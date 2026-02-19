@@ -9,6 +9,7 @@ import logging
 import os
 import re
 import sys
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -31,7 +32,6 @@ GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
 SITEMAP_INDEX_URL = "https://developers.openai.com/sitemap-index.xml"
 GITHUB_TREE_URL = "https://api.github.com/repos/openai/codex/git/trees/main?recursive=1"
 USER_AGENT = "codex-docs-sync/0.1 (+https://github.com/chenrui333/codex-docs)"
-REQUEST_TIMEOUT_SECONDS = 30
 
 LOG = logging.getLogger("fetch_codex_docs")
 
@@ -58,6 +58,34 @@ WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
     ("GitHub Core Docs", "github.openai.com/openai/codex/docs/"),
     ("GitHub Other Docs", "github.openai.com/openai/codex/"),
 )
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        LOG.warning("Invalid integer for %s=%r. Falling back to %d.", name, raw, default)
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        LOG.warning("Invalid float for %s=%r. Falling back to %.2f.", name, raw, default)
+        return default
+
+
+REQUEST_TIMEOUT_SECONDS = _env_float("CODEX_DOCS_TIMEOUT_SECONDS", 30.0)
+REQUEST_MAX_RETRIES = max(_env_int("CODEX_DOCS_MAX_RETRIES", 3), 1)
+REQUEST_BACKOFF_SECONDS = max(_env_float("CODEX_DOCS_RETRY_BACKOFF_SECONDS", 1.5), 0.0)
+STRICT_SYNC_MODE = os.environ.get("CODEX_DOCS_STRICT_SYNC", "0") == "1"
 
 
 @dataclass(frozen=True)
@@ -133,9 +161,30 @@ def is_codex_related_developers_url(url: str) -> bool:
 
 
 def fetch_text(session: requests.Session, url: str) -> str:
-    response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
-    response.raise_for_status()
-    return response.text
+    last_error: Exception | None = None
+    for attempt in range(1, REQUEST_MAX_RETRIES + 1):
+        try:
+            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+            response.raise_for_status()
+            return response.text
+        except requests.RequestException as exc:
+            last_error = exc
+            if attempt >= REQUEST_MAX_RETRIES:
+                break
+            sleep_seconds = REQUEST_BACKOFF_SECONDS * (2 ** (attempt - 1))
+            LOG.warning(
+                "Request failed (attempt %d/%d) for %s: %s. Retrying in %.2fs",
+                attempt,
+                REQUEST_MAX_RETRIES,
+                url,
+                exc,
+                sleep_seconds,
+            )
+            if sleep_seconds > 0:
+                time.sleep(sleep_seconds)
+
+    assert last_error is not None  # pragma: no cover - defensive
+    raise last_error
 
 
 def load_existing_coverage() -> Dict[str, object]:
@@ -159,12 +208,21 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
     sitemap_urls = parse_loc_tags(index_xml)
     mirrored_urls: set[str] = set()
     codex_related_urls: set[str] = set()
+    sitemap_fetch_errors: List[Dict[str, str]] = []
 
     for sitemap_url in sitemap_urls:
         try:
             sitemap_xml = fetch_text(session, sitemap_url)
         except requests.RequestException as exc:
             LOG.warning("Skipping sitemap %s due to error: %s", sitemap_url, exc)
+            sitemap_fetch_errors.append(
+                {
+                    "source": "developers",
+                    "stage": "sitemap_fetch",
+                    "url": sitemap_url,
+                    "error": str(exc),
+                }
+            )
             continue
 
         for raw_url in parse_loc_tags(sitemap_xml):
@@ -216,7 +274,6 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
         )
 
     coverage = {
-        "generated_at": now_utc_iso(),
         "developers": {
             "sitemap_index_url": SITEMAP_INDEX_URL,
             "sitemap_urls": sitemap_urls,
@@ -230,7 +287,9 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
                 "codex_related_urls": len(codex_related_sorted),
                 "mirrored_urls": len(mirrored_sorted),
                 "skipped_codex_related_urls": len(skipped_codex_related),
+                "sitemap_fetch_errors": len(sitemap_fetch_errors),
             },
+            "sitemap_fetch_errors": sitemap_fetch_errors,
         },
     }
 
@@ -453,8 +512,11 @@ def remove_empty_directories(start: Path) -> None:
                 pass
 
 
-def build_developers_files(session: requests.Session) -> Tuple[List[ManagedFile], Dict[str, object]]:
+def build_developers_files(
+    session: requests.Session,
+) -> Tuple[List[ManagedFile], Dict[str, object], List[Dict[str, str]]]:
     managed: List[ManagedFile] = []
+    fetch_errors: List[Dict[str, str]] = []
     developers_urls, coverage = discover_developers_urls(session)
     for url in developers_urls:
         try:
@@ -462,6 +524,14 @@ def build_developers_files(session: requests.Session) -> Tuple[List[ManagedFile]
             content = html_to_markdown(url, html)
         except requests.RequestException as exc:
             LOG.warning("Skipping developers URL %s due to error: %s", url, exc)
+            fetch_errors.append(
+                {
+                    "source": "developers",
+                    "stage": "page_fetch",
+                    "url": url,
+                    "error": str(exc),
+                }
+            )
             continue
 
         rel_path = developers_url_to_rel_path(url)
@@ -474,11 +544,21 @@ def build_developers_files(session: requests.Session) -> Tuple[List[ManagedFile]
             )
         )
 
-    return managed, coverage
+    developers_section = coverage.get("developers", {})
+    if isinstance(developers_section, dict):
+        developers_section["page_fetch_errors"] = fetch_errors
+        counts = developers_section.get("counts", {})
+        if isinstance(counts, dict):
+            counts["page_fetch_errors"] = len(fetch_errors)
+        else:
+            developers_section["counts"] = {"page_fetch_errors": len(fetch_errors)}
+
+    return managed, coverage, fetch_errors
 
 
-def build_github_files(session: requests.Session) -> List[ManagedFile]:
+def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], List[Dict[str, str]]]:
     managed: List[ManagedFile] = []
+    fetch_errors: List[Dict[str, str]] = []
 
     for path in discover_github_paths(session):
         raw_url = f"https://raw.githubusercontent.com/openai/codex/main/{path}"
@@ -486,6 +566,14 @@ def build_github_files(session: requests.Session) -> List[ManagedFile]:
             raw_text = fetch_text(session, raw_url)
         except requests.RequestException as exc:
             LOG.warning("Skipping GitHub path %s due to error: %s", path, exc)
+            fetch_errors.append(
+                {
+                    "source": "github",
+                    "stage": "page_fetch",
+                    "url": raw_url,
+                    "error": str(exc),
+                }
+            )
             continue
 
         rel_path = github_path_to_rel_path(path)
@@ -499,7 +587,7 @@ def build_github_files(session: requests.Session) -> List[ManagedFile]:
             )
         )
 
-    return managed
+    return managed, fetch_errors
 
 
 def write_manifest(entries: Dict[str, Dict[str, str]]) -> None:
@@ -512,14 +600,21 @@ def write_manifest(entries: Dict[str, Dict[str, str]]) -> None:
 
 
 def write_summary(
-    added: List[str], updated: List[str], removed: List[str], total: int
+    added: List[str],
+    updated: List[str],
+    removed: List[str],
+    total: int,
+    failures: List[Dict[str, str]] | None = None,
 ) -> None:
+    failure_items = failures or []
     payload = {
         "generated_at": now_utc_iso(),
         "total_files": total,
         "added": added,
         "updated": updated,
         "removed": removed,
+        "failure_count": len(failure_items),
+        "failures": failure_items,
     }
     ensure_parent(SUMMARY_PATH)
     SUMMARY_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
@@ -605,7 +700,11 @@ def render_category_summary(label: str, paths: List[str]) -> List[str]:
     return lines
 
 
-def apply_sync(managed_files: Iterable[ManagedFile]) -> Tuple[List[str], List[str], List[str]]:
+def apply_sync(
+    managed_files: Iterable[ManagedFile],
+    failures: List[Dict[str, str]] | None = None,
+    preserve_missing_sources: Sequence[str] = (),
+) -> Tuple[List[str], List[str], List[str]]:
     previous = load_existing_manifest()
 
     next_entries: Dict[str, Dict[str, str]] = {}
@@ -623,7 +722,16 @@ def apply_sync(managed_files: Iterable[ManagedFile]) -> Tuple[List[str], List[st
     next_paths = set(next_entries)
 
     added = sorted(next_paths - previous_paths)
-    removed = sorted(previous_paths - next_paths)
+    preserve_sources = set(preserve_missing_sources)
+    removed_candidates = sorted(previous_paths - next_paths)
+    removed: List[str] = []
+    for path in removed_candidates:
+        previous_source_type = previous.get(path, {}).get("source_type", "")
+        if previous_source_type in preserve_sources:
+            next_entries[path] = previous[path]
+            continue
+        removed.append(path)
+
     updated = sorted(
         path
         for path in (next_paths & previous_paths)
@@ -645,8 +753,19 @@ def apply_sync(managed_files: Iterable[ManagedFile]) -> Tuple[List[str], List[st
 
     write_manifest(next_entries)
     has_changes = bool(added or updated or removed)
-    if has_changes or not SUMMARY_PATH.exists():
-        write_summary(added, updated, removed, len(next_entries))
+    summary_schema_stale = False
+    if SUMMARY_PATH.exists():
+        try:
+            summary_payload = json.loads(SUMMARY_PATH.read_text())
+            summary_schema_stale = not (
+                isinstance(summary_payload, dict)
+                and "failure_count" in summary_payload
+                and "failures" in summary_payload
+            )
+        except json.JSONDecodeError:
+            summary_schema_stale = True
+    if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale:
+        write_summary(added, updated, removed, len(next_entries), failures=failures)
     write_weekly_note(added, updated, removed)
 
     return added, updated, removed
@@ -664,28 +783,113 @@ def main() -> int:
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
 
+    failures: List[Dict[str, str]] = []
+    preserve_missing_sources: set[str] = set()
+    developers_files: List[ManagedFile] = []
+    github_files: List[ManagedFile] = []
+    developers_fetch_errors: List[Dict[str, str]] = []
+    github_fetch_errors: List[Dict[str, str]] = []
+    coverage: Dict[str, object] = {}
+
     try:
-        developers_files, coverage = build_developers_files(session)
-        github_files = build_github_files(session)
-        managed_files = developers_files + github_files
-        coverage["github"] = {
-            "repo": "openai/codex",
-            "mirrored_paths_count": len(github_files),
-            "mirrored_paths": sorted(item.rel_path for item in github_files),
+        developers_files, coverage, developers_fetch_errors = build_developers_files(session)
+        failures.extend(developers_fetch_errors)
+        if developers_fetch_errors:
+            preserve_missing_sources.add("developers")
+    except Exception as exc:
+        LOG.warning("Developers source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": "developers",
+            "stage": "source_build",
+            "url": "https://developers.openai.com",
+            "error": str(exc),
         }
-        write_coverage(coverage)
+        failures.append(failure)
+        preserve_missing_sources.add("developers")
+        coverage["developers"] = {
+            "error": str(exc),
+            "counts": {
+                "codex_related_urls": 0,
+                "mirrored_urls": 0,
+                "sitemap_urls": 0,
+                "skipped_codex_related_urls": 0,
+                "sitemap_fetch_errors": 0,
+                "page_fetch_errors": 0,
+            },
+        }
 
-        added, updated, removed = apply_sync(managed_files)
+    try:
+        github_files, github_fetch_errors = build_github_files(session)
+        failures.extend(github_fetch_errors)
+        if github_fetch_errors:
+            preserve_missing_sources.add("github")
+    except Exception as exc:
+        LOG.warning("GitHub source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": "github",
+            "stage": "source_build",
+            "url": "https://github.com/openai/codex",
+            "error": str(exc),
+        }
+        failures.append(failure)
+        preserve_missing_sources.add("github")
 
-        LOG.info("Managed files: %d", len(managed_files))
-        LOG.info("Added: %d", len(added))
-        LOG.info("Updated: %d", len(updated))
-        LOG.info("Removed: %d", len(removed))
+    github_source_errors = [item for item in failures if item["source"] == "github" and item["stage"] == "source_build"]
+    coverage["github"] = {
+        "repo": "openai/codex",
+        "mirrored_paths_count": len(github_files),
+        "mirrored_paths": sorted(item.rel_path for item in github_files),
+        "page_fetch_errors": github_fetch_errors,
+        "source_errors": github_source_errors,
+        "counts": {
+            "mirrored_paths_count": len(github_files),
+            "page_fetch_errors": len(github_fetch_errors),
+            "source_errors": len(github_source_errors),
+        },
+    }
+    coverage["sync"] = {
+        "strict_sync_mode": STRICT_SYNC_MODE,
+        "preserve_missing_sources": sorted(preserve_missing_sources),
+        "failure_count": len(failures),
+    }
+    write_coverage(coverage)
 
-        return 0
-    except Exception as exc:  # pragma: no cover - guardrail for CI
-        LOG.exception("Sync failed: %s", exc)
+    managed_files = developers_files + github_files
+    if not managed_files:
+        LOG.error("No source files were fetched successfully.")
+        write_summary([], [], [], 0, failures=failures)
         return 1
+
+    try:
+        added, updated, removed = apply_sync(
+            managed_files,
+            failures=failures,
+            preserve_missing_sources=sorted(preserve_missing_sources),
+        )
+    except Exception as exc:  # pragma: no cover - guardrail for sync bugs
+        LOG.exception("Sync failed while writing output: %s", exc)
+        return 1
+
+    LOG.info("Managed files: %d", len(managed_files))
+    LOG.info("Added: %d", len(added))
+    LOG.info("Updated: %d", len(updated))
+    LOG.info("Removed: %d", len(removed))
+
+    if failures:
+        LOG.warning("Sync completed with %d failure(s).", len(failures))
+        for item in failures[:25]:
+            LOG.warning(
+                "failure source=%s stage=%s url=%s error=%s",
+                item.get("source"),
+                item.get("stage"),
+                item.get("url"),
+                item.get("error"),
+            )
+        if STRICT_SYNC_MODE:
+            LOG.error("Strict sync mode is enabled and failures were detected.")
+            return 1
+
+    return 0
 
 
 if __name__ == "__main__":

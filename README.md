@@ -34,6 +34,13 @@ Coverage watchdog behavior:
 - Highlights newly discovered codex-related URLs in workflow logs
 - Optional strict mode: set `CODEX_DOCS_STRICT_COVERAGE=1` to fail when new codex-related URLs are discovered but none are mirrored
 
+Resiliency controls:
+
+- `CODEX_DOCS_TIMEOUT_SECONDS` request timeout per call (default `30`)
+- `CODEX_DOCS_MAX_RETRIES` max request attempts (default `3`)
+- `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
+- `CODEX_DOCS_STRICT_SYNC=1` fail the run if any source segment fails (otherwise partial-source runs are allowed and failures are recorded)
+
 Release workflow: `.github/workflows/release.yml`
 
 - Creates a GitHub release from the root `VERSION` file (tag format `vX.Y.Z`)
