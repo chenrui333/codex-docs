@@ -26,6 +26,12 @@ GitHub Actions workflow: `.github/workflows/update-docs.yml`
 - Executes `scripts/fetch_codex_docs.py`
 - Commits and pushes when content changes are detected
 
+Release workflow: `.github/workflows/release.yml`
+
+- Creates a GitHub release from the root `VERSION` file (tag format `vX.Y.Z`)
+- Triggers on `VERSION` changes or manual run via `workflow_dispatch`
+- Keeps direct-push sync model unchanged
+
 ## Local usage
 
 ```bash
