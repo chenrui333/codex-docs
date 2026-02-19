@@ -1,8 +1,15 @@
 {
   "added": [],
-  "failure_count": 0,
-  "failures": [],
-  "generated_at": "2026-02-19T20:58:41+00:00",
+  "failure_count": 1,
+  "failures": [
+    {
+      "error": "403 Client Error: rate limit exceeded for url: https://api.github.com/repos/openai/codex/git/trees/main?recursive=1",
+      "source": "github",
+      "stage": "source_build",
+      "url": "https://github.com/openai/codex"
+    }
+  ],
+  "generated_at": "2026-02-19T21:23:08+00:00",
   "removed": [],
   "total_files": 107,
   "updated": []

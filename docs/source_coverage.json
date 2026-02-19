@@ -185,59 +185,31 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-02-19T21:00:28+00:00",
+  "generated_at": "2026-02-19T21:11:30+00:00",
   "github": {
     "counts": {
-      "mirrored_paths_count": 36,
+      "mirrored_paths_count": 0,
       "page_fetch_errors": 0,
-      "source_errors": 0
+      "source_errors": 1
     },
-    "mirrored_paths": [
-      "github.openai.com/openai/codex/AGENTS.md",
-      "github.openai.com/openai/codex/CHANGELOG.md",
-      "github.openai.com/openai/codex/LICENSE",
-      "github.openai.com/openai/codex/README.md",
-      "github.openai.com/openai/codex/SECURITY.md",
-      "github.openai.com/openai/codex/codex-cli/README.md",
-      "github.openai.com/openai/codex/codex-cli/scripts/README.md",
-      "github.openai.com/openai/codex/codex-rs/README.md",
-      "github.openai.com/openai/codex/codex-rs/config.md",
-      "github.openai.com/openai/codex/codex-rs/docs/bazel.md",
-      "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md",
-      "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md",
-      "github.openai.com/openai/codex/docs/CLA.md",
-      "github.openai.com/openai/codex/docs/agents_md.md",
-      "github.openai.com/openai/codex/docs/authentication.md",
-      "github.openai.com/openai/codex/docs/config.md",
-      "github.openai.com/openai/codex/docs/contributing.md",
-      "github.openai.com/openai/codex/docs/example-config.md",
-      "github.openai.com/openai/codex/docs/exec.md",
-      "github.openai.com/openai/codex/docs/execpolicy.md",
-      "github.openai.com/openai/codex/docs/exit-confirmation-prompt-design.md",
-      "github.openai.com/openai/codex/docs/getting-started.md",
-      "github.openai.com/openai/codex/docs/install.md",
-      "github.openai.com/openai/codex/docs/js_repl.md",
-      "github.openai.com/openai/codex/docs/license.md",
-      "github.openai.com/openai/codex/docs/open-source-fund.md",
-      "github.openai.com/openai/codex/docs/prompts.md",
-      "github.openai.com/openai/codex/docs/sandbox.md",
-      "github.openai.com/openai/codex/docs/skills.md",
-      "github.openai.com/openai/codex/docs/slash_commands.md",
-      "github.openai.com/openai/codex/docs/tui-alternate-screen.md",
-      "github.openai.com/openai/codex/docs/tui-chat-composer.md",
-      "github.openai.com/openai/codex/docs/tui-request-user-input.md",
-      "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md",
-      "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md",
-      "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md"
-    ],
-    "mirrored_paths_count": 36,
+    "mirrored_paths": [],
+    "mirrored_paths_count": 0,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_errors": []
+    "source_errors": [
+      {
+        "error": "403 Client Error: rate limit exceeded for url: https://api.github.com/repos/openai/codex/git/trees/main?recursive=1",
+        "source": "github",
+        "stage": "source_build",
+        "url": "https://github.com/openai/codex"
+      }
+    ]
   },
   "sync": {
-    "failure_count": 0,
-    "preserve_missing_sources": [],
+    "failure_count": 1,
+    "preserve_missing_sources": [
+      "github"
+    ],
     "strict_sync_mode": false
   }
 }
