@@ -274,6 +274,7 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
         )
 
     coverage = {
+        "generated_at": now_utc_iso(),
         "developers": {
             "sitemap_index_url": SITEMAP_INDEX_URL,
             "sitemap_urls": sitemap_urls,
@@ -621,6 +622,18 @@ def write_summary(
 
 
 def write_coverage(coverage: Dict[str, object]) -> None:
+    coverage_without_generated_at = {k: v for k, v in coverage.items() if k != "generated_at"}
+    if COVERAGE_PATH.exists():
+        try:
+            previous = json.loads(COVERAGE_PATH.read_text())
+            if isinstance(previous, dict):
+                previous_has_generated_at = "generated_at" in previous
+                previous_without_generated_at = {k: v for k, v in previous.items() if k != "generated_at"}
+                if previous_has_generated_at and previous_without_generated_at == coverage_without_generated_at:
+                    return
+        except json.JSONDecodeError:
+            pass
+
     ensure_parent(COVERAGE_PATH)
     COVERAGE_PATH.write_text(json.dumps(coverage, indent=2, sort_keys=True) + "\n")
 
@@ -789,7 +802,7 @@ def main() -> int:
     github_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
-    coverage: Dict[str, object] = {}
+    coverage: Dict[str, object] = {"generated_at": now_utc_iso()}
 
     try:
         developers_files, coverage, developers_fetch_errors = build_developers_files(session)
