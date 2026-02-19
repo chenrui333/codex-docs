@@ -2,12 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/topic/codex
 
-# Codex
-
-Automate developer workflows and build code-generation experiences using Codex-driven agents and tools.
-
-Codex
-
 ## All recipes8
 
 [Codex Prompting Guide

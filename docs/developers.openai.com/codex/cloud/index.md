@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cloud
 
-Delegate to Codex in the cloud
-
 Codex is OpenAI’s coding agent that can read, edit, and run code. It helps you build faster, fix bugs, and understand unfamiliar code. With Codex cloud, Codex can work on tasks in the background (including in parallel) using its own cloud environment.
 
 ## Codex web setup
@@ -29,8 +27,4 @@ Kick off a cloud task from your editor, then monitor progress and apply the resu
 Tag `@codex` on issues and pull requests to spin up tasks and propose changes directly from GitHub.](/codex/integrations/github)[### Control internet access
 
 Decide whether Codex can reach the public internet from cloud environments, and when to enable it.](/codex/cloud/internet-access)
-
-[Next
-
-Environments](/codex/cloud/environments)
 

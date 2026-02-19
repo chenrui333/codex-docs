@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/automations
 
-Schedule recurring Codex tasks
-
 Automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives the task if there’s nothing to report. You can combine automations with [skills](/codex/skills) for more complex tasks.
 
 Automations run locally in the Codex app. The app needs to be running, and the
@@ -14,9 +12,7 @@ In Git repositories, each automation run starts in a new
 checkout. In non-version-controlled projects, automations run directly in the
 project directory.
 
-![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp) ![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-dark.webp)
-
-![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp) ![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-dark.webp)
+![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp)
 
 ## Managing tasks
 
@@ -176,10 +172,4 @@ Afterward, create a new automation:
 ```
 Check my commits from the last 24h and submit a $recent-code-bugfix.
 ```
-
-[Previous
-
-Review](/codex/app/review)[Next
-
-Worktrees](/codex/app/worktrees)
 

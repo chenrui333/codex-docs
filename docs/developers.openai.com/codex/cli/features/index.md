@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cli/features
 
-Overview of functionality in the Codex terminal client
-
 Codex supports workflows beyond chat. Use this guide to learn what each one unlocks and when to use it.
 
 ## Running in interactive mode
@@ -194,10 +192,4 @@ See [Model Context Protocol](/codex/mcp) for example configurations, supported a
 - Launch Codex from any directory using `codex --cd <path>` to set the working root without running `cd` first. The active path appears in the TUI header.
 - Expose more writable roots with `--add-dir` (for example, `codex --cd apps/frontend --add-dir ../backend --add-dir ../shared`) when you need to coordinate changes across more than one project.
 - Make sure your environment is already set up before launching Codex so it doesn’t spend tokens probing what to activate. For example, source your Python virtual environment (or other language environments), start any required daemons, and export the environment variables you expect to use ahead of time.
-
-[Previous
-
-Overview](/codex/cli)[Next
-
-Command Line Options](/codex/cli/reference)
 

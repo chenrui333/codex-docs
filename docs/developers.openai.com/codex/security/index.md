@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/security
 
-How to securely operate and manage Codex agents
-
 Codex helps protect your code and data and reduces the risk of misuse.
 
 By default, the agent runs with network access turned off. Locally, Codex uses an OS-enforced sandbox that limits what it can touch (typically to the current workspace), plus an approval policy that controls when it must stop and ask you before acting.

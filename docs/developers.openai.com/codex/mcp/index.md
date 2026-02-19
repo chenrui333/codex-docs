@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/mcp
 
-Give Codex access to third-party tools and context
-
 Model Context Protocol (MCP) connects models to tools and context. Use it to give Codex access to third-party documentation, or to let it interact with developer tools like your browser or Figma.
 
 Codex supports MCP servers in both the CLI and the IDE extension.

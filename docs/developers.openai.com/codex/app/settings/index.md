@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/settings
 
-Configure Codex app behavior and preferences
-
 Use the settings panel to tune how the Codex app behaves, how it opens files,
 and how it connects to tools. Open [**Settings**](codex://settings) from the app menu or
 press `Cmd`+`,`.
@@ -56,10 +54,4 @@ You can also add your own custom instructions. Editing custom instructions updat
 
 The **Archived threads** section lists archived chats with dates and project
 context. Use **Unarchive** to restore a thread.
-
-[Previous
-
-Features](/codex/app/features)[Next
-
-Review](/codex/app/review)
 

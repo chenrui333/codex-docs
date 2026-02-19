@@ -2,18 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/codex/autofix-github-actions
 
-Sep 30, 2025
-
-# Use Codex CLI to automatically fix CI failures
-
-[![Himadri Acharya](https://avatars.githubusercontent.com/u/14100684?v=4)  HA](https://www.linkedin.com/in/himadri-acharya-086ba261/)  [![Kevin Alwell](https://avatars.githubusercontent.com/u/26548363)  KA](https://github.com/alwell-kevin)  [![Charlie Weems](https://avatars.githubusercontent.com/u/181146176?v=4)  CW](https://wee.ms)
-
-[Himadri Acharya ,](https://www.linkedin.com/in/himadri-acharya-086ba261/)  [Kevin Alwell
-(OpenAI)
- ,](https://github.com/alwell-kevin)  [Charlie Weems](https://wee.ms)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/codex/Autofix-github-actions.ipynb) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/codex/Autofix-github-actions.ipynb)
-
 ## Purpose of this cookbook
 
 This cookbook shows you how to embed the OpenAI Codex CLI into your CI/CD pipeline so that when your builds or tests fail, codex automatically generates & proposes fixes. The following is an example in a node project with CI running in GitHub Actions.

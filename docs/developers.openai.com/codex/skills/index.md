@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/skills
 
-Give Codex new capabilities and expertise
-
 Use agent skills to extend Codex with task-specific capabilities. A skill packages instructions, resources, and optional scripts so Codex can follow a workflow reliably. You can share skills across teams or with the community. Skills build on the [open agent skills standard](https://agentskills.io).
 
 Skills are available in the Codex CLI, IDE extension, and Codex app.

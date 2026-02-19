@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/sdk
 
-Programmatically control local Codex agents
-
 If you use Codex through the Codex CLI, the IDE extension, or Codex Web, you can also control it programmatically.
 
 Use the SDK when you need to:

@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/review
 
-Review and iterate with Codex on changes inside the app
-
 The review pane helps you understand what Codex changed, give targeted feedback, and decide what to keep.
 
 It only works for projects that live inside a Git repository. If your project
@@ -59,9 +57,7 @@ inline comments and keep the scope minimal.”
 If you use `/review` to run a code review, comments will show up directly
 inline in the review pane.
 
-![Inline code review comments displayed in the review pane](/images/codex/app/inline-code-review-light.webp) ![Inline code review comments displayed in the review pane](/images/codex/app/inline-code-review-dark.webp)
-
-![Inline code review comments displayed in the review pane](/images/codex/app/inline-code-review-light.webp) ![Inline code review comments displayed in the review pane](/images/codex/app/inline-code-review-dark.webp)
+![Inline code review comments displayed in the review pane](/images/codex/app/inline-code-review-light.webp)
 
 ## Staging and reverting files
 
@@ -83,10 +79,4 @@ to discard it.
 Git can represent both staged and unstaged changes in the same file. When that
 happens, it can look like the pane is showing “the same file twice” across
 staged and unstaged views. That’s normal Git behavior.
-
-[Previous
-
-Settings](/codex/app/settings)[Next
-
-Automations](/codex/app/automations)
 

@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/open-source
 
-Open-source components of Codex and where to collaborate
-
 OpenAI develops key parts of Codex in the open. That work lives on GitHub so you can follow progress, report issues, and contribute improvements.
 
 ## Open-source components

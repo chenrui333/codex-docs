@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/ide
 
-Pair with Codex in your IDE
-
 Codex is OpenAI’s coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Codex VS Code extension, you can use Codex side by side in your IDE or delegate tasks to Codex Cloud.
 
 ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what’s included](/codex/pricing).
@@ -92,8 +90,4 @@ Browse the full list of commands you can run from the command palette and bind t
 Use slash commands to control how Codex behaves and quickly change common settings from chat.](/codex/ide/slash-commands)[### Extension settings
 
 Tune Codex to your workflow with editor settings for models, approvals, and other defaults.](/codex/ide/settings)
-
-[Next
-
-Features](/codex/ide/features)
 

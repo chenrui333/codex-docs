@@ -2,15 +2,11 @@
 
 Source: https://developers.openai.com/codex/app
 
-Your Codex command center
-
 The Codex app is a focused desktop experience for working on Codex threads in parallel, with built-in worktree support, automations, and Git functionality.
 
 ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what’s included](/codex/pricing).
 
-![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-light.webp) ![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-dark.webp)
-
-![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-light.webp) ![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-dark.webp)
+![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-light.webp)
 
 ## Getting started
 
@@ -40,7 +36,9 @@ If you used the Codex app, CLI, or IDE Extension before you’ll see past projec
 
    You can ask Codex anything about the project or your computer in general. Here are some examples:
 
-   ![](/codex/colorcons/brain.png)Tell me about this projectCopied![](/codex/colorcons/gamepad.png)Build a classic Snake game in this repo.Copied![](/codex/colorcons/search.png)Find and fix bugs in my codebase with minimal, high-confidence changes.Copied
+- Tell me about this project
+- Build a classic Snake game in this repo.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 
    If you need more inspiration, check out the [explore section](/codex/explore).
 
@@ -71,8 +69,4 @@ Connect your Codex agent to additional services using MCP.](/codex/app/features#
 ---
 
 Need help? Visit the [troubleshooting guide](/codex/app/troubleshooting).
-
-[Next
-
-Features](/codex/app/features)
 

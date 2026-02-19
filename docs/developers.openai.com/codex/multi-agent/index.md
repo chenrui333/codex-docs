@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/multi-agent
 
-Use experimental multi-agent collaboration in Codex CLI
-
 Codex can run multi-agent workflows by spawning specialized agents in parallel and then collecting their results in one response. This can be particularly helpful for complex tasks that are highly parallel, such as codebase exploration or implementing a multi-step feature plan.
 
 With multi-agent workflows you can also define your own set of agents with different model configurations and instructions depending on the agent.

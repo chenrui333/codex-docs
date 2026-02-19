@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/config-reference
 
-Complete reference for Codex config.toml and requirements.toml
-
 Use this page as a searchable reference for Codex configuration files. For conceptual guidance and examples, start with [Config basics](/codex/config-basic) and [Advanced Config](/codex/config-advanced).
 
 ## `config.toml`

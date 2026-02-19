@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/guides/build-ai-native-engineering-team
 
-How coding agents speed up the software development lifecycle
-
 ## Introduction
 
 AI models are rapidly expanding the range of tasks they can perform, with significant implications for engineering. Frontier systems now sustain multi-hour reasoning: as of August 2025, METR found that leading models could complete **2 hours and 17 minutes** of continuous work with roughly **50% confidence** of producing a correct answer.

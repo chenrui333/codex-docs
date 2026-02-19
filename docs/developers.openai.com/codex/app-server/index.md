@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app-server
 
-Embed Codex into your product with the app-server protocol
-
 Codex app-server is the interface Codex uses to power rich clients (for example, the Codex VS Code extension). Use it when you want a deep integration inside your own product: authentication, conversation history, approvals, and streamed agent events. The app-server implementation is open source in the Codex GitHub repository ([openai/codex/codex-rs/app-server](https://github.com/openai/codex/tree/main/codex-rs/app-server)). See the [Open Source](/codex/open-source) page for the full list of open-source Codex components.
 
 If you are automating jobs or running Codex in CI, use the

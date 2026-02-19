@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/feature-maturity
 
-How to interpret feature maturity levels in Codex docs and releases
-
 Some Codex features ship behind a maturity label so you can understand how reliable each one is, what might change, and what level of support to expect.
 
 | Maturity | What it means | Guidance |

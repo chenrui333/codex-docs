@@ -2,16 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk
 
-Oct 21, 2025
-
-# Build Code Review with the Codex SDK
-
-[![Charlie Weems](https://avatars.githubusercontent.com/u/181146176?v=4)  CW](https://wee.ms)
-
-[Charlie Weems](https://wee.ms)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/codex/build_code_review_with_codex_sdk.md) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/codex/build_code_review_with_codex_sdk.md)
-
 With [Code Review](https://chatgpt.com/codex/settings/code-review) in Codex Cloud, you can connect your team’s cloud hosted GitHub repository to Codex and receive automated code reviews on every PR. But what if your code is hosted on-prem, or you don’t have GitHub as an SCM?
 
 Luckily, we can replicate Codex’s cloud hosted review process in our own CI/CD runners. In this guide, we’ll build our own Code Review action using the Codex CLI headless mode with both GitHub Actions and Jenkins.

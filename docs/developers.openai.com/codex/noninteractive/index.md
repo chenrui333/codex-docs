@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/noninteractive
 
-Use `codex exec` to run Codex in scripts and CI
-
 Non-interactive mode lets you run Codex from scripts (for example, continuous integration (CI) jobs) without opening the interactive TUI.
 You invoke it with `codex exec`.
 

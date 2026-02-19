@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/models
 
-Meet the AI models that power Codex
-
 ## Recommended models
 
 ![gpt-5.3-codex](/images/codex/codex-wallpaper-1.webp)

@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/quickstart
 
-Start using Codex in your IDE, CLI, or the cloud
-
 ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Using Codex with your ChatGPT subscription gives you access to the latest Codex models and features.
 
 You can also use Codex with API credits by signing in with an OpenAI API key.
@@ -13,10 +11,6 @@ For a limited time, **try Codex for free in ChatGPT Free and Go**, or enjoy
 subscriptions.
 
 ## Setup
-
-Choose an option
-
-AppRecommended (macOS only)IDE extensionCodex in your IDECLICodex in your terminalCloudCodex in your browser
 
 The Codex app is available on macOS (Apple Silicon).
 
@@ -44,7 +38,9 @@ If you used the Codex app, CLI, or IDE Extension before you’ll see past projec
 
    You can ask Codex anything about the project or your computer in general. Here are some examples:
 
-   ![](/codex/colorcons/brain.png)Tell me about this projectCopied![](/codex/colorcons/gamepad.png)Build a classic Snake game in this repo.Copied![](/codex/colorcons/search.png)Find and fix bugs in my codebase with minimal, high-confidence changes.Copied
+- Tell me about this project
+- Build a classic Snake game in this repo.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 
    If you need more inspiration, check out the [explore section](/codex/explore).
 
@@ -69,7 +65,9 @@ Install the Codex extension for your IDE.
 
    Codex starts in Agent mode by default, which lets it read files, run commands, and write changes in your project directory.
 
-   ![](/codex/colorcons/brain.png)Tell me about this projectCopied![](/codex/colorcons/gamepad.png)Build a classic Snake game in this repo.Copied![](/codex/colorcons/search.png)Find and fix bugs in my codebase with minimal, high-confidence changes.Copied
+- Tell me about this project
+- Build a classic Snake game in this repo.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 4. Use Git checkpoints
 
    Codex can modify your codebase, so consider creating Git checkpoints before and after each task so you can easily revert changes if needed.
@@ -98,7 +96,9 @@ The Codex CLI is supported on macOS, Windows, and Linux.
 
    Once authenticated, you can ask Codex to perform tasks in the current directory.
 
-   ![](/codex/colorcons/brain.png)Tell me about this projectCopied![](/codex/colorcons/gamepad.png)Build a classic Snake game in this repo.Copied![](/codex/colorcons/search.png)Find and fix bugs in my codebase with minimal, high-confidence changes.Copied
+- Tell me about this project
+- Build a classic Snake game in this repo.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 4. Use Git checkpoints
 
    Codex can modify your codebase, so consider creating Git checkpoints before and after each task so you can easily revert changes if needed.
@@ -117,7 +117,9 @@ Use Codex in the cloud at [chatgpt.com/codex](https://chatgpt.com/codex).
 
    Once your environment is ready, launch coding tasks from the [Codex interface](https://chatgpt.com/codex). You can monitor progress in real time by viewing logs, or let tasks run in the background.
 
-   ![](/codex/colorcons/brain.png)Tell me about this projectCopied![](/codex/colorcons/brain.png)Explain the top failure modes of my application's architecture.Copied![](/codex/colorcons/search.png)Find and fix bugs in my codebase with minimal, high-confidence changes.Copied
+- Tell me about this project
+- Explain the top failure modes of my application's architecture.
+- Find and fix bugs in my codebase with minimal, high-confidence changes.
 4. Review changes and create a pull request
 
    When a task completes, review the proposed changes in the diff view. You can iterate on the results or create a pull request directly in your GitHub repository.

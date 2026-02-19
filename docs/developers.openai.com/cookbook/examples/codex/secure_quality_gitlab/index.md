@@ -2,17 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab
 
-Aug 29, 2025
-
-# Automating Code Quality and Security Fixes with Codex CLI on GitLab
-
-[![Jonathan Lim](https://avatars.githubusercontent.com/u/189068472?v=4)  JL](https://www.linkedin.com/in/jonlmr)  [![Pierre-Antoine Porte](https://avatars.githubusercontent.com/u/174109416?v=4)  PP](https://www.linkedin.com/in/portepa/)
-
-[Jonathan Lim ,](https://www.linkedin.com/in/jonlmr)  [Pierre-Antoine Porte
-(OpenAI)](https://www.linkedin.com/in/portepa/)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/codex/secure_quality_gitlab.md) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/codex/secure_quality_gitlab.md)
-
 ## Introduction
 
 When deploying production code, most teams rely on CI/CD pipelines to validate changes before merging. Reviewers typically look at unit test results, vulnerability scans, and code quality reports. Traditionally, these are produced by rule-based engines that catch known issues but often miss contextual or higher-order problems—while leaving developers with noisy results that are hard to prioritize or act on.

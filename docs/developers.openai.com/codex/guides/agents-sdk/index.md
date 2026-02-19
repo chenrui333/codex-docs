@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/guides/agents-sdk
 
-Invoke Codex as an MCP server to build multi-agent development workflows
-
 # Running Codex as an MCP server
 
 You can run Codex as an MCP server and connect it from other MCP clients (for example, an agent built with the [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/guides/mcp/)).

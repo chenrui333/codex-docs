@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/troubleshooting
 
-FAQ and fixes for common Codex app issues
-
 ## Frequently Asked Questions
 
 ### Files appear in the side panel that Codex didn’t edit
@@ -136,8 +134,4 @@ If it continues to be stuck, wait until your active Codex threads are completed 
 **Fonts aren’t rendering correctly**
 
 Codex uses the same font for the review pane, integrated terminal and any other code displayed inside the app. You can configure the font inside the [Settings](codex://settings) pane as **Code font**.
-
-[Previous
-
-Commands](/codex/app/commands)
 

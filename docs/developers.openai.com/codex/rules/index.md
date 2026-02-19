@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/rules
 
-Control which commands Codex can run outside the sandbox
-
 Use rules to control which commands Codex can run outside the sandbox.
 
 Rules are experimental and may change.

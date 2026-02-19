@@ -11,7 +11,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Sequence, Tuple
 from urllib.parse import ParseResult, urlparse, urlunparse
 
 import requests
@@ -32,6 +32,23 @@ USER_AGENT = "codex-docs-sync/0.1 (+https://github.com/chenrui333/codex-docs)"
 REQUEST_TIMEOUT_SECONDS = 30
 
 LOG = logging.getLogger("fetch_codex_docs")
+
+DEVELOPERS_CONTENT_SELECTORS: Sequence[str] = (
+    "article#mainContent",
+    "article.prose-content",
+    "main article",
+    "main",
+    "article",
+    "body",
+)
+NOISY_EXACT_LINES = {
+    "Copy PageMore page actions",
+    "Copy Page",
+    "More page actions",
+}
+NOISY_LINE_PATTERNS = (
+    re.compile(r"^Choose an option\s*$", flags=re.IGNORECASE),
+)
 
 
 @dataclass(frozen=True)
@@ -134,20 +151,9 @@ def developers_url_to_rel_path(url: str) -> str:
 
 def html_to_markdown(url: str, html: str) -> str:
     soup = BeautifulSoup(html, "html.parser")
-
-    for tag in soup(["script", "style", "noscript", "svg", "canvas"]):
-        tag.decompose()
-
-    main = soup.find("main") or soup.find("article") or soup.body
-    if main is None:
-        main = soup
-
-    title = None
-    if soup.title and soup.title.string:
-        title = soup.title.string.strip()
-    og_title = soup.find("meta", attrs={"property": "og:title"})
-    if og_title and og_title.get("content"):
-        title = og_title["content"].strip()
+    title = _extract_title(soup)
+    main = select_developers_content_root(soup)
+    prune_developers_noise(main)
 
     markdown_body = to_markdown(str(main), heading_style="ATX", bullets="-")
     markdown_body = normalize_markdown(markdown_body)
@@ -217,14 +223,87 @@ def normalize_markdown(text: str) -> str:
     filtered_lines: List[str] = []
     for line in text.split("\n"):
         stripped = line.strip()
-        if stripped in {"Copy PageMore page actions", "Copy Page", "More page actions"}:
+        if "/codex/colorcons/" in stripped and "Copied" in stripped:
+            without_icons = re.sub(r"!\[[^\]]*\]\(/codex/colorcons/[^)]+\)", "", stripped)
+            prompts = [chunk.strip() for chunk in without_icons.split("Copied") if chunk.strip()]
+            if prompts:
+                filtered_lines.extend(f"- {prompt}" for prompt in prompts)
+                continue
+
+        if stripped in NOISY_EXACT_LINES:
+            continue
+        if any(pattern.match(stripped) for pattern in NOISY_LINE_PATTERNS):
             continue
         filtered_lines.append(line.rstrip())
 
-    lines = filtered_lines
+    deduped_lines: List[str] = []
+    for line in filtered_lines:
+        if deduped_lines and line.strip() and line == deduped_lines[-1]:
+            continue
+        deduped_lines.append(line)
+
+    lines = deduped_lines
     normalized = "\n".join(lines)
     normalized = re.sub(r"\n{3,}", "\n\n", normalized)
     return normalized.strip() + "\n"
+
+
+def _extract_title(soup: BeautifulSoup) -> str | None:
+    title = None
+    if soup.title and soup.title.string:
+        title = soup.title.string.strip()
+    og_title = soup.find("meta", attrs={"property": "og:title"})
+    if og_title and og_title.get("content"):
+        title = og_title["content"].strip()
+    return title
+
+
+def select_developers_content_root(soup: BeautifulSoup):
+    for selector in DEVELOPERS_CONTENT_SELECTORS:
+        candidates = soup.select(selector)
+        if not candidates:
+            continue
+        candidate = max(candidates, key=lambda node: len(node.get_text(" ", strip=True)))
+        if candidate.get_text(" ", strip=True):
+            return candidate
+    return soup
+
+
+def prune_developers_noise(root) -> None:
+    for selector in (
+        "script",
+        "style",
+        "noscript",
+        "svg",
+        "canvas",
+        "nav",
+        "header",
+        "footer",
+        "[role='navigation']",
+        "[aria-label='Breadcrumb']",
+        "button[role='radio']",
+        "button[role='menuitemradio']",
+    ):
+        for node in root.select(selector):
+            node.decompose()
+
+    for node in root.select("div.fixed.inset-0.hidden"):
+        node.decompose()
+
+    def has_segmented_control_class(tokens) -> bool:
+        if not tokens:
+            return False
+        if isinstance(tokens, str):
+            return "SegmentedControlOption" in tokens
+        return any("SegmentedControlOption" in token for token in tokens)
+
+    for node in root.find_all(class_=has_segmented_control_class):
+        node.decompose()
+
+    for image in root.find_all("img"):
+        classes = set(image.get("class") or [])
+        if "hidden" in classes and any(token.startswith("dark:") and token.endswith("block") for token in classes):
+            image.decompose()
 
 
 def load_existing_manifest() -> Dict[str, Dict[str, str]]:

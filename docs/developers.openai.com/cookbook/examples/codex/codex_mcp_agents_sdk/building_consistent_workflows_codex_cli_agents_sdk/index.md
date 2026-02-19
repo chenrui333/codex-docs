@@ -2,16 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk
 
-Oct 1, 2025
-
-# Building Consistent Workflows with Codex CLI & Agents SDK
-
-[![Josh Hall](https://avatars.githubusercontent.com/u/198997750?v=4)  JH](https://www.linkedin.com/in/jhall14/)  [![Charlie Weems](https://avatars.githubusercontent.com/u/181146176?v=4)  CW](https://wee.ms)
-
-[Josh Hall ,](https://www.linkedin.com/in/jhall14/)  [Charlie Weems](https://wee.ms)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb)
-
 ### Ensuring Repeatable, Traceable, and Scaleable Agentic Development
 
 ## Introduction

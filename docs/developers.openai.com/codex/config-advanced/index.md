@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/config-advanced
 
-More advanced configuration options for Codex local clients
-
 Use these options when you need more control over providers, policies, and integrations. For a quick start, see [Config basics](/codex/config-basic).
 
 ## Profiles

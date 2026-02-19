@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/integrations/slack
 
-Ask Codex to run tasks from channels and threads
-
 Use Codex in Slack to kick off coding tasks from channels and threads. Mention `@Codex` with a prompt, and Codex creates a cloud task and replies with the results.
 
 ![Codex Slack integration in action](/images/codex/integrations/slack-example.png)

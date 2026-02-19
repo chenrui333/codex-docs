@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/config-basic
 
-Learn the basics of configuring your local Codex client
-
 Codex reads configuration details from more than one location. Your personal defaults live in `~/.codex/config.toml`, and you can add project overrides with `.codex/config.toml` files. For security, Codex loads project config files only when you trust the project.
 
 ## Codex configuration file

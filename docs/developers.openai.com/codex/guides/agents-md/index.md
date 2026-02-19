@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/guides/agents-md
 
-Give Codex extra instructions and context for your project
-
 Codex reads `AGENTS.md` files before doing any work. By layering global guidance with project-specific overrides, you can start each task with consistent expectations, no matter which repository you open.
 
 ## How Codex discovers guidance

@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/pricing
 
-Codex is included in your ChatGPT Plus, Pro, Business, Edu, or Enterprise plan
-
 For a limited time, **try Codex for free in ChatGPT Free and Go**, or enjoy
 **2x Codex rate limits** with Plus, Pro, Business and Enterprise
 subscriptions.

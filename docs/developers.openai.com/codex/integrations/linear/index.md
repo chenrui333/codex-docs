@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/integrations/linear
 
-Run Codex tasks from Linear issues
-
 Use Codex in Linear to delegate work from issues. Assign an issue to Codex or mention `@Codex` in a comment, and Codex creates a cloud task and replies with progress and results.
 
 Codex in Linear is available on paid plans (see [Pricing](/codex/pricing)).
@@ -24,13 +22,13 @@ You can delegate in two ways:
 
 After you install the integration, you can assign issues to Codex the same way you assign them to teammates. Codex starts work and posts updates back to the issue.
 
-![Assigning Codex to a Linear issue (light mode)](/images/codex/integrations/linear-assign-codex-light.webp)![Assigning Codex to a Linear issue (dark mode)](/images/codex/integrations/linear-assign-codex-dark.webp)
+![Assigning Codex to a Linear issue (light mode)](/images/codex/integrations/linear-assign-codex-light.webp)
 
 ### Mention `@Codex` in comments
 
 You can also mention `@Codex` in comment threads to delegate work or ask questions. After Codex replies, follow up in the thread to continue the same session.
 
-![Mentioning Codex in a Linear issue comment (light mode)](/images/codex/integrations/linear-comment-light.webp)![Mentioning Codex in a Linear issue comment (dark mode)](/images/codex/integrations/linear-comment-dark.webp)
+![Mentioning Codex in a Linear issue comment (light mode)](/images/codex/integrations/linear-comment-light.webp)
 
 After Codex starts working on an issue, it [chooses an environment and repo](#how-codex-chooses-an-environment-and-repo) to work in.
 To pin a specific repo, include it in your comment, for example: `@Codex fix this in openai/codex`.
@@ -60,7 +58,7 @@ You can assign issues to Codex automatically using triage rules:
 Linear assigns new issues that enter triage to Codex automatically.
 When you use triage rules, Codex runs tasks using the account of the issue creator.
 
-![Screenshot of an example triage rule assigning everything to Codex and labeling it in the "Triage" status (light mode)](/images/codex/integrations/linear-triage-rule-light.webp)![Screenshot of an example triage rule assigning everything to Codex and labeling it in the "Triage" status (dark mode)](/images/codex/integrations/linear-triage-rule-dark.webp)
+![Screenshot of an example triage rule assigning everything to Codex and labeling it in the "Triage" status (light mode)](/images/codex/integrations/linear-triage-rule-light.webp)
 
 ## Data usage, privacy, and security
 

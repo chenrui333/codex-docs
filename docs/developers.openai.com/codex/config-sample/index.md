@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/config-sample
 
-A complete example config.toml you can copy and adapt
-
 Use this example configuration as a starting point. It includes most keys Codex reads from `config.toml`, along with defaults and short notes.
 
 For explanations and guidance, see:

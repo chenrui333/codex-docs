@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/enterprise/admin-setup
 
-Set up Codex for your ChatGPT Enterprise workspace
-
 This guide is for ChatGPT Enterprise admins who want to set up Codex for their workspace.
 
 ## Enterprise-grade security and privacy

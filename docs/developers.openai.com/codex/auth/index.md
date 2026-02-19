@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/auth
 
-Sign-in methods for Codex
-
 ## OpenAI authentication
 
 Codex supports two ways to sign in when using OpenAI models:

@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/worktrees
 
-Leverage Git worktrees within the Codex app to let Codex work in parallel
-
 In the Codex app, worktrees let Codex run multiple independent tasks in the same project without interfering with each other. For Git repositories, [automations](/codex/app/automations) run on dedicated background worktrees so they don’t conflict with your ongoing work. In non-version-controlled projects, automations run directly in the project directory. You can also start threads on a worktree manually.
 
 ## What’s a worktree
@@ -57,9 +55,7 @@ From here you can commit your changes, push your branch to your remote repositor
 
 You can open your IDE to the worktree using the “Open” button in the header, use the integrated terminal, or anything else that you need to do from the worktree directory.
 
-![Worktree thread view with branch controls and worktree details](/images/codex/app/worktree-light.webp) ![Worktree thread view with branch controls and worktree details](/images/codex/app/worktree-dark.webp)
-
-![Worktree thread view with branch controls and worktree details](/images/codex/app/worktree-light.webp) ![Worktree thread view with branch controls and worktree details](/images/codex/app/worktree-dark.webp)
+![Worktree thread view with branch controls and worktree details](/images/codex/app/worktree-light.webp)
 
 Remember, if you create a branch on a worktree, you can’t check it out in any other worktree, including your local checkout.
 
@@ -76,9 +72,7 @@ You can sync with local at any point. To do so, click **Sync with local** in the
 - **Overwrite**: Makes the destination checkout match the source checkout’s files and commit history.
 - **Apply**: Calculates the source changes since the nearest shared commit and applies that patch onto the destination checkout, preserving destination commit history while bringing over source code changes (not source commits).
 
-![Sync worktree dialog with options to apply or pull changes](/images/codex/app/sync-worktree-light.webp) ![Sync worktree dialog with options to apply or pull changes](/images/codex/app/sync-worktree-dark.webp)
-
-![Sync worktree dialog with options to apply or pull changes](/images/codex/app/sync-worktree-light.webp) ![Sync worktree dialog with options to apply or pull changes](/images/codex/app/sync-worktree-dark.webp)
+![Sync worktree dialog with options to apply or pull changes](/images/codex/app/sync-worktree-light.webp)
 
 You can create multiple worktrees and sync them to the same feature branch to split up your work into parallel threads.
 
@@ -153,10 +147,4 @@ Threads can remain in your history even if the underlying worktree directory
 is cleaned up. However, Codex saves a snapshot of the worktree prior to
 cleaning it up and offers to restore it if you reopen the thread associated
 with it.
-
-[Previous
-
-Automations](/codex/app/automations)[Next
-
-Local Environments](/codex/app/local-environments)
 

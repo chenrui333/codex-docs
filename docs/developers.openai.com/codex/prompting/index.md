@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/prompting
 
-Interacting with the Codex agent
-
 ## Prompts
 
 You interact with Codex by sending prompts (user messages) that describe what you want it to do.

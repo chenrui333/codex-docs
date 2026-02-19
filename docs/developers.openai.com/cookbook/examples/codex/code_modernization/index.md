@@ -2,16 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/codex/code_modernization
 
-Nov 19, 2025
-
-# Modernizing your Codebase with Codex
-
-[![Derrick Choi](https://avatars.githubusercontent.com/u/211427900)  DC](https://www.linkedin.com/in/derrickchoi/)
-
-[Derrick Choi](https://www.linkedin.com/in/derrickchoi/)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/codex/code_modernization.md) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/codex/code_modernization.md)
-
 ## Introduction
 
 Codex is trained to read and reason about large, complex codebases, plan work alongside engineers, and produce high-quality changes. Code modernization has quickly become one of its most common and valuable uses. In this setup, engineers focus on architecture and business rules while Codex handles the heavy lifting: translating legacy patterns, proposing safe refactors, and keeping documentation and tests in sync as the system evolves.

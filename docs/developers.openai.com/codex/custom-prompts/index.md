@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/custom-prompts
 
-Deprecated. Use skills for reusable prompts
-
 Custom prompts are deprecated. Use [skills](/codex/skills) for reusable
 instructions that Codex can invoke explicitly or implicitly.
 

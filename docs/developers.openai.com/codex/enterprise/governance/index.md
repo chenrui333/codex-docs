@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/enterprise/governance
 
-Governance guidance for managing Codex in your organization
-
 # Governance and Observability
 
 Codex gives enterprise teams visibility into adoption and impact, plus the auditability needed for security and compliance programs. Use the self-serve dashboard for day-to-day tracking, the Analytics API for programmatic reporting, and the Compliance API to export detailed logs into your governance stack.

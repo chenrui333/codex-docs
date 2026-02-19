@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/github-action
 
-Trigger Codex actions from GitHub Events
-
 Use the Codex GitHub Action (`openai/codex-action@v1`) to run Codex in CI/CD jobs, apply patches, or post reviews from a GitHub Actions workflow.
 The action installs the Codex CLI, starts the Responses API proxy when you provide an API key, and runs `codex exec` under the permissions you specify.
 

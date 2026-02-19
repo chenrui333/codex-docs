@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cloud/environments
 
-Customize dependencies and tools for Codex
-
 Use environments to control what Codex installs and runs during cloud tasks. For example, you can add dependencies, install tools like linters and formatters, and set environment variables.
 
 Configure environments in [Codex settings](https://chatgpt.com/codex/settings/environments).
@@ -85,10 +83,4 @@ environment in your workspace.
 Internet access is available during the setup script phase to install dependencies. During the agent phase, internet access is off by default, but you can configure limited or unrestricted access. See [agent internet access](/codex/cloud/internet-access).
 
 Environments run behind an HTTP/HTTPS network proxy for security and abuse prevention purposes. All outbound internet traffic passes through this proxy.
-
-[Previous
-
-Overview](/codex/cloud)[Next
-
-Internet Access](/codex/cloud/internet-access)
 

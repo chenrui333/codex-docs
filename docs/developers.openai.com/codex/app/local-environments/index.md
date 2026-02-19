@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/local-environments
 
-Configure common actions and setup scripts for worktrees
-
 Local environments let you configure setup steps for worktrees as well as common actions for a project.
 
 You configure your local environments through the [Codex app settings](codex://settings) pane. You can check the generated file into your project’s Git repository to share with others.
@@ -33,9 +31,7 @@ Use actions to define common tasks like starting your app’s development server
 
 Actions are helpful to keep you from typing common actions like triggering a build for your project or starting a development server. For one-off quick debugging you can use the integrated terminal directly.
 
-![Project actions list shown in Codex app settings](/images/codex/app/actions-light.webp) ![Project actions list shown in Codex app settings](/images/codex/app/actions-dark.webp)
-
-![Project actions list shown in Codex app settings](/images/codex/app/actions-light.webp) ![Project actions list shown in Codex app settings](/images/codex/app/actions-dark.webp)
+![Project actions list shown in Codex app settings](/images/codex/app/actions-light.webp)
 
 For example, for a Node.js project you might create a “Run” action that contains the following script:
 
@@ -46,10 +42,4 @@ npm start
 If the commands for your action are platform-specific, define platform-specific scripts for macOS, Windows, and Linux.
 
 To identify your actions, choose an icon associated with each action.
-
-[Previous
-
-Worktrees](/codex/app/worktrees)[Next
-
-Commands](/codex/app/commands)
 

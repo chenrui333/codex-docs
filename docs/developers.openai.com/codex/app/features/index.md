@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/features
 
-What you can do with the Codex app
-
 The Codex app is a focused desktop experience for working on Codex threads in parallel,
 with built-in worktree support, automations, and Git functionality.
 
@@ -21,9 +19,7 @@ If you work in a single repository with two or more apps or packages, split
 distinct projects into separate app projects so the [sandbox](/codex/security)
 only includes the files for that project.
 
-![Codex app showing multiple projects in the sidebar and threads in the main pane](/images/codex/app/multitask-light.webp) ![Codex app showing multiple projects in the sidebar and threads in the main pane](/images/codex/app/multitask-dark.webp)
-
-![Codex app showing multiple projects in the sidebar and threads in the main pane](/images/codex/app/multitask-light.webp) ![Codex app showing multiple projects in the sidebar and threads in the main pane](/images/codex/app/multitask-dark.webp)
+![Codex app showing multiple projects in the sidebar and threads in the main pane](/images/codex/app/multitask-light.webp)
 
 ## Skills support
 
@@ -31,9 +27,7 @@ The Codex app supports the same [agent skills](/codex/skills) as the CLI and
 IDE Extension. You can also view and explore new skills that your team has
 created across your different projects by clicking Skills in the sidebar.
 
-![Skills picker showing available skills in the Codex app](/images/codex/app/skill-selector-light.webp) ![Skills picker showing available skills in the Codex app](/images/codex/app/skill-selector-dark.webp)
-
-![Skills picker showing available skills in the Codex app](/images/codex/app/skill-selector-light.webp) ![Skills picker showing available skills in the Codex app](/images/codex/app/skill-selector-dark.webp)
+![Skills picker showing available skills in the Codex app](/images/codex/app/skill-selector-light.webp)
 
 ## Automations
 
@@ -41,9 +35,7 @@ You can also combine skills with [automations](/codex/app/automations) to perfor
 such as evaluating errors in your telemetry and submitting fixes or creating reports on recent
 codebase changes.
 
-![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp) ![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-dark.webp)
-
-![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp) ![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-dark.webp)
+![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp)
 
 ## Modes
 
@@ -57,9 +49,7 @@ Both **Local** and **Worktree** threads will run on your computer.
 
 For the full glossary and concepts, explore the [concepts section](/codex/prompting).
 
-![New thread composer with Local, Worktree, and Cloud mode options](/images/codex/app/modes-light.webp) ![New thread composer with Local, Worktree, and Cloud mode options](/images/codex/app/modes-dark.webp)
-
-![New thread composer with Local, Worktree, and Cloud mode options](/images/codex/app/modes-light.webp) ![New thread composer with Local, Worktree, and Cloud mode options](/images/codex/app/modes-dark.webp)
+![New thread composer with Local, Worktree, and Cloud mode options](/images/codex/app/modes-light.webp)
 
 ## Built-in Git tools
 
@@ -73,9 +63,7 @@ within the Codex app.
 
 For more advanced Git tasks, use the [integrated terminal](#integrated-terminal).
 
-![Git diff and commit panel with a commit message field](/images/codex/app/git-commit-light.webp) ![Git diff and commit panel with a commit message field](/images/codex/app/git-commit-dark.webp)
-
-![Git diff and commit panel with a commit message field](/images/codex/app/git-commit-light.webp) ![Git diff and commit panel with a commit message field](/images/codex/app/git-commit-dark.webp)
+![Git diff and commit panel with a commit message field](/images/codex/app/git-commit-light.webp)
 
 ## Worktree support
 
@@ -90,9 +78,7 @@ Automations run in dedicated background worktrees for Git repositories, and dire
 
 [Learn more about using worktrees in the Codex app.](/codex/app/worktrees)
 
-![Worktree thread view showing branch actions and worktree details](/images/codex/app/worktree-light.webp) ![Worktree thread view showing branch actions and worktree details](/images/codex/app/worktree-dark.webp)
-
-![Worktree thread view showing branch actions and worktree details](/images/codex/app/worktree-light.webp) ![Worktree thread view showing branch actions and worktree details](/images/codex/app/worktree-dark.webp)
+![Worktree thread view showing branch actions and worktree details](/images/codex/app/worktree-light.webp)
 
 ## Integrated terminal
 
@@ -115,17 +101,13 @@ If you run a task regularly, you can define an **action** inside your [local env
 Note that `Cmd`+`K` opens the command palette in the Codex
 app. It doesn’t clear the terminal. To clear the terminal use `Ctrl`+`L`.
 
-![Integrated terminal drawer open beneath a Codex thread](/images/codex/app/integrated-terminal-light.webp) ![Integrated terminal drawer open beneath a Codex thread](/images/codex/app/integrated-terminal-dark.webp)
-
-![Integrated terminal drawer open beneath a Codex thread](/images/codex/app/integrated-terminal-light.webp) ![Integrated terminal drawer open beneath a Codex thread](/images/codex/app/integrated-terminal-dark.webp)
+![Integrated terminal drawer open beneath a Codex thread](/images/codex/app/integrated-terminal-light.webp)
 
 ## Voice dictation
 
 Use your voice to prompt Codex. Hold `Ctrl`+`M` while the composer is visible and start talking. Your voice will be transcribed. Edit the transcribed prompt or hit send to have Codex start work.
 
-![Voice dictation indicator in the composer with a transcribed prompt](/images/codex/app/voice-dictation-light.webp) ![Voice dictation indicator in the composer with a transcribed prompt](/images/codex/app/voice-dictation-dark.webp)
-
-![Voice dictation indicator in the composer with a transcribed prompt](/images/codex/app/voice-dictation-light.webp) ![Voice dictation indicator in the composer with a transcribed prompt](/images/codex/app/voice-dictation-dark.webp)
+![Voice dictation indicator in the composer with a transcribed prompt](/images/codex/app/voice-dictation-light.webp)
 
 ## Floating pop-out window
 
@@ -136,9 +118,7 @@ the thread near your browser, editor, or design preview while iterating quickly.
 You can also toggle the pop-out window to stay on top when you want it to remain
 visible across your workflow.
 
-![Pop-out window preview in light mode](/images/codex/app/popover-light.webp) ![Pop-out window preview in light mode](/images/codex/app/popover-dark.webp)
-
-![Pop-out window preview in light mode](/images/codex/app/popover-light.webp) ![Pop-out window preview in light mode](/images/codex/app/popover-dark.webp)
+![Pop-out window preview in light mode](/images/codex/app/popover-light.webp)
 
 ---
 
@@ -218,10 +198,4 @@ from going to sleep by enabling the “Prevent sleep while running” toggle in 
 - [Automations](/codex/app/automations)
 - [Local environments](/codex/app/local-environments)
 - [Worktrees](/codex/app/worktrees)
-
-[Previous
-
-Overview](/codex/app)[Next
-
-Settings](/codex/app/settings)
 

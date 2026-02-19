@@ -2,11 +2,7 @@
 
 Source: https://developers.openai.com/codex/overview
 
-One agent for everywhere you code
-
-![Codex app showing a project sidebar, thread list, and review pane](/images/codex/app/codex-app-basic-light.webp) ![Codex app showing a project sidebar, thread list, and review pane](/images/codex/app/codex-app-basic-dark.webp)
-
-![Codex app showing a project sidebar, thread list, and review pane](/images/codex/app/codex-app-basic-light.webp) ![Codex app showing a project sidebar, thread list, and review pane](/images/codex/app/codex-app-basic-dark.webp)
+![Codex app showing a project sidebar, thread list, and review pane](/images/codex/app/codex-app-basic-light.webp)
 
 Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. It can help you:
 

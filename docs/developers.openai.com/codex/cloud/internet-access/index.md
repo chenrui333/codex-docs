@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cloud/internet-access
 
-Control internet access for Codex cloud tasks
-
 By default, Codex blocks internet access during the agent phase. Setup scripts still run with internet access so you can install dependencies. You can enable agent internet access per environment when you need it.
 
 ## Risks of agent internet access
@@ -143,8 +141,4 @@ ubuntu.com
 visualstudio.com
 yarnpkg.com
 ```
-
-[Previous
-
-Environments](/codex/cloud/environments)
 

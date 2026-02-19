@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/workflows
 
-Development usage patterns with Codex
-
 Codex works best when you treat it like a teammate with explicit context and a clear definition of “done.”
 This page gives end-to-end workflow examples for the Codex IDE extension, the Codex CLI, and Codex cloud.
 

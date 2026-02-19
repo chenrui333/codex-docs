@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/ide/features
 
-What you can do with the Codex IDE extension
-
 The Codex IDE extension gives you access to Codex directly in VS Code, Cursor, Windsurf, and other VS Code-compatible editors. It uses the same agent as the Codex CLI and shares the same configuration.
 
 ## Prompting Codex
@@ -74,10 +72,4 @@ Hold down `Shift` while dropping an image. VS Code otherwise prevents extensions
 ## See also
 
 - [Codex IDE extension settings](/codex/ide/settings)
-
-[Previous
-
-Overview](/codex/ide)[Next
-
-Settings](/codex/ide/settings)
 

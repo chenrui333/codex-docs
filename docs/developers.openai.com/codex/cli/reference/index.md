@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cli/reference
 
-Options and flags for the Codex terminal client
-
 ## How to read this reference
 
 This page catalogs every documented Codex CLI command and flag. Use the interactive tables to search by key or description. Each section indicates whether the option is stable or experimental and calls out risky combinations.
@@ -1479,10 +1477,4 @@ Command to execute under Landlock + seccomp. Provide the executable after `--`.
 - [Config basics](/codex/config-basic): persist defaults like the model and provider.
 - [Advanced Config](/codex/config-advanced): profiles, providers, sandbox tuning, and integrations.
 - [AGENTS.md](/codex/guides/agents-md): conceptual overview of Codex agent capabilities and best practices.
-
-[Previous
-
-Features](/codex/cli/features)[Next
-
-Slash commands](/codex/cli/slash-commands)
 

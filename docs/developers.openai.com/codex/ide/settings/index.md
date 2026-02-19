@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/ide/settings
 
-Reference for Codex IDE extension settings
-
 Use these settings to customize the Codex IDE extension.
 
 ## Change a setting
@@ -25,10 +23,4 @@ The Codex IDE extension uses the Codex CLI. Configure some behavior, such as the
 | `chatgpt.localeOverride` | Preferred language for the Codex UI. Leave empty to detect automatically. |
 | `chatgpt.openOnStartup` | Focus the Codex sidebar when the extension finishes starting. |
 | `chatgpt.runCodexInWindowsSubsystemForLinux` | Windows only: Run Codex in WSL when Windows Subsystem for Linux (WSL) is available. Recommended for improved sandbox security and better performance. Codex agent mode on Windows currently requires WSL. Changing this setting reloads VS Code to apply the change. |
-
-[Previous
-
-Features](/codex/ide/features)[Next
-
-IDE Commands](/codex/ide/commands)
 

@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cli
 
-Pair with Codex in your terminal
-
 Codex CLI is OpenAI’s coding agent that you can run locally from your terminal. It can read, change, and run code on your machine in the selected directory.
 It’s [open source](https://github.com/openai/codex) and built in Rust for speed and efficiency.
 
@@ -76,8 +74,4 @@ Automate repeatable workflows by scripting Codex with the `exec` command.](/code
 Give Codex access to additional third-party tools and context with Model Context Protocol (MCP).](/codex/mcp)[### Approval modes
 
 Choose the approval mode that matches your comfort level before Codex edits or runs commands.](/codex/cli/features#approval-modes)
-
-[Next
-
-Features](/codex/cli/features)
 

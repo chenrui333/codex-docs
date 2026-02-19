@@ -2,18 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/codex/jira-github
 
-Jun 21, 2025
-
-# Automate Jira ↔ GitHub with Codex
-
-[![Kevin Alwell](https://avatars.githubusercontent.com/u/26548363)  KA](https://github.com/alwell-kevin)  [![Naren Sankaran](https://avatars.githubusercontent.com/u/196844623?s=400&u=d669669fd962473d606a97801367ba96fc548287&v=4)  NS](https://www.linkedin.com/in/snarendran/)
-
-[Kevin Alwell
-(OpenAI)
- ,](https://github.com/alwell-kevin)  [Naren Sankaran](https://www.linkedin.com/in/snarendran/)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/codex/jira-github.ipynb) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/codex/jira-github.ipynb)
-
 ## Purpose of this cookbook
 
 This cookbook provides a practical, step-by-step approach to automating the workflow between Jira and GitHub. By labeling a Jira issue, you trigger an end-to-end process that creates a **GitHub pull request**, keeps both systems updated, and streamlines code review, all with minimal manual effort. The automation is powered by the [`codex-cli`](https://github.com/openai/openai-codex) agent running inside a GitHub Action.

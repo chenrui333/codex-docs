@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/cli/slash-commands
 
-Control Codex during interactive sessions
-
 Slash commands give you fast, keyboard-first control over Codex. Type `/` in the composer to open the slash popup, choose a command, and Codex will perform actions such as switching models, adjusting permissions, or summarizing long conversations without leaving the terminal.
 
 This guide shows you how to:
@@ -234,8 +232,4 @@ Expected: Codex clears local credentials for the current user session.
 1. Type `/quit` (or `/exit`) and press Enter.
 
 Expected: Codex exits immediately. Save or commit any important work first.
-
-[Previous
-
-Command Line Options](/codex/cli/reference)
 

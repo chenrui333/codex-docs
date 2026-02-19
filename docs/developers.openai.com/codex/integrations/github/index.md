@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/integrations/github
 
-Run Codex code review in pull requests
-
 Use Codex to review pull requests without leaving GitHub. Add a pull request comment with `@codex review`, and Codex replies with a standard GitHub code review.
 
 ## Set up code review

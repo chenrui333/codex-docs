@@ -2,17 +2,6 @@
 
 Source: https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide
 
-Dec 4, 2025
-
-# Codex Prompting Guide
-
-[![Noah MacCallum](https://avatars.githubusercontent.com/u/171723556)  NM](https://x.com/noahmacca)
-
-[Noah MacCallum
-(OpenAI)](https://x.com/noahmacca)
-
-[View on GitHub](https://github.com/openai/openai-cookbook/blob/main/examples/gpt-5/codex_prompting_guide.ipynb) [Download raw](https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/gpt-5/codex_prompting_guide.ipynb)
-
 Codex models advance the frontier of intelligence and efficiency and our recommended agentic coding model. Follow this guide closely to ensure you’re getting the best performance possible from this model. This guide is for anyone using the model directly via the API for maximum customizability; we also have the [Codex SDK](https://developers.openai.com/codex/sdk/) for simpler integrations.
 
 In the API, the Codex-tuned model is `gpt-5.2-codex` (see the [model page](https://platform.openai.com/docs/models/gpt-5.2-codex)).
@@ -563,8 +552,6 @@ We’ve found it to be helpful and more in-distribution if parallel tool call it
 
 ```
 function_call
-function_call
-function_call_output
 function_call_output
 ```
 

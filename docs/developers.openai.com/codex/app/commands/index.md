@@ -2,8 +2,6 @@
 
 Source: https://developers.openai.com/codex/app/commands
 
-Reference for Codex app commands and keyboard shortcuts
-
 Use these commands and keyboard shortcuts to navigate the Codex app.
 
 ## Keyboard shortcuts
@@ -56,10 +54,4 @@ Enabled skills also appear in the slash command list (for example, `/imagegen`).
 
 - [Features](/codex/app/features)
 - [Settings](/codex/app/settings)
-
-[Previous
-
-Local Environments](/codex/app/local-environments)[Next
-
-Troubleshooting](/codex/app/troubleshooting)
 
