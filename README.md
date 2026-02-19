@@ -17,7 +17,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/docs_manifest.json` hash manifest for change tracking
 - `docs/sync_summary.json` latest sync summary
 - `docs/source_coverage.json` sitemap coverage watchdog output
-- `weekly/YYYY-MM-DD.md` digest files written when changes are detected
+- `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
 
 ## Automation
 

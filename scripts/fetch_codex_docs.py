@@ -51,6 +51,13 @@ NOISY_EXACT_LINES = {
 NOISY_LINE_PATTERNS = (
     re.compile(r"^Choose an option\s*$", flags=re.IGNORECASE),
 )
+WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
+    ("Developers Codex", "developers.openai.com/codex/"),
+    ("Developers Cookbook", "developers.openai.com/cookbook/"),
+    ("Developers Resources", "developers.openai.com/resources/"),
+    ("GitHub Core Docs", "github.openai.com/openai/codex/docs/"),
+    ("GitHub Other Docs", "github.openai.com/openai/codex/"),
+)
 
 
 @dataclass(frozen=True)
@@ -542,22 +549,60 @@ def write_weekly_note(added: List[str], updated: List[str], removed: List[str]) 
         "",
     ]
 
+    lines.append("## Category Summary")
+    lines.append("")
+    lines.extend(render_category_summary("Added", added))
+    lines.extend(render_category_summary("Updated", updated))
+    lines.extend(render_category_summary("Removed", removed))
+
     if added:
-        lines.append("## Added")
+        lines.append("## Added (Raw Paths)")
         lines.extend(f"- `{item}`" for item in added)
         lines.append("")
 
     if updated:
-        lines.append("## Updated")
+        lines.append("## Updated (Raw Paths)")
         lines.extend(f"- `{item}`" for item in updated)
         lines.append("")
 
     if removed:
-        lines.append("## Removed")
+        lines.append("## Removed (Raw Paths)")
         lines.extend(f"- `{item}`" for item in removed)
         lines.append("")
 
     weekly_path.write_text("\n".join(lines).rstrip() + "\n")
+
+
+def categorize_path(path: str) -> str:
+    for category, prefix in WEEKLY_CATEGORY_RULES:
+        if path.startswith(prefix):
+            return category
+    return "Other"
+
+
+def render_category_summary(label: str, paths: List[str]) -> List[str]:
+    lines: List[str] = [f"### {label}"]
+    if not paths:
+        lines.append("- None")
+        lines.append("")
+        return lines
+
+    counts: Dict[str, int] = {}
+    for path in paths:
+        category = categorize_path(path)
+        counts[category] = counts.get(category, 0) + 1
+
+    ordered_categories = [name for name, _ in WEEKLY_CATEGORY_RULES]
+    for category in sorted(counts):
+        if category not in ordered_categories:
+            ordered_categories.append(category)
+
+    for category in ordered_categories:
+        count = counts.get(category)
+        if count:
+            lines.append(f"- {category}: {count}")
+    lines.append("")
+    return lines
 
 
 def apply_sync(managed_files: Iterable[ManagedFile]) -> Tuple[List[str], List[str], List[str]]:
