@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import os
 import re
 import sys
 from dataclasses import dataclass
@@ -23,6 +24,7 @@ DOCS_DIR = ROOT / "docs"
 WEEKLY_DIR = ROOT / "weekly"
 MANIFEST_PATH = DOCS_DIR / "docs_manifest.json"
 SUMMARY_PATH = DOCS_DIR / "sync_summary.json"
+COVERAGE_PATH = DOCS_DIR / "source_coverage.json"
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
 GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
 
@@ -113,17 +115,43 @@ def keep_developers_url(url: str) -> bool:
     return False
 
 
+def is_codex_related_developers_url(url: str) -> bool:
+    parsed = urlparse(url)
+    if parsed.netloc != "developers.openai.com":
+        return False
+    path = parsed.path.rstrip("/")
+    if not path:
+        return False
+    return "codex" in path.lower()
+
+
 def fetch_text(session: requests.Session, url: str) -> str:
     response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
     response.raise_for_status()
     return response.text
 
 
-def discover_developers_urls(session: requests.Session) -> List[str]:
+def load_existing_coverage() -> Dict[str, object]:
+    if not COVERAGE_PATH.exists():
+        return {}
+
+    try:
+        payload = json.loads(COVERAGE_PATH.read_text())
+    except json.JSONDecodeError:
+        LOG.warning("Existing coverage report is invalid JSON and will be recreated")
+        return {}
+
+    if isinstance(payload, dict):
+        return payload
+    return {}
+
+
+def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict[str, object]]:
     LOG.info("Discovering Codex URLs from %s", SITEMAP_INDEX_URL)
     index_xml = fetch_text(session, SITEMAP_INDEX_URL)
     sitemap_urls = parse_loc_tags(index_xml)
-    urls: set[str] = set()
+    mirrored_urls: set[str] = set()
+    codex_related_urls: set[str] = set()
 
     for sitemap_url in sitemap_urls:
         try:
@@ -134,10 +162,72 @@ def discover_developers_urls(session: requests.Session) -> List[str]:
 
         for raw_url in parse_loc_tags(sitemap_xml):
             cleaned = canonicalize_url(raw_url)
+            if is_codex_related_developers_url(cleaned):
+                codex_related_urls.add(cleaned)
             if keep_developers_url(cleaned):
-                urls.add(cleaned)
+                mirrored_urls.add(cleaned)
 
-    return sorted(urls)
+    mirrored_sorted = sorted(mirrored_urls)
+    codex_related_sorted = sorted(codex_related_urls)
+    skipped_codex_related = sorted(set(codex_related_sorted) - set(mirrored_sorted))
+
+    previous_coverage = load_existing_coverage()
+    previous_developers = previous_coverage.get("developers", {})
+    previous_codex_related = set()
+    previous_mirrored = set()
+    if isinstance(previous_developers, dict):
+        previous_codex_related = set(previous_developers.get("codex_related_urls", []))
+        previous_mirrored = set(previous_developers.get("mirrored_urls", []))
+
+    new_codex_related = sorted(set(codex_related_sorted) - previous_codex_related)
+    new_mirrored = sorted(set(mirrored_sorted) - previous_mirrored)
+
+    LOG.info(
+        "Coverage watchdog: codex-related=%d mirrored=%d skipped=%d",
+        len(codex_related_sorted),
+        len(mirrored_sorted),
+        len(skipped_codex_related),
+    )
+
+    if new_codex_related:
+        LOG.warning(
+            "Coverage watchdog: discovered %d new codex-related URLs. Review filters if needed:\n%s",
+            len(new_codex_related),
+            "\n".join(f"- {item}" for item in new_codex_related[:30]),
+        )
+    if new_mirrored:
+        LOG.info(
+            "Coverage watchdog: newly mirrored %d URLs:\n%s",
+            len(new_mirrored),
+            "\n".join(f"- {item}" for item in new_mirrored[:30]),
+        )
+
+    strict_coverage = os.environ.get("CODEX_DOCS_STRICT_COVERAGE", "0") == "1"
+    if strict_coverage and new_codex_related and not new_mirrored:
+        raise RuntimeError(
+            "Strict coverage mode failed: new codex-related URLs were discovered but none were mirrored."
+        )
+
+    coverage = {
+        "generated_at": now_utc_iso(),
+        "developers": {
+            "sitemap_index_url": SITEMAP_INDEX_URL,
+            "sitemap_urls": sitemap_urls,
+            "codex_related_urls": codex_related_sorted,
+            "mirrored_urls": mirrored_sorted,
+            "skipped_codex_related_urls": skipped_codex_related,
+            "new_codex_related_urls_since_last_run": new_codex_related,
+            "new_mirrored_urls_since_last_run": new_mirrored,
+            "counts": {
+                "sitemap_urls": len(sitemap_urls),
+                "codex_related_urls": len(codex_related_sorted),
+                "mirrored_urls": len(mirrored_sorted),
+                "skipped_codex_related_urls": len(skipped_codex_related),
+            },
+        },
+    }
+
+    return mirrored_sorted, coverage
 
 
 def developers_url_to_rel_path(url: str) -> str:
@@ -356,9 +446,10 @@ def remove_empty_directories(start: Path) -> None:
                 pass
 
 
-def build_developers_files(session: requests.Session) -> List[ManagedFile]:
+def build_developers_files(session: requests.Session) -> Tuple[List[ManagedFile], Dict[str, object]]:
     managed: List[ManagedFile] = []
-    for url in discover_developers_urls(session):
+    developers_urls, coverage = discover_developers_urls(session)
+    for url in developers_urls:
         try:
             html = fetch_text(session, url)
             content = html_to_markdown(url, html)
@@ -376,7 +467,7 @@ def build_developers_files(session: requests.Session) -> List[ManagedFile]:
             )
         )
 
-    return managed
+    return managed, coverage
 
 
 def build_github_files(session: requests.Session) -> List[ManagedFile]:
@@ -425,6 +516,11 @@ def write_summary(
     }
     ensure_parent(SUMMARY_PATH)
     SUMMARY_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+
+
+def write_coverage(coverage: Dict[str, object]) -> None:
+    ensure_parent(COVERAGE_PATH)
+    COVERAGE_PATH.write_text(json.dumps(coverage, indent=2, sort_keys=True) + "\n")
 
 
 def write_weekly_note(added: List[str], updated: List[str], removed: List[str]) -> None:
@@ -524,9 +620,15 @@ def main() -> int:
     session.headers.update({"User-Agent": USER_AGENT})
 
     try:
-        developers_files = build_developers_files(session)
+        developers_files, coverage = build_developers_files(session)
         github_files = build_github_files(session)
         managed_files = developers_files + github_files
+        coverage["github"] = {
+            "repo": "openai/codex",
+            "mirrored_paths_count": len(github_files),
+            "mirrored_paths": sorted(item.rel_path for item in github_files),
+        }
+        write_coverage(coverage)
 
         added, updated, removed = apply_sync(managed_files)
 

@@ -16,6 +16,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/github.openai.com/openai/codex/...` mirrored markdown from `openai/codex`
 - `docs/docs_manifest.json` hash manifest for change tracking
 - `docs/sync_summary.json` latest sync summary
+- `docs/source_coverage.json` sitemap coverage watchdog output
 - `weekly/YYYY-MM-DD.md` digest files written when changes are detected
 
 ## Automation
@@ -25,6 +26,13 @@ GitHub Actions workflow: `.github/workflows/update-docs.yml`
 - Runs every 6 hours
 - Executes `scripts/fetch_codex_docs.py`
 - Commits and pushes when content changes are detected
+- Uploads `docs/source_coverage.json` as a workflow artifact for visibility
+
+Coverage watchdog behavior:
+
+- Logs codex-related sitemap URL counts and deltas on each run
+- Highlights newly discovered codex-related URLs in workflow logs
+- Optional strict mode: set `CODEX_DOCS_STRICT_COVERAGE=1` to fail when new codex-related URLs are discovered but none are mirrored
 
 Release workflow: `.github/workflows/release.yml`
 
