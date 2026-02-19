@@ -1,0 +1,3 @@
+beautifulsoup4==4.13.4
+markdownify==1.2.0
+requests==2.32.5

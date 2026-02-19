@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "developers.openai.com/codex/ambassadors/index.md": {
+      "sha256": "d0db131f9082a463dd0660dc4327dddafa4d56fc9d5cac496765efb383d41289",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/ambassadors"
+    },
+    "developers.openai.com/codex/app-server/index.md": {
+      "sha256": "ce657ed3b8d6154d7e826720ab29db52d8d05f265cc9ecb20e108b36e48f2499",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app-server"
+    },
+    "developers.openai.com/codex/app/automations/index.md": {
+      "sha256": "d3629759c3c282c9b08d50db1117fe0d698a16845a2595f43dbf7918a56045c1",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/automations"
+    },
+    "developers.openai.com/codex/app/commands/index.md": {
+      "sha256": "08f2920bdd671042f295808c55325a456f14e080ea14fc4adeebf38966a6b406",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/commands"
+    },
+    "developers.openai.com/codex/app/features/index.md": {
+      "sha256": "9a5ae84edd616cdba3aee5394960b91d102a4083e33efdec43bed2a06bfc02ee",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/features"
+    },
+    "developers.openai.com/codex/app/index.md": {
+      "sha256": "fbd72f827b3174b83d1b31c6bd147fa8c50cb78e1d9ce7a323459389b0c7bd02",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app"
+    },
+    "developers.openai.com/codex/app/local-environments/index.md": {
+      "sha256": "22aca3715c3d7f830ec70880db153a031be8db90320ccbdf15c06a041e285da2",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/local-environments"
+    },
+    "developers.openai.com/codex/app/review/index.md": {
+      "sha256": "5dc21dfa6653a357f84d996632f5d0c06e7fa9e9d84d08b881b26e46da96125f",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/review"
+    },
+    "developers.openai.com/codex/app/settings/index.md": {
+      "sha256": "4039f6249c5af283ea2a6d018675955f6d9cba40de1ad3b12718e152b47f2dad",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/settings"
+    },
+    "developers.openai.com/codex/app/troubleshooting/index.md": {
+      "sha256": "ae04bb1847b38d2fa8b32055a94540aaa62abb7e17b4d0e32db427916eaaf2ff",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/troubleshooting"
+    },
+    "developers.openai.com/codex/app/worktrees/index.md": {
+      "sha256": "f8367fcc477288adf4e87990f96323c476e77ff749681ec1959d7b4cfe899912",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/worktrees"
+    },
+    "developers.openai.com/codex/auth/index.md": {
+      "sha256": "119e6623c0687e4c58e6ea9070fcc2e2667783b197eaadf55653174c37371bfd",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/auth"
+    },
+    "developers.openai.com/codex/changelog/index.md": {
+      "sha256": "c3d192a373e21b4725f1331b7cbea5aae3a54b1b65df93d4eff02c2b064bd49a",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/changelog"
+    },
+    "developers.openai.com/codex/cli/features/index.md": {
+      "sha256": "798eaf78d07e27f522060ed85300042bb6ad27a4aac83ae45655223af8768533",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cli/features"
+    },
+    "developers.openai.com/codex/cli/index.md": {
+      "sha256": "2e4e557067bd3e90d951088ed8f24b82d09b54cd725059ce7e5a465efcdb3db2",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cli"
+    },
+    "developers.openai.com/codex/cli/reference/index.md": {
+      "sha256": "56fd7a3894fea0def9f9d7fe331b3d22fd497b933340bd582232525a172b5456",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cli/reference"
+    },
+    "developers.openai.com/codex/cli/slash-commands/index.md": {
+      "sha256": "3500eac3f63dbc7442611f082fa1ce412c381433977b8b3670e161e989f5f971",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cli/slash-commands"
+    },
+    "developers.openai.com/codex/cloud/environments/index.md": {
+      "sha256": "443afbddd46ccf16765270566fd871c3662d98ccbec20aa893dff155ebf1b9f2",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cloud/environments"
+    },
+    "developers.openai.com/codex/cloud/index.md": {
+      "sha256": "101f6e4de4f2c44a313d2cdf035e3a8374e2fc7553a88c58666a426d38d45142",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cloud"
+    },
+    "developers.openai.com/codex/cloud/internet-access/index.md": {
+      "sha256": "709b1074ab55732284f6932f64f28921a93daeba8294576308df62bb47134f72",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/cloud/internet-access"
+    },
+    "developers.openai.com/codex/concepts/cyber-safety/index.md": {
+      "sha256": "0ba16668f8aeeae095931c4f197b48981f70ddd82e236a0101419743807d8188",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/concepts/cyber-safety"
+    },
+    "developers.openai.com/codex/config-advanced/index.md": {
+      "sha256": "09782506c430d28de7cc23c6e2ab56d254001927cdda7ad304c7ef2027a40dfe",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/config-advanced"
+    },
+    "developers.openai.com/codex/config-basic/index.md": {
+      "sha256": "a1be34b5de854b9a101f7d0c00efb7cfd9ab311f2f8c11a6e8531269dd4b6bd9",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/config-basic"
+    },
+    "developers.openai.com/codex/config-reference/index.md": {
+      "sha256": "9e5e29601e3540042ab4c854fdbd79a7404d70bfc02c222bce6a8495026d2ca4",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/config-reference"
+    },
+    "developers.openai.com/codex/config-sample/index.md": {
+      "sha256": "272135a066b8cdb4f4a32490568dcb50e839b9fa4aa3bc0d91db8123dd4d0125",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/config-sample"
+    },
+    "developers.openai.com/codex/custom-prompts/index.md": {
+      "sha256": "20341f557ed77fc528019b3927536fe5c9c89b602e1ac9754138240117f7c5b5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/custom-prompts"
+    },
+    "developers.openai.com/codex/enterprise/admin-setup/index.md": {
+      "sha256": "517fae9f2989fb83fbdf397485b7b394e40b4d55a63b4cc83689ffdfae928c01",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/enterprise/admin-setup"
+    },
+    "developers.openai.com/codex/enterprise/governance/index.md": {
+      "sha256": "fae4726bb510a997b6e03d49ee0a12caad2f463e7dff31bdaac59e34cc4ffdb2",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/enterprise/governance"
+    },
+    "developers.openai.com/codex/explore/index.md": {
+      "sha256": "e3d4d12f77c8f81cb489ba9e2545d3786978d7c1b819d89708cc47b48c1ab26b",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/explore"
+    },
+    "developers.openai.com/codex/feature-maturity/index.md": {
+      "sha256": "7d94913674c882aaf52f507ea424bc7c43c420878448e8746b90fe846e3d8304",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/feature-maturity"
+    },
+    "developers.openai.com/codex/github-action/index.md": {
+      "sha256": "d297bf7a8ff87e900799ee2ac7e7f1e506aad5b15448f222c02713521421946c",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/github-action"
+    },
+    "developers.openai.com/codex/guides/agents-md/index.md": {
+      "sha256": "4bec5efce91461349c7d74cc01e906e0c1918c690cbf5988adc1848f1633d5b5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/guides/agents-md"
+    },
+    "developers.openai.com/codex/guides/agents-sdk/index.md": {
+      "sha256": "8f45d7ea8a782c52f73f6173027faf77015ec3897eb3b8f2a9d08fa1606f583b",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/guides/agents-sdk"
+    },
+    "developers.openai.com/codex/guides/build-ai-native-engineering-team/index.md": {
+      "sha256": "00964c2232ef2d21a160fcabdde624f8dee62121770ddead58d1e21f32cf22ba",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/guides/build-ai-native-engineering-team"
+    },
+    "developers.openai.com/codex/ide/commands/index.md": {
+      "sha256": "6a56e4f219b020f1432b4951ec9112418478f283ba655790d32aaa146f9f6277",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/ide/commands"
+    },
+    "developers.openai.com/codex/ide/features/index.md": {
+      "sha256": "7d4acd758864ef39d9aa4ebd1f37c9293098e4138f07b8f996ad87fa21340ae4",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/ide/features"
+    },
+    "developers.openai.com/codex/ide/index.md": {
+      "sha256": "1a6ec75f9ee8bff6873b516e1191c2deacaeffe727834650cbd5c3294980df63",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/ide"
+    },
+    "developers.openai.com/codex/ide/settings/index.md": {
+      "sha256": "35ec37a05868080528d14d62a614b7d73d657ff5cfbca68f39e34a32eb15dbc5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/ide/settings"
+    },
+    "developers.openai.com/codex/ide/slash-commands/index.md": {
+      "sha256": "7297a0d3bd1bcfb34901046c085fdf0eb1eb133e4adf66eda186076568ca5c40",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/ide/slash-commands"
+    },
+    "developers.openai.com/codex/index.md": {
+      "sha256": "c245adad1447faacc26a91ec5d348e0590909fe54e90e0bc80ba5b830e8637d5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex"
+    },
+    "developers.openai.com/codex/integrations/github/index.md": {
+      "sha256": "e6e422f9fb409e0266ba376d3cb2ec4f045a68a294426e04b823587099244896",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/integrations/github"
+    },
+    "developers.openai.com/codex/integrations/linear/index.md": {
+      "sha256": "7ec2fdaadb28457353f0b16fef312e582534bf53d0d6a6444c74cd7f06d959d8",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/integrations/linear"
+    },
+    "developers.openai.com/codex/integrations/slack/index.md": {
+      "sha256": "31041af2800477e257132210285e92bbf57623d242c2702b66f76d2daadb57b4",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/integrations/slack"
+    },
+    "developers.openai.com/codex/mcp/index.md": {
+      "sha256": "2411df8857cd704a92c06b833062d0b0b0e18858776909eb117ad3de36a8afda",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/mcp"
+    },
+    "developers.openai.com/codex/models/index.md": {
+      "sha256": "cd3e13a20ec86a64e4d75e892a1168b217891a10131aadd8faf5565b02744165",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/models"
+    },
+    "developers.openai.com/codex/multi-agent/index.md": {
+      "sha256": "867b0fa88b2b74166209db9d10619a2fea9edea173092c4cf1ac054a17b7dbef",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/multi-agent"
+    },
+    "developers.openai.com/codex/noninteractive/index.md": {
+      "sha256": "f051d454ddc4a7df9fc52bba3bed465725a1575f9dd6f31c59250668f78da84e",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/noninteractive"
+    },
+    "developers.openai.com/codex/open-source/index.md": {
+      "sha256": "dbc2da9303703733147947660d6b0b2b6efb8c46b14703e5cdbdc80881a5e37c",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/open-source"
+    },
+    "developers.openai.com/codex/overview/index.md": {
+      "sha256": "3463ad0c08c5be8c4bacd275ecb13cea0678ec14668b5eaad16a8d13b9a5b5a3",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/overview"
+    },
+    "developers.openai.com/codex/pricing/index.md": {
+      "sha256": "0bf90edde71619d52beafc632ed1460d5c0d0af82b0c3cf94087bc5bf5373930",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/pricing"
+    },
+    "developers.openai.com/codex/prompting/index.md": {
+      "sha256": "7928658bf614bf65f37829590e02097b034c23581010c4f639396dfb6b200916",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/prompting"
+    },
+    "developers.openai.com/codex/quickstart/index.md": {
+      "sha256": "a861e8c2aba420a98b87f289e97e168bf5a7548a1a8a7f9a9c08de87f6e56538",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/quickstart"
+    },
+    "developers.openai.com/codex/rules/index.md": {
+      "sha256": "e193f3ad0a53a7c60d43cfb6e12eeb07a6fb892cc70bfa0b3361bcbf16897d46",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/rules"
+    },
+    "developers.openai.com/codex/sdk/index.md": {
+      "sha256": "d21dd7c5ff35cb72254271c1fdcdf49e5bbadde57193a95bb2598f406d90dda9",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/sdk"
+    },
+    "developers.openai.com/codex/security/index.md": {
+      "sha256": "28e4f24313f428e916d53f8ab72caeb40158783e65aa23653e58cf3280219c09",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/security"
+    },
+    "developers.openai.com/codex/skills/index.md": {
+      "sha256": "ee09df7f201d0c1ce730cbb7710f3a44e358b4eaa3a00ba248dc48819f878eda",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/skills"
+    },
+    "developers.openai.com/codex/videos/index.md": {
+      "sha256": "d0ae33af82bf22a1a87e0990af9b51ae4d76ca3b6e30062d2ffe871f5c471377",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/videos"
+    },
+    "developers.openai.com/codex/windows/index.md": {
+      "sha256": "36c3ad1ab86f8c332318cf7dd556cc14a3ddd870ddb70a39c383eaada8cd2222",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/windows"
+    },
+    "developers.openai.com/codex/workflows/index.md": {
+      "sha256": "fc5c3334b64458948ee4942f3d56ed5baae4d9692f1a0bf351c98c4abd60fee5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/workflows"
+    },
+    "developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb/index.md": {
+      "sha256": "0bd853521c633fe8762fcf5b4206616367527a2a9cf1695924b38dcf1b73bb8f",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb"
+    },
+    "developers.openai.com/cookbook/examples/codex/autofix-github-actions/index.md": {
+      "sha256": "516b3c19188a0c232a9a9b9d2ec6924e19a5211758cf666b170314c00a020413",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions"
+    },
+    "developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk/index.md": {
+      "sha256": "a9a85ad9c103863dc50c9a0a285c6726b7208bd553f55f241e5fc0851e80ed32",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk"
+    },
+    "developers.openai.com/cookbook/examples/codex/code_modernization/index.md": {
+      "sha256": "eb1bf58f70264564a7217e146efcad818c202f00377c9d86d4ea618f8347ee14",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/code_modernization"
+    },
+    "developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb/index.md": {
+      "sha256": "fec8bfa924a54ab9c6c9a31f98998d3d12512b88fd6713b24c5b065bcb3ae734",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb"
+    },
+    "developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk/index.md": {
+      "sha256": "44d03fcac97533bd4cc55717cc99ddda2baf9339ca161f6fa035a70a2373ceb4",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk"
+    },
+    "developers.openai.com/cookbook/examples/codex/jira-github.ipynb/index.md": {
+      "sha256": "6baa501076e224e31c48065692cc0d93b1f68090e8925e95d63d74014d63808b",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb"
+    },
+    "developers.openai.com/cookbook/examples/codex/jira-github/index.md": {
+      "sha256": "90e69ffc541ca843930b1f5781e29d024bcad43eb0b3b04756a36091eeba062c",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github"
+    },
+    "developers.openai.com/cookbook/examples/codex/secure_quality_gitlab/index.md": {
+      "sha256": "480858a5263eb724d172ffc8aacac81dfc383f1724fe8a55884e8bfac466e335",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab"
+    },
+    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md": {
+      "sha256": "d772bb29daac3f937040b56acbc99e7b5e7f308294e9b490d88367d39ee12b9b",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
+    },
+    "developers.openai.com/cookbook/topic/codex/index.md": {
+      "sha256": "4ded1a5d58999e0b07c49615fb1bd943d657617d138c90bd5f88f6316ba43e28",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/topic/codex"
+    },
+    "developers.openai.com/resources/codex/index.md": {
+      "sha256": "ba41ae1d1bb62b4504e04ab82b5054c44249881c3e3d15093597f73af16feffc",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/resources/codex"
+    },
+    "github.openai.com/openai/codex/AGENTS.md": {
+      "sha256": "8ca309d780df18b1c2535d5864862d78248524e93f0c10aa606457b6756c7477",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
+    },
+    "github.openai.com/openai/codex/CHANGELOG.md": {
+      "sha256": "8a0600e61a77311e5dfddef5c26cd19e97137220c593a44d8e149ac797583ef1",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/CHANGELOG.md"
+    },
+    "github.openai.com/openai/codex/LICENSE": {
+      "sha256": "fbeda2145bd36d60a7dc61de4e78acf9d5e34f84e64f3d87f1815936434df61a",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/LICENSE"
+    },
+    "github.openai.com/openai/codex/README.md": {
+      "sha256": "eb9b277b8ff6d1f0d8350c7b9afc4f94ee63dd1c9b2b9e85c3905453b0d644e8",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/README.md"
+    },
+    "github.openai.com/openai/codex/SECURITY.md": {
+      "sha256": "fbff9437ce082a23fb3109136cae186f729b0291ffdec32807a253ed65e8f0f0",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/SECURITY.md"
+    },
+    "github.openai.com/openai/codex/codex-cli/README.md": {
+      "sha256": "0e44f8acab6268b464b4c87d3ecfc60aafdded47eaa6629633a723f88d106514",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/README.md"
+    },
+    "github.openai.com/openai/codex/codex-cli/scripts/README.md": {
+      "sha256": "d7f84021a7726db88cb89a7acbceb3044dde1ae89c61c48acf13650dc620e29d",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md"
+    },
+    "github.openai.com/openai/codex/codex-rs/README.md": {
+      "sha256": "66bcc1c827a67cca804c2352240cb2cd7cb08a686ae765839bee75d10875868f",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md"
+    },
+    "github.openai.com/openai/codex/codex-rs/config.md": {
+      "sha256": "671218d12b0aec684c5cbcc9de6d789739ec55f94aba0a147021f35566f4c88e",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/config.md"
+    },
+    "github.openai.com/openai/codex/codex-rs/docs/bazel.md": {
+      "sha256": "3acdede3536ec31d3b6370405f99461726dc8c83839cf57e8740eea8533d1304",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/bazel.md"
+    },
+    "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md": {
+      "sha256": "d7429d497244bc8da7a7af0ef67c6e5105dc09c4bac674973313c7704ad618e6",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
+    },
+    "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md": {
+      "sha256": "292fefd86723342ed412aa564e11890fbe8907b8397dec9cff3187b7f8cd3db6",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md"
+    },
+    "github.openai.com/openai/codex/docs/CLA.md": {
+      "sha256": "3c3fc352c13db113d079a637f338e696e2dc47af53bae3394cf8fb8de6daa562",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/CLA.md"
+    },
+    "github.openai.com/openai/codex/docs/agents_md.md": {
+      "sha256": "fe9c918a09a3573bf6428f4da0322750900760ef709ac1fd13d07358c702aaa1",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/agents_md.md"
+    },
+    "github.openai.com/openai/codex/docs/authentication.md": {
+      "sha256": "3fe4a065894ac5c1c212432a2c35b9e16a39a79377ea4c9521122a28ae0f7aef",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/authentication.md"
+    },
+    "github.openai.com/openai/codex/docs/config.md": {
+      "sha256": "9251ea6898e3b9051b4b70495d91d6541ac1591e6c43ce3d13bdf6ed94774d75",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/config.md"
+    },
+    "github.openai.com/openai/codex/docs/contributing.md": {
+      "sha256": "da00ed0943d1dd3fc37f09adc50c0f88290d10f82919bc4018621b23072ab2f7",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/contributing.md"
+    },
+    "github.openai.com/openai/codex/docs/example-config.md": {
+      "sha256": "8c360f977c2f5971b36bbda5721ec51b2604e7013eca46b3d4f51433461909c3",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/example-config.md"
+    },
+    "github.openai.com/openai/codex/docs/exec.md": {
+      "sha256": "49eac6fd452d21763683c9f224075d6c5c74ffa28217fbe50c279fa6a543200b",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/exec.md"
+    },
+    "github.openai.com/openai/codex/docs/execpolicy.md": {
+      "sha256": "76b29e8cffcfab00c706e9bbd443e4f4b8c53288968b434e5990af1766132450",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/execpolicy.md"
+    },
+    "github.openai.com/openai/codex/docs/exit-confirmation-prompt-design.md": {
+      "sha256": "5a0c59c64542fd849204ef8480f52328ed70644e1a0287384b5da6df0b29622f",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/exit-confirmation-prompt-design.md"
+    },
+    "github.openai.com/openai/codex/docs/getting-started.md": {
+      "sha256": "210187b0199e42d71beabab773f6b8f3c01fe897037df1b16f88dd4efe007e90",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/getting-started.md"
+    },
+    "github.openai.com/openai/codex/docs/install.md": {
+      "sha256": "cd613c9cc53f506fc2787032903071c09ffe1873df0813f847413ae00e09c6be",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
+    },
+    "github.openai.com/openai/codex/docs/js_repl.md": {
+      "sha256": "08e1725b9cb8bd2f4ffd5da6144fc49f04c3189bde58ed7b4bf99d77ba07a2e5",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/js_repl.md"
+    },
+    "github.openai.com/openai/codex/docs/license.md": {
+      "sha256": "dca51cd27a681f46b17d7867d1e8311c024ec1478a6e12b6463a71a4e2f869ba",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/license.md"
+    },
+    "github.openai.com/openai/codex/docs/open-source-fund.md": {
+      "sha256": "7dd10179cc0275c1cef77f5ab63e5e0b149aca2868318e7d958dea0d1e42707c",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/open-source-fund.md"
+    },
+    "github.openai.com/openai/codex/docs/prompts.md": {
+      "sha256": "91f596f5d47ffe029646dd5a77b1152b6a2b2b5437062cc5a6d4635f0e47c58c",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/prompts.md"
+    },
+    "github.openai.com/openai/codex/docs/sandbox.md": {
+      "sha256": "61d4dd0ccda2a0cbbde78832e752cdf56b1eb8cf7a54f1d46b52a2824c911249",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/sandbox.md"
+    },
+    "github.openai.com/openai/codex/docs/skills.md": {
+      "sha256": "e59789d09692310bbf94e2ef8db0aaf00d97f2226982c8c5330d2d260583a97d",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/skills.md"
+    },
+    "github.openai.com/openai/codex/docs/slash_commands.md": {
+      "sha256": "0c063e80ca817a88bc7cd81c11669f73dad1941296142153bdac4dc08a733e69",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/slash_commands.md"
+    },
+    "github.openai.com/openai/codex/docs/tui-alternate-screen.md": {
+      "sha256": "2eaf23d3956a463cbb56ac92ee68706b7cf9816535ac6fda4657874fff70348f",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md"
+    },
+    "github.openai.com/openai/codex/docs/tui-chat-composer.md": {
+      "sha256": "daf072786dbb4321515235c68db23dc4f0a24dff2091e816861d97784d04329a",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-chat-composer.md"
+    },
+    "github.openai.com/openai/codex/docs/tui-request-user-input.md": {
+      "sha256": "7e9602bf5d5189c3abf62f128a1a50ef9a6ae25f2993a77054985e2cf5e5874b",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-request-user-input.md"
+    },
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md": {
+      "sha256": "0b1855aef540583f3bc22c9e5f3737c943ad062a2f7d8c7a44d94aa3b4c4ebe0",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-review.md"
+    },
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md": {
+      "sha256": "2acfbb2a923a7aa57062146da5115f046133f92299fd69c1299f7f5a099e809e",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-tuning.md"
+    },
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md": {
+      "sha256": "015e4698b80815aefe025d8609ce8b03ef11f8f99c53ca3afa7d6163eccdc478",
+      "source_type": "github",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-validation.md"
+    }
+  }
+}
