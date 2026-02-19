@@ -50,10 +50,9 @@ Release workflow: `.github/workflows/release.yml`
 ## Local usage
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r scripts/requirements.txt
-python scripts/fetch_codex_docs.py
+just setup
+just sync
+just check
 ```
 
 ## Notes

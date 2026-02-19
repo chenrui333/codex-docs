@@ -10,13 +10,13 @@
 - If an output problem exists, fix `scripts/fetch_codex_docs.py` instead.
 
 ## Local workflow
-1. Create and activate venv:
-   - `python3 -m venv .venv`
-   - `source .venv/bin/activate`
-2. Install deps:
-   - `pip install -r scripts/requirements.txt`
+1. Preferred command runner: use `just`.
+2. Setup environment:
+   - `just setup`
 3. Run sync:
-   - `python scripts/fetch_codex_docs.py`
+   - `just sync`
+4. Validate local idempotence + scope:
+   - `just check`
 
 ## Validation expectations
 - After changing sync logic, run sync twice and confirm second run is idempotent (no new diffs).
