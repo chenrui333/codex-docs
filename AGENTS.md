@@ -28,6 +28,7 @@
 - `.github/workflows/update-docs.yml` is direct-push sync to `main`.
 - Keep direct-push model unless explicitly requested to move to PR-based flow.
 - `.github/workflows/release.yml` creates versioned releases from the root `VERSION` file.
+- `.github/workflows/propose-version-bump.yml` is an optional monthly/manual helper that opens a `VERSION` bump PR.
 
 ## Runtime controls
 - `CODEX_DOCS_TIMEOUT_SECONDS`, `CODEX_DOCS_MAX_RETRIES`, and `CODEX_DOCS_RETRY_BACKOFF_SECONDS` tune fetch behavior.

@@ -27,6 +27,7 @@ GitHub Actions workflow: `.github/workflows/update-docs.yml`
 - Executes `scripts/fetch_codex_docs.py`
 - Commits and pushes when content changes are detected
 - Uploads `docs/source_coverage.json` as a workflow artifact for visibility
+- On sync failure, creates or updates a daily issue with sync summary + log tail
 
 Coverage watchdog behavior:
 
@@ -46,6 +47,11 @@ Release workflow: `.github/workflows/release.yml`
 - Creates a GitHub release from the root `VERSION` file (tag format `vX.Y.Z`)
 - Triggers on `VERSION` changes or manual run via `workflow_dispatch`
 - Keeps direct-push sync model unchanged
+
+Optional helper workflow: `.github/workflows/propose-version-bump.yml`
+
+- Runs monthly (and manual dispatch) to propose a `VERSION` bump PR
+- Skips creating duplicates when an open bump PR with the same title already exists
 
 ## Local usage
 
