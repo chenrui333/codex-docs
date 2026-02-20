@@ -84,7 +84,7 @@ subscribers.
 
 ## Alternative models
 
-![gpt-5.2](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5.2.jpg)
+![gpt-5.2](/images/api/models/gpt-5.2.jpg)
 
 gpt-5.2
 
@@ -96,7 +96,7 @@ Copy command
 
 Show details
 
-![gpt-5.1-codex-max](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5.1-codex-max.jpg)
+![gpt-5.1-codex-max](/images/api/models/gpt-5.1-codex-max.jpg)
 
 gpt-5.1-codex-max
 
@@ -108,7 +108,7 @@ Copy command
 
 Show details
 
-![gpt-5.1](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5.1.jpg)
+![gpt-5.1](/images/api/models/gpt-5.1.jpg)
 
 gpt-5.1
 
@@ -120,7 +120,7 @@ Copy command
 
 Show details
 
-![gpt-5.1-codex](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5.1-codex.jpg)
+![gpt-5.1-codex](/images/api/models/gpt-5.1-codex.jpg)
 
 gpt-5.1-codex
 
@@ -132,7 +132,7 @@ Copy command
 
 Show details
 
-![gpt-5-codex](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5-codex.jpg)
+![gpt-5-codex](/images/api/models/gpt-5-codex.jpg)
 
 gpt-5-codex
 
@@ -144,7 +144,7 @@ Copy command
 
 Show details
 
-![gpt-5-codex-mini](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5-codex.jpg)
+![gpt-5-codex-mini](/images/api/models/gpt-5-codex.jpg)
 
 gpt-5-codex-mini
 
@@ -156,7 +156,7 @@ Copy command
 
 Show details
 
-![gpt-5](https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5.jpg)
+![gpt-5](/images/api/models/gpt-5.jpg)
 
 gpt-5
 
