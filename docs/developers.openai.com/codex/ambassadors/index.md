@@ -12,6 +12,8 @@ Codex easier to adopt in practice, and help shape where it goes next.
 
 [Apply Today](https://openai.com/form/codex-ambassadors)
 
+[Upcoming Meetups](/codex/community/meetups)
+
 ![Codex Ambassadors leading a community workshop](/images/codex/ambassadors/ambassadors-18.jpg)   ![Builders collaborating during a Codex Ambassador event](/images/codex/ambassadors/ambassadors-25.jpg)
 
 Ambassadors run hands-on meetups, workshops, and community sessions

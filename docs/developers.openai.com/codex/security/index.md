@@ -91,6 +91,8 @@ With `--ask-for-approval untrusted`, Codex runs only known-safe read operations 
 
 #### Configuration in `config.toml`
 
+For the broader configuration workflow, see [Config basics](/codex/config-basic), [Advanced Config](/codex/config-advanced#approval-policies-and-sandbox-modes), and the [Configuration Reference](/codex/config-reference).
+
 ```
 # Always ask for approval mode
 approval_policy = "untrusted"
@@ -230,7 +232,7 @@ OTel is optional and designed to complement, not replace, the sandbox and approv
 
 ## Managed configuration
 
-Enterprise admins can control local Codex behavior in two ways:
+Enterprise admins can control local Codex behavior in two ways. For the exact key list, see the [`requirements.toml` section in Configuration Reference](/codex/config-reference#requirementstoml):
 
 - **Requirements**: admin-enforced constraints that users can’t override.
 - **Managed defaults**: starting values applied when Codex launches. Users can still change settings during a session; Codex reapplies managed defaults the next time it starts.

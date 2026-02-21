@@ -6,6 +6,8 @@ Codex can run multi-agent workflows by spawning specialized agents in parallel a
 
 With multi-agent workflows you can also define your own set of agents with different model configurations and instructions depending on the agent.
 
+For the concepts and tradeoffs behind multi-agent workflows (including context pollution/context rot and model-selection guidance), see [Multi-agents concepts](/codex/concepts/multi-agents).
+
 ## Enable multi-agent
 
 Multi-agent workflows are currently experimental and need to be explicitly enabled.

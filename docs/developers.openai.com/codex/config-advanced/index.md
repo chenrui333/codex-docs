@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/config-advanced
 
 Use these options when you need more control over providers, policies, and integrations. For a quick start, see [Config basics](/codex/config-basic).
 
+For background on project guidance, reusable capabilities, custom slash commands, multi-agent workflows, and integrations, see [Customization](/codex/concepts/customization). For configuration keys, see [Configuration Reference](/codex/config-reference).
+
 ## Profiles
 
 Profiles let you save named sets of configuration values and switch between them from the CLI.
@@ -184,7 +186,9 @@ model_context_window = 128000             # Context window size
 
 ## Approval policies and sandbox modes
 
-Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access). See [Sandbox & approvals](/codex/security) for deeper examples.
+Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access).
+
+For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/security#protected-paths-in-writable-roots), and [Network access](/codex/security#network-access).
 
 ```
 approval_policy = "untrusted"   # Other options: on-request, never
@@ -196,6 +200,8 @@ exclude_slash_tmp = false       # Allow /tmp
 writable_roots = ["/Users/YOU/.pyenv/shims"]
 network_access = false          # Opt in to outbound network
 ```
+
+Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](/codex/config-reference) and [Managed configuration](/codex/security#managed-configuration).
 
 In workspace-write mode, some environments keep `.git/` and `.codex/`
 read-only even when the rest of the workspace is writable. This is why

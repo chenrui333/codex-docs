@@ -24,7 +24,7 @@ Get inspirations on what you can build with Codex.
 
  Learn more](/codex/explore) [### Community
 
-Join the OpenAI Discord to ask questions, share workflows and connect with others.
+Explore Codex Ambassadors and upcoming community meetups by location.
 
- Join the Discord](https://discord.gg/openai)
+ See community](/codex/community/meetups)
 

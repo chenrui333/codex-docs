@@ -26,7 +26,10 @@
       "https://developers.openai.com/codex/cloud",
       "https://developers.openai.com/codex/cloud/environments",
       "https://developers.openai.com/codex/cloud/internet-access",
+      "https://developers.openai.com/codex/community/meetups",
+      "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
+      "https://developers.openai.com/codex/concepts/multi-agents",
       "https://developers.openai.com/codex/config-advanced",
       "https://developers.openai.com/codex/config-basic",
       "https://developers.openai.com/codex/config-reference",
@@ -84,8 +87,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 81,
-      "mirrored_urls": 71,
+      "codex_related_urls": 84,
+      "mirrored_urls": 74,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -113,7 +116,10 @@
       "https://developers.openai.com/codex/cloud",
       "https://developers.openai.com/codex/cloud/environments",
       "https://developers.openai.com/codex/cloud/internet-access",
+      "https://developers.openai.com/codex/community/meetups",
+      "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
+      "https://developers.openai.com/codex/concepts/multi-agents",
       "https://developers.openai.com/codex/config-advanced",
       "https://developers.openai.com/codex/config-basic",
       "https://developers.openai.com/codex/config-reference",
@@ -164,8 +170,16 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/community/meetups",
+      "https://developers.openai.com/codex/concepts/customization",
+      "https://developers.openai.com/codex/concepts/multi-agents"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/community/meetups",
+      "https://developers.openai.com/codex/concepts/customization",
+      "https://developers.openai.com/codex/concepts/multi-agents"
+    ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -185,7 +199,7 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-02-20T00:32:37+00:00",
+  "generated_at": "2026-02-21T00:33:12+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,
