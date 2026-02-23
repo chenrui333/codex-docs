@@ -76,6 +76,7 @@
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
+      "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb",
@@ -87,8 +88,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 84,
-      "mirrored_urls": 74,
+      "codex_related_urls": 85,
+      "mirrored_urls": 75,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -165,13 +166,18 @@
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
+      "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks"
+    ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -191,7 +197,7 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-02-21T06:17:08+00:00",
+  "generated_at": "2026-02-23T18:26:56+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,

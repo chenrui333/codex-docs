@@ -16,5 +16,5 @@ March 12, 2026
 
 Hosted by [Leonard](https://www.linkedin.com/in/lgofman/), [Michael](https://www.linkedin.com/in/michael-rusudev/), and [Carlos](https://www.linkedin.com/in/cataladev/)
 
-[Share city](/codex/community/meetups?city=Orlando)[Register now](https://luma.com/39y2dvwx)
+[Register now](https://luma.com/39y2dvwx)[Share city](/codex/community/meetups?city=Orlando)
 

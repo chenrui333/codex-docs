@@ -102,7 +102,7 @@
       "source_url": "https://developers.openai.com/codex/cloud/internet-access"
     },
     "developers.openai.com/codex/community/meetups/index.md": {
-      "sha256": "5963dd08ff47452487d053bb4ae6b43b4dac1e8ad1878909bfe7b676e87c1dfd",
+      "sha256": "90f24468b5f5eb65ce54681a0ccfc056ac3fa95ca542513d5caed1b60e286519",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/community/meetups"
     },
@@ -351,6 +351,11 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github"
     },
+    "developers.openai.com/cookbook/examples/codex/long_horizon_tasks/index.md": {
+      "sha256": "b24003d46388eb8467c1c280bb090626aeedb11aefdb8b75d6dcd4fd99fe438f",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks"
+    },
     "developers.openai.com/cookbook/examples/codex/secure_quality_gitlab/index.md": {
       "sha256": "e8fad14f2d29999eb7fee88981567e3b86b406f2477b174375426632d2e6ccac",
       "source_type": "developers",
@@ -362,7 +367,7 @@
       "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
     },
     "developers.openai.com/cookbook/topic/codex/index.md": {
-      "sha256": "c67c0ccb185d784a4519fbcab4ac1e0e7c5c323f7bd92fc66d7735c49565bc52",
+      "sha256": "298a83ec5c77dd07d7a71ea4842b53a23329ce93ba3513d834eae3c4c7a64661",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },

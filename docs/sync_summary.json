@@ -1,12 +1,14 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/cookbook/examples/codex/long_horizon_tasks/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-21T12:12:12+00:00",
+  "generated_at": "2026-02-23T18:27:14+00:00",
   "removed": [],
-  "total_files": 110,
+  "total_files": 111,
   "updated": [
-    "github.openai.com/openai/codex/AGENTS.md",
-    "github.openai.com/openai/codex/docs/install.md"
+    "developers.openai.com/codex/community/meetups/index.md",
+    "developers.openai.com/cookbook/topic/codex/index.md"
   ]
 }

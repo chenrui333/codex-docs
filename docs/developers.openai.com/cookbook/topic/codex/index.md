@@ -2,9 +2,13 @@
 
 Source: https://developers.openai.com/cookbook/topic/codex
 
-## All recipes8
+## All recipes9
 
-[Codex Prompting Guide
+[Long horizon tasks with Codex
+
+Codex
+
+Feb 23, 2026](/cookbook/examples/codex/long_horizon_tasks)[Codex Prompting Guide
 
 CodexResponses
 
