@@ -4,9 +4,34 @@ Source: https://developers.openai.com/codex/windows
 
 The easiest way to use Codex on Windows is to [set up the IDE extension](/codex/ide) or [install the CLI](/codex/cli) and run it from PowerShell.
 
-When you run Codex natively on Windows, the agent mode uses an experimental Windows sandbox to block filesystem writes outside the working folder and prevent network access without your explicit approval. [Learn more below](#windows-experimental-sandbox).
+When you run Codex natively on Windows, agent mode uses a [Windows sandbox](#windows-sandbox) to block filesystem writes outside the working folder and prevent network access without your explicit approval. [Learn more below](#windows-sandbox).
 
-Instead, you can use [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL2). WSL2 gives you a Linux shell, Unix-style semantics, and tooling that match many tasks that models see in training.
+If you prefer to have Codex use [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL2), [read the instructions](#windows-subsystem-for-linux) below.
+
+## Windows sandbox
+
+Native Windows sandbox support includes two modes that you can configure in `config.toml`:
+
+```
+[windows]
+sandbox = "unelevated" # or "elevated"
+```
+
+How `elevated` mode works:
+
+- Uses a Restricted Token approach with filesystem ACLs to limit which files the sandbox can write to.
+- Runs commands as a dedicated Windows Sandbox User.
+- Limits network access by installing Windows Firewall rules.
+
+### Grant sandbox read access
+
+When a command fails because the Windows sandbox can’t read a directory, use:
+
+```
+/sandbox-add-read-dir C:\absolute\directory\path
+```
+
+The path must be an existing absolute directory. After the command succeeds, later commands that run in the sandbox can read that directory during the current session.
 
 ## Windows Subsystem for Linux
 
@@ -83,27 +108,7 @@ codex
   ```
 - If you need Windows access to files, they’re under `\wsl$\Ubuntu\home&lt;user>` in Explorer.
 
-## Windows experimental sandbox
-
-The Windows sandbox support is experimental. How it works:
-
-- Launches commands inside a restricted token derived from an AppContainer profile.
-- Grants only specifically requested filesystem capabilities by attaching capability security identifiers to that profile.
-- Disables outbound network access by overriding proxy-related environment variables and inserting stub executables for common network tools.
-
-Its primary limitation is that it can’t prevent file writes, deletions, or creations in any directory where the Everyone SID already has write permissions (for example, world-writable folders). When using the Windows sandbox, Codex scans for folders where Everyone has write access and recommends that you remove that access.
-
-### Grant sandbox read access
-
-When a command fails because the Windows sandbox can’t read a directory, use:
-
-```
-/sandbox-add-read-dir C:\absolute\directory\path
-```
-
-The path must be an existing absolute directory. After the command succeeds, later commands that run in the sandbox can read that directory during the current session.
-
-### Troubleshooting and FAQ
+## Troubleshooting and FAQ
 
 #### Installed extension, but it’s unresponsive
 

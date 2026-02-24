@@ -127,17 +127,17 @@
       "source_url": "https://developers.openai.com/codex/config-advanced"
     },
     "developers.openai.com/codex/config-basic/index.md": {
-      "sha256": "3844402d6a4c787e6c5adc4a8680a733b9db5d6ec4965873c708a7c7d8356d3d",
+      "sha256": "603d918ad2bd4b95b26fa32fa3fb13942f1e61c54229d3483b17f7fe190c95d3",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "655d3c11be36e86bbf9147c73a94d61f2aca0e4c47303866141501b240a6daa0",
+      "sha256": "946df556ec9eef8ad9ff1447a73ef8383dbcb095f64fbc4765492c8daf501934",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "1afca0459667ae4160096b9e6c251a2c14b9e34c6eb1309f7705293f5430c19a",
+      "sha256": "eec980bb9e89bf6c2159a825127dc8003a006da4f3789d3329b1f517b7070223",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
@@ -292,7 +292,7 @@
       "source_url": "https://developers.openai.com/codex/sdk"
     },
     "developers.openai.com/codex/security/index.md": {
-      "sha256": "8c11098250e91c83eb162c432282cae6751d0c75b56f40b3acd283abe4cfd00c",
+      "sha256": "9e4a8188fc66fd239aa06ad1f3586200435ad216eac7b427e68e387d3755dd95",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security"
     },
@@ -307,7 +307,7 @@
       "source_url": "https://developers.openai.com/codex/videos"
     },
     "developers.openai.com/codex/windows/index.md": {
-      "sha256": "3b415fd38ae3d20e155e83f0db3e90d5f35ffa1393d171d449be04ae208cc422",
+      "sha256": "87e987c76c982c0b6f3448d6c87ff4b4a81b2084fbc13ae6126b6a95f86bab42",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/windows"
     },

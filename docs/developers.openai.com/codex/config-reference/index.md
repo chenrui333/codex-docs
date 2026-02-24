@@ -46,8 +46,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.apps_mcp_gateway` | `boolean` | Route Apps MCP calls through the OpenAI connectors MCP gateway (`https://api.openai.com/v1/connectors/mcp/`) instead of legacy routing (experimental). |
 | `features.child_agents_md` | `boolean` | Append AGENTS.md scope/precedence guidance even when no AGENTS.md is present (experimental). |
 | `features.collaboration_modes` | `boolean` | Enable collaboration modes such as plan mode (stable; on by default). |
-| `features.elevated_windows_sandbox` | `boolean` | Enable the elevated Windows sandbox pipeline (experimental). |
-| `features.experimental_windows_sandbox` | `boolean` | Run the Windows restricted-token sandbox (experimental). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, and `close\_agent`) (experimental; off by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.powershell_utf8` | `boolean` | Force PowerShell UTF-8 output (defaults to true). |
@@ -180,6 +178,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `tui.status_line` | `array<string> | null` | Ordered list of TUI footer status-line item identifiers. `null` disables the status line. |
 | `web_search` | `disabled | cached | live` | Web search mode (default: `"cached"`; cached uses an OpenAI-maintained index and does not fetch live pages; if you use `--yolo` or another full access sandbox setting, it defaults to `"live"`). Use `"live"` to fetch the most recent data from the web, or `"disabled"` to remove the tool. |
 | `windows_wsl_setup_acknowledged` | `boolean` | Track Windows onboarding acknowledgement (Windows only). |
+| `windows.sandbox` | `unelevated | elevated` | Windows-only native sandbox mode when running Codex natively on Windows. |
 
 Key
 
@@ -588,30 +587,6 @@ Type / Values
 Details
 
 Enable collaboration modes such as plan mode (stable; on by default).
-
-Key
-
-`features.elevated_windows_sandbox`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable the elevated Windows sandbox pipeline (experimental).
-
-Key
-
-`features.experimental_windows_sandbox`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Run the Windows restricted-token sandbox (experimental).
 
 Key
 
@@ -2196,6 +2171,18 @@ Type / Values
 Details
 
 Track Windows onboarding acknowledgement (Windows only).
+
+Key
+
+`windows.sandbox`
+
+Type / Values
+
+`unelevated | elevated`
+
+Details
+
+Windows-only native sandbox mode when running Codex natively on Windows.
 
 Expand to view all
 

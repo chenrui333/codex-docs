@@ -350,8 +350,6 @@ enabled = true
 # request_rule = true
 # collaboration_modes = true
 # use_linux_sandbox_bwrap = false
-# experimental_windows_sandbox = false
-# elevated_windows_sandbox = false
 # remote_models = false
 # runtime_metrics = false
 # powershell_utf8 = true
@@ -524,4 +522,16 @@ trace_exporter = "none"
 # client-certificate = "/etc/codex/certs/client.pem"
 # client-private-key = "/etc/codex/certs/client-key.pem"
 ```
+
+################################################################################
+
+# Windows
+
+################################################################################
+
+[windows]
+
+# Native Windows sandbox mode (Windows only): unelevated | elevated
+
+sandbox = “unelevated”
 

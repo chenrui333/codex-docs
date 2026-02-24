@@ -140,7 +140,7 @@ Codex enforces the sandbox differently depending on your OS:
 
 - **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
 - **Linux** uses `Landlock` plus `seccomp` by default. You can opt into the alternative Linux sandbox pipeline with `features.use_linux_sandbox_bwrap = true` (or `-c use_linux_sandbox_bwrap=true`). In managed proxy mode, the bwrap pipeline routes egress through a proxy-only bridge and fails closed if it cannot build valid loopback proxy routes; landlock-only flows do not use that bridge behavior.
-- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux (WSL)](/codex/windows#windows-subsystem-for-linux). When running natively on Windows, you can enable an [experimental sandbox](/codex/windows#windows-experimental-sandbox) implementation.
+- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux (WSL)](/codex/windows#windows-subsystem-for-linux). When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
 
 If you use the Codex IDE extension on Windows, it supports WSL directly. Set the following in your VS Code settings to keep the agent inside WSL whenever it’s available:
 
@@ -152,7 +152,14 @@ If you use the Codex IDE extension on Windows, it supports WSL directly. Set the
 
 This ensures the IDE extension inherits Linux sandbox semantics for commands, approvals, and filesystem access even when the host OS is Windows. Learn more in the [Windows setup guide](/codex/windows).
 
-The native Windows sandbox is experimental and has important limitations. For example, it can’t prevent writes in directories where the `Everyone` SID already has write permissions (for example, world-writable folders). See the [Windows setup guide](/codex/windows#windows-experimental-sandbox) for details and mitigation steps.
+When running natively on Windows, configure the native sandbox mode in `config.toml`:
+
+```
+[windows]
+sandbox = "unelevated" # or "elevated"
+```
+
+See the [Windows setup guide](/codex/windows#windows-sandbox) for details.
 
 When you run Linux in a containerized environment such as Docker, the sandbox may not work if the host or container configuration doesn’t support the required `Landlock` and `seccomp` features.
 
