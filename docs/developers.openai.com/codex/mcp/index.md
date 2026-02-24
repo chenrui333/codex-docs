@@ -77,7 +77,9 @@ Configure each MCP server with a `[mcp_servers.<server-name>]` table in the conf
 - `enabled_tools` (optional): Tool allow list.
 - `disabled_tools` (optional): Tool deny list (applied after `enabled_tools`).
 
-If your OAuth provider requires a static callback URI, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
+If your OAuth provider requires a fixed callback port, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
+
+If your MCP OAuth flow must use a specific callback URL (for example, a remote devbox ingress URL or a custom callback path), set `mcp_oauth_callback_url`. Codex uses this value as the OAuth `redirect_uri` while still using `mcp_oauth_callback_port` for the callback listener port. Local callback URLs (for example `localhost`) bind on loopback; non-local callback URLs bind on `0.0.0.0` so the callback can reach the host.
 
 #### config.toml examples
 
@@ -88,6 +90,12 @@ args = ["-y", "@upstash/context7-mcp"]
 
 [mcp_servers.context7.env]
 MY_ENV_VAR = "MY_ENV_VALUE"
+```
+
+```
+# Optional MCP OAuth callback overrides (used by `codex mcp login`)
+mcp_oauth_callback_port = 5555
+mcp_oauth_callback_url = "https://devbox.example.internal/callback"
 ```
 
 ```

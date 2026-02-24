@@ -64,7 +64,7 @@ settings.
 
 If you are in a managed environment, admins can restrict these behaviors using
 admin-enforced requirements. For example, they can disallow `approval_policy = "never"` or constrain allowed sandbox modes. See
-[Admin-enforced requirements (`requirements.toml`)](/codex/security#admin-enforced-requirements-requirementstoml).
+[Admin-enforced requirements (`requirements.toml`)](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 Automations use `approval_policy = "never"` when your organization policy
 allows it. If `approval_policy = "never"` is disallowed by admin requirements,

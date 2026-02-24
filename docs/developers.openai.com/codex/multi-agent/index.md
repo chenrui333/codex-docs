@@ -33,6 +33,8 @@ When many agents are running, Codex waits until all requested results are availa
 
 Codex will automatically decide when to spawn a new agent or you can explicitly ask it to do so.
 
+For long-running commands or polling workflows, Codex can also use the built-in `monitor` role, which is tuned for waiting and repeated status checks.
+
 To see it in action, try the following prompt on your project:
 
 ```
@@ -49,6 +51,7 @@ I would like to review the following points on the current PR (this branch vs ma
 
 - Use `/agent` in the CLI to switch between active agent threads and inspect the ongoing thread.
 - Ask Codex directly to steer a running sub-agent, stop it, or close completed agent threads.
+- The `wait` tool supports long polling windows for monitoring workflows (up to 1 hour per call).
 
 ## Approvals and sandbox controls
 
@@ -70,9 +73,10 @@ role-specific config file (`config_file`) when Codex spawns an agent with that r
 
 Codex ships with built-in roles:
 
-- `default`
-- `worker`
-- `explorer`
+- `default`: general-purpose fallback role.
+- `worker`: execution-focused role for implementation and fixes.
+- `explorer`: read-heavy codebase exploration role.
+- `monitor`: long-running command/task monitoring role (optimized for waiting/polling).
 
 Each agent role can override your default configuration. Common settings to override for an agent role are:
 
@@ -85,6 +89,7 @@ Each agent role can override your default configuration. Common settings to over
 | Field | Type | Required | Purpose |
 | --- | --- | --- | --- |
 | `agents.max_threads` | number | No | Maximum number of concurrently open agent threads. |
+| `agents.max_depth` | number | No | Maximum nesting depth for spawned agent threads (root session starts at 0). |
 | `[agents.<name>]` | table | No | Declares a role. `<name>` is used as the `agent_type` when spawning an agent. |
 | `agents.<name>.description` | string | No | Human-facing role guidance shown to Codex when it decides which role to use. |
 | `agents.<name>.config_file` | string (path) | No | Path to a TOML config layer applied to spawned agents for that role. |
@@ -92,7 +97,9 @@ Each agent role can override your default configuration. Common settings to over
 **Notes:**
 
 - Unknown fields in `[agents.<name>]` are rejected.
+- `agents.max_depth` defaults to `1`, which allows a direct child agent to spawn but prevents deeper nesting.
 - Relative `config_file` paths are resolved relative to the `config.toml` file that defines the role.
+- `agents.<name>.config_file` is validated at config load time and must point to an existing file.
 - If a role name matches a built-in role (for example, `explorer`), your user-defined role takes precedence.
 - If Codex can’t load a role config file, agent spawns can fail until you fix the file.
 - Any configuration not set by the agent role will be inherited from the parent session.

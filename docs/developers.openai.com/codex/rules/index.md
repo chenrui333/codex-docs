@@ -45,7 +45,7 @@ When Smart approvals are enabled (the default), Codex may propose a
 carefully before accepting it.
 
 Admins can also enforce restrictive `prefix_rule` entries from
-[`requirements.toml`](/codex/security#admin-enforced-requirements-requirementstoml).
+[`requirements.toml`](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 ## Understand rule fields
 

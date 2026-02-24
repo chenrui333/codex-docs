@@ -90,6 +90,8 @@ Use the [Compliance API](https://chatgpt.com/admin/api-reference) when you need 
 
 The Compliance API gives enterprises a way to export logs and metadata for Codex activity so you can connect that data to your existing audit, monitoring, and security workflows. It is designed for use with tools like eDiscovery, DLP, SIEM, or other compliance systems.
 
+For Codex usage authenticated through ChatGPT, Compliance API exports provide audit records for Codex activity and can be used in investigations and compliance workflows. These audit logs are retained for up to 30 days. API-key-authenticated Codex usage follows your API organization settings and is not included in Compliance API exports.
+
 ### What you can export
 
 #### Activity logs

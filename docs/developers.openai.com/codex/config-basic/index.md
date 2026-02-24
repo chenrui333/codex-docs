@@ -37,7 +37,7 @@ On managed machines, your organization may also enforce constraints via
 `requirements.toml` (for example, disallowing `approval_policy = "never"` or
 `sandbox_mode = "danger-full-access"`). See [Managed
 configuration](/codex/security#managed-configuration) and [Admin-enforced
-requirements](/codex/security#admin-enforced-requirements-requirementstoml).
+requirements](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 ## Common configuration options
 

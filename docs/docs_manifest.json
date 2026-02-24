@@ -7,12 +7,12 @@
       "source_url": "https://developers.openai.com/codex/ambassadors"
     },
     "developers.openai.com/codex/app-server/index.md": {
-      "sha256": "29047bbe5b281b410e9174a1ad129306f489b5cd51d7c74745f7bfe785c7e126",
+      "sha256": "0fde41a12224a15585c9b58df247a9f39c7f97ce9224b2f562d050251b4ef1c7",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app-server"
     },
     "developers.openai.com/codex/app/automations/index.md": {
-      "sha256": "c6e69700cb8ca09a839c9a34259fd40a41206b315eaf09b5adc36f4dc9ab9ed1",
+      "sha256": "ed05caea6054fca033f735cb16951572846af90b3398534c9bbf32b6c7b73822",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/automations"
     },
@@ -57,7 +57,7 @@
       "source_url": "https://developers.openai.com/codex/app/worktrees"
     },
     "developers.openai.com/codex/auth/index.md": {
-      "sha256": "6767af8744d38b511d1196e98c9cf3f34b5dd437c8df2440656f987678085d62",
+      "sha256": "7efe7dbb9e016dfff236532f45130f0597336f338328e0954b227e4eb5e111c7",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/auth"
     },
@@ -67,7 +67,7 @@
       "source_url": "https://developers.openai.com/codex/changelog"
     },
     "developers.openai.com/codex/cli/features/index.md": {
-      "sha256": "088c29687b1b9f71b42ffec0cbba4376bde73499470ec745a307424bf8fd7aca",
+      "sha256": "1fd508d7f9e49aebdcba4afc9640ecc137a0e5edd56a347111a99d36ba30fad0",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
@@ -122,22 +122,22 @@
       "source_url": "https://developers.openai.com/codex/concepts/multi-agents"
     },
     "developers.openai.com/codex/config-advanced/index.md": {
-      "sha256": "3bf02c45bc33c12b52cd914adb3fc6d5327b1e28da980f012f37524defe684bd",
+      "sha256": "52a58fe5fa5f8ca50a3b25ace29354674e002ed9bde21b76df550542d8a0abb2",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-advanced"
     },
     "developers.openai.com/codex/config-basic/index.md": {
-      "sha256": "aa34b3dad692b697655f25f62491ae9982b8503a7d3cf95a6cf41c9643d0c9cc",
+      "sha256": "3844402d6a4c787e6c5adc4a8680a733b9db5d6ec4965873c708a7c7d8356d3d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "bf14fcbc04c8b6e323d4de7be1d3ea96042bb98f76699d618e8de75d91d9e453",
+      "sha256": "655d3c11be36e86bbf9147c73a94d61f2aca0e4c47303866141501b240a6daa0",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "c42e4e76682192fc5b170741d05d9fb2703f432b75fc449fffa982dcdc0ab7ad",
+      "sha256": "1afca0459667ae4160096b9e6c251a2c14b9e34c6eb1309f7705293f5430c19a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
@@ -147,14 +147,19 @@
       "source_url": "https://developers.openai.com/codex/custom-prompts"
     },
     "developers.openai.com/codex/enterprise/admin-setup/index.md": {
-      "sha256": "c61a6992560cd864b1902cbec467d02c7ecc5ee4a18d414bc553fa72201f2471",
+      "sha256": "2058ab4617aa23b071e0e614f8b46d955084124cc91247dbd06143602528f945",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/admin-setup"
     },
     "developers.openai.com/codex/enterprise/governance/index.md": {
-      "sha256": "0d89f22493762599432b729ba1e0b310bf1c261203a0599c5308713a3e4f0301",
+      "sha256": "cdac18ae8dd0e2408def5da4021cf8ad595c76ba3ed98fbd5fe845274c6aeb6f",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/governance"
+    },
+    "developers.openai.com/codex/enterprise/managed-configuration/index.md": {
+      "sha256": "867ef4a460c5b844f2ce3c58210a2d83176a4afe743af1157fd5617edce0c2c4",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
     "developers.openai.com/codex/explore/index.md": {
       "sha256": "ee7e5464aeccf5b88ee585315257775b4f9d37f34993bcb0416286be663bfba0",
@@ -232,7 +237,7 @@
       "source_url": "https://developers.openai.com/codex/integrations/slack"
     },
     "developers.openai.com/codex/mcp/index.md": {
-      "sha256": "5ff34d9bceefcf409e3df801dd9cb5e9e68fa49c8cfac2f889381a1c0de23752",
+      "sha256": "0bbf0001896f9a796981dbf507d84f375ec91e601d8dd1a5c00a49cdda1717b3",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/mcp"
     },
@@ -242,7 +247,7 @@
       "source_url": "https://developers.openai.com/codex/models"
     },
     "developers.openai.com/codex/multi-agent/index.md": {
-      "sha256": "6fee74ac48aa31e3cd1b081c44bb80ad86074beeded6bb49760d41489d1587b8",
+      "sha256": "4adea5eaac59df2141c4933124189a95a897f3643a1e298886a896d0444366bf",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/multi-agent"
     },
@@ -277,7 +282,7 @@
       "source_url": "https://developers.openai.com/codex/quickstart"
     },
     "developers.openai.com/codex/rules/index.md": {
-      "sha256": "439da62a96a99d5bcd5c169fb5d812bd7e4d39d384c2e062c6f7bee88054b557",
+      "sha256": "71b0f01846a7ff39347d032d083faa020f703c12f49369a05c423d3793e54fc3",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/rules"
     },
@@ -287,7 +292,7 @@
       "source_url": "https://developers.openai.com/codex/sdk"
     },
     "developers.openai.com/codex/security/index.md": {
-      "sha256": "162c46aaa8b283cc046c9a321e6242239be424951d229eb455d5110b9d21ecf2",
+      "sha256": "8c11098250e91c83eb162c432282cae6751d0c75b56f40b3acd283abe4cfd00c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security"
     },

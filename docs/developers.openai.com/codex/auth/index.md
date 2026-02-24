@@ -11,6 +11,13 @@ Codex supports two ways to sign in when using OpenAI models:
 
 Codex cloud requires signing in with ChatGPT. The Codex CLI and IDE extension support both sign-in methods.
 
+Your sign-in method also determines which admin controls and data-handling policies apply.
+
+- With sign in with ChatGPT, Codex usage follows your ChatGPT workspace permissions, RBAC, and ChatGPT Enterprise retention and residency settings
+- With an API key, usage follows your API organization’s retention and data-sharing settings instead
+
+For the CLI, Sign in with ChatGPT is the default authentication path when no valid session is available.
+
 ### Sign in with ChatGPT
 
 When you sign in with ChatGPT from the Codex app, CLI, or IDE Extension, Codex opens a browser window for you to complete the login flow. After you sign in, the browser returns an access token to the CLI or IDE extension.
@@ -20,6 +27,8 @@ When you sign in with ChatGPT from the Codex app, CLI, or IDE Extension, Codex o
 You can also sign in to the Codex app, CLI, or IDE Extension with an API key. Get your API key from the [OpenAI dashboard](https://platform.openai.com/api-keys).
 
 OpenAI bills API key usage through your OpenAI Platform account at standard API rates. See the [API pricing page](https://openai.com/api/pricing/).
+
+Recommendation is to use API key authentication for programmatic Codex CLI workflows (for example CI/CD jobs). Do not expose Codex execution in untrusted or publicly triggerable environments.
 
 ## Secure your Codex cloud account
 
@@ -44,6 +53,8 @@ If your account supports more than one login method and one of them is email and
 When you sign in to the Codex app, CLI, or IDE Extension using either ChatGPT or an API key, Codex caches your login details and reuses them the next time you start the CLI or extension. The CLI and extension share the same cached login details. If you log out from either one, you’ll need to sign in again the next time you start the CLI or extension.
 
 Codex caches login details locally in a plaintext file at `~/.codex/auth.json` or in your OS-specific credential store.
+
+For sign in with ChatGPT sessions, Codex refreshes tokens automatically during use before they expire, so active sessions usually continue without requiring another browser login.
 
 ## Credential storage
 

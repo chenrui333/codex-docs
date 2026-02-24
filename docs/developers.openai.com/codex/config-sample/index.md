@@ -51,6 +51,8 @@ model_provider = "openai"
 # model_context_window = 128000       # tokens; default: auto for model
 # model_auto_compact_token_limit = 0  # tokens; unset uses model defaults
 # tool_output_token_limit = 10000     # tokens stored per tool output; default: 10000 for gpt-5.2-codex
+# model_catalog_json = "/absolute/path/to/models.json" # optional startup-only model catalog override
+# background_terminal_max_timeout = 300000 # ms; max empty write_stdin poll window (default 5m)
 # log_dir = "/absolute/path/to/codex-logs" # directory for Codex logs; default: "$CODEX_HOME/log"
 
 ################################################################################
@@ -109,7 +111,14 @@ notify = [ ]
 # - untrusted: only known-safe read-only commands auto-run; others prompt
 # - on-request: model decides when to ask (default)
 # - never: never prompt (risky)
+# - { reject = { ... } }: auto-reject selected prompt categories
 approval_policy = "on-request"
+# Example granular auto-reject policy:
+# approval_policy = { reject = { sandbox_approval = true, rules = false, mcp_elicitations = false } }
+
+# Allow login-shell semantics for shell-based tools when they request `login = true`.
+# Default: true. Set false to force non-login shells and reject explicit login-shell requests.
+allow_login_shell = true
 
 # Filesystem/network sandbox policy for tool calls:
 # - read-only (default)
@@ -139,6 +148,10 @@ mcp_oauth_credentials_store = "auto"
 
 # Optional fixed port for MCP OAuth callback: 1-65535. Default: unset.
 # mcp_oauth_callback_port = 4321
+
+# Optional redirect URI override for MCP OAuth login (for example, remote devbox ingress).
+# Custom callback paths are supported. `mcp_oauth_callback_port` still controls the listener port.
+# mcp_oauth_callback_url = "https://devbox.example.internal/callback"
 
 ################################################################################
 # Project Documentation Controls
@@ -195,6 +208,20 @@ web_search = "cached"
 
 # Active profile name. When unset, no profile is applied.
 # profile = "default"
+
+################################################################################
+# Agents (multi-agent roles and limits)
+################################################################################
+
+# [agents]
+# Maximum concurrently open agent threads. Default: 6
+# max_threads = 6
+# Maximum nested spawn depth. Root session starts at depth 0. Default: 1
+# max_depth = 1
+
+# [agents.reviewer]
+# description = "Find security, correctness, and test risks in code."
+# config_file = "./agents/reviewer.toml"  # relative to the config.toml that defines it
 
 ################################################################################
 # Skills (per-skill overrides)
@@ -278,8 +305,14 @@ show_tooltips = true
 # Control alternate screen usage (auto skips it in Zellij to preserve scrollback).
 # alternate_screen = "auto"
 
-# Ordered list of footer status-line item IDs. Default: null (disabled).
+# Ordered list of footer status-line item IDs. When unset, Codex uses:
+# ["model-with-reasoning", "context-remaining", "current-dir"].
+# Set to [] to hide the footer.
 # status_line = ["model", "context-remaining", "git-branch"]
+
+# Syntax-highlighting theme (kebab-case). Use /theme in the TUI to preview and save.
+# You can also add custom .tmTheme files under $CODEX_HOME/themes.
+# theme = "catppuccin-mocha"
 
 # Control whether users can submit feedback from `/feedback`. Default: true
 [feedback]
@@ -303,27 +336,26 @@ enabled = true
 
 [features]
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
-shell_tool = true
+# shell_tool = true
 # apps = false
 # apps_mcp_gateway = false
-# Deprecated legacy toggles; prefer the top-level `web_search` setting.
-# web_search = false
 # web_search_cached = false
 # web_search_request = false
-unified_exec = false
-shell_snapshot = false
-apply_patch_freeform = false
+# unified_exec = false
+# shell_snapshot = false
+# apply_patch_freeform = false
+# multi_agent = false
 # search_tool = false
 # personality = true
-request_rule = true
-collaboration_modes = true
-use_linux_sandbox_bwrap = false
-experimental_windows_sandbox = false
-elevated_windows_sandbox = false
-remote_models = false
-runtime_metrics = false
-powershell_utf8 = true
-child_agents_md = false
+# request_rule = true
+# collaboration_modes = true
+# use_linux_sandbox_bwrap = false
+# experimental_windows_sandbox = false
+# elevated_windows_sandbox = false
+# remote_models = false
+# runtime_metrics = false
+# powershell_utf8 = true
+# child_agents_md = false
 
 ################################################################################
 # Define MCP servers under this table. Leave empty to disable.
@@ -413,6 +445,7 @@ child_agents_md = false
 # model_verbosity = "medium"
 # personality = "friendly" # or "pragmatic" or "none"
 # chatgpt_base_url = "https://chatgpt.com/backend-api/"
+# model_catalog_json = "./models.json"
 # experimental_compact_prompt_file = "./compact_prompt.txt"
 # include_apply_patch_tool = false
 # experimental_use_unified_exec_tool = false
@@ -426,9 +459,21 @@ child_agents_md = false
 
 # Optional per-app controls.
 [apps]
+# [_default] applies to all apps unless overridden per app.
+# [apps._default]
+# enabled = true
+# destructive_enabled = true
+# open_world_enabled = true
+#
 # [apps.google_drive]
 # enabled = false
-# disabled_reason = "user" # or "unknown"
+# destructive_enabled = false            # block destructive-hint tools for this app
+# default_tools_enabled = true
+# default_tools_approval_mode = "prompt" # auto | prompt | approve
+#
+# [apps.google_drive.tools."files/delete"]
+# enabled = false
+# approval_mode = "approve"
 
 ################################################################################
 # Projects (trust levels)

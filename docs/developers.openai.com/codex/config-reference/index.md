@@ -14,10 +14,24 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | --- | --- | --- |
 | `agents.<name>.config_file` | `string (path)` | Path to a TOML config layer for that role; relative paths resolve from the config file that declares the role. |
 | `agents.<name>.description` | `string` | Role guidance shown to Codex when choosing and spawning that agent type. |
+| `agents.max_depth` | `number` | Maximum nesting depth allowed for spawned agent threads (root sessions start at depth 0; default: 1). |
 | `agents.max_threads` | `number` | Maximum number of agent threads that can be open concurrently. |
-| `approval_policy` | `untrusted | on-request | never` | Controls when Codex pauses for approval before executing commands. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs. |
-| `apps.<id>.disabled_reason` | `unknown | user` | Optional reason attached when an app/connector is disabled. |
+| `allow_login_shell` | `boolean` | Allow shell-based tools to use login-shell semantics. Defaults to `true`; when `false`, `login = true` requests are rejected and omitted `login` defaults to non-login shells. |
+| `approval_policy` | `untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }` | Controls when Codex pauses for approval before executing commands. You can also use `approval\_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs. |
+| `approval_policy.reject.mcp_elicitations` | `boolean` | When `true`, MCP elicitation prompts are auto-rejected instead of shown to the user. |
+| `approval_policy.reject.rules` | `boolean` | When `true`, approvals triggered by execpolicy `prompt` rules are auto-rejected. |
+| `approval_policy.reject.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are auto-rejected. |
+| `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive\_hint = true`. |
+| `apps._default.enabled` | `boolean` | Default app enabled state for all apps unless overridden per app. |
+| `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open\_world\_hint = true`. |
+| `apps.<id>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for tools in this app unless a per-tool override exists. |
+| `apps.<id>.default_tools_enabled` | `boolean` | Default enabled state for tools in this app unless a per-tool override exists. |
+| `apps.<id>.destructive_enabled` | `boolean` | Allow or block tools in this app that advertise `destructive\_hint = true`. |
 | `apps.<id>.enabled` | `boolean` | Enable or disable a specific app/connector by id (default: true). |
+| `apps.<id>.open_world_enabled` | `boolean` | Allow or block tools in this app that advertise `open\_world\_hint = true`. |
+| `apps.<id>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Per-tool approval behavior override for a single app tool. |
+| `apps.<id>.tools.<tool>.enabled` | `boolean` | Per-tool enabled override for an app tool (for example `repos/list`). |
+| `background_terminal_max_timeout` | `number` | Maximum poll window in milliseconds for empty `write\_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background\_terminal\_timeout` key. |
 | `chatgpt_base_url` | `string` | Override the base URL used during the ChatGPT login flow. |
 | `check_for_update_on_startup` | `boolean` | Check for Codex updates on startup (set to false only when updates are centrally managed). |
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
@@ -59,6 +73,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `instructions` | `string` | Reserved for future use; prefer `model\_instructions\_file` or `AGENTS.md`. |
 | `log_dir` | `string (path)` | Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX\_HOME/log`. |
 | `mcp_oauth_callback_port` | `integer` | Optional fixed port for the local HTTP callback server used during MCP OAuth login. When unset, Codex binds to an ephemeral port chosen by the OS. |
+| `mcp_oauth_callback_url` | `string` | Optional redirect URI override for MCP OAuth login (for example, a devbox ingress URL). `mcp\_oauth\_callback\_port` still controls the callback listener port. |
 | `mcp_oauth_credentials_store` | `auto | file | keyring` | Preferred store for MCP OAuth credentials. |
 | `mcp_servers.<id>.args` | `array<string>` | Arguments passed to the MCP stdio server command. |
 | `mcp_servers.<id>.bearer_token_env_var` | `string` | Environment variable sourcing the bearer token for an MCP HTTP server. |
@@ -78,6 +93,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.url` | `string` | Endpoint for an MCP streamable HTTP server. |
 | `model` | `string` | Model to use (e.g., `gpt-5-codex`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
+| `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model\_catalog\_json` can override this per profile. |
 | `model_context_window` | `number` | Context window tokens available to the active model. |
 | `model_instructions_file` | `string (path)` | Replacement for built-in instructions instead of `AGENTS.md`. |
 | `model_provider` | `string` | Provider id from `model\_providers` (default: `openai`). |
@@ -128,6 +144,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `profiles.<name>.experimental_use_freeform_apply_patch` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`. |
 | `profiles.<name>.experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified\_exec`. |
 | `profiles.<name>.include_apply_patch_tool` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`. |
+| `profiles.<name>.model_catalog_json` | `string (path)` | Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model\_catalog\_json` for that profile). |
 | `profiles.<name>.oss_provider` | `lmstudio | ollama` | Profile-scoped OSS provider for `--oss` sessions. |
 | `profiles.<name>.personality` | `none | friendly | pragmatic` | Profile-scoped communication style override for supported models. |
 | `profiles.<name>.web_search` | `disabled | cached | live` | Profile-scoped web search mode override (default: `"cached"`). |
@@ -190,6 +207,18 @@ Role guidance shown to Codex when choosing and spawning that agent type.
 
 Key
 
+`agents.max_depth`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum nesting depth allowed for spawned agent threads (root sessions start at depth 0; default: 1).
+
+Key
+
 `agents.max_threads`
 
 Type / Values
@@ -202,27 +231,135 @@ Maximum number of agent threads that can be open concurrently.
 
 Key
 
+`allow_login_shell`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow shell-based tools to use login-shell semantics. Defaults to `true`; when `false`, `login = true` requests are rejected and omitted `login` defaults to non-login shells.
+
+Key
+
 `approval_policy`
 
 Type / Values
 
-`untrusted | on-request | never`
+`untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }`
 
 Details
 
-Controls when Codex pauses for approval before executing commands. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.
+Controls when Codex pauses for approval before executing commands. You can also use `approval\_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.
 
 Key
 
-`apps.<id>.disabled_reason`
+`approval_policy.reject.mcp_elicitations`
 
 Type / Values
 
-`unknown | user`
+`boolean`
 
 Details
 
-Optional reason attached when an app/connector is disabled.
+When `true`, MCP elicitation prompts are auto-rejected instead of shown to the user.
+
+Key
+
+`approval_policy.reject.rules`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, approvals triggered by execpolicy `prompt` rules are auto-rejected.
+
+Key
+
+`approval_policy.reject.sandbox_approval`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, sandbox escalation approval prompts are auto-rejected.
+
+Key
+
+`apps._default.destructive_enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Default allow/deny for app tools with `destructive\_hint = true`.
+
+Key
+
+`apps._default.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Default app enabled state for all apps unless overridden per app.
+
+Key
+
+`apps._default.open_world_enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Default allow/deny for app tools with `open\_world\_hint = true`.
+
+Key
+
+`apps.<id>.default_tools_approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Default approval behavior for tools in this app unless a per-tool override exists.
+
+Key
+
+`apps.<id>.default_tools_enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Default enabled state for tools in this app unless a per-tool override exists.
+
+Key
+
+`apps.<id>.destructive_enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow or block tools in this app that advertise `destructive\_hint = true`.
 
 Key
 
@@ -235,6 +372,54 @@ Type / Values
 Details
 
 Enable or disable a specific app/connector by id (default: true).
+
+Key
+
+`apps.<id>.open_world_enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow or block tools in this app that advertise `open\_world\_hint = true`.
+
+Key
+
+`apps.<id>.tools.<tool>.approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Per-tool approval behavior override for a single app tool.
+
+Key
+
+`apps.<id>.tools.<tool>.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Per-tool enabled override for an app tool (for example `repos/list`).
+
+Key
+
+`background_terminal_max_timeout`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum poll window in milliseconds for empty `write\_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background\_terminal\_timeout` key.
 
 Key
 
@@ -730,6 +915,18 @@ Optional fixed port for the local HTTP callback server used during MCP OAuth log
 
 Key
 
+`mcp_oauth_callback_url`
+
+Type / Values
+
+`string`
+
+Details
+
+Optional redirect URI override for MCP OAuth login (for example, a devbox ingress URL). `mcp\_oauth\_callback\_port` still controls the callback listener port.
+
+Key
+
 `mcp_oauth_credentials_store`
 
 Type / Values
@@ -955,6 +1152,18 @@ Type / Values
 Details
 
 Token threshold that triggers automatic history compaction (unset uses model defaults).
+
+Key
+
+`model_catalog_json`
+
+Type / Values
+
+`string (path)`
+
+Details
+
+Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model\_catalog\_json` can override this per profile.
 
 Key
 
@@ -1558,6 +1767,18 @@ Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\
 
 Key
 
+`profiles.<name>.model_catalog_json`
+
+Type / Values
+
+`string (path)`
+
+Details
+
+Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model\_catalog\_json` for that profile).
+
+Key
+
 `profiles.<name>.oss_provider`
 
 Type / Values
@@ -1990,14 +2211,14 @@ Note: Rename `experimental_instructions_file` to `model_instructions_file`. Code
 
 ## `requirements.toml`
 
-`requirements.toml` is an admin-enforced configuration file that constrains security-sensitive settings users can’t override. For details, locations, and examples, see [Admin-enforced requirements](/codex/security#admin-enforced-requirements-requirementstoml).
+`requirements.toml` is an admin-enforced configuration file that constrains security-sensitive settings users can’t override. For details, locations, and examples, see [Admin-enforced requirements](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 For ChatGPT Business and Enterprise users, Codex can also apply cloud-fetched
 requirements. See the security page for precedence details.
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
-| `allowed_approval_policies` | `array<string>` | Allowed values for `approval\_policy`. |
+| `allowed_approval_policies` | `array<string>` | Allowed values for `approval\_policy` (for example `untrusted`, `on-request`, `never`, and `reject`). |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox\_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web\_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
 | `mcp_servers` | `table` | Allowlist of MCP servers that may be enabled. Both the server name (`<id>`) and its identity must match for the MCP server to be enabled. Any configured MCP server not in the allowlist (or with a mismatched identity) is disabled. |
@@ -2022,7 +2243,7 @@ Type / Values
 
 Details
 
-Allowed values for `approval\_policy`.
+Allowed values for `approval\_policy` (for example `untrusted`, `on-request`, `never`, and `reject`).
 
 Key
 

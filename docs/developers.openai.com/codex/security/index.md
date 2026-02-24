@@ -15,14 +15,14 @@ Codex security controls come from two layers that work together:
 
 Codex uses different sandbox modes depending on where you run it:
 
-- **Codex cloud**: Runs in isolated OpenAI-managed containers, preventing access to your host system or unrelated data. You can expand access intentionally (for example, to install dependencies or allow specific domains) when needed. Network access is always enabled during the setup phase, which runs before the agent has access to your code.
+- **Codex cloud**: Runs in isolated OpenAI-managed containers, preventing access to your host system or unrelated data. Uses a two-phase runtime model: setup runs before the agent phase and can access the network to install specified dependencies, then the agent phase runs offline by default unless you enable internet access for that environment. Secrets configured for cloud environments are available only during setup and are removed before the agent phase starts.
 - **Codex CLI / IDE extension**: OS-level mechanisms enforce sandbox policies. Defaults include no network access and write permissions limited to the active workspace. You can configure the sandbox, approval policy, and network settings based on your risk tolerance.
 
 In the `Auto` preset (for example, `--full-auto`), Codex can read files, make edits, and run commands in the working directory automatically.
 
 Codex asks for approval to edit files outside the workspace or to run commands that require network access. If you want to chat or plan without making changes, switch to `read-only` mode with the `/permissions` command.
 
-Codex can also elicit approval for app (connector) tool calls that advertise side effects, even when the action isn’t a shell command or file change.
+Codex can also elicit approval for app (connector) tool calls that advertise side effects, even when the action isn’t a shell command or file change. Destructive app/MCP tool calls always require approval when the tool advertises a destructive annotation, even if it also advertises other hints (for example, read-only hints).
 
 ## Network access [Elevated Risk](https://help.openai.com/articles/20001061)
 
@@ -75,6 +75,8 @@ This option works with all `--sandbox` modes, so you still control Codex’s lev
 
 If you need Codex to read files, make edits, and run commands with network access without approval prompts, use `--sandbox danger-full-access` (or the `--dangerously-bypass-approvals-and-sandbox` flag). Use caution before doing so.
 
+For a middle ground, `approval_policy = { reject = { ... } }` lets you auto-reject specific approval prompt categories (sandbox escalation, execpolicy-rule prompts, or MCP elicitations) while keeping other prompts interactive.
+
 ### Common sandbox and approval combinations
 
 | Intent | Flags | Effect |
@@ -97,10 +99,14 @@ For the broader configuration workflow, see [Config basics](/codex/config-basic)
 # Always ask for approval mode
 approval_policy = "untrusted"
 sandbox_mode    = "read-only"
+allow_login_shell = false # optional hardening: disallow login shells for shell-based tools
 
 # Optional: Allow network in workspace-write mode
 [sandbox_workspace_write]
 network_access = true
+
+# Optional: granular approval prompt auto-rejection
+# approval_policy = { reject = { sandbox_approval = true, rules = false, mcp_elicitations = false } }
 ```
 
 You can also save presets as profiles, then select them with `codex --profile <name>`:
@@ -132,8 +138,8 @@ The `sandbox` command is also available as `codex debug`, and the platform helpe
 
 Codex enforces the sandbox differently depending on your OS:
 
-- **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected.
-- **Linux** uses `Landlock` plus `seccomp` by default. You can opt into the alternative Linux sandbox pipeline with `features.use_linux_sandbox_bwrap = true` (or `-c use_linux_sandbox_bwrap=true`).
+- **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
+- **Linux** uses `Landlock` plus `seccomp` by default. You can opt into the alternative Linux sandbox pipeline with `features.use_linux_sandbox_bwrap = true` (or `-c use_linux_sandbox_bwrap=true`). In managed proxy mode, the bwrap pipeline routes egress through a proxy-only bridge and fails closed if it cannot build valid loopback proxy routes; landlock-only flows do not use that bridge behavior.
 - **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux (WSL)](/codex/windows#windows-subsystem-for-linux). When running natively on Windows, you can enable an [experimental sandbox](/codex/windows#windows-experimental-sandbox) implementation.
 
 If you use the Codex IDE extension on Windows, it supports WSL directly. Set the following in your VS Code settings to keep the agent inside WSL whenever it’s available:
@@ -232,157 +238,5 @@ OTel is optional and designed to complement, not replace, the sandbox and approv
 
 ## Managed configuration
 
-Enterprise admins can control local Codex behavior in two ways. For the exact key list, see the [`requirements.toml` section in Configuration Reference](/codex/config-reference#requirementstoml):
-
-- **Requirements**: admin-enforced constraints that users can’t override.
-- **Managed defaults**: starting values applied when Codex launches. Users can still change settings during a session; Codex reapplies managed defaults the next time it starts.
-
-### Admin-enforced requirements (requirements.toml)
-
-Requirements constrain security-sensitive settings (approval policy, sandbox mode, web search mode, and optionally which MCP servers you can enable). If a user explicitly selects a disallowed value (via `config.toml`, CLI flags, profiles, or in-session UI), Codex rejects the change. If a value isn’t explicitly set and the default conflicts with requirements, Codex falls back to a requirements-compliant default. If you configure an `mcp_servers` approved list, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex turns it off.
-
-#### Locations
-
-- Linux/macOS (Unix): `/etc/codex/requirements.toml`
-- macOS MDM: preference domain `com.openai.codex`, key `requirements_toml_base64`
-
-#### Cloud requirements (Business and Enterprise)
-
-When you sign in with ChatGPT on a Business or Enterprise plan, Codex can also
-fetch admin-enforced requirements from the Codex service. This applies across
-Codex surfaces, including the TUI, `codex exec`, and `codex app-server`.
-
-Cloud requirements are currently best-effort. If the fetch fails or times out,
-Codex continues without the cloud layer.
-
-Requirements layer in this order (higher wins):
-
-- macOS managed preferences (MDM; highest precedence)
-- Cloud requirements (ChatGPT Business or Enterprise)
-- `/etc/codex/requirements.toml`
-
-Cloud requirements only fill unset requirement fields, so higher-precedence
-managed layers still win when both specify the same constraint.
-
-For backwards compatibility, Codex also interprets legacy `managed_config.toml` fields `approval_policy` and `sandbox_mode` as requirements (allowing only that single value).
-
-#### Example requirements.toml
-
-This example blocks `--ask-for-approval never` and `--sandbox danger-full-access` (including `--yolo`):
-
-```
-allowed_approval_policies = ["untrusted", "on-request"]
-allowed_sandbox_modes = ["read-only", "workspace-write"]
-```
-
-You can also constrain web search mode:
-
-```
-allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
-```
-
-`allowed_web_search_modes = []` effectively allows only `"disabled"`.
-For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
-
-#### Enforce command rules from requirements
-
-Admins can also enforce restrictive command rules from `requirements.toml`
-using a `[rules]` table. These rules merge with regular `.rules` files, and the
-most restrictive decision still wins.
-
-Unlike `.rules`, requirements rules must specify `decision`, and that decision
-must be `"prompt"` or `"forbidden"` (not `"allow"`).
-
-```
-[rules]
-prefix_rules = [
-  { pattern = [{ token = "rm" }], decision = "forbidden", justification = "Use git clean -fd instead." },
-  { pattern = [{ token = "git" }, { any_of = ["push", "commit"] }], decision = "prompt", justification = "Require review before mutating history." },
-]
-```
-
-To restrict which MCP servers Codex can enable, add an `mcp_servers` approved list. For stdio servers, match on `command`; for streamable HTTP servers, match on `url`:
-
-```
-[mcp_servers.docs]
-identity = { command = "codex-mcp" }
-
-[mcp_servers.remote]
-identity = { url = "https://example.com/mcp" }
-```
-
-If `mcp_servers` is present but empty, Codex disables all MCP servers.
-
-### Managed defaults (managed\_config.toml)
-
-Managed defaults merge on top of a user’s local `config.toml` and take precedence over any CLI `--config` overrides, setting the starting values when Codex launches. Users can still change those settings during a session; Codex reapplies managed defaults the next time it starts.
-
-Make sure your managed defaults meet your requirements; Codex rejects disallowed values.
-
-#### Precedence and layering
-
-Codex assembles the effective configuration in this order (top overrides bottom):
-
-- Managed preferences (macOS MDM; highest precedence)
-- `managed_config.toml` (system/managed file)
-- `config.toml` (user’s base configuration)
-
-CLI `--config key=value` overrides apply to the base, but managed layers override them. This means each run starts from the managed defaults even if you provide local flags.
-
-Cloud requirements affect the requirements layer (not managed defaults). See
-[Admin-enforced requirements](/codex/security#admin-enforced-requirements-requirementstoml)
-for their precedence.
-
-#### Locations
-
-- Linux/macOS (Unix): `/etc/codex/managed_config.toml`
-- Windows/non-Unix: `~/.codex/managed_config.toml`
-
-If the file is missing, Codex skips the managed layer.
-
-#### macOS managed preferences (MDM)
-
-On macOS, admins can push a device profile that provides base64-encoded TOML payloads at:
-
-- Preference domain: `com.openai.codex`
-- Keys:
-  - `config_toml_base64` (managed defaults)
-  - `requirements_toml_base64` (requirements)
-
-Codex parses these “managed preferences” payloads as TOML and applies them with the highest precedence.
-
-### MDM setup workflow
-
-Codex honors standard macOS MDM payloads, so you can distribute settings with tooling like `Jamf Pro`, `Fleet`, or `Kandji`. A lightweight deployment looks like:
-
-1. Build the managed payload TOML and encode it with `base64` (no wrapping).
-2. Drop the string into your MDM profile under the `com.openai.codex` domain at `config_toml_base64` (managed defaults) or `requirements_toml_base64` (requirements).
-3. Push the profile, then ask users to restart Codex and confirm the startup config summary reflects the managed values.
-4. When revoking or changing policy, update the managed payload; the CLI reads the refreshed preference the next time it launches.
-
-Avoid embedding secrets or high-churn dynamic values in the payload. Treat the managed TOML like any other MDM setting under change control.
-
-### Example managed\_config.toml
-
-```
-# Set conservative defaults
-approval_policy = "on-request"
-sandbox_mode    = "workspace-write"
-
-[sandbox_workspace_write]
-network_access = false             # keep network disabled unless explicitly allowed
-
-[otel]
-environment = "prod"
-exporter = "otlp-http"            # point at your collector
-log_user_prompt = false            # keep prompts redacted
-# exporter details live under exporter tables; see Monitoring and telemetry above
-```
-
-### Recommended guardrails
-
-- Prefer `workspace-write` with approvals for most users; reserve full access for controlled containers.
-- Keep `network_access = false` unless your security review allows a collector or domains required by your workflows.
-- Use managed configuration to pin OTel settings (exporter, environment), but keep `log_user_prompt = false` unless your policy explicitly allows storing prompt contents.
-- Periodically audit diffs between local `config.toml` and managed policy to catch drift; managed layers should win over local flags and files.
+Enterprise admins can configure Codex security settings for their workspace in [Managed configuration](/codex/enterprise/managed-configuration). See that page for setup and policy details.
 

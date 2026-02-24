@@ -22,6 +22,7 @@ Once the session is open, you can:
 
 - Send prompts, code snippets, or screenshots (see [image inputs](#image-inputs)) directly into the composer.
 - Watch Codex explain its plan before making a change, and approve or reject steps inline.
+- Read syntax-highlighted markdown code blocks and diffs in the TUI, then use `/theme` to preview and save a preferred color theme.
 - Navigate draft history in the composer with `Up`/`Down`; Codex restores prior draft text and image placeholders.
 - Press `Ctrl`+`C` or use `/exit` to close the interactive session when you’re done.
 
@@ -84,6 +85,12 @@ codex --image img1.png,img2.jpg "Summarize these diagrams"
 ```
 
 Codex accepts common formats such as PNG and JPEG. Use comma-separated filenames for two or more images, and combine them with text instructions to add context.
+
+## Syntax highlighting and themes
+
+The TUI syntax-highlights fenced markdown code blocks and file diffs so code is easier to scan during reviews and debugging.
+
+Use `/theme` to open the theme picker, preview themes live, and save your selection to `tui.theme` in `~/.codex/config.toml`. You can also add custom `.tmTheme` files under `$CODEX_HOME/themes` and select them in the picker.
 
 ## Running local code review
 

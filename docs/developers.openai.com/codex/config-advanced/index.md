@@ -19,11 +19,13 @@ Define profiles under `[profiles.<name>]` in `config.toml`, then run `codex --pr
 ```
 model = "gpt-5-codex"
 approval_policy = "on-request"
+model_catalog_json = "/Users/me/.codex/model-catalogs/default.json"
 
 [profiles.deep-review]
 model = "gpt-5-pro"
 model_reasoning_effort = "high"
 approval_policy = "never"
+model_catalog_json = "/Users/me/.codex/model-catalogs/deep-review.json"
 
 [profiles.lightweight]
 model = "gpt-4.1"
@@ -31,6 +33,8 @@ approval_policy = "untrusted"
 ```
 
 To make a profile the default, add `profile = "deep-review"` at the top level of `config.toml`. Codex loads that profile unless you override it on the command line.
+
+Profiles can also override `model_catalog_json`. When both the top level and the selected profile set `model_catalog_json`, Codex prefers the profile value.
 
 ## One-off overrides from the CLI
 
@@ -190,9 +194,12 @@ Pick approval strictness (affects when Codex pauses) and sandbox level (affects 
 
 For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/security#protected-paths-in-writable-roots), and [Network access](/codex/security#network-access).
 
+You can also use a granular reject policy (`approval_policy = { reject = { ... } }`) to auto-reject only selected prompt categories (sandbox approvals, execpolicy rule prompts, or MCP elicitations) while keeping other prompts interactive.
+
 ```
-approval_policy = "untrusted"   # Other options: on-request, never
+approval_policy = "untrusted"   # Other options: on-request, never, or { reject = { ... } }
 sandbox_mode = "workspace-write"
+allow_login_shell = false       # Optional hardening: disallow login shells for shell tools
 
 [sandbox_workspace_write]
 exclude_tmpdir_env_var = false  # Allow $TMPDIR

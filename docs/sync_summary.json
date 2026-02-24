@@ -1,14 +1,26 @@
 {
   "added": [
-    "developers.openai.com/cookbook/examples/codex/long_horizon_tasks/index.md"
+    "developers.openai.com/codex/enterprise/managed-configuration/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-23T18:27:14+00:00",
+  "generated_at": "2026-02-24T00:33:07+00:00",
   "removed": [],
-  "total_files": 111,
+  "total_files": 112,
   "updated": [
-    "developers.openai.com/codex/community/meetups/index.md",
-    "developers.openai.com/cookbook/topic/codex/index.md"
+    "developers.openai.com/codex/app-server/index.md",
+    "developers.openai.com/codex/app/automations/index.md",
+    "developers.openai.com/codex/auth/index.md",
+    "developers.openai.com/codex/cli/features/index.md",
+    "developers.openai.com/codex/config-advanced/index.md",
+    "developers.openai.com/codex/config-basic/index.md",
+    "developers.openai.com/codex/config-reference/index.md",
+    "developers.openai.com/codex/config-sample/index.md",
+    "developers.openai.com/codex/enterprise/admin-setup/index.md",
+    "developers.openai.com/codex/enterprise/governance/index.md",
+    "developers.openai.com/codex/mcp/index.md",
+    "developers.openai.com/codex/multi-agent/index.md",
+    "developers.openai.com/codex/rules/index.md",
+    "developers.openai.com/codex/security/index.md"
   ]
 }

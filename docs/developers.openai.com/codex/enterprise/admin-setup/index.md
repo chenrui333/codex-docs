@@ -4,48 +4,69 @@ Source: https://developers.openai.com/codex/enterprise/admin-setup
 
 This guide is for ChatGPT Enterprise admins who want to set up Codex for their workspace.
 
+Use this page as the step-by-step rollout guide. It focuses on setup order and decision points. For detailed policy, configuration, and monitoring details, use the linked pages: [Authentication](/codex/auth), [Security](/codex/security), [Managed configuration](/codex/enterprise/managed-configuration), and [Governance](/codex/enterprise/governance).
+
 ## Enterprise-grade security and privacy
 
 Codex supports ChatGPT Enterprise security features, including:
 
 - No training on enterprise data
-- Zero data retention for the CLI and IDE
-- Residency and retention follow ChatGPT Enterprise policies
+- Zero data retention for the App, CLI, and IDE (code remains in developer environment)
+- Residency and retention that follow ChatGPT Enterprise policies
 - Granular user access controls
-- Data encryption at rest (AES 256) and in transit (TLS 1.2+)
+- Data encryption at rest (AES-256) and in transit (TLS 1.2+)
 
-For more, see [Security](/codex/security).
+For security controls and runtime protections, see [Security](/codex/security). Refer to [Zero Data Retention (ZDR)](https://platform.openai.com/docs/guides/your-data#zero-data-retention) for more details.
 
 ## Local vs. cloud setup
 
 Codex operates in two environments: local and cloud.
 
-1. Local use includes the Codex app, CLI, and IDE extension. The agent runs on the developer’s computer in a sandbox.
-2. Use in the cloud includes Codex cloud, iOS, Code Review, and tasks created by the [Slack integration](/codex/integrations/slack). The agent runs remotely in a hosted container with your codebase.
+1. **Codex local** includes the Codex app, CLI, and IDE extension. The agent runs on the developer’s computer in a sandbox.
+2. **Codex cloud** includes hosted Codex features (including Codex cloud, iOS, Code Review, and tasks created by the [Slack integration](/codex/integrations/slack) or [Linear integration](/codex/integrations/linear)). The agent runs remotely in a hosted container with your codebase.
 
-Use separate permissions and role-based access control (RBAC) to control access to local and cloud features. You can enable local, cloud, or both for all users or for specific groups.
+You can enable local, cloud, or both, and control access with workspace settings and role-based access control (RBAC).
 
-## Codex local setup
+## Step 0: Owners and rollout decision
 
-### Enable Codex app, CLI, and IDE extension in workspace settings
+Ensure you have the following owners:
 
-To enable Codex locally for workspace members, go to [Workspace Settings > Settings and Permissions](https://chatgpt.com/admin/settings). Turn on **Allow members to use Codex Local**. This setting doesn’t require the GitHub connector.
+- Workspace owner with access to ChatGPT Enterprise
+- IT management owner for managed configuration
+- Governance owner for analytics / compliance review
 
-After you turn this on, users can sign in to use the Codex app, CLI, and IDE extension with their ChatGPT account. If you turn off this setting, users who attempt to use the Codex app, CLI, or IDE will see the following error: “403 - Unauthorized. Contact your ChatGPT administrator for access.”
+A rollout decision:
 
-## Team Config
+- Codex local only (Codex app, CLI, and IDE extension)
+- Codex cloud only (Codex web, GitHub code review)
+- Both local + cloud
 
-Teams who want to standardize Codex across an organization can use Team Config to share defaults, rules, and skills without duplicating setup on every local configuration.
+Review [authentication](https://developers.openai.com/codex/auth) before rollout:
 
-| Type | Path | Use it to |
-| --- | --- | --- |
-| [Config basics](/codex/config-basic) | `config.toml` | Set defaults for sandbox mode, approvals, model, reasoning effort, and more. |
-| [Rules](/codex/rules) | `rules/` | Control which commands Codex can run outside the sandbox. |
-| [Skills](/codex/skills) | `skills/` | Make shared skills available to your team. |
+- Codex local supports ChatGPT sign-in or API keys. Confirm MFA/SSO requirements and any managed login restrictions in authentication
+- Codex cloud requires ChatGPT sign-in
 
-For locations and precedence, see [Config basics](/codex/config-basic#configuration-precedence).
+## Step 1: Enable workspace toggles
 
-## Codex cloud setup
+Turn on only the Codex features you plan to roll out in this phase.
+
+Go to [Workspace Settings > Settings and Permissions](https://chatgpt.com/admin/settings).
+
+### Codex local
+
+Turn on **Allow members to use Codex Local**.
+
+This enables use of the Codex app, CLI, and IDE extension for allowed users.
+
+If this toggle is off, users who attempt to use the Codex app, CLI, or IDE will see the following error: “403 - Unauthorized. Contact your ChatGPT administrator for access.”
+
+#### Enable device code authentication for Codex CLI
+
+Allow developers to sign in with device codes when using Codex CLI in a non-interactive environment. More details in [authentication](https://developers.openai.com/codex/auth/).
+
+![Codex local toggle](/images/codex/enterprise/local-toggle-config.png)
+
+### Codex cloud
 
 ### Prerequisites
 
@@ -59,112 +80,151 @@ access, work with someone on your engineering team who does.
 
 Start by turning on the ChatGPT GitHub Connector in the Codex section of [Workspace Settings > Settings and Permissions](https://chatgpt.com/admin/settings).
 
-To enable Codex cloud for your workspace, turn on **Allow members to use Codex cloud**.
+To enable Codex cloud for your workspace, turn on **Allow members to use Codex cloud**. Once enabled, users can access Codex directly from the left-hand navigation panel in ChatGPT.
 
-Once enabled, users can access Codex directly from the left-hand navigation panel in ChatGPT.
+Note that it may take up to 10 minutes for Codex to appear in ChatGPT.
 
-![Codex cloud toggle](/images/codex/enterprise/cloud-toggle-config.png)
+#### Allow members to administer Codex
 
-After you turn on Codex in your Enterprise workspace settings, it may take up
-to 10 minutes for Codex to appear in ChatGPT.
+Allows users to view overall Codex [workspace analytics](https://chatgpt.com/codex/settings/analytics), access [cloud-managed requirements](https://chatgpt.com/codex/settings/managed-configs), and manage Cloud environments (edit and delete).
 
-### Configure the GitHub Connector IP allow list
+Codex cloud not required.
 
-To control which IP addresses can connect to your ChatGPT GitHub connector, configure these IP ranges:
+#### Enable Codex Slack app to post answers on task completion
 
-- [ChatGPT egress IP ranges](https://openai.com/chatgpt-actions.json)
-- [Codex container egress IP ranges](https://openai.com/chatgpt-agents.json)
-
-These IP ranges can change. Consider checking them automatically and updating your allow list based on the latest values.
-
-### Allow members to administer Codex
-
-This toggle allows users to view Codex workspace analytics and manage environments (edit and delete).
-
-Codex supports role-based access (see [Role-based access (RBAC)](#role-based-access-rbac)), so you can turn on this toggle for a specific subset of users.
-
-### Enable Codex Slack app to post answers on task completion
-
-Codex integrates with Slack. When a user mentions `@Codex` in Slack, Codex starts a cloud task, gets context from the Slack thread, and responds with a link to a PR to review in the thread.
-
-To allow the Slack app to post answers on task completion, turn on **Allow Codex Slack app to post answers on task completion**. When enabled, Codex posts its full answer back to Slack when the task completes. Otherwise, Codex posts only a link to the task.
+Codex posts its full answer back to Slack when the task completes. Otherwise, Codex posts only a link to the task.
 
 To learn more, see [Codex in Slack](/codex/integrations/slack).
 
-### Enable Codex agent to access the internet
+#### Enable Codex agent to access the internet
 
 By default, Codex cloud agents have no internet access during runtime to help protect against security and safety risks like prompt injection.
 
-As an admin, you can allow users to enable agent internet access in their environments. To enable it, turn on **Allow Codex agent to access the internet**.
+This setting enables users to use an allowlist for common software dependency domains, add more domains and trusted sites, and specify allowed HTTP methods.
 
-When this setting is on, users can use an allow list for common software dependency domains, add more domains and trusted sites, and specify allowed HTTP methods.
+For security implications of internet access and runtime controls, see [Security](/codex/security).
+
+![Codex cloud toggle](/images/codex/enterprise/cloud-toggle-config.png)
+
+## Step 2: Set up custom roles (RBAC)
+
+Use RBAC to control which users or groups can access Codex local and Codex cloud.
+
+### What RBAC lets you do
+
+Workspace Owners can use RBAC in ChatGPT admin settings to:
+
+- Set a default role for users who are not assigned any custom role
+- Create custom roles with granular permissions
+- Assign one or more custom roles to Groups (including SCIM-synced groups)
+- Manage roles centrally from the Custom Roles tab
+
+Users can inherit multiple roles, and permissions resolve to the maximum allowed across those roles.
+
+### Important behavior to plan for
+
+Users in any custom role group do not use the workspace default permissions.
+
+If you are gradually rolling out Codex, one suggestion is to have a “Codex Users” group and a second “Codex Admin” group that has the “Allow members to administer Codex” toggle enabled.
+
+For RBAC setup details and the full permission model, see the [OpenAI RBAC Help Center article](https://help.openai.com/en/articles/11750701-rbac).
+
+## Step 3: Configure Codex local managed settings
+
+For Codex local, set an admin-approved baseline for local behavior before broader rollout.
+
+### Use managed configuration for two different goals
+
+- **Requirements** (`requirements.toml`): Admin-enforced constraints users cannot override
+- **Managed defaults** (`managed_config.toml`): Starting values applied when Codex launches
+
+### Team Config
+
+Teams who want to standardize Codex across an organization can use Team Config to share defaults, rules, and skills without duplicating setup on every local configuration.
+
+| Type | Path | Use it to |
+| --- | --- | --- |
+| [Config basics](/codex/config-basic) | `config.toml` | Set defaults for sandbox mode, approvals, model, reasoning effort, and more. |
+| [Rules](/codex/rules) | `rules/` | Control which commands Codex can run outside the sandbox. |
+| [Skills](/codex/skills) | `skills/` | Make shared skills available to your team. |
+
+For locations and precedence, see [Config basics](/codex/config-basic#configuration-precedence).
+
+### Recommended first decisions for local rollout
+
+Define a baseline for your pilot:
+
+- Approval policy posture
+- Sandbox mode posture
+- Web search posture
+- MCP / connectors policy
+- Local logging and telemetry posture
+
+For exact keys, precedence, MDM deployment, and examples, see [Managed configuration](/codex/enterprise/managed-configuration) and [Security](/codex/security).
+
+If you plan to restrict login method or workspace for local clients, see the admin-managed authentication restrictions in [Authentication](https://developers.openai.com/codex/auth).
+
+## Step 4: Configure Codex cloud usage (if enabled)
+
+This step covers repository and environment setup after the Codex cloud workspace toggle is enabled.
+
+### Connect Codex cloud to repositories
+
+1. Navigate to [Codex](https://chatgpt.com/codex) and select **Get started**
+2. Select **Connect to GitHub** to install the ChatGPT GitHub Connector if you haven’t already connected GitHub to ChatGPT
+3. Install or authorize the ChatGPT GitHub Connector
+4. Choose an installation target for the ChatGPT Connector (typically your main organization)
+5. Allow the repositories you want to connect to Codex
+
+For more, see [Cloud environments](https://developers.openai.com/codex/cloud/environments).
+
+Codex uses short-lived, least-privilege GitHub App installation tokens for each operation and respects the user’s existing GitHub repository permissions and branch protection rules.
+
+### Configure IP addresses (as needed)
+
+Configure connector / IP allow lists if required by your network policy with these [egress IP ranges](https://openai.com/chatgpt-agents.json).
+
+These IP ranges can change. Consider checking them automatically and updating your allow list based on the latest values.
 
 ### Enable code review with Codex cloud
 
-To allow Codex to do code reviews, go to [Settings → Code review](https://chatgpt.com/codex/settings/code-review).
+To allow Codex to perform code reviews on GitHub, go to [Settings → Code review](https://chatgpt.com/codex/settings/code-review).
 
-Users can specify whether they want Codex to review their pull requests. Users can also configure whether code review runs for all contributors to a repository.
+Code review can be configured at the repository level. Users can also enable auto review for their PRs and choose when Codex automatically triggers a review. More details on [GitHub](https://developers.openai.com/codex/integrations/github) integration page.
 
-Codex supports two types of code reviews:
+Additional integration docs for [Slack](/codex/integrations/slack), [GitHub](/codex/integrations/github), and [Linear](/codex/integrations/linear).
 
-1. Automatically triggered code reviews when a user opens a PR for review.
-2. Reactive code reviews when a user mentions @Codex to look at issues. For example, “@Codex fix this CI error” or “@Codex address that feedback.”
+## Step 5: Set up governance and observability
 
-## Role-based access (RBAC)
+Codex gives enterprise teams several options for visibility into adoption and impact. Set up governance early so your team can monitor adoption, investigate issues, and support compliance workflows.
 
-Codex supports role-based access. RBAC is a security and permissions model used to control access to systems or resources based on a user’s role assignments.
+### Codex governance typically uses
 
-To enable RBAC for Codex, navigate to Settings & Permissions → Custom Roles in [ChatGPT’s admin page](https://chatgpt.com/admin/settings) and assign roles to groups created in the Groups tab.
+- Analytics Dashboard for quick, self-serve visibility
+- Analytics API for programmatic reporting and BI integration
+- Compliance API for audit and investigation workflows
 
-This simplifies permission management for Codex and improves security in your ChatGPT workspace. To learn more, see the [Help Center article](https://help.openai.com/en/articles/11750701-rbac).
+### Recommended minimum setup
 
-## Set up your first Codex cloud environment
+- Assign an owner for adoption reporting
+- Assign an owner for audit and compliance review
+- Define a review cadence
+- Decide what success looks like
 
-1. Go to Codex cloud and select **Get started**.
-2. Select **Connect to GitHub** to install the ChatGPT GitHub Connector if you haven’t already connected GitHub to ChatGPT.
-   - Allow the ChatGPT Connector for your account.
-   - Choose an installation target for the ChatGPT Connector (typically your main organization).
-   - Allow the repositories you want to connect to Codex (a GitHub admin may need to approve this).
-3. Create your first environment by selecting the repository most relevant to your developers, then select **Create environment**.
-   - Add the email addresses of any environment collaborators to give them edit access.
-4. Start a few starter tasks (for example, writing tests, fixing bugs, or exploring code).
+For details and examples, see [Governance](/codex/enterprise/governance).
 
-You have now created your first environment. Users who connect to GitHub can create tasks using this environment. Users who have access to the repository can also push pull requests generated from their tasks.
+## Step 6: Confirm and validate setup
 
-### Environment management
+### What to verify
 
-As a ChatGPT workspace administrator, you can edit and delete Codex environments in your workspace.
+- Users can sign in to Codex local (ChatGPT or API key)
+- (If enabled) Users can sign in to Codex cloud (ChatGPT sign-in required)
+- MFA and SSO requirements match your enterprise security policy
+- RBAC and workspace toggles produce the expected access behavior
+- Managed configuration is applied for users
+- Governance data is visible for admins
 
-### Connect more GitHub repositories with Codex cloud
+For authentication options and enterprise login restrictions, see [Authentication](/codex/auth).
 
-1. Select **Environments**, or open the environment selector and select **Manage Environments**.
-2. Select **Create Environment**.
-3. Select the repository you want to connect.
-4. Enter a name and description.
-5. Select the environment visibility.
-6. Select **Create Environment**.
-
-Codex automatically optimizes your environment setup by reviewing your codebase. Avoid advanced environment configuration until you observe specific performance issues. For more, see [Codex cloud](/codex/cloud).
-
-### Share setup instructions with users
-
-You can share these steps with end users:
-
-1. Go to [Codex](https://chatgpt.com/codex) in the left-hand panel of ChatGPT.
-2. Select **Connect to GitHub** in the prompt composer if you’re not already connected.
-   - Sign in to GitHub.
-3. You can now use shared environments with your workspace or create your own environment.
-4. Try a task in both Ask and Code mode. For example:
-   - Ask: Find bugs in this codebase.
-   - Write code: Improve test coverage following the existing test patterns.
-
-## Track Codex usage
-
-- For workspaces with rate limits, use [Settings → Usage](https://chatgpt.com/codex/settings/usage) to view workspace metrics for Codex.
-- For more detail on enterprise governance, refer to the [Governance](/codex/enterprise/governance) page.
-- For enterprise workspaces with flexible pricing, you can see credit usage in the ChatGPT workspace billing console.
-
-## Zero data retention (ZDR)
-
-Codex supports OpenAI organizations with [Zero Data Retention (ZDR)](https://platform.openai.com/docs/guides/your-data#zero-data-retention) enabled.
+Once your team is confident with setup, you can confidently roll Codex out to additional teams and organizations.
 

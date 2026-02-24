@@ -118,7 +118,7 @@ Use the thread APIs to create, list, or archive conversations. Drive a conversat
 - **Start (or resume) a thread**: Call `thread/start` for a new conversation, `thread/resume` to continue an existing one, or `thread/fork` to branch history into a new thread id.
 - **Begin a turn**: Call `turn/start` with the target `threadId` and user input. Optional fields override model, personality, `cwd`, sandbox policy, and more.
 - **Steer an active turn**: Call `turn/steer` to append user input to the currently in-flight turn without creating a new turn.
-- **Stream events**: After `turn/start`, keep reading notifications on stdout: `item/started`, `item/completed`, `item/agentMessage/delta`, tool progress, and other updates.
+- **Stream events**: After `turn/start`, keep reading notifications on stdout: `thread/archived`, `thread/unarchived`, `item/started`, `item/completed`, `item/agentMessage/delta`, tool progress, and other updates.
 - **Finish the turn**: The server emits `turn/completed` with final status when the model finishes or after a `turn/interrupt` cancellation.
 
 ## Initialization
@@ -203,11 +203,12 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/start` - create a new thread; emits `thread/started` and automatically subscribes you to turn/item events for that thread.
 - `thread/resume` - reopen an existing thread by id so later `turn/start` calls append to it.
 - `thread/fork` - fork a thread into a new thread id by copying stored history; emits `thread/started` for the new thread.
-- `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history.
-- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filters.
+- `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history. Returned `thread` objects include runtime `status`.
+- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filters. Returned `thread` objects include runtime `status`.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
-- `thread/archive` - move a thread’s log file into the archived directory; returns `{}` on success.
-- `thread/unarchive` - restore an archived thread rollout back into the active sessions directory; returns the restored `thread`.
+- `thread/archive` - move a thread’s log file into the archived directory; returns `{}` on success and emits `thread/archived`.
+- `thread/unarchive` - restore an archived thread rollout back into the active sessions directory; returns the restored `thread` and emits `thread/unarchived`.
+- `thread/status/changed` - notification emitted when a loaded thread’s runtime `status` changes.
 - `thread/compact/start` - trigger conversation history compaction for a thread; returns `{}` immediately while progress streams via `turn/*` and `item/*` notifications.
 - `thread/rollback` - drop the last N turns from the in-memory context and persist a rollback marker; returns the updated `thread`.
 - `turn/start` - add user input to a thread and begin Codex generation; responds with the initial `turn` and streams events. For `collaborationMode`, `settings.developer_instructions: null` means “use built-in instructions for the selected mode.”
@@ -225,7 +226,8 @@ If a client sends an experimental method or field without opting in, app-server 
 - `tool/requestUserInput` - prompt the user with 1-3 short questions for a tool call (experimental); questions can set `isOther` for a free-form option.
 - `config/mcpServer/reload` - reload MCP server configuration from disk and queue a refresh for loaded threads.
 - `mcpServerStatus/list` - list MCP servers, tools, resources, and auth status (cursor + limit pagination).
-- `feedback/upload` - submit a feedback report (classification + optional reason/logs + conversation id).
+- `windowsSandbox/setupStart` - start Windows sandbox setup for `elevated` or `unelevated` mode; returns quickly and later emits `windowsSandbox/setupCompleted`.
+- `feedback/upload` - submit a feedback report (classification + optional reason/logs + conversation id, plus optional `extraLogFiles` attachments).
 - `config/read` - fetch the effective configuration on disk after resolving configuration layering.
 - `config/value/write` - write a single configuration key/value to the user’s `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
@@ -335,7 +337,7 @@ To continue a stored session, call `thread/resume` with the `thread.id` you reco
   "threadId": "thr_123",
   "personality": "friendly"
 } }
-{ "id": 11, "result": { "thread": { "id": "thr_123" } } }
+{ "id": 11, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes" } } }
 ```
 
 Resuming a thread doesn’t update `thread.updatedAt` (or the rollout file’s modified time) by itself. The timestamp updates when you start a turn.
@@ -354,15 +356,18 @@ To branch from a stored session, call `thread/fork` with the `thread.id`. This c
 { "method": "thread/started", "params": { "thread": { "id": "thr_456" } } }
 ```
 
+When a user-facing thread title has been set, app-server hydrates `thread.name` on `thread/list`, `thread/read`, `thread/resume`, `thread/unarchive`, and `thread/rollback` responses. `thread/start` and `thread/fork` may omit `name` (or return `null`) until a title is set later.
+
 ### Read a stored thread (without resuming)
 
 Use `thread/read` when you want stored thread data but don’t want to resume the thread or subscribe to its events.
 
 - `includeTurns` - when `true`, the response includes the thread’s turns; when `false` or omitted, you get the thread summary only.
+- Returned `thread` objects include runtime `status` (`notLoaded`, `idle`, `systemError`, or `active` with `activeFlags`).
 
 ```
 { "method": "thread/read", "id": 19, "params": { "threadId": "thr_123", "includeTurns": true } }
-{ "id": 19, "result": { "thread": { "id": "thr_123", "turns": [] } } }
+{ "id": 19, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes", "status": { "type": "notLoaded" }, "turns": [] } } }
 ```
 
 Unlike `thread/resume`, `thread/read` doesn’t load the thread into memory or emit `thread/started`.
@@ -402,14 +407,28 @@ Example:
 } }
 { "id": 20, "result": {
   "data": [
-    { "id": "thr_a", "preview": "Create a TUI", "modelProvider": "openai", "createdAt": 1730831111, "updatedAt": 1730831111 },
-    { "id": "thr_b", "preview": "Fix tests", "modelProvider": "openai", "createdAt": 1730750000, "updatedAt": 1730750000 }
+    { "id": "thr_a", "preview": "Create a TUI", "modelProvider": "openai", "createdAt": 1730831111, "updatedAt": 1730831111, "name": "TUI prototype", "status": { "type": "notLoaded" } },
+    { "id": "thr_b", "preview": "Fix tests", "modelProvider": "openai", "createdAt": 1730750000, "updatedAt": 1730750000, "status": { "type": "notLoaded" } }
   ],
   "nextCursor": "opaque-token-or-null"
 } }
 ```
 
 When `nextCursor` is `null`, you have reached the final page.
+
+### Track thread status changes
+
+`thread/status/changed` is emitted whenever a loaded thread’s runtime status changes. The payload includes `threadId` and the new `status`.
+
+```
+{
+  "method": "thread/status/changed",
+  "params": {
+    "threadId": "thr_123",
+    "status": { "type": "active", "activeFlags": ["waitingOnApproval"] }
+  }
+}
+```
 
 ### List loaded threads
 
@@ -427,6 +446,7 @@ Use `thread/archive` to move the persisted thread log (stored as a JSONL file on
 ```
 { "method": "thread/archive", "id": 22, "params": { "threadId": "thr_b" } }
 { "id": 22, "result": {} }
+{ "method": "thread/archived", "params": { "threadId": "thr_b" } }
 ```
 
 Archived threads won’t appear in future calls to `thread/list` unless you pass `archived: true`.
@@ -437,7 +457,8 @@ Use `thread/unarchive` to move an archived thread rollout back into the active s
 
 ```
 { "method": "thread/unarchive", "id": 24, "params": { "threadId": "thr_b" } }
-{ "id": 24, "result": { "thread": { "id": "thr_b" } } }
+{ "id": 24, "result": { "thread": { "id": "thr_b", "name": "Bug bash notes" } } }
+{ "method": "thread/unarchived", "params": { "threadId": "thr_b" } }
 ```
 
 ### Trigger thread compaction
@@ -479,6 +500,8 @@ Restricted read access shape:
   "readableRoots": ["/Users/me/shared-read-only"]
 }
 ```
+
+On macOS, `includePlatformDefaults: true` appends a curated platform-default Seatbelt policy for restricted-read sessions. This improves tool compatibility without broadly allowing all of `/System`.
 
 Examples:
 
@@ -656,9 +679,54 @@ Notes:
 - `sandboxPolicy` accepts the same shape used by `turn/start` (for example, `dangerFullAccess`, `readOnly`, `workspaceWrite`, `externalSandbox`).
 - When omitted, `timeoutMs` falls back to the server default.
 
+### Read admin requirements (`configRequirements/read`)
+
+Use `configRequirements/read` to inspect the effective admin requirements loaded from `requirements.toml` and/or MDM.
+
+```
+{ "method": "configRequirements/read", "id": 52, "params": {} }
+{ "id": 52, "result": {
+  "requirements": {
+    "allowedApprovalPolicies": ["onRequest", "unlessTrusted"],
+    "allowedSandboxModes": ["readOnly", "workspaceWrite"],
+    "network": {
+      "enabled": true,
+      "allowedDomains": ["api.openai.com"],
+      "allowUnixSockets": ["/tmp/example.sock"],
+      "dangerouslyAllowAllUnixSockets": false
+    }
+  }
+} }
+```
+
+`result.requirements` is `null` when no requirements are configured. When present, the optional `network` object carries managed proxy constraints (domain rules, proxy settings, and unix-socket policy).
+
+### Windows sandbox setup (`windowsSandbox/setupStart`)
+
+Custom Windows clients can trigger sandbox setup asynchronously instead of blocking on startup checks.
+
+```
+{ "method": "windowsSandbox/setupStart", "id": 53, "params": { "mode": "elevated" } }
+{ "id": 53, "result": { "started": true } }
+```
+
+App-server starts setup in the background and later emits a completion notification:
+
+```
+{
+  "method": "windowsSandbox/setupCompleted",
+  "params": { "mode": "elevated", "success": true, "error": null }
+}
+```
+
+Modes:
+
+- `elevated` - run the elevated Windows sandbox setup path.
+- `unelevated` - run the legacy setup/preflight path.
+
 ## Events
 
-Event notifications are the server-initiated stream for thread lifecycles, turn lifecycles, and the items within them. After you start or resume a thread, keep reading the active transport stream for `thread/started`, `turn/*`, and `item/*` notifications.
+Event notifications are the server-initiated stream for thread lifecycles, turn lifecycles, and the items within them. After you start or resume a thread, keep reading the active transport stream for `thread/started`, `thread/archived`, `thread/unarchived`, `thread/status/changed`, `turn/*`, and `item/*` notifications.
 
 ### Notification opt-out
 
@@ -676,6 +744,10 @@ The fuzzy file search session API emits per-query notifications:
 - `fuzzyFileSearch/sessionUpdated` - `{ sessionId, query, files }` with the current matches for the active query.
 - `fuzzyFileSearch/sessionCompleted` - `{ sessionId }` once indexing and matching for that query completes.
 
+### Windows sandbox setup events
+
+- `windowsSandbox/setupCompleted` - `{ mode, success, error }` emitted after a `windowsSandbox/setupStart` request finishes.
+
 ### Turn events
 
 - `turn/started` - `{ turn }` with the turn id, empty `items`, and `status: "inProgress"`.
@@ -691,7 +763,7 @@ The fuzzy file search session API emits per-query notifications:
 `ThreadItem` is the tagged union carried in turn responses and `item/*` notifications. Common item types include:
 
 - `userMessage` - `{id, content}` where `content` is a list of user inputs (`text`, `image`, or `localImage`).
-- `agentMessage` - `{id, text}` containing the accumulated agent reply.
+- `agentMessage` - `{id, text, phase?}` containing the accumulated agent reply. When present, `phase` uses Responses API wire values (`commentary`, `final_answer`).
 - `plan` - `{id, text}` containing proposed plan text in plan mode. Treat the final `plan` item from `item/completed` as authoritative.
 - `reasoning` - `{id, summary, content}` where `summary` holds streamed reasoning summaries and `content` holds raw reasoning blocks.
 - `commandExecution` - `{id, command, cwd, status, commandActions, aggregatedOutput?, exitCode?, durationMs?}`.
@@ -753,9 +825,13 @@ Depending on a user’s Codex settings, command execution and file changes may r
 Order of messages:
 
 1. `item/started` shows the pending `commandExecution` item with `command`, `cwd`, and other fields.
-2. `item/commandExecution/requestApproval` includes `itemId`, `threadId`, `turnId`, optional `reason`, optional `command`, optional `cwd`, optional `commandActions`, and optional `proposedExecpolicyAmendment`.
+2. `item/commandExecution/requestApproval` includes `itemId`, `threadId`, `turnId`, optional `reason`, optional `command`, optional `cwd`, optional `commandActions`, optional `proposedExecpolicyAmendment`, and optional `networkApprovalContext`.
 3. Client responds with one of the command execution approval decisions above.
 4. `item/completed` returns the final `commandExecution` item with `status: completed | failed | declined`.
+
+When `networkApprovalContext` is present, the prompt is for managed network access (not a general shell-command approval). The current v2 schema exposes the target `host` and `protocol`; clients should render a network-specific prompt and not rely on `command` being a user-meaningful shell command preview.
+
+Codex deduplicates concurrent network approval prompts by destination (`host`, protocol, and port). The app-server may therefore send one prompt that unblocks multiple queued requests to the same destination, while different ports on the same host are treated separately.
 
 ### File change approvals
 
@@ -768,7 +844,7 @@ Order of messages:
 
 ### MCP tool-call approvals (apps)
 
-App (connector) tool calls can also require approval. When an app tool call has side effects, the server may elicit approval with `tool/requestUserInput` and options such as **Accept**, **Decline**, and **Cancel**. If the user declines or cancels, the related `mcpToolCall` item completes with an error instead of running the tool.
+App (connector) tool calls can also require approval. When an app tool call has side effects, the server may elicit approval with `tool/requestUserInput` and options such as **Accept**, **Decline**, and **Cancel**. Destructive tool annotations always trigger approval even when the tool also advertises less-privileged hints. If the user declines or cancels, the related `mcpToolCall` item completes with an error instead of running the tool.
 
 ## Skills
 
@@ -865,7 +941,7 @@ To enable or disable a skill by path:
 
 ## Apps (connectors)
 
-Use `app/list` to fetch available apps. In the CLI/TUI, `/apps` is the user-facing picker; in custom clients, call `app/list` directly. Each entry includes both `isAccessible` (available to the user) and `isEnabled` (enabled in `config.toml`) so clients can distinguish install/access from local enabled state.
+Use `app/list` to fetch available apps. In the CLI/TUI, `/apps` is the user-facing picker; in custom clients, call `app/list` directly. Each entry includes both `isAccessible` (available to the user) and `isEnabled` (enabled in `config.toml`) so clients can distinguish install/access from local enabled state. App entries can also include optional `branding`, `appMetadata`, and `labels` fields.
 
 ```
 { "method": "app/list", "id": 50, "params": {
@@ -881,6 +957,11 @@ Use `app/list` to fetch available apps. In the CLI/TUI, `/apps` is the user-faci
       "name": "Demo App",
       "description": "Example connector for documentation.",
       "logoUrl": "https://example.com/demo-app.png",
+      "logoUrlDark": null,
+      "distributionChannel": null,
+      "branding": null,
+      "appMetadata": null,
+      "labels": null,
       "installUrl": "https://chatgpt.com/apps/demo-app/demo-app",
       "isAccessible": true,
       "isEnabled": true
@@ -906,6 +987,11 @@ The server also emits `app/list/updated` notifications whenever either source (a
         "name": "Demo App",
         "description": "Example connector for documentation.",
         "logoUrl": "https://example.com/demo-app.png",
+        "logoUrlDark": null,
+        "distributionChannel": null,
+        "branding": null,
+        "appMetadata": null,
+        "labels": null,
         "installUrl": "https://chatgpt.com/apps/demo-app/demo-app",
         "isAccessible": true,
         "isEnabled": true
@@ -932,6 +1018,72 @@ Invoke an app by inserting `$<app-slug>` in the text input and adding a `mention
         "type": "mention",
         "name": "Demo App",
         "path": "app://demo-app"
+      }
+    ]
+  }
+}
+```
+
+### Config RPC examples for app settings
+
+Use `config/read`, `config/value/write`, and `config/batchWrite` to inspect or update app controls in `config.toml`.
+
+Read the effective app config shape (including `_default` and per-tool overrides):
+
+```
+{ "method": "config/read", "id": 60, "params": { "includeLayers": false } }
+{ "id": 60, "result": {
+  "config": {
+    "apps": {
+      "_default": {
+        "enabled": true,
+        "destructive_enabled": true,
+        "open_world_enabled": true
+      },
+      "google_drive": {
+        "enabled": true,
+        "destructive_enabled": false,
+        "default_tools_approval_mode": "prompt",
+        "tools": {
+          "files/delete": { "enabled": false, "approval_mode": "approve" }
+        }
+      }
+    }
+  }
+} }
+```
+
+Update a single app setting:
+
+```
+{
+  "method": "config/value/write",
+  "id": 61,
+  "params": {
+    "keyPath": "apps.google_drive.default_tools_approval_mode",
+    "value": "prompt",
+    "mergeStrategy": "replace"
+  }
+}
+```
+
+Apply multiple app edits atomically:
+
+```
+{
+  "method": "config/batchWrite",
+  "id": 62,
+  "params": {
+    "edits": [
+      {
+        "keyPath": "apps._default.destructive_enabled",
+        "value": false,
+        "mergeStrategy": "upsert"
+      },
+      {
+        "keyPath": "apps.google_drive.tools.files/delete.approval_mode",
+        "value": "approve",
+        "mergeStrategy": "upsert"
       }
     ]
   }
