@@ -2,7 +2,13 @@
 
 Source: https://developers.openai.com/resources/codex
 
-[![Introducing the Codex app](https://cdn.openai.com/devhub/resources/video-1.png)
+[![Codex Prompting Guide](https://cdn.openai.com/devhub/resources/cookbook-1.png)
+
+#### Codex Prompting Guide
+
+Codex models advance the frontier of intelligence and efficiency and our recommended agentic coding model. Follow this guide closely to ensure you’re getting th
+
+cookbook](/cookbook/examples/gpt-5/codex_prompting_guide)[![Introducing the Codex app](https://cdn.openai.com/devhub/resources/video-1.png)
 
 #### Introducing the Codex app
 
@@ -14,13 +20,7 @@ video](https://www.youtube.com/watch?v=HFM3se4lNiw)[![Codex in JetBrains IDEs](h
 
 How to use Codex inside JetBrains IDEs like Rider, IntelliJ, PyCharm, and WebStorm.
 
-video](https://www.youtube.com/watch?v=1XkVsE9-ZK4)[![Codex Prompting Guide](https://cdn.openai.com/devhub/resources/cookbook-1.png)
-
-#### Codex Prompting Guide
-
-Codex models advance the frontier of intelligence and efficiency and our recommended agentic coding model. Follow this guide closely to ensure you’re getting th
-
-cookbook](/cookbook/examples/gpt-5/codex_prompting_guide)[![Modernizing your Codebase with Codex](https://cdn.openai.com/devhub/resources/cookbook-2.png)
+video](https://www.youtube.com/watch?v=1XkVsE9-ZK4)[![Modernizing your Codebase with Codex](https://cdn.openai.com/devhub/resources/cookbook-2.png)
 
 #### Modernizing your Codebase with Codex
 

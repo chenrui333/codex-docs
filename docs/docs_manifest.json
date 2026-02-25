@@ -372,12 +372,12 @@
       "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
     },
     "developers.openai.com/cookbook/topic/codex/index.md": {
-      "sha256": "298a83ec5c77dd07d7a71ea4842b53a23329ce93ba3513d834eae3c4c7a64661",
+      "sha256": "f8d6cfeb774ef524cf5d11f93cc62d56df9a551fa1e81b2f7d9e38eadaa1b0bd",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },
     "developers.openai.com/resources/codex/index.md": {
-      "sha256": "ba41ae1d1bb62b4504e04ab82b5054c44249881c3e3d15093597f73af16feffc",
+      "sha256": "374ad811ad59d76e1da60206d75b0baf83798724781c8dd6fdb17277ac7825dd",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/resources/codex"
     },
@@ -432,7 +432,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/bazel.md"
     },
     "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md": {
-      "sha256": "d7429d497244bc8da7a7af0ef67c6e5105dc09c4bac674973313c7704ad618e6",
+      "sha256": "a3a9f10b53460a4a1f53a0b1018de9bad5b16ca6bbbba7c915875753926b9193",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
     },

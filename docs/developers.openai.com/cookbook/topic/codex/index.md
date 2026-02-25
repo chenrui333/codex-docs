@@ -4,15 +4,15 @@ Source: https://developers.openai.com/cookbook/topic/codex
 
 ## All recipes9
 
-[Long horizon tasks with Codex
-
-Codex
-
-Feb 23, 2026](/cookbook/examples/codex/long_horizon_tasks)[Codex Prompting Guide
+[Codex Prompting Guide
 
 CodexResponses
 
-Dec 4, 2025](/cookbook/examples/gpt-5/codex_prompting_guide)[Modernizing your Codebase with Codex
+Feb 25, 2026](/cookbook/examples/gpt-5/codex_prompting_guide)[Long horizon tasks with Codex
+
+Codex
+
+Feb 23, 2026](/cookbook/examples/codex/long_horizon_tasks)[Modernizing your Codebase with Codex
 
 Codex
 

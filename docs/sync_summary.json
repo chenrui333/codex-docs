@@ -2,10 +2,12 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-25T06:29:39+00:00",
+  "generated_at": "2026-02-25T12:20:07+00:00",
   "removed": [],
   "total_files": 112,
   "updated": [
-    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md"
+    "developers.openai.com/cookbook/topic/codex/index.md",
+    "developers.openai.com/resources/codex/index.md",
+    "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md"
   ]
 }
