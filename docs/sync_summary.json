@@ -2,14 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-24T06:27:07+00:00",
+  "generated_at": "2026-02-25T00:37:23+00:00",
   "removed": [],
   "total_files": 112,
   "updated": [
-    "developers.openai.com/codex/config-basic/index.md",
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
-    "developers.openai.com/codex/security/index.md",
-    "developers.openai.com/codex/windows/index.md"
+    "github.openai.com/openai/codex/docs/config.md"
   ]
 }
