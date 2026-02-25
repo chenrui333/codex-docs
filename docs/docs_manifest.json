@@ -367,7 +367,7 @@
       "source_url": "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab"
     },
     "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md": {
-      "sha256": "04a05f131d3fbe387ada51b3942f7c739db5be298a71f5558138d9f1867c52a6",
+      "sha256": "a256eb10d8d297aff7f821c3dd4cc5d738e159e31d643282d0e1e097f8b01870",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
     },

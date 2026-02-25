@@ -562,3 +562,116 @@ We recommend doing tool call response truncation as follows to be as in-distribu
 - Limit to 10k tokens. You can cheaply approximate this by computing `num_bytes/4`.
 - If you hit the truncation limit, you should use half of the budget for the beginning, half for the end, and truncate in the middle with `…3 tokens truncated…`
 
+## New features in GPT-5.3 Codex
+
+### Preamble messages
+
+The Responses API has been updated to include a new `phase` parameter intended to prevent early stopping and other misbehaviors when preamble messages are requested by the prompt. `phase` is currently only supported with `gpt-5.3-codex`. Check out implementation details below. Correctly implementing this parameter is required for `gpt-5.3-codex`; otherwise, significant performance degradation can occur.
+
+### Phase
+
+To better support preamble messages with `gpt-5.3-codex`, the Responses API includes a `phase` field designed to prevent early stopping on longer-running tasks and other misbehaviors.
+
+#### Values
+
+`phase` is one of:
+
+- `null`
+- `"commentary"`
+- `"final_answer"`
+
+#### Where it appears
+
+You’ll receive `phase` on assistant output items (for example, `output_item.done`). Your integration must persist assistant output items, including their `phase`, and pass those assistant items back in subsequent requests.
+
+**Important:** `phase` is only supported on assistant items. Do not add `phase` to user messages.
+
+#### How it’s used downstream
+
+When the model marks an output item with:
+
+- `phase: "commentary"`: the corresponding assistant message should be treated as commentary/preamble-style content.
+- `phase: "final_answer"`: the corresponding assistant message should be treated as the final closeout.
+
+Correctly preserving `phase` on assistant items is required for `gpt-5.3-codex`. If assistant `phase` metadata is dropped during history reconstruction, significant performance degradation can occur.
+
+### Preambles & Personality
+
+Preambles are messages sent along with tool calls that provide user updates while working: short, human-readable progress and intent snapshots that keep the user oriented without turning the transcript into a tool-call log. GPT-5.3-Codex preambles have been tuned toward the following characteristics:
+
+- Acknowledge then plan before any tool calls (1 sentence acknowledgement, 1–2 sentence plan).
+- Keep most updates to 1–2 sentences, and use longer updates only at real milestones.
+- Cadence: aim every 1–3 execution steps; hard floor: at least within every 6 steps or 10 tool calls.
+- Content per update: outcome/impact so far, next 1–3 steps, and open questions/learnings when present.
+- Tone: real person pairing, low-ceremony; avoid headings/status labels and log voice.
+
+#### Personality (Friendly vs Pragmatic)
+
+Personality is the higher-level vibe and collaboration posture that sits above preamble mechanics (cadence, length, and grounding). It affects word choice, how eagerly the model explains tradeoffs, and how much warmth it brings to the interaction.
+
+The Codex app and CLI ship with support for two personalities provided here as example implementations for your harness.
+
+##### Friendly
+
+- More human, partner-y pairing energy.
+- Slightly more acknowledgement, reassurance, and context-setting.
+- Better when the user benefits from narrative orientation (onboarding, ambiguous tasks, higher-stakes changes).
+
+###### Example Friendly personality prompt snippet from codex-cli
+
+This snippet can be used in your system prompt to steer the pair programming personality of the model.
+
+```
+# Personality
+
+You optimize for team morale and being a supportive teammate as much as code quality. You communicate warmly, check in often, and explain concepts without ego. You excel at pairing, onboarding, and unblocking others. You create momentum by making collaborators feel supported and capable.
+
+## Values
+You are guided by these core values:
+* Empathy: Interprets empathy as meeting people where they are - adjusting explanations, pacing, and tone to maximize understanding and confidence.
+* Collaboration: Sees collaboration as an active skill: inviting input, synthesizing perspectives, and making others successful.
+* Ownership: Takes responsibility not just for code, but for whether teammates are unblocked and progress continues.
+
+## Tone & User Experience
+Your voice is warm, encouraging, and conversational. You use teamwork-oriented language such as "we" and "let’s"; affirm progress, and replaces judgment with curiosity. You use light enthusiasm and humor when it helps sustain energy and focus. The user should feel safe asking basic questions without embarrassment, supported even when the problem is hard, and genuinely partnered with rather than evaluated. Interactions should reduce anxiety, increase clarity, and leave the user motivated to keep going.
+
+You are NEVER curt or dismissive.
+
+You are a patient and enjoyable collaborator: unflappable when others might get frustrated, while being an enjoyable, easy-going personality to work with. Even if you suspect a statement is incorrect, you remain supportive and collaborative, explaining your concerns while noting valid points. You frequently point out the strengths and insights of others while remaining focused on working with others to accomplish the task at hand.
+
+## Escalation
+You escalate gently and deliberately when decisions have non-obvious consequences or hidden risk. Escalation is framed as support and shared responsibility-never correction-and is introduced with an explicit pause to realign, sanity-check assumptions, or surface tradeoffs before committing.
+```
+
+##### Pragmatic
+
+- More terse, direct, let’s ship delivery.
+- Fewer social flourishes; higher ratio of actionable information per token.
+- Better when latency/throughput matters, or your users already know the workflow and just want progress and results.
+
+### Troubleshooting & Metaprompting
+
+Common failure modes we’ve been explicitly tracking:
+
+- Overthinking / long time before first useful action (tool call or concrete plan).
+- Loggy / unnatural status updates instead of pair programmer collaboration.
+- Awkward preamble phrasing and repetitive tics (“Good catch”, “Aha”, “Got it–”, etc.).
+
+#### Metaprompting for targeted fixes
+
+Failure modes like the ones above can typically be addressed through metaprompting. It’s possible to ask the model at the end of a turn that didn’t perform up to expectations how to improve its own instructions. The following prompt was used to produce some of the solutions to overthinking problems above and can be modified to meet your particular needs.
+
+```
+That was a high quality response, thanks! It seemed like it took you a while to finish responding though. Is there a way to clarify your instructions so you can get to a response as good as this faster next time? It’s extremely important to be efficient when providing these responses or users won’t get the most out of them in time. Let’s see if we can improve!
+think through the response you gave above
+read through your instructions starting from "" and look for anything that might have made you take longer to formulate a high quality response than you needed
+write out targeted (but generalized) additions/changes/deletions to your instructions to make a request like this one faster next time with the same level of quality
+```
+
+When metaprompting inside a specific context, it is important to generate responses a few times if possible and pay attention to elements of the responses that are common between them. Some improvements or changes the model proposes might be overly specific to that particular situation, but you can often simplify them to arrive at a general improvement. We recommend creating an eval to measure whether a particular prompt change is better or worse for your particular use case.
+
+#### Some examples
+
+- For overthinking / slow starts: ask it to propose instruction changes that reduce time-to-first-tool-call or first concrete plan.
+- For overly loggy preambles: ask it to rewrite your user updates instructions to satisfy your particular preference constraints.
+
