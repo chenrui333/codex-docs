@@ -12,3 +12,10 @@ sync:
 
 check:
     ./scripts/validate_sync.sh
+
+feature-flags:
+    python3 scripts/snapshot_feature_flags.py
+
+check-feature-flags:
+    python3 scripts/snapshot_feature_flags.py
+    git diff --exit-code -- docs/feature-flags/

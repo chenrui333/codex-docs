@@ -1,0 +1,417 @@
+{
+  "cli_features": [
+    {
+      "enabled": false,
+      "key": "undo",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "shell_tool",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "unified_exec",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "shell_zsh_fork",
+      "stage": "under development"
+    },
+    {
+      "enabled": true,
+      "key": "shell_snapshot",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "js_repl",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
+      "key": "js_repl_tools_only",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "web_search_request",
+      "stage": "deprecated"
+    },
+    {
+      "enabled": false,
+      "key": "web_search_cached",
+      "stage": "deprecated"
+    },
+    {
+      "enabled": false,
+      "key": "search_tool",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "codex_git_commit",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "runtime_metrics",
+      "stage": "under development"
+    },
+    {
+      "enabled": true,
+      "key": "sqlite",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "memories",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "child_agents_md",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "apply_patch_freeform",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "request_permissions",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "use_linux_sandbox_bwrap",
+      "stage": "experimental/under development (platform-dependent)"
+    },
+    {
+      "enabled": false,
+      "key": "request_rule",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "experimental_windows_sandbox",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "elevated_windows_sandbox",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "remote_models",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "powershell_utf8",
+      "stage": "stable/under development (platform-dependent)"
+    },
+    {
+      "enabled": true,
+      "key": "enable_request_compression",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "multi_agent",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
+      "key": "apps",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
+      "key": "apps_mcp_gateway",
+      "stage": "under development"
+    },
+    {
+      "enabled": true,
+      "key": "skill_mcp_dependency_install",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "skill_env_var_dependency_prompt",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "skill_approval",
+      "stage": "under development"
+    },
+    {
+      "enabled": true,
+      "key": "steer",
+      "stage": "removed"
+    },
+    {
+      "enabled": true,
+      "key": "collaboration_modes",
+      "stage": "removed"
+    },
+    {
+      "enabled": true,
+      "key": "personality",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "voice_transcription",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "realtime_conversation",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "prevent_idle_sleep",
+      "stage": "unknown"
+    },
+    {
+      "enabled": false,
+      "key": "responses_websockets",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "responses_websockets_v2",
+      "stage": "under development"
+    }
+  ],
+  "codex_cli_version": "codex-cli 0.105.0",
+  "coverage": {
+    "missing_in_docs": [
+      "codex_git_commit",
+      "elevated_windows_sandbox",
+      "enable_request_compression",
+      "experimental_windows_sandbox",
+      "js_repl",
+      "js_repl_tools_only",
+      "memories",
+      "prevent_idle_sleep",
+      "realtime_conversation",
+      "request_permissions",
+      "responses_websockets",
+      "responses_websockets_v2",
+      "shell_zsh_fork",
+      "skill_approval",
+      "skill_env_var_dependency_prompt",
+      "skill_mcp_dependency_install",
+      "sqlite",
+      "steer",
+      "voice_transcription"
+    ],
+    "stale_in_docs": [
+      "web_search"
+    ]
+  },
+  "docs_feature_keys": [
+    "apply_patch_freeform",
+    "apps",
+    "apps_mcp_gateway",
+    "child_agents_md",
+    "collaboration_modes",
+    "multi_agent",
+    "personality",
+    "powershell_utf8",
+    "remote_models",
+    "request_rule",
+    "runtime_metrics",
+    "search_tool",
+    "shell_snapshot",
+    "shell_tool",
+    "undo",
+    "unified_exec",
+    "use_linux_sandbox_bwrap",
+    "web_search",
+    "web_search_cached",
+    "web_search_request"
+  ],
+  "source_defaults": {
+    "apply_patch_freeform": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "apps": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental"
+    },
+    "apps_mcp_gateway": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "child_agents_md": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "codex_git_commit": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "collaboration_modes": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "removed"
+    },
+    "default_mode_request_user_input": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "elevated_windows_sandbox": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
+    "enable_request_compression": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "experimental_windows_sandbox": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
+    "js_repl": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental"
+    },
+    "js_repl_tools_only": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "memories": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "multi_agent": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental"
+    },
+    "personality": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "powershell_utf8": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable/under development (platform-dependent)"
+    },
+    "prevent_idle_sleep": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "unknown"
+    },
+    "realtime_conversation": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "remote_models": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
+    "request_permissions": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "request_rule": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
+    "responses_websockets": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "responses_websockets_v2": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "runtime_metrics": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "search_tool": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
+    "shell_snapshot": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "shell_tool": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "shell_zsh_fork": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "skill_env_var_dependency_prompt": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "skill_mcp_dependency_install": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "sqlite": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "steer": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "removed"
+    },
+    "undo": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "stable"
+    },
+    "unified_exec": {
+      "default_enabled_expr": "!cfg!(windows)",
+      "stage_from_source": "stable"
+    },
+    "use_linux_sandbox_bwrap": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental/under development (platform-dependent)"
+    },
+    "voice_transcription": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "web_search_cached": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "deprecated"
+    },
+    "web_search_request": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "deprecated"
+    }
+  },
+  "source_fingerprints": {
+    "client_rs_sha256": "8b4467084d0ee0ed4b985b2bf8e414fb96c5b6cb8171b80f5e70f6f869855759",
+    "features_rs_sha256": "a28c44491bf86f77841ba85362df6b364ec63439d13e2d1c17ab72e81bf77a5b"
+  },
+  "source_urls": {
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/features.rs"
+  },
+  "websocket_precedence": {
+    "detected": true,
+    "openai_beta_headers": {
+      "responses_websockets": "responses_websockets=2026-02-04",
+      "responses_websockets_v2": "responses_websockets=2026-02-06"
+    },
+    "rules": {
+      "none_rule": "(false, false) => None",
+      "v1_rule": "(true, false) => Some(ResponsesWebsocketVersion::V1)",
+      "v2_precedence_rule": "(_, true) => Some(ResponsesWebsocketVersion::V2)"
+    }
+  }
+}

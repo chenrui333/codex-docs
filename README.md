@@ -53,12 +53,21 @@ Optional helper workflow: `.github/workflows/propose-version-bump.yml`
 - Runs monthly (and manual dispatch) to propose a `VERSION` bump PR
 - Skips creating duplicates when an open bump PR with the same title already exists
 
+Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
+
+- Runs daily (and manual dispatch) to snapshot current feature flags into `docs/feature-flags/`
+- Uses both `codex features list` and `openai/codex` source files for lifecycle + semantics checks
+- Commits updated snapshots on schedule/manual runs when drift is detected
+- Enforces freshness on pull requests touching feature-flag automation/docs inputs
+
 ## Local usage
 
 ```bash
 just setup
 just sync
 just check
+just feature-flags
+just check-feature-flags
 ```
 
 ## Notes
