@@ -133,10 +133,30 @@ def parse_feature_defaults_from_source(features_rs_text: str) -> Dict[str, Dict[
             continue
         key = key_match.group(1)
         default_match = re.search(r"default_enabled:\s*([^,\n]+)", block)
-        stage_match = re.search(r"stage:\s*Stage::([A-Za-z]+)", block)
+        stage_matches = re.findall(r"stage:\s*Stage::([A-Za-z]+)", block)
+        normalized_stage_values = sorted(
+            {
+                {
+                    "UnderDevelopment": "under development",
+                    "Experimental": "experimental",
+                    "Stable": "stable",
+                    "Deprecated": "deprecated",
+                    "Removed": "removed",
+                }.get(match, match.lower())
+                for match in stage_matches
+            }
+        )
+        if not normalized_stage_values:
+            normalized_stage = "unknown"
+        elif len(normalized_stage_values) == 1:
+            normalized_stage = normalized_stage_values[0]
+        else:
+            normalized_stage = (
+                f"{'/'.join(normalized_stage_values)} (platform-dependent)"
+            )
         parsed[key] = {
             "default_enabled_expr": default_match.group(1).strip() if default_match else "unknown",
-            "stage_from_source": stage_match.group(1).lower() if stage_match else "unknown",
+            "stage_from_source": normalized_stage,
         }
     return parsed
 
@@ -269,6 +289,11 @@ def main() -> int:
         features_rs = fetch_text(OSS_FEATURES_RS_URL)
         client_rs = fetch_text(OSS_CLIENT_RS_URL)
         source_defaults = parse_feature_defaults_from_source(features_rs)
+        for row in cli_features:
+            key = str(row["key"])
+            source_stage = source_defaults.get(key, {}).get("stage_from_source")
+            if source_stage:
+                row["stage"] = source_stage
         ws_precedence = derive_websocket_precedence(client_rs)
         source_hashes = {
             "features_rs_sha256": sha256_text(features_rs),

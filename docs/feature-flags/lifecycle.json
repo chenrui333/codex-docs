@@ -28,7 +28,7 @@
     {
       "enabled": false,
       "key": "js_repl",
-      "stage": "under development"
+      "stage": "experimental"
     },
     {
       "enabled": false,
@@ -88,7 +88,7 @@
     {
       "enabled": false,
       "key": "use_linux_sandbox_bwrap",
-      "stage": "under development"
+      "stage": "experimental/under development (platform-dependent)"
     },
     {
       "enabled": false,
@@ -113,7 +113,7 @@
     {
       "enabled": false,
       "key": "powershell_utf8",
-      "stage": "under development"
+      "stage": "stable/under development (platform-dependent)"
     },
     {
       "enabled": true,
@@ -153,7 +153,7 @@
     {
       "enabled": true,
       "key": "steer",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -178,7 +178,7 @@
     {
       "enabled": false,
       "key": "prevent_idle_sleep",
-      "stage": "experimental"
+      "stage": "unknown"
     },
     {
       "enabled": false,
@@ -243,7 +243,7 @@
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "apps": {
       "default_enabled_expr": "false",
@@ -251,15 +251,15 @@
     },
     "apps_mcp_gateway": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "child_agents_md": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "codex_git_commit": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "collaboration_modes": {
       "default_enabled_expr": "true",
@@ -267,7 +267,7 @@
     },
     "default_mode_request_user_input": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "elevated_windows_sandbox": {
       "default_enabled_expr": "false",
@@ -287,11 +287,11 @@
     },
     "js_repl_tools_only": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "memories": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "multi_agent": {
       "default_enabled_expr": "false",
@@ -303,7 +303,7 @@
     },
     "powershell_utf8": {
       "default_enabled_expr": "true",
-      "stage_from_source": "stable"
+      "stage_from_source": "stable/under development (platform-dependent)"
     },
     "prevent_idle_sleep": {
       "default_enabled_expr": "false",
@@ -311,7 +311,7 @@
     },
     "realtime_conversation": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "remote_models": {
       "default_enabled_expr": "false",
@@ -319,7 +319,7 @@
     },
     "request_permissions": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "request_rule": {
       "default_enabled_expr": "false",
@@ -327,15 +327,15 @@
     },
     "responses_websockets": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "responses_websockets_v2": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "runtime_metrics": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "search_tool": {
       "default_enabled_expr": "false",
@@ -351,11 +351,11 @@
     },
     "shell_zsh_fork": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "skill_env_var_dependency_prompt": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "skill_mcp_dependency_install": {
       "default_enabled_expr": "true",
@@ -379,11 +379,11 @@
     },
     "use_linux_sandbox_bwrap": {
       "default_enabled_expr": "false",
-      "stage_from_source": "experimental"
+      "stage_from_source": "experimental/under development (platform-dependent)"
     },
     "voice_transcription": {
       "default_enabled_expr": "false",
-      "stage_from_source": "underdevelopment"
+      "stage_from_source": "under development"
     },
     "web_search_cached": {
       "default_enabled_expr": "false",
