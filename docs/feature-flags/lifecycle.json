@@ -1,7 +1,7 @@
 {
   "cli_features": [
     {
-      "enabled": true,
+      "enabled": false,
       "key": "undo",
       "stage": "stable"
     },
@@ -26,7 +26,7 @@
       "stage": "stable"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "js_repl",
       "stage": "under development"
     },
@@ -51,12 +51,12 @@
       "stage": "removed"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "codex_git_commit",
       "stage": "under development"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "runtime_metrics",
       "stage": "under development"
     },
@@ -66,7 +66,7 @@
       "stage": "stable"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "memories",
       "stage": "under development"
     },
@@ -76,7 +76,7 @@
       "stage": "under development"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "apply_patch_freeform",
       "stage": "under development"
     },
@@ -121,7 +121,7 @@
       "stage": "stable"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "multi_agent",
       "stage": "experimental"
     },
@@ -181,12 +181,12 @@
       "stage": "experimental"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "responses_websockets",
       "stage": "under development"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "responses_websockets_v2",
       "stage": "under development"
     }

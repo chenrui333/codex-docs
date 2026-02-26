@@ -5,9 +5,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Dict, Iterable, List
 from urllib.request import Request, urlopen
@@ -33,8 +35,8 @@ class SnapshotError(RuntimeError):
     """Raised when feature snapshot generation cannot continue."""
 
 
-def run_command(argv: List[str]) -> str:
-    proc = subprocess.run(argv, check=False, text=True, capture_output=True)
+def run_command(argv: List[str], env: Dict[str, str] | None = None) -> str:
+    proc = subprocess.run(argv, check=False, text=True, capture_output=True, env=env)
     if proc.returncode != 0:
         joined = " ".join(argv)
         raise SnapshotError(
@@ -185,7 +187,9 @@ def render_markdown(
     lines.append("")
     lines.append(f"- Codex CLI version: `{codex_version}`")
     lines.append("- Inputs:")
-    lines.append("  - `codex features list` (runtime behavior + lifecycle stage labels)")
+    lines.append(
+        "  - `codex features list` from an isolated temporary `CODEX_HOME` (runtime behavior + lifecycle stage labels)"
+    )
     lines.append("  - `openai/codex` source (`features.rs`, `client.rs`) for semantic checks")
     lines.append("  - mirrored docs (`config-basic`, `config-reference`) for coverage comparison")
     lines.append("")
@@ -248,7 +252,10 @@ def write_json(path: Path, payload: Dict[str, object]) -> None:
 def main() -> int:
     try:
         codex_version = run_command(["codex", "--version"])
-        features_raw = run_command(["codex", "features", "list"])
+        with tempfile.TemporaryDirectory(prefix="codex-features-home-") as tmp_home:
+            isolated_env = os.environ.copy()
+            isolated_env["CODEX_HOME"] = tmp_home
+            features_raw = run_command(["codex", "features", "list"], env=isolated_env)
         cli_features = parse_features_list(features_raw)
 
         docs_keys = sorted(
