@@ -1,6 +1,7 @@
 {
   "developers": {
     "codex_related_urls": [
+      "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
@@ -89,12 +90,12 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 86,
+      "codex_related_urls": 87,
       "mirrored_urls": 76,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 10
+      "skipped_codex_related_urls": 11
     },
     "mirrored_urls": [
       "https://developers.openai.com/codex",
@@ -174,7 +175,9 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma"
+    ],
     "new_mirrored_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -183,6 +186,7 @@
       "https://developers.openai.com/sitemap-0.xml"
     ],
     "skipped_codex_related_urls": [
+      "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
@@ -195,7 +199,7 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-02-24T06:26:54+00:00",
+  "generated_at": "2026-02-26T18:20:15+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,

@@ -2,10 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-26T12:20:15+00:00",
+  "generated_at": "2026-02-26T18:20:30+00:00",
   "removed": [],
   "total_files": 112,
   "updated": [
-    "developers.openai.com/codex/changelog/index.md"
+    "github.openai.com/openai/codex/docs/js_repl.md"
   ]
 }
