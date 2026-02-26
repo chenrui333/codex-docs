@@ -195,7 +195,9 @@
   "coverage": {
     "missing_in_docs": [
       "codex_git_commit",
+      "elevated_windows_sandbox",
       "enable_request_compression",
+      "experimental_windows_sandbox",
       "js_repl",
       "js_repl_tools_only",
       "memories",
@@ -222,8 +224,6 @@
     "apps_mcp_gateway",
     "child_agents_md",
     "collaboration_modes",
-    "elevated_windows_sandbox",
-    "experimental_windows_sandbox",
     "multi_agent",
     "personality",
     "powershell_utf8",
