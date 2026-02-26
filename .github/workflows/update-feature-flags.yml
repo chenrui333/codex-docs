@@ -12,11 +12,70 @@ on:
       - "docs/feature-flags/**"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
+  validate-feature-flags:
+    if: github.event_name == 'pull_request'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
+
+      - name: Generate feature lifecycle snapshot
+        run: python3 scripts/snapshot_feature_flags.py
+
+      - name: Upload snapshot artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feature-flags-snapshot-${{ matrix.os }}
+          path: docs/feature-flags/
+          if-no-files-found: error
+
+      - name: Check for snapshot changes
+        id: changed
+        run: |
+          if git diff --quiet -- docs/feature-flags/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Enforce snapshot freshness
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          echo "Feature-flag snapshot drift detected. Run:"
+          echo "  python3 scripts/snapshot_feature_flags.py"
+          echo "and commit docs/feature-flags/*."
+          git --no-pager diff -- docs/feature-flags/
+          exit 1
+
   update-feature-flags:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -44,7 +103,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: feature-flags-snapshot
+          name: feature-flags-snapshot-ubuntu-latest
           path: docs/feature-flags/
           if-no-files-found: error
 
@@ -57,17 +116,8 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Enforce snapshot freshness in pull requests
-        if: github.event_name == 'pull_request' && steps.changed.outputs.changed == 'true'
-        run: |
-          echo "Feature-flag snapshot drift detected. Run:"
-          echo "  python3 scripts/snapshot_feature_flags.py"
-          echo "and commit docs/feature-flags/*."
-          git --no-pager diff -- docs/feature-flags/
-          exit 1
-
       - name: Commit and push snapshot updates
-        if: github.event_name != 'pull_request' && steps.changed.outputs.changed == 'true'
+        if: steps.changed.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
