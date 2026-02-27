@@ -432,7 +432,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/bazel.md"
     },
     "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md": {
-      "sha256": "a3a9f10b53460a4a1f53a0b1018de9bad5b16ca6bbbba7c915875753926b9193",
+      "sha256": "94f0eb38055e947d45657522258d5122cac9d17d5139f6dae696ac7efff73886",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
     },
