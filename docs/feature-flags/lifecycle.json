@@ -146,14 +146,14 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
-      "key": "skill_approval",
-      "stage": "under development"
-    },
-    {
       "enabled": true,
       "key": "steer",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "default_mode_request_user_input",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -191,10 +191,11 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.105.0",
+  "codex_cli_version": "codex-cli 0.106.0",
   "coverage": {
     "missing_in_docs": [
       "codex_git_commit",
+      "default_mode_request_user_input",
       "elevated_windows_sandbox",
       "enable_request_compression",
       "experimental_windows_sandbox",
@@ -207,7 +208,6 @@
       "responses_websockets",
       "responses_websockets_v2",
       "shell_zsh_fork",
-      "skill_approval",
       "skill_env_var_dependency_prompt",
       "skill_mcp_dependency_install",
       "sqlite",
