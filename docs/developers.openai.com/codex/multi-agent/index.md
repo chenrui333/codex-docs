@@ -106,36 +106,155 @@ Each agent role can override your default configuration. Common settings to over
 
 ### Example agent roles
 
-Below is an example that overrides the definitions for the built-in `default` and `explorer` agent roles and defines a new `reviewer` role.
+The best role definitions are narrow and opinionated. Give each role one clear job, a tool surface that matches that job, and instructions that keep it from drifting into adjacent work.
 
-Example `~/.codex/config.toml`:
+#### Example 1: PR review team
+
+This pattern splits review into three focused roles:
+
+- `explorer` maps the codebase and gathers evidence.
+- `reviewer` looks for correctness, security, and test risks.
+- `docs_researcher` checks framework or API documentation through a dedicated MCP server.
+
+Project config (`.codex/config.toml`):
 
 ```
-[agents.default]
-description = "General-purpose helper."
-
-[agents.reviewer]
-description = "Find security, correctness, and test risks in code."
-config_file = "agents/reviewer.toml"
+[agents]
+max_threads = 6
+max_depth = 1
 
 [agents.explorer]
-description = "Fast codebase explorer for read-heavy tasks."
-config_file = "agents/custom-explorer.toml"
+description = "Read-only codebase explorer for gathering evidence before changes are proposed."
+config_file = "agents/explorer.toml"
+
+[agents.reviewer]
+description = "PR reviewer focused on correctness, security, and missing tests."
+config_file = "agents/reviewer.toml"
+
+[agents.docs_researcher]
+description = "Documentation specialist that uses the docs MCP server to verify APIs and framework behavior."
+config_file = "agents/docs-researcher.toml"
 ```
 
-Example config file for the `reviewer` role (`~/.codex/agents/reviewer.toml`):
-
-```
-model = "gpt-5.3-codex"
-model_reasoning_effort = "high"
-developer_instructions = "Focus on high priority issues, write tests to validate hypothesis before flagging an issue. When finding security issues give concrete steps on how to reproduce the vulnerability."
-```
-
-Example config file for the `explorer` role (`~/.codex/agents/custom-explorer.toml`):
+`agents/explorer.toml`:
 
 ```
 model = "gpt-5.3-codex-spark"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
+developer_instructions = """
+Stay in exploration mode.
+Trace the real execution path, cite files and symbols, and avoid proposing fixes unless the parent agent asks for them.
+Prefer fast search and targeted file reads over broad scans.
+"""
+```
+
+`agents/reviewer.toml`:
+
+```
+model = "gpt-5.3-codex"
+model_reasoning_effort = "high"
+sandbox_mode = "read-only"
+developer_instructions = """
+Review code like an owner.
+Prioritize correctness, security, behavior regressions, and missing test coverage.
+Lead with concrete findings, include reproduction steps when possible, and avoid style-only comments unless they hide a real bug.
+"""
+```
+
+`agents/docs-researcher.toml`:
+
+```
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = """
+Use the docs MCP server to confirm APIs, options, and version-specific behavior.
+Return concise answers with links or exact references when available.
+Do not make code changes.
+"""
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+```
+
+This setup works well for prompts like:
+
+```
+Review this branch against main. Have explorer map the affected code paths, reviewer find real risks, and docs_researcher verify the framework APIs that the patch relies on.
+```
+
+#### Example 2: frontend integration debugging team
+
+This pattern is useful for UI regressions, flaky browser flows, or integration bugs that cross application code and the running product.
+
+Project config (`.codex/config.toml`):
+
+```
+[agents]
+max_threads = 6
+max_depth = 1
+
+[agents.explorer]
+description = "Read-only codebase explorer for locating the relevant frontend and backend code paths."
+config_file = "agents/explorer.toml"
+
+[agents.browser_debugger]
+description = "UI debugger that uses browser tooling to reproduce issues and capture evidence."
+config_file = "agents/browser-debugger.toml"
+
+[agents.worker]
+description = "Implementation-focused agent for small, targeted fixes after the issue is understood."
+config_file = "agents/worker.toml"
+```
+
+`agents/explorer.toml`:
+
+```
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = """
+Map the code that owns the failing UI flow.
+Identify entry points, state transitions, and likely files before the worker starts editing.
+"""
+```
+
+`agents/browser-debugger.toml`:
+
+```
+model = "gpt-5.3-codex"
+model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Reproduce the issue in the browser, capture exact steps, and report what the UI actually does.
+Use browser tooling for screenshots, console output, and network evidence.
+Do not edit application code.
+"""
+
+[mcp_servers.chrome_devtools]
+url = "http://localhost:3000/mcp"
+startup_timeout_sec = 20
+```
+
+`agents/worker.toml`:
+
+```
+model = "gpt-5.3-codex"
+model_reasoning_effort = "medium"
+developer_instructions = """
+Own the fix once the issue is reproduced.
+Make the smallest defensible change, keep unrelated files untouched, and validate only the behavior you changed.
+"""
+
+[[skills.config]]
+path = "/Users/me/.agents/skills/docs-editor/SKILL.md"
+enabled = false
+```
+
+This setup works well for prompts like:
+
+```
+Investigate why the settings modal fails to save. Have browser_debugger reproduce it, explorer trace the responsible code path, and worker implement the smallest fix once the failure mode is clear.
 ```
 
