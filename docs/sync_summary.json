@@ -2,10 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-27T06:22:53+00:00",
+  "generated_at": "2026-02-27T12:16:58+00:00",
   "removed": [],
   "total_files": 112,
   "updated": [
-    "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md"
+    "github.openai.com/openai/codex/docs/config.md"
   ]
 }
