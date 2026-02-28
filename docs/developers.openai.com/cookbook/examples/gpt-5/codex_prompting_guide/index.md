@@ -4,7 +4,7 @@ Source: https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_gu
 
 Codex models advance the frontier of intelligence and efficiency and our recommended agentic coding model. Follow this guide closely to ensure you’re getting the best performance possible from this model. This guide is for anyone using the model directly via the API for maximum customizability; we also have the [Codex SDK](https://developers.openai.com/codex/sdk/) for simpler integrations.
 
-In the API, the Codex-tuned model is `gpt-5.2-codex` (see the [model page](https://platform.openai.com/docs/models/gpt-5.2-codex)).
+In the API, the Codex-tuned model is `gpt-5.3-codex` (see the [model page](https://developers.openai.com/api/docs/models/gpt-5.3-codex)).
 
 Recent improvements to Codex models
 

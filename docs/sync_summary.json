@@ -2,10 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-27T18:15:45+00:00",
+  "generated_at": "2026-02-28T00:30:32+00:00",
   "removed": [],
   "total_files": 112,
   "updated": [
-    "developers.openai.com/codex/multi-agent/index.md"
+    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md"
   ]
 }
