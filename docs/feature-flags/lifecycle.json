@@ -2,28 +2,53 @@
   "cli_features": [
     {
       "enabled": false,
-      "key": "undo",
-      "stage": "stable"
-    },
-    {
-      "enabled": true,
-      "key": "shell_tool",
-      "stage": "stable"
-    },
-    {
-      "enabled": true,
-      "key": "unified_exec",
-      "stage": "stable"
+      "key": "apply_patch_freeform",
+      "stage": "under development"
     },
     {
       "enabled": false,
-      "key": "shell_zsh_fork",
+      "key": "apps",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
+      "key": "apps_mcp_gateway",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "child_agents_md",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "codex_git_commit",
       "stage": "under development"
     },
     {
       "enabled": true,
-      "key": "shell_snapshot",
+      "key": "collaboration_modes",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "default_mode_request_user_input",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "elevated_windows_sandbox",
+      "stage": "removed"
+    },
+    {
+      "enabled": true,
+      "key": "enable_request_compression",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "experimental_windows_sandbox",
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -37,128 +62,13 @@
     },
     {
       "enabled": false,
-      "key": "web_search_request",
-      "stage": "deprecated"
-    },
-    {
-      "enabled": false,
-      "key": "web_search_cached",
-      "stage": "deprecated"
-    },
-    {
-      "enabled": false,
-      "key": "search_tool",
-      "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "codex_git_commit",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
-      "key": "runtime_metrics",
-      "stage": "under development"
-    },
-    {
-      "enabled": true,
-      "key": "sqlite",
-      "stage": "stable"
-    },
-    {
-      "enabled": false,
       "key": "memories",
       "stage": "under development"
     },
     {
       "enabled": false,
-      "key": "child_agents_md",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
-      "key": "apply_patch_freeform",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
-      "key": "request_permissions",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
-      "key": "use_linux_sandbox_bwrap",
-      "stage": "experimental/under development (platform-dependent)"
-    },
-    {
-      "enabled": false,
-      "key": "request_rule",
-      "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "experimental_windows_sandbox",
-      "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "elevated_windows_sandbox",
-      "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "remote_models",
-      "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "powershell_utf8",
-      "stage": "stable/under development (platform-dependent)"
-    },
-    {
-      "enabled": true,
-      "key": "enable_request_compression",
-      "stage": "stable"
-    },
-    {
-      "enabled": false,
       "key": "multi_agent",
       "stage": "experimental"
-    },
-    {
-      "enabled": false,
-      "key": "apps",
-      "stage": "experimental"
-    },
-    {
-      "enabled": false,
-      "key": "apps_mcp_gateway",
-      "stage": "under development"
-    },
-    {
-      "enabled": true,
-      "key": "skill_mcp_dependency_install",
-      "stage": "stable"
-    },
-    {
-      "enabled": false,
-      "key": "skill_env_var_dependency_prompt",
-      "stage": "under development"
-    },
-    {
-      "enabled": true,
-      "key": "steer",
-      "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "default_mode_request_user_input",
-      "stage": "under development"
-    },
-    {
-      "enabled": true,
-      "key": "collaboration_modes",
-      "stage": "removed"
     },
     {
       "enabled": true,
@@ -167,8 +77,13 @@
     },
     {
       "enabled": false,
-      "key": "voice_transcription",
-      "stage": "under development"
+      "key": "powershell_utf8",
+      "stage": "stable/under development (platform-dependent)"
+    },
+    {
+      "enabled": false,
+      "key": "prevent_idle_sleep",
+      "stage": "unknown"
     },
     {
       "enabled": false,
@@ -177,8 +92,18 @@
     },
     {
       "enabled": false,
-      "key": "prevent_idle_sleep",
-      "stage": "unknown"
+      "key": "remote_models",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "request_permissions",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "request_rule",
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -189,9 +114,84 @@
       "enabled": false,
       "key": "responses_websockets_v2",
       "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "runtime_metrics",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "search_tool",
+      "stage": "removed"
+    },
+    {
+      "enabled": true,
+      "key": "shell_snapshot",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "shell_tool",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "shell_zsh_fork",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "skill_env_var_dependency_prompt",
+      "stage": "under development"
+    },
+    {
+      "enabled": true,
+      "key": "skill_mcp_dependency_install",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "sqlite",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "steer",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "undo",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "unified_exec",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "use_linux_sandbox_bwrap",
+      "stage": "experimental/under development (platform-dependent)"
+    },
+    {
+      "enabled": false,
+      "key": "voice_transcription",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "web_search_cached",
+      "stage": "deprecated"
+    },
+    {
+      "enabled": false,
+      "key": "web_search_request",
+      "stage": "deprecated"
     }
   ],
-  "codex_cli_version": "codex-cli 0.106.0",
+  "codex_cli_version": "codex-cli 0.107.0",
   "coverage": {
     "missing_in_docs": [
       "codex_git_commit",
@@ -280,6 +280,10 @@
     "experimental_windows_sandbox": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
+    },
+    "fast_mode": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "js_repl": {
       "default_enabled_expr": "false",
@@ -399,8 +403,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "8b4467084d0ee0ed4b985b2bf8e414fb96c5b6cb8171b80f5e70f6f869855759",
-    "features_rs_sha256": "4dcfb88f991c344c373354d1dc42937b50fc4e8bed25029f9cabbddf8f9d59ab"
+    "client_rs_sha256": "d57d576bdca49f7c9723c2fc5c81abf68825e138879da9e3b92428c4cadad7fe",
+    "features_rs_sha256": "1fa79ecdd48245e802539adb194ed6939c6f8cd105d40e2d8cb0f4584a1c6238"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
