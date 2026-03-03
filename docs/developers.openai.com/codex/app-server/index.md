@@ -207,6 +207,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filters. Returned `thread` objects include runtime `status`.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
 - `thread/archive` - move a thread’s log file into the archived directory; returns `{}` on success and emits `thread/archived`.
+- `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread and emits `thread/closed`.
 - `thread/unarchive` - restore an archived thread rollout back into the active sessions directory; returns the restored `thread` and emits `thread/unarchived`.
 - `thread/status/changed` - notification emitted when a loaded thread’s runtime `status` changes.
 - `thread/compact/start` - trigger conversation history compaction for a thread; returns `{}` immediately while progress streams via `turn/*` and `item/*` notifications.
@@ -229,6 +230,8 @@ If a client sends an experimental method or field without opting in, app-server 
 - `windowsSandbox/setupStart` - start Windows sandbox setup for `elevated` or `unelevated` mode; returns quickly and later emits `windowsSandbox/setupCompleted`.
 - `feedback/upload` - submit a feedback report (classification + optional reason/logs + conversation id, plus optional `extraLogFiles` attachments).
 - `config/read` - fetch the effective configuration on disk after resolving configuration layering.
+- `externalAgentConfig/detect` - detect migratable external-agent artifacts with `includeHome` and optional `cwds`; each detected item includes `cwd` (`null` for home).
+- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home).
 - `config/value/write` - write a single configuration key/value to the user’s `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
 - `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists and residency requirements (or `null` if you haven’t set any up).
@@ -303,6 +306,7 @@ Use this endpoint to discover feature flags with metadata and lifecycle stage:
 - `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filtering.
 - `thread/loaded/list` returns the thread IDs currently in memory.
 - `thread/archive` moves the thread’s persisted JSONL log into the archived directory.
+- `thread/unsubscribe` unsubscribes the current connection from a loaded thread and can trigger `thread/closed`.
 - `thread/unarchive` restores an archived thread rollout back into the active sessions directory.
 - `thread/compact/start` triggers compaction and returns `{}` immediately.
 - `thread/rollback` drops the last N turns from the in-memory context and records a rollback marker in the thread’s persisted JSONL log.
@@ -317,18 +321,22 @@ Start a fresh thread when you need a new Codex conversation.
   "cwd": "/Users/me/project",
   "approvalPolicy": "never",
   "sandbox": "workspaceWrite",
-  "personality": "friendly"
+  "personality": "friendly",
+  "serviceName": "my_app_server_client"
 } }
 { "id": 10, "result": {
   "thread": {
     "id": "thr_123",
     "preview": "",
+    "ephemeral": false,
     "modelProvider": "openai",
     "createdAt": 1730910000
   }
 } }
 { "method": "thread/started", "params": { "thread": { "id": "thr_123" } } }
 ```
+
+`serviceName` is optional. Set it when you want app-server to tag thread-level metrics with your integration’s service name.
 
 To continue a stored session, call `thread/resume` with the `thread.id` you recorded earlier. The response shape matches `thread/start`. You can also pass the same configuration overrides supported by `thread/start`, such as `personality`:
 
@@ -337,7 +345,7 @@ To continue a stored session, call `thread/resume` with the `thread.id` you reco
   "threadId": "thr_123",
   "personality": "friendly"
 } }
-{ "id": 11, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes" } } }
+{ "id": 11, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes", "ephemeral": false } } }
 ```
 
 Resuming a thread doesn’t update `thread.updatedAt` (or the rollout file’s modified time) by itself. The timestamp updates when you start a turn.
@@ -367,7 +375,7 @@ Use `thread/read` when you want stored thread data but don’t want to resume th
 
 ```
 { "method": "thread/read", "id": 19, "params": { "threadId": "thr_123", "includeTurns": true } }
-{ "id": 19, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes", "status": { "type": "notLoaded" }, "turns": [] } } }
+{ "id": 19, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes", "ephemeral": false, "status": { "type": "notLoaded" }, "turns": [] } } }
 ```
 
 Unlike `thread/resume`, `thread/read` doesn’t load the thread into memory or emit `thread/started`.
@@ -407,8 +415,8 @@ Example:
 } }
 { "id": 20, "result": {
   "data": [
-    { "id": "thr_a", "preview": "Create a TUI", "modelProvider": "openai", "createdAt": 1730831111, "updatedAt": 1730831111, "name": "TUI prototype", "status": { "type": "notLoaded" } },
-    { "id": "thr_b", "preview": "Fix tests", "modelProvider": "openai", "createdAt": 1730750000, "updatedAt": 1730750000, "status": { "type": "notLoaded" } }
+    { "id": "thr_a", "preview": "Create a TUI", "ephemeral": false, "modelProvider": "openai", "createdAt": 1730831111, "updatedAt": 1730831111, "name": "TUI prototype", "status": { "type": "notLoaded" } },
+    { "id": "thr_b", "preview": "Fix tests", "ephemeral": true, "modelProvider": "openai", "createdAt": 1730750000, "updatedAt": 1730750000, "status": { "type": "notLoaded" } }
   ],
   "nextCursor": "opaque-token-or-null"
 } }
@@ -437,6 +445,26 @@ When `nextCursor` is `null`, you have reached the final page.
 ```
 { "method": "thread/loaded/list", "id": 21 }
 { "id": 21, "result": { "data": ["thr_123", "thr_456"] } }
+```
+
+### Unsubscribe from a loaded thread
+
+`thread/unsubscribe` removes the current connection’s subscription to a thread. The response status is one of:
+
+- `unsubscribed` when the connection was subscribed and is now removed.
+- `notSubscribed` when the connection was not subscribed to that thread.
+- `notLoaded` when the thread is not loaded.
+
+If this was the last subscriber, the server unloads the thread and emits a `thread/status/changed` transition to `notLoaded` plus `thread/closed`.
+
+```
+{ "method": "thread/unsubscribe", "id": 22, "params": { "threadId": "thr_123" } }
+{ "id": 22, "result": { "status": "unsubscribed" } }
+{ "method": "thread/status/changed", "params": {
+    "threadId": "thr_123",
+    "status": { "type": "notLoaded" }
+} }
+{ "method": "thread/closed", "params": { "threadId": "thr_123" } }
 ```
 
 ### Archive a thread
@@ -470,6 +498,15 @@ App-server emits progress as standard `turn/*` and `item/*` notifications on the
 ```
 { "method": "thread/compact/start", "id": 25, "params": { "threadId": "thr_b" } }
 { "id": 25, "result": {} }
+```
+
+### Roll back recent turns
+
+Use `thread/rollback` to remove the last `numTurns` entries from the in-memory context and persist a rollback marker in the rollout log. The returned `thread` includes `turns` populated after the rollback.
+
+```
+{ "method": "thread/rollback", "id": 26, "params": { "threadId": "thr_b", "numTurns": 1 } }
+{ "id": 26, "result": { "thread": { "id": "thr_b", "name": "Bug bash notes", "ephemeral": false } } }
 ```
 
 ## Turns
@@ -726,7 +763,7 @@ Modes:
 
 ## Events
 
-Event notifications are the server-initiated stream for thread lifecycles, turn lifecycles, and the items within them. After you start or resume a thread, keep reading the active transport stream for `thread/started`, `thread/archived`, `thread/unarchived`, `thread/status/changed`, `turn/*`, and `item/*` notifications.
+Event notifications are the server-initiated stream for thread lifecycles, turn lifecycles, and the items within them. After you start or resume a thread, keep reading the active transport stream for `thread/started`, `thread/archived`, `thread/unarchived`, `thread/closed`, `thread/status/changed`, `turn/*`, `item/*`, and `serverRequest/resolved` notifications.
 
 ### Notification opt-out
 
@@ -769,6 +806,7 @@ The fuzzy file search session API emits per-query notifications:
 - `commandExecution` - `{id, command, cwd, status, commandActions, aggregatedOutput?, exitCode?, durationMs?}`.
 - `fileChange` - `{id, changes, status}` describing proposed edits; `changes` list `{path, kind, diff}`.
 - `mcpToolCall` - `{id, server, tool, status, arguments, result?, error?}`.
+- `dynamicToolCall` - `{id, tool, arguments, status, contentItems?, success?, durationMs?}` for client-executed dynamic tool invocations.
 - `collabToolCall` - `{id, tool, status, senderThreadId, receiverThreadId?, newThreadId?, prompt?, agentStatus?}`.
 - `webSearch` - `{id, query, action?}` for web search requests issued by the agent.
 - `imageView` - `{id, path}` emitted when the agent invokes the image viewer tool.
@@ -825,9 +863,10 @@ Depending on a user’s Codex settings, command execution and file changes may r
 Order of messages:
 
 1. `item/started` shows the pending `commandExecution` item with `command`, `cwd`, and other fields.
-2. `item/commandExecution/requestApproval` includes `itemId`, `threadId`, `turnId`, optional `reason`, optional `command`, optional `cwd`, optional `commandActions`, optional `proposedExecpolicyAmendment`, and optional `networkApprovalContext`.
+2. `item/commandExecution/requestApproval` includes `itemId`, `threadId`, `turnId`, optional `reason`, optional `command`, optional `cwd`, optional `commandActions`, optional `proposedExecpolicyAmendment`, optional `networkApprovalContext`, and optional `availableDecisions`. When `initialize.params.capabilities.experimentalApi = true`, the payload can also include experimental `additionalPermissions` describing requested per-command sandbox access. Any filesystem paths inside `additionalPermissions` are absolute on the wire.
 3. Client responds with one of the command execution approval decisions above.
-4. `item/completed` returns the final `commandExecution` item with `status: completed | failed | declined`.
+4. `serverRequest/resolved` confirms that the pending request has been answered or cleared.
+5. `item/completed` returns the final `commandExecution` item with `status: completed | failed | declined`.
 
 When `networkApprovalContext` is present, the prompt is for managed network access (not a general shell-command approval). The current v2 schema exposes the target `host` and `protocol`; clients should render a network-specific prompt and not rely on `command` being a user-meaningful shell command preview.
 
@@ -840,7 +879,23 @@ Order of messages:
 1. `item/started` emits a `fileChange` item with proposed `changes` and `status: "inProgress"`.
 2. `item/fileChange/requestApproval` includes `itemId`, `threadId`, `turnId`, optional `reason`, and optional `grantRoot`.
 3. Client responds with one of the file change approval decisions above.
-4. `item/completed` returns the final `fileChange` item with `status: completed | failed | declined`.
+4. `serverRequest/resolved` confirms that the pending request has been answered or cleared.
+5. `item/completed` returns the final `fileChange` item with `status: completed | failed | declined`.
+
+### `tool/requestUserInput`
+
+When the client responds to `item/tool/requestUserInput`, app-server emits `serverRequest/resolved` with `{ threadId, requestId }`. If the pending request is cleared by turn start, turn completion, or turn interruption before the client answers, the server emits the same notification for that cleanup.
+
+### Dynamic tool calls (experimental)
+
+`dynamicTools` on `thread/start` and the corresponding `item/tool/call` request or response flow are experimental APIs.
+
+When a dynamic tool is invoked during a turn, app-server emits:
+
+1. `item/started` with `item.type = "dynamicToolCall"`, `status = "inProgress"`, plus `tool` and `arguments`.
+2. `item/tool/call` as a server request to the client.
+3. The client response payload with returned content items.
+4. `item/completed` with `item.type = "dynamicToolCall"`, the final `status`, and any returned `contentItems` or `success` value.
 
 ### MCP tool-call approvals (apps)
 
@@ -1089,6 +1144,50 @@ Apply multiple app edits atomically:
   }
 }
 ```
+
+### Detect and import external agent config
+
+Use `externalAgentConfig/detect` to discover migratable external-agent artifacts, then pass the selected entries to `externalAgentConfig/import`.
+
+Detection example:
+
+```
+{ "method": "externalAgentConfig/detect", "id": 63, "params": {
+  "includeHome": true,
+  "cwds": ["/Users/me/project"]
+} }
+{ "id": 63, "result": {
+  "items": [
+    {
+      "itemType": "AGENTS_MD",
+      "description": "Import /Users/me/project/CLAUDE.md to /Users/me/project/AGENTS.md.",
+      "cwd": "/Users/me/project"
+    },
+    {
+      "itemType": "SKILLS",
+      "description": "Copy skill folders from /Users/me/.claude/skills to /Users/me/.agents/skills.",
+      "cwd": null
+    }
+  ]
+} }
+```
+
+Import example:
+
+```
+{ "method": "externalAgentConfig/import", "id": 64, "params": {
+  "migrationItems": [
+    {
+      "itemType": "AGENTS_MD",
+      "description": "Import /Users/me/project/CLAUDE.md to /Users/me/project/AGENTS.md.",
+      "cwd": "/Users/me/project"
+    }
+  ]
+} }
+{ "id": 64, "result": {} }
+```
+
+Supported `itemType` values are `AGENTS_MD`, `CONFIG`, `SKILLS`, and `MCP_SERVER_CONFIG`. Detection returns only items that still have work to do. For example, AGENTS migration is skipped when `AGENTS.md` already exists and is non-empty, and skill imports do not overwrite existing skill directories.
 
 ## Auth endpoints
 

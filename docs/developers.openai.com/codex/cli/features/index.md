@@ -23,6 +23,8 @@ Once the session is open, you can:
 - Send prompts, code snippets, or screenshots (see [image inputs](#image-inputs)) directly into the composer.
 - Watch Codex explain its plan before making a change, and approve or reject steps inline.
 - Read syntax-highlighted markdown code blocks and diffs in the TUI, then use `/theme` to preview and save a preferred color theme.
+- Use `/clear` to wipe the terminal and start a fresh chat, or press `Ctrl`+`L` to clear the screen without starting a new conversation.
+- Use `/copy` to copy the latest completed Codex output. If a turn is still running, Codex copies the most recent finished output instead of in-progress text.
 - Navigate draft history in the composer with `Up`/`Down`; Codex restores prior draft text and image placeholders.
 - Press `Ctrl`+`C` or use `/exit` to close the interactive session when you’re done.
 

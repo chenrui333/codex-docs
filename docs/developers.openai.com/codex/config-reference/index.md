@@ -14,6 +14,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | --- | --- | --- |
 | `agents.<name>.config_file` | `string (path)` | Path to a TOML config layer for that role; relative paths resolve from the config file that declares the role. |
 | `agents.<name>.description` | `string` | Role guidance shown to Codex when choosing and spawning that agent type. |
+| `agents.job_max_runtime_seconds` | `number` | Default per-worker timeout for `spawn\_agents\_on\_csv` jobs. When unset, the tool falls back to 1800 seconds per worker. |
 | `agents.max_depth` | `number` | Maximum nesting depth allowed for spawned agent threads (root sessions start at depth 0; default: 1). |
 | `agents.max_threads` | `number` | Maximum number of agent threads that can be open concurrently. |
 | `allow_login_shell` | `boolean` | Allow shell-based tools to use login-shell semantics. Defaults to `true`; when `false`, `login = true` requests are rejected and omitted `login` defaults to non-login shells. |
@@ -46,7 +47,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.apps_mcp_gateway` | `boolean` | Route Apps MCP calls through the OpenAI connectors MCP gateway (`https://api.openai.com/v1/connectors/mcp/`) instead of legacy routing (experimental). |
 | `features.child_agents_md` | `boolean` | Append AGENTS.md scope/precedence guidance even when no AGENTS.md is present (experimental). |
 | `features.collaboration_modes` | `boolean` | Enable collaboration modes such as plan mode (stable; on by default). |
-| `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, and `close\_agent`) (experimental; off by default). |
+| `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, `close\_agent`, and `spawn\_agents\_on\_csv`) (experimental; off by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.powershell_utf8` | `boolean` | Force PowerShell UTF-8 output (defaults to true). |
 | `features.remote_models` | `boolean` | Refresh remote model list before showing readiness (experimental). |
@@ -166,6 +167,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `skills.config` | `array<object>` | Per-skill enablement overrides stored in config.toml. |
 | `skills.config.<index>.enabled` | `boolean` | Enable or disable the referenced skill. |
 | `skills.config.<index>.path` | `string (path)` | Path to a skill folder containing `SKILL.md`. |
+| `sqlite_home` | `string (path)` | Directory where Codex stores the SQLite-backed state DB used by agent jobs and other resumable runtime state. |
 | `suppress_unstable_features_warning` | `boolean` | Suppress the warning that appears when under-development feature flags are enabled. |
 | `tool_output_token_limit` | `number` | Token budget for storing individual tool/function outputs in history. |
 | `tools.web_search` | `boolean` | Deprecated legacy toggle for web search; prefer the top-level `web\_search` setting. |
@@ -203,6 +205,18 @@ Type / Values
 Details
 
 Role guidance shown to Codex when choosing and spawning that agent type.
+
+Key
+
+`agents.job_max_runtime_seconds`
+
+Type / Values
+
+`number`
+
+Details
+
+Default per-worker timeout for `spawn\_agents\_on\_csv` jobs. When unset, the tool falls back to 1800 seconds per worker.
 
 Key
 
@@ -598,7 +612,7 @@ Type / Values
 
 Details
 
-Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, and `close\_agent`) (experimental; off by default).
+Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, `close\_agent`, and `spawn\_agents\_on\_csv`) (experimental; off by default).
 
 Key
 
@@ -2027,6 +2041,18 @@ Type / Values
 Details
 
 Path to a skill folder containing `SKILL.md`.
+
+Key
+
+`sqlite_home`
+
+Type / Values
+
+`string (path)`
+
+Details
+
+Directory where Codex stores the SQLite-backed state DB used by agent jobs and other resumable runtime state.
 
 Key
 

@@ -7,7 +7,7 @@
       "source_url": "https://developers.openai.com/codex/ambassadors"
     },
     "developers.openai.com/codex/app-server/index.md": {
-      "sha256": "0fde41a12224a15585c9b58df247a9f39c7f97ce9224b2f562d050251b4ef1c7",
+      "sha256": "440d8f6be0fcff46775a616225ec12121bf4117cc17f4d998e0aae39e9f80929",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app-server"
     },
@@ -72,7 +72,7 @@
       "source_url": "https://developers.openai.com/codex/changelog"
     },
     "developers.openai.com/codex/cli/features/index.md": {
-      "sha256": "1fd508d7f9e49aebdcba4afc9640ecc137a0e5edd56a347111a99d36ba30fad0",
+      "sha256": "083cbe420b518db51ed1df9410513dc069a4f0e80ad12904d39cdf544a642b32",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
@@ -87,7 +87,7 @@
       "source_url": "https://developers.openai.com/codex/cli/reference"
     },
     "developers.openai.com/codex/cli/slash-commands/index.md": {
-      "sha256": "93616c4884c99a0471c3130b819a53e7f5af488080ce2de83f49b024bc664af8",
+      "sha256": "0a48d7f48d0a99f09519f886a2140e74ec7775fc498f2f5e2e07a4643454deea",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/slash-commands"
     },
@@ -137,12 +137,12 @@
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "946df556ec9eef8ad9ff1447a73ef8383dbcb095f64fbc4765492c8daf501934",
+      "sha256": "0b82377da492f5a3530f7a32f5abb48aa35e72917a45dd2a9be34d6cf64cc43a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "eec980bb9e89bf6c2159a825127dc8003a006da4f3789d3329b1f517b7070223",
+      "sha256": "cf9cb3027fdd2b508411e17dc0963636d7c83b628cad6fb34b088d519a5cc19f",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
@@ -252,7 +252,7 @@
       "source_url": "https://developers.openai.com/codex/models"
     },
     "developers.openai.com/codex/multi-agent/index.md": {
-      "sha256": "4d6c08a3670d4d11bb65f4c2297a4dad5060b6a1393b6c709d88e47fd872fcc1",
+      "sha256": "2b52ca0a2ed73958c91ae11d8134ff8f42fa38cb80a427e390ab0ce973035e31",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/multi-agent"
     },

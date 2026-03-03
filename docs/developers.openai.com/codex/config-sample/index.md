@@ -54,6 +54,7 @@ model_provider = "openai"
 # model_catalog_json = "/absolute/path/to/models.json" # optional startup-only model catalog override
 # background_terminal_max_timeout = 300000 # ms; max empty write_stdin poll window (default 5m)
 # log_dir = "/absolute/path/to/codex-logs" # directory for Codex logs; default: "$CODEX_HOME/log"
+# sqlite_home = "/absolute/path/to/codex-state" # optional SQLite-backed runtime state directory
 
 ################################################################################
 # Reasoning & Verbosity (Responses API capable models)
@@ -218,6 +219,8 @@ web_search = "cached"
 # max_threads = 6
 # Maximum nested spawn depth. Root session starts at depth 0. Default: 1
 # max_depth = 1
+# Default timeout per worker for spawn_agents_on_csv jobs. When unset, the tool defaults to 1800 seconds.
+# job_max_runtime_seconds = 1800
 
 # [agents.reviewer]
 # description = "Find security, correctness, and test risks in code."
@@ -229,7 +232,7 @@ web_search = "cached"
 
 # Disable or re-enable a specific skill without deleting it.
 [[skills.config]]
-# path = "/path/to/skill"
+# path = "/path/to/skill/SKILL.md"
 # enabled = false
 
 ################################################################################

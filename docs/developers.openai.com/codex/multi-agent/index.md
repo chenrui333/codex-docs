@@ -53,12 +53,64 @@ I would like to review the following points on the current PR (this branch vs ma
 - Ask Codex directly to steer a running sub-agent, stop it, or close completed agent threads.
 - The `wait` tool supports long polling windows for monitoring workflows (up to 1 hour per call).
 
+## Process CSV batches with sub-agents
+
+Use `spawn_agents_on_csv` when you have many similar tasks that can be expressed as one row per work item. Codex reads the CSV, spawns one worker sub-agent per row, waits for the full batch to finish, and exports the combined results to CSV.
+
+This works well for repeated audits such as:
+
+- reviewing one file, package, or service per row
+- checking a list of incidents, PRs, or migration targets
+- generating structured summaries for many similar inputs
+
+The tool accepts:
+
+- `csv_path` for the source CSV
+- `instruction` for the worker prompt template, using `{column_name}` placeholders
+- `id_column` when you want stable item ids from a specific column
+- `output_schema` when each worker should return a JSON object with a fixed shape
+- `output_csv_path`, `max_concurrency`, and `max_runtime_seconds` for job control
+
+Each worker must call `report_agent_job_result` exactly once. If a worker exits without reporting a result, that row is marked as failed in the exported CSV.
+
+Example prompt:
+
+```
+Create /tmp/components.csv with columns path,owner and one row per frontend component.
+
+Then call spawn_agents_on_csv with:
+- csv_path: /tmp/components.csv
+- id_column: path
+- instruction: "Review {path} owned by {owner}. Return JSON with keys path, risk, summary, and follow_up via report_agent_job_result."
+- output_csv_path: /tmp/components-review.csv
+- output_schema: an object with required string fields path, risk, summary, and follow_up
+```
+
+When you run this through `codex exec`, Codex shows a single-line progress update on `stderr` while the batch is running. The exported CSV includes the original row data plus metadata such as `job_id`, `item_id`, `status`, `last_error`, and `result_json`.
+
+Related runtime settings:
+
+- `agents.max_threads` caps how many agent threads can stay open concurrently.
+- `agents.job_max_runtime_seconds` sets the default per-worker timeout for CSV fan-out jobs. A per-call `max_runtime_seconds` override takes precedence.
+- `sqlite_home` controls where Codex stores the SQLite-backed state used for agent jobs and their exported results.
+
 ## Approvals and sandbox controls
 
-Sub-agents inherit your current sandbox policy, but they run with
-non-interactive approvals. If a sub-agent attempts an action that would require
-a new approval, that action fails and the error is surfaced in the parent
-workflow.
+Sub-agents inherit your current sandbox policy.
+
+In interactive CLI sessions, approval requests can surface from inactive agent
+threads even while you are looking at the main thread. The approval overlay
+shows the source thread label, and you can press `o` to open that thread before
+you approve, reject, or answer the request.
+
+In non-interactive flows, or whenever a run cannot surface a fresh approval,
+an action that needs new approval fails and the error is surfaced back to the
+parent workflow.
+
+Codex also reapplies the parent turn’s live runtime overrides when it spawns a
+child. That includes sandbox and approval choices you set interactively during
+the session, such as `/approvals` changes or `--yolo`, even if the selected
+agent role loads a config file with different defaults.
 
 You can also override the sandbox configuration for individual [agent roles](#agent-roles) such as explicitly marking an agent to work in read-only mode.
 
@@ -90,6 +142,7 @@ Each agent role can override your default configuration. Common settings to over
 | --- | --- | --- | --- |
 | `agents.max_threads` | number | No | Maximum number of concurrently open agent threads. |
 | `agents.max_depth` | number | No | Maximum nesting depth for spawned agent threads (root session starts at 0). |
+| `agents.job_max_runtime_seconds` | number | No | Default timeout per worker for `spawn_agents_on_csv` jobs. |
 | `[agents.<name>]` | table | No | Declares a role. `<name>` is used as the `agent_type` when spawning an agent. |
 | `agents.<name>.description` | string | No | Human-facing role guidance shown to Codex when it decides which role to use. |
 | `agents.<name>.config_file` | string (path) | No | Path to a TOML config layer applied to spawned agents for that role. |
@@ -98,6 +151,7 @@ Each agent role can override your default configuration. Common settings to over
 
 - Unknown fields in `[agents.<name>]` are rejected.
 - `agents.max_depth` defaults to `1`, which allows a direct child agent to spawn but prevents deeper nesting.
+- `agents.job_max_runtime_seconds` is optional. When you leave it unset, `spawn_agents_on_csv` falls back to its per-call default timeout of 1800 seconds per worker.
 - Relative `config_file` paths are resolved relative to the `config.toml` file that defines the role.
 - `agents.<name>.config_file` is validated at config load time and must point to an existing file.
 - If a role name matches a built-in role (for example, `explorer`), your user-defined role takes precedence.
