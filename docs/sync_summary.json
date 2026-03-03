@@ -1,11 +1,13 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/codex/app/windows/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-02-28T00:30:32+00:00",
+  "generated_at": "2026-03-03T00:35:18+00:00",
   "removed": [],
-  "total_files": 112,
+  "total_files": 113,
   "updated": [
-    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md"
+    "developers.openai.com/cookbook/examples/codex/long_horizon_tasks/index.md"
   ]
 }

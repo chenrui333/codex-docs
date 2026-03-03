@@ -51,6 +51,11 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/troubleshooting"
     },
+    "developers.openai.com/codex/app/windows/index.md": {
+      "sha256": "c8e3f1117a0928b676e052a95c0028633602c7f5a78c5f4a5c5722167fa0b422",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/windows"
+    },
     "developers.openai.com/codex/app/worktrees/index.md": {
       "sha256": "3d0c4075cb866ff7146e0c465754da7b038fdff67862f99d808808a62635af1b",
       "source_type": "developers",
@@ -357,7 +362,7 @@
       "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github"
     },
     "developers.openai.com/cookbook/examples/codex/long_horizon_tasks/index.md": {
-      "sha256": "b24003d46388eb8467c1c280bb090626aeedb11aefdb8b75d6dcd4fd99fe438f",
+      "sha256": "f5156052534009739637dfd41582d5e71cffb294a17b6d449df865328c7b9031",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks"
     },
