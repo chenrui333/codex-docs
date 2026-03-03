@@ -542,7 +542,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md"
     },
     "github.openai.com/openai/codex/docs/tui-chat-composer.md": {
-      "sha256": "daf072786dbb4321515235c68db23dc4f0a24dff2091e816861d97784d04329a",
+      "sha256": "d260b02e7feee6ca4a77d5a0e6abe364afcd575182f01d7402c05f0595fcedc9",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-chat-composer.md"
     },
