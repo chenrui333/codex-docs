@@ -2,11 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-04T00:33:44+00:00",
+  "generated_at": "2026-03-04T06:20:07+00:00",
   "removed": [],
   "total_files": 113,
   "updated": [
-    "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md",
-    "github.openai.com/openai/codex/docs/js_repl.md"
+    "developers.openai.com/codex/app/worktrees/index.md"
   ]
 }

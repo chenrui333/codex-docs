@@ -2,7 +2,7 @@
 
 Source: https://developers.openai.com/codex/app/worktrees
 
-In the Codex app, worktrees let Codex run multiple independent tasks in the same project without interfering with each other. For Git repositories, [automations](/codex/app/automations) run on dedicated background worktrees so they don’t conflict with your ongoing work. In non-version-controlled projects, automations run directly in the project directory. You can also start threads on a worktree manually.
+In the Codex app, worktrees let Codex run multiple independent tasks in the same project without interfering with each other. For Git repositories, [automations](/codex/app/automations) run on dedicated background worktrees so they don’t conflict with your ongoing work. In non-version-controlled projects, automations run directly in the project directory. You can also start threads on a worktree manually, and use Handoff to move a thread between Local and Worktree.
 
 ## What’s a worktree
 
@@ -12,12 +12,13 @@ Worktrees only work in projects that are part of a Git repository since they use
 
 - **Local checkout**: The repository that you created. Sometimes just referred to as **Local** in the Codex app.
 - **Worktree**: A [Git worktree](https://git-scm.com/docs/git-worktree) that was created from your local checkout in the Codex app.
+- **Handoff**: The flow that moves a thread between Local and Worktree. Codex handles the Git operations required to move your work safely between them.
 
 ## Why use a worktree
 
-1. Work in parallel with Codex without breaking each other as you work.
-2. Start a thread unrelated to your current work
-   - Staging area to queue up work you want Codex to start but aren’t ready to test yet.
+1. Work in parallel with Codex without disturbing your current Local setup.
+2. Queue up background work while you stay focused on the foreground.
+3. Move a thread into Local later when you’re ready to inspect, test, or collaborate more directly.
 
 ## Getting started
 
@@ -33,19 +34,20 @@ Worktrees require a Git repository. Make sure the project you selected lives in 
 3. Submit your prompt
 
    Submit your task and Codex will create a Git worktree based on the branch you selected. By default, Codex works in a [“detached HEAD”](https://git-scm.com/docs/git-checkout#_detached_head).
-4. Verify your changes
+4. Choose where to keep working
 
-   When you’re ready, follow one of the paths [below](#verifying-and-pushing-workflow-changes)
-   based on your project and flow.
+   When you’re ready, you can either keep working directly on the worktree or hand the thread off to your local checkout. Handing off to or from local will move your thread *and* code so you can continue in the other checkout.
 
-## Verifying and pushing workflow changes
+## Working between Local and Worktree
 
-Worktrees look and feel much like your local checkout. But **Git only allows a branch to be checked out in one place at a time**. If you check out a branch on a worktree, you **can’t** check it out in your local checkout at the same time, and vice versa.
+Worktrees look and feel much like your local checkout. The difference is where they fit into your flow. You can think of Local as the foreground and Worktree as the background. Handoff lets you move a thread between them.
 
-Because of this, choose how you want to verify and commit changes Codex made on a worktree:
+Under the hood, Handoff handles the Git operations required to move work between two checkouts safely. This matters because **Git only allows a branch to be checked out in one place at a time**. If you check out a branch on a worktree, you **can’t** check it out in your local checkout at the same time, and vice versa.
+
+In practice, there are two common paths:
 
 1. [Work exclusively on the worktree](#option-1-working-on-the-worktree). This path works best when you can verify changes directly on the worktree, for example because you have dependencies and tools installed using a [local environment setup script](/codex/app/local-environments).
-2. [Work in your local checkout](#option-2-working-in-your-local-checkout). Use this when you need to bring changes back into your main checkout, for example because you can run only one instance of your app.
+2. [Hand the thread off to Local](#option-2-handing-a-thread-off-to-local). Use this when you want to bring the thread into the foreground, for example because you want to inspect changes in your usual IDE or can run only one instance of your app.
 
 ### Option 1: Working on the worktree
 
@@ -59,36 +61,33 @@ You can open your IDE to the worktree using the “Open” button in the header,
 
 Remember, if you create a branch on a worktree, you can’t check it out in any other worktree, including your local checkout.
 
-If you plan to keep working on this branch, you can [add it to the sidebar](#adding-a-worktree-to-the-sidebar). Otherwise, archive the thread after you’re done so the worktree can be deleted.
+### Option 2: Handing a thread off to Local
 
-### Option 2: Working in your local checkout
+If you want to bring a thread into the foreground, click **Hand off** in the header of your thread and move it to **Local**.
 
-If you don’t want to verify your changes directly on the worktree and instead check them out on your local checkout, click **Sync with local** in the header of your thread.
+This path works well when you want to read the changes in your usual IDE window, run your existing development server, or validate the work in the same environment you already use day to day.
 
-You will be presented with the option of creating a new branch or syncing to an existing branch.
+Codex handles the Git steps required to move the thread safely between the worktree and your local checkout.
 
-You can sync with local at any point. To do so, click **Sync with local** in the header again. From here, you can choose which direction to sync (to local or from local) and a sync method:
+Each thread keeps the same associated worktree over time. If you hand the thread back to a worktree later, Codex returns it to that same background environment so you can pick up where you left off.
 
-- **Overwrite**: Makes the destination checkout match the source checkout’s files and commit history.
-- **Apply**: Calculates the source changes since the nearest shared commit and applies that patch onto the destination checkout, preserving destination commit history while bringing over source code changes (not source commits).
+![Handoff dialog moving a thread from a worktree to Local](/images/codex/app/handoff-light.webp)
 
-![Sync worktree dialog with options to apply or pull changes](/images/codex/app/sync-worktree-light.webp)
+You can also go the other direction. If you’re already working in Local and want to free up the foreground, use **Hand off** to move the thread to a worktree. This is useful when you want Codex to keep working in the background while you switch your attention back to something else locally.
 
-You can create multiple worktrees and sync them to the same feature branch to split up your work into parallel threads.
-
-In some cases, changes on your worktree might conflict with changes on your local checkout, for example from testing a previous worktree. In those cases, you can use the **Overwrite local** option to reset the previous changes and cleanly apply your worktree changes.
-
-Since this process uses Git operations, any files that are part of the `.gitignore` file won’t be transferred during the sync process.
-
-## Adding a worktree to the sidebar
-
-If you choose option one above (work on the worktree), once you have created a branch on the worktree, an option appears in the header to add the worktree to your sidebar. This promotes the worktree to a permanent home. When you do this, it will never be automatically deleted, and you can even kick off new threads from the same worktree.
+Since Handoff uses Git operations, any files that are part of your `.gitignore` file won’t move with the thread.
 
 ## Advanced details
 
+### Codex-managed and permanent worktrees
+
+By default, threads use a Codex-managed worktree. These are meant to feel lightweight and disposable. A Codex-managed worktree is typically dedicated to one thread, and Codex returns that thread to the same worktree if you hand it back there later.
+
+If you want a long-lived environment, create a permanent worktree from the three-dot menu on a project in the sidebar. This creates a new permanent worktree as its own project. Permanent worktrees are not automatically deleted, and you can start multiple threads from the same worktree.
+
 ### How Codex manages worktrees for you
 
-Codex will create a worktree in `$CODEX_HOME/worktrees`. The starting commit will be the `HEAD` commit of the branch selected when you start your thread. If you chose a branch with local changes, the uncommitted changes will be applied to the worktree as well. The worktree will *not* be checked out as a branch. It will be in a [detached HEAD](https://git-scm.com/docs/git-checkout#_detached_head) state. This means you can create several worktrees without polluting your branches.
+Codex creates worktrees in `$CODEX_HOME/worktrees`. The starting commit will be the `HEAD` commit of the branch selected when you start your thread. If you chose a branch with local changes, the uncommitted changes will be applied to the worktree as well. The worktree will *not* be checked out as a branch. It will be in a [detached HEAD](https://git-scm.com/docs/git-checkout#_detached_head) state. This lets Codex create several worktrees without polluting your branches.
 
 ### Branch limitations
 
@@ -100,7 +99,7 @@ fatal: 'feature/a' is already used by worktree at '<WORKTREE_PATH>'
 
 To resolve this, you would need to check out another branch instead of `feature/a` on the worktree.
 
-If you plan on checking out the branch locally, try Workflow 2 ([sync with local](#option-2-working-in-your-local-checkout)).
+If you plan on checking out the branch locally, use Handoff to move the thread into Local instead of trying to keep the same branch checked out in both places at once.
 
 Why this limitation exists
 
@@ -114,19 +113,20 @@ By enforcing a one-branch-per-worktree rule, Git guarantees that each branch has
 
 Worktrees can take up a lot of disk space. Each one has its own set of repository files, dependencies, build caches, etc. As a result, the Codex app tries to keep the number of worktrees to a reasonable limit.
 
-Worktrees will never be cleaned up if:
+By default, Codex keeps your most recent 15 Codex-managed worktrees. You can change this limit or turn off automatic deletion in settings if you prefer to manage disk usage yourself.
+
+Codex tries to avoid deleting worktrees that are still important. Codex-managed worktrees won’t be deleted automatically if:
 
 - A pinned conversation is tied to it
-- The worktree was added to the sidebar (see above)
+- The thread is still in progress
+- The worktree is a permanent worktree
 
-Worktrees are eligible for cleanup when:
+Codex-managed worktrees are deleted automatically when:
 
-- It’s more than 4 days old
-- You have more than 10 worktrees
+- You archive the associated thread
+- Codex needs to delete older worktrees to stay within your configured limit
 
-When either of those conditions are met, Codex automatically cleans up a worktree when you archive a thread, or on app startup if it finds a worktree with no associated threads.
-
-Before cleaning up a worktree, Codex will save a snapshot of the work on it that you can restore at any point in a new worktree. If you open a conversation after its worktree was cleaned up, you’ll see the option to restore it.
+Before deleting a Codex-managed worktree, Codex saves a snapshot of the work on it. If you open a conversation after its worktree was deleted, you’ll see the option to restore it.
 
 ## Frequently asked questions
 
@@ -135,16 +135,18 @@ Can I control where worktrees are created?
 Not today. Codex creates worktrees under `$CODEX_HOME/worktrees` so it can
 manage them consistently.
 
-Can I move a session between worktrees?
+Can I move a thread between Local and Worktree?
 
-Not yet. If you need to change environments, you have to start a new thread in
-the target environment and restate the prompt. You can use the up arrow keys
-in the composer to try to recover your prompt.
+Yes. Use **Hand off** in the thread header to move a thread between your local
+checkout and a worktree. Codex handles the Git operations needed to move the
+thread safely between environments. If you hand a thread back to a worktree
+later, Codex returns it to the same associated worktree.
 
 What happens to threads if a worktree is deleted?
 
 Threads can remain in your history even if the underlying worktree directory
-is cleaned up. However, Codex saves a snapshot of the worktree prior to
-cleaning it up and offers to restore it if you reopen the thread associated
-with it.
+is deleted. For Codex-managed worktrees, Codex saves a snapshot before
+deleting the worktree and offers to restore it if you reopen the associated
+thread. Permanent worktrees are not automatically deleted when you archive
+their threads.
 
