@@ -253,6 +253,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "artifact": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "child_agents_md": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -282,6 +286,14 @@
       "stage_from_source": "removed"
     },
     "fast_mode": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "image_detail_original": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "image_generation": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -403,17 +415,17 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "d57d576bdca49f7c9723c2fc5c81abf68825e138879da9e3b92428c4cadad7fe",
-    "features_rs_sha256": "1fa79ecdd48245e802539adb194ed6939c6f8cd105d40e2d8cb0f4584a1c6238"
+    "client_rs_sha256": "32e14e364a6607ff1e057cae16b59fd8f6d48cb3a5ed4932e0527e5932285298",
+    "features_rs_sha256": "212af44434e04d3de9333af8ae4fdff32bc18031d3cea4edccd0c5413bba1f2a"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
     "features_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/features.rs"
   },
   "websocket_precedence": {
-    "detected": true,
+    "detected": false,
     "openai_beta_headers": {
-      "responses_websockets": "responses_websockets=2026-02-04",
+      "responses_websockets": "unknown",
       "responses_websockets_v2": "responses_websockets=2026-02-06"
     },
     "rules": {
