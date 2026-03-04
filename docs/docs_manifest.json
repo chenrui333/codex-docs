@@ -22,12 +22,12 @@
       "source_url": "https://developers.openai.com/codex/app/commands"
     },
     "developers.openai.com/codex/app/features/index.md": {
-      "sha256": "ed761ea2e164571457bd5f9da9dd46c37d440e73abcbde76951756fe8f47d9c2",
+      "sha256": "a1a408adf6be50545e241c9e966835cdf1615f4e9338f725414cb412defbf81a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/features"
     },
     "developers.openai.com/codex/app/index.md": {
-      "sha256": "27eba9393c6249eddb834abd4a8460aa5554065c3b3511490df4a17954a128aa",
+      "sha256": "1efb766cb19baf4022d102b37de11dce7f06a8bb5ad0f9805a3e7b9b71f6dd77",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app"
     },
@@ -47,12 +47,12 @@
       "source_url": "https://developers.openai.com/codex/app/settings"
     },
     "developers.openai.com/codex/app/troubleshooting/index.md": {
-      "sha256": "79d69ace07ccf2b70aba3f1b2e43b7a65bd135b5f9307df2dd2e8be36c7200b4",
+      "sha256": "94cf27b6906395d3302ed96c9e2a7778a3b3b52dfe0a38e916d41d45789c58a9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/troubleshooting"
     },
     "developers.openai.com/codex/app/windows/index.md": {
-      "sha256": "c8e3f1117a0928b676e052a95c0028633602c7f5a78c5f4a5c5722167fa0b422",
+      "sha256": "1887999116ec526e03c50e8c309f8ec89a146a0118d231bc5cd528dc3383f858",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/windows"
     },
@@ -142,7 +142,7 @@
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "cf9cb3027fdd2b508411e17dc0963636d7c83b628cad6fb34b088d519a5cc19f",
+      "sha256": "436961294015e563e1e6186572e22d6019d455727464c91f18f1ffef83b9fe79",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
@@ -247,7 +247,7 @@
       "source_url": "https://developers.openai.com/codex/mcp"
     },
     "developers.openai.com/codex/models/index.md": {
-      "sha256": "47409cb11fbe60bd1db964991f3100d0c8cd185c74d1c6a136d522a4cfc481b4",
+      "sha256": "c17416700c7e1f16cb2e517bd23ce7b24bf1fd4a054730a13f5f2cb276ab9e31",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/models"
     },
@@ -282,7 +282,7 @@
       "source_url": "https://developers.openai.com/codex/prompting"
     },
     "developers.openai.com/codex/quickstart/index.md": {
-      "sha256": "91cfcc73f2822281bd9832aadc1332557c4ed617da2e85c3ee6d6243e77f2ee2",
+      "sha256": "15713417894480dead276e70d21df9b6358b6f3ce985c150455b0f1ab1ebfd32",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/quickstart"
     },
@@ -312,7 +312,7 @@
       "source_url": "https://developers.openai.com/codex/videos"
     },
     "developers.openai.com/codex/windows/index.md": {
-      "sha256": "87e987c76c982c0b6f3448d6c87ff4b4a81b2084fbc13ae6126b6a95f86bab42",
+      "sha256": "b12e96d05a7ae3639c6c83abee483cca84b4e0683258f945d2b9a13b88c6a0a9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/windows"
     },
@@ -422,7 +422,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md"
     },
     "github.openai.com/openai/codex/codex-rs/README.md": {
-      "sha256": "66bcc1c827a67cca804c2352240cb2cd7cb08a686ae765839bee75d10875868f",
+      "sha256": "55e4fc5153c3a028065a3010f5492cf24cbcde0e903acee7718ed8ee67912eb0",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md"
     },

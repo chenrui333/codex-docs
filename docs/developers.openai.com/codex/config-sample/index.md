@@ -127,6 +127,10 @@ allow_login_shell = true
 # - danger-full-access (no sandbox; extremely risky)
 sandbox_mode = "read-only"
 
+[windows]
+# Native Windows sandbox mode (Windows only): unelevated | elevated
+sandbox = "unelevated"
+
 ################################################################################
 # Authentication & Login
 ################################################################################

@@ -103,6 +103,16 @@ app. It doesn’t clear the terminal. To clear the terminal use `Ctrl`+`L`.
 
 ![Integrated terminal drawer open beneath a Codex thread](/images/codex/app/integrated-terminal-light.webp)
 
+## Native Windows sandbox
+
+On Windows, Codex can run natively in PowerShell with a native Windows sandbox
+instead of requiring WSL or a virtual machine. This lets you stay in
+Windows-native workflows while keeping bounded permissions in place.
+
+[Learn more about Windows setup and sandboxing](/codex/app/windows).
+
+![Codex app Windows sandbox setup prompt above the message composer](/images/codex/windows/windows-sandbox-setup.webp)
+
 ## Voice dictation
 
 Use your voice to prompt Codex. Hold `Ctrl`+`M` while the composer is visible and start talking. Your voice will be transcribed. Edit the transcribed prompt or hit send to have Codex start work.

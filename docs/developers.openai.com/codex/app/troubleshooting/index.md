@@ -34,8 +34,10 @@ unarchive a thread it will reappear in the original location of your sidebar.
 ### Only some threads appear in the sidebar
 
 The sidebar allows filtering of threads depending on the state of a project. If
-you’re missing threads, check whether you have any filters applied by clicking
-the filter icon next to the **Threads** label.
+you’re missing threads, click the filter icon next to the **Threads** label and
+switch to Chronological. If you still don’t see the thread, open
+[Settings](codex://settings) and check the archived chats or archived threads
+section.
 
 ### Code doesn’t run on a worktree
 

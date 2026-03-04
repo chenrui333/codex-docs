@@ -6,6 +6,8 @@ The Codex app is a focused desktop experience for working on Codex threads in pa
 
 ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what’s included](/codex/pricing).
 
+![Codex app for Windows showing a project sidebar, active thread, and review pane](/images/codex/windows/codex-windows-light.webp)
+
 ![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-light.webp)
 
 ## Getting started
@@ -14,11 +16,11 @@ The Codex app is available on macOS (Apple Silicon).
 
 1. Download and install the Codex app
 
-   The Codex app is currently only available for macOS.
+   Download the Codex app for Windows or macOS.
 
    [Download for macOS](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
 
-   [Get notified for Windows and Linux](https://openai.com/form/codex-app/)
+   [Get notified for Linux](https://openai.com/form/codex-app/)
 2. Open Codex and sign in
 
    Once you downloaded and installed the Codex app, open it and sign in with your ChatGPT account or an OpenAI API key.

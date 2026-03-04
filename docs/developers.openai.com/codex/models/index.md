@@ -52,6 +52,11 @@ ChatGPT Credits
 
 API Access
 
+The gpt-5.3-codex-spark model is available in research preview for ChatGPT Pro
+subscribers. It is optimized for near-instant, real-time coding iteration.
+
+## Alternative models
+
 ![gpt-5.2-codex](/images/codex/gpt-5.2-codex.png)
 
 gpt-5.2-codex
@@ -62,27 +67,7 @@ codex -m gpt-5.2-codex
 
 Copy command
 
-Capability
-
-Speed
-
-Codex CLI & SDK
-
-Codex app & IDE extension
-
-Codex Cloud
-
-ChatGPT Credits
-
-API Access
-
-For most coding tasks in Codex, start with gpt-5.3-codex. It is available for
-ChatGPT-authenticated Codex sessions in the Codex app, CLI, IDE extension, and
-Codex Cloud. API access for GPT-5.3-Codex will come soon. The
-gpt-5.3-codex-spark model is available in research preview for ChatGPT Pro
-subscribers.
-
-## Alternative models
+Show details
 
 ![gpt-5.2](/images/api/models/gpt-5.2.jpg)
 

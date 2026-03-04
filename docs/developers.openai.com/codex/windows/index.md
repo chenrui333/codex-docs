@@ -2,7 +2,13 @@
 
 Source: https://developers.openai.com/codex/windows
 
-The easiest way to use Codex on Windows is to [set up the IDE extension](/codex/ide) or [install the CLI](/codex/cli) and run it from PowerShell.
+The easiest way to use Codex on Windows is to use the [Codex app](/codex/app/windows). You can also [set up the IDE extension](/codex/ide) or [install the CLI](/codex/cli) and run it from PowerShell.
+
+[![](/images/codex/codex-banner-icon.webp)
+
+Use the Codex app on Windows
+
+Work across projects, run parallel agent threads, and review results in one place with the native Windows app.](/codex/app/windows)
 
 When you run Codex natively on Windows, agent mode uses a [Windows sandbox](#windows-sandbox) to block filesystem writes outside the working folder and prevent network access without your explicit approval. [Learn more below](#windows-sandbox).
 

@@ -1,72 +1,165 @@
-# Codex app
+# Windows
 
 Source: https://developers.openai.com/codex/app/windows
 
-The Codex app is a focused desktop experience for working on Codex threads in parallel, with built-in worktree support, automations, and Git functionality.
+The [Codex app for Windows](https://apps.microsoft.com/detail/9plm9xgg6vks?hl=en-US&gl=US) gives you one interface for
+working across projects, running parallel agent threads, and reviewing results.
+It runs natively on Windows using PowerShell and the
+[Windows sandbox](/codex/windows#windows-sandbox), or you can configure it to
+run in [Windows Subsystem for Linux (WSL)](#windows-subsystem-for-linux-wsl).
 
-ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what’s included](/codex/pricing).
+![Codex app for Windows showing a project sidebar, active thread, and review pane](/images/codex/windows/codex-windows-light.webp)
 
-![Codex app window with a project sidebar, active thread, and review pane](/images/codex/app/app-screenshot-light.webp)
+## Download and update the Codex app
 
-## Getting started
+Download the Codex app from the
+[Microsoft Store](https://apps.microsoft.com/detail/9plm9xgg6vks?hl=en-US&gl=US).
 
-The Codex app is available on macOS (Apple Silicon).
+Then follow the [quickstart](/codex/quickstart?setup=app) to get started.
 
-1. Download and install the Codex app
+To update the app, open the Microsoft Store, go to **Downloads**, and click
+**Check for updates**. The Store installs the latest version afterward.
 
-   The Codex app is currently only available for macOS.
+For enterprises, administrators can deploy the app with Microsoft Store app
+distribution through enterprise management tools.
 
-   [Download for macOS](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
+## Customize for your dev setup
 
-   [Get notified for Windows and Linux](https://openai.com/form/codex-app/)
-2. Open Codex and sign in
+### Preferred editor
 
-   Once you downloaded and installed the Codex app, open it and sign in with your ChatGPT account or an OpenAI API key.
+Choose a default app for **Open**, such as Visual Studio, VS Code, or another
+editor. You can override that choice per project. If you already picked a
+different app from the **Open** menu for a project, that project-specific
+choice takes precedence.
 
-   If you sign in with an OpenAI API key, some functionality such as [cloud threads](/codex/prompting#threads) might not be available.
-3. Select a project
+![Codex app settings showing the default Open In app on Windows](/images/codex/windows/open-in-windows-light.webp)
 
-   Choose a project folder that you want Codex to work in.
+### Integrated terminal
 
-If you used the Codex app, CLI, or IDE Extension before you’ll see past projects that you worked on.
+You can also choose the default integrated terminal. Depending on what you have
+installed, options include:
 
-4. Send your first message
+- PowerShell
+- Command Prompt
+- Git Bash
+- WSL
 
-   After choosing the project, make sure **Local** is selected to have Codex work on your machine and send your first message to Codex.
+This change applies only to new terminal sessions. If you already have an
+integrated terminal open, restart the app or start a new thread before
+expecting the new default terminal to appear.
 
-   You can ask Codex anything about the project or your computer in general. Here are some examples:
+![Codex app settings showing the integrated terminal selection on Windows](/images/codex/windows/integrated-shell-light.webp)
 
-- Tell me about this project
-- Build a classic Snake game in this repo.
-- Find and fix bugs in my codebase with minimal, high-confidence changes.
+## Windows Subsystem for Linux (WSL)
 
-   If you need more inspiration, check out the [explore section](/codex/explore).
+By default, the Codex app uses the Windows-native agent. That means the agent
+runs commands in PowerShell. The app can still work with projects that live in
+Windows Subsystem for Linux (WSL) by using the `wsl` CLI when needed.
 
----
+If you want to add a project from the WSL filesystem, click **Add new project**
+or press `Ctrl`+`O`, then type `\\wsl$\` into the File
+Explorer window. From there, choose your Linux distribution and the folder you
+want to open.
 
-## Work with the Codex app
+If you plan to keep using the Windows-native agent, prefer storing projects on
+your Windows filesystem and accessing them from WSL through
+`/mnt/<drive>/...`. This setup is more reliable than opening projects
+directly from the WSL filesystem.
 
-[### Multitask across projects
+If you want the agent itself to run in WSL, open **[Settings](codex://settings)**,
+switch the agent from Windows native to WSL, and **restart the app**. The
+change doesn’t take effect until you restart. Your projects should remain in
+place after restart.
 
-Run multiple tasks in parallel and switch quickly between them.](/codex/app/features#multitask-across-projects)[### Built-in Git tools
+![Codex app settings showing the agent selector with Windows native and WSL options](/images/codex/windows/wsl-select-light.webp)
 
-Review diffs, comment inline, stage or revert chunks, and commit without leaving the app.](/codex/app/features#built-in-git-tools)[### Worktrees for parallel tasks
+You configure the integrated terminal independently from the agent. See
+[Customize for your dev setup](#customize-for-your-dev-setup) for the
+terminal options. You can keep the agent in WSL and still use PowerShell in the
+terminal, or use WSL for both, depending on your workflow.
 
-Isolate changes of multiple Codex threads using built-in Git worktree support.](/codex/app/worktrees)[### Skills support
+## Useful developer tools
 
-Give your Codex agent additional capabilities and reuse skills across App, CLI, and IDE Extension.](/codex/app/features#skills-support)[### Automations
+Codex works best when a few common developer tools are already installed:
 
-Pair skills with automations to automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives runs if there’s nothing to report.](/codex/app/automations)[### Built-in terminal
+- **Git**: Powers the review panel in the Codex app and lets you inspect or
+  revert changes.
+- **Node.js**: A common tool that the agent uses to perform tasks more
+  efficiently.
+- **Python**: A common tool that the agent uses to perform tasks more
+  efficiently.
+- **.NET SDK**: Useful when you want to build native Windows apps.
+- **GitHub CLI**: Powers GitHub-specific functionality in the Codex app.
 
-Open a terminal per thread to test your changes, run dev servers, scripts, and custom commands.](/codex/app/features#integrated-terminal)[### Local environments
+Install them with the default Windows package manager `winget` by pasting this
+into the [integrated terminal](/codex/app/features#integrated-terminal) or
+asking Codex to install them:
 
-Define worktree setup scripts and common project actions for easy access.](/codex/app/local-environments)[### Sync with the IDE extension
+```
+winget install --id Git.Git
+winget install --id OpenJS.NodeJS.LTS
+winget install --id Python.Python.3.14
+winget install --id Microsoft.DotNet.SDK.10
+winget install --id GitHub.cli
+```
 
-Share Auto Context and active threads across app and IDE sessions.](/codex/app/features#sync-with-the-ide-extension)[### MCP support
+After installing GitHub CLI, run `gh auth login` to enable GitHub features in
+the app.
 
-Connect your Codex agent to additional services using MCP.](/codex/app/features#mcp-support)
+If you need a different Python or .NET version, change the package IDs to the
+version you want.
 
----
+## Troubleshooting and FAQ
 
-Need help? Visit the [troubleshooting guide](/codex/app/troubleshooting).
+### Run commands with elevated permissions
+
+If you need Codex to run commands with elevated permissions, start the Codex app
+itself as an administrator. After installation, open the Start menu, find
+Codex, and choose Run as administrator. The Codex agent inherits that
+permission level.
+
+### PowerShell execution policy blocks commands
+
+If you have never used tools such as Node.js or `npm` in PowerShell before, the
+Codex agent or integrated terminal may hit execution policy errors.
+
+This can also happen if Codex creates PowerShell scripts for you. In that case,
+you may need a less restrictive execution policy before PowerShell will run
+them.
+
+An error may look something like this:
+
+```
+npm.ps1 cannot be loaded because running scripts is disabled on this system.
+```
+
+A common fix is to set the execution policy to `RemoteSigned`:
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+```
+
+For details and other options, check Microsoft’s
+[execution policy guide](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+before changing the policy.
+
+### Local environment scripts on Windows
+
+If your [local environment](/codex/app/local-environments) uses cross-platform
+commands such as `npm` scripts, you can keep one shared setup script or
+set of actions for every platform.
+
+If you need Windows-specific behavior, create Windows-specific setup scripts or
+Windows-specific actions.
+
+Actions run in the environment used by your integrated terminal. See
+[Customize for your dev setup](#customize-for-your-dev-setup).
+
+Local setup scripts run in the agent environment: WSL if the agent uses WSL,
+and PowerShell otherwise.
+
+### Git features are unavailable
+
+If you don’t have Git installed natively on Windows, the app can’t use some
+features. Install it with `winget install Git.Git` from PowerShell or `cmd.exe`.
 
