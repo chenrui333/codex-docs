@@ -437,7 +437,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/bazel.md"
     },
     "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md": {
-      "sha256": "94f0eb38055e947d45657522258d5122cac9d17d5139f6dae696ac7efff73886",
+      "sha256": "a5d4e2d40c6ef2de6879ed92bb77a617726455baae31c9d022e09583c9c02592",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
     },
@@ -502,7 +502,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
     },
     "github.openai.com/openai/codex/docs/js_repl.md": {
-      "sha256": "8d4a3df9a30ddd13c4b588cf9cf9e2e725e0a9c107f7d1fd4ddd8dd8c481a84c",
+      "sha256": "5c1724413247e7b81ff470e33a3040b8165498754b9fafbb486895b79f958b5d",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/js_repl.md"
     },
