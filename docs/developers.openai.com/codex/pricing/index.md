@@ -16,7 +16,7 @@ $20/month
 
 - Codex on the web, in the CLI, in the IDE extension, and on iOS
 - Cloud-based integrations like automatic code review and Slack integration
-- The latest models, including GPT-5.3-Codex
+- The latest models, including GPT-5.4 and GPT-5.3-Codex
 - GPT-5.1-Codex-Mini for up to 4x higher usage limits for local messages
 - Flexibly extend usage with [ChatGPT credits](#credits-overview)
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the Plus plan
@@ -82,7 +82,19 @@ Great for automation in shared environments like CI.
 
 ### What are the usage limits for my plan?
 
-The number of Codex messages you can send depends on the size and complexity of your coding tasks and whether you run them locally or in the cloud. Small scripts or routine functions may consume only a fraction of your allowance, while larger codebases, long-running tasks, or extended sessions that require Codex to hold more context will use significantly more per message.
+The number of Codex messages you can send depends on the model used, size and complexity of your coding tasks and whether you run them locally or in the cloud. Small scripts or routine functions may consume only a fraction of your allowance, while larger codebases, long-running tasks, or extended sessions that require Codex to hold more context will use significantly more per message.
+
+GPT-5.4
+
+|  | Local Messages[\*](#shared-limits) / 5h | Cloud Tasks[\*](#shared-limits) / 5h | Code Reviews / week |
+| --- | --- | --- | --- |
+| ChatGPT Plus | 33-168 | Not available | Not available |
+| ChatGPT Pro | 223-1120 | Not available | Not available |
+| ChatGPT Business | 33-168 | Not available | Not available |
+| ChatGPT Enterprise & Edu | No fixed limits — usage scales with [credits](#credits-overview) | | |
+| API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
+
+GPT-5.3-Codex
 
 |  | Local Messages[\*](#shared-limits) / 5h | Cloud Tasks[\*](#shared-limits) / 5h | Code Reviews / week |
 | --- | --- | --- | --- |
@@ -92,12 +104,24 @@ The number of Codex messages you can send depends on the size and complexity of 
 | ChatGPT Enterprise & Edu | No fixed limits — usage scales with [credits](#credits-overview) | | |
 | API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 
+GPT-5.1-Codex-Mini
+
+|  | Local Messages[\*](#shared-limits) / 5h | Cloud Tasks[\*](#shared-limits) / 5h | Code Reviews / week |
+| --- | --- | --- | --- |
+| ChatGPT Plus | 180-900 | Not available | Not available |
+| ChatGPT Pro | 1200-6000 | Not available | Not available |
+| ChatGPT Business | 180-900 | Not available | Not available |
+| ChatGPT Enterprise & Edu | Local usage scales with [credits](#credits-overview) | Not available | Not available |
+| API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
+
 \*The usage limits for local messages and cloud tasks share a **five-hour
 window**. Additional weekly limits may apply.
 
-Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features.
+Speed configurations increase credit consumption for all applicable models, so
+they also use included limits faster. Details can be found
+[here](/codex/speed).
 
-GPT-5.1-Codex-Mini can be used for local tasks, providing up to 4x more usage.
+Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features.
 
 GPT-5.3-Codex-Spark is in research preview for ChatGPT Pro users only, and isn’t available in the API at launch. Because it runs on specialized low-latency hardware, usage is governed by a separate usage limit that may adjust based on demand.
 
@@ -119,13 +143,36 @@ You can find your current limits in the [Codex usage dashboard](https://chatgpt.
 
 Credits let you continue using Codex after you reach your included usage limits. Usage draws down from your available credits based on the models and features you use, allowing you to extend work without interruption.
 
-Credit cost per message varies based on task size, complexity, and the reasoning required. The table shows average credit costs; these averages also apply to legacy GPT-5.2, GPT-5.2-Codex, GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and GPT-5-Codex-Mini. Average rates may evolve over time as new capabilities are introduced.
+Credit cost per message varies based on the model used, the task size and complexity, and the reasoning required. The table shows average credit costs. Average rates may evolve over time as new capabilities are introduced.
 
-|  | Unit | GPT-5.3-Codex, GPT-5.2-Codex | GPT-5.1-Codex-Mini |
-| --- | --- | --- | --- |
-| Local Tasks | 1 message | ~5 credits | ~1 credit |
-| Cloud Tasks | 1 message | ~25 credits | Not available |
-| Code Review | 1 pull request | ~25 credits | Not available |
+GPT-5.4
+
+|  | Unit | Average credit cost |
+| --- | --- | --- |
+| Local Tasks | 1 message | ~7 credits |
+| Cloud Tasks | 1 message | ~34 credits |
+| Code Review | 1 pull request | ~34 credits |
+
+GPT-5.3-Codex
+
+|  | Unit | Average credit cost |
+| --- | --- | --- |
+| Local Tasks | 1 message | ~5 credits |
+| Cloud Tasks | 1 message | ~25 credits |
+| Code Review | 1 pull request | ~25 credits |
+
+GPT-5.1-Codex-Mini
+
+|  | Unit | Average credit cost |
+| --- | --- | --- |
+| Local Tasks | 1 message | ~1 credit |
+| Cloud Tasks | 1 message | Not available |
+| Code Review | 1 pull request | Not available |
+
+These averages also apply to legacy GPT-5.2, GPT-5.2-Codex, GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and GPT-5-Codex-Mini.
+
+Speed configurations will increase credit consumption for all models that apply.
+Details can be found [here](/codex/speed).
 
 [Learn more about credits in ChatGPT Plus and Pro.](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-freegopluspro-sora)
 [Learn more about credits in ChatGPT Business, Enterprise, and Edu.](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans)

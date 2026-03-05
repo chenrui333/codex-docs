@@ -48,7 +48,7 @@ Here are a few options people change most often:
 Choose the model Codex uses by default in the CLI and IDE.
 
 ```
-model = "gpt-5.2"
+model = "gpt-5.4"
 ```
 
 #### Approval prompts
@@ -73,7 +73,7 @@ For mode-by-mode behavior (including protected `.git`/`.codex` paths and network
 
 #### Windows sandbox mode
 
-When running Codex natively on Windows, set the native sandbox mode to `elevated` in the `windows` table. Use `unelevated` only if you do not have administrator permissions or if elevated setup fails.
+When running Codex natively on Windows, set the native sandbox mode to `elevated` in the `windows` table. Use `unelevated` only if you don’t have administrator permissions or if elevated setup fails.
 
 ```
 [windows]

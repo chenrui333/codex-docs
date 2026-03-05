@@ -2,7 +2,7 @@
 
 Source: https://developers.openai.com/codex/config-sample
 
-Use this example configuration as a starting point. It includes most keys Codex reads from `config.toml`, along with defaults and short notes.
+Use this example configuration as a starting point. It includes most keys Codex reads from `config.toml`, along with default behaviors, recommended values where helpful, and short notes.
 
 For explanations and guidance, see:
 
@@ -17,9 +17,8 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 ```
 # Codex example configuration (config.toml)
 #
-# This file lists all keys Codex reads from config.toml, their default values,
-# and concise explanations. Values here mirror the effective defaults compiled
-# into the CLI. Adjust as needed.
+# This file lists all keys Codex reads from config.toml, along with default
+# behaviors, recommended examples, and concise explanations. Adjust as needed.
 #
 # Notes
 # - Root keys must appear before tables in TOML.
@@ -30,15 +29,15 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 # Core Model Selection
 ################################################################################
 
-# Primary model used by Codex. Default: "gpt-5.2-codex" on all platforms.
-model = "gpt-5.2-codex"
+# Primary model used by Codex. Recommended example for most users: "gpt-5.4".
+model = "gpt-5.4"
 
 # Default communication style for supported models. Default: "friendly".
 # Allowed values: none | friendly | pragmatic
 # personality = "friendly"
 
 # Optional model override for /review. Default: unset (uses current session model).
-# review_model = "gpt-5.2-codex"
+# review_model = "gpt-5.4"
 
 # Provider id selected from [model_providers]. Default: "openai".
 model_provider = "openai"
@@ -50,7 +49,7 @@ model_provider = "openai"
 # Uncomment to force values.
 # model_context_window = 128000       # tokens; default: auto for model
 # model_auto_compact_token_limit = 0  # tokens; unset uses model defaults
-# tool_output_token_limit = 10000     # tokens stored per tool output; default: 10000 for gpt-5.2-codex
+# tool_output_token_limit = 10000     # tokens stored per tool output
 # model_catalog_json = "/absolute/path/to/models.json" # optional startup-only model catalog override
 # background_terminal_max_timeout = 300000 # ms; max empty write_stdin poll window (default 5m)
 # log_dir = "/absolute/path/to/codex-logs" # directory for Codex logs; default: "$CODEX_HOME/log"
@@ -60,7 +59,7 @@ model_provider = "openai"
 # Reasoning & Verbosity (Responses API capable models)
 ################################################################################
 
-# Reasoning effort: minimal | low | medium | high | xhigh (default: medium; xhigh on gpt-5.2-codex and gpt-5.2)
+# Reasoning effort: minimal | low | medium | high | xhigh (default: medium; `xhigh` availability is model-dependent)
 model_reasoning_effort = "medium"
 
 # Reasoning summary: auto | concise | detailed | none (default: auto)
@@ -440,7 +439,7 @@ enabled = true
 [profiles]
 
 # [profiles.default]
-# model = "gpt-5.2-codex"
+# model = "gpt-5.4"
 # model_provider = "openai"
 # approval_policy = "on-request"
 # sandbox_mode = "read-only"
@@ -538,7 +537,9 @@ trace_exporter = "none"
 
 [windows]
 
-# Native Windows sandbox mode (Windows only): unelevated | elevated
+# Native Windows sandbox mode (Windows only). The example below uses the
 
-sandbox = “unelevated”
+# recommended elevated mode.
+
+sandbox = “elevated”
 

@@ -7,7 +7,7 @@
       "source_url": "https://developers.openai.com/codex/ambassadors"
     },
     "developers.openai.com/codex/app-server/index.md": {
-      "sha256": "440d8f6be0fcff46775a616225ec12121bf4117cc17f4d998e0aae39e9f80929",
+      "sha256": "7cfc0e9e2c082ddd85160148069abfc9d33db2aaa2c113747f49a873e4e7aaff",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app-server"
     },
@@ -72,12 +72,12 @@
       "source_url": "https://developers.openai.com/codex/changelog"
     },
     "developers.openai.com/codex/cli/features/index.md": {
-      "sha256": "083cbe420b518db51ed1df9410513dc069a4f0e80ad12904d39cdf544a642b32",
+      "sha256": "471f5c3e0390cbc4bde8c405ce7d6e67a253f8615a9859f3df25e8a14df1dd7b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
     "developers.openai.com/codex/cli/index.md": {
-      "sha256": "3ad2621221251ef4158a34b8fcd112b368150d1d3942ba505b866ad0ab585e2f",
+      "sha256": "4a2d695e9dd10570a54f5f90e85d70091f00651f70964fbd4299c2174241f74b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli"
     },
@@ -127,12 +127,12 @@
       "source_url": "https://developers.openai.com/codex/concepts/multi-agents"
     },
     "developers.openai.com/codex/config-advanced/index.md": {
-      "sha256": "52a58fe5fa5f8ca50a3b25ace29354674e002ed9bde21b76df550542d8a0abb2",
+      "sha256": "3910425970092b3f142dde53fde7fda6bf3b3aa2fd0d9bcbd3b17f17da417ded",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-advanced"
     },
     "developers.openai.com/codex/config-basic/index.md": {
-      "sha256": "603d918ad2bd4b95b26fa32fa3fb13942f1e61c54229d3483b17f7fe190c95d3",
+      "sha256": "c322f1f0a0091269eccf46d49739fad7d2e771caaf3ea3c6a65796747f3430b1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
@@ -142,7 +142,7 @@
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "436961294015e563e1e6186572e22d6019d455727464c91f18f1ffef83b9fe79",
+      "sha256": "b87cc23a8e356fc638f64f87c1167c4c63907c1cabce995043262827e1d4ce48",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
@@ -247,7 +247,7 @@
       "source_url": "https://developers.openai.com/codex/mcp"
     },
     "developers.openai.com/codex/models/index.md": {
-      "sha256": "c17416700c7e1f16cb2e517bd23ce7b24bf1fd4a054730a13f5f2cb276ab9e31",
+      "sha256": "0e5741c3013d59e43e5382099c14f1ad9698b4ae3e2e8e5779139398093fa07a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/models"
     },
@@ -272,7 +272,7 @@
       "source_url": "https://developers.openai.com/codex/overview"
     },
     "developers.openai.com/codex/pricing/index.md": {
-      "sha256": "b5da423c1521f1672d3c8cdce358689b7f6a0ec4b649763d2d2c8c46245fe2de",
+      "sha256": "ecba5a826077e931090eaf6b35852c82c4559f0848065a2fc6a3bdf3668d46b7",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
@@ -305,6 +305,11 @@
       "sha256": "64a813c0cd69cd1696b15aa1ac434cd6f113043bc8dc9659b522c68c203734ce",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/skills"
+    },
+    "developers.openai.com/codex/speed/index.md": {
+      "sha256": "87b6b8842103d004700611099853ed3babb3a8435f3e2b95fc1314995220edf1",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/speed"
     },
     "developers.openai.com/codex/videos/index.md": {
       "sha256": "28e8888a7742f763a1df67d4e7a5fde6549b1d595afdfb13c79ab72ea42b09ce",

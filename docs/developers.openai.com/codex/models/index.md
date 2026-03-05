@@ -4,11 +4,35 @@ Source: https://developers.openai.com/codex/models
 
 ## Recommended models
 
+![gpt-5.4](/images/codex/codex-wallpaper-3.webp)
+
+gpt-5.4
+
+Flagship frontier model for professional work that brings the industry-leading coding capabilities of GPT-5.3-Codex together with stronger reasoning, tool use, and agentic workflows.
+
+codex -m gpt-5.4
+
+Copy command
+
+Capability
+
+Speed
+
+Codex CLI & SDK
+
+Codex app & IDE extension
+
+Codex Cloud
+
+ChatGPT Credits
+
+API Access
+
 ![gpt-5.3-codex](/images/codex/codex-wallpaper-1.webp)
 
 gpt-5.3-codex
 
-Most capable agentic coding model to date, combining frontier coding performance with stronger reasoning and professional knowledge capabilities.
+Industry-leading coding model for complex software engineering. Its coding capabilities now also power GPT-5.4.
 
 codex -m gpt-5.3-codex
 
@@ -52,8 +76,11 @@ ChatGPT Credits
 
 API Access
 
-The gpt-5.3-codex-spark model is available in research preview for ChatGPT Pro
-subscribers. It is optimized for near-instant, real-time coding iteration.
+For most tasks in Codex, start with `gpt-5.4`. It combines strong coding,
+reasoning, native computer use, and broader professional workflows in one
+model. The `gpt-5.3-codex-spark` model is available in research preview for
+ChatGPT Pro subscribers and is optimized for near-instant, real-time coding
+iteration.
 
 ## Alternative models
 
@@ -73,7 +100,7 @@ Show details
 
 gpt-5.2
 
-Our best general agentic model for tasks across industries and domains.
+Previous general-purpose model for coding and agentic tasks across industries and domains. Succeeded by GPT-5.4.
 
 codex -m gpt-5.2
 
@@ -169,7 +196,7 @@ future releases of Codex.
 The Codex CLI and IDE extension use the same `config.toml` [configuration file](/codex/config-basic). To specify a model, add a `model` entry to your configuration file. If you don’t specify a model, the Codex app, CLI, or IDE Extension defaults to a recommended model.
 
 ```
-model = "gpt-5.2"
+model = "gpt-5.4"
 ```
 
 ### Choosing a different local model temporarily
@@ -179,7 +206,7 @@ In the Codex CLI, you can use the `/model` command during an active thread to ch
 To start a new Codex CLI thread with a specific model or to specify the model for `codex exec` you can use the `--model`/`-m` flag:
 
 ```
-codex -m gpt-5.3-codex
+codex -m gpt-5.4
 ```
 
 ### Choosing your model for cloud tasks

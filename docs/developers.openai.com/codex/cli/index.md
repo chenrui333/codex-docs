@@ -57,7 +57,7 @@ and follow our [Windows setup guide](/codex/windows).
 
 Run `codex` to start an interactive terminal UI (TUI) session.](/codex/cli/features#running-in-interactive-mode)[### Control model and reasoning
 
-Use `/model` to switch between GPT-5.3-Codex and other available models, or adjust reasoning levels.](/codex/cli/features#models-reasoning)[### Image inputs
+Use `/model` to switch between GPT-5.4, GPT-5.3-Codex, and other available models, or adjust reasoning levels.](/codex/cli/features#models-reasoning)[### Image inputs
 
 Attach screenshots or design specs so Codex reads them alongside your prompt.](/codex/cli/features#image-inputs)[### Run local code review
 

@@ -48,12 +48,12 @@ Each resumed run keeps the original transcript, plan history, and approvals, so 
 
 ## Models and reasoning
 
-For most coding tasks in Codex, `gpt-5.3-codex` is the go-to model. It’s available for ChatGPT-authenticated Codex sessions in the Codex app, CLI, IDE extension, and Codex Cloud. For extra fast tasks, ChatGPT Pro subscribers have access to the GPT-5.3-Codex-Spark model in research preview.
+For most tasks in Codex, `gpt-5.4` is the recommended model. It brings the industry-leading coding capabilities of `gpt-5.3-codex` to OpenAI’s flagship frontier model, combining frontier coding performance with stronger reasoning, native computer use, and broader professional workflows. For extra fast tasks, ChatGPT Pro subscribers have access to the GPT-5.3-Codex-Spark model in research preview.
 
-Switch models mid-session with the /model command, or specify one when launching the CLI.
+Switch models mid-session with the `/model` command, or specify one when launching the CLI.
 
 ```
-codex --model gpt-5.3-codex
+codex --model gpt-5.4
 ```
 
 [Learn more about the models available in Codex](/codex/models).

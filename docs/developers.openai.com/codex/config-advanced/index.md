@@ -47,10 +47,10 @@ Examples:
 
 ```
 # Dedicated flag
-codex --model gpt-5.2
+codex --model gpt-5.4
 
 # Generic key/value override (value is TOML, not JSON)
-codex --config model='"gpt-5.2"'
+codex --config model='"gpt-5.4"'
 codex --config sandbox_workspace_write.network_access=true
 codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
 ```
@@ -192,9 +192,9 @@ model_context_window = 128000             # Context window size
 
 Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access).
 
-For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/security#protected-paths-in-writable-roots), and [Network access](/codex/security#network-access).
+For operational details people often miss while editing `config.toml`, see [Common sandbox and approval combinations](/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/security#protected-paths-in-writable-roots), and [Network access](/codex/security#network-access).
 
-You can also use a granular reject policy (`approval_policy = { reject = { ... } }`) to auto-reject only selected prompt categories (sandbox approvals, execpolicy rule prompts, or MCP elicitations) while keeping other prompts interactive.
+You can also use a granular reject policy (`approval_policy = { reject = { ... } }`) to auto-reject only selected prompt categories, such as sandbox approvals, `execpolicy` rule prompts, or MCP input requests (`mcp_elicitations`), while keeping other prompts interactive.
 
 ```
 approval_policy = "untrusted"   # Other options: on-request, never, or { reject = { ... } }

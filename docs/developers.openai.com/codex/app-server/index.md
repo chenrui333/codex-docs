@@ -246,14 +246,13 @@ Call `model/list` to discover available models and their capabilities before ren
 { "method": "model/list", "id": 6, "params": { "limit": 20, "includeHidden": false } }
 { "id": 6, "result": {
   "data": [{
-    "id": "gpt-5.2-codex",
-    "model": "gpt-5.2-codex",
-    "upgrade": "gpt-5.3-codex",
-    "displayName": "GPT-5.2 Codex",
+    "id": "gpt-5.4",
+    "model": "gpt-5.4",
+    "displayName": "GPT-5.4",
     "hidden": false,
     "defaultReasoningEffort": "medium",
-    "reasoningEffort": [{
-      "effort": "low",
+    "supportedReasoningEfforts": [{
+      "reasoningEffort": "low",
       "description": "Lower latency"
     }],
     "inputModalities": ["text", "image"],
@@ -266,9 +265,10 @@ Call `model/list` to discover available models and their capabilities before ren
 
 Each model entry can include:
 
-- `reasoningEffort` - supported effort options for the model.
+- `supportedReasoningEfforts` - supported effort options for the model.
 - `defaultReasoningEffort` - suggested default effort for clients.
 - `upgrade` - optional recommended upgrade model id for migration prompts in clients.
+- `upgradeInfo` - optional upgrade metadata for migration prompts in clients.
 - `hidden` - whether the model is hidden from the default picker list.
 - `inputModalities` - supported input types for the model (for example `text`, `image`).
 - `supportsPersonality` - whether the model supports personality-specific instructions such as `/personality`.
@@ -870,7 +870,7 @@ Order of messages:
 
 When `networkApprovalContext` is present, the prompt is for managed network access (not a general shell-command approval). The current v2 schema exposes the target `host` and `protocol`; clients should render a network-specific prompt and not rely on `command` being a user-meaningful shell command preview.
 
-Codex deduplicates concurrent network approval prompts by destination (`host`, protocol, and port). The app-server may therefore send one prompt that unblocks multiple queued requests to the same destination, while different ports on the same host are treated separately.
+Codex groups concurrent network approval prompts by destination (`host`, protocol, and port). The app-server may therefore send one prompt that unblocks multiple queued requests to the same destination, while different ports on the same host are treated separately.
 
 ### File change approvals
 
