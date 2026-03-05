@@ -80,7 +80,6 @@
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
-      "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb",
@@ -92,8 +91,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 89,
-      "mirrored_urls": 77,
+      "codex_related_urls": 88,
+      "mirrored_urls": 76,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -172,7 +171,6 @@
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
-      "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
@@ -201,7 +199,7 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-03-03T06:21:38+00:00",
+  "generated_at": "2026-03-05T00:34:23+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,

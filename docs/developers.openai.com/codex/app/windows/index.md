@@ -163,3 +163,9 @@ and PowerShell otherwise.
 If you don’t have Git installed natively on Windows, the app can’t use some
 features. Install it with `winget install Git.Git` from PowerShell or `cmd.exe`.
 
+### Cmder is not listed in the open dialog
+
+If Cmder is installed but doesn’t show in Codex’s open dialog, add it to the
+Windows Start Menu: right-click Cmder and choose **Add to Start**, then restart
+Codex or reboot.
+

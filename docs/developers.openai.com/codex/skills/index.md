@@ -69,10 +69,10 @@ Codex supports symlinked skill folders and follows the symlink target when scann
 
 ## Install skills
 
-To install skills beyond the built-ins, use `$skill-installer`:
+To install skills beyond the built-ins, use `$skill-installer`. For example, to install the `$linear` skill:
 
 ```
-$skill-installer install the linear skill from the .experimental folder
+$skill-installer linear
 ```
 
 You can also prompt the installer to download skills from other repositories. Codex detects newly installed skills automatically; if one doesn’t appear, restart Codex.

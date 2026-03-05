@@ -52,7 +52,7 @@
       "source_url": "https://developers.openai.com/codex/app/troubleshooting"
     },
     "developers.openai.com/codex/app/windows/index.md": {
-      "sha256": "1887999116ec526e03c50e8c309f8ec89a146a0118d231bc5cd528dc3383f858",
+      "sha256": "859fa84d7d99bc37567f7eb34ae66e0978b356baa45c8a0d3837e55c0e4887fc",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/windows"
     },
@@ -302,7 +302,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/skills/index.md": {
-      "sha256": "f8b682fc008d322381cec51977f3219412ed7a8325050ee7c190be16c14a5eed",
+      "sha256": "64a813c0cd69cd1696b15aa1ac434cd6f113043bc8dc9659b522c68c203734ce",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/skills"
     },
@@ -361,11 +361,6 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github"
     },
-    "developers.openai.com/cookbook/examples/codex/long_horizon_tasks/index.md": {
-      "sha256": "f5156052534009739637dfd41582d5e71cffb294a17b6d449df865328c7b9031",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/cookbook/examples/codex/long_horizon_tasks"
-    },
     "developers.openai.com/cookbook/examples/codex/secure_quality_gitlab/index.md": {
       "sha256": "e8fad14f2d29999eb7fee88981567e3b86b406f2477b174375426632d2e6ccac",
       "source_type": "developers",
@@ -377,7 +372,7 @@
       "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
     },
     "developers.openai.com/cookbook/topic/codex/index.md": {
-      "sha256": "f8d6cfeb774ef524cf5d11f93cc62d56df9a551fa1e81b2f7d9e38eadaa1b0bd",
+      "sha256": "cef142612259ee21d52baac8a8cf57d659a5f77f2fb4bd998d5a1a9ff1acf375",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },
