@@ -23,6 +23,13 @@ To update the app, open the Microsoft Store, go to **Downloads**, and click
 For enterprises, administrators can deploy the app with Microsoft Store app
 distribution through enterprise management tools.
 
+If you prefer a command-line install path, or need an alternative to opening
+the Microsoft Store UI, run:
+
+```
+winget install --id 9PLM9XGG6VKS
+```
+
 ## Customize for your dev setup
 
 ### Preferred editor
@@ -158,10 +165,37 @@ Actions run in the environment used by your integrated terminal. See
 Local setup scripts run in the agent environment: WSL if the agent uses WSL,
 and PowerShell otherwise.
 
+### Share config, auth, and sessions with WSL
+
+The Windows app uses the same Codex home directory as native Codex on Windows:
+`%USERPROFILE%\.codex`.
+
+If you also run the Codex CLI inside WSL, the CLI uses the Linux home
+directory by default, so it does not automatically share configuration, cached
+auth, or session history with the Windows app.
+
+To share them, use one of these approaches:
+
+- Sync WSL `~/.codex` with `%USERPROFILE%\.codex` on your file system.
+- Point WSL at the Windows Codex home directory by setting `CODEX_HOME`:
+
+```
+export CODEX_HOME=/mnt/c/Users/<windows-user>/.codex
+```
+
+If you want that setting in every shell, add it to your WSL shell profile, such
+as `~/.bashrc` or `~/.zshrc`.
+
 ### Git features are unavailable
 
 If you don’t have Git installed natively on Windows, the app can’t use some
 features. Install it with `winget install Git.Git` from PowerShell or `cmd.exe`.
+
+### Git isn’t detected for projects opened from `\\wsl$`
+
+For now, if you want to use the Windows-native agent with a project that is
+also accessible from WSL, the most reliable workaround is to store the project
+on the native Windows drive and access it in WSL through `/mnt/<drive>/...`.
 
 ### Cmder is not listed in the open dialog
 
