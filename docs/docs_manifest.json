@@ -7,7 +7,7 @@
       "source_url": "https://developers.openai.com/codex/ambassadors"
     },
     "developers.openai.com/codex/app-server/index.md": {
-      "sha256": "7cfc0e9e2c082ddd85160148069abfc9d33db2aaa2c113747f49a873e4e7aaff",
+      "sha256": "ef58c356f75ccf207e8f00982418bddb998afe57424bf0c6e1601e8cb8863533",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app-server"
     },
@@ -52,7 +52,7 @@
       "source_url": "https://developers.openai.com/codex/app/troubleshooting"
     },
     "developers.openai.com/codex/app/windows/index.md": {
-      "sha256": "1ad098e9b9b703434944fd32cb46b509966f060a5b1acadbc55b3e3cd2c06bcc",
+      "sha256": "c86b8ff2dde9b48ac41e192120324f7ae820256c158b700d5a50d0e129b2ed74",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/windows"
     },
@@ -82,7 +82,7 @@
       "source_url": "https://developers.openai.com/codex/cli"
     },
     "developers.openai.com/codex/cli/reference/index.md": {
-      "sha256": "db51c57fb34fa8ed7d056b942adc0e13dbcd214ed13afc9a20218c096d0439d8",
+      "sha256": "4ee9a36edbdaa5fe215a88f58454776f942cbc9a4967a8f2618884a05099448d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/reference"
     },
@@ -137,7 +137,7 @@
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "0b82377da492f5a3530f7a32f5abb48aa35e72917a45dd2a9be34d6cf64cc43a",
+      "sha256": "d8a19c38a74f69da3fdc1af7af2fcf1d5a301d7b2be7b5bd7fefdcd616f01762",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
@@ -162,7 +162,7 @@
       "source_url": "https://developers.openai.com/codex/enterprise/governance"
     },
     "developers.openai.com/codex/enterprise/managed-configuration/index.md": {
-      "sha256": "867ef4a460c5b844f2ce3c58210a2d83176a4afe743af1157fd5617edce0c2c4",
+      "sha256": "05b6657fcfe460c54736ec20e5647ebf593454dc532c75fa0642196ce300dc75",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
@@ -247,7 +247,7 @@
       "source_url": "https://developers.openai.com/codex/mcp"
     },
     "developers.openai.com/codex/models/index.md": {
-      "sha256": "0e5741c3013d59e43e5382099c14f1ad9698b4ae3e2e8e5779139398093fa07a",
+      "sha256": "a3afc9fc6075e01574077ef67efa378c8efbb17768b0462d55e2ff43dc51f7f1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/models"
     },
@@ -502,7 +502,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
     },
     "github.openai.com/openai/codex/docs/js_repl.md": {
-      "sha256": "04d04add3beb276ba53f6f76409074a738bdf5ce494cf5a69334d11ceeb90fec",
+      "sha256": "58c6525e130420d8e5fb5f761f12d6092fa1e3f8a6f63c0e3e02d56c19b2ca7a",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/js_repl.md"
     },

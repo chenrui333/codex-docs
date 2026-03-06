@@ -1,20 +1,17 @@
 {
-  "added": [
-    "developers.openai.com/codex/speed/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-05T18:41:05+00:00",
+  "generated_at": "2026-03-06T00:38:12+00:00",
   "removed": [],
   "total_files": 113,
   "updated": [
     "developers.openai.com/codex/app-server/index.md",
-    "developers.openai.com/codex/cli/features/index.md",
-    "developers.openai.com/codex/cli/index.md",
-    "developers.openai.com/codex/config-advanced/index.md",
-    "developers.openai.com/codex/config-basic/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
+    "developers.openai.com/codex/app/windows/index.md",
+    "developers.openai.com/codex/cli/reference/index.md",
+    "developers.openai.com/codex/config-reference/index.md",
+    "developers.openai.com/codex/enterprise/managed-configuration/index.md",
     "developers.openai.com/codex/models/index.md",
-    "developers.openai.com/codex/pricing/index.md"
+    "github.openai.com/openai/codex/docs/js_repl.md"
   ]
 }

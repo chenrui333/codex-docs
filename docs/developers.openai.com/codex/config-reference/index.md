@@ -14,25 +14,25 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | --- | --- | --- |
 | `agents.<name>.config_file` | `string (path)` | Path to a TOML config layer for that role; relative paths resolve from the config file that declares the role. |
 | `agents.<name>.description` | `string` | Role guidance shown to Codex when choosing and spawning that agent type. |
-| `agents.job_max_runtime_seconds` | `number` | Default per-worker timeout for `spawn\_agents\_on\_csv` jobs. When unset, the tool falls back to 1800 seconds per worker. |
+| `agents.job_max_runtime_seconds` | `number` | Default per-worker timeout for `spawn_agents_on_csv` jobs. When unset, the tool falls back to 1800 seconds per worker. |
 | `agents.max_depth` | `number` | Maximum nesting depth allowed for spawned agent threads (root sessions start at depth 0; default: 1). |
 | `agents.max_threads` | `number` | Maximum number of agent threads that can be open concurrently. |
 | `allow_login_shell` | `boolean` | Allow shell-based tools to use login-shell semantics. Defaults to `true`; when `false`, `login = true` requests are rejected and omitted `login` defaults to non-login shells. |
-| `approval_policy` | `untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }` | Controls when Codex pauses for approval before executing commands. You can also use `approval\_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs. |
+| `approval_policy` | `untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }` | Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs. |
 | `approval_policy.reject.mcp_elicitations` | `boolean` | When `true`, MCP elicitation prompts are auto-rejected instead of shown to the user. |
 | `approval_policy.reject.rules` | `boolean` | When `true`, approvals triggered by execpolicy `prompt` rules are auto-rejected. |
 | `approval_policy.reject.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are auto-rejected. |
-| `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive\_hint = true`. |
+| `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive_hint = true`. |
 | `apps._default.enabled` | `boolean` | Default app enabled state for all apps unless overridden per app. |
-| `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open\_world\_hint = true`. |
+| `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open_world_hint = true`. |
 | `apps.<id>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for tools in this app unless a per-tool override exists. |
 | `apps.<id>.default_tools_enabled` | `boolean` | Default enabled state for tools in this app unless a per-tool override exists. |
-| `apps.<id>.destructive_enabled` | `boolean` | Allow or block tools in this app that advertise `destructive\_hint = true`. |
+| `apps.<id>.destructive_enabled` | `boolean` | Allow or block tools in this app that advertise `destructive_hint = true`. |
 | `apps.<id>.enabled` | `boolean` | Enable or disable a specific app/connector by id (default: true). |
-| `apps.<id>.open_world_enabled` | `boolean` | Allow or block tools in this app that advertise `open\_world\_hint = true`. |
+| `apps.<id>.open_world_enabled` | `boolean` | Allow or block tools in this app that advertise `open_world_hint = true`. |
 | `apps.<id>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Per-tool approval behavior override for a single app tool. |
 | `apps.<id>.tools.<tool>.enabled` | `boolean` | Per-tool enabled override for an app tool (for example `repos/list`). |
-| `background_terminal_max_timeout` | `number` | Maximum poll window in milliseconds for empty `write\_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background\_terminal\_timeout` key. |
+| `background_terminal_max_timeout` | `number` | Maximum poll window in milliseconds for empty `write_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background_terminal_timeout` key. |
 | `chatgpt_base_url` | `string` | Override the base URL used during the ChatGPT login flow. |
 | `check_for_update_on_startup` | `boolean` | Check for Codex updates on startup (set to false only when updates are centrally managed). |
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
@@ -40,27 +40,27 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `developer_instructions` | `string` | Additional developer instructions injected into the session (optional). |
 | `disable_paste_burst` | `boolean` | Disable burst-paste detection in the TUI. |
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
-| `experimental_use_freeform_apply_patch` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform` or `codex --enable apply\_patch\_freeform`. |
-| `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified\_exec` or `codex --enable unified\_exec`. |
-| `features.apply_patch_freeform` | `boolean` | Expose the freeform `apply\_patch` tool (experimental). |
+| `experimental_use_freeform_apply_patch` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform` or `codex --enable apply_patch_freeform`. |
+| `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
+| `features.apply_patch_freeform` | `boolean` | Expose the freeform `apply_patch` tool (experimental). |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
 | `features.apps_mcp_gateway` | `boolean` | Route Apps MCP calls through the OpenAI connectors MCP gateway (`https://api.openai.com/v1/connectors/mcp/`) instead of legacy routing (experimental). |
 | `features.child_agents_md` | `boolean` | Append AGENTS.md scope/precedence guidance even when no AGENTS.md is present (experimental). |
 | `features.collaboration_modes` | `boolean` | Enable collaboration modes such as plan mode (stable; on by default). |
-| `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, `close\_agent`, and `spawn\_agents\_on\_csv`) (experimental; off by default). |
+| `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait`, `close_agent`, and `spawn_agents_on_csv`) (experimental; off by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.powershell_utf8` | `boolean` | Force PowerShell UTF-8 output (defaults to true). |
 | `features.remote_models` | `boolean` | Refresh remote model list before showing readiness (experimental). |
-| `features.request_rule` | `boolean` | Enable Smart approvals (`prefix\_rule` suggestions on escalation requests; stable; on by default). |
+| `features.request_rule` | `boolean` | Enable Smart approvals (`prefix_rule` suggestions on escalation requests; stable; on by default). |
 | `features.runtime_metrics` | `boolean` | Show runtime metrics summary in TUI turn separators (experimental). |
-| `features.search_tool` | `boolean` | Enable `search\_tool\_bm25` for Apps tool discovery before invoking app MCP tools (experimental). |
+| `features.search_tool` | `boolean` | Enable `search_tool_bm25` for Apps tool discovery before invoking app MCP tools (experimental). |
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (beta). |
 | `features.shell_tool` | `boolean` | Enable the default `shell` tool for running commands (stable; on by default). |
 | `features.unified_exec` | `boolean` | Use the unified PTY-backed exec tool (beta). |
 | `features.use_linux_sandbox_bwrap` | `boolean` | Use the bubblewrap-based Linux sandbox pipeline (experimental; off by default). |
-| `features.web_search` | `boolean` | Deprecated legacy toggle; prefer the top-level `web\_search` setting. |
-| `features.web_search_cached` | `boolean` | Deprecated legacy toggle. When `web\_search` is unset, true maps to `web\_search = "cached"`. |
-| `features.web_search_request` | `boolean` | Deprecated legacy toggle. When `web\_search` is unset, true maps to `web\_search = "live"`. |
+| `features.web_search` | `boolean` | Deprecated legacy toggle; prefer the top-level `web_search` setting. |
+| `features.web_search_cached` | `boolean` | Deprecated legacy toggle. When `web_search` is unset, true maps to `web_search = "cached"`. |
+| `features.web_search_request` | `boolean` | Deprecated legacy toggle. When `web_search` is unset, true maps to `web_search = "live"`. |
 | `feedback.enabled` | `boolean` | Enable feedback submission via `/feedback` across Codex surfaces (default: true). |
 | `file_opener` | `vscode | vscode-insiders | windsurf | cursor | none` | URI scheme used to open citations from Codex output (default: `vscode`). |
 | `forced_chatgpt_workspace_id` | `string (uuid)` | Limit ChatGPT logins to a specific workspace identifier. |
@@ -68,17 +68,17 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `hide_agent_reasoning` | `boolean` | Suppress reasoning events in both the TUI and `codex exec` output. |
 | `history.max_bytes` | `number` | If set, caps the history file size in bytes by dropping oldest entries. |
 | `history.persistence` | `save-all | none` | Control whether Codex saves session transcripts to history.jsonl. |
-| `include_apply_patch_tool` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`. |
-| `instructions` | `string` | Reserved for future use; prefer `model\_instructions\_file` or `AGENTS.md`. |
-| `log_dir` | `string (path)` | Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX\_HOME/log`. |
+| `include_apply_patch_tool` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform`. |
+| `instructions` | `string` | Reserved for future use; prefer `model_instructions_file` or `AGENTS.md`. |
+| `log_dir` | `string (path)` | Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX_HOME/log`. |
 | `mcp_oauth_callback_port` | `integer` | Optional fixed port for the local HTTP callback server used during MCP OAuth login. When unset, Codex binds to an ephemeral port chosen by the OS. |
-| `mcp_oauth_callback_url` | `string` | Optional redirect URI override for MCP OAuth login (for example, a devbox ingress URL). `mcp\_oauth\_callback\_port` still controls the callback listener port. |
+| `mcp_oauth_callback_url` | `string` | Optional redirect URI override for MCP OAuth login (for example, a devbox ingress URL). `mcp_oauth_callback_port` still controls the callback listener port. |
 | `mcp_oauth_credentials_store` | `auto | file | keyring` | Preferred store for MCP OAuth credentials. |
 | `mcp_servers.<id>.args` | `array<string>` | Arguments passed to the MCP stdio server command. |
 | `mcp_servers.<id>.bearer_token_env_var` | `string` | Environment variable sourcing the bearer token for an MCP HTTP server. |
 | `mcp_servers.<id>.command` | `string` | Launcher command for an MCP stdio server. |
 | `mcp_servers.<id>.cwd` | `string` | Working directory for the MCP stdio server process. |
-| `mcp_servers.<id>.disabled_tools` | `array<string>` | Deny list applied after `enabled\_tools` for the MCP server. |
+| `mcp_servers.<id>.disabled_tools` | `array<string>` | Deny list applied after `enabled_tools` for the MCP server. |
 | `mcp_servers.<id>.enabled` | `boolean` | Disable an MCP server without removing its configuration. |
 | `mcp_servers.<id>.enabled_tools` | `array<string>` | Allow list of tool names exposed by the MCP server. |
 | `mcp_servers.<id>.env` | `map<string,string>` | Environment variables forwarded to the MCP stdio server. |
@@ -86,21 +86,21 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.env_vars` | `array<string>` | Additional environment variables to whitelist for an MCP stdio server. |
 | `mcp_servers.<id>.http_headers` | `map<string,string>` | Static HTTP headers included with each MCP HTTP request. |
 | `mcp_servers.<id>.required` | `boolean` | When true, fail startup/resume if this enabled MCP server cannot initialize. |
-| `mcp_servers.<id>.startup_timeout_ms` | `number` | Alias for `startup\_timeout\_sec` in milliseconds. |
+| `mcp_servers.<id>.startup_timeout_ms` | `number` | Alias for `startup_timeout_sec` in milliseconds. |
 | `mcp_servers.<id>.startup_timeout_sec` | `number` | Override the default 10s startup timeout for an MCP server. |
 | `mcp_servers.<id>.tool_timeout_sec` | `number` | Override the default 60s per-tool timeout for an MCP server. |
 | `mcp_servers.<id>.url` | `string` | Endpoint for an MCP streamable HTTP server. |
 | `model` | `string` | Model to use (e.g., `gpt-5-codex`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
-| `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model\_catalog\_json` can override this per profile. |
+| `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile. |
 | `model_context_window` | `number` | Context window tokens available to the active model. |
 | `model_instructions_file` | `string (path)` | Replacement for built-in instructions instead of `AGENTS.md`. |
-| `model_provider` | `string` | Provider id from `model\_providers` (default: `openai`). |
+| `model_provider` | `string` | Provider id from `model_providers` (default: `openai`). |
 | `model_providers.<id>.base_url` | `string` | API base URL for the model provider. |
 | `model_providers.<id>.env_http_headers` | `map<string,string>` | HTTP headers populated from environment variables when present. |
 | `model_providers.<id>.env_key` | `string` | Environment variable supplying the provider API key. |
 | `model_providers.<id>.env_key_instructions` | `string` | Optional setup guidance for the provider API key. |
-| `model_providers.<id>.experimental_bearer_token` | `string` | Direct bearer token for the provider (discouraged; use `env\_key`). |
+| `model_providers.<id>.experimental_bearer_token` | `string` | Direct bearer token for the provider (discouraged; use `env_key`). |
 | `model_providers.<id>.http_headers` | `map<string,string>` | Static HTTP headers added to provider requests. |
 | `model_providers.<id>.name` | `string` | Display name for a custom model provider. |
 | `model_providers.<id>.query_params` | `map<string,string>` | Extra query parameters appended to provider requests. |
@@ -140,10 +140,10 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
 | `profile` | `string` | Default profile applied at startup (equivalent to `--profile`). |
 | `profiles.<name>.*` | `various` | Profile-scoped overrides for any of the supported configuration keys. |
-| `profiles.<name>.experimental_use_freeform_apply_patch` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`. |
-| `profiles.<name>.experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified\_exec`. |
-| `profiles.<name>.include_apply_patch_tool` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`. |
-| `profiles.<name>.model_catalog_json` | `string (path)` | Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model\_catalog\_json` for that profile). |
+| `profiles.<name>.experimental_use_freeform_apply_patch` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform`. |
+| `profiles.<name>.experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec`. |
+| `profiles.<name>.include_apply_patch_tool` | `boolean` | Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform`. |
+| `profiles.<name>.model_catalog_json` | `string (path)` | Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model_catalog_json` for that profile). |
 | `profiles.<name>.oss_provider` | `lmstudio | ollama` | Profile-scoped OSS provider for `--oss` sessions. |
 | `profiles.<name>.personality` | `none | friendly | pragmatic` | Profile-scoped communication style override for supported models. |
 | `profiles.<name>.web_search` | `disabled | cached | live` | Profile-scoped web search mode override (default: `"cached"`). |
@@ -156,7 +156,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `sandbox_workspace_write.exclude_slash_tmp` | `boolean` | Exclude `/tmp` from writable roots in workspace-write mode. |
 | `sandbox_workspace_write.exclude_tmpdir_env_var` | `boolean` | Exclude `$TMPDIR` from writable roots in workspace-write mode. |
 | `sandbox_workspace_write.network_access` | `boolean` | Allow outbound network access inside the workspace-write sandbox. |
-| `sandbox_workspace_write.writable_roots` | `array<string>` | Additional writable roots when `sandbox\_mode = "workspace-write"`. |
+| `sandbox_workspace_write.writable_roots` | `array<string>` | Additional writable roots when `sandbox_mode = "workspace-write"`. |
 | `shell_environment_policy.exclude` | `array<string>` | Glob patterns for removing environment variables after the defaults. |
 | `shell_environment_policy.experimental_use_profile` | `boolean` | Use the user shell profile when spawning subprocesses. |
 | `shell_environment_policy.ignore_default_excludes` | `boolean` | Keep variables containing KEY/SECRET/TOKEN before other filters run. |
@@ -170,7 +170,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `sqlite_home` | `string (path)` | Directory where Codex stores the SQLite-backed state DB used by agent jobs and other resumable runtime state. |
 | `suppress_unstable_features_warning` | `boolean` | Suppress the warning that appears when under-development feature flags are enabled. |
 | `tool_output_token_limit` | `number` | Token budget for storing individual tool/function outputs in history. |
-| `tools.web_search` | `boolean` | Deprecated legacy toggle for web search; prefer the top-level `web\_search` setting. |
+| `tools.web_search` | `boolean` | Deprecated legacy toggle for web search; prefer the top-level `web_search` setting. |
 | `tui` | `table` | TUI-specific options such as enabling inline desktop notifications. |
 | `tui.alternate_screen` | `auto | always | never` | Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback). |
 | `tui.animations` | `boolean` | Enable terminal animations (welcome screen, shimmer, spinner) (default: true). |
@@ -216,7 +216,7 @@ Type / Values
 
 Details
 
-Default per-worker timeout for `spawn\_agents\_on\_csv` jobs. When unset, the tool falls back to 1800 seconds per worker.
+Default per-worker timeout for `spawn_agents_on_csv` jobs. When unset, the tool falls back to 1800 seconds per worker.
 
 Key
 
@@ -264,7 +264,7 @@ Type / Values
 
 Details
 
-Controls when Codex pauses for approval before executing commands. You can also use `approval\_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.
+Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.
 
 Key
 
@@ -312,7 +312,7 @@ Type / Values
 
 Details
 
-Default allow/deny for app tools with `destructive\_hint = true`.
+Default allow/deny for app tools with `destructive_hint = true`.
 
 Key
 
@@ -336,7 +336,7 @@ Type / Values
 
 Details
 
-Default allow/deny for app tools with `open\_world\_hint = true`.
+Default allow/deny for app tools with `open_world_hint = true`.
 
 Key
 
@@ -372,7 +372,7 @@ Type / Values
 
 Details
 
-Allow or block tools in this app that advertise `destructive\_hint = true`.
+Allow or block tools in this app that advertise `destructive_hint = true`.
 
 Key
 
@@ -396,7 +396,7 @@ Type / Values
 
 Details
 
-Allow or block tools in this app that advertise `open\_world\_hint = true`.
+Allow or block tools in this app that advertise `open_world_hint = true`.
 
 Key
 
@@ -432,7 +432,7 @@ Type / Values
 
 Details
 
-Maximum poll window in milliseconds for empty `write\_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background\_terminal\_timeout` key.
+Maximum poll window in milliseconds for empty `write_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background_terminal_timeout` key.
 
 Key
 
@@ -528,7 +528,7 @@ Type / Values
 
 Details
 
-Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform` or `codex --enable apply\_patch\_freeform`.
+Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform` or `codex --enable apply_patch_freeform`.
 
 Key
 
@@ -540,7 +540,7 @@ Type / Values
 
 Details
 
-Legacy name for enabling unified exec; prefer `[features].unified\_exec` or `codex --enable unified\_exec`.
+Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`.
 
 Key
 
@@ -552,7 +552,7 @@ Type / Values
 
 Details
 
-Expose the freeform `apply\_patch` tool (experimental).
+Expose the freeform `apply_patch` tool (experimental).
 
 Key
 
@@ -612,7 +612,7 @@ Type / Values
 
 Details
 
-Enable multi-agent collaboration tools (`spawn\_agent`, `send\_input`, `resume\_agent`, `wait`, `close\_agent`, and `spawn\_agents\_on\_csv`) (experimental; off by default).
+Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait`, `close_agent`, and `spawn_agents_on_csv`) (experimental; off by default).
 
 Key
 
@@ -660,7 +660,7 @@ Type / Values
 
 Details
 
-Enable Smart approvals (`prefix\_rule` suggestions on escalation requests; stable; on by default).
+Enable Smart approvals (`prefix_rule` suggestions on escalation requests; stable; on by default).
 
 Key
 
@@ -684,7 +684,7 @@ Type / Values
 
 Details
 
-Enable `search\_tool\_bm25` for Apps tool discovery before invoking app MCP tools (experimental).
+Enable `search_tool_bm25` for Apps tool discovery before invoking app MCP tools (experimental).
 
 Key
 
@@ -744,7 +744,7 @@ Type / Values
 
 Details
 
-Deprecated legacy toggle; prefer the top-level `web\_search` setting.
+Deprecated legacy toggle; prefer the top-level `web_search` setting.
 
 Key
 
@@ -756,7 +756,7 @@ Type / Values
 
 Details
 
-Deprecated legacy toggle. When `web\_search` is unset, true maps to `web\_search = "cached"`.
+Deprecated legacy toggle. When `web_search` is unset, true maps to `web_search = "cached"`.
 
 Key
 
@@ -768,7 +768,7 @@ Type / Values
 
 Details
 
-Deprecated legacy toggle. When `web\_search` is unset, true maps to `web\_search = "live"`.
+Deprecated legacy toggle. When `web_search` is unset, true maps to `web_search = "live"`.
 
 Key
 
@@ -864,7 +864,7 @@ Type / Values
 
 Details
 
-Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`.
+Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform`.
 
 Key
 
@@ -876,7 +876,7 @@ Type / Values
 
 Details
 
-Reserved for future use; prefer `model\_instructions\_file` or `AGENTS.md`.
+Reserved for future use; prefer `model_instructions_file` or `AGENTS.md`.
 
 Key
 
@@ -888,7 +888,7 @@ Type / Values
 
 Details
 
-Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX\_HOME/log`.
+Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX_HOME/log`.
 
 Key
 
@@ -912,7 +912,7 @@ Type / Values
 
 Details
 
-Optional redirect URI override for MCP OAuth login (for example, a devbox ingress URL). `mcp\_oauth\_callback\_port` still controls the callback listener port.
+Optional redirect URI override for MCP OAuth login (for example, a devbox ingress URL). `mcp_oauth_callback_port` still controls the callback listener port.
 
 Key
 
@@ -984,7 +984,7 @@ Type / Values
 
 Details
 
-Deny list applied after `enabled\_tools` for the MCP server.
+Deny list applied after `enabled_tools` for the MCP server.
 
 Key
 
@@ -1080,7 +1080,7 @@ Type / Values
 
 Details
 
-Alias for `startup\_timeout\_sec` in milliseconds.
+Alias for `startup_timeout_sec` in milliseconds.
 
 Key
 
@@ -1152,7 +1152,7 @@ Type / Values
 
 Details
 
-Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model\_catalog\_json` can override this per profile.
+Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile.
 
 Key
 
@@ -1188,7 +1188,7 @@ Type / Values
 
 Details
 
-Provider id from `model\_providers` (default: `openai`).
+Provider id from `model_providers` (default: `openai`).
 
 Key
 
@@ -1248,7 +1248,7 @@ Type / Values
 
 Details
 
-Direct bearer token for the provider (discouraged; use `env\_key`).
+Direct bearer token for the provider (discouraged; use `env_key`).
 
 Key
 
@@ -1728,7 +1728,7 @@ Type / Values
 
 Details
 
-Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`.
+Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform`.
 
 Key
 
@@ -1740,7 +1740,7 @@ Type / Values
 
 Details
 
-Legacy name for enabling unified exec; prefer `[features].unified\_exec`.
+Legacy name for enabling unified exec; prefer `[features].unified_exec`.
 
 Key
 
@@ -1752,7 +1752,7 @@ Type / Values
 
 Details
 
-Legacy name for enabling freeform apply\_patch; prefer `[features].apply\_patch\_freeform`.
+Legacy name for enabling freeform apply\_patch; prefer `[features].apply_patch_freeform`.
 
 Key
 
@@ -1764,7 +1764,7 @@ Type / Values
 
 Details
 
-Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model\_catalog\_json` for that profile).
+Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model_catalog_json` for that profile).
 
 Key
 
@@ -1920,7 +1920,7 @@ Type / Values
 
 Details
 
-Additional writable roots when `sandbox\_mode = "workspace-write"`.
+Additional writable roots when `sandbox_mode = "workspace-write"`.
 
 Key
 
@@ -2088,7 +2088,7 @@ Type / Values
 
 Details
 
-Deprecated legacy toggle for web search; prefer the top-level `web\_search` setting.
+Deprecated legacy toggle for web search; prefer the top-level `web_search` setting.
 
 Key
 
@@ -2229,20 +2229,25 @@ Note: Rename `experimental_instructions_file` to `model_instructions_file`. Code
 For ChatGPT Business and Enterprise users, Codex can also apply cloud-fetched
 requirements. See the security page for precedence details.
 
+Use `[features]` in `requirements.toml` to pin feature flags by the same
+canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
+
 | Key | Type / Values | Details |
 | --- | --- | --- |
-| `allowed_approval_policies` | `array<string>` | Allowed values for `approval\_policy` (for example `untrusted`, `on-request`, `never`, and `reject`). |
-| `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox\_mode`. |
-| `allowed_web_search_modes` | `array<string>` | Allowed values for `web\_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `reject`). |
+| `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
+| `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
+| `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
 | `mcp_servers` | `table` | Allowlist of MCP servers that may be enabled. Both the server name (`<id>`) and its identity must match for the MCP server to be enabled. Any configured MCP server not in the allowlist (or with a mismatched identity) is disabled. |
 | `mcp_servers.<id>.identity` | `table` | Identity rule for a single MCP server. Set either `command` (stdio) or `url` (streamable HTTP). |
-| `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp\_servers.<id>.command` matches this command. |
-| `mcp_servers.<id>.identity.url` | `string` | Allow an MCP streamable HTTP server when its `mcp\_servers.<id>.url` matches this URL. |
+| `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command. |
+| `mcp_servers.<id>.identity.url` | `string` | Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL. |
 | `rules` | `table` | Admin-enforced command rules merged with `.rules` files. Requirements rules must be restrictive. |
 | `rules.prefix_rules` | `array<table>` | List of enforced prefix rules. Each rule must include `pattern` and `decision`. |
 | `rules.prefix_rules[].decision` | `prompt | forbidden` | Required. Requirements rules can only prompt or forbid (not allow). |
 | `rules.prefix_rules[].justification` | `string` | Optional non-empty rationale surfaced in approval prompts or rejection messages. |
-| `rules.prefix_rules[].pattern` | `array<table>` | Command prefix expressed as pattern tokens. Each token sets either `token` or `any\_of`. |
+| `rules.prefix_rules[].pattern` | `array<table>` | Command prefix expressed as pattern tokens. Each token sets either `token` or `any_of`. |
 | `rules.prefix_rules[].pattern[].any_of` | `array<string>` | A list of allowed alternative tokens at this position. |
 | `rules.prefix_rules[].pattern[].token` | `string` | A single literal token at this position. |
 
@@ -2256,7 +2261,7 @@ Type / Values
 
 Details
 
-Allowed values for `approval\_policy` (for example `untrusted`, `on-request`, `never`, and `reject`).
+Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `reject`).
 
 Key
 
@@ -2268,7 +2273,7 @@ Type / Values
 
 Details
 
-Allowed values for `sandbox\_mode`.
+Allowed values for `sandbox_mode`.
 
 Key
 
@@ -2280,7 +2285,31 @@ Type / Values
 
 Details
 
-Allowed values for `web\_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.
+Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.
+
+Key
+
+`features`
+
+Type / Values
+
+`table`
+
+Details
+
+Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table.
+
+Key
+
+`features.<name>`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Require a specific canonical feature key to stay enabled or disabled.
 
 Key
 
@@ -2316,7 +2345,7 @@ Type / Values
 
 Details
 
-Allow an MCP stdio server when its `mcp\_servers.<id>.command` matches this command.
+Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command.
 
 Key
 
@@ -2328,7 +2357,7 @@ Type / Values
 
 Details
 
-Allow an MCP streamable HTTP server when its `mcp\_servers.<id>.url` matches this URL.
+Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL.
 
 Key
 
@@ -2388,7 +2417,7 @@ Type / Values
 
 Details
 
-Command prefix expressed as pattern tokens. Each token sets either `token` or `any\_of`.
+Command prefix expressed as pattern tokens. Each token sets either `token` or `any_of`.
 
 Key
 

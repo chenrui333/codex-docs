@@ -25,11 +25,11 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--full-auto` | `boolean` | Shortcut for low-friction local work: sets `--ask-for-approval on-request` and `--sandbox workspace-write`. |
 | `--image, -i` | `path[,path...]` | Attach one or more image files to the initial prompt. Separate multiple paths with commas or repeat the flag. |
 | `--model, -m` | `string` | Override the model set in configuration (for example `gpt-5-codex`). |
-| `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate\_screen` for this run). |
-| `--oss` | `boolean` | Use the local open source model provider (equivalent to `-c model\_provider="oss"`). Validates that Ollama is running. |
+| `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run). |
+| `--oss` | `boolean` | Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running. |
 | `--profile, -p` | `string` | Configuration profile name to load from `~/.codex/config.toml`. |
 | `--sandbox, -s` | `read-only | workspace-write | danger-full-access` | Select the sandbox policy for model-generated shell commands. |
-| `--search` | `boolean` | Enable live web search (sets `web\_search = "live"` instead of the default `"cached"`). |
+| `--search` | `boolean` | Enable live web search (sets `web_search = "live"` instead of the default `"cached"`). |
 | `PROMPT` | `string` | Optional text instruction to start the session. Omit to launch the TUI without a pre-filled message. |
 
 Key
@@ -162,7 +162,7 @@ Type / Values
 
 Details
 
-Disable alternate screen mode for the TUI (overrides `tui.alternate\_screen` for this run).
+Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run).
 
 Key
 
@@ -174,7 +174,7 @@ Type / Values
 
 Details
 
-Use the local open source model provider (equivalent to `-c model\_provider="oss"`). Validates that Ollama is running.
+Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running.
 
 Key
 
@@ -210,7 +210,7 @@ Type / Values
 
 Details
 
-Enable live web search (sets `web\_search = "live"` instead of the default `"cached"`).
+Enable live web search (sets `web_search = "live"` instead of the default `"cached"`).
 
 Key
 
@@ -1096,7 +1096,7 @@ Authenticate the CLI with a ChatGPT account or API key. With no flags, Codex ope
 | Key | Type / Values | Details |
 | --- | --- | --- |
 | `--device-auth` | `boolean` | Use OAuth device code flow instead of launching a browser window. |
-| `--with-api-key` | `boolean` | Read an API key from stdin (for example `printenv OPENAI\_API\_KEY | codex login --with-api-key`). |
+| `--with-api-key` | `boolean` | Read an API key from stdin (for example `printenv OPENAI_API_KEY | codex login --with-api-key`). |
 | `status subcommand` | `codex login status` | Print the active authentication mode and exit with 0 when logged in. |
 
 Key
@@ -1121,7 +1121,7 @@ Type / Values
 
 Details
 
-Read an API key from stdin (for example `printenv OPENAI\_API\_KEY | codex login --with-api-key`).
+Read an API key from stdin (for example `printenv OPENAI_API_KEY | codex login --with-api-key`).
 
 Key
 

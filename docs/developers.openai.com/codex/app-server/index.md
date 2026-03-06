@@ -234,7 +234,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home).
 - `config/value/write` - write a single configuration key/value to the user’s `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
-- `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists and residency requirements (or `null` if you haven’t set any up).
+- `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven’t set any up).
 
 ## Models
 
@@ -726,6 +726,10 @@ Use `configRequirements/read` to inspect the effective admin requirements loaded
   "requirements": {
     "allowedApprovalPolicies": ["onRequest", "unlessTrusted"],
     "allowedSandboxModes": ["readOnly", "workspaceWrite"],
+    "featureRequirements": {
+      "personality": true,
+      "unified_exec": false
+    },
     "network": {
       "enabled": true,
       "allowedDomains": ["api.openai.com"],
@@ -736,7 +740,7 @@ Use `configRequirements/read` to inspect the effective admin requirements loaded
 } }
 ```
 
-`result.requirements` is `null` when no requirements are configured. When present, the optional `network` object carries managed proxy constraints (domain rules, proxy settings, and unix-socket policy).
+`result.requirements` is `null` when no requirements are configured. See the docs on [`requirements.toml`](/codex/config-reference#requirementstoml) for details on supported keys and values.
 
 ### Windows sandbox setup (`windowsSandbox/setupStart`)
 

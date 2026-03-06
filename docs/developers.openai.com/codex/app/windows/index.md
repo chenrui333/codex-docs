@@ -27,7 +27,7 @@ If you prefer a command-line install path, or need an alternative to opening
 the Microsoft Store UI, run:
 
 ```
-winget install --id 9PLM9XGG6VKS
+winget install Codex -s msstore
 ```
 
 ## Customize for your dev setup

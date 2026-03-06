@@ -4,7 +4,7 @@ Source: https://developers.openai.com/codex/models
 
 ## Recommended models
 
-![gpt-5.4](/images/codex/codex-wallpaper-3.webp)
+![gpt-5.4](/images/api/models/gpt-5.4.jpg)
 
 gpt-5.4
 

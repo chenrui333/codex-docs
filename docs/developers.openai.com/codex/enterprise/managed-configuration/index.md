@@ -11,6 +11,8 @@ Enterprise admins can control local Codex behavior in two ways:
 
 Requirements constrain security-sensitive settings (approval policy, sandbox mode, web search mode, and optionally which MCP servers can be enabled). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced requirement, Codex falls back to a requirements-compatible value and notifies the user. If an `mcp_servers` allowlist is configured, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
 
+Requirements can also be used to constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note features are generally not security-sensitive, but enterprises have the option of pinning values, if desired. Omitted keys remain unconstrained.
+
 For the exact key list, see the [`requirements.toml` section in Configuration Reference](/codex/config-reference#requirementstoml).
 
 ### Locations and precedence
@@ -81,6 +83,16 @@ allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
 `allowed_web_search_modes = []` effectively allows only `"disabled"`.
 For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
 
+You can also pin [feature flags](/codex/config-basic/#feature-flags):
+
+```
+[features]
+personality = true
+unified_exec = false
+```
+
+Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the effective feature set to satisfy these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
+
 ### Enforce command rules from requirements
 
 Admins can also enforce restrictive command rules from `requirements.toml`
@@ -144,7 +156,7 @@ On macOS, admins can push a device profile that provides base64-encoded TOML pay
   - `config_toml_base64` (managed defaults)
   - `requirements_toml_base64` (requirements)
 
-Codex parses these “managed preferences” payloads as TOML. For managed defaults (`config_toml_base64`), managed preferences have the highest precedence. For requirements (`requirements_toml_base64`), precedence follows the cloud-managed requirements order described above.
+Codex parses these “managed preferences” payloads as TOML. For managed defaults (`config_toml_base64`), managed preferences have the highest precedence. For requirements (`requirements_toml_base64`), precedence follows the cloud-managed requirements order described above. The same requirements-side `[features]` table works in `requirements_toml_base64`; use canonical feature keys there as well.
 
 ### MDM setup workflow
 
