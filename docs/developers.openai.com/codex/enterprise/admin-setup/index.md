@@ -4,7 +4,7 @@ Source: https://developers.openai.com/codex/enterprise/admin-setup
 
 This guide is for ChatGPT Enterprise admins who want to set up Codex for their workspace.
 
-Use this page as the step-by-step rollout guide. It focuses on setup order and decision points. For detailed policy, configuration, and monitoring details, use the linked pages: [Authentication](/codex/auth), [Security](/codex/security), [Managed configuration](/codex/enterprise/managed-configuration), and [Governance](/codex/enterprise/governance).
+Use this page as the step-by-step rollout guide. It focuses on setup order and decision points. For detailed policy, configuration, and monitoring details, use the linked pages: [Authentication](/codex/auth), [Agent approvals & security](/codex/agent-approvals-security), [Managed configuration](/codex/enterprise/managed-configuration), and [Governance](/codex/enterprise/governance).
 
 ## Enterprise-grade security and privacy
 
@@ -16,7 +16,7 @@ Codex supports ChatGPT Enterprise security features, including:
 - Granular user access controls
 - Data encryption at rest (AES-256) and in transit (TLS 1.2+)
 
-For security controls and runtime protections, see [Security](/codex/security). Refer to [Zero Data Retention (ZDR)](https://platform.openai.com/docs/guides/your-data#zero-data-retention) for more details.
+For security controls and runtime protections, see [Agent approvals & security](/codex/agent-approvals-security). Refer to [Zero Data Retention (ZDR)](https://platform.openai.com/docs/guides/your-data#zero-data-retention) for more details.
 
 ## Local vs. cloud setup
 
@@ -102,7 +102,7 @@ By default, Codex cloud agents have no internet access during runtime to help pr
 
 This setting enables users to use an allowlist for common software dependency domains, add more domains and trusted sites, and specify allowed HTTP methods.
 
-For security implications of internet access and runtime controls, see [Security](/codex/security).
+For security implications of internet access and runtime controls, see [Agent approvals & security](/codex/agent-approvals-security).
 
 ![Codex cloud toggle](/images/codex/enterprise/cloud-toggle-config.png)
 
@@ -160,7 +160,7 @@ Define a baseline for your pilot:
 - MCP / connectors policy
 - Local logging and telemetry posture
 
-For exact keys, precedence, MDM deployment, and examples, see [Managed configuration](/codex/enterprise/managed-configuration) and [Security](/codex/security).
+For exact keys, precedence, MDM deployment, and examples, see [Managed configuration](/codex/enterprise/managed-configuration) and [Agent approvals & security](/codex/agent-approvals-security).
 
 If you plan to restrict login method or workspace for local clients, see the admin-managed authentication restrictions in [Authentication](https://developers.openai.com/codex/auth).
 

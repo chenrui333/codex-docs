@@ -113,6 +113,8 @@ Example final output (stdout):
 
 `codex exec` reuses saved CLI authentication by default. In CI, it’s common to provide credentials explicitly:
 
+### Use API key auth (recommended)
+
 - Set `CODEX_API_KEY` as a secret environment variable for the job.
 - Keep prompts and tool output in mind: they can include sensitive code or data.
 
@@ -123,6 +125,26 @@ CODEX_API_KEY=<api-key> codex exec --json "triage open bug reports"
 ```
 
 `CODEX_API_KEY` is only supported in `codex exec`.
+
+Use ChatGPT-managed auth in CI/CD (advanced)
+
+Read this if you need to run CI/CD jobs with a Codex user account instead of an
+API key, such as enterprise teams using ChatGPT-managed Codex access on trusted
+runners or users who need ChatGPT/Codex rate limits instead of API key usage.
+
+API keys are the right default for automation because they are simpler to
+provision and rotate. Use this path only if you specifically need to run as
+your Codex account.
+
+Treat `~/.codex/auth.json` like a password: it contains access tokens. Don’t
+commit it, paste it into tickets, or share it in chat.
+
+Do not use this workflow for public or open-source repositories. If `codex login`
+is not an option on the runner, seed `auth.json` through secure storage, run
+Codex on the runner so Codex refreshes it in place, and persist the updated file
+between runs.
+
+See [Maintain Codex account auth in CI/CD (advanced)](/codex/auth/ci-cd-auth).
 
 ## Resume a non-interactive session
 

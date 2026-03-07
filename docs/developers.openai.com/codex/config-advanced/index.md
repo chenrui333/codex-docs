@@ -192,7 +192,7 @@ model_context_window = 128000             # Context window size
 
 Pick approval strictness (affects when Codex pauses) and sandbox level (affects file/network access).
 
-For operational details people often miss while editing `config.toml`, see [Common sandbox and approval combinations](/codex/security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/security#protected-paths-in-writable-roots), and [Network access](/codex/security#network-access).
+For operational details that are easy to miss while editing `config.toml`, see [Common sandbox and approval combinations](/codex/agent-approvals-security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
 
 You can also use a granular reject policy (`approval_policy = { reject = { ... } }`) to auto-reject only selected prompt categories, such as sandbox approvals, `execpolicy` rule prompts, or MCP input requests (`mcp_elicitations`), while keeping other prompts interactive.
 
@@ -208,7 +208,7 @@ writable_roots = ["/Users/YOU/.pyenv/shims"]
 network_access = false          # Opt in to outbound network
 ```
 
-Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](/codex/config-reference) and [Managed configuration](/codex/security#managed-configuration).
+Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](/codex/config-reference) and [Managed configuration](/codex/enterprise/managed-configuration).
 
 In workspace-write mode, some environments keep `.git/` and `.codex/`
 read-only even when the rest of the workspace is writable. This is why
@@ -304,7 +304,7 @@ Each metric below also includes default metadata tags: `auth_mode`, `originator`
 | `codex.tool.call` | counter | `tool`, `success` | Tool invocation count by tool name and success/failure. |
 | `codex.tool.call.duration_ms` | histogram | `tool`, `success` | Tool execution duration in milliseconds by tool name and outcome. |
 
-For more security and privacy guidance around telemetry, see [Security](/codex/security#monitoring-and-telemetry).
+For more security and privacy guidance around telemetry, see [Security](/codex/agent-approvals-security#monitoring-and-telemetry).
 
 ### Metrics
 

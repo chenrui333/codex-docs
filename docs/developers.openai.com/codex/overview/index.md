@@ -26,5 +26,9 @@ Get inspirations on what you can build with Codex.
 
 Explore Codex Ambassadors and upcoming community meetups by location.
 
- See community](/codex/community/meetups)
+ See community](/codex/community/meetups) [### Codex for OSS
+
+Apply or nominate maintainers for API credits, ChatGPT Pro with Codex, and selective Codex Security access.
+
+ Learn more](/codex/community/codex-for-oss)
 

@@ -87,7 +87,7 @@ forced_chatgpt_workspace_id = "00000000-0000-0000-0000-000000000000"
 
 If the active credentials don’t match the configured restrictions, Codex logs the user out and exits.
 
-These settings are commonly applied via managed configuration rather than per-user setup. See [Managed configuration](/codex/security#managed-configuration).
+These settings are commonly applied via managed configuration rather than per-user setup. See [Managed configuration](/codex/enterprise/managed-configuration).
 
 ## Login on headless devices
 
@@ -142,6 +142,12 @@ CONTAINER_HOME=$(docker exec MY_CONTAINER printenv HOME)
 docker exec MY_CONTAINER mkdir -p "$CONTAINER_HOME/.codex"
 docker cp ~/.codex/auth.json MY_CONTAINER:"$CONTAINER_HOME/.codex/auth.json"
 ```
+
+For a more advanced version of this same pattern on trusted CI/CD runners, see
+[Maintain Codex account auth in CI/CD (advanced)](/codex/auth/ci-cd-auth).
+That guide explains how to let Codex refresh `auth.json` during normal runs and
+then keep the updated file for the next job. API keys are still the recommended
+default for automation.
 
 ### Fallback: Forward the localhost callback over SSH
 

@@ -9,8 +9,8 @@ For explanations and guidance, see:
 - [Config basics](/codex/config-basic)
 - [Advanced Config](/codex/config-advanced)
 - [Config Reference](/codex/config-reference)
-- [Sandbox and approvals](/codex/security#sandbox-and-approvals)
-- [Managed configuration](/codex/security#managed-configuration)
+- [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals)
+- [Managed configuration](/codex/enterprise/managed-configuration)
 
 Use the snippet below as a reference. Copy only the keys and sections you need into `~/.codex/config.toml` (or into a project-scoped `.codex/config.toml`), then adjust values for your setup.
 

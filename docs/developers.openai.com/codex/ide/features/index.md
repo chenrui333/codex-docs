@@ -59,7 +59,7 @@ You can also view the cloud tasks in the [Codex cloud interface](https://chatgpt
 
 ## Web search
 
-Codex ships with a first-party web search tool. For local tasks in the Codex IDE Extension, Codex enables web search by default and serves results from a web search cache. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you configure your sandbox for [full access](/codex/security), web search defaults to live results. See [Config basics](/codex/config-basic) to disable web search or switch to live results that fetch the most recent data.
+Codex ships with a first-party web search tool. For local tasks in the Codex IDE Extension, Codex enables web search by default and serves results from a web search cache. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you configure your sandbox for [full access](/codex/agent-approvals-security), web search defaults to live results. See [Config basics](/codex/config-basic) to disable web search or switch to live results that fetch the most recent data.
 
 You’ll see `web_search` items in the transcript or `codex exec --json` output whenever Codex looks something up.
 

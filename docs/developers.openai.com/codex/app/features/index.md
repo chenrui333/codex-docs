@@ -16,7 +16,7 @@ If you’ve used the [Codex CLI](/codex/cli), a project is like starting a
 session in a specific directory.
 
 If you work in a single repository with two or more apps or packages, split
-distinct projects into separate app projects so the [sandbox](/codex/security)
+distinct projects into separate app projects so the [sandbox](/codex/agent-approvals-security)
 only includes the files for that project.
 
 ![Codex app showing multiple projects in the sidebar and threads in the main pane](/images/codex/app/multitask-light.webp)
@@ -164,7 +164,7 @@ If your task requires work across more than one repository or directory, prefer
 opening separate projects or using worktrees rather than asking Codex to roam
 outside the project root.
 
-For details on how Codex handles sandboxing, check out the [security documentation](/codex/security).
+For details on how Codex handles sandboxing, check out the [security documentation](/codex/agent-approvals-security).
 
 ## MCP support
 
@@ -177,7 +177,7 @@ server or add a new server to your configuration.
 
 Codex ships with a first-party web search tool. For local tasks in the Codex IDE Extension, Codex
 enables web search by default and serves results from a web search cache. If you configure your
-sandbox for [full access](/codex/security), web search defaults to live results. See
+sandbox for [full access](/codex/agent-approvals-security), web search defaults to live results. See
 [Config basics](/codex/config-basic) to disable web search or switch to live results that fetch the
 most recent data.
 

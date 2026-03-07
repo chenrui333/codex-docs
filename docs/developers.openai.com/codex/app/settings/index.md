@@ -26,7 +26,7 @@ notification permissions.
 
 Codex agents in the app inherit the same configuration as the IDE and CLI extension.
 Use the in-app controls for common settings, or edit `config.toml` for advanced
-options. See [Codex security](/codex/security) and
+options. See [Codex security](/codex/agent-approvals-security) and
 [config basics](/codex/config-basic) for more detail.
 
 ## Git

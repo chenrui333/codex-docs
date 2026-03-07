@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/open-source
 
 OpenAI develops key parts of Codex in the open. That work lives on GitHub so you can follow progress, report issues, and contribute improvements.
 
+If you maintain a widely used open-source project or want to nominate maintainers stewarding important projects, you can also [apply to the Codex open source program](/codex/community/codex-for-oss) for API credits, ChatGPT Pro with Codex, and selective access to Codex Security.
+
 ## Open-source components
 
 | Component | Where to find | Notes |

@@ -64,7 +64,7 @@ When you use triage rules, Codex runs tasks using the account of the issue creat
 
 When you mention `@Codex` or assign an issue to it, Codex receives your issue content to understand your request and create a task.
 Data handling follows OpenAI’s [Privacy Policy](https://openai.com/privacy), [Terms of Use](https://openai.com/terms/), and other applicable [policies](https://openai.com/policies).
-For more on security, see the [Codex security documentation](/codex/security).
+For more on security, see the [Codex security documentation](/codex/agent-approvals-security).
 
 Codex uses large language models that can make mistakes. Always review answers and diffs.
 

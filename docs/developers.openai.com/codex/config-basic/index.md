@@ -13,7 +13,7 @@ To open the configuration file from the Codex IDE extension, select the gear ico
 The CLI and IDE extension share the same configuration layers. You can use them to:
 
 - Set the default model and provider.
-- Configure [approval policies and sandbox settings](/codex/security#sandbox-and-approvals).
+- Configure [approval policies and sandbox settings](/codex/agent-approvals-security#sandbox-and-approvals).
 - Configure [MCP servers](/codex/mcp).
 
 ## Configuration precedence
@@ -36,7 +36,7 @@ For one-off overrides via `-c`/`--config` (including TOML quoting rules), see [A
 On managed machines, your organization may also enforce constraints via
 `requirements.toml` (for example, disallowing `approval_policy = "never"` or
 `sandbox_mode = "danger-full-access"`). See [Managed
-configuration](/codex/security#managed-configuration) and [Admin-enforced
+configuration](/codex/enterprise/managed-configuration) and [Admin-enforced
 requirements](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 ## Common configuration options
@@ -59,7 +59,7 @@ Control when Codex pauses to ask before running generated commands.
 approval_policy = "on-request"
 ```
 
-For behavior differences between `untrusted`, `on-request`, and `never`, see [Run without approval prompts](/codex/security#run-without-approval-prompts) and [Common sandbox and approval combinations](/codex/security#common-sandbox-and-approval-combinations).
+For behavior differences between `untrusted`, `on-request`, and `never`, see [Run without approval prompts](/codex/agent-approvals-security#run-without-approval-prompts) and [Common sandbox and approval combinations](/codex/agent-approvals-security#common-sandbox-and-approval-combinations).
 
 #### Sandbox level
 
@@ -69,7 +69,7 @@ Adjust how much filesystem and network access Codex has while executing commands
 sandbox_mode = "workspace-write"
 ```
 
-For mode-by-mode behavior (including protected `.git`/`.codex` paths and network defaults), see [Sandbox and approvals](/codex/security#sandbox-and-approvals), [Protected paths in writable roots](/codex/security#protected-paths-in-writable-roots), and [Network access](/codex/security#network-access).
+For mode-by-mode behavior (including protected `.git`/`.codex` paths and network defaults), see [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
 
 #### Windows sandbox mode
 
@@ -83,7 +83,7 @@ sandbox = "elevated"   # Recommended
 
 #### Web search mode
 
-Codex enables web search by default for local tasks and serves results from a web search cache. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](/codex/security#common-sandbox-and-approval-combinations), web search defaults to live results. Choose a mode with `web_search`:
+Codex enables web search by default for local tasks and serves results from a web search cache. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](/codex/agent-approvals-security#common-sandbox-and-approval-combinations), web search defaults to live results. Choose a mode with `web_search`:
 
 - `"cached"` (default) serves results from the web search cache.
 - `"live"` fetches the most recent data from the web (same as `--search`).
