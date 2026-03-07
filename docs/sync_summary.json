@@ -1,15 +1,12 @@
 {
-  "added": [
-    "developers.openai.com/codex/concepts/sandboxing/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-07T06:14:50+00:00",
+  "generated_at": "2026-03-07T18:10:09+00:00",
   "removed": [],
   "total_files": 121,
   "updated": [
-    "developers.openai.com/codex/agent-approvals-security/index.md",
-    "developers.openai.com/codex/app/features/index.md",
-    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md"
+    "developers.openai.com/codex/auth/index.md",
+    "developers.openai.com/codex/speed/index.md"
   ]
 }

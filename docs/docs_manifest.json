@@ -72,7 +72,7 @@
       "source_url": "https://developers.openai.com/codex/auth/ci-cd-auth"
     },
     "developers.openai.com/codex/auth/index.md": {
-      "sha256": "ebbdbde909efefae7a092f33ae56358261904fb9d7f4da153dbf753ddfa56373",
+      "sha256": "ab99721d7373f046f6f2d9e8a51f013ea7182905116fa53f9cd543339eda950e",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/auth"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/skills"
     },
     "developers.openai.com/codex/speed/index.md": {
-      "sha256": "87b6b8842103d004700611099853ed3babb3a8435f3e2b95fc1314995220edf1",
+      "sha256": "dec2fcb0b0581dd4c42cf9c220cde3be8f3c362c936f72cecb7705e25793e5d8",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/speed"
     },
