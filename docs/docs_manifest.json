@@ -2,7 +2,7 @@
   "schema_version": 1,
   "sources": {
     "developers.openai.com/codex/agent-approvals-security/index.md": {
-      "sha256": "bf8f8801b1b9175f471362a2b13ac16ce1ac8a342d55460b584a683834fcf8b4",
+      "sha256": "05c97acdc1eec598882d1a49aed2ea69cd69c0dac2aaca5734ca112d3d2fdaa6",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/agent-approvals-security"
     },
@@ -27,7 +27,7 @@
       "source_url": "https://developers.openai.com/codex/app/commands"
     },
     "developers.openai.com/codex/app/features/index.md": {
-      "sha256": "bb80a48eb3384ac9249ff7e9eb5119b1deae1b2e6940855033f4b0ada3742df4",
+      "sha256": "40e645789128f876bfb93f8bd0d6707ebc9e95cd6bcd3ec4aa735d75e428bcc9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/features"
     },
@@ -145,6 +145,11 @@
       "sha256": "22eaa8c294632f789dfd52d4a7fb9b684c30ea316bf4f1e3251c18678f421190",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/multi-agents"
+    },
+    "developers.openai.com/codex/concepts/sandboxing/index.md": {
+      "sha256": "a752c3bded62e669d1a709c683f58094579b0fe0936654be9f243bf28713eb8a",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/concepts/sandboxing"
     },
     "developers.openai.com/codex/config-advanced/index.md": {
       "sha256": "bd232c61dc2d483d019d6043f81cf250d182b8e95493649281e2a01c01dcb8cd",
@@ -407,7 +412,7 @@
       "source_url": "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab"
     },
     "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md": {
-      "sha256": "a632747fd93dfd6e1878e105b594344182be327b280e9eb5bbb43ac4abd8e5a4",
+      "sha256": "aeabb2cd5b7c1dd19f1d365c7920090c169778e9bb99ec48b6e731f98a30e5a0",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
     },

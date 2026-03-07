@@ -37,6 +37,7 @@
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/multi-agents",
+      "https://developers.openai.com/codex/concepts/sandboxing",
       "https://developers.openai.com/codex/config-advanced",
       "https://developers.openai.com/codex/config-basic",
       "https://developers.openai.com/codex/config-reference",
@@ -99,8 +100,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 96,
-      "mirrored_urls": 84,
+      "codex_related_urls": 97,
+      "mirrored_urls": 85,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -137,6 +138,7 @@
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/multi-agents",
+      "https://developers.openai.com/codex/concepts/sandboxing",
       "https://developers.openai.com/codex/config-advanced",
       "https://developers.openai.com/codex/config-basic",
       "https://developers.openai.com/codex/config-reference",
@@ -193,22 +195,10 @@
       "https://developers.openai.com/resources/codex"
     ],
     "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/agent-approvals-security",
-      "https://developers.openai.com/codex/auth/ci-cd-auth",
-      "https://developers.openai.com/codex/codex-for-oss-terms",
-      "https://developers.openai.com/codex/community/codex-for-oss",
-      "https://developers.openai.com/codex/security/faq",
-      "https://developers.openai.com/codex/security/setup",
-      "https://developers.openai.com/codex/security/threat-model"
+      "https://developers.openai.com/codex/concepts/sandboxing"
     ],
     "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/agent-approvals-security",
-      "https://developers.openai.com/codex/auth/ci-cd-auth",
-      "https://developers.openai.com/codex/codex-for-oss-terms",
-      "https://developers.openai.com/codex/community/codex-for-oss",
-      "https://developers.openai.com/codex/security/faq",
-      "https://developers.openai.com/codex/security/setup",
-      "https://developers.openai.com/codex/security/threat-model"
+      "https://developers.openai.com/codex/concepts/sandboxing"
     ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -231,7 +221,7 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-03-07T00:33:03+00:00",
+  "generated_at": "2026-03-07T06:14:35+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,

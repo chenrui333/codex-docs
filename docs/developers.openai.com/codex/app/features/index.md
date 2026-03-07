@@ -164,7 +164,9 @@ If your task requires work across more than one repository or directory, prefer
 opening separate projects or using worktrees rather than asking Codex to roam
 outside the project root.
 
-For details on how Codex handles sandboxing, check out the [security documentation](/codex/agent-approvals-security).
+For a high-level overview, see [Sandboxing](/codex/concepts/sandboxing). For
+configuration details, see the
+[agent approvals & security documentation](/codex/agent-approvals-security).
 
 ## MCP support
 

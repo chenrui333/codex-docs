@@ -10,6 +10,9 @@ scanning connected GitHub repositories, see [Codex Security](/codex/security).
 
 By default, the agent runs with network access turned off. Locally, Codex uses an OS-enforced sandbox that limits what it can touch (typically to the current workspace), plus an approval policy that controls when it must stop and ask you before acting.
 
+For a high-level explanation of how sandboxing works across the Codex app, IDE
+extension, and CLI, see [Sandboxing](/codex/concepts/sandboxing).
+
 ## Sandbox and approvals
 
 Codex security controls come from two layers that work together:

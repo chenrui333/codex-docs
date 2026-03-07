@@ -1,36 +1,15 @@
 {
   "added": [
-    "developers.openai.com/codex/agent-approvals-security/index.md",
-    "developers.openai.com/codex/auth/ci-cd-auth/index.md",
-    "developers.openai.com/codex/codex-for-oss-terms/index.md",
-    "developers.openai.com/codex/community/codex-for-oss/index.md",
-    "developers.openai.com/codex/security/faq/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/security/threat-model/index.md"
+    "developers.openai.com/codex/concepts/sandboxing/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-07T00:33:26+00:00",
+  "generated_at": "2026-03-07T06:14:50+00:00",
   "removed": [],
-  "total_files": 120,
+  "total_files": 121,
   "updated": [
+    "developers.openai.com/codex/agent-approvals-security/index.md",
     "developers.openai.com/codex/app/features/index.md",
-    "developers.openai.com/codex/app/settings/index.md",
-    "developers.openai.com/codex/auth/index.md",
-    "developers.openai.com/codex/cli/features/index.md",
-    "developers.openai.com/codex/config-advanced/index.md",
-    "developers.openai.com/codex/config-basic/index.md",
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
-    "developers.openai.com/codex/enterprise/admin-setup/index.md",
-    "developers.openai.com/codex/ide/features/index.md",
-    "developers.openai.com/codex/index.md",
-    "developers.openai.com/codex/integrations/linear/index.md",
-    "developers.openai.com/codex/integrations/slack/index.md",
-    "developers.openai.com/codex/noninteractive/index.md",
-    "developers.openai.com/codex/open-source/index.md",
-    "developers.openai.com/codex/overview/index.md",
-    "developers.openai.com/codex/prompting/index.md",
-    "developers.openai.com/codex/security/index.md"
+    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md"
   ]
 }
