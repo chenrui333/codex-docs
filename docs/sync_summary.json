@@ -2,11 +2,12 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-07T18:10:09+00:00",
+  "generated_at": "2026-03-08T00:35:18+00:00",
   "removed": [],
   "total_files": 121,
   "updated": [
-    "developers.openai.com/codex/auth/index.md",
-    "developers.openai.com/codex/speed/index.md"
+    "developers.openai.com/codex/config-basic/index.md",
+    "developers.openai.com/codex/config-reference/index.md",
+    "developers.openai.com/codex/config-sample/index.md"
   ]
 }

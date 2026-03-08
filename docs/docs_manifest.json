@@ -157,17 +157,17 @@
       "source_url": "https://developers.openai.com/codex/config-advanced"
     },
     "developers.openai.com/codex/config-basic/index.md": {
-      "sha256": "81a14005ea231e1117122a854e23ee9eedd5de8e9effaa976669c408f97c8856",
+      "sha256": "acdff84c5acf6561ac1364376a99063a3b51e9c25e60a334520202a8b4ff3659",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "bc6db105bb2ea90c7da3b7657d11469eeac60142cdc9d05d46681a953cfd160e",
+      "sha256": "67d53ec8154624582754305f1e7951f90d718fc003402750a6a6b79969e7224d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "12bb6523407673d7a777aaba34ad4fd01a4b466360ca1b5a086ba24767474110",
+      "sha256": "bee73722a544b73dfab98b18178606cc09ea7686fb90f5d53e271603af8d3524",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
