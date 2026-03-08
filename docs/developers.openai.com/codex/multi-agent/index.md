@@ -33,7 +33,7 @@ When many agents are running, Codex waits until all requested results are availa
 
 Codex will automatically decide when to spawn a new agent or you can explicitly ask it to do so.
 
-For long-running commands or polling workflows, Codex can also use the built-in `monitor` role, which is tuned for waiting and repeated status checks.
+For long-running commands or polling workflows, Codex can also use the built-in `monitor` role, tuned for waiting and repeated status checks.
 
 To see it in action, try the following prompt on your project:
 
@@ -55,7 +55,7 @@ I would like to review the following points on the current PR (this branch vs ma
 
 ## Process CSV batches with sub-agents
 
-Use `spawn_agents_on_csv` when you have many similar tasks that can be expressed as one row per work item. Codex reads the CSV, spawns one worker sub-agent per row, waits for the full batch to finish, and exports the combined results to CSV.
+Use `spawn_agents_on_csv` when you have many similar tasks that map to one row per work item. Codex reads the CSV, spawns one worker sub-agent per row, waits for the full batch to finish, and exports the combined results to CSV.
 
 This works well for repeated audits such as:
 
@@ -71,7 +71,7 @@ The tool accepts:
 - `output_schema` when each worker should return a JSON object with a fixed shape
 - `output_csv_path`, `max_concurrency`, and `max_runtime_seconds` for job control
 
-Each worker must call `report_agent_job_result` exactly once. If a worker exits without reporting a result, that row is marked as failed in the exported CSV.
+Each worker must call `report_agent_job_result` exactly once. If a worker exits without reporting a result, Codex marks that row with an error in the exported CSV.
 
 Example prompt:
 
@@ -103,8 +103,8 @@ threads even while you are looking at the main thread. The approval overlay
 shows the source thread label, and you can press `o` to open that thread before
 you approve, reject, or answer the request.
 
-In non-interactive flows, or whenever a run cannot surface a fresh approval,
-an action that needs new approval fails and the error is surfaced back to the
+In non-interactive flows, or whenever a run can’t surface a fresh approval,
+an action that needs new approval fails and Codex surfaces the error back to the
 parent workflow.
 
 Codex also reapplies the parent turn’s live runtime overrides when it spawns a
@@ -118,7 +118,7 @@ You can also override the sandbox configuration for individual [agent roles](#ag
 
 You configure agent roles in the `[agents]` section of your [configuration](/codex/config-basic#configuration-precedence).
 
-Agent roles can be defined either in your local configuration (typically `~/.codex/config.toml`) or shared in a project-specific `.codex/config.toml`.
+Define agent roles either in your local configuration (typically `~/.codex/config.toml`) or in a project-specific `.codex/config.toml`.
 
 Each role can provide guidance (`description`) for when Codex should use this agent, and optionally load a
 role-specific config file (`config_file`) when Codex spawns an agent with that role.
@@ -134,29 +134,30 @@ Each agent role can override your default configuration. Common settings to over
 
 - `model` and `model_reasoning_effort` to select a specific model for your agent role
 - `sandbox_mode` to mark an agent as `read-only`
-- `developer_instructions` to give the agent role additional instructions without relying on the parent agent for passing them
+- `developer_instructions` to give the agent role extra instructions without relying on the parent agent to pass them
 
 ### Schema
 
 | Field | Type | Required | Purpose |
 | --- | --- | --- | --- |
-| `agents.max_threads` | number | No | Maximum number of concurrently open agent threads. |
-| `agents.max_depth` | number | No | Maximum nesting depth for spawned agent threads (root session starts at 0). |
+| `agents.max_threads` | number | No | Concurrent open agent thread cap. |
+| `agents.max_depth` | number | No | Spawned agent nesting depth (root session starts at 0). |
 | `agents.job_max_runtime_seconds` | number | No | Default timeout per worker for `spawn_agents_on_csv` jobs. |
-| `[agents.<name>]` | table | No | Declares a role. `<name>` is used as the `agent_type` when spawning an agent. |
+| `[agents.<name>]` | table | No | Role declaration. `<name>` becomes the `agent_type` when spawning an agent. |
 | `agents.<name>.description` | string | No | Human-facing role guidance shown to Codex when it decides which role to use. |
 | `agents.<name>.config_file` | string (path) | No | Path to a TOML config layer applied to spawned agents for that role. |
 
 **Notes:**
 
-- Unknown fields in `[agents.<name>]` are rejected.
+- Codex rejects unknown fields in `[agents.<name>]`.
+- `agents.max_threads` defaults to `6` when you leave it unset.
 - `agents.max_depth` defaults to `1`, which allows a direct child agent to spawn but prevents deeper nesting.
 - `agents.job_max_runtime_seconds` is optional. When you leave it unset, `spawn_agents_on_csv` falls back to its per-call default timeout of 1800 seconds per worker.
-- Relative `config_file` paths are resolved relative to the `config.toml` file that defines the role.
-- `agents.<name>.config_file` is validated at config load time and must point to an existing file.
+- Codex resolves relative `config_file` paths relative to the `config.toml` file that defines the role.
+- Codex validates `agents.<name>.config_file` at config load time, and it must point to an existing file.
 - If a role name matches a built-in role (for example, `explorer`), your user-defined role takes precedence.
 - If Codex can’t load a role config file, agent spawns can fail until you fix the file.
-- Any configuration not set by the agent role will be inherited from the parent session.
+- The agent inherits any configuration that the role doesn’t set from the parent session.
 
 ### Example agent roles
 
@@ -238,7 +239,7 @@ This setup works well for prompts like:
 Review this branch against main. Have explorer map the affected code paths, reviewer find real risks, and docs_researcher verify the framework APIs that the patch relies on.
 ```
 
-#### Example 2: frontend integration debugging team
+#### Example 2: Frontend integration debugging team
 
 This pattern is useful for UI regressions, flaky browser flows, or integration bugs that cross application code and the running product.
 

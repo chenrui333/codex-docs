@@ -162,7 +162,7 @@
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "67d53ec8154624582754305f1e7951f90d718fc003402750a6a6b79969e7224d",
+      "sha256": "0933b96c66e2b5435ea580232d8c9ca7505eddef77b4bb39255da7fc6f67d7d9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
@@ -277,7 +277,7 @@
       "source_url": "https://developers.openai.com/codex/models"
     },
     "developers.openai.com/codex/multi-agent/index.md": {
-      "sha256": "2b52ca0a2ed73958c91ae11d8134ff8f42fa38cb80a427e390ab0ce973035e31",
+      "sha256": "6c742bba26c2461743e70f741d7ce1a7532c1c7b0e128c0039b2e15042eb80c1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/multi-agent"
     },
@@ -327,7 +327,7 @@
       "source_url": "https://developers.openai.com/codex/security/faq"
     },
     "developers.openai.com/codex/security/index.md": {
-      "sha256": "a03ca246706d4794691c9ac238565fc069909950a15935d3a75ecb960a65eaea",
+      "sha256": "a76e15b8634eb2a7903d6cad2ae53e40e05df6a6d4bee4c648f3babc3238f43e",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security"
     },

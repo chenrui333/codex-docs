@@ -28,7 +28,7 @@ You get a workflow focused on:
 
 ## Access and prerequisites
 
-Codex Security works with connected GitHub repositories through Codex cloud. OpenAI manages access. If you need access or a repository isn’t visible, contact your OpenAI account team and confirm the repository is available through your Codex cloud workspace.
+Codex Security works with connected GitHub repositories through Codex Web. OpenAI manages access. If you need access or a repository isn’t visible, contact your OpenAI account team and confirm the repository is available through your Codex Web workspace.
 
 ## Related docs
 
