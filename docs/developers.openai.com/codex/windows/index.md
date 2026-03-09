@@ -29,6 +29,16 @@ How `elevated` mode works:
 - Runs commands as a dedicated Windows Sandbox User.
 - Limits network access by installing Windows Firewall rules.
 
+### Sandbox permissions
+
+Running Codex in full access mode means Codex is not limited to your project
+directory and might perform unintentional destructive actions that can lead to
+data loss. For safer automation, keep sandbox boundaries in place and use
+[rules](/codex/rules) for specific exceptions, or set your [approval policy to
+never](/codex/agent-approvals-security#run-without-approval-prompts) to have
+Codex attempt to solve problems without asking for escalated permissions,
+based on your [approval and security setup](/codex/agent-approvals-security).
+
 ### Grant sandbox read access
 
 When a command fails because the Windows sandbox can’t read a directory, use:
