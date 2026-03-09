@@ -87,7 +87,7 @@ jobs:
 
       - name: Create or update failure issue
         if: steps.sync.outcome == 'failure'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           SYNC_LOG_TAIL: ${{ steps.failure-context.outputs.sync_log_tail }}
           SYNC_SUMMARY: ${{ steps.failure-context.outputs.sync_summary }}
