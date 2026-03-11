@@ -432,7 +432,7 @@
       "source_url": "https://developers.openai.com/resources/codex"
     },
     "github.openai.com/openai/codex/AGENTS.md": {
-      "sha256": "b28cfd33bcd8ac4b7a268494114e17e9923d6296235c60d0fc115e9ec3523c89",
+      "sha256": "00e6ced4093919715e95fc814ec30b6e20389985fe008e59b593c6d5c3410879",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
     },
@@ -507,7 +507,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/authentication.md"
     },
     "github.openai.com/openai/codex/docs/config.md": {
-      "sha256": "67bd7c1fb2f75cba1924caa34e1fb1141fa185b1e1d534e4fc71a128328de25a",
+      "sha256": "bc998ed4568c091faa6a46718db8896cfe16d405c7da28641a4a2c1498fb2183",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/config.md"
     },

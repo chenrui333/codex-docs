@@ -1,18 +1,12 @@
 {
-  "added": [
-    "developers.openai.com/codex/learn/best-practices/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-11T00:31:48+00:00",
+  "generated_at": "2026-03-11T06:22:03+00:00",
   "removed": [],
   "total_files": 122,
   "updated": [
-    "developers.openai.com/codex/app/index.md",
-    "developers.openai.com/codex/cli/index.md",
-    "developers.openai.com/codex/enterprise/admin-setup/index.md",
-    "developers.openai.com/codex/enterprise/managed-configuration/index.md",
-    "developers.openai.com/codex/ide/index.md",
-    "developers.openai.com/codex/quickstart/index.md"
+    "github.openai.com/openai/codex/AGENTS.md",
+    "github.openai.com/openai/codex/docs/config.md"
   ]
 }
