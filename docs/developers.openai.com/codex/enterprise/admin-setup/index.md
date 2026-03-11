@@ -2,57 +2,52 @@
 
 Source: https://developers.openai.com/codex/enterprise/admin-setup
 
+![Codex enterprise admin toggle](/images/codex/codex_enterprise_admin.png)
+
 This guide is for ChatGPT Enterprise admins who want to set up Codex for their workspace.
 
-Use this page as the step-by-step rollout guide. It focuses on setup order and decision points. For detailed policy, configuration, and monitoring details, use the linked pages: [Authentication](/codex/auth), [Agent approvals & security](/codex/agent-approvals-security), [Managed configuration](/codex/enterprise/managed-configuration), and [Governance](/codex/enterprise/governance).
+Use this page as the step-by-step rollout guide. For detailed policy, configuration, and monitoring details, use the linked pages: [Authentication](/codex/auth), [Agent approvals & security](/codex/agent-approvals-security), [Managed configuration](/codex/enterprise/managed-configuration), and [Governance](/codex/enterprise/governance).
 
 ## Enterprise-grade security and privacy
 
 Codex supports ChatGPT Enterprise security features, including:
 
 - No training on enterprise data
-- Zero data retention for the App, CLI, and IDE (code remains in developer environment)
+- Zero data retention for the App, CLI, and IDE (code stays in the developer environment)
 - Residency and retention that follow ChatGPT Enterprise policies
 - Granular user access controls
 - Data encryption at rest (AES-256) and in transit (TLS 1.2+)
+- Audit logging via the ChatGPT Compliance API
 
 For security controls and runtime protections, see [Agent approvals & security](/codex/agent-approvals-security). Refer to [Zero Data Retention (ZDR)](https://platform.openai.com/docs/guides/your-data#zero-data-retention) for more details.
 
-## Local vs. cloud setup
+## Pre-requisites: Determine owners and rollout strategy
 
-Codex operates in two environments: local and cloud.
+During your rollout, team members may support different aspects of integrating Codex into your organization. Ensure you have the following owners:
 
-1. **Codex local** includes the Codex app, CLI, and IDE extension. The agent runs on the developer’s computer in a sandbox.
-2. **Codex cloud** includes hosted Codex features (including Codex cloud, iOS, Code Review, and tasks created by the [Slack integration](/codex/integrations/slack) or [Linear integration](/codex/integrations/linear)). The agent runs remotely in a hosted container with your codebase.
+- **ChatGPT Enterprise workspace owner:** required to configure Codex settings in your workspace.
+- **Security owner:** determines agent permissions settings for Codex.
+- **Analytics owner:** integrates analytics and compliance APIs into your data pipelines.
+
+Decide which Codex surfaces you will use:
+
+- **Codex local:** includes the Codex app, CLI, and IDE extension. The agent runs on the developer’s computer in a sandbox.
+- **Codex cloud:** includes hosted Codex features (including Codex cloud, iOS, Code Review, and tasks created by the [Slack integration](/codex/integrations/slack) or [Linear integration](/codex/integrations/linear)). The agent runs remotely in a hosted container with your codebase.
+- **Both:** use local + cloud together.
 
 You can enable local, cloud, or both, and control access with workspace settings and role-based access control (RBAC).
 
-## Step 0: Owners and rollout decision
+## Step 1: Enable Codex in your workspace
 
-Ensure you have the following owners:
-
-- Workspace owner with access to ChatGPT Enterprise
-- IT management owner for managed configuration
-- Governance owner for analytics / compliance review
-
-A rollout decision:
-
-- Codex local only (Codex app, CLI, and IDE extension)
-- Codex cloud only (Codex web, GitHub code review)
-- Both local + cloud
-
-Review [authentication](https://developers.openai.com/codex/auth) before rollout:
-
-- Codex local supports ChatGPT sign-in or API keys. Confirm MFA/SSO requirements and any managed login restrictions in authentication
-- Codex cloud requires ChatGPT sign-in
-
-## Step 1: Enable workspace toggles
-
-Turn on only the Codex features you plan to roll out in this phase.
+You configure access to Codex in ChatGPT Enterprise workspace settings.
 
 Go to [Workspace Settings > Settings and Permissions](https://chatgpt.com/admin/settings).
 
 ### Codex local
+
+Codex local is enabled by default for new ChatGPT Enterprise workspaces. If
+you are not a ChatGPT workspace owner, you can test whether you have access by
+[installing Codex](/codex/quickstart) and logging in with your work email.
 
 Turn on **Allow members to use Codex Local**.
 
@@ -62,7 +57,7 @@ If this toggle is off, users who attempt to use the Codex app, CLI, or IDE will 
 
 #### Enable device code authentication for Codex CLI
 
-Allow developers to sign in with device codes when using Codex CLI in a non-interactive environment. More details in [authentication](https://developers.openai.com/codex/auth/).
+Allow developers to sign in with a device code when using Codex CLI in a non-interactive environment (for example, a remote development box). More details are in [authentication](https://developers.openai.com/codex/auth/).
 
 ![Codex local toggle](/images/codex/enterprise/local-toggle-config.png)
 
@@ -84,12 +79,6 @@ To enable Codex cloud for your workspace, turn on **Allow members to use Codex c
 
 Note that it may take up to 10 minutes for Codex to appear in ChatGPT.
 
-#### Allow members to administer Codex
-
-Allows users to view overall Codex [workspace analytics](https://chatgpt.com/codex/settings/analytics), access [cloud-managed requirements](https://chatgpt.com/codex/settings/managed-configs), and manage Cloud environments (edit and delete).
-
-Codex cloud not required.
-
 #### Enable Codex Slack app to post answers on task completion
 
 Codex posts its full answer back to Slack when the task completes. Otherwise, Codex posts only a link to the task.
@@ -100,7 +89,7 @@ To learn more, see [Codex in Slack](/codex/integrations/slack).
 
 By default, Codex cloud agents have no internet access during runtime to help protect against security and safety risks like prompt injection.
 
-This setting enables users to use an allowlist for common software dependency domains, add more domains and trusted sites, and specify allowed HTTP methods.
+This setting lets users use an allowlist for common software dependency domains, add domains and trusted sites, and specify allowed HTTP methods.
 
 For security implications of internet access and runtime controls, see [Agent approvals & security](/codex/agent-approvals-security).
 
@@ -108,39 +97,102 @@ For security implications of internet access and runtime controls, see [Agent ap
 
 ## Step 2: Set up custom roles (RBAC)
 
-Use RBAC to control which users or groups can access Codex local and Codex cloud.
+Use RBAC to control granular permissions for access Codex local and Codex cloud.
+
+![Codex cloud toggle](/images/codex/enterprise/rbac_custom_roles.png)
 
 ### What RBAC lets you do
 
 Workspace Owners can use RBAC in ChatGPT admin settings to:
 
-- Set a default role for users who are not assigned any custom role
+- Set a default role for users who aren’t assigned any custom role
 - Create custom roles with granular permissions
-- Assign one or more custom roles to Groups (including SCIM-synced groups)
+- Assign one or more custom roles to Groups
+- Automatically sync users into Groups via SCIM
 - Manage roles centrally from the Custom Roles tab
 
-Users can inherit multiple roles, and permissions resolve to the maximum allowed across those roles.
+Users can inherit more than one role, and permissions resolve to the most permissive (least restrictive) access across those roles.
 
-### Important behavior to plan for
+### Create a Codex Admin group
 
-Users in any custom role group do not use the workspace default permissions.
+Set up a dedicated “Codex Admin” group rather than granting Codex administration to a broad audience.
 
-If you are gradually rolling out Codex, one suggestion is to have a “Codex Users” group and a second “Codex Admin” group that has the “Allow members to administer Codex” toggle enabled.
+The **Allow members to administer Codex** toggle grants the Codex Admin role. Codex Admins can:
 
-For RBAC setup details and the full permission model, see the [OpenAI RBAC Help Center article](https://help.openai.com/en/articles/11750701-rbac).
+- View Codex [workspace analytics](https://chatgpt.com/codex/settings/analytics)
+- Open the Codex [Policies page](https://chatgpt.com/codex/settings/policies) to manage cloud-managed `requirements.toml` policies
+- Assign those managed policies to user groups or configure a default fallback policy
+- Manage Codex cloud environments, including editing and deleting environments
 
-## Step 3: Configure Codex local managed settings
+Use this role for the small set of admins who own Codex rollout, policy management, and governance. It’s not required for general Codex users. You don’t need Codex cloud to enable this toggle.
 
-For Codex local, set an admin-approved baseline for local behavior before broader rollout.
+Recommended rollout pattern:
 
-### Use managed configuration for two different goals
+- Create a “Codex Users” group for people who should use Codex
+- Create a separate “Codex Admin” group for the smaller set of people who should manage Codex settings and policies
+- Assign the custom role with **Allow members to administer Codex** enabled only to the “Codex Admin” group
+- Keep membership in the “Codex Admin” group limited to workspace owners or designated platform, IT, and governance operators
+- If you use SCIM, back the “Codex Admin” group with your identity provider so membership changes are auditable and centrally managed
 
-- **Requirements** (`requirements.toml`): Admin-enforced constraints users cannot override
-- **Managed defaults** (`managed_config.toml`): Starting values applied when Codex launches
+This separation makes it easier to roll out Codex while keeping analytics, environment management, and policy deployment limited to trusted admins. For RBAC setup details and the full permission model, see the [OpenAI RBAC Help Center article](https://help.openai.com/en/articles/11750701-rbac).
 
-### Team Config
+## Step 3: Configure Codex local requirements
+
+Codex Admins can deploy admin-enforced `requirements.toml` policies from the Codex [Policies page](https://chatgpt.com/codex/settings/policies).
+
+Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules.
+
+![Codex policies and configurations page](/images/codex/enterprise/policies_and_configurations_page.png)
+
+Recommended setup:
+
+1. Create a baseline policy for most users, then create stricter or more permissive variants only where needed.
+2. Assign each managed policy to a specific user group, and configure a default fallback policy for everyone else.
+3. Order group rules with care. If a user matches more than one group-specific rule, the first matching rule applies.
+4. Treat each policy as a complete profile for that group. Codex doesn’t fill missing fields from later matching group rules.
+
+These cloud-managed policies apply across Codex local surfaces when users sign in with ChatGPT, including the Codex app, CLI, and IDE extension.
+
+### Example requirements.toml policies
+
+Use cloud-managed `requirements.toml` policies to enforce the guardrails you want for each group. The snippets below are examples you can adapt, not required settings.
+
+![Example managed requirements policy](/images/codex/enterprise/example_policy.png)
+
+Example: limit web search, sandbox mode, and approvals for a standard local rollout:
+
+```
+allowed_web_search_modes = ["disabled", "cached"]
+allowed_sandbox_modes = ["workspace-write"]
+allowed_approval_policies = ["on-request"]
+```
+
+Example: add a restrictive command rule when you want admins to block or gate specific commands:
+
+```
+[rules]
+prefix_rules = [
+  { pattern = [{ token = "git" }, { any_of = ["push", "commit"] }], decision = "prompt", justification = "Require review before mutating remote history." },
+]
+```
+
+You can use either example on its own or combine them in a single managed policy for a group. For exact keys, precedence, and more examples, see [Managed configuration](/codex/enterprise/managed-configuration) and [Agent approvals & security](/codex/agent-approvals-security).
+
+### Checking user policies
+
+Use the policy lookup tools at the end of the workflow to confirm which managed policy applies to a user. You can check policy assignment by group or by entering a user email.
+
+![Policy lookup by group or user email](/images/codex/enterprise/policy_lookup.png)
+
+If you plan to restrict login method or workspace for local clients, see the admin-managed authentication restrictions in [Authentication](https://developers.openai.com/codex/auth).
+
+## Step 4: Standardize local configuration with Team Config
 
 Teams who want to standardize Codex across an organization can use Team Config to share defaults, rules, and skills without duplicating setup on every local configuration.
+
+You can check Team Config settings into the repository under the `.codex` directory. Codex automatically picks up Team Config settings when a user opens that repository.
+
+Start with Team Config for your highest-traffic repositories so teams get consistent behavior in the places they use Codex most.
 
 | Type | Path | Use it to |
 | --- | --- | --- |
@@ -150,39 +202,29 @@ Teams who want to standardize Codex across an organization can use Team Config t
 
 For locations and precedence, see [Config basics](/codex/config-basic#configuration-precedence).
 
-### Recommended first decisions for local rollout
+## Step 5: Configure Codex cloud usage (if enabled)
 
-Define a baseline for your pilot:
-
-- Approval policy posture
-- Sandbox mode posture
-- Web search posture
-- MCP / connectors policy
-- Local logging and telemetry posture
-
-For exact keys, precedence, MDM deployment, and examples, see [Managed configuration](/codex/enterprise/managed-configuration) and [Agent approvals & security](/codex/agent-approvals-security).
-
-If you plan to restrict login method or workspace for local clients, see the admin-managed authentication restrictions in [Authentication](https://developers.openai.com/codex/auth).
-
-## Step 4: Configure Codex cloud usage (if enabled)
-
-This step covers repository and environment setup after the Codex cloud workspace toggle is enabled.
+This step covers repository and environment setup after you enable the Codex cloud workspace toggle.
 
 ### Connect Codex cloud to repositories
 
 1. Navigate to [Codex](https://chatgpt.com/codex) and select **Get started**
 2. Select **Connect to GitHub** to install the ChatGPT GitHub Connector if you haven’t already connected GitHub to ChatGPT
-3. Install or authorize the ChatGPT GitHub Connector
+3. Install or connect the ChatGPT GitHub Connector
 4. Choose an installation target for the ChatGPT Connector (typically your main organization)
 5. Allow the repositories you want to connect to Codex
+
+For GitHub Enterprise Managed Users (EMU), an organization owner must install
+the Codex GitHub App for the organization before users can connect
+repositories in Codex cloud.
 
 For more, see [Cloud environments](https://developers.openai.com/codex/cloud/environments).
 
 Codex uses short-lived, least-privilege GitHub App installation tokens for each operation and respects the user’s existing GitHub repository permissions and branch protection rules.
 
-### Configure IP addresses (as needed)
+### Configure IP addresses
 
-Configure connector / IP allow lists if required by your network policy with these [egress IP ranges](https://openai.com/chatgpt-agents.json).
+If your GitHub organization controls the IP addresses that apps use to connect, make sure to include these [egress IP ranges](https://openai.com/chatgpt-agents.json).
 
 These IP ranges can change. Consider checking them automatically and updating your allow list based on the latest values.
 
@@ -190,30 +232,140 @@ These IP ranges can change. Consider checking them automatically and updating yo
 
 To allow Codex to perform code reviews on GitHub, go to [Settings → Code review](https://chatgpt.com/codex/settings/code-review).
 
-Code review can be configured at the repository level. Users can also enable auto review for their PRs and choose when Codex automatically triggers a review. More details on [GitHub](https://developers.openai.com/codex/integrations/github) integration page.
+You can configure code review at the repository level. Users can also enable auto review for their PRs and choose when Codex automatically triggers a review. More details are on the [GitHub integration page](https://developers.openai.com/codex/integrations/github).
 
-Additional integration docs for [Slack](/codex/integrations/slack), [GitHub](/codex/integrations/github), and [Linear](/codex/integrations/linear).
+Use the overview page to confirm your workspace has code review turned on and to see the available review controls.
 
-## Step 5: Set up governance and observability
+![Code review settings overview](/images/codex/enterprise/code_review_settings_overview.png)
 
-Codex gives enterprise teams several options for visibility into adoption and impact. Set up governance early so your team can monitor adoption, investigate issues, and support compliance workflows.
+Use the auto review settings to decide whether Codex should review pull
+requests automatically for connected repositories.
+
+![Automatic code review settings](/images/codex/enterprise/auto_code_review_settings.png)
+
+Use review triggers to control which pull request events should start a
+Codex review.
+
+![Code review trigger settings](/images/codex/enterprise/review_triggers.png)
+
+### Configure Codex security
+
+Codex Security helps engineering and security teams find, confirm, and remediate likely vulnerabilities in connected GitHub repositories.
+
+At a high level, Codex Security:
+
+- scans connected repositories commit by commit
+- ranks likely findings and confirms them when possible
+- shows structured findings with evidence, criticality, and suggested remediation
+- lets teams refine a repository threat model to improve prioritization and review quality
+
+For setup, scan creation, findings review, and threat model guidance, see [Codex Security setup](/codex/security/setup). For a product overview, see [Codex Security](/codex/security).
+
+Integration docs are also available for [Slack](/codex/integrations/slack), [GitHub](/codex/integrations/github), and [Linear](/codex/integrations/linear).
+
+## Step 6: Set up governance and observability
+
+Codex gives enterprise teams options for visibility into adoption and impact. Set up governance early so your team can track adoption, investigate issues, and support compliance workflows.
 
 ### Codex governance typically uses
 
 - Analytics Dashboard for quick, self-serve visibility
-- Analytics API for programmatic reporting and BI integration
+- Analytics API for programmatic reporting and business intelligence integration
 - Compliance API for audit and investigation workflows
 
-### Recommended minimum setup
+### Recommended baseline setup
 
 - Assign an owner for adoption reporting
 - Assign an owner for audit and compliance review
 - Define a review cadence
 - Decide what success looks like
 
-For details and examples, see [Governance](/codex/enterprise/governance).
+### Analytics API setup steps
 
-## Step 6: Confirm and validate setup
+To set up the Analytics API key:
+
+1. Sign in to the [OpenAI API Platform Portal](https://platform.openai.com) as an owner or admin, and select the correct organization.
+2. Go to the [API keys page](https://platform.openai.com/settings/organization/api-keys).
+3. Create a new secret key dedicated to Codex Analytics, and give it a descriptive name such as Codex Analytics API.
+4. Select the appropriate project for your organization. If you only have one project, the default project is fine.
+5. Set the key permissions to Read only, since this API only retrieves analytics data.
+6. Copy the key value and store it securely, because you can only view it once.
+7. Email [support@openai.com](mailto:support@openai.com) to have that key scoped to `codex.enterprise.analytics.read` only. Wait for OpenAI to confirm your API key has Codex Analytics API access.
+
+![Codex analytics key creation](/images/codex/codex_analytics_key.png)
+
+To use the Analytics API key:
+
+1. Find your `workspace_id` in the [ChatGPT Admin console](https://chatgpt.com/admin) under Workspace details.
+2. Call the Analytics API at `https://api.chatgpt.com/v1/analytics/codex` using your Platform API key, and include your `workspace_id` in the path.
+3. Choose the endpoint you want to query:
+
+- /workspaces/`{workspace_id}`/usage
+- /workspaces/`{workspace_id}`/code\_reviews
+- /workspaces/`{workspace_id}`/code\_review\_responses
+
+4. Set a reporting date range with `start_time` and `end_time` if needed.
+5. Retrieve the next page of results with `next_page` if the response spans more than one page.
+
+Example curl command to retrieve workspace usage:
+
+```
+curl -H "Authorization: Bearer YOUR_PLATFORM_API_KEY" \
+  "https://api.chatgpt.com/v1/analytics/codex/workspaces/WORKSPACE_ID/usage"
+```
+
+For more details on the Analytics API, see [Analytics API](/codex/enterprise/governance#analytics-api).
+
+### Compliance API setup steps
+
+To set up the Compliance API key:
+
+1. Sign in to the [OpenAI API Platform Portal](https://platform.openai.com) as an owner or admin, and select the correct organization.
+2. Go to the [API keys page](https://platform.openai.com/settings/organization/api-keys).
+3. Create a new secret key dedicated to Compliance API and select the appropriate project for your organization. If you only have one project, the default project is fine.
+4. Choose All permissions.
+5. Copy the key value and store it securely, because you can only view it once.
+6. Send an email to [support@openai.com](mailto:support@openai.com) with:
+
+- the last 4 digits of the API key
+- the key name
+- the created-by name
+- the scope needed: `read`, `delete`, or both
+
+7. Wait for OpenAI to confirm your API key has Compliance API access.
+
+To use the Compliance API key:
+
+1. Find your `workspace_id` in the [ChatGPT Admin console](https://chatgpt.com/admin) under Workspace details.
+2. Use the Compliance API at `https://api.chatgpt.com/v1/`
+3. Pass your Compliance API key in the Authorization header as a Bearer token.
+4. For Codex-related compliance data, use these endpoints:
+
+- /compliance/workspaces/`{workspace_id}`/logs
+- /compliance/workspaces/`{workspace_id}`/logs/`{log_file_id}`
+- /compliance/workspaces/`{workspace_id}`/codex\_tasks
+- /compliance/workspaces/`{workspace_id}`/codex\_environments
+
+5. For most Codex compliance integrations, start with the logs endpoint and request Codex event types such as CODEX\_LOG or CODEX\_SECURITY\_LOG.
+6. Use /logs to list available Codex compliance log files, then /logs/`{log_file_id}` to download a specific file.
+
+Example curl command to list compliance log files:
+
+```
+curl -L -H "Authorization: Bearer YOUR_COMPLIANCE_API_KEY" \
+  "https://api.chatgpt.com/v1/compliance/workspaces/WORKSPACE_ID/logs?event_type=CODEX_LOG&after=2026-03-01T00:00:00Z"
+```
+
+Example curl command to list Codex tasks:
+
+```
+curl -H "Authorization: Bearer YOUR_COMPLIANCE_API_KEY" \
+  "https://api.chatgpt.com/v1/compliance/workspaces/WORKSPACE_ID/codex_tasks"
+```
+
+For more details on the Compliance API, see [Compliance API](/codex/enterprise/governance#compliance-api).
+
+## Step 7: Confirm and verify setup
 
 ### What to verify
 
@@ -221,10 +373,10 @@ For details and examples, see [Governance](/codex/enterprise/governance).
 - (If enabled) Users can sign in to Codex cloud (ChatGPT sign-in required)
 - MFA and SSO requirements match your enterprise security policy
 - RBAC and workspace toggles produce the expected access behavior
-- Managed configuration is applied for users
+- Managed configuration applies for users
 - Governance data is visible for admins
 
 For authentication options and enterprise login restrictions, see [Authentication](/codex/auth).
 
-Once your team is confident with setup, you can confidently roll Codex out to additional teams and organizations.
+Once your team is confident with setup, you can roll Codex out to more teams and organizations.
 

@@ -1,12 +1,18 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/codex/learn/best-practices/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-09T00:34:52+00:00",
+  "generated_at": "2026-03-11T00:31:48+00:00",
   "removed": [],
-  "total_files": 121,
+  "total_files": 122,
   "updated": [
-    "developers.openai.com/codex/app/windows/index.md",
-    "developers.openai.com/codex/windows/index.md"
+    "developers.openai.com/codex/app/index.md",
+    "developers.openai.com/codex/cli/index.md",
+    "developers.openai.com/codex/enterprise/admin-setup/index.md",
+    "developers.openai.com/codex/enterprise/managed-configuration/index.md",
+    "developers.openai.com/codex/ide/index.md",
+    "developers.openai.com/codex/quickstart/index.md"
   ]
 }

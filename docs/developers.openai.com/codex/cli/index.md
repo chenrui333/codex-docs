@@ -49,6 +49,8 @@ The Codex CLI is available on macOS and Linux. Windows support is
 experimental. For the best Windows experience, use Codex in a WSL workspace
 and follow our [Windows setup guide](/codex/windows).
 
+If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
+
 ---
 
 ## Work with the Codex CLI

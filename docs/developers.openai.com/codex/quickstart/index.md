@@ -30,8 +30,7 @@ The Codex app is available on macOS (Apple Silicon).
 
    Choose a project folder that you want Codex to work in.
 
-If you used the Codex app, CLI, or IDE Extension before you’ll see past projects that you worked on.
-
+   If you used the Codex app, CLI, or IDE Extension before you’ll see past projects that you worked on.
 4. Send your first message
 
    After choosing the project, make sure **Local** is selected to have Codex work on your machine and send your first message to Codex.
@@ -43,6 +42,7 @@ If you used the Codex app, CLI, or IDE Extension before you’ll see past projec
 - Find and fix bugs in my codebase with minimal, high-confidence changes.
 
    If you need more inspiration, check out the [explore section](/codex/explore).
+   If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 
    [Learn more about the Codex app](/codex/app)
 
@@ -71,6 +71,7 @@ Install the Codex extension for your IDE.
 4. Use Git checkpoints
 
    Codex can modify your codebase, so consider creating Git checkpoints before and after each task so you can easily revert changes if needed.
+   If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 
    [Learn more about the Codex IDE extension](/codex/ide)
 
@@ -102,6 +103,7 @@ The Codex CLI is supported on macOS, Windows, and Linux.
 4. Use Git checkpoints
 
    Codex can modify your codebase, so consider creating Git checkpoints before and after each task so you can easily revert changes if needed.
+   If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 
 [Learn more about the Codex CLI](/codex/cli)
 

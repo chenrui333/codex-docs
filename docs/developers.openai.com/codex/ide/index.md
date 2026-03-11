@@ -66,6 +66,7 @@ Codex includes commands you can bind as keyboard shortcuts in your IDE settings 
 To see all available commands and bind them as keyboard shortcuts, select the settings icon in the Codex chat and select **Keyboard shortcuts**.
 You can also refer to the [Codex IDE extension commands](/codex/ide/commands) page.
 For a list of supported slash commands, see [Codex IDE extension slash commands](/codex/ide/slash-commands).
+If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 
 ---
 

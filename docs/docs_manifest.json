@@ -32,7 +32,7 @@
       "source_url": "https://developers.openai.com/codex/app/features"
     },
     "developers.openai.com/codex/app/index.md": {
-      "sha256": "1efb766cb19baf4022d102b37de11dce7f06a8bb5ad0f9805a3e7b9b71f6dd77",
+      "sha256": "35876b6973613ab06c83e40e12209bc6eb075954dfca3e698dc469015b4ddaa2",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app"
     },
@@ -87,7 +87,7 @@
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
     "developers.openai.com/codex/cli/index.md": {
-      "sha256": "4a2d695e9dd10570a54f5f90e85d70091f00651f70964fbd4299c2174241f74b",
+      "sha256": "4e415c83197aa3ed6e78f5617259d998671154f4c116f36c42b91e20b914829a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli"
     },
@@ -177,7 +177,7 @@
       "source_url": "https://developers.openai.com/codex/custom-prompts"
     },
     "developers.openai.com/codex/enterprise/admin-setup/index.md": {
-      "sha256": "89c124d37501333a7e67ad6bfc6ce8a08f0ad3d90fc4d961b194128ebea4350c",
+      "sha256": "c26c961a00216a77b86a89200b3597918cb6fc2e54261a9e012f8ea2b75a95b4",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/admin-setup"
     },
@@ -187,7 +187,7 @@
       "source_url": "https://developers.openai.com/codex/enterprise/governance"
     },
     "developers.openai.com/codex/enterprise/managed-configuration/index.md": {
-      "sha256": "05b6657fcfe460c54736ec20e5647ebf593454dc532c75fa0642196ce300dc75",
+      "sha256": "f58bb8ad02cbf6bf2681493f67ece05f079c8e8717d2d997e716bbcbbc2e491c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
@@ -232,7 +232,7 @@
       "source_url": "https://developers.openai.com/codex/ide/features"
     },
     "developers.openai.com/codex/ide/index.md": {
-      "sha256": "406974df0f03a34d4dda56bab7966235e2e11e344986561b51a2b2643e40f7c9",
+      "sha256": "e16e122bddea8e0d78c64f49d37ef28476ab5961b6d4b5039233916930338ede",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide"
     },
@@ -265,6 +265,11 @@
       "sha256": "f8e559de2712bf4f6040d025c711550b8b03785459e5792067b64afbf3c5c93e",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/integrations/slack"
+    },
+    "developers.openai.com/codex/learn/best-practices/index.md": {
+      "sha256": "c8719581804b8cf4ad16a863135da5756a275f988881d87439c759f965a32f9f",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/learn/best-practices"
     },
     "developers.openai.com/codex/mcp/index.md": {
       "sha256": "0bbf0001896f9a796981dbf507d84f375ec91e601d8dd1a5c00a49cdda1717b3",
@@ -307,7 +312,7 @@
       "source_url": "https://developers.openai.com/codex/prompting"
     },
     "developers.openai.com/codex/quickstart/index.md": {
-      "sha256": "15713417894480dead276e70d21df9b6358b6f3ce985c150455b0f1ab1ebfd32",
+      "sha256": "395d698859d68ec93defbe2ddf8a99f6b1a2ec58664f50d03be49633a14b4c3d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/quickstart"
     },

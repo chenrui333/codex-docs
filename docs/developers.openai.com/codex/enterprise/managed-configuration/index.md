@@ -9,21 +9,21 @@ Enterprise admins can control local Codex behavior in two ways:
 
 ## Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, sandbox mode, web search mode, and optionally which MCP servers can be enabled). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced requirement, Codex falls back to a requirements-compatible value and notifies the user. If an `mcp_servers` allowlist is configured, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
+Requirements constrain security-sensitive settings (approval policy, sandbox mode, web search mode, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
 
-Requirements can also be used to constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note features are generally not security-sensitive, but enterprises have the option of pinning values, if desired. Omitted keys remain unconstrained.
+Requirements can also constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren’t always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
 For the exact key list, see the [`requirements.toml` section in Configuration Reference](/codex/config-reference#requirementstoml).
 
 ### Locations and precedence
 
-Requirements layers are applied in this order (earlier wins per field):
+Codex applies requirements layers in this order (earlier wins per field):
 
 1. Cloud-managed requirements (ChatGPT Business or Enterprise)
 2. macOS managed preferences (MDM) via `com.openai.codex:requirements_toml_base64`
 3. System `requirements.toml` (`/etc/codex/requirements.toml` on Unix systems, including Linux/macOS)
 
-Across layers, requirements are merged per field: if an earlier layer sets a field (including an empty list), later layers do not override that field, but lower layers can still fill fields that remain unset.
+Across layers, Codex merges requirements per field: if an earlier layer sets a field (including an empty list), later layers don’t override that field, but lower layers can still fill fields that remain unset.
 
 For backwards compatibility, Codex also interprets legacy `managed_config.toml` fields `approval_policy` and `sandbox_mode` as requirements (allowing only that single value).
 
@@ -55,15 +55,15 @@ For more examples, see [Example requirements.toml](#example-requirementstoml).
 
 Admins can configure different managed requirements for different user groups, and also set a default fallback requirements policy.
 
-If a user matches multiple group-specific rules, the first matching rule applies. Codex does not fill unset requirement fields from later matching group rules.
+If a user matches more than one group-specific rule, the first matching rule applies. Codex doesn’t fill unset fields from later matching group rules.
 
-For example, if the first matching group rule sets only `allowed_sandbox_modes = ["read-only"]` and a later matching group rule sets `allowed_approval_policies = ["on-request"]`, Codex applies only the first matching group rule and does not fill `allowed_approval_policies` from the later rule.
+For example, if the first matching group rule sets only `allowed_sandbox_modes = ["read-only"]` and a later matching group rule sets `allowed_approval_policies = ["on-request"]`, Codex applies only the first matching group rule and doesn’t fill `allowed_approval_policies` from the later rule.
 
 #### How Codex applies cloud-managed requirements locally
 
-When a user starts Codex and signs in with ChatGPT on a Business or Enterprise plan, Codex applies managed requirements on a best-effort basis. Codex first checks for a valid, unexpired local managed requirements cache entry and uses it if available. If the cache is missing, expired, invalid, or does not match the current auth identity, Codex attempts to fetch managed requirements from the service (with retries) and writes a new signed cache entry on success. If no valid cached entry is available and the fetch fails or times out, Codex continues without the managed requirements layer.
+When a user starts Codex and signs in with ChatGPT on a Business or Enterprise plan, Codex applies managed requirements on a best-effort basis. Codex first checks for a valid, unexpired local managed requirements cache entry and uses it if available. If the cache is missing, expired, corrupted, or doesn’t match the current auth identity, Codex attempts to fetch managed requirements from the service (with retries) and writes a new signed cache entry on success. If no valid cached entry is available and the fetch fails or times out, Codex continues without the managed requirements layer.
 
-After cache resolution, managed requirements are enforced as part of the normal requirements layering described above.
+After cache resolution, Codex enforces managed requirements as part of the normal requirements layering described above.
 
 ### Example requirements.toml
 
@@ -80,7 +80,7 @@ You can also constrain web search mode:
 allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
 ```
 
-`allowed_web_search_modes = []` effectively allows only `"disabled"`.
+`allowed_web_search_modes = []` allows only `"disabled"`.
 For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
 
 You can also pin [feature flags](/codex/config-basic/#feature-flags):
@@ -91,7 +91,7 @@ personality = true
 unified_exec = false
 ```
 
-Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the effective feature set to satisfy these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
+Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
 
 ### Enforce command rules from requirements
 

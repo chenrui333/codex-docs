@@ -43,6 +43,7 @@ If you used the Codex app, CLI, or IDE Extension before you’ll see past projec
 - Find and fix bugs in my codebase with minimal, high-confidence changes.
 
    If you need more inspiration, check out the [explore section](/codex/explore).
+   If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 
 ---
 

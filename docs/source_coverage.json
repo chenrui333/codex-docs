@@ -60,6 +60,7 @@
       "https://developers.openai.com/codex/integrations/github",
       "https://developers.openai.com/codex/integrations/linear",
       "https://developers.openai.com/codex/integrations/slack",
+      "https://developers.openai.com/codex/learn/best-practices",
       "https://developers.openai.com/codex/mcp",
       "https://developers.openai.com/codex/models",
       "https://developers.openai.com/codex/multi-agent",
@@ -100,8 +101,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 97,
-      "mirrored_urls": 85,
+      "codex_related_urls": 98,
+      "mirrored_urls": 86,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -161,6 +162,7 @@
       "https://developers.openai.com/codex/integrations/github",
       "https://developers.openai.com/codex/integrations/linear",
       "https://developers.openai.com/codex/integrations/slack",
+      "https://developers.openai.com/codex/learn/best-practices",
       "https://developers.openai.com/codex/mcp",
       "https://developers.openai.com/codex/models",
       "https://developers.openai.com/codex/multi-agent",
@@ -194,8 +196,12 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/learn/best-practices"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/learn/best-practices"
+    ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -217,7 +223,7 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
     ]
   },
-  "generated_at": "2026-03-07T12:11:49+00:00",
+  "generated_at": "2026-03-11T00:31:30+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,
