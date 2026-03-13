@@ -12,6 +12,7 @@ By default, the agent runs with network access turned off. Locally, Codex uses a
 
 For a high-level explanation of how sandboxing works across the Codex app, IDE
 extension, and CLI, see [Sandboxing](/codex/concepts/sandboxing).
+For a broader enterprise security overview, see the [Codex security white paper](https://trust.openai.com/?itemUid=382f924d-54f3-43a8-a9df-c39e6c959958&source=click).
 
 ## Sandbox and approvals
 

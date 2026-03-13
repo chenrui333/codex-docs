@@ -20,6 +20,7 @@ Codex supports ChatGPT Enterprise security features, including:
 - Audit logging via the ChatGPT Compliance API
 
 For security controls and runtime protections, see [Agent approvals & security](/codex/agent-approvals-security). Refer to [Zero Data Retention (ZDR)](https://platform.openai.com/docs/guides/your-data#zero-data-retention) for more details.
+For a broader enterprise security overview, see the [Codex security white paper](https://trust.openai.com/?itemUid=382f924d-54f3-43a8-a9df-c39e6c959958&source=click).
 
 ## Pre-requisites: Determine owners and rollout strategy
 

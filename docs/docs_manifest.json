@@ -2,7 +2,7 @@
   "schema_version": 1,
   "sources": {
     "developers.openai.com/codex/agent-approvals-security/index.md": {
-      "sha256": "05c97acdc1eec598882d1a49aed2ea69cd69c0dac2aaca5734ca112d3d2fdaa6",
+      "sha256": "5051f6756af566d25a7525cffe4d8fe533d33fcde7c324442aa5128df4f2930b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/agent-approvals-security"
     },
@@ -177,7 +177,7 @@
       "source_url": "https://developers.openai.com/codex/custom-prompts"
     },
     "developers.openai.com/codex/enterprise/admin-setup/index.md": {
-      "sha256": "c26c961a00216a77b86a89200b3597918cb6fc2e54261a9e012f8ea2b75a95b4",
+      "sha256": "2361f82efbd391c6daaaee775ddfe5f251a58452953ff990edf2a5228a13e1a8",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/admin-setup"
     },
