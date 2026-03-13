@@ -223,7 +223,7 @@
     {
       "enabled": false,
       "key": "use_linux_sandbox_bwrap",
-      "stage": "experimental"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -345,9 +345,17 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
+    "enable_fanout": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "enable_request_compression": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "exec_permission_approvals": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "experimental_windows_sandbox": {
       "default_enabled_expr": "false",
@@ -405,13 +413,13 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "realtime_conversation_v2": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "remote_models": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
-    },
-    "request_permissions": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
     },
     "request_permissions_tool": {
       "default_enabled_expr": "false",
@@ -457,10 +465,6 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
-    "spawn_csv": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
-    },
     "sqlite": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -489,6 +493,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "stable"
     },
+    "use_linux_sandbox_bwrap": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
     "voice_transcription": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -503,8 +511,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "98dadf7a18c5f9e0b752d004ee5c1171960f628320e674cfe336163e745137ea",
-    "features_rs_sha256": "6179ff4c1c956d7eb7bcd1d7b30359976e9c28b86c81b21870678d831ac7aa54"
+    "client_rs_sha256": "c936b67067507220baf0a93ca39f6b5afdd4f271a2e7ed02678370b61d848401",
+    "features_rs_sha256": "5c0c0ec58d658d0c72eebe14528c761094fd026b13adcd44c0d4ce23443250f5"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
