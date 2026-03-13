@@ -4,15 +4,20 @@ Source: https://developers.openai.com/codex/app/automations
 
 Automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives the task if there’s nothing to report. You can combine automations with [skills](/codex/skills) for more complex tasks.
 
-Automations run locally in the Codex app. The app needs to be running, and the
-selected project needs to be available on disk.
+Automations run in the background in the Codex app. The app needs to be
+running, and the selected project needs to be available on disk.
 
-In Git repositories, each automation run starts in a new
-[worktree](/codex/app/worktrees) so it doesn’t interfere with your main
-checkout. In non-version-controlled projects, automations run directly in the
+In Git repositories, you can choose whether an automation runs in your local
+project or on a new [worktree](/codex/app/worktrees). Both options run in the
+background. Worktrees keep automation changes separate from unfinished local
+work, while running in your local project can modify files you are still
+working on. In non-version-controlled projects, automations run directly in the
 project directory.
 
-![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp)
+You can also leave the model and reasoning effort on their default settings, or
+choose them explicitly if you want more control over how the automation runs.
+
+![Automation creation form with schedule and prompt fields](/images/codex/app/codex-automations-light.webp)
 
 ## Managing tasks
 
@@ -20,7 +25,13 @@ All automations and their runs can be found in the automations pane inside your 
 
 The “Triage” section acts as your inbox. Automation runs with findings show up there, and you can filter your inbox to show all automation runs or only unread ones.
 
-When an automation runs in a Git repository, Codex uses a dedicated background [worktree](/codex/app/features#worktree-support). In non-version-controlled projects, automations run directly in the project directory. Consider using Git to enable running on background worktrees. You can have the same automation run on multiple projects.
+For Git repositories, each automation can run either in your local project or
+on a dedicated background [worktree](/codex/app/features#worktree-support). Use
+worktrees when you want to isolate automation changes from unfinished local
+work. Use local mode when you want the automation to work directly in your main
+checkout, keeping in mind that it can modify files you are actively editing.
+In non-version-controlled projects, automations run directly in the project
+directory. You can have the same automation run on multiple projects.
 
 Automations use your default sandbox settings. In read-only mode, tool calls fail if they require modifying files, network access, or working with apps on your computer. With full access enabled, background automations carry elevated risk. You can adjust sandbox settings in [Settings](/codex/app/settings) and selectively allowlist commands with [rules](/codex/rules).
 
@@ -32,7 +43,7 @@ Before you schedule an automation, test the prompt manually in a regular thread
 first. This helps you confirm:
 
 - The prompt is clear and scoped correctly.
-- The selected model and tools behave as expected.
+- The selected or default model, reasoning effort, and tools behave as expected.
 - The resulting diff is reviewable.
 
 When you start scheduling runs, review the first few outputs closely and adjust
@@ -40,9 +51,9 @@ the prompt or cadence as needed.
 
 ## Worktree cleanup for automations
 
-For Git repositories, automations run in worktrees. Frequent schedules can
-create many worktrees over time. Archive automation runs you no longer need,
-and avoid pinning runs unless you intend to keep their worktrees.
+If you choose worktrees for Git repositories, frequent schedules can create
+many worktrees over time. Archive automation runs you no longer need, and avoid
+pinning runs unless you intend to keep their worktrees.
 
 ## Permissions and security model
 

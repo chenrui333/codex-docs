@@ -2,19 +2,19 @@
 
 Source: https://developers.openai.com/codex/community/meetups
 
-Mar 12
+Apr 8
 
-![Stylized city cover for Orlando](/codex/meetups/orlando.webp)
+![Stylized city cover for Mexico City](/codex/meetups/mexico-city.webp)
 
-UpcomingMar 12
+UpcomingApr 8
 
-Orlando, FL, USA
+Mexico City, Mexico
 
-### Orlando
+### Mexico City
 
-March 12, 2026
+April 8, 2026
 
-Hosted by [Leonard](https://www.linkedin.com/in/lgofman/), [Michael](https://www.linkedin.com/in/michael-rusudev/), and [Carlos](https://www.linkedin.com/in/cataladev/)
+Hosted by [Ben Kim](https://ben-k.im) and [Javier Rivero](https://www.linkedin.com/in/javierriveroe)
 
-[Register now](https://luma.com/39y2dvwx)[Share city](/codex/community/meetups?city=Orlando)
+[Register now](https://luma.com/suipk589)[Share city](/codex/community/meetups?city=Mexico%20City)
 

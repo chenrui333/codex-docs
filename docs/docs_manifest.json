@@ -17,7 +17,7 @@
       "source_url": "https://developers.openai.com/codex/app-server"
     },
     "developers.openai.com/codex/app/automations/index.md": {
-      "sha256": "ed05caea6054fca033f735cb16951572846af90b3398534c9bbf32b6c7b73822",
+      "sha256": "f6029872bdb17d0b61bd7d4da2355a12d1520d8a61789688309c0b420c538482",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/automations"
     },
@@ -47,7 +47,7 @@
       "source_url": "https://developers.openai.com/codex/app/review"
     },
     "developers.openai.com/codex/app/settings/index.md": {
-      "sha256": "3f1cf8beeb8149bdea4c3d9f59fca03479f800fca0333bab29f2cab626691072",
+      "sha256": "a8ef10952e4bcc55d525ec7aafa91e41ca680b5aaf7db9c5532dabb94be38724",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/settings"
     },
@@ -127,7 +127,7 @@
       "source_url": "https://developers.openai.com/codex/community/codex-for-oss"
     },
     "developers.openai.com/codex/community/meetups/index.md": {
-      "sha256": "90f24468b5f5eb65ce54681a0ccfc056ac3fa95ca542513d5caed1b60e286519",
+      "sha256": "0cf2c0783ceadd7c630e2f9f2e8a809cd1090e7fe7a07106b08a45c29454b44c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/community/meetups"
     },
@@ -507,7 +507,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/authentication.md"
     },
     "github.openai.com/openai/codex/docs/config.md": {
-      "sha256": "bc998ed4568c091faa6a46718db8896cfe16d405c7da28641a4a2c1498fb2183",
+      "sha256": "ca3091a4f0423701b37842d8a0c5596e15a882f99ad36e2439fb20bbf444dcb1",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/config.md"
     },
@@ -547,7 +547,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
     },
     "github.openai.com/openai/codex/docs/js_repl.md": {
-      "sha256": "2b46d3baefde62034daf006944fa3a5d524e44f4ebbef2ce6d7c4b83413c6f3f",
+      "sha256": "e5c170dbde50fd1dbd9f0245c12f26ed272cb0ac9a8d8a58ae447c087de132ce",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/js_repl.md"
     },

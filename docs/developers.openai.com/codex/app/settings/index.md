@@ -12,11 +12,6 @@ Choose where files open and how much command output appears in threads. You can 
 require `Cmd`+`Enter` for multiline prompts or prevent sleep while a
 thread runs.
 
-## Appearance
-
-Pick a theme, decide whether the window is solid, and adjust UI or code fonts. Font
-choices apply across the app, including the diff review panel and terminal.
-
 ## Notifications
 
 Choose when turn completion notifications appear, and whether the app should prompt for
@@ -28,6 +23,14 @@ Codex agents in the app inherit the same configuration as the IDE and CLI extens
 Use the in-app controls for common settings, or edit `config.toml` for advanced
 options. See [Codex security](/codex/agent-approvals-security) and
 [config basics](/codex/config-basic) for more detail.
+
+## Appearance
+
+In **Settings**, you can change the Codex app appearance by choosing a base theme,
+adjusting accent, background, and foreground colors, and changing the UI and code
+fonts. You can also share your custom theme with friends.
+
+![Codex app Appearance settings showing theme selection, color controls, and font options](/images/codex/app/theme-selection-light.webp)
 
 ## Git
 

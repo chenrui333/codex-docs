@@ -2,10 +2,14 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-12T00:29:47+00:00",
+  "generated_at": "2026-03-13T00:34:17+00:00",
   "removed": [],
   "total_files": 122,
   "updated": [
+    "developers.openai.com/codex/app/automations/index.md",
+    "developers.openai.com/codex/app/settings/index.md",
+    "developers.openai.com/codex/community/meetups/index.md",
+    "github.openai.com/openai/codex/docs/config.md",
     "github.openai.com/openai/codex/docs/js_repl.md"
   ]
 }
