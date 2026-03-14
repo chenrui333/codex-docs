@@ -22,12 +22,12 @@
       "source_url": "https://developers.openai.com/codex/app/automations"
     },
     "developers.openai.com/codex/app/commands/index.md": {
-      "sha256": "4bf8174e3d45ff8a9fbfa8d805c5018916ba74d52fdcd9daa0928a0eaebe7c81",
+      "sha256": "de2fd541dfa73026511f7684bd2540fb2a4dd11be9bc309326055e575a033dfa",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/commands"
     },
     "developers.openai.com/codex/app/features/index.md": {
-      "sha256": "40e645789128f876bfb93f8bd0d6707ebc9e95cd6bcd3ec4aa735d75e428bcc9",
+      "sha256": "21d06f56d3d881c95b69d393d637a02acada9fd7e28a22f3393069eccbae5a24",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/features"
     },

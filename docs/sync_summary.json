@@ -2,11 +2,11 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-13T18:15:10+00:00",
+  "generated_at": "2026-03-14T00:32:37+00:00",
   "removed": [],
   "total_files": 122,
   "updated": [
-    "developers.openai.com/codex/agent-approvals-security/index.md",
-    "developers.openai.com/codex/enterprise/admin-setup/index.md"
+    "developers.openai.com/codex/app/commands/index.md",
+    "developers.openai.com/codex/app/features/index.md"
   ]
 }

@@ -50,6 +50,24 @@ Enabled skills also appear in the slash command list (for example, `/imagegen`).
 | `/review` | Start code review mode to review uncommitted changes or compare against a base branch. |
 | `/status` | Show the thread ID, context usage, and rate limits. |
 
+## Deeplinks
+
+The Codex app registers the `codex://` URL scheme so links can open specific parts of the app directly.
+
+| Deeplink | Opens | Supported query parameters |
+| --- | --- | --- |
+| `codex://settings` | Settings. | None. |
+| `codex://skills` | Skills. | None. |
+| `codex://automations` | Inbox in automation create mode. | None. |
+| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be a UUID. | None. |
+| `codex://new` | A new thread. | Optional: `prompt`, `originUrl`, `path`. |
+
+For new-thread deeplinks:
+
+- `prompt` prefills the composer.
+- `path` must be an absolute path to a local directory and, when valid, makes that directory the active workspace for the new thread.
+- `originUrl` tries to match one of your current workspace roots by Git remote URL. If both `path` and `originUrl` are present, Codex resolves `path` first.
+
 ## See also
 
 - [Features](/codex/app/features)
