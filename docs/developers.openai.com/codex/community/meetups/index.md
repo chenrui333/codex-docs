@@ -10,11 +10,11 @@ UpcomingApr 8
 
 Mexico City, Mexico
 
-### Mexico City
+### Community Meetup - Mexico City
 
 April 8, 2026
 
 Hosted by [Ben Kim](https://ben-k.im) and [Javier Rivero](https://www.linkedin.com/in/javierriveroe)
 
-[Register now](https://luma.com/suipk589)[Share city](/codex/community/meetups?city=Mexico%20City)
+[Register now (opens in a new tab)](https://luma.com/suipk589)[Share city](/codex/community/meetups?city=Mexico%20City)
 
