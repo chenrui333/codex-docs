@@ -127,7 +127,7 @@
       "source_url": "https://developers.openai.com/codex/community/codex-for-oss"
     },
     "developers.openai.com/codex/community/meetups/index.md": {
-      "sha256": "865d77aac340ab32726bc85d6107acb228425b0f85a2975379d5719fed57c99d",
+      "sha256": "e768f883200f64c2a2b93a68ccf5deb7f953d28385cc0ff873fa0d8bf93e9aa7",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/community/meetups"
     },
@@ -432,7 +432,7 @@
       "source_url": "https://developers.openai.com/resources/codex"
     },
     "github.openai.com/openai/codex/AGENTS.md": {
-      "sha256": "9b70292df14a1d6efd2f62b449d4c54a4854b331021d73aa58c358411008194d",
+      "sha256": "932e35f307f93af625f62d6cea1c2bba356c56823b4c084ae4de803b8cf4aa9e",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
     },

@@ -2,19 +2,19 @@
 
 Source: https://developers.openai.com/codex/community/meetups
 
-Apr 8
+Mar 17
 
-![Stylized city cover for Mexico City](/codex/meetups/mexico-city.webp)
+![Stylized city cover for San Francisco](/codex/meetups/san-francisco.webp)
 
-UpcomingApr 8
+UpcomingMar 17
 
-Mexico City, Mexico
+San Francisco, California, USA
 
-### Community Meetup - Mexico City
+### Community Hackathon - San Francisco
 
-April 8, 2026
+March 17, 2026
 
-Hosted by [Ben Kim](https://ben-k.im) and [Javier Rivero](https://www.linkedin.com/in/javierriveroe)
+Hosted by [Adam Chan](https://x.com/itsajchan)
 
-[Register now (opens in a new tab)](https://luma.com/suipk589)[Share city](/codex/community/meetups?city=Mexico%20City)
+[Register now (opens in a new tab)](https://luma.com/openclaw-hack-night-mar17-2026)[Share city](/codex/community/meetups?city=San%20Francisco)
 
