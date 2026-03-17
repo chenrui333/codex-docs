@@ -28,6 +28,30 @@ ChatGPT Credits
 
 API Access
 
+![gpt-5.4-mini](/images/api/models/gpt-5-mini.jpg)
+
+gpt-5.4-mini
+
+Fast, efficient mini model for responsive coding tasks and subagents.
+
+codex -m gpt-5.4-mini
+
+Copy command
+
+Capability
+
+Speed
+
+Codex CLI & SDK
+
+Codex app & IDE extension
+
+Codex Cloud
+
+ChatGPT Credits
+
+API Access
+
 ![gpt-5.3-codex](/images/codex/codex-wallpaper-1.webp)
 
 gpt-5.3-codex
@@ -78,9 +102,10 @@ API Access
 
 For most tasks in Codex, start with `gpt-5.4`. It combines strong coding,
 reasoning, native computer use, and broader professional workflows in one
-model. The `gpt-5.3-codex-spark` model is available in research preview for
-ChatGPT Pro subscribers and is optimized for near-instant, real-time coding
-iteration.
+model. Use `gpt-5.4-mini` when you want a faster, lower-cost option for
+lighter coding tasks or subagents. The `gpt-5.3-codex-spark` model remains
+available in research preview for ChatGPT Pro subscribers and is optimized for
+near-instant, text-only iteration.
 
 ## Alternative models
 

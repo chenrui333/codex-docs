@@ -48,7 +48,12 @@ Each resumed run keeps the original transcript, plan history, and approvals, so 
 
 ## Models and reasoning
 
-For most tasks in Codex, `gpt-5.4` is the recommended model. It brings the industry-leading coding capabilities of `gpt-5.3-codex` to OpenAI’s flagship frontier model, combining frontier coding performance with stronger reasoning, native computer use, and broader professional workflows. For extra fast tasks, ChatGPT Pro subscribers have access to the GPT-5.3-Codex-Spark model in research preview.
+For most tasks in Codex, `gpt-5.4` is the recommended model. It brings the
+industry-leading coding capabilities of `gpt-5.3-codex` to OpenAI’s flagship
+frontier model, combining frontier coding performance with stronger reasoning,
+native computer use, and broader professional workflows. For extra fast tasks,
+ChatGPT Pro subscribers have access to the GPT-5.3-Codex-Spark model in
+research preview.
 
 Switch models mid-session with the `/model` command, or specify one when launching the CLI.
 

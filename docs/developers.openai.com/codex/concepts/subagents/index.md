@@ -3,7 +3,7 @@
 Source: https://developers.openai.com/codex/concepts/subagents
 
 Codex can run subagent workflows by spawning specialized agents in parallel so
-they can explore, execute, or analyze work concurrently.
+they can explore, tackle, or analyze work concurrently.
 
 This page explains the core concepts and tradeoffs. For setup, agent configuration, and examples, see [Subagents](/codex/subagents).
 
@@ -67,18 +67,21 @@ Different agents need different model and reasoning settings.
 
 If you don’t pin a model or `model_reasoning_effort`, Codex can choose a setup
 that balances intelligence, speed, and price for the task. It may favor
-`gpt-5.3-codex-spark` for fast scans or a higher-effort `gpt-5.4`
-configuration for harder reasoning. When you want finer control, steer that
+`gpt-5.4-mini` for fast scans or a higher-effort `gpt-5.4`
+configuration for more demanding reasoning. When you want finer control, steer that
 choice in your prompt or set `model` and `model_reasoning_effort` directly in
 the agent file.
 
-For most tasks in Codex, start with `gpt-5.4`. Use `gpt-5.3-codex-spark` when
-you want a faster option for lighter subagent work.
+For most tasks in Codex, start with `gpt-5.4`. Use `gpt-5.4-mini` when you
+want a faster, lower-cost option for lighter subagent work. If you have
+ChatGPT Pro and want near-instant text-only iteration, `gpt-5.3-codex-spark`
+remains available in research preview.
 
 ### Model choice
 
 - **`gpt-5.4`**: Start here for most agents. It combines strong coding, reasoning, tool use, and broader workflows. The main agent and agents that coordinate ambiguous or multi-step work fit here.
-- **`gpt-5.3-codex-spark`**: Use for agents that favor speed over depth, such as exploration, read-heavy scans, or quick summarization tasks. It works well for parallel workers that return distilled results to the main agent.
+- **`gpt-5.4-mini`**: Use for agents that favor speed and efficiency over depth, such as exploration, read-heavy scans, large-file review, or processing supporting documents. It works well for parallel workers that return distilled results to the main agent.
+- **`gpt-5.3-codex-spark`**: If you have ChatGPT Pro, use this research preview model for near-instant, text-only iteration when latency matters more than broader capability.
 
 ### Reasoning effort (`model_reasoning_effort`)
 

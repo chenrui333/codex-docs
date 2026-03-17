@@ -82,7 +82,7 @@
       "source_url": "https://developers.openai.com/codex/changelog"
     },
     "developers.openai.com/codex/cli/features/index.md": {
-      "sha256": "fa54c0700300af5f8c14973ffbab84f9fc1f58dd9d70f936ddada0b829087d97",
+      "sha256": "7cf5da45db9af19a54c83f48ece25a15a210e5d33bc1a6037a316c6049351878",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
@@ -147,7 +147,7 @@
       "source_url": "https://developers.openai.com/codex/concepts/sandboxing"
     },
     "developers.openai.com/codex/concepts/subagents/index.md": {
-      "sha256": "fd9d5e537fc6bb5ffd90086f625eccda80f31535a707b124c09846b24c240b05",
+      "sha256": "d8f81c6050a4e2d916d893f4e9cc9da3249d2294a04b6dbb3000312e08fa4925",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/subagents"
     },
@@ -277,7 +277,7 @@
       "source_url": "https://developers.openai.com/codex/mcp"
     },
     "developers.openai.com/codex/models/index.md": {
-      "sha256": "a3afc9fc6075e01574077ef67efa378c8efbb17768b0462d55e2ff43dc51f7f1",
+      "sha256": "b3409f771b7e1e2ad283797ef3817f7a2617b1937dd48cb566fecc75c1507935",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/models"
     },
@@ -297,7 +297,7 @@
       "source_url": "https://developers.openai.com/codex/overview"
     },
     "developers.openai.com/codex/pricing/index.md": {
-      "sha256": "ecba5a826077e931090eaf6b35852c82c4559f0848065a2fc6a3bdf3668d46b7",
+      "sha256": "f45e4e284bd71c2acfbab2b0cad9af591cf823d1c0a56f6c5b7650d6fc596d23",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
@@ -352,7 +352,7 @@
       "source_url": "https://developers.openai.com/codex/speed"
     },
     "developers.openai.com/codex/subagents/index.md": {
-      "sha256": "8fd9fe5b6ed08cb5ab5a26b424398153f1b050f60a71a664226f419474d004d3",
+      "sha256": "2079713d165a3a86baf00921872371a2cef3bcb8fd1fc5869d40a7f53fbaa538",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/subagents"
     },

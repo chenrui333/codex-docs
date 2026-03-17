@@ -17,7 +17,7 @@ $20/month
 - Codex on the web, in the CLI, in the IDE extension, and on iOS
 - Cloud-based integrations like automatic code review and Slack integration
 - The latest models, including GPT-5.4 and GPT-5.3-Codex
-- GPT-5.1-Codex-Mini for up to 4x higher usage limits for local messages
+- GPT-5.4-mini for up to 3.3x higher usage limits for local messages
 - Flexibly extend usage with [ChatGPT credits](#credits-overview)
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the Plus plan
 
@@ -94,6 +94,16 @@ GPT-5.4
 | ChatGPT Enterprise & Edu | No fixed limits — usage scales with [credits](#credits-overview) | | |
 | API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 
+GPT-5.4-mini
+
+|  | Local Messages[\*](#shared-limits) / 5h | Cloud Tasks[\*](#shared-limits) / 5h | Code Reviews / week |
+| --- | --- | --- | --- |
+| ChatGPT Plus | 110-560 | Not available | Not available |
+| ChatGPT Pro | 743-3733 | Not available | Not available |
+| ChatGPT Business | 110-560 | Not available | Not available |
+| ChatGPT Enterprise & Edu | No fixed limits — usage scales with [credits](#credits-overview) | | |
+| API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
+
 GPT-5.3-Codex
 
 |  | Local Messages[\*](#shared-limits) / 5h | Cloud Tasks[\*](#shared-limits) / 5h | Code Reviews / week |
@@ -102,16 +112,6 @@ GPT-5.3-Codex
 | ChatGPT Pro | 300-1500 | 50-400 | 100-250 |
 | ChatGPT Business | 45-225 | 10-60 | 10-25 |
 | ChatGPT Enterprise & Edu | No fixed limits — usage scales with [credits](#credits-overview) | | |
-| API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
-
-GPT-5.1-Codex-Mini
-
-|  | Local Messages[\*](#shared-limits) / 5h | Cloud Tasks[\*](#shared-limits) / 5h | Code Reviews / week |
-| --- | --- | --- | --- |
-| ChatGPT Plus | 180-900 | Not available | Not available |
-| ChatGPT Pro | 1200-6000 | Not available | Not available |
-| ChatGPT Business | 180-900 | Not available | Not available |
-| ChatGPT Enterprise & Edu | Local usage scales with [credits](#credits-overview) | Not available | Not available |
 | API Key | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 
 \*The usage limits for local messages and cloud tasks share a **five-hour
@@ -131,7 +131,7 @@ ChatGPT Plus and Pro users who reach their usage limit can purchase additional c
 
 Business, Edu, and Enterprise plans with [flexible pricing](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans) can purchase additional workspace credits to continue using Codex.
 
-If you are approaching usage limits, you can also switch to the GPT-5.1-Codex-Mini model to make your usage limits last longer.
+If you are approaching usage limits, you can also switch to the GPT-5.4-mini model to make your usage limits last longer.
 
 All users may also run extra local tasks using an API key, with usage charged at [standard API rates](https://platform.openai.com/docs/pricing).
 
@@ -153,6 +153,14 @@ GPT-5.4
 | Cloud Tasks | 1 message | ~34 credits |
 | Code Review | 1 pull request | ~34 credits |
 
+GPT-5.4-mini
+
+|  | Unit | Average credit cost |
+| --- | --- | --- |
+| Local Tasks | 1 message | ~2 credits |
+| Cloud Tasks | 1 message | Not available |
+| Code Review | 1 pull request | Not available |
+
 GPT-5.3-Codex
 
 |  | Unit | Average credit cost |
@@ -160,14 +168,6 @@ GPT-5.3-Codex
 | Local Tasks | 1 message | ~5 credits |
 | Cloud Tasks | 1 message | ~25 credits |
 | Code Review | 1 pull request | ~25 credits |
-
-GPT-5.1-Codex-Mini
-
-|  | Unit | Average credit cost |
-| --- | --- | --- |
-| Local Tasks | 1 message | ~1 credit |
-| Cloud Tasks | 1 message | Not available |
-| Code Review | 1 pull request | Not available |
 
 These averages also apply to legacy GPT-5.2, GPT-5.2-Codex, GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and GPT-5-Codex-Mini.
 
@@ -188,5 +188,5 @@ The usage limits and credits above are average rates. You can try the following 
 - **Control the size of your prompts.** Be precise with the instructions you give Codex, but remove unnecessary context.
 - **Reduce the size of your AGENTS.md.** If you work on a larger project, you can control how much context you inject through AGENTS.md files by [nesting them within your repository](/codex/guides/agents-md#layer-project-instructions).
 - **Limit the number of MCP servers you use.** Every [MCP](/codex/mcp) you add to Codex adds more context to your messages and uses more of your limit. Disable MCP servers when you don’t need them.
-- **Switch to GPT-5.1-Codex-Mini for routine tasks.** Using the mini model should extend your usage limits by roughly 4x.
+- **Switch to GPT-5.4-mini for routine tasks.** Using the mini model should extend your local-message usage limits by roughly 2.5x to 3.3x, depending on the model you switch from.
 
