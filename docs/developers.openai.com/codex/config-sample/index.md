@@ -356,7 +356,6 @@ enabled = true
 # apps_mcp_gateway = false
 # unified_exec = false
 # shell_snapshot = false
-# multi_agent = false
 # personality = true
 # use_linux_sandbox_bwrap = false
 # runtime_metrics = true

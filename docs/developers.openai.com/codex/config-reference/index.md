@@ -56,7 +56,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
 | `features.image_detail_original` | `boolean` | Allow image outputs with `detail = "original"` on supported models (under development). |
 | `features.image_generation` | `boolean` | Enable the built-in image generation tool (under development). |
-| `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait`, `close_agent`, and `spawn_agents_on_csv`) (experimental; off by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.powershell_utf8` | `boolean` | Force PowerShell UTF-8 output. Enabled by default on Windows and off elsewhere. |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
@@ -753,18 +752,6 @@ Type / Values
 Details
 
 Enable the built-in image generation tool (under development).
-
-Key
-
-`features.multi_agent`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait`, `close_agent`, and `spawn_agents_on_csv`) (experimental; off by default).
 
 Key
 

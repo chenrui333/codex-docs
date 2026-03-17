@@ -9,7 +9,7 @@ In Codex, customization comes from a few layers that work together:
 - **Project guidance (`AGENTS.md`)** for persistent instructions
 - **Skills** for reusable workflows and domain expertise
 - **[MCP](/codex/mcp)** for access to external tools and shared systems
-- **[Multi-agents](/codex/concepts/multi-agents)** for delegating work to specialized sub-agents
+- **[Subagents](/codex/concepts/subagents)** for delegating work to specialized subagents
 
 These are complementary, not competing. `AGENTS.md` shapes behavior, skills package repeatable processes, and [MCP](/codex/mcp) connects Codex to systems outside the local workspace.
 
@@ -21,7 +21,7 @@ Use it for the rules you want Codex to follow every time in a repo, such as:
 
 - Build and test commands
 - Review expectations
-- Repo-specific conventions
+- repo-specific conventions
 - Directory-specific instructions
 
 When the agent makes incorrect assumptions about your codebase, correct them in `AGENTS.md` and ask the agent to update `AGENTS.md` so the fix persists. Treat it as a feedback loop.
@@ -46,7 +46,7 @@ Use the global file to shape how Codex communicates with you (for example, revie
   - AGENTS.md    Global (for you as a developer)
 - repo-root/
 
-  - AGENTS.md    Repo-specific (for your team)
+  - AGENTS.md    repo-specific (for your team)
 
 [Custom instructions with AGENTS.md](/codex/guides/agents-md)
 
@@ -89,9 +89,9 @@ Use skills for:
 
 Skills can be global (in your user directory, for you as a developer) or repo-specific (checked into `.agents/skills`, for your team). Put repo skills in `.agents/skills` when the workflow applies to that project; use your user directory for skills you want across all repos.
 
-| Layer | Global | Repo |
+| Layer | Global | repo |
 | --- | --- | --- |
-| AGENTS | `~/.codex/AGENTS.md` | `AGENTS.md` in repo root or nested dirs |
+| AGENTS | `~/.codex/AGENTS.md` | `AGENTS.md` in repo root or nested directories |
 | Skills | `$HOME/.agents/skills` | `.agents/skills` in repo |
 
 Codex uses progressive disclosure for skills:
@@ -107,11 +107,11 @@ Skills can be invoked explicitly, and Codex can also choose them implicitly when
 ## MCP
 
 MCP (Model Context Protocol) is the standard way to connect Codex to external tools and context providers.
-It’s especially useful for remotely hosted systems such as Figma, Linear, Jira, GitHub, or internal knowledge services your team depends on.
+It’s especially useful for remotely hosted systems such as Figma, Linear, GitHub, or internal knowledge services your team depends on.
 
 Use MCP when Codex needs capabilities that live outside the local repo, such as issue trackers, design tools, browsers, or shared documentation systems.
 
-A useful mental model:
+One way to think about it:
 
 - **Host**: Codex
 - **Client**: the MCP connection inside Codex
@@ -131,11 +131,11 @@ In practice, MCP is often most useful when paired with skills:
 
 [Model Context Protocol](/codex/mcp)
 
-## Multi-agents
+## Subagents
 
-You can create different agents with different roles and prompt them to use tools differently. For example, one agent might run specific testing commands and configurations, while another has MCP servers that fetch production logs for debugging. Each sub-agent stays focused and uses the right tools for its job.
+You can create different agents with different roles and prompt them to use tools differently. For example, one agent might run specific testing commands and configurations, while another has MCP servers that fetch production logs for debugging. Each subagent stays focused and uses the right tools for its job.
 
-[Multi-agents concepts](/codex/concepts/multi-agents)
+[Subagent concepts](/codex/concepts/subagents)
 
 ## Skills + MCP together
 
@@ -148,6 +148,6 @@ Build in this order:
 
 1. [Custom instructions with AGENTS.md](/codex/guides/agents-md) so Codex follows your repo conventions. Add pre-commit hooks and linters to enforce those rules.
 2. [Skills](/codex/skills) so you never have the same conversation twice. Skills can include a `scripts/` directory with CLI scripts or pair with [MCP](/codex/mcp) for external systems.
-3. [MCP](/codex/mcp) when workflows need external systems (Linear, JIRA, docs servers, design tools).
-4. [Multi-agents](/codex/multi-agent) when you’re ready to delegate noisy or specialized tasks to sub-agents.
+3. [MCP](/codex/mcp) when workflows need external systems (Linear, GitHub, docs servers, design tools).
+4. [Subagents](/codex/subagents) when you’re ready to delegate noisy or specialized tasks to subagents.
 

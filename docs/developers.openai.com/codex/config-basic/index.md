@@ -152,7 +152,6 @@ shell_snapshot = true           # Speed up repeated commands
 | `apps` | false | Experimental | Enable ChatGPT Apps/connectors support |
 | `apps_mcp_gateway` | false | Experimental | Route Apps MCP calls through `https://api.openai.com/v1/connectors/mcp/` instead of legacy routing |
 | `collaboration_modes` | true | Stable | Enable collaboration modes such as plan mode |
-| `multi_agent` | false | Experimental | Enable multi-agent collaboration tools |
 | `personality` | true | Stable | Enable personality selection controls |
 | `remote_models` | false | Experimental | Refresh remote model list before showing readiness |
 | `runtime_metrics` | false | Experimental | Show runtime metrics summaries in TUI turn separators |

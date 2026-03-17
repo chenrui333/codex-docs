@@ -22,14 +22,14 @@ the command name to filter the list.
 | --- | --- | --- |
 | [`/permissions`](#update-permissions-with-permissions) | Set what Codex can do without asking first. | Relax or tighten approval requirements mid-session, such as switching between Auto and Read Only. |
 | [`/sandbox-add-read-dir`](#grant-sandbox-read-access-with-sandbox-add-read-dir) | Grant sandbox read access to an extra directory (Windows only). | Unblock commands that need to read an absolute directory path outside the current readable roots. |
-| [`/agent`](#switch-agent-threads-with-agent) | Switch the active agent thread. | Inspect or continue work in a spawned sub-agent thread. |
+| [`/agent`](#switch-agent-threads-with-agent) | Switch the active agent thread. | Inspect or continue work in a spawned subagent thread. |
 | [`/apps`](#browse-apps-with-apps) | Browse apps (connectors) and insert them into your prompt. | Attach an app as `$app-slug` before asking Codex to use it. |
-| [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a clean slate. |
+| [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want to start over. |
 | [`/compact`](#keep-transcripts-lean-with-compact) | Summarize the visible conversation to free tokens. | Use after long runs so Codex retains key points without blowing the context window. |
 | [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. |
 | [`/diff`](#review-changes-with-diff) | Show the Git diff, including files Git isn’t tracking yet. | Review Codex’s edits before you commit or run tests. |
 | [`/exit`](#exit-the-cli-with-quit-or-exit) | Exit the CLI (same as `/quit`). | Alternative spelling; both commands exit the session. |
-| [`/experimental`](#toggle-experimental-features-with-experimental) | Toggle experimental features. | Enable optional features such as sub-agents from the CLI. |
+| [`/experimental`](#toggle-experimental-features-with-experimental) | Toggle experimental features. | Enable optional features such as subagents from the CLI. |
 | [`/feedback`](#send-feedback-with-feedback) | Send logs to the Codex maintainers. | Report issues or share diagnostics with support. |
 | [`/init`](#generate-agentsmd-with-init) | Generate an `AGENTS.md` scaffold in the current directory. | Capture persistent instructions for the repository or subdirectory you’re working in. |
 | [`/logout`](#sign-out-with-logout) | Sign out of Codex. | Clear local credentials when using a shared machine. |
@@ -94,7 +94,7 @@ While a task is already running, `/plan` is temporarily unavailable.
 ### Toggle experimental features with `/experimental`
 
 1. Type `/experimental` and press Enter.
-2. Toggle the features you want (for example, **Multi-agents**), then restart Codex.
+2. Toggle the features you want, then restart Codex.
 
 Expected: Codex saves your feature choices to config and applies them on restart.
 
@@ -211,7 +211,7 @@ Expected: Codex adds the file to the conversation, ensuring follow-up turns refe
 Expected: Codex starts a fresh conversation in the same CLI session, so you
 can switch tasks without leaving your terminal.
 
-Unlike `/clear`, `/new` does not clear the current terminal view first.
+Unlike `/clear`, `/new` doesn’t clear the current terminal view first.
 
 ### Resume a saved conversation with `/resume`
 
