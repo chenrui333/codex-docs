@@ -12,11 +12,6 @@
     },
     {
       "enabled": false,
-      "key": "apps_mcp_gateway",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
       "key": "artifact",
       "stage": "under development"
     },
@@ -28,6 +23,11 @@
     {
       "enabled": false,
       "key": "code_mode",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "code_mode_only",
       "stage": "under development"
     },
     {
@@ -56,9 +56,19 @@
       "stage": "removed"
     },
     {
+      "enabled": false,
+      "key": "enable_fanout",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "enable_request_compression",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "exec_permission_approvals",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -101,7 +111,7 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "multi_agent",
       "stage": "stable"
     },
@@ -134,11 +144,6 @@
       "enabled": false,
       "key": "remote_models",
       "stage": "removed"
-    },
-    {
-      "enabled": false,
-      "key": "request_permissions",
-      "stage": "under development"
     },
     {
       "enabled": false,
@@ -212,12 +217,22 @@
     },
     {
       "enabled": false,
+      "key": "tool_suggest",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "undo",
       "stage": "stable"
     },
     {
       "enabled": true,
       "key": "unified_exec",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "use_legacy_landlock",
       "stage": "stable"
     },
     {
@@ -241,26 +256,32 @@
       "stage": "deprecated"
     }
   ],
-  "codex_cli_version": "codex-cli 0.114.0",
+  "codex_cli_version": "codex-cli 0.115.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
       "code_mode",
+      "code_mode_only",
       "codex_git_commit",
       "codex_hooks",
+      "enable_fanout",
+      "exec_permission_approvals",
       "guardian_approval",
       "js_repl",
       "js_repl_tools_only",
       "memories",
+      "multi_agent",
       "plugins",
       "realtime_conversation",
-      "request_permissions",
       "request_permissions_tool",
       "shell_zsh_fork",
       "tool_call_mcp_elicitation",
+      "tool_suggest",
+      "use_legacy_landlock",
       "voice_transcription"
     ],
     "stale_in_docs": [
+      "apps_mcp_gateway",
       "web_search"
     ]
   },
@@ -277,7 +298,6 @@
     "fast_mode",
     "image_detail_original",
     "image_generation",
-    "multi_agent",
     "personality",
     "powershell_utf8",
     "prevent_idle_sleep",
@@ -477,6 +497,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "tui_app_server": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental"
+    },
     "undo": {
       "default_enabled_expr": "false",
       "stage_from_source": "stable"
@@ -507,8 +531,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "ce53e05ce86d155d7f166c3238cf4b8c2b10e638c5dac7d1d5467c052cf885a8",
-    "features_rs_sha256": "63975f3030ebbd4faf2268b2d8f6bdea6d1ff8b0163f4b939a0b21ef30bcd9ad"
+    "client_rs_sha256": "35f2fe532d8343e55bf06f7c2cf0300d36cc0b87bf009b7af2785a09308dd739",
+    "features_rs_sha256": "9d8ffed12b973fb9290f02e4edd31de9644d8c318239e05a4bab4f9b7770e54f"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
