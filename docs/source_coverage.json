@@ -193,11 +193,7 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/community/codex-ambassadors",
-      "https://developers.openai.com/community/codex-for-oss",
-      "https://developers.openai.com/learn/codex"
-    ],
+    "new_codex_related_urls_since_last_run": [],
     "new_mirrored_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -223,7 +219,7 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-03-18T00:36:00+00:00",
+  "generated_at": "2026-03-18T06:29:08+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,
