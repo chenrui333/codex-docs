@@ -24,11 +24,11 @@ Get inspirations on what you can build with Codex.
 
  Learn more](/codex/explore) [### Community
 
-Explore Codex Ambassadors and upcoming community meetups by location.
+Read community posts, explore meetups, and connect with Codex builders.
 
- See community](/codex/community/meetups) [### Codex for OSS
+ See community](/community) [### Codex for Open Source
 
 Apply or nominate maintainers for API credits, ChatGPT Pro with Codex, and selective Codex Security access.
 
- Learn more](/codex/community/codex-for-oss)
+ Learn more](/community/codex-for-oss)
 

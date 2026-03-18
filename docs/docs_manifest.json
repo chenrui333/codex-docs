@@ -6,11 +6,6 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/agent-approvals-security"
     },
-    "developers.openai.com/codex/ambassadors/index.md": {
-      "sha256": "b6387fe7fbee2e671580d5c49c309761f9309fde8e6633a20ac17abc7dfa4b3d",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/ambassadors"
-    },
     "developers.openai.com/codex/app-server/index.md": {
       "sha256": "ef58c356f75ccf207e8f00982418bddb998afe57424bf0c6e1601e8cb8863533",
       "source_type": "developers",
@@ -117,19 +112,9 @@
       "source_url": "https://developers.openai.com/codex/cloud/internet-access"
     },
     "developers.openai.com/codex/codex-for-oss-terms/index.md": {
-      "sha256": "f419a5356c7af608e86320f7d39501efda2571f7857b0c5afdd578a5d83f0ea9",
+      "sha256": "f88587f5fbcee838a34b5f29e3213df2e3f1550025f63ab02d278696edc789f6",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/codex-for-oss-terms"
-    },
-    "developers.openai.com/codex/community/codex-for-oss/index.md": {
-      "sha256": "09556e9083fdc4a2d038e024ed1e130969d754f9d37b137ebe1675bdb952fb7a",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/community/codex-for-oss"
-    },
-    "developers.openai.com/codex/community/meetups/index.md": {
-      "sha256": "e768f883200f64c2a2b93a68ccf5deb7f953d28385cc0ff873fa0d8bf93e9aa7",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/community/meetups"
     },
     "developers.openai.com/codex/concepts/customization/index.md": {
       "sha256": "2dd4dc8924b5fe017e3c79518eeafb79c8f7b010fe7abe39e18db885b3988a15",
@@ -247,7 +232,7 @@
       "source_url": "https://developers.openai.com/codex/ide/slash-commands"
     },
     "developers.openai.com/codex/index.md": {
-      "sha256": "c7b0ef8c8bf7d1ae582127b177ab458ac9eb0840ae25b952326ed4bd543d7d74",
+      "sha256": "1d2346305b958e7b686e869c1f9492380ba771feef6006b5fa88de44baee4417",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex"
     },
@@ -272,7 +257,7 @@
       "source_url": "https://developers.openai.com/codex/learn/best-practices"
     },
     "developers.openai.com/codex/mcp/index.md": {
-      "sha256": "0bbf0001896f9a796981dbf507d84f375ec91e601d8dd1a5c00a49cdda1717b3",
+      "sha256": "2ad02b95621c444e4c9b33b122449d6234d7b053c2519391156dee9b9107d009",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/mcp"
     },
@@ -287,12 +272,12 @@
       "source_url": "https://developers.openai.com/codex/noninteractive"
     },
     "developers.openai.com/codex/open-source/index.md": {
-      "sha256": "2820aebe35dab4e9c3a3d22f874ebb026d27aca1ff38d232aeeb20d52fd31613",
+      "sha256": "e46afe30296e9a8a8b723ba35118f52ba7c2f9db4361974dbc0150ddd6f062b4",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/open-source"
     },
     "developers.openai.com/codex/overview/index.md": {
-      "sha256": "03bb07014f640e39394f78113fcf14022ef4e81d1192c523fcef6a6903a0c5b9",
+      "sha256": "c062bef24d4f600b7edaece3238eec0e34a538afa20f3f7e900b16b84a8cd143",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/overview"
     },
@@ -427,7 +412,7 @@
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },
     "developers.openai.com/resources/codex/index.md": {
-      "sha256": "374ad811ad59d76e1da60206d75b0baf83798724781c8dd6fdb17277ac7825dd",
+      "sha256": "3ab594895ffa7eb7135ccfd4c762a0ba14b7c23e35165d33f592e9a2f70a8055",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/resources/codex"
     },

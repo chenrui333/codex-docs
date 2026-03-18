@@ -119,7 +119,7 @@ enabled = true
 
 The list of MCP servers keeps growing. Here are a few common ones:
 
-- [OpenAI Docs MCP](/resources/docs-mcp): Search and read OpenAI developer docs.
+- [OpenAI Docs MCP](/learn/docs-mcp): Search and read OpenAI developer docs.
 - [Context7](https://github.com/upstash/context7): Connect to up-to-date developer documentation.
 - Figma [Local](https://developers.figma.com/docs/figma-mcp-server/local-server-installation/) and [Remote](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/): Access your Figma designs.
 - [Playwright](https://www.npmjs.com/package/@playwright/mcp): Control and inspect a browser using Playwright.

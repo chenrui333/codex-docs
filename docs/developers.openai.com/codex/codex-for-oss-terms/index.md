@@ -2,7 +2,7 @@
 
 Source: https://developers.openai.com/codex/codex-for-oss-terms
 
-These Program Terms govern the Codex for Open Source program (the “Program”) offered by OpenAI OpCo, LLC and its affiliates (“OpenAI,” “we,” “our,” or “us”). By submitting an application to the Program or accepting any Program benefit, you agree to these Program Terms.
+These Program Terms govern the Codex for OSS program (the “Program”) offered by OpenAI OpCo, LLC and its affiliates (“OpenAI,” “we,” “our,” or “us”). By submitting an application to the Program or accepting any Program benefit, you agree to these Program Terms.
 
 These Program Terms supplement, and do not replace, the OpenAI Terms of Use, Privacy Policy, applicable service terms, and OpenAI policies that govern your use of ChatGPT, Codex, the API, and any other OpenAI services made available through the Program. If there is a conflict, these Program Terms control only with respect to the Program.
 

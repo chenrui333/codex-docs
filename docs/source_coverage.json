@@ -9,7 +9,6 @@
       "https://developers.openai.com/blog/topic/codex",
       "https://developers.openai.com/codex",
       "https://developers.openai.com/codex/agent-approvals-security",
-      "https://developers.openai.com/codex/ambassadors",
       "https://developers.openai.com/codex/app",
       "https://developers.openai.com/codex/app-server",
       "https://developers.openai.com/codex/app/automations",
@@ -32,8 +31,6 @@
       "https://developers.openai.com/codex/cloud/environments",
       "https://developers.openai.com/codex/cloud/internet-access",
       "https://developers.openai.com/codex/codex-for-oss-terms",
-      "https://developers.openai.com/codex/community/codex-for-oss",
-      "https://developers.openai.com/codex/community/meetups",
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/sandboxing",
@@ -81,6 +78,8 @@
       "https://developers.openai.com/codex/videos",
       "https://developers.openai.com/codex/windows",
       "https://developers.openai.com/codex/workflows",
+      "https://developers.openai.com/community/codex-ambassadors",
+      "https://developers.openai.com/community/codex-for-oss",
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb",
@@ -98,20 +97,20 @@
       "https://developers.openai.com/cookbook/gpt-5-codex-prompting-guide",
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
+      "https://developers.openai.com/learn/codex",
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
       "codex_related_urls": 98,
-      "mirrored_urls": 86,
+      "mirrored_urls": 83,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 12
+      "skipped_codex_related_urls": 15
     },
     "mirrored_urls": [
       "https://developers.openai.com/codex",
       "https://developers.openai.com/codex/agent-approvals-security",
-      "https://developers.openai.com/codex/ambassadors",
       "https://developers.openai.com/codex/app",
       "https://developers.openai.com/codex/app-server",
       "https://developers.openai.com/codex/app/automations",
@@ -134,8 +133,6 @@
       "https://developers.openai.com/codex/cloud/environments",
       "https://developers.openai.com/codex/cloud/internet-access",
       "https://developers.openai.com/codex/codex-for-oss-terms",
-      "https://developers.openai.com/codex/community/codex-for-oss",
-      "https://developers.openai.com/codex/community/meetups",
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/sandboxing",
@@ -196,7 +193,11 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/community/codex-ambassadors",
+      "https://developers.openai.com/community/codex-for-oss",
+      "https://developers.openai.com/learn/codex"
+    ],
     "new_mirrored_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -211,15 +212,18 @@
       "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
       "https://developers.openai.com/blog/topic/codex",
+      "https://developers.openai.com/community/codex-ambassadors",
+      "https://developers.openai.com/community/codex-for-oss",
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb",
       "https://developers.openai.com/cookbook/gpt-5-1-codex-max-prompting-guide",
       "https://developers.openai.com/cookbook/gpt-5-1-codex-max_prompting_guide",
       "https://developers.openai.com/cookbook/gpt-5-codex-prompting-guide",
-      "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
+      "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide",
+      "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-03-17T06:28:13+00:00",
+  "generated_at": "2026-03-18T00:36:00+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,
