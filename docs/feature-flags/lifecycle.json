@@ -158,12 +158,12 @@
     {
       "enabled": false,
       "key": "responses_websockets",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
       "key": "responses_websockets_v2",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -447,11 +447,11 @@
     },
     "responses_websockets": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "responses_websockets_v2": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "runtime_metrics": {
       "default_enabled_expr": "false",
@@ -531,8 +531,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "35f2fe532d8343e55bf06f7c2cf0300d36cc0b87bf009b7af2785a09308dd739",
-    "features_rs_sha256": "9d8ffed12b973fb9290f02e4edd31de9644d8c318239e05a4bab4f9b7770e54f"
+    "client_rs_sha256": "928da12079d3c0aa3200212ea33be6f950230bab38326eb15f7cc290499d03d1",
+    "features_rs_sha256": "a93257d63e781e86d190544c2a0e7c36136c35c12d58c39f4c29e5b8b2e9a6a7"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
