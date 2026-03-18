@@ -76,11 +76,10 @@ For authentication details (including credential storage modes), see [Authentica
 
 For shared defaults, rules, and skills checked into repos or system paths, see [Team Config](/codex/enterprise/admin-setup#team-config).
 
-If you just need to point the built-in OpenAI provider at an LLM proxy, router, or data-residency enabled project, set environment variable `OPENAI_BASE_URL` instead of defining a new provider. This overrides the default OpenAI endpoint without a `config.toml` change.
+If you just need to point the built-in OpenAI provider at an LLM proxy, router, or data-residency enabled project, set `openai_base_url` in `config.toml` instead of defining a new provider. This changes the base URL for the built-in `openai` provider without requiring a separate `model_providers.<id>` entry.
 
 ```
-export OPENAI_BASE_URL="https://api.openai.com/v1"
-codex
+openai_base_url = "https://us.api.openai.com/v1"
 ```
 
 ## Project config files (`.codex/config.toml`)
@@ -89,7 +88,7 @@ In addition to your user config, Codex reads project-scoped overrides from `.cod
 
 For security, Codex loads project-scoped config files only when the project is trusted. If the project is untrusted, Codex ignores `.codex/config.toml` files in the project.
 
-Relative paths inside a project config (for example, `experimental_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
+Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
 ## Agent roles (`[agents]` in `config.toml`)
 
@@ -194,12 +193,21 @@ Pick approval strictness (affects when Codex pauses) and sandbox level (affects 
 
 For operational details to keep in mind while editing `config.toml`, see [Common sandbox and approval combinations](/codex/agent-approvals-security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
 
-You can also use a granular reject policy (`approval_policy = { reject = { ... } }`) to auto-reject only selected prompt categories, such as sandbox approvals, `execpolicy` rule prompts, or MCP input requests (`mcp_elicitations`), while keeping other prompts interactive.
+You can also use a granular approval policy (`approval_policy = { granular = { ... } }`) to allow or auto-reject individual prompt categories. This is useful when you want normal interactive approvals for some cases but want others, such as `request_permissions` or skill-script prompts, to fail closed automatically.
 
 ```
-approval_policy = "untrusted"   # Other options: on-request, never, or { reject = { ... } }
+approval_policy = "untrusted"   # Other options: on-request, never, or { granular = { ... } }
 sandbox_mode = "workspace-write"
 allow_login_shell = false       # Optional hardening: disallow login shells for shell tools
+
+# Example granular approval policy:
+# approval_policy = { granular = {
+#   sandbox_approval = true,
+#   rules = true,
+#   mcp_elicitations = true,
+#   request_permissions = false,
+#   skill_approval = false
+# } }
 
 [sandbox_workspace_write]
 exclude_tmpdir_env_var = false  # Allow $TMPDIR

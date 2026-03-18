@@ -109,10 +109,16 @@ model_provider = "openai"
 # - untrusted: only known-safe read-only commands auto-run; others prompt
 # - on-request: model decides when to ask (default)
 # - never: never prompt (risky)
-# - { reject = { ... } }: auto-reject selected prompt categories
+# - { granular = { ... } }: allow or auto-reject selected prompt categories
 approval_policy = "on-request"
-# Example granular auto-reject policy:
-# approval_policy = { reject = { sandbox_approval = true, rules = false, mcp_elicitations = false } }
+# Example granular policy:
+# approval_policy = { granular = {
+#   sandbox_approval = true,
+#   rules = true,
+#   mcp_elicitations = true,
+#   request_permissions = false,
+#   skill_approval = false
+# } }
 
 # Allow login-shell semantics for shell-based tools when they request `login = true`.
 # Default: true. Set false to force non-login shells and reject explicit login-shell requests.
@@ -133,6 +139,9 @@ cli_auth_credentials_store = "file"
 
 # Base URL for ChatGPT auth flow (not OpenAI API).
 chatgpt_base_url = "https://chatgpt.com/backend-api/"
+
+# Optional base URL override for the built-in OpenAI provider.
+# openai_base_url = "https://us.api.openai.com/v1"
 
 # Restrict ChatGPT login to a specific workspace id. Default: unset.
 # forced_chatgpt_workspace_id = "00000000-0000-0000-0000-000000000000"
@@ -353,26 +362,15 @@ enabled = true
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
 # shell_tool = true
 # apps = false
-# apps_mcp_gateway = false
-# unified_exec = false
-# shell_snapshot = false
+# unified_exec = true
+# shell_snapshot = true
+# multi_agent = true
 # personality = true
-# use_linux_sandbox_bwrap = false
-# runtime_metrics = true
-# powershell_utf8 = true
-# child_agents_md = false
-# sqlite = true
 # fast_mode = true
+# smart_approvals = false
 # enable_request_compression = true
-# image_generation = false
 # skill_mcp_dependency_install = true
-# skill_env_var_dependency_prompt = false
-# default_mode_request_user_input = false
-# artifact = false
 # prevent_idle_sleep = false
-# responses_websockets = false
-# responses_websockets_v2 = false
-# image_detail_original = false
 
 ################################################################################
 # Define MCP servers under this table. Leave empty to disable.

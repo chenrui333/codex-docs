@@ -10,8 +10,8 @@ conversations without leaving the terminal.
 This guide shows you how to:
 
 - Find the right built-in slash command for a task
-- Steer an active session with commands like `/model`, `/personality`,
-  `/permissions`, `/experimental`, `/agent`, and `/status`
+- Steer an active session with commands like `/model`, `/fast`,
+  `/personality`, `/permissions`, `/agent`, and `/status`
 
 ## Built-in slash commands
 
@@ -24,7 +24,7 @@ the command name to filter the list.
 | [`/sandbox-add-read-dir`](#grant-sandbox-read-access-with-sandbox-add-read-dir) | Grant sandbox read access to an extra directory (Windows only). | Unblock commands that need to read an absolute directory path outside the current readable roots. |
 | [`/agent`](#switch-agent-threads-with-agent) | Switch the active agent thread. | Inspect or continue work in a spawned subagent thread. |
 | [`/apps`](#browse-apps-with-apps) | Browse apps (connectors) and insert them into your prompt. | Attach an app as `$app-slug` before asking Codex to use it. |
-| [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want to start over. |
+| [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a clean slate. |
 | [`/compact`](#keep-transcripts-lean-with-compact) | Summarize the visible conversation to free tokens. | Use after long runs so Codex retains key points without blowing the context window. |
 | [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. |
 | [`/diff`](#review-changes-with-diff) | Show the Git diff, including files Git isn’t tracking yet. | Review Codex’s edits before you commit or run tests. |
@@ -36,6 +36,7 @@ the command name to filter the list.
 | [`/mcp`](#list-mcp-tools-with-mcp) | List configured Model Context Protocol (MCP) tools. | Check which external tools Codex can call during the session. |
 | [`/mention`](#highlight-files-with-mention) | Attach a file to the conversation. | Point Codex at specific files or folders you want it to inspect next. |
 | [`/model`](#set-the-active-model-with-model) | Choose the active model (and reasoning effort, when available). | Switch between general-purpose models (`gpt-4.1-mini`) and deeper reasoning models before running a task. |
+| [`/fast`](#toggle-fast-mode-with-fast) | Toggle Fast mode for GPT-5.4. | Turn Fast mode on or off, or check whether the current thread is using it. |
 | [`/plan`](#switch-to-plan-mode-with-plan) | Switch to plan mode and optionally send a prompt. | Ask Codex to propose an execution plan before implementation work starts. |
 | [`/personality`](#set-a-communication-style-with-personality) | Choose a communication style for responses. | Make Codex more concise, more explanatory, or more collaborative without changing your instructions. |
 | [`/ps`](#check-background-terminals-with-ps) | Show experimental background terminals and their recent output. | Check long-running commands without leaving the main transcript. |
@@ -64,6 +65,13 @@ The following workflows keep your session on track without restarting Codex.
 3. Choose a model such as `gpt-4.1-mini` or `gpt-4.1` from the popup.
 
 Expected: Codex confirms the new model in the transcript. Run `/status` to verify the change.
+
+### Toggle Fast mode with `/fast`
+
+1. Type `/fast on`, `/fast off`, or `/fast status`.
+2. If you want the setting to persist, confirm the update when Codex offers to save it.
+
+Expected: Codex reports whether Fast mode is on or off for the current thread. In the TUI footer, you can also show a Fast mode status-line item with `/statusline`.
 
 ### Set a communication style with `/personality`
 
@@ -94,7 +102,7 @@ While a task is already running, `/plan` is temporarily unavailable.
 ### Toggle experimental features with `/experimental`
 
 1. Type `/experimental` and press Enter.
-2. Toggle the features you want, then restart Codex.
+2. Toggle the features you want (for example, Apps or Smart Approvals), then restart Codex if the prompt asks you to.
 
 Expected: Codex saves your feature choices to config and applies them on restart.
 
@@ -211,7 +219,7 @@ Expected: Codex adds the file to the conversation, ensuring follow-up turns refe
 Expected: Codex starts a fresh conversation in the same CLI session, so you
 can switch tasks without leaving your terminal.
 
-Unlike `/clear`, `/new` doesn’t clear the current terminal view first.
+Unlike `/clear`, `/new` does not clear the current terminal view first.
 
 ### Resume a saved conversation with `/resume`
 

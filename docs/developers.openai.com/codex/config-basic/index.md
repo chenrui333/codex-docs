@@ -150,21 +150,17 @@ shell_snapshot = true           # Speed up repeated commands
 | Key | Default | Maturity | Description |
 | --- | --- | --- | --- |
 | `apps` | false | Experimental | Enable ChatGPT Apps/connectors support |
-| `apps_mcp_gateway` | false | Experimental | Route Apps MCP calls through `https://api.openai.com/v1/connectors/mcp/` instead of legacy routing |
-| `collaboration_modes` | true | Stable | Enable collaboration modes such as plan mode |
+| `fast_mode` | true | Stable | Enable Fast mode selection and the `service_tier = "fast"` path |
+| `multi_agent` | true | Stable | Enable subagent collaboration tools |
 | `personality` | true | Stable | Enable personality selection controls |
-| `remote_models` | false | Experimental | Refresh remote model list before showing readiness |
-| `runtime_metrics` | false | Experimental | Show runtime metrics summaries in TUI turn separators |
-| `request_rule` | true | Stable | Enable Smart approvals (`prefix_rule` suggestions) |
-| `search_tool` | false | Experimental | Enable `search_tool_bm25` so Codex discovers Apps MCP tools via search before tool calls |
-| `shell_snapshot` | false | Beta | Snapshot your shell environment to speed up repeated commands |
+| `shell_snapshot` | true | Stable | Snapshot your shell environment to speed up repeated commands |
 | `shell_tool` | true | Stable | Enable the default `shell` tool |
-| `use_linux_sandbox_bwrap` | false | Experimental | Use the bubblewrap-based Linux sandbox pipeline |
-| `unified_exec` | false | Beta | Use the unified PTY-backed exec tool |
-| `undo` | true | Stable | Enable undo via per-turn git ghost snapshots |
+| `smart_approvals` | false | Experimental | Route eligible approval requests through the guardian reviewer subagent |
+| `unified_exec` | `true` except Windows | Stable | Use the unified PTY-backed exec tool |
+| `undo` | false | Stable | Enable undo via per-turn git ghost snapshots |
 | `web_search` | true | Deprecated | Legacy toggle; prefer the top-level `web_search` setting |
-| `web_search_cached` | true | Deprecated | Legacy toggle that maps to `web_search = "cached"` when unset |
-| `web_search_request` | true | Deprecated | Legacy toggle that maps to `web_search = "live"` when unset |
+| `web_search_cached` | false | Deprecated | Legacy toggle that maps to `web_search = "cached"` when unset |
+| `web_search_request` | false | Deprecated | Legacy toggle that maps to `web_search = "live"` when unset |
 
 The Maturity column uses feature maturity labels such as Experimental, Beta,
 and Stable. See [Feature Maturity](/codex/feature-maturity) for how to

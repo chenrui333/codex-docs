@@ -83,7 +83,7 @@ This option works with all `--sandbox` modes, so you still control Codex’s lev
 
 If you need Codex to read files, make edits, and run commands with network access without approval prompts, use `--sandbox danger-full-access` (or the `--dangerously-bypass-approvals-and-sandbox` flag). Use caution before doing so.
 
-For a middle ground, `approval_policy = { reject = { ... } }` lets you auto-reject specific approval prompt categories (sandbox escalation, execpolicy-rule prompts, or MCP elicitations) while keeping other prompts interactive.
+For a middle ground, `approval_policy = { granular = { ... } }` lets you keep specific approval prompt categories interactive while automatically rejecting others. The granular policy covers sandbox approvals, execpolicy-rule prompts, MCP elicitations, `request_permissions` prompts, and skill-script approvals.
 
 ### Common sandbox and approval combinations
 
@@ -113,8 +113,14 @@ allow_login_shell = false # optional hardening: disallow login shells for shell-
 [sandbox_workspace_write]
 network_access = true
 
-# Optional: granular approval prompt auto-rejection
-# approval_policy = { reject = { sandbox_approval = true, rules = false, mcp_elicitations = false } }
+# Optional: granular approval policy
+# approval_policy = { granular = {
+#   sandbox_approval = true,
+#   rules = true,
+#   mcp_elicitations = true,
+#   request_permissions = false,
+#   skill_approval = false
+# } }
 ```
 
 You can also save presets as profiles, then select them with `codex --profile <name>`:
@@ -147,7 +153,7 @@ The `sandbox` command is also available as `codex debug`, and the platform helpe
 Codex enforces the sandbox differently depending on your OS:
 
 - **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
-- **Linux** uses `Landlock` plus `seccomp` by default. You can opt into the alternative Linux sandbox pipeline with `features.use_linux_sandbox_bwrap = true` (or `-c use_linux_sandbox_bwrap=true`). In managed proxy mode, the bwrap pipeline routes egress through a proxy-only bridge and fails closed if it cannot build valid loopback proxy routes; landlock-only flows do not use that bridge behavior.
+- **Linux** uses the bubblewrap pipeline plus `seccomp` by default. `use_legacy_landlock` is available when you need the older path. In managed proxy mode, the default bubblewrap pipeline routes egress through a proxy-only bridge and fails closed if it cannot build valid loopback proxy routes.
 - **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux (WSL)](/codex/windows#windows-subsystem-for-linux). When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
 
 If you use the Codex IDE extension on Windows, it supports WSL directly. Set the following in your VS Code settings to keep the agent inside WSL whenever it’s available:
@@ -165,6 +171,7 @@ When running natively on Windows, configure the native sandbox mode in `config.t
 ```
 [windows]
 sandbox = "unelevated" # or "elevated"
+# sandbox_private_desktop = true  # default; set false only for compatibility
 ```
 
 See the [Windows setup guide](/codex/windows#windows-sandbox) for details.

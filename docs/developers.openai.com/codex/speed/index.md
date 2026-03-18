@@ -10,9 +10,11 @@ credit consumption.
 Fast mode is currently supported on GPT-5.4. When enabled, speed is increased
 by 1.5x and credits are consumed at a 2x rate.
 
-Enable it by typing `/fast`. It’s available in Codex IDE Extensions, Codex
-CLI, and the Codex app when you sign in with ChatGPT. With an API key, Codex
-uses standard API pricing instead and you can’t use `/fast`.
+Use `/fast on`, `/fast off`, or `/fast status` in the CLI to change or inspect
+the current setting. You can also persist the default with `service_tier = "fast"` plus `[features].fast_mode = true` in `config.toml`. Fast mode is
+available in the Codex IDE extension, Codex CLI, and the Codex app when you
+sign in with ChatGPT. With an API key, Codex uses standard API pricing instead
+and you can’t use Fast mode credits.
 
 [
 Your browser does not support the video tag.

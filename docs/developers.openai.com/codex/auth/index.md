@@ -93,6 +93,25 @@ If the active credentials don’t match the configured restrictions, Codex logs 
 
 These settings are commonly applied via managed configuration rather than per-user setup. See [Managed configuration](/codex/enterprise/managed-configuration).
 
+## Login diagnostics
+
+Direct `codex login` runs write a dedicated `codex-login.log` file under
+your configured log directory. Use it when you need to debug browser-login or
+device-code failures, or when support asks for login-specific logs.
+
+## Custom CA bundles
+
+If your network uses a corporate TLS proxy or private root CA, set
+`CODEX_CA_CERTIFICATE` to a PEM bundle before logging in. When
+`CODEX_CA_CERTIFICATE` is unset, Codex falls back to `SSL_CERT_FILE`. The same
+custom CA settings apply to login, normal HTTPS requests, and secure websocket
+connections.
+
+```
+export CODEX_CA_CERTIFICATE=/path/to/corporate-root-ca.pem
+codex login
+```
+
 ## Login on headless devices
 
 If you are signing in to ChatGPT with the Codex CLI, there are some situations where the browser-based login UI may not work:

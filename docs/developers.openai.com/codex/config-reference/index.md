@@ -20,10 +20,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `agents.max_threads` | `number` | Maximum number of agent threads that can be open concurrently. Defaults to `6` when unset. |
 | `allow_login_shell` | `boolean` | Allow shell-based tools to use login-shell semantics. Defaults to `true`; when `false`, `login = true` requests are rejected and omitted `login` defaults to non-login shells. |
 | `analytics.enabled` | `boolean` | Enable or disable analytics for this machine/profile. When unset, the client default applies. |
-| `approval_policy` | `untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }` | Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs. |
-| `approval_policy.reject.mcp_elicitations` | `boolean` | When `true`, MCP elicitation prompts are auto-rejected instead of shown to the user. |
-| `approval_policy.reject.rules` | `boolean` | When `true`, approvals triggered by execpolicy `prompt` rules are auto-rejected. |
-| `approval_policy.reject.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are auto-rejected. |
+| `approval_policy` | `untrusted | on-request | never | { granular = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool, request_permissions = bool, skill_approval = bool } }` | Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { granular = { ... } }` to allow or auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs. |
+| `approval_policy.granular.mcp_elicitations` | `boolean` | When `true`, MCP elicitation prompts are allowed to surface instead of being auto-rejected. |
+| `approval_policy.granular.request_permissions` | `boolean` | When `true`, prompts from the `request_permissions` tool are allowed to surface. |
+| `approval_policy.granular.rules` | `boolean` | When `true`, approvals triggered by execpolicy `prompt` rules are allowed to surface. |
+| `approval_policy.granular.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are allowed to surface. |
+| `approval_policy.granular.skill_approval` | `boolean` | When `true`, skill-script approval prompts are allowed to surface. |
 | `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive_hint = true`. |
 | `apps._default.enabled` | `boolean` | Default app enabled state for all apps unless overridden per app. |
 | `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open_world_hint = true`. |
@@ -40,40 +42,23 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
 | `commit_attribution` | `string` | Override the commit co-author trailer text. Set an empty string to disable automatic attribution. |
 | `compact_prompt` | `string` | Inline override for the history compaction prompt. |
+| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. |
 | `developer_instructions` | `string` | Additional developer instructions injected into the session (optional). |
 | `disable_paste_burst` | `boolean` | Disable burst-paste detection in the TUI. |
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
 | `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
-| `features.apps_mcp_gateway` | `boolean` | Route Apps MCP calls through the OpenAI connectors MCP gateway (`https://api.openai.com/v1/connectors/mcp/`) instead of legacy routing (experimental). |
-| `features.artifact` | `boolean` | Enable native artifact tools such as slides and spreadsheets (under development). |
-| `features.child_agents_md` | `boolean` | Append AGENTS.md scope/precedence guidance even when no AGENTS.md is present (experimental). |
-| `features.collaboration_modes` | `boolean` | Legacy toggle for collaboration modes. Plan and default modes are available in current builds without setting this key. |
-| `features.default_mode_request_user_input` | `boolean` | Allow `request_user_input` in default collaboration mode (under development; off by default). |
-| `features.elevated_windows_sandbox` | `boolean` | Legacy toggle for an earlier elevated Windows sandbox rollout. Current builds do not use it. |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
-| `features.experimental_windows_sandbox` | `boolean` | Legacy toggle for an earlier Windows sandbox rollout. Current builds do not use it. |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
-| `features.image_detail_original` | `boolean` | Allow image outputs with `detail = "original"` on supported models (under development). |
-| `features.image_generation` | `boolean` | Enable the built-in image generation tool (under development). |
+| `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
-| `features.powershell_utf8` | `boolean` | Force PowerShell UTF-8 output. Enabled by default on Windows and off elsewhere. |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
-| `features.remote_models` | `boolean` | Legacy toggle for an older remote-model readiness flow. Current builds do not use it. |
-| `features.request_rule` | `boolean` | Legacy toggle for Smart approvals. Current builds include this behavior by default, so most users can leave this unset. |
-| `features.responses_websockets` | `boolean` | Prefer the Responses API WebSocket transport for supported providers (under development). |
-| `features.responses_websockets_v2` | `boolean` | Enable Responses API WebSocket v2 mode (under development). |
-| `features.runtime_metrics` | `boolean` | Show runtime metrics summary in TUI turn separators (experimental). |
-| `features.search_tool` | `boolean` | Legacy toggle for an older Apps discovery flow. Current builds do not use it. |
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (stable; on by default). |
 | `features.shell_tool` | `boolean` | Enable the default `shell` tool for running commands (stable; on by default). |
-| `features.skill_env_var_dependency_prompt` | `boolean` | Prompt for missing skill environment-variable dependencies (under development). |
 | `features.skill_mcp_dependency_install` | `boolean` | Allow prompting and installing missing MCP dependencies for skills (stable; on by default). |
-| `features.sqlite` | `boolean` | Enable SQLite-backed state persistence (stable; on by default). |
-| `features.steer` | `boolean` | Legacy toggle from an earlier Enter/Tab steering rollout. Current builds always use the current steering behavior. |
+| `features.smart_approvals` | `boolean` | Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). |
 | `features.undo` | `boolean` | Enable undo support (stable; off by default). |
 | `features.unified_exec` | `boolean` | Use the unified PTY-backed exec tool (stable; enabled by default except on Windows). |
-| `features.use_linux_sandbox_bwrap` | `boolean` | Use the bubblewrap-based Linux sandbox pipeline (experimental; off by default). |
 | `features.web_search` | `boolean` | Deprecated legacy toggle; prefer the top-level `web_search` setting. |
 | `features.web_search_cached` | `boolean` | Deprecated legacy toggle. When `web_search` is unset, true maps to `web_search = "cached"`. |
 | `features.web_search_request` | `boolean` | Deprecated legacy toggle. When `web_search` is unset, true maps to `web_search = "live"`. |
@@ -138,6 +123,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `notice.hide_world_writable_warning` | `boolean` | Track acknowledgement of the Windows world-writable directories warning. |
 | `notice.model_migrations` | `map<string,string>` | Track acknowledged model migrations as old->new mappings. |
 | `notify` | `array<string>` | Command invoked for notifications; receives a JSON payload from Codex. |
+| `openai_base_url` | `string` | Base URL override for the built-in `openai` model provider. |
 | `oss_provider` | `lmstudio | ollama` | Default local provider used when running with `--oss` (defaults to prompting if unset). |
 | `otel.environment` | `string` | Environment tag applied to emitted OpenTelemetry events (default: `dev`). |
 | `otel.exporter` | `none | otlp-http | otlp-grpc` | Select the OpenTelemetry exporter and provide any endpoint metadata. |
@@ -156,21 +142,22 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `otel.trace_exporter.<id>.tls.ca-certificate` | `string` | CA certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-certificate` | `string` | Client certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-private-key` | `string` | Client private key path for OTEL trace exporter TLS. |
-| `permissions.network.admin_url` | `string` | Admin endpoint for the managed network proxy. |
-| `permissions.network.allow_local_binding` | `boolean` | Permit local bind/listen operations through the managed proxy. |
-| `permissions.network.allow_unix_sockets` | `array<string>` | Allowlist of Unix socket paths permitted through the managed proxy. |
-| `permissions.network.allow_upstream_proxy` | `boolean` | Allow the managed proxy to chain to another upstream proxy. |
-| `permissions.network.allowed_domains` | `array<string>` | Allowlist of domains permitted through the managed proxy. |
-| `permissions.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow the proxy to use arbitrary Unix sockets instead of the default restricted set. |
-| `permissions.network.dangerously_allow_non_loopback_admin` | `boolean` | Permit non-loopback bind addresses for the managed proxy admin listener. |
-| `permissions.network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback bind addresses for the managed proxy listener. |
-| `permissions.network.denied_domains` | `array<string>` | Denylist of domains blocked by the managed proxy. |
-| `permissions.network.enable_socks5` | `boolean` | Expose a SOCKS5 listener from the managed network proxy. |
-| `permissions.network.enable_socks5_udp` | `boolean` | Allow UDP over the SOCKS5 listener when enabled. |
-| `permissions.network.enabled` | `boolean` | Enable the managed network proxy configuration for subprocesses. |
-| `permissions.network.mode` | `limited | full` | Network proxy mode used for subprocess traffic. |
-| `permissions.network.proxy_url` | `string` | HTTP proxy endpoint used by the managed network proxy. |
-| `permissions.network.socks_url` | `string` | SOCKS5 proxy endpoint used by the managed network proxy. |
+| `permissions.<name>.filesystem` | `table` | Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`. |
+| `permissions.<name>.filesystem.":project_roots".<subpath>` | `"read" | "write" | "none"` | Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself. |
+| `permissions.<name>.filesystem.<path>` | `"read" | "write" | "none" | table` | Grant direct access for a path or special token, or scope nested entries under that root. |
+| `permissions.<name>.network.allow_local_binding` | `boolean` | Permit local bind/listen operations through the managed proxy. |
+| `permissions.<name>.network.allow_unix_sockets` | `array<string>` | Allowlist of Unix socket paths permitted through the managed proxy. |
+| `permissions.<name>.network.allow_upstream_proxy` | `boolean` | Allow the managed proxy to chain to another upstream proxy. |
+| `permissions.<name>.network.allowed_domains` | `array<string>` | Allowlist of domains permitted through the managed proxy. |
+| `permissions.<name>.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow the proxy to use arbitrary Unix sockets instead of the default restricted set. |
+| `permissions.<name>.network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback bind addresses for the managed proxy listener. |
+| `permissions.<name>.network.denied_domains` | `array<string>` | Denylist of domains blocked by the managed proxy. |
+| `permissions.<name>.network.enable_socks5` | `boolean` | Expose a SOCKS5 listener when this permissions profile enables the managed network proxy. |
+| `permissions.<name>.network.enable_socks5_udp` | `boolean` | Allow UDP over the SOCKS5 listener when enabled. |
+| `permissions.<name>.network.enabled` | `boolean` | Enable network access for this named permissions profile. |
+| `permissions.<name>.network.mode` | `limited | full` | Network proxy mode used for subprocess traffic. |
+| `permissions.<name>.network.proxy_url` | `string` | HTTP proxy endpoint used when this permissions profile enables the managed network proxy. |
+| `permissions.<name>.network.socks_url` | `string` | SOCKS5 proxy endpoint used by this permissions profile. |
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
 | `plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in preset default. |
 | `profile` | `string` | Default profile applied at startup (equivalent to `--profile`). |
@@ -196,7 +183,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `sandbox_workspace_write.exclude_tmpdir_env_var` | `boolean` | Exclude `$TMPDIR` from writable roots in workspace-write mode. |
 | `sandbox_workspace_write.network_access` | `boolean` | Allow outbound network access inside the workspace-write sandbox. |
 | `sandbox_workspace_write.writable_roots` | `array<string>` | Additional writable roots when `sandbox_mode = "workspace-write"`. |
-| `service_tier` | `flex | fast` | Preferred service tier for new turns. `fast` is honored only when the `features.fast_mode` gate is enabled. |
+| `service_tier` | `flex | fast` | Preferred service tier for new turns. |
 | `shell_environment_policy.exclude` | `array<string>` | Glob patterns for removing environment variables after the defaults. |
 | `shell_environment_policy.experimental_use_profile` | `boolean` | Use the user shell profile when spawning subprocesses. |
 | `shell_environment_policy.ignore_default_excludes` | `boolean` | Keep variables containing KEY/SECRET/TOKEN before other filters run. |
@@ -211,7 +198,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `suppress_unstable_features_warning` | `boolean` | Suppress the warning that appears when under-development feature flags are enabled. |
 | `tool_output_token_limit` | `number` | Token budget for storing individual tool/function outputs in history. |
 | `tools.view_image` | `boolean` | Enable the local-image attachment tool `view_image`. |
-| `tools.web_search` | `boolean` | Deprecated legacy toggle for web search; prefer the top-level `web_search` setting. |
+| `tools.web_search` | `boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }` | Optional web search tool configuration. The legacy boolean form is still accepted, but the object form lets you set search context size, allowed domains, and approximate user location. |
 | `tui` | `table` | TUI-specific options such as enabling inline desktop notifications. |
 | `tui.alternate_screen` | `auto | always | never` | Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback). |
 | `tui.animations` | `boolean` | Enable terminal animations (welcome screen, shimmer, spinner) (default: true). |
@@ -224,6 +211,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `web_search` | `disabled | cached | live` | Web search mode (default: `"cached"`; cached uses an OpenAI-maintained index and does not fetch live pages; if you use `--yolo` or another full access sandbox setting, it defaults to `"live"`). Use `"live"` to fetch the most recent data from the web, or `"disabled"` to remove the tool. |
 | `windows_wsl_setup_acknowledged` | `boolean` | Track Windows onboarding acknowledgement (Windows only). |
 | `windows.sandbox` | `unelevated | elevated` | Windows-only native sandbox mode when running Codex natively on Windows. |
+| `windows.sandbox_private_desktop` | `boolean` | Run the final sandboxed child process on a private desktop by default on native Windows. Set `false` only for compatibility with the older `Winsta0\\Default` behavior. |
 
 Key
 
@@ -327,15 +315,15 @@ Key
 
 Type / Values
 
-`untrusted | on-request | never | { reject = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool } }`
+`untrusted | on-request | never | { granular = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool, request_permissions = bool, skill_approval = bool } }`
 
 Details
 
-Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { reject = { ... } }` to auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.
+Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { granular = { ... } }` to allow or auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.
 
 Key
 
-`approval_policy.reject.mcp_elicitations`
+`approval_policy.granular.mcp_elicitations`
 
 Type / Values
 
@@ -343,11 +331,11 @@ Type / Values
 
 Details
 
-When `true`, MCP elicitation prompts are auto-rejected instead of shown to the user.
+When `true`, MCP elicitation prompts are allowed to surface instead of being auto-rejected.
 
 Key
 
-`approval_policy.reject.rules`
+`approval_policy.granular.request_permissions`
 
 Type / Values
 
@@ -355,11 +343,11 @@ Type / Values
 
 Details
 
-When `true`, approvals triggered by execpolicy `prompt` rules are auto-rejected.
+When `true`, prompts from the `request_permissions` tool are allowed to surface.
 
 Key
 
-`approval_policy.reject.sandbox_approval`
+`approval_policy.granular.rules`
 
 Type / Values
 
@@ -367,7 +355,31 @@ Type / Values
 
 Details
 
-When `true`, sandbox escalation approval prompts are auto-rejected.
+When `true`, approvals triggered by execpolicy `prompt` rules are allowed to surface.
+
+Key
+
+`approval_policy.granular.sandbox_approval`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, sandbox escalation approval prompts are allowed to surface.
+
+Key
+
+`approval_policy.granular.skill_approval`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, skill-script approval prompts are allowed to surface.
 
 Key
 
@@ -563,6 +575,18 @@ Inline override for the history compaction prompt.
 
 Key
 
+`default_permissions`
+
+Type / Values
+
+`string`
+
+Details
+
+Name of the default permissions profile to apply to sandboxed tool calls.
+
+Key
+
 `developer_instructions`
 
 Type / Values
@@ -623,78 +647,6 @@ Enable ChatGPT Apps/connectors support (experimental).
 
 Key
 
-`features.apps_mcp_gateway`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Route Apps MCP calls through the OpenAI connectors MCP gateway (`https://api.openai.com/v1/connectors/mcp/`) instead of legacy routing (experimental).
-
-Key
-
-`features.artifact`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable native artifact tools such as slides and spreadsheets (under development).
-
-Key
-
-`features.child_agents_md`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Append AGENTS.md scope/precedence guidance even when no AGENTS.md is present (experimental).
-
-Key
-
-`features.collaboration_modes`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle for collaboration modes. Plan and default modes are available in current builds without setting this key.
-
-Key
-
-`features.default_mode_request_user_input`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Allow `request_user_input` in default collaboration mode (under development; off by default).
-
-Key
-
-`features.elevated_windows_sandbox`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle for an earlier elevated Windows sandbox rollout. Current builds do not use it.
-
-Key
-
 `features.enable_request_compression`
 
 Type / Values
@@ -704,18 +656,6 @@ Type / Values
 Details
 
 Compress streaming request bodies with zstd when supported (stable; on by default).
-
-Key
-
-`features.experimental_windows_sandbox`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle for an earlier Windows sandbox rollout. Current builds do not use it.
 
 Key
 
@@ -731,7 +671,7 @@ Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by d
 
 Key
 
-`features.image_detail_original`
+`features.multi_agent`
 
 Type / Values
 
@@ -739,19 +679,7 @@ Type / Values
 
 Details
 
-Allow image outputs with `detail = "original"` on supported models (under development).
-
-Key
-
-`features.image_generation`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable the built-in image generation tool (under development).
+Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default).
 
 Key
 
@@ -767,18 +695,6 @@ Enable personality selection controls (stable; on by default).
 
 Key
 
-`features.powershell_utf8`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Force PowerShell UTF-8 output. Enabled by default on Windows and off elsewhere.
-
-Key
-
 `features.prevent_idle_sleep`
 
 Type / Values
@@ -788,78 +704,6 @@ Type / Values
 Details
 
 Prevent the machine from sleeping while a turn is actively running (experimental; off by default).
-
-Key
-
-`features.remote_models`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle for an older remote-model readiness flow. Current builds do not use it.
-
-Key
-
-`features.request_rule`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle for Smart approvals. Current builds include this behavior by default, so most users can leave this unset.
-
-Key
-
-`features.responses_websockets`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Prefer the Responses API WebSocket transport for supported providers (under development).
-
-Key
-
-`features.responses_websockets_v2`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable Responses API WebSocket v2 mode (under development).
-
-Key
-
-`features.runtime_metrics`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Show runtime metrics summary in TUI turn separators (experimental).
-
-Key
-
-`features.search_tool`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle for an older Apps discovery flow. Current builds do not use it.
 
 Key
 
@@ -887,18 +731,6 @@ Enable the default `shell` tool for running commands (stable; on by default).
 
 Key
 
-`features.skill_env_var_dependency_prompt`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Prompt for missing skill environment-variable dependencies (under development).
-
-Key
-
 `features.skill_mcp_dependency_install`
 
 Type / Values
@@ -911,7 +743,7 @@ Allow prompting and installing missing MCP dependencies for skills (stable; on b
 
 Key
 
-`features.sqlite`
+`features.smart_approvals`
 
 Type / Values
 
@@ -919,19 +751,7 @@ Type / Values
 
 Details
 
-Enable SQLite-backed state persistence (stable; on by default).
-
-Key
-
-`features.steer`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy toggle from an earlier Enter/Tab steering rollout. Current builds always use the current steering behavior.
+Route eligible approval requests through the guardian reviewer subagent (experimental; off by default).
 
 Key
 
@@ -956,18 +776,6 @@ Type / Values
 Details
 
 Use the unified PTY-backed exec tool (stable; enabled by default except on Windows).
-
-Key
-
-`features.use_linux_sandbox_bwrap`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Use the bubblewrap-based Linux sandbox pipeline (experimental; off by default).
 
 Key
 
@@ -1739,6 +1547,18 @@ Command invoked for notifications; receives a JSON payload from Codex.
 
 Key
 
+`openai_base_url`
+
+Type / Values
+
+`string`
+
+Details
+
+Base URL override for the built-in `openai` model provider.
+
+Key
+
 `oss_provider`
 
 Type / Values
@@ -1955,19 +1775,43 @@ Client private key path for OTEL trace exporter TLS.
 
 Key
 
-`permissions.network.admin_url`
+`permissions.<name>.filesystem`
 
 Type / Values
 
-`string`
+`table`
 
 Details
 
-Admin endpoint for the managed network proxy.
+Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`.
 
 Key
 
-`permissions.network.allow_local_binding`
+`permissions.<name>.filesystem.":project_roots".<subpath>`
+
+Type / Values
+
+`"read" | "write" | "none"`
+
+Details
+
+Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself.
+
+Key
+
+`permissions.<name>.filesystem.<path>`
+
+Type / Values
+
+`"read" | "write" | "none" | table`
+
+Details
+
+Grant direct access for a path or special token, or scope nested entries under that root.
+
+Key
+
+`permissions.<name>.network.allow_local_binding`
 
 Type / Values
 
@@ -1979,7 +1823,7 @@ Permit local bind/listen operations through the managed proxy.
 
 Key
 
-`permissions.network.allow_unix_sockets`
+`permissions.<name>.network.allow_unix_sockets`
 
 Type / Values
 
@@ -1991,7 +1835,7 @@ Allowlist of Unix socket paths permitted through the managed proxy.
 
 Key
 
-`permissions.network.allow_upstream_proxy`
+`permissions.<name>.network.allow_upstream_proxy`
 
 Type / Values
 
@@ -2003,7 +1847,7 @@ Allow the managed proxy to chain to another upstream proxy.
 
 Key
 
-`permissions.network.allowed_domains`
+`permissions.<name>.network.allowed_domains`
 
 Type / Values
 
@@ -2015,7 +1859,7 @@ Allowlist of domains permitted through the managed proxy.
 
 Key
 
-`permissions.network.dangerously_allow_all_unix_sockets`
+`permissions.<name>.network.dangerously_allow_all_unix_sockets`
 
 Type / Values
 
@@ -2027,19 +1871,7 @@ Allow the proxy to use arbitrary Unix sockets instead of the default restricted 
 
 Key
 
-`permissions.network.dangerously_allow_non_loopback_admin`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Permit non-loopback bind addresses for the managed proxy admin listener.
-
-Key
-
-`permissions.network.dangerously_allow_non_loopback_proxy`
+`permissions.<name>.network.dangerously_allow_non_loopback_proxy`
 
 Type / Values
 
@@ -2051,7 +1883,7 @@ Permit non-loopback bind addresses for the managed proxy listener.
 
 Key
 
-`permissions.network.denied_domains`
+`permissions.<name>.network.denied_domains`
 
 Type / Values
 
@@ -2063,7 +1895,7 @@ Denylist of domains blocked by the managed proxy.
 
 Key
 
-`permissions.network.enable_socks5`
+`permissions.<name>.network.enable_socks5`
 
 Type / Values
 
@@ -2071,11 +1903,11 @@ Type / Values
 
 Details
 
-Expose a SOCKS5 listener from the managed network proxy.
+Expose a SOCKS5 listener when this permissions profile enables the managed network proxy.
 
 Key
 
-`permissions.network.enable_socks5_udp`
+`permissions.<name>.network.enable_socks5_udp`
 
 Type / Values
 
@@ -2087,7 +1919,7 @@ Allow UDP over the SOCKS5 listener when enabled.
 
 Key
 
-`permissions.network.enabled`
+`permissions.<name>.network.enabled`
 
 Type / Values
 
@@ -2095,11 +1927,11 @@ Type / Values
 
 Details
 
-Enable the managed network proxy configuration for subprocesses.
+Enable network access for this named permissions profile.
 
 Key
 
-`permissions.network.mode`
+`permissions.<name>.network.mode`
 
 Type / Values
 
@@ -2111,7 +1943,7 @@ Network proxy mode used for subprocess traffic.
 
 Key
 
-`permissions.network.proxy_url`
+`permissions.<name>.network.proxy_url`
 
 Type / Values
 
@@ -2119,11 +1951,11 @@ Type / Values
 
 Details
 
-HTTP proxy endpoint used by the managed network proxy.
+HTTP proxy endpoint used when this permissions profile enables the managed network proxy.
 
 Key
 
-`permissions.network.socks_url`
+`permissions.<name>.network.socks_url`
 
 Type / Values
 
@@ -2131,7 +1963,7 @@ Type / Values
 
 Details
 
-SOCKS5 proxy endpoint used by the managed network proxy.
+SOCKS5 proxy endpoint used by this permissions profile.
 
 Key
 
@@ -2443,7 +2275,7 @@ Type / Values
 
 Details
 
-Preferred service tier for new turns. `fast` is honored only when the `features.fast_mode` gate is enabled.
+Preferred service tier for new turns.
 
 Key
 
@@ -2619,11 +2451,11 @@ Key
 
 Type / Values
 
-`boolean`
+`boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }`
 
 Details
 
-Deprecated legacy toggle for web search; prefer the top-level `web_search` setting.
+Optional web search tool configuration. The legacy boolean form is still accepted, but the object form lets you set search context size, allowed domains, and approximate user location.
 
 Key
 
@@ -2769,6 +2601,18 @@ Details
 
 Windows-only native sandbox mode when running Codex natively on Windows.
 
+Key
+
+`windows.sandbox_private_desktop`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Run the final sandboxed child process on a private desktop by default on native Windows. Set `false` only for compatibility with the older `Winsta0\\Default` behavior.
+
 Expand to view all
 
 You can find the latest JSON schema for `config.toml` [here](/codex/config-schema.json).
@@ -2793,7 +2637,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
-| `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `reject`). |
+| `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`). |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
@@ -2820,7 +2664,7 @@ Type / Values
 
 Details
 
-Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `reject`).
+Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`).
 
 Key
 

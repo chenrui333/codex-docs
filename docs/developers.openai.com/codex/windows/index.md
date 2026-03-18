@@ -28,6 +28,7 @@ How `elevated` mode works:
 - Uses a Restricted Token approach with filesystem ACLs to limit which files the sandbox can write to.
 - Runs commands as a dedicated Windows Sandbox User.
 - Limits network access by installing Windows Firewall rules.
+- Uses a private desktop by default for stronger UI isolation. Set `windows.sandbox_private_desktop = false` only if you need the older `Winsta0\\Default` behavior for compatibility.
 
 ### Sandbox permissions
 
