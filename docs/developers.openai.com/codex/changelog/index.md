@@ -1,4 +1,4 @@
-# Codex changelog
+# Changelog – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/changelog
 

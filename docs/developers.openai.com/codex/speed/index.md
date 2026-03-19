@@ -1,4 +1,4 @@
-# Speed
+# Speed – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/speed
 

@@ -1,4 +1,4 @@
-# Codex Security
+# Security – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/security
 

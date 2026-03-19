@@ -1,4 +1,4 @@
-# Config basics
+# Config basics – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/config-basic
 

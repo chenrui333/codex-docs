@@ -1,4 +1,4 @@
-# Prompting
+# Prompting – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/prompting
 

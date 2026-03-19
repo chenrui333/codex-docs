@@ -1,4 +1,4 @@
-# Codex app features
+# Features – Codex app | OpenAI Developers
 
 Source: https://developers.openai.com/codex/app/features
 

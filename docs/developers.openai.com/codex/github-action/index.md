@@ -1,4 +1,4 @@
-# Codex GitHub Action
+# GitHub Action – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/github-action
 

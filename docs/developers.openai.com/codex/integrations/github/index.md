@@ -1,4 +1,4 @@
-# Use Codex in GitHub
+# Use Codex in GitHub | OpenAI Developers
 
 Source: https://developers.openai.com/codex/integrations/github
 

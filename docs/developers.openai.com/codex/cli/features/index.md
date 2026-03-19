@@ -1,4 +1,4 @@
-# Codex CLI features
+# Features – Codex CLI | OpenAI Developers
 
 Source: https://developers.openai.com/codex/cli/features
 

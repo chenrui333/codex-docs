@@ -1,4 +1,4 @@
-# Managed configuration
+# Managed configuration – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/enterprise/managed-configuration
 

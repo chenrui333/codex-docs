@@ -1,4 +1,4 @@
-# Codex IDE extension slash commands
+# Slash commands – Codex IDE | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide/slash-commands
 

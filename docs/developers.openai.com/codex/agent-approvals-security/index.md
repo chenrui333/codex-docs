@@ -1,4 +1,4 @@
-# Agent approvals & security
+# Agent approvals & security – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/agent-approvals-security
 

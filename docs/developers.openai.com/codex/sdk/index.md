@@ -1,4 +1,4 @@
-# Codex SDK
+# SDK – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/sdk
 

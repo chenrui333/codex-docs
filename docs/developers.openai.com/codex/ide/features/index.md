@@ -1,4 +1,4 @@
-# Codex IDE extension features
+# Features – Codex IDE | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide/features
 

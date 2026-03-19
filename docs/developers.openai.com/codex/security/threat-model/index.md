@@ -1,4 +1,4 @@
-# Improving the threat model
+# Improving the threat model – Codex Security | OpenAI Developers
 
 Source: https://developers.openai.com/codex/security/threat-model
 

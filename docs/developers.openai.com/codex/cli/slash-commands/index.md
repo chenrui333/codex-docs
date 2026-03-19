@@ -1,4 +1,4 @@
-# Slash commands in Codex CLI
+# Slash commands in Codex CLI | OpenAI Developers
 
 Source: https://developers.openai.com/codex/cli/slash-commands
 

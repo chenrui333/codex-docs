@@ -1,4 +1,4 @@
-# Codex for Open Source Program Terms
+# For Open Source Program Terms – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/codex-for-oss-terms
 

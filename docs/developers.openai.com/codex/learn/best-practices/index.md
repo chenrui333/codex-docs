@@ -1,4 +1,4 @@
-# Best practices
+# Best practices – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/learn/best-practices
 

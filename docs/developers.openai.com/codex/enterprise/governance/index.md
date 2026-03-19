@@ -1,4 +1,4 @@
-# Governance
+# Governance – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/enterprise/governance
 

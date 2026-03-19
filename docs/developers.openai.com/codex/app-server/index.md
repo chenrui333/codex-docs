@@ -1,4 +1,4 @@
-# Codex App Server
+# App Server – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/app-server
 

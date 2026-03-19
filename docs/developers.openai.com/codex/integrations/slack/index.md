@@ -1,4 +1,4 @@
-# Use Codex in Slack
+# Use Codex in Slack | OpenAI Developers
 
 Source: https://developers.openai.com/codex/integrations/slack
 

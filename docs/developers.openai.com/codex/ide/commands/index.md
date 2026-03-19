@@ -1,4 +1,4 @@
-# Codex IDE extension commands
+# Commands – Codex IDE | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide/commands
 

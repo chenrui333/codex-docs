@@ -1,4 +1,4 @@
-# Agent internet access
+# Agent internet access – Codex web | OpenAI Developers
 
 Source: https://developers.openai.com/codex/cloud/internet-access
 

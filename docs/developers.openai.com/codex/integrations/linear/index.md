@@ -1,4 +1,4 @@
-# Use Codex in Linear
+# Use Codex in Linear | OpenAI Developers
 
 Source: https://developers.openai.com/codex/integrations/linear
 

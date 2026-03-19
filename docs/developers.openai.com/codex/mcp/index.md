@@ -1,4 +1,4 @@
-# Model Context Protocol
+# Model Context Protocol – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/mcp
 

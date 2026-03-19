@@ -1,4 +1,4 @@
-# Codex app
+# App – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/app
 

@@ -1,4 +1,4 @@
-# FAQ
+# FAQ – Codex Security | OpenAI Developers
 
 Source: https://developers.openai.com/codex/security/faq
 

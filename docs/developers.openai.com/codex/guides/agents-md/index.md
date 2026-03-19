@@ -1,4 +1,4 @@
-# Custom instructions with AGENTS.md
+# Custom instructions with AGENTS.md – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/guides/agents-md
 

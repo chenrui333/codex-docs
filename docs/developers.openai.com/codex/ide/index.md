@@ -1,4 +1,4 @@
-# Codex IDE extension
+# IDE extension – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide
 

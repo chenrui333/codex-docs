@@ -1,4 +1,4 @@
-# Admin Setup
+# Admin Setup – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/enterprise/admin-setup
 

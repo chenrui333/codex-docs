@@ -1,4 +1,4 @@
-# Codex IDE extension settings
+# Settings – Codex IDE | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide/settings
 

@@ -1,4 +1,4 @@
-# Maintain Codex account auth in CI/CD (advanced)
+# Maintain Codex account auth in CI/CD (advanced) | OpenAI Developers
 
 Source: https://developers.openai.com/codex/auth/ci-cd-auth
 
