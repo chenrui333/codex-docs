@@ -107,7 +107,7 @@ Global subagent settings still live under `[agents]` in your [configuration](/co
 **Notes:**
 
 - `agents.max_threads` defaults to `6` when you leave it unset.
-- `agents.max_depth` defaults to `1`, which allows a direct child agent to spawn but prevents deeper nesting.
+- `agents.max_depth` defaults to `1`, which allows a direct child agent to spawn but prevents deeper nesting. Keep the default unless you specifically need recursive delegation. Raising this value can turn broad delegation instructions into repeated fan-out, which increases token usage, latency, and local resource consumption. `agents.max_threads` still caps concurrent open threads, but it doesn’t remove the cost and predictability risks of deeper recursion.
 - `agents.job_max_runtime_seconds` is optional. When you leave it unset, `spawn_agents_on_csv` falls back to its per-call default timeout of 1800 seconds per worker.
 - If a custom agent name matches a built-in agent such as `explorer`, your custom agent takes precedence.
 
