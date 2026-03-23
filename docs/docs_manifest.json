@@ -72,7 +72,7 @@
       "source_url": "https://developers.openai.com/codex/auth"
     },
     "developers.openai.com/codex/changelog/index.md": {
-      "sha256": "981ff3c89cb1354725384b90aa3515ec2cebf6080c88dd5fc15dfaf26a32c810",
+      "sha256": "e12504664619d019163a589f938a90de6794f2509e1c7d72625843f6d8f551ac",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/changelog"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/videos"
     },
     "developers.openai.com/codex/windows/index.md": {
-      "sha256": "670ee96ccf2a5c8629b385b7cd755a727f8b2d2fd8090b7acd4c24d776e7ed08",
+      "sha256": "c5d1a96d9aa1c20917d40b87d54edd9efcad0bb1a39c14da3df01ed309b2740d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/windows"
     },
