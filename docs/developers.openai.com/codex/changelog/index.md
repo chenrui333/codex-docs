@@ -2,40 +2,156 @@
 
 Source: https://developers.openai.com/codex/changelog
 
-#### Agent internet access
+```
+$ npm install -g @openai/codex@0.115.0
+```
 
-![](/images/codex/changelog/internet_access.png)
+  View details
 
-Now you can give Codex access to the internet during task execution to install dependencies, upgrade packages, run tests that need external resources, and more.
+## New Features
 
-Internet access is off by default. Plus, Pro, and Business users can enable it for specific environments, with granular control of which domains and HTTP methods Codex can access. Internet access for Enterprise users is coming soon.
+- Supported models can now request full-resolution image inspection through both `view_image` and `codex.emitImage(..., detail: "original")`, which helps with precision visual tasks. ([#14175](https://github.com/openai/codex/pull/14175))
+- `js_repl` now exposes `codex.cwd` and `codex.homeDir`, and saved `codex.tool(...)` / `codex.emitImage(...)` references keep working across cells. ([#14385](https://github.com/openai/codex/pull/14385), [#14503](https://github.com/openai/codex/pull/14503))
+- Realtime websocket sessions gained a dedicated transcription mode, plus v2 handoff support through the `codex` tool, with a unified `[realtime]` session config. ([#14554](https://github.com/openai/codex/pull/14554), [#14556](https://github.com/openai/codex/pull/14556), [#14606](https://github.com/openai/codex/pull/14606))
+- The v2 app-server now exposes filesystem RPCs for file reads, writes, copies, directory operations, and path watching, and there is a new Python SDK for integrating with that API. ([#14245](https://github.com/openai/codex/pull/14245), [#14435](https://github.com/openai/codex/pull/14435))
+- Smart Approvals can now route review requests through a guardian subagent in core, app-server, and TUI, reducing repeated setup work on follow-up approvals. ([#13860](https://github.com/openai/codex/pull/13860), [#14668](https://github.com/openai/codex/pull/14668))
+- App integrations now use the Responses API tool-search flow, can suggest missing tools, and fall back cleanly when the active model does not support search-based lookup. ([#14274](https://github.com/openai/codex/pull/14274), [#14287](https://github.com/openai/codex/pull/14287), [#14732](https://github.com/openai/codex/pull/14732))
 
-Learn more about usage and risks in the [docs](/codex/cloud/agent-internet).
+## Bug Fixes
 
-#### Update existing PRs
+- Spawned subagents now inherit sandbox and network rules more reliably, including project-profile layering, persisted host approvals, and symlinked writable roots. ([#14619](https://github.com/openai/codex/pull/14619), [#14650](https://github.com/openai/codex/pull/14650), [#14674](https://github.com/openai/codex/pull/14674), [#14807](https://github.com/openai/codex/pull/14807))
+- `js_repl` no longer hangs when dynamic tool responses contain literal U+2028 or U+2029 characters. ([#14421](https://github.com/openai/codex/pull/14421))
+- The TUI no longer stalls on exit after creating subagents, and interrupting a turn no longer tears down background terminals by default. ([#14816](https://github.com/openai/codex/pull/14816), [#14602](https://github.com/openai/codex/pull/14602))
+- `codex exec --profile` once again preserves profile-scoped settings when starting or resuming a thread. ([#14524](https://github.com/openai/codex/pull/14524))
+- MCP and elicitation flows are more robust, with safer tool-name normalization and preserved `tool_params` in approval prompts. ([#14491](https://github.com/openai/codex/pull/14491), [#14605](https://github.com/openai/codex/pull/14605), [#14769](https://github.com/openai/codex/pull/14769))
+- The local network proxy now serves CONNECT traffic as explicit HTTP/1, improving compatibility with HTTP proxy clients. ([#14395](https://github.com/openai/codex/pull/14395))
 
-![](/images/codex/changelog/update_prs.png)
+## Chores
 
-Now you can update existing pull requests when following up on a task.
+- The subagent wait tool is now consistently named `wait_agent`, aligning it with `spawn_agent` and `send_input`. ([#14631](https://github.com/openai/codex/pull/14631))
 
-#### Voice dictation
+## Changelog
 
-![](/images/codex/changelog/voice_dictation.gif)
+Full Changelog: [rust-v0.114.0...rust-v0.115.0](https://github.com/openai/codex/compare/rust-v0.114.0...rust-v0.115.0)
 
-Now you can dictate tasks to Codex.
+- [#14395](https://github.com/openai/codex/pull/14395) fix(network-proxy): serve HTTP proxy listener as HTTP/1 [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14385](https://github.com/openai/codex/pull/14385) Add js\_repl cwd and homeDir helpers [@fjord-oai](https://github.com/fjord-oai)
+- [#14376](https://github.com/openai/codex/pull/14376) Keep agent-switch word-motion keys out of draft editing [@joshka-oai](https://github.com/joshka-oai)
+- [#14175](https://github.com/openai/codex/pull/14175) Let models opt into original image detail [@fjord-oai](https://github.com/fjord-oai)
+- [#14382](https://github.com/openai/codex/pull/14382) check for large binaries in CI [@owenlin0](https://github.com/owenlin0)
+- [#14392](https://github.com/openai/codex/pull/14392) chore(app-server): stop emitting codex/event/ notifications [@owenlin0](https://github.com/owenlin0)
+- [#14274](https://github.com/openai/codex/pull/14274) feat: search\_tool migrate to bring you own tool of Responses API [@apanasenko-oai](https://github.com/apanasenko-oai)
+- [#14174](https://github.com/openai/codex/pull/14174) refactor: centralize filesystem permissions precedence [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14394](https://github.com/openai/codex/pull/14394) chore(app-server): delete unused rpc methods from v1.rs [@owenlin0](https://github.com/owenlin0)
+- [#14171](https://github.com/openai/codex/pull/14171) fix: align core approvals with split sandbox policies [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14410](https://github.com/openai/codex/pull/14410) Make collab model metadata accurate on completion [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14387](https://github.com/openai/codex/pull/14387) feat(app-server): propagate traces across tasks and core ops [@owenlin0](https://github.com/owenlin0)
+- [#14407](https://github.com/openai/codex/pull/14407) chore: use AVAILABLE and ON\_INSTALL as default plugin install and auth policies [@sayan-oai](https://github.com/sayan-oai)
+- [#14287](https://github.com/openai/codex/pull/14287) [apps] Add tool\_suggest tool. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#14432](https://github.com/openai/codex/pull/14432) Clarify spawn agent authorization [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14295](https://github.com/openai/codex/pull/14295) Support waiting for code\_mode sessions [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14427](https://github.com/openai/codex/pull/14427) feat: refactor on openai-curated plugins. [@xl-openai](https://github.com/xl-openai)
+- [#13996](https://github.com/openai/codex/pull/13996) refactor: make bubblewrap the default Linux sandbox [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14440](https://github.com/openai/codex/pull/14440) fix: follow up on linux sandbox review nits [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14431](https://github.com/openai/codex/pull/14431) Handle pre-approved permissions in zsh fork [@mousseau-oai](https://github.com/mousseau-oai)
+- [#14403](https://github.com/openai/codex/pull/14403) [elicitation] User-friendly tool call messages. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#14429](https://github.com/openai/codex/pull/14429) Use granted permissions when invoking apply\_patch [@mousseau-oai](https://github.com/mousseau-oai)
+- [#14471](https://github.com/openai/codex/pull/14471) Updated out-of-date tip about availability on free and go plans [@etraut-openai](https://github.com/etraut-openai)
+- [#14444](https://github.com/openai/codex/pull/14444) fix: move inline codex-rs/core unit tests into sibling files [@bolinfest](https://github.com/bolinfest)
+- [#14437](https://github.com/openai/codex/pull/14437) Dispatch tools when code mode is not awaited directly [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14435](https://github.com/openai/codex/pull/14435) Add Python app-server SDK [@shaqayeq-oai](https://github.com/shaqayeq-oai)
+- [#14473](https://github.com/openai/codex/pull/14473) fix(cli): support legacy use\_linux\_sandbox\_bwrap flag [@viyatb-oai](https://github.com/viyatb-oai)
+- [#13882](https://github.com/openai/codex/pull/13882) Fix stdio-to-uds peer-close flake [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14476](https://github.com/openai/codex/pull/14476) Move code mode tool files under tools/code\_mode and split functionality [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14475](https://github.com/openai/codex/pull/14475) rename spawn\_csv feature flag to enable\_fanout [@daveaitel-openai](https://github.com/daveaitel-openai)
+- [#14173](https://github.com/openai/codex/pull/14173) fix: preserve split filesystem semantics in linux sandbox [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14480](https://github.com/openai/codex/pull/14480) Cleanup code\_mode tool descriptions [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14488](https://github.com/openai/codex/pull/14488) Handle malformed agent role definitions nonfatally [@gabec-openai](https://github.com/gabec-openai)
+- [#14398](https://github.com/openai/codex/pull/14398) Do not allow unified\_exec for sandboxed scenarios on Windows [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#14419](https://github.com/openai/codex/pull/14419) use scopes\_supported for OAuth when present on MCP servers [@jgershen-oai](https://github.com/jgershen-oai)
+- [#14484](https://github.com/openai/codex/pull/14484) Add default code-mode yield timeout [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14494](https://github.com/openai/codex/pull/14494) Add parallel tool call test [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14478](https://github.com/openai/codex/pull/14478) chore(app-server): stop exporting EventMsg schemas [@owenlin0](https://github.com/owenlin0)
+- [#14490](https://github.com/openai/codex/pull/14490) fix turn\_start\_jsonrpc\_span\_parents\_core\_turn\_spans flakiness [@owenlin0](https://github.com/owenlin0)
+- [#14496](https://github.com/openai/codex/pull/14496) Reuse tool runtime for code mode worker [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14421](https://github.com/openai/codex/pull/14421) Fix js\_repl hangs on U+2028/U+2029 dynamic tool responses [@aaronl-openai](https://github.com/aaronl-openai)
+- [#14505](https://github.com/openai/codex/pull/14505) Skip nested tool call parallel test on Windows [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14491](https://github.com/openai/codex/pull/14491) Fix MCP tool calling [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14493](https://github.com/openai/codex/pull/14493) memories: focus write prompts on user preferences [@andi-oai](https://github.com/andi-oai)
+- [#14510](https://github.com/openai/codex/pull/14510) Rename exec session IDs to cell IDs [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14500](https://github.com/openai/codex/pull/14500) Update tool search prompts [@mzeng-openai](https://github.com/mzeng-openai)
+- [#14426](https://github.com/openai/codex/pull/14426) Decouple request permissions feature and tool [@mousseau-oai](https://github.com/mousseau-oai)
+- [#14503](https://github.com/openai/codex/pull/14503) Persist js\_repl codex helpers across cells [@fjord-oai](https://github.com/fjord-oai)
+- [#14517](https://github.com/openai/codex/pull/14517) Expose code-mode tools through globals [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14502](https://github.com/openai/codex/pull/14502) feat(search\_tool): gate search\_tool on model supports\_search\_tool field [@apanasenko-oai](https://github.com/apanasenko-oai)
+- [#14521](https://github.com/openai/codex/pull/14521) Reapply "Pass more params to compaction" ([#14298](https://github.com/openai/codex/pull/14298)) [@rasmusrygaard](https://github.com/rasmusrygaard)
+- [#14524](https://github.com/openai/codex/pull/14524) Fix `codex exec --profile` handling [@etraut-openai](https://github.com/etraut-openai)
+- [#14516](https://github.com/openai/codex/pull/14516) Rename reject approval policy to granular [@mousseau-oai](https://github.com/mousseau-oai)
+- [#14445](https://github.com/openai/codex/pull/14445) feat: add plugin/read. [@xl-openai](https://github.com/xl-openai)
+- [#14178](https://github.com/openai/codex/pull/14178) login: add custom CA support for login flows [@joshka-oai](https://github.com/joshka-oai)
+- [#14535](https://github.com/openai/codex/pull/14535) Split multi-agent handlers per tool [@pakrym-oai](https://github.com/pakrym-oai)
+- [#13329](https://github.com/openai/codex/pull/13329) [js\_repl] Hard-stop active js\_repl execs on explicit user interrupts [@aaronl-openai](https://github.com/aaronl-openai)
+- [#14239](https://github.com/openai/codex/pull/14239) client: extend custom CA handling across HTTPS and websocket clients [@joshka-oai](https://github.com/joshka-oai)
+- [#14536](https://github.com/openai/codex/pull/14536) Add typed multi-agent tool outputs [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14514](https://github.com/openai/codex/pull/14514) fix: reopen writable linux carveouts under denied parents [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14531](https://github.com/openai/codex/pull/14531) Add plugin usage telemetry [@alexsong-oai](https://github.com/alexsong-oai)
+- [#14511](https://github.com/openai/codex/pull/14511) code\_mode: Move exec params from runtime declarations to [@pragma](https://github.com/pragma) [@cconger](https://github.com/cconger)
+- [#14504](https://github.com/openai/codex/pull/14504) Refactor cloud requirements error and surface in JSON-RPC error [@alexsong-oai](https://github.com/alexsong-oai)
+- [#14537](https://github.com/openai/codex/pull/14537) Add realtime v2 event parser behind feature flag [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14529](https://github.com/openai/codex/pull/14529) Simplify permissions available in request permissions tool [@mousseau-oai](https://github.com/mousseau-oai)
+- [#14522](https://github.com/openai/codex/pull/14522) feat: support skill-scoped managed network domain overrides in skill config [@celia-oai](https://github.com/celia-oai)
+- [#14554](https://github.com/openai/codex/pull/14554) Add codex tool support for realtime v2 handoff [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14556](https://github.com/openai/codex/pull/14556) Add realtime transcription mode for websocket sessions [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14518](https://github.com/openai/codex/pull/14518) Add diagnostics for read\_only\_unless\_trusted timeout flake [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14603](https://github.com/openai/codex/pull/14603) Split multi-agent handler into dedicated files [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14526](https://github.com/openai/codex/pull/14526) code mode: single line tool declarations [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14400](https://github.com/openai/codex/pull/14400) Use a private desktop for Windows sandbox instead of Winsta0\Default [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#14558](https://github.com/openai/codex/pull/14558) sending back imagaegencall response back to responseapi [@won-openai](https://github.com/won-openai)
+- [#14553](https://github.com/openai/codex/pull/14553) Improve granular approval policy prompt [@mousseau-oai](https://github.com/mousseau-oai)
+- [#14541](https://github.com/openai/codex/pull/14541) chore: clarify plugin + app copy in model instructions [@sayan-oai](https://github.com/sayan-oai)
+- [#14542](https://github.com/openai/codex/pull/14542) [bazel] Bump up cc and rust toolchains [@zbarsky-openai](https://github.com/zbarsky-openai)
+- [#14512](https://github.com/openai/codex/pull/14512) Start TUI on embedded app server [@etraut-openai](https://github.com/etraut-openai)
+- [#14606](https://github.com/openai/codex/pull/14606) Unify realtime v1/v2 session config [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14527](https://github.com/openai/codex/pull/14527) app-server: Add platform os and family to init response [@euroelessar](https://github.com/euroelessar)
+- [#14618](https://github.com/openai/codex/pull/14618) Use subagents naming in the TUI [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14304](https://github.com/openai/codex/pull/14304) Override local apps settings with requirements.toml settings [@canvrno-oai](https://github.com/canvrno-oai)
+- [#14479](https://github.com/openai/codex/pull/14479) feat(app-server, core): add more spans [@owenlin0](https://github.com/owenlin0)
+- [#13644](https://github.com/openai/codex/pull/13644) fix: preserve zsh-fork escalation fds across unified-exec spawn paths [@bolinfest](https://github.com/bolinfest)
+- [#14617](https://github.com/openai/codex/pull/14617) Add code\_mode\_only feature [@pakrym-oai](https://github.com/pakrym-oai)
+- [#13201](https://github.com/openai/codex/pull/13201) Slash copy osc52 wsl support [@won-openai](https://github.com/won-openai)
+- [#14631](https://github.com/openai/codex/pull/14631) Rename multi-agent wait tool to wait\_agent [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14622](https://github.com/openai/codex/pull/14622) Stabilize multi-agent feature flag [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14245](https://github.com/openai/codex/pull/14245) app-server: add v2 filesystem APIs [@euroelessar](https://github.com/euroelessar)
+- [#14605](https://github.com/openai/codex/pull/14605) Normalize MCP tool names to code-mode safe form [@pakrym-oai](https://github.com/pakrym-oai)
+- [#14637](https://github.com/openai/codex/pull/14637) Fix wait\_agent expectations in core tests [@charley-oai](https://github.com/charley-oai)
+- [#13860](https://github.com/openai/codex/pull/13860) Add Smart Approvals guardian review across core, app-server, and TUI [@charley-oai](https://github.com/charley-oai)
+- [#14639](https://github.com/openai/codex/pull/14639) Fix stale create\_wait\_tool reference [@charley-oai](https://github.com/charley-oai)
+- [#14532](https://github.com/openai/codex/pull/14532) [hooks] stop continuation & stop\_hook\_active mechanics [@eternal-openai](https://github.com/eternal-openai)
+- [#14635](https://github.com/openai/codex/pull/14635) Fix realtime transcription session.update tools payload [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14636](https://github.com/openai/codex/pull/14636) Use parser-specific realtime voice enum [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14633](https://github.com/openai/codex/pull/14633) refactor: make unified-exec zsh-fork state explicit [@bolinfest](https://github.com/bolinfest)
+- [#12031](https://github.com/openai/codex/pull/12031) Add openai\_base\_url config override for built-in provider [@etraut-openai](https://github.com/etraut-openai)
+- [#14645](https://github.com/openai/codex/pull/14645) Fix Windows CI assertions for guardian and Smart Approvals [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#14616](https://github.com/openai/codex/pull/14616) Fix turn context reconstruction after backtracking [@charley-oai](https://github.com/charley-oai)
+- [#14619](https://github.com/openai/codex/pull/14619) fix: persist future network host approvals across sessions [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14650](https://github.com/openai/codex/pull/14650) fix: sync split sandbox policies for spawned subagents [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14609](https://github.com/openai/codex/pull/14609) move plugin/skill instructions into dev msg and reorder [@sayan-oai](https://github.com/sayan-oai)
+- [#12024](https://github.com/openai/codex/pull/12024) Enforce errors on overriding built-in model providers [@etraut-openai](https://github.com/etraut-openai)
+- [#14646](https://github.com/openai/codex/pull/14646) Refresh Python SDK generated types [@sayan-oai](https://github.com/sayan-oai)
+- [#14649](https://github.com/openai/codex/pull/14649) make defaultPrompt an array, keep backcompat [@sayan-oai](https://github.com/sayan-oai)
+- [#14501](https://github.com/openai/codex/pull/14501) dynamic tool calls: add param `exposeToContext` to optionally hide tool [@cconger](https://github.com/cconger)
+- [#14651](https://github.com/openai/codex/pull/14651) Add argument-comment Dylint runner [@bolinfest](https://github.com/bolinfest)
+- [#14674](https://github.com/openai/codex/pull/14674) fix: fix symlinked writable roots in sandbox policies [@viyatb-oai](https://github.com/viyatb-oai)
+- [#14611](https://github.com/openai/codex/pull/14611) Add auth 401 recovery observability to client bug reports [@ccy-oai](https://github.com/ccy-oai)
+- [#14647](https://github.com/openai/codex/pull/14647) [apps] Add tool call meta. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#14732](https://github.com/openai/codex/pull/14732) [apps] Improve search tool fallback. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#14602](https://github.com/openai/codex/pull/14602) Preserve background terminals on interrupt and rename cleanup command to /stop [@friel-openai](https://github.com/friel-openai)
+- [#14668](https://github.com/openai/codex/pull/14668) Reuse guardian session across approvals [@charley-oai](https://github.com/charley-oai)
+- [#14769](https://github.com/openai/codex/pull/14769) fix(core): preserve tool\_params for elicitations [@mzeng-openai](https://github.com/mzeng-openai)
+- [#14807](https://github.com/openai/codex/pull/14807) fix: sub-agent role when using profiles [@jif-oai](https://github.com/jif-oai)
+- [#14806](https://github.com/openai/codex/pull/14806) feat: improve skills cache key to take into account config layering [@jif-oai](https://github.com/jif-oai)
+- [#13850](https://github.com/openai/codex/pull/13850) feat: make interrupt state not final for multi-agents [@jif-oai](https://github.com/jif-oai)
+- [#14816](https://github.com/openai/codex/pull/14816) fix: tui freeze when sub-agents are present [@jif-oai](https://github.com/jif-oai)
 
-#### Fixes & improvements
-
-- Added a link to this changelog from the profile menu.
-- Added support for binary files: When applying patches, all file operations are supported. When using PRs, only deleting or renaming binary files is supported for now.
-- Fixed an issue on iOS where follow up tasks where shown duplicated in the task list.
-- Fixed an issue on iOS where pull request statuses were out of date.
-- Fixed an issue with follow ups where the environments were incorrectly started with the state from the first turn, rather than the most recent state.
-- Fixed internationalization of task events and logs.
-- Improved error messages for setup scripts.
-- Increased the limit on task diffs from 1 MB to 5 MB.
-- Increased the limit for setup script duration from 5 to 10 minutes.
-- Polished GitHub connection flow.
-- Re-enabled Live Activities on iOS after resolving an issue with missed notifications.
-- Removed the mandatory two-factor authentication requirement for users using SSO or social logins.
+[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.115.0)
 

@@ -2,11 +2,11 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-23T18:22:20+00:00",
+  "generated_at": "2026-03-24T00:32:02+00:00",
   "removed": [],
   "total_files": 119,
   "updated": [
     "developers.openai.com/codex/changelog/index.md",
-    "developers.openai.com/codex/windows/index.md"
+    "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md"
   ]
 }

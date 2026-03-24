@@ -72,7 +72,7 @@
       "source_url": "https://developers.openai.com/codex/auth"
     },
     "developers.openai.com/codex/changelog/index.md": {
-      "sha256": "e12504664619d019163a589f938a90de6794f2509e1c7d72625843f6d8f551ac",
+      "sha256": "87ba43a24656edb5213381565389ee72c45b4757ad88adbb7278d183cd6057b6",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/changelog"
     },
@@ -472,7 +472,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
     },
     "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md": {
-      "sha256": "292fefd86723342ed412aa564e11890fbe8907b8397dec9cff3187b7f8cd3db6",
+      "sha256": "3b432126573d680421118338a304c3889d420793dd9f60c8dc3d36596787e0be",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md"
     },
