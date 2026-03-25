@@ -14,10 +14,14 @@ To change a setting, follow these steps:
 
 The Codex IDE extension uses the Codex CLI. Configure some behavior, such as the default model, approvals, and sandbox settings, in the shared `~/.codex/config.toml` file instead of in editor settings. See [Config basics](/codex/config-basic).
 
+The extension also honors VS Code’s built-in chat font settings for Codex conversation surfaces.
+
 ## Settings reference
 
 | Setting | Description |
 | --- | --- |
+| `chat.fontSize` | Controls chat text in the Codex sidebar, including conversation content and the composer. |
+| `chat.editor.fontSize` | Controls code-rendered content in Codex conversations, including code snippets and diffs. |
 | `chatgpt.cliExecutable` | Development only: Path to the Codex CLI executable. You don’t need to set this unless you’re actively developing the Codex CLI. If you set this manually, parts of the extension might not work as expected. |
 | `chatgpt.commentCodeLensEnabled` | Show CodeLens above to-do comments so you can complete them with Codex. |
 | `chatgpt.localeOverride` | Preferred language for the Codex UI. Leave empty to detect automatically. |

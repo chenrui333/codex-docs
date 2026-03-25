@@ -2,11 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-24T00:32:02+00:00",
+  "generated_at": "2026-03-25T18:24:56+00:00",
   "removed": [],
   "total_files": 119,
   "updated": [
-    "developers.openai.com/codex/changelog/index.md",
-    "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md"
+    "developers.openai.com/codex/ide/settings/index.md"
   ]
 }
