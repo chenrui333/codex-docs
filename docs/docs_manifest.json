@@ -217,7 +217,7 @@
       "source_url": "https://developers.openai.com/codex/ide/features"
     },
     "developers.openai.com/codex/ide/index.md": {
-      "sha256": "e109e63e89187edc81dba73dfd91cbf583bee852313d59f14645cfc3fc0c68c1",
+      "sha256": "970737a9b3c8356d9b4579ac11a1c6d2d9bc24c3669c4cc9d8dc37c8b4b556a1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide"
     },
@@ -417,7 +417,7 @@
       "source_url": "https://developers.openai.com/resources/codex"
     },
     "github.openai.com/openai/codex/AGENTS.md": {
-      "sha256": "eba405bb869970c6ea7db8f26eff67bf92b8deb038632e54d9dbd38a6af11a72",
+      "sha256": "e5d31d898206a94c626ebfc408f606f2778c7bf41177c30255b2e7347ebd4cfc",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
     },

@@ -22,7 +22,8 @@ The Codex VS Code extension is available on macOS and Linux. Windows support
 is experimental. For the best Windows experience, use Codex in a WSL workspace
 and follow our [Windows setup guide](/codex/windows).
 
-After you install it, you’ll find the extension in your left sidebar next to your other extensions.
+After you install it, you’ll find Codex in your editor sidebar.
+In VS Code, Codex opens in the right sidebar by default.
 If you’re using VS Code, restart the editor if you don’t see Codex right away.
 
 If you’re using Cursor, the activity bar displays horizontally by default. Collapsed items can hide Codex, so you can pin it and reorganize the order of the extensions.
@@ -37,9 +38,11 @@ If you want to use Codex in JetBrains IDEs like Rider, IntelliJ, PyCharm, or Web
 
 ### Move Codex to the right sidebar
 
-In VS Code, you can drag the Codex icon to the right of your editor to move it to the right sidebar.
+In VS Code, Codex appears in the right sidebar automatically.
+If you prefer it in the primary (left) sidebar, drag the Codex icon back to the left activity bar.
 
-In some IDEs, like Cursor, you may need to temporarily change the activity bar orientation first:
+In VS Code forks like Cursor, you may need to move Codex to the right sidebar manually.
+To do that, you may need to temporarily change the activity bar orientation first:
 
 1. Open your editor settings and search for `activity bar` (in Workbench settings).
 2. Change the orientation to `vertical`.
@@ -50,6 +53,7 @@ In some IDEs, like Cursor, you may need to temporarily change the activity bar o
 Now drag the Codex icon to the right sidebar (for example, next to your Cursor chat). Codex appears as another tab in the sidebar.
 
 After you move it, reset the activity bar orientation to `horizontal` to restore the default behavior.
+If you change your mind later, you can drag Codex back to the primary (left) sidebar at any time.
 
 ### Sign in
 
