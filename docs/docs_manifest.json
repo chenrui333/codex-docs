@@ -351,6 +351,71 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/subagents"
     },
+    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md": {
+      "sha256": "4f0893f2ebab5731a4ba5557fbb338f737984dafaef5ae95240c17c6cf5128d8",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/api-integration-migrations"
+    },
+    "developers.openai.com/codex/use-cases/browser-games/index.md": {
+      "sha256": "5ce9df18eeb709dd1921b66ba93cf3028ded0c90a4e9e7d5e8cf8fb058408788",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/browser-games"
+    },
+    "developers.openai.com/codex/use-cases/chatgpt-apps/index.md": {
+      "sha256": "afd7d36f09ffd99bd660bd3b476a735edd6f67bf195dd4fbd6068bba544f9d79",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/chatgpt-apps"
+    },
+    "developers.openai.com/codex/use-cases/codebase-onboarding/index.md": {
+      "sha256": "f06c3fe2a2a0b4e35e5b2455de2859a283181aa48f88ec7dbbb826b243c7e18c",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/codebase-onboarding"
+    },
+    "developers.openai.com/codex/use-cases/datasets-and-reports/index.md": {
+      "sha256": "33de7b1bf59d55722b56d9cc6639823ef45ec16e751e698eeb014431b68e219c",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/datasets-and-reports"
+    },
+    "developers.openai.com/codex/use-cases/figma-designs-to-code/index.md": {
+      "sha256": "388043e62c80c09524a8da9c9f32fa25876a539ac002c82e3c96f6a641d1c6e1",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/figma-designs-to-code"
+    },
+    "developers.openai.com/codex/use-cases/frontend-designs/index.md": {
+      "sha256": "4c22d6a4f7bf404a6b37f28f0eeb03dcb6599b5f24c6c03360f9b6b9c075a87f",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/frontend-designs"
+    },
+    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md": {
+      "sha256": "8cbbebafd43eb2974739e4be6d29118a740a0e21fe085b36e0a58c4f3688935a",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/generate-slide-decks"
+    },
+    "developers.openai.com/codex/use-cases/github-code-reviews/index.md": {
+      "sha256": "0ee8f918f1d03b031067ae6e15d4ed1caf440d1e57f68d41547b0ba9ce9ce3ac",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/github-code-reviews"
+    },
+    "developers.openai.com/codex/use-cases/index.md": {
+      "sha256": "c6101bc2dd9d9dcccb6ae39b73fc7cfbded331e227fe92979d04c792c6f5db08",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases"
+    },
+    "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md": {
+      "sha256": "88d753a87778096f7dcc78a14dd5c274e1628cdcea9e2660b93cf954c99c4328",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems"
+    },
+    "developers.openai.com/codex/use-cases/native-ios-macos-apps/index.md": {
+      "sha256": "cb202b76b855951011b2cbda03b38742f4dabe94957242abcba2f57537eedaa0",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/native-ios-macos-apps"
+    },
+    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md": {
+      "sha256": "e4534a5790515cbf380b500d4f325a8a1be87f091d9700efd5f88322a1d715e8",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/slack-coding-tasks"
+    },
     "developers.openai.com/codex/videos/index.md": {
       "sha256": "35304d60aa641658b8934691f8240724db7993b03b8e59f4abee8d9f20a2bb5a",
       "source_type": "developers",
