@@ -150,6 +150,7 @@ shell_snapshot = true           # Speed up repeated commands
 | Key | Default | Maturity | Description |
 | --- | --- | --- | --- |
 | `apps` | false | Experimental | Enable ChatGPT Apps/connectors support |
+| `codex_hooks` | false | Under development | Enable lifecycle hooks from `hooks.json`. See [Hooks](/codex/hooks). |
 | `fast_mode` | true | Stable | Enable Fast mode selection and the `service_tier = "fast"` path |
 | `multi_agent` | true | Stable | Enable subagent collaboration tools |
 | `personality` | true | Stable | Enable personality selection controls |
@@ -167,6 +168,8 @@ and Stable. See [Feature Maturity](/codex/feature-maturity) for how to
 interpret these labels.
 
 Omit feature keys to keep their defaults.
+
+For the current lifecycle hooks MVP, see [Hooks](/codex/hooks).
 
 ### Enabling features
 

@@ -362,6 +362,7 @@ enabled = true
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
 # shell_tool = true
 # apps = false
+# codex_hooks = false
 # unified_exec = true
 # shell_snapshot = true
 # multi_agent = true

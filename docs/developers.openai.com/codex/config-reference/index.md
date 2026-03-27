@@ -48,6 +48,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
 | `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
+| `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` (under development; off by default). |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
@@ -644,6 +645,18 @@ Type / Values
 Details
 
 Enable ChatGPT Apps/connectors support (experimental).
+
+Key
+
+`features.codex_hooks`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable lifecycle hooks loaded from `hooks.json` (under development; off by default).
 
 Key
 

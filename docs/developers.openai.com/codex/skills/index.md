@@ -2,7 +2,9 @@
 
 Source: https://developers.openai.com/codex/skills
 
-Use agent skills to extend Codex with task-specific capabilities. A skill packages instructions, resources, and optional scripts so Codex can follow a workflow reliably. You can share skills across teams or with the community. Skills build on the [open agent skills standard](https://agentskills.io).
+Use agent skills to extend Codex with task-specific capabilities. A skill packages instructions, resources, and optional scripts so Codex can follow a workflow reliably. Skills build on the [open agent skills standard](https://agentskills.io).
+
+Skills are the authoring format for reusable workflows. Plugins are the installable distribution unit for reusable skills and apps in Codex. Use skills to design the workflow itself, then package it as a [plugin](/codex/plugins) when you want other developers to install it.
 
 Skills are available in the Codex CLI, IDE extension, and Codex app.
 
@@ -67,15 +69,35 @@ Codex reads skills from repository, user, admin, and system locations. For repos
 
 Codex supports symlinked skill folders and follows the symlink target when scanning these locations.
 
-## Install skills
+These locations are for authoring and local discovery. When you want to
+distribute reusable skills beyond a single repo, or optionally bundle them with
+app integrations, use [plugins](/codex/plugins).
 
-To install skills beyond the built-ins, use `$skill-installer`. For example, to install the `$linear` skill:
+## Distribute skills with plugins
+
+Direct skill folders are best for local authoring and repo-scoped workflows. If
+you want to distribute a reusable skill, bundle two or more skills together, or
+ship a skill alongside an app integration, package them as a
+[plugin](/codex/plugins).
+
+Plugins can include one or more skills. They can also optionally bundle app
+mappings, MCP server configuration, and presentation assets in a single
+package.
+
+## Install curated skills for local use
+
+To add curated skills beyond the built-ins for your own local Codex setup, use `$skill-installer`. For example, to install the `$linear` skill:
 
 ```
 $skill-installer linear
 ```
 
-You can also prompt the installer to download skills from other repositories. Codex detects newly installed skills automatically; if one doesn’t appear, restart Codex.
+You can also prompt the installer to download skills from other repositories.
+Codex detects newly installed skills automatically; if one doesn’t appear,
+restart Codex.
+
+Use this for local setup and experimentation. For reusable distribution of your
+own skills, prefer plugins.
 
 ## Enable or disable skills
 

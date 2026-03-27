@@ -90,6 +90,26 @@ For security, Codex loads project-scoped config files only when the project is t
 
 Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
+## Hooks (experimental)
+
+Codex can also load lifecycle hooks from `hooks.json` files that sit next to
+active config layers.
+
+In practice, the two most useful locations are:
+
+- `~/.codex/hooks.json`
+- `<repo>/.codex/hooks.json`
+
+Turn hooks on with:
+
+```
+[features]
+codex_hooks = true
+```
+
+For the current event list, input fields, output behavior, and limitations, see
+[Hooks](/codex/hooks).
+
 ## Agent roles (`[agents]` in `config.toml`)
 
 For subagent role configuration (`[agents]` in `config.toml`), see [Subagents](/codex/subagents).

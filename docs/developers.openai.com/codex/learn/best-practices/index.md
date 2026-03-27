@@ -163,7 +163,7 @@ Skills are especially useful for recurring jobs like:
 - Telemetry or incident summaries
 - Standard debugging flows
 
-The `$skill-creator` skill is the best place to start to scaffold the first version of a skill and to use the `$skill-installer` skill to install it locally. One of the most important parts of a skill is the description. It should say what the skill does and when to use it.
+The `$skill-creator` skill is the best place to start to scaffold the first version of a skill. Keep the first version local while you iterate. When it’s ready to share broadly, package it as a [plugin](/codex/plugins). One of the most important parts of a skill is the description. It should say what the skill does and when to use it.
 
 Personal skills are stored in `$HOME/.agents/skills`, and shared team skills
 can be checked into `.agents/skills` inside a repository. This is especially

@@ -49,6 +49,7 @@
       "https://developers.openai.com/codex/guides/agents-md",
       "https://developers.openai.com/codex/guides/agents-sdk",
       "https://developers.openai.com/codex/guides/build-ai-native-engineering-team",
+      "https://developers.openai.com/codex/hooks",
       "https://developers.openai.com/codex/ide",
       "https://developers.openai.com/codex/ide/commands",
       "https://developers.openai.com/codex/ide/features",
@@ -63,6 +64,7 @@
       "https://developers.openai.com/codex/noninteractive",
       "https://developers.openai.com/codex/open-source",
       "https://developers.openai.com/codex/overview",
+      "https://developers.openai.com/codex/plugins",
       "https://developers.openai.com/codex/pricing",
       "https://developers.openai.com/codex/prompting",
       "https://developers.openai.com/codex/quickstart",
@@ -101,8 +103,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 98,
-      "mirrored_urls": 83,
+      "codex_related_urls": 100,
+      "mirrored_urls": 85,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -151,6 +153,7 @@
       "https://developers.openai.com/codex/guides/agents-md",
       "https://developers.openai.com/codex/guides/agents-sdk",
       "https://developers.openai.com/codex/guides/build-ai-native-engineering-team",
+      "https://developers.openai.com/codex/hooks",
       "https://developers.openai.com/codex/ide",
       "https://developers.openai.com/codex/ide/commands",
       "https://developers.openai.com/codex/ide/features",
@@ -165,6 +168,7 @@
       "https://developers.openai.com/codex/noninteractive",
       "https://developers.openai.com/codex/open-source",
       "https://developers.openai.com/codex/overview",
+      "https://developers.openai.com/codex/plugins",
       "https://developers.openai.com/codex/pricing",
       "https://developers.openai.com/codex/prompting",
       "https://developers.openai.com/codex/quickstart",
@@ -193,8 +197,14 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/hooks",
+      "https://developers.openai.com/codex/plugins"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/hooks",
+      "https://developers.openai.com/codex/plugins"
+    ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -219,7 +229,7 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-03-18T06:29:08+00:00",
+  "generated_at": "2026-03-27T00:38:45+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,

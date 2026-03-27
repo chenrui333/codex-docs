@@ -56,6 +56,12 @@ Skills give Codex reusable capabilities for repeatable workflows.
 Skills are often the best fit for reusable workflows because they support richer instructions, scripts, and references while staying reusable across tasks.
 Skills are loaded and visible to the agent (at least their metadata), so Codex can discover and choose them implicitly. This keeps rich workflows available without bloating context up front.
 
+Use skill folders to author and iterate on workflows locally. If a plugin
+already exists for the workflow, install it first to reuse a proven setup. When
+you want to distribute your own workflow across teams or bundle it with app
+integrations, package it as [plugins](/codex/plugins). Skills remain the
+authoring format; plugins are the installable distribution unit.
+
 A skill is typically a `SKILL.md` file plus optional scripts, references, and assets.
 
 - my-skill/
@@ -89,7 +95,7 @@ Use skills for:
 
 Skills can be global (in your user directory, for you as a developer) or repo-specific (checked into `.agents/skills`, for your team). Put repo skills in `.agents/skills` when the workflow applies to that project; use your user directory for skills you want across all repos.
 
-| Layer | Global | repo |
+| Layer | Global | Repo |
 | --- | --- | --- |
 | AGENTS | `~/.codex/AGENTS.md` | `AGENTS.md` in repo root or nested directories |
 | Skills | `$HOME/.agents/skills` | `.agents/skills` in repo |
@@ -147,7 +153,7 @@ If a skill depends on MCP, declare that dependency in `agents/openai.yaml` so Co
 Build in this order:
 
 1. [Custom instructions with AGENTS.md](/codex/guides/agents-md) so Codex follows your repo conventions. Add pre-commit hooks and linters to enforce those rules.
-2. [Skills](/codex/skills) so you never have the same conversation twice. Skills can include a `scripts/` directory with CLI scripts or pair with [MCP](/codex/mcp) for external systems.
+2. Install a [plugin](/codex/plugins) when a reusable workflow already exists. Otherwise, create a [skill](/codex/skills) and package it as a plugin when you want to share it.
 3. [MCP](/codex/mcp) when workflows need external systems (Linear, GitHub, docs servers, design tools).
 4. [Subagents](/codex/subagents) when you’re ready to delegate noisy or specialized tasks to subagents.
 
