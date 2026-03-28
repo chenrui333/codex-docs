@@ -1,23 +1,21 @@
 {
   "added": [
-    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md",
-    "developers.openai.com/codex/use-cases/browser-games/index.md",
-    "developers.openai.com/codex/use-cases/chatgpt-apps/index.md",
-    "developers.openai.com/codex/use-cases/codebase-onboarding/index.md",
-    "developers.openai.com/codex/use-cases/datasets-and-reports/index.md",
-    "developers.openai.com/codex/use-cases/figma-designs-to-code/index.md",
-    "developers.openai.com/codex/use-cases/frontend-designs/index.md",
-    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md",
-    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
-    "developers.openai.com/codex/use-cases/index.md",
-    "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md",
-    "developers.openai.com/codex/use-cases/native-ios-macos-apps/index.md",
-    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md"
+    "developers.openai.com/codex/plugins/build/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-27T18:23:41+00:00",
+  "generated_at": "2026-03-28T00:36:14+00:00",
   "removed": [],
-  "total_files": 134,
-  "updated": []
+  "total_files": 135,
+  "updated": [
+    "developers.openai.com/codex/concepts/customization/index.md",
+    "developers.openai.com/codex/learn/best-practices/index.md",
+    "developers.openai.com/codex/plugins/index.md",
+    "developers.openai.com/codex/skills/index.md",
+    "github.openai.com/openai/codex/AGENTS.md",
+    "github.openai.com/openai/codex/docs/tui-alternate-screen.md",
+    "github.openai.com/openai/codex/docs/tui-chat-composer.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md"
+  ]
 }

@@ -4,7 +4,7 @@ Source: https://developers.openai.com/codex/skills
 
 Use agent skills to extend Codex with task-specific capabilities. A skill packages instructions, resources, and optional scripts so Codex can follow a workflow reliably. Skills build on the [open agent skills standard](https://agentskills.io).
 
-Skills are the authoring format for reusable workflows. Plugins are the installable distribution unit for reusable skills and apps in Codex. Use skills to design the workflow itself, then package it as a [plugin](/codex/plugins) when you want other developers to install it.
+Skills are the authoring format for reusable workflows. Plugins are the installable distribution unit for reusable skills and apps in Codex. Use skills to design the workflow itself, then package it as a [plugin](/codex/plugins/build) when you want other developers to install it.
 
 Skills are available in the Codex CLI, IDE extension, and Codex app.
 
@@ -71,14 +71,14 @@ Codex supports symlinked skill folders and follows the symlink target when scann
 
 These locations are for authoring and local discovery. When you want to
 distribute reusable skills beyond a single repo, or optionally bundle them with
-app integrations, use [plugins](/codex/plugins).
+app integrations, use [plugins](/codex/plugins/build).
 
 ## Distribute skills with plugins
 
 Direct skill folders are best for local authoring and repo-scoped workflows. If
 you want to distribute a reusable skill, bundle two or more skills together, or
 ship a skill alongside an app integration, package them as a
-[plugin](/codex/plugins).
+[plugin](/codex/plugins/build).
 
 Plugins can include one or more skills. They can also optionally bundle app
 mappings, MCP server configuration, and presentation assets in a single

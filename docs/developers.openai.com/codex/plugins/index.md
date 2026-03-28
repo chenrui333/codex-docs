@@ -2,380 +2,116 @@
 
 Source: https://developers.openai.com/codex/plugins
 
-## What plugins are
+## Overview
 
-Plugins are installable bundles for reusable Codex workflows. They make it
-easier to share the same setup across projects or teams, and they can package
-skills, optional app integrations, and MCP server configurations in a single
-place.
+Plugins bundle skills, app integrations, and MCP servers into reusable
+workflows for Codex.
+
+Extend what Codex can do, for example:
+
+- Install the Gmail plugin to let Codex read and manage Gmail.
+- Install the Google Drive plugin to work across Drive, Docs, Sheets, and
+  Slides.
+- Install the Slack plugin to summarize channels or draft replies.
 
 A plugin can contain:
 
-- **Skills:** prompts that describe workflows to Codex and can be
-  progressively discovered by the agent.
-- **Apps:** optional app integrations or connector mappings packaged with the
-  plugin.
-- **MCP servers:** remote tools or shared context the plugin needs.
+- **Skills:** reusable instructions for specific kinds of work. Codex can load
+  them when needed so it follows the right steps and uses the right references
+  or helper scripts for a task.
+- **Apps:** connections to tools like GitHub, Slack, or Google Drive, so
+  Codex can read information from those tools and take actions in them.
+- **MCP servers:** services that give Codex access to additional tools or
+  shared information, often from systems outside your local project.
 
-More plugin components are coming soon.
+More plugin capabilities are coming soon.
 
 ## Use and install plugins
 
-### In the Codex app
+### Plugin Directory in the Codex app
 
-Plugins curated by OpenAI appear in the Codex directory. Start there when you
-want ready-made workflows or app integrations.
+Open **Plugins** in the Codex app to browse and install curated plugins.
 
-![Codex plugin directory](/images/codex/plugins/directory.png)
+![Codex Plugins page](/images/codex/plugins/directory.png)
 
-### In the CLI
+### Plugin directory in the CLI
 
-In Codex CLI, run the following command to open the plugins surface:
+In Codex CLI, run the following command to open the plugins list:
 
 ```
 codex
 /plugins
 ```
 
-![Plugin directory in Codex CLI](/images/codex/plugins/cli_light.png)
+![Plugins list in Codex CLI](/images/codex/plugins/cli_light.png)
 
-### Use plugins locally
+### Install and use a plugin
 
-For the fastest setup, use the built-in `@plugin-creator` skill to scaffold a
-local plugin.
+Once you open the plugin directory:
 
-![plugin-creator skill in Codex](/images/codex/plugins/plugin-creator.png)
+1. Search or browse for a plugin, then open its details.
+2. Select the install button. In the app, select the plus button or
+   **Add to Codex**. In the CLI, select `Install plugin`.
+3. If the plugin needs an external app, connect it when prompted. Some plugins
+   ask you to authenticate during install. Others wait until the first time you
+   use them.
+4. After installation, start a new thread and ask Codex to use the plugin.
 
-It creates the required `.codex-plugin/plugin.json` manifest and
-can also generate a local marketplace entry for testing.
+After you install a plugin, you can use it directly in the prompt window:
 
-If you already have a plugin from another ecosystem or a plugin you built
-yourself, you can add it to your local marketplace with `@plugin-creator`.
+![Codex Plugins page](/images/codex/plugins/plugin-github-invoke.png)
 
-![how to invoke the plugin-creator skill](/images/codex/plugins/plugin-creator-invoke.png)
+Describe the task directly
 
-In the plugin directory, you can also load your own local marketplace with a
-custom marketplace name and browse the plugins there.
+Ask for the outcome you want, such as “Summarize unread Gmail threads
+from today” or “Pull the latest launch notes from Google Drive.”
 
-![custom local marketplace in the plugin directory](/images/codex/plugins/codex-local-plugin-light.png)
+Use this when you want Codex to choose the right installed tools for the
+task.
 
-#### Install a local plugin manually
+Choose a specific plugin
 
-Use a repo marketplace or a personal marketplace, depending on who should be
-able to access the plugin.
+Type `@` to invoke the plugin or one of its bundled skills
+explicitly.
 
-Add a marketplace file at `$REPO_ROOT/.agents/plugins/marketplace.json`
-and store your plugins under `$REPO_ROOT/plugins/`.
+Use this when you want to be specific about which plugin or skill Codex
+should use. See [Codex app commands](/codex/app/commands) and
+[Skills](/codex/skills).
 
-**Repo marketplace example**
+### How permissions and data sharing work
 
-Step 1: Copy the plugin folder into `$REPO_ROOT/plugins/my-plugin`.
+Installing a plugin makes its workflows available in Codex, but your existing
+[approval settings](/codex/agent-approvals-security) still apply. Any
+connected external services remain subject to their own authentication,
+privacy, and data-sharing policies.
 
-```
-mkdir -p ./plugins
-cp -R /absolute/path/to/my-plugin ./plugins/my-plugin
-```
+- Bundled skills are available as soon as you install the plugin.
+- If a plugin includes apps, Codex may prompt you to install or sign in to
+  those apps in ChatGPT during setup or the first time you use them.
+- If a plugin includes MCP servers, they may require additional setup or
+  authentication before you can use them.
+- When Codex sends data through a bundled app, that app’s terms and privacy
+  policy apply.
 
-Step 2: Add or update `$REPO_ROOT/.agents/plugins/marketplace.json` so
-that `source.path` points to that plugin directory with a `./`-prefixed
-relative path:
+### Remove or turn off a plugin
 
-```
-{
-  "name": "local-repo",
-  "plugins": [
-    {
-      "name": "my-plugin",
-      "source": {
-        "source": "local",
-        "path": "./plugins/my-plugin"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
-    }
-  ]
-}
-```
+To remove a plugin, reopen it from the plugin browser and select
+**Uninstall plugin**.
 
-Step 3: Restart Codex and verify that the plugin appears.
+Uninstalling a plugin removes the plugin bundle from Codex, but bundled apps
+stay installed until you manage them in ChatGPT.
 
-Add a marketplace file at `~/.agents/plugins/marketplace.json` and store
-your plugins under `~/.codex/plugins/`.
-
-**Personal marketplace example**
-
-Step 1: Copy the plugin folder into `~/.codex/plugins/my-plugin`.
+If you want to keep a plugin installed but turn it off, set its entry in
+`~/.codex/config.toml` to `enabled = false`, then restart Codex:
 
 ```
-mkdir -p ~/.codex/plugins
-cp -R /absolute/path/to/my-plugin ~/.codex/plugins/my-plugin
+[plugins."gmail@openai-curated"]
+enabled = false
 ```
 
-Step 2: Add or update `~/.agents/plugins/marketplace.json` so that the
-plugin entry’s `source.path` points to that directory.
+## Build your own plugin
 
-Step 3: Restart Codex and verify that the plugin appears.
-
-The marketplace file points to the plugin location, so those directories are
-examples rather than fixed requirements. Codex resolves `source.path` relative
-to the marketplace root, not relative to the `.agents/plugins/` folder. See
-[Marketplace metadata](#marketplace-metadata) for the file format.
-
-After you change the plugin, update the plugin directory that your marketplace
-entry points to and restart Codex so the local install picks up the new files.
-
-### Marketplace metadata
-
-If you maintain a repo marketplace, define it in
-`$REPO_ROOT/.agents/plugins/marketplace.json`. For a personal marketplace, use
-`~/.agents/plugins/marketplace.json`. A marketplace file controls plugin
-ordering and install policies in Codex-facing catalogs. Before you add a plugin
-to a marketplace, make sure its `version`, publisher metadata, and
-install-surface copy are ready for other developers to see.
-
-```
-{
-  "name": "openai-curated",
-  "interface": {
-    "displayName": "ChatGPT Official"
-  },
-  "plugins": [
-    {
-      "name": "my-plugin",
-      "source": {
-        "source": "local",
-        "path": "./plugins/my-plugin"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
-    }
-  ]
-}
-```
-
-- Use top-level `name` to identify the marketplace.
-- Use `interface.displayName` for the marketplace title shown in Codex.
-- Point each plugin entry’s `source.path` at the plugin directory you want
-  Codex to load. For repo installs, that often lives under
-  `./plugins/`. For personal installs, it often lives under
-  `~/.codex/plugins/`.
-- Keep `source.path` relative to the marketplace root, start it with `./`, and
-  keep it inside that root.
-- Always include `policy.installation`, `policy.authentication`, and
-  `category` on each plugin entry.
-- Use `policy.installation` values such as `AVAILABLE`,
-  `INSTALLED_BY_DEFAULT`, or `NOT_AVAILABLE`.
-- Use `policy.authentication` to decide whether auth happens on install or
-  first use.
-
-The marketplace controls where Codex loads the plugin from. `source.path` can
-point somewhere else if your plugin lives outside those example directories. A
-marketplace file can live in the repo where you are developing the plugin or in
-a separate marketplace repo, and one marketplace file can point to one plugin
-or many.
-
-### How Codex uses marketplaces
-
-A plugin marketplace is a JSON catalog of plugins that Codex can read and
-install.
-
-Codex can read marketplace files from:
-
-- the curated marketplace that powers the official Plugin Directory
-- a repo marketplace at `$REPO_ROOT/.agents/plugins/marketplace.json`
-- a personal marketplace at `~/.agents/plugins/marketplace.json`
-
-You can install any plugin exposed through a marketplace. Codex installs
-plugins into
-`~/.codex/plugins/cache/$MARKETPLACE_NAME/$PLUGIN_NAME/$VERSION/`. For local
-plugins, `$VERSION` is `local`, and Codex loads the installed copy from that
-cache path rather than directly from the marketplace entry.
-
-You can enable or disable each plugin individually. Codex stores each plugin’s
-on or off state in `~/.codex/config.toml`.
-
-## Build and distribute plugins
-
-### When to create a plugin
-
-Use local skills when:
-
-- You are iterating on one repo or one workflow.
-- The behavior is personal or project-specific.
-- You are experimenting before you package something reusable.
-
-Use plugins when:
-
-- You want the same skills or app integrations available across teams or
-  projects.
-- You want to bundle skills, MCP config, and app integrations into one
-  installable unit.
-- You want a stable, versioned package for teammates or a marketplace.
-
-Start local, then package the workflow as a plugin when you are ready to share
-it.
-
-### Plugin structure
-
-Every plugin has a manifest at `.codex-plugin/plugin.json`. It can also include
-a `skills/` directory, an `.app.json` file that points at one or more apps or
-connectors, and assets used to present the plugin across supported surfaces.
-
-- my-plugin/
-
-  - .codex-plugin/
-
-    - plugin.json    Required: plugin manifest
-  - skills/
-
-    - my-skill/
-
-      - SKILL.md    Optional: skill instructions
-  - .app.json    Optional: app or connector mappings
-  - .mcp.json    Optional: MCP server configuration
-  - assets/    Optional: icons, logos, screenshots
-
-Only `plugin.json` belongs in `.codex-plugin/`. Keep `skills/`, `assets/`,
-`.mcp.json`, and `.app.json` at the plugin root.
-
-Published plugins typically use a richer manifest than the minimal example that
-appears in quick-start scaffolds. The manifest has three jobs:
-
-- Identify the plugin.
-- Point to bundled components such as skills, apps, or MCP servers.
-- Provide install-surface metadata such as descriptions, icons, and legal links.
-
-Here’s a complete manifest example:
-
-```
-{
-  "name": "my-plugin",
-  "version": "0.1.0",
-  "description": "Bundle reusable skills and app integrations.",
-  "author": {
-    "name": "Your team",
-    "email": "team@example.com",
-    "url": "https://example.com"
-  },
-  "homepage": "https://example.com/plugins/my-plugin",
-  "repository": "https://github.com/example/my-plugin",
-  "license": "MIT",
-  "keywords": ["research", "crm"],
-  "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
-  "apps": "./.app.json",
-  "interface": {
-    "displayName": "My Plugin",
-    "shortDescription": "Reusable skills and apps",
-    "longDescription": "Distribute skills and app integrations together.",
-    "developerName": "Your team",
-    "category": "Productivity",
-    "capabilities": ["Read", "Write"],
-    "websiteURL": "https://example.com",
-    "privacyPolicyURL": "https://example.com/privacy",
-    "termsOfServiceURL": "https://example.com/terms",
-    "defaultPrompt": [
-      "Use My Plugin to summarize new CRM notes.",
-      "Use My Plugin to triage new customer follow-ups."
-    ],
-    "brandColor": "#10A37F",
-    "composerIcon": "./assets/icon.png",
-    "logo": "./assets/logo.png",
-    "screenshots": ["./assets/screenshot-1.png"]
-  }
-}
-```
-
-`.codex-plugin/plugin.json` is the required entry point. The other manifest
-fields are optional, but published plugins commonly use them.
-
-### Create your first plugin
-
-Start with a minimal plugin that packages one skill.
-
-1. Create a plugin folder with a manifest at `.codex-plugin/plugin.json`.
-
-```
-mkdir -p my-first-plugin/.codex-plugin
-```
-
-`my-first-plugin/.codex-plugin/plugin.json`
-
-```
-{
-  "name": "my-first-plugin",
-  "version": "1.0.0",
-  "description": "Reusable greeting workflow",
-  "skills": "./skills/"
-}
-```
-
-Use a stable plugin `name` in kebab-case. Codex uses it as the plugin
-identifier and component namespace.
-
-2. Add a skill under `skills/<skill-name>/SKILL.md`.
-
-```
-mkdir -p my-first-plugin/skills/hello
-```
-
-`my-first-plugin/skills/hello/SKILL.md`
-
-```
----
-name: hello
-description: Greet the user with a friendly message.
----
-
-Greet the user warmly and ask how you can help.
-```
-
-3. Follow [Use plugins locally](#use-plugins-locally) to load the plugin in
-   Codex.
-
-From there, you can add MCP config, app integrations, or marketplace metadata
-as needed.
-
-### Manifest fields
-
-Use the top-level fields to define package metadata and point to bundled
-components:
-
-- `name`, `version`, and `description` identify the plugin.
-- `author`, `homepage`, `repository`, `license`, and `keywords` provide
-  publisher and discovery metadata.
-- `skills`, `mcpServers`, and `apps` point to bundled components relative to
-  the plugin root.
-- `interface` controls how install surfaces present the plugin.
-
-Use the `interface` object for install-surface metadata:
-
-- `displayName`, `shortDescription`, and `longDescription` control the title and
-  descriptive copy.
-- `developerName`, `category`, and `capabilities` add publisher and capability
-  metadata.
-- `websiteURL`, `privacyPolicyURL`, and `termsOfServiceURL` provide external
-  links.
-- `defaultPrompt`, `brandColor`, `composerIcon`, `logo`, and `screenshots`
-  control starter prompts and visual presentation.
-
-### Path rules
-
-- Keep manifest paths relative to the plugin root and start them with `./`.
-- Store visual assets such as `composerIcon`, `logo`, and `screenshots` under
-  `./assets/` when possible.
-- Use `skills` for bundled skill folders, `apps` for `.app.json`, and
-  `mcpServers` for `.mcp.json`.
-
-### Publish official public plugins
-
-Adding plugins to the official Plugin Directory is coming soon.
-
-Self-serve plugin publishing and management are coming soon.
+If you want to create, test, or distribute your own plugin, see
+[Build plugins](/codex/plugins/build). That page covers local scaffolding,
+manual marketplace setup, plugin manifests, and packaging guidance.
 

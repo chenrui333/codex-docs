@@ -65,6 +65,7 @@
       "https://developers.openai.com/codex/open-source",
       "https://developers.openai.com/codex/overview",
       "https://developers.openai.com/codex/plugins",
+      "https://developers.openai.com/codex/plugins/build",
       "https://developers.openai.com/codex/pricing",
       "https://developers.openai.com/codex/prompting",
       "https://developers.openai.com/codex/quickstart",
@@ -116,8 +117,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 113,
-      "mirrored_urls": 98,
+      "codex_related_urls": 114,
+      "mirrored_urls": 99,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -182,6 +183,7 @@
       "https://developers.openai.com/codex/open-source",
       "https://developers.openai.com/codex/overview",
       "https://developers.openai.com/codex/plugins",
+      "https://developers.openai.com/codex/plugins/build",
       "https://developers.openai.com/codex/pricing",
       "https://developers.openai.com/codex/prompting",
       "https://developers.openai.com/codex/quickstart",
@@ -224,34 +226,10 @@
       "https://developers.openai.com/resources/codex"
     ],
     "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/use-cases",
-      "https://developers.openai.com/codex/use-cases/api-integration-migrations",
-      "https://developers.openai.com/codex/use-cases/browser-games",
-      "https://developers.openai.com/codex/use-cases/chatgpt-apps",
-      "https://developers.openai.com/codex/use-cases/codebase-onboarding",
-      "https://developers.openai.com/codex/use-cases/datasets-and-reports",
-      "https://developers.openai.com/codex/use-cases/figma-designs-to-code",
-      "https://developers.openai.com/codex/use-cases/frontend-designs",
-      "https://developers.openai.com/codex/use-cases/generate-slide-decks",
-      "https://developers.openai.com/codex/use-cases/github-code-reviews",
-      "https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems",
-      "https://developers.openai.com/codex/use-cases/native-ios-macos-apps",
-      "https://developers.openai.com/codex/use-cases/slack-coding-tasks"
+      "https://developers.openai.com/codex/plugins/build"
     ],
     "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/use-cases",
-      "https://developers.openai.com/codex/use-cases/api-integration-migrations",
-      "https://developers.openai.com/codex/use-cases/browser-games",
-      "https://developers.openai.com/codex/use-cases/chatgpt-apps",
-      "https://developers.openai.com/codex/use-cases/codebase-onboarding",
-      "https://developers.openai.com/codex/use-cases/datasets-and-reports",
-      "https://developers.openai.com/codex/use-cases/figma-designs-to-code",
-      "https://developers.openai.com/codex/use-cases/frontend-designs",
-      "https://developers.openai.com/codex/use-cases/generate-slide-decks",
-      "https://developers.openai.com/codex/use-cases/github-code-reviews",
-      "https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems",
-      "https://developers.openai.com/codex/use-cases/native-ios-macos-apps",
-      "https://developers.openai.com/codex/use-cases/slack-coding-tasks"
+      "https://developers.openai.com/codex/plugins/build"
     ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -277,7 +255,7 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-03-27T18:23:12+00:00",
+  "generated_at": "2026-03-28T00:35:46+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 36,

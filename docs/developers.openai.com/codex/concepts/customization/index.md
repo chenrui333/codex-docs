@@ -59,7 +59,7 @@ Skills are loaded and visible to the agent (at least their metadata), so Codex c
 Use skill folders to author and iterate on workflows locally. If a plugin
 already exists for the workflow, install it first to reuse a proven setup. When
 you want to distribute your own workflow across teams or bundle it with app
-integrations, package it as [plugins](/codex/plugins). Skills remain the
+integrations, package it as a [plugin](/codex/plugins/build). Skills remain the
 authoring format; plugins are the installable distribution unit.
 
 A skill is typically a `SKILL.md` file plus optional scripts, references, and assets.
