@@ -497,7 +497,7 @@
       "source_url": "https://developers.openai.com/resources/codex"
     },
     "github.openai.com/openai/codex/AGENTS.md": {
-      "sha256": "4d2264b6a85f550000d1fe0aa3e00e433493945cf7609feab13c93ba415abfd4",
+      "sha256": "f43a2b86f464995cfd757250b3510195c505230259847031bf680d99d9a4e5c6",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
     },
@@ -647,12 +647,12 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/slash_commands.md"
     },
     "github.openai.com/openai/codex/docs/tui-alternate-screen.md": {
-      "sha256": "9023a0712c472b32ca6116167163749dbbd7ed87a4f0180b3d36313798844aba",
+      "sha256": "2eaf23d3956a463cbb56ac92ee68706b7cf9816535ac6fda4657874fff70348f",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md"
     },
     "github.openai.com/openai/codex/docs/tui-chat-composer.md": {
-      "sha256": "39155520d54cc63c525a27c8d6c9747302e0ad6437c9470089445ea802164458",
+      "sha256": "d260b02e7feee6ca4a77d5a0e6abe364afcd575182f01d7402c05f0595fcedc9",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-chat-composer.md"
     },
@@ -662,12 +662,12 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-request-user-input.md"
     },
     "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md": {
-      "sha256": "8203b8206ca9244e014fafbff9378be5c4b83506907f33f51cc84e06a775477d",
+      "sha256": "0b1855aef540583f3bc22c9e5f3737c943ad062a2f7d8c7a44d94aa3b4c4ebe0",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-review.md"
     },
     "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md": {
-      "sha256": "f33bb69f965634b0b67c928eb1d57bebde5ee01810b6e52a9e8d33a518ceb0db",
+      "sha256": "2acfbb2a923a7aa57062146da5115f046133f92299fd69c1299f7f5a099e809e",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-tuning.md"
     },

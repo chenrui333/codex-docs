@@ -2,11 +2,14 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-28T06:26:10+00:00",
+  "generated_at": "2026-03-28T18:13:12+00:00",
   "removed": [],
   "total_files": 135,
   "updated": [
-    "developers.openai.com/codex/cli/index.md",
-    "github.openai.com/openai/codex/codex-rs/README.md"
+    "github.openai.com/openai/codex/AGENTS.md",
+    "github.openai.com/openai/codex/docs/tui-alternate-screen.md",
+    "github.openai.com/openai/codex/docs/tui-chat-composer.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md"
   ]
 }
