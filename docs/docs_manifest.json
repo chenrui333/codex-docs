@@ -82,7 +82,7 @@
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
     "developers.openai.com/codex/cli/index.md": {
-      "sha256": "30ac8375805ec29897e77a37d8d0b50bc655ea5616d887f458cfb7615d8b312e",
+      "sha256": "f13d0995d6b65e6b3b05a9212f0e9869a6e461e709159337d1e43d4913324f38",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli"
     },
@@ -532,7 +532,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md"
     },
     "github.openai.com/openai/codex/codex-rs/README.md": {
-      "sha256": "55e4fc5153c3a028065a3010f5492cf24cbcde0e903acee7718ed8ee67912eb0",
+      "sha256": "07dc6728b41fbb9cb3e8f1f366b5a8efb12bf0c27304b345c7a3d992c59c65ec",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md"
     },

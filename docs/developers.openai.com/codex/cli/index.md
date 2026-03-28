@@ -71,7 +71,7 @@ Use Codex to search the web and get up-to-date information for your task.](/code
 
 Launch a Codex Cloud task, choose environments, and apply the resulting diffs without leaving your terminal.](/codex/cli/features#working-with-codex-cloud)[### Scripting Codex
 
-Automate repeatable workflows by scripting Codex with the `exec` command.](/codex/sdk#using-codex-cli-programmatically)[### Model Context Protocol
+Automate repeatable workflows by scripting Codex with the `exec` command.](/codex/noninteractive)[### Model Context Protocol
 
 Give Codex access to additional third-party tools and context with Model Context Protocol (MCP).](/codex/mcp)[### Approval modes
 
