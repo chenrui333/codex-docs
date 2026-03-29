@@ -626,11 +626,6 @@
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/open-source-fund.md"
     },
-    "github.openai.com/openai/codex/docs/prompts.md": {
-      "sha256": "91f596f5d47ffe029646dd5a77b1152b6a2b2b5437062cc5a6d4635f0e47c58c",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/prompts.md"
-    },
     "github.openai.com/openai/codex/docs/sandbox.md": {
       "sha256": "61d4dd0ccda2a0cbbde78832e752cdf56b1eb8cf7a54f1d46b52a2824c911249",
       "source_type": "github",
@@ -652,7 +647,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md"
     },
     "github.openai.com/openai/codex/docs/tui-chat-composer.md": {
-      "sha256": "d260b02e7feee6ca4a77d5a0e6abe364afcd575182f01d7402c05f0595fcedc9",
+      "sha256": "22aa853435f7dba03f330651f667ddcc8787e295ba5bac324d39f837813fbb84",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-chat-composer.md"
     },

@@ -251,10 +251,10 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-03-28T06:25:49+00:00",
+  "generated_at": "2026-03-29T00:40:45+00:00",
   "github": {
     "counts": {
-      "mirrored_paths_count": 36,
+      "mirrored_paths_count": 35,
       "page_fetch_errors": 0,
       "source_errors": 0
     },
@@ -285,7 +285,6 @@
       "github.openai.com/openai/codex/docs/js_repl.md",
       "github.openai.com/openai/codex/docs/license.md",
       "github.openai.com/openai/codex/docs/open-source-fund.md",
-      "github.openai.com/openai/codex/docs/prompts.md",
       "github.openai.com/openai/codex/docs/sandbox.md",
       "github.openai.com/openai/codex/docs/skills.md",
       "github.openai.com/openai/codex/docs/slash_commands.md",
@@ -296,7 +295,7 @@
       "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md",
       "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md"
     ],
-    "mirrored_paths_count": 36,
+    "mirrored_paths_count": 35,
     "page_fetch_errors": [],
     "repo": "openai/codex",
     "source_errors": []
