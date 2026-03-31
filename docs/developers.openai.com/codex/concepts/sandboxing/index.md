@@ -38,6 +38,43 @@ trusting the agent’s intentions; you are trusting that the agent is operating
 inside enforced limits. That makes it easier to let Codex work independently
 while still knowing when it will stop and ask for help.
 
+## Getting started
+
+Codex applies sandboxing automatically when you use the default permissions
+mode.
+
+### Prerequisites
+
+On **macOS**, sandboxing works out of the box using the built-in Seatbelt
+framework.
+
+On **Windows**, Codex uses the native [Windows
+sandbox](/codex/windows#windows-sandbox) when you run in PowerShell and the
+Linux sandbox implementation when you run in WSL2.
+
+On **Linux and WSL2**, install `bubblewrap` with your package manager first:
+
+```
+sudo apt install bubblewrap
+```
+
+```
+sudo dnf install bubblewrap
+```
+
+Codex uses the system `bwrap` at `/usr/bin/bwrap` when it is available. If it
+is missing, Codex falls back to a bundled helper, but that helper requires
+unprivileged user namespaces. Installing your distro’s `bubblewrap` package is
+the most reliable setup.
+
+Codex surfaces a startup warning when `bwrap` is missing or cannot create user
+namespaces. On distributions that restrict them with AppArmor, you can enable
+them with:
+
+```
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+```
+
 ## How you control it
 
 Most people start with the permissions controls in the product.

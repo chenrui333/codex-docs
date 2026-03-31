@@ -2,14 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-31T00:39:14+00:00",
+  "generated_at": "2026-03-31T06:35:27+00:00",
   "removed": [],
   "total_files": 134,
   "updated": [
-    "developers.openai.com/codex/use-cases/frontend-designs/index.md",
-    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md",
-    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
-    "developers.openai.com/codex/use-cases/index.md",
-    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md"
+    "developers.openai.com/codex/concepts/sandboxing/index.md"
   ]
 }
