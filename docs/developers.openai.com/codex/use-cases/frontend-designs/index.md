@@ -103,7 +103,7 @@ Front-end  Design](/codex/use-cases/figma-designs-to-code)[![](/images/codex/cod
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Automation](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
+Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
 
 ### Create browser-based games
 

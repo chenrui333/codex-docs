@@ -2,7 +2,7 @@
 
 Source: https://developers.openai.com/codex/use-cases
 
-[Integrations](/codex/use-cases?search=Integrations)  [Analysis](/codex/use-cases?search=Analysis)  [Automation](/codex/use-cases?search=Automation)
+[Integrations](/codex/use-cases?search=Integrations)  [Analysis](/codex/use-cases?search=Analysis)  [Design](/codex/use-cases?search=Design)
 
 ## Featured
 
@@ -14,7 +14,7 @@ Start with the most common Codex workflows.
 
 Catch regressions and potential issues before human review.
 
-Integrations  Automation](/codex/use-cases/github-code-reviews)[![](/codex/use-cases/frontend-designs-use-case.png)
+Integrations  Workflow](/codex/use-cases/github-code-reviews)[![](/codex/use-cases/frontend-designs-use-case.png)
 
 ### Build responsive front-end designs
 
@@ -60,7 +60,7 @@ Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallp
 
 Manipulate pptx files and use image generation to automate slide creation.
 
-Data  Automation](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-3.webp)
 
 ### Iterate on difficult problems
 
@@ -72,13 +72,13 @@ Engineering  Analysis](/codex/use-cases/iterate-on-difficult-problems)[![](/imag
 
 Turn Slack threads into scoped cloud tasks.
 
-Integrations  Automation](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-1.webp)
+Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-1.webp)
 
 ### Review pull requests faster
 
 Catch regressions and potential issues before human review.
 
-Integrations  Automation](/codex/use-cases/github-code-reviews)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Workflow](/codex/use-cases/github-code-reviews)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Turn Figma designs into code
 
@@ -125,7 +125,7 @@ Evaluation  Code](/codex/use-cases/api-integration-migrations)
 
 - [All](/codex/use-cases)
 - [Analysis](/codex/use-cases?task_type=analysis)
-- [Automation](/codex/use-cases?task_type=automation)
 - [Code](/codex/use-cases?task_type=code)
 - [Design](/codex/use-cases?task_type=design)
+- [Workflow](/codex/use-cases?task_type=workflow)
 

@@ -2,12 +2,14 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-03-29T00:41:05+00:00",
-  "removed": [
-    "github.openai.com/openai/codex/docs/prompts.md"
-  ],
+  "generated_at": "2026-03-31T00:39:14+00:00",
+  "removed": [],
   "total_files": 134,
   "updated": [
-    "github.openai.com/openai/codex/docs/tui-chat-composer.md"
+    "developers.openai.com/codex/use-cases/frontend-designs/index.md",
+    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md",
+    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
+    "developers.openai.com/codex/use-cases/index.md",
+    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md"
   ]
 }

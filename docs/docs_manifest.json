@@ -387,22 +387,22 @@
       "source_url": "https://developers.openai.com/codex/use-cases/figma-designs-to-code"
     },
     "developers.openai.com/codex/use-cases/frontend-designs/index.md": {
-      "sha256": "4c22d6a4f7bf404a6b37f28f0eeb03dcb6599b5f24c6c03360f9b6b9c075a87f",
+      "sha256": "aa862b00488adca78a4b5c748d068b49ddd3984738689503bffbcb657ee2f720",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/frontend-designs"
     },
     "developers.openai.com/codex/use-cases/generate-slide-decks/index.md": {
-      "sha256": "8cbbebafd43eb2974739e4be6d29118a740a0e21fe085b36e0a58c4f3688935a",
+      "sha256": "705d43513495e05f8eb6fcf5f8865f58de0bd4aef15b407f65edde8d1c5b7889",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/generate-slide-decks"
     },
     "developers.openai.com/codex/use-cases/github-code-reviews/index.md": {
-      "sha256": "0ee8f918f1d03b031067ae6e15d4ed1caf440d1e57f68d41547b0ba9ce9ce3ac",
+      "sha256": "5b6807d5829b1d145768368ce05f0823a8cdd661bf7cedb2072edb188ce20704",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/github-code-reviews"
     },
     "developers.openai.com/codex/use-cases/index.md": {
-      "sha256": "c6101bc2dd9d9dcccb6ae39b73fc7cfbded331e227fe92979d04c792c6f5db08",
+      "sha256": "1b5f89c6a40a63ec2ee3c0cf2e262d098c66399f7e6c07e171d0042e089091d4",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases"
     },
@@ -417,7 +417,7 @@
       "source_url": "https://developers.openai.com/codex/use-cases/native-ios-macos-apps"
     },
     "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md": {
-      "sha256": "e4534a5790515cbf380b500d4f325a8a1be87f091d9700efd5f88322a1d715e8",
+      "sha256": "8fd25f7ecd03c12ebb05a9d25e1fb8f2c327d78473f97ea3299301fefac38df4",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/slack-coding-tasks"
     },

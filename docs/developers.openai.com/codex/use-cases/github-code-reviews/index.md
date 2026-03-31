@@ -68,11 +68,11 @@ Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallp
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Automation](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Kick off coding tasks from Slack
 
 Mention `@Codex` in Slack to start a task tied to the right repo and environment, then...
 
-Integrations  Automation](/codex/use-cases/slack-coding-tasks)
+Integrations  Workflow](/codex/use-cases/slack-coding-tasks)
 

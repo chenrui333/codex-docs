@@ -46,7 +46,7 @@ You can learn more about how to use Codex in Slack in the [dedicated guide](/cod
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Automation](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Analyze datasets and ship reports
 

@@ -132,7 +132,7 @@ Adjust the deck to make sure the following layout rules are followed:
 
 Mention `@Codex` in Slack to start a task tied to the right repo and environment, then...
 
-Integrations  Automation](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Analyze datasets and ship reports
 
