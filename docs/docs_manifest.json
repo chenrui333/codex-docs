@@ -497,7 +497,7 @@
       "source_url": "https://developers.openai.com/resources/codex"
     },
     "github.openai.com/openai/codex/AGENTS.md": {
-      "sha256": "58e28573008ac9de40d3269074347abcf1d95fe178005567b9de350f31e6965e",
+      "sha256": "0ed87177d6fa98cb8fd0b19e1ed7aed2e44f38a91d9d6d8799154a60e9ad07ee",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
     },
