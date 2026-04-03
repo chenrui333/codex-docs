@@ -87,12 +87,14 @@ Everything in Plus and:
 - Assign standard or usage-based Codex seats based on your team’s needs.
   [Learn
   more](https://help.openai.com/en/articles/8792828-what-is-chatgpt-business)
-- Larger virtual machines to run cloud tasks faster - Flexibly extend
-  usage with [ChatGPT credits](#credits-overview) - A secure, dedicated
-  workspace with essential admin controls, SAML SSO, and MFA - No training
-  on your business data by default. [Learn
-  more](https://openai.com/business-data/) - Other [ChatGPT
-  features](https://chatgpt.com/pricing) as part of the Business plan
+- Larger virtual machines to run cloud tasks faster
+- Flexibly extend usage with [ChatGPT credits](#credits-overview)
+- A secure, dedicated workspace with essential admin controls, SAML SSO,
+  and MFA
+- No training on your business data by default. [Learn
+  more](https://openai.com/business-data/)
+- Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
+  Business plan
 
 ### Enterprise & Edu
 
@@ -102,14 +104,15 @@ Unlock Codex for your entire organization with enterprise-grade functionality.
 
 Everything in Business and:
 
-- Priority request processing - Enterprise-level security and controls,
-  including SCIM, EKM, user analytics, domain verification, and role-based
-  access control
-  ([RBAC](https://help.openai.com/en/articles/11750701-rbac)) - Audit logs
-  and usage monitoring via the [Compliance
-  API](https://chatgpt.com/admin/api-reference#tag/Codex-Tasks) - Data
-  retention and data residency controls - Other [ChatGPT
-  features](https://chatgpt.com/pricing) as part of the Enterprise plan
+- Priority request processing
+- Enterprise-level security and controls, including SCIM, EKM, user
+  analytics, domain verification, and role-based access control
+  ([RBAC](https://help.openai.com/en/articles/11750701-rbac))
+- Audit logs and usage monitoring via the [Compliance
+  API](https://chatgpt.com/admin/api-reference#tag/Codex-Tasks)
+- Data retention and data residency controls
+- Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
+  Enterprise plan
 
 ### API Key
 
@@ -252,10 +255,11 @@ Business & New Enterprise Customers
 | GPT-5.2-Codex | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.2 | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.1-Codex-Max | 31.25 credits | 3.125 credits | 250 credits |
-| GPT-5.3-Codex-Spark | research preview |  |  |
+| GPT-5.3-Codex-Spark | research preview | | |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | Fast mode consumes 2x as many credits. | | | |
+| Code review runs on 5.3-Codex. | | | |
 
 Plus, Pro, Existing Enterprise/Edu and New Edu
 
