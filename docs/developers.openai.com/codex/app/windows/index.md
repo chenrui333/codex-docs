@@ -2,7 +2,7 @@
 
 Source: https://developers.openai.com/codex/app/windows
 
-The [Codex app for Windows](https://apps.microsoft.com/detail/9plm9xgg6vks?hl=en-US&gl=US) gives you one interface for
+The [Codex app for Windows](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi) gives you one interface for
 working across projects, running parallel agent threads, and reviewing results.
 It runs natively on Windows using PowerShell and the
 [Windows sandbox](/codex/windows#windows-sandbox), or you can configure it to
@@ -13,7 +13,7 @@ run in [Windows Subsystem for Linux (WSL)](#windows-subsystem-for-linux-wsl).
 ## Download and update the Codex app
 
 Download the Codex app from the
-[Microsoft Store](https://apps.microsoft.com/detail/9plm9xgg6vks?hl=en-US&gl=US).
+[Microsoft Store](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi).
 
 Then follow the [quickstart](/codex/quickstart?setup=app) to get started.
 
