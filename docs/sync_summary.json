@@ -2,10 +2,11 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-07T00:40:13+00:00",
+  "generated_at": "2026-04-07T18:24:23+00:00",
   "removed": [],
   "total_files": 134,
   "updated": [
-    "developers.openai.com/codex/app/windows/index.md"
+    "github.openai.com/openai/codex/AGENTS.md",
+    "github.openai.com/openai/codex/README.md"
   ]
 }
