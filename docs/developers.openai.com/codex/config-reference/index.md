@@ -93,7 +93,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.startup_timeout_sec` | `number` | Override the default 10s startup timeout for an MCP server. |
 | `mcp_servers.<id>.tool_timeout_sec` | `number` | Override the default 60s per-tool timeout for an MCP server. |
 | `mcp_servers.<id>.url` | `string` | Endpoint for an MCP streamable HTTP server. |
-| `model` | `string` | Model to use (e.g., `gpt-5-codex`). |
+| `model` | `string` | Model to use (e.g., `gpt-5.4`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
 | `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile. |
 | `model_context_window` | `number` | Context window tokens available to the active model. |
@@ -1196,7 +1196,7 @@ Type / Values
 
 Details
 
-Model to use (e.g., `gpt-5-codex`).
+Model to use (e.g., `gpt-5.4`).
 
 Key
 

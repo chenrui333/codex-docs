@@ -249,12 +249,9 @@ Business & New Enterprise Customers
 | Credits per 1M tokens | Input Tokens | Cached input tokens | Output Tokens |
 | --- | --- | --- | --- |
 | GPT-5.4 | 62.50 credits | 6.250 credits | 375 credits |
+| GPT-5.4-mini | 18.75 credits | 1.875 credits | 113 credits |
 | GPT-5.3-Codex | 43.75 credits | 4.375 credits | 350 credits |
-| GPT-5.1-Codex-mini | 6.25 credits | 0.625 credits | 50 credits |
-| GPT-5.4-Mini | 18.75 credits | 1.875 credits | 113 credits |
-| GPT-5.2-Codex | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.2 | 43.75 credits | 4.375 credits | 350 credits |
-| GPT-5.1-Codex-Max | 31.25 credits | 3.125 credits | 250 credits |
 | GPT-5.3-Codex-Spark | research preview | | |
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -263,15 +260,15 @@ Business & New Enterprise Customers
 
 Plus, Pro, Existing Enterprise/Edu and New Edu
 
-|  | Unit | GPT-5.4 | GPT-5.3-Codex | GPT-5.1-Codex-mini |
+|  | Unit | GPT-5.4 | GPT-5.3-Codex | GPT-5.4-mini |
 | --- | --- | --- | --- | --- |
-| Local Tasks | 1 message | ~7 credits | ~5 credits | ~1 credit |
+| Local Tasks | 1 message | ~7 credits | ~5 credits | ~2 credits |
 | Cloud Tasks | 1 message | ~34 credits | ~25 credits | Not available |
 | Code Review | 1 pull request | ~34 credits | ~25 credits | Not available |
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Fast mode consumes 2x as many credits. | | | | |
-| These averages also apply to legacy GPT-5.2, GPT-5.2-Codex, GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and GPT-5-Codex-Mini. | | | | |
+| These averages also apply to GPT-5.2. | | | | |
 
 Speed configurations will increase credit consumption for all models that apply.
 Details can be found [here](/codex/speed).

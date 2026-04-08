@@ -352,7 +352,7 @@ enabled = true
 # hide_rate_limit_model_nudge = true
 # hide_gpt5_1_migration_prompt = true
 # "hide_gpt-5.1-codex-max_migration_prompt" = true
-# model_migrations = { "gpt-4.1" = "gpt-5.1" }
+# model_migrations = { "gpt-5.3-codex" = "gpt-5.4" }
 
 ################################################################################
 # Centralized Feature Flags (preferred)

@@ -109,23 +109,11 @@ near-instant, real-time coding iteration.
 
 ## Alternative models
 
-![gpt-5.2-codex](/images/codex/gpt-5.2-codex.png)
-
-gpt-5.2-codex
-
-Advanced coding model for real-world engineering. Succeeded by GPT-5.3-Codex.
-
-codex -m gpt-5.2-codex
-
-Copy command
-
-Show details
-
 ![gpt-5.2](/images/api/models/gpt-5.2.jpg)
 
 gpt-5.2
 
-Previous general-purpose model for coding and agentic tasks across industries and domains. Succeeded by GPT-5.4.
+Previous general-purpose model for coding and agentic tasks, including hard debugging tasks that benefit from deeper deliberation.
 
 codex -m gpt-5.2
 
@@ -133,81 +121,9 @@ Copy command
 
 Show details
 
-![gpt-5.1-codex-max](/images/api/models/gpt-5.1-codex-max.jpg)
-
-gpt-5.1-codex-max
-
-Optimized for long-horizon, agentic coding tasks in Codex.
-
-codex -m gpt-5.1-codex-max
-
-Copy command
-
-Show details
-
-![gpt-5.1](/images/api/models/gpt-5.1.jpg)
-
-gpt-5.1
-
-Great for coding and agentic tasks across domains. Succeeded by GPT-5.2.
-
-codex -m gpt-5.1
-
-Copy command
-
-Show details
-
-![gpt-5.1-codex](/images/api/models/gpt-5.1-codex.jpg)
-
-gpt-5.1-codex
-
-Optimized for long-running, agentic coding tasks in Codex. Succeeded by GPT-5.1-Codex-Max.
-
-codex -m gpt-5.1-codex
-
-Copy command
-
-Show details
-
-![gpt-5-codex](/images/api/models/gpt-5-codex.jpg)
-
-gpt-5-codex
-
-Version of GPT-5 tuned for long-running, agentic coding tasks. Succeeded by GPT-5.1-Codex.
-
-codex -m gpt-5-codex
-
-Copy command
-
-Show details
-
-![gpt-5-codex-mini](/images/api/models/gpt-5-codex.jpg)
-
-gpt-5-codex-mini
-
-Smaller, more cost-effective version of GPT-5-Codex. Succeeded by GPT-5.1-Codex-Mini.
-
-codex -m gpt-5-codex
-
-Copy command
-
-Show details
-
-![gpt-5](/images/api/models/gpt-5.jpg)
-
-gpt-5
-
-Reasoning model for coding and agentic tasks across domains. Succeeded by GPT-5.1.
-
-codex -m gpt-5
-
-Copy command
-
-Show details
-
 ## Other models
 
-Codex works best with the models listed above.
+When you sign in with ChatGPT, Codex works best with the models listed above.
 
 You can also point Codex at any model and provider that supports either the [Chat Completions](https://platform.openai.com/docs/api-reference/chat) or [Responses APIs](https://platform.openai.com/docs/api-reference/responses) to fit your specific use case.
 

@@ -17,7 +17,7 @@ Profiles are not currently supported in the Codex IDE extension.
 Define profiles under `[profiles.<name>]` in `config.toml`, then run `codex --profile <name>`:
 
 ```
-model = "gpt-5-codex"
+model = "gpt-5.4"
 approval_policy = "on-request"
 model_catalog_json = "/Users/me/.codex/model-catalogs/default.json"
 
@@ -134,7 +134,7 @@ A model provider defines how Codex connects to a model (base URL, wire API, and 
 Define additional providers and point `model_provider` at them:
 
 ```
-model = "gpt-5.1"
+model = "gpt-5.4"
 model_provider = "proxy"
 
 [model_providers.proxy]

@@ -24,7 +24,7 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--enable` | `feature` | Force-enable a feature flag (translates to `-c features.<name>=true`). Repeatable. |
 | `--full-auto` | `boolean` | Shortcut for low-friction local work: sets `--ask-for-approval on-request` and `--sandbox workspace-write`. |
 | `--image, -i` | `path[,path...]` | Attach one or more image files to the initial prompt. Separate multiple paths with commas or repeat the flag. |
-| `--model, -m` | `string` | Override the model set in configuration (for example `gpt-5-codex`). |
+| `--model, -m` | `string` | Override the model set in configuration (for example `gpt-5.4`). |
 | `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run). |
 | `--oss` | `boolean` | Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running. |
 | `--profile, -p` | `string` | Configuration profile name to load from `~/.codex/config.toml`. |
@@ -150,7 +150,7 @@ Type / Values
 
 Details
 
-Override the model set in configuration (for example `gpt-5-codex`).
+Override the model set in configuration (for example `gpt-5.4`).
 
 Key
 
