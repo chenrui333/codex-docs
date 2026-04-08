@@ -2,10 +2,11 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-08T12:26:11+00:00",
-  "removed": [
-    "github.openai.com/openai/codex/codex-cli/README.md"
-  ],
+  "generated_at": "2026-04-08T18:32:19+00:00",
+  "removed": [],
   "total_files": 133,
-  "updated": []
+  "updated": [
+    "developers.openai.com/codex/changelog/index.md",
+    "developers.openai.com/codex/noninteractive/index.md"
+  ]
 }

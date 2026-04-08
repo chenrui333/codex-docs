@@ -13,6 +13,7 @@ Use `codex exec` when you want Codex to:
 
 - Run as part of a pipeline (CI, pre-merge checks, scheduled jobs).
 - Produce output you can pipe into other tools (for example, to generate release notes or summaries).
+- Fit naturally into CLI workflows that chain command output into Codex and pass Codex output to other tools.
 - Run with explicit, pre-set sandbox and approval settings.
 
 ## Basic usage
@@ -34,6 +35,18 @@ Use `--ephemeral` when you don’t want to persist session rollout files to disk
 ```
 codex exec --ephemeral "triage this repository and suggest next steps"
 ```
+
+If stdin is piped and you also provide a prompt argument, Codex treats the prompt as the instruction and the piped content as additional context.
+
+This makes it easy to generate input with one command and hand it directly to Codex:
+
+```
+curl -s https://jsonplaceholder.typicode.com/comments \
+  | codex exec "format the top 20 items into a markdown table" \
+  > table.md
+```
+
+For more advanced stdin piping patterns, see [Advanced stdin piping](#advanced-stdin-piping).
 
 ## Permissions and safety
 
@@ -237,4 +250,71 @@ jobs:
 #### Alternative: Use the Codex GitHub Action
 
 If you want to avoid installing the CLI yourself, you can run `codex exec` through the [Codex GitHub Action](/codex/github-action) and pass the prompt as an input.
+
+## Advanced stdin piping
+
+When another command produces input for Codex, choose the stdin pattern based on where the instruction should come from. Use prompt-plus-stdin when you already know the instruction and want to pass piped output as context. Use `codex exec -` when stdin should become the full prompt.
+
+### Use prompt-plus-stdin
+
+Prompt-plus-stdin is useful when another command already produces the data you want Codex to inspect. In this mode, you write the instruction yourself and pipe in the output as context, which makes it a natural fit for CLI workflows built around command output, logs, and generated data.
+
+```
+npm test 2>&1 \
+  | codex exec "summarize the failing tests and propose the smallest likely fix" \
+  | tee test-summary.md
+```
+
+More prompt-plus-stdin examples
+
+### Summarize logs
+
+```
+tail -n 200 app.log \
+  | codex exec "identify the likely root cause, cite the most important errors, and suggest the next three debugging steps" \
+  > log-triage.md
+```
+
+### Inspect TLS or HTTP issues
+
+```
+curl -vv https://api.example.com/health 2>&1 \
+  | codex exec "explain the TLS or HTTP failure and suggest the most likely fix" \
+  > tls-debug.md
+```
+
+### Prepare a Slack-ready update
+
+```
+gh run view 123456 --log \
+  | codex exec "write a concise Slack-ready update on the CI failure, including the likely cause and next step" \
+  | pbcopy
+```
+
+### Draft a pull request comment from CI logs
+
+```
+gh run view 123456 --log \
+  | codex exec "summarize the failure in 5 bullets for the pull request thread" \
+  | gh pr comment 789 --body-file -
+```
+
+### Use `codex exec -` when stdin is the prompt
+
+If you omit the prompt argument, Codex reads the prompt from stdin. Use `codex exec -` when you want to force that behavior explicitly.
+
+The `-` sentinel is useful when another command or script is generating the entire prompt dynamically. This is a good fit when you store prompts in files, assemble prompts with shell scripts, or combine live command output with instructions before handing the whole prompt to Codex.
+
+```
+cat prompt.txt | codex exec -
+```
+
+```
+printf "Summarize this error log in 3 bullets:\n\n%s\n" "$(tail -n 200 app.log)" \
+  | codex exec -
+```
+
+```
+generate_prompt.sh | codex exec - --json > result.jsonl
+```
 
