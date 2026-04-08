@@ -521,11 +521,6 @@
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/SECURITY.md"
     },
-    "github.openai.com/openai/codex/codex-cli/README.md": {
-      "sha256": "0e44f8acab6268b464b4c87d3ecfc60aafdded47eaa6629633a723f88d106514",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/README.md"
-    },
     "github.openai.com/openai/codex/codex-cli/scripts/README.md": {
       "sha256": "d7f84021a7726db88cb89a7acbceb3044dde1ae89c61c48acf13650dc620e29d",
       "source_type": "github",
