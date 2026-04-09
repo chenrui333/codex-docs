@@ -72,7 +72,7 @@
       "source_url": "https://developers.openai.com/codex/auth"
     },
     "developers.openai.com/codex/changelog/index.md": {
-      "sha256": "e12504664619d019163a589f938a90de6794f2509e1c7d72625843f6d8f551ac",
+      "sha256": "8f1e69d9eb4cbe84c5ff6d9c9cfe697341c00f5ac4df177b8ca532b48d0f11ec",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/changelog"
     },
@@ -207,7 +207,7 @@
       "source_url": "https://developers.openai.com/codex/guides/build-ai-native-engineering-team"
     },
     "developers.openai.com/codex/hooks/index.md": {
-      "sha256": "81951b0e6fc77aada51324e0134f82868a1b67bf3941173a804bbd0d8e81febe",
+      "sha256": "5a0095288250e214461967fc94d5a4e481606128a310629e6b792f2ad494cb6b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/hooks"
     },

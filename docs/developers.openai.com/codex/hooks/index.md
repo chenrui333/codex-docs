@@ -227,10 +227,17 @@ That `additionalContext` text is added as extra developer context.
 
 ### PreToolUse
 
+Work in progress
+
 Currently `PreToolUse` only supports Bash tool interception. The model can
 still work around this by writing its own script to disk and then running that
 script with Bash, so treat this as a useful guardrail rather than a complete
-enforcement boundary.
+enforcement boundary
+
+This doesn’t intercept all shell calls yet, only the simple ones. The newer
+`unified_exec` mechanism allows richer streaming stdin/stdout handling of
+shell, but interception is incomplete. Similarly, this doesn’t intercept MCP,
+Write, WebSearch, or other non-shell tool calls.
 
 `matcher` is applied to `tool_name`, which currently always equals `Bash`.
 
@@ -275,10 +282,17 @@ You can also use exit code `2` and write the blocking reason to `stderr`.
 
 ### PostToolUse
 
+Work in progress
+
 Currently `PostToolUse` only supports Bash tool results. It is not limited to
 commands that exit successfully: non-interactive `exec_command` calls can still
 trigger `PostToolUse` when Codex emits a Bash post-tool payload. It cannot undo
 side effects from the command that already ran.
+
+This doesn’t intercept all shell calls yet, only the simple ones. The newer
+`unified_exec` mechanism allows richer streaming stdin/stdout handling of
+shell, but interception is incomplete. Similarly, this doesn’t intercept MCP,
+Write, WebSearch, or other non-shell tool calls.
 
 `matcher` is applied to `tool_name`, which currently always equals `Bash`.
 
