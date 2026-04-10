@@ -45,9 +45,11 @@ $20/month
 
 ### Pro
 
-Rely on Codex for daily full-time development.
+Choose 5x or 20x higher rate limits than Plus.
 
-$200/month
+From
+
+$100/month
 
 [Get Pro](https://chatgpt.com/explore/pro?utm_internal_source=openai_developers_codex)
 
@@ -56,10 +58,11 @@ Everything in Plus and:
 - Priority request processing
 - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
   for day-to-day coding tasks
-- 6x higher usage limits for local and cloud tasks
-- 10x more cloud-based code reviews
+- 5x or 20x higher rate limits than Plus\*
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Pro plan
+
+\*Codex usage boost ends May 31, 2026.
 
 ### API Key
 
@@ -139,24 +142,38 @@ require Codex to hold more context will use significantly more per message.
 
 Plus
 
-|  | Local Messages[\*](#shared-limits-plus) / 5h | Cloud Tasks[\*](#shared-limits-plus) / 5h | Code Reviews / week |
+|  | Local Messages[\*](#shared-limits-plus) / 5h | Cloud Tasks[\*](#shared-limits-plus) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
-| GPT-5.4 | 33-168 | Not available | Not available |
-| GPT-5.4-mini | 110-560 | Not available | Not available |
-| GPT-5.3-Codex | 45-225 | 10-60 | 10-25 |
+| GPT-5.4 | 20-100 | Not available | Not available |
+| GPT-5.4-mini | 60-350 | Not available | Not available |
+| GPT-5.3-Codex | 30-150 | 10-60 | 20-50 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
 | For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
-Pro
+Pro 5x
 
-|  | Local Messages[\*](#shared-limits-pro) / 5h | Cloud Tasks[\*](#shared-limits-pro) / 5h | Code Reviews / week |
+|  | Local Messages[\*](#shared-limits-pro) / 5h | Cloud Tasks[\*](#shared-limits-pro) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
-| GPT-5.4 | 223-1120 | Not available | Not available |
-| GPT-5.4-mini | 743-3733 | Not available | Not available |
-| GPT-5.3-Codex | 300-1500 | 50-400 | 100-250 |
+| GPT-5.4 | 200-1000 | Not available | Not available |
+| GPT-5.4-mini | 600-3500 | Not available | Not available |
+| GPT-5.3-Codex | 300-1500 | 100-600 | 200-500 |
+|  |  |  |  |
+| --- | --- | --- | --- |
+| \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
+| The limits shown for Pro 5x include a 2x usage boost that ends May 31, 2026. | | | |
+| For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
+| Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
+
+Pro 20x
+
+|  | Local Messages[\*](#shared-limits-pro-20x) / 5h | Cloud Tasks[\*](#shared-limits-pro-20x) / 5h | Code Reviews / 5h |
+| --- | --- | --- | --- |
+| GPT-5.4 | 400-2000 | Not available | Not available |
+| GPT-5.4-mini | 1200-7000 | Not available | Not available |
+| GPT-5.3-Codex | 600-3000 | 200-1200 | 400-1000 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -165,11 +182,11 @@ Pro
 
 Business
 
-|  | Local Messages[\*](#shared-limits-business) / 5h | Cloud Tasks[\*](#shared-limits-business) / 5h | Code Reviews / week |
+|  | Local Messages[\*](#shared-limits-business) / 5h | Cloud Tasks[\*](#shared-limits-business) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
-| GPT-5.4 | 15-60 | Not available | Not available |
-| GPT-5.4-mini | 40-200 | Not available | Not available |
-| GPT-5.3-Codex | 20-90 | 5-40 | 15-30 |
+| GPT-5.4 | 20-100 | Not available | Not available |
+| GPT-5.4-mini | 60-350 | Not available | Not available |
+| GPT-5.3-Codex | 30-150 | 10-60 | 20-50 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -178,7 +195,7 @@ Business
 
 API Key
 
-|  | Local Messages[\*](#shared-limits-api-key) / 5h | Cloud Tasks[\*](#shared-limits-api-key) / 5h | Code Reviews / week |
+|  | Local Messages[\*](#shared-limits-api-key) / 5h | Cloud Tasks[\*](#shared-limits-api-key) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
 | GPT-5.4 | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 | GPT-5.4-mini | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
