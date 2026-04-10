@@ -128,21 +128,21 @@ Adjust the deck to make sure the following layout rules are followed:
 
 [![](/images/codex/codex-wallpaper-2.webp)
 
+### Coordinate new-hire onboarding
+
+Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
+
 ### Kick off coding tasks from Slack
 
 Mention `@Codex` in Slack to start a task tied to the right repo and environment, then...
 
-Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Analyze datasets and ship reports
+### Learn a new concept
 
-Use Codex to clean data, join sources, explore hypotheses, model results, and package the...
+Use Codex to study material such as research papers or courses, split the reading across...
 
-Data  Analysis](/codex/use-cases/datasets-and-reports)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Build responsive front-end designs
-
-Use Codex to translate screenshots and design briefs into code that matches the repo's...
-
-Front-end  Design](/codex/use-cases/frontend-designs)
+Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)
 

@@ -129,11 +129,11 @@ Engineering  Analysis](/codex/use-cases/codebase-onboarding)[![](/images/codex/c
 
 Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-2.webp)
+Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Analyze datasets and ship reports
+### Learn a new concept
 
-Use Codex to clean data, join sources, explore hypotheses, model results, and package the...
+Use Codex to study material such as research papers or courses, split the reading across...
 
-Data  Analysis](/codex/use-cases/datasets-and-reports)
+Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)
 

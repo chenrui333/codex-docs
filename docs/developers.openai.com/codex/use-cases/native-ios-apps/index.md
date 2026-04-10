@@ -1,6 +1,6 @@
-# Build for iOS and macOS | Codex use cases
+# Build for iOS | Codex use cases
 
-Source: https://developers.openai.com/codex/use-cases/native-ios-macos-apps
+Source: https://developers.openai.com/codex/use-cases/native-ios-apps
 
 Need
 

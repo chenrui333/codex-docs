@@ -63,23 +63,23 @@ This [cookbook guide](/cookbook/examples/evaluation/building_resilient_prompts_u
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Add Mac telemetry
+
+Use Codex and the Build macOS Apps plugin to add a few high-signal `Logger` events around...
+
+macOS  Code](/codex/use-cases/macos-telemetry-logs)[![](/images/codex/codex-wallpaper-2.webp)
+
+### Create a CLI Codex can use
+
+Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
+
+Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/images/codex/codex-wallpaper-1.webp)
 
 ### Create browser-based games
 
 Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Bring your app to ChatGPT
-
-Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
-
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-3.webp)
-
-### Build for iOS and macOS
-
-Use Codex to scaffold SwiftUI projects, keep the build loop CLI-first with `xcodebuild` or...
-
-Mobile  Code](/codex/use-cases/native-ios-macos-apps)
+Engineering  Code](/codex/use-cases/browser-games)
 

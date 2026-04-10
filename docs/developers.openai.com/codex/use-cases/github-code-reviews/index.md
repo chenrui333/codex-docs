@@ -62,17 +62,17 @@ Codex applies guidance from the closest `AGENTS.md` to each changed file. You ca
 
 Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
 
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-2.webp)
 
-### Generate slide decks
+### Coordinate new-hire onboarding
 
-Use Codex to update existing presentations or build new decks by editing slides directly...
+Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
 
-### Kick off coding tasks from Slack
+### Create a CLI Codex can use
 
-Mention `@Codex` in Slack to start a task tied to the right repo and environment, then...
+Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
 
-Integrations  Workflow](/codex/use-cases/slack-coding-tasks)
+Engineering  Code](/codex/use-cases/agent-friendly-clis)
 

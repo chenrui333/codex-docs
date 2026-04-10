@@ -40,23 +40,23 @@ You can learn more about how to use Codex in Slack in the [dedicated guide](/cod
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Coordinate new-hire onboarding
+
+Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
 
 ### Generate slide decks
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Analyze datasets and ship reports
 
 Use Codex to clean data, join sources, explore hypotheses, model results, and package the...
 
-Data  Analysis](/codex/use-cases/datasets-and-reports)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Bring your app to ChatGPT
-
-Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
-
-Integrations  Code](/codex/use-cases/chatgpt-apps)
+Data  Analysis](/codex/use-cases/datasets-and-reports)
 

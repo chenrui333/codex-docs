@@ -103,11 +103,11 @@ Front-end  Design](/codex/use-cases/figma-designs-to-code)[![](/images/codex/cod
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Workflow](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
+Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Create browser-based games
+### Add iOS app intents
 
-Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
+Use Codex and the Build iOS Apps plugin to identify the actions and entities your app should...
 
-Engineering  Code](/codex/use-cases/browser-games)
+iOS  Code](/codex/use-cases/ios-app-intents)
 
