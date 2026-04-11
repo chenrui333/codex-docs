@@ -1,34 +1,11 @@
 {
-  "added": [
-    "developers.openai.com/codex/use-cases/agent-friendly-clis/index.md",
-    "developers.openai.com/codex/use-cases/automation-bug-triage/index.md",
-    "developers.openai.com/codex/use-cases/ios-app-intents/index.md",
-    "developers.openai.com/codex/use-cases/ios-liquid-glass/index.md",
-    "developers.openai.com/codex/use-cases/ios-simulator-bug-debugging/index.md",
-    "developers.openai.com/codex/use-cases/ios-swiftui-view-refactor/index.md",
-    "developers.openai.com/codex/use-cases/learn-a-new-concept/index.md",
-    "developers.openai.com/codex/use-cases/macos-sidebar-detail-inspector/index.md",
-    "developers.openai.com/codex/use-cases/macos-telemetry-logs/index.md",
-    "developers.openai.com/codex/use-cases/native-ios-apps/index.md",
-    "developers.openai.com/codex/use-cases/native-macos-apps/index.md",
-    "developers.openai.com/codex/use-cases/new-hire-onboarding/index.md",
-    "developers.openai.com/codex/use-cases/reusable-codex-skills/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-10T18:23:03+00:00",
-  "removed": [
-    "developers.openai.com/codex/use-cases/native-ios-macos-apps/index.md"
-  ],
+  "generated_at": "2026-04-11T00:38:13+00:00",
+  "removed": [],
   "total_files": 145,
   "updated": [
-    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md",
-    "developers.openai.com/codex/use-cases/codebase-onboarding/index.md",
-    "developers.openai.com/codex/use-cases/frontend-designs/index.md",
-    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md",
-    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
-    "developers.openai.com/codex/use-cases/index.md",
-    "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md",
-    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md"
+    "developers.openai.com/codex/changelog/index.md"
   ]
 }

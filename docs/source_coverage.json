@@ -249,36 +249,8 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/use-cases/agent-friendly-clis",
-      "https://developers.openai.com/codex/use-cases/automation-bug-triage",
-      "https://developers.openai.com/codex/use-cases/ios-app-intents",
-      "https://developers.openai.com/codex/use-cases/ios-liquid-glass",
-      "https://developers.openai.com/codex/use-cases/ios-simulator-bug-debugging",
-      "https://developers.openai.com/codex/use-cases/ios-swiftui-view-refactor",
-      "https://developers.openai.com/codex/use-cases/learn-a-new-concept",
-      "https://developers.openai.com/codex/use-cases/macos-sidebar-detail-inspector",
-      "https://developers.openai.com/codex/use-cases/macos-telemetry-logs",
-      "https://developers.openai.com/codex/use-cases/native-ios-apps",
-      "https://developers.openai.com/codex/use-cases/native-macos-apps",
-      "https://developers.openai.com/codex/use-cases/new-hire-onboarding",
-      "https://developers.openai.com/codex/use-cases/reusable-codex-skills"
-    ],
-    "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/use-cases/agent-friendly-clis",
-      "https://developers.openai.com/codex/use-cases/automation-bug-triage",
-      "https://developers.openai.com/codex/use-cases/ios-app-intents",
-      "https://developers.openai.com/codex/use-cases/ios-liquid-glass",
-      "https://developers.openai.com/codex/use-cases/ios-simulator-bug-debugging",
-      "https://developers.openai.com/codex/use-cases/ios-swiftui-view-refactor",
-      "https://developers.openai.com/codex/use-cases/learn-a-new-concept",
-      "https://developers.openai.com/codex/use-cases/macos-sidebar-detail-inspector",
-      "https://developers.openai.com/codex/use-cases/macos-telemetry-logs",
-      "https://developers.openai.com/codex/use-cases/native-ios-apps",
-      "https://developers.openai.com/codex/use-cases/native-macos-apps",
-      "https://developers.openai.com/codex/use-cases/new-hire-onboarding",
-      "https://developers.openai.com/codex/use-cases/reusable-codex-skills"
-    ],
+    "new_codex_related_urls_since_last_run": [],
+    "new_mirrored_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -303,7 +275,7 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-04-10T18:22:43+00:00",
+  "generated_at": "2026-04-11T00:37:54+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 34,
