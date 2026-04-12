@@ -46,6 +46,65 @@ codex exec resume 7f9f9a2e-1b3c-4c7a-9b0e-.... "Implement the plan"
 
 Each resumed run keeps the original transcript, plan history, and approvals, so Codex can use prior context while you supply new instructions. Override the working directory with `--cd` or add extra roots with `--add-dir` if you need to steer the environment before resuming.
 
+## Connect the TUI to a remote app server
+
+Remote TUI mode lets you run the Codex app server on one machine and use the Codex terminal UI from another machine. This is useful when the code, credentials, or execution environment live on a remote host, but you want the local interactive TUI experience.
+
+Start the app server on the machine that should own the workspace and run commands:
+
+```
+codex app-server --listen ws://127.0.0.1:4500
+```
+
+Then connect from the machine running the TUI:
+
+```
+codex --remote ws://127.0.0.1:4500
+```
+
+For access from another machine, bind the app server to a reachable interface, for example:
+
+```
+codex app-server --listen ws://0.0.0.0:4500
+```
+
+`--remote` accepts explicit `ws://host:port` and `wss://host:port` addresses only. For plain WebSocket connections, prefer local-host addresses or SSH port forwarding. If you expose the listener beyond the local host, configure authentication before real remote use and put authenticated non-local connections behind TLS.
+
+Codex supports these WebSocket authentication modes for remote TUI connections:
+
+- **No WebSocket auth**: Best for local-host listeners or SSH port-forwarded connections. Codex can start non-local listeners without auth, but logs a warning and the startup banner reminds you to configure auth before real remote use.
+- **Capability token**: Store a shared token in a file on the app-server host, start the server with `--ws-auth capability-token --ws-token-file /abs/path/to/token`, then set the same token in an environment variable on the TUI host and pass `--remote-auth-token-env <ENV_VAR>`.
+- **Signed bearer token**: Store an HMAC shared secret in a file on the app-server host, start the server with `--ws-auth signed-bearer-token --ws-shared-secret-file /abs/path/to/secret`, and have the TUI send a signed JWT bearer token through `--remote-auth-token-env <ENV_VAR>`. The shared secret must be at least 32 bytes. Signed tokens use HS256 and must include `exp`; Codex also validates `nbf`, `iss`, and `aud` when those claims or server options are present.
+
+To create a capability token on the app-server host, generate a random token file with permissions that only your user can read:
+
+```
+TOKEN_FILE="$HOME/.codex/codex-app-server-token"
+install -d -m 700 "$(dirname "$TOKEN_FILE")"
+openssl rand -base64 32 > "$TOKEN_FILE"
+chmod 600 "$TOKEN_FILE"
+```
+
+Treat the token file like a password, and regenerate it if it leaks.
+
+Then start the app server with that token file. For example, with a capability token behind a TLS proxy:
+
+```
+# Remote host
+TOKEN_FILE="$HOME/.codex/codex-app-server-token"
+codex app-server \
+  --listen ws://0.0.0.0:4500 \
+  --ws-auth capability-token \
+  --ws-token-file "$TOKEN_FILE"
+
+# TUI host
+export CODEX_REMOTE_AUTH_TOKEN="$(ssh devbox 'cat ~/.codex/codex-app-server-token')"
+codex --remote wss://codex-devbox.example.com:4500 \
+  --remote-auth-token-env CODEX_REMOTE_AUTH_TOKEN
+```
+
+The TUI sends remote auth tokens as `Authorization: Bearer <token>` during the WebSocket handshake. Codex only sends those tokens over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`, so put non-local remote listeners behind TLS if clients need to authenticate over the network.
+
 ## Models and reasoning
 
 For most tasks in Codex, `gpt-5.4` is the recommended model. It brings the
