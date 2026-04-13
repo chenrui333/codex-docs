@@ -2,7 +2,7 @@
   "schema_version": 1,
   "sources": {
     "developers.openai.com/codex/agent-approvals-security/index.md": {
-      "sha256": "484cc33cd7dfcf47f6b5ac5efa6926d781fc1308488bbc3e83ab30e5c129d067",
+      "sha256": "a1ab2ddb5dcd1046a02eab264e68f25d86b9acf6dbd852cf15eb78eea0242244",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/agent-approvals-security"
     },
@@ -52,7 +52,7 @@
       "source_url": "https://developers.openai.com/codex/app/troubleshooting"
     },
     "developers.openai.com/codex/app/windows/index.md": {
-      "sha256": "4643839bb391e41ed514af0b7a3f7070c5ce2e3b67f00355d52e4b4ccf08a7e5",
+      "sha256": "05b5133c9d4cd539c82d557fc86092dde75e70b0d8113649ea220531ab4df37f",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/windows"
     },
@@ -82,12 +82,12 @@
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
     "developers.openai.com/codex/cli/index.md": {
-      "sha256": "f13d0995d6b65e6b3b05a9212f0e9869a6e461e709159337d1e43d4913324f38",
+      "sha256": "af7c8bcf67edcdeb9b51c4d66c9ff3c1a798622c93e10d6cd6fa7a3748a3cd46",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli"
     },
     "developers.openai.com/codex/cli/reference/index.md": {
-      "sha256": "58801f6fa3fea266d4704fa385f3cba992d74941a5c49e8c7916dec279d9653a",
+      "sha256": "3006d298a8651eccbf751dbf4cfc1004a30e12cec10d639025ea535bc239a803",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/reference"
     },
@@ -127,7 +127,7 @@
       "source_url": "https://developers.openai.com/codex/concepts/cyber-safety"
     },
     "developers.openai.com/codex/concepts/sandboxing/index.md": {
-      "sha256": "ff9285a1fa42c8c48beb3d4f9482a24ea6488404686b36b36544c3372142fd0a",
+      "sha256": "a2c94f2fa1fd7271eb3e0095650ee382ea9864cc779073b6efb0e79649801e42",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/sandboxing"
     },
@@ -222,7 +222,7 @@
       "source_url": "https://developers.openai.com/codex/ide/features"
     },
     "developers.openai.com/codex/ide/index.md": {
-      "sha256": "970737a9b3c8356d9b4579ac11a1c6d2d9bc24c3669c4cc9d8dc37c8b4b556a1",
+      "sha256": "c26ed84b63f09dafcdec19f6830f74175cb80600b504947f7fd94f3d782138c9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide"
     },
@@ -297,7 +297,7 @@
       "source_url": "https://developers.openai.com/codex/plugins"
     },
     "developers.openai.com/codex/pricing/index.md": {
-      "sha256": "608c50737bf89df995656cd9b3e7e1ab88804b0a371f2cf837d6dce2e99cb19f",
+      "sha256": "2664663d7bcc2c7c1c2a232cbff440e852c818e958f8b18add33e620ee0560f1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
@@ -487,7 +487,7 @@
       "source_url": "https://developers.openai.com/codex/videos"
     },
     "developers.openai.com/codex/windows/index.md": {
-      "sha256": "c5d1a96d9aa1c20917d40b87d54edd9efcad0bb1a39c14da3df01ed309b2740d",
+      "sha256": "2f112ea89661c63ff87453c3e798048645a34111d51f2e72ab072ba595cd1599",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/windows"
     },
@@ -702,7 +702,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md"
     },
     "github.openai.com/openai/codex/docs/tui-chat-composer.md": {
-      "sha256": "22aa853435f7dba03f330651f667ddcc8787e295ba5bac324d39f837813fbb84",
+      "sha256": "f5d77df4a20336a16c9c8d08960b83df5f8d5b190547b10e3a080cae396c5744",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-chat-composer.md"
     },

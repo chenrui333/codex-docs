@@ -154,9 +154,9 @@ Codex enforces the sandbox differently depending on your OS:
 
 - **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
 - **Linux** uses the bubblewrap pipeline plus `seccomp` by default. `use_legacy_landlock` is available when you need the older path. In managed proxy mode, the default bubblewrap pipeline routes egress through a proxy-only bridge and fails closed if it cannot build valid loopback proxy routes.
-- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux (WSL)](/codex/windows#windows-subsystem-for-linux). When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
+- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux 2 (WSL2)](/codex/windows#windows-subsystem-for-linux). WSL1 was supported through Codex `0.114`; starting in `0.115`, the Linux sandbox moved to `bubblewrap`, so WSL1 is no longer supported. When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
 
-If you use the Codex IDE extension on Windows, it supports WSL directly. Set the following in your VS Code settings to keep the agent inside WSL whenever it’s available:
+If you use the Codex IDE extension on Windows, it supports WSL2 directly. Set the following in your VS Code settings to keep the agent inside WSL2 whenever it’s available:
 
 ```
 {

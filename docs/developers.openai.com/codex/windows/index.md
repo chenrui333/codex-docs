@@ -16,7 +16,7 @@ practical ways:
 
 - natively on Windows with the stronger `elevated` sandbox,
 - natively on Windows with the fallback `unelevated` sandbox,
-- or inside [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL), which uses the Linux sandbox implementation.
+- or inside [Windows Subsystem for Linux 2](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL2), which uses the Linux sandbox implementation.
 
 ## Windows sandbox
 
@@ -87,16 +87,19 @@ When a command fails because the Windows sandbox can’t read a directory, use:
 
 The path must be an existing absolute directory. After the command succeeds, later commands that run in the sandbox can read that directory during the current session.
 
-We recommend using the native Windows sandbox by default. The native Windows sandbox will offer the best perfomance and highest speeds while keeping the same security. Choose WSL when you
+We recommend using the native Windows sandbox by default. The native Windows sandbox will offer the best perfomance and highest speeds while keeping the same security. Choose WSL2 when you
 need a Linux-native environment on Windows, when your workflow already lives in
-WSL, or when neither native Windows sandbox mode meets your needs.
+WSL2, or when neither native Windows sandbox mode meets your needs.
 
 ## Windows Subsystem for Linux
 
-If you choose WSL, Codex runs inside the Linux environment instead of using the
+If you choose WSL2, Codex runs inside the Linux environment instead of using the
 native Windows sandbox. This is useful if you need Linux-native tooling on
-Windows, if your repositories and developer workflow already live in WSL, or
+Windows, if your repositories and developer workflow already live in WSL2, or
 if neither native Windows sandbox mode works for your environment.
+
+WSL1 was supported through Codex `0.114`. Starting in Codex `0.115`, the Linux
+sandbox moved to `bubblewrap`, so WSL1 is no longer supported.
 
 ### Launch VS Code from inside WSL
 

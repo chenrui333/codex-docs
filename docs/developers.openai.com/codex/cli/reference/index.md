@@ -279,7 +279,7 @@ interpret these labels.
 | [`codex mcp`](/codex/cli/reference#codex-mcp) | Experimental | Manage Model Context Protocol servers (list, add, remove, authenticate). |
 | [`codex mcp-server`](/codex/cli/reference#codex-mcp-server) | Experimental | Run Codex itself as an MCP server over stdio. Useful when another agent consumes Codex. |
 | [`codex resume`](/codex/cli/reference#codex-resume) | Stable | Continue a previous interactive session by ID or resume the most recent conversation. |
-| [`codex sandbox`](/codex/cli/reference#codex-sandbox) | Experimental | Run arbitrary commands inside Codex-provided macOS seatbelt or Linux sandboxes (Landlock by default, optional bubblewrap pipeline). |
+| [`codex sandbox`](/codex/cli/reference#codex-sandbox) | Experimental | Run arbitrary commands inside Codex-provided macOS seatbelt or Linux bubblewrap sandboxes. |
 
 Key
 
@@ -483,7 +483,7 @@ Experimental
 
 Details
 
-Run arbitrary commands inside Codex-provided macOS seatbelt or Linux sandboxes (Landlock by default, optional bubblewrap pipeline).
+Run arbitrary commands inside Codex-provided macOS seatbelt or Linux bubblewrap sandboxes.
 
 Expand to view all
 

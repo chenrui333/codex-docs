@@ -45,7 +45,7 @@ $20/month
 
 ### Pro
 
-Choose 5x or 20x higher rate limits than Plus.
+Choose 10x or 20x higher rate limits than Plus.
 
 From
 
@@ -58,11 +58,11 @@ Everything in Plus and:
 - Priority request processing
 - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
   for day-to-day coding tasks
-- 5x or 20x higher rate limits than Plus\*
+- 10x or 20x higher rate limits than Plus\*
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Pro plan
 
-\*Codex usage boost ends May 31, 2026.
+\*Current usage includes an additional boost ending May 31, 2026. Pro $100 is currently 10x Plus. Pro $200 is currently 20x Plus (equivalent to the 2x promo available since February 2026).
 
 ### API Key
 
@@ -163,7 +163,7 @@ Pro 5x
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| The limits shown for Pro 5x include a 2x usage boost that ends May 31, 2026. | | | |
+| Pro $100 currently runs at 10x Plus limits through May 31, 2026. | | | |
 | For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
@@ -177,6 +177,7 @@ Pro 20x
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
+| Pro $200 remains at 20x Plus limits. This is equivalent to the 2x promo available since February 2026. | | | |
 | For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 

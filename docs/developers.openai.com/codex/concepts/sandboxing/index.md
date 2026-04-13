@@ -23,7 +23,7 @@ operations. If Codex runs tools like `git`, package managers, or test runners,
 those commands inherit the same sandbox boundaries.
 
 Codex uses platform-native enforcement on each OS. The implementation differs
-between macOS, Linux, WSL, and native Windows, but the idea is the same across
+between macOS, Linux, WSL2, and native Windows, but the idea is the same across
 surfaces: give the agent a bounded place to work so routine tasks can run
 autonomously inside clear limits.
 
@@ -62,10 +62,10 @@ sudo apt install bubblewrap
 sudo dnf install bubblewrap
 ```
 
-Codex uses the system `bwrap` at `/usr/bin/bwrap` when it is available. If it
-is missing, Codex falls back to a bundled helper, but that helper requires
-unprivileged user namespaces. Installing your distro’s `bubblewrap` package is
-the most reliable setup.
+Codex uses the first `bwrap` executable it finds on `PATH`. If no `bwrap`
+executable is available, Codex falls back to a bundled helper, but that helper
+requires unprivileged user namespaces. Installing your distro’s `bubblewrap`
+package keeps this setup reliable.
 
 Codex surfaces a startup warning when `bwrap` is missing or cannot create user
 namespaces. On distributions that restrict them with AppArmor, you can enable

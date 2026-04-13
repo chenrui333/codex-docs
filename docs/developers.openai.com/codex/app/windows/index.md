@@ -6,7 +6,7 @@ The [Codex app for Windows](https://get.microsoft.com/installer/download/9PLM9XG
 working across projects, running parallel agent threads, and reviewing results.
 It runs natively on Windows using PowerShell and the
 [Windows sandbox](/codex/windows#windows-sandbox), or you can configure it to
-run in [Windows Subsystem for Linux (WSL)](#windows-subsystem-for-linux-wsl).
+run in [Windows Subsystem for Linux 2 (WSL2)](#windows-subsystem-for-linux-wsl).
 
 ![Codex app for Windows showing a project sidebar, active thread, and review pane](/images/codex/windows/codex-windows-light.webp)
 
@@ -32,7 +32,7 @@ winget install Codex -s msstore
 
 ## Native sandbox
 
-The Codex app on Windows supports a native [Windows sandbox](/codex/windows#windows-sandbox) when the agent runs in PowerShell, and uses Linux sandboxing when you run the agent in [Windows Subsystem for Linux (WSL)](#windows-subsystem-for-linux-wsl). To apply sandbox protections in either mode, set sandbox permissions to **Default permissions** in the Composer before sending messages to Codex.
+The Codex app on Windows supports a native [Windows sandbox](/codex/windows#windows-sandbox) when the agent runs in PowerShell, and uses Linux sandboxing when you run the agent in [Windows Subsystem for Linux 2 (WSL2)](#windows-subsystem-for-linux-wsl). To apply sandbox protections in either mode, set sandbox permissions to **Default permissions** in the Composer before sending messages to Codex.
 
 Running Codex in full access mode means Codex is not limited to your project
 directory and might perform unintentional destructive actions that can lead to
@@ -73,7 +73,7 @@ expecting the new default terminal to appear.
 
 By default, the Codex app uses the Windows-native agent. That means the agent
 runs commands in PowerShell. The app can still work with projects that live in
-Windows Subsystem for Linux (WSL) by using the `wsl` CLI when needed.
+Windows Subsystem for Linux 2 (WSL2) by using the `wsl` CLI when needed.
 
 If you want to add a project from the WSL filesystem, click **Add new project**
 or press `Ctrl`+`O`, then type `\\wsl$\` into the File
@@ -85,10 +85,13 @@ your Windows filesystem and accessing them from WSL through
 `/mnt/<drive>/...`. This setup is more reliable than opening projects
 directly from the WSL filesystem.
 
-If you want the agent itself to run in WSL, open **[Settings](codex://settings)**,
+If you want the agent itself to run in WSL2, open **[Settings](codex://settings)**,
 switch the agent from Windows native to WSL, and **restart the app**. The
 change doesn’t take effect until you restart. Your projects should remain in
 place after restart.
+
+WSL1 was supported through Codex `0.114`. Starting in Codex `0.115`, the Linux
+sandbox moved to `bubblewrap`, so WSL1 is no longer supported.
 
 ![Codex app settings showing the agent selector with Windows native and WSL options](/images/codex/windows/wsl-select-light.webp)
 

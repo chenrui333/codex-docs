@@ -2,11 +2,18 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-12T06:38:12+00:00",
+  "generated_at": "2026-04-13T00:44:11+00:00",
   "removed": [],
   "total_files": 145,
   "updated": [
-    "developers.openai.com/codex/cli/features/index.md",
-    "developers.openai.com/codex/cli/reference/index.md"
+    "developers.openai.com/codex/agent-approvals-security/index.md",
+    "developers.openai.com/codex/app/windows/index.md",
+    "developers.openai.com/codex/cli/index.md",
+    "developers.openai.com/codex/cli/reference/index.md",
+    "developers.openai.com/codex/concepts/sandboxing/index.md",
+    "developers.openai.com/codex/ide/index.md",
+    "developers.openai.com/codex/pricing/index.md",
+    "developers.openai.com/codex/windows/index.md",
+    "github.openai.com/openai/codex/docs/tui-chat-composer.md"
   ]
 }
