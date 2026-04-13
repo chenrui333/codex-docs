@@ -26,6 +26,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `approval_policy.granular.rules` | `boolean` | When `true`, approvals triggered by execpolicy `prompt` rules are allowed to surface. |
 | `approval_policy.granular.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are allowed to surface. |
 | `approval_policy.granular.skill_approval` | `boolean` | When `true`, skill-script approval prompts are allowed to surface. |
+| `approvals_reviewer` | `user | guardian_subagent` | Select who reviews eligible approval prompts. Defaults to `user`; `guardian_subagent` routes supported reviews through the Guardian reviewer subagent. |
 | `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive_hint = true`. |
 | `apps._default.enabled` | `boolean` | Default app enabled state for all apps unless overridden per app. |
 | `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open_world_hint = true`. |
@@ -99,6 +100,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `model_context_window` | `number` | Context window tokens available to the active model. |
 | `model_instructions_file` | `string (path)` | Replacement for built-in instructions instead of `AGENTS.md`. |
 | `model_provider` | `string` | Provider id from `model_providers` (default: `openai`). |
+| `model_providers.<id>` | `table` | Custom provider definition. Built-in provider IDs (`openai`, `ollama`, and `lmstudio`) are reserved and cannot be overridden. |
+| `model_providers.<id>.auth` | `table` | Command-backed bearer token configuration for a custom provider. Do not combine with `env_key`, `experimental_bearer_token`, or `requires_openai_auth`. |
+| `model_providers.<id>.auth.args` | `array<string>` | Arguments passed to the token command. |
+| `model_providers.<id>.auth.command` | `string` | Command to run when Codex needs a bearer token. The command must print the token to stdout. |
+| `model_providers.<id>.auth.cwd` | `string (path)` | Working directory for the token command. |
+| `model_providers.<id>.auth.refresh_interval_ms` | `number` | How often Codex proactively refreshes the token in milliseconds (default: 300000). Set to `0` to refresh only after an authentication retry. |
+| `model_providers.<id>.auth.timeout_ms` | `number` | Maximum token command runtime in milliseconds (default: 5000). |
 | `model_providers.<id>.base_url` | `string` | API base URL for the model provider. |
 | `model_providers.<id>.env_http_headers` | `map<string,string>` | HTTP headers populated from environment variables when present. |
 | `model_providers.<id>.env_key` | `string` | Environment variable supplying the provider API key. |
@@ -147,18 +155,17 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `permissions.<name>.filesystem.":project_roots".<subpath>` | `"read" | "write" | "none"` | Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself. |
 | `permissions.<name>.filesystem.<path>` | `"read" | "write" | "none" | table` | Grant direct access for a path or special token, or scope nested entries under that root. |
 | `permissions.<name>.network.allow_local_binding` | `boolean` | Permit local bind/listen operations through the managed proxy. |
-| `permissions.<name>.network.allow_unix_sockets` | `array<string>` | Allowlist of Unix socket paths permitted through the managed proxy. |
 | `permissions.<name>.network.allow_upstream_proxy` | `boolean` | Allow the managed proxy to chain to another upstream proxy. |
-| `permissions.<name>.network.allowed_domains` | `array<string>` | Allowlist of domains permitted through the managed proxy. |
 | `permissions.<name>.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow the proxy to use arbitrary Unix sockets instead of the default restricted set. |
 | `permissions.<name>.network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback bind addresses for the managed proxy listener. |
-| `permissions.<name>.network.denied_domains` | `array<string>` | Denylist of domains blocked by the managed proxy. |
+| `permissions.<name>.network.domains` | `map<string, allow | deny>` | Domain rules for the managed proxy. Use domain names or wildcard patterns as keys, with `allow` or `deny` values. |
 | `permissions.<name>.network.enable_socks5` | `boolean` | Expose a SOCKS5 listener when this permissions profile enables the managed network proxy. |
 | `permissions.<name>.network.enable_socks5_udp` | `boolean` | Allow UDP over the SOCKS5 listener when enabled. |
 | `permissions.<name>.network.enabled` | `boolean` | Enable network access for this named permissions profile. |
 | `permissions.<name>.network.mode` | `limited | full` | Network proxy mode used for subprocess traffic. |
 | `permissions.<name>.network.proxy_url` | `string` | HTTP proxy endpoint used when this permissions profile enables the managed network proxy. |
 | `permissions.<name>.network.socks_url` | `string` | SOCKS5 proxy endpoint used by this permissions profile. |
+| `permissions.<name>.network.unix_sockets` | `map<string, allow | none>` | Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values. |
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
 | `plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in preset default. |
 | `profile` | `string` | Default profile applied at startup (equivalent to `--profile`). |
@@ -198,6 +205,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `sqlite_home` | `string (path)` | Directory where Codex stores the SQLite-backed state DB used by agent jobs and other resumable runtime state. |
 | `suppress_unstable_features_warning` | `boolean` | Suppress the warning that appears when under-development feature flags are enabled. |
 | `tool_output_token_limit` | `number` | Token budget for storing individual tool/function outputs in history. |
+| `tool_suggest.discoverables` | `array<table>` | Allow tool suggestions for additional discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`. |
 | `tools.view_image` | `boolean` | Enable the local-image attachment tool `view_image`. |
 | `tools.web_search` | `boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }` | Optional web search tool configuration. The legacy boolean form is still accepted, but the object form lets you set search context size, allowed domains, and approximate user location. |
 | `tui` | `table` | TUI-specific options such as enabling inline desktop notifications. |
@@ -208,6 +216,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `tui.notifications` | `boolean | array<string>` | Enable TUI notifications; optionally restrict to specific event types. |
 | `tui.show_tooltips` | `boolean` | Show onboarding tooltips in the TUI welcome screen (default: true). |
 | `tui.status_line` | `array<string> | null` | Ordered list of TUI footer status-line item identifiers. `null` disables the status line. |
+| `tui.terminal_title` | `array<string> | null` | Ordered list of terminal window/tab title item identifiers. Defaults to `["spinner", "project"]`; `null` disables title updates. |
 | `tui.theme` | `string` | Syntax-highlighting theme override (kebab-case theme name). |
 | `web_search` | `disabled | cached | live` | Web search mode (default: `"cached"`; cached uses an OpenAI-maintained index and does not fetch live pages; if you use `--yolo` or another full access sandbox setting, it defaults to `"live"`). Use `"live"` to fetch the most recent data from the web, or `"disabled"` to remove the tool. |
 | `windows_wsl_setup_acknowledged` | `boolean` | Track Windows onboarding acknowledgement (Windows only). |
@@ -381,6 +390,18 @@ Type / Values
 Details
 
 When `true`, skill-script approval prompts are allowed to surface.
+
+Key
+
+`approvals_reviewer`
+
+Type / Values
+
+`user | guardian_subagent`
+
+Details
+
+Select who reviews eligible approval prompts. Defaults to `user`; `guardian_subagent` routes supported reviews through the Guardian reviewer subagent.
 
 Key
 
@@ -1260,6 +1281,90 @@ Provider id from `model_providers` (default: `openai`).
 
 Key
 
+`model_providers.<id>`
+
+Type / Values
+
+`table`
+
+Details
+
+Custom provider definition. Built-in provider IDs (`openai`, `ollama`, and `lmstudio`) are reserved and cannot be overridden.
+
+Key
+
+`model_providers.<id>.auth`
+
+Type / Values
+
+`table`
+
+Details
+
+Command-backed bearer token configuration for a custom provider. Do not combine with `env_key`, `experimental_bearer_token`, or `requires_openai_auth`.
+
+Key
+
+`model_providers.<id>.auth.args`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Arguments passed to the token command.
+
+Key
+
+`model_providers.<id>.auth.command`
+
+Type / Values
+
+`string`
+
+Details
+
+Command to run when Codex needs a bearer token. The command must print the token to stdout.
+
+Key
+
+`model_providers.<id>.auth.cwd`
+
+Type / Values
+
+`string (path)`
+
+Details
+
+Working directory for the token command.
+
+Key
+
+`model_providers.<id>.auth.refresh_interval_ms`
+
+Type / Values
+
+`number`
+
+Details
+
+How often Codex proactively refreshes the token in milliseconds (default: 300000). Set to `0` to refresh only after an authentication retry.
+
+Key
+
+`model_providers.<id>.auth.timeout_ms`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum token command runtime in milliseconds (default: 5000).
+
+Key
+
 `model_providers.<id>.base_url`
 
 Type / Values
@@ -1836,18 +1941,6 @@ Permit local bind/listen operations through the managed proxy.
 
 Key
 
-`permissions.<name>.network.allow_unix_sockets`
-
-Type / Values
-
-`array<string>`
-
-Details
-
-Allowlist of Unix socket paths permitted through the managed proxy.
-
-Key
-
 `permissions.<name>.network.allow_upstream_proxy`
 
 Type / Values
@@ -1857,18 +1950,6 @@ Type / Values
 Details
 
 Allow the managed proxy to chain to another upstream proxy.
-
-Key
-
-`permissions.<name>.network.allowed_domains`
-
-Type / Values
-
-`array<string>`
-
-Details
-
-Allowlist of domains permitted through the managed proxy.
 
 Key
 
@@ -1896,15 +1977,15 @@ Permit non-loopback bind addresses for the managed proxy listener.
 
 Key
 
-`permissions.<name>.network.denied_domains`
+`permissions.<name>.network.domains`
 
 Type / Values
 
-`array<string>`
+`map<string, allow | deny>`
 
 Details
 
-Denylist of domains blocked by the managed proxy.
+Domain rules for the managed proxy. Use domain names or wildcard patterns as keys, with `allow` or `deny` values.
 
 Key
 
@@ -1977,6 +2058,18 @@ Type / Values
 Details
 
 SOCKS5 proxy endpoint used by this permissions profile.
+
+Key
+
+`permissions.<name>.network.unix_sockets`
+
+Type / Values
+
+`map<string, allow | none>`
+
+Details
+
+Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values.
 
 Key
 
@@ -2448,6 +2541,18 @@ Token budget for storing individual tool/function outputs in history.
 
 Key
 
+`tool_suggest.discoverables`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Allow tool suggestions for additional discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`.
+
+Key
+
 `tools.view_image`
 
 Type / Values
@@ -2568,6 +2673,18 @@ Ordered list of TUI footer status-line item identifiers. `null` disables the sta
 
 Key
 
+`tui.terminal_title`
+
+Type / Values
+
+`array<string> | null`
+
+Details
+
+Ordered list of terminal window/tab title item identifiers. Defaults to `["spinner", "project"]`; `null` disables title updates.
+
+Key
+
 `tui.theme`
 
 Type / Values
@@ -2651,6 +2768,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | Key | Type / Values | Details |
 | --- | --- | --- |
 | `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`). |
+| `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer` (for example `user` and `guardian_subagent`). |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
@@ -2678,6 +2796,18 @@ Type / Values
 Details
 
 Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`).
+
+Key
+
+`allowed_approvals_reviewers`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Allowed values for `approvals_reviewer` (for example `user` and `guardian_subagent`).
 
 Key
 

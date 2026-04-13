@@ -129,7 +129,7 @@ Set `project_root_markers = []` to skip searching parent directories and treat t
 
 ## Custom model providers
 
-A model provider defines how Codex connects to a model (base URL, wire API, and optional HTTP headers).
+A model provider defines how Codex connects to a model (base URL, wire API, authentication, and optional HTTP headers). Custom providers can’t reuse the reserved built-in provider IDs: `openai`, `ollama`, and `lmstudio`.
 
 Define additional providers and point `model_provider` at them:
 
@@ -142,7 +142,7 @@ name = "OpenAI using LLM proxy"
 base_url = "http://proxy.example.com"
 env_key = "OPENAI_API_KEY"
 
-[model_providers.ollama]
+[model_providers.local_ollama]
 name = "Ollama"
 base_url = "http://localhost:11434/v1"
 
@@ -159,6 +159,23 @@ Add request headers when needed:
 http_headers = { "X-Example-Header" = "example-value" }
 env_http_headers = { "X-Example-Features" = "EXAMPLE_FEATURES" }
 ```
+
+Use command-backed authentication when a provider needs Codex to fetch bearer tokens from an external credential helper:
+
+```
+[model_providers.proxy]
+name = "OpenAI using LLM proxy"
+base_url = "https://proxy.example.com/v1"
+wire_api = "responses"
+
+[model_providers.proxy.auth]
+command = "/usr/local/bin/fetch-codex-token"
+args = ["--audience", "codex"]
+timeout_ms = 5000
+refresh_interval_ms = 300000
+```
+
+The auth command receives no `stdin` and must print the token to stdout. Codex trims surrounding whitespace, treats an empty token as an error, and refreshes proactively at `refresh_interval_ms`; set `refresh_interval_ms = 0` to refresh only after an authentication retry. Don’t combine `[model_providers.<id>.auth]` with `env_key`, `experimental_bearer_token`, or `requires_openai_auth`.
 
 ## OSS mode (local providers)
 
@@ -178,12 +195,12 @@ base_url = "https://YOUR_PROJECT_NAME.openai.azure.com/openai"
 env_key = "AZURE_OPENAI_API_KEY"
 query_params = { api-version = "2025-04-01-preview" }
 wire_api = "responses"
-
-[model_providers.openai]
 request_max_retries = 4
 stream_max_retries = 10
 stream_idle_timeout_ms = 300000
 ```
+
+To change the base URL for the built-in OpenAI provider, use `openai_base_url`; don’t create `[model_providers.openai]`, because you can’t override built-in provider IDs.
 
 ## ChatGPT customers using data residency
 

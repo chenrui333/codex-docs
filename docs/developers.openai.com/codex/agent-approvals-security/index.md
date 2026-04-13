@@ -11,7 +11,7 @@ scanning connected GitHub repositories, see [Codex Security](/codex/security).
 By default, the agent runs with network access turned off. Locally, Codex uses an OS-enforced sandbox that limits what it can touch (typically to the current workspace), plus an approval policy that controls when it must stop and ask you before acting.
 
 For a high-level explanation of how sandboxing works across the Codex app, IDE
-extension, and CLI, see [Sandboxing](/codex/concepts/sandboxing).
+extension, and CLI, see [sandboxing](/codex/concepts/sandboxing).
 For a broader enterprise security overview, see the [Codex security white paper](https://trust.openai.com/?itemUid=382f924d-54f3-43a8-a9df-c39e6c959958&source=click).
 
 ## Sandbox and approvals
@@ -83,7 +83,9 @@ This option works with all `--sandbox` modes, so you still control Codex’s lev
 
 If you need Codex to read files, make edits, and run commands with network access without approval prompts, use `--sandbox danger-full-access` (or the `--dangerously-bypass-approvals-and-sandbox` flag). Use caution before doing so.
 
-For a middle ground, `approval_policy = { granular = { ... } }` lets you keep specific approval prompt categories interactive while automatically rejecting others. The granular policy covers sandbox approvals, execpolicy-rule prompts, MCP elicitations, `request_permissions` prompts, and skill-script approvals.
+For a middle ground, `approval_policy = { granular = { ... } }` lets you keep specific approval prompt categories interactive while automatically rejecting others. The granular policy covers sandbox approvals, execpolicy-rule prompts, MCP prompts, `request_permissions` prompts, and skill-script approvals.
+
+Set `approvals_reviewer = "guardian_subagent"` to route eligible approval reviews through the Guardian reviewer subagent instead of prompting the user directly. Admin requirements can constrain this with `allowed_approvals_reviewers`.
 
 ### Common sandbox and approval combinations
 
@@ -153,8 +155,8 @@ The `sandbox` command is also available as `codex debug`, and the platform helpe
 Codex enforces the sandbox differently depending on your OS:
 
 - **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
-- **Linux** uses the bubblewrap pipeline plus `seccomp` by default. `use_legacy_landlock` is available when you need the older path. In managed proxy mode, the default bubblewrap pipeline routes egress through a proxy-only bridge and fails closed if it cannot build valid loopback proxy routes.
-- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux 2 (WSL2)](/codex/windows#windows-subsystem-for-linux). WSL1 was supported through Codex `0.114`; starting in `0.115`, the Linux sandbox moved to `bubblewrap`, so WSL1 is no longer supported. When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
+- **Linux** uses the `bwrap` pipeline plus `seccomp` by default. `use_legacy_landlock` is available when you need the older path. In managed proxy mode, the default `bwrap` pipeline routes egress through a proxy-only bridge and fails closed if it can’t build valid local proxy routes.
+- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux 2 (WSL2)](/codex/windows#windows-subsystem-for-linux). WSL1 was supported through Codex `0.114`; starting in `0.115`, the Linux sandbox moved to `bwrap`, so WSL1 is no longer supported. When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
 
 If you use the Codex IDE extension on Windows, it supports WSL2 directly. Set the following in your VS Code settings to keep the agent inside WSL2 whenever it’s available:
 

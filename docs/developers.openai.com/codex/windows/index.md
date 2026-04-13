@@ -34,12 +34,12 @@ sandbox = "elevated" # or "unelevated"
 
 `elevated` is the preferred native Windows sandbox. It uses dedicated
 lower-privilege sandbox users, filesystem permission boundaries, firewall
-rules, and local policy changes needed for sandboxed command execution.
+rules, and local policy changes needed for commands that run in the sandbox.
 
 `unelevated` is the fallback native Windows sandbox. It runs commands with a
 restricted Windows token derived from your current user, applies ACL-based
 filesystem boundaries, and uses environment-level offline controls instead of
-the dedicated offline-user firewall rule. It is weaker than `elevated`, but it
+the dedicated offline-user firewall rule. It’s weaker than `elevated`, but it
 is still useful when administrator-approved setup is blocked by local or
 enterprise policy.
 
@@ -66,12 +66,12 @@ based on your [approval and security setup](/codex/agent-approvals-security).
 | Windows version | Support level | Notes |
 | --- | --- | --- |
 | Windows 11 | Recommended | Best baseline for Codex on Windows. Use this if you are standardizing an enterprise deployment. |
-| Recent, fully updated Windows 10 | Best effort | Can work, but is less reliable than Windows 11. For Windows 10, Codex depends on modern console support, including ConPTY. In practice, Windows 10 October 2018 Update or newer is required. |
+| Recent, fully updated Windows 10 | Best effort | Can work, but is less reliable than Windows 11. For Windows 10, Codex depends on modern console support, including ConPTY. In practice, Windows 10 version 1809 or newer is required. |
 | Older Windows 10 builds | Not recommended | More likely to miss required console components such as ConPTY and more likely to fail in enterprise setups. |
 
 Additional environment assumptions:
 
-- `winget` should be available. If it is missing, update Windows or install
+- `winget` should be available. If it’s missing, update Windows or install
   the Windows Package Manager before setting up Codex.
 - The recommended native sandbox depends on administrator-approved setup.
 - Some enterprise-managed devices block the required setup steps even when the
@@ -87,7 +87,7 @@ When a command fails because the Windows sandbox can’t read a directory, use:
 
 The path must be an existing absolute directory. After the command succeeds, later commands that run in the sandbox can read that directory during the current session.
 
-We recommend using the native Windows sandbox by default. The native Windows sandbox will offer the best perfomance and highest speeds while keeping the same security. Choose WSL2 when you
+Use the native Windows sandbox by default. The native Windows sandbox offers the best performance and highest speeds while keeping the same security. Choose WSL2 when you
 need a Linux-native environment on Windows, when your workflow already lives in
 WSL2, or when neither native Windows sandbox mode meets your needs.
 

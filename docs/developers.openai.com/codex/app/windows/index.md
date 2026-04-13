@@ -186,7 +186,7 @@ The Windows app uses the same Codex home directory as native Codex on Windows:
 `%USERPROFILE%\.codex`.
 
 If you also run the Codex CLI inside WSL, the CLI uses the Linux home
-directory by default, so it does not automatically share configuration, cached
+directory by default, so it doesn’t automatically share configuration, cached
 auth, or session history with the Windows app.
 
 To share them, use one of these approaches:
@@ -208,13 +208,13 @@ features. Install it with `winget install Git.Git` from PowerShell or `cmd.exe`.
 
 ### Git isn’t detected for projects opened from `\\wsl$`
 
-For now, if you want to use the Windows-native agent with a project that is
-also accessible from WSL, the most reliable workaround is to store the project
+For now, if you want to use the Windows-native agent with a project also
+accessible from WSL, the most reliable workaround is to store the project
 on the native Windows drive and access it in WSL through `/mnt/<drive>/...`.
 
-### Cmder is not listed in the open dialog
+### `Cmder` isn’t listed in the open dialog
 
-If Cmder is installed but doesn’t show in Codex’s open dialog, add it to the
-Windows Start Menu: right-click Cmder and choose **Add to Start**, then restart
-Codex or reboot.
+If `Cmder` is installed but doesn’t show in Codex’s open dialog, add it to the
+Windows Start Menu: right-click `Cmder` and choose **Add to Start**, then
+restart Codex or reboot.
 

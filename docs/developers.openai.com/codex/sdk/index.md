@@ -13,7 +13,7 @@ Use the SDK when you need to:
 
 ## TypeScript library
 
-The TypeScript library provides a way to control Codex from within your application that is more comprehensive and flexible than non-interactive mode.
+The TypeScript library provides a way to control Codex from within your application that’s more comprehensive and flexible than non-interactive mode.
 
 Use the library server-side; it requires Node.js 18 or later.
 
@@ -59,4 +59,50 @@ console.log(result2);
 ```
 
 For more details, check out the [TypeScript repo](https://github.com/openai/codex/tree/main/sdk/typescript).
+
+## Python library
+
+The Python SDK is experimental and controls the local Codex app-server over JSON-RPC. It requires Python 3.10 or later and a local checkout of the open-source Codex repo.
+
+### Installation
+
+From the Codex repo root, install the SDK in editable mode:
+
+```
+cd sdk/python
+python -m pip install -e .
+```
+
+For manual local SDK usage, pass `AppServerConfig(codex_bin=...)` to point at a local `codex` binary, or use the repo examples and notebook bootstrap.
+
+### Usage
+
+Start Codex, create a thread, and run a prompt:
+
+```
+from codex_app_server import Codex
+
+with Codex() as codex:
+    thread = codex.thread_start(model="gpt-5.4")
+    result = thread.run("Make a plan to diagnose and fix the CI failures")
+    print(result.final_response)
+```
+
+Use `AsyncCodex` when your application is already asynchronous:
+
+```
+import asyncio
+
+from codex_app_server import AsyncCodex
+
+async def main() -> None:
+    async with AsyncCodex() as codex:
+        thread = await codex.thread_start(model="gpt-5.4")
+        result = await thread.run("Implement the plan")
+        print(result.final_response)
+
+asyncio.run(main())
+```
+
+For more details, check out the [Python repo](https://github.com/openai/codex/tree/main/sdk/python).
 

@@ -1,8 +1,8 @@
-# Sandboxing – Codex | OpenAI Developers
+# Sandbox – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/concepts/sandboxing
 
-Sandboxing is the boundary that lets Codex act autonomously without giving it
+The sandbox is the boundary that lets Codex act autonomously without giving it
 unrestricted access to your machine. When Codex runs local commands in the
 **Codex app**, **IDE extension**, or **CLI**, those commands run inside a
 constrained environment instead of running with full access by default.
@@ -29,11 +29,11 @@ autonomously inside clear limits.
 
 ## Why it matters
 
-Sandboxing reduces approval fatigue. Instead of asking you to confirm every
+The sandbox reduces approval fatigue. Instead of asking you to confirm every
 low-risk command, Codex can read files, make edits, and run routine project
 commands within the boundary you already approved.
 
-It also gives you a clearer trust model for agentic work. You are not just
+It also gives you a clearer trust model for agentic work. You aren’t just
 trusting the agent’s intentions; you are trusting that the agent is operating
 inside enforced limits. That makes it easier to let Codex work independently
 while still knowing when it will stop and ask for help.
@@ -64,12 +64,12 @@ sudo dnf install bubblewrap
 
 Codex uses the first `bwrap` executable it finds on `PATH`. If no `bwrap`
 executable is available, Codex falls back to a bundled helper, but that helper
-requires unprivileged user namespaces. Installing your distro’s `bubblewrap`
-package keeps this setup reliable.
+requires support for unprivileged user namespace creation. Installing the
+distribution package that provides `bwrap` keeps this setup reliable.
 
-Codex surfaces a startup warning when `bwrap` is missing or cannot create user
-namespaces. On distributions that restrict them with AppArmor, you can enable
-them with:
+Codex surfaces a startup warning when `bwrap` is missing or when the helper
+can’t create the needed user namespace. On distributions that restrict this
+AppArmor setting, you can enable it with:
 
 ```
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
@@ -101,7 +101,7 @@ should pause for approval.
 
 At a high level, the common sandbox modes are:
 
-- `read-only`: Codex can inspect files, but it cannot edit files or run
+- `read-only`: Codex can inspect files, but it can’t edit files or run
   commands without approval.
 - `workspace-write`: Codex can read files, edit within the workspace, and run
   routine local commands inside that boundary. This is the default low-friction
@@ -112,11 +112,11 @@ At a high level, the common sandbox modes are:
 
 The common approval policies are:
 
-- `untrusted`: Codex asks before running commands that are not in its trusted
+- `untrusted`: Codex asks before running commands that aren’t in its trusted
   set.
 - `on-request`: Codex works inside the sandbox by default and asks when it
   needs to go beyond that boundary.
-- `never`: Codex does not stop for approval prompts.
+- `never`: Codex doesn’t stop for approval prompts.
 
 Full access means using `sandbox_mode = "danger-full-access"` together with
 `approval_policy = "never"`. By contrast, `--full-auto` is the lower-risk local
@@ -126,7 +126,13 @@ automation preset: `sandbox_mode = "workspace-write"` and
 If you need Codex to work across more than one directory, writable roots let
 you extend the places it can modify without removing the sandbox entirely. If
 you need a broader or narrower trust boundary, adjust the default sandbox mode
-and approval policy instead of relying on ad hoc exceptions.
+and approval policy instead of relying on one-off exceptions.
+
+For reusable permission sets, set `default_permissions` to a named profile and
+define `[permissions.<name>.filesystem]` or `[permissions.<name>.network]`.
+Managed network profiles use map tables such as
+`[permissions.<name>.network.domains]` and
+`[permissions.<name>.network.unix_sockets]` for domain and socket rules.
 
 When a workflow needs a specific exception, use [rules](/codex/rules). Rules
 let you allow, prompt, or forbid command prefixes outside the sandbox, which is

@@ -24,7 +24,8 @@ the command name to filter the list.
 | [`/sandbox-add-read-dir`](#grant-sandbox-read-access-with-sandbox-add-read-dir) | Grant sandbox read access to an extra directory (Windows only). | Unblock commands that need to read an absolute directory path outside the current readable roots. |
 | [`/agent`](#switch-agent-threads-with-agent) | Switch the active agent thread. | Inspect or continue work in a spawned subagent thread. |
 | [`/apps`](#browse-apps-with-apps) | Browse apps (connectors) and insert them into your prompt. | Attach an app as `$app-slug` before asking Codex to use it. |
-| [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a clean slate. |
+| [`/plugins`](#browse-plugins-with-plugins) | Browse installed and discoverable plugins. | Inspect plugin tools, install suggested plugins, or manage plugin availability. |
+| [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a fresh start. |
 | [`/compact`](#keep-transcripts-lean-with-compact) | Summarize the visible conversation to free tokens. | Use after long runs so Codex retains key points without blowing the context window. |
 | [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. |
 | [`/diff`](#review-changes-with-diff) | Show the Git diff, including files Git isn’t tracking yet. | Review Codex’s edits before you commit or run tests. |
@@ -40,6 +41,7 @@ the command name to filter the list.
 | [`/plan`](#switch-to-plan-mode-with-plan) | Switch to plan mode and optionally send a prompt. | Ask Codex to propose an execution plan before implementation work starts. |
 | [`/personality`](#set-a-communication-style-with-personality) | Choose a communication style for responses. | Make Codex more concise, more explanatory, or more collaborative without changing your instructions. |
 | [`/ps`](#check-background-terminals-with-ps) | Show experimental background terminals and their recent output. | Check long-running commands without leaving the main transcript. |
+| [`/stop`](#stop-background-terminals-with-stop) | Stop all background terminals. | Cancel background terminal work started by the current session. |
 | [`/fork`](#fork-the-current-conversation-with-fork) | Fork the current conversation into a new thread. | Branch the active session to explore a new approach without losing the current transcript. |
 | [`/resume`](#resume-a-saved-conversation-with-resume) | Resume a saved conversation from your session list. | Continue work from a previous CLI session without starting over. |
 | [`/new`](#start-a-new-conversation-with-new) | Start a new conversation inside the same CLI session. | Reset the chat context without leaving the CLI when you want a fresh prompt in the same repo. |
@@ -48,6 +50,7 @@ the command name to filter the list.
 | [`/status`](#inspect-the-session-with-status) | Display session configuration and token usage. | Confirm the active model, approval policy, writable roots, and remaining context capacity. |
 | [`/debug-config`](#inspect-config-layers-with-debug-config) | Print config layer and requirements diagnostics. | Debug precedence and policy requirements, including experimental network constraints. |
 | [`/statusline`](#configure-footer-items-with-statusline) | Configure TUI status-line fields interactively. | Pick and reorder footer items (model/context/limits/git/tokens/session) and persist in config.toml. |
+| [`/title`](#configure-terminal-title-items-with-title) | Configure terminal window or tab title fields interactively. | Pick and reorder title items such as project, status, thread, branch, model, and task progress. |
 
 `/quit` and `/exit` both exit the CLI. Use them only after you have saved or
 committed any important work.
@@ -179,6 +182,17 @@ Available status-line items include model, model+reasoning, context stats, rate
 limits, git branch, token counters, session id, current directory/project root,
 and Codex version.
 
+### Configure terminal title items with `/title`
+
+1. Type `/title`.
+2. Use the picker to toggle and reorder items, then confirm.
+
+Expected: The terminal window or tab title updates immediately and persists to
+`tui.terminal_title` in `config.toml`.
+
+Available title items include app name, project, spinner, status, thread, git
+branch, model, and task progress.
+
 ### Check background terminals with `/ps`
 
 1. Type `/ps`.
@@ -188,6 +202,14 @@ Expected: Codex shows each background terminal’s command plus up to three
 recent, non-empty output lines so you can gauge progress at a glance.
 
 Background terminals appear when `unified_exec` is in use; otherwise, the list may be empty.
+
+### Stop background terminals with `/stop`
+
+1. Type `/stop`.
+2. Confirm if Codex asks before stopping the listed terminals.
+
+Expected: Codex stops all background terminals for the current session. `/clean`
+is still available as an alias for `/stop`.
 
 ### Keep transcripts lean with `/compact`
 
@@ -219,7 +241,7 @@ Expected: Codex adds the file to the conversation, ensuring follow-up turns refe
 Expected: Codex starts a fresh conversation in the same CLI session, so you
 can switch tasks without leaving your terminal.
 
-Unlike `/clear`, `/new` does not clear the current terminal view first.
+Unlike `/clear`, `/new` doesn’t clear the current terminal view first.
 
 ### Resume a saved conversation with `/resume`
 
@@ -271,6 +293,14 @@ Expected: You see the configured Model Context Protocol (MCP) tools Codex can ca
 
 Expected: Codex inserts the app mention into the composer as `$app-slug`, so
 you can immediately ask Codex to use it.
+
+### Browse plugins with `/plugins`
+
+1. Type `/plugins`.
+2. Pick a plugin from the list to inspect its capabilities or available actions.
+
+Expected: Codex opens the plugin browser so you can review installed plugins and
+discoverable plugins that your configuration allows.
 
 ### Switch agent threads with `/agent`
 
