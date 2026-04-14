@@ -281,11 +281,6 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/open-source"
     },
-    "developers.openai.com/codex/overview/index.md": {
-      "sha256": "a4059e34678db177d8f93f82a91e803059a178272146233e8bc9e3160f180df6",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/overview"
-    },
     "developers.openai.com/codex/plugins/build/index.md": {
       "sha256": "487b54964aa17c99caf1e7ec6d8a2747e8aee709177680d8480af67cdb7a9d4c",
       "source_type": "developers",
@@ -332,7 +327,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "d030be3a12d08399b774c33e46c6f8dcbabc54ab8deac8a6fd5beba3829f4acd",
+      "sha256": "8cb47847c55975b9331230e0153f7401da0c7aaeb84077e74ba9e561b19fbfd4",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
