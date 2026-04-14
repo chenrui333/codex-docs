@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/reusable-codex-skills
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/reusable-codex-skills/?export=pdf)
+
 Turn a working Codex thread, review rules, test commands, release checklists, design conventions, writing examples, or repo-specific scripts into a skill Codex can use in future threads.
 
 Easy
@@ -25,7 +27,19 @@ Related links
 
   Gather information about the workflow, scaffold a skill, keep the main instructions short, and validate the result.
 
+| Skill | Why use it |
+| --- | --- |
+| [Skill Creator](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) | Gather information about the workflow, scaffold a skill, keep the main instructions short, and validate the result. |
+
 ## Starter prompt
+
+Use $skill-creator to create a Codex skill that [fixes failing Buildkite checks on a GitHub PR / turns PR notes into inline review comments / writes our release notes from merged PRs]
+Use these sources when creating the skill:
+- Working example: [say "use this thread," link a merged PR, or paste a good Codex answer]
+- Source: [paste a Slack thread, PR review link, runbook URL, docs URL, or ticket]
+- Repo: [repo path, if this skill depends on one repo]
+- Scripts or commands to reuse: [test command], [preview command], [log-fetch script], [release command]
+- Good output: [paste the Slack update, changelog entry, review comment, ticket, or final answer you want future threads to match]
 
 Use $skill-creator to create a Codex skill that [fixes failing Buildkite checks on a GitHub PR / turns PR notes into inline review comments / writes our release notes from merged PRs]
 Use these sources when creating the skill:

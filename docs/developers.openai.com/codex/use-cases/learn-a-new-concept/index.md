@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/learn-a-new-concept
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/learn-a-new-concept/?export=pdf)
+
 Use Codex to study material such as research papers or courses, split the reading across subagents, gather context, and produce a Markdown report with diagrams.
 
 Intermediate
@@ -26,7 +28,28 @@ Related links
 
   Generate illustrative, non-exact visual assets when a Markdown-native diagram is not enough.
 
+| Skill | Why use it |
+| --- | --- |
+| [ImageGen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen) | Generate illustrative, non-exact visual assets when a Markdown-native diagram is not enough. |
+
 ## Starter prompt
+
+I want to learn a new concept from this research paper: [paper path or URL].
+Please run this as a subagent workflow:
+- Spawn one subagent to map the paper's problem statement, contribution, method, experiments, and limitations.
+- Spawn one subagent to gather prerequisite context and explain the background terms I need.
+- Spawn one subagent to inspect the figures, tables, notation, and any claims that need careful verification.
+- Wait for all subagents, reconcile disagreements, and avoid overclaiming beyond the source material.
+Final output:
+- create `notes/[concept-name]-report.md`
+- include an executive summary, glossary, paper walkthrough, concept map, method diagram, evidence table, caveats, and open questions
+- use Markdown-native Mermaid diagrams where diagrams help
+- use imagegen to generate illustrative, non-exact visual assets when a Markdown-native diagram is not enough
+- cite paper sections, pages, figures, or tables whenever possible
+Constraints:
+- do not treat the paper as ground truth if the evidence is weak
+- separate what the paper claims from your interpretation
+- call out missing background, assumptions, and follow-up reading
 
 I want to learn a new concept from this research paper: [paper path or URL].
 Please run this as a subagent workflow:

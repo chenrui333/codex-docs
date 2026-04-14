@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/api-integration-migrations
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/api-integration-migrations/?export=pdf)
+
 Use Codex to update your existing OpenAI API integration to the latest recommended models and API features, while checking for regressions before you ship.
 
 Intermediate
@@ -25,7 +27,20 @@ Related links
 
   Pull the current model, migration, and API guidance before Codex makes edits to your implementation.
 
+| Skill | Why use it |
+| --- | --- |
+| [OpenAI Docs](https://github.com/openai/skills/tree/main/skills/.curated/openai-docs) | Pull the current model, migration, and API guidance before Codex makes edits to your implementation. |
+
 ## Starter prompt
+
+Use $openai-docs to upgrade this OpenAI integration to the latest recommended model and API features.
+Specifically, look for the latest model and prompt guidance for this specific model.
+Requirements:
+- Start by inventorying the current models, endpoints, and tool assumptions in the repo.
+- Identify the smallest migration plan that gets us onto the latest supported path.
+- Preserve behavior unless a change is required by the new API or model.
+- Update prompts using the latest model prompt guidance.
+- Call out any prompt, tool, or response-shape changes we need to review manually.
 
 Use $openai-docs to upgrade this OpenAI integration to the latest recommended model and API features.
 Specifically, look for the latest model and prompt guidance for this specific model.

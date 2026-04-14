@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/slack-coding-tasks
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/slack-coding-tasks/?export=pdf)
+
 Mention `@Codex` in Slack to start a task tied to the right repo and environment, then review the result back in the thread or in Codex cloud.
 
 Easy
@@ -20,6 +22,8 @@ Related links
 - Teams that want quick issue triage, bug fixes, or scoped implementation work without context switching
 
 ## Starter prompt
+
+@Codex analyze the issue mentioned in this thread and implement a fix in <name of your environment>.
 
 @Codex analyze the issue mentioned in this thread and implement a fix in <name of your environment>.
 

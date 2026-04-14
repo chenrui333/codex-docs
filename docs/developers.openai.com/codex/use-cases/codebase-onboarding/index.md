@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/codebase-onboarding
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/codebase-onboarding/?export=pdf)
+
 Use Codex to map unfamiliar codebases, explain different modules and data flow, and point you to the next files worth reading before you edit.
 
 Easy
@@ -20,6 +22,13 @@ Related links
 - Anyone trying to understand how a feature works before changing it
 
 ## Starter prompt
+
+Explain how the request flows through <name of the system area> in the codebase.
+Include:
+- which modules own what
+- where data is validated
+- the top gotchas to watch for before making changes
+End with the files I should read next.
 
 Explain how the request flows through <name of the system area> in the codebase.
 Include:

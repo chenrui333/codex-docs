@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/agent-friendly-clis
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/agent-friendly-clis/?export=pdf)
+
 Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts, use to download files, and remember through a companion skill.
 
 Intermediate
@@ -28,7 +30,19 @@ Related links
 
   Create the companion skill that teaches later Codex tasks which CLI commands to run first and which write actions require approval.
 
+| Skill | Why use it |
+| --- | --- |
+| [Cli Creator](https://github.com/openai/skills/tree/main/skills/.curated/cli-creator) | Design the command surface, build the CLI, add setup and auth checks, install the command on PATH, and verify it from another folder. |
+| [Skill Creator](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) | Create the companion skill that teaches later Codex tasks which CLI commands to run first and which write actions require approval. |
+
 ## Starter prompt
+
+Use $cli-creator to create a CLI you can use, and use $skill-creator to create the companion skill in this same thread.
+Source to learn from: [docs URL, OpenAPI spec, redacted curl command, existing script path, log folder, CSV or JSON export, SQLite database path, or pasted --help output].
+First job the CLI should support: [download failed CI logs from a build URL, search support tickets and read one by ID, query an admin API, read a local database, or run one step from an existing script].
+Optional write job: [create a draft comment, upload media, retry a failed job, or read-only for now].
+Command name: [cli-name, or recommend one].
+Before coding, show me the proposed command surface and ask only for missing details that would block the build.
 
 Use $cli-creator to create a CLI you can use, and use $skill-creator to create the companion skill in this same thread.
 Source to learn from: [docs URL, OpenAPI spec, redacted curl command, existing script path, log folder, CSV or JSON export, SQLite database path, or pasted --help output].

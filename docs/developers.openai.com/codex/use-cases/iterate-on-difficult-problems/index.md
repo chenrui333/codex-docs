@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/iterate-on-difficult-probl
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/iterate-on-difficult-problems/?export=pdf)
+
 Give Codex an evaluation system, such as scripts and reviewable artifacts, so it can keep improving a hard task until the scores are good enough.
 
 Advanced
@@ -21,6 +23,25 @@ Related links
 - Long-running Codex sessions where you want progress tracked clearly instead of relying on context
 
 ## Starter prompt
+
+I have a difficult task in this workspace and I want you to run it as an eval-driven improvement loop.
+Before changing anything:
+- Read `AGENTS.md`.
+- Find the script or command that scores the current output.
+Iteration loop:
+- Make one focused improvement at a time.
+- Re-run the eval command after each meaningful change.
+- Log the scores and what changed.
+- Inspect generated artifacts directly. If the output is visual, use `view\_image`.
+- Keep going until both the overall score and the LLM average are above 90%.
+Constraints:
+- Do not stop at the first acceptable result.
+- Do not revert to an earlier version unless the new result is clearly worse in scores or artifacts.
+- If the eval improves but is still below target, explain the bottleneck and continue.
+Output:
+- current best scores
+- log of major iterations
+- remaining risks or weak spots
 
 I have a difficult task in this workspace and I want you to run it as an eval-driven improvement loop.
 Before changing anything:

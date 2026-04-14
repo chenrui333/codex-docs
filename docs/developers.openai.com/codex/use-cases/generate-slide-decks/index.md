@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/generate-slide-decks
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/generate-slide-decks/?export=pdf)
+
 Use Codex to update existing presentations or build new decks by editing slides directly through code, generating visuals, and applying repeatable layout rules slide by slide.
 
 Easy
@@ -29,7 +31,25 @@ Related links
 
   Generate illustrations, cover art, diagrams, and slide visuals that match one reusable visual direction.
 
+| Skill | Why use it |
+| --- | --- |
+| [Slides](https://github.com/openai/skills/tree/main/skills/.curated/slides) | Create and edit `.pptx` decks in JavaScript with PptxGenJS, bundled helpers, and render and validation scripts for overflow, overlap, and font checks. |
+| [ImageGen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen) | Generate illustrations, cover art, diagrams, and slide visuals that match one reusable visual direction. |
+
 ## Starter prompt
+
+Use $slides with $imagegen to edit this slide deck in the following way:
+- If present, add logo.png in the bottom right corner on every slide
+- On slides X, Y and Z, move the text to the left and use image generation to generate an illustration (style: abstract, digital art) on the right
+- Preserve text as text and simple charts as native PowerPoint charts where practical.
+- Add these slides: [describe new slides here]
+- Use the existing branding on new slides and new text (colors, fonts, layout, etc.)
+- Render the updated deck to slide images, review the output, and fix layout issues before delivery.
+- Run overflow and font-substitution checks before delivery, especially if the deck is dense.
+- Save reusable prompts or generation notes when you create a batch of related images.
+Output:
+- A copy of the slide deck with the changes applied
+- notes on which slides were generated, rewritten, or left unchanged
 
 Use $slides with $imagegen to edit this slide deck in the following way:
 - If present, add logo.png in the bottom right corner on every slide

@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/use-cases/github-code-reviews
 
 [← All use cases](/codex/use-cases)
 
+Copy page   [Export as PDF](/codex/use-cases/github-code-reviews/?export=pdf)
+
 Use Codex in GitHub to automatically surface regressions, missing tests, and documentation issues directly on a pull request.
 
 Easy
@@ -25,7 +27,13 @@ Related links
 
   Focus the review on risky surfaces such as secrets, auth, and dependency changes.
 
+| Skill | Why use it |
+| --- | --- |
+| [Security Best Practices](https://github.com/openai/skills/tree/main/skills/.curated/security-best-practices) | Focus the review on risky surfaces such as secrets, auth, and dependency changes. |
+
 ## Starter prompt
+
+@codex review for security regressions, missing tests, and risky behavior changes.
 
 @codex review for security regressions, missing tests, and risky behavior changes.
 

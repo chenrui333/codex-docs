@@ -1,20 +1,22 @@
 {
   "added": [],
-  "failure_count": 1,
-  "failures": [
-    {
-      "error": "403 Client Error: rate limit exceeded for url: https://api.github.com/repos/openai/codex/git/trees/main?recursive=1",
-      "source": "github",
-      "stage": "source_build",
-      "url": "https://github.com/openai/codex"
-    }
-  ],
-  "generated_at": "2026-04-14T12:29:00+00:00",
-  "removed": [
-    "developers.openai.com/codex/overview/index.md"
-  ],
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-04-14T18:31:06+00:00",
+  "removed": [],
   "total_files": 144,
   "updated": [
-    "developers.openai.com/codex/security/setup/index.md"
+    "developers.openai.com/codex/security/setup/index.md",
+    "developers.openai.com/codex/use-cases/agent-friendly-clis/index.md",
+    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md",
+    "developers.openai.com/codex/use-cases/codebase-onboarding/index.md",
+    "developers.openai.com/codex/use-cases/frontend-designs/index.md",
+    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md",
+    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
+    "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md",
+    "developers.openai.com/codex/use-cases/learn-a-new-concept/index.md",
+    "developers.openai.com/codex/use-cases/new-hire-onboarding/index.md",
+    "developers.openai.com/codex/use-cases/reusable-codex-skills/index.md",
+    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md"
   ]
 }
