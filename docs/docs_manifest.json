@@ -27,7 +27,7 @@
       "source_url": "https://developers.openai.com/codex/app/features"
     },
     "developers.openai.com/codex/app/index.md": {
-      "sha256": "afec20838661a8809b5ce6e2cfa033691de8d90d741a0923748a0e8263da836d",
+      "sha256": "8a8065b2b99ba44ec2badce3ea342fe571c16fb4249136db475e7f8627e44d9b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app"
     },
@@ -176,11 +176,6 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
-    "developers.openai.com/codex/explore/index.md": {
-      "sha256": "5a79f002c3f41893ef1c7228961eac790be7ec9d8de8998fa7054aeb0b1a283e",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/explore"
-    },
     "developers.openai.com/codex/feature-maturity/index.md": {
       "sha256": "3e66ff48eb31a4e0f2437da9263d1ce09510bc0ffd9ef5f3f1d69ab0cedf5164",
       "source_type": "developers",
@@ -237,7 +232,7 @@
       "source_url": "https://developers.openai.com/codex/ide/slash-commands"
     },
     "developers.openai.com/codex/index.md": {
-      "sha256": "2b10bb7632c308bbc198697323ed551dc264d63277b5591a13bf5fc7f20274aa",
+      "sha256": "424c10d660c0dd0ba818b23607f40cfb7925ce0dae0640bbf91c0922ddbf34b1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex"
     },
@@ -302,7 +297,7 @@
       "source_url": "https://developers.openai.com/codex/prompting"
     },
     "developers.openai.com/codex/quickstart/index.md": {
-      "sha256": "a67fb57d5eeadbdd59202567fa71abebc32fcc6d5f4a488882eeaef9dc0b701e",
+      "sha256": "463531f2edbdf9121529b5a4e6feb91048f632a0241ab95b256f0264247440f9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/quickstart"
     },
@@ -327,7 +322,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "7e247437013b21ce9cdd83623512eaa3a12812e687bb913d4a3f578537901bb7",
+      "sha256": "1af94fd1256b5675a61c8d3a45d7874ecebf6a7c1da47e70dedf01b8c3030116",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },

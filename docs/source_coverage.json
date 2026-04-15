@@ -43,7 +43,6 @@
       "https://developers.openai.com/codex/enterprise/admin-setup",
       "https://developers.openai.com/codex/enterprise/governance",
       "https://developers.openai.com/codex/enterprise/managed-configuration",
-      "https://developers.openai.com/codex/explore",
       "https://developers.openai.com/codex/feature-maturity",
       "https://developers.openai.com/codex/github-action",
       "https://developers.openai.com/codex/guides/agents-md",
@@ -128,8 +127,8 @@
       "https://developers.openai.com/resources/codex"
     ],
     "counts": {
-      "codex_related_urls": 125,
-      "mirrored_urls": 110,
+      "codex_related_urls": 124,
+      "mirrored_urls": 109,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -172,7 +171,6 @@
       "https://developers.openai.com/codex/enterprise/admin-setup",
       "https://developers.openai.com/codex/enterprise/governance",
       "https://developers.openai.com/codex/enterprise/managed-configuration",
-      "https://developers.openai.com/codex/explore",
       "https://developers.openai.com/codex/feature-maturity",
       "https://developers.openai.com/codex/github-action",
       "https://developers.openai.com/codex/guides/agents-md",
@@ -273,7 +271,7 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-04-14T18:30:46+00:00",
+  "generated_at": "2026-04-15T06:43:39+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 34,

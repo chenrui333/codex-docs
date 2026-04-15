@@ -37,7 +37,7 @@ The Codex app is available on macOS (Apple Silicon).
 - Build a classic Snake game in this repo.
 - Find and fix bugs in my codebase with minimal, high-confidence changes.
 
-   If you need more inspiration, check out the [explore section](/codex/explore).
+   If you need more inspiration, explore [Codex use cases](/codex/use-cases).
    If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 
    [Learn more about the Codex app](/codex/app)

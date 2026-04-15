@@ -2,10 +2,15 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-15T00:44:54+00:00",
-  "removed": [],
-  "total_files": 144,
+  "generated_at": "2026-04-15T06:44:01+00:00",
+  "removed": [
+    "developers.openai.com/codex/explore/index.md"
+  ],
+  "total_files": 143,
   "updated": [
+    "developers.openai.com/codex/app/index.md",
+    "developers.openai.com/codex/index.md",
+    "developers.openai.com/codex/quickstart/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }

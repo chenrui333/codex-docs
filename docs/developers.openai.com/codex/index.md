@@ -18,11 +18,11 @@ Codex is OpenAI’s coding agent for software development. ChatGPT Plus, Pro, Bu
 
 Download and start building with Codex.
 
- Get started](/codex/quickstart) [### Explore
+ Get started](/codex/quickstart) [### Explore use cases
 
-Get inspirations on what you can build with Codex.
+Get inspiration on what you can build with Codex.
 
- Learn more](/codex/explore) [### Community
+ Learn more](/codex/use-cases) [### Community
 
 Read community posts, explore meetups, and connect with Codex builders.
 
