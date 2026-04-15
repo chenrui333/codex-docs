@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/slack-coding-tasks
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Kick off coding tasks from Slack
+
+Turn Slack threads into scoped cloud tasks.
+
+Difficulty **Easy**
+
+Time horizon **5m**
+
+Mention `@Codex` in Slack to start a task tied to the right repo and environment, then review the result back in the thread or in Codex cloud.
+
+## Best for
+
+- Async handoffs that start in a Slack thread and already have enough context to act on
+- Teams that want quick issue triage, bug fixes, or scoped implementation work without context switching
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/slack-coding-tasks/?export=pdf)

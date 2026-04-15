@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/github-code-reviews
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Review pull requests faster
+
+Catch regressions and potential issues before human review.
+
+Difficulty **Easy**
+
+Time horizon **5s**
+
+Use Codex in GitHub to automatically surface regressions, missing tests, and documentation issues directly on a pull request.
+
+## Best for
+
+- Teams that want another review signal before human merge approval
+- Large codebases for projects in production
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/github-code-reviews/?export=pdf)

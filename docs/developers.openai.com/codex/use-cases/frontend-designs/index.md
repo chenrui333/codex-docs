@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/frontend-designs
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Build responsive front-end designs
+
+Turn screenshots and visual references into responsive UI with visual checks.
+
+Difficulty **Intermediate**
+
+Time horizon **1h**
+
+Use Codex to translate screenshots and design briefs into code that matches the repo's design system, then use Playwright to compare the implementation to your references for different screen sizes and iterate until it looks right.
+
+## Best for
+
+- Creating new front-end projects from scratch
+- Implementing already designed screens or flows from screenshots in an existing codebase
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/frontend-designs/?export=pdf)

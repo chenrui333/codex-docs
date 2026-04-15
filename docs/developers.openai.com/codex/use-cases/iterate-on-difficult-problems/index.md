@@ -2,6 +2,32 @@
 
 Source: https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Iterate on difficult problems
+
+Use Codex as a scored improvement loop to solve hard tasks.
+
+Difficulty **Advanced**
+
+Time horizon **Long-running**
+
+Give Codex an evaluation system, such as scripts and reviewable artifacts, so it can keep improving a hard task until the scores are good enough.
+
+## Best for
+
+- Problems where each iteration can be scored, but the best result usually takes many passes
+- Tasks with visual or subjective outputs that need both deterministic checks and an LLM-as-a-judge score
+- Long-running Codex sessions where you want progress tracked clearly instead of relying on context
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/iterate-on-difficult-problems/?export=pdf)

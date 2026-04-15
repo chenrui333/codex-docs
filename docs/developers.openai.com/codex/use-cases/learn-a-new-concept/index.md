@@ -2,6 +2,32 @@
 
 Source: https://developers.openai.com/codex/use-cases/learn-a-new-concept
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Learn a new concept
+
+Turn dense source material into a clear, reviewable learning report.
+
+Difficulty **Intermediate**
+
+Time horizon **30m**
+
+Use Codex to study material such as research papers or courses, split the reading across subagents, gather context, and produce a Markdown report with diagrams.
+
+## Best for
+
+- Individuals learning about an unfamiliar concept
+- Dense source material that benefits from parallel reading, context gathering, diagrams, and a written synthesis
+- Turning a one-off reading session into a reusable Markdown report with citations, glossary terms
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/learn-a-new-concept/?export=pdf)

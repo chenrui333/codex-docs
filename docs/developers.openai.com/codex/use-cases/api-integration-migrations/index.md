@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/api-integration-migrations
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Upgrade your API integration
+
+Upgrade your app to the latest OpenAI API models.
+
+Difficulty **Intermediate**
+
+Time horizon **1h**
+
+Use Codex to update your existing OpenAI API integration to the latest recommended models and API features, while checking for regressions before you ship.
+
+## Best for
+
+- Teams upgrading from older models or API surfaces
+- Repos that need behavior-preserving migrations with explicit validation
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/api-integration-migrations/?export=pdf)

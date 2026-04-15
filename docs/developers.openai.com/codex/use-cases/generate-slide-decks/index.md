@@ -2,6 +2,32 @@
 
 Source: https://developers.openai.com/codex/use-cases/generate-slide-decks
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Generate slide decks
+
+Manipulate pptx files and use image generation to automate slide creation.
+
+Difficulty **Easy**
+
+Time horizon **30m**
+
+Use Codex to update existing presentations or build new decks by editing slides directly through code, generating visuals, and applying repeatable layout rules slide by slide.
+
+## Best for
+
+- Teams turning notes or structured inputs into repeatable slide decks
+- Creating new visual presentations from scratch
+- Rebuilding or extending decks from screenshots, PDFs, or reference presentations
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/generate-slide-decks/?export=pdf)

@@ -2,6 +2,32 @@
 
 Source: https://developers.openai.com/codex/use-cases/new-hire-onboarding
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Coordinate new-hire onboarding
+
+Prepare onboarding trackers, team summaries, and welcome-space drafts.
+
+Difficulty **Intermediate**
+
+Time horizon **30m**
+
+Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team summaries, and prepare welcome-space setup for review before anything is sent.
+
+## Best for
+
+- People, recruiting, IT, or workplace operations teams coordinating a batch of upcoming starts
+- Managers preparing for new teammates and first-week handoffs
+- Coordinators turning a roster into a tracker, manager note, and welcome-space draft
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/new-hire-onboarding/?export=pdf)

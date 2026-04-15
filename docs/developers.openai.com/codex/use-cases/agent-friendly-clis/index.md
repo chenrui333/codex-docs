@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/agent-friendly-clis
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Create a CLI Codex can use
+
+Give Codex a composable command for an API, log source, export, or team script.
+
+Difficulty **Intermediate**
+
+Time horizon **1h**
+
+Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts, use to download files, and remember through a companion skill.
+
+## Best for
+
+- Repeated work where Codex needs to search, read, download from, or safely write to the same service, export, local archive, or repo script.
+- Agent tools that need paged search, exact reads by ID, predictable JSON, downloaded files, local indexes, or draft-before-write commands.
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/agent-friendly-clis/?export=pdf)

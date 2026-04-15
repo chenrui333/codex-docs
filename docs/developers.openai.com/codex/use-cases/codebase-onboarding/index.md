@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/codebase-onboarding
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Understand large codebases
+
+Trace request flows, map unfamiliar modules, and find the right files fast.
+
+Difficulty **Easy**
+
+Time horizon **5m**
+
+Use Codex to map unfamiliar codebases, explain different modules and data flow, and point you to the next files worth reading before you edit.
+
+## Best for
+
+- New engineers onboarding to a new repo or service
+- Anyone trying to understand how a feature works before changing it
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/codebase-onboarding/?export=pdf)

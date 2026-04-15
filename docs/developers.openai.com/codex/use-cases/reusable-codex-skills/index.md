@@ -2,6 +2,31 @@
 
 Source: https://developers.openai.com/codex/use-cases/reusable-codex-skills
 
+Codex use cases
+
+![](/assets/OpenAI-black-wordmark.svg)
+
+![Codex](/assets/OAI_Codex-Lockup_Fallback_Black.svg)
+
+Codex use case
+
+# Save workflows as skills
+
+Create a skill Codex can keep on hand for work you repeat.
+
+Difficulty **Easy**
+
+Time horizon **5m**
+
+Turn a working Codex thread, review rules, test commands, release checklists, design conventions, writing examples, or repo-specific scripts into a skill Codex can use in future threads.
+
+## Best for
+
+- Codified workflows you want Codex to use again.
+- Teams that want a reusable skill instead of a long prompt pasted into every thread.
+
+# Contents
+
 [← All use cases](/codex/use-cases)
 
 Copy page   [Export as PDF](/codex/use-cases/reusable-codex-skills/?export=pdf)
