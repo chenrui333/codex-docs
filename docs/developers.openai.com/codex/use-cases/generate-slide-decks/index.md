@@ -77,6 +77,8 @@ Output:
 - A copy of the slide deck with the changes applied
 - notes on which slides were generated, rewritten, or left unchanged
 
+[Open in the Codex app](codex://new?prompt=Use+%24slides+with+%24imagegen+to+edit+this+slide+deck+in+the+following+way%3A+%0A-+If+present%2C+add+logo.png+in+the+bottom+right+corner+on+every+slide%0A-+On+slides+X%2C+Y+and+Z%2C+move+the+text+to+the+left+and+use+image+generation+to+generate+an+illustration+%28style%3A+abstract%2C+digital+art%29+on+the+right%0A-+Preserve+text+as+text+and+simple+charts+as+native+PowerPoint+charts+where+practical.%0A-+Add+these+slides%3A+%5Bdescribe+new+slides+here%5D%0A-+Use+the+existing+branding+on+new+slides+and+new+text+%28colors%2C+fonts%2C+layout%2C+etc.%29+%0A-+Render+the+updated+deck+to+slide+images%2C+review+the+output%2C+and+fix+layout+issues+before+delivery.%0A-+Run+overflow+and+font-substitution+checks+before+delivery%2C+especially+if+the+deck+is+dense.%0A-+Save+reusable+prompts+or+generation+notes+when+you+create+a+batch+of+related+images.%0A%0AOutput%3A%0A-+A+copy+of+the+slide+deck+with+the+changes+applied%0A-+notes+on+which+slides+were+generated%2C+rewritten%2C+or+left+unchanged "Open in the Codex app")
+
 Use $slides with $imagegen to edit this slide deck in the following way:
 - If present, add logo.png in the bottom right corner on every slide
 - On slides X, Y and Z, move the text to the left and use image generation to generate an illustration (style: abstract, digital art) on the right
@@ -178,17 +180,17 @@ Adjust the deck to make sure the following layout rules are followed:
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Kick off coding tasks from Slack
+### Turn feedback into actions
 
-Mention `@Codex` in Slack to start a task tied to the right repo and environment, then...
+Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-1.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Learn a new concept
+### Complete tasks from messages
 
-Use Codex to study material such as research papers or courses, split the reading across...
+Use Computer Use to read one Messages thread, complete the task, and draft a reply.
 
-Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
 

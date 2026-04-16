@@ -12,13 +12,13 @@ ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more
 
 ## Getting started
 
-The Codex app is available on macOS (Apple Silicon).
+The Codex app is available on macOS and Windows.
 
 1. Download and install the Codex app
 
-   Download the Codex app for Windows or macOS.
+   Download the Codex app for Windows or macOS. Choose the Intel build if you’re using an Intel-based Mac.
 
-   [Download for macOS](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
+   [Download for macOS (Apple Silicon)](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)[Download for macOS (Intel)](https://persistent.oaistatic.com/codex-app-prod/Codex-latest-x64.dmg)
 
    Need a different operating system?
 
@@ -55,23 +55,29 @@ If you used the Codex app, CLI, or IDE Extension before you’ll see past projec
 
 [### Multitask across projects
 
-Run multiple tasks in parallel and switch quickly between them.](/codex/app/features#multitask-across-projects)[### Built-in Git tools
+Run project threads side by side and switch between them quickly.](/codex/app/features#multitask-across-projects)[### Worktrees
 
-Review diffs, comment inline, stage or revert chunks, and commit without leaving the app.](/codex/app/features#built-in-git-tools)[### Worktrees for parallel tasks
+Keep parallel code changes isolated with built-in Git worktree support.](/codex/app/worktrees)[### Computer use
 
-Isolate changes of multiple Codex threads using built-in Git worktree support.](/codex/app/worktrees)[### Skills support
+Let Codex use macOS apps for GUI tasks, browser flows, and native app testing.](/codex/app/computer-use)[### Review and ship changes
 
-Give your Codex agent additional capabilities and reuse skills across App, CLI, and IDE Extension.](/codex/app/features#skills-support)[### Automations
+Inspect diffs, address PR feedback, stage files, commit, and push.](/codex/app/review)[### Terminal and actions
 
-Pair skills with automations to automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives runs if there’s nothing to report.](/codex/app/automations)[### Built-in terminal
+Run commands in each thread and launch repeatable project actions.](/codex/app/features#integrated-terminal)[### In-app browser
 
-Open a terminal per thread to test your changes, run dev servers, scripts, and custom commands.](/codex/app/features#integrated-terminal)[### Local environments
+Open unauthenticated local or public pages and comment on rendered output.](/codex/app/browser)[### Image generation
 
-Define worktree setup scripts and common project actions for easy access.](/codex/app/local-environments)[### Sync with the IDE extension
+Generate or edit images in a thread while you work on the surrounding code and assets.](/codex/app/features#image-generation)[### Automations
 
-Share Auto Context and active threads across app and IDE sessions.](/codex/app/features#sync-with-the-ide-extension)[### MCP support
+Schedule recurring tasks, or wake up the same thread for ongoing checks.](/codex/app/automations)[### Skills
 
-Connect your Codex agent to additional services using MCP.](/codex/app/features#mcp-support)
+Reuse instructions and workflows across the app, CLI, and IDE Extension.](/codex/app/features#skills-support)[### Sidebar and artifacts
+
+Follow plans, sources, task summaries, and generated file previews.](/codex/app/features#richer-outputs-and-artifacts)[### Plugins
+
+Connect apps, skills, and MCP servers to extend what Codex can do.](/codex/plugins)[### IDE Extension sync
+
+Share Auto Context and active threads across app and IDE sessions.](/codex/app/features#sync-with-the-ide-extension)
 
 ---
 

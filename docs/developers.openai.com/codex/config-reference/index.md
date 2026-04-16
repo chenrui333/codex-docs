@@ -52,6 +52,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` (under development; off by default). |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
+| `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
@@ -94,6 +95,16 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.startup_timeout_sec` | `number` | Override the default 10s startup timeout for an MCP server. |
 | `mcp_servers.<id>.tool_timeout_sec` | `number` | Override the default 60s per-tool timeout for an MCP server. |
 | `mcp_servers.<id>.url` | `string` | Endpoint for an MCP streamable HTTP server. |
+| `memories.consolidation_model` | `string` | Optional model override for global memory consolidation. |
+| `memories.extract_model` | `string` | Optional model override for per-thread memory extraction. |
+| `memories.generate_memories` | `boolean` | When `false`, newly created threads are not stored as memory-generation inputs. Defaults to `true`. |
+| `memories.max_raw_memories_for_consolidation` | `number` | Maximum recent raw memories retained for global consolidation. Defaults to `256` and is capped at `4096`. |
+| `memories.max_rollout_age_days` | `number` | Maximum age of threads considered for memory generation. Defaults to `30` and is clamped to `0`-`90`. |
+| `memories.max_rollouts_per_startup` | `number` | Maximum rollout candidates processed per startup pass. Defaults to `16` and is capped at `128`. |
+| `memories.max_unused_days` | `number` | Maximum days since a memory was last used before it becomes ineligible for consolidation. Defaults to `30` and is clamped to `0`-`365`. |
+| `memories.min_rollout_idle_hours` | `number` | Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`. |
+| `memories.no_memories_if_mcp_or_web_search` | `boolean` | When `true`, threads that use MCP tool calls or web search are kept out of memory generation. Defaults to `false`. |
+| `memories.use_memories` | `boolean` | When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`. |
 | `model` | `string` | Model to use (e.g., `gpt-5.4`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
 | `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile. |
@@ -705,6 +716,18 @@ Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by d
 
 Key
 
+`features.memories`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable [Memories](/codex/memories) (off by default).
+
+Key
+
 `features.multi_agent`
 
 Type / Values
@@ -1206,6 +1229,126 @@ Type / Values
 Details
 
 Endpoint for an MCP streamable HTTP server.
+
+Key
+
+`memories.consolidation_model`
+
+Type / Values
+
+`string`
+
+Details
+
+Optional model override for global memory consolidation.
+
+Key
+
+`memories.extract_model`
+
+Type / Values
+
+`string`
+
+Details
+
+Optional model override for per-thread memory extraction.
+
+Key
+
+`memories.generate_memories`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `false`, newly created threads are not stored as memory-generation inputs. Defaults to `true`.
+
+Key
+
+`memories.max_raw_memories_for_consolidation`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum recent raw memories retained for global consolidation. Defaults to `256` and is capped at `4096`.
+
+Key
+
+`memories.max_rollout_age_days`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum age of threads considered for memory generation. Defaults to `30` and is clamped to `0`-`90`.
+
+Key
+
+`memories.max_rollouts_per_startup`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum rollout candidates processed per startup pass. Defaults to `16` and is capped at `128`.
+
+Key
+
+`memories.max_unused_days`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum days since a memory was last used before it becomes ineligible for consolidation. Defaults to `30` and is clamped to `0`-`365`.
+
+Key
+
+`memories.min_rollout_idle_hours`
+
+Type / Values
+
+`number`
+
+Details
+
+Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`.
+
+Key
+
+`memories.no_memories_if_mcp_or_web_search`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, threads that use MCP tool calls or web search are kept out of memory generation. Defaults to `false`.
+
+Key
+
+`memories.use_memories`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`.
 
 Key
 

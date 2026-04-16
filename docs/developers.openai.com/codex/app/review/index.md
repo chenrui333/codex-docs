@@ -43,12 +43,12 @@ To leave an inline comment:
 2. Hover the line you want to comment on.
 3. Click the **+** button that appears.
 4. Write your feedback and submit it.
-5. Once you are done with all your feedback, send a message back to the thread.
+5. After you finish leaving feedback, send a message back to the thread.
 
-Because the comment is anchored to a line, Codex can usually respond more
-precisely than with a general instruction.
+Because comments are line-specific, Codex can respond more precisely than with a
+general instruction.
 
-Inline comments are treated as review guidance. After leaving comments, send a
+Codex treats inline comments as review guidance. After leaving comments, send a
 follow-up message that makes your intent explicit, for example “Address the
 inline comments and keep the scope minimal.”
 
@@ -59,12 +59,35 @@ inline in the review pane.
 
 ![Inline code review comments displayed in the review pane](/images/codex/app/inline-code-review-light.webp)
 
+## Pull request reviews
+
+When Codex has GitHub access for your repository and the current project is on
+the pull request branch, the Codex app can help you work through pull request
+feedback without leaving the app. The sidebar shows pull request context and
+feedback from reviewers, and the review pane shows comments alongside the diff
+so you can ask Codex to address issues in the same thread.
+
+Install the GitHub CLI (`gh`) and authenticate it with `gh auth login` so Codex
+can load pull request context, review comments, and changed files. If `gh` is
+missing or unauthenticated, pull request details may not appear in the sidebar
+or review pane.
+
+Use this flow when you want to keep the full fix loop in one place:
+
+1. Open the review pane on the pull request branch.
+2. Review the pull request context, comments, and changed files.
+3. Ask Codex to fix the specific comments you want handled.
+4. Inspect the resulting diff in the review pane.
+5. Stage, commit, and push the changes to the PR branch when you are ready.
+
+For GitHub-triggered reviews, see [Use Codex in GitHub](/codex/integrations/github).
+
 ## Staging and reverting files
 
 The review pane includes Git actions so you can shape the diff before you
 commit.
 
-You can stage, unstage, or revert changes at multiple levels:
+You can stage, unstage, or revert changes at these levels:
 
 - **Entire diff**: use the action buttons in the review header (for example,
   “Stage all” or “Revert all”)
@@ -74,7 +97,7 @@ You can stage, unstage, or revert changes at multiple levels:
 Use staging when you want to accept part of the work, and revert when you want
 to discard it.
 
-### Partially staged states
+### Staged and unstaged states
 
 Git can represent both staged and unstaged changes in the same file. When that
 happens, it can look like the pane is showing “the same file twice” across

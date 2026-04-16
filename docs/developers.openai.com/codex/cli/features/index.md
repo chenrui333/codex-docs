@@ -156,6 +156,16 @@ codex --image img1.png,img2.jpg "Summarize these diagrams"
 
 Codex accepts common formats such as PNG and JPEG. Use comma-separated filenames for two or more images, and combine them with text instructions to add context.
 
+## Image generation
+
+Ask Codex to generate or edit images directly in the CLI. This works well for assets such as icons, banners, illustrations, sprite sheets, and placeholder art. If you want Codex to transform or extend an existing asset, attach a reference image with your prompt.
+
+You can ask in natural language or explicitly invoke the image generation skill by including `$imagegen` in your prompt.
+
+Built-in image generation uses `gpt-image-1.5`, counts toward your general Codex usage limits, and uses included limits 3-5x faster on average than similar turns without image generation, depending on image quality and size. For details, see [Pricing](/codex/pricing#image-generation-usage-limits). For prompting tips and model details, see the [image generation guide](/api/docs/guides/image-generation).
+
+For larger batches of image generation, set `OPENAI_API_KEY` in your environment variables and ask Codex to generate images through the API so API pricing applies instead.
+
 ## Syntax highlighting and themes
 
 The TUI syntax-highlights fenced markdown code blocks and file diffs so code is easier to scan during reviews and debugging.

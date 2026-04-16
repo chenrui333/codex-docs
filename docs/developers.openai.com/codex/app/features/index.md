@@ -33,7 +33,8 @@ created across your different projects by clicking Skills in the sidebar.
 
 You can also combine skills with [automations](/codex/app/automations) to perform routine tasks
 such as evaluating errors in your telemetry and submitting fixes or creating reports on recent
-codebase changes.
+codebase changes. For ongoing work that should stay in one thread, use a
+[thread automation](/codex/app/automations#thread-automations).
 
 ![Automation creation form with schedule and prompt fields](/images/codex/app/create-automation-light.webp)
 
@@ -132,6 +133,51 @@ visible across your workflow.
 
 ![Pop-out window preview in light mode](/images/codex/app/popover-light.webp)
 
+## In-app browser
+
+Use the [in-app browser](/codex/app/browser) to preview, review, and comment on
+local development servers, file-backed previews, and public pages that don’t
+require sign-in while you iterate on a web app.
+
+The in-app browser doesn’t support authentication flows, signed-in pages, your
+regular browser profile, cookies, extensions, or existing tabs.
+
+Use browser comments to mark specific elements or areas on a page, then ask
+Codex to address that feedback.
+
+![Codex app showing a browser comment on a local web app preview](/images/codex/app/in-app-browser-light.webp)
+
+## Computer use
+
+[Computer use](/codex/app/computer-use) helps Codex operate a macOS app by
+seeing, clicking, and typing. This is useful for testing desktop apps, checking
+browser or simulator flows, working with data sources that aren’t available as
+plugins, changing app settings, and reproducing GUI-only bugs.
+
+Because computer use can affect app and system state outside your project
+workspace, keep tasks narrow and review permission prompts before continuing.
+
+The feature isn’t available in the European Economic Area, the United Kingdom, or
+Switzerland at launch.
+
+![Codex app asking for permission to use Calculator with computer use](/images/codex/app/computer-use-approval-light.webp)
+
+## Work with non-code artifacts
+
+When a task produces non-code artifacts, the sidebar can preview PDF files,
+spreadsheets, documents, and presentations. Give Codex the source data, expected
+file type, structure, and review criteria you care about.
+
+For spreadsheets and presentations, describe the sheets, columns, charts, slide
+sections, and checks that matter. Ask Codex to explain where it saved the output
+and how it checked the result.
+
+Use the task sidebar to follow what Codex is doing while a thread runs. It can
+surface the agent’s plan, sources, generated artifacts, and task summary so you
+can steer the work, inspect generated files, and decide what needs another pass.
+
+![Codex app showing a generated presentation in the artifact viewer](/images/codex/app/artifact-viewer-light.webp)
+
 ---
 
 ## Sync with the IDE extension
@@ -147,6 +193,18 @@ IDE Extension, and vice versa.
 
 If you’re unsure whether the app includes context, toggle it off and ask the
 same question again to compare results.
+
+## Thread automations
+
+Automations can also attach to a single thread. These thread automations are
+recurring wake-up calls that preserve the thread’s context so Codex can check
+on long-running work, poll a source for new information, or continue a follow-up
+loop. Use them for heartbeat-style automations that should keep returning to the
+same conversation on a schedule.
+
+Use a thread automation when the next run depends on the current conversation.
+Use a standalone or project [automation](/codex/app/automations) when you want
+Codex to start a fresh recurring task for one or more projects.
 
 ## Approvals and sandboxing
 
@@ -166,7 +224,7 @@ If your task requires work across more than one repository or directory, prefer
 opening separate projects or using worktrees rather than asking Codex to roam
 outside the project root.
 
-For a high-level overview, see [Sandboxing](/codex/concepts/sandboxing). For
+For a high-level overview, see [sandboxing](/codex/concepts/sandboxing). For
 configuration details, see the
 [agent approvals & security documentation](/codex/agent-approvals-security).
 
@@ -179,11 +237,21 @@ server or add a new server to your configuration.
 
 ## Web search
 
-Codex ships with a first-party web search tool. For local tasks in the Codex IDE Extension, Codex
+Codex ships with a first-party web search tool. For local tasks in the Codex app, Codex
 enables web search by default and serves results from a web search cache. If you configure your
 sandbox for [full access](/codex/agent-approvals-security), web search defaults to live results. See
 [Config basics](/codex/config-basic) to disable web search or switch to live results that fetch the
 most recent data.
+
+## Image generation
+
+Ask Codex to generate or edit images directly in a thread. This is useful for UI assets, banners, backgrounds, illustrations, sprite sheets, and placeholders you want to create alongside code. Add a reference image when you want Codex to transform or extend an existing asset.
+
+You can ask in natural language or explicitly invoke the image generation skill by including `$imagegen` in your prompt.
+
+Built-in image generation uses `gpt-image-1.5`, counts toward your general Codex usage limits, and uses included limits 3-5x faster on average than similar turns without image generation, depending on image quality and size. For details, see [Pricing](/codex/pricing#image-generation-usage-limits). For prompting tips and model details, see the [image generation guide](/api/docs/guides/image-generation).
+
+For larger batches of image generation, set `OPENAI_API_KEY` in your environment variables and ask Codex to generate images through the API so API pricing applies instead.
 
 ## Image input
 
@@ -192,6 +260,23 @@ while dropping an image to add the image to the context.
 
 You can also ask Codex to view images on your system. By giving Codex tools to take screenshots of
 the app you are working on, Codex can verify the work it’s doing.
+
+## Chats
+
+Chats are threads you can start when the task doesn’t need a specific project
+folder or Git repository. Use them for research, triage, planning,
+plugin-heavy workflows, and other conversations where Codex should use connected
+tools instead of editing a codebase.
+
+Chats use a Codex-managed `threads` directory under your Codex home as their
+working location. By default, that location is `~/.codex/threads`.
+
+## Memories
+
+[Memories](/codex/memories), where available, let Codex carry useful context
+from past tasks into future threads. They’re most useful for stable preferences,
+project conventions, recurring work patterns, and known pitfalls that would
+otherwise need to repeat.
 
 ## Notifications
 
@@ -210,6 +295,9 @@ from going to sleep by enabling the “Prevent sleep while running” toggle in 
 
 - [Settings](/codex/app/settings)
 - [Automations](/codex/app/automations)
+- [In-app browser](/codex/app/browser)
+- [Computer use](/codex/app/computer-use)
+- [Review pane](/codex/app/review)
 - [Local environments](/codex/app/local-environments)
 - [Worktrees](/codex/app/worktrees)
 

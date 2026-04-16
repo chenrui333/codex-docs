@@ -82,7 +82,9 @@ Use open files, selections, and `@file` references to get more relevant results 
 
 Use the default model or switch to other models to leverage their respective strengths.](/codex/ide/features#switch-between-models)[### Adjust reasoning effort
 
-Choose `low`, `medium`, or `high` to trade off speed and depth based on the task.](/codex/ide/features#adjust-reasoning-effort)[### Choose an approval mode
+Choose `low`, `medium`, or `high` to trade off speed and depth based on the task.](/codex/ide/features#adjust-reasoning-effort)[### Image generation
+
+Generate or edit images without leaving your editor, and use reference assets when you need iteration.](/codex/ide/features#image-generation)[### Choose an approval mode
 
 Switch between `Chat`, `Agent`, and `Agent (Full Access)` depending on how much autonomy you want Codex to have.](/codex/ide/features#choose-an-approval-mode)[### Delegate to the cloud
 

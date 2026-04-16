@@ -89,23 +89,23 @@ Codex applies guidance from the closest `AGENTS.md` to each changed file. You ca
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Deploy an app or website
+
+Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
+
+Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/images/codex/codex-wallpaper-1.webp)
 
 ### Bring your app to ChatGPT
 
 Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
 
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Coordinate new-hire onboarding
+### Complete tasks from messages
 
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+Use Computer Use to read one Messages thread, complete the task, and draft a reply.
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Create a CLI Codex can use
-
-Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
-
-Engineering  Code](/codex/use-cases/agent-friendly-clis)
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
 

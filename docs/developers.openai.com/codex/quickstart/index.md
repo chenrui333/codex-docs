@@ -8,13 +8,13 @@ You can also use Codex with API credits by signing in with an OpenAI API key.
 
 ## Setup
 
-The Codex app is available on macOS (Apple Silicon).
+The Codex app is available on macOS and Windows.
 
 1. Download and install the Codex app
 
-   Download the Codex app for Windows or macOS.
+   Download the Codex app for Windows or macOS. Choose the Intel build if you’re using an Intel-based Mac.
 
-   [Download for macOS](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
+   [Download for macOS (Apple Silicon)](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)[Download for macOS (Intel)](https://persistent.oaistatic.com/codex-app-prod/Codex-latest-x64.dmg)
 
    Need a different operating system?
 

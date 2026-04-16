@@ -67,6 +67,8 @@ Requirements:
 - Update prompts using the latest model prompt guidance.
 - Call out any prompt, tool, or response-shape changes we need to review manually.
 
+[Open in the Codex app](codex://new?prompt=Use+%24openai-docs+to+upgrade+this+OpenAI+integration+to+the+latest+recommended+model+and+API+features.%0A%0ASpecifically%2C+look+for+the+latest+model+and+prompt+guidance+for+this+specific+model.%0A%0ARequirements%3A%0A-+Start+by+inventorying+the+current+models%2C+endpoints%2C+and+tool+assumptions+in+the+repo.%0A-+Identify+the+smallest+migration+plan+that+gets+us+onto+the+latest+supported+path.%0A-+Preserve+behavior+unless+a+change+is+required+by+the+new+API+or+model.%0A-+Update+prompts+using+the+latest+model+prompt+guidance.+%0A-+Call+out+any+prompt%2C+tool%2C+or+response-shape+changes+we+need+to+review+manually. "Open in the Codex app")
+
 Use $openai-docs to upgrade this OpenAI integration to the latest recommended model and API features.
 Specifically, look for the latest model and prompt guidance for this specific model.
 Requirements:

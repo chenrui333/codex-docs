@@ -38,7 +38,7 @@ Slash commands let you control Codex without leaving the thread composer. Availa
 
 You can also explicitly invoke skills by typing `$` in the thread composer. See [Skills](/codex/skills).
 
-Enabled skills also appear in the slash command list (for example, `/imagegen`).
+Enabled skills also appear in the slash command list.
 
 ### Available slash commands
 
@@ -64,7 +64,7 @@ The Codex app registers the `codex://` URL scheme so links can open specific par
 
 For new-thread deeplinks:
 
-- `prompt` prefills the composer.
+- `prompt` sets the initial composer text.
 - `path` must be an absolute path to a local directory and, when valid, makes that directory the active workspace for the new thread.
 - `originUrl` tries to match one of your current workspace roots by Git remote URL. If both `path` and `originUrl` are present, Codex resolves `path` first.
 

@@ -66,6 +66,8 @@ Use these sources when creating the skill:
 - Scripts or commands to reuse: [test command], [preview command], [log-fetch script], [release command]
 - Good output: [paste the Slack update, changelog entry, review comment, ticket, or final answer you want future threads to match]
 
+[Open in the Codex app](codex://new?prompt=Use+%24skill-creator+to+create+a+Codex+skill+that+%5Bfixes+failing+Buildkite+checks+on+a+GitHub+PR+%2F+turns+PR+notes+into+inline+review+comments+%2F+writes+our+release+notes+from+merged+PRs%5D%0A%0AUse+these+sources+when+creating+the+skill%3A%0A-+Working+example%3A+%5Bsay+%22use+this+thread%2C%22+link+a+merged+PR%2C+or+paste+a+good+Codex+answer%5D%0A-+Source%3A+%5Bpaste+a+Slack+thread%2C+PR+review+link%2C+runbook+URL%2C+docs+URL%2C+or+ticket%5D%0A-+Repo%3A+%5Brepo+path%2C+if+this+skill+depends+on+one+repo%5D%0A-+Scripts+or+commands+to+reuse%3A+%5Btest+command%5D%2C+%5Bpreview+command%5D%2C+%5Blog-fetch+script%5D%2C+%5Brelease+command%5D%0A-+Good+output%3A+%5Bpaste+the+Slack+update%2C+changelog+entry%2C+review+comment%2C+ticket%2C+or+final+answer+you+want+future+threads+to+match%5D "Open in the Codex app")
+
 Use $skill-creator to create a Codex skill that [fixes failing Buildkite checks on a GitHub PR / turns PR notes into inline review comments / writes our release notes from merged PRs]
 Use these sources when creating the skill:
 - Working example: [say "use this thread," link a merged PR, or paste a good Codex answer]
@@ -146,11 +148,11 @@ Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/images/codex/codex
 
 Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-3.webp)
+Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-2.webp)
 
-### Iterate on difficult problems
+### Deploy an app or website
 
-Give Codex an evaluation system, such as scripts and reviewable artifacts, so it can keep...
+Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
 
-Engineering  Analysis](/codex/use-cases/iterate-on-difficult-problems)
+Front-end  Integrations](/codex/use-cases/deploy-app-or-website)
 

@@ -55,6 +55,8 @@ Include:
 - the top gotchas to watch for before making changes
 End with the files I should read next.
 
+[Open in the Codex app](codex://new?prompt=Explain+how+the+request+flows+through+%3Cname+of+the+system+area%3E+in+the+codebase.%0A%0AInclude%3A%0A-+which+modules+own+what%0A-+where+data+is+validated%0A-+the+top+gotchas+to+watch+for+before+making+changes%0A%0AEnd+with+the+files+I+should+read+next. "Open in the Codex app")
+
 Explain how the request flows through <name of the system area> in the codebase.
 Include:
 - which modules own what

@@ -45,6 +45,14 @@ add your own. If a server requires OAuth, the app starts the auth flow. These se
 also apply to the Codex CLI and IDE extension because the MCP configuration lives in
 `config.toml`. See the [Model Context Protocol docs](/codex/mcp) for details.
 
+## Computer Use
+
+On macOS, check your Computer Use settings to review desktop-app access and related
+preferences after setup. To revoke system-level access, update Screen Recording
+or Accessibility permissions in macOS Privacy & Security settings. The feature
+isn’t available in the European Economic Area, the United Kingdom, or Switzerland
+at launch.
+
 ## Personalization
 
 Choose **Friendly**, **Pragmatic**, or **None** as your default personality. Use
@@ -52,6 +60,17 @@ Choose **Friendly**, **Pragmatic**, or **None** as your default personality. Use
 
 You can also add your own custom instructions. Editing custom instructions updates your
 [personal instructions in `AGENTS.md`](/codex/guides/agents-md).
+
+## Context-aware suggestions
+
+Use context-aware suggestions to surface follow-ups and tasks you may want to resume when you
+start or return to Codex.
+
+## Memories
+
+Enable Memories, where available, to let Codex carry useful context from past
+threads into future work. See [Memories](/codex/memories) for setup, storage,
+and per-thread controls.
 
 ## Archived threads
 

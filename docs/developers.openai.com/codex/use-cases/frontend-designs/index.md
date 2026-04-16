@@ -70,6 +70,8 @@ Validation:
 - Compare the finished UI against the provided screenshots for both look and behavior.
 - Use $playwright-interactive to check that the UI matches the references and iterate as needed until it does.
 
+[Open in the Codex app](codex://new?prompt=Implement+this+UI+in+the+current+project+using+the+screenshots+and+notes+I+provide+as+the+source+of+truth.%0A%0ARequirements%3A%0A-+Reuse+the+existing+design+system+components+and+tokens.%0A-+Translate+the+screenshots+into+this+repo%27s+utilities+and+component+patterns+instead+of+inventing+a+parallel+system.%0A-+Match+spacing%2C+layout%2C+hierarchy%2C+and+responsive+behavior+closely.%0A-+Respect+the+repo%27s+routing%2C+state%2C+and+data-fetch+patterns.%0A-+Make+the+page+responsive+on+desktop+and+mobile.%0A-+If+any+screenshot+detail+is+ambiguous%2C+choose+the+simplest+implementation+that+still+matches+the+overall+direction+and+note+the+assumption+briefly.%0A%0AValidation%3A%0A-+Compare+the+finished+UI+against+the+provided+screenshots+for+both+look+and+behavior.%0A-+Use+%24playwright-interactive+to+check+that+the+UI+matches+the+references+and+iterate+as+needed+until+it+does. "Open in the Codex app")
+
 Implement this UI in the current project using the screenshots and notes I provide as the source of truth.
 Requirements:
 - Reuse the existing design system components and tokens.
@@ -148,9 +150,9 @@ Use Codex to update existing presentations or build new decks by editing slides 
 
 Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Add iOS app intents
+### Make granular UI changes
 
-Use Codex and the Build iOS Apps plugin to identify the actions and entities your app should...
+Use Codex to make one small UI adjustment at a time in an existing app, verify it in the...
 
-iOS  Code](/codex/use-cases/ios-app-intents)
+Front-end  Design](/codex/use-cases/make-granular-ui-changes)
 

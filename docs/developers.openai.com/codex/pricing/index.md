@@ -45,7 +45,7 @@ $20/month
 
 ### Pro
 
-Choose 10x or 20x higher rate limits than Plus.
+Choose 5x or 20x higher rate limits than Plus.
 
 From
 
@@ -55,14 +55,15 @@ $100/month
 
 Everything in Plus and:
 
-- Priority request processing
+**Double your normal Codex usage $100/month tier until May 31, 2026.**
+
 - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
   for day-to-day coding tasks
-- 10x or 20x higher rate limits than Plus\*
+- 10x or 20x more Codex usage than Plus\*
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Pro plan
 
-\*Current usage includes an additional boost ending May 31, 2026. Pro $100 is currently 10x Plus. Pro $200 is currently 20x Plus (equivalent to the 2x promo available since February 2026).
+[\*Learn more about limits and promos on both tiers.](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans)
 
 ### API Key
 
@@ -157,13 +158,13 @@ Pro 5x
 
 |  | Local Messages[\*](#shared-limits-pro) / 5h | Cloud Tasks[\*](#shared-limits-pro) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
-| GPT-5.4 | 200-1000 | Not available | Not available |
-| GPT-5.4-mini | 600-3500 | Not available | Not available |
-| GPT-5.3-Codex | 300-1500 | 100-600 | 200-500 |
+| GPT-5.4 | 100-500 | Not available | Not available |
+| GPT-5.4-mini | 300-1750 | Not available | Not available |
+| GPT-5.3-Codex | 150-750 | 50-300 | 100-250 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| Pro $100 currently runs at 10x Plus limits through May 31, 2026. | | | |
+| Pro $100 gets 2x the usage shown above until May 31, 2026. | | | |
 | For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
@@ -177,7 +178,7 @@ Pro 20x
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| Pro $200 remains at 20x Plus limits. This is equivalent to the 2x promo available since February 2026. | | | |
+| Pro $200 gets a boost on the usage shown above until May 31, 2026. [Learn more](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans). | | | |
 | For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
@@ -208,8 +209,7 @@ API Key
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 Speed configurations increase credit consumption for all applicable models, so
-they also use included limits faster. Details can be found [here](/codex/speed).
-GPT-5.3-Codex-Spark is in research preview for ChatGPT Pro users only, and isn’t
+they also use included limits faster. Details can be found [here](/codex/speed). Image generations also use included limits ~3-5x faster on average, depending on image quality and size. GPT-5.3-Codex-Spark is in research preview for ChatGPT Pro users only, and isn’t
 available in the API at launch. Because it runs on specialized low-latency
 hardware, usage is governed by a separate usage limit that may adjust based on
 demand.
@@ -228,6 +228,26 @@ model to make your usage limits last longer.
 
 All users may also run extra local tasks using an API key, with usage charged at
 [standard API rates](https://platform.openai.com/docs/pricing).
+
+### How does image generation count toward usage limits?
+
+Image generation counts toward the same general Codex usage limits as local
+messages and cloud tasks. Image generations use included limits 3-5x faster on
+average than similar turns without image generation, depending on
+image quality and size. After you reach your included limits, image generation
+also draws from [credits](#credits-overview).
+
+Image generation isn’t available on the Free plan. When you use Codex with an
+API key, API pricing applies to image generation instead of included ChatGPT
+usage limits.
+
+### What is the current Codex usage promo on Pro?
+
+We’re currently offering extra Codex usage on both Pro tiers.
+
+For **Pro $100**, to celebrate the launch, you’ll get **2x Codex usage through May 31, 2026**. That means 10x usage instead of the standard 5x.
+
+**For Pro $200**, as a thank you to our most loyal customers, we’re carrying forward the benefits of our earlier 2x promo, which means Pro $200 now includes 20x Plus on an ongoing basis. In addition, we’re continuing to honor the higher 5-hour Codex limits for a limited time, so those remain at 25x Plus through May 31, 2026 instead of the standard 20x Plus.
 
 ### Where can I see my current usage limits?
 
@@ -248,7 +268,7 @@ input tokens and output tokens your workspace consumes. Read about tokens
 [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
 This format replaces average per-message estimates for your plan with a direct
-mapping between token usage and credits. This is most useful when you want a
+mapping between token usage and credits. It’s most useful when you want a
 clearer view of how input, cached input, and output affect credit consumption.
 
 Under this model, actual credit usage depends on the mix of input, cached input,
@@ -271,6 +291,8 @@ Business & New Enterprise Customers
 | GPT-5.3-Codex | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.2 | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.3-Codex-Spark | research preview | | |
+| GPT-Image-1.5 (image) | 200 credits | 50 credits | 800 credits |
+| GPT-Image-1.5 (text) | 125 credits | 31.25 credits | 250 credits |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | Fast mode consumes 2x as many credits. | | | |
@@ -283,6 +305,8 @@ Plus, Pro, Existing Enterprise/Edu and New Edu
 | Local Tasks | 1 message | ~7 credits | ~5 credits | ~2 credits |
 | Cloud Tasks | 1 message | ~34 credits | ~25 credits | Not available |
 | Code Review | 1 pull request | ~34 credits | ~25 credits | Not available |
+| Image generation | 1 image (1024px × 1024px) | ~5-6 credits | | |
+| Image generation | 1 image (1024px × 1536px) | ~7-8 credits | | |
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Fast mode consumes 2x as many credits. | | | | |

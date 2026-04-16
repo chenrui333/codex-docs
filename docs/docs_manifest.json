@@ -12,22 +12,32 @@
       "source_url": "https://developers.openai.com/codex/app-server"
     },
     "developers.openai.com/codex/app/automations/index.md": {
-      "sha256": "aac310287d685f6eda9a53f94f503264a97c9e5867de858e20f17b80ac5d1d43",
+      "sha256": "d615a20188d5fde4e2e4fe06b7f7540732c4efe90c040b2832e05b803bd035e8",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/automations"
     },
+    "developers.openai.com/codex/app/browser/index.md": {
+      "sha256": "216985d90bf29770a4d32e27aed882c0375c5659e6c04b56b46c8aadb59f3543",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/browser"
+    },
     "developers.openai.com/codex/app/commands/index.md": {
-      "sha256": "771e2c6b5f505a543b4b30c6883264fdc8b9677521d3679f2810a7d864c929f1",
+      "sha256": "705cfd2386fb6bb6b2afebc183067cf06aeedec9cef38fedfc20f98b7b16080d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/commands"
     },
+    "developers.openai.com/codex/app/computer-use/index.md": {
+      "sha256": "dc8244431ce773171d34566e90c1378205a07581c0ee07c7034876faed23a836",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/computer-use"
+    },
     "developers.openai.com/codex/app/features/index.md": {
-      "sha256": "eb722aadd3a74d845284bb569f2a8efd28cc9b4d4995608bd6d321981b6e8f52",
+      "sha256": "363f7ea1a1444ff15ef7e1c992074d458fbfae17a503fa2150db2cd774a7a29b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/features"
     },
     "developers.openai.com/codex/app/index.md": {
-      "sha256": "b1f87bbda9d6cbe0d207d0a876ff8a93427c69b9b89a4076d70ae894de8571e0",
+      "sha256": "d0155315d33007eba2c49e051135e5dfbc3dee3fdfd892849d68caa27e78d66e",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app"
     },
@@ -37,12 +47,12 @@
       "source_url": "https://developers.openai.com/codex/app/local-environments"
     },
     "developers.openai.com/codex/app/review/index.md": {
-      "sha256": "395beae004b883ddce3d0ffd1265d6ec28defd9e9f396b2773e6d34cdb408f8b",
+      "sha256": "237b528f135e8380d38bc832ced95a8328a4978af110f673fa7cbe48500246f7",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/review"
     },
     "developers.openai.com/codex/app/settings/index.md": {
-      "sha256": "ff21526b32e5f9a7b38da277f19018984e93ae0e4ac828f6999047ad3b9c5b93",
+      "sha256": "5a622a6704d6521b420c01bef671163fc0659e5c7b7fa666cdd4172450351d26",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/settings"
     },
@@ -77,12 +87,12 @@
       "source_url": "https://developers.openai.com/codex/changelog"
     },
     "developers.openai.com/codex/cli/features/index.md": {
-      "sha256": "d278981152d980c133d87d3df61522106851d1c4aedc099781f7a45ee4f013a4",
+      "sha256": "013c27fcc557924bc7c90567cf5a3acb17325c67e2e2901f62650148e547826a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
     "developers.openai.com/codex/cli/index.md": {
-      "sha256": "af7c8bcf67edcdeb9b51c4d66c9ff3c1a798622c93e10d6cd6fa7a3748a3cd46",
+      "sha256": "9a752929af38e722ea3bbc3d79f5bab99dc212b3020f64c35a20582f2f9b0b60",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli"
     },
@@ -117,7 +127,7 @@
       "source_url": "https://developers.openai.com/codex/codex-for-oss-terms"
     },
     "developers.openai.com/codex/concepts/customization/index.md": {
-      "sha256": "e07185e2c8598fd00ef9e2f261f7b67fd637e6dedc95c7070a59126ef9208d35",
+      "sha256": "d8096ed22fc500cb8ba506dd49f3dca31c8e3a4e04d2f6a85f514d1784995962",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/customization"
     },
@@ -142,12 +152,12 @@
       "source_url": "https://developers.openai.com/codex/config-advanced"
     },
     "developers.openai.com/codex/config-basic/index.md": {
-      "sha256": "16fcc88a61ee454fecef9ebb05ab41f43b983bdde5712f5dd9ca0d5e78245590",
+      "sha256": "08eff11bc86557f7ad0e06e4902bba9ef5b5f29ee02de1c461880c3c540634ec",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "99ddf34424844ee01455014ffb17761f8313692279fd36ad7e25a1aeaaf3ec62",
+      "sha256": "4e4987b38e68d98d274e86b850c4757b3fbfe4c9180558227cae8e5fc754446c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
@@ -212,12 +222,12 @@
       "source_url": "https://developers.openai.com/codex/ide/commands"
     },
     "developers.openai.com/codex/ide/features/index.md": {
-      "sha256": "032d39c1a2bd25e61891d76b7a5b4be4e2de2fccbb06dba83c9487b04e762264",
+      "sha256": "4db9d91e03b34fb2f875c46fe41b25e53f703fa47aad2b8b2b1bc8c3c228b092",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide/features"
     },
     "developers.openai.com/codex/ide/index.md": {
-      "sha256": "c26ed84b63f09dafcdec19f6830f74175cb80600b504947f7fd94f3d782138c9",
+      "sha256": "404158a2a1f25c453308f2fa8f91854800bfd2d5c96259f0699229570a9636bd",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide"
     },
@@ -261,6 +271,11 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/mcp"
     },
+    "developers.openai.com/codex/memories/index.md": {
+      "sha256": "051fd2d7364a741e0693e71a9c61bdc57d8b21ed720d1be83d6f850242d97408",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/memories"
+    },
     "developers.openai.com/codex/models/index.md": {
       "sha256": "d8292926eb12f54860b4ec241bb07fafff972fbf7b13bf531f1eae320b659c4a",
       "source_type": "developers",
@@ -277,7 +292,7 @@
       "source_url": "https://developers.openai.com/codex/open-source"
     },
     "developers.openai.com/codex/plugins/build/index.md": {
-      "sha256": "487b54964aa17c99caf1e7ec6d8a2747e8aee709177680d8480af67cdb7a9d4c",
+      "sha256": "75f6dc8f7f11d251a0e639e30630df983a8b8dc2e6cedd110572b05afd6f26f7",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/plugins/build"
     },
@@ -287,19 +302,24 @@
       "source_url": "https://developers.openai.com/codex/plugins"
     },
     "developers.openai.com/codex/pricing/index.md": {
-      "sha256": "ef832c9a5e74f2b1999ad3e80283c4fb55d2a100a9adb3cb50bbb87bf9b91573",
+      "sha256": "1c6720727f3fdb5594c7b776e40ef5cdf05ec7fe4bef182cf5ac8879b1a039e3",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
     "developers.openai.com/codex/prompting/index.md": {
-      "sha256": "68cc53ce7932ce5c55273e5678d3525873cf6a44e19f107db94b61452a54d8d2",
+      "sha256": "3791379616f5036ed299904494bd435173d5fe2f881a04ebbe3f027ac35e9389",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/prompting"
     },
     "developers.openai.com/codex/quickstart/index.md": {
-      "sha256": "2ca8a2d2ef3db8696cc207acde2580d0009607d853762f9b66790d9e264dc521",
+      "sha256": "c7bbb4b53892a56fb1499ec1b9c9e3f20676eed4a1886f0952ab1e9b4049b336",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/quickstart"
+    },
+    "developers.openai.com/codex/remote-connections/index.md": {
+      "sha256": "36c6135eb2725c05fe11e4ebf2657475d5343186bbeb87cbe5b52b52275394e3",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/remote-connections"
     },
     "developers.openai.com/codex/rules/index.md": {
       "sha256": "ad19345d71dcbc35283a5234265cb10fede0eb0f16882bcf0c590b2f186284d6",
@@ -322,7 +342,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "3ea02475402f19e104c7540fa5fbc4ecadff0036f1894e5fa1cf252c23e0c428",
+      "sha256": "aa4a0ea986cfa0bcbee038fb953e6fbde556bfa3fff21bc50cf2d2433f5aa868",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -346,13 +366,43 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/subagents"
     },
+    "developers.openai.com/codex/tracks/analysis-and-collaboration/index.md": {
+      "sha256": "84d02e0a99333bca0c6c0673fea8da0ecfc54ff0e1a6a882b067caf79589694b",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/tracks/analysis-and-collaboration"
+    },
+    "developers.openai.com/codex/tracks/game-development/index.md": {
+      "sha256": "dc0bb8397bc74d8930c9f2e5060cc5f08a8528170a0da4046148a008b1b6406f",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/tracks/game-development"
+    },
+    "developers.openai.com/codex/tracks/native-development/index.md": {
+      "sha256": "d6deeb827929aec53adfd58979738ae9cefeb271e8bea098dde11917860bc515",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/tracks/native-development"
+    },
+    "developers.openai.com/codex/tracks/production-systems/index.md": {
+      "sha256": "b59b65ff5fc12a2020f8a0a9b97fa645ae247a5163d8d1d1214bf76c4f87ad3e",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/tracks/production-systems"
+    },
+    "developers.openai.com/codex/tracks/web-development/index.md": {
+      "sha256": "c113d29ab7316b9cb85007fcc0a9133f247298c0b75971a35d0cd0f8f8ec308d",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/tracks/web-development"
+    },
     "developers.openai.com/codex/use-cases/agent-friendly-clis/index.md": {
-      "sha256": "e51de0c304ab513c5dd56d73c40972fc46155bbf33353998984ed0f5555f0d82",
+      "sha256": "2077fc82d8bdbf8efab1ad8f0bd102029b663bc03464e0a1cd06c6e0617e4db2",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/agent-friendly-clis"
     },
+    "developers.openai.com/codex/use-cases/analyze-data-export/index.md": {
+      "sha256": "fcdcc5af79d491d85ccc4a781b5c6ab3b11aee8954a1c094116aee124efcb8c1",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/analyze-data-export"
+    },
     "developers.openai.com/codex/use-cases/api-integration-migrations/index.md": {
-      "sha256": "9394a50bcbed528985a9661c94ad60575c6fc194a7b238db931aaccec17a5b20",
+      "sha256": "6ebeeb2a02da47a8495ad79aece067483fa46dbb680d7be3291061068178d62b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/api-integration-migrations"
     },
@@ -371,15 +421,70 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/chatgpt-apps"
     },
+    "developers.openai.com/codex/use-cases/clean-messy-data/index.md": {
+      "sha256": "f7316cbe98c4bdadd9c3c45e0f8ccc343af5b79ee56a7449c117e7f2b3d102fc",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/clean-messy-data"
+    },
+    "developers.openai.com/codex/use-cases/code-migrations/index.md": {
+      "sha256": "9bc54fca1963a13df32bdfe458f2204cbb322284d9d6442a7946cfa7a4a55e29",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/code-migrations"
+    },
     "developers.openai.com/codex/use-cases/codebase-onboarding/index.md": {
-      "sha256": "c0fec0fe3c82ac1cbcab3e033b48338285fb846b769e0cce85237e79708647eb",
+      "sha256": "74b52acaef1da7bdbfa8204830f7b082ffaf6ab60cf9834de117b522c7aeaf02",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/codebase-onboarding"
+    },
+    "developers.openai.com/codex/use-cases/collections/analysis-and-collaboration/index.md": {
+      "sha256": "224598c17e23ab90c457fcad87c3645f8e382f1d67bbca66360f1f5dfbd4e894",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections/analysis-and-collaboration"
+    },
+    "developers.openai.com/codex/use-cases/collections/game-development/index.md": {
+      "sha256": "ab9e92966016f4454fee6bf7e5d3c886f258c456a25cac414d200ed7d1f05651",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections/game-development"
+    },
+    "developers.openai.com/codex/use-cases/collections/index.md": {
+      "sha256": "e0050f17c790dcb5a9672c1a8a4ea1ab7c17fbf04124a84c919aa45d50ac1729",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections"
+    },
+    "developers.openai.com/codex/use-cases/collections/native-development/index.md": {
+      "sha256": "33390d033413bfa612f71d91e69f7231019020289c4b2dce21a1f584d6d32022",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections/native-development"
+    },
+    "developers.openai.com/codex/use-cases/collections/production-systems/index.md": {
+      "sha256": "349f5d943794f84b8dc779f54fe2489304b84e14072031f5f289d9fe1a83d60d",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections/production-systems"
+    },
+    "developers.openai.com/codex/use-cases/collections/web-development/index.md": {
+      "sha256": "17cbb845ce89e6ec4a5ffbbaed6c73f9d41744b102e5d3b67f55f25e52c2aec9",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections/web-development"
+    },
+    "developers.openai.com/codex/use-cases/complete-tasks-from-messages/index.md": {
+      "sha256": "cf6e5df88b473ea306db57d1913e7ae3dd6242322c5f0689c74e5f1baec5c9bb",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/complete-tasks-from-messages"
     },
     "developers.openai.com/codex/use-cases/datasets-and-reports/index.md": {
       "sha256": "33de7b1bf59d55722b56d9cc6639823ef45ec16e751e698eeb014431b68e219c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/datasets-and-reports"
+    },
+    "developers.openai.com/codex/use-cases/deploy-app-or-website/index.md": {
+      "sha256": "7377af36421af50b7f421c215b6e50e3abd61a9dbf7e557e37453d79140a0ef8",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/deploy-app-or-website"
+    },
+    "developers.openai.com/codex/use-cases/feedback-synthesis/index.md": {
+      "sha256": "952c9da9417477f38fbffbbdca37bd037adbf0ba12a6439baf2fd1dd8dfe5cec",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/feedback-synthesis"
     },
     "developers.openai.com/codex/use-cases/figma-designs-to-code/index.md": {
       "sha256": "388043e62c80c09524a8da9c9f32fa25876a539ac002c82e3c96f6a641d1c6e1",
@@ -387,22 +492,22 @@
       "source_url": "https://developers.openai.com/codex/use-cases/figma-designs-to-code"
     },
     "developers.openai.com/codex/use-cases/frontend-designs/index.md": {
-      "sha256": "a04779ebb2691fe0fb205f360775f105dae66e55ed01a355a5049dbdbf8912e4",
+      "sha256": "d94dd4e5c79b138fc1c6ca66212746b41315b14db5fe9adac16a353be47368ec",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/frontend-designs"
     },
     "developers.openai.com/codex/use-cases/generate-slide-decks/index.md": {
-      "sha256": "c5fa89b6b106c97e83e5ada98364db89fc90f9f00437f708d6e2d5b60335b210",
+      "sha256": "060e82e8f8fd7bd2220f0a3ee51da74d133095fcaeb9f3c8db561fd868e0d55a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/generate-slide-decks"
     },
     "developers.openai.com/codex/use-cases/github-code-reviews/index.md": {
-      "sha256": "fcc025ea6ae63b73e3b6db80dd69ca2b10b30887b9d7eb1826e7c820bcd7254d",
+      "sha256": "e9cd9138fb6dc39a62db7c5fd8c5a43ba0daad581181b21e242e1d72e6a7ef97",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/github-code-reviews"
     },
     "developers.openai.com/codex/use-cases/index.md": {
-      "sha256": "ec267c747dfe3c61975ef3e9c6fad57dc03d5b4068209d2337c6f025620594cf",
+      "sha256": "f243e643b16c5ad837309540334e8c67b90f47ab1e51677608d2322c24abfe04",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases"
     },
@@ -427,12 +532,12 @@
       "source_url": "https://developers.openai.com/codex/use-cases/ios-swiftui-view-refactor"
     },
     "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md": {
-      "sha256": "922f2dea4dba75354d1e683efac7d8d1d522fefb5bdede68a6d722c55c945061",
+      "sha256": "396fb2338efe9a919985e8a166ffc78dbf631e0a621fcb9f493a217728341b69",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems"
     },
     "developers.openai.com/codex/use-cases/learn-a-new-concept/index.md": {
-      "sha256": "09f4aaf09564997433f255c38d785536f12f7f1bc34d94af5ffb4584ca53b6b3",
+      "sha256": "13b06c2b331de1037fac2e614e75ee899e11e7fdca1aebc8a7924463b8c6c312",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/learn-a-new-concept"
     },
@@ -446,6 +551,16 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/macos-telemetry-logs"
     },
+    "developers.openai.com/codex/use-cases/make-granular-ui-changes/index.md": {
+      "sha256": "70f30e090f3b7c7c1c2f59b148f8a1dd2d437611fb473ba39429a573aa992232",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/make-granular-ui-changes"
+    },
+    "developers.openai.com/codex/use-cases/manage-your-inbox/index.md": {
+      "sha256": "0e59302cbe6d8cb81bebd11e4ab5d3e2e9c379970b4ec97bce8f539d2b441c86",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/manage-your-inbox"
+    },
     "developers.openai.com/codex/use-cases/native-ios-apps/index.md": {
       "sha256": "a8549912eae21b02221746d8441f9732b1bd1c309b130a6a30611453831342b3",
       "source_type": "developers",
@@ -457,19 +572,44 @@
       "source_url": "https://developers.openai.com/codex/use-cases/native-macos-apps"
     },
     "developers.openai.com/codex/use-cases/new-hire-onboarding/index.md": {
-      "sha256": "be6fee163054adab3de8618fb916b04b661c0e3200e295aa886ac0ffa86a7da2",
+      "sha256": "977943d38137e0b50a889c1a02b6aa652cffc70e71ccd931d66db09565705377",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/new-hire-onboarding"
     },
+    "developers.openai.com/codex/use-cases/proactive-teammate/index.md": {
+      "sha256": "900ed1ecf90311c02b13543560637ec9d54c12238ac3556dab290fa15c9a8b58",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/proactive-teammate"
+    },
+    "developers.openai.com/codex/use-cases/qa-your-app-with-computer-use/index.md": {
+      "sha256": "2583b68ddc7300e9b03bfc9696bbcb81e5b99f9da846aeda38196f283bb42dc5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use"
+    },
+    "developers.openai.com/codex/use-cases/refactor-your-codebase/index.md": {
+      "sha256": "a88b66a8a5245a763b46b4ea3f2702fda6d125c75516607ab3097d3ece96a6f7",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/refactor-your-codebase"
+    },
     "developers.openai.com/codex/use-cases/reusable-codex-skills/index.md": {
-      "sha256": "787b032460a7cfa03524e064df213ab14d9d257d40206f382d0fb4b2b3f102b3",
+      "sha256": "e21ed64d6468793e017e8ef4ba792b4214a08817322d3a1e5b46b41aa68ba091",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/reusable-codex-skills"
     },
     "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md": {
-      "sha256": "a68a23837d2179a8060bf12a9f4da84bd551c6a4cf45d16ff8bde8b55d43d247",
+      "sha256": "f8763bf9a9d8eb0975feebbf35d0a70e1627062b3310b39dce8046bb03314e29",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/slack-coding-tasks"
+    },
+    "developers.openai.com/codex/use-cases/tracks/index.md": {
+      "sha256": "c717d471708ccfc4005e17a3832d2a9c76ba54144712cf7f16d4a3e0a6fe1428",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/tracks"
+    },
+    "developers.openai.com/codex/use-cases/use-your-computer-with-codex/index.md": {
+      "sha256": "360d6fa74c47b1a517bac81e10f84279b8ff9536e2c6ada2eada37ba9e7ad25b",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/use-your-computer-with-codex"
     },
     "developers.openai.com/codex/videos/index.md": {
       "sha256": "35304d60aa641658b8934691f8240724db7993b03b8e59f4abee8d9f20a2bb5a",
@@ -617,7 +757,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/authentication.md"
     },
     "github.openai.com/openai/codex/docs/config.md": {
-      "sha256": "00083a28c1710c9dedbd9a989261d9d495b965afb34f198cfe3e49720950504e",
+      "sha256": "b49c2cf8b4e238557cb3e20fac1b3d93366a147a8c2862b99c8f0652147bd92c",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/config.md"
     },

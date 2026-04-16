@@ -152,6 +152,7 @@ shell_snapshot = true           # Speed up repeated commands
 | `apps` | false | Experimental | Enable ChatGPT Apps/connectors support |
 | `codex_hooks` | false | Under development | Enable lifecycle hooks from `hooks.json`. See [Hooks](/codex/hooks). |
 | `fast_mode` | true | Stable | Enable Fast mode selection and the `service_tier = "fast"` path |
+| `memories` | false | Stable | Enable [Memories](/codex/memories) |
 | `multi_agent` | true | Stable | Enable subagent collaboration tools |
 | `personality` | true | Stable | Enable personality selection controls |
 | `shell_snapshot` | true | Stable | Snapshot your shell environment to speed up repeated commands |

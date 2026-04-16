@@ -16,7 +16,7 @@ Explain how the transform module works and how other modules use it.
 Add a new command-line option `--json` that outputs JSON.
 ```
 
-When you submit a prompt, Codex works in a loop: it calls the model and then performs any actions (file reads, file edits, tool calls, and so on) indicated by the model output. This process ends when the task is complete or you cancel it.
+When you submit a prompt, Codex works in a loop: it calls the model and then performs the actions indicated by the model output, such as file reads, file edits, and tool calls. This process ends when the task is complete or you cancel it.
 
 As with ChatGPT, Codex is only as effective as the instructions you give it. Here are some tips we find helpful when prompting Codex:
 
@@ -35,6 +35,14 @@ Threads can run either locally or in the cloud:
 
 - **Local threads** run on your machine. Codex can read and edit your files and run commands, so you can see what changes and use your existing tools. To reduce the risk of unwanted changes outside your workspace, local threads run in a [sandbox](/codex/agent-approvals-security).
 - **Cloud threads** run in an isolated [environment](/codex/cloud/environments). Codex clones your repository and checks out the branch it’s working on. Cloud threads are useful when you want to run work in parallel or delegate tasks from another device. To use cloud threads with your repo, push your code to GitHub first. You can also [delegate tasks from your local machine](/codex/ide/cloud-tasks), which includes your current working state.
+
+In the Codex app, you can also start a chat without choosing a project. Chats
+aren’t tied to a saved repository or project folder. Use them for research,
+planning, connected-tool workflows, or other work where Codex shouldn’t start
+from a codebase. Chats use a Codex-managed `threads` directory under your Codex
+home as their working location. By default, that location is `~/.codex/threads`.
+To change the base location for this state, set `CODEX_HOME`; see
+[Config and state locations](/codex/config-advanced#config-and-state-locations).
 
 ## Context
 

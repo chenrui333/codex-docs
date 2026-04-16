@@ -69,7 +69,13 @@ You can learn more about how to use Codex in Slack in the [dedicated guide](/cod
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/images/codex/codex-wallpaper-1.webp)
+
+### Complete tasks from messages
+
+Use Computer Use to read one Messages thread, complete the task, and draft a reply.
+
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Coordinate new-hire onboarding
 
@@ -81,11 +87,5 @@ Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/code
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Analyze datasets and ship reports
-
-Use Codex to clean data, join sources, explore hypotheses, model results, and package the...
-
-Data  Analysis](/codex/use-cases/datasets-and-reports)
+Data  Integrations](/codex/use-cases/generate-slide-decks)
 

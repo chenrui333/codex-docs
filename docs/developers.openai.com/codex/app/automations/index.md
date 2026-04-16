@@ -4,8 +4,8 @@ Source: https://developers.openai.com/codex/app/automations
 
 Automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives the task if there’s nothing to report. You can combine automations with [skills](/codex/skills) for more complex tasks.
 
-Automations run in the background in the Codex app. The app needs to be
-running, and the selected project needs to be available on disk.
+For project-scoped automations, the app needs to be running, and the selected
+project needs to be available on disk.
 
 In Git repositories, you can choose whether an automation runs in your local
 project or on a new [worktree](/codex/app/worktrees). Both options run in the
@@ -21,23 +21,77 @@ choose them explicitly if you want more control over how the automation runs.
 
 ## Managing tasks
 
-All automations and their runs can be found in the automations pane inside your Codex app sidebar.
+Find all automations and their runs in the automations pane inside your Codex app sidebar.
 
 The “Triage” section acts as your inbox. Automation runs with findings show up there, and you can filter your inbox to show all automation runs or only unread ones.
+
+Standalone automations start fresh runs on a schedule and report results in
+Triage. Use them when each run should be independent or when one automation
+should run across one or more projects. If you need a custom cadence, choose a
+custom schedule and enter cron syntax.
 
 For Git repositories, each automation can run either in your local project or
 on a dedicated background [worktree](/codex/app/features#worktree-support). Use
 worktrees when you want to isolate automation changes from unfinished local
 work. Use local mode when you want the automation to work directly in your main
-checkout, keeping in mind that it can modify files you are actively editing.
+checkout, keeping in mind that it can change files you are actively editing.
 In non-version-controlled projects, automations run directly in the project
-directory. You can have the same automation run on multiple projects.
+directory. You can have the same automation run on more than one project.
 
 Automations use your default sandbox settings. In read-only mode, tool calls fail if they require modifying files, network access, or working with apps on your computer. With full access enabled, background automations carry elevated risk. You can adjust sandbox settings in [Settings](/codex/app/settings) and selectively allowlist commands with [rules](/codex/rules).
 
-To keep automations maintainable and shareable across teams, you can use [skills](/codex/skills) to define the action and provide tools and context to Codex. You can explicitly trigger a skill as part of an automation by using `$skill-name` inside your automation.
+Automations can use the same plugins and skills available to Codex. To keep
+automations maintainable and shareable across teams, use [skills](/codex/skills)
+to define the action and provide tools and context. You can explicitly trigger a
+skill as part of an automation by using `$skill-name` inside your automation.
 
-## Testing automations safely
+## Ask Codex to create or update automations
+
+You can create and update automations from a regular Codex thread. Describe the
+task, the schedule, and whether the automation should stay attached to the
+current thread or start fresh runs. Codex can draft the automation prompt, choose
+the right automation type, and update it when the scope or cadence changes.
+
+For example, ask Codex to remind you in this thread while a deployment finishes,
+or ask it to create a standalone automation that checks a project on a recurring
+schedule.
+
+Skills can also create or update automations. For example, a skill for
+babysitting a pull request could set up a recurring automation that checks the
+PR status with the GitHub plugin and fixes new review feedback.
+
+## Thread automations
+
+Thread automations are heartbeat-style recurring wake-up calls attached to the
+current thread. Use them when you want Codex to keep returning to the same
+conversation on a schedule.
+
+Use a thread automation when the scheduled work should preserve the thread’s
+context instead of starting from a new prompt each time.
+
+Thread automations can use minute-based intervals for active follow-up loops,
+or daily and weekly schedules when you need a check-in at a specific time.
+
+Thread automations are useful for:
+
+- checking a long-running command until it finishes
+- polling Slack, GitHub, or another connected source when the results should
+  stay in the same thread
+- reminding Codex to continue a review loop at a fixed cadence
+- running a skill-driven workflow that uses plugins, such as checking PR status
+  and addressing new feedback
+- keeping a chat focused on an ongoing research or triage task
+
+Use a standalone or project automation when each run should be independent,
+when it should run across more than one project, or when findings should appear
+as separate automation runs in Triage.
+
+When you create a thread automation, make the prompt durable. It should
+describe what Codex should do each time the thread wakes up, how to decide
+whether there is anything important to report, and when to stop or ask you for
+input.
+
+## Test automations
 
 Before you schedule an automation, test the prompt manually in a regular thread
 first. This helps you confirm:
@@ -46,8 +100,8 @@ first. This helps you confirm:
 - The selected or default model, reasoning effort, and tools behave as expected.
 - The resulting diff is reviewable.
 
-When you start scheduling runs, review the first few outputs closely and adjust
-the prompt or cadence as needed.
+When you start scheduling runs, review the first few outputs and adjust the
+prompt or cadence as needed.
 
 ## Worktree cleanup for automations
 
@@ -57,8 +111,7 @@ pinning runs unless you intend to keep their worktrees.
 
 ## Permissions and security model
 
-Automations are designed to run unattended and use your default sandbox
-settings.
+Automations run unattended and use your default sandbox settings.
 
 - If your sandbox mode is **read-only**, tool calls fail if they require
   modifying files, accessing network, or working with apps on your computer.
@@ -68,7 +121,7 @@ settings.
   on your computer. You can selectively allowlist commands to run outside the
   sandbox using [rules](/codex/rules).
 - If your sandbox mode is **full access**, background automations carry
-  elevated risk, as Codex may modify files, run commands, and access network
+  elevated risk, as Codex may change files, run commands, and access network
   without asking. Consider updating sandbox settings to workspace write, and
   using [rules](/codex/rules) to selectively define which commands the agent
   can run with full access.
@@ -78,7 +131,7 @@ admin-enforced requirements. For example, they can disallow `approval_policy = "
 [Admin-enforced requirements (`requirements.toml`)](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 Automations use `approval_policy = "never"` when your organization policy
-allows it. If `approval_policy = "never"` is disallowed by admin requirements,
+allows it. If admin requirements disallow `approval_policy = "never"`,
 automations fall back to the approval behavior of your selected mode.
 
 ## Examples

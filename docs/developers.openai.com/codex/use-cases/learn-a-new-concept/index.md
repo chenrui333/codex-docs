@@ -77,6 +77,8 @@ Constraints:
 - separate what the paper claims from your interpretation
 - call out missing background, assumptions, and follow-up reading
 
+[Open in the Codex app](codex://new?prompt=I+want+to+learn+a+new+concept+from+this+research+paper%3A+%5Bpaper+path+or+URL%5D.%0A%0APlease+run+this+as+a+subagent+workflow%3A%0A-+Spawn+one+subagent+to+map+the+paper%27s+problem+statement%2C+contribution%2C+method%2C+experiments%2C+and+limitations.%0A-+Spawn+one+subagent+to+gather+prerequisite+context+and+explain+the+background+terms+I+need.%0A-+Spawn+one+subagent+to+inspect+the+figures%2C+tables%2C+notation%2C+and+any+claims+that+need+careful+verification.%0A-+Wait+for+all+subagents%2C+reconcile+disagreements%2C+and+avoid+overclaiming+beyond+the+source+material.%0A%0AFinal+output%3A%0A-+create+%60notes%2F%5Bconcept-name%5D-report.md%60%0A-+include+an+executive+summary%2C+glossary%2C+paper+walkthrough%2C+concept+map%2C+method+diagram%2C+evidence+table%2C+caveats%2C+and+open+questions%0A-+use+Markdown-native+Mermaid+diagrams+where+diagrams+help%0A-+use+imagegen+to+generate+illustrative%2C+non-exact+visual+assets+when+a+Markdown-native+diagram+is+not+enough%0A-+cite+paper+sections%2C+pages%2C+figures%2C+or+tables+whenever+possible%0A%0AConstraints%3A%0A-+do+not+treat+the+paper+as+ground+truth+if+the+evidence+is+weak%0A-+separate+what+the+paper+claims+from+your+interpretation%0A-+call+out+missing+background%2C+assumptions%2C+and+follow-up+reading "Open in the Codex app")
+
 I want to learn a new concept from this research paper: [paper path or URL].
 Please run this as a subagent workflow:
 - Spawn one subagent to map the paper's problem statement, contribution, method, experiments, and limitations.
@@ -253,17 +255,17 @@ Update the report with a short "Next study loop" section.
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Generate slide decks
+### Query tabular data
 
-Use Codex to update existing presentations or build new decks by editing slides directly...
+Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or local data file to...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Analyze datasets and ship reports
+### Turn feedback into actions
 
-Use Codex to clean data, join sources, explore hypotheses, model results, and package the...
+Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Analysis](/codex/use-cases/datasets-and-reports)
+Data  Integrations](/codex/use-cases/feedback-synthesis)
 

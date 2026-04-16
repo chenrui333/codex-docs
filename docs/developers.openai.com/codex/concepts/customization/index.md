@@ -7,11 +7,14 @@ Customization is how you make Codex work the way your team works.
 In Codex, customization comes from a few layers that work together:
 
 - **Project guidance (`AGENTS.md`)** for persistent instructions
+- **[Memories](/codex/memories)** for useful context learned from prior work
 - **Skills** for reusable workflows and domain expertise
 - **[MCP](/codex/mcp)** for access to external tools and shared systems
 - **[Subagents](/codex/concepts/subagents)** for delegating work to specialized subagents
 
-These are complementary, not competing. `AGENTS.md` shapes behavior, skills package repeatable processes, and [MCP](/codex/mcp) connects Codex to systems outside the local workspace.
+These are complementary, not competing. `AGENTS.md` shapes behavior, memories
+carry local context forward, skills package repeatable processes, and
+[MCP](/codex/mcp) connects Codex to systems outside the local workspace.
 
 ## AGENTS Guidance
 

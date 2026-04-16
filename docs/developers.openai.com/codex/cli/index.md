@@ -61,7 +61,9 @@ Run `codex` to start an interactive terminal UI (TUI) session.](/codex/cli/featu
 
 Use `/model` to switch between GPT-5.4, GPT-5.3-Codex, and other available models, or adjust reasoning levels.](/codex/cli/features#models-reasoning)[### Image inputs
 
-Attach screenshots or design specs so Codex reads them alongside your prompt.](/codex/cli/features#image-inputs)[### Run local code review
+Attach screenshots or design specs so Codex reads them alongside your prompt.](/codex/cli/features#image-inputs)[### Image generation
+
+Generate or edit images directly in the CLI, and attach references when you want Codex to iterate on an existing asset.](/codex/cli/features#image-generation)[### Run local code review
 
 Get your code reviewed by a separate Codex agent before you commit or push your changes.](/codex/cli/features#running-local-code-review)[### Use subagents
 

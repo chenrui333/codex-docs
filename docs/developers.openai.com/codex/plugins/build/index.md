@@ -252,7 +252,8 @@ on or off state in `~/.codex/config.toml`.
 
 Every plugin has a manifest at `.codex-plugin/plugin.json`. It can also include
 a `skills/` directory, an `.app.json` file that points at one or more apps or
-connectors, and assets used to present the plugin across supported surfaces.
+connectors, an `.mcp.json` file that configures MCP servers, and assets used to
+present the plugin across supported surfaces.
 
 - my-plugin/
 
