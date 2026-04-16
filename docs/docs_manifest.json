@@ -27,7 +27,7 @@
       "source_url": "https://developers.openai.com/codex/app/features"
     },
     "developers.openai.com/codex/app/index.md": {
-      "sha256": "8a8065b2b99ba44ec2badce3ea342fe571c16fb4249136db475e7f8627e44d9b",
+      "sha256": "b1f87bbda9d6cbe0d207d0a876ff8a93427c69b9b89a4076d70ae894de8571e0",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app"
     },
@@ -297,7 +297,7 @@
       "source_url": "https://developers.openai.com/codex/prompting"
     },
     "developers.openai.com/codex/quickstart/index.md": {
-      "sha256": "463531f2edbdf9121529b5a4e6feb91048f632a0241ab95b256f0264247440f9",
+      "sha256": "2ca8a2d2ef3db8696cc207acde2580d0009607d853762f9b66790d9e264dc521",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/quickstart"
     },
@@ -322,7 +322,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "e61de3f687fc93784a16cb42f64764de2e6f2bbf1998f39f238e283ed88f45ac",
+      "sha256": "93422ed565fd9bc0c5357ea8bc759421b794f04b563fd8a4ade0d7f2353fde51",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -567,7 +567,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/README.md"
     },
     "github.openai.com/openai/codex/SECURITY.md": {
-      "sha256": "fbff9437ce082a23fb3109136cae186f729b0291ffdec32807a253ed65e8f0f0",
+      "sha256": "a71f3645c5438400bf803a210cae829a07b5319ac1babe289badad7d1091af3a",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/SECURITY.md"
     },
@@ -577,7 +577,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md"
     },
     "github.openai.com/openai/codex/codex-rs/README.md": {
-      "sha256": "07dc6728b41fbb9cb3e8f1f366b5a8efb12bf0c27304b345c7a3d992c59c65ec",
+      "sha256": "77b0e573f2e23864eb19f11987bc8da515c500fafab2bbe6bb68319931f3267d",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md"
     },
@@ -657,7 +657,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
     },
     "github.openai.com/openai/codex/docs/js_repl.md": {
-      "sha256": "e5c170dbde50fd1dbd9f0245c12f26ed272cb0ac9a8d8a58ae447c087de132ce",
+      "sha256": "4fc3e25a6f3691f10bb12fd495e7c17451850111895e4b2850d8466acf45f1df",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/js_repl.md"
     },

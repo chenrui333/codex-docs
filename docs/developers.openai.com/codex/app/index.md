@@ -20,6 +20,10 @@ The Codex app is available on macOS (Apple Silicon).
 
    [Download for macOS](https://persistent.oaistatic.com/codex-app-prod/Codex.dmg)
 
+   Need a different operating system?
+
+   [Download for Windows](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)
+
    [Get notified for Linux](https://openai.com/form/codex-app/)
 2. Open Codex and sign in
 
