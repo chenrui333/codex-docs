@@ -1,20 +1,11 @@
 {
-  "added": [
-    "developers.openai.com/codex/tracks/productivity-and-collaboration/index.md",
-    "developers.openai.com/codex/use-cases/collections/productivity-and-collaboration/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-17T00:44:11+00:00",
-  "removed": [
-    "developers.openai.com/codex/tracks/analysis-and-collaboration/index.md",
-    "developers.openai.com/codex/use-cases/collections/analysis-and-collaboration/index.md"
-  ],
+  "generated_at": "2026-04-17T06:44:48+00:00",
+  "removed": [],
   "total_files": 171,
   "updated": [
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/use-cases/collections/index.md",
-    "developers.openai.com/codex/use-cases/collections/production-systems/index.md",
-    "developers.openai.com/codex/use-cases/index.md"
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }
