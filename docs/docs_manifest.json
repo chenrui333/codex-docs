@@ -342,7 +342,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "aa4a0ea986cfa0bcbee038fb953e6fbde556bfa3fff21bc50cf2d2433f5aa868",
+      "sha256": "b623ce13fed59084d7f25f9bdaa8180a03c3c61fc104cb80571b147036979a32",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -366,11 +366,6 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/subagents"
     },
-    "developers.openai.com/codex/tracks/analysis-and-collaboration/index.md": {
-      "sha256": "84d02e0a99333bca0c6c0673fea8da0ecfc54ff0e1a6a882b067caf79589694b",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/tracks/analysis-and-collaboration"
-    },
     "developers.openai.com/codex/tracks/game-development/index.md": {
       "sha256": "dc0bb8397bc74d8930c9f2e5060cc5f08a8528170a0da4046148a008b1b6406f",
       "source_type": "developers",
@@ -385,6 +380,11 @@
       "sha256": "b59b65ff5fc12a2020f8a0a9b97fa645ae247a5163d8d1d1214bf76c4f87ad3e",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/tracks/production-systems"
+    },
+    "developers.openai.com/codex/tracks/productivity-and-collaboration/index.md": {
+      "sha256": "a208dc3d9ec5d1d530e64eafd516e4642af8b37937da3163fe7ef090a82ff7ad",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/tracks/productivity-and-collaboration"
     },
     "developers.openai.com/codex/tracks/web-development/index.md": {
       "sha256": "c113d29ab7316b9cb85007fcc0a9133f247298c0b75971a35d0cd0f8f8ec308d",
@@ -436,18 +436,13 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/codebase-onboarding"
     },
-    "developers.openai.com/codex/use-cases/collections/analysis-and-collaboration/index.md": {
-      "sha256": "224598c17e23ab90c457fcad87c3645f8e382f1d67bbca66360f1f5dfbd4e894",
-      "source_type": "developers",
-      "source_url": "https://developers.openai.com/codex/use-cases/collections/analysis-and-collaboration"
-    },
     "developers.openai.com/codex/use-cases/collections/game-development/index.md": {
       "sha256": "ab9e92966016f4454fee6bf7e5d3c886f258c456a25cac414d200ed7d1f05651",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/collections/game-development"
     },
     "developers.openai.com/codex/use-cases/collections/index.md": {
-      "sha256": "e0050f17c790dcb5a9672c1a8a4ea1ab7c17fbf04124a84c919aa45d50ac1729",
+      "sha256": "53108b8911d681788e9fdc02f2ae850bfd5d6ccb980f9120abc0ce7b32d423dc",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/collections"
     },
@@ -457,9 +452,14 @@
       "source_url": "https://developers.openai.com/codex/use-cases/collections/native-development"
     },
     "developers.openai.com/codex/use-cases/collections/production-systems/index.md": {
-      "sha256": "349f5d943794f84b8dc779f54fe2489304b84e14072031f5f289d9fe1a83d60d",
+      "sha256": "6367e6e848bf84d11916571663a866172dc8829678be95578554253fb85e0b3f",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases/collections/production-systems"
+    },
+    "developers.openai.com/codex/use-cases/collections/productivity-and-collaboration/index.md": {
+      "sha256": "6801ee1e8d9b2f0d406ed3951da38a54d65c3685ad8c6032846622a1edcd08b5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/use-cases/collections/productivity-and-collaboration"
     },
     "developers.openai.com/codex/use-cases/collections/web-development/index.md": {
       "sha256": "17cbb845ce89e6ec4a5ffbbaed6c73f9d41744b102e5d3b67f55f25e52c2aec9",
@@ -507,7 +507,7 @@
       "source_url": "https://developers.openai.com/codex/use-cases/github-code-reviews"
     },
     "developers.openai.com/codex/use-cases/index.md": {
-      "sha256": "f243e643b16c5ad837309540334e8c67b90f47ab1e51677608d2322c24abfe04",
+      "sha256": "364b7881ee47038842e26a6231ee4206c45ae0558748e4a610867e312d9ac200",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases"
     },

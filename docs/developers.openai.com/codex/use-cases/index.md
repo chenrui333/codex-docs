@@ -12,9 +12,9 @@ Source: https://developers.openai.com/codex/use-cases
 
 Use Codex to navigate real codebases, make controlled changes, codify repeatable work, and keep production quality high.](/codex/use-cases/collections/production-systems)[![](/codex/use-cases/background-codex-collection2.png) ![](/codex/use-cases/analysis-collaboration-illustration.png)
 
-## Analysis and Collaboration
+## Productivity and collaboration
 
-Work with Codex to analyze data and complex source material, combine multiple apps and services, and turn insights into action.](/codex/use-cases/collections/analysis-and-collaboration)[![](/codex/use-cases/background-codex-collection3.png) ![](/codex/use-cases/web-development-illustration.png)
+Work with Codex to analyze data and complex source material, combine multiple apps and services, and turn insights into action.](/codex/use-cases/collections/productivity-and-collaboration)[![](/codex/use-cases/background-codex-collection3.png) ![](/codex/use-cases/web-development-illustration.png)
 
 ## Web development
 

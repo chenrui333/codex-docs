@@ -1,6 +1,6 @@
-# Analysis and Collaboration – Codex | OpenAI Developers
+# Productivity and collaboration – Codex | OpenAI Developers
 
-Source: https://developers.openai.com/codex/use-cases/collections/analysis-and-collaboration
+Source: https://developers.openai.com/codex/use-cases/collections/productivity-and-collaboration
 
 Codex can help you manage all of your work across multiple apps and files and help collaborate with your team.
 The use cases in this collection cover common workflows when the work starts in files, messages, docs, spreadsheets, and when you need shareable artifacts.

@@ -74,7 +74,7 @@ Automation  Quality](/codex/use-cases/automation-bug-triage)
 
 ## Avoid the review bottleneck
 
-Have Codex automatically review PRs and catch issues so you can ship updates confidently.
+Use Codex to automatically review PRs and run focused QA passes on critical flows, so you can catch issues quickly and ship updates confidently.
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
@@ -82,5 +82,11 @@ Have Codex automatically review PRs and catch issues so you can ship updates con
 
 Use Codex in GitHub to automatically surface regressions, missing tests, and documentation...
 
-Integrations  Workflow](/codex/use-cases/github-code-reviews)
+Integrations  Workflow](/codex/use-cases/github-code-reviews)[![](/images/codex/codex-wallpaper-1.webp)
+
+### QA your app with Computer Use
+
+Use Computer Use to exercise key flows, catch issues, and finish with a bug report.
+
+Automation  Quality](/codex/use-cases/qa-your-app-with-computer-use)
 
