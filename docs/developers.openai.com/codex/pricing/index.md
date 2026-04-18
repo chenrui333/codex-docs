@@ -59,7 +59,7 @@ Everything in Plus and:
 
 - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
   for day-to-day coding tasks
-- 10x or 20x more Codex usage than Plus\*
+- ~~5x~~ 10x or 20x more Codex usage than Plus\*
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Pro plan
 

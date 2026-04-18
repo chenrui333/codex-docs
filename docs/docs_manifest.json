@@ -302,7 +302,7 @@
       "source_url": "https://developers.openai.com/codex/plugins"
     },
     "developers.openai.com/codex/pricing/index.md": {
-      "sha256": "1c6720727f3fdb5594c7b776e40ef5cdf05ec7fe4bef182cf5ac8879b1a039e3",
+      "sha256": "5e1357323d93c4e19990bd2d9edf2ebf58aca3621a55fbb00848f966d4e67511",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
@@ -342,7 +342,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "f8e986ce463a3588bd87f37f8ff473f0dd21d88835e560ea9152887827467ea7",
+      "sha256": "8670a738e32115c890e404a34c8790283e148c644cde8887bb614fc3a5d089c1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
