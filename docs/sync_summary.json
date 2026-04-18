@@ -2,11 +2,10 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-18T00:40:16+00:00",
+  "generated_at": "2026-04-18T06:32:04+00:00",
   "removed": [],
   "total_files": 171,
   "updated": [
-    "developers.openai.com/codex/pricing/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }
