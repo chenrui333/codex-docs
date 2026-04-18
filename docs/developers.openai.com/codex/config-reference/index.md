@@ -52,6 +52,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` (under development; off by default). |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
+| `features.guardian_approval` | `boolean` | Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). Use with `approvals_reviewer = "guardian_subagent"`. |
 | `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
@@ -59,7 +60,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (stable; on by default). |
 | `features.shell_tool` | `boolean` | Enable the default `shell` tool for running commands (stable; on by default). |
 | `features.skill_mcp_dependency_install` | `boolean` | Allow prompting and installing missing MCP dependencies for skills (stable; on by default). |
-| `features.smart_approvals` | `boolean` | Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). |
 | `features.undo` | `boolean` | Enable undo support (stable; off by default). |
 | `features.unified_exec` | `boolean` | Use the unified PTY-backed exec tool (stable; enabled by default except on Windows). |
 | `features.web_search` | `boolean` | Deprecated legacy toggle; prefer the top-level `web_search` setting. |
@@ -716,6 +716,18 @@ Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by d
 
 Key
 
+`features.guardian_approval`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). Use with `approvals_reviewer = "guardian_subagent"`.
+
+Key
+
 `features.memories`
 
 Type / Values
@@ -797,18 +809,6 @@ Type / Values
 Details
 
 Allow prompting and installing missing MCP dependencies for skills (stable; on by default).
-
-Key
-
-`features.smart_approvals`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Route eligible approval requests through the guardian reviewer subagent (experimental; off by default).
 
 Key
 

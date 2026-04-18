@@ -157,7 +157,7 @@ shell_snapshot = true           # Speed up repeated commands
 | `personality` | true | Stable | Enable personality selection controls |
 | `shell_snapshot` | true | Stable | Snapshot your shell environment to speed up repeated commands |
 | `shell_tool` | true | Stable | Enable the default `shell` tool |
-| `smart_approvals` | false | Experimental | Route eligible approval requests through the guardian reviewer subagent |
+| `guardian_approval` | false | Experimental | Route eligible approval requests through the guardian reviewer subagent (set `approvals_reviewer = "guardian_subagent"`). |
 | `unified_exec` | `true` except Windows | Stable | Use the unified PTY-backed exec tool |
 | `undo` | false | Stable | Enable undo via per-turn git ghost snapshots |
 | `web_search` | true | Deprecated | Legacy toggle; prefer the top-level `web_search` setting |
