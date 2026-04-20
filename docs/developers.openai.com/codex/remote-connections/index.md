@@ -2,9 +2,10 @@
 
 Source: https://developers.openai.com/codex/remote-connections
 
-SSH remote connections are currently in alpha. We are gradually rolling out
-access. Availability, setup flows, and supported environments may change as
-the feature improves.
+SSH remote connections are currently in alpha. To enable them today, set
+`remote_connections = true` in the `[features]` table in
+`~/.codex/config.toml`. Availability, setup flows, and supported environments
+may change as the feature improves.
 
 Remote connections let Codex work with projects that live on another
 SSH-accessible machine. Use them when the codebase, credentials, services, or
@@ -43,6 +44,14 @@ the remote filesystem and shell.
    remote host’s `PATH` in that shell.
 4. In the Codex app, open **Settings > Connections**, add or enable the SSH host,
    then choose a remote project folder.
+
+If remote connections don’t appear yet, enable the alpha feature flag in
+`~/.codex/config.toml`:
+
+```
+[features]
+remote_connections = true
+```
 
 Remote project threads run commands, read files, and write changes on the
 remote host.
