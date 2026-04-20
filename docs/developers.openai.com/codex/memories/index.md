@@ -16,6 +16,9 @@ Keep required team guidance in `AGENTS.md` or checked-in documentation. Treat
 memories as a helpful local recall layer, not as the only source for rules that
 must always apply.
 
+[Chronicle](/codex/memories/chronicle) helps Codex recover recent working
+context from your screen to build up memory.
+
 ## Enable memories
 
 In the Codex app, enable Memories in settings.

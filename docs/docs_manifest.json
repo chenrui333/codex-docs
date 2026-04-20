@@ -82,7 +82,7 @@
       "source_url": "https://developers.openai.com/codex/auth"
     },
     "developers.openai.com/codex/changelog/index.md": {
-      "sha256": "f6de9bdcef8ad4ca2a4a8b89831687d36284c519800c99269c00dbf65df484df",
+      "sha256": "f5c26bfaf623253c0d66591030888469e639e09506251dc70f3b96db8658e51d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/changelog"
     },
@@ -271,8 +271,13 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/mcp"
     },
+    "developers.openai.com/codex/memories/chronicle/index.md": {
+      "sha256": "101dd7ff5a6ad97a29d2e6b93a6cf66a30b769d706eaa3f7bfa1c36773babaf5",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/memories/chronicle"
+    },
     "developers.openai.com/codex/memories/index.md": {
-      "sha256": "051fd2d7364a741e0693e71a9c61bdc57d8b21ed720d1be83d6f850242d97408",
+      "sha256": "ff379893b9ccef394ddec21d8b11316a07b4c4a56e56b0cb462b07b645076eef",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/memories"
     },
@@ -342,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "40b6ef054baed3e2001dbd89deeef3b616414966e4da571a1a6aa4e65f188ffa",
+      "sha256": "dd759f2c54ccf9b1317d4c99bc763c57d334cf39f5db25d4f07bae9a35362b60",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
