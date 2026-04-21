@@ -93,6 +93,25 @@ unified_exec = false
 
 Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
 
+### Enforce deny-read requirements
+
+Admins can deny reads for exact paths or glob patterns with
+`[permissions.filesystem]`. Users can’t weaken these requirements with local
+configuration.
+
+```
+[permissions.filesystem]
+deny_read = [
+  "/Users/alice/.ssh",
+  "./private/**/*.txt",
+]
+```
+
+When deny-read requirements are present, Codex constrains local sandbox mode to
+`read-only` or `workspace-write` so the requirement can be enforced. On native
+Windows, managed `deny_read` applies to direct file tools; shell subprocess
+reads don’t use this sandbox requirement.
+
 ### Enforce command rules from requirements
 
 Admins can also enforce restrictive command rules from `requirements.toml`

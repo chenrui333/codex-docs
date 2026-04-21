@@ -75,6 +75,26 @@ In the default `workspace-write` sandbox policy, writable roots still include pr
 - `<writable_root>/.codex` is protected as read-only when it exists as a directory.
 - Protection is recursive, so everything under those paths is read-only.
 
+### Deny reads with filesystem profiles
+
+Named permission profiles can also deny reads for exact paths or glob patterns.
+This is useful when a workspace should stay writable but specific sensitive
+files, such as local environment files, must stay unreadable:
+
+```
+default_permissions = "workspace"
+
+[permissions.workspace.filesystem]
+":project_roots" = { "." = "write", "**/*.env" = "none" }
+glob_scan_max_depth = 3
+```
+
+Use `"none"` for paths or globs that Codex shouldn’t read. The sandbox policy
+evaluates globs for local macOS and Linux command execution. On platforms that
+pre-expand glob matches before the sandbox starts, set `glob_scan_max_depth` for
+unbounded `**` patterns, or list explicit depths such as `*.env`, `*/*.env`, and
+`*/*/*.env`.
+
 ### Run without approval prompts
 
 You can disable approval prompts with `--ask-for-approval never` or `-a never` (shorthand).

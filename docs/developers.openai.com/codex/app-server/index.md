@@ -224,9 +224,9 @@ If a client sends an experimental method or field without opting in, app-server 
 - `experimentalFeature/list` - list feature flags with lifecycle stage metadata and cursor pagination.
 - `collaborationMode/list` - list collaboration mode presets (experimental, no pagination).
 - `skills/list` - list skills for one or more `cwd` values (supports `forceReload` and optional `perCwdExtraUserRoots`).
-- `plugin/list` - list discovered plugin marketplaces and plugin state, including install/auth policy metadata, marketplace errors, featured plugin ids, and the development-only `forceRemoteSync` option.
-- `plugin/read` - read one plugin by marketplace path and plugin name, including bundled skills, apps, and MCP server names.
-- `plugin/install` - install a plugin from a marketplace path.
+- `plugin/list` - list discovered plugin marketplaces and plugin state, including install/auth policy metadata, marketplace load errors, featured plugin ids, and local, Git, or remote plugin source metadata.
+- `plugin/read` - read one plugin by marketplace path or remote marketplace name and plugin name, including bundled skills, apps, and MCP server names when those details are available.
+- `plugin/install` - install a plugin from a marketplace path or remote marketplace name.
 - `plugin/uninstall` - uninstall an installed plugin.
 - `app/list` - list available apps (connectors) with pagination plus accessibility/enabled metadata.
 - `skills/config/write` - enable or disable skills by path.
@@ -244,6 +244,14 @@ If a client sends an experimental method or field without opting in, app-server 
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
 - `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven’t set any up).
 - `fs/readFile`, `fs/writeFile`, `fs/createDirectory`, `fs/getMetadata`, `fs/readDirectory`, `fs/remove`, and `fs/copy` - operate on absolute filesystem paths through the app-server v2 filesystem API.
+
+Plugin summaries include a `source` union. Local plugins return
+`{ "type": "local", "path": ... }`, Git-backed marketplace entries return
+`{ "type": "git", "url": ..., "path": ..., "refName": ..., "sha": ... }`,
+and remote catalog entries return `{ "type": "remote" }`. For remote-only
+catalog entries, `PluginMarketplaceEntry.path` can be `null`; pass
+`remoteMarketplaceName` instead of `marketplacePath` when reading or installing
+those plugins.
 
 ## Models
 
@@ -1224,7 +1232,17 @@ Import example:
 { "id": 64, "result": {} }
 ```
 
-Supported `itemType` values are `AGENTS_MD`, `CONFIG`, `SKILLS`, and `MCP_SERVER_CONFIG`. Detection returns only items that still have work to do. For example, AGENTS migration is skipped when `AGENTS.md` already exists and is non-empty, and skill imports don’t overwrite existing skill directories.
+Supported `itemType` values are `AGENTS_MD`, `CONFIG`, `SKILLS`, `PLUGINS`,
+and `MCP_SERVER_CONFIG`. For `PLUGINS` items, `details.plugins` lists each
+`marketplaceName` and the `pluginNames` Codex can try to migrate. Detection
+returns only items that still have work to do. For example, Codex skips AGENTS
+migration when `AGENTS.md` already exists and is non-empty, and skill imports
+don’t overwrite existing skill directories.
+
+When detecting plugins from `.claude/settings.json`, Codex reads configured
+marketplace sources from `extraKnownMarketplaces`. If `enabledPlugins` contains
+plugins from `claude-plugins-official` but the marketplace source is missing,
+Codex infers `anthropics/claude-plugins-official` as the source.
 
 ## Auth endpoints
 

@@ -133,6 +133,9 @@ define `[permissions.<name>.filesystem]` or `[permissions.<name>.network]`.
 Managed network profiles use map tables such as
 `[permissions.<name>.network.domains]` and
 `[permissions.<name>.network.unix_sockets]` for domain and socket rules.
+Filesystem profiles can also deny reads for exact paths or glob patterns by
+setting matching entries to `"none"`; use this to keep files such as local
+secrets unreadable without turning off workspace writes.
 
 When a workflow needs a specific exception, use [rules](/codex/rules). Rules
 let you allow, prompt, or forbid command prefixes outside the sandbox, which is

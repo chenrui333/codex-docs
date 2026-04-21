@@ -80,6 +80,10 @@ Common memory-specific settings include:
   stored as memory-generation inputs.
 - `memories.use_memories`: controls whether Codex injects existing memories into
   future sessions.
+- `memories.disable_on_external_context`: when `true`, keeps threads that used
+  external context such as MCP tool calls, web search, or tool search out of
+  memory generation. The older `memories.no_memories_if_mcp_or_web_search` key
+  is still accepted as an alias.
 - `memories.extract_model`: overrides the model used for per-thread memory
   extraction.
 - `memories.consolidation_model`: overrides the model used for global memory

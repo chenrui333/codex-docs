@@ -11,7 +11,7 @@ you to inject your own scripts into the agentic loop, enabling features such as:
 - Send the conversation to a custom logging/analytics engine
 - Scan your team’s prompts to block accidentally pasting API keys
 - Summarize conversations to create persistent memories automatically
-- Run a custom validator when a conversation turn stops, enforcing standards
+- Run a custom validation check when a conversation turn stops, enforcing standards
 - Customize prompting when in a certain directory
 
 Hooks are behind a feature flag in `config.toml`:
@@ -25,9 +25,9 @@ Runtime behavior to keep in mind:
 
 - Matching hooks from multiple files all run.
 - Multiple matching command hooks for the same event are launched concurrently,
-  so one hook cannot prevent another matching hook from starting.
-- `PreToolUse`, `PostToolUse`, `UserPromptSubmit`, and `Stop` run at turn
-  scope.
+  so one hook can’t prevent another matching hook from starting.
+- `PreToolUse`, `PermissionRequest`, `PostToolUse`, `UserPromptSubmit`, and
+  `Stop` run at turn scope.
 - Hooks are currently disabled on Windows.
 
 ## Where Codex looks for hooks
@@ -40,7 +40,7 @@ In practice, the two most useful locations are:
 - `<repo>/.codex/hooks.json`
 
 If more than one `hooks.json` file exists, Codex loads all matching hooks.
-Higher-precedence config layers do not replace lower-precedence hooks.
+Higher-precedence config layers don’t replace lower-precedence hooks.
 
 ## Config shape
 
@@ -73,6 +73,18 @@ Hooks are organized in three levels:
             "type": "command",
             "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_policy.py\"",
             "statusMessage": "Checking Bash command"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/permission_request.py\"",
+            "statusMessage": "Checking approval request"
           }
         ]
       }
@@ -135,6 +147,7 @@ Only some current Codex events honor `matcher`:
 
 | Event | What `matcher` filters | Notes |
 | --- | --- | --- |
+| `PermissionRequest` | tool name | Current Codex runtime only emits `Bash`. |
 | `PostToolUse` | tool name | Current Codex runtime only emits `Bash`. |
 | `PreToolUse` | tool name | Current Codex runtime only emits `Bash`. |
 | `SessionStart` | start source | Current runtime values are `startup` and `resume`. |
@@ -148,7 +161,7 @@ Examples:
 - `Edit|Write`
 
 That last example is still a valid regex, but current Codex `PreToolUse` and
-`PostToolUse` events only emit `Bash`, so it will not match anything today.
+`PostToolUse` events only emit `Bash`, so it won’t match anything today.
 
 ## Common input fields
 
@@ -191,8 +204,8 @@ fields:
 
 Exit `0` with no output is treated as success and Codex continues.
 
-`PreToolUse` supports `systemMessage`, but `continue`, `stopReason`, and
-`suppressOutput` are not currently supported for that event.
+`PreToolUse` and `PermissionRequest` support `systemMessage`, but `continue`,
+`stopReason`, and `suppressOutput` aren’t currently supported for those events.
 
 `PostToolUse` supports `systemMessage`, `continue: false`, and `stopReason`.
 `suppressOutput` is parsed but not currently supported for that event.
@@ -280,13 +293,70 @@ You can also use exit code `2` and write the blocking reason to `stderr`.
 `updatedInput`, `additionalContext`, `continue: false`, `stopReason`, and
 `suppressOutput` are parsed but not supported yet, so they fail open.
 
+### PermissionRequest
+
+Work in progress
+
+`PermissionRequest` runs when Codex is about to ask for approval, such as a
+shell escalation or managed-network approval. It can allow the request, deny
+the request, or decline to decide and let the normal approval prompt continue.
+It doesn’t run for commands that don’t need approval.
+
+`matcher` is applied to `tool_name`, which currently always equals `Bash`.
+
+Fields in addition to [Common input fields](#common-input-fields):
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
+| `tool_name` | `string` | Currently always `Bash` |
+| `tool_input.command` | `string` | Shell command associated with the approval request |
+| `tool_input.description` | `string | null` | Human-readable approval reason, when Codex has one |
+
+Plain text on `stdout` is ignored.
+
+To approve the request, return:
+
+```
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "allow"
+    }
+  }
+}
+```
+
+To deny the request, return:
+
+```
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PermissionRequest",
+    "decision": {
+      "behavior": "deny",
+      "message": "Blocked by repository policy."
+    }
+  }
+}
+```
+
+If multiple matching hooks return decisions, any `deny` wins. Otherwise, an
+`allow` lets the request proceed without surfacing the approval prompt. If no
+matching hook decides, Codex uses the normal approval flow.
+
+Don’t return `updatedInput`, `updatedPermissions`, or `interrupt` for
+`PermissionRequest`; those fields are reserved for future behavior and fail
+closed today.
+
 ### PostToolUse
 
 Work in progress
 
-Currently `PostToolUse` only supports Bash tool results. It is not limited to
+Currently `PostToolUse` only supports Bash tool results. It’s not limited to
 commands that exit successfully: non-interactive `exec_command` calls can still
-trigger `PostToolUse` when Codex emits a Bash post-tool payload. It cannot undo
+trigger `PostToolUse` when Codex emits a Bash post-tool payload. It can’t undo
 side effects from the command that already ran.
 
 This doesn’t intercept all shell calls yet, only the simple ones. The newer
@@ -323,7 +393,7 @@ JSON on `stdout` can use `systemMessage` and this hook-specific shape:
 
 That `additionalContext` text is added as extra developer context.
 
-For this event, `decision: "block"` does not undo the completed Bash command.
+For this event, `decision: "block"` doesn’t undo the completed Bash command.
 Instead, Codex records the feedback, replaces the tool result with that
 feedback, and continues the model from the hook-provided message.
 
@@ -338,14 +408,14 @@ so they fail open.
 
 ### UserPromptSubmit
 
-`matcher` is not currently used for this event.
+`matcher` isn’t currently used for this event.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
 | Field | Type | Meaning |
 | --- | --- | --- |
 | `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
-| `prompt` | `string` | User prompt that is about to be sent |
+| `prompt` | `string` | User prompt that’s about to be sent |
 
 Plain text on `stdout` is added as extra developer context.
 
@@ -376,7 +446,7 @@ You can also use exit code `2` and write the blocking reason to `stderr`.
 
 ### Stop
 
-`matcher` is not currently used for this event.
+`matcher` isn’t currently used for this event.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
@@ -401,7 +471,7 @@ Codex going, return:
 
 You can also use exit code `2` and write the continuation reason to `stderr`.
 
-For this event, `decision: "block"` does not reject the turn. Instead, it tells
+For this event, `decision: "block"` doesn’t reject the turn. Instead, it tells
 Codex to continue and automatically creates a new continuation prompt that acts
 as a new user prompt, using your `reason` as that prompt text.
 

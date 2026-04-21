@@ -60,6 +60,18 @@ Configure each MCP server with a `[mcp_servers.<server-name>]` table in the conf
 - `env` (optional): Environment variables to set for the server.
 - `env_vars` (optional): Environment variables to allow and forward.
 - `cwd` (optional): Working directory to start the server from.
+- `experimental_environment` (optional): Set to `remote` to start the stdio
+  server through a remote executor environment when one is available.
+
+`env_vars` can contain plain variable names or objects with a source:
+
+```
+env_vars = ["LOCAL_TOKEN", { name = "REMOTE_TOKEN", source = "remote" }]
+```
+
+String entries and `source = "local"` read from Codex’s local environment.
+`source = "remote"` reads from the remote executor environment and requires
+remote MCP stdio.
 
 #### Streamable HTTP servers
 
@@ -79,7 +91,7 @@ Configure each MCP server with a `[mcp_servers.<server-name>]` table in the conf
 
 If your OAuth provider requires a fixed callback port, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
 
-If your MCP OAuth flow must use a specific callback URL (for example, a remote devbox ingress URL or a custom callback path), set `mcp_oauth_callback_url`. Codex uses this value as the OAuth `redirect_uri` while still using `mcp_oauth_callback_port` for the callback listener port. Local callback URLs (for example `localhost`) bind on loopback; non-local callback URLs bind on `0.0.0.0` so the callback can reach the host.
+If your MCP OAuth flow must use a specific callback URL (for example, a remote Devbox ingress URL or a custom callback path), set `mcp_oauth_callback_url`. Codex uses this value as the OAuth `redirect_uri` while still using `mcp_oauth_callback_port` for the callback listener port. Local callback URLs (for example `localhost`) bind on the local interface; non-local callback URLs bind on `0.0.0.0` so the callback can reach the host.
 
 If the MCP server advertises `scopes_supported`, Codex prefers those
 server-advertised scopes during OAuth login. Otherwise, Codex falls back to the
@@ -91,6 +103,7 @@ scopes configured in `config.toml`.
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
+env_vars = ["LOCAL_TOKEN"]
 
 [mcp_servers.context7.env]
 MY_ENV_VAR = "MY_ENV_VALUE"

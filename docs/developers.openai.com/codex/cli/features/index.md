@@ -24,8 +24,10 @@ Once the session is open, you can:
 - Watch Codex explain its plan before making a change, and approve or reject steps inline.
 - Read syntax-highlighted markdown code blocks and diffs in the TUI, then use `/theme` to preview and save a preferred theme.
 - Use `/clear` to wipe the terminal and start a fresh chat, or press `Ctrl`+`L` to clear the screen without starting a new conversation.
-- Use `/copy` to copy the latest completed Codex output. If a turn is still running, Codex copies the most recent finished output instead of in-progress text.
+- Use `/copy` or press `Ctrl`+`O` to copy the latest completed Codex output. If a turn is still running, Codex copies the most recent finished output instead of in-progress text.
+- Press `Tab` while Codex is running to queue follow-up text, slash commands, or `!` shell commands for the next turn.
 - Navigate draft history in the composer with `Up`/`Down`; Codex restores prior draft text and image placeholders.
+- Press `Ctrl`+`R` to search prompt history from the composer, then press `Enter` to accept a match or `Esc` to cancel.
 - Press `Ctrl`+`C` or use `/exit` to close the interactive session when you’re done.
 
 ## Resuming conversations
@@ -273,7 +275,7 @@ See [Model Context Protocol](/codex/mcp) for example configurations, supported a
 ## Tips and shortcuts
 
 - Type `@` in the composer to open a fuzzy file search over the workspace root; press `Tab` or `Enter` to drop the highlighted path into your message.
-- Press `Enter` while Codex is running to inject new instructions into the current turn, or press `Tab` to queue a follow-up prompt for the next turn.
+- Press `Enter` while Codex is running to inject new instructions into the current turn, or press `Tab` to queue follow-up input for the next turn. Queued input can be a normal prompt, a slash command such as `/review`, or a `!` shell command. Codex parses queued slash commands when they run.
 - Prefix a line with `!` to run a local shell command (for example, `!ls`). Codex treats the output like a user-provided command result and still applies your approval and sandbox settings.
 - Tap `Esc` twice while the composer is empty to edit your previous user message. Continue pressing `Esc` to walk further back in the transcript, then hit `Enter` to fork from that point.
 - Launch Codex from any directory using `codex --cd <path>` to set the working root without running `cd` first. The active path appears in the TUI header.

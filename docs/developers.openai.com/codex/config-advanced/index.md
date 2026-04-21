@@ -478,6 +478,8 @@ Place the script somewhere on disk and point `notify` to it.
 - `notify` runs an external program (good for webhooks, desktop notifiers, CI hooks).
 - `tui.notifications` is built in to the TUI and can optionally filter by event type (for example, `agent-turn-complete` and `approval-requested`).
 - `tui.notification_method` controls how the TUI emits terminal notifications (`auto`, `osc9`, or `bel`).
+- `tui.notification_condition` controls whether TUI notifications fire only when
+  the terminal is `unfocused` or `always`.
 
 In `auto` mode, Codex prefers OSC 9 notifications (a terminal escape sequence some terminals interpret as a desktop notification) and falls back to BEL (`\x07`) otherwise.
 
@@ -524,6 +526,8 @@ Running `codex` with no subcommand launches the interactive terminal UI (TUI). C
 
 - `tui.notifications`: enable/disable notifications (or restrict to specific types)
 - `tui.notification_method`: choose `auto`, `osc9`, or `bel` for terminal notifications
+- `tui.notification_condition`: choose `unfocused` or `always` for when
+  notifications fire
 - `tui.animations`: enable/disable ASCII animations and shimmer effects
 - `tui.alternate_screen`: control alternate screen usage (set to `never` to keep terminal scrollback)
 - `tui.show_tooltips`: show or hide onboarding tooltips on the welcome screen

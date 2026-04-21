@@ -135,6 +135,14 @@ sandbox_mode = "read-only"
 # Named permissions profile to apply by default. Required before using [permissions.<name>].
 # default_permissions = "workspace"
 
+# Example filesystem profile. Use `"none"` to deny reads for exact paths or
+# glob patterns. On platforms that need pre-expanded glob matches, set
+# glob_scan_max_depth when using unbounded patterns such as `**`.
+# [permissions.workspace.filesystem]
+# glob_scan_max_depth = 3
+# ":project_roots" = { "." = "write", "**/*.env" = "none" }
+# "/absolute/path/to/secrets" = "none"
+
 ################################################################################
 # Authentication & Login
 ################################################################################
@@ -325,6 +333,9 @@ notifications = false
 # Notification mechanism for terminal alerts: auto | osc9 | bel. Default: "auto"
 # notification_method = "auto"
 
+# When notifications fire: unfocused (default) | always
+# notification_condition = "unfocused"
+
 # Enables welcome/status/spinner animations. Default: true
 animations = true
 
@@ -390,6 +401,16 @@ enabled = true
 # prevent_idle_sleep = false
 
 ################################################################################
+# Memories (table)
+################################################################################
+
+# Enable memories with [features].memories, then tune memory behavior here.
+# [memories]
+# generate_memories = true
+# use_memories = true
+# disable_on_external_context = false # legacy alias: no_memories_if_mcp_or_web_search
+
+################################################################################
 # Define MCP servers under this table. Leave empty to disable.
 ################################################################################
 
@@ -402,8 +423,10 @@ enabled = true
 # command = "docs-server"                 # required
 # args = ["--port", "4000"]               # optional
 # env = { "API_KEY" = "value" }           # optional key/value pairs copied as-is
-# env_vars = ["ANOTHER_SECRET"]            # optional: forward these from the parent env
+# env_vars = ["ANOTHER_SECRET"]            # optional: forward local parent env vars
+# env_vars = ["LOCAL_TOKEN", { name = "REMOTE_TOKEN", source = "remote" }]
 # cwd = "/path/to/server"                 # optional working directory override
+# experimental_environment = "remote"      # experimental: run stdio via a remote executor
 # startup_timeout_sec = 10.0               # optional; default 10.0 seconds
 # # startup_timeout_ms = 10000              # optional alias for startup timeout (milliseconds)
 # tool_timeout_sec = 60.0                  # optional; default 60.0 seconds

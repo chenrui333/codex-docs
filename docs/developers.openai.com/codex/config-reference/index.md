@@ -86,7 +86,8 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.enabled_tools` | `array<string>` | Allow list of tool names exposed by the MCP server. |
 | `mcp_servers.<id>.env` | `map<string,string>` | Environment variables forwarded to the MCP stdio server. |
 | `mcp_servers.<id>.env_http_headers` | `map<string,string>` | HTTP headers populated from environment variables for an MCP HTTP server. |
-| `mcp_servers.<id>.env_vars` | `array<string>` | Additional environment variables to whitelist for an MCP stdio server. |
+| `mcp_servers.<id>.env_vars` | `array<string | { name = string, source = "local" | "remote" }>` | Additional environment variables to whitelist for an MCP stdio server. String entries default to `source = "local"`; use `source = "remote"` only with executor-backed remote stdio. |
+| `mcp_servers.<id>.experimental_environment` | `local | remote` | Experimental placement for an MCP server. `remote` starts stdio servers through a remote executor environment; streamable HTTP remote placement is not implemented. |
 | `mcp_servers.<id>.http_headers` | `map<string,string>` | Static HTTP headers included with each MCP HTTP request. |
 | `mcp_servers.<id>.oauth_resource` | `string` | Optional RFC 8707 OAuth resource parameter to include during MCP login. |
 | `mcp_servers.<id>.required` | `boolean` | When true, fail startup/resume if this enabled MCP server cannot initialize. |
@@ -96,6 +97,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.tool_timeout_sec` | `number` | Override the default 60s per-tool timeout for an MCP server. |
 | `mcp_servers.<id>.url` | `string` | Endpoint for an MCP streamable HTTP server. |
 | `memories.consolidation_model` | `string` | Optional model override for global memory consolidation. |
+| `memories.disable_on_external_context` | `boolean` | When `true`, threads that use external context such as MCP tool calls, web search, or tool search are kept out of memory generation. Defaults to `false`. Legacy alias: `memories.no_memories_if_mcp_or_web_search`. |
 | `memories.extract_model` | `string` | Optional model override for per-thread memory extraction. |
 | `memories.generate_memories` | `boolean` | When `false`, newly created threads are not stored as memory-generation inputs. Defaults to `true`. |
 | `memories.max_raw_memories_for_consolidation` | `number` | Maximum recent raw memories retained for global consolidation. Defaults to `256` and is capped at `4096`. |
@@ -103,7 +105,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `memories.max_rollouts_per_startup` | `number` | Maximum rollout candidates processed per startup pass. Defaults to `16` and is capped at `128`. |
 | `memories.max_unused_days` | `number` | Maximum days since a memory was last used before it becomes ineligible for consolidation. Defaults to `30` and is clamped to `0`-`365`. |
 | `memories.min_rollout_idle_hours` | `number` | Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`. |
-| `memories.no_memories_if_mcp_or_web_search` | `boolean` | When `true`, threads that use MCP tool calls or web search are kept out of memory generation. Defaults to `false`. |
 | `memories.use_memories` | `boolean` | When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`. |
 | `model` | `string` | Model to use (e.g., `gpt-5.4`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
@@ -163,8 +164,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `otel.trace_exporter.<id>.tls.client-certificate` | `string` | Client certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-private-key` | `string` | Client private key path for OTEL trace exporter TLS. |
 | `permissions.<name>.filesystem` | `table` | Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`. |
-| `permissions.<name>.filesystem.":project_roots".<subpath>` | `"read" | "write" | "none"` | Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself. |
-| `permissions.<name>.filesystem.<path>` | `"read" | "write" | "none" | table` | Grant direct access for a path or special token, or scope nested entries under that root. |
+| `permissions.<name>.filesystem.":project_roots".<subpath-or-glob>` | `"read" | "write" | "none"` | Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`. |
+| `permissions.<name>.filesystem.<path-or-glob>` | `"read" | "write" | "none" | table` | Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths. |
+| `permissions.<name>.filesystem.glob_scan_max_depth` | `number` | Maximum depth for expanding deny-read glob patterns on platforms that snapshot matches before sandbox startup. Must be at least `1` when set. |
 | `permissions.<name>.network.allow_local_binding` | `boolean` | Permit local bind/listen operations through the managed proxy. |
 | `permissions.<name>.network.allow_upstream_proxy` | `boolean` | Allow the managed proxy to chain to another upstream proxy. |
 | `permissions.<name>.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow the proxy to use arbitrary Unix sockets instead of the default restricted set. |
@@ -223,7 +225,8 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `tui.alternate_screen` | `auto | always | never` | Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback). |
 | `tui.animations` | `boolean` | Enable terminal animations (welcome screen, shimmer, spinner) (default: true). |
 | `tui.model_availability_nux.<model>` | `integer` | Internal startup-tooltip state keyed by model slug. |
-| `tui.notification_method` | `auto | osc9 | bel` | Notification method for unfocused terminal notifications (default: auto). |
+| `tui.notification_condition` | `unfocused | always` | Control whether TUI notifications fire only when the terminal is unfocused or regardless of focus. Defaults to `unfocused`. |
+| `tui.notification_method` | `auto | osc9 | bel` | Notification method for terminal notifications (default: auto). |
 | `tui.notifications` | `boolean | array<string>` | Enable TUI notifications; optionally restrict to specific event types. |
 | `tui.show_tooltips` | `boolean` | Show onboarding tooltips in the TUI welcome screen (default: true). |
 | `tui.status_line` | `array<string> | null` | Ordered list of TUI footer status-line item identifiers. `null` disables the status line. |
@@ -1128,11 +1131,23 @@ Key
 
 Type / Values
 
-`array<string>`
+`array<string | { name = string, source = "local" | "remote" }>`
 
 Details
 
-Additional environment variables to whitelist for an MCP stdio server.
+Additional environment variables to whitelist for an MCP stdio server. String entries default to `source = "local"`; use `source = "remote"` only with executor-backed remote stdio.
+
+Key
+
+`mcp_servers.<id>.experimental_environment`
+
+Type / Values
+
+`local | remote`
+
+Details
+
+Experimental placement for an MCP server. `remote` starts stdio servers through a remote executor environment; streamable HTTP remote placement is not implemented.
 
 Key
 
@@ -1244,6 +1259,18 @@ Optional model override for global memory consolidation.
 
 Key
 
+`memories.disable_on_external_context`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, threads that use external context such as MCP tool calls, web search, or tool search are kept out of memory generation. Defaults to `false`. Legacy alias: `memories.no_memories_if_mcp_or_web_search`.
+
+Key
+
 `memories.extract_model`
 
 Type / Values
@@ -1325,18 +1352,6 @@ Type / Values
 Details
 
 Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`.
-
-Key
-
-`memories.no_memories_if_mcp_or_web_search`
-
-Type / Values
-
-`boolean`
-
-Details
-
-When `true`, threads that use MCP tool calls or web search are kept out of memory generation. Defaults to `false`.
 
 Key
 
@@ -2048,7 +2063,7 @@ Named filesystem permission profile. Each key is an absolute path or special tok
 
 Key
 
-`permissions.<name>.filesystem.":project_roots".<subpath>`
+`permissions.<name>.filesystem.":project_roots".<subpath-or-glob>`
 
 Type / Values
 
@@ -2056,11 +2071,11 @@ Type / Values
 
 Details
 
-Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself.
+Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`.
 
 Key
 
-`permissions.<name>.filesystem.<path>`
+`permissions.<name>.filesystem.<path-or-glob>`
 
 Type / Values
 
@@ -2068,7 +2083,19 @@ Type / Values
 
 Details
 
-Grant direct access for a path or special token, or scope nested entries under that root.
+Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths.
+
+Key
+
+`permissions.<name>.filesystem.glob_scan_max_depth`
+
+Type / Values
+
+`number`
+
+Details
+
+Maximum depth for expanding deny-read glob patterns on platforms that snapshot matches before sandbox startup. Must be at least `1` when set.
 
 Key
 
@@ -2768,6 +2795,18 @@ Internal startup-tooltip state keyed by model slug.
 
 Key
 
+`tui.notification_condition`
+
+Type / Values
+
+`unfocused | always`
+
+Details
+
+Control whether TUI notifications fire only when the terminal is unfocused or regardless of focus. Defaults to `unfocused`.
+
+Key
+
 `tui.notification_method`
 
 Type / Values
@@ -2776,7 +2815,7 @@ Type / Values
 
 Details
 
-Notification method for unfocused terminal notifications (default: auto).
+Notification method for terminal notifications (default: auto).
 
 Key
 
@@ -2920,6 +2959,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `mcp_servers.<id>.identity` | `table` | Identity rule for a single MCP server. Set either `command` (stdio) or `url` (streamable HTTP). |
 | `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command. |
 | `mcp_servers.<id>.identity.url` | `string` | Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL. |
+| `permissions.filesystem.deny_read` | `array<string>` | Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config. |
 | `rules` | `table` | Admin-enforced command rules merged with `.rules` files. Requirements rules must be restrictive. |
 | `rules.prefix_rules` | `array<table>` | List of enforced prefix rules. Each rule must include `pattern` and `decision`. |
 | `rules.prefix_rules[].decision` | `prompt | forbidden` | Required. Requirements rules can only prompt or forbid (not allow). |
@@ -3047,6 +3087,18 @@ Type / Values
 Details
 
 Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL.
+
+Key
+
+`permissions.filesystem.deny_read`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config.
 
 Key
 

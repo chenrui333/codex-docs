@@ -18,6 +18,11 @@ This guide shows you how to:
 Codex ships with the following commands. Open the slash popup and start typing
 the command name to filter the list.
 
+When a task is already running, you can type a slash command and press `Tab` to
+queue it for the next turn. Codex parses queued slash commands when they run, so
+command menus and errors appear after the current turn finishes. Slash
+completion still works before you queue the command.
+
 | Command | Purpose | When to use it |
 | --- | --- | --- |
 | [`/permissions`](#update-permissions-with-permissions) | Set what Codex can do without asking first. | Relax or tighten approval requirements mid-session, such as switching between Auto and Read Only. |
@@ -27,7 +32,7 @@ the command name to filter the list.
 | [`/plugins`](#browse-plugins-with-plugins) | Browse installed and discoverable plugins. | Inspect plugin tools, install suggested plugins, or manage plugin availability. |
 | [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a fresh start. |
 | [`/compact`](#keep-transcripts-lean-with-compact) | Summarize the visible conversation to free tokens. | Use after long runs so Codex retains key points without blowing the context window. |
-| [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. |
+| [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. You can also press `Ctrl+O`. |
 | [`/diff`](#review-changes-with-diff) | Show the Git diff, including files Git isn’t tracking yet. | Review Codex’s edits before you commit or run tests. |
 | [`/exit`](#exit-the-cli-with-quit-or-exit) | Exit the CLI (same as `/quit`). | Alternative spelling; both commands exit the session. |
 | [`/experimental`](#toggle-experimental-features-with-experimental) | Toggle experimental features. | Enable optional features such as subagents from the CLI. |
@@ -139,6 +144,9 @@ Expected: Codex copies the latest completed Codex output to your clipboard.
 If a turn is still running, `/copy` uses the latest completed output instead of
 the in-progress response. The command is unavailable before the first completed
 Codex output and immediately after a rollback.
+
+You can also press `Ctrl`+`O` from the main TUI to copy the
+latest completed response without opening the slash command menu.
 
 ### Grant sandbox read access with `/sandbox-add-read-dir`
 
@@ -297,10 +305,11 @@ you can immediately ask Codex to use it.
 ### Browse plugins with `/plugins`
 
 1. Type `/plugins`.
-2. Pick a plugin from the list to inspect its capabilities or available actions.
+2. Choose a marketplace tab, then pick a plugin to inspect its capabilities or available actions.
 
-Expected: Codex opens the plugin browser so you can review installed plugins and
-discoverable plugins that your configuration allows.
+Expected: Codex opens the plugin browser so you can review installed plugins,
+discoverable plugins that your configuration allows, and installed plugin state.
+Press `Space` on an installed plugin to toggle its enabled state.
 
 ### Switch agent threads with `/agent`
 

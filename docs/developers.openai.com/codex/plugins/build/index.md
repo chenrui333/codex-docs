@@ -42,6 +42,32 @@ you add more plugins.
 
 ![custom local marketplace in the plugin directory](/images/codex/plugins/codex-local-plugin-light.png)
 
+### Add a marketplace from the CLI
+
+Use `codex plugin marketplace add` when you want Codex to install and track a
+marketplace source for you instead of editing `config.toml` by hand.
+
+```
+codex plugin marketplace add owner/repo
+codex plugin marketplace add owner/repo --ref main
+codex plugin marketplace add https://github.com/example/plugins.git --sparse .agents/plugins
+codex plugin marketplace add ./local-marketplace-root
+```
+
+Marketplace sources can be GitHub shorthand (`owner/repo` or
+`owner/repo@ref`), HTTP or HTTPS Git URLs, SSH Git URLs, or local marketplace root
+directories. Use `--ref` to pin a Git ref, and repeat `--sparse PATH` to use a
+sparse checkout for Git-backed marketplace repos. `--sparse` is valid only for
+Git marketplace sources.
+
+To refresh or remove configured marketplaces:
+
+```
+codex plugin marketplace upgrade
+codex plugin marketplace upgrade marketplace-name
+codex plugin marketplace remove marketplace-name
+```
+
 ### Create a plugin manually
 
 Start with a minimal plugin that packages one skill.
@@ -213,6 +239,8 @@ copy are ready for other developers to see.
   personal installs, a common pattern is `./.codex/plugins/<plugin-name>`.
 - Keep `source.path` relative to the marketplace root, start it with `./`, and
   keep it inside that root.
+- For local entries, `source` can also be a plain string path such as
+  `"./plugins/my-plugin"`.
 - Always include `policy.installation`, `policy.authentication`, and
   `category` on each plugin entry.
 - Use `policy.installation` values such as `AVAILABLE`,
@@ -220,11 +248,36 @@ copy are ready for other developers to see.
 - Use `policy.authentication` to decide whether auth happens on install or
   first use.
 
-The marketplace controls where Codex loads the plugin from. `source.path` can
-point somewhere else if your plugin lives outside those example directories. A
-marketplace file can live in the repo where you are developing the plugin or in
-a separate marketplace repo, and one marketplace file can point to one plugin
-or many.
+The marketplace controls where Codex loads the plugin from. A local
+`source.path` can point somewhere else if your plugin lives outside those
+example directories. A marketplace file can live in the repo where you are
+developing the plugin or in a separate marketplace repo, and one marketplace
+file can point to one plugin or many.
+
+Marketplace entries can also point at Git-backed plugin sources. Use
+`"source": "url"` when the plugin lives at the repository root, or
+`"source": "git-subdir"` when the plugin lives in a subdirectory:
+
+```
+{
+  "name": "remote-helper",
+  "source": {
+    "source": "git-subdir",
+    "url": "https://github.com/example/codex-plugins.git",
+    "path": "./plugins/remote-helper",
+    "ref": "main"
+  },
+  "policy": {
+    "installation": "AVAILABLE",
+    "authentication": "ON_INSTALL"
+  },
+  "category": "Productivity"
+}
+```
+
+Git-backed entries may use `ref` or `sha` selectors. If Codex can’t resolve a
+marketplace entry’s source, it skips that plugin entry instead of failing the
+whole marketplace.
 
 ### How Codex uses marketplaces
 
@@ -235,6 +288,7 @@ Codex can read marketplace files from:
 
 - the curated marketplace that powers the official Plugin Directory
 - a repo marketplace at `$REPO_ROOT/.agents/plugins/marketplace.json`
+- a Claude-style marketplace at `$REPO_ROOT/.claude-plugin/marketplace.json`
 - a personal marketplace at `~/.agents/plugins/marketplace.json`
 
 You can install any plugin exposed through a marketplace. Codex installs
