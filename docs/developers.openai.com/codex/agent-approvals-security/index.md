@@ -155,7 +155,7 @@ The `sandbox` command is also available as `codex debug`, and the platform helpe
 Codex enforces the sandbox differently depending on your OS:
 
 - **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
-- **Linux** uses the `bwrap` pipeline plus `seccomp` by default. `use_legacy_landlock` is available when you need the older path. In managed proxy mode, the default `bwrap` pipeline routes egress through a proxy-only bridge and fails closed if it can’t build valid local proxy routes.
+- **Linux** uses `bwrap` plus `seccomp` by default.
 - **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux 2 (WSL2)](/codex/windows#windows-subsystem-for-linux). WSL1 was supported through Codex `0.114`; starting in `0.115`, the Linux sandbox moved to `bwrap`, so WSL1 is no longer supported. When running natively on Windows, Codex uses a [Windows sandbox](/codex/windows#windows-sandbox) implementation.
 
 If you use the Codex IDE extension on Windows, it supports WSL2 directly. Set the following in your VS Code settings to keep the agent inside WSL2 whenever it’s available:
@@ -178,9 +178,56 @@ sandbox = "unelevated" # or "elevated"
 
 See the [Windows setup guide](/codex/windows#windows-sandbox) for details.
 
-When you run Linux in a containerized environment such as Docker, the sandbox may not work if the host or container configuration doesn’t support the required `Landlock` and `seccomp` features.
+When you run Linux in a containerized environment such as Docker, the sandbox may not work if the host or container configuration blocks the namespace, setuid `bwrap`, or `seccomp` operations that Codex needs.
 
 In that case, configure your Docker container to provide the isolation you need, then run `codex` with `--sandbox danger-full-access` (or the `--dangerously-bypass-approvals-and-sandbox` flag) inside the container.
+
+### Run Codex in Dev Containers
+
+If your host cannot run the Linux sandbox directly, or if your organization already standardizes on containerized development, run Codex with Dev Containers and let Docker provide the outer isolation boundary. This works with Visual Studio Code Dev Containers and compatible tools.
+
+Use the [Codex secure devcontainer example](https://github.com/openai/codex/tree/main/.devcontainer) as a reference implementation. The example installs Codex, common development tools, `bubblewrap`, and firewall-based outbound controls.
+
+Devcontainers provide substantial protection, but they do not prevent every
+attack. If you run Codex with `--sandbox danger-full-access` or
+`--dangerously-bypass-approvals-and-sandbox` inside the container, a malicious
+project can exfiltrate anything available inside the devcontainer, including
+Codex credentials. Use this pattern only with trusted repositories, and
+monitor Codex activity as you would in any other elevated environment.
+
+The reference implementation includes:
+
+- an Ubuntu 24.04 base image with Codex and common development tools installed;
+- an allowlist-driven firewall profile for outbound access;
+- VS Code settings and extension recommendations for reopening the workspace in a container;
+- persistent mounts for command history and Codex configuration;
+- `bubblewrap`, so Codex can still use its Linux sandbox when the container grants the needed capabilities.
+
+To try it:
+
+1. Install Visual Studio Code and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+2. Copy the Codex example `.devcontainer` setup into your repository, or start from the Codex repository directly.
+3. In VS Code, run **Dev Containers: Open Folder in Container…** and select `.devcontainer/devcontainer.secure.json`.
+4. After the container starts, open a terminal and run `codex`.
+
+You can also start the container from the CLI:
+
+```
+devcontainer up --workspace-folder . --config .devcontainer/devcontainer.secure.json
+```
+
+The example has three main pieces:
+
+- `.devcontainer/devcontainer.secure.json` controls container settings, capabilities, mounts, environment variables, and VS Code extensions.
+- `.devcontainer/Dockerfile.secure` defines the Ubuntu-based image and installed tools.
+- `.devcontainer/init-firewall.sh` applies the outbound network policy.
+
+The reference firewall is intentionally a starting point. If you depend on domain allowlisting for isolation, implement DNS rebinding and DNS refresh protections that fit your environment, such as TTL-aware refreshes or a DNS-aware firewall.
+
+Inside the container, choose one of these modes:
+
+- Keep Codex’s Linux sandbox enabled if the Dev Container profile grants the capabilities needed for `bwrap` to create the inner sandbox.
+- If the container is your intended security boundary, run Codex with `--sandbox danger-full-access` inside the container so Codex does not try to create a second sandbox layer.
 
 ## Version control
 
