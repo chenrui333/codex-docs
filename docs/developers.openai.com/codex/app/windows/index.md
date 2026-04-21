@@ -4,6 +4,8 @@ Source: https://developers.openai.com/codex/app/windows
 
 The [Codex app for Windows](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi) gives you one interface for
 working across projects, running parallel agent threads, and reviewing results.
+The Windows app supports core workflows such as worktrees, automations, Git
+functionality, the in-app browser, artifact previews, plugins, and skills.
 It runs natively on Windows using PowerShell and the
 [Windows sandbox](/codex/windows#windows-sandbox), or you can configure it to
 run in [Windows Subsystem for Linux 2 (WSL2)](#windows-subsystem-for-linux-wsl).

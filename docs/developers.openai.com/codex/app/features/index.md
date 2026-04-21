@@ -5,6 +5,9 @@ Source: https://developers.openai.com/codex/app/features
 The Codex app is a focused desktop experience for working on Codex threads in parallel,
 with built-in worktree support, automations, and Git functionality.
 
+Most Codex app features are available on both macOS and Windows.
+Platform-specific exceptions are noted below.
+
 ---
 
 ## Multitask across projects

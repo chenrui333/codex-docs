@@ -14,7 +14,26 @@ Like [MCP](https://modelcontextprotocol.io/), `codex app-server` supports bidire
 Supported transports:
 
 - `stdio` (`--listen stdio://`, default): newline-delimited JSON (JSONL).
-- `websocket` (`--listen ws://IP:PORT`, experimental): one JSON-RPC message per WebSocket text frame.
+- `websocket` (`--listen ws://IP:PORT`, experimental and unsupported): one JSON-RPC message per WebSocket text frame.
+- `off` (`--listen off`): don’t expose a local transport.
+
+When you run with `--listen ws://IP:PORT`, the same listener also serves basic HTTP health probes:
+
+- `GET /readyz` returns `200 OK` once the listener accepts new connections.
+- `GET /healthz` returns `200 OK` when the request doesn’t include an `Origin` header.
+- Requests with an `Origin` header are rejected with `403 Forbidden`.
+
+WebSocket transport is experimental and unsupported. Loopback listeners such as `ws://127.0.0.1:PORT` are appropriate for localhost and SSH port-forwarding workflows. Non-loopback WebSocket listeners currently allow unauthenticated connections by default during rollout, so configure WebSocket auth before exposing one remotely.
+
+Supported WebSocket auth flags:
+
+- `--ws-auth capability-token --ws-token-file /absolute/path`
+- `--ws-auth capability-token --ws-token-sha256 HEX`
+- `--ws-auth signed-bearer-token --ws-shared-secret-file /absolute/path`
+
+For signed bearer tokens, you can also set `--ws-issuer`, `--ws-audience`, and `--ws-max-clock-skew-seconds`. Clients present the credential as `Authorization: Bearer <token>` during the WebSocket handshake, and app-server enforces auth before JSON-RPC `initialize`.
+
+Prefer `--ws-token-file` over passing raw bearer tokens on the command line. Use `--ws-token-sha256` only when the client keeps the raw high-entropy token in a separate local secret store; the hash is only a verifier, and clients still need the original token.
 
 In WebSocket mode, app-server uses bounded queues. When request ingress is full, the server rejects new requests with JSON-RPC error code `-32001` and message `"Server overloaded; retry later."` Clients should retry with an exponentially increasing delay and jitter.
 
@@ -201,11 +220,13 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/resume` - reopen an existing thread by id so later `turn/start` calls append to it.
 - `thread/fork` - fork a thread into a new thread id by copying stored history; emits `thread/started` for the new thread.
 - `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history. Returned `thread` objects include runtime `status`.
-- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filters. Returned `thread` objects include runtime `status`.
+- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, and `searchTerm` filters. Returned `thread` objects include runtime `status`.
+- `thread/turns/list` - page through a stored thread’s turn history without resuming it.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
 - `thread/name/set` - set or update a thread’s user-facing name for a loaded thread or a persisted rollout; emits `thread/name/updated`.
+- `thread/metadata/update` - patch SQLite-backed stored thread metadata; currently supports persisted `gitInfo`.
 - `thread/archive` - move a thread’s log file into the archived directory; returns `{}` on success and emits `thread/archived`.
-- `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread and emits `thread/closed`.
+- `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread after a no-subscriber inactivity grace period and emits `thread/closed`.
 - `thread/unarchive` - restore an archived thread rollout back into the active sessions directory; returns the restored `thread` and emits `thread/unarchived`.
 - `thread/status/changed` - notification emitted when a loaded thread’s runtime `status` changes.
 - `thread/compact/start` - trigger conversation history compaction for a thread; returns `{}` immediately while progress streams via `turn/*` and `item/*` notifications.
@@ -213,6 +234,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/backgroundTerminals/clean` - stop all running background terminals for a thread (experimental; requires `capabilities.experimentalApi`).
 - `thread/rollback` - drop the last N turns from the in-memory context and persist a rollback marker; returns the updated `thread`.
 - `turn/start` - add user input to a thread and begin Codex generation; responds with the initial `turn` and streams events. For `collaborationMode`, `settings.developer_instructions: null` means “use built-in instructions for the selected mode.”
+- `thread/inject_items` - append raw Responses API items to a loaded thread’s model-visible history without starting a user turn.
 - `turn/steer` - append user input to the active in-flight turn for a thread; returns the accepted `turnId`.
 - `turn/interrupt` - request cancellation of an in-flight turn; success is `{}` and the turn ends with `status: "interrupted"`.
 - `review/start` - kick off the Codex reviewer for a thread; emits `enteredReviewMode` and `exitedReviewMode` items.
@@ -220,10 +242,14 @@ If a client sends an experimental method or field without opting in, app-server 
 - `command/exec/write` - write `stdin` bytes to a running `command/exec` session or close `stdin`.
 - `command/exec/resize` - resize a running PTY-backed `command/exec` session.
 - `command/exec/terminate` - stop a running `command/exec` session.
+- `command/exec/outputDelta` (notify) - emitted for base64-encoded stdout/stderr chunks from a streaming `command/exec` session.
 - `model/list` - list available models (set `includeHidden: true` to include entries with `hidden: true`) with effort options, optional `upgrade`, and `inputModalities`.
 - `experimentalFeature/list` - list feature flags with lifecycle stage metadata and cursor pagination.
+- `experimentalFeature/enablement/set` - patch in-memory runtime enablement for supported feature keys such as `apps` and `plugins`.
 - `collaborationMode/list` - list collaboration mode presets (experimental, no pagination).
 - `skills/list` - list skills for one or more `cwd` values (supports `forceReload` and optional `perCwdExtraUserRoots`).
+- `skills/changed` (notify) - emitted when watched local skill files change.
+- `marketplace/add` - add a remote plugin marketplace and persist it into the user’s marketplace config.
 - `plugin/list` - list discovered plugin marketplaces and plugin state, including install/auth policy metadata, marketplace load errors, featured plugin ids, and local, Git, or remote plugin source metadata.
 - `plugin/read` - read one plugin by marketplace path or remote marketplace name and plugin name, including bundled skills, apps, and MCP server names when those details are available.
 - `plugin/install` - install a plugin from a marketplace path or remote marketplace name.
@@ -235,15 +261,17 @@ If a client sends an experimental method or field without opting in, app-server 
 - `config/mcpServer/reload` - reload MCP server configuration from disk and queue a refresh for loaded threads.
 - `mcpServerStatus/list` - list MCP servers, tools, resources, and auth status (cursor + limit pagination). Use `detail: "full"` for full data or `detail: "toolsAndAuthOnly"` to omit resources.
 - `mcpServer/resource/read` - read a single MCP resource through an initialized MCP server.
+- `mcpServer/tool/call` - call a tool on a thread’s configured MCP server.
+- `mcpServer/startupStatus/updated` (notify) - emitted when a configured MCP server’s startup status changes for a loaded thread.
 - `windowsSandbox/setupStart` - start Windows sandbox setup for `elevated` or `unelevated` mode; returns quickly and later emits `windowsSandbox/setupCompleted`.
 - `feedback/upload` - submit a feedback report (classification + optional reason/logs + conversation id, plus optional `extraLogFiles` attachments).
 - `config/read` - fetch the effective configuration on disk after resolving configuration layering.
 - `externalAgentConfig/detect` - detect external-agent artifacts that can be migrated with `includeHome` and optional `cwds`; each detected item includes `cwd` (`null` for home).
-- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home).
+- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home); plugin imports emit `externalAgentConfig/import/completed`.
 - `config/value/write` - write a single configuration key/value to the user’s `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
 - `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven’t set any up).
-- `fs/readFile`, `fs/writeFile`, `fs/createDirectory`, `fs/getMetadata`, `fs/readDirectory`, `fs/remove`, and `fs/copy` - operate on absolute filesystem paths through the app-server v2 filesystem API.
+- `fs/readFile`, `fs/writeFile`, `fs/createDirectory`, `fs/getMetadata`, `fs/readDirectory`, `fs/remove`, `fs/copy`, `fs/watch`, `fs/unwatch`, and `fs/changed` (notify) - operate on absolute filesystem paths through the app-server v2 filesystem API.
 
 Plugin summaries include a `source` union. Local plugins return
 `{ "type": "local", "path": ... }`, Git-backed marketplace entries return
@@ -320,13 +348,16 @@ Use this endpoint to discover feature flags with metadata and lifecycle stage:
 ## Threads
 
 - `thread/read` reads a stored thread without subscribing to it; set `includeTurns` to include turns.
-- `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, and `cwd` filtering.
+- `thread/turns/list` pages through a stored thread’s turn history without resuming it.
+- `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, and `searchTerm` filtering.
 - `thread/loaded/list` returns the thread IDs currently in memory.
 - `thread/archive` moves the thread’s persisted JSONL log into the archived directory.
-- `thread/unsubscribe` unsubscribes the current connection from a loaded thread and can trigger `thread/closed`.
+- `thread/metadata/update` patches stored thread metadata, currently including persisted `gitInfo`.
+- `thread/unsubscribe` unsubscribes the current connection from a loaded thread and can trigger `thread/closed` after an inactivity grace period.
 - `thread/unarchive` restores an archived thread rollout back into the active sessions directory.
 - `thread/compact/start` triggers compaction and returns `{}` immediately.
 - `thread/rollback` drops the last N turns from the in-memory context and records a rollback marker in the thread’s persisted JSONL log.
+- `thread/inject_items` appends raw Responses API items to a loaded thread’s model-visible history without starting a user turn.
 
 ### Start or resume a thread
 
@@ -397,6 +428,23 @@ Use `thread/read` when you want stored thread data but don’t want to resume th
 
 Unlike `thread/resume`, `thread/read` doesn’t load the thread into memory or emit `thread/started`.
 
+### List thread turns
+
+Use `thread/turns/list` to page a stored thread’s turn history without resuming it. Results default to newest-first so clients can fetch older turns with `nextCursor`. The response also includes `backwardsCursor`; pass it as `cursor` with `sortDirection: "asc"` to fetch turns newer than the first item from the earlier page.
+
+```
+{ "method": "thread/turns/list", "id": 20, "params": {
+  "threadId": "thr_123",
+  "limit": 50,
+  "sortDirection": "desc"
+} }
+{ "id": 20, "result": {
+  "data": [],
+  "nextCursor": "older-turns-cursor-or-null",
+  "backwardsCursor": "newer-turns-cursor-or-null"
+} }
+```
+
 ### List threads (with pagination & filters)
 
 `thread/list` lets you render a history UI. Results default to newest-first by `createdAt`. Filters apply before pagination. Pass any combination of:
@@ -408,6 +456,7 @@ Unlike `thread/resume`, `thread/read` doesn’t load the thread into memory or e
 - `sourceKinds` - restrict results to specific thread sources. When omitted or `[]`, the server defaults to interactive sources only: `cli` and `vscode`.
 - `archived` - when `true`, list archived threads only. When `false` or omitted, list non-archived threads (default).
 - `cwd` - restrict results to threads whose session current working directory exactly matches this path.
+- `searchTerm` - search stored thread summaries and metadata before pagination.
 
 `sourceKinds` accepts the following values:
 
@@ -441,6 +490,23 @@ Example:
 
 When `nextCursor` is `null`, you have reached the final page.
 
+### Update stored thread metadata
+
+Use `thread/metadata/update` to patch stored thread metadata without resuming the thread. Today this supports persisted `gitInfo`; omitted fields are left unchanged, and explicit `null` clears a stored value.
+
+```
+{ "method": "thread/metadata/update", "id": 21, "params": {
+  "threadId": "thr_123",
+  "gitInfo": { "branch": "feature/sidebar-pr" }
+} }
+{ "id": 21, "result": {
+  "thread": {
+    "id": "thr_123",
+    "gitInfo": { "sha": null, "branch": "feature/sidebar-pr", "originUrl": null }
+  }
+} }
+```
+
 ### Track thread status changes
 
 `thread/status/changed` is emitted whenever a loaded thread’s runtime status changes. The payload includes `threadId` and the new `status`.
@@ -472,11 +538,16 @@ When `nextCursor` is `null`, you have reached the final page.
 - `notSubscribed` when the connection wasn’t subscribed to that thread.
 - `notLoaded` when the thread isn’t loaded.
 
-If this was the last subscriber, the server unloads the thread and emits a `thread/status/changed` transition to `notLoaded` plus `thread/closed`.
+If this was the last subscriber, the server keeps the thread loaded until it has no subscribers and no thread activity for 30 minutes. When the grace period expires, app-server unloads the thread and emits a `thread/status/changed` transition to `notLoaded` plus `thread/closed`.
 
 ```
 { "method": "thread/unsubscribe", "id": 22, "params": { "threadId": "thr_123" } }
 { "id": 22, "result": { "status": "unsubscribed" } }
+```
+
+If the thread later expires:
+
+```
 { "method": "thread/status/changed", "params": {
     "threadId": "thr_123",
     "status": { "type": "notLoaded" }
@@ -623,6 +694,24 @@ Examples:
   }
 } }
 { "id": 30, "result": { "turn": { "id": "turn_456", "status": "inProgress", "items": [], "error": null } } }
+```
+
+### Inject items into a thread
+
+Use `thread/inject_items` to append prebuilt Responses API items to a loaded thread’s prompt history without starting a user turn. These items are persisted to the rollout and included in subsequent model requests.
+
+```
+{ "method": "thread/inject_items", "id": 31, "params": {
+  "threadId": "thr_123",
+  "items": [
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [{ "type": "output_text", "text": "Previously computed context." }]
+    }
+  ]
+} }
+{ "id": 31, "result": {} }
 ```
 
 ### Steer an active turn
@@ -805,6 +894,28 @@ Modes:
 
 - `elevated` - run the elevated Windows sandbox setup path.
 - `unelevated` - run the legacy setup/preflight path.
+
+## Filesystem
+
+The v2 filesystem APIs operate on absolute paths. Use `fs/watch` when a client needs to invalidate UI state after a file or directory changes.
+
+```
+{ "method": "fs/watch", "id": 54, "params": {
+  "watchId": "0195ec6b-1d6f-7c2e-8c7a-56f2c4a8b9d1",
+  "path": "/Users/me/project/.git/HEAD"
+} }
+{ "id": 54, "result": { "path": "/Users/me/project/.git/HEAD" } }
+{ "method": "fs/changed", "params": {
+  "watchId": "0195ec6b-1d6f-7c2e-8c7a-56f2c4a8b9d1",
+  "changedPaths": ["/Users/me/project/.git/HEAD"]
+} }
+{ "method": "fs/unwatch", "id": 55, "params": {
+  "watchId": "0195ec6b-1d6f-7c2e-8c7a-56f2c4a8b9d1"
+} }
+{ "id": 55, "result": {} }
+```
+
+Watching a file emits `fs/changed` for that file path, including updates delivered by replace or rename operations.
 
 ## Events
 
@@ -1026,6 +1137,8 @@ Use `skills/list` to fetch available skills (optionally scoped by `cwds`, with `
 } }
 ```
 
+The server also emits `skills/changed` notifications when watched local skill files change. Treat this as an invalidation signal and rerun `skills/list` with your current params when needed.
+
 To enable or disable a skill by path:
 
 ```
@@ -1232,6 +1345,8 @@ Import example:
 { "id": 64, "result": {} }
 ```
 
+When a request includes plugin imports, the server emits `externalAgentConfig/import/completed` after the import finishes. This notification may arrive immediately after the response or after background remote imports complete.
+
 Supported `itemType` values are `AGENTS_MD`, `CONFIG`, `SKILLS`, `PLUGINS`,
 and `MCP_SERVER_CONFIG`. For `PLUGINS` items, `details.plugins` lists each
 `marketplaceName` and the `pluginNames` Codex can try to migrate. Detection
@@ -1246,28 +1361,30 @@ Codex infers `anthropics/claude-plugins-official` as the source.
 
 ## Auth endpoints
 
-The JSON-RPC auth/account surface exposes request/response methods plus server-initiated notifications (no `id`). Use these to determine auth state, start or cancel logins, logout, and inspect ChatGPT rate limits.
+The JSON-RPC auth/account surface exposes request/response methods plus server-initiated notifications (no `id`). Use these to determine auth state, start or cancel logins, logout, inspect ChatGPT rate limits, and notify workspace owners about depleted credits or usage limits.
 
 ### Authentication modes
 
-Codex supports three authentication modes. `account/updated.authMode` shows the active mode, and `account/read` also reports it.
+Codex supports these authentication modes. `account/updated.authMode` shows the active mode and includes the current ChatGPT `planType` when available. `account/read` also reports account and plan details.
 
-- **API key (`apikey`)** - the caller supplies an OpenAI API key and Codex stores it for API requests.
-- **ChatGPT managed (`chatgpt`)** - Codex owns the ChatGPT OAuth flow, persists tokens, and refreshes them automatically.
-- **ChatGPT external tokens (`chatgptAuthTokens`)** - a host app supplies `idToken` and `accessToken` directly. Codex stores these tokens in memory, and the host app must refresh them when asked.
+- **API key (`apikey`)** - the caller supplies an OpenAI API key with `type: "apiKey"`, and Codex stores it for API requests.
+- **ChatGPT managed (`chatgpt`)** - Codex owns the ChatGPT OAuth flow, persists tokens, and refreshes them automatically. Start with `type: "chatgpt"` for the browser flow or `type: "chatgptDeviceCode"` for the device-code flow.
+- **ChatGPT external tokens (`chatgptAuthTokens`)** - experimental and intended for host apps that already own the user’s ChatGPT auth lifecycle. The host app supplies an `accessToken`, `chatgptAccountId`, and optional `chatgptPlanType` directly, and must refresh the token when asked.
 
 ### API overview
 
 - `account/read` - fetch current account info; optionally refresh tokens.
-- `account/login/start` - begin login (`apiKey`, `chatgpt`, or `chatgptAuthTokens`).
+- `account/login/start` - begin login (`apiKey`, `chatgpt`, `chatgptDeviceCode`, or experimental `chatgptAuthTokens`).
 - `account/login/completed` (notify) - emitted when a login attempt finishes (success or error).
-- `account/login/cancel` - cancel a pending ChatGPT login by `loginId`.
+- `account/login/cancel` - cancel a pending managed ChatGPT login by `loginId`.
 - `account/logout` - sign out; triggers `account/updated`.
-- `account/updated` (notify) - emitted whenever auth mode changes (`authMode`: `apikey`, `chatgpt`, `chatgptAuthTokens`, or `null`).
+- `account/updated` (notify) - emitted whenever auth mode changes (`authMode`: `apikey`, `chatgpt`, `chatgptAuthTokens`, or `null`) and includes `planType` when available.
 - `account/chatgptAuthTokens/refresh` (server request) - request fresh externally managed ChatGPT tokens after an authorization error.
 - `account/rateLimits/read` - fetch ChatGPT rate limits.
 - `account/rateLimits/updated` (notify) - emitted whenever a user’s ChatGPT rate limits change.
+- `account/sendAddCreditsNudgeEmail` - ask ChatGPT to email a workspace owner about depleted credits or a reached usage limit.
 - `mcpServer/oauthLogin/completed` (notify) - emitted after a `mcpServer/oauth/login` flow finishes; payload includes `{ name, success, error? }`.
+- `mcpServer/startupStatus/updated` (notify) - emitted when a configured MCP server’s startup status changes for a loaded thread; payload includes `{ name, status, error }`.
 
 ### 1) Check auth state
 
@@ -1339,7 +1456,10 @@ Field notes:
    ```
 
    ```
-   { "method": "account/updated", "params": { "authMode": "apikey" } }
+   {
+     "method": "account/updated",
+     "params": { "authMode": "apikey", "planType": null }
+   }
    ```
 
 ### 3) Log in with ChatGPT (browser flow)
@@ -1371,12 +1491,57 @@ Field notes:
    ```
 
    ```
-   { "method": "account/updated", "params": { "authMode": "chatgpt" } }
+   {
+     "method": "account/updated",
+     "params": { "authMode": "chatgpt", "planType": "plus" }
+   }
    ```
 
-### 3b) Log in with externally managed ChatGPT tokens (`chatgptAuthTokens`)
+### 3b) Log in with ChatGPT (device-code flow)
 
-Use this mode when a host application owns the user’s ChatGPT auth lifecycle and supplies tokens directly.
+Use this flow when your client owns the sign-in ceremony or when a browser callback is brittle.
+
+1. Start:
+
+   ```
+   {
+     "method": "account/login/start",
+     "id": 4,
+     "params": { "type": "chatgptDeviceCode" }
+   }
+   ```
+
+   ```
+   {
+     "id": 4,
+     "result": {
+       "type": "chatgptDeviceCode",
+       "loginId": "<uuid>",
+       "verificationUrl": "https://auth.openai.com/codex/device",
+       "userCode": "ABCD-1234"
+     }
+   }
+   ```
+2. Show `verificationUrl` and `userCode` to the user; the frontend owns the UX.
+3. Wait for notifications:
+
+   ```
+   {
+     "method": "account/login/completed",
+     "params": { "loginId": "<uuid>", "success": true, "error": null }
+   }
+   ```
+
+   ```
+   {
+     "method": "account/updated",
+     "params": { "authMode": "chatgpt", "planType": "plus" }
+   }
+   ```
+
+### 3c) Log in with externally managed ChatGPT tokens (`chatgptAuthTokens`)
+
+Use this experimental mode only when a host application owns the user’s ChatGPT auth lifecycle and supplies tokens directly. Clients must set `capabilities.experimentalApi = true` during `initialize` before using this login type.
 
 1. Send:
 
@@ -1386,8 +1551,9 @@ Use this mode when a host application owns the user’s ChatGPT auth lifecycle a
      "id": 7,
      "params": {
        "type": "chatgptAuthTokens",
-       "idToken": "<jwt>",
-       "accessToken": "<jwt>"
+       "accessToken": "<jwt>",
+       "chatgptAccountId": "org-123",
+       "chatgptPlanType": "business"
      }
    }
    ```
@@ -1408,7 +1574,7 @@ Use this mode when a host application owns the user’s ChatGPT auth lifecycle a
    ```
    {
      "method": "account/updated",
-     "params": { "authMode": "chatgptAuthTokens" }
+     "params": { "authMode": "chatgptAuthTokens", "planType": "business" }
    }
    ```
 
@@ -1420,7 +1586,7 @@ When the server receives a `401 Unauthorized`, it may request refreshed tokens f
   "id": 8,
   "params": { "reason": "unauthorized", "previousAccountId": "org-123" }
 }
-{ "id": 8, "result": { "idToken": "<jwt>", "accessToken": "<jwt>" } }
+{ "id": 8, "result": { "accessToken": "<jwt>", "chatgptAccountId": "org-123", "chatgptPlanType": "business" } }
 ```
 
 The server retries the original request after a successful refresh response. Requests time out after about 10 seconds.
@@ -1437,7 +1603,7 @@ The server retries the original request after a successful refresh response. Req
 ```
 { "method": "account/logout", "id": 5 }
 { "id": 5, "result": {} }
-{ "method": "account/updated", "params": { "authMode": null } }
+{ "method": "account/updated", "params": { "authMode": null, "planType": null } }
 ```
 
 ### 6) Rate limits (ChatGPT)
@@ -1449,20 +1615,23 @@ The server retries the original request after a successful refresh response. Req
     "limitId": "codex",
     "limitName": null,
     "primary": { "usedPercent": 25, "windowDurationMins": 15, "resetsAt": 1730947200 },
-    "secondary": null
+    "secondary": null,
+    "rateLimitReachedType": null
   },
   "rateLimitsByLimitId": {
     "codex": {
       "limitId": "codex",
       "limitName": null,
       "primary": { "usedPercent": 25, "windowDurationMins": 15, "resetsAt": 1730947200 },
-      "secondary": null
+      "secondary": null,
+      "rateLimitReachedType": null
     },
     "codex_other": {
       "limitId": "codex_other",
       "limitName": "codex_other",
       "primary": { "usedPercent": 42, "windowDurationMins": 60, "resetsAt": 1730950800 },
-      "secondary": null
+      "secondary": null,
+      "rateLimitReachedType": null
     }
   }
 } }
@@ -1483,4 +1652,18 @@ Field notes:
 - `usedPercent` is current usage within the quota window.
 - `windowDurationMins` is the quota window length.
 - `resetsAt` is a Unix timestamp (seconds) for the next reset.
+- `planType` is included when the backend returns the ChatGPT plan associated with a bucket.
+- `credits` is included when the backend returns remaining workspace credit details.
+- `rateLimitReachedType` identifies the backend-classified limit state when one has been reached.
+
+### 7) Notify a workspace owner about a limit
+
+Use `account/sendAddCreditsNudgeEmail` to ask ChatGPT to email a workspace owner when credits are depleted or a usage limit has been reached.
+
+```
+{ "method": "account/sendAddCreditsNudgeEmail", "id": 7, "params": { "creditType": "credits" } }
+{ "id": 7, "result": { "status": "sent" } }
+```
+
+Use `creditType: "credits"` when workspace credits are depleted, or `creditType: "usage_limit"` when the workspace usage limit has been reached. If the owner was already notified recently, the response status is `cooldown_active`.
 

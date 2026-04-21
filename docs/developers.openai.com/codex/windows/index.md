@@ -5,6 +5,10 @@ Source: https://developers.openai.com/codex/windows
 Use Codex on Windows with the native [Codex app](/codex/app/windows), the
 [CLI](/codex/cli), or the [IDE extension](/codex/ide).
 
+The Codex app on Windows supports core workflows such as parallel agent threads,
+worktrees, automations, Git functionality, the in-app browser, artifact previews,
+plugins, and skills.
+
 [![](/images/codex/codex-banner-icon.webp)
 
 Use the Codex app on Windows

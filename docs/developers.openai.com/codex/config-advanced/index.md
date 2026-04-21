@@ -372,35 +372,140 @@ Each metric includes its own fields plus the default context fields below.
 
 #### Metrics catalog
 
-Each metric includes the required fields plus the default context fields above. Every metric is prefixed by `codex.`.
+Each metric includes the required fields plus the default context fields above. Metric names below omit the `codex.` prefix.
+Most metric names are centralized in `codex-rs/otel/src/metrics/names.rs`; feature-specific metrics emitted outside that file are included here too.
 If a metric includes the `tool` field, it reflects the internal tool used (for example, `apply_patch` or `shell`) and doesn’t contain the actual shell command or patch `codex` is trying to apply.
+
+#### Runtime and model transport
+
+| Metric | Type | Fields | Description |
+| --- | --- | --- | --- |
+| `api_request` | counter | `status`, `success` | API request count by HTTP status and success/failure. |
+| `api_request.duration_ms` | histogram | `status`, `success` | API request duration in milliseconds. |
+| `sse_event` | counter | `kind`, `success` | SSE event count by event kind and success/failure. |
+| `sse_event.duration_ms` | histogram | `kind`, `success` | SSE event processing duration in milliseconds. |
+| `websocket.request` | counter | `success` | WebSocket request count by success/failure. |
+| `websocket.request.duration_ms` | histogram | `success` | WebSocket request duration in milliseconds. |
+| `websocket.event` | counter | `kind`, `success` | WebSocket message/event count by type and success/failure. |
+| `websocket.event.duration_ms` | histogram | `kind`, `success` | WebSocket message/event processing duration in milliseconds. |
+| `responses_api_overhead.duration_ms` | histogram |  | Responses API overhead timing from websocket responses. |
+| `responses_api_inference_time.duration_ms` | histogram |  | Responses API inference timing from websocket responses. |
+| `responses_api_engine_iapi_ttft.duration_ms` | histogram |  | Responses API engine IAPI time-to-first-token timing. |
+| `responses_api_engine_service_ttft.duration_ms` | histogram |  | Responses API engine service time-to-first-token timing. |
+| `responses_api_engine_iapi_tbt.duration_ms` | histogram |  | Responses API engine IAPI time-between-token timing. |
+| `responses_api_engine_service_tbt.duration_ms` | histogram |  | Responses API engine service time-between-token timing. |
+| `transport.fallback_to_http` | counter | `from_wire_api` | WebSocket-to-HTTP fallback count. |
+| `remote_models.fetch_update.duration_ms` | histogram |  | Time to fetch remote model definitions. |
+| `remote_models.load_cache.duration_ms` | histogram |  | Time to load the remote model cache. |
+| `startup_prewarm.duration_ms` | histogram | `status` | Startup prewarm duration by outcome. |
+| `startup_prewarm.age_at_first_turn_ms` | histogram | `status` | Startup prewarm age when the first real turn resolves it. |
+| `cloud_requirements.fetch.duration_ms` | histogram |  | Workspace-managed cloud requirements fetch duration. |
+| `cloud_requirements.fetch_attempt` | counter | See note | Workspace-managed cloud requirements fetch attempts. |
+| `cloud_requirements.fetch_final` | counter | See note | Final workspace-managed cloud requirements fetch outcome. |
+| `cloud_requirements.load` | counter | `trigger`, `outcome` | Workspace-managed cloud requirements load outcome. |
+
+The `cloud_requirements.fetch_attempt` metric includes `trigger`, `attempt`, `outcome`, and `status_code` fields. The `cloud_requirements.fetch_final` metric includes `trigger`, `outcome`, `reason`, `attempt_count`, and `status_code` fields.
+
+#### Turn and tool activity
+
+| Metric | Type | Fields | Description |
+| --- | --- | --- | --- |
+| `turn.e2e_duration_ms` | histogram |  | End-to-end time for a full turn. |
+| `turn.ttft.duration_ms` | histogram |  | Time to first token for a turn. |
+| `turn.ttfm.duration_ms` | histogram |  | Time to first model output item for a turn. |
+| `turn.network_proxy` | counter | `active`, `tmp_mem_enabled` | Whether the managed network proxy was active for the turn. |
+| `turn.memory` | counter | `read_allowed`, `feature_enabled`, `config_use_memories`, `has_citations` | Per-turn memory read availability and memory citation usage. |
+| `turn.tool.call` | histogram | `tmp_mem_enabled` | Number of tool calls in the turn. |
+| `turn.token_usage` | histogram | `token_type`, `tmp_mem_enabled` | Per-turn token usage by token type (`total`, `input`, `cached_input`, `output`, or `reasoning_output`). |
+| `tool.call` | counter | `tool`, `success` | Tool invocation count by tool name and success/failure. |
+| `tool.call.duration_ms` | histogram | `tool`, `success` | Tool execution duration in milliseconds by tool name and outcome. |
+| `tool.unified_exec` | counter | `tty` | Unified exec tool calls by TTY mode. |
+| `approval.requested` | counter | `tool`, `approved` | Tool approval request result (`approved`, `approved_with_amendment`, `approved_for_session`, `denied`, `abort`). |
+| `mcp.call` | counter | See note | MCP tool invocation result. |
+| `mcp.call.duration_ms` | histogram | See note | MCP tool invocation duration. |
+| `mcp.tools.list.duration_ms` | histogram | `cache` | MCP tool-list duration, including cache hit/miss state. |
+| `mcp.tools.fetch_uncached.duration_ms` | histogram |  | Duration of uncached MCP tool fetches. |
+| `mcp.tools.cache_write.duration_ms` | histogram |  | Duration of Codex Apps MCP tool-cache writes. |
+| `hooks.run` | counter | `hook_name`, `source`, `status` | Hook run count by hook name, source, and status. |
+| `hooks.run.duration_ms` | histogram | `hook_name`, `source`, `status` | Hook run duration in milliseconds. |
+
+The `mcp.call` and `mcp.call.duration_ms` metrics include `status`; normal tool-call emissions also include `tool`, plus `connector_id` and `connector_name` when available. Blocked Codex Apps MCP calls may emit `mcp.call` with only `status`.
+
+#### Threads, tasks, and features
 
 | Metric | Type | Fields | Description |
 | --- | --- | --- | --- |
 | `feature.state` | counter | `feature`, `value` | Feature values that differ from defaults (emit one row per non-default). |
-| `thread.started` | counter | `is_git` | New thread created. |
-| `thread.fork` | counter |  | New thread created by forking an existing thread. |
+| `status_line` | counter |  | Session started with a configured status line. |
+| `model_warning` | counter |  | Warning sent to the model. |
+| `thread.started` | counter | `is_git` | New thread created, tagged by whether the working directory is in a Git repo. |
+| `conversation.turn.count` | counter |  | User/assistant turns per thread, recorded at the end of the thread. |
+| `thread.fork` | counter | `source` | New thread created by forking an existing thread. |
 | `thread.rename` | counter |  | Thread renamed. |
+| `thread.side` | counter | `source` | Side conversation created. |
+| `thread.skills.enabled_total` | histogram |  | Number of skills enabled for a new thread. |
+| `thread.skills.kept_total` | histogram |  | Number of enabled skills kept after prompt rendering. |
+| `thread.skills.truncated` | histogram |  | Whether skill rendering truncated the enabled skills list (`1` or `0`). |
 | `task.compact` | counter | `type` | Number of compactions per type (`remote` or `local`), including manual and auto. |
-| `task.user_shell` | counter |  | Number of user shell actions (`!` in the TUI for example). |
 | `task.review` | counter |  | Number of reviews triggered. |
 | `task.undo` | counter |  | Number of undo actions triggered. |
-| `approval.requested` | counter | `tool`, `approved` | Tool approval request result (`approved`, `approved_with_amendment`, `approved_for_session`, `denied`, `abort`). |
-| `conversation.turn.count` | counter |  | User/assistant turns per thread, recorded at the end of the thread. |
-| `turn.e2e_duration_ms` | histogram |  | End-to-end time for a full turn. |
-| `mcp.call` | counter | `status` | MCP tool invocation result (`ok` or error string). |
-| `model_warning` | counter |  | Warning sent to the model. |
-| `tool.call` | counter | `tool`, `success` | Tool invocation result (`success`: `true` or `false`). |
-| `tool.call.duration_ms` | histogram | `tool`, `success` | Tool execution time. |
-| `remote_models.fetch_update.duration_ms` | histogram |  | Time to fetch remote model definitions. |
-| `remote_models.load_cache.duration_ms` | histogram |  | Time to load the remote model cache. |
-| `shell_snapshot` | counter | `success` | Whether taking a shell snapshot succeeded. |
+| `task.user_shell` | counter |  | Number of user shell actions (`!` in the TUI for example). |
+| `shell_snapshot` | counter | See note | Whether taking a shell snapshot succeeded. |
 | `shell_snapshot.duration_ms` | histogram | `success` | Time to take a shell snapshot. |
-| `db.init` | counter | `status` | State DB initialization outcomes (`opened`, `created`, `open_error`, `init_error`). |
+| `skill.injected` | counter | `status`, `skill` | Skill injection outcomes by skill. |
+| `plugins.startup_sync` | counter | `transport`, `status` | Curated plugin startup sync attempts. |
+| `plugins.startup_sync.final` | counter | `transport`, `status` | Final curated plugin startup sync outcome. |
+| `multi_agent.spawn` | counter | `role` | Agent spawns by role. |
+| `multi_agent.resume` | counter |  | Agent resumes. |
+| `multi_agent.nickname_pool_reset` | counter |  | Agent nickname pool resets. |
+
+The `shell_snapshot` metric includes `success` and, on failures, `failure_reason`.
+
+#### Memory and local state
+
+| Metric | Type | Fields | Description |
+| --- | --- | --- | --- |
+| `memory.phase1` | counter | `status` | Memory phase 1 job counts by status. |
+| `memory.phase1.e2e_ms` | histogram |  | End-to-end duration for memory phase 1. |
+| `memory.phase1.output` | counter |  | Memory phase 1 outputs written. |
+| `memory.phase1.token_usage` | histogram | `token_type` | Memory phase 1 token usage by token type. |
+| `memory.phase2` | counter | `status` | Memory phase 2 job counts by status. |
+| `memory.phase2.e2e_ms` | histogram |  | End-to-end duration for memory phase 2. |
+| `memory.phase2.input` | counter |  | Memory phase 2 input count. |
+| `memory.phase2.token_usage` | histogram | `token_type` | Memory phase 2 token usage by token type. |
+| `memories.usage` | counter | `kind`, `tool`, `success` | Memory usage by kind, tool, and success/failure. |
+| `external_agent_config.detect` | counter | See note | External agent config detections by migration item type. |
+| `external_agent_config.import` | counter | See note | External agent config imports by migration item type. |
 | `db.backfill` | counter | `status` | Initial state DB backfill results (`upserted`, `failed`). |
-| `db.backfill.duration_ms` | histogram | `status` | Duration of the initial state DB backfill, tagged with `success`, `failed`, or `partial_failure`. |
-| `db.error` | counter | `stage` | Errors during state DB operations (for example, `extract_metadata_from_rollout`, `backfill_sessions`, `apply_rollout_items`). |
-| `db.compare_error` | counter | `stage`, `reason` | State DB discrepancies detected during reconciliation. |
+| `db.backfill.duration_ms` | histogram | `status` | Duration of the initial state DB backfill. |
+| `db.error` | counter | `stage` | Errors during state DB operations. |
+
+The `external_agent_config.detect` and `external_agent_config.import` metrics include `migration_type`; skills migrations also include `skills_count`.
+
+#### Windows sandbox
+
+| Metric | Type | Fields | Description |
+| --- | --- | --- | --- |
+| `windows_sandbox.setup_success` | counter | `originator`, `mode` | Windows sandbox setup successes. |
+| `windows_sandbox.setup_failure` | counter | `originator`, `mode` | Windows sandbox setup failures. |
+| `windows_sandbox.setup_duration_ms` | histogram | `result`, `originator`, `mode` | Windows sandbox setup duration. |
+| `windows_sandbox.elevated_setup_success` | counter |  | Elevated Windows sandbox setup successes. |
+| `windows_sandbox.elevated_setup_failure` | counter | See note | Elevated Windows sandbox setup failures. |
+| `windows_sandbox.elevated_setup_canceled` | counter | See note | Canceled elevated Windows sandbox setup attempts. |
+| `windows_sandbox.elevated_setup_duration_ms` | histogram | `result` | Elevated Windows sandbox setup duration. |
+| `windows_sandbox.elevated_prompt_shown` | counter |  | Elevated sandbox setup prompt shown. |
+| `windows_sandbox.elevated_prompt_accept` | counter |  | Elevated sandbox setup prompt accepted. |
+| `windows_sandbox.elevated_prompt_use_legacy` | counter |  | User chose legacy sandbox from the elevated prompt. |
+| `windows_sandbox.elevated_prompt_quit` | counter |  | User quit from the elevated prompt. |
+| `windows_sandbox.fallback_prompt_shown` | counter |  | Fallback sandbox prompt shown. |
+| `windows_sandbox.fallback_retry_elevated` | counter |  | User retried elevated setup from the fallback prompt. |
+| `windows_sandbox.fallback_use_legacy` | counter |  | User chose legacy sandbox from the fallback prompt. |
+| `windows_sandbox.fallback_prompt_quit` | counter |  | User quit from the fallback prompt. |
+| `windows_sandbox.legacy_setup_preflight_failed` | counter | See note | Legacy Windows sandbox setup preflight failure. |
+| `windows_sandbox.setup_elevated_sandbox_command` | counter |  | Elevated sandbox setup command invoked. |
+| `windows_sandbox.createprocessasuserw_failed` | counter | `error_code`, `path_kind`, `exe`, `level` | Windows `CreateProcessAsUserW` failures. |
+
+The elevated setup failure metrics include `code` and `message` when Windows setup failure details are available, and may include `originator` when emitted from the shared setup path. The `windows_sandbox.legacy_setup_preflight_failed` metric includes `originator` when emitted from the shared setup path, but fallback-prompt preflight failures may not include any fields.
 
 ### Feedback controls
 
