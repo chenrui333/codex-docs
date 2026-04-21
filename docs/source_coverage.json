@@ -303,12 +303,8 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/memories/chronicle"
-    ],
-    "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/memories/chronicle"
-    ],
+    "new_codex_related_urls_since_last_run": [],
+    "new_mirrored_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -333,7 +329,7 @@
       "https://developers.openai.com/learn/codex"
     ]
   },
-  "generated_at": "2026-04-20T18:26:21+00:00",
+  "generated_at": "2026-04-21T00:44:00+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 34,

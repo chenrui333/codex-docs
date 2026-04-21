@@ -1,15 +1,12 @@
 {
-  "added": [
-    "developers.openai.com/codex/memories/chronicle/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-20T18:26:47+00:00",
+  "generated_at": "2026-04-21T00:44:27+00:00",
   "removed": [],
   "total_files": 172,
   "updated": [
     "developers.openai.com/codex/changelog/index.md",
-    "developers.openai.com/codex/memories/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }
