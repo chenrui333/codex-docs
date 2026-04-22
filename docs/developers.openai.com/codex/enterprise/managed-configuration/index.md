@@ -21,7 +21,7 @@ Codex applies requirements layers in this order (earlier wins per field):
 
 1. Cloud-managed requirements (ChatGPT Business or Enterprise)
 2. macOS managed preferences (MDM) via `com.openai.codex:requirements_toml_base64`
-3. System `requirements.toml` (`/etc/codex/requirements.toml` on Unix systems, including Linux/macOS)
+3. System `requirements.toml` (`/etc/codex/requirements.toml` on Unix systems, including Linux/macOS, or `%ProgramData%\OpenAI\Codex\requirements.toml` on Windows)
 
 Across layers, Codex merges requirements per field: if an earlier layer sets a field (including an empty list), later layers don’t override that field, but lower layers can still fill fields that remain unset.
 

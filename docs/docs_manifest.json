@@ -182,7 +182,7 @@
       "source_url": "https://developers.openai.com/codex/enterprise/governance"
     },
     "developers.openai.com/codex/enterprise/managed-configuration/index.md": {
-      "sha256": "e8182b21e882d29f4060261ef2d9848d065672d95a43f5679b422cda913e92fc",
+      "sha256": "b42c90d034b331634847e75e687dc414a0b2e9eb479887f4116a8e35fd295ff1",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "d2f1891adf371729c3bc34ce67471a5e7242215dc58d1ae3c20658db36eaab41",
+      "sha256": "ea39fb667c3b9619015923f46a6e53ce672887e2a5df3dc47e04644cabe5bca6",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
