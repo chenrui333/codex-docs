@@ -2,17 +2,14 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-21T18:28:58+00:00",
+  "generated_at": "2026-04-22T00:42:21+00:00",
   "removed": [],
   "total_files": 172,
   "updated": [
-    "developers.openai.com/codex/app-server/index.md",
     "developers.openai.com/codex/app/features/index.md",
-    "developers.openai.com/codex/app/index.md",
-    "developers.openai.com/codex/app/windows/index.md",
-    "developers.openai.com/codex/config-advanced/index.md",
-    "developers.openai.com/codex/quickstart/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/windows/index.md"
+    "developers.openai.com/codex/cli/features/index.md",
+    "developers.openai.com/codex/ide/features/index.md",
+    "developers.openai.com/codex/pricing/index.md",
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }

@@ -32,7 +32,7 @@
       "source_url": "https://developers.openai.com/codex/app/computer-use"
     },
     "developers.openai.com/codex/app/features/index.md": {
-      "sha256": "832d5720aa16fb2cd92c9c2ced5401042790a6ca5a8a73c076240976e184498c",
+      "sha256": "b7e0f5300411a7cc31617969ac31161426ad9ea686e38cc415d099fce8d805bd",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/features"
     },
@@ -87,7 +87,7 @@
       "source_url": "https://developers.openai.com/codex/changelog"
     },
     "developers.openai.com/codex/cli/features/index.md": {
-      "sha256": "c841023d3d18a2c4a1e8cc0c768add8eb8269d759889af9181e9a83a145728f9",
+      "sha256": "3ec2778ba6d632ddf03e0f42cc9a9af1c932cd3c998b00602bec1b56276a298d",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
@@ -222,7 +222,7 @@
       "source_url": "https://developers.openai.com/codex/ide/commands"
     },
     "developers.openai.com/codex/ide/features/index.md": {
-      "sha256": "4db9d91e03b34fb2f875c46fe41b25e53f703fa47aad2b8b2b1bc8c3c228b092",
+      "sha256": "bbf46a207cfbb21a6267c9e4a494e8237ff2de341efb0ec9cfe08b509aed556a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide/features"
     },
@@ -307,7 +307,7 @@
       "source_url": "https://developers.openai.com/codex/plugins"
     },
     "developers.openai.com/codex/pricing/index.md": {
-      "sha256": "5e1357323d93c4e19990bd2d9edf2ebf58aca3621a55fbb00848f966d4e67511",
+      "sha256": "ab21b52fe0cbe1d925a697ef3256862c6b11d071f8bac0f304286b38df196af0",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "cdc4de9c23493492a1f5e3fe6f728682847788f80b9b4f89e4a4a99b6333904d",
+      "sha256": "1cbbbdae686d1ba3838c530960f2b3443c16f25840cbcbe4b8c4801e47552a8f",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },

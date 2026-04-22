@@ -291,8 +291,8 @@ Business & New Enterprise Customers
 | GPT-5.3-Codex | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.2 | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.3-Codex-Spark | research preview | | |
-| GPT-Image-1.5 (image) | 200 credits | 50 credits | 800 credits |
-| GPT-Image-1.5 (text) | 125 credits | 31.25 credits | 250 credits |
+| GPT-Image-2 (image) | 200 credits | 50 credits | 750 credits |
+| GPT-Image-2 (text) | 125 credits | 31.25 credits | 250 credits |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | Fast mode consumes 2x as many credits. | | | |
