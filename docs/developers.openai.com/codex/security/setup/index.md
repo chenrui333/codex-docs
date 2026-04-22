@@ -77,7 +77,7 @@ You can use two views:
 - **Recommended Findings**: an evolving top 10 list of the most critical issues in the repo
 - **All Findings**: a sortable, filterable table of findings across the repository
 
-![Recommended findings view](/_astro/aardvark_recommended_findings.Dj6eIPV0_ZhRjOL.webp?dpl=dpl_3aKbT7bkHXs12aJgAsSxsqw1NPUv)
+![Recommended findings view](/_astro/aardvark_recommended_findings.Dj6eIPV0_ZhRjOL.webp?dpl=dpl_D9QZ3SofDxH5Gb4kYGmd3jDgomDi)
 
 Click a finding to open its detail page, which includes:
 
