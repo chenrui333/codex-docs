@@ -137,7 +137,7 @@
       "source_url": "https://developers.openai.com/codex/concepts/cyber-safety"
     },
     "developers.openai.com/codex/concepts/sandboxing/index.md": {
-      "sha256": "7b759ae650d7eaf74f3cf6898325ed0d44563e13c433eb5bbfda10d9726f1644",
+      "sha256": "fb161f1868b30efc73d4f59b9adaffb7d9589e0a0b22576be5b8dfe95168ba5c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/sandboxing"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "ea39fb667c3b9619015923f46a6e53ce672887e2a5df3dc47e04644cabe5bca6",
+      "sha256": "5da880cc0fb2ec4dac12a93b711f537efe94134dc4ab58d98a0c99709f580f33",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },

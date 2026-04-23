@@ -69,7 +69,35 @@ distribution package that provides `bwrap` keeps this setup reliable.
 
 Codex surfaces a startup warning when `bwrap` is missing or when the helper
 can’t create the needed user namespace. On distributions that restrict this
-AppArmor setting, you can enable it with:
+AppArmor setting, prefer loading the `bwrap` AppArmor profile so `bwrap` can
+keep working without disabling the restriction globally.
+
+**Ubuntu AppArmor note:** On Ubuntu 25.04, installing `bubblewrap` from
+Ubuntu’s package repository should work without extra AppArmor setup. The
+`bwrap-userns-restrict` profile ships in the `apparmor` package at
+`/etc/apparmor.d/bwrap-userns-restrict`.
+
+On Ubuntu 24.04, Codex may still warn that it can’t create the needed user
+namespace after `bubblewrap` is installed. Copy and load the extra profile:
+
+```
+sudo apt update
+sudo apt install apparmor-profiles apparmor-utils
+sudo install -m 0644 \
+  /usr/share/apparmor/extra-profiles/bwrap-userns-restrict \
+  /etc/apparmor.d/bwrap-userns-restrict
+sudo apparmor_parser -r /etc/apparmor.d/bwrap-userns-restrict
+```
+
+`apparmor_parser -r` loads the profile into the kernel without a reboot. You
+can also reload all AppArmor profiles:
+
+```
+sudo systemctl reload apparmor.service
+```
+
+If that profile is unavailable or does not resolve the issue, you can disable
+the AppArmor unprivileged user namespace restriction with:
 
 ```
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
