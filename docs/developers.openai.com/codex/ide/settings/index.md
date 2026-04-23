@@ -26,5 +26,5 @@ The extension also honors VS Code’s built-in chat font settings for Codex conv
 | `chatgpt.commentCodeLensEnabled` | Show CodeLens above to-do comments so you can complete them with Codex. |
 | `chatgpt.localeOverride` | Preferred language for the Codex UI. Leave empty to detect automatically. |
 | `chatgpt.openOnStartup` | Focus the Codex sidebar when the extension finishes starting. |
-| `chatgpt.runCodexInWindowsSubsystemForLinux` | Windows only: Run Codex in WSL when Windows Subsystem for Linux (WSL) is available. Recommended for improved sandbox security and better performance. Codex agent mode on Windows currently requires WSL. Changing this setting reloads VS Code to apply the change. |
+| `chatgpt.runCodexInWindowsSubsystemForLinux` | Windows only: Run Codex in WSL when Windows Subsystem for Linux (WSL) is available. Use this when your repositories and tooling live in WSL2 or when you need Linux-native tooling. Otherwise, Codex can run natively on Windows with the Windows sandbox. Changing this setting reloads VS Code to apply the change. |
 

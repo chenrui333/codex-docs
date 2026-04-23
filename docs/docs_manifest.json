@@ -92,7 +92,7 @@
       "source_url": "https://developers.openai.com/codex/cli/features"
     },
     "developers.openai.com/codex/cli/index.md": {
-      "sha256": "9a752929af38e722ea3bbc3d79f5bab99dc212b3020f64c35a20582f2f9b0b60",
+      "sha256": "f648e1e068383abf6fa1e57977c6737187d344115117fdc4c34b21f4b68a98c5",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli"
     },
@@ -227,12 +227,12 @@
       "source_url": "https://developers.openai.com/codex/ide/features"
     },
     "developers.openai.com/codex/ide/index.md": {
-      "sha256": "404158a2a1f25c453308f2fa8f91854800bfd2d5c96259f0699229570a9636bd",
+      "sha256": "286b6c4784963af4c2189bad5e3a84b84f1c343502195fd8e42434030561d041",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide"
     },
     "developers.openai.com/codex/ide/settings/index.md": {
-      "sha256": "f301f6f512702f558908fe684c5a2b4ea783a27c8e96ad8de6ba3752d627a4fd",
+      "sha256": "73f2f017c0857706c15ca6fa83d146e151b0341b7bf16358bcf35644e4bf14fc",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/ide/settings"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "2adab4178bca8625dc3e77132ad8148164c2301ae4b33f14f65356e6f70ff2ca",
+      "sha256": "df5810969edb50cdfdb9c8c7b025414f91c28c21f8d82206d6533490f316d8a9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },

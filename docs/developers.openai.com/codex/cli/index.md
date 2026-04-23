@@ -45,9 +45,10 @@ npmHomebrew
 
    npm i -g @openai/codex@latestCopy
 
-The Codex CLI is available on macOS and Linux. Windows support is
-experimental. For the best Windows experience, use Codex in a WSL2 workspace
-and follow our [Windows setup guide](/codex/windows).
+The Codex CLI is available on macOS, Windows, and Linux. On Windows, run Codex
+natively in PowerShell with the Windows sandbox, or use WSL2 when you need a
+Linux-native environment. For setup details, see the
+[Windows setup guide](/codex/windows).
 
 If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
 

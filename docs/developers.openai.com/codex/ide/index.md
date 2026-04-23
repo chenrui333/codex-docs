@@ -18,9 +18,10 @@ You can get the Codex extension from the [Visual Studio Code Marketplace](https:
 - [Download for Visual Studio Code Insiders](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
 - [Download for JetBrains IDEs](#jetbrains-ide-integration)
 
-The Codex VS Code extension is available on macOS and Linux. Windows support
-is experimental. For the best Windows experience, use Codex in a WSL2
-workspace and follow our [Windows setup guide](/codex/windows).
+Codex IDE integrations for VS Code-compatible editors and JetBrains IDEs are
+available on macOS, Windows, and Linux. On Windows, run Codex natively with
+the Windows sandbox, or use WSL2 when you need a Linux-native environment. For
+setup details, see the [Windows setup guide](/codex/windows).
 
 After you install it, you’ll find Codex in your editor sidebar.
 In VS Code, Codex opens in the right sidebar by default.
