@@ -29,14 +29,14 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 # Core Model Selection
 ################################################################################
 
-# Primary model used by Codex. Recommended example for most users: "gpt-5.4".
-model = "gpt-5.4"
+# Primary model used by Codex. Recommended example for most users: "gpt-5.5".
+model = "gpt-5.5"
 
 # Communication style for supported models. Allowed values: none | friendly | pragmatic
 # personality = "pragmatic"
 
 # Optional model override for /review. Default: unset (uses current session model).
-# review_model = "gpt-5.4"
+# review_model = "gpt-5.5"
 
 # Provider id selected from [model_providers]. Default: "openai".
 model_provider = "openai"
@@ -111,7 +111,7 @@ model_provider = "openai"
 # - never: never prompt (risky)
 # - { granular = { ... } }: allow or auto-reject selected prompt categories
 approval_policy = "on-request"
-# Who reviews eligible approval prompts: user (default) | guardian_subagent
+# Who reviews eligible approval prompts: user (default) | auto_review
 # approvals_reviewer = "user"
 
 # Example granular policy:
@@ -395,7 +395,6 @@ enabled = true
 # multi_agent = true
 # personality = true
 # fast_mode = true
-# guardian_approval = false
 # enable_request_compression = true
 # skill_mcp_dependency_install = true
 # prevent_idle_sleep = false

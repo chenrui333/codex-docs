@@ -109,17 +109,17 @@ The TUI sends remote auth tokens as `Authorization: Bearer <token>` during the W
 
 ## Models and reasoning
 
-For most tasks in Codex, `gpt-5.4` is the recommended model. It brings the
-industry-leading coding capabilities of `gpt-5.3-codex` to OpenAI’s flagship
-frontier model, combining frontier coding performance with stronger reasoning,
-native computer use, and broader professional workflows. For extra fast tasks,
-ChatGPT Pro subscribers have access to the GPT-5.3-Codex-Spark model in
-research preview.
+For most tasks in Codex, `gpt-5.5` is the recommended model when it is
+available. It is OpenAI’s newest frontier model for complex coding, computer
+use, knowledge work, and research workflows, with stronger planning, tool use,
+and follow-through on multi-step tasks. If `gpt-5.5` is not yet available,
+continue using `gpt-5.4`. For extra fast tasks, ChatGPT Pro subscribers have
+access to the GPT-5.3-Codex-Spark model in research preview.
 
 Switch models mid-session with the `/model` command, or specify one when launching the CLI.
 
 ```
-codex --model gpt-5.4
+codex --model gpt-5.5
 ```
 
 [Learn more about the models available in Codex](/codex/models).

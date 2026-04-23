@@ -105,7 +105,48 @@ If you need Codex to read files, make edits, and run commands with network acces
 
 For a middle ground, `approval_policy = { granular = { ... } }` lets you keep specific approval prompt categories interactive while automatically rejecting others. The granular policy covers sandbox approvals, execpolicy-rule prompts, MCP prompts, `request_permissions` prompts, and skill-script approvals.
 
-Set `approvals_reviewer = "guardian_subagent"` to route eligible approval reviews through the Guardian reviewer subagent instead of prompting the user directly. Admin requirements can constrain this with `allowed_approvals_reviewers`.
+### Automatic approval reviews
+
+By default, approval requests route to you:
+
+```
+approvals_reviewer = "user"
+```
+
+Automatic approval reviews apply when approvals are interactive, such as
+`approval_policy = "on-request"` or a granular approval policy. Set
+`approvals_reviewer = "auto_review"` to route eligible approval requests
+through a reviewer agent before Codex runs the request:
+
+```
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+```
+
+The reviewer evaluates only actions that already need approval, such as sandbox
+escalations, network requests, `request_permissions` prompts, or side-effecting
+app and MCP tool calls. Actions that stay inside the sandbox continue without an
+extra review step.
+
+The reviewer policy checks for data exfiltration, credential probing, persistent
+security weakening, and destructive actions. Low-risk and medium-risk actions
+can proceed when policy allows them. The policy denies critical-risk actions.
+High-risk actions require enough user authorization and no matching deny rule.
+Timeouts, parse failures, and review errors fail closed.
+
+The [default reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md)
+is in the open-source Codex repository. Enterprises can replace its
+tenant-specific section with `guardian_policy_config` in managed requirements.
+Local `[auto_review].policy` text is also supported, but managed requirements
+take precedence. For setup details, see
+[Managed configuration](/codex/enterprise/managed-configuration#configure-automatic-review-policy).
+
+In the Codex app, these reviews appear as automatic review items with a status such
+as Reviewing, Approved, Denied, Stopped, or Timed out. They can also include a
+risk level for the reviewed request.
+
+Automatic review uses extra model calls, so it can add to Codex usage. Admins
+can constrain it with `allowed_approvals_reviewers`.
 
 ### Common sandbox and approval combinations
 

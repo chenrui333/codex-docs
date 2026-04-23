@@ -68,7 +68,7 @@ Inspect diffs, address PR feedback, stage files, commit, and push.](/codex/app/r
 
 Run commands in each thread and launch repeatable project actions.](/codex/app/features#integrated-terminal)[### In-app browser
 
-Open unauthenticated local or public pages and comment on rendered output.](/codex/app/browser)[### Image generation
+Open rendered pages, leave comments, or let Codex operate local browser flows.](/codex/app/browser)[### Image generation
 
 Generate or edit images in a thread while you work on the surrounding code and assets.](/codex/app/features#image-generation)[### Automations
 

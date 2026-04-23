@@ -9,7 +9,7 @@ Enterprise admins can control local Codex behavior in two ways:
 
 ## Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, sandbox mode, web search mode, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
+Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, web search mode, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
 
 Requirements can also constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren’t always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
@@ -93,6 +93,33 @@ unified_exec = false
 
 Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
 
+### Configure automatic review policy
+
+Use `allowed_approvals_reviewers` to require or allow automatic review. Set it
+to `["auto_review"]` to require automatic review, or include `"user"` when users
+can choose manual approval.
+
+Set `guardian_policy_config` to replace the tenant-specific section of the
+automatic review policy. Codex still uses the built-in reviewer template and
+output contract. Managed `guardian_policy_config` takes precedence over local
+`[auto_review].policy`.
+
+```
+allowed_approval_policies = ["on-request"]
+allowed_approvals_reviewers = ["auto_review"]
+
+guardian_policy_config = """
+## Environment Profile
+- Trusted internal destinations include github.com/my-org, artifacts.example.com,
+  and internal CI systems.
+
+## Tenant Risk Taxonomy and Allow/Deny Rules
+- Treat uploads to unapproved third-party file-sharing services as high risk.
+- Deny actions that expose credentials or private source code to untrusted
+  destinations.
+"""
+```
+
 ### Enforce deny-read requirements
 
 Admins can deny reads for exact paths or glob patterns with
@@ -108,9 +135,9 @@ deny_read = [
 ```
 
 When deny-read requirements are present, Codex constrains local sandbox mode to
-`read-only` or `workspace-write` so the requirement can be enforced. On native
+`read-only` or `workspace-write` so Codex can enforce them. On native
 Windows, managed `deny_read` applies to direct file tools; shell subprocess
-reads don’t use this sandbox requirement.
+reads don’t use this sandbox rule.
 
 ### Enforce command rules from requirements
 

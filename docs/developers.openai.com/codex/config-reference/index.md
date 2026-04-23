@@ -26,7 +26,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `approval_policy.granular.rules` | `boolean` | When `true`, approvals triggered by execpolicy `prompt` rules are allowed to surface. |
 | `approval_policy.granular.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are allowed to surface. |
 | `approval_policy.granular.skill_approval` | `boolean` | When `true`, skill-script approval prompts are allowed to surface. |
-| `approvals_reviewer` | `user | guardian_subagent` | Select who reviews eligible approval prompts. Defaults to `user`; `guardian_subagent` routes supported reviews through the Guardian reviewer subagent. |
+| `approvals_reviewer` | `user | auto_review` | Who reviews eligible approval prompts under `on-request` or granular approval policies. Defaults to `user`; `auto_review` uses the reviewer subagent. This setting doesn't change sandboxing or review actions already allowed inside the sandbox. |
 | `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive_hint = true`. |
 | `apps._default.enabled` | `boolean` | Default app enabled state for all apps unless overridden per app. |
 | `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open_world_hint = true`. |
@@ -37,6 +37,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `apps.<id>.open_world_enabled` | `boolean` | Allow or block tools in this app that advertise `open_world_hint = true`. |
 | `apps.<id>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Per-tool approval behavior override for a single app tool. |
 | `apps.<id>.tools.<tool>.enabled` | `boolean` | Per-tool enabled override for an app tool (for example `repos/list`). |
+| `auto_review.policy` | `string` | Local Markdown policy instructions for automatic review. Managed `guardian_policy_config` takes precedence. Blank values are ignored. |
 | `background_terminal_max_timeout` | `number` | Maximum poll window in milliseconds for empty `write_stdin` polls (background terminal polling). Default: `300000` (5 minutes). Replaces the older `background_terminal_timeout` key. |
 | `chatgpt_base_url` | `string` | Override the base URL used during the ChatGPT login flow. |
 | `check_for_update_on_startup` | `boolean` | Check for Codex updates on startup (set to false only when updates are centrally managed). |
@@ -52,7 +53,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` (under development; off by default). |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
-| `features.guardian_approval` | `boolean` | Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). Use with `approvals_reviewer = "guardian_subagent"`. |
 | `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
@@ -106,7 +106,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `memories.max_unused_days` | `number` | Maximum days since a memory was last used before it becomes ineligible for consolidation. Defaults to `30` and is clamped to `0`-`365`. |
 | `memories.min_rollout_idle_hours` | `number` | Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`. |
 | `memories.use_memories` | `boolean` | When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`. |
-| `model` | `string` | Model to use (e.g., `gpt-5.4`). |
+| `model` | `string` | Model to use (e.g., `gpt-5.5`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
 | `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile. |
 | `model_context_window` | `number` | Context window tokens available to the active model. |
@@ -411,11 +411,11 @@ Key
 
 Type / Values
 
-`user | guardian_subagent`
+`user | auto_review`
 
 Details
 
-Select who reviews eligible approval prompts. Defaults to `user`; `guardian_subagent` routes supported reviews through the Guardian reviewer subagent.
+Who reviews eligible approval prompts under `on-request` or granular approval policies. Defaults to `user`; `auto_review` uses the reviewer subagent. This setting doesn't change sandboxing or review actions already allowed inside the sandbox.
 
 Key
 
@@ -536,6 +536,18 @@ Type / Values
 Details
 
 Per-tool enabled override for an app tool (for example `repos/list`).
+
+Key
+
+`auto_review.policy`
+
+Type / Values
+
+`string`
+
+Details
+
+Local Markdown policy instructions for automatic review. Managed `guardian_policy_config` takes precedence. Blank values are ignored.
 
 Key
 
@@ -716,18 +728,6 @@ Type / Values
 Details
 
 Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default).
-
-Key
-
-`features.guardian_approval`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). Use with `approvals_reviewer = "guardian_subagent"`.
 
 Key
 
@@ -1375,7 +1375,7 @@ Type / Values
 
 Details
 
-Model to use (e.g., `gpt-5.4`).
+Model to use (e.g., `gpt-5.5`).
 
 Key
 
@@ -2950,11 +2950,12 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | Key | Type / Values | Details |
 | --- | --- | --- |
 | `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`). |
-| `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer` (for example `user` and `guardian_subagent`). |
+| `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
 | `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
+| `guardian_policy_config` | `string` | Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored. |
 | `mcp_servers` | `table` | Allowlist of MCP servers that may be enabled. Both the server name (`<id>`) and its identity must match for the MCP server to be enabled. Any configured MCP server not in the allowlist (or with a mismatched identity) is disabled. |
 | `mcp_servers.<id>.identity` | `table` | Identity rule for a single MCP server. Set either `command` (stdio) or `url` (streamable HTTP). |
 | `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command. |
@@ -2990,7 +2991,7 @@ Type / Values
 
 Details
 
-Allowed values for `approvals_reviewer` (for example `user` and `guardian_subagent`).
+Allowed values for `approvals_reviewer`, such as `user` and `auto_review`.
 
 Key
 
@@ -3039,6 +3040,18 @@ Type / Values
 Details
 
 Require a specific canonical feature key to stay enabled or disabled.
+
+Key
+
+`guardian_policy_config`
+
+Type / Values
+
+`string`
+
+Details
+
+Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored.
 
 Key
 

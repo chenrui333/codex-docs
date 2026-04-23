@@ -232,8 +232,16 @@ For operational details to keep in mind while editing `config.toml`, see [Common
 
 You can also use a granular approval policy (`approval_policy = { granular = { ... } }`) to allow or auto-reject individual prompt categories. This is useful when you want normal interactive approvals for some cases but want others, such as `request_permissions` or skill-script prompts, to fail closed automatically.
 
+Set `approvals_reviewer = "auto_review"` to route eligible interactive approval
+requests through automatic review. This changes the reviewer, not the sandbox
+boundary.
+
+Use `[auto_review].policy` for local reviewer policy instructions. Managed
+`guardian_policy_config` takes precedence.
+
 ```
 approval_policy = "untrusted"   # Other options: on-request, never, or { granular = { ... } }
+approvals_reviewer = "user"     # Or "auto_review" for automatic review
 sandbox_mode = "workspace-write"
 allow_login_shell = false       # Optional hardening: disallow login shells for shell tools
 
@@ -251,6 +259,11 @@ exclude_tmpdir_env_var = false  # Allow $TMPDIR
 exclude_slash_tmp = false       # Allow /tmp
 writable_roots = ["/Users/YOU/.pyenv/shims"]
 network_access = false          # Opt in to outbound network
+
+[auto_review]
+policy = """
+Use your organization's automatic review policy.
+"""
 ```
 
 Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](/codex/config-reference) and [Managed configuration](/codex/enterprise/managed-configuration).

@@ -42,7 +42,7 @@ completion still works before you queue the command.
 | [`/mcp`](#list-mcp-tools-with-mcp) | List configured Model Context Protocol (MCP) tools. | Check which external tools Codex can call during the session. |
 | [`/mention`](#highlight-files-with-mention) | Attach a file to the conversation. | Point Codex at specific files or folders you want it to inspect next. |
 | [`/model`](#set-the-active-model-with-model) | Choose the active model (and reasoning effort, when available). | Switch between general-purpose models (`gpt-4.1-mini`) and deeper reasoning models before running a task. |
-| [`/fast`](#toggle-fast-mode-with-fast) | Toggle Fast mode for GPT-5.4. | Turn Fast mode on or off, or check whether the current thread is using it. |
+| [`/fast`](#toggle-fast-mode-with-fast) | Toggle Fast mode for supported models. | Turn Fast mode on or off, or check whether the current thread is using it. |
 | [`/plan`](#switch-to-plan-mode-with-plan) | Switch to plan mode and optionally send a prompt. | Ask Codex to propose an execution plan before implementation work starts. |
 | [`/personality`](#set-a-communication-style-with-personality) | Choose a communication style for responses. | Make Codex more concise, more explanatory, or more collaborative without changing your instructions. |
 | [`/ps`](#check-background-terminals-with-ps) | Show experimental background terminals and their recent output. | Check long-running commands without leaving the main transcript. |

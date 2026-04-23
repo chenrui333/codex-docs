@@ -37,8 +37,8 @@ $20/month
 - Codex on the web, in the CLI, in the IDE extension, and on iOS
 - Cloud-based integrations like automatic code review and Slack
   integration
-- The latest models, including GPT-5.4 and GPT-5.3-Codex
-- GPT-5.4-mini for up to 3.3x higher usage limits for local messages
+- The latest models, including GPT-5.5, GPT-5.4, and GPT-5.3-Codex
+- GPT-5.4-mini for higher usage limits on routine local messages
 - Flexibly extend usage with [ChatGPT credits](#credits-overview)
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Plus plan
@@ -55,7 +55,7 @@ $100/month
 
 Everything in Plus and:
 
-**Double your normal Codex usage $100/month tier until May 31, 2026.**
+**Double your normal Codex usage on the $100/month tier until May 31, 2026.**
 
 - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
   for day-to-day coding tasks
@@ -141,10 +141,16 @@ cloud. Small scripts or routine functions may consume only a fraction of your
 allowance, while larger codebases, long-running tasks, or extended sessions that
 require Codex to hold more context will use significantly more per message.
 
+GPT-5.5 uses significantly fewer tokens to achieve results comparable to
+GPT-5.4. Its Codex setup runs faster and delivers higher-quality results for
+most users. These efficiency gains support generous usage limits despite
+GPT-5.5 being a significantly more capable model.
+
 Plus
 
 |  | Local Messages[\*](#shared-limits-plus) / 5h | Cloud Tasks[\*](#shared-limits-plus) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
+| GPT-5.5 | 15-80 | Not available | Not available |
 | GPT-5.4 | 20-100 | Not available | Not available |
 | GPT-5.4-mini | 60-350 | Not available | Not available |
 | GPT-5.3-Codex | 30-150 | 10-60 | 20-50 |
@@ -158,6 +164,7 @@ Pro 5x
 
 |  | Local Messages[\*](#shared-limits-pro) / 5h | Cloud Tasks[\*](#shared-limits-pro) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
+| GPT-5.5 | 80-400 | Not available | Not available |
 | GPT-5.4 | 100-500 | Not available | Not available |
 | GPT-5.4-mini | 300-1750 | Not available | Not available |
 | GPT-5.3-Codex | 150-750 | 50-300 | 100-250 |
@@ -172,6 +179,7 @@ Pro 20x
 
 |  | Local Messages[\*](#shared-limits-pro-20x) / 5h | Cloud Tasks[\*](#shared-limits-pro-20x) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
+| GPT-5.5 | 300-1600 | Not available | Not available |
 | GPT-5.4 | 400-2000 | Not available | Not available |
 | GPT-5.4-mini | 1200-7000 | Not available | Not available |
 | GPT-5.3-Codex | 600-3000 | 200-1200 | 400-1000 |
@@ -186,6 +194,7 @@ Business
 
 |  | Local Messages[\*](#shared-limits-business) / 5h | Cloud Tasks[\*](#shared-limits-business) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
+| GPT-5.5 | 15-80 | Not available | Not available |
 | GPT-5.4 | 20-100 | Not available | Not available |
 | GPT-5.4-mini | 60-350 | Not available | Not available |
 | GPT-5.3-Codex | 30-150 | 10-60 | 20-50 |
@@ -199,6 +208,7 @@ API Key
 
 |  | Local Messages[\*](#shared-limits-api-key) / 5h | Cloud Tasks[\*](#shared-limits-api-key) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
+| GPT-5.5 | Not available | Not available | Not available |
 | GPT-5.4 | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 | GPT-5.4-mini | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 | GPT-5.3-Codex | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
@@ -209,10 +219,13 @@ API Key
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 Speed configurations increase credit consumption for all applicable models, so
-they also use included limits faster. Details can be found [here](/codex/speed). Image generations also use included limits ~3-5x faster on average, depending on image quality and size. GPT-5.3-Codex-Spark is in research preview for ChatGPT Pro users only, and isn’t
-available in the API at launch. Because it runs on specialized low-latency
-hardware, usage is governed by a separate usage limit that may adjust based on
-demand.
+they also use included limits faster. Fast mode consumes credits at a higher
+rate for supported models. See [Speed](/codex/speed) for supported models and
+rates. Image generations also use included limits ~3-5x faster on average,
+depending on image quality and size. GPT-5.3-Codex-Spark is in research preview
+for ChatGPT Pro users only, and isn’t available in the API at launch. Because it
+runs on specialized low-latency hardware, usage is governed by a separate usage
+limit that may adjust based on demand.
 
 ### What happens when you hit usage limits?
 
@@ -223,8 +236,8 @@ Business, Edu, and Enterprise plans with [flexible
 pricing](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans)
 can purchase additional workspace credits to continue using Codex.
 
-If you are approaching usage limits, you can also switch to the GPT-5.4-mini
-model to make your usage limits last longer.
+If you are approaching usage limits, you can also switch to a smaller model to
+make your usage limits last longer.
 
 All users may also run extra local tasks using an API key, with usage charged at
 [standard API rates](https://platform.openai.com/docs/pricing).
@@ -241,7 +254,7 @@ Image generation isn’t available on the Free plan. When you use Codex with an
 API key, API pricing applies to image generation instead of included ChatGPT
 usage limits.
 
-### What is the current Codex usage promo on Pro?
+### What’s the current Codex usage promo on Pro?
 
 We’re currently offering extra Codex usage on both Pro tiers.
 
@@ -286,6 +299,7 @@ Business & New Enterprise Customers
 
 | Credits per 1M tokens | Input Tokens | Cached input tokens | Output Tokens |
 | --- | --- | --- | --- |
+| GPT-5.5 | 125 credits | 12.50 credits | 750 credits |
 | GPT-5.4 | 62.50 credits | 6.250 credits | 375 credits |
 | GPT-5.4-mini | 18.75 credits | 1.875 credits | 113 credits |
 | GPT-5.3-Codex | 43.75 credits | 4.375 credits | 350 credits |
@@ -295,25 +309,26 @@ Business & New Enterprise Customers
 | GPT-Image-2 (text) | 125 credits | 31.25 credits | 250 credits |
 |  |  |  |  |
 | --- | --- | --- | --- |
-| Fast mode consumes 2x as many credits. | | | |
-| Code review runs on 5.3-Codex. | | | |
+| Fast mode consumes credits at a higher rate for supported models. See [Speed](/codex/speed) for rates. | | | |
+| Cloud tasks and code review run on GPT-5.3-Codex. | | | |
 
 Plus, Pro, Existing Enterprise/Edu and New Edu
 
-|  | Unit | GPT-5.4 | GPT-5.3-Codex | GPT-5.4-mini |
-| --- | --- | --- | --- | --- |
-| Local Tasks | 1 message | ~7 credits | ~5 credits | ~2 credits |
-| Cloud Tasks | 1 message | ~34 credits | ~25 credits | Not available |
-| Code Review | 1 pull request | ~34 credits | ~25 credits | Not available |
-| Image generation | 1 image (1024px × 1024px) | ~5-6 credits | | |
-| Image generation | 1 image (1024px × 1536px) | ~7-8 credits | | |
-|  |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| Fast mode consumes 2x as many credits. | | | | |
-| These averages also apply to GPT-5.2. | | | | |
+|  | Unit | GPT-5.5 | GPT-5.4 | GPT-5.3-Codex | GPT-5.4-mini |
+| --- | --- | --- | --- | --- | --- |
+| Local Tasks | 1 message | ~14 credits | ~7 credits | ~5 credits | ~2 credits |
+| Cloud Tasks | 1 message | Not available | Not available | ~25 credits | Not available |
+| Code Review | 1 pull request | Not available | Not available | ~25 credits | Not available |
+| Image generation | 1 image (1024px × 1024px) | ~5-6 credits | | | |
+| Image generation | 1 image (1024px × 1536px) | ~7-8 credits | | | |
+|  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| Fast mode consumes credits at a higher rate for supported models. See [Speed](/codex/speed) for rates. | | | | | |
+| These averages also apply to GPT-5.2. | | | | | |
 
 Speed configurations will increase credit consumption for all models that apply.
-Details can be found [here](/codex/speed).
+Fast mode consumes credits at a higher rate for supported models. See
+[Speed](/codex/speed) for supported models and rates.
 
 [Learn more about credits in ChatGPT Plus and
 Pro.](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-freegopluspro-sora)
@@ -341,7 +356,7 @@ tips to maximize your limits:
 - **Limit the number of MCP servers you use.** Every [MCP](/codex/mcp) you add
   to Codex adds more context to your messages and uses more of your limit.
   Disable MCP servers when you don’t need them.
-- **Switch to GPT-5.4-mini for routine tasks.** Using the mini model should
-  extend your local-message usage limits by roughly 2.5x to 3.3x, depending on
-  the model you switch from.
+- **Switch to a smaller model for routine tasks.** Using GPT-5.4 or
+  GPT-5.4-mini can extend your local-message usage limits, depending on the
+  model you switch from.
 

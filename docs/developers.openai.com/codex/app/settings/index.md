@@ -45,6 +45,16 @@ add your own. If a server requires OAuth, the app starts the auth flow. These se
 also apply to the Codex CLI and IDE extension because the MCP configuration lives in
 `config.toml`. See the [Model Context Protocol docs](/codex/mcp) for details.
 
+## Browser use
+
+Use these settings to install or enable the bundled Browser plugin and manage
+allowlisted and blocklisted websites. Codex asks before using a website
+unless you’ve allowlisted it. Removing a site from the blocklist lets Codex ask
+again before using it in the browser.
+
+See [In-app browser](/codex/app/browser) for browser preview, comment, and
+browser use workflows.
+
 ## Computer Use
 
 On macOS, check your Computer Use settings to review desktop-app access and related
