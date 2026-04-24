@@ -2,10 +2,11 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-24T06:46:13+00:00",
+  "generated_at": "2026-04-24T12:28:47+00:00",
   "removed": [],
   "total_files": 172,
   "updated": [
+    "developers.openai.com/codex/remote-connections/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }

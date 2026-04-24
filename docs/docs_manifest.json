@@ -322,7 +322,7 @@
       "source_url": "https://developers.openai.com/codex/quickstart"
     },
     "developers.openai.com/codex/remote-connections/index.md": {
-      "sha256": "787e275c148efadd11d7b6a7ff4ac6e75bc54c3cbf54eaae99e5213e21acab67",
+      "sha256": "95ca9b70ba59da1e1765adfc9d122de34be011807a61417f625d5f12f2eede2a",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/remote-connections"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "7a05cbe6a8f44250917bdc918870c60cae80e9aeab522162a56ff41f138099e8",
+      "sha256": "18db73b022fd0bfa9ddc50ca42879e7fec9f990105b65a39f6f989680b70f9a9",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
