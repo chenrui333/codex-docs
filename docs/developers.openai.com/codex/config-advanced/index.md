@@ -86,7 +86,7 @@ openai_base_url = "https://us.api.openai.com/v1"
 
 In addition to your user config, Codex reads project-scoped overrides from `.codex/config.toml` files inside your repo. Codex walks from the project root to your current working directory and loads every `.codex/config.toml` it finds. If multiple files define the same key, the closest file to your working directory wins.
 
-For security, Codex loads project-scoped config files only when the project is trusted. If the project is untrusted, Codex ignores `.codex/config.toml` files in the project.
+For security, Codex loads project-scoped config files only when the project is trusted. If the project is untrusted, Codex ignores project `.codex/` layers, including `.codex/config.toml`, project-local hooks, and project-local rules. User and system layers remain separate and still load.
 
 Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
@@ -99,6 +99,9 @@ In practice, the two most useful locations are:
 
 - `~/.codex/hooks.json`
 - `<repo>/.codex/hooks.json`
+
+Project-local hooks load only when the project `.codex/` layer is trusted.
+User-level hooks remain independent of project trust.
 
 Turn hooks on with:
 

@@ -2,7 +2,7 @@
 
 Source: https://developers.openai.com/codex/config-basic
 
-Codex reads configuration details from more than one location. Your personal defaults live in `~/.codex/config.toml`, and you can add project overrides with `.codex/config.toml` files. For security, Codex loads project config files only when you trust the project.
+Codex reads configuration details from more than one location. Your personal defaults live in `~/.codex/config.toml`, and you can add project overrides with `.codex/config.toml` files. For security, Codex loads project `.codex/` layers only when you trust the project.
 
 ## Codex configuration file
 
@@ -29,7 +29,7 @@ Codex resolves values in this order (highest precedence first):
 
 Use that precedence to set shared defaults at the top level and keep profiles focused on the values that differ.
 
-If you mark a project as untrusted, Codex skips project-scoped `.codex/` layers (including `.codex/config.toml`) and falls back to user, system, and built-in defaults.
+If you mark a project as untrusted, Codex skips project-scoped `.codex/` layers, including project-local config, hooks, and rules. User and system config still load, including user/global hooks and rules.
 
 For one-off overrides via `-c`/`--config` (including TOML quoting rules), see [Advanced Config](/codex/config-advanced#one-off-overrides-from-the-cli).
 

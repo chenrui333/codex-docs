@@ -8,7 +8,7 @@ Rules are experimental and may change.
 
 ## Create a rules file
 
-1. Create a `.rules` file under `./codex/rules/` (for example, `~/.codex/rules/default.rules`).
+1. Create a `.rules` file under a `rules/` folder next to an active config layer (for example, `~/.codex/rules/default.rules`).
 2. Add a rule. This example prompts before allowing `gh pr view` to run outside the sandbox.
 
    ```
@@ -38,7 +38,9 @@ Rules are experimental and may change.
    ```
 3. Restart Codex.
 
-Codex scans `rules/` under every [Team Config](/codex/enterprise/admin-setup#team-config) location at startup. When you add a command to the allow list in the TUI, Codex writes to the user layer at `~/.codex/rules/default.rules` so future runs can skip the prompt.
+Codex scans `rules/` under every active config layer at startup, including [Team Config](/codex/enterprise/admin-setup#team-config) locations and the user layer at `~/.codex/rules/`. Project-local rules under `<repo>/.codex/rules/` load only when the project `.codex/` layer is trusted.
+
+When you add a command to the allow list in the TUI, Codex writes to the user layer at `~/.codex/rules/default.rules` so future runs can skip the prompt.
 
 When Smart approvals are enabled (the default), Codex may propose a
 `prefix_rule` for you during escalation requests. Review the suggested prefix

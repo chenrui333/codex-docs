@@ -42,6 +42,10 @@ In practice, the two most useful locations are:
 If more than one `hooks.json` file exists, Codex loads all matching hooks.
 Higher-precedence config layers don’t replace lower-precedence hooks.
 
+Project-local hooks load only when the project `.codex/` layer is trusted. In
+untrusted projects, Codex still loads user and system hooks from their own
+active config layers.
+
 ## Config shape
 
 Hooks are organized in three levels:
