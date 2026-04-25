@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
+source_last_modified: '2026-04-25T06:51:41Z'
+source_etag: 'W/"34a4a58b512c3186fd70dbd614e65228"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Review pull requests faster | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/github-code-reviews

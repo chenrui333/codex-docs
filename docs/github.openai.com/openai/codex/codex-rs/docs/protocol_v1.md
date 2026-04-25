@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md'
+source_etag: 'W/"d0dd0576f3b6aaa27eda6907c85d65afa766db1654d7395f41092008cb9967c5"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 Overview of Protocol defined in [protocol.rs](../protocol/src/protocol.rs) and [agent.rs](../core/src/agent.rs).
 
 The goal of this document is to define terminology used in the system and explain the expected behavior of the system.

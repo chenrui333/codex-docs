@@ -1,3 +1,10 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases

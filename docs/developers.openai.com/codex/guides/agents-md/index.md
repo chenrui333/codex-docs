@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/guides/agents-md'
+source_last_modified: '2026-04-25T06:36:11Z'
+source_etag: 'W/"1115b7d9a27ab2cdab491ff09aa946bf"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Custom instructions with AGENTS.md – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/guides/agents-md

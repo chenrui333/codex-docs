@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/pricing'
+source_last_modified: '2026-04-25T06:28:15Z'
+source_etag: 'W/"77ba0796bb862949ba8d240729283090"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Pricing – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/pricing

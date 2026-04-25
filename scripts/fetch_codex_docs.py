@@ -15,6 +15,7 @@ import tempfile
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Dict, Iterable, List, Sequence, Tuple
 from urllib.parse import ParseResult, urlparse, urlunparse
@@ -45,6 +46,10 @@ PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
 CAPABILITY_INVENTORY_SOURCE_TYPE = "capability_inventory"
 SOURCE_METADATA_KEYS = (
     "source_kind",
+    "source_last_modified",
+    "source_etag",
+    "codex_cli_versions",
+    "codex_cli_versions_raw",
     "codex_cli_version",
     "codex_cli_version_raw",
     "codex_cli_command",
@@ -127,7 +132,7 @@ class ManagedFile:
     source_type: str
     source_url: str
     content: str | bytes
-    source_metadata: Dict[str, str] | None = None
+    source_metadata: Dict[str, object] | None = None
 
 
 def now_utc_iso() -> str:
@@ -195,13 +200,13 @@ def is_codex_related_developers_url(url: str) -> bool:
     return "codex" in path.lower()
 
 
-def fetch_text(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> str:
+def fetch_response(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> requests.Response:
     last_error: Exception | None = None
     for attempt in range(1, REQUEST_MAX_RETRIES + 1):
         try:
             response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS, headers=headers)
             response.raise_for_status()
-            return response.text
+            return response
         except requests.RequestException as exc:
             last_error = exc
             if attempt >= REQUEST_MAX_RETRIES:
@@ -220,33 +225,40 @@ def fetch_text(session: requests.Session, url: str, headers: Dict[str, str] | No
 
     assert last_error is not None  # pragma: no cover - defensive
     raise last_error
+
+
+def fetch_text(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> str:
+    return fetch_response(session, url, headers=headers).text
 
 
 def fetch_bytes(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> bytes:
-    last_error: Exception | None = None
-    for attempt in range(1, REQUEST_MAX_RETRIES + 1):
-        try:
-            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS, headers=headers)
-            response.raise_for_status()
-            return response.content
-        except requests.RequestException as exc:
-            last_error = exc
-            if attempt >= REQUEST_MAX_RETRIES:
-                break
-            sleep_seconds = REQUEST_BACKOFF_SECONDS * (2 ** (attempt - 1))
-            LOG.warning(
-                "Request failed (attempt %d/%d) for %s: %s. Retrying in %.2fs",
-                attempt,
-                REQUEST_MAX_RETRIES,
-                url,
-                exc,
-                sleep_seconds,
-            )
-            if sleep_seconds > 0:
-                time.sleep(sleep_seconds)
+    return fetch_response(session, url, headers=headers).content
 
-    assert last_error is not None  # pragma: no cover - defensive
-    raise last_error
+
+def normalize_http_datetime(value: str) -> str:
+    try:
+        parsed = parsedate_to_datetime(value)
+    except (TypeError, ValueError):
+        return value
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def response_source_metadata(response: requests.Response) -> Dict[str, str]:
+    metadata: Dict[str, str] = {}
+    last_modified = response.headers.get("Last-Modified", "").strip()
+    if last_modified:
+        metadata["source_last_modified"] = normalize_http_datetime(last_modified)
+    etag = response.headers.get("ETag", "").strip()
+    if etag:
+        metadata["source_etag"] = etag
+    return metadata
+
+
+def fetch_text_with_source_metadata(session: requests.Session, url: str) -> Tuple[str, Dict[str, str]]:
+    response = fetch_response(session, url)
+    return response.text, response_source_metadata(response)
 
 
 def fetch_json(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> Dict[str, object]:
@@ -698,7 +710,7 @@ def prune_developers_noise(root) -> None:
             image.decompose()
 
 
-def load_existing_manifest() -> Dict[str, Dict[str, str]]:
+def load_existing_manifest() -> Dict[str, Dict[str, object]]:
     if not MANIFEST_PATH.exists():
         return {}
 
@@ -712,10 +724,15 @@ def load_existing_manifest() -> Dict[str, Dict[str, str]]:
     if not isinstance(sources, dict):
         return {}
 
-    parsed: Dict[str, Dict[str, str]] = {}
+    parsed: Dict[str, Dict[str, object]] = {}
     for rel_path, meta in sources.items():
         if isinstance(meta, dict):
-            parsed_meta = {str(key): str(value) for key, value in meta.items() if isinstance(value, (str, int, float, bool))}
+            parsed_meta: Dict[str, object] = {}
+            for key, value in meta.items():
+                if isinstance(value, list):
+                    parsed_meta[str(key)] = [str(item) for item in value]
+                elif isinstance(value, (str, int, float, bool)):
+                    parsed_meta[str(key)] = str(value)
             parsed_meta["sha256"] = str(meta.get("sha256", ""))
             parsed_meta["source_url"] = str(meta.get("source_url", ""))
             parsed_meta["source_type"] = str(meta.get("source_type", ""))
@@ -775,7 +792,7 @@ def build_developers_files(
     developers_urls, coverage = discover_developers_urls(session)
     for url in developers_urls:
         try:
-            html = fetch_text(session, url)
+            html, source_metadata = fetch_text_with_source_metadata(session, url)
             content = html_to_markdown(url, html)
         except requests.RequestException as exc:
             LOG.warning("Skipping developers URL %s due to error: %s", url, exc)
@@ -796,6 +813,7 @@ def build_developers_files(
                 source_type="developers",
                 source_url=url,
                 content=content,
+                source_metadata=source_metadata,
             )
         )
 
@@ -818,7 +836,7 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
     for path in discover_github_paths(session):
         raw_url = github_raw_url(path)
         try:
-            raw_text = fetch_text(session, raw_url)
+            raw_text, source_metadata = fetch_text_with_source_metadata(session, raw_url)
         except requests.RequestException as exc:
             LOG.warning("Skipping GitHub path %s due to error: %s", path, exc)
             fetch_errors.append(
@@ -839,6 +857,7 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
                 source_type="github",
                 source_url=raw_url,
                 content=content,
+                source_metadata=source_metadata,
             )
         )
 
@@ -873,7 +892,7 @@ def build_platform_tool_guide_files(
     for url in referenced_urls:
         fetch_url = platform_markdown_url(url)
         try:
-            raw_markdown = fetch_text(session, fetch_url)
+            raw_markdown, source_metadata = fetch_text_with_source_metadata(session, fetch_url)
         except requests.RequestException as exc:
             LOG.warning("Skipping platform tool guide %s due to error: %s", url, exc)
             fetch_errors.append(
@@ -892,6 +911,7 @@ def build_platform_tool_guide_files(
                 source_type=PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
                 source_url=url,
                 content=markdown_with_source(url, raw_markdown, default_title="Platform Tool Guide"),
+                source_metadata=source_metadata,
             )
         )
 
@@ -907,7 +927,20 @@ def managed_file_text(item: ManagedFile) -> str:
 def strip_quotes(value: str) -> str:
     value = value.strip()
     if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
-        return value[1:-1]
+        if value[0] == '"':
+            try:
+                unquoted = str(json.loads(value))
+                while '\\"' in unquoted:
+                    unquoted = unquoted.replace('\\"', '"')
+                return unquoted
+            except json.JSONDecodeError:
+                pass
+        unquoted = value[1:-1]
+        if value[0] == "'":
+            unquoted = unquoted.replace("''", "'")
+        while '\\"' in unquoted:
+            unquoted = unquoted.replace('\\"', '"')
+        return unquoted
     return value
 
 
@@ -926,6 +959,198 @@ def parse_simple_frontmatter(text: str) -> Dict[str, str]:
         if key in {"name", "description"}:
             parsed[key] = strip_quotes(value)
     return parsed
+
+
+FRONTMATTER_METADATA_ORDER = (
+    "source_type",
+    "source_url",
+    "source_kind",
+    "source_last_modified",
+    "source_etag",
+    "codex_cli_versions",
+    "codex_cli_versions_raw",
+    "name",
+    "description",
+)
+PRESERVED_FRONTMATTER_SOURCE_KEYS = ("source_last_modified", "source_etag")
+
+
+def parse_frontmatter_block(block: str) -> Dict[str, object]:
+    parsed: Dict[str, object] = {}
+    for line in block.splitlines():
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip()
+        if key:
+            stripped = value.strip()
+            if stripped.startswith("[") and stripped.endswith("]"):
+                try:
+                    parsed[key] = [str(item) for item in json.loads(stripped)]
+                    continue
+                except json.JSONDecodeError:
+                    pass
+            parsed[key] = strip_quotes(value)
+    return parsed
+
+
+def metadata_values(value: object) -> List[str]:
+    if isinstance(value, list):
+        return [str(item) for item in value if str(item)]
+    if isinstance(value, str) and value:
+        return [value]
+    return []
+
+
+def append_unique(values: Sequence[str], value: str) -> List[str]:
+    result: List[str] = []
+    for item in values:
+        if item and item not in result:
+            result.append(item)
+    if value and value not in result:
+        result.append(value)
+    return result
+
+
+def existing_version_values(
+    metadata: Dict[str, object],
+    list_key: str,
+    legacy_keys: Sequence[str],
+) -> List[str]:
+    values = metadata_values(metadata.get(list_key))
+    for key in legacy_keys:
+        raw_value = metadata.get(key)
+        for item in metadata_values(raw_value):
+            values = append_unique(values, item)
+    return values
+
+
+def codex_cli_version_history_metadata(
+    existing_metadata: Dict[str, object],
+    codex_cli_metadata: Dict[str, str],
+) -> Dict[str, List[str]]:
+    version = codex_cli_metadata.get("codex_cli_version", "")
+    versions = existing_version_values(
+        existing_metadata,
+        "codex_cli_versions",
+        ("codex_cli_version", "captured_with_codex_cli_version"),
+    )
+    versions = append_unique(versions, version)
+
+    version_raw = codex_cli_metadata.get("codex_cli_version_raw", "")
+    raw_versions = existing_version_values(
+        existing_metadata,
+        "codex_cli_versions_raw",
+        ("codex_cli_version_raw", "captured_with_codex_cli_version_raw"),
+    )
+    raw_versions = append_unique(raw_versions, version_raw)
+
+    history: Dict[str, List[str]] = {}
+    if versions:
+        history["codex_cli_versions"] = versions
+    if raw_versions:
+        history["codex_cli_versions_raw"] = raw_versions
+    return history
+
+
+def split_markdown_frontmatter(text: str) -> Tuple[Dict[str, object], str]:
+    if not text.startswith("---\n"):
+        return {}, text
+    end = text.find("\n---\n", 4)
+    if end == -1:
+        return {}, text
+    metadata = parse_frontmatter_block(text[4:end])
+    body = text[end + len("\n---\n") :]
+    return metadata, body.lstrip("\n")
+
+
+def yaml_scalar(value: object) -> str:
+    if isinstance(value, list):
+        return json.dumps([str(item) for item in value], ensure_ascii=False)
+    return "'" + str(value).replace("'", "''") + "'"
+
+
+def format_frontmatter(metadata: Dict[str, object], body: str) -> str:
+    ordered_keys = [key for key in FRONTMATTER_METADATA_ORDER if metadata.get(key)]
+    ordered_keys.extend(key for key in sorted(metadata) if key not in ordered_keys and metadata.get(key))
+    lines = ["---"]
+    lines.extend(f"{key}: {yaml_scalar(metadata[key])}" for key in ordered_keys)
+    lines.append("---")
+    return "\n".join(lines) + "\n\n" + body.lstrip("\n")
+
+
+def markdown_frontmatter_metadata(
+    item: ManagedFile,
+    codex_cli_metadata: Dict[str, str],
+) -> Tuple[Dict[str, object], Dict[str, object]]:
+    source_metadata = dict(item.source_metadata or {})
+    frontmatter: Dict[str, object] = {
+        "source_type": item.source_type,
+        "source_url": item.source_url,
+    }
+    for key in ("source_kind", "source_last_modified", "source_etag"):
+        if source_metadata.get(key):
+            frontmatter[key] = source_metadata[key]
+
+    for key in ("source_kind", "source_last_modified", "source_etag"):
+        if frontmatter.get(key):
+            source_metadata[key] = frontmatter[key]
+    return frontmatter, source_metadata
+
+
+def apply_codex_version_history(
+    metadata: Dict[str, object],
+    source_metadata: Dict[str, object],
+    existing_metadata: Dict[str, object],
+    codex_cli_metadata: Dict[str, str],
+) -> None:
+    history = codex_cli_version_history_metadata(existing_metadata, codex_cli_metadata)
+    metadata.update(history)
+    source_metadata.update(history)
+
+
+def annotate_markdown_file(item: ManagedFile, codex_cli_metadata: Dict[str, str]) -> ManagedFile:
+    raw_text = managed_file_text(item)
+    source_frontmatter, body = split_markdown_frontmatter(raw_text)
+    metadata, source_metadata = markdown_frontmatter_metadata(item, codex_cli_metadata)
+
+    existing_path = output_path_for_rel_path(item.rel_path)
+    existing_frontmatter: Dict[str, object] = {}
+    if existing_path.exists():
+        existing_frontmatter, existing_body = split_markdown_frontmatter(existing_path.read_text())
+        if existing_body == body:
+            for key in PRESERVED_FRONTMATTER_SOURCE_KEYS:
+                if existing_frontmatter.get(key):
+                    metadata[key] = existing_frontmatter[key]
+                    source_metadata[key] = existing_frontmatter[key]
+
+    apply_codex_version_history(metadata, source_metadata, existing_frontmatter, codex_cli_metadata)
+
+    merged_frontmatter = dict(metadata)
+    for key, value in source_frontmatter.items():
+        if key not in merged_frontmatter:
+            merged_frontmatter[key] = value
+
+    return ManagedFile(
+        rel_path=item.rel_path,
+        source_type=item.source_type,
+        source_url=item.source_url,
+        content=format_frontmatter(merged_frontmatter, body),
+        source_metadata=source_metadata or item.source_metadata,
+    )
+
+
+def annotate_markdown_files(
+    managed_files: Sequence[ManagedFile],
+    codex_cli_metadata: Dict[str, str],
+) -> List[ManagedFile]:
+    annotated: List[ManagedFile] = []
+    for item in managed_files:
+        if item.rel_path.endswith(".md"):
+            annotated.append(annotate_markdown_file(item, codex_cli_metadata))
+        else:
+            annotated.append(item)
+    return annotated
 
 
 def markdown_title(text: str, default: str) -> str:
@@ -953,6 +1178,27 @@ def capability_counts(capabilities: Sequence[Dict[str, object]]) -> Dict[str, ob
     }
 
 
+def load_existing_capability_inventory() -> Dict[str, object]:
+    if not CAPABILITIES_PATH.exists():
+        return {}
+    try:
+        payload = json.loads(CAPABILITIES_PATH.read_text())
+    except json.JSONDecodeError:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def existing_capabilities_by_id(payload: Dict[str, object]) -> Dict[str, Dict[str, object]]:
+    capabilities = payload.get("capabilities", []) if isinstance(payload, dict) else []
+    if not isinstance(capabilities, list):
+        return {}
+    return {
+        str(item["id"]): item
+        for item in capabilities
+        if isinstance(item, dict) and item.get("id")
+    }
+
+
 def build_capability_inventory_file(
     codex_cli_files: Sequence[ManagedFile],
     platform_tool_guide_files: Sequence[ManagedFile],
@@ -961,6 +1207,16 @@ def build_capability_inventory_file(
 ) -> ManagedFile:
     capabilities: List[Dict[str, object]] = []
     codex_cli_version = codex_cli_metadata.get("codex_cli_version", "")
+    codex_cli_version_raw = codex_cli_metadata.get("codex_cli_version_raw", "")
+    previous_inventory = load_existing_capability_inventory()
+    previous_capabilities = existing_capabilities_by_id(previous_inventory)
+
+    def add_version_history(entry: Dict[str, object]) -> None:
+        history = codex_cli_version_history_metadata(
+            previous_capabilities.get(str(entry.get("id", "")), {}),
+            codex_cli_metadata,
+        )
+        entry.update(history)
 
     for item in sorted(codex_cli_files, key=lambda entry: entry.rel_path):
         if item.source_type != "codex_cli_system_skill" or not item.rel_path.endswith("/SKILL.md"):
@@ -982,6 +1238,9 @@ def build_capability_inventory_file(
             entry["description"] = metadata["description"]
         if codex_cli_version:
             entry["codex_cli_version"] = codex_cli_version
+        if codex_cli_version_raw:
+            entry["codex_cli_version_raw"] = codex_cli_version_raw
+        add_version_history(entry)
         capabilities.append(entry)
 
     for item in sorted(codex_cli_files, key=lambda entry: entry.rel_path):
@@ -1009,24 +1268,34 @@ def build_capability_inventory_file(
         }
         if codex_cli_version:
             entry["codex_cli_version"] = codex_cli_version
+        if codex_cli_version_raw:
+            entry["codex_cli_version_raw"] = codex_cli_version_raw
+        add_version_history(entry)
         capabilities.append(entry)
 
     for item in sorted(platform_tool_guide_files, key=lambda entry: entry.rel_path):
         name = capability_name_from_tool_guide_url(item.source_url)
         referenced_from = referenced_platform_tool_guides_by_url.get(item.source_url, [])
-        capabilities.append(
-            {
-                "id": f"tool_guide:{name}",
-                "name": name,
-                "title": markdown_title(managed_file_text(item), default=name.replace("_", " ").title()),
-                "category": "linked_tool_guide",
-                "source_type": item.source_type,
-                "source_url": item.source_url,
-                "mirrored_path": item.rel_path,
-                "first_seen_path": referenced_from[0] if referenced_from else item.rel_path,
-                "referenced_from": referenced_from,
-            }
-        )
+        entry = {
+            "id": f"tool_guide:{name}",
+            "name": name,
+            "title": markdown_title(managed_file_text(item), default=name.replace("_", " ").title()),
+            "category": "linked_tool_guide",
+            "source_type": item.source_type,
+            "source_url": item.source_url,
+            "mirrored_path": item.rel_path,
+            "first_seen_path": referenced_from[0] if referenced_from else item.rel_path,
+            "referenced_from": referenced_from,
+        }
+        for key in ("source_last_modified", "source_etag"):
+            if item.source_metadata and item.source_metadata.get(key):
+                entry[key] = item.source_metadata[key]
+        if codex_cli_version:
+            entry["codex_cli_version"] = codex_cli_version
+        if codex_cli_version_raw:
+            entry["codex_cli_version_raw"] = codex_cli_version_raw
+        add_version_history(entry)
+        capabilities.append(entry)
 
     capabilities = sorted(capabilities, key=lambda item: str(item["id"]))
     payload = {
@@ -1037,8 +1306,11 @@ def build_capability_inventory_file(
         "counts": capability_counts(capabilities),
         "capabilities": capabilities,
     }
+    inventory_history = codex_cli_version_history_metadata(previous_inventory, codex_cli_metadata)
+    payload.update(inventory_history)
     inventory_metadata = dict(codex_cli_metadata)
     inventory_metadata["source_kind"] = "generated_capability_inventory"
+    inventory_metadata.update(inventory_history)
     return ManagedFile(
         rel_path=CAPABILITIES_REL_PATH,
         source_type=CAPABILITY_INVENTORY_SOURCE_TYPE,
@@ -1149,7 +1421,7 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
     return managed, fetch_errors, metadata
 
 
-def write_manifest(entries: Dict[str, Dict[str, str]]) -> None:
+def write_manifest(entries: Dict[str, Dict[str, object]]) -> None:
     payload = {
         "schema_version": 1,
         "sources": {key: entries[key] for key in sorted(entries)},
@@ -1164,7 +1436,7 @@ def write_summary(
     removed: List[str],
     total: int,
     failures: List[Dict[str, str]] | None = None,
-    source_metadata: Dict[str, str] | None = None,
+    source_metadata: Dict[str, object] | None = None,
 ) -> None:
     failure_items = failures or []
     payload = {
@@ -1203,7 +1475,7 @@ def write_weekly_note(
     added: List[str],
     updated: List[str],
     removed: List[str],
-    source_metadata: Dict[str, str] | None = None,
+    source_metadata: Dict[str, object] | None = None,
 ) -> None:
     if not (added or updated or removed):
         return
@@ -1292,11 +1564,11 @@ def apply_sync(
     managed_files: Iterable[ManagedFile],
     failures: List[Dict[str, str]] | None = None,
     preserve_missing_sources: Sequence[str] = (),
-    source_metadata: Dict[str, str] | None = None,
+    source_metadata: Dict[str, object] | None = None,
 ) -> Tuple[List[str], List[str], List[str]]:
     previous = load_existing_manifest()
 
-    next_entries: Dict[str, Dict[str, str]] = {}
+    next_entries: Dict[str, Dict[str, object]] = {}
     rel_to_file: Dict[str, ManagedFile] = {}
 
     for item in managed_files:
@@ -1602,7 +1874,10 @@ def main() -> int:
     }
     write_coverage(coverage)
 
-    managed_files = developers_files + github_files + platform_tool_guide_files + codex_cli_files + capability_inventory_files
+    managed_files = annotate_markdown_files(
+        developers_files + github_files + platform_tool_guide_files + codex_cli_files + capability_inventory_files,
+        codex_cli_metadata,
+    )
     if not managed_files:
         LOG.error("No source files were fetched successfully.")
         write_summary([], [], [], 0, failures=failures)

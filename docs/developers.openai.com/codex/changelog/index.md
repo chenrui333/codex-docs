@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/changelog'
+source_last_modified: '2026-04-25T06:28:34Z'
+source_etag: 'W/"06a610e1af8b684df50ab4345b88fe83"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Changelog – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/changelog

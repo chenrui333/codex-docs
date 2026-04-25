@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/install.md'
+source_etag: 'W/"12afca7725364956272758278a977b2fa3265350a01940ee406f770c27f65b65"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 ## Installing & building
 
 ### System requirements

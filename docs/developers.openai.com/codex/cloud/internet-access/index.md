@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/cloud/internet-access'
+source_last_modified: '2026-04-25T06:29:32Z'
+source_etag: 'W/"1d9cb59701860657398326e2a5ca90da"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Agent internet access – Codex web | OpenAI Developers
 
 Source: https://developers.openai.com/codex/cloud/internet-access

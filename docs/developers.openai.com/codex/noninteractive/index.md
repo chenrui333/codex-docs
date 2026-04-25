@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/noninteractive'
+source_last_modified: '2026-04-25T06:40:15Z'
+source_etag: 'W/"3b64ef8dd3e759e8251ce882a912922e"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Non-interactive mode – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/noninteractive

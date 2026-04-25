@@ -25,7 +25,7 @@ CONFIG_REFERENCE_DOC = (
 )
 
 OSS_FEATURES_RS_URL = (
-    "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/features.rs"
+    "https://raw.githubusercontent.com/openai/codex/main/codex-rs/features/src/lib.rs"
 )
 OSS_CLIENT_RS_URL = "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs"
 HTTP_USER_AGENT = "codex-docs-feature-lifecycle/0.1 (+https://github.com/chenrui333/codex-docs)"
@@ -210,7 +210,7 @@ def render_markdown(
     lines.append(
         "  - `codex features list` from an isolated temporary `CODEX_HOME` (runtime behavior + lifecycle stage labels)"
     )
-    lines.append("  - `openai/codex` source (`features.rs`, `client.rs`) for semantic checks")
+    lines.append("  - `openai/codex` source (`features/src/lib.rs`, `client.rs`) for semantic checks")
     lines.append("  - mirrored docs (`config-basic`, `config-reference`) for coverage comparison")
     lines.append("")
     lines.append("## Current CLI Feature Snapshot")
@@ -259,7 +259,7 @@ def render_markdown(
     lines.append("")
     lines.append("## Source Fingerprints")
     lines.append("")
-    lines.append(f"- `features.rs` sha256: `{source_hashes['features_rs_sha256']}`")
+    lines.append(f"- `features/src/lib.rs` sha256: `{source_hashes['features_rs_sha256']}`")
     lines.append(f"- `client.rs` sha256: `{source_hashes['client_rs_sha256']}`")
     lines.append("")
     return "\n".join(lines).rstrip() + "\n"

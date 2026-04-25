@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/app/worktrees'
+source_last_modified: '2026-04-25T06:32:01Z'
+source_etag: 'W/"45b9408ffe43e8c6cc7a98cc8677056b"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Worktrees – Codex app | OpenAI Developers
 
 Source: https://developers.openai.com/codex/app/worktrees

@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/integrations/github'
+source_last_modified: '2026-04-25T06:39:00Z'
+source_etag: 'W/"54ea0791e415d368bd5e164ab88e704b"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Use Codex in GitHub | OpenAI Developers
 
 Source: https://developers.openai.com/codex/integrations/github

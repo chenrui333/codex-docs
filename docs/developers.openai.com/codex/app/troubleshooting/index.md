@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/app/troubleshooting'
+source_last_modified: '2026-04-25T06:30:22Z'
+source_etag: 'W/"90c0ad20719188747a2498a3961bf8f3"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Troubleshooting – Codex app | OpenAI Developers
 
 Source: https://developers.openai.com/codex/app/troubleshooting

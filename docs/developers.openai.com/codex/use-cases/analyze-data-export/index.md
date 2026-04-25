@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/analyze-data-export'
+source_last_modified: '2026-04-25T06:57:07Z'
+source_etag: 'W/"989bd71d535b5f3c14d7e0ff20b2d717"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Query tabular data | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/analyze-data-export

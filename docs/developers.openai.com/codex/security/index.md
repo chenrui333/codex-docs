@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/security'
+source_last_modified: '2026-04-25T06:28:04Z'
+source_etag: 'W/"ee5dac943b013db158328dcd96fc8ed7"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Security – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/security

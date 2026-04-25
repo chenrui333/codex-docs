@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md'
+source_etag: 'W/"8cc8677fafad554c5c9925bd000618006a4d7afa808f0bc1d174884e2ea37772"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Codex MCP Server Interface [experimental]
 
 This document describes Codex's experimental MCP server interface: a JSON-RPC API that runs over the Model Context Protocol (MCP) transport to control a local Codex engine.

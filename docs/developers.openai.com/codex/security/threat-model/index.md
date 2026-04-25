@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/security/threat-model'
+source_last_modified: '2026-04-25T06:50:21Z'
+source_etag: 'W/"399ea380546ebd8a7a83bc79f6b9debf"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Improving the threat model – Codex Security | OpenAI Developers
 
 Source: https://developers.openai.com/codex/security/threat-model

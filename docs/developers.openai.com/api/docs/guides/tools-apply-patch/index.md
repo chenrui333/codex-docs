@@ -1,3 +1,12 @@
+---
+source_type: 'platform_tool_guide'
+source_url: 'https://developers.openai.com/api/docs/guides/tools-apply-patch'
+source_last_modified: '2026-04-25T10:17:19Z'
+source_etag: 'W/"dd05d3c7ce6f524e30a889027f7bd3c1"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Apply Patch
 
 Source: https://developers.openai.com/api/docs/guides/tools-apply-patch

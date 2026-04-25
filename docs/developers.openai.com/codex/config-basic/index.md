@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/config-basic'
+source_last_modified: '2026-04-25T06:28:20Z'
+source_etag: 'W/"6f83504d680173cb3033186905c70ccf"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Config basics – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/config-basic

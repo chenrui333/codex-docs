@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md'
+source_etag: 'W/"fa7dd93991ef5360685f582a0924b65861f981e38d6525dcbabf49036800605a"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # npm releases
 
 Use the staging helper in the repo root to generate npm tarballs for a release. For

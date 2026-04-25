@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/exit-confirmation-prompt-design.md'
+source_etag: 'W/"73d82d7566120335cce92d133e96515fee4fc5ec2c22ca97bb995ce0431e899a"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Exit and shutdown flow (tui)
 
 This document describes how exit, shutdown, and interruption work in the Rust TUI (`codex-rs/tui`).

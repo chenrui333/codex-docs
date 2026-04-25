@@ -1,8 +1,12 @@
 ---
-name: skill-creator
-description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.
-metadata:
-  short-description: Create or update a skill
+source_type: 'codex_cli_system_skill'
+source_url: 'codex-cli://skills/.system/skill-creator/SKILL.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+name: 'skill-creator'
+description: 'Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex''s capabilities with specialized knowledge, workflows, or tool integrations.'
+short-description: 'Create or update a skill'
 ---
 
 # Skill Creator

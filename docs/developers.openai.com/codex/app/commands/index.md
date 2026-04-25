@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/app/commands'
+source_last_modified: '2026-04-25T06:34:54Z'
+source_etag: 'W/"88a1b7116add206986a2dde19944c5fa"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Commands – Codex app | OpenAI Developers
 
 Source: https://developers.openai.com/codex/app/commands

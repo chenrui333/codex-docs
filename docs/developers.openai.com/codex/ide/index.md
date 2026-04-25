@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/ide'
+source_last_modified: '2026-04-25T06:31:51Z'
+source_etag: 'W/"959f374755a7b978f40b75048db4c5bb"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # IDE extension – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide

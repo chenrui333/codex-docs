@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/CLA.md'
+source_etag: 'W/"eb27d3139c1961daea50174a9fe876cfe113044ef06f80e73f3e68ec99ab8135"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Individual Contributor License Agreement (v1.0, OpenAI)
 
 _Based on the Apache Software Foundation Individual CLA v 2.2._

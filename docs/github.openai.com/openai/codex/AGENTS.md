@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
+source_etag: 'W/"7259b365bdc20b7aee74df5fa076fa38f9042feae6fd6bb3e893f4ade6c22b52"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Rust/codex-rs
 
 In the codex-rs folder where the rust code lives:

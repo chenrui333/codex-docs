@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/generate-slide-decks'
+source_last_modified: '2026-04-25T06:34:32Z'
+source_etag: 'W/"210b9a4b8b2e195b2d716befbecccda3"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Generate slide decks | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/generate-slide-decks

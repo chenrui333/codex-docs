@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/clean-messy-data'
+source_last_modified: '2026-04-25T06:50:35Z'
+source_etag: 'W/"de2d63864b5be71d55cae3470b1f135e"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Clean and prepare messy data | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/clean-messy-data
