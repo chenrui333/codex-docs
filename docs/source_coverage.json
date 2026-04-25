@@ -395,7 +395,7 @@
       "https://developers.openai.com/showcase/codex-101"
     ]
   },
-  "generated_at": "2026-04-25T15:05:39+00:00",
+  "generated_at": "2026-04-25T15:46:48+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 33,
@@ -442,10 +442,31 @@
     "repo": "openai/codex",
     "source_errors": []
   },
+  "platform_tool_guides": {
+    "candidate_urls": [
+      "https://platform.openai.com/docs/guides/tools-web-search"
+    ],
+    "counts": {
+      "candidate_urls": 1,
+      "mirrored_paths_count": 1,
+      "page_fetch_errors": 0,
+      "referenced_urls": 1,
+      "source_errors": 0
+    },
+    "mirrored_paths": [
+      "platform.openai.com/docs/guides/tools-web-search/index.md"
+    ],
+    "mirrored_paths_count": 1,
+    "page_fetch_errors": [],
+    "referenced_urls": [
+      "https://platform.openai.com/docs/guides/tools-web-search"
+    ],
+    "source_errors": [],
+    "source_type": "platform_tool_guide"
+  },
   "sync": {
     "failure_count": 0,
-    "preserve_missing_sources": [],
-    "strict_sync_mode": false
+    "preserve_missing_sources": []
   },
   "system_prompts": {
     "counts": {
