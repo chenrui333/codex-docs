@@ -71,10 +71,12 @@ jobs:
             BRANCH="$BRANCH-$(date -u +%Y%m%d%H%M%S)"
           fi
 
-          echo "current=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "next=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
-          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          {
+            echo "current=$CURRENT_VERSION"
+            echo "next=$NEXT_VERSION"
+            echo "title=$TITLE"
+            echo "branch=$BRANCH"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Check for existing open bump PR
         id: existing-pr
