@@ -9,6 +9,10 @@ permissions:
   contents: write
   issues: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   update-docs:
     runs-on: ubuntu-latest
@@ -65,8 +69,71 @@ jobs:
           path: docs/source_coverage.json
           if-no-files-found: warn
 
-      - name: Check for changes
+      - name: Check recorded sync failures
         if: steps.sync.outcome == 'success'
+        id: recorded_failures
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import sys
+          from pathlib import Path
+
+
+          report_errors = []
+
+
+          def load_json(path: Path) -> dict:
+              if not path.exists():
+                  report_errors.append(f'missing report: {path}')
+                  return {}
+
+              try:
+                  payload = json.loads(path.read_text())
+              except json.JSONDecodeError as error:
+                  report_errors.append(f'invalid JSON in {path}: {error}')
+                  return {}
+
+              if not isinstance(payload, dict):
+                  report_errors.append(f'unexpected report shape: {path}')
+                  return {}
+
+              return payload
+
+
+          def failure_count(value: object) -> int:
+              try:
+                  return int(value or 0)
+              except (TypeError, ValueError):
+                  return 1 if value else 0
+
+
+          summary = load_json(Path('docs/sync_summary.json'))
+          coverage = load_json(Path('docs/source_coverage.json'))
+          coverage_sync = coverage.get('sync', {})
+          if not isinstance(coverage_sync, dict):
+              coverage_sync = {}
+
+          summary_failures = failure_count(summary.get('failure_count'))
+          coverage_failures = failure_count(coverage_sync.get('failure_count'))
+          has_failures = bool(report_errors or summary_failures or coverage_failures)
+
+          print(f'summary_failure_count={summary_failures}')
+          print(f'coverage_failure_count={coverage_failures}')
+          print(f'has_failures={str(has_failures).lower()}')
+
+          if has_failures:
+              details = ', '.join(report_errors) if report_errors else 'recorded source failures'
+              print(
+                  '::error::Docs sync recorded failures: '
+                  f'sync_summary failure_count={summary_failures}, '
+                  f'source_coverage sync.failure_count={coverage_failures}; '
+                  f'{details}.',
+                  file=sys.stderr,
+              )
+          PY
+
+      - name: Check for changes
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true'
         id: changed
         run: |
           if git diff --quiet; then
@@ -76,17 +143,19 @@ jobs:
           fi
 
       - name: Commit and push if changed
-        if: steps.sync.outcome == 'success' && steps.changed.outputs.changed == 'true'
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/ dot_codex/ system_prompts/ weekly/
           cli_version="$(codex --version | awk '{print $NF}')"
           git commit -m "chore: sync docs for cli ${cli_version} ($(date -u +'%Y-%m-%d'))"
+          git fetch origin main
+          git pull --rebase origin main
           git push
 
       - name: Create or update failure issue
-        if: steps.sync.outcome == 'failure'
+        if: steps.sync.outcome == 'failure' || steps.recorded_failures.outputs.has_failures == 'true'
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
@@ -107,15 +176,21 @@ jobs:
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const syncLogTail = tailLines(readText('sync.log'), 120).slice(-12000) || '(no log available)';
             const syncSummary = readText('docs/sync_summary.json').slice(-12000) || '(no sync summary available)';
+            const sourceCoverage = readText('docs/source_coverage.json').slice(-12000) || '(no source coverage available)';
 
             const body = [
-              `Automated docs sync failed on ${date}.`,
+              `Automated docs sync failed or recorded source failures on ${date}.`,
               '',
               `Workflow run: ${runUrl}`,
               '',
               '### Sync summary',
               '```json',
               syncSummary,
+              '```',
+              '',
+              '### Source coverage',
+              '```json',
+              sourceCoverage,
               '```',
               '',
               '### Sync log tail',
@@ -150,5 +225,5 @@ jobs:
             }
 
       - name: Fail workflow when sync fails
-        if: steps.sync.outcome == 'failure'
+        if: steps.sync.outcome == 'failure' || steps.recorded_failures.outputs.has_failures == 'true'
         run: exit 1

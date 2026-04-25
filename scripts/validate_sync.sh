@@ -93,7 +93,6 @@ python - "$before" "$after_second" <<'PY'
 import sys
 from pathlib import Path
 
-before_path = Path(sys.argv[1])
 after_path = Path(sys.argv[2])
 
 
@@ -124,15 +123,17 @@ def parse_porcelain_z(blob: bytes) -> set[str]:
 
     return entries
 
-before = parse_porcelain_z(before_path.read_bytes())
 after = parse_porcelain_z(after_path.read_bytes())
-introduced = sorted(after - before)
+dirty = sorted(after)
 
 allowed_prefixes = ("docs/", "dot_codex/", "system_prompts/", "weekly/")
-bad = [path for path in introduced if not path.startswith(allowed_prefixes)]
+bad = [path for path in dirty if not path.startswith(allowed_prefixes)]
 
 if bad:
-    print("Changed-file scope violation. New dirty paths outside docs/ or weekly/:")
+    print(
+        "Changed-file scope violation. Dirty paths outside docs/, dot_codex/, "
+        "system_prompts/, or weekly/:"
+    )
     for path in bad:
         print(f"- {path}")
     sys.exit(1)
