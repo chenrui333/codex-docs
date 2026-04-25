@@ -1,3 +1,11 @@
+---
+source_type: 'codex_cli_system_skill'
+source_url: 'codex-cli://skills/.system/openai-docs/references/upgrade-guide.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Upgrading to GPT-5.4
 
 Use this guide when the user explicitly asks to upgrade an existing integration to GPT-5.4. Pair it with current OpenAI docs lookups. The default target string is `gpt-5.4`.

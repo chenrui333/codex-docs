@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/cookbook/examples/codex/autofix-github-actions'
+source_last_modified: '2026-04-25T06:49:59Z'
+source_etag: 'W/"25267233acd6a5c02b5b246c64a4dd32"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Use Codex CLI to automatically fix CI failures
 
 Source: https://developers.openai.com/cookbook/examples/codex/autofix-github-actions

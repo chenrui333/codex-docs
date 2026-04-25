@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/concepts/customization'
+source_last_modified: '2026-04-25T06:34:03Z'
+source_etag: 'W/"88b76544a58f0652a83414205cb719e2"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Customization – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/concepts/customization

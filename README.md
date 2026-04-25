@@ -21,11 +21,13 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/platform.openai.com/...` mirrored linked platform tool guides
 - `dot_codex/skills/dot_system/...` mirrored Codex CLI system skills in installed-path shape
 - `system_prompts/codex-cli/prompt-input.json` sanitized prompt input snapshot from `codex debug prompt-input`
-- `docs/docs_manifest.json` hash manifest for change tracking, including last-changed Codex CLI version metadata for CLI-backed files
+- `docs/docs_manifest.json` hash manifest for change tracking, including Codex CLI version-history metadata
 - `docs/codex_capabilities.json` generated capability inventory spanning system skills, prompt snapshots, and linked tool guides
 - `docs/sync_summary.json` latest sync summary with the source snapshot for changed outputs
 - `docs/source_coverage.json` sitemap coverage watchdog output
 - `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
+
+Generated Markdown files include YAML frontmatter with stable source metadata such as `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
 
 ## Automation
 

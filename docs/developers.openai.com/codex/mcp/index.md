@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/mcp'
+source_last_modified: '2026-04-25T06:32:59Z'
+source_etag: 'W/"698d6e79016d8393640e1d71bf1fd8f3"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Model Context Protocol – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/mcp

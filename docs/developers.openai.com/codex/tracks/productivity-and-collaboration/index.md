@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/tracks/productivity-and-collaboration'
+source_last_modified: '2026-04-25T12:19:47Z'
+source_etag: '"be91cdeb9ddd9c92abd6501b0a697a46"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Redirecting to: /codex/use-cases/collections/productivity-and-collaboration
 
 Source: https://developers.openai.com/codex/tracks/productivity-and-collaboration

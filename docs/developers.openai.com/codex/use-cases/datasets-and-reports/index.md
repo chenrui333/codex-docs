@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/datasets-and-reports'
+source_last_modified: '2026-04-25T06:30:51Z'
+source_etag: 'W/"e30eccd5690502f0c5ed59e40250a00b"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Analyze datasets and ship reports | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/datasets-and-reports

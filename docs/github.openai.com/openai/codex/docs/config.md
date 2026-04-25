@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/config.md'
+source_etag: 'W/"c1851f6e7e87147303f34bd8ed7ab033a9c4186e64a7be6b768d522bfe349d93"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Configuration
 
 For basic configuration instructions, see [this documentation](https://developers.openai.com/codex/config-basic).

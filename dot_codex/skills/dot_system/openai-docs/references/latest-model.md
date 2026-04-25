@@ -1,3 +1,11 @@
+---
+source_type: 'codex_cli_system_skill'
+source_url: 'codex-cli://skills/.system/openai-docs/references/latest-model.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Latest model guide
 
 This file is a curated helper. Every recommendation here must be verified against current OpenAI docs before it is repeated to a user.

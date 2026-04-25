@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/contributing.md'
+source_etag: 'W/"59af4d84a58c8605f562b572812cd808b33c9319c0b39a018c942692b48a45ec"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 ## Contributing
 
 **External contributions are by invitation only**

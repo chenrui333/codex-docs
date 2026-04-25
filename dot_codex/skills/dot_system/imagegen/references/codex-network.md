@@ -1,3 +1,11 @@
+---
+source_type: 'codex_cli_system_skill'
+source_url: 'codex-cli://skills/.system/imagegen/references/codex-network.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Codex network approvals / sandbox notes
 
 This file is for the fallback CLI mode only. Read it when the user explicitly asks to use `scripts/image_gen.py` / CLI / API / model controls, or after the user explicitly confirms that a transparent-output request should use the `gpt-image-1.5` true-transparency fallback path.

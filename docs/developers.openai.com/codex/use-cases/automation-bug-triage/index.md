@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/automation-bug-triage'
+source_last_modified: '2026-04-25T06:36:15Z'
+source_etag: 'W/"c229c2cb29c0aa3759a0ca446faa50cb"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Automate bug triage | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/automation-bug-triage

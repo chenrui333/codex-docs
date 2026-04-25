@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
+source_last_modified: '2026-04-25T06:44:15Z'
+source_etag: 'W/"7f63eeee8f58e59574d08dabacc49106"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Admin Setup – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/enterprise/admin-setup

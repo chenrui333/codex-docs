@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/hooks'
+source_last_modified: '2026-04-25T06:29:37Z'
+source_etag: 'W/"5c65d24430a57d23e81444b25b88c31b"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Hooks – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/hooks

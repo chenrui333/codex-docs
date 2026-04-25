@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/concepts/subagents'
+source_last_modified: '2026-04-25T06:39:23Z'
+source_etag: 'W/"d387a077534daf38dd7007de0cd25f6a"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Subagents – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/concepts/subagents

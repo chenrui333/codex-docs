@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/frontend-designs'
+source_last_modified: '2026-04-25T06:37:43Z'
+source_etag: 'W/"1d7b415298dc0c03dfe7d45e6d0a47b7"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Build responsive front-end designs | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/frontend-designs

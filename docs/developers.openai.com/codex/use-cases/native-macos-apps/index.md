@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/native-macos-apps'
+source_last_modified: '2026-04-25T06:49:17Z'
+source_etag: 'W/"c0b15aea93407c70386daaee4d1e26dd"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Build for macOS | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/native-macos-apps

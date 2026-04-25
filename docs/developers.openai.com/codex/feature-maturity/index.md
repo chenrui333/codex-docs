@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/feature-maturity'
+source_last_modified: '2026-04-25T06:56:28Z'
+source_etag: 'W/"30ebdaa829ebe9bde76da3206067bfe8"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Feature Maturity – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/feature-maturity

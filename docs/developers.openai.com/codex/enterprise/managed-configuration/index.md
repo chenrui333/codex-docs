@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
+source_last_modified: '2026-04-25T06:44:16Z'
+source_etag: 'W/"af54850a354e02af645001db8e750739"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Managed configuration – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/enterprise/managed-configuration

@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/deploy-app-or-website'
+source_last_modified: '2026-04-25T06:49:50Z'
+source_etag: 'W/"1fd8a8e9097f9a2d94055cf7161284da"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Deploy an app or website | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/deploy-app-or-website

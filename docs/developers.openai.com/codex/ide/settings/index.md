@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/ide/settings'
+source_last_modified: '2026-04-25T06:59:52Z'
+source_etag: 'W/"f7967ea037e46d6ebcd3f5fef5f7554c"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Settings – Codex IDE | OpenAI Developers
 
 Source: https://developers.openai.com/codex/ide/settings

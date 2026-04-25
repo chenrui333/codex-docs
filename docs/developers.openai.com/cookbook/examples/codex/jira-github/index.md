@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/cookbook/examples/codex/jira-github'
+source_last_modified: '2026-04-25T06:58:18Z'
+source_etag: 'W/"4ee310f9ea42fc45555b0af4b75c1dcc"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Automate Jira ↔ GitHub with Codex
 
 Source: https://developers.openai.com/cookbook/examples/codex/jira-github

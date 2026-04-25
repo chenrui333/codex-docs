@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/cli/reference'
+source_last_modified: '2026-04-25T06:28:51Z'
+source_etag: 'W/"bbfe1416569617d45d82e0f1ba81df67"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Command line options – Codex CLI | OpenAI Developers
 
 Source: https://developers.openai.com/codex/cli/reference

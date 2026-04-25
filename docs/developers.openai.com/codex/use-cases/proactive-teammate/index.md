@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/proactive-teammate'
+source_last_modified: '2026-04-25T06:56:49Z'
+source_etag: 'W/"91cc4a596599e393c7830c78c39bdb98"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Set up a teammate | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/proactive-teammate

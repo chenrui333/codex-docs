@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/learn-a-new-concept'
+source_last_modified: '2026-04-25T06:37:11Z'
+source_etag: 'W/"1d30ad49cd3daea3555f1136d5982cc7"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Learn a new concept | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/learn-a-new-concept

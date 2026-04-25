@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/integrations/slack'
+source_last_modified: '2026-04-25T06:44:46Z'
+source_etag: 'W/"b9c38f0c9177cdc9aaf8689b8ac082ac"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Use Codex in Slack | OpenAI Developers
 
 Source: https://developers.openai.com/codex/integrations/slack

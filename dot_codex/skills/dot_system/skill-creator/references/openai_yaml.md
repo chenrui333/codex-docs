@@ -1,3 +1,11 @@
+---
+source_type: 'codex_cli_system_skill'
+source_url: 'codex-cli://skills/.system/skill-creator/references/openai_yaml.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # openai.yaml fields (full example + descriptions)
 
 `agents/openai.yaml` is an extended, product-specific config intended for the machine/harness to read, not the agent. Other product-specific config can also live in the `agents/` folder.

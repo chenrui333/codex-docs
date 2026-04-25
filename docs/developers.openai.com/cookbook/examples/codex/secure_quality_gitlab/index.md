@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab'
+source_last_modified: '2026-04-25T06:43:54Z'
+source_etag: 'W/"8ca9ef2c65083088b0441ce942e75ab8"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Automating Code Quality and Security Fixes with Codex CLI on GitLab
 
 Source: https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab

@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/config-reference'
+source_last_modified: '2026-04-25T06:28:27Z'
+source_etag: 'W/"ffb92c54ab25499934ee4cce8f8b3a8b"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Configuration Reference – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/config-reference

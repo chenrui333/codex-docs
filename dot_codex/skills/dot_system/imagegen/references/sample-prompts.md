@@ -1,3 +1,11 @@
+---
+source_type: 'codex_cli_system_skill'
+source_url: 'codex-cli://skills/.system/imagegen/references/sample-prompts.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Sample prompts (copy/paste)
 
 These prompt recipes are shared across both top-level modes of the skill:

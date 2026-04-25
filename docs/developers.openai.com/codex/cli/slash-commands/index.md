@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/cli/slash-commands'
+source_last_modified: '2026-04-25T06:42:37Z'
+source_etag: 'W/"7d76af13e49d48792f61bee3329d6e48"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Slash commands in Codex CLI | OpenAI Developers
 
 Source: https://developers.openai.com/codex/cli/slash-commands

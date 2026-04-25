@@ -1,3 +1,11 @@
+---
+source_type: 'github'
+source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-review.md'
+source_etag: 'W/"45585ea29e2085fc3bc1417c76a358523a4dd3498ab013fa544880222681fb98"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # TUI Stream Chunking
 
 This document explains how stream chunking in the TUI works and why it is

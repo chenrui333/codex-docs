@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/integrations/linear'
+source_last_modified: '2026-04-25T06:46:48Z'
+source_etag: 'W/"b892206bf5994cc5ee91627a455fbc96"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Use Codex in Linear | OpenAI Developers
 
 Source: https://developers.openai.com/codex/integrations/linear

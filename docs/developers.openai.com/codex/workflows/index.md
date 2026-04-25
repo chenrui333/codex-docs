@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/workflows'
+source_last_modified: '2026-04-25T06:41:43Z'
+source_etag: 'W/"d6a99925f1c9b673aa7e39380f5aa788"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # Workflows – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/workflows

@@ -1,3 +1,12 @@
+---
+source_type: 'developers'
+source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
+source_last_modified: '2026-04-25T06:53:02Z'
+source_etag: 'W/"ef1d068fb74acbec873ac0c69ebde4cb"'
+codex_cli_versions: ["0.125.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0"]
+---
+
 # QA your app with Computer Use | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use
