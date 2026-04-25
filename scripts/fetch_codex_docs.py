@@ -29,6 +29,8 @@ WEEKLY_DIR = ROOT / "weekly"
 MANIFEST_PATH = DOCS_DIR / "docs_manifest.json"
 SUMMARY_PATH = DOCS_DIR / "sync_summary.json"
 COVERAGE_PATH = DOCS_DIR / "source_coverage.json"
+CAPABILITIES_PATH = DOCS_DIR / "codex_capabilities.json"
+CAPABILITIES_REL_PATH = str(CAPABILITIES_PATH.relative_to(DOCS_DIR))
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
 GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
 PLATFORM_ROOT = DOCS_DIR / "platform.openai.com"
@@ -40,6 +42,7 @@ SYSTEM_PROMPT_OUTPUT_PREFIX = "system_prompts/codex-cli/"
 ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
 CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
 PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
+CAPABILITY_INVENTORY_SOURCE_TYPE = "capability_inventory"
 SOURCE_METADATA_KEYS = (
     "source_kind",
     "codex_cli_version",
@@ -51,7 +54,12 @@ SOURCE_METADATA_KEYS = (
 SITEMAP_INDEX_URL = "https://developers.openai.com/sitemap-index.xml"
 GITHUB_TREE_URL = "https://api.github.com/repos/openai/codex/git/trees/main?recursive=1"
 GITHUB_RAW_URL_TEMPLATE = "https://raw.githubusercontent.com/openai/codex/main/{path}"
-PLATFORM_TOOL_GUIDE_URLS = ("https://platform.openai.com/docs/guides/tools-web-search",)
+PLATFORM_TOOL_GUIDE_URLS = (
+    "https://developers.openai.com/api/docs/guides/tools-apply-patch",
+    "https://developers.openai.com/api/docs/guides/tools-computer-use",
+    "https://developers.openai.com/api/docs/guides/tools-shell",
+    "https://platform.openai.com/docs/guides/tools-web-search",
+)
 USER_AGENT = "codex-docs-sync/0.1 (+https://github.com/chenrui333/codex-docs)"
 
 LOG = logging.getLogger("fetch_codex_docs")
@@ -78,6 +86,7 @@ WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
     ("Developers Codex", "developers.openai.com/codex/"),
     ("Developers Cookbook", "developers.openai.com/cookbook/"),
     ("Developers Resources", "developers.openai.com/resources/"),
+    ("API Tool Guides", "developers.openai.com/api/docs/guides/"),
     ("Platform Tool Guides", "platform.openai.com/docs/guides/"),
     ("GitHub Core Docs", "github.openai.com/openai/codex/docs/"),
     ("GitHub Other Docs", "github.openai.com/openai/codex/"),
@@ -443,12 +452,32 @@ def platform_url_to_rel_path(url: str) -> str:
     segments = [segment for segment in parsed.path.split("/") if segment]
     if not segments:
         segments = ["root"]
-    path = PLATFORM_ROOT.joinpath(*segments, "index.md")
+    root = PLATFORM_ROOT
+    if parsed.netloc == "developers.openai.com":
+        root = DEVELOPERS_ROOT
+    path = root.joinpath(*segments, "index.md")
     return str(path.relative_to(DOCS_DIR))
 
 
 def platform_markdown_url(url: str) -> str:
     return f"{url.rstrip('/')}.md"
+
+
+def tool_guide_slug(url: str) -> str:
+    return Path(urlparse(url).path.rstrip("/")).name
+
+
+def tool_guide_aliases(url: str) -> List[str]:
+    base_urls = {url.rstrip("/")}
+    slug = tool_guide_slug(url)
+    if slug.startswith("tools-"):
+        base_urls.add(f"https://platform.openai.com/docs/guides/{slug}")
+        base_urls.add(f"https://developers.openai.com/api/docs/guides/{slug}")
+    aliases: set[str] = set()
+    for item in base_urls:
+        aliases.add(item)
+        aliases.add(platform_markdown_url(item))
+    return sorted(aliases)
 
 
 def strip_mdx_imports(text: str) -> str:
@@ -816,30 +845,31 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
     return managed, fetch_errors
 
 
-def referenced_platform_tool_guide_urls(source_files: Sequence[ManagedFile]) -> List[str]:
-    referenced: set[str] = set()
+def referenced_platform_tool_guides(source_files: Sequence[ManagedFile]) -> Dict[str, List[str]]:
+    referenced: Dict[str, set[str]] = {}
     for item in source_files:
         if isinstance(item.content, bytes):
             text = item.content.decode("utf-8", errors="ignore")
         else:
             text = item.content
         for url in PLATFORM_TOOL_GUIDE_URLS:
-            if url in text or platform_markdown_url(url) in text:
-                referenced.add(url)
-    return sorted(referenced)
+            if any(alias in text for alias in tool_guide_aliases(url)):
+                referenced.setdefault(url, set()).add(item.rel_path)
+    return {url: sorted(paths) for url, paths in sorted(referenced.items())}
 
 
 def build_platform_tool_guide_files(
     session: requests.Session,
     source_files: Sequence[ManagedFile],
-) -> Tuple[List[ManagedFile], List[Dict[str, str]], List[str]]:
+) -> Tuple[List[ManagedFile], List[Dict[str, str]], Dict[str, List[str]]]:
     managed: List[ManagedFile] = []
     fetch_errors: List[Dict[str, str]] = []
-    referenced_urls = referenced_platform_tool_guide_urls(source_files)
+    referenced_by_url = referenced_platform_tool_guides(source_files)
+    referenced_urls = sorted(referenced_by_url)
     if not referenced_urls:
-        return managed, fetch_errors, referenced_urls
+        return managed, fetch_errors, referenced_by_url
 
-    LOG.info("Mirroring %d linked platform tool guide(s)", len(referenced_urls))
+    LOG.info("Mirroring %d linked tool guide(s)", len(referenced_urls))
     for url in referenced_urls:
         fetch_url = platform_markdown_url(url)
         try:
@@ -865,7 +895,179 @@ def build_platform_tool_guide_files(
             )
         )
 
-    return managed, fetch_errors, referenced_urls
+    return managed, fetch_errors, referenced_by_url
+
+
+def managed_file_text(item: ManagedFile) -> str:
+    if isinstance(item.content, bytes):
+        return item.content.decode("utf-8", errors="replace")
+    return item.content
+
+
+def strip_quotes(value: str) -> str:
+    value = value.strip()
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        return value[1:-1]
+    return value
+
+
+def parse_simple_frontmatter(text: str) -> Dict[str, str]:
+    if not text.startswith("---"):
+        return {}
+    match = re.match(r"^---\n(.*?)\n---\n", text, flags=re.DOTALL)
+    if not match:
+        return {}
+    parsed: Dict[str, str] = {}
+    for line in match.group(1).splitlines():
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip()
+        if key in {"name", "description"}:
+            parsed[key] = strip_quotes(value)
+    return parsed
+
+
+def markdown_title(text: str, default: str) -> str:
+    for line in text.splitlines():
+        if line.startswith("# "):
+            return line[2:].strip() or default
+    return default
+
+
+def capability_name_from_tool_guide_url(url: str) -> str:
+    slug = tool_guide_slug(url)
+    if slug.startswith("tools-"):
+        slug = slug[len("tools-") :]
+    return slug.replace("-", "_")
+
+
+def capability_counts(capabilities: Sequence[Dict[str, object]]) -> Dict[str, object]:
+    by_category: Dict[str, int] = {}
+    for item in capabilities:
+        category = str(item.get("category", "unknown"))
+        by_category[category] = by_category.get(category, 0) + 1
+    return {
+        "total": len(capabilities),
+        "by_category": {key: by_category[key] for key in sorted(by_category)},
+    }
+
+
+def build_capability_inventory_file(
+    codex_cli_files: Sequence[ManagedFile],
+    platform_tool_guide_files: Sequence[ManagedFile],
+    referenced_platform_tool_guides_by_url: Dict[str, List[str]],
+    codex_cli_metadata: Dict[str, str],
+) -> ManagedFile:
+    capabilities: List[Dict[str, object]] = []
+    codex_cli_version = codex_cli_metadata.get("codex_cli_version", "")
+
+    for item in sorted(codex_cli_files, key=lambda entry: entry.rel_path):
+        if item.source_type != "codex_cli_system_skill" or not item.rel_path.endswith("/SKILL.md"):
+            continue
+        skill_rel = item.rel_path.removeprefix(SYSTEM_SKILL_OUTPUT_PREFIX)
+        skill_dir = skill_rel.rsplit("/", 1)[0]
+        metadata = parse_simple_frontmatter(managed_file_text(item))
+        name = metadata.get("name") or Path(skill_dir).name
+        entry: Dict[str, object] = {
+            "id": f"system_skill:{name}",
+            "name": name,
+            "category": "system_skill",
+            "source_type": item.source_type,
+            "source_url": item.source_url,
+            "mirrored_path": item.rel_path,
+            "first_seen_path": item.rel_path,
+        }
+        if metadata.get("description"):
+            entry["description"] = metadata["description"]
+        if codex_cli_version:
+            entry["codex_cli_version"] = codex_cli_version
+        capabilities.append(entry)
+
+    for item in sorted(codex_cli_files, key=lambda entry: entry.rel_path):
+        if item.source_type != "codex_cli_prompt_input":
+            continue
+        roles: List[str] = []
+        message_count = 0
+        try:
+            payload = json.loads(managed_file_text(item))
+            if isinstance(payload, list):
+                message_count = len(payload)
+                roles = sorted({str(entry.get("role")) for entry in payload if isinstance(entry, dict) and entry.get("role")})
+        except json.JSONDecodeError:
+            roles = []
+        entry = {
+            "id": "system_prompt:prompt-input",
+            "name": "prompt-input",
+            "category": "system_prompt_snapshot",
+            "source_type": item.source_type,
+            "source_url": item.source_url,
+            "mirrored_path": item.rel_path,
+            "first_seen_path": item.rel_path,
+            "message_count": message_count,
+            "roles": roles,
+        }
+        if codex_cli_version:
+            entry["codex_cli_version"] = codex_cli_version
+        capabilities.append(entry)
+
+    for item in sorted(platform_tool_guide_files, key=lambda entry: entry.rel_path):
+        name = capability_name_from_tool_guide_url(item.source_url)
+        referenced_from = referenced_platform_tool_guides_by_url.get(item.source_url, [])
+        capabilities.append(
+            {
+                "id": f"tool_guide:{name}",
+                "name": name,
+                "title": markdown_title(managed_file_text(item), default=name.replace("_", " ").title()),
+                "category": "linked_tool_guide",
+                "source_type": item.source_type,
+                "source_url": item.source_url,
+                "mirrored_path": item.rel_path,
+                "first_seen_path": referenced_from[0] if referenced_from else item.rel_path,
+                "referenced_from": referenced_from,
+            }
+        )
+
+    capabilities = sorted(capabilities, key=lambda item: str(item["id"]))
+    payload = {
+        "schema_version": 1,
+        "source_kind": "generated_capability_inventory",
+        "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
+        "codex_cli_version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
+        "counts": capability_counts(capabilities),
+        "capabilities": capabilities,
+    }
+    inventory_metadata = dict(codex_cli_metadata)
+    inventory_metadata["source_kind"] = "generated_capability_inventory"
+    return ManagedFile(
+        rel_path=CAPABILITIES_REL_PATH,
+        source_type=CAPABILITY_INVENTORY_SOURCE_TYPE,
+        source_url="generated://capability-inventory",
+        content=json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        source_metadata=inventory_metadata,
+    )
+
+
+def capability_inventory_counts_from_text(text: str) -> Dict[str, object]:
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return {"total": 0, "by_category": {}}
+    capabilities = payload.get("capabilities", []) if isinstance(payload, dict) else []
+    if not isinstance(capabilities, list):
+        return {"total": 0, "by_category": {}}
+    return capability_counts([item for item in capabilities if isinstance(item, dict)])
+
+
+def capability_inventory_counts(
+    inventory_files: Sequence[ManagedFile],
+    preserve_missing_sources: set[str],
+) -> Dict[str, object]:
+    if inventory_files:
+        return capability_inventory_counts_from_text(managed_file_text(inventory_files[0]))
+    if CAPABILITY_INVENTORY_SOURCE_TYPE in preserve_missing_sources and CAPABILITIES_PATH.exists():
+        return capability_inventory_counts_from_text(CAPABILITIES_PATH.read_text())
+    return {"total": 0, "by_category": {}}
 
 
 def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Dict[str, str]]:
@@ -1110,9 +1312,11 @@ def apply_sync(
             preserved_metadata = {
                 key: previous_meta[key]
                 for key in SOURCE_METADATA_KEYS
-                if previous_same_hash and previous_meta.get(key)
+                if key != "source_kind" and previous_same_hash and previous_meta.get(key)
             }
             next_entry.update(preserved_metadata or item.source_metadata)
+            if item.source_metadata.get("source_kind"):
+                next_entry["source_kind"] = item.source_metadata["source_kind"]
         next_entries[item.rel_path] = next_entry
 
     previous_paths = set(previous)
@@ -1196,10 +1400,11 @@ def main() -> int:
     github_files: List[ManagedFile] = []
     platform_tool_guide_files: List[ManagedFile] = []
     codex_cli_files: List[ManagedFile] = []
+    capability_inventory_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
     platform_tool_guide_fetch_errors: List[Dict[str, str]] = []
-    platform_tool_guide_referenced_urls: List[str] = []
+    platform_tool_guide_references_by_url: Dict[str, List[str]] = {}
     codex_cli_fetch_errors: List[Dict[str, str]] = []
     codex_cli_metadata: Dict[str, str] = {}
     coverage: Dict[str, object] = {"generated_at": now_utc_iso()}
@@ -1248,26 +1453,6 @@ def main() -> int:
         preserve_missing_sources.add("github")
 
     try:
-        platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_referenced_urls = (
-            build_platform_tool_guide_files(session, developers_files + github_files)
-        )
-        failures.extend(platform_tool_guide_fetch_errors)
-        if platform_tool_guide_fetch_errors:
-            preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
-        if {"developers", "github"} & preserve_missing_sources and not platform_tool_guide_files:
-            preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
-    except Exception as exc:
-        LOG.warning("Platform tool guide source failed; continuing with remaining sources: %s", exc)
-        failure = {
-            "source": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
-            "stage": "source_build",
-            "url": "https://platform.openai.com/docs/guides",
-            "error": str(exc),
-        }
-        failures.append(failure)
-        preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
-
-    try:
         codex_cli_files, codex_cli_fetch_errors, codex_cli_metadata = build_codex_cli_files()
         failures.extend(codex_cli_fetch_errors)
         if codex_cli_fetch_errors:
@@ -1284,6 +1469,38 @@ def main() -> int:
         }
         failures.append(failure)
         preserve_missing_sources.update(CODEX_CLI_SOURCE_TYPES)
+
+    try:
+        platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
+            build_platform_tool_guide_files(session, developers_files + github_files + codex_cli_files)
+        )
+        failures.extend(platform_tool_guide_fetch_errors)
+        if platform_tool_guide_fetch_errors:
+            preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
+        if ({"developers", "github"} | CODEX_CLI_SOURCE_TYPES) & preserve_missing_sources:
+            preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
+    except Exception as exc:
+        LOG.warning("Platform tool guide source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
+            "stage": "source_build",
+            "url": "https://platform.openai.com/docs/guides",
+            "error": str(exc),
+        }
+        failures.append(failure)
+        preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
+
+    if preserve_missing_sources:
+        preserve_missing_sources.add(CAPABILITY_INVENTORY_SOURCE_TYPE)
+    else:
+        capability_inventory_files = [
+            build_capability_inventory_file(
+                codex_cli_files,
+                platform_tool_guide_files,
+                platform_tool_guide_references_by_url,
+                codex_cli_metadata,
+            )
+        ]
 
     github_source_errors = [item for item in failures if item["source"] == "github" and item["stage"] == "source_build"]
     github_mirrored_paths = coverage_paths_for_source(github_files, "github", preserve_missing_sources)
@@ -1312,18 +1529,31 @@ def main() -> int:
     coverage["platform_tool_guides"] = {
         "source_type": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
         "candidate_urls": list(PLATFORM_TOOL_GUIDE_URLS),
-        "referenced_urls": platform_tool_guide_referenced_urls,
+        "referenced_urls": sorted(platform_tool_guide_references_by_url),
+        "references_by_url": platform_tool_guide_references_by_url,
         "mirrored_paths_count": len(platform_tool_guide_mirrored_paths),
         "mirrored_paths": platform_tool_guide_mirrored_paths,
         "page_fetch_errors": platform_tool_guide_fetch_errors,
         "source_errors": platform_tool_guide_source_errors,
         "counts": {
             "candidate_urls": len(PLATFORM_TOOL_GUIDE_URLS),
-            "referenced_urls": len(platform_tool_guide_referenced_urls),
+            "referenced_urls": len(platform_tool_guide_references_by_url),
             "mirrored_paths_count": len(platform_tool_guide_mirrored_paths),
             "page_fetch_errors": len(platform_tool_guide_fetch_errors),
             "source_errors": len(platform_tool_guide_source_errors),
         },
+    }
+    capability_inventory_mirrored_paths = coverage_paths_for_source(
+        capability_inventory_files,
+        CAPABILITY_INVENTORY_SOURCE_TYPE,
+        preserve_missing_sources,
+    )
+    coverage["capability_inventory"] = {
+        "source_type": CAPABILITY_INVENTORY_SOURCE_TYPE,
+        "output_path": CAPABILITIES_REL_PATH,
+        "mirrored_paths_count": len(capability_inventory_mirrored_paths),
+        "mirrored_paths": capability_inventory_mirrored_paths,
+        "counts": capability_inventory_counts(capability_inventory_files, preserve_missing_sources),
     }
     system_skill_files = [item for item in codex_cli_files if item.source_type == "codex_cli_system_skill"]
     prompt_input_files = [item for item in codex_cli_files if item.source_type == "codex_cli_prompt_input"]
@@ -1372,7 +1602,7 @@ def main() -> int:
     }
     write_coverage(coverage)
 
-    managed_files = developers_files + github_files + platform_tool_guide_files + codex_cli_files
+    managed_files = developers_files + github_files + platform_tool_guide_files + codex_cli_files + capability_inventory_files
     if not managed_files:
         LOG.error("No source files were fetched successfully.")
         write_summary([], [], [], 0, failures=failures)
