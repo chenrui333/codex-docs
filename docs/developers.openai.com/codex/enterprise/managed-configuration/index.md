@@ -9,7 +9,7 @@ Enterprise admins can control local Codex behavior in two ways:
 
 ## Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, web search mode, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
+Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, web search mode, managed hooks, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, profiles, or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
 
 Requirements can also constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren’t always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
@@ -74,6 +74,31 @@ allowed_approval_policies = ["untrusted", "on-request"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 ```
 
+### Override sandbox requirements by host
+
+Use `[[remote_sandbox_config]]` when one managed policy should apply different
+sandbox requirements on different hosts. For example, you can keep a stricter
+default for laptops while allowing workspace writes on matching devboxes or CI
+runners. Host-specific entries currently override `allowed_sandbox_modes` only:
+
+```
+allowed_sandbox_modes = ["read-only"]
+
+[[remote_sandbox_config]]
+hostname_patterns = ["*.devbox.example.com", "runner-??.ci.example.com"]
+allowed_sandbox_modes = ["read-only", "workspace-write"]
+```
+
+Codex compares each `hostname_patterns` entry against the best-effort resolved
+host name. It prefers the fully qualified domain name when available and falls
+back to the local host name. Matching is case-insensitive; `*` matches any
+sequence of characters, and `?` matches one character.
+
+The first matching `[[remote_sandbox_config]]` entry wins within the same
+requirements source. If no entry matches, Codex keeps the top-level
+`allowed_sandbox_modes`. Hostname matching is for policy selection only; don’t
+treat it as authenticated device proof.
+
 You can also constrain web search mode:
 
 ```
@@ -92,6 +117,27 @@ unified_exec = false
 ```
 
 Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
+
+### Disable Codex feature surfaces
+
+Admins can use `[feature_requirements]` to disable specific Codex feature
+surfaces for users receiving a managed `requirements.toml`. You can also set
+the same keys in the existing `[features]` table.
+
+```
+[feature_requirements]
+browser_use = false
+in_app_browser = false
+computer_use = false
+```
+
+- `in_app_browser = false` disables the in-app browser pane.
+- `browser_use = false` disables Browser Use and Browser Agent availability.
+- `computer_use = false` disables Computer Use availability and related
+  install or enablement flows.
+
+If omitted, these features are allowed by policy, subject to normal client,
+platform, and rollout availability.
 
 ### Configure automatic review policy
 
@@ -138,6 +184,39 @@ When deny-read requirements are present, Codex constrains local sandbox mode to
 `read-only` or `workspace-write` so Codex can enforce them. On native
 Windows, managed `deny_read` applies to direct file tools; shell subprocess
 reads don’t use this sandbox rule.
+
+### Enforce managed hooks from requirements
+
+Admins can also define managed lifecycle hooks directly in `requirements.toml`.
+Use `[hooks]` for the hook configuration itself, and point `managed_dir` at the
+directory where your MDM or endpoint-management tooling installs the referenced
+scripts.
+
+```
+[features]
+codex_hooks = true
+
+[hooks]
+managed_dir = "/enterprise/hooks"
+windows_managed_dir = 'C:\enterprise\hooks'
+
+[[hooks.PreToolUse]]
+matcher = "^Bash$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = "python3 /enterprise/hooks/pre_tool_use_policy.py"
+timeout = 30
+statusMessage = "Checking managed Bash command"
+```
+
+Notes:
+
+- Codex enforces the hook configuration from `requirements.toml`, but it does
+  not distribute the scripts in `managed_dir`.
+- Deliver those scripts separately with your MDM or device-management solution.
+- Managed hook commands should reference absolute script paths under the
+  configured managed directory.
 
 ### Enforce command rules from requirements
 

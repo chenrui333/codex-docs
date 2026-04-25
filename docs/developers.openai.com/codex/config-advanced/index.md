@@ -92,13 +92,15 @@ Relative paths inside a project config (for example, `model_instructions_file`) 
 
 ## Hooks (experimental)
 
-Codex can also load lifecycle hooks from `hooks.json` files that sit next to
-active config layers.
+Codex can also load lifecycle hooks from either `hooks.json` files or inline
+`[hooks]` tables in `config.toml` files that sit next to active config layers.
 
 In practice, the two most useful locations are:
 
 - `~/.codex/hooks.json`
+- `~/.codex/config.toml`
 - `<repo>/.codex/hooks.json`
+- `<repo>/.codex/config.toml`
 
 Project-local hooks load only when the project `.codex/` layer is trusted.
 User-level hooks remain independent of project trust.
@@ -109,6 +111,22 @@ Turn hooks on with:
 [features]
 codex_hooks = true
 ```
+
+Inline TOML hooks use the same event structure as `hooks.json`:
+
+```
+[[hooks.PreToolUse]]
+matcher = "^Bash$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_policy.py"'
+timeout = 30
+statusMessage = "Checking Bash command"
+```
+
+If a single layer contains both `hooks.json` and inline `[hooks]`, Codex loads
+both and warns. Prefer one representation per layer.
 
 For the current event list, input fields, output behavior, and limitations, see
 [Hooks](/codex/hooks).

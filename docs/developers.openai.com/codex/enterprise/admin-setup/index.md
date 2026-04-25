@@ -141,7 +141,7 @@ This separation makes it easier to roll out Codex while keeping analytics, envir
 
 Codex Admins can deploy admin-enforced `requirements.toml` policies from the Codex [Policies page](https://chatgpt.com/codex/settings/policies).
 
-Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules.
+Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Disable Codex feature surfaces](/codex/enterprise/managed-configuration#disable-codex-feature-surfaces).
 
 ![Codex policies and configurations page](/images/codex/enterprise/policies_and_configurations_page.png)
 

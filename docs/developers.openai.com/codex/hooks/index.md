@@ -2,9 +2,6 @@
 
 Source: https://developers.openai.com/codex/hooks
 
-Experimental. Hooks are under active development. Windows support temporarily
-disabled.
-
 Hooks are an extensibility framework for Codex. They allow
 you to inject your own scripts into the agentic loop, enabling features such as:
 
@@ -25,22 +22,28 @@ Runtime behavior to keep in mind:
 
 - Matching hooks from multiple files all run.
 - Multiple matching command hooks for the same event are launched concurrently,
-  so one hook can’t prevent another matching hook from starting.
+  so one hook cannot prevent another matching hook from starting.
 - `PreToolUse`, `PermissionRequest`, `PostToolUse`, `UserPromptSubmit`, and
   `Stop` run at turn scope.
-- Hooks are currently disabled on Windows.
 
 ## Where Codex looks for hooks
 
-Codex discovers `hooks.json` next to active config layers.
+Codex discovers hooks next to active config layers in either of these forms:
 
-In practice, the two most useful locations are:
+- `hooks.json`
+- inline `[hooks]` tables inside `config.toml`
+
+In practice, the four most useful locations are:
 
 - `~/.codex/hooks.json`
+- `~/.codex/config.toml`
 - `<repo>/.codex/hooks.json`
+- `<repo>/.codex/config.toml`
 
-If more than one `hooks.json` file exists, Codex loads all matching hooks.
-Higher-precedence config layers don’t replace lower-precedence hooks.
+If more than one hook source exists, Codex loads all matching hooks.
+Higher-precedence config layers do not replace lower-precedence hooks.
+If a single layer contains both `hooks.json` and inline `[hooks]`, Codex
+merges them and warns at startup. Prefer one representation per layer.
 
 Project-local hooks load only when the project `.codex/` layer is trusted. In
 untrusted projects, Codex still loads user and system hooks from their own
@@ -133,13 +136,70 @@ Hooks are organized in three levels:
 Notes:
 
 - `timeout` is in seconds.
-- `timeoutSec` is also accepted as an alias.
 - If `timeout` is omitted, Codex uses `600` seconds.
 - `statusMessage` is optional.
 - Commands run with the session `cwd` as their working directory.
 - For repo-local hooks, prefer resolving from the git root instead of using a
   relative path such as `.codex/hooks/...`. Codex may be started from a
   subdirectory, and a git-root-based path keeps the hook location stable.
+
+Equivalent inline TOML in `config.toml`:
+
+```
+[features]
+codex_hooks = true
+
+[[hooks.PreToolUse]]
+matcher = "^Bash$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_policy.py"'
+timeout = 30
+statusMessage = "Checking Bash command"
+
+[[hooks.PostToolUse]]
+matcher = "^Bash$"
+
+[[hooks.PostToolUse.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/post_tool_use_review.py"'
+timeout = 30
+statusMessage = "Reviewing Bash output"
+```
+
+## Managed hooks from `requirements.toml`
+
+Enterprise-managed requirements can also define hooks inline under `[hooks]`.
+This is useful when admins want to enforce the hook configuration while
+delivering the actual scripts through MDM or another device-management system.
+
+```
+[features]
+codex_hooks = true
+
+[hooks]
+managed_dir = "/enterprise/hooks"
+windows_managed_dir = 'C:\enterprise\hooks'
+
+[[hooks.PreToolUse]]
+matcher = "^Bash$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = "python3 /enterprise/hooks/pre_tool_use_policy.py"
+timeout = 30
+statusMessage = "Checking managed Bash command"
+```
+
+Notes for managed hooks:
+
+- `managed_dir` is used on macOS and Linux.
+- `windows_managed_dir` is used on Windows.
+- Codex does not distribute the scripts in `managed_dir`; your enterprise
+  tooling must install and update them separately.
+- Managed hook commands should use absolute script paths under the configured
+  managed directory.
 
 ## Matcher patterns
 
@@ -151,21 +211,23 @@ Only some current Codex events honor `matcher`:
 
 | Event | What `matcher` filters | Notes |
 | --- | --- | --- |
-| `PermissionRequest` | tool name | Current Codex runtime only emits `Bash`. |
-| `PostToolUse` | tool name | Current Codex runtime only emits `Bash`. |
-| `PreToolUse` | tool name | Current Codex runtime only emits `Bash`. |
-| `SessionStart` | start source | Current runtime values are `startup` and `resume`. |
-| `UserPromptSubmit` | not supported | Any configured `matcher` is ignored for this event. |
-| `Stop` | not supported | Any configured `matcher` is ignored for this event. |
+| `PermissionRequest` | tool name | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
+| `PostToolUse` | tool name | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
+| `PreToolUse` | tool name | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
+| `SessionStart` | start source | Current runtime values are `startup`, `resume`, and `clear` |
+| `UserPromptSubmit` | not supported | Any configured `matcher` is ignored for this event |
+| `Stop` | not supported | Any configured `matcher` is ignored for this event |
+
+\*For `apply_patch`, matchers can also use `Edit` or `Write`.
 
 Examples:
 
 - `Bash`
-- `startup|resume`
+- `^apply_patch$`
 - `Edit|Write`
-
-That last example is still a valid regex, but current Codex `PreToolUse` and
-`PostToolUse` events only emit `Bash`, so it won’t match anything today.
+- `mcp__filesystem__read_file`
+- `mcp__filesystem__.*`
+- `startup|resume|clear`
 
 ## Common input fields
 
@@ -244,28 +306,28 @@ That `additionalContext` text is added as extra developer context.
 
 ### PreToolUse
 
-Work in progress
-
-Currently `PreToolUse` only supports Bash tool interception. The model can
-still work around this by writing its own script to disk and then running that
-script with Bash, so treat this as a useful guardrail rather than a complete
-enforcement boundary
+`PreToolUse` can intercept Bash, file edits performed through `apply_patch`,
+and MCP tool calls. It is still a guardrail rather than a complete enforcement
+boundary because Codex can often perform equivalent work through another
+supported tool path.
 
 This doesn’t intercept all shell calls yet, only the simple ones. The newer
 `unified_exec` mechanism allows richer streaming stdin/stdout handling of
-shell, but interception is incomplete. Similarly, this doesn’t intercept MCP,
-Write, WebSearch, or other non-shell tool calls.
+shell, but interception is incomplete. Similarly, this doesn’t intercept
+`WebSearch` or other non-shell, non-MCP tool calls.
 
-`matcher` is applied to `tool_name`, which currently always equals `Bash`.
+`matcher` is applied to `tool_name` and matcher aliases. For file edits through
+`apply_patch`, matchers can use `apply_patch`, `Edit`, or `Write`; hook input
+still reports `tool_name: "apply_patch"`.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
 | Field | Type | Meaning |
 | --- | --- | --- |
 | `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
-| `tool_name` | `string` | Currently always `Bash` |
+| `tool_name` | `string` | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read` |
 | `tool_use_id` | `string` | Tool-call id for this invocation |
-| `tool_input.command` | `string` | Shell command Codex is about to run |
+| `tool_input` | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
 
 Plain text on `stdout` is ignored.
 
@@ -299,22 +361,22 @@ You can also use exit code `2` and write the blocking reason to `stderr`.
 
 ### PermissionRequest
 
-Work in progress
-
 `PermissionRequest` runs when Codex is about to ask for approval, such as a
 shell escalation or managed-network approval. It can allow the request, deny
 the request, or decline to decide and let the normal approval prompt continue.
 It doesn’t run for commands that don’t need approval.
 
-`matcher` is applied to `tool_name`, which currently always equals `Bash`.
+`matcher` is applied to `tool_name` and matcher aliases. Current canonical
+values include `Bash`, `apply_patch`, and MCP tool names such as
+`mcp__server__tool`; `apply_patch` also matches `Edit` and `Write`.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
 | Field | Type | Meaning |
 | --- | --- | --- |
 | `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
-| `tool_name` | `string` | Currently always `Bash` |
-| `tool_input.command` | `string` | Shell command associated with the approval request |
+| `tool_name` | `string` | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read` |
+| `tool_input` | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
 | `tool_input.description` | `string | null` | Human-readable approval reason, when Codex has one |
 
 Plain text on `stdout` is ignored.
@@ -356,29 +418,29 @@ closed today.
 
 ### PostToolUse
 
-Work in progress
-
-Currently `PostToolUse` only supports Bash tool results. It’s not limited to
-commands that exit successfully: non-interactive `exec_command` calls can still
-trigger `PostToolUse` when Codex emits a Bash post-tool payload. It can’t undo
-side effects from the command that already ran.
+`PostToolUse` runs after supported tools produce output, including Bash,
+`apply_patch`, and MCP tool calls. For Bash, it also runs after commands that
+exit with a non-zero status. It can’t undo side effects from the tool that
+already ran.
 
 This doesn’t intercept all shell calls yet, only the simple ones. The newer
 `unified_exec` mechanism allows richer streaming stdin/stdout handling of
-shell, but interception is incomplete. Similarly, this doesn’t intercept MCP,
-Write, WebSearch, or other non-shell tool calls.
+shell, but interception is incomplete. Similarly, this doesn’t intercept
+`WebSearch` or other non-shell, non-MCP tool calls.
 
-`matcher` is applied to `tool_name`, which currently always equals `Bash`.
+`matcher` is applied to `tool_name` and matcher aliases. For file edits through
+`apply_patch`, matchers can use `apply_patch`, `Edit`, or `Write`; hook input
+still reports `tool_name: "apply_patch"`.
 
 Fields in addition to [Common input fields](#common-input-fields):
 
 | Field | Type | Meaning |
 | --- | --- | --- |
 | `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
-| `tool_name` | `string` | Currently always `Bash` |
+| `tool_name` | `string` | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read` |
 | `tool_use_id` | `string` | Tool-call id for this invocation |
-| `tool_input.command` | `string` | Shell command Codex just ran |
-| `tool_response` | `JSON value` | Bash tool output payload. Today this is usually a JSON string |
+| `tool_input` | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
+| `tool_response` | `JSON value` | Tool-specific output. For MCP tools, this is the MCP call result. |
 
 Plain text on `stdout` is ignored.
 

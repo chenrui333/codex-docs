@@ -147,22 +147,22 @@
       "source_url": "https://developers.openai.com/codex/concepts/subagents"
     },
     "developers.openai.com/codex/config-advanced/index.md": {
-      "sha256": "2f3924f13cc1665158df4dfdd806e01aaf75735bbea9e209187569fa01d6ea5a",
+      "sha256": "6c86b46ab91f1e7ebaf3f8c2666cd3dcf360ce06c75cb4fe8478dd454f0addf3",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-advanced"
     },
     "developers.openai.com/codex/config-basic/index.md": {
-      "sha256": "aa1f1c0c5712b207e4511a68240515e167bf5d9116df0c345559e004bbcffc13",
+      "sha256": "e04467b410cb06f9ef541990ab99850b334000cc70f2dc74466460e558e4afb8",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-basic"
     },
     "developers.openai.com/codex/config-reference/index.md": {
-      "sha256": "27f401b512e76a085eea2116a2e21747887925dd77e2294b37f30974c7c48908",
+      "sha256": "1cd4217ca11b678380acbfbb1d60805e410395f35d1264471706fb3eed48a03c",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
     "developers.openai.com/codex/config-sample/index.md": {
-      "sha256": "fb23755089433b8b38b008d0e4f459549999b0842580f0138176023986ae1aac",
+      "sha256": "bbee215caf81213846a1e52bce85053f547c68640b9cd04707757a77e5ad4275",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-sample"
     },
@@ -172,7 +172,7 @@
       "source_url": "https://developers.openai.com/codex/custom-prompts"
     },
     "developers.openai.com/codex/enterprise/admin-setup/index.md": {
-      "sha256": "43068706dc6480c59637e64c6406afc0f57661a20e4650a842829590b65b7e63",
+      "sha256": "0ff9064bb75f06c62d089a426ef67eaf3a754be0d91b35dd0c65647898c9a283",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/admin-setup"
     },
@@ -182,7 +182,7 @@
       "source_url": "https://developers.openai.com/codex/enterprise/governance"
     },
     "developers.openai.com/codex/enterprise/managed-configuration/index.md": {
-      "sha256": "f0b9e3ee3faac85e4131ae7db147d838f17e3956fb858739b21003142bdb04d1",
+      "sha256": "116cff02a0cae690923326d018db093ede10288d00665fe54ee54bb9720755f5",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
@@ -212,7 +212,7 @@
       "source_url": "https://developers.openai.com/codex/guides/build-ai-native-engineering-team"
     },
     "developers.openai.com/codex/hooks/index.md": {
-      "sha256": "6e44c92a3f4a35cefba320f6f692ef95fda26a56b7dc9ae9a3a8e19767b9d9dc",
+      "sha256": "176e363883d1d8fb96fcca6a826a9939c4804baa361ec5518832ad027798da70",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/hooks"
     },
@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "09ebd9a81cedde2613c89f4d72c03a70ea4d96b3f788dbadaa38d5f888619bfa",
+      "sha256": "b5703d68ec75445802fe3225702e67d2990c86ee10e45cb57bb43047a7ead133",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },

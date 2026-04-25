@@ -410,6 +410,20 @@ enabled = true
 # disable_on_external_context = false # legacy alias: no_memories_if_mcp_or_web_search
 
 ################################################################################
+# Lifecycle hooks can be configured here inline or in a sibling hooks.json.
+################################################################################
+
+# [hooks]
+# [[hooks.PreToolUse]]
+# matcher = "^Bash$"
+#
+# [[hooks.PreToolUse.hooks]]
+# type = "command"
+# command = 'python3 "/absolute/path/to/pre_tool_use_policy.py"'
+# timeout = 30
+# statusMessage = "Checking Bash command"
+
+################################################################################
 # Define MCP servers under this table. Leave empty to disable.
 ################################################################################
 

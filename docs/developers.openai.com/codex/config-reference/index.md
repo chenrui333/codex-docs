@@ -50,7 +50,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
 | `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
-| `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` (under development; off by default). |
+| `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
 | `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
@@ -72,6 +72,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `hide_agent_reasoning` | `boolean` | Suppress reasoning events in both the TUI and `codex exec` output. |
 | `history.max_bytes` | `number` | If set, caps the history file size in bytes by dropping oldest entries. |
 | `history.persistence` | `save-all | none` | Control whether Codex saves session transcripts to history.jsonl. |
+| `hooks` | `table` | Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events. |
 | `instructions` | `string` | Reserved for future use; prefer `model_instructions_file` or `AGENTS.md`. |
 | `log_dir` | `string (path)` | Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX_HOME/log`. |
 | `mcp_oauth_callback_port` | `integer` | Optional fixed port for the local HTTP callback server used during MCP OAuth login. When unset, Codex binds to an ephemeral port chosen by the OS. |
@@ -703,7 +704,7 @@ Type / Values
 
 Details
 
-Enable lifecycle hooks loaded from `hooks.json` (under development; off by default).
+Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config.
 
 Key
 
@@ -956,6 +957,18 @@ Type / Values
 Details
 
 Control whether Codex saves session transcripts to history.jsonl.
+
+Key
+
+`hooks`
+
+Type / Values
+
+`table`
+
+Details
+
+Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events.
 
 Key
 
@@ -2953,14 +2966,26 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `feature_requirements` | `table` | Alias for `features` in `requirements.toml`. Use it to pin feature values by canonical feature key. |
+| `feature_requirements.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. You can also set `features.browser_use`. |
+| `feature_requirements.computer_use` | `boolean` | Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. You can also set `features.computer_use`. |
+| `feature_requirements.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. You can also set `features.in_app_browser`. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
 | `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
 | `guardian_policy_config` | `string` | Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored. |
+| `hooks` | `table` | Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`. |
+| `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`. |
+| `hooks.<Event>[].hooks` | `array<table>` | Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped. |
+| `hooks.managed_dir` | `string (absolute path)` | Directory containing managed hook scripts on macOS and Linux. Codex validates that it is absolute and exists before loading managed hooks. |
+| `hooks.windows_managed_dir` | `string (absolute path)` | Directory containing managed hook scripts on Windows. Codex validates that it is absolute and exists before loading managed hooks. |
 | `mcp_servers` | `table` | Allowlist of MCP servers that may be enabled. Both the server name (`<id>`) and its identity must match for the MCP server to be enabled. Any configured MCP server not in the allowlist (or with a mismatched identity) is disabled. |
 | `mcp_servers.<id>.identity` | `table` | Identity rule for a single MCP server. Set either `command` (stdio) or `url` (streamable HTTP). |
 | `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command. |
 | `mcp_servers.<id>.identity.url` | `string` | Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL. |
 | `permissions.filesystem.deny_read` | `array<string>` | Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config. |
+| `remote_sandbox_config` | `array<table>` | Host-specific sandbox requirements. The first entry whose `hostname_patterns` match the resolved host name overrides top-level `allowed_sandbox_modes` for that requirements source. Host-specific entries currently override sandbox modes only. |
+| `remote_sandbox_config[].allowed_sandbox_modes` | `array<string>` | Allowed sandbox modes to apply when this host-specific entry matches. |
+| `remote_sandbox_config[].hostname_patterns` | `array<string>` | Case-insensitive host name patterns. Supports `*` for any sequence of characters and `?` for one character. |
 | `rules` | `table` | Admin-enforced command rules merged with `.rules` files. Requirements rules must be restrictive. |
 | `rules.prefix_rules` | `array<table>` | List of enforced prefix rules. Each rule must include `pattern` and `decision`. |
 | `rules.prefix_rules[].decision` | `prompt | forbidden` | Required. Requirements rules can only prompt or forbid (not allow). |
@@ -3019,6 +3044,54 @@ Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is al
 
 Key
 
+`feature_requirements`
+
+Type / Values
+
+`table`
+
+Details
+
+Alias for `features` in `requirements.toml`. Use it to pin feature values by canonical feature key.
+
+Key
+
+`feature_requirements.browser_use`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. You can also set `features.browser_use`.
+
+Key
+
+`feature_requirements.computer_use`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. You can also set `features.computer_use`.
+
+Key
+
+`feature_requirements.in_app_browser`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable the in-app browser pane. You can also set `features.in_app_browser`.
+
+Key
+
 `features`
 
 Type / Values
@@ -3052,6 +3125,66 @@ Type / Values
 Details
 
 Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored.
+
+Key
+
+`hooks`
+
+Type / Values
+
+`table`
+
+Details
+
+Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`.
+
+Key
+
+`hooks.<Event>`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`.
+
+Key
+
+`hooks.<Event>[].hooks`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.
+
+Key
+
+`hooks.managed_dir`
+
+Type / Values
+
+`string (absolute path)`
+
+Details
+
+Directory containing managed hook scripts on macOS and Linux. Codex validates that it is absolute and exists before loading managed hooks.
+
+Key
+
+`hooks.windows_managed_dir`
+
+Type / Values
+
+`string (absolute path)`
+
+Details
+
+Directory containing managed hook scripts on Windows. Codex validates that it is absolute and exists before loading managed hooks.
 
 Key
 
@@ -3112,6 +3245,42 @@ Type / Values
 Details
 
 Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config.
+
+Key
+
+`remote_sandbox_config`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Host-specific sandbox requirements. The first entry whose `hostname_patterns` match the resolved host name overrides top-level `allowed_sandbox_modes` for that requirements source. Host-specific entries currently override sandbox modes only.
+
+Key
+
+`remote_sandbox_config[].allowed_sandbox_modes`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Allowed sandbox modes to apply when this host-specific entry matches.
+
+Key
+
+`remote_sandbox_config[].hostname_patterns`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Case-insensitive host name patterns. Supports `*` for any sequence of characters and `?` for one character.
 
 Key
 
