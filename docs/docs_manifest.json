@@ -1822,6 +1822,20 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/workflows"
     },
+    "developers.openai.com/cookbook/articles/codex_exec_plans/index.md": {
+      "codex_cli_versions": [
+        "0.125.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.125.0"
+      ],
+      "sha256": "ed7bc7a76eb81d2723c0f1c6b11090faf98873eb2bd41464401800c4829a9465",
+      "source_area": "cookbook",
+      "source_etag": "W/\"d60804650c2f49d95afd697bbc4c1f4c\"",
+      "source_last_modified": "2026-04-25T06:41:02Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/articles/codex_exec_plans"
+    },
     "developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb/index.md": {
       "codex_cli_versions": [
         "0.125.0"
