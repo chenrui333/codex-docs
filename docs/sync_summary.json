@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "platform.openai.com/docs/guides/tools-web-search/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-25T15:07:18+00:00",
+  "generated_at": "2026-04-25T15:47:05+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,8 +13,6 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 217,
-  "updated": [
-    "system_prompts/codex-cli/prompt-input.json"
-  ]
+  "total_files": 218,
+  "updated": []
 }
