@@ -1,6 +1,31 @@
 {
   "schema_version": 1,
   "sources": {
+    "codex_capabilities.json": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "daeac61efebdbdf9cf7293bb06fa6abd5d6c7f5d724d6aa0a7f10578776496a3",
+      "source_kind": "generated_capability_inventory",
+      "source_type": "capability_inventory",
+      "source_url": "generated://capability-inventory"
+    },
+    "developers.openai.com/api/docs/guides/tools-apply-patch/index.md": {
+      "sha256": "bc51293e5f4e802b78d2bb1314aab827dda1156353aaee3c74feb25d0c5f5ce8",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-apply-patch"
+    },
+    "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+      "sha256": "0cecbb8a2b4429d0b7457ffd28e1497bd067dabc3b8cceceb353f1dedf1d37e8",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use"
+    },
+    "developers.openai.com/api/docs/guides/tools-shell/index.md": {
+      "sha256": "d9a44513a20fa0f36c09dcb6b72fb8e001bb8f0d344d29f0355b8e7e828e6bc9",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-shell"
+    },
     "developers.openai.com/codex/agent-approvals-security/index.md": {
       "sha256": "ba2c4f8145d63d6b8fcc55931ff6a9b9fb85d541ba73c20c92e349863ea4e81d",
       "source_type": "developers",

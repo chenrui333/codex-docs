@@ -1,10 +1,13 @@
 {
   "added": [
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "codex_capabilities.json",
+    "developers.openai.com/api/docs/guides/tools-apply-patch/index.md",
+    "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+    "developers.openai.com/api/docs/guides/tools-shell/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-25T15:47:05+00:00",
+  "generated_at": "2026-04-25T16:10:58+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,6 +16,6 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 218,
+  "total_files": 222,
   "updated": []
 }
