@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Sequence
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,6 +29,18 @@ OSS_FEATURES_RS_URL = (
 )
 OSS_CLIENT_RS_URL = "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs"
 HTTP_USER_AGENT = "codex-docs-feature-lifecycle/0.1 (+https://github.com/chenrui333/codex-docs)"
+FEATURE_LIFECYCLE_SOURCE_TYPE = "feature_flag_snapshot"
+FEATURE_LIFECYCLE_SOURCE_AREA = "feature_flags"
+FEATURE_LIFECYCLE_SOURCE_URL = "generated://feature-flags/lifecycle"
+FEATURE_LIFECYCLE_SOURCE_KIND = "generated_feature_flag_lifecycle"
+FRONTMATTER_METADATA_ORDER = (
+    "source_type",
+    "source_area",
+    "source_url",
+    "source_kind",
+    "codex_cli_versions",
+    "codex_cli_versions_raw",
+)
 
 
 class SnapshotError(RuntimeError):
@@ -53,6 +65,106 @@ def fetch_text(url: str) -> str:
 
 def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def parse_codex_cli_version(version_raw: str) -> str:
+    match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", version_raw)
+    return match.group(1) if match else version_raw.strip()
+
+
+def strip_quotes(value: str) -> str:
+    value = value.strip()
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        if value[0] == '"':
+            try:
+                return str(json.loads(value))
+            except json.JSONDecodeError:
+                pass
+        return value[1:-1]
+    return value
+
+
+def parse_frontmatter_block(block: str) -> Dict[str, object]:
+    parsed: Dict[str, object] = {}
+    for line in block.splitlines():
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip()
+        if not key:
+            continue
+        stripped = value.strip()
+        if stripped.startswith("[") and stripped.endswith("]"):
+            try:
+                parsed[key] = [str(item) for item in json.loads(stripped)]
+                continue
+            except json.JSONDecodeError:
+                pass
+        parsed[key] = strip_quotes(value)
+    return parsed
+
+
+def split_markdown_frontmatter(text: str) -> tuple[Dict[str, object], str]:
+    if not text.startswith("---\n"):
+        return {}, text
+    end = text.find("\n---\n", 4)
+    if end == -1:
+        return {}, text
+    metadata = parse_frontmatter_block(text[4:end])
+    body = text[end + len("\n---\n") :]
+    return metadata, body.lstrip("\n")
+
+
+def yaml_scalar(value: object) -> str:
+    if isinstance(value, list):
+        return json.dumps([str(item) for item in value], ensure_ascii=False)
+    return "'" + str(value).replace("'", "''") + "'"
+
+
+def format_frontmatter(metadata: Dict[str, object], body: str) -> str:
+    ordered_keys = [key for key in FRONTMATTER_METADATA_ORDER if metadata.get(key)]
+    ordered_keys.extend(key for key in sorted(metadata) if key not in ordered_keys and metadata.get(key))
+    lines = ["---"]
+    lines.extend(f"{key}: {yaml_scalar(metadata[key])}" for key in ordered_keys)
+    lines.append("---")
+    return "\n".join(lines) + "\n\n" + body.lstrip("\n")
+
+
+def metadata_values(value: object) -> List[str]:
+    if isinstance(value, list):
+        return [str(item) for item in value if str(item)]
+    if isinstance(value, str) and value:
+        return [value]
+    return []
+
+
+def append_unique(values: Sequence[str], value: str) -> List[str]:
+    result: List[str] = []
+    for item in values:
+        if item and item not in result:
+            result.append(item)
+    if value and value not in result:
+        result.append(value)
+    return result
+
+
+def codex_version_history_metadata(
+    existing_metadata: Dict[str, object],
+    codex_version_raw: str,
+) -> Dict[str, List[str]]:
+    version = parse_codex_cli_version(codex_version_raw)
+    versions = metadata_values(existing_metadata.get("codex_cli_versions"))
+    versions = append_unique(versions, version)
+
+    raw_versions = metadata_values(existing_metadata.get("codex_cli_versions_raw"))
+    raw_versions = append_unique(raw_versions, codex_version_raw)
+
+    history: Dict[str, List[str]] = {}
+    if versions:
+        history["codex_cli_versions"] = versions
+    if raw_versions:
+        history["codex_cli_versions_raw"] = raw_versions
+    return history
 
 
 def parse_features_list(raw: str) -> List[Dict[str, object]]:
@@ -265,6 +377,40 @@ def render_markdown(
     return "\n".join(lines).rstrip() + "\n"
 
 
+def render_markdown_document(
+    codex_version: str,
+    cli_features: List[Dict[str, object]],
+    docs_keys: List[str],
+    source_defaults: Dict[str, Dict[str, str]],
+    missing_in_docs: List[str],
+    stale_in_docs: List[str],
+    ws_precedence: Dict[str, object],
+    source_hashes: Dict[str, str],
+) -> str:
+    existing_metadata: Dict[str, object] = {}
+    if OUTPUT_MD.exists():
+        existing_metadata, _ = split_markdown_frontmatter(OUTPUT_MD.read_text())
+
+    body = render_markdown(
+        codex_version=codex_version,
+        cli_features=cli_features,
+        docs_keys=docs_keys,
+        source_defaults=source_defaults,
+        missing_in_docs=missing_in_docs,
+        stale_in_docs=stale_in_docs,
+        ws_precedence=ws_precedence,
+        source_hashes=source_hashes,
+    )
+    metadata: Dict[str, object] = {
+        "source_type": FEATURE_LIFECYCLE_SOURCE_TYPE,
+        "source_area": FEATURE_LIFECYCLE_SOURCE_AREA,
+        "source_url": FEATURE_LIFECYCLE_SOURCE_URL,
+        "source_kind": FEATURE_LIFECYCLE_SOURCE_KIND,
+    }
+    metadata.update(codex_version_history_metadata(existing_metadata, codex_version))
+    return format_frontmatter(metadata, body)
+
+
 def write_json(path: Path, payload: Dict[str, object]) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
@@ -317,7 +463,7 @@ def main() -> int:
             },
         }
 
-        markdown = render_markdown(
+        markdown = render_markdown_document(
             codex_version=codex_version,
             cli_features=cli_features,
             docs_keys=docs_keys,

@@ -44,6 +44,9 @@ ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
 CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
 PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
 CAPABILITY_INVENTORY_SOURCE_TYPE = "capability_inventory"
+WEEKLY_REPORT_SOURCE_TYPE = "weekly_sync_report"
+WEEKLY_REPORT_SOURCE_AREA = "weekly"
+WEEKLY_REPORT_SOURCE_KIND = "generated_weekly_report"
 SOURCE_METADATA_KEYS = (
     "source_area",
     "source_kind",
@@ -1092,6 +1095,7 @@ FRONTMATTER_METADATA_ORDER = (
     "source_etag",
     "codex_cli_versions",
     "codex_cli_versions_raw",
+    "report_date",
     "name",
     "description",
 )
@@ -1657,7 +1661,75 @@ def write_weekly_note(
         lines.extend(f"- `{item}`" for item in removed)
         lines.append("")
 
-    weekly_path.write_text("\n".join(lines).rstrip() + "\n")
+    body = "\n".join(lines).rstrip() + "\n"
+    existing_metadata: Dict[str, object] = {}
+    if weekly_path.exists():
+        existing_metadata, _ = split_markdown_frontmatter(weekly_path.read_text())
+    metadata = weekly_report_metadata(
+        date_tag,
+        body,
+        existing_metadata=existing_metadata,
+        source_metadata=source_metadata,
+    )
+    weekly_path.write_text(format_frontmatter(metadata, body))
+
+
+def weekly_source_snapshot_metadata(body: str) -> Dict[str, str]:
+    metadata: Dict[str, str] = {}
+    for key, value in re.findall(r"^- `([^`]+)`: `([^`]+)`$", body, flags=re.MULTILINE):
+        metadata[key] = value
+    return metadata
+
+
+def weekly_report_metadata(
+    date_tag: str,
+    body: str,
+    *,
+    existing_metadata: Dict[str, object] | None = None,
+    source_metadata: Dict[str, object] | None = None,
+) -> Dict[str, object]:
+    metadata = dict(existing_metadata or {})
+    metadata.update(
+        {
+            "source_type": WEEKLY_REPORT_SOURCE_TYPE,
+            "source_area": WEEKLY_REPORT_SOURCE_AREA,
+            "source_url": f"generated://weekly/{date_tag}",
+            "source_kind": WEEKLY_REPORT_SOURCE_KIND,
+            "report_date": date_tag,
+        }
+    )
+
+    snapshot_metadata = weekly_source_snapshot_metadata(body)
+    version_source: Dict[str, str] = {}
+    for key in ("codex_cli_version", "codex_cli_version_raw"):
+        value = source_metadata.get(key) if source_metadata else None
+        if isinstance(value, str) and value:
+            version_source[key] = value
+        elif snapshot_metadata.get(key):
+            version_source[key] = snapshot_metadata[key]
+    if version_source:
+        metadata.update(codex_cli_version_history_metadata(metadata, version_source))
+
+    return metadata
+
+
+def ensure_weekly_frontmatter() -> None:
+    if not WEEKLY_DIR.exists():
+        return
+
+    for weekly_path in sorted(WEEKLY_DIR.glob("*.md")):
+        if weekly_path.name == "README.md":
+            continue
+        text = weekly_path.read_text()
+        existing_metadata, body = split_markdown_frontmatter(text)
+        metadata = weekly_report_metadata(
+            weekly_path.stem,
+            body,
+            existing_metadata=existing_metadata,
+        )
+        content = format_frontmatter(metadata, body)
+        if content != text:
+            weekly_path.write_text(content)
 
 
 def categorize_path(path: str) -> str:
@@ -1783,6 +1855,7 @@ def apply_sync(
     if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale or summary_had_failures:
         write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
     write_weekly_note(added, updated, removed, source_metadata=source_metadata)
+    ensure_weekly_frontmatter()
 
     return added, updated, removed
 
