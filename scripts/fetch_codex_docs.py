@@ -69,6 +69,13 @@ PLATFORM_TOOL_GUIDE_URLS = (
     "https://developers.openai.com/api/docs/guides/tools-shell",
     "https://platform.openai.com/docs/guides/tools-web-search",
 )
+DEVELOPERS_REDIRECT_ALIASES = {
+    "/cookbook/examples/gpt-5/codex_prompting_guide.ipynb": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
+    "/cookbook/gpt-5-1-codex-max-prompting-guide": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
+    "/cookbook/gpt-5-1-codex-max_prompting_guide": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
+    "/cookbook/gpt-5-codex-prompting-guide": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
+    "/cookbook/gpt-5-codex_prompting_guide": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
+}
 USER_AGENT = "codex-docs-sync/0.1 (+https://github.com/chenrui333/codex-docs)"
 
 LOG = logging.getLogger("fetch_codex_docs")
@@ -233,10 +240,70 @@ def keep_developers_url(url: str) -> bool:
     if any(path == prefix or path.startswith(prefix + "/") for prefix in prefixes):
         return True
 
+    if path == "/cookbook/articles/codex_exec_plans":
+        return True
+
     if path == "/cookbook/examples/gpt-5/codex_prompting_guide":
         return True
 
     return False
+
+
+def developers_skipped_url_detail(url: str) -> Dict[str, str] | None:
+    parsed = urlparse(url)
+    path = parsed.path.rstrip("/")
+    if path in DEVELOPERS_REDIRECT_ALIASES:
+        return {
+            "url": url,
+            "classification": "redirect_alias",
+            "reason": "Redirects to an already mirrored canonical cookbook guide.",
+            "canonical_url": DEVELOPERS_REDIRECT_ALIASES[path],
+        }
+
+    if path == "/blog/topic/codex":
+        return {
+            "url": url,
+            "classification": "blog_index",
+            "reason": "Blog listing pages are intentionally excluded from the docs mirror.",
+        }
+
+    if path.startswith("/blog/"):
+        return {
+            "url": url,
+            "classification": "blog_post",
+            "reason": "Blog posts are intentionally excluded from the docs mirror.",
+        }
+
+    if path.startswith("/community/"):
+        return {
+            "url": url,
+            "classification": "community_page",
+            "reason": "Community pages are intentionally excluded from the docs mirror.",
+        }
+
+    if path == "/learn/codex":
+        return {
+            "url": url,
+            "classification": "learn_index",
+            "reason": "Learning index pages are intentionally excluded from the docs mirror.",
+        }
+
+    if path.startswith("/showcase/"):
+        return {
+            "url": url,
+            "classification": "showcase_page",
+            "reason": "Showcase pages are intentionally excluded from the docs mirror.",
+        }
+
+    return None
+
+
+def count_details_by_classification(details: Sequence[Dict[str, str]]) -> Dict[str, int]:
+    counts: Dict[str, int] = {}
+    for item in details:
+        classification = item.get("classification", "unknown")
+        counts[classification] = counts.get(classification, 0) + 1
+    return {key: counts[key] for key in sorted(counts)}
 
 
 def is_codex_related_developers_url(url: str) -> bool:
@@ -513,23 +580,35 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
     mirrored_sorted = sorted(mirrored_urls)
     codex_related_sorted = sorted(codex_related_urls)
     skipped_codex_related = sorted(set(codex_related_sorted) - set(mirrored_sorted))
+    skipped_codex_related_details: List[Dict[str, str]] = []
+    unclassified_skipped_codex_related: List[str] = []
+    for skipped_url in skipped_codex_related:
+        detail = developers_skipped_url_detail(skipped_url)
+        if detail:
+            skipped_codex_related_details.append(detail)
+        else:
+            unclassified_skipped_codex_related.append(skipped_url)
 
     previous_coverage = load_existing_coverage()
     previous_developers = previous_coverage.get("developers", {})
     previous_codex_related = set()
     previous_mirrored = set()
+    previous_unclassified_skipped = set()
     if isinstance(previous_developers, dict):
         previous_codex_related = set(previous_developers.get("codex_related_urls", []))
         previous_mirrored = set(previous_developers.get("mirrored_urls", []))
+        previous_unclassified_skipped = set(previous_developers.get("unclassified_skipped_codex_related_urls", []))
 
     new_codex_related = sorted(set(codex_related_sorted) - previous_codex_related)
     new_mirrored = sorted(set(mirrored_sorted) - previous_mirrored)
+    new_unclassified_skipped = sorted(set(unclassified_skipped_codex_related) - previous_unclassified_skipped)
 
     LOG.info(
-        "Coverage watchdog: codex-related=%d mirrored=%d skipped=%d",
+        "Coverage watchdog: codex-related=%d mirrored=%d skipped=%d unclassified=%d",
         len(codex_related_sorted),
         len(mirrored_sorted),
         len(skipped_codex_related),
+        len(unclassified_skipped_codex_related),
     )
 
     if new_codex_related:
@@ -546,9 +625,9 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
         )
 
     strict_coverage = os.environ.get("CODEX_DOCS_STRICT_COVERAGE", "0") == "1"
-    if strict_coverage and new_codex_related and not new_mirrored:
+    if strict_coverage and new_unclassified_skipped and not new_mirrored:
         raise RuntimeError(
-            "Strict coverage mode failed: new codex-related URLs were discovered but none were mirrored."
+            "Strict coverage mode failed: new unclassified codex-related URLs were discovered but none were mirrored."
         )
 
     coverage = {
@@ -559,13 +638,21 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
             "codex_related_urls": codex_related_sorted,
             "mirrored_urls": mirrored_sorted,
             "skipped_codex_related_urls": skipped_codex_related,
+            "skipped_codex_related_url_details": skipped_codex_related_details,
+            "skipped_codex_related_url_counts_by_classification": count_details_by_classification(
+                skipped_codex_related_details
+            ),
+            "unclassified_skipped_codex_related_urls": unclassified_skipped_codex_related,
             "new_codex_related_urls_since_last_run": new_codex_related,
             "new_mirrored_urls_since_last_run": new_mirrored,
+            "new_unclassified_skipped_codex_related_urls_since_last_run": new_unclassified_skipped,
             "counts": {
                 "sitemap_urls": len(sitemap_urls),
                 "codex_related_urls": len(codex_related_sorted),
                 "mirrored_urls": len(mirrored_sorted),
                 "skipped_codex_related_urls": len(skipped_codex_related),
+                "classified_skipped_codex_related_urls": len(skipped_codex_related_details),
+                "unclassified_skipped_codex_related_urls": len(unclassified_skipped_codex_related),
                 "sitemap_fetch_errors": len(sitemap_fetch_errors),
             },
             "sitemap_fetch_errors": sitemap_fetch_errors,
@@ -1342,6 +1429,15 @@ def build_capability_inventory_file(
         if item.source_metadata and item.source_metadata.get("source_area"):
             entry["source_area"] = item.source_metadata["source_area"]
 
+    def preserve_source_last_modified_when_etag_matches(entry: Dict[str, object]) -> None:
+        previous_entry = previous_capabilities.get(str(entry.get("id", "")), {})
+        if not previous_entry:
+            return
+        if not entry.get("source_etag") or previous_entry.get("source_etag") != entry.get("source_etag"):
+            return
+        if previous_entry.get("source_last_modified"):
+            entry["source_last_modified"] = previous_entry["source_last_modified"]
+
     def add_version_history(entry: Dict[str, object]) -> None:
         history = codex_cli_version_history_metadata(
             previous_capabilities.get(str(entry.get("id", "")), {}),
@@ -1424,6 +1520,7 @@ def build_capability_inventory_file(
         for key in ("source_last_modified", "source_etag"):
             if item.source_metadata and item.source_metadata.get(key):
                 entry[key] = item.source_metadata[key]
+        preserve_source_last_modified_when_etag_matches(entry)
         if codex_cli_version:
             entry["codex_cli_version"] = codex_cli_version
         if codex_cli_version_raw:
