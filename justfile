@@ -13,6 +13,9 @@ sync:
 check:
     ./scripts/validate_sync.sh
 
+check-strict:
+    VALIDATE_STRICT_SYNC=1 ./scripts/validate_sync.sh
+
 feature-flags:
     python3 scripts/snapshot_feature_flags.py
 

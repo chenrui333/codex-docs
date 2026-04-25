@@ -1306,6 +1306,11 @@
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-validation.md"
     },
+    "platform.openai.com/docs/guides/tools-web-search/index.md": {
+      "sha256": "8f47ace2ac5c67ca5b4f75a813b7da5e9a26f39c2db7ecae111e6877357a83c3",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search"
+    },
     "system_prompts/codex-cli/prompt-input.json": {
       "codex_cli_command": "codex --version",
       "codex_cli_version": "0.125.0",

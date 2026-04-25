@@ -31,6 +31,7 @@ SUMMARY_PATH = DOCS_DIR / "sync_summary.json"
 COVERAGE_PATH = DOCS_DIR / "source_coverage.json"
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
 GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
+PLATFORM_ROOT = DOCS_DIR / "platform.openai.com"
 SYSTEM_SKILLS_ROOT = ROOT / "dot_codex" / "skills" / "dot_system"
 SYSTEM_PROMPTS_ROOT = ROOT / "system_prompts" / "codex-cli"
 
@@ -38,6 +39,7 @@ SYSTEM_SKILL_OUTPUT_PREFIX = "dot_codex/skills/dot_system/"
 SYSTEM_PROMPT_OUTPUT_PREFIX = "system_prompts/codex-cli/"
 ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
 CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
+PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
 SOURCE_METADATA_KEYS = (
     "source_kind",
     "codex_cli_version",
@@ -49,6 +51,7 @@ SOURCE_METADATA_KEYS = (
 SITEMAP_INDEX_URL = "https://developers.openai.com/sitemap-index.xml"
 GITHUB_TREE_URL = "https://api.github.com/repos/openai/codex/git/trees/main?recursive=1"
 GITHUB_RAW_URL_TEMPLATE = "https://raw.githubusercontent.com/openai/codex/main/{path}"
+PLATFORM_TOOL_GUIDE_URLS = ("https://platform.openai.com/docs/guides/tools-web-search",)
 USER_AGENT = "codex-docs-sync/0.1 (+https://github.com/chenrui333/codex-docs)"
 
 LOG = logging.getLogger("fetch_codex_docs")
@@ -75,6 +78,7 @@ WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
     ("Developers Codex", "developers.openai.com/codex/"),
     ("Developers Cookbook", "developers.openai.com/cookbook/"),
     ("Developers Resources", "developers.openai.com/resources/"),
+    ("Platform Tool Guides", "platform.openai.com/docs/guides/"),
     ("GitHub Core Docs", "github.openai.com/openai/codex/docs/"),
     ("GitHub Other Docs", "github.openai.com/openai/codex/"),
 )
@@ -182,11 +186,11 @@ def is_codex_related_developers_url(url: str) -> bool:
     return "codex" in path.lower()
 
 
-def fetch_text(session: requests.Session, url: str) -> str:
+def fetch_text(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> str:
     last_error: Exception | None = None
     for attempt in range(1, REQUEST_MAX_RETRIES + 1):
         try:
-            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS, headers=headers)
             response.raise_for_status()
             return response.text
         except requests.RequestException as exc:
@@ -209,11 +213,11 @@ def fetch_text(session: requests.Session, url: str) -> str:
     raise last_error
 
 
-def fetch_bytes(session: requests.Session, url: str) -> bytes:
+def fetch_bytes(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> bytes:
     last_error: Exception | None = None
     for attempt in range(1, REQUEST_MAX_RETRIES + 1):
         try:
-            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS, headers=headers)
             response.raise_for_status()
             return response.content
         except requests.RequestException as exc:
@@ -236,9 +240,28 @@ def fetch_bytes(session: requests.Session, url: str) -> bytes:
     raise last_error
 
 
-def fetch_json(session: requests.Session, url: str) -> Dict[str, object]:
-    payload = json.loads(fetch_text(session, url))
+def fetch_json(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> Dict[str, object]:
+    payload = json.loads(fetch_text(session, url, headers=headers))
     return payload if isinstance(payload, dict) else {}
+
+
+def github_api_token() -> str:
+    for name in ("GH_TOKEN", "GITHUB_TOKEN"):
+        token = os.environ.get(name, "").strip()
+        if token:
+            return token
+    return ""
+
+
+def github_api_headers() -> Dict[str, str]:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    token = github_api_token()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
 
 
 def github_raw_url(path: str) -> str:
@@ -415,6 +438,46 @@ def developers_url_to_rel_path(url: str) -> str:
     return str(path.relative_to(DOCS_DIR))
 
 
+def platform_url_to_rel_path(url: str) -> str:
+    parsed = urlparse(url)
+    segments = [segment for segment in parsed.path.split("/") if segment]
+    if not segments:
+        segments = ["root"]
+    path = PLATFORM_ROOT.joinpath(*segments, "index.md")
+    return str(path.relative_to(DOCS_DIR))
+
+
+def platform_markdown_url(url: str) -> str:
+    return f"{url.rstrip('/')}.md"
+
+
+def strip_mdx_imports(text: str) -> str:
+    output: List[str] = []
+    skipping_import = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not skipping_import and stripped.startswith("import "):
+            skipping_import = not stripped.endswith(";")
+            continue
+        if skipping_import:
+            if stripped.endswith(";"):
+                skipping_import = False
+            continue
+        output.append(line)
+    return "\n".join(output)
+
+
+def markdown_with_source(url: str, raw_markdown: str, default_title: str) -> str:
+    normalized = normalize_markdown(strip_mdx_imports(raw_markdown))
+    lines = normalized.splitlines()
+    title = default_title
+    body = normalized.strip()
+    if lines and lines[0].startswith("# "):
+        title = lines[0][2:].strip() or default_title
+        body = "\n".join(lines[1:]).strip()
+    return f"# {title}\n\nSource: {url}\n\n{body}\n"
+
+
 def html_to_markdown(url: str, html: str) -> str:
     soup = BeautifulSoup(html, "html.parser")
     title = _extract_title(soup)
@@ -466,9 +529,7 @@ def keep_github_markdown_path(path: str) -> bool:
 
 def discover_github_paths(session: requests.Session) -> List[str]:
     LOG.info("Discovering markdown files from openai/codex GitHub tree")
-    response = session.get(GITHUB_TREE_URL, timeout=REQUEST_TIMEOUT_SECONDS)
-    response.raise_for_status()
-    payload = response.json()
+    payload = fetch_json(session, GITHUB_TREE_URL, headers=github_api_headers())
     tree = payload.get("tree", [])
 
     paths = [
@@ -482,6 +543,38 @@ def discover_github_paths(session: requests.Session) -> List[str]:
 def github_path_to_rel_path(path: str) -> str:
     output_path = GITHUB_ROOT / path
     return str(output_path.relative_to(DOCS_DIR))
+
+
+def manifest_paths_for_source_type(source_type: str) -> List[str]:
+    if not MANIFEST_PATH.exists():
+        return []
+
+    try:
+        payload = json.loads(MANIFEST_PATH.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        LOG.warning("Could not read existing manifest for preserved %s coverage: %s", source_type, exc)
+        return []
+
+    sources = payload.get("sources", {})
+    if not isinstance(sources, dict):
+        return []
+
+    paths: List[str] = []
+    for rel_path, entry in sources.items():
+        if isinstance(rel_path, str) and isinstance(entry, dict) and entry.get("source_type") == source_type:
+            paths.append(rel_path)
+    return sorted(paths)
+
+
+def coverage_paths_for_source(
+    current_files: Sequence[ManagedFile],
+    source_type: str,
+    preserve_missing_sources: set[str],
+) -> List[str]:
+    paths = {item.rel_path for item in current_files}
+    if source_type in preserve_missing_sources:
+        paths.update(manifest_paths_for_source_type(source_type))
+    return sorted(paths)
 
 
 def system_skill_path_to_rel_path(path: Path) -> str:
@@ -721,6 +814,58 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
         )
 
     return managed, fetch_errors
+
+
+def referenced_platform_tool_guide_urls(source_files: Sequence[ManagedFile]) -> List[str]:
+    referenced: set[str] = set()
+    for item in source_files:
+        if isinstance(item.content, bytes):
+            text = item.content.decode("utf-8", errors="ignore")
+        else:
+            text = item.content
+        for url in PLATFORM_TOOL_GUIDE_URLS:
+            if url in text or platform_markdown_url(url) in text:
+                referenced.add(url)
+    return sorted(referenced)
+
+
+def build_platform_tool_guide_files(
+    session: requests.Session,
+    source_files: Sequence[ManagedFile],
+) -> Tuple[List[ManagedFile], List[Dict[str, str]], List[str]]:
+    managed: List[ManagedFile] = []
+    fetch_errors: List[Dict[str, str]] = []
+    referenced_urls = referenced_platform_tool_guide_urls(source_files)
+    if not referenced_urls:
+        return managed, fetch_errors, referenced_urls
+
+    LOG.info("Mirroring %d linked platform tool guide(s)", len(referenced_urls))
+    for url in referenced_urls:
+        fetch_url = platform_markdown_url(url)
+        try:
+            raw_markdown = fetch_text(session, fetch_url)
+        except requests.RequestException as exc:
+            LOG.warning("Skipping platform tool guide %s due to error: %s", url, exc)
+            fetch_errors.append(
+                {
+                    "source": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
+                    "stage": "page_fetch",
+                    "url": fetch_url,
+                    "error": str(exc),
+                }
+            )
+            continue
+
+        managed.append(
+            ManagedFile(
+                rel_path=platform_url_to_rel_path(url),
+                source_type=PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
+                source_url=url,
+                content=markdown_with_source(url, raw_markdown, default_title="Platform Tool Guide"),
+            )
+        )
+
+    return managed, fetch_errors, referenced_urls
 
 
 def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Dict[str, str]]:
@@ -1002,12 +1147,14 @@ def apply_sync(
 
     remove_empty_directories(DEVELOPERS_ROOT)
     remove_empty_directories(GITHUB_ROOT)
+    remove_empty_directories(PLATFORM_ROOT)
     remove_empty_directories(ROOT / "dot_codex")
     remove_empty_directories(ROOT / "system_prompts")
 
     write_manifest(next_entries)
     has_changes = bool(added or updated or removed)
     summary_schema_stale = False
+    summary_had_failures = False
     if SUMMARY_PATH.exists():
         try:
             summary_payload = json.loads(SUMMARY_PATH.read_text())
@@ -1016,9 +1163,15 @@ def apply_sync(
                 and "failure_count" in summary_payload
                 and "failures" in summary_payload
             )
+            if isinstance(summary_payload, dict):
+                try:
+                    summary_had_failures = int(summary_payload.get("failure_count", 0)) > 0
+                except (TypeError, ValueError):
+                    summary_had_failures = bool(summary_payload.get("failure_count"))
+                summary_had_failures = summary_had_failures or bool(summary_payload.get("failures"))
         except json.JSONDecodeError:
             summary_schema_stale = True
-    if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale:
+    if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale or summary_had_failures:
         write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
     write_weekly_note(added, updated, removed, source_metadata=source_metadata)
 
@@ -1041,9 +1194,12 @@ def main() -> int:
     preserve_missing_sources: set[str] = set()
     developers_files: List[ManagedFile] = []
     github_files: List[ManagedFile] = []
+    platform_tool_guide_files: List[ManagedFile] = []
     codex_cli_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
+    platform_tool_guide_fetch_errors: List[Dict[str, str]] = []
+    platform_tool_guide_referenced_urls: List[str] = []
     codex_cli_fetch_errors: List[Dict[str, str]] = []
     codex_cli_metadata: Dict[str, str] = {}
     coverage: Dict[str, object] = {"generated_at": now_utc_iso()}
@@ -1092,6 +1248,26 @@ def main() -> int:
         preserve_missing_sources.add("github")
 
     try:
+        platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_referenced_urls = (
+            build_platform_tool_guide_files(session, developers_files + github_files)
+        )
+        failures.extend(platform_tool_guide_fetch_errors)
+        if platform_tool_guide_fetch_errors:
+            preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
+        if {"developers", "github"} & preserve_missing_sources and not platform_tool_guide_files:
+            preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
+    except Exception as exc:
+        LOG.warning("Platform tool guide source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
+            "stage": "source_build",
+            "url": "https://platform.openai.com/docs/guides",
+            "error": str(exc),
+        }
+        failures.append(failure)
+        preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
+
+    try:
         codex_cli_files, codex_cli_fetch_errors, codex_cli_metadata = build_codex_cli_files()
         failures.extend(codex_cli_fetch_errors)
         if codex_cli_fetch_errors:
@@ -1110,16 +1286,43 @@ def main() -> int:
         preserve_missing_sources.update(CODEX_CLI_SOURCE_TYPES)
 
     github_source_errors = [item for item in failures if item["source"] == "github" and item["stage"] == "source_build"]
+    github_mirrored_paths = coverage_paths_for_source(github_files, "github", preserve_missing_sources)
     coverage["github"] = {
         "repo": "openai/codex",
-        "mirrored_paths_count": len(github_files),
-        "mirrored_paths": sorted(item.rel_path for item in github_files),
+        "mirrored_paths_count": len(github_mirrored_paths),
+        "mirrored_paths": github_mirrored_paths,
         "page_fetch_errors": github_fetch_errors,
         "source_errors": github_source_errors,
         "counts": {
-            "mirrored_paths_count": len(github_files),
+            "mirrored_paths_count": len(github_mirrored_paths),
             "page_fetch_errors": len(github_fetch_errors),
             "source_errors": len(github_source_errors),
+        },
+    }
+    platform_tool_guide_source_errors = [
+        item
+        for item in failures
+        if item["source"] == PLATFORM_TOOL_GUIDE_SOURCE_TYPE and item["stage"] == "source_build"
+    ]
+    platform_tool_guide_mirrored_paths = coverage_paths_for_source(
+        platform_tool_guide_files,
+        PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
+        preserve_missing_sources,
+    )
+    coverage["platform_tool_guides"] = {
+        "source_type": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
+        "candidate_urls": list(PLATFORM_TOOL_GUIDE_URLS),
+        "referenced_urls": platform_tool_guide_referenced_urls,
+        "mirrored_paths_count": len(platform_tool_guide_mirrored_paths),
+        "mirrored_paths": platform_tool_guide_mirrored_paths,
+        "page_fetch_errors": platform_tool_guide_fetch_errors,
+        "source_errors": platform_tool_guide_source_errors,
+        "counts": {
+            "candidate_urls": len(PLATFORM_TOOL_GUIDE_URLS),
+            "referenced_urls": len(platform_tool_guide_referenced_urls),
+            "mirrored_paths_count": len(platform_tool_guide_mirrored_paths),
+            "page_fetch_errors": len(platform_tool_guide_fetch_errors),
+            "source_errors": len(platform_tool_guide_source_errors),
         },
     }
     system_skill_files = [item for item in codex_cli_files if item.source_type == "codex_cli_system_skill"]
@@ -1164,13 +1367,12 @@ def main() -> int:
         },
     }
     coverage["sync"] = {
-        "strict_sync_mode": STRICT_SYNC_MODE,
         "preserve_missing_sources": sorted(preserve_missing_sources),
         "failure_count": len(failures),
     }
     write_coverage(coverage)
 
-    managed_files = developers_files + github_files + codex_cli_files
+    managed_files = developers_files + github_files + platform_tool_guide_files + codex_cli_files
     if not managed_files:
         LOG.error("No source files were fetched successfully.")
         write_summary([], [], [], 0, failures=failures)

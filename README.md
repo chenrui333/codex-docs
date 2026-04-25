@@ -9,6 +9,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `developers.openai.com` Codex pages (`/codex/...`)
 - Codex-related cookbook/resources pages (`/cookbook/...codex...`, `/resources/codex`)
 - Markdown docs from `openai/codex` (README, CHANGELOG, `docs/*.md`, selected CLI/Rust docs)
+- Linked platform tool guides referenced by mirrored Codex docs
 - System skills materialized by the installed Codex CLI
 - A sanitized `codex debug prompt-input` snapshot from the installed Codex CLI
 
@@ -16,6 +17,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 
 - `docs/developers.openai.com/...` mirrored pages from the OpenAI Developers site
 - `docs/github.openai.com/openai/codex/...` mirrored markdown from `openai/codex`
+- `docs/platform.openai.com/...` mirrored linked platform tool guides
 - `dot_codex/skills/dot_system/...` mirrored Codex CLI system skills in installed-path shape
 - `system_prompts/codex-cli/prompt-input.json` sanitized prompt input snapshot from `codex debug prompt-input`
 - `docs/docs_manifest.json` hash manifest for change tracking, including last-changed Codex CLI version metadata for CLI-backed files
@@ -45,6 +47,7 @@ Resiliency controls:
 - `CODEX_DOCS_MAX_RETRIES` max request attempts (default `3`)
 - `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
 - `CODEX_DOCS_STRICT_SYNC=1` fail the run if any source segment fails (otherwise partial-source runs are allowed and failures are recorded)
+- `just check-strict` runs the idempotence check with strict sync failure enforcement
 
 Release workflow: `.github/workflows/release.yml`
 
@@ -70,6 +73,7 @@ Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
 just setup
 just sync
 just check
+just check-strict
 just feature-flags
 just check-feature-flags
 ```

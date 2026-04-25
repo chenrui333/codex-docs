@@ -14,6 +14,11 @@ fi
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
 
+strict_sync="${VALIDATE_STRICT_SYNC:-0}"
+if [[ "$strict_sync" == "1" ]]; then
+  export CODEX_DOCS_STRICT_SYNC=1
+fi
+
 before="$tmpdir/status-before.bin"
 after_first="$tmpdir/status-after-first.bin"
 after_second="$tmpdir/status-after-second.bin"
@@ -36,6 +41,52 @@ if ! cmp -s "$after_first" "$after_second"; then
   echo "Current status:"
   git status --short
   exit 1
+fi
+
+if [[ "$strict_sync" == "1" ]]; then
+  python - <<'PY'
+import json
+import sys
+from pathlib import Path
+
+
+def load_json(path: Path) -> dict:
+    if not path.exists():
+        print(f"Missing required strict sync report: {path}")
+        sys.exit(1)
+    payload = json.loads(path.read_text())
+    if not isinstance(payload, dict):
+        print(f"Unexpected strict sync report shape: {path}")
+        sys.exit(1)
+    return payload
+
+
+def failure_count(value: object) -> int:
+    try:
+        return int(value or 0)
+    except (TypeError, ValueError):
+        return 1 if value else 0
+
+
+summary = load_json(Path("docs/sync_summary.json"))
+coverage = load_json(Path("docs/source_coverage.json"))
+coverage_sync = coverage.get("sync", {})
+if not isinstance(coverage_sync, dict):
+    coverage_sync = {}
+
+summary_failures = failure_count(summary.get("failure_count"))
+coverage_failures = failure_count(coverage_sync.get("failure_count"))
+
+if summary_failures or coverage_failures:
+    print(
+        "Strict sync validation failed: "
+        f"sync_summary failure_count={summary_failures}, "
+        f"source_coverage sync.failure_count={coverage_failures}."
+    )
+    sys.exit(1)
+
+print("Strict sync validation passed: no recorded source failures.")
+PY
 fi
 
 python - "$before" "$after_second" <<'PY'

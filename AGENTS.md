@@ -5,7 +5,7 @@
 - Keep changes focused on sync automation, output quality, and release hygiene.
 
 ## Generated content boundaries
-- Treat `docs/developers.openai.com/**`, `docs/github.openai.com/**`, `dot_codex/skills/dot_system/**`, and `system_prompts/codex-cli/**` as generated output.
+- Treat `docs/developers.openai.com/**`, `docs/github.openai.com/**`, `docs/platform.openai.com/**`, `dot_codex/skills/dot_system/**`, and `system_prompts/codex-cli/**` as generated output.
 - Do not hand-edit mirrored docs, skills, or prompts unless doing a temporary emergency fix.
 - If an output problem exists, fix `scripts/fetch_codex_docs.py` instead.
 
