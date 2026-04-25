@@ -85,32 +85,28 @@ jobs:
           git commit -m "chore: sync docs for cli ${cli_version} ($(date -u +'%Y-%m-%d'))"
           git push
 
-      - name: Build failure context
-        if: steps.sync.outcome == 'failure'
-        id: failure-context
-        run: |
-          {
-            echo 'sync_log_tail<<EOF'
-            tail -n 120 sync.log || true
-            echo EOF
-            echo 'sync_summary<<EOF'
-            cat docs/sync_summary.json || true
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
-
       - name: Create or update failure issue
         if: steps.sync.outcome == 'failure'
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
-        env:
-          SYNC_LOG_TAIL: ${{ steps.failure-context.outputs.sync_log_tail }}
-          SYNC_SUMMARY: ${{ steps.failure-context.outputs.sync_summary }}
         with:
           script: |
+            const { readFileSync } = require('fs');
+
+            const readText = (path) => {
+              try {
+                return readFileSync(path, 'utf8');
+              } catch {
+                return '';
+              }
+            };
+
+            const tailLines = (text, lineCount) => text.split(/\r?\n/).slice(-lineCount).join('\n');
+
             const date = new Date().toISOString().split('T')[0];
             const title = `Codex docs sync failed - ${date}`;
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const syncLogTail = (process.env.SYNC_LOG_TAIL || '').slice(-12000) || '(no log available)';
-            const syncSummary = (process.env.SYNC_SUMMARY || '').slice(-12000) || '(no sync summary available)';
+            const syncLogTail = tailLines(readText('sync.log'), 120).slice(-12000) || '(no log available)';
+            const syncSummary = readText('docs/sync_summary.json').slice(-12000) || '(no sync summary available)';
 
             const body = [
               `Automated docs sync failed on ${date}.`,
