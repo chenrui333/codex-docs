@@ -9,13 +9,17 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `developers.openai.com` Codex pages (`/codex/...`)
 - Codex-related cookbook/resources pages (`/cookbook/...codex...`, `/resources/codex`)
 - Markdown docs from `openai/codex` (README, CHANGELOG, `docs/*.md`, selected CLI/Rust docs)
+- System skills materialized by the installed Codex CLI
+- A sanitized `codex debug prompt-input` snapshot from the installed Codex CLI
 
 ## Repository layout
 
 - `docs/developers.openai.com/...` mirrored pages from the OpenAI Developers site
 - `docs/github.openai.com/openai/codex/...` mirrored markdown from `openai/codex`
-- `docs/docs_manifest.json` hash manifest for change tracking
-- `docs/sync_summary.json` latest sync summary
+- `dot_codex/skills/dot_system/...` mirrored Codex CLI system skills in installed-path shape
+- `system_prompts/codex-cli/prompt-input.json` sanitized prompt input snapshot from `codex debug prompt-input`
+- `docs/docs_manifest.json` hash manifest for change tracking, including last-changed Codex CLI version metadata for CLI-backed files
+- `docs/sync_summary.json` latest sync summary with the source snapshot for changed outputs
 - `docs/source_coverage.json` sitemap coverage watchdog output
 - `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
 

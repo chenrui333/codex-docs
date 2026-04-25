@@ -2,14 +2,17 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-25T06:37:07+00:00",
-  "removed": [
-    "github.openai.com/openai/codex/docs/js_repl.md"
-  ],
-  "total_files": 171,
+  "generated_at": "2026-04-25T15:07:18+00:00",
+  "removed": [],
+  "source_metadata": {
+    "codex_cli_command": "codex --version",
+    "codex_cli_version": "0.125.0",
+    "codex_cli_version_raw": "codex-cli 0.125.0",
+    "codex_prompt_snapshot_command": "codex debug prompt-input",
+    "source_kind": "installed_codex_cli"
+  },
+  "total_files": 217,
   "updated": [
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/skills/index.md",
-    "github.openai.com/openai/codex/codex-rs/README.md"
+    "system_prompts/codex-cli/prompt-input.json"
   ]
 }

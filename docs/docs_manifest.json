@@ -691,6 +691,456 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/resources/codex"
     },
+    "dot_codex/skills/dot_system/dot_codex-system-skills.marker": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "b368053f8337cfcf654d321631535d125e5ca8fa3e19885212e1049b357757be",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/.codex-system-skills.marker"
+    },
+    "dot_codex/skills/dot_system/imagegen/LICENSE.txt": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/LICENSE.txt"
+    },
+    "dot_codex/skills/dot_system/imagegen/SKILL.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "59981d23519222bcecf1be48bb37730bbc50539ceb0e35ad09fcef98a3df19d3",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/SKILL.md"
+    },
+    "dot_codex/skills/dot_system/imagegen/agents/openai.yaml": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "9ca574af14580dc7a2a3dc37a1796d17f93cb8850be66501f0799ef8603e9dc0",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/agents/openai.yaml"
+    },
+    "dot_codex/skills/dot_system/imagegen/assets/imagegen-small.svg": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "cff5f34f57ff60b3ee92eaedd17b15e96dd4b9e776df3e78936c9e00d42be294",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/assets/imagegen-small.svg"
+    },
+    "dot_codex/skills/dot_system/imagegen/assets/imagegen.png": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/assets/imagegen.png"
+    },
+    "dot_codex/skills/dot_system/imagegen/references/cli.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "38d92cdbec5f3430439a3868ced0a3c5694e0e84a75e46d6e7f7a00aca6e673b",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/references/cli.md"
+    },
+    "dot_codex/skills/dot_system/imagegen/references/codex-network.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "c88298ca4481f6116a16fa7987434fc977f8b311c1bbc0c3d862ffd0c5981148",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/references/codex-network.md"
+    },
+    "dot_codex/skills/dot_system/imagegen/references/image-api.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "ca5424dfcad5a4c87b4401d1cffb70bfcc18c7ca2c281d12045f822e59fa4093",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/references/image-api.md"
+    },
+    "dot_codex/skills/dot_system/imagegen/references/prompting.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "a88c459a0306051535d1b68eb899925f08a175cbbcd07d72a9d0c43f330cb81f",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/references/prompting.md"
+    },
+    "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "43307821f1db18e06be50189a078f3e1ccc3ee6b5523934614e22e64d27597ab",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/references/sample-prompts.md"
+    },
+    "dot_codex/skills/dot_system/imagegen/scripts/image_gen.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "35e8f9fa47deca111e46c63c4ac2008e09198ef664c0926a9dfdcd6745aa37ed",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/scripts/image_gen.py"
+    },
+    "dot_codex/skills/dot_system/imagegen/scripts/remove_chroma_key.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "3f7b9b14ad5c90f37618bc1c16a039a2076abca12ddc41b3ae470e2b1cad6c0e",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/imagegen/scripts/remove_chroma_key.py"
+    },
+    "dot_codex/skills/dot_system/openai-docs/LICENSE.txt": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/LICENSE.txt"
+    },
+    "dot_codex/skills/dot_system/openai-docs/SKILL.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "b93d0da4fbf0d472c9671237c452be359f675845f281aa2cac0a718264421068",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/SKILL.md"
+    },
+    "dot_codex/skills/dot_system/openai-docs/agents/openai.yaml": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "114e8c083f9273d25a18ac9338bb96a6db425fdb2b2bfa9abb49208fc29aaab9",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/agents/openai.yaml"
+    },
+    "dot_codex/skills/dot_system/openai-docs/assets/openai-small.svg": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "45be1f0757eb18889eefb1e7db79668ef46a275dc4e0e78e8df5ebd7f6cdeadc",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/assets/openai-small.svg"
+    },
+    "dot_codex/skills/dot_system/openai-docs/assets/openai.png": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/assets/openai.png"
+    },
+    "dot_codex/skills/dot_system/openai-docs/references/latest-model.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "ca7a6859b13ccb076cfb067f6c77116d6eeaf4c484b0a3d619ad3e887d2a743c",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/references/latest-model.md"
+    },
+    "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "24d893d79f7582c4b980d29e19e1566715119811ccf5f13beda0df1fe298124f",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/references/prompting-guide.md"
+    },
+    "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "a0d333202d4daf4dd29ed46f28fba2a50031d473340ed6e4d1063981f1a0fcf5",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/references/upgrade-guide.md"
+    },
+    "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.js": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "c0abb628e8592d5e3a1f31824734755a9449751fe4c2237a195d32afe510b9dd",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/openai-docs/scripts/resolve-latest-model-info.js"
+    },
+    "dot_codex/skills/dot_system/plugin-creator/SKILL.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "3b43cb214f458a1ae13e1b93a69e493241d8e12c5a474afe8ae81ae0507aa216",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/plugin-creator/SKILL.md"
+    },
+    "dot_codex/skills/dot_system/plugin-creator/agents/openai.yaml": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "9d4409fa52b1527ee4a9b69b2484499825ca6bf65ea96bb1d5c1b4d8a31e3757",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/plugin-creator/agents/openai.yaml"
+    },
+    "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator-small.svg": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/plugin-creator/assets/plugin-creator-small.svg"
+    },
+    "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator.png": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/plugin-creator/assets/plugin-creator.png"
+    },
+    "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "5d7223255decc44fcb93f3aa80bb17afc1469b2d3c339d65d9473c5c0c54fcdd",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/plugin-creator/references/plugin-json-spec.md"
+    },
+    "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "63ce72d2854c07a42382115c471cfcd42a743be3b84f398fa2d4cdb2fca13362",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/plugin-creator/scripts/create_basic_plugin.py"
+    },
+    "dot_codex/skills/dot_system/skill-creator/SKILL.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "da44c88f6b3845a8fa8c60792ec9a722110a55a9793c279757b48fefb11f819c",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/SKILL.md"
+    },
+    "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "d07d21b93fcf3d4dc8d9a3399c05fc226a49a333a96d3e1c68b451b8dd9eade6",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/agents/openai.yaml"
+    },
+    "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/assets/skill-creator-small.svg"
+    },
+    "dot_codex/skills/dot_system/skill-creator/assets/skill-creator.png": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/assets/skill-creator.png"
+    },
+    "dot_codex/skills/dot_system/skill-creator/license.txt": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/license.txt"
+    },
+    "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "ffac39318e408108141d40f820968e59f70434a891694f9bf1d25be8237b150c",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/references/openai_yaml.md"
+    },
+    "dot_codex/skills/dot_system/skill-creator/scripts/generate_openai_yaml.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "ddaf9abdfb3e762ed3c82571e9c607ce964188f49f2146281beb2cb8a553a93d",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/scripts/generate_openai_yaml.py"
+    },
+    "dot_codex/skills/dot_system/skill-creator/scripts/init_skill.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "f40cb8fafc34e2d5dbbb8b6b04297af128b70844b67bc9445ef69790e0cdb49e",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/scripts/init_skill.py"
+    },
+    "dot_codex/skills/dot_system/skill-creator/scripts/quick_validate.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "6cc9dc3199c935916cf6f73fcbbbb0e3bb1b58c8f5109fefa499978908164f51",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-creator/scripts/quick_validate.py"
+    },
+    "dot_codex/skills/dot_system/skill-installer/LICENSE.txt": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/LICENSE.txt"
+    },
+    "dot_codex/skills/dot_system/skill-installer/SKILL.md": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "09df0ea7921f63d51befae9fc8f71daece5ef49d7b96e35fff8b18d15d6afda7",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/SKILL.md"
+    },
+    "dot_codex/skills/dot_system/skill-installer/agents/openai.yaml": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "5ce223d8b1070b82c42298538f1b8d376f788eb9e7a42a987e8c094070d73f0e",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/agents/openai.yaml"
+    },
+    "dot_codex/skills/dot_system/skill-installer/assets/skill-installer-small.svg": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "3928703ff00dc1a681e7a22401843b7edcbd4b2051651ce4c43b75f7e140504e",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/assets/skill-installer-small.svg"
+    },
+    "dot_codex/skills/dot_system/skill-installer/assets/skill-installer.png": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/assets/skill-installer.png"
+    },
+    "dot_codex/skills/dot_system/skill-installer/scripts/github_utils.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "61c1bbe2ae217433b4b6f9f09f21aca4df52c12598068343ade719f706e4859b",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/scripts/github_utils.py"
+    },
+    "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "0fbbd36e8ea294442c0bd48d6f610a2e8656216bfef5c322f1dcf448ef2f09f1",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/scripts/install-skill-from-github.py"
+    },
+    "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "e4e1f78ca3d045827f2a05cfd99fae57cc7c1a1bfeba8704029108834debff35",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_system_skill",
+      "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
+    },
     "github.openai.com/openai/codex/AGENTS.md": {
       "sha256": "d0e91701296f09987275f0a96e7b432da117b931b2a81a6ed61a7ec819683cef",
       "source_type": "github",
@@ -855,6 +1305,16 @@
       "sha256": "015e4698b80815aefe025d8609ce8b03ef11f8f99c53ca3afa7d6163eccdc478",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-validation.md"
+    },
+    "system_prompts/codex-cli/prompt-input.json": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_version": "0.125.0",
+      "codex_cli_version_raw": "codex-cli 0.125.0",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "28d1cba6ade6d3d27dec0175123cf82eec9fea28d64d2e271802a153da3b9580",
+      "source_kind": "installed_codex_cli",
+      "source_type": "codex_cli_prompt_input",
+      "source_url": "codex-cli://debug/prompt-input"
     }
   }
 }
