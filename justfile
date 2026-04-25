@@ -7,6 +7,10 @@ setup:
     python3 -m venv .venv
     . .venv/bin/activate && pip install -r scripts/requirements.txt
 
+lint:
+    actionlint .github/workflows/*.yml
+    ruff check scripts
+
 sync:
     . .venv/bin/activate && python scripts/fetch_codex_docs.py
 
