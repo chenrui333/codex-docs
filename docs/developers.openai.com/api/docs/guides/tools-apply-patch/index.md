@@ -1,5 +1,6 @@
 ---
 source_type: 'platform_tool_guide'
+source_area: 'tool_guide_apply_patch'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-apply-patch'
 source_last_modified: '2026-04-25T10:17:19Z'
 source_etag: 'W/"dd05d3c7ce6f524e30a889027f7bd3c1"'

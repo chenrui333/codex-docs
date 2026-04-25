@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
 source_last_modified: '2026-04-25T06:28:49Z'
 source_etag: 'W/"7ca10d7935c9d4ef1923548c4c3bf5fe"'

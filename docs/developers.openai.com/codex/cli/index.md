@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli'
 source_last_modified: '2026-04-25T06:30:09Z'
 source_etag: 'W/"512d7dbf13ae7ddef15b23e59f7de202"'

@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/native-development'
 source_last_modified: '2026-04-25T06:49:17Z'
 source_etag: 'W/"1e4ce00e42a23908636ac57691873781"'

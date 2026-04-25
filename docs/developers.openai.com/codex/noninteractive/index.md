@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/noninteractive'
 source_last_modified: '2026-04-25T06:40:15Z'
 source_etag: 'W/"3b64ef8dd3e759e8251ce882a912922e"'

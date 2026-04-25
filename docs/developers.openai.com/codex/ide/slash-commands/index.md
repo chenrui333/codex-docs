@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_ide'
 source_url: 'https://developers.openai.com/codex/ide/slash-commands'
 source_last_modified: '2026-04-25T06:40:05Z'
 source_etag: 'W/"cd0bd1e7c43713a6ded2fa693993c5ef"'

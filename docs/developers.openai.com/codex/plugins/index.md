@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins'
 source_last_modified: '2026-04-25T06:31:49Z'
 source_etag: 'W/"f18e866e64f0ec7e6efcb7cb80022451"'

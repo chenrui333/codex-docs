@@ -1,5 +1,6 @@
 ---
 source_type: 'github'
+source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md'
 source_etag: 'W/"88409cc3eb266f9b1abe743928a5adb8c1a75450794628a214c41214e6cd07e8"'
 codex_cli_versions: ["0.125.0"]

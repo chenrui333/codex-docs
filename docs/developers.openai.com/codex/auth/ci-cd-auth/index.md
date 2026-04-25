@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_auth'
 source_url: 'https://developers.openai.com/codex/auth/ci-cd-auth'
 source_last_modified: '2026-04-25T06:55:25Z'
 source_etag: 'W/"5debbabc95f60626109d4c40fdb1114c"'

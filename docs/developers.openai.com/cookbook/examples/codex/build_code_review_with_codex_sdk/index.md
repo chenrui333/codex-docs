@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk'
 source_last_modified: '2026-04-25T06:28:10Z'
 source_etag: 'W/"b078116b9be06bcc6943625fa3554c9d"'

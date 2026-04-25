@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/automation-bug-triage'
 source_last_modified: '2026-04-25T06:36:15Z'
 source_etag: 'W/"c229c2cb29c0aa3759a0ca446faa50cb"'

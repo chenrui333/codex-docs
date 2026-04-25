@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/features'
 source_last_modified: '2026-04-25T06:31:36Z'
 source_etag: 'W/"d444543b229a117cf14c8339c64f8399"'

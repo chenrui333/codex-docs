@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_track'
 source_url: 'https://developers.openai.com/codex/tracks/productivity-and-collaboration'
 source_last_modified: '2026-04-25T12:19:47Z'
 source_etag: '"be91cdeb9ddd9c92abd6501b0a697a46"'

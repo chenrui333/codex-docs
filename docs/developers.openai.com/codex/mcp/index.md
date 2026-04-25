@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/mcp'
 source_last_modified: '2026-04-25T06:32:59Z'
 source_etag: 'W/"698d6e79016d8393640e1d71bf1fd8f3"'

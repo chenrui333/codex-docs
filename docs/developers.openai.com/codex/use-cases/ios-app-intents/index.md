@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ios-app-intents'
 source_last_modified: '2026-04-25T06:49:17Z'
 source_etag: 'W/"a0f07fe577bca9c68ad3399c1cacc313"'

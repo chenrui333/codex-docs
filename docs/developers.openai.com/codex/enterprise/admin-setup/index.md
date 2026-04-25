@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
 source_last_modified: '2026-04-25T06:44:15Z'
 source_etag: 'W/"7f63eeee8f58e59574d08dabacc49106"'

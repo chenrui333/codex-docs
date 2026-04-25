@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/agent-approvals-security'
 source_last_modified: '2026-04-25T06:28:33Z'
 source_etag: 'W/"52069cce2a2981cdf861d4b6325c7a2f"'

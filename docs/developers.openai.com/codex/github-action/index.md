@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_integration'
 source_url: 'https://developers.openai.com/codex/github-action'
 source_last_modified: '2026-04-25T06:30:33Z'
 source_etag: 'W/"f0bea2dc7b6aa5862d5e9b67f2d48e2a"'

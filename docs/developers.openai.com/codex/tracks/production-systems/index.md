@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_track'
 source_url: 'https://developers.openai.com/codex/tracks/production-systems'
 source_last_modified: '2026-04-25T12:19:47Z'
 source_etag: '"6ba4d7d74377412b3644c6dbcffae9bd"'

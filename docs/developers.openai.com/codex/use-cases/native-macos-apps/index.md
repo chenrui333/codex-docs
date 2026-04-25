@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/native-macos-apps'
 source_last_modified: '2026-04-25T06:49:17Z'
 source_etag: 'W/"c0b15aea93407c70386daaee4d1e26dd"'

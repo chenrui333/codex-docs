@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_integration'
 source_url: 'https://developers.openai.com/codex/integrations/slack'
 source_last_modified: '2026-04-25T06:44:46Z'
 source_etag: 'W/"b9c38f0c9177cdc9aaf8689b8ac082ac"'

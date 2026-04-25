@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ios-simulator-bug-debugging'
 source_last_modified: '2026-04-25T06:54:17Z'
 source_etag: 'W/"0ed61945221c8fcf69bf46031c86728c"'

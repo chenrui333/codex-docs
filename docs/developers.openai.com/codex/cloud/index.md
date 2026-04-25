@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cloud'
 source_url: 'https://developers.openai.com/codex/cloud'
 source_last_modified: '2026-04-25T06:30:21Z'
 source_etag: 'W/"811c50ed4d0be6d3a95860d70f537cfd"'

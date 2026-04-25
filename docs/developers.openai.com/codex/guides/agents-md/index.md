@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/guides/agents-md'
 source_last_modified: '2026-04-25T06:36:11Z'
 source_etag: 'W/"1115b7d9a27ab2cdab491ff09aa946bf"'

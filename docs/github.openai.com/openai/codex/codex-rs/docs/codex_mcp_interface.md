@@ -1,5 +1,6 @@
 ---
 source_type: 'github'
+source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md'
 source_etag: 'W/"8cc8677fafad554c5c9925bd000618006a4d7afa808f0bc1d174884e2ea37772"'
 codex_cli_versions: ["0.125.0"]

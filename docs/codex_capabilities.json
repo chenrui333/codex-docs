@@ -19,6 +19,7 @@
         "developer",
         "user"
       ],
+      "source_area": "system_prompt",
       "source_type": "codex_cli_prompt_input",
       "source_url": "codex-cli://debug/prompt-input"
     },
@@ -37,6 +38,7 @@
       "id": "system_skill:imagegen",
       "mirrored_path": "dot_codex/skills/dot_system/imagegen/SKILL.md",
       "name": "imagegen",
+      "source_area": "system_skill_imagegen",
       "source_type": "codex_cli_system_skill",
       "source_url": "codex-cli://skills/.system/imagegen/SKILL.md"
     },
@@ -55,6 +57,7 @@
       "id": "system_skill:openai-docs",
       "mirrored_path": "dot_codex/skills/dot_system/openai-docs/SKILL.md",
       "name": "openai-docs",
+      "source_area": "system_skill_openai_docs",
       "source_type": "codex_cli_system_skill",
       "source_url": "codex-cli://skills/.system/openai-docs/SKILL.md"
     },
@@ -73,6 +76,7 @@
       "id": "system_skill:plugin-creator",
       "mirrored_path": "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
       "name": "plugin-creator",
+      "source_area": "system_skill_plugin_creator",
       "source_type": "codex_cli_system_skill",
       "source_url": "codex-cli://skills/.system/plugin-creator/SKILL.md"
     },
@@ -91,6 +95,7 @@
       "id": "system_skill:skill-creator",
       "mirrored_path": "dot_codex/skills/dot_system/skill-creator/SKILL.md",
       "name": "skill-creator",
+      "source_area": "system_skill_skill_creator",
       "source_type": "codex_cli_system_skill",
       "source_url": "codex-cli://skills/.system/skill-creator/SKILL.md"
     },
@@ -109,6 +114,7 @@
       "id": "system_skill:skill-installer",
       "mirrored_path": "dot_codex/skills/dot_system/skill-installer/SKILL.md",
       "name": "skill-installer",
+      "source_area": "system_skill_skill_installer",
       "source_type": "codex_cli_system_skill",
       "source_url": "codex-cli://skills/.system/skill-installer/SKILL.md"
     },
@@ -129,6 +135,7 @@
       "referenced_from": [
         "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md"
       ],
+      "source_area": "tool_guide_apply_patch",
       "source_etag": "W/\"dd05d3c7ce6f524e30a889027f7bd3c1\"",
       "source_last_modified": "2026-04-25T10:17:19Z",
       "source_type": "platform_tool_guide",
@@ -152,6 +159,7 @@
       "referenced_from": [
         "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md"
       ],
+      "source_area": "tool_guide_computer_use",
       "source_etag": "W/\"951e9b1644516acc8b2c6864be05d417\"",
       "source_last_modified": "2026-04-25T08:14:40Z",
       "source_type": "platform_tool_guide",
@@ -175,6 +183,7 @@
       "referenced_from": [
         "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md"
       ],
+      "source_area": "tool_guide_shell",
       "source_etag": "W/\"924501b7c2a599357dff05300bedf75f\"",
       "source_last_modified": "2026-04-25T10:17:19Z",
       "source_type": "platform_tool_guide",
@@ -198,6 +207,7 @@
       "referenced_from": [
         "developers.openai.com/codex/agent-approvals-security/index.md"
       ],
+      "source_area": "tool_guide_web_search",
       "source_etag": "W/\"3b72afe81c0c46e03b11d97cbcb37372\"",
       "source_last_modified": "2026-04-25T07:35:10Z",
       "source_type": "platform_tool_guide",
@@ -222,5 +232,6 @@
     "total": 10
   },
   "schema_version": 1,
+  "source_area": "capability_inventory",
   "source_kind": "generated_capability_inventory"
 }

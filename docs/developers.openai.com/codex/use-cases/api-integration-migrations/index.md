@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/api-integration-migrations'
 source_last_modified: '2026-04-25T06:49:53Z'
 source_etag: 'W/"cca2ac9798c858d272162638a7f37774"'

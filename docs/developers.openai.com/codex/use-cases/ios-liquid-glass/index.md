@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ios-liquid-glass'
 source_last_modified: '2026-04-25T06:47:10Z'
 source_etag: 'W/"6bb314168bfb699732f9047c2b90068d"'

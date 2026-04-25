@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_ide'
 source_url: 'https://developers.openai.com/codex/ide'
 source_last_modified: '2026-04-25T06:31:51Z'
 source_etag: 'W/"959f374755a7b978f40b75048db4c5bb"'

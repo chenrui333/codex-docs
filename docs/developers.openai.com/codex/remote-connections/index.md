@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/remote-connections'
 source_last_modified: '2026-04-25T06:40:25Z'
 source_etag: 'W/"d56c230534f185f73d307d95896ddfbc"'

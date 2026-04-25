@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/speed'
 source_last_modified: '2026-04-25T06:36:12Z'
 source_etag: 'W/"7519f69d0295f8db589cbd228c494e83"'

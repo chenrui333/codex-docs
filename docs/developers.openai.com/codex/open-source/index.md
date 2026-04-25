@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_open_source'
 source_url: 'https://developers.openai.com/codex/open-source'
 source_last_modified: '2026-04-25T06:50:05Z'
 source_etag: 'W/"afec9ed6e97faccabb80c7dc3540c3fb"'

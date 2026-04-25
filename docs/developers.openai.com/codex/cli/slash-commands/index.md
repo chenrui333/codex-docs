@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/slash-commands'
 source_last_modified: '2026-04-25T06:42:37Z'
 source_etag: 'W/"7d76af13e49d48792f61bee3329d6e48"'

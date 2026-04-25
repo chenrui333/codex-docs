@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/threat-model'
 source_last_modified: '2026-04-25T06:50:21Z'
 source_etag: 'W/"399ea380546ebd8a7a83bc79f6b9debf"'

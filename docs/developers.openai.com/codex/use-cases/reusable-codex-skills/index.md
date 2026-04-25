@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/reusable-codex-skills'
 source_last_modified: '2026-04-25T06:51:28Z'
 source_etag: 'W/"6cb889c766dc776c4011eafa497dfbe5"'

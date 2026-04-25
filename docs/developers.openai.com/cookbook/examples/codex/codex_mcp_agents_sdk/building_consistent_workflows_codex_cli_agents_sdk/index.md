@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk'
 source_last_modified: '2026-04-25T07:01:12Z'
 source_etag: 'W/"c77baeb2f8180ce654f72fbb89671186"'

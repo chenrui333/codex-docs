@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab'
 source_last_modified: '2026-04-25T06:43:54Z'
 source_etag: 'W/"8ca9ef2c65083088b0441ce942e75ab8"'
