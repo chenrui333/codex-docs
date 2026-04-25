@@ -8,7 +8,10 @@ import json
 import logging
 import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -28,9 +31,24 @@ SUMMARY_PATH = DOCS_DIR / "sync_summary.json"
 COVERAGE_PATH = DOCS_DIR / "source_coverage.json"
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
 GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
+SYSTEM_SKILLS_ROOT = ROOT / "dot_codex" / "skills" / "dot_system"
+SYSTEM_PROMPTS_ROOT = ROOT / "system_prompts" / "codex-cli"
+
+SYSTEM_SKILL_OUTPUT_PREFIX = "dot_codex/skills/dot_system/"
+SYSTEM_PROMPT_OUTPUT_PREFIX = "system_prompts/codex-cli/"
+ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
+CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
+SOURCE_METADATA_KEYS = (
+    "source_kind",
+    "codex_cli_version",
+    "codex_cli_version_raw",
+    "codex_cli_command",
+    "codex_prompt_snapshot_command",
+)
 
 SITEMAP_INDEX_URL = "https://developers.openai.com/sitemap-index.xml"
 GITHUB_TREE_URL = "https://api.github.com/repos/openai/codex/git/trees/main?recursive=1"
+GITHUB_RAW_URL_TEMPLATE = "https://raw.githubusercontent.com/openai/codex/main/{path}"
 USER_AGENT = "codex-docs-sync/0.1 (+https://github.com/chenrui333/codex-docs)"
 
 LOG = logging.getLogger("fetch_codex_docs")
@@ -52,6 +70,8 @@ NOISY_LINE_PATTERNS = (
     re.compile(r"^Choose an option\s*$", flags=re.IGNORECASE),
 )
 WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
+    ("System Skills", SYSTEM_SKILL_OUTPUT_PREFIX),
+    ("System Prompts", SYSTEM_PROMPT_OUTPUT_PREFIX),
     ("Developers Codex", "developers.openai.com/codex/"),
     ("Developers Cookbook", "developers.openai.com/cookbook/"),
     ("Developers Resources", "developers.openai.com/resources/"),
@@ -93,15 +113,17 @@ class ManagedFile:
     rel_path: str
     source_type: str
     source_url: str
-    content: str
+    content: str | bytes
+    source_metadata: Dict[str, str] | None = None
 
 
 def now_utc_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def sha256_text(text: str) -> str:
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+def sha256_content(content: str | bytes) -> str:
+    payload = content.encode("utf-8") if isinstance(content, str) else content
+    return hashlib.sha256(payload).hexdigest()
 
 
 def canonicalize_url(url: str) -> str:
@@ -185,6 +207,93 @@ def fetch_text(session: requests.Session, url: str) -> str:
 
     assert last_error is not None  # pragma: no cover - defensive
     raise last_error
+
+
+def fetch_bytes(session: requests.Session, url: str) -> bytes:
+    last_error: Exception | None = None
+    for attempt in range(1, REQUEST_MAX_RETRIES + 1):
+        try:
+            response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+            response.raise_for_status()
+            return response.content
+        except requests.RequestException as exc:
+            last_error = exc
+            if attempt >= REQUEST_MAX_RETRIES:
+                break
+            sleep_seconds = REQUEST_BACKOFF_SECONDS * (2 ** (attempt - 1))
+            LOG.warning(
+                "Request failed (attempt %d/%d) for %s: %s. Retrying in %.2fs",
+                attempt,
+                REQUEST_MAX_RETRIES,
+                url,
+                exc,
+                sleep_seconds,
+            )
+            if sleep_seconds > 0:
+                time.sleep(sleep_seconds)
+
+    assert last_error is not None  # pragma: no cover - defensive
+    raise last_error
+
+
+def fetch_json(session: requests.Session, url: str) -> Dict[str, object]:
+    payload = json.loads(fetch_text(session, url))
+    return payload if isinstance(payload, dict) else {}
+
+
+def github_raw_url(path: str) -> str:
+    return GITHUB_RAW_URL_TEMPLATE.format(path=path)
+
+
+def run_local_command(
+    args: Sequence[str],
+    *,
+    cwd: Path | None = None,
+    env: Dict[str, str] | None = None,
+) -> str:
+    result = subprocess.run(
+        list(args),
+        cwd=str(cwd) if cwd else None,
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if result.returncode != 0:
+        stderr = result.stderr.strip()
+        raise RuntimeError(f"{' '.join(args)} failed with exit code {result.returncode}: {stderr}")
+    return result.stdout
+
+
+def parse_codex_cli_version(version_raw: str) -> str:
+    match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", version_raw)
+    return match.group(1) if match else version_raw.strip()
+
+
+def encode_dot_path(path: Path) -> str:
+    parts = [f"dot_{part[1:]}" if part.startswith(".") else part for part in path.parts]
+    return Path(*parts).as_posix()
+
+
+def sanitize_prompt_text(text: str, replacements: Sequence[Tuple[str, str]]) -> str:
+    sanitized = text
+    for old, new in replacements:
+        sanitized = sanitized.replace(old, new)
+    sanitized = re.sub(r"<current_date>[^<]+</current_date>", "<current_date>YYYY-MM-DD</current_date>", sanitized)
+    sanitized = re.sub(r"<shell>[^<]+</shell>", "<shell>bash</shell>", sanitized)
+    sanitized = re.sub(r"<timezone>[^<]+</timezone>", "<timezone>Etc/UTC</timezone>", sanitized)
+    return sanitized
+
+
+def sanitize_prompt_payload(value, replacements: Sequence[Tuple[str, str]]):
+    if isinstance(value, str):
+        return sanitize_prompt_text(value, replacements)
+    if isinstance(value, list):
+        return [sanitize_prompt_payload(item, replacements) for item in value]
+    if isinstance(value, dict):
+        return {key: sanitize_prompt_payload(item, replacements) for key, item in value.items()}
+    return value
 
 
 def load_existing_coverage() -> Dict[str, object]:
@@ -375,6 +484,10 @@ def github_path_to_rel_path(path: str) -> str:
     return str(output_path.relative_to(DOCS_DIR))
 
 
+def system_skill_path_to_rel_path(path: Path) -> str:
+    return f"{SYSTEM_SKILL_OUTPUT_PREFIX}{encode_dot_path(path)}"
+
+
 def normalize_markdown(text: str) -> str:
     text = text.replace("\r\n", "\n")
     filtered_lines: List[str] = []
@@ -480,11 +593,11 @@ def load_existing_manifest() -> Dict[str, Dict[str, str]]:
     parsed: Dict[str, Dict[str, str]] = {}
     for rel_path, meta in sources.items():
         if isinstance(meta, dict):
-            parsed[rel_path] = {
-                "sha256": str(meta.get("sha256", "")),
-                "source_url": str(meta.get("source_url", "")),
-                "source_type": str(meta.get("source_type", "")),
-            }
+            parsed_meta = {str(key): str(value) for key, value in meta.items() if isinstance(value, (str, int, float, bool))}
+            parsed_meta["sha256"] = str(meta.get("sha256", ""))
+            parsed_meta["source_url"] = str(meta.get("source_url", ""))
+            parsed_meta["source_type"] = str(meta.get("source_type", ""))
+            parsed[rel_path] = parsed_meta
     return parsed
 
 
@@ -492,13 +605,32 @@ def ensure_parent(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
 
-def write_file_if_changed(path: Path, content: str) -> bool:
+def write_file_if_changed(path: Path, content: str | bytes) -> bool:
+    if isinstance(content, bytes):
+        if path.exists() and path.read_bytes() == content:
+            return False
+
+        ensure_parent(path)
+        path.write_bytes(content)
+        return True
+
     if path.exists() and path.read_text() == content:
         return False
 
     ensure_parent(path)
     path.write_text(content)
     return True
+
+
+def output_path_for_rel_path(rel_path: str) -> Path:
+    rel = Path(rel_path)
+    if rel.is_absolute() or ".." in rel.parts:
+        raise ValueError(f"Unsafe managed output path: {rel_path}")
+
+    if rel_path.startswith(ROOT_OUTPUT_PREFIXES):
+        return ROOT / rel
+
+    return DOCS_DIR / rel
 
 
 def remove_empty_directories(start: Path) -> None:
@@ -562,7 +694,7 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
     fetch_errors: List[Dict[str, str]] = []
 
     for path in discover_github_paths(session):
-        raw_url = f"https://raw.githubusercontent.com/openai/codex/main/{path}"
+        raw_url = github_raw_url(path)
         try:
             raw_text = fetch_text(session, raw_url)
         except requests.RequestException as exc:
@@ -591,6 +723,85 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
     return managed, fetch_errors
 
 
+def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Dict[str, str]]:
+    codex_bin = shutil.which("codex")
+    if not codex_bin:
+        raise RuntimeError("codex CLI is not installed or not on PATH")
+
+    version_raw = run_local_command([codex_bin, "--version"]).strip()
+    version = parse_codex_cli_version(version_raw)
+    metadata = {
+        "source_kind": "installed_codex_cli",
+        "codex_cli_version": version,
+        "codex_cli_version_raw": version_raw,
+        "codex_cli_command": "codex --version",
+        "codex_prompt_snapshot_command": "codex debug prompt-input",
+    }
+
+    managed: List[ManagedFile] = []
+    fetch_errors: List[Dict[str, str]] = []
+
+    with tempfile.TemporaryDirectory(prefix="codex-docs-home-") as home_dir, tempfile.TemporaryDirectory(
+        prefix="codex-docs-workspace-"
+    ) as workspace_dir:
+        home_path = Path(home_dir)
+        workspace_path = Path(workspace_dir)
+        codex_home = home_path / ".codex"
+        codex_home.mkdir(parents=True, exist_ok=True)
+
+        env = os.environ.copy()
+        env.update(
+            {
+                "HOME": str(home_path),
+                "CODEX_HOME": str(codex_home),
+                "NO_COLOR": "1",
+                "SHELL": "/bin/bash",
+                "TZ": "UTC",
+            }
+        )
+
+        prompt_raw = run_local_command([codex_bin, "debug", "prompt-input", ""], cwd=workspace_path, env=env)
+        prompt_payload = json.loads(prompt_raw)
+        replacement_items = {
+            str(codex_home): "$CODEX_HOME",
+            str(codex_home.resolve()): "$CODEX_HOME",
+            str(home_path): "$HOME",
+            str(home_path.resolve()): "$HOME",
+            str(workspace_path): "$WORKSPACE",
+            str(workspace_path.resolve()): "$WORKSPACE",
+        }
+        replacements = tuple(sorted(replacement_items.items(), key=lambda item: len(item[0]), reverse=True))
+        prompt_payload = sanitize_prompt_payload(prompt_payload, replacements)
+        prompt_content = json.dumps(prompt_payload, indent=2, ensure_ascii=False) + "\n"
+        managed.append(
+            ManagedFile(
+                rel_path=f"{SYSTEM_PROMPT_OUTPUT_PREFIX}prompt-input.json",
+                source_type="codex_cli_prompt_input",
+                source_url="codex-cli://debug/prompt-input",
+                content=prompt_content,
+                source_metadata=metadata,
+            )
+        )
+
+        system_skills_source = codex_home / "skills" / ".system"
+        if not system_skills_source.is_dir():
+            raise RuntimeError("codex debug prompt-input did not materialize system skills")
+
+        for source_path in sorted(path for path in system_skills_source.rglob("*") if path.is_file()):
+            rel_path = source_path.relative_to(system_skills_source)
+            managed.append(
+                ManagedFile(
+                    rel_path=system_skill_path_to_rel_path(rel_path),
+                    source_type="codex_cli_system_skill",
+                    source_url=f"codex-cli://skills/.system/{rel_path.as_posix()}",
+                    content=source_path.read_bytes(),
+                    source_metadata=metadata,
+                )
+            )
+
+    return managed, fetch_errors, metadata
+
+
 def write_manifest(entries: Dict[str, Dict[str, str]]) -> None:
     payload = {
         "schema_version": 1,
@@ -606,6 +817,7 @@ def write_summary(
     removed: List[str],
     total: int,
     failures: List[Dict[str, str]] | None = None,
+    source_metadata: Dict[str, str] | None = None,
 ) -> None:
     failure_items = failures or []
     payload = {
@@ -617,6 +829,8 @@ def write_summary(
         "failure_count": len(failure_items),
         "failures": failure_items,
     }
+    if source_metadata:
+        payload["source_metadata"] = source_metadata
     ensure_parent(SUMMARY_PATH)
     SUMMARY_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
@@ -638,7 +852,12 @@ def write_coverage(coverage: Dict[str, object]) -> None:
     COVERAGE_PATH.write_text(json.dumps(coverage, indent=2, sort_keys=True) + "\n")
 
 
-def write_weekly_note(added: List[str], updated: List[str], removed: List[str]) -> None:
+def write_weekly_note(
+    added: List[str],
+    updated: List[str],
+    removed: List[str],
+    source_metadata: Dict[str, str] | None = None,
+) -> None:
     if not (added or updated or removed):
         return
 
@@ -656,6 +875,15 @@ def write_weekly_note(added: List[str], updated: List[str], removed: List[str]) 
         f"- Removed: {len(removed)}",
         "",
     ]
+
+    if source_metadata:
+        lines.append("## Source Snapshot")
+        lines.append("")
+        for key in SOURCE_METADATA_KEYS:
+            value = source_metadata.get(key)
+            if value:
+                lines.append(f"- `{key}`: `{value}`")
+        lines.append("")
 
     lines.append("## Category Summary")
     lines.append("")
@@ -717,6 +945,7 @@ def apply_sync(
     managed_files: Iterable[ManagedFile],
     failures: List[Dict[str, str]] | None = None,
     preserve_missing_sources: Sequence[str] = (),
+    source_metadata: Dict[str, str] | None = None,
 ) -> Tuple[List[str], List[str], List[str]]:
     previous = load_existing_manifest()
 
@@ -725,11 +954,21 @@ def apply_sync(
 
     for item in managed_files:
         rel_to_file[item.rel_path] = item
-        next_entries[item.rel_path] = {
-            "sha256": sha256_text(item.content),
+        next_entry = {
+            "sha256": sha256_content(item.content),
             "source_type": item.source_type,
             "source_url": item.source_url,
         }
+        if item.source_metadata:
+            previous_meta = previous.get(item.rel_path, {})
+            previous_same_hash = previous_meta.get("sha256") == next_entry["sha256"]
+            preserved_metadata = {
+                key: previous_meta[key]
+                for key in SOURCE_METADATA_KEYS
+                if previous_same_hash and previous_meta.get(key)
+            }
+            next_entry.update(preserved_metadata or item.source_metadata)
+        next_entries[item.rel_path] = next_entry
 
     previous_paths = set(previous)
     next_paths = set(next_entries)
@@ -753,16 +992,18 @@ def apply_sync(
 
     touched = set(added) | set(updated)
     for rel_path in sorted(touched):
-        abs_path = DOCS_DIR / rel_path
+        abs_path = output_path_for_rel_path(rel_path)
         write_file_if_changed(abs_path, rel_to_file[rel_path].content)
 
     for rel_path in removed:
-        abs_path = DOCS_DIR / rel_path
+        abs_path = output_path_for_rel_path(rel_path)
         if abs_path.exists():
             abs_path.unlink()
 
     remove_empty_directories(DEVELOPERS_ROOT)
     remove_empty_directories(GITHUB_ROOT)
+    remove_empty_directories(ROOT / "dot_codex")
+    remove_empty_directories(ROOT / "system_prompts")
 
     write_manifest(next_entries)
     has_changes = bool(added or updated or removed)
@@ -778,8 +1019,8 @@ def apply_sync(
         except json.JSONDecodeError:
             summary_schema_stale = True
     if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale:
-        write_summary(added, updated, removed, len(next_entries), failures=failures)
-    write_weekly_note(added, updated, removed)
+        write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
+    write_weekly_note(added, updated, removed, source_metadata=source_metadata)
 
     return added, updated, removed
 
@@ -800,8 +1041,11 @@ def main() -> int:
     preserve_missing_sources: set[str] = set()
     developers_files: List[ManagedFile] = []
     github_files: List[ManagedFile] = []
+    codex_cli_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
+    codex_cli_fetch_errors: List[Dict[str, str]] = []
+    codex_cli_metadata: Dict[str, str] = {}
     coverage: Dict[str, object] = {"generated_at": now_utc_iso()}
 
     try:
@@ -847,6 +1091,24 @@ def main() -> int:
         failures.append(failure)
         preserve_missing_sources.add("github")
 
+    try:
+        codex_cli_files, codex_cli_fetch_errors, codex_cli_metadata = build_codex_cli_files()
+        failures.extend(codex_cli_fetch_errors)
+        if codex_cli_fetch_errors:
+            preserve_missing_sources.update(
+                item["source"] for item in codex_cli_fetch_errors if item["source"] in CODEX_CLI_SOURCE_TYPES
+            )
+    except Exception as exc:
+        LOG.warning("Codex CLI source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": "codex_cli",
+            "stage": "source_build",
+            "url": "codex-cli://installed",
+            "error": str(exc),
+        }
+        failures.append(failure)
+        preserve_missing_sources.update(CODEX_CLI_SOURCE_TYPES)
+
     github_source_errors = [item for item in failures if item["source"] == "github" and item["stage"] == "source_build"]
     coverage["github"] = {
         "repo": "openai/codex",
@@ -860,6 +1122,47 @@ def main() -> int:
             "source_errors": len(github_source_errors),
         },
     }
+    system_skill_files = [item for item in codex_cli_files if item.source_type == "codex_cli_system_skill"]
+    prompt_input_files = [item for item in codex_cli_files if item.source_type == "codex_cli_prompt_input"]
+    codex_cli_source_errors = [item for item in failures if item["source"] == "codex_cli" and item["stage"] == "source_build"]
+    coverage["codex_cli"] = {
+        "source_kind": "installed_codex_cli",
+        "version": codex_cli_metadata.get("codex_cli_version", ""),
+        "version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
+        "system_skill_output_prefix": SYSTEM_SKILL_OUTPUT_PREFIX,
+        "prompt_output_prefix": SYSTEM_PROMPT_OUTPUT_PREFIX,
+        "prompt_snapshot_command": codex_cli_metadata.get("codex_prompt_snapshot_command", "codex debug prompt-input"),
+        "system_skill_paths": sorted(item.rel_path for item in system_skill_files),
+        "prompt_snapshot_paths": sorted(item.rel_path for item in prompt_input_files),
+        "source_errors": codex_cli_source_errors,
+        "counts": {
+            "system_skill_paths": len(system_skill_files),
+            "prompt_snapshot_paths": len(prompt_input_files),
+            "source_errors": len(codex_cli_source_errors),
+        },
+    }
+    coverage["system_skills"] = {
+        "source_kind": "installed_codex_cli",
+        "output_prefix": SYSTEM_SKILL_OUTPUT_PREFIX,
+        "mirrored_paths_count": len(system_skill_files),
+        "mirrored_paths": sorted(item.rel_path for item in system_skill_files),
+        "page_fetch_errors": [],
+        "counts": {
+            "mirrored_paths_count": len(system_skill_files),
+            "page_fetch_errors": 0,
+        },
+    }
+    coverage["system_prompts"] = {
+        "source_kind": "installed_codex_cli",
+        "output_prefix": SYSTEM_PROMPT_OUTPUT_PREFIX,
+        "mirrored_paths_count": len(prompt_input_files),
+        "mirrored_paths": sorted(item.rel_path for item in prompt_input_files),
+        "page_fetch_errors": [],
+        "counts": {
+            "mirrored_paths_count": len(prompt_input_files),
+            "page_fetch_errors": 0,
+        },
+    }
     coverage["sync"] = {
         "strict_sync_mode": STRICT_SYNC_MODE,
         "preserve_missing_sources": sorted(preserve_missing_sources),
@@ -867,7 +1170,7 @@ def main() -> int:
     }
     write_coverage(coverage)
 
-    managed_files = developers_files + github_files
+    managed_files = developers_files + github_files + codex_cli_files
     if not managed_files:
         LOG.error("No source files were fetched successfully.")
         write_summary([], [], [], 0, failures=failures)
@@ -878,6 +1181,7 @@ def main() -> int:
             managed_files,
             failures=failures,
             preserve_missing_sources=sorted(preserve_missing_sources),
+            source_metadata=codex_cli_metadata,
         )
     except Exception as exc:  # pragma: no cover - guardrail for sync bugs
         LOG.exception("Sync failed while writing output: %s", exc)

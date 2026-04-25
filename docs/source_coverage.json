@@ -1,4 +1,68 @@
 {
+  "codex_cli": {
+    "counts": {
+      "prompt_snapshot_paths": 1,
+      "source_errors": 0,
+      "system_skill_paths": 45
+    },
+    "prompt_output_prefix": "system_prompts/codex-cli/",
+    "prompt_snapshot_command": "codex debug prompt-input",
+    "prompt_snapshot_paths": [
+      "system_prompts/codex-cli/prompt-input.json"
+    ],
+    "source_errors": [],
+    "source_kind": "installed_codex_cli",
+    "system_skill_output_prefix": "dot_codex/skills/dot_system/",
+    "system_skill_paths": [
+      "dot_codex/skills/dot_system/dot_codex-system-skills.marker",
+      "dot_codex/skills/dot_system/imagegen/LICENSE.txt",
+      "dot_codex/skills/dot_system/imagegen/SKILL.md",
+      "dot_codex/skills/dot_system/imagegen/agents/openai.yaml",
+      "dot_codex/skills/dot_system/imagegen/assets/imagegen-small.svg",
+      "dot_codex/skills/dot_system/imagegen/assets/imagegen.png",
+      "dot_codex/skills/dot_system/imagegen/references/cli.md",
+      "dot_codex/skills/dot_system/imagegen/references/codex-network.md",
+      "dot_codex/skills/dot_system/imagegen/references/image-api.md",
+      "dot_codex/skills/dot_system/imagegen/references/prompting.md",
+      "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md",
+      "dot_codex/skills/dot_system/imagegen/scripts/image_gen.py",
+      "dot_codex/skills/dot_system/imagegen/scripts/remove_chroma_key.py",
+      "dot_codex/skills/dot_system/openai-docs/LICENSE.txt",
+      "dot_codex/skills/dot_system/openai-docs/SKILL.md",
+      "dot_codex/skills/dot_system/openai-docs/agents/openai.yaml",
+      "dot_codex/skills/dot_system/openai-docs/assets/openai-small.svg",
+      "dot_codex/skills/dot_system/openai-docs/assets/openai.png",
+      "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
+      "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
+      "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
+      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.js",
+      "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
+      "dot_codex/skills/dot_system/plugin-creator/agents/openai.yaml",
+      "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator-small.svg",
+      "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator.png",
+      "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
+      "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
+      "dot_codex/skills/dot_system/skill-creator/SKILL.md",
+      "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml",
+      "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg",
+      "dot_codex/skills/dot_system/skill-creator/assets/skill-creator.png",
+      "dot_codex/skills/dot_system/skill-creator/license.txt",
+      "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md",
+      "dot_codex/skills/dot_system/skill-creator/scripts/generate_openai_yaml.py",
+      "dot_codex/skills/dot_system/skill-creator/scripts/init_skill.py",
+      "dot_codex/skills/dot_system/skill-creator/scripts/quick_validate.py",
+      "dot_codex/skills/dot_system/skill-installer/LICENSE.txt",
+      "dot_codex/skills/dot_system/skill-installer/SKILL.md",
+      "dot_codex/skills/dot_system/skill-installer/agents/openai.yaml",
+      "dot_codex/skills/dot_system/skill-installer/assets/skill-installer-small.svg",
+      "dot_codex/skills/dot_system/skill-installer/assets/skill-installer.png",
+      "dot_codex/skills/dot_system/skill-installer/scripts/github_utils.py",
+      "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
+      "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
+    ],
+    "version": "0.125.0",
+    "version_raw": "codex-cli 0.125.0"
+  },
   "developers": {
     "codex_related_urls": [
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
@@ -331,7 +395,7 @@
       "https://developers.openai.com/showcase/codex-101"
     ]
   },
-  "generated_at": "2026-04-25T06:36:34+00:00",
+  "generated_at": "2026-04-25T15:05:39+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 33,
@@ -382,5 +446,75 @@
     "failure_count": 0,
     "preserve_missing_sources": [],
     "strict_sync_mode": false
+  },
+  "system_prompts": {
+    "counts": {
+      "mirrored_paths_count": 1,
+      "page_fetch_errors": 0
+    },
+    "mirrored_paths": [
+      "system_prompts/codex-cli/prompt-input.json"
+    ],
+    "mirrored_paths_count": 1,
+    "output_prefix": "system_prompts/codex-cli/",
+    "page_fetch_errors": [],
+    "source_kind": "installed_codex_cli"
+  },
+  "system_skills": {
+    "counts": {
+      "mirrored_paths_count": 45,
+      "page_fetch_errors": 0
+    },
+    "mirrored_paths": [
+      "dot_codex/skills/dot_system/dot_codex-system-skills.marker",
+      "dot_codex/skills/dot_system/imagegen/LICENSE.txt",
+      "dot_codex/skills/dot_system/imagegen/SKILL.md",
+      "dot_codex/skills/dot_system/imagegen/agents/openai.yaml",
+      "dot_codex/skills/dot_system/imagegen/assets/imagegen-small.svg",
+      "dot_codex/skills/dot_system/imagegen/assets/imagegen.png",
+      "dot_codex/skills/dot_system/imagegen/references/cli.md",
+      "dot_codex/skills/dot_system/imagegen/references/codex-network.md",
+      "dot_codex/skills/dot_system/imagegen/references/image-api.md",
+      "dot_codex/skills/dot_system/imagegen/references/prompting.md",
+      "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md",
+      "dot_codex/skills/dot_system/imagegen/scripts/image_gen.py",
+      "dot_codex/skills/dot_system/imagegen/scripts/remove_chroma_key.py",
+      "dot_codex/skills/dot_system/openai-docs/LICENSE.txt",
+      "dot_codex/skills/dot_system/openai-docs/SKILL.md",
+      "dot_codex/skills/dot_system/openai-docs/agents/openai.yaml",
+      "dot_codex/skills/dot_system/openai-docs/assets/openai-small.svg",
+      "dot_codex/skills/dot_system/openai-docs/assets/openai.png",
+      "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
+      "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
+      "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
+      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.js",
+      "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
+      "dot_codex/skills/dot_system/plugin-creator/agents/openai.yaml",
+      "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator-small.svg",
+      "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator.png",
+      "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
+      "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
+      "dot_codex/skills/dot_system/skill-creator/SKILL.md",
+      "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml",
+      "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg",
+      "dot_codex/skills/dot_system/skill-creator/assets/skill-creator.png",
+      "dot_codex/skills/dot_system/skill-creator/license.txt",
+      "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md",
+      "dot_codex/skills/dot_system/skill-creator/scripts/generate_openai_yaml.py",
+      "dot_codex/skills/dot_system/skill-creator/scripts/init_skill.py",
+      "dot_codex/skills/dot_system/skill-creator/scripts/quick_validate.py",
+      "dot_codex/skills/dot_system/skill-installer/LICENSE.txt",
+      "dot_codex/skills/dot_system/skill-installer/SKILL.md",
+      "dot_codex/skills/dot_system/skill-installer/agents/openai.yaml",
+      "dot_codex/skills/dot_system/skill-installer/assets/skill-installer-small.svg",
+      "dot_codex/skills/dot_system/skill-installer/assets/skill-installer.png",
+      "dot_codex/skills/dot_system/skill-installer/scripts/github_utils.py",
+      "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
+      "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
+    ],
+    "mirrored_paths_count": 45,
+    "output_prefix": "dot_codex/skills/dot_system/",
+    "page_fetch_errors": [],
+    "source_kind": "installed_codex_cli"
   }
 }
