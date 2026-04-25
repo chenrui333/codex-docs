@@ -1,5 +1,6 @@
 ---
 source_type: 'github'
+source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-validation.md'
 source_etag: 'W/"c38bb1ef23d7aa662d62fdbbd847e6fbb3fc2122f926d1d989c53f8ecc44ba3f"'
 codex_cli_versions: ["0.125.0"]

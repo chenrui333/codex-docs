@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide'
 source_last_modified: '2026-04-25T06:41:24Z'
 source_etag: 'W/"4f9e1c42917ce0b6e966b3c0d5682663"'

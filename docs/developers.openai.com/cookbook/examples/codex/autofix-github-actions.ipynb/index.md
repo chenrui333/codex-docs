@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb'
 source_last_modified: '2026-04-25T12:19:52Z'
 source_etag: '"3a5ee90efb6ccf42712ec7097f044bf0"'

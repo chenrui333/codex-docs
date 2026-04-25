@@ -1,5 +1,6 @@
 ---
 source_type: 'platform_tool_guide'
+source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
 source_last_modified: '2026-04-25T08:14:40Z'
 source_etag: 'W/"951e9b1644516acc8b2c6864be05d417"'

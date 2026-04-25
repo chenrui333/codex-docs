@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_integration'
 source_url: 'https://developers.openai.com/codex/integrations/github'
 source_last_modified: '2026-04-25T06:39:00Z'
 source_etag: 'W/"54ea0791e415d368bd5e164ab88e704b"'

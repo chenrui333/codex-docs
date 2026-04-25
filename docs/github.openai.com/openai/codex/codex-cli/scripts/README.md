@@ -1,5 +1,6 @@
 ---
 source_type: 'github'
+source_area: 'github_cli'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md'
 source_etag: 'W/"fa7dd93991ef5360685f582a0924b65861f981e38d6525dcbabf49036800605a"'
 codex_cli_versions: ["0.125.0"]

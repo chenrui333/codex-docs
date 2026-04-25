@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/generate-slide-decks'
 source_last_modified: '2026-04-25T06:34:32Z'
 source_etag: 'W/"210b9a4b8b2e195b2d716befbecccda3"'

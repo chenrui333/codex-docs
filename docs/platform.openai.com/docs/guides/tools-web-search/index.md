@@ -1,5 +1,6 @@
 ---
 source_type: 'platform_tool_guide'
+source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
 source_last_modified: '2026-04-25T07:35:10Z'
 source_etag: 'W/"3b72afe81c0c46e03b11d97cbcb37372"'

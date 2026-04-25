@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_memory'
 source_url: 'https://developers.openai.com/codex/memories/chronicle'
 source_last_modified: '2026-04-25T06:38:17Z'
 source_etag: 'W/"e771fa0796018a67046a13d3122649de"'

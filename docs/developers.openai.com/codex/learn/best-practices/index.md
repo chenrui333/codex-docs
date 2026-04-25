@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/learn/best-practices'
 source_last_modified: '2026-04-25T06:30:43Z'
 source_etag: 'W/"b560c5751470cec7dbe1cffe297df731"'

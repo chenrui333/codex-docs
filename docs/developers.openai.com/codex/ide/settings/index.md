@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_ide'
 source_url: 'https://developers.openai.com/codex/ide/settings'
 source_last_modified: '2026-04-25T06:59:52Z'
 source_etag: 'W/"f7967ea037e46d6ebcd3f5fef5f7554c"'

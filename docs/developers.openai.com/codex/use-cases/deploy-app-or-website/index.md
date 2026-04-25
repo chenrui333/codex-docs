@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deploy-app-or-website'
 source_last_modified: '2026-04-25T06:49:50Z'
 source_etag: 'W/"1fd8a8e9097f9a2d94055cf7161284da"'

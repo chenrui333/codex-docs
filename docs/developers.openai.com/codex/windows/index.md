@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/windows'
 source_last_modified: '2026-04-25T06:28:04Z'
 source_etag: 'W/"de6ab17f784ea2b9bbac7f20a7fb292f"'

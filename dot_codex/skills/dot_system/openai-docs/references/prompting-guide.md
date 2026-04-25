@@ -1,5 +1,6 @@
 ---
 source_type: 'codex_cli_system_skill'
+source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/references/prompting-guide.md'
 source_kind: 'installed_codex_cli'
 codex_cli_versions: ["0.125.0"]

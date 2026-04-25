@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/topic/codex'
 source_last_modified: '2026-04-25T06:31:37Z'
 source_etag: 'W/"33901d45c82049b5e222465505d65d4a"'

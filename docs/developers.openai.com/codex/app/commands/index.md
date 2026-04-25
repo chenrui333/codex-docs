@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
 source_last_modified: '2026-04-25T06:34:54Z'
 source_etag: 'W/"88a1b7116add206986a2dde19944c5fa"'

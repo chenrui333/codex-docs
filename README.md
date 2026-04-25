@@ -27,7 +27,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/source_coverage.json` sitemap coverage watchdog output
 - `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
 
-Generated Markdown files include YAML frontmatter with stable source metadata such as `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
+Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
 
 ## Automation
 

@@ -1,5 +1,6 @@
 ---
 source_type: 'platform_tool_guide'
+source_area: 'tool_guide_shell'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-shell'
 source_last_modified: '2026-04-25T10:17:19Z'
 source_etag: 'W/"924501b7c2a599357dff05300bedf75f"'

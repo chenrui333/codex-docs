@@ -1,5 +1,6 @@
 ---
 source_type: 'github'
+source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/authentication.md'
 source_etag: 'W/"e5349891f8df99ec8d9e9b9fd394eb0357453da1778864da32348a2a54b452a8"'
 codex_cli_versions: ["0.125.0"]

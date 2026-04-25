@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_track'
 source_url: 'https://developers.openai.com/codex/tracks/web-development'
 source_last_modified: '2026-04-25T12:19:47Z'
 source_etag: '"3f297b9a9a0f29b433f3a7863a7b45e8"'

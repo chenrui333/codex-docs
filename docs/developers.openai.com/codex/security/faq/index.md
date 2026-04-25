@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/faq'
 source_last_modified: '2026-04-25T06:54:23Z'
 source_etag: 'W/"db0aaaaa66881587735043eacabab19e"'

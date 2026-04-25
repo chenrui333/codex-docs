@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_sdk'
 source_url: 'https://developers.openai.com/codex/sdk'
 source_last_modified: '2026-04-25T06:33:55Z'
 source_etag: 'W/"28bd573a593b19ab68c959d1ee4f6338"'

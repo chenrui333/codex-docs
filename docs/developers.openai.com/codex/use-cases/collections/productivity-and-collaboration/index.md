@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/productivity-and-collaboration'
 source_last_modified: '2026-04-25T06:29:08Z'
 source_etag: 'W/"9f313fbedfab7674aaecd71417e844e5"'

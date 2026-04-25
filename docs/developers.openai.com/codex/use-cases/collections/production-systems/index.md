@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/production-systems'
 source_last_modified: '2026-04-25T06:37:05Z'
 source_etag: 'W/"2c0434a30a7d9efe79f498e3bcc50942"'

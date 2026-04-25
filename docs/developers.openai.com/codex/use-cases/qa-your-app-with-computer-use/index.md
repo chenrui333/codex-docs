@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
 source_last_modified: '2026-04-25T06:53:02Z'
 source_etag: 'W/"ef1d068fb74acbec873ac0c69ebde4cb"'

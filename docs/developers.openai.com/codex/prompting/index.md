@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/prompting'
 source_last_modified: '2026-04-25T06:41:42Z'
 source_etag: 'W/"f63af68db03bd299047313fe461338ea"'

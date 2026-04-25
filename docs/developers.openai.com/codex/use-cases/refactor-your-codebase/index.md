@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/refactor-your-codebase'
 source_last_modified: '2026-04-25T06:52:08Z'
 source_etag: 'W/"a8cb0e6ed1ef577339f208f723bdaf11"'

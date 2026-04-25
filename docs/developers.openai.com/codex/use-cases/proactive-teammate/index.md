@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/proactive-teammate'
 source_last_modified: '2026-04-25T06:56:49Z'
 source_etag: 'W/"91cc4a596599e393c7830c78c39bdb98"'

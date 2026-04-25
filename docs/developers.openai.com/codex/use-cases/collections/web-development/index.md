@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/web-development'
 source_last_modified: '2026-04-25T06:37:05Z'
 source_etag: 'W/"4293662b7d3d0ba0b48fe4a0b4c39d07"'

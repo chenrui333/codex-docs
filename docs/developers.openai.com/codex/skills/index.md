@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/skills'
 source_last_modified: '2026-04-25T06:31:15Z'
 source_etag: 'W/"f9f78a930fbbeb9fbe5751f28d8a8b26"'

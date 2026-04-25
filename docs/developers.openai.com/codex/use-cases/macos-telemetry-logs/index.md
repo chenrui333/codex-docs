@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/macos-telemetry-logs'
 source_last_modified: '2026-04-25T06:58:00Z'
 source_etag: 'W/"ee43ed8ae10c1658dd025acb61680bb2"'

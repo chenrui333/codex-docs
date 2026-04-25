@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/computer-use'
 source_last_modified: '2026-04-25T06:31:06Z'
 source_etag: 'W/"500ba8399fd0c370398c52e96a9b92d4"'

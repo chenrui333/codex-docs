@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
 source_last_modified: '2026-04-25T06:44:16Z'
 source_etag: 'W/"af54850a354e02af645001db8e750739"'

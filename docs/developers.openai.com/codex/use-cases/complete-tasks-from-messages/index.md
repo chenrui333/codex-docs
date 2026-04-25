@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
 source_last_modified: '2026-04-25T06:50:28Z'
 source_etag: 'W/"469f4db6dfe1e3069dbc90edde8bfc2f"'

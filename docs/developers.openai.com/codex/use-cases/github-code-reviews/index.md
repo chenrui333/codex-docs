@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
 source_last_modified: '2026-04-25T06:51:41Z'
 source_etag: 'W/"34a4a58b512c3186fd70dbd614e65228"'

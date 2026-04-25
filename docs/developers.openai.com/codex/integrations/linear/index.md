@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_integration'
 source_url: 'https://developers.openai.com/codex/integrations/linear'
 source_last_modified: '2026-04-25T06:46:48Z'
 source_etag: 'W/"b892206bf5994cc5ee91627a455fbc96"'

@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/sandboxing'
 source_last_modified: '2026-04-25T06:33:54Z'
 source_etag: 'W/"ca199d9918dd92221ed5546cfd383104"'

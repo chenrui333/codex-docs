@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/code-migrations'
 source_last_modified: '2026-04-25T06:37:10Z'
 source_etag: 'W/"8402887ad418634d43fab9949307a749"'

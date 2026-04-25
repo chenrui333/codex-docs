@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/troubleshooting'
 source_last_modified: '2026-04-25T06:30:22Z'
 source_etag: 'W/"90c0ad20719188747a2498a3961bf8f3"'

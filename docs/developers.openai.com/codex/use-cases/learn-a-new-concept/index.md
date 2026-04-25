@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/learn-a-new-concept'
 source_last_modified: '2026-04-25T06:37:11Z'
 source_etag: 'W/"1d30ad49cd3daea3555f1136d5982cc7"'

@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_cloud'
 source_url: 'https://developers.openai.com/codex/cloud/internet-access'
 source_last_modified: '2026-04-25T06:29:32Z'
 source_etag: 'W/"1d9cb59701860657398326e2a5ca90da"'

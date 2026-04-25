@@ -45,6 +45,7 @@ CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
 PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
 CAPABILITY_INVENTORY_SOURCE_TYPE = "capability_inventory"
 SOURCE_METADATA_KEYS = (
+    "source_area",
     "source_kind",
     "source_last_modified",
     "source_etag",
@@ -96,6 +97,51 @@ WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
     ("GitHub Core Docs", "github.openai.com/openai/codex/docs/"),
     ("GitHub Other Docs", "github.openai.com/openai/codex/"),
 )
+DEVELOPERS_CODEX_SOURCE_AREAS = {
+    "agent-approvals-security": "codex_security",
+    "app": "codex_app",
+    "app-server": "codex_app",
+    "auth": "codex_auth",
+    "changelog": "codex_changelog",
+    "cli": "codex_cli_docs",
+    "cloud": "codex_cloud",
+    "codex-for-oss-terms": "codex_open_source",
+    "concepts": "codex_concept",
+    "config-advanced": "codex_cli_docs",
+    "config-basic": "codex_cli_docs",
+    "config-reference": "codex_cli_docs",
+    "config-sample": "codex_cli_docs",
+    "custom-prompts": "codex_cli_docs",
+    "enterprise": "codex_enterprise",
+    "feature-maturity": "codex_reference",
+    "github-action": "codex_integration",
+    "guides": "codex_guide",
+    "hooks": "codex_cli_docs",
+    "ide": "codex_ide",
+    "integrations": "codex_integration",
+    "learn": "codex_guide",
+    "mcp": "codex_cli_docs",
+    "memories": "codex_memory",
+    "models": "codex_reference",
+    "noninteractive": "codex_cli_docs",
+    "open-source": "codex_open_source",
+    "plugins": "codex_cli_docs",
+    "pricing": "codex_reference",
+    "prompting": "codex_cli_docs",
+    "quickstart": "codex_cli_docs",
+    "remote-connections": "codex_cli_docs",
+    "rules": "codex_cli_docs",
+    "sdk": "codex_sdk",
+    "security": "codex_security",
+    "skills": "codex_cli_docs",
+    "speed": "codex_reference",
+    "subagents": "codex_cli_docs",
+    "tracks": "codex_track",
+    "use-cases": "codex_use_case",
+    "videos": "codex_media",
+    "windows": "codex_app",
+    "workflows": "codex_reference",
+}
 
 
 def _env_int(name: str, default: int) -> int:
@@ -318,6 +364,82 @@ def parse_codex_cli_version(version_raw: str) -> str:
 def encode_dot_path(path: Path) -> str:
     parts = [f"dot_{part[1:]}" if part.startswith(".") else part for part in path.parts]
     return Path(*parts).as_posix()
+
+
+def source_area_slug(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
+
+
+def developers_source_area(url: str) -> str:
+    parsed = urlparse(url)
+    segments = [segment for segment in parsed.path.split("/") if segment]
+    if not segments:
+        return "developers"
+
+    if segments[0] == "cookbook":
+        return "cookbook"
+    if segments[0] == "resources":
+        return "resource"
+    if segments[0] != "codex":
+        return source_area_slug(segments[0]) or "developers"
+    if len(segments) == 1:
+        return "codex_overview"
+
+    return DEVELOPERS_CODEX_SOURCE_AREAS.get(segments[1], f"codex_{source_area_slug(segments[1])}")
+
+
+def github_source_area(url: str) -> str:
+    parsed = urlparse(url)
+    marker = "/openai/codex/main/"
+    path = parsed.path.split(marker, 1)[1] if marker in parsed.path else parsed.path.lstrip("/")
+    if path.startswith("docs/"):
+        return "github_docs"
+    if path.startswith("codex-cli/"):
+        return "github_cli"
+    if path.startswith("codex-rs/"):
+        return "github_rust"
+    return "github_root"
+
+
+def system_skill_source_area(rel_path: str) -> str:
+    skill_rel = rel_path.removeprefix(SYSTEM_SKILL_OUTPUT_PREFIX)
+    skill_name = skill_rel.split("/", 1)[0]
+    if not skill_name or skill_name.endswith(".marker"):
+        return "system_skill_inventory"
+    return f"system_skill_{source_area_slug(skill_name)}"
+
+
+def source_area_for_managed_file(item: ManagedFile) -> str:
+    if item.source_type == "developers":
+        return developers_source_area(item.source_url)
+    if item.source_type == "github":
+        return github_source_area(item.source_url)
+    if item.source_type == PLATFORM_TOOL_GUIDE_SOURCE_TYPE:
+        return f"tool_guide_{capability_name_from_tool_guide_url(item.source_url)}"
+    if item.source_type == "codex_cli_system_skill":
+        return system_skill_source_area(item.rel_path)
+    if item.source_type == "codex_cli_prompt_input":
+        return "system_prompt"
+    if item.source_type == CAPABILITY_INVENTORY_SOURCE_TYPE:
+        return "capability_inventory"
+    return source_area_slug(item.source_type) or "unknown"
+
+
+def add_source_area_metadata(managed_files: Sequence[ManagedFile]) -> List[ManagedFile]:
+    enriched: List[ManagedFile] = []
+    for item in managed_files:
+        metadata = dict(item.source_metadata or {})
+        metadata["source_area"] = source_area_for_managed_file(item)
+        enriched.append(
+            ManagedFile(
+                rel_path=item.rel_path,
+                source_type=item.source_type,
+                source_url=item.source_url,
+                content=item.content,
+                source_metadata=metadata,
+            )
+        )
+    return enriched
 
 
 def sanitize_prompt_text(text: str, replacements: Sequence[Tuple[str, str]]) -> str:
@@ -963,6 +1085,7 @@ def parse_simple_frontmatter(text: str) -> Dict[str, str]:
 
 FRONTMATTER_METADATA_ORDER = (
     "source_type",
+    "source_area",
     "source_url",
     "source_kind",
     "source_last_modified",
@@ -1088,11 +1211,11 @@ def markdown_frontmatter_metadata(
         "source_type": item.source_type,
         "source_url": item.source_url,
     }
-    for key in ("source_kind", "source_last_modified", "source_etag"):
+    for key in ("source_area", "source_kind", "source_last_modified", "source_etag"):
         if source_metadata.get(key):
             frontmatter[key] = source_metadata[key]
 
-    for key in ("source_kind", "source_last_modified", "source_etag"):
+    for key in ("source_area", "source_kind", "source_last_modified", "source_etag"):
         if frontmatter.get(key):
             source_metadata[key] = frontmatter[key]
     return frontmatter, source_metadata
@@ -1211,6 +1334,10 @@ def build_capability_inventory_file(
     previous_inventory = load_existing_capability_inventory()
     previous_capabilities = existing_capabilities_by_id(previous_inventory)
 
+    def add_source_area(entry: Dict[str, object], item: ManagedFile) -> None:
+        if item.source_metadata and item.source_metadata.get("source_area"):
+            entry["source_area"] = item.source_metadata["source_area"]
+
     def add_version_history(entry: Dict[str, object]) -> None:
         history = codex_cli_version_history_metadata(
             previous_capabilities.get(str(entry.get("id", "")), {}),
@@ -1234,6 +1361,7 @@ def build_capability_inventory_file(
             "mirrored_path": item.rel_path,
             "first_seen_path": item.rel_path,
         }
+        add_source_area(entry, item)
         if metadata.get("description"):
             entry["description"] = metadata["description"]
         if codex_cli_version:
@@ -1266,6 +1394,7 @@ def build_capability_inventory_file(
             "message_count": message_count,
             "roles": roles,
         }
+        add_source_area(entry, item)
         if codex_cli_version:
             entry["codex_cli_version"] = codex_cli_version
         if codex_cli_version_raw:
@@ -1287,6 +1416,7 @@ def build_capability_inventory_file(
             "first_seen_path": referenced_from[0] if referenced_from else item.rel_path,
             "referenced_from": referenced_from,
         }
+        add_source_area(entry, item)
         for key in ("source_last_modified", "source_etag"):
             if item.source_metadata and item.source_metadata.get(key):
                 entry[key] = item.source_metadata[key]
@@ -1301,6 +1431,7 @@ def build_capability_inventory_file(
     payload = {
         "schema_version": 1,
         "source_kind": "generated_capability_inventory",
+        "source_area": "capability_inventory",
         "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
         "codex_cli_version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
         "counts": capability_counts(capabilities),
@@ -1310,6 +1441,7 @@ def build_capability_inventory_file(
     payload.update(inventory_history)
     inventory_metadata = dict(codex_cli_metadata)
     inventory_metadata["source_kind"] = "generated_capability_inventory"
+    inventory_metadata["source_area"] = "capability_inventory"
     inventory_metadata.update(inventory_history)
     return ManagedFile(
         rel_path=CAPABILITIES_REL_PATH,
@@ -1586,7 +1718,8 @@ def apply_sync(
                 for key in SOURCE_METADATA_KEYS
                 if key != "source_kind" and previous_same_hash and previous_meta.get(key)
             }
-            next_entry.update(preserved_metadata or item.source_metadata)
+            next_entry.update(item.source_metadata)
+            next_entry.update(preserved_metadata)
             if item.source_metadata.get("source_kind"):
                 next_entry["source_kind"] = item.source_metadata["source_kind"]
         next_entries[item.rel_path] = next_entry
@@ -1683,6 +1816,7 @@ def main() -> int:
 
     try:
         developers_files, coverage, developers_fetch_errors = build_developers_files(session)
+        developers_files = add_source_area_metadata(developers_files)
         failures.extend(developers_fetch_errors)
         if developers_fetch_errors:
             preserve_missing_sources.add("developers")
@@ -1710,6 +1844,7 @@ def main() -> int:
 
     try:
         github_files, github_fetch_errors = build_github_files(session)
+        github_files = add_source_area_metadata(github_files)
         failures.extend(github_fetch_errors)
         if github_fetch_errors:
             preserve_missing_sources.add("github")
@@ -1726,6 +1861,7 @@ def main() -> int:
 
     try:
         codex_cli_files, codex_cli_fetch_errors, codex_cli_metadata = build_codex_cli_files()
+        codex_cli_files = add_source_area_metadata(codex_cli_files)
         failures.extend(codex_cli_fetch_errors)
         if codex_cli_fetch_errors:
             preserve_missing_sources.update(
@@ -1746,6 +1882,7 @@ def main() -> int:
         platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
             build_platform_tool_guide_files(session, developers_files + github_files + codex_cli_files)
         )
+        platform_tool_guide_files = add_source_area_metadata(platform_tool_guide_files)
         failures.extend(platform_tool_guide_fetch_errors)
         if platform_tool_guide_fetch_errors:
             preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)

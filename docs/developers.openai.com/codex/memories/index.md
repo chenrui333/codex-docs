@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_memory'
 source_url: 'https://developers.openai.com/codex/memories'
 source_last_modified: '2026-04-25T06:31:38Z'
 source_etag: 'W/"5826bfcd704af5e32efef9fcb1f2e783"'

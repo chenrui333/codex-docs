@@ -1,5 +1,6 @@
 ---
 source_type: 'developers'
+source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/customization'
 source_last_modified: '2026-04-25T06:34:03Z'
 source_etag: 'W/"88b76544a58f0652a83414205cb719e2"'
