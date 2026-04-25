@@ -347,7 +347,7 @@
       "source_url": "https://developers.openai.com/codex/security"
     },
     "developers.openai.com/codex/security/setup/index.md": {
-      "sha256": "b5703d68ec75445802fe3225702e67d2990c86ee10e45cb57bb43047a7ead133",
+      "sha256": "68f56501b33afc72646d7701c66656a8cc033c094fae116900642b9e920ae368",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -357,7 +357,7 @@
       "source_url": "https://developers.openai.com/codex/security/threat-model"
     },
     "developers.openai.com/codex/skills/index.md": {
-      "sha256": "516bd6695b4645d43d076c1eae8c4f06c11cd6a666bb4af639b1e8c075b4a684",
+      "sha256": "2ca2da240b7e482123826f4d20386eb6898be0d72f03d4a3c326d760b0d0745b",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/skills"
     },
@@ -722,7 +722,7 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-cli/scripts/README.md"
     },
     "github.openai.com/openai/codex/codex-rs/README.md": {
-      "sha256": "77b0e573f2e23864eb19f11987bc8da515c500fafab2bbe6bb68319931f3267d",
+      "sha256": "4d7a39f982817eeae04be632814d8f0862957b76dd13bb54d4ee834a5eaaec3c",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md"
     },
@@ -800,11 +800,6 @@
       "sha256": "59074df84b6199503bc29c2dd165a5530bfe4beae89baeb6ad0e29ae5bcfb846",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
-    },
-    "github.openai.com/openai/codex/docs/js_repl.md": {
-      "sha256": "4fc3e25a6f3691f10bb12fd495e7c17451850111895e4b2850d8466acf45f1df",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/js_repl.md"
     },
     "github.openai.com/openai/codex/docs/license.md": {
       "sha256": "dca51cd27a681f46b17d7867d1e8311c024ec1478a6e12b6463a71a4e2f869ba",

@@ -331,10 +331,10 @@
       "https://developers.openai.com/showcase/codex-101"
     ]
   },
-  "generated_at": "2026-04-24T00:46:02+00:00",
+  "generated_at": "2026-04-25T06:36:34+00:00",
   "github": {
     "counts": {
-      "mirrored_paths_count": 34,
+      "mirrored_paths_count": 33,
       "page_fetch_errors": 0,
       "source_errors": 0
     },
@@ -361,7 +361,6 @@
       "github.openai.com/openai/codex/docs/exit-confirmation-prompt-design.md",
       "github.openai.com/openai/codex/docs/getting-started.md",
       "github.openai.com/openai/codex/docs/install.md",
-      "github.openai.com/openai/codex/docs/js_repl.md",
       "github.openai.com/openai/codex/docs/license.md",
       "github.openai.com/openai/codex/docs/open-source-fund.md",
       "github.openai.com/openai/codex/docs/sandbox.md",
@@ -374,7 +373,7 @@
       "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md",
       "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md"
     ],
-    "mirrored_paths_count": 34,
+    "mirrored_paths_count": 33,
     "page_fetch_errors": [],
     "repo": "openai/codex",
     "source_errors": []

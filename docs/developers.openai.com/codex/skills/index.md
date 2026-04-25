@@ -8,7 +8,11 @@ Skills are the authoring format for reusable workflows. Plugins are the installa
 
 Skills are available in the Codex CLI, IDE extension, and Codex app.
 
-Skills use **progressive disclosure** to manage context efficiently: Codex starts with each skill’s metadata (`name`, `description`, file path, and optional metadata from `agents/openai.yaml`). Codex loads the full `SKILL.md` instructions only when it decides to use a skill.
+Skills use **progressive disclosure** to manage context efficiently: Codex starts with each skill’s name, description, and file path. Codex loads the full `SKILL.md` instructions only when it decides to use a skill.
+
+Codex includes an initial list of available skills in context so it can choose the right skill for a task. To avoid crowding out the rest of the prompt, this list is capped at roughly 2% of the model’s context window, or 8,000 characters when the context window is unknown. If many skills are installed, Codex shortens skill descriptions first. For very large skill sets, some skills may be omitted from the initial list, and Codex will show a warning.
+
+This budget applies only to the initial skills list. When Codex selects a skill, it still reads the full SKILL.md instructions for that skill.
 
 A skill is a directory with a `SKILL.md` file plus optional scripts and references. The `SKILL.md` file must include `name` and `description`.
 
@@ -29,7 +33,7 @@ Codex can activate skills in two ways:
 1. **Explicit invocation:** Include the skill directly in your prompt. In CLI/IDE, run `/skills` or type `$` to mention a skill.
 2. **Implicit invocation:** Codex can choose a skill when your task matches the skill `description`.
 
-Because implicit matching depends on `description`, write descriptions with clear scope and boundaries.
+Because implicit matching depends on `description`, write concise descriptions with clear scope and boundaries. Front-load the key use case and trigger words so Codex can still match the skill if descriptions are shortened.
 
 ## Create a skill
 
