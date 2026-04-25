@@ -1,9 +1,11 @@
-name: Lint Workflows
+name: Lint
 
 on:
   pull_request:
     paths:
       - ".github/workflows/**"
+      - "scripts/**"
+      - "justfile"
   workflow_dispatch:
 
 permissions:
@@ -27,3 +29,23 @@ jobs:
 
       - name: Run actionlint
         run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 .github/workflows/*.yml
+
+  ruff:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: "3.14"
+
+      - name: Install ruff
+        run: python -m pip install ruff==0.15.12
+
+      - name: Run ruff
+        run: ruff check scripts
