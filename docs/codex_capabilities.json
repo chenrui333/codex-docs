@@ -137,7 +137,7 @@
       ],
       "source_area": "tool_guide_apply_patch",
       "source_etag": "W/\"dd05d3c7ce6f524e30a889027f7bd3c1\"",
-      "source_last_modified": "2026-04-25T10:17:19Z",
+      "source_last_modified": "2026-04-25T10:21:08Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-apply-patch",
       "title": "Apply Patch"
@@ -161,7 +161,7 @@
       ],
       "source_area": "tool_guide_computer_use",
       "source_etag": "W/\"951e9b1644516acc8b2c6864be05d417\"",
-      "source_last_modified": "2026-04-25T08:14:40Z",
+      "source_last_modified": "2026-04-25T10:21:09Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
       "title": "Computer use"
@@ -185,7 +185,7 @@
       ],
       "source_area": "tool_guide_shell",
       "source_etag": "W/\"924501b7c2a599357dff05300bedf75f\"",
-      "source_last_modified": "2026-04-25T10:17:19Z",
+      "source_last_modified": "2026-04-25T10:21:10Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-shell",
       "title": "Shell"
@@ -209,7 +209,7 @@
       ],
       "source_area": "tool_guide_web_search",
       "source_etag": "W/\"3b72afe81c0c46e03b11d97cbcb37372\"",
-      "source_last_modified": "2026-04-25T07:35:10Z",
+      "source_last_modified": "2026-04-25T10:21:11Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
       "title": "Web search"
