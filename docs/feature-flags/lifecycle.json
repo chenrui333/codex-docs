@@ -288,7 +288,7 @@
     {
       "enabled": false,
       "key": "undo",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -467,6 +467,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "enable_mcp_apps": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "enable_request_compression": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -484,10 +488,6 @@
       "stage_from_source": "experimental"
     },
     "fast_mode": {
-      "default_enabled_expr": "true",
-      "stage_from_source": "stable"
-    },
-    "general_analytics": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
@@ -641,7 +641,7 @@
     },
     "undo": {
       "default_enabled_expr": "false",
-      "stage_from_source": "stable"
+      "stage_from_source": "removed"
     },
     "unified_exec": {
       "default_enabled_expr": "!cfg!(windows)",
@@ -673,8 +673,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "e18fedf63894495cd0c1f6b473308fe45d6bcde2087247225ce26daa716fd9ec",
-    "features_rs_sha256": "c1f7f75c2faa37373a31120c5809462ef3228d326e5040adc32471b6e67b82dc"
+    "client_rs_sha256": "ea06a2b867b820cfce9fab521439705582fd40163635f4efccc1d2a9e2db8815",
+    "features_rs_sha256": "7d1bacfdc676353b5de8189cc32bf88bae743e933d94de1b1bb56a7124eaa239"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
