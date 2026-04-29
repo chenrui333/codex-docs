@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md'
-source_etag: 'W/"88409cc3eb266f9b1abe743928a5adb8c1a75450794628a214c41214e6cd07e8"'
+source_etag: 'W/"e2397790c15c65dc4abb5c7f2074cc0a8f0771a5ad42bb82358b77329ee9b762"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -68,18 +68,21 @@ To test to see what happens when a command is run under the sandbox provided by 
 
 ```
 # macOS
-codex sandbox macos [--full-auto] [--log-denials] [COMMAND]...
+codex sandbox macos [--log-denials] [COMMAND]...
 
 # Linux
-codex sandbox linux [--full-auto] [COMMAND]...
+codex sandbox linux [COMMAND]...
 
 # Windows
-codex sandbox windows [--full-auto] [COMMAND]...
+codex sandbox windows [COMMAND]...
 
 # Legacy aliases
-codex debug seatbelt [--full-auto] [--log-denials] [COMMAND]...
-codex debug landlock [--full-auto] [COMMAND]...
+codex debug seatbelt [--log-denials] [COMMAND]...
+codex debug landlock [COMMAND]...
 ```
+
+To try a writable legacy sandbox mode with these commands, pass an explicit config override such
+as `-c 'sandbox_mode="workspace-write"'`.
 
 ### Selecting a sandbox policy via `--sandbox`
 
