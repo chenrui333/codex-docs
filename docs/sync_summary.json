@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-29T06:57:15+00:00",
+  "generated_at": "2026-04-29T12:40:45+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,6 +13,8 @@
   },
   "total_files": 223,
   "updated": [
-    "github.openai.com/openai/codex/codex-rs/README.md"
+    "developers.openai.com/codex/config-reference/index.md",
+    "developers.openai.com/codex/memories/index.md",
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }

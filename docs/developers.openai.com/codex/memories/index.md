@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_memory'
 source_url: 'https://developers.openai.com/codex/memories'
-source_last_modified: '2026-04-25T06:31:38Z'
-source_etag: 'W/"5826bfcd704af5e32efef9fcb1f2e783"'
+source_last_modified: '2026-04-29T12:31:07Z'
+source_etag: 'W/"3427ab6387936f2d71f70f237b941f07"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -54,6 +54,10 @@ Memories may not update right away when a thread ends. Codex waits until a
 thread has been idle long enough to avoid summarizing work that’s still in
 progress.
 
+Memory generation can also skip a background pass when your Codex rate-limit
+remaining percentage is below the configured threshold, so Codex doesn’t spend
+quota when you’re near a limit.
+
 ## Memory storage
 
 Codex stores memories under your Codex home directory. By default, that’s
@@ -94,6 +98,8 @@ Common memory-specific settings include:
   external context such as MCP tool calls, web search, or tool search out of
   memory generation. The older `memories.no_memories_if_mcp_or_web_search` key
   is still accepted as an alias.
+- `memories.min_rate_limit_remaining_percent`: controls the minimum remaining
+  Codex rate-limit percentage required before memory generation starts.
 - `memories.extract_model`: overrides the model used for per-thread memory
   extraction.
 - `memories.consolidation_model`: overrides the model used for global memory
