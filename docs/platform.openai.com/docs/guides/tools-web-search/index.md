@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-04-25T07:35:10Z'
-source_etag: 'W/"3b72afe81c0c46e03b11d97cbcb37372"'
+source_last_modified: '2026-04-29T17:54:13Z'
+source_etag: 'W/"90cfe7e498dd5091fa20702d2f36ac94"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -17,10 +17,20 @@ Web search allows models to access up-to-date information from the internet and 
 There are three main types of web search available with OpenAI models:
 
 1. Non‑reasoning web search: The non-reasoning model sends the user’s query to the web search tool, which returns the response based on top results. There’s no internal planning and the model simply passes along the search tool’s responses. This method is fast and ideal for quick lookups.
-2. Agentic search with reasoning models is an approach where the model actively manages the search process. It can perform web searches as part of its chain of thought, analyze results, and decide whether to keep searching. This flexibility makes agentic search well suited to complex workflows, but it also means searches take longer than quick lookups. For example, you can adjust GPT-5’s reasoning level to change both the depth and latency of the search.
-3. Deep research is a specialized, agent-driven method for in-depth, extended investigations by reasoning models. The model conducts web searches as part of its chain of thought, often tapping into hundreds of sources. Deep research can run for several minutes and is best used with background mode. These tasks typically use models like `o3-deep-research`, `o4-mini-deep-research`, or `gpt-5` with reasoning level set to `high`.
+2. Agentic search with reasoning models is an approach where the model actively manages the search process. It can perform web searches as part of its chain of thought, analyze results, and decide whether to keep searching. This flexibility makes agentic search well suited to complex workflows, but it also means searches take longer than quick lookups. For example, you can adjust reasoning levels on models like `gpt-5.5` to change both the depth and latency of the search.
+3. Deep research is a specialized, agent-driven method for in-depth, extended investigations by reasoning models. The model conducts web searches as part of its chain of thought, often tapping into hundreds of sources. Deep research can run for several minutes and is best used with background mode. Use `gpt-5.5` with reasoning set to `high` or `xhigh`.
+
+## Choose an integration
+
+| Use case                                      | Recommended path                              | Notes                                                                                 |
+| --------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| New web search integration                    | Responses API with `web_search` and `gpt-5.5` | Supports hosted web search controls such as filters, sources, and live-access control |
+| Existing Chat Completions search integration  | Chat Completions with `gpt-5-search-api`      | Use this only when you need to preserve a Chat Completions integration                |
+| Multi-step research or long-running reporting | `gpt-5.5` with `high` or `xhigh` reasoning    | Use background mode for reports that can take several minutes                         |
 
 Using the [Responses API](https://developers.openai.com/api/docs/api-reference/responses), you can enable web search by configuring it in the `tools` array in an API request to generate content. Like any other tool, the model can choose to search the web or not based on the content of the input prompt.
+
+For new Responses API integrations, use `{ "type": "web_search" }`. The earlier `web_search_preview` tool remains available for legacy integrations, but it does not support newer controls such as `filters` and `external_web_access`.
 
 ## Output and citations
 
@@ -45,7 +55,11 @@ When displaying web results or information contained in web results to end
   {
     "type": "web_search_call",
     "id": "ws_67c9fa0502748190b7dd390736892e100be649c1a5ff9609",
-    "status": "completed"
+    "status": "completed",
+    "action": {
+      "type": "search",
+      "query": "latest news about AI"
+    }
   },
   {
     "id": "msg_67c9fa077e288190af08fdffda2e34f20be649c1a5ff9609",
@@ -70,6 +84,18 @@ When displaying web results or information contained in web results to end
   }
 ]
 ```
+
+## Migrating from legacy web search
+
+| If you use                                              | Recommended path                                                                                        | Notes                                                                                      |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `web_search_preview` in Responses                       | Migrate to `web_search`                                                                                 | `web_search` supports newer controls such as `filters` and `external_web_access`           |
+| `gpt-4o-search-preview` or `gpt-4o-mini-search-preview` | Migrate to Responses `web_search`, or use `gpt-5-search-api` if you must stay on Chat Completions       | The preview search models are deprecated and shut down on 2026-07-23                       |
+| Chat Completions search integrations                    | Use `gpt-5-search-api`, or migrate to Responses `web_search` for more tool controls and optional search | Chat Completions search models always search before responding; Responses search is a tool |
+
+## Search context size
+
+`search_context_size` controls how much context from web search results is made available to the model before it generates a response. Use `low` for simple lookups, `medium` for a balanced default, and `high` when the answer may require more detail from search results. This setting does not set an exact token count or guarantee a specific number of sources or citations.
 
 ## Domain filtering
 
@@ -99,16 +125,37 @@ Control whether the web search tool fetches live content or uses only cached/ind
 - Default is `true` (live access) if you do not set it.
 - Preview variants (`web_search_preview`) ignore this parameter and behave as if `external_web_access` is `true`.
 
-## API compatibility
-
-Web search is available in the Responses API as the generally available version of the tool, `web_search`, as well as the earlier tool version, `web_search_preview`.
-To use web search in the Chat Completions API, use the specialized web search models `gpt-5-search-api`, `gpt-4o-search-preview` and `gpt-4o-mini-search-preview`.
-
 ## Limitations
 
-- Web search is currently not supported in [`gpt-5`](https://developers.openai.com/api/docs/models/gpt-5) with `minimal` reasoning, and [`gpt-4.1-nano`](https://developers.openai.com/api/docs/models/gpt-4.1-nano).
-- When used as a tool in the [Responses API](https://developers.openai.com/api/docs/api-reference/responses), web search has the same tiered rate limits as the models above.
-- Web search is limited to a context window size of 128000 (even with [`gpt-4.1`](https://developers.openai.com/api/docs/models/gpt-4.1) and [`gpt-4.1-mini`](https://developers.openai.com/api/docs/models/gpt-4.1-mini) models).
+#### Chat Completions API
+
+The Chat Completions API supports only specialized search models for web search. These models do not support Responses API `web_search` features such as domain filters, complete source lists, live-access control.
+
+| Model                        | Context window | Limitation                                                                                                                                   |
+| ---------------------------- | -------------: | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `gpt-5-search-api`           |           200k | Uses the Chat Completions search model path                                                                                                  |
+| `gpt-4o-search-preview`      |           128k | Uses the Chat Completions search model path; [deprecated, shutdown 2026-07-23](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
+| `gpt-4o-mini-search-preview` |           128k | Uses the Chat Completions search model path; [deprecated, shutdown 2026-07-23](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
+
+#### Responses API
+
+Use the hosted `web_search` tool. The Responses API still accepts `web_search_preview` for legacy integrations, but use `web_search` for new integrations.
+
+For a larger model context window, use `gpt-5.5`. The web search context window remains 128k.
+
+| Model          | Model context window | Limitation                                                                                                                         |
+| -------------- | -------------------: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `gpt-4.1`      |                   1M | Search context is limited to 128k                                                                                                  |
+| `gpt-4.1-mini` |                   1M | Search context is limited to 128k                                                                                                  |
+| `o4-mini`      |                 200k | Search context is limited to 128k; [deprecated, shutdown 2026-10-23](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
+
+For Responses API web search, the search context window is limited to 128k, even when the model context window is larger.
+
+- Web search does not support [`gpt-5`](https://developers.openai.com/api/docs/models/gpt-5) with `minimal` reasoning.
+- [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4) with reasoning effort set to `none` may produce lower-quality results.
+- Responses API web search uses the underlying model's tiered rate limits.
+- `web_search_preview` does not support `filters` and ignores `external_web_access`.
+- With `tool_choice: "auto"`, search is optional. Use `tool_choice: "required"` or a specific web search tool choice when search must run.
 
 ## Usage notes
 
