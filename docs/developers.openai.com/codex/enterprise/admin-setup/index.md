@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
-source_last_modified: '2026-04-25T06:44:15Z'
-source_etag: 'W/"7f63eeee8f58e59574d08dabacc49106"'
+source_last_modified: '2026-04-29T00:02:09Z'
+source_etag: 'W/"e8f0cc569889a0b39cfea3b32d4bc19d"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -151,7 +151,7 @@ This separation makes it easier to roll out Codex while keeping analytics, envir
 
 Codex Admins can deploy admin-enforced `requirements.toml` policies from the Codex [Policies page](https://chatgpt.com/codex/settings/policies).
 
-Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Disable Codex feature surfaces](/codex/enterprise/managed-configuration#disable-codex-feature-surfaces).
+Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Pin feature flags](/codex/enterprise/managed-configuration#pin-feature-flags).
 
 ![Codex policies and configurations page](/images/codex/enterprise/policies_and_configurations_page.png)
 
@@ -176,6 +176,15 @@ Example: limit web search, sandbox mode, and approvals for a standard local roll
 allowed_web_search_modes = ["disabled", "cached"]
 allowed_sandbox_modes = ["workspace-write"]
 allowed_approval_policies = ["on-request"]
+```
+
+Example: disable Browser Use, the in-app browser, and Computer Use:
+
+```
+[features]
+browser_use = false
+in_app_browser = false
+computer_use = false
 ```
 
 Example: add a restrictive command rule when you want admins to block or gate specific commands:

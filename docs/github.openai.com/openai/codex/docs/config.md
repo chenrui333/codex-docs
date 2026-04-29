@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/config.md'
-source_etag: 'W/"c1851f6e7e87147303f34bd8ed7ab033a9c4186e64a7be6b768d522bfe349d93"'
+source_etag: 'W/"f958dd37e0e816cdcb2b2b2e995b9a0ea9dfb84625366ae2bf780708ab850566"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -56,6 +56,16 @@ approval_mode = "prompt"
 Use `$` in the composer to insert a ChatGPT connector; the popover lists accessible
 apps. The `/apps` command lists available and installed apps. Connected apps appear first
 and are labeled as connected; others are marked as can be installed.
+
+Codex stores "never show again" choices for tool suggestions in `config.toml`:
+
+```toml
+[tool_suggest]
+disabled_tools = [
+  { type = "plugin", id = "slack@openai-curated" },
+  { type = "connector", id = "connector_google_calendar" },
+]
+```
 
 ## Notify
 

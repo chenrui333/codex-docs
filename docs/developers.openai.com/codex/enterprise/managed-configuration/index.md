@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-04-25T06:44:16Z'
-source_etag: 'W/"af54850a354e02af645001db8e750739"'
+source_last_modified: '2026-04-28T23:56:55Z'
+source_etag: 'W/"c5f2bbe3a23cd2f25ae4c5baa4efaf51"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -118,28 +118,23 @@ allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
 `allowed_web_search_modes = []` allows only `"disabled"`.
 For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
 
-You can also pin [feature flags](/codex/config-basic/#feature-flags):
+### Pin feature flags
+
+You can also pin [feature flags](/codex/config-basic/#feature-flags) for users
+receiving a managed `requirements.toml`:
 
 ```
 [features]
 personality = true
 unified_exec = false
-```
 
-Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
-
-### Disable Codex feature surfaces
-
-Admins can use `[feature_requirements]` to disable specific Codex feature
-surfaces for users receiving a managed `requirements.toml`. You can also set
-the same keys in the existing `[features]` table.
-
-```
-[feature_requirements]
+# Disable specific Codex feature surfaces when needed.
 browser_use = false
 in_app_browser = false
 computer_use = false
 ```
+
+Use the canonical feature keys from `config.toml`’s `[features]` table. Codex normalizes the resulting feature set to meet these pins and rejects conflicting writes to `config.toml` or profile-scoped feature settings.
 
 - `in_app_browser = false` disables the in-app browser pane.
 - `browser_use = false` disables Browser Use and Browser Agent availability.

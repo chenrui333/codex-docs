@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-04-25T06:28:27Z'
-source_etag: 'W/"ffb92c54ab25499934ee4cce8f8b3a8b"'
+source_last_modified: '2026-04-28T23:55:41Z'
+source_etag: 'W/"4e33fd3f43cb0403b2750384830e429b"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -2976,12 +2976,11 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
-| `feature_requirements` | `table` | Alias for `features` in `requirements.toml`. Use it to pin feature values by canonical feature key. |
-| `feature_requirements.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. You can also set `features.browser_use`. |
-| `feature_requirements.computer_use` | `boolean` | Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. You can also set `features.computer_use`. |
-| `feature_requirements.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. You can also set `features.in_app_browser`. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
 | `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
+| `features.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. |
+| `features.computer_use` | `boolean` | Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. |
+| `features.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. |
 | `guardian_policy_config` | `string` | Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored. |
 | `hooks` | `table` | Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`. |
 | `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`. |
@@ -3054,54 +3053,6 @@ Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is al
 
 Key
 
-`feature_requirements`
-
-Type / Values
-
-`table`
-
-Details
-
-Alias for `features` in `requirements.toml`. Use it to pin feature values by canonical feature key.
-
-Key
-
-`feature_requirements.browser_use`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. You can also set `features.browser_use`.
-
-Key
-
-`feature_requirements.computer_use`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. You can also set `features.computer_use`.
-
-Key
-
-`feature_requirements.in_app_browser`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Set to `false` in `requirements.toml` to disable the in-app browser pane. You can also set `features.in_app_browser`.
-
-Key
-
 `features`
 
 Type / Values
@@ -3123,6 +3074,42 @@ Type / Values
 Details
 
 Require a specific canonical feature key to stay enabled or disabled.
+
+Key
+
+`features.browser_use`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability.
+
+Key
+
+`features.computer_use`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.
+
+Key
+
+`features.in_app_browser`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable the in-app browser pane.
 
 Key
 
