@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md'
-source_etag: 'W/"8cc8677fafad554c5c9925bd000618006a4d7afa808f0bc1d174884e2ea37772"'
+source_etag: 'W/"210c31dbf5f5b0b809de5027529492f0be0e0fe04478a0ef3eae4193b3555aa1"'
 codex_cli_versions: ["0.125.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0"]
 ---
@@ -97,6 +97,7 @@ Fetch the built-in collaboration mode presets with `collaborationMode/list`. Thi
 
 - `data` - ordered list of collaboration mode masks (partial settings to apply on top of the base mode)
   - For tri-state fields like `reasoning_effort` and `developer_instructions`, omit the field to keep the current value, set it to `null` to clear it, or set a concrete value to update it.
+  - Built-in presets do not set `model`. The Plan preset sets `reasoning_effort` to medium; clients keep or override model separately.
 
 When sending `turn/start` with `collaborationMode`, `settings.developer_instructions: null` means "use built-in instructions for the selected mode".
 

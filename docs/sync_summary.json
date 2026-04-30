@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-04-29T18:36:56+00:00",
+  "generated_at": "2026-04-30T00:50:44+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,8 +13,9 @@
   },
   "total_files": 223,
   "updated": [
-    "codex_capabilities.json",
+    "developers.openai.com/codex/changelog/index.md",
     "developers.openai.com/codex/security/setup/index.md",
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "github.openai.com/openai/codex/AGENTS.md",
+    "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md"
   ]
 }
