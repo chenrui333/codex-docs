@@ -4,8 +4,8 @@ source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/learn/best-practices'
 source_last_modified: '2026-04-25T06:30:43Z'
 source_etag: 'W/"b560c5751470cec7dbe1cffe297df731"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Best practices – Codex | OpenAI Developers

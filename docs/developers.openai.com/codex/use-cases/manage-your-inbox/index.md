@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/manage-your-inbox'
 source_last_modified: '2026-04-25T06:54:35Z'
 source_etag: 'W/"4c10a95c6556f10368b10198d64fc978"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Manage your inbox | Codex use cases

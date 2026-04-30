@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/sandboxing'
-source_last_modified: '2026-04-25T06:33:54Z'
-source_etag: 'W/"ca199d9918dd92221ed5546cfd383104"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:54:12Z'
+source_etag: 'W/"9a936929ec3e89ebef719c9db2acb8cd"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Sandbox – Codex | OpenAI Developers
@@ -157,9 +157,10 @@ The common approval policies are:
 - `never`: Codex doesn’t stop for approval prompts.
 
 Full access means using `sandbox_mode = "danger-full-access"` together with
-`approval_policy = "never"`. By contrast, `--full-auto` is the lower-risk local
-automation preset: `sandbox_mode = "workspace-write"` and
-`approval_policy = "on-request"`.
+`approval_policy = "never"`. By contrast, the lower-risk local automation
+preset is `sandbox_mode = "workspace-write"` together with
+`approval_policy = "on-request"`, or the matching CLI flags
+`--sandbox workspace-write --ask-for-approval on-request`.
 
 If you need Codex to work across more than one directory, writable roots let
 you extend the places it can modify without removing the sandbox entirely. If

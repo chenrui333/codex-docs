@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/tui-request-user-input.md'
 source_etag: 'W/"ce28d03c53c67a75daaba8bbc3171b7aed9eecf09400b44586b642974669f495"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Request user input overlay (TUI)

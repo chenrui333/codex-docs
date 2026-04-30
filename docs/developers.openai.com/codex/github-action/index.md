@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_integration'
 source_url: 'https://developers.openai.com/codex/github-action'
-source_last_modified: '2026-04-25T06:30:33Z'
-source_etag: 'W/"f0bea2dc7b6aa5862d5e9b67f2d48e2a"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:49:41Z'
+source_etag: 'W/"7fbed672c56513200bbb794148e87255"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # GitHub Action – Codex | OpenAI Developers
@@ -96,7 +96,7 @@ Replace `.github/codex/prompts/review.md` with your own prompt file or use the `
 Fine-tune how Codex runs by setting the action inputs that map to `codex exec` options:
 
 - `prompt` or `prompt-file` (choose one): Inline instructions or a repository path to Markdown or text with your task. Consider storing prompts in `.github/codex/prompts/`.
-- `codex-args`: Extra CLI flags. Provide a JSON array (for example `["--full-auto"]`) or a shell string (`--full-auto --sandbox danger-full-access`) to allow edits, streaming, or MCP configuration.
+- `codex-args`: Extra CLI flags. Provide a JSON array (for example `["--json"]`) or a shell string (`--sandbox workspace-write --json`) to allow edits, streaming, or MCP configuration.
 - `model` and `effort`: Pick the Codex agent configuration you want; leave empty for defaults.
 - `sandbox`: Match the sandbox mode (`workspace-write`, `read-only`, `danger-full-access`) to the permissions Codex needs during the run.
 - `output-file`: Save the final Codex message to disk so later steps can upload or diff it.

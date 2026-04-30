@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-04-25T06:28:49Z'
-source_etag: 'W/"7ca10d7935c9d4ef1923548c4c3bf5fe"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:50:09Z'
+source_etag: 'W/"1eeeeb5de296c3046894a936003cbee3"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Sample Configuration – Codex | OpenAI Developers
@@ -142,8 +142,10 @@ allow_login_shell = true
 # - workspace-write
 # - danger-full-access (no sandbox; extremely risky)
 sandbox_mode = "read-only"
-# Named permissions profile to apply by default. Required before using [permissions.<name>].
-# default_permissions = "workspace"
+# Named permissions profile to apply by default. Built-ins:
+# :read-only | :workspace | :danger-no-sandbox
+# Use a custom name such as "workspace" only when you also define [permissions.workspace].
+# default_permissions = ":workspace"
 
 # Example filesystem profile. Use `"none"` to deny reads for exact paths or
 # glob patterns. On platforms that need pre-expanded glob matches, set
@@ -370,6 +372,15 @@ show_tooltips = true
 # You can also add custom .tmTheme files under $CODEX_HOME/themes.
 # theme = "catppuccin-mocha"
 
+# Custom key bindings. Context-specific bindings override [tui.keymap.global].
+# Use [] to unbind an action.
+# [tui.keymap.global]
+# open_transcript = "ctrl-t"
+# open_external_editor = []
+#
+# [tui.keymap.composer]
+# submit = ["enter", "ctrl-m"]
+
 # Internal tooltip state keyed by model slug. Usually managed by Codex.
 # [tui.model_availability_nux]
 # "gpt-5.4" = 1
@@ -480,9 +491,17 @@ enabled = true
 # - openai
 # - ollama
 # - lmstudio
+# - amazon-bedrock
 # These IDs are reserved. Use a different ID for custom providers.
 
 [model_providers]
+
+# --- Example: built-in Amazon Bedrock provider options ---
+# model_provider = "amazon-bedrock"
+# model = "<bedrock-model-id>"
+# [model_providers.amazon-bedrock.aws]
+# profile = "default"
+# region = "eu-central-1"
 
 # --- Example: OpenAI data residency with explicit base URL or headers ---
 # [model_providers.openaidr]
@@ -553,6 +572,10 @@ enabled = true
 # discoverables = [
 #   { type = "connector", id = "gmail" },
 #   { type = "plugin", id = "figma@openai-curated" },
+# ]
+# disabled_tools = [
+#   { type = "plugin", id = "slack@openai-curated" },
+#   { type = "connector", id = "connector_googlecalendar" },
 # ]
 
 ################################################################################

@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
 source_last_modified: '2026-04-25T06:50:28Z'
 source_etag: 'W/"469f4db6dfe1e3069dbc90edde8bfc2f"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Complete tasks from messages | Codex use cases

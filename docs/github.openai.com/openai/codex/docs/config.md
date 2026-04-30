@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/config.md'
 source_etag: 'W/"f958dd37e0e816cdcb2b2b2e995b9a0ea9dfb84625366ae2bf780708ab850566"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Configuration

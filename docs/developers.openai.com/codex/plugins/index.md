@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins'
-source_last_modified: '2026-04-25T06:31:49Z'
-source_etag: 'W/"f18e866e64f0ec7e6efcb7cb80022451"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:49:49Z'
+source_etag: 'W/"945a58d0db0c966bad2a7eece5474067"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Plugins – Codex | OpenAI Developers
@@ -56,8 +56,9 @@ codex
 ![Plugins list in Codex CLI](/images/codex/plugins/cli_light.png)
 
 The CLI plugin browser groups plugins by marketplace. Use the marketplace tabs
-to switch sources, open a plugin to inspect details, and press `Space`
-on an installed plugin to toggle its enabled state.
+to switch sources, open a plugin to inspect details, install or uninstall
+marketplace entries, and press `Space` on an installed plugin to toggle
+its enabled state.
 
 ### Install and use a plugin
 

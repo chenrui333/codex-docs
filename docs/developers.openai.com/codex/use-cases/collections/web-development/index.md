@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/web-development'
-source_last_modified: '2026-04-25T06:37:05Z'
-source_etag: 'W/"4293662b7d3d0ba0b48fe4a0b4c39d07"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:55:55Z'
+source_etag: 'W/"7a5d9fe1f764c8b19813f530390dc99f"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Web development – Codex | OpenAI Developers
@@ -75,9 +75,9 @@ Use Codex in GitHub to make sure changes are safe to merge so you can have a fas
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
-### Review pull requests faster
+### Codex code review for GitHub pull requests
 
-Use Codex in GitHub to automatically surface regressions, missing tests, and documentation...
+Use Codex code review in GitHub to automatically surface regressions, missing tests, and...
 
 Integrations  Workflow](/codex/use-cases/github-code-reviews)
 

@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_plugin_creator'
 source_url: 'codex-cli://skills/.system/plugin-creator/references/plugin-json-spec.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Plugin JSON sample spec

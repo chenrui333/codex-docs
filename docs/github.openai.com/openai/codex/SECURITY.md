@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/SECURITY.md'
 source_etag: 'W/"85cdf55682402eb9dba63777e1e7c541827d10bc2edd355da5d28a4f9af6bb1d"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Security Policy

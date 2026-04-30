@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md'
 source_etag: 'W/"20fd9af5df8a3d42b3ff6dc93595b2dc8590d54fc17ae1f7e9cd3f888e94913f"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # TUI Alternate Screen and Terminal Multiplexers

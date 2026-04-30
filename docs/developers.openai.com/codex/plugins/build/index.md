@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins/build'
-source_last_modified: '2026-04-25T06:48:28Z'
-source_etag: 'W/"81fd8f76ceaed885805fc6396a4e7100"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:50:16Z'
+source_etag: 'W/"d3f17684652e99232056ddcf0096ac2d"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Build plugins – Codex | OpenAI Developers
@@ -316,8 +316,8 @@ on or off state in `~/.codex/config.toml`.
 
 Every plugin has a manifest at `.codex-plugin/plugin.json`. It can also include
 a `skills/` directory, an `.app.json` file that points at one or more apps or
-connectors, an `.mcp.json` file that configures MCP servers, and assets used to
-present the plugin across supported surfaces.
+connectors, an `.mcp.json` file that configures MCP servers, lifecycle config,
+and assets used to present the plugin across supported surfaces.
 
 - my-plugin/
 
@@ -331,10 +331,13 @@ present the plugin across supported surfaces.
       - SKILL.md    Optional: skill instructions
   - .app.json    Optional: app or connector mappings
   - .mcp.json    Optional: MCP server configuration
+  - hooks/
+
+    - hooks.json    Optional: lifecycle configuration
   - assets/    Optional: icons, logos, screenshots
 
 Only `plugin.json` belongs in `.codex-plugin/`. Keep `skills/`, `assets/`,
-`.mcp.json`, and `.app.json` at the plugin root.
+`.mcp.json`, `.app.json`, and lifecycle config files at the plugin root.
 
 Published plugins typically use a richer manifest than the minimal example that
 appears in quick-start scaffolds. The manifest has three jobs:
@@ -363,6 +366,7 @@ Here’s a complete manifest example:
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "apps": "./.app.json",
+  "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "My Plugin",
     "shortDescription": "Reusable skills and apps",
@@ -396,8 +400,8 @@ components:
 - `name`, `version`, and `description` identify the plugin.
 - `author`, `homepage`, `repository`, `license`, and `keywords` provide
   publisher and discovery metadata.
-- `skills`, `mcpServers`, and `apps` point to bundled components relative to
-  the plugin root.
+- `skills`, `mcpServers`, `apps`, and `hooks` point to bundled components
+  relative to the plugin root.
 - `interface` controls how install surfaces present the plugin.
 
 Use the `interface` object for install-surface metadata:
@@ -416,8 +420,44 @@ Use the `interface` object for install-surface metadata:
 - Keep manifest paths relative to the plugin root and start them with `./`.
 - Store visual assets such as `composerIcon`, `logo`, and `screenshots` under
   `./assets/` when possible.
-- Use `skills` for bundled skill folders, `apps` for `.app.json`, and
-  `mcpServers` for `.mcp.json`.
+- Use `skills` for bundled skill folders, `apps` for `.app.json`,
+  `mcpServers` for `.mcp.json`, and `hooks` for lifecycle config.
+- If you omit `hooks` and the plugin includes `./hooks/hooks.json`, Codex loads
+  that default lifecycle config automatically.
+
+### Bundled MCP servers and lifecycle config
+
+`mcpServers` can point to an `.mcp.json` file that contains either a direct
+server map or a wrapped `mcp_servers` object.
+
+Direct server map:
+
+```
+{
+  "docs": {
+    "command": "docs-mcp",
+    "args": ["--stdio"]
+  }
+}
+```
+
+Wrapped server map:
+
+```
+{
+  "mcp_servers": {
+    "docs": {
+      "command": "docs-mcp",
+      "args": ["--stdio"]
+    }
+  }
+}
+```
+
+`hooks` can point to one lifecycle JSON file, an array of lifecycle JSON files,
+an inline lifecycle object, or an array of inline lifecycle objects. File paths
+must follow the same `./`-prefixed plugin-root path rules as other manifest
+paths. If you omit the manifest field, Codex still checks `./hooks/hooks.json`.
 
 ### Publish official public plugins
 

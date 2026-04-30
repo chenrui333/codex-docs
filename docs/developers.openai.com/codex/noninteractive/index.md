@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/noninteractive'
-source_last_modified: '2026-04-25T06:40:15Z'
-source_etag: 'W/"3b64ef8dd3e759e8251ce882a912922e"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:49:17Z'
+source_etag: 'W/"956f066a981279aea994c5a92e80fb61"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Non-interactive mode – Codex | OpenAI Developers
@@ -62,10 +62,14 @@ For more advanced stdin piping patterns, see [Advanced stdin piping](#advanced-s
 
 By default, `codex exec` runs in a read-only sandbox. In automation, set the least permissions needed for the workflow:
 
-- Allow edits: `codex exec --full-auto "<task>"`
+- Allow edits: `codex exec --sandbox workspace-write "<task>"`
 - Allow broader access: `codex exec --sandbox danger-full-access "<task>"`
 
 Use `danger-full-access` only in a controlled environment (for example, an isolated CI runner or container).
+
+Codex keeps `codex exec --full-auto` as a deprecated compatibility flag and prints a warning. Prefer the explicit `--sandbox workspace-write` flag in new scripts.
+
+Use `--ignore-user-config` when you need a run that doesn’t load `$CODEX_HOME/config.toml`, and `--ignore-rules` when you need to skip user and project execpolicy `.rules` files for a controlled automation environment.
 
 If you configure an enabled MCP server with `required = true` and it fails to initialize, `codex exec` exits with an error instead of continuing without that server.
 
@@ -88,7 +92,7 @@ Sample JSON stream (each line is a JSON object):
 {"type":"turn.started"}
 {"type":"item.started","item":{"id":"item_1","type":"command_execution","command":"bash -lc ls","status":"in_progress"}}
 {"type":"item.completed","item":{"id":"item_3","type":"agent_message","text":"Repo contains docs, sdk, and examples directories."}}
-{"type":"turn.completed","usage":{"input_tokens":24763,"cached_input_tokens":24448,"output_tokens":122}}
+{"type":"turn.completed","usage":{"input_tokens":24763,"cached_input_tokens":24448,"output_tokens":122,"reasoning_output_tokens":0}}
 ```
 
 If you only need the final message, write it to a file with `-o <path>`/`--output-last-message <path>`. This writes the final message to the file and still prints it to `stdout` (see [`codex exec`](/codex/cli/reference#codex-exec) for details).
@@ -242,7 +246,7 @@ jobs:
 
       - name: Run Codex
         run: |
-          codex exec --full-auto --sandbox workspace-write \
+          codex exec --sandbox workspace-write \
             "Read the repository, run the test suite, identify the minimal change needed to make all tests pass, implement only that change, and stop. Do not refactor unrelated files."
 
       - name: Verify tests

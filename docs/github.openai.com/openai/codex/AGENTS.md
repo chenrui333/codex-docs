@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
 source_etag: 'W/"fc71e0d2c5fe7a66ef198398047df5bd5b2cb589375a56e9a4248c8605dbd317"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Rust/codex-rs

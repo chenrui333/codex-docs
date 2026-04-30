@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/refactor-your-codebase'
-source_last_modified: '2026-04-25T06:52:08Z'
-source_etag: 'W/"a8cb0e6ed1ef577339f208f723bdaf11"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:51:00Z'
+source_etag: 'W/"0317812e83a13c67f88158ed4e4455df"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Refactor your codebase | Codex use cases
@@ -127,7 +127,7 @@ They’re useful when the refactor spans more than one module or takes more than
 
 ## Use skills for repeatable patterns
 
-[Skills](/codex/guides/skills) are useful when the same cleanup rules repeat across repos, services, or teams. Use framework-specific skills when available, add security and CI skills around risky cleanups, and create a team skill when you have a proven checklist for unused-code removal, module extraction, or legacy-pattern modernization.
+[Skills](/codex/skills) are useful when the same cleanup rules repeat across repos, services, or teams. Use framework-specific skills when available, add security and CI skills around risky cleanups, and create a team skill when you have a proven checklist for unused-code removal, module extraction, or legacy-pattern modernization.
 If you end up doing the same modernization pass across more than one codebase, Codex can help turn the first successful pass into a reusable skill.
 
 ## Related use cases

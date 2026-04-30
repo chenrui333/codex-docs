@@ -4,8 +4,8 @@ source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/quickstart'
 source_last_modified: '2026-04-25T06:30:34Z'
 source_etag: 'W/"daff279219f18a6157f6ac5fc5aa459d"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Quickstart – Codex | OpenAI Developers

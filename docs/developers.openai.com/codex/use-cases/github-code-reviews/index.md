@@ -2,13 +2,13 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
-source_last_modified: '2026-04-25T06:51:41Z'
-source_etag: 'W/"34a4a58b512c3186fd70dbd614e65228"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:49:13Z'
+source_etag: 'W/"d9cf2f284ef85f9244cf0660d3428222"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
-# Review pull requests faster | Codex use cases
+# Codex code review for GitHub pull requests | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/github-code-reviews
 
@@ -20,7 +20,7 @@ Codex use cases
 
 Codex use case
 
-# Review pull requests faster
+# Codex code review for GitHub pull requests
 
 Catch regressions and potential issues before human review.
 
@@ -28,7 +28,7 @@ Difficulty **Easy**
 
 Time horizon **5s**
 
-Use Codex in GitHub to automatically surface regressions, missing tests, and documentation issues directly on a pull request.
+Use Codex code review in GitHub to automatically surface regressions, missing tests, and documentation issues directly on a pull request.
 
 ## Best for
 
@@ -41,7 +41,7 @@ Use Codex in GitHub to automatically surface regressions, missing tests, and doc
 
 Copy page   [Export as PDF](/codex/use-cases/github-code-reviews/?export=pdf)
 
-Use Codex in GitHub to automatically surface regressions, missing tests, and documentation issues directly on a pull request.
+Use Codex code review in GitHub to automatically surface regressions, missing tests, and documentation issues directly on a pull request.
 
 Easy
 
@@ -49,7 +49,7 @@ Easy
 
 Related links
 
-[Use Codex in GitHub](/codex/integrations/github)  [Custom instructions with AGENTS.md](/codex/guides/agents-md)
+[Codex code review in GitHub](/codex/integrations/github)  [Custom instructions with AGENTS.md](/codex/guides/agents-md)
 
 ## Best for
 
@@ -74,7 +74,8 @@ Related links
 
 ## How to use
 
-Start by adding Codex code review to your GitHub organization or repository. See [Use Codex in GitHub](/codex/integrations/github) for more details.
+Start by adding Codex code review to your GitHub organization or repository.
+See [Codex code review in GitHub](/codex/integrations/github) for more details.
 
 You can set up Codex to automatically review every pull request, or you can request a review with `@codex review` in a pull request comment.
 
@@ -82,7 +83,7 @@ If Codex flags a regression or potential issue, you can ask it to fix it by comm
 
 This will start a new cloud task that will fix the issue and update the pull request.
 
-## Define additional guidance
+## Define review guidance
 
 To customize what Codex reviews, add or update a top-level `AGENTS.md` with a section like this:
 

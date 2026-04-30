@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/analyze-data-export'
-source_last_modified: '2026-04-25T06:57:07Z'
-source_etag: 'W/"989bd71d535b5f3c14d7e0ff20b2d717"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:59:11Z'
+source_etag: 'W/"7514da513a53b6efb789b36e6044ef5f"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Query tabular data | Codex use cases
@@ -58,7 +58,7 @@ Related links
 
 ## Skills & Plugins
 
-- [Spreadsheet](https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet)
+- Spreadsheet
 
   Inspect tabular data, run calculations, and create charts or tables.
 - [Google Sheets](/codex/plugins)
@@ -67,7 +67,7 @@ Related links
 
 | Skill | Why use it |
 | --- | --- |
-| [Spreadsheet](https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet) | Inspect tabular data, run calculations, and create charts or tables. |
+| Spreadsheet | Inspect tabular data, run calculations, and create charts or tables. |
 | [Google Sheets](/codex/plugins) | Analyze approved Google Sheets when the data lives in a shared spreadsheet. |
 
 ## Starter prompt

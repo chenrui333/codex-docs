@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-basic'
-source_last_modified: '2026-04-25T06:28:20Z'
-source_etag: 'W/"6f83504d680173cb3033186905c70ccf"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:48:55Z'
+source_etag: 'W/"4a969b692419b946812cf887b2bd2124"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Config basics – Codex | OpenAI Developers
@@ -81,6 +81,16 @@ sandbox_mode = "workspace-write"
 
 For mode-by-mode behavior (including protected `.git`/`.codex` paths and network defaults), see [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
 
+#### Permission profiles
+
+Use a named permission profile when you want one reusable filesystem or network policy across sessions:
+
+```
+default_permissions = ":workspace"
+```
+
+Built-in profiles include `:read-only`, `:workspace`, and `:danger-no-sandbox`. For custom filesystem or network rules, define `[permissions.<name>]` tables and set `default_permissions` to that name.
+
 #### Windows sandbox mode
 
 When running Codex natively on Windows, set the native sandbox mode to `elevated` in the `windows` table. Use `unelevated` only if you don’t have administrator permissions or if elevated setup fails.
@@ -122,6 +132,18 @@ personality = "friendly" # or "pragmatic" or "none"
 ```
 
 You can override this later in an active session with `/personality` or per thread/turn when using the app-server APIs.
+
+#### TUI keymap
+
+Customize terminal shortcuts under `tui.keymap`. Context-specific bindings override `tui.keymap.global`, and an empty list unbinds the action.
+
+```
+[tui.keymap.global]
+open_transcript = "ctrl-t"
+
+[tui.keymap.composer]
+submit = ["enter", "ctrl-m"]
+```
 
 #### Command environment
 

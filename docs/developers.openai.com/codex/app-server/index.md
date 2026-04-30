@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app-server'
-source_last_modified: '2026-04-25T06:40:07Z'
-source_etag: 'W/"9027480c039d4198f6b41728d32bad5e"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:49:31Z'
+source_etag: 'W/"28a595adb9a5ab4cad23a86f64040c61"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # App Server – Codex | OpenAI Developers
@@ -234,6 +234,9 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/turns/list` - page through a stored thread’s turn history without resuming it.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
 - `thread/name/set` - set or update a thread’s user-facing name for a loaded thread or a persisted rollout; emits `thread/name/updated`.
+- `thread/goal/set` - set the goal for a loaded thread (experimental; requires `capabilities.experimentalApi`); emits `thread/goal/updated`.
+- `thread/goal/get` - read the current goal for a loaded thread (experimental; requires `capabilities.experimentalApi`).
+- `thread/goal/clear` - clear the goal for a loaded thread (experimental; requires `capabilities.experimentalApi`); emits `thread/goal/cleared`.
 - `thread/metadata/update` - patch SQLite-backed stored thread metadata; currently supports persisted `gitInfo`.
 - `thread/archive` - move a thread’s log file into the archived directory; returns `{}` on success and emits `thread/archived`.
 - `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread after a no-subscriber inactivity grace period and emits `thread/closed`.
@@ -254,12 +257,14 @@ If a client sends an experimental method or field without opting in, app-server 
 - `command/exec/terminate` - stop a running `command/exec` session.
 - `command/exec/outputDelta` (notify) - emitted for base64-encoded stdout/stderr chunks from a streaming `command/exec` session.
 - `model/list` - list available models (set `includeHidden: true` to include entries with `hidden: true`) with effort options, optional `upgrade`, and `inputModalities`.
+- `modelProvider/capabilities/read` - read provider capability bounds for model/provider combinations (experimental; requires `capabilities.experimentalApi`).
 - `experimentalFeature/list` - list feature flags with lifecycle stage metadata and cursor pagination.
 - `experimentalFeature/enablement/set` - patch in-memory runtime enablement for supported feature keys such as `apps` and `plugins`.
 - `collaborationMode/list` - list collaboration mode presets (experimental, no pagination).
 - `skills/list` - list skills for one or more `cwd` values (supports `forceReload` and optional `perCwdExtraUserRoots`).
 - `skills/changed` (notify) - emitted when watched local skill files change.
 - `marketplace/add` - add a remote plugin marketplace and persist it into the user’s marketplace config.
+- `marketplace/upgrade` - refresh a configured Git marketplace, or all configured Git marketplaces when you omit the marketplace name.
 - `plugin/list` - list discovered plugin marketplaces and plugin state, including install/auth policy metadata, marketplace load errors, featured plugin ids, and local, Git, or remote plugin source metadata.
 - `plugin/read` - read one plugin by marketplace path or remote marketplace name and plugin name, including bundled skills, apps, and MCP server names when those details are available.
 - `plugin/install` - install a plugin from a marketplace path or remote marketplace name.
@@ -277,7 +282,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `feedback/upload` - submit a feedback report (classification + optional reason/logs + conversation id, plus optional `extraLogFiles` attachments).
 - `config/read` - fetch the effective configuration on disk after resolving configuration layering.
 - `externalAgentConfig/detect` - detect external-agent artifacts that can be migrated with `includeHome` and optional `cwds`; each detected item includes `cwd` (`null` for home).
-- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home); plugin imports emit `externalAgentConfig/import/completed`.
+- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home). Supported item types include config, skills, `AGENTS.md`, plugins, MCP server config, subagents, hooks, commands, and sessions; plugin imports emit `externalAgentConfig/import/completed`.
 - `config/value/write` - write a single configuration key/value to the user’s `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
 - `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven’t set any up).

@@ -3,15 +3,15 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/SKILL.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 name: 'openai-docs'
 description: 'Use when the user asks how to build with OpenAI products or APIs and needs up-to-date official documentation with citations, help choosing the latest model for a use case, or model upgrade and prompt-upgrade guidance; prioritize OpenAI docs MCP tools, use bundled references only as helper context, and restrict any fallback browsing to official OpenAI domains.'
 ---
 
 # OpenAI Docs
 
-Provide authoritative, current guidance from OpenAI developer docs using the developers.openai.com MCP server. Always prioritize the developer docs MCP tools over web.run for OpenAI-related questions. This skill may also load targeted files from `references/` for model-selection, model-upgrade, and prompt-upgrade requests, but current OpenAI docs remain authoritative. Only if the MCP server is installed and returns no meaningful results should you fall back to web search.
+Provide authoritative, current guidance from OpenAI developer docs using the developers.openai.com MCP server. Always prioritize the developer docs MCP tools over web.run for OpenAI-related questions. This skill also owns model selection, API model migration, and prompt-upgrade guidance. Only if the MCP server is installed and returns no meaningful results should you fall back to web search.
 
 ## Quick start
 
@@ -19,7 +19,7 @@ Provide authoritative, current guidance from OpenAI developer docs using the dev
 - Use `mcp__openaiDeveloperDocs__fetch_openai_doc` to pull exact sections and quote/paraphrase accurately.
 - Use `mcp__openaiDeveloperDocs__list_openai_docs` only when you need to browse or discover pages without a clear query.
 - For model-selection, "latest model", or default-model questions, fetch `https://developers.openai.com/api/docs/guides/latest-model.md` first. If that is unavailable, load `references/latest-model.md`.
-- For model upgrades or prompt upgrades, run `node scripts/resolve-latest-model-info.js` from this skill directory when the script is present, then follow `references/upgrade-guide.md` unless the resolver returns newer guidance for a dynamic latest/current/default request.
+- For model upgrades or prompt upgrades, run `node scripts/resolve-latest-model-info.js` only when the target is latest/current/default or otherwise unspecified; otherwise preserve the explicitly requested target.
 - Preserve explicit target requests: if the user names a target model like "migrate to GPT-5.4", keep that requested target even if `latest-model.md` names a newer model. Mention newer guidance only as optional.
 - If current remote guidance is needed, fetch both the returned migration and prompting guide URLs directly. If direct fetch fails, use MCP/search fallback; if that also fails, use bundled fallback references and disclose the fallback.
 

@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/generate-slide-decks'
-source_last_modified: '2026-04-25T06:34:32Z'
-source_etag: 'W/"210b9a4b8b2e195b2d716befbecccda3"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:49:22Z'
+source_etag: 'W/"2b4f81ba5c961575e8f60ce3d932b33d"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Generate slide decks | Codex use cases
@@ -60,21 +60,21 @@ Related links
 
 ## Skills & Plugins
 
-- [Slides](https://github.com/openai/skills/tree/main/skills/.curated/slides)
+- Slides
 
   Create and edit `.pptx` decks in JavaScript with PptxGenJS, bundled helpers, and render and validation scripts for overflow, overlap, and font checks.
-- [ImageGen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen)
+- ImageGen
 
   Generate illustrations, cover art, diagrams, and slide visuals that match one reusable visual direction.
 
 | Skill | Why use it |
 | --- | --- |
-| [Slides](https://github.com/openai/skills/tree/main/skills/.curated/slides) | Create and edit `.pptx` decks in JavaScript with PptxGenJS, bundled helpers, and render and validation scripts for overflow, overlap, and font checks. |
-| [ImageGen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen) | Generate illustrations, cover art, diagrams, and slide visuals that match one reusable visual direction. |
+| Slides | Create and edit `.pptx` decks in JavaScript with PptxGenJS, bundled helpers, and render and validation scripts for overflow, overlap, and font checks. |
+| ImageGen | Generate illustrations, cover art, diagrams, and slide visuals that match one reusable visual direction. |
 
 ## Starter prompt
 
-Use $slides with $imagegen to edit this slide deck in the following way:
+Use the $slides and $imagegen skills to edit this slide deck in the following way:
 - If present, add logo.png in the bottom right corner on every slide
 - On slides X, Y and Z, move the text to the left and use image generation to generate an illustration (style: abstract, digital art) on the right
 - Preserve text as text and simple charts as native PowerPoint charts where practical.
@@ -87,9 +87,9 @@ Output:
 - A copy of the slide deck with the changes applied
 - notes on which slides were generated, rewritten, or left unchanged
 
-[Open in the Codex app](codex://new?prompt=Use+%24slides+with+%24imagegen+to+edit+this+slide+deck+in+the+following+way%3A+%0A-+If+present%2C+add+logo.png+in+the+bottom+right+corner+on+every+slide%0A-+On+slides+X%2C+Y+and+Z%2C+move+the+text+to+the+left+and+use+image+generation+to+generate+an+illustration+%28style%3A+abstract%2C+digital+art%29+on+the+right%0A-+Preserve+text+as+text+and+simple+charts+as+native+PowerPoint+charts+where+practical.%0A-+Add+these+slides%3A+%5Bdescribe+new+slides+here%5D%0A-+Use+the+existing+branding+on+new+slides+and+new+text+%28colors%2C+fonts%2C+layout%2C+etc.%29+%0A-+Render+the+updated+deck+to+slide+images%2C+review+the+output%2C+and+fix+layout+issues+before+delivery.%0A-+Run+overflow+and+font-substitution+checks+before+delivery%2C+especially+if+the+deck+is+dense.%0A-+Save+reusable+prompts+or+generation+notes+when+you+create+a+batch+of+related+images.%0A%0AOutput%3A%0A-+A+copy+of+the+slide+deck+with+the+changes+applied%0A-+notes+on+which+slides+were+generated%2C+rewritten%2C+or+left+unchanged "Open in the Codex app")
+[Open in the Codex app](codex://new?prompt=Use+the+%24slides+and+%24imagegen+skills+to+edit+this+slide+deck+in+the+following+way%3A%0A-+If+present%2C+add+logo.png+in+the+bottom+right+corner+on+every+slide%0A-+On+slides+X%2C+Y+and+Z%2C+move+the+text+to+the+left+and+use+image+generation+to+generate+an+illustration+%28style%3A+abstract%2C+digital+art%29+on+the+right%0A-+Preserve+text+as+text+and+simple+charts+as+native+PowerPoint+charts+where+practical.%0A-+Add+these+slides%3A+%5Bdescribe+new+slides+here%5D%0A-+Use+the+existing+branding+on+new+slides+and+new+text+%28colors%2C+fonts%2C+layout%2C+etc.%29+%0A-+Render+the+updated+deck+to+slide+images%2C+review+the+output%2C+and+fix+layout+issues+before+delivery.%0A-+Run+overflow+and+font-substitution+checks+before+delivery%2C+especially+if+the+deck+is+dense.%0A-+Save+reusable+prompts+or+generation+notes+when+you+create+a+batch+of+related+images.%0A%0AOutput%3A%0A-+A+copy+of+the+slide+deck+with+the+changes+applied%0A-+notes+on+which+slides+were+generated%2C+rewritten%2C+or+left+unchanged "Open in the Codex app")
 
-Use $slides with $imagegen to edit this slide deck in the following way:
+Use the $slides and $imagegen skills to edit this slide deck in the following way:
 - If present, add logo.png in the bottom right corner on every slide
 - On slides X, Y and Z, move the text to the left and use image generation to generate an illustration (style: abstract, digital art) on the right
 - Preserve text as text and simple charts as native PowerPoint charts where practical.
@@ -104,7 +104,7 @@ Output:
 
 ## Introduction
 
-You can use Codex to manipulate PowerPoint decks in a systematic way, using the Slides skill to create and edit decks with PptxGenJS, and using image generation to generate visuals for the slides.
+You can use Codex to manipulate PowerPoint decks in a systematic way, using the slides system skill, which comes with Codex by default, to create and edit decks with PptxGenJS, and using image generation to generate visuals for the slides.
 
 Skills can be installed directly from the Codex app–see our [skills documentation](/codex/skills) for more details.
 
@@ -114,7 +114,7 @@ You can create new decks from scratch, describing what you want, but the ideal w
 
 If a deck already exists, ask Codex to inspect it before making changes.
 
-The slides skill is opinionated here: match the source aspect ratio before you rebuild layout, and default to 16:9 only when the source material does not already define the deck size. If the references are screenshots or a PDF, ask Codex to render or inspect them first so it can compare slide geometry visually instead of guessing.
+The slides system skill is opinionated here: match the source aspect ratio before you rebuild layout, and default to 16:9 only when the source material does not already define the deck size. If the references are screenshots or a PDF, ask Codex to render or inspect them first so it can compare slide geometry visually instead of guessing.
 
 ## Keep the deck editable
 
@@ -124,7 +124,7 @@ For example, if you want to build a complex timeline with illustrations, instead
 
 ## Generate visuals intentionally
 
-Image generation is most useful when the slides need a cover image, a concept illustration, or a lightweight diagram that would otherwise take manual design work. Ask Codex to define the visual direction first, then reuse that direction consistently across the whole deck.
+The imagegen system skill is already installed with Codex and is most useful when the slides need a cover image, a concept illustration, or a lightweight diagram that would otherwise take manual design work. Ask Codex to define the visual direction first, then reuse that direction consistently across the whole deck.
 
 When several slides need related visuals, have Codex save the prompts or generation notes it used. That makes the deck easier to extend later without starting over stylistically.
 
@@ -132,11 +132,11 @@ When several slides need related visuals, have Codex save the prompts or generat
 
 Deck automation works better when Codex treats each slide as its own decision. Some slides should preserve exact copy, some need a stronger headline and cleaner structure, and some should stay mostly untouched apart from asset cleanup or formatting fixes.
 
-The slides skill also ships with bundled layout helpers. Ask Codex to copy those helpers into the working directory and reuse them instead of reimplementing spacing, text-sizing, and image-placement logic on every deck.
+The slides system skill also ships with bundled layout helpers. Ask Codex to copy those helpers into the working directory and reuse them instead of reimplementing spacing, text-sizing, and image-placement logic on every deck.
 
 ## Validation before delivery
 
-Decks are easy to get almost right and still ship with clipped text, substituted fonts, or layout drift that only shows up after export. The slides skill includes scripts to render decks to per-slide PNGs, build a quick montage for review, detect overflow beyond the slide canvas, and report missing or substituted fonts.
+Decks are easy to get almost right and still ship with clipped text, substituted fonts, or layout drift that only shows up after export. The slides system skill includes scripts to render decks to per-slide PNGs, build a quick montage for review, detect overflow beyond the slide canvas, and report missing or substituted fonts.
 
 Ask Codex to use those checks before it hands back the final deck, especially when slides are dense or margins are tight.
 

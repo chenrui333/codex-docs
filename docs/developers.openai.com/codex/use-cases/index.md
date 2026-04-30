@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Codex use cases
@@ -42,7 +42,7 @@ Start with the most common Codex workflows.
 
 [![](/codex/use-cases/gh-pr-use-case.png)
 
-### Review pull requests faster
+### Codex code review for GitHub pull requests
 
 Catch regressions and potential issues before human review.
 
@@ -143,6 +143,14 @@ Front-end  Design](/codex/use-cases/frontend-designs)
 Process tabular data without affecting the original.
 
 Data  Knowledge Work](/codex/use-cases/clean-messy-data)
+
+[![](/images/codex/codex-wallpaper-1.webp)
+
+### Codex code review for GitHub pull requests
+
+Catch regressions and potential issues before human review.
+
+Integrations  Workflow](/codex/use-cases/github-code-reviews)
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
@@ -271,14 +279,6 @@ iOS  Code](/codex/use-cases/ios-swiftui-view-refactor)
 Remove dead code and modernize legacy patterns without changing behavior.
 
 Engineering  Code](/codex/use-cases/refactor-your-codebase)
-
-[![](/images/codex/codex-wallpaper-1.webp)
-
-### Review pull requests faster
-
-Catch regressions and potential issues before human review.
-
-Integrations  Workflow](/codex/use-cases/github-code-reviews)
 
 [![](/images/codex/codex-wallpaper-2.webp)
 

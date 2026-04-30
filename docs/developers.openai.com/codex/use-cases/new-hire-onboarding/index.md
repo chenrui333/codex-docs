@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/new-hire-onboarding'
-source_last_modified: '2026-04-25T06:37:12Z'
-source_etag: 'W/"b65c47c2356e7e1836188dca3bd0c4af"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:55:14Z'
+source_etag: 'W/"a4860336f6acab13daea5c07ec8c62e1"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Coordinate new-hire onboarding | Codex use cases
@@ -60,9 +60,9 @@ Related links
 
 ## Skills & Plugins
 
-- [Spreadsheet](https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet)
+- Spreadsheet
 
-  Inspect CSV, TSV, and Excel trackers; stage spreadsheet updates; and review tabular operations data before it becomes a source of truth.
+  Inspect CSV, TSV, and Excel trackers, stage spreadsheet updates, and review tabular operations data before it becomes a source of truth.
 - [Google Drive](https://github.com/openai/plugins/tree/main/plugins/google-drive)
 
   Bring approved docs, tracker templates, exports, and shared onboarding folders into the task context.
@@ -72,7 +72,7 @@ Related links
 
 | Skill | Why use it |
 | --- | --- |
-| [Spreadsheet](https://github.com/openai/skills/tree/main/skills/.curated/spreadsheet) | Inspect CSV, TSV, and Excel trackers; stage spreadsheet updates; and review tabular operations data before it becomes a source of truth. |
+| Spreadsheet | Inspect CSV, TSV, and Excel trackers, stage spreadsheet updates, and review tabular operations data before it becomes a source of truth. |
 | [Google Drive](https://github.com/openai/plugins/tree/main/plugins/google-drive) | Bring approved docs, tracker templates, exports, and shared onboarding folders into the task context. |
 | [Notion](https://github.com/openai/plugins/tree/main/plugins/notion) | Reference onboarding plans, project pages, checklists, and team wikis that already live in Notion. |
 

@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-04-29T12:34:02Z'
-source_etag: 'W/"ec6bb5f6445af1a50c78810cfc48f26e"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:50:10Z'
+source_etag: 'W/"4c796df780dce08af4c28cae24e883c5"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Configuration Reference – Codex | OpenAI Developers
@@ -54,7 +54,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
 | `commit_attribution` | `string` | Override the commit co-author trailer text. Set an empty string to disable automatic attribution. |
 | `compact_prompt` | `string` | Inline override for the history compaction prompt. |
-| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. |
+| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables. |
 | `developer_instructions` | `string` | Additional developer instructions injected into the session (optional). |
 | `disable_paste_burst` | `boolean` | Disable burst-paste detection in the TUI. |
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
@@ -145,6 +145,8 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `model_providers.<id>.stream_max_retries` | `number` | Retry count for SSE streaming interruptions (default: 5). |
 | `model_providers.<id>.supports_websockets` | `boolean` | Whether that provider supports the Responses API WebSocket transport. |
 | `model_providers.<id>.wire_api` | `responses` | Protocol used by the provider. `responses` is the only supported value, and it is the default when omitted. |
+| `model_providers.amazon-bedrock.aws.profile` | `string` | AWS profile name used by the built-in `amazon-bedrock` provider. |
+| `model_providers.amazon-bedrock.aws.region` | `string` | AWS region used by the built-in `amazon-bedrock` provider. |
 | `model_reasoning_effort` | `minimal | low | medium | high | xhigh` | Adjust reasoning effort for supported models (Responses API only; `xhigh` is model-dependent). |
 | `model_reasoning_summary` | `auto | concise | detailed | none` | Select reasoning summary detail or disable summaries entirely. |
 | `model_supports_reasoning_summaries` | `boolean` | Force Codex to send or not send reasoning metadata. |
@@ -230,12 +232,15 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `sqlite_home` | `string (path)` | Directory where Codex stores the SQLite-backed state DB used by agent jobs and other resumable runtime state. |
 | `suppress_unstable_features_warning` | `boolean` | Suppress the warning that appears when under-development feature flags are enabled. |
 | `tool_output_token_limit` | `number` | Token budget for storing individual tool/function outputs in history. |
+| `tool_suggest.disabled_tools` | `array<table>` | Disable suggestions for specific discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`. |
 | `tool_suggest.discoverables` | `array<table>` | Allow tool suggestions for additional discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`. |
 | `tools.view_image` | `boolean` | Enable the local-image attachment tool `view_image`. |
 | `tools.web_search` | `boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }` | Optional web search tool configuration. The legacy boolean form is still accepted, but the object form lets you set search context size, allowed domains, and approximate user location. |
 | `tui` | `table` | TUI-specific options such as enabling inline desktop notifications. |
 | `tui.alternate_screen` | `auto | always | never` | Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback). |
 | `tui.animations` | `boolean` | Enable terminal animations (welcome screen, shimmer, spinner) (default: true). |
+| `tui.keymap.<context>.<action>` | `string | array<string>` | Keyboard shortcut binding for a TUI action. Supported contexts include `global`, `chat`, `composer`, `editor`, `pager`, `list`, and `approval`; context-specific bindings override `tui.keymap.global`. |
+| `tui.keymap.<context>.<action> = []` | `empty array` | Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, or `page-down`. |
 | `tui.model_availability_nux.<model>` | `integer` | Internal startup-tooltip state keyed by model slug. |
 | `tui.notification_condition` | `unfocused | always` | Control whether TUI notifications fire only when the terminal is unfocused or regardless of focus. Defaults to `unfocused`. |
 | `tui.notification_method` | `auto | osc9 | bel` | Notification method for terminal notifications (default: auto). |
@@ -643,7 +648,7 @@ Type / Values
 
 Details
 
-Name of the default permissions profile to apply to sandboxed tool calls.
+Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables.
 
 Key
 
@@ -1727,6 +1732,30 @@ Protocol used by the provider. `responses` is the only supported value, and it i
 
 Key
 
+`model_providers.amazon-bedrock.aws.profile`
+
+Type / Values
+
+`string`
+
+Details
+
+AWS profile name used by the built-in `amazon-bedrock` provider.
+
+Key
+
+`model_providers.amazon-bedrock.aws.region`
+
+Type / Values
+
+`string`
+
+Details
+
+AWS region used by the built-in `amazon-bedrock` provider.
+
+Key
+
 `model_reasoning_effort`
 
 Type / Values
@@ -2747,6 +2776,18 @@ Token budget for storing individual tool/function outputs in history.
 
 Key
 
+`tool_suggest.disabled_tools`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Disable suggestions for specific discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`.
+
+Key
+
 `tool_suggest.discoverables`
 
 Type / Values
@@ -2816,6 +2857,30 @@ Type / Values
 Details
 
 Enable terminal animations (welcome screen, shimmer, spinner) (default: true).
+
+Key
+
+`tui.keymap.<context>.<action>`
+
+Type / Values
+
+`string | array<string>`
+
+Details
+
+Keyboard shortcut binding for a TUI action. Supported contexts include `global`, `chat`, `composer`, `editor`, `pager`, `list`, and `approval`; context-specific bindings override `tui.keymap.global`.
+
+Key
+
+`tui.keymap.<context>.<action> = []`
+
+Type / Values
+
+`empty array`
+
+Details
+
+Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, or `page-down`.
 
 Key
 

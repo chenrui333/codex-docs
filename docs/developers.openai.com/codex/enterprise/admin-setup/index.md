@@ -4,8 +4,8 @@ source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
 source_last_modified: '2026-04-29T00:02:09Z'
 source_etag: 'W/"e8f0cc569889a0b39cfea3b32d4bc19d"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Admin Setup – Codex | OpenAI Developers

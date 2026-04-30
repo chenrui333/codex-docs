@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/hooks'
-source_last_modified: '2026-04-25T06:29:37Z'
-source_etag: 'W/"5c65d24430a57d23e81444b25b88c31b"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:51:11Z'
+source_etag: 'W/"c5a7b9dde06117ce1306b12c83be87c1"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Hooks – Codex | OpenAI Developers
@@ -42,6 +42,11 @@ Codex discovers hooks next to active config layers in either of these forms:
 
 - `hooks.json`
 - inline `[hooks]` tables inside `config.toml`
+
+Installed plugins can also bundle lifecycle config through their plugin
+manifest or a default `hooks/hooks.json` file. See [Build
+plugins](/codex/plugins/build#bundled-mcp-servers-and-lifecycle-config) for the
+plugin packaging rules.
 
 In practice, the four most useful locations are:
 

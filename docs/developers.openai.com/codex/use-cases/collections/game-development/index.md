@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/game-development'
-source_last_modified: '2026-04-25T06:50:00Z'
-source_etag: 'W/"80403a910ea0e48068a765082e057fc6"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:52:55Z'
+source_etag: 'W/"ef9ecff0fe45fe5d70611067fd32629d"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Game development – Codex | OpenAI Developers
@@ -69,9 +69,9 @@ Have Codex in GitHub automatically review PRs and catch regressions and missing 
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
-### Review pull requests faster
+### Codex code review for GitHub pull requests
 
-Use Codex in GitHub to automatically surface regressions, missing tests, and documentation...
+Use Codex code review in GitHub to automatically surface regressions, missing tests, and...
 
 Integrations  Workflow](/codex/use-cases/github-code-reviews)
 

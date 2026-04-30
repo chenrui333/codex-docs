@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/learn-a-new-concept'
-source_last_modified: '2026-04-25T06:37:11Z'
-source_etag: 'W/"1d30ad49cd3daea3555f1136d5982cc7"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:52:06Z'
+source_etag: 'W/"86a9f3b6381c1687f92ae75d39aa3549"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Learn a new concept | Codex use cases
@@ -60,13 +60,13 @@ Related links
 
 ## Skills & Plugins
 
-- [ImageGen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen)
+- ImageGen
 
-  Generate illustrative, non-exact visual assets when a Markdown-native diagram is not enough.
+  Generate illustrative, non-exact visual assets when a Mermaid diagram is not enough.
 
 | Skill | Why use it |
 | --- | --- |
-| [ImageGen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen) | Generate illustrative, non-exact visual assets when a Markdown-native diagram is not enough. |
+| ImageGen | Generate illustrative, non-exact visual assets when a Mermaid diagram is not enough. |
 
 ## Starter prompt
 
@@ -175,7 +175,7 @@ Good defaults include:
 - An experiment map that connects datasets, metrics, baselines, and reported claims.
 - A limitations diagram that separates assumptions, failure modes, and open questions.
 
-For Markdown-first reports, ask for Mermaid when the destination supports it, or a small checked-in SVG/PNG asset when it does not. Ask Codex to use imagegen only when you need an illustrative, non-exact visual or something that doesn’t fit in a Markdown-native diagram.
+For Markdown-first reports, ask for Mermaid when the destination supports it, or a small checked-in SVG/PNG asset when it does not. Ask Codex to use the imagegen system skill, which comes with Codex by default, only when you need an illustrative, non-exact visual or something that doesn’t fit in a Markdown-native diagram.
 
 ## Write the Markdown report
 

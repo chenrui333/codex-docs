@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/reference'
-source_last_modified: '2026-04-25T06:28:51Z'
-source_etag: 'W/"bbfe1416569617d45d82e0f1ba81df67"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:51:41Z'
+source_etag: 'W/"c671f54a66f9e58efa1f1a54ad1c1a08"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Command line options – Codex CLI | OpenAI Developers
@@ -32,7 +32,6 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--dangerously-bypass-approvals-and-sandbox, --yolo` | `boolean` | Run every command without approvals or sandboxing. Only use inside an externally hardened environment. |
 | `--disable` | `feature` | Force-disable a feature flag (translates to `-c features.<name>=false`). Repeatable. |
 | `--enable` | `feature` | Force-enable a feature flag (translates to `-c features.<name>=true`). Repeatable. |
-| `--full-auto` | `boolean` | Shortcut for low-friction local work: sets `--ask-for-approval on-request` and `--sandbox workspace-write`. |
 | `--image, -i` | `path[,path...]` | Attach one or more image files to the initial prompt. Separate multiple paths with commas or repeat the flag. |
 | `--model, -m` | `string` | Override the model set in configuration (for example `gpt-5.4`). |
 | `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run). |
@@ -127,18 +126,6 @@ Type / Values
 Details
 
 Force-enable a feature flag (translates to `-c features.<name>=true`). Repeatable.
-
-Key
-
-`--full-auto`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Shortcut for low-friction local work: sets `--ask-for-approval on-request` and `--sandbox workspace-write`.
 
 Key
 
@@ -280,6 +267,7 @@ interpret these labels.
 | [`codex cloud`](/codex/cli/reference#codex-cloud) | Experimental | Browse or execute Codex Cloud tasks from the terminal without opening the TUI. Alias: `codex cloud-tasks`. |
 | [`codex completion`](/codex/cli/reference#codex-completion) | Stable | Generate shell completion scripts for Bash, Zsh, Fish, or PowerShell. |
 | [`codex debug app-server send-message-v2`](/codex/cli/reference#codex-debug-app-server-send-message-v2) | Experimental | Debug app-server by sending a single V2 message through the built-in test client. |
+| [`codex debug models`](/codex/cli/reference#codex-debug-models) | Experimental | Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog. |
 | [`codex exec`](/codex/cli/reference#codex-exec) | Stable | Run Codex non-interactively. Alias: `codex e`. Stream results to stdout or JSONL and optionally resume previous sessions. |
 | [`codex execpolicy`](/codex/cli/reference#codex-execpolicy) | Experimental | Evaluate execpolicy rule files and see whether a command would be allowed, prompted, or blocked. |
 | [`codex features`](/codex/cli/reference#codex-features) | Stable | List feature flags and persistently enable or disable them in `config.toml`. |
@@ -290,7 +278,8 @@ interpret these labels.
 | [`codex mcp-server`](/codex/cli/reference#codex-mcp-server) | Experimental | Run Codex itself as an MCP server over stdio. Useful when another agent consumes Codex. |
 | [`codex plugin marketplace`](/codex/cli/reference#codex-plugin-marketplace) | Experimental | Add, upgrade, or remove plugin marketplaces from Git or local sources. |
 | [`codex resume`](/codex/cli/reference#codex-resume) | Stable | Continue a previous interactive session by ID or resume the most recent conversation. |
-| [`codex sandbox`](/codex/cli/reference#codex-sandbox) | Experimental | Run arbitrary commands inside Codex-provided macOS seatbelt or Linux bubblewrap sandboxes. |
+| [`codex sandbox`](/codex/cli/reference#codex-sandbox) | Experimental | Run arbitrary commands inside Codex-provided macOS, Linux, or Windows sandboxes. |
+| [`codex update`](/codex/cli/reference#codex-update) | Stable | Check for and apply a Codex CLI update when the installed release supports self-update. |
 
 Key
 
@@ -375,6 +364,18 @@ Experimental
 Details
 
 Debug app-server by sending a single V2 message through the built-in test client.
+
+Key
+
+[`codex debug models`](/codex/cli/reference#codex-debug-models)
+
+Maturity
+
+Experimental
+
+Details
+
+Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog.
 
 Key
 
@@ -506,7 +507,19 @@ Experimental
 
 Details
 
-Run arbitrary commands inside Codex-provided macOS seatbelt or Linux bubblewrap sandboxes.
+Run arbitrary commands inside Codex-provided macOS, Linux, or Windows sandboxes.
+
+Key
+
+[`codex update`](/codex/cli/reference#codex-update)
+
+Maturity
+
+Stable
+
+Details
+
+Check for and apply a Codex CLI update when the installed release supports self-update.
 
 Expand to view all
 
@@ -514,7 +527,7 @@ Expand to view all
 
 ### `codex` (interactive)
 
-Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing and `--full-auto` to let Codex run most commands without prompts.
+Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing. For low-friction local work, use `--sandbox workspace-write --ask-for-approval on-request`.
 
 Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication. See [Codex CLI features](/codex/cli/features#connect-the-tui-to-a-remote-app-server) for setup examples and authentication guidance.
 
@@ -676,6 +689,28 @@ Details
 Message text sent to app-server through the built-in V2 test-client flow.
 
 This debug flow initializes with `experimentalApi: true`, starts a thread, sends a turn, and streams server notifications. Use it to reproduce and inspect app-server protocol behavior locally.
+
+### `codex debug models`
+
+Print the raw model catalog Codex sees as JSON.
+
+| Key | Type / Values | Details |
+| --- | --- | --- |
+| `--bundled` | `boolean` | Skip refresh and print only the model catalog bundled with the current Codex binary. |
+
+Key
+
+`--bundled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Skip refresh and print only the model catalog bundled with the current Codex binary.
+
+Use `--bundled` when you want to inspect only the catalog bundled with the current binary, without refreshing from the remote models endpoint.
 
 ### `codex apply`
 
@@ -884,7 +919,9 @@ Use `codex exec` (or the short form `codex e`) for scripted or CI-style runs tha
 | `--color` | `always | never | auto` | Control ANSI color in stdout. |
 | `--dangerously-bypass-approvals-and-sandbox, --yolo` | `boolean` | Bypass approval prompts and sandboxing. Dangerous—only use inside an isolated runner. |
 | `--ephemeral` | `boolean` | Run without persisting session rollout files to disk. |
-| `--full-auto` | `boolean` | Apply the low-friction automation preset (`workspace-write` sandbox and `on-request` approvals). |
+| `--full-auto` | `boolean` | Deprecated compatibility flag. Prefer `--sandbox workspace-write`; Codex prints a warning when this flag is used. |
+| `--ignore-rules` | `boolean` | Do not load user or project execpolicy `.rules` files for this run. |
+| `--ignore-user-config` | `boolean` | Do not load `$CODEX_HOME/config.toml`. Authentication still uses `CODEX_HOME`. |
 | `--image, -i` | `path[,path...]` | Attach images to the first message. Repeatable; supports comma-separated lists. |
 | `--json, --experimental-json` | `boolean` | Print newline-delimited JSON events instead of formatted text. |
 | `--model, -m` | `string` | Override the configured model for this run. |
@@ -956,7 +993,31 @@ Type / Values
 
 Details
 
-Apply the low-friction automation preset (`workspace-write` sandbox and `on-request` approvals).
+Deprecated compatibility flag. Prefer `--sandbox workspace-write`; Codex prints a warning when this flag is used.
+
+Key
+
+`--ignore-rules`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Do not load user or project execpolicy `.rules` files for this run.
+
+Key
+
+`--ignore-user-config`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Do not load `$CODEX_HOME/config.toml`. Authentication still uses `CODEX_HOME`.
 
 Key
 
@@ -1555,9 +1616,37 @@ Use the sandbox helper to run a command under the same policies Codex uses inter
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
+| `--allow-unix-socket` | `path` | Allow the sandboxed command to bind or connect Unix sockets rooted at this path. Repeat to allow multiple paths. |
+| `--cd, -C` | `DIR` | Working directory used for profile resolution and command execution. Requires `--permissions-profile`. |
 | `--config, -c` | `key=value` | Pass configuration overrides into the sandboxed run (repeatable). |
-| `--full-auto` | `boolean` | Grant write access to the current workspace and `/tmp` without approvals. |
+| `--include-managed-config` | `boolean` | Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`. |
+| `--log-denials` | `boolean` | Capture macOS sandbox denials with `log stream` while the command runs and print them after exit. |
+| `--permissions-profile` | `NAME` | Apply a named permissions profile from the active configuration stack. |
 | `COMMAND...` | `var-args` | Shell command to execute under macOS Seatbelt. Everything after `--` is forwarded. |
+
+Key
+
+`--allow-unix-socket`
+
+Type / Values
+
+`path`
+
+Details
+
+Allow the sandboxed command to bind or connect Unix sockets rooted at this path. Repeat to allow multiple paths.
+
+Key
+
+`--cd, -C`
+
+Type / Values
+
+`DIR`
+
+Details
+
+Working directory used for profile resolution and command execution. Requires `--permissions-profile`.
 
 Key
 
@@ -1573,7 +1662,7 @@ Pass configuration overrides into the sandboxed run (repeatable).
 
 Key
 
-`--full-auto`
+`--include-managed-config`
 
 Type / Values
 
@@ -1581,7 +1670,31 @@ Type / Values
 
 Details
 
-Grant write access to the current workspace and `/tmp` without approvals.
+Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.
+
+Key
+
+`--log-denials`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Capture macOS sandbox denials with `log stream` while the command runs and print them after exit.
+
+Key
+
+`--permissions-profile`
+
+Type / Values
+
+`NAME`
+
+Details
+
+Apply a named permissions profile from the active configuration stack.
 
 Key
 
@@ -1599,9 +1712,23 @@ Shell command to execute under macOS Seatbelt. Everything after `--` is forwarde
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
+| `--cd, -C` | `DIR` | Working directory used for profile resolution and command execution. Requires `--permissions-profile`. |
 | `--config, -c` | `key=value` | Configuration overrides applied before launching the sandbox (repeatable). |
-| `--full-auto` | `boolean` | Grant write access to the current workspace and `/tmp` inside the Landlock sandbox. |
+| `--include-managed-config` | `boolean` | Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`. |
+| `--permissions-profile` | `NAME` | Apply a named permissions profile from the active configuration stack. |
 | `COMMAND...` | `var-args` | Command to execute under Landlock + seccomp. Provide the executable after `--`. |
+
+Key
+
+`--cd, -C`
+
+Type / Values
+
+`DIR`
+
+Details
+
+Working directory used for profile resolution and command execution. Requires `--permissions-profile`.
 
 Key
 
@@ -1617,7 +1744,7 @@ Configuration overrides applied before launching the sandbox (repeatable).
 
 Key
 
-`--full-auto`
+`--include-managed-config`
 
 Type / Values
 
@@ -1625,7 +1752,19 @@ Type / Values
 
 Details
 
-Grant write access to the current workspace and `/tmp` inside the Landlock sandbox.
+Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.
+
+Key
+
+`--permissions-profile`
+
+Type / Values
+
+`NAME`
+
+Details
+
+Apply a named permissions profile from the active configuration stack.
 
 Key
 
@@ -1639,9 +1778,83 @@ Details
 
 Command to execute under Landlock + seccomp. Provide the executable after `--`.
 
+#### Windows
+
+| Key | Type / Values | Details |
+| --- | --- | --- |
+| `--cd, -C` | `DIR` | Working directory used for profile resolution and command execution. Requires `--permissions-profile`. |
+| `--config, -c` | `key=value` | Configuration overrides applied before launching the sandbox (repeatable). |
+| `--include-managed-config` | `boolean` | Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`. |
+| `--permissions-profile` | `NAME` | Apply a named permissions profile from the active configuration stack. |
+| `COMMAND...` | `var-args` | Command to execute under the native Windows sandbox. Provide the executable after `--`. |
+
+Key
+
+`--cd, -C`
+
+Type / Values
+
+`DIR`
+
+Details
+
+Working directory used for profile resolution and command execution. Requires `--permissions-profile`.
+
+Key
+
+`--config, -c`
+
+Type / Values
+
+`key=value`
+
+Details
+
+Configuration overrides applied before launching the sandbox (repeatable).
+
+Key
+
+`--include-managed-config`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`.
+
+Key
+
+`--permissions-profile`
+
+Type / Values
+
+`NAME`
+
+Details
+
+Apply a named permissions profile from the active configuration stack.
+
+Key
+
+`COMMAND...`
+
+Type / Values
+
+`var-args`
+
+Details
+
+Command to execute under the native Windows sandbox. Provide the executable after `--`.
+
+### `codex update`
+
+Check for and apply a Codex CLI update when the installed release supports self-update. Debug builds print a message telling you to install a release build instead.
+
 ## Flag combinations and safety tips
 
-- Set `--full-auto` for unattended local work, but avoid combining it with `--dangerously-bypass-approvals-and-sandbox` unless you are inside a dedicated sandbox VM.
+- Use `--sandbox workspace-write` for unattended local work that can stay inside the workspace, and avoid `--dangerously-bypass-approvals-and-sandbox` unless you are inside a dedicated sandbox VM.
 - When you need to grant Codex write access to more directories, prefer `--add-dir` rather than forcing `--sandbox danger-full-access`.
 - Pair `--json` with `--output-last-message` in CI to capture machine-readable progress and a final natural-language summary.
 

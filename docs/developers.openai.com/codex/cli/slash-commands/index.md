@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/slash-commands'
-source_last_modified: '2026-04-25T06:42:37Z'
-source_etag: 'W/"7d76af13e49d48792f61bee3329d6e48"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:52:32Z'
+source_etag: 'W/"bd7a63c7c49d49a5cab8ac37673e495e"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Slash commands in Codex CLI | OpenAI Developers
@@ -49,7 +49,7 @@ completion still works before you queue the command.
 | [`/feedback`](#send-feedback-with-feedback) | Send logs to the Codex maintainers. | Report issues or share diagnostics with support. |
 | [`/init`](#generate-agentsmd-with-init) | Generate an `AGENTS.md` scaffold in the current directory. | Capture persistent instructions for the repository or subdirectory you’re working in. |
 | [`/logout`](#sign-out-with-logout) | Sign out of Codex. | Clear local credentials when using a shared machine. |
-| [`/mcp`](#list-mcp-tools-with-mcp) | List configured Model Context Protocol (MCP) tools. | Check which external tools Codex can call during the session. |
+| [`/mcp`](#list-mcp-tools-with-mcp) | List configured Model Context Protocol (MCP) tools. | Check which external tools Codex can call during the session; add `verbose` for server details. |
 | [`/mention`](#highlight-files-with-mention) | Attach a file to the conversation. | Point Codex at specific files or folders you want it to inspect next. |
 | [`/model`](#set-the-active-model-with-model) | Choose the active model (and reasoning effort, when available). | Switch between general-purpose models (`gpt-4.1-mini`) and deeper reasoning models before running a task. |
 | [`/fast`](#toggle-fast-mode-with-fast) | Toggle Fast mode for supported models. | Turn Fast mode on or off, or check whether the current thread is using it. |
@@ -58,6 +58,7 @@ completion still works before you queue the command.
 | [`/ps`](#check-background-terminals-with-ps) | Show experimental background terminals and their recent output. | Check long-running commands without leaving the main transcript. |
 | [`/stop`](#stop-background-terminals-with-stop) | Stop all background terminals. | Cancel background terminal work started by the current session. |
 | [`/fork`](#fork-the-current-conversation-with-fork) | Fork the current conversation into a new thread. | Branch the active session to explore a new approach without losing the current transcript. |
+| [`/side`](#start-a-side-conversation-with-side) | Start an ephemeral side conversation. | Ask a focused follow-up without disrupting the main thread’s transcript. |
 | [`/resume`](#resume-a-saved-conversation-with-resume) | Resume a saved conversation from your session list. | Continue work from a previous CLI session without starting over. |
 | [`/new`](#start-a-new-conversation-with-new) | Start a new conversation inside the same CLI session. | Reset the chat context without leaving the CLI when you want a fresh prompt in the same repo. |
 | [`/quit`](#exit-the-cli-with-quit-or-exit) | Exit the CLI. | Leave the session immediately. |
@@ -66,6 +67,7 @@ completion still works before you queue the command.
 | [`/debug-config`](#inspect-config-layers-with-debug-config) | Print config layer and requirements diagnostics. | Debug precedence and policy requirements, including experimental network constraints. |
 | [`/statusline`](#configure-footer-items-with-statusline) | Configure TUI status-line fields interactively. | Pick and reorder footer items (model/context/limits/git/tokens/session) and persist in config.toml. |
 | [`/title`](#configure-terminal-title-items-with-title) | Configure terminal window or tab title fields interactively. | Pick and reorder title items such as project, status, thread, branch, model, and task progress. |
+| [`/keymap`](#remap-tui-shortcuts-with-keymap) | Remap TUI keyboard shortcuts. | Inspect and persist custom shortcut bindings in `config.toml`. |
 
 `/quit` and `/exit` both exit the CLI. Use them only after you have saved or
 committed any important work.
@@ -211,6 +213,18 @@ Expected: The terminal window or tab title updates immediately and persists to
 Available title items include app name, project, spinner, status, thread, git
 branch, model, and task progress.
 
+### Remap TUI shortcuts with `/keymap`
+
+Use `/keymap` to inspect, update, and persist keyboard shortcut bindings for the TUI.
+
+1. Type `/keymap`.
+2. Pick the shortcut context and action you want to change.
+3. Enter the new binding or remove the existing one.
+
+Expected: Codex updates the active keymap and writes the custom binding to `tui.keymap` in `config.toml`.
+
+Key bindings use names such as `ctrl-a`, `shift-enter`, and `page-down`. Context-specific bindings override `tui.keymap.global`; an empty binding list unbinds the action.
+
 ### Check background terminals with `/ps`
 
 1. Type `/ps`.
@@ -280,6 +294,18 @@ approach in parallel.
 If you need to fork a saved session instead of the current one, run
 `codex fork` in your terminal to open the session picker.
 
+### Start a side conversation with `/side`
+
+Use `/side` to start an ephemeral fork from the current conversation without switching away from the main task.
+
+1. Type `/side` to open a side conversation.
+2. Optionally add inline text, for example `/side Check whether this plan has an obvious risk`.
+3. Return to the parent thread after the focused detour finishes.
+
+Expected: Codex opens a side conversation whose transcript is separate from the parent thread. While you are in side mode, the TUI continues to show parent-thread status so you can see whether the main task is still running.
+
+`/side` is unavailable inside another side conversation and during review mode.
+
 ### Generate `AGENTS.md` with `/init`
 
 1. Run `/init` in the directory where you want Codex to look for persistent instructions.
@@ -303,6 +329,8 @@ you set `review_model` in `config.toml`.
 2. Review the list to confirm which MCP servers and tools are available.
 
 Expected: You see the configured Model Context Protocol (MCP) tools Codex can call in this session.
+
+Use `/mcp verbose` to include detailed server diagnostics. If you pass anything other than `verbose`, Codex shows the command usage.
 
 ### Browse apps with `/apps`
 

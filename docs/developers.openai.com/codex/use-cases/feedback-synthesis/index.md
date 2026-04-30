@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/feedback-synthesis'
 source_last_modified: '2026-04-25T06:52:27Z'
 source_etag: 'W/"d6f22bcc8d5467b17ac1bb490335fe77"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Turn feedback into actions | Codex use cases

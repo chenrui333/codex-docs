@@ -4,8 +4,8 @@ source_area: 'codex_sdk'
 source_url: 'https://developers.openai.com/codex/sdk'
 source_last_modified: '2026-04-25T06:33:55Z'
 source_etag: 'W/"28bd573a593b19ab68c959d1ee4f6338"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # SDK – Codex | OpenAI Developers

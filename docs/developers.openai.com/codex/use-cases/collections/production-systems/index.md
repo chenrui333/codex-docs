@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/production-systems'
-source_last_modified: '2026-04-25T06:37:05Z'
-source_etag: 'W/"2c0434a30a7d9efe79f498e3bcc50942"'
-codex_cli_versions: ["0.125.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0"]
+source_last_modified: '2026-04-30T17:52:43Z'
+source_etag: 'W/"f5cac888a2fae893d79448061e26ff59"'
+codex_cli_versions: ["0.125.0", "0.128.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
 
 # Production systems – Codex | OpenAI Developers
@@ -88,9 +88,9 @@ Use Codex to automatically review PRs and run focused QA passes on critical flow
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
-### Review pull requests faster
+### Codex code review for GitHub pull requests
 
-Use Codex in GitHub to automatically surface regressions, missing tests, and documentation...
+Use Codex code review in GitHub to automatically surface regressions, missing tests, and...
 
 Integrations  Workflow](/codex/use-cases/github-code-reviews)[![](/images/codex/codex-wallpaper-1.webp)
 
