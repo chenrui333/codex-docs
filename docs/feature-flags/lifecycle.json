@@ -415,6 +415,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "apps_mcp_path_override": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "artifact": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -678,7 +682,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "9a573657ec6c39165af7799c4bd5dddf43c50fec7572c2b58079c1486feb056a",
-    "features_rs_sha256": "a88fc44dd9be91fa6c2b90ae0827bd6a49bdd650376a4c8a0a89468b37b2785d"
+    "features_rs_sha256": "57843fc8a0b20e3f23358595f2889534b1fe939a43996a77d1612a72529e73a1"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
