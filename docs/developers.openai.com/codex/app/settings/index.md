@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-04-25T06:31:37Z'
-source_etag: 'W/"0e25c30931e0ae29ab4520c05730a49c"'
+source_last_modified: '2026-05-01T18:09:00Z'
+source_etag: 'W/"334cefb1d997d719413bbcefba03a8fb"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -42,6 +42,36 @@ fonts. You can also share your custom theme with friends.
 
 ![Codex app Appearance settings showing theme selection, color controls, and font options](/images/codex/app/theme-selection-light.webp)
 
+### Codex pets
+
+Codex pets are optional animated companions for the app. In **Settings**,
+choose **Pets** to select a built-in pet or refresh custom pets from your
+local Codex home. Type `/pet` in the composer, use **Wake Pet** or **Tuck Away Pet** in Settings, or
+press `Cmd+K` or `Ctrl+K` and run the same commands to
+toggle the floating overlay.
+
+The overlay keeps active Codex work visible while you use other apps. It
+shows the active thread, reflects whether Codex is running, waiting for
+input, or ready for review, and pairs that state with a short progress
+prompt so you can glance at what changed without reopening the thread.
+
+1/8
+
+CodexI found a tiny loose thread in settings. Want me to tug it?
+
+To create your own pet, install the `hatch-pet` skill:
+
+```
+$skill-installer hatch-pet
+```
+
+Reload skills from the command menu. Press `Cmd+K` or `Ctrl+K`,
+choose **Force Reload Skills**, then ask the skill to create a pet:
+
+```
+$hatch-pet create a new pet inspired by my recent projects
+```
+
 ## Git
 
 Use Git settings to standardize branch naming and choose whether Codex uses force
@@ -58,8 +88,8 @@ also apply to the Codex CLI and IDE extension because the MCP configuration live
 ## Browser use
 
 Use these settings to install or enable the bundled Browser plugin and manage
-allowlisted and blocklisted websites. Codex asks before using a website
-unless you’ve allowlisted it. Removing a site from the blocklist lets Codex ask
+allowed and blocked websites. Codex asks before using a website unless you’ve
+allowed it. Removing a site from the blocked list lets Codex ask
 again before using it in the browser.
 
 See [In-app browser](/codex/app/browser) for browser preview, comment, and
@@ -70,8 +100,7 @@ browser use workflows.
 On macOS, check your Computer Use settings to review desktop-app access and related
 preferences after setup. To revoke system-level access, update Screen Recording
 or Accessibility permissions in macOS Privacy & Security settings. The feature
-isn’t available in the European Economic Area, the United Kingdom, or Switzerland
-at launch.
+isn’t available in the EEA, the United Kingdom, or Switzerland at launch.
 
 ## Personalization
 

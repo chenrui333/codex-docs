@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/config.md'
-source_etag: 'W/"f958dd37e0e816cdcb2b2b2e995b9a0ea9dfb84625366ae2bf780708ab850566"'
+source_etag: 'W/"77788e7b40898e42622e66061051822f443df8fdd6340062335ad3d4312ec46e"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -69,7 +69,9 @@ disabled_tools = [
 
 ## Notify
 
-Codex can run a notification hook when the agent finishes a turn. See the configuration reference for the latest notification settings:
+`notify` is deprecated and will be removed in a future release. Existing configurations still work for compatibility, but new automation should use lifecycle hooks instead.
+
+Codex can run a legacy notification command when the agent finishes a turn. See the configuration reference for the latest notification settings:
 
 - https://developers.openai.com/codex/config-reference
 
