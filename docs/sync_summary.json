@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/codex/migrate/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-01T18:29:28+00:00",
+  "generated_at": "2026-05-02T00:48:40+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,11 +13,9 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 220,
+  "total_files": 221,
   "updated": [
-    "developers.openai.com/codex/app/settings/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "github.openai.com/openai/codex/codex-rs/README.md",
-    "github.openai.com/openai/codex/docs/config.md"
+    "developers.openai.com/codex/quickstart/index.md",
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }

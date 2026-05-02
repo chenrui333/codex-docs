@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/quickstart'
-source_last_modified: '2026-04-25T06:30:34Z'
-source_etag: 'W/"daff279219f18a6157f6ac5fc5aa459d"'
+source_last_modified: '2026-05-01T23:21:05Z'
+source_etag: 'W/"603169b9a9666abd2e7f176b443f31e8"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -56,8 +56,6 @@ exceptions are noted in the relevant docs.
 
    If you need more inspiration, explore [Codex use cases](/codex/use-cases).
    If you’re new to Codex, read the [best practices guide](/codex/learn/best-practices).
-
-   [Learn more about the Codex app](/codex/app)
 
 Install the Codex extension for your IDE.
 
@@ -147,4 +145,14 @@ Use Codex in the cloud at [chatgpt.com/codex](https://chatgpt.com/codex).
    ```
 
    [Learn more about Codex cloud](/codex/cloud)
+
+## Next steps
+
+[Learn more about the Codex app
+
+Use the Codex app to work with your local projects.](/codex/app)
+[Migrate to Codex
+
+Move supported instruction files, MCP server configuration, skills, and
+subagents into Codex.](/codex/migrate)
 

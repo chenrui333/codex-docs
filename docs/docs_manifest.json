@@ -916,6 +916,20 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/memories"
     },
+    "developers.openai.com/codex/migrate/index.md": {
+      "codex_cli_versions": [
+        "0.128.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.128.0"
+      ],
+      "sha256": "ae44aa2527ecd0951a3700d53e99ad7f0e8b743ac76efc846a10625299c18a7f",
+      "source_area": "codex_migrate",
+      "source_etag": "W/\"344b0640ed63fc28b79b8ee1e109ed9a\"",
+      "source_last_modified": "2026-05-01T23:22:21Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/migrate"
+    },
     "developers.openai.com/codex/models/index.md": {
       "codex_cli_versions": [
         "0.125.0",
@@ -1037,10 +1051,10 @@
         "codex-cli 0.125.0",
         "codex-cli 0.128.0"
       ],
-      "sha256": "b4ff110d0a6c5f3c7f0e34a83dca6469240caf7fde2dabd858c57d85af7810db",
+      "sha256": "171115babf4d3aac9496939f2c0e0a1a9ad348ad102746a1ff621bc398dd4a16",
       "source_area": "codex_cli_docs",
-      "source_etag": "W/\"daff279219f18a6157f6ac5fc5aa459d\"",
-      "source_last_modified": "2026-04-25T06:30:34Z",
+      "source_etag": "W/\"603169b9a9666abd2e7f176b443f31e8\"",
+      "source_last_modified": "2026-05-01T23:21:05Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/quickstart"
     },
@@ -1133,10 +1147,10 @@
         "codex-cli 0.125.0",
         "codex-cli 0.128.0"
       ],
-      "sha256": "6d088a0ee0497abca8bac387bb56e80178adb30c96e6ab0dab052ccdad428e6c",
+      "sha256": "38a196c088075eab20519ef2e87518af15dcc5ff5c3f82c2647e47d66511ac9d",
       "source_area": "codex_security",
-      "source_etag": "W/\"ee733631ad77e5655ac1219177216445\"",
-      "source_last_modified": "2026-05-01T18:06:21Z",
+      "source_etag": "W/\"341da45b79ac51314d7c03ce6d30775b\"",
+      "source_last_modified": "2026-05-01T23:23:12Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
