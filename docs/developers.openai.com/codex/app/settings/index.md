@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-05-01T18:09:00Z'
-source_etag: 'W/"334cefb1d997d719413bbcefba03a8fb"'
+source_last_modified: '2026-05-02T01:18:41Z'
+source_etag: 'W/"98943e094aa392de10d24b7ad6e34c0b"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -45,8 +45,9 @@ fonts. You can also share your custom theme with friends.
 ### Codex pets
 
 Codex pets are optional animated companions for the app. In **Settings**,
-choose **Pets** to select a built-in pet or refresh custom pets from your
-local Codex home. Type `/pet` in the composer, use **Wake Pet** or **Tuck Away Pet** in Settings, or
+go to **Appearance** and choose **Pets** to select a built-in pet or
+refresh custom pets from your local Codex home. Type `/pet` in the
+composer, use **Wake Pet** or **Tuck Away Pet** in **Settings > Appearance**, or
 press `Cmd+K` or `Ctrl+K` and run the same commands to
 toggle the floating overlay.
 
