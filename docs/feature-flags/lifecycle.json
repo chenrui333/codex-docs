@@ -118,7 +118,7 @@
     {
       "enabled": false,
       "key": "goals",
-      "stage": "experimental"
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -183,7 +183,7 @@
     {
       "enabled": false,
       "key": "prevent_idle_sleep",
-      "stage": "unknown"
+      "stage": "experimental"
     },
     {
       "enabled": false,
@@ -577,7 +577,7 @@
     },
     "prevent_idle_sleep": {
       "default_enabled_expr": "false",
-      "stage_from_source": "unknown"
+      "stage_from_source": "experimental/under development (platform-dependent)"
     },
     "realtime_conversation": {
       "default_enabled_expr": "false",

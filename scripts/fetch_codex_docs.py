@@ -426,6 +426,13 @@ def run_local_command(
     return result.stdout
 
 
+def codex_subprocess_env(base: Dict[str, str] | None = None) -> Dict[str, str]:
+    env = dict(os.environ if base is None else base)
+    for name in ("GH_TOKEN", "GITHUB_TOKEN"):
+        env.pop(name, None)
+    return env
+
+
 def parse_codex_cli_version(version_raw: str) -> str:
     match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", version_raw)
     return match.group(1) if match else version_raw.strip()
@@ -1580,7 +1587,7 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
     if not codex_bin:
         raise RuntimeError("codex CLI is not installed or not on PATH")
 
-    version_raw = run_local_command([codex_bin, "--version"]).strip()
+    version_raw = run_local_command([codex_bin, "--version"], env=codex_subprocess_env()).strip()
     version = parse_codex_cli_version(version_raw)
     metadata = {
         "source_kind": "installed_codex_cli",
@@ -1601,7 +1608,7 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
         codex_home = home_path / ".codex"
         codex_home.mkdir(parents=True, exist_ok=True)
 
-        env = os.environ.copy()
+        env = codex_subprocess_env()
         env.update(
             {
                 "HOME": str(home_path),

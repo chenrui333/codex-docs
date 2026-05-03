@@ -149,7 +149,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add docs/ dot_codex/ system_prompts/ weekly/
           cli_version="$(codex --version | awk '{print $NF}')"
-          git commit -m "chore: sync docs for cli ${cli_version} ($(date -u +'%Y-%m-%d'))"
+          git commit -s -m "chore: sync docs for cli ${cli_version} ($(date -u +'%Y-%m-%d'))"
           git fetch origin main
           git pull --rebase origin main
           git push

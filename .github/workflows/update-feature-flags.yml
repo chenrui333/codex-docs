@@ -137,7 +137,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/feature-flags/
-          git commit -m "chore: refresh feature-flag lifecycle snapshot ($(date -u +'%Y-%m-%d'))"
+          git commit -s -m "chore: refresh feature-flag lifecycle snapshot ($(date -u +'%Y-%m-%d'))"
           git fetch origin main
           git pull --rebase origin main
           git push
