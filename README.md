@@ -61,8 +61,9 @@ Release workflow: `.github/workflows/release.yml`
 
 Optional helper workflow: `.github/workflows/propose-version-bump.yml`
 
-- Runs monthly (and manual dispatch) to propose a `VERSION` bump PR
-- Skips creating duplicates when an open bump PR with the same title already exists
+- Runs monthly (and manual dispatch) to prepare a `VERSION` bump branch
+- Skips duplicate work when an open bump PR with the same title already exists
+- Opens or updates a tracking issue when the default Actions token cannot create PRs
 
 Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
 

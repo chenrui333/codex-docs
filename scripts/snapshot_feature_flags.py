@@ -57,6 +57,13 @@ def run_command(argv: List[str], env: Dict[str, str] | None = None) -> str:
     return proc.stdout.strip()
 
 
+def codex_subprocess_env(base: Dict[str, str] | None = None) -> Dict[str, str]:
+    env = dict(os.environ if base is None else base)
+    for name in ("GH_TOKEN", "GITHUB_TOKEN"):
+        env.pop(name, None)
+    return env
+
+
 def fetch_text(url: str) -> str:
     req = Request(url, headers={"User-Agent": HTTP_USER_AGENT})
     with urlopen(req, timeout=30) as resp:  # noqa: S310 (trusted static URLs)
@@ -245,7 +252,11 @@ def parse_feature_defaults_from_source(features_rs_text: str) -> Dict[str, Dict[
             continue
         key = key_match.group(1)
         default_match = re.search(r"default_enabled:\s*([^,\n]+)", block)
-        stage_matches = re.findall(r"stage:\s*Stage::([A-Za-z]+)", block)
+        stage_expr = block
+        stage_match = re.search(r"stage:\s*(.*?)(?:\n\s*default_enabled:|\Z)", block, flags=re.DOTALL)
+        if stage_match:
+            stage_expr = stage_match.group(1)
+        stage_matches = re.findall(r"Stage::([A-Za-z]+)", stage_expr)
         normalized_stage_values = sorted(
             {
                 {
@@ -327,8 +338,8 @@ def render_markdown(
     lines.append("")
     lines.append("## Current CLI Feature Snapshot")
     lines.append("")
-    lines.append("| Key | Stage | Enabled | In Docs | Source Default |")
-    lines.append("| --- | --- | --- | --- | --- |")
+    lines.append("| Key | CLI Stage | Enabled | In Docs | Source Stage | Source Default |")
+    lines.append("| --- | --- | --- | --- | --- | --- |")
     for row in cli_features:
         key = str(row["key"])
         defaults = source_defaults.get(
@@ -337,7 +348,8 @@ def render_markdown(
         in_docs = "yes" if key in docs_key_set else "no"
         enabled = "true" if row["enabled"] else "false"
         lines.append(
-            f"| `{key}` | `{row['stage']}` | `{enabled}` | `{in_docs}` | `{defaults['default_enabled_expr']}` |"
+            f"| `{key}` | `{row['stage']}` | `{enabled}` | `{in_docs}` | "
+            f"`{defaults['stage_from_source']}` | `{defaults['default_enabled_expr']}` |"
         )
     lines.append("")
     lines.append("## Coverage Gaps")
@@ -417,9 +429,9 @@ def write_json(path: Path, payload: Dict[str, object]) -> None:
 
 def main() -> int:
     try:
-        codex_version = run_command(["codex", "--version"])
+        codex_version = run_command(["codex", "--version"], env=codex_subprocess_env())
         with tempfile.TemporaryDirectory(prefix="codex-features-home-") as tmp_home:
-            isolated_env = os.environ.copy()
+            isolated_env = codex_subprocess_env()
             isolated_env["CODEX_HOME"] = tmp_home
             features_raw = run_command(["codex", "features", "list"], env=isolated_env)
         cli_features = parse_features_list(features_raw)
@@ -435,11 +447,6 @@ def main() -> int:
         features_rs = fetch_text(OSS_FEATURES_RS_URL)
         client_rs = fetch_text(OSS_CLIENT_RS_URL)
         source_defaults = parse_feature_defaults_from_source(features_rs)
-        for row in cli_features:
-            key = str(row["key"])
-            source_stage = source_defaults.get(key, {}).get("stage_from_source")
-            if source_stage:
-                row["stage"] = source_stage
         ws_precedence = derive_websocket_precedence(client_rs)
         source_hashes = {
             "features_rs_sha256": sha256_text(features_rs),
