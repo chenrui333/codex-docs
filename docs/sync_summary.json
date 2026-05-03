@@ -2,8 +2,16 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-02T06:45:48+00:00",
-  "removed": [],
+  "generated_at": "2026-05-03T18:23:36+00:00",
+  "removed": [
+    "github.openai.com/openai/codex/docs/exit-confirmation-prompt-design.md",
+    "github.openai.com/openai/codex/docs/tui-alternate-screen.md",
+    "github.openai.com/openai/codex/docs/tui-chat-composer.md",
+    "github.openai.com/openai/codex/docs/tui-request-user-input.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md",
+    "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md"
+  ],
   "source_metadata": {
     "codex_cli_command": "codex --version",
     "codex_cli_version": "0.128.0",
@@ -11,9 +19,8 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 221,
+  "total_files": 214,
   "updated": [
-    "developers.openai.com/codex/app/settings/index.md",
-    "developers.openai.com/codex/security/setup/index.md"
+    "github.openai.com/openai/codex/docs/config.md"
   ]
 }

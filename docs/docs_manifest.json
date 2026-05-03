@@ -3082,9 +3082,9 @@
         "codex-cli 0.125.0",
         "codex-cli 0.128.0"
       ],
-      "sha256": "8baf2e6d57d99e3ff91920a6e7b3b6a35bf8d6e0052aafd5ed83cbba2c8fc743",
+      "sha256": "bb9882f3f57eeedb2fb0bbc149f03078f6e9b54c15a407eeb94f189d7ed53af8",
       "source_area": "github_docs",
-      "source_etag": "W/\"77788e7b40898e42622e66061051822f443df8fdd6340062335ad3d4312ec46e\"",
+      "source_etag": "W/\"f4c7ffd580dd00b30ef62d4543730ab170f2ac77599b1156068fab3366c79972\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/config.md"
     },
@@ -3147,21 +3147,6 @@
       "source_etag": "W/\"fd39160d926f9439ca12d1a51f9dd74b2de78cde9b8478acb9f540dafc3b08b6\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/execpolicy.md"
-    },
-    "github.openai.com/openai/codex/docs/exit-confirmation-prompt-design.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "e02f225890cec19d1e08fe1a544970b7ae5b6c1298c38c450cc909f12a12b8e4",
-      "source_area": "github_docs",
-      "source_etag": "W/\"73d82d7566120335cce92d133e96515fee4fc5ec2c22ca97bb995ce0431e899a\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/exit-confirmation-prompt-design.md"
     },
     "github.openai.com/openai/codex/docs/getting-started.md": {
       "codex_cli_versions": [
@@ -3267,96 +3252,6 @@
       "source_etag": "W/\"a7d2abcaac56b52a8be40a5fbadd01885cd23676eb02c75088ba36d7e0d1791c\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/slash_commands.md"
-    },
-    "github.openai.com/openai/codex/docs/tui-alternate-screen.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "6310c67978cba6a6ac44d7113f4a0e4d054f8ad7e7682c41629ab2561b772d7c",
-      "source_area": "github_docs",
-      "source_etag": "W/\"20fd9af5df8a3d42b3ff6dc93595b2dc8590d54fc17ae1f7e9cd3f888e94913f\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-alternate-screen.md"
-    },
-    "github.openai.com/openai/codex/docs/tui-chat-composer.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "087a6227d683ece3778b3f388e8bf981f595d2dc866184a17190cef3c892ee55",
-      "source_area": "github_docs",
-      "source_etag": "W/\"008b9b9ba7be5bf60554619ee808aa1b810632670e583ef8ec59de5e00f3532d\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-chat-composer.md"
-    },
-    "github.openai.com/openai/codex/docs/tui-request-user-input.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "9ba2b8c44ab29ca763e45473c4c23ea7c816fec8f1d418fe0619e74516229310",
-      "source_area": "github_docs",
-      "source_etag": "W/\"ce28d03c53c67a75daaba8bbc3171b7aed9eecf09400b44586b642974669f495\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-request-user-input.md"
-    },
-    "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "d2341718004a11fb98ce46d082e47fc3bdc77083fce3c9556b55d3e719b2f807",
-      "source_area": "github_docs",
-      "source_etag": "W/\"45585ea29e2085fc3bc1417c76a358523a4dd3498ab013fa544880222681fb98\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-review.md"
-    },
-    "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "9f2368c3bf2d7add084b27d184815a5d1aa74abdac39db9c3e2edebac61411c9",
-      "source_area": "github_docs",
-      "source_etag": "W/\"c476f5ce88765037504a82a9235d0965ee42bd68aba5a339e84427e870f60232\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-tuning.md"
-    },
-    "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md": {
-      "codex_cli_versions": [
-        "0.125.0",
-        "0.128.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
-      ],
-      "sha256": "02ffebad76c9256383e9a0d92d3cbc1a2e7cb2a7ade3f112f5b3352638beb306",
-      "source_area": "github_docs",
-      "source_etag": "W/\"c38bb1ef23d7aa662d62fdbbd847e6fbb3fc2122f926d1d989c53f8ecc44ba3f\"",
-      "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/tui-stream-chunking-validation.md"
     },
     "platform.openai.com/docs/guides/tools-web-search/index.md": {
       "codex_cli_versions": [

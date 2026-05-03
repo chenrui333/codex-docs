@@ -507,10 +507,10 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-05-02T06:45:29+00:00",
+  "generated_at": "2026-05-03T18:23:11+00:00",
   "github": {
     "counts": {
-      "mirrored_paths_count": 33,
+      "mirrored_paths_count": 26,
       "page_fetch_errors": 0,
       "source_errors": 0
     },
@@ -534,22 +534,15 @@
       "github.openai.com/openai/codex/docs/example-config.md",
       "github.openai.com/openai/codex/docs/exec.md",
       "github.openai.com/openai/codex/docs/execpolicy.md",
-      "github.openai.com/openai/codex/docs/exit-confirmation-prompt-design.md",
       "github.openai.com/openai/codex/docs/getting-started.md",
       "github.openai.com/openai/codex/docs/install.md",
       "github.openai.com/openai/codex/docs/license.md",
       "github.openai.com/openai/codex/docs/open-source-fund.md",
       "github.openai.com/openai/codex/docs/sandbox.md",
       "github.openai.com/openai/codex/docs/skills.md",
-      "github.openai.com/openai/codex/docs/slash_commands.md",
-      "github.openai.com/openai/codex/docs/tui-alternate-screen.md",
-      "github.openai.com/openai/codex/docs/tui-chat-composer.md",
-      "github.openai.com/openai/codex/docs/tui-request-user-input.md",
-      "github.openai.com/openai/codex/docs/tui-stream-chunking-review.md",
-      "github.openai.com/openai/codex/docs/tui-stream-chunking-tuning.md",
-      "github.openai.com/openai/codex/docs/tui-stream-chunking-validation.md"
+      "github.openai.com/openai/codex/docs/slash_commands.md"
     ],
-    "mirrored_paths_count": 33,
+    "mirrored_paths_count": 26,
     "page_fetch_errors": [],
     "repo": "openai/codex",
     "source_errors": []
