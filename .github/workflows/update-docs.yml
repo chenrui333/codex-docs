@@ -199,7 +199,7 @@ jobs:
               '```',
             ].join('\n');
 
-            const { data: openIssues } = await github.rest.issues.listForRepo({
+            const openIssues = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
@@ -220,7 +220,7 @@ jobs:
                 repo: context.repo.repo,
                 title,
                 body,
-                labels: ['bug', 'automation'],
+                labels: ['bug'],
               });
             }
 
