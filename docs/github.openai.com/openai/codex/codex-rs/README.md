@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md'
-source_etag: 'W/"5e4ba7eb24401a8ef1f9266bece5a5c0a7e9800cbd965a49f4db5793a4762d44"'
+source_etag: 'W/"e2397790c15c65dc4abb5c7f2074cc0a8f0771a5ad42bb82358b77329ee9b762"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -55,7 +55,7 @@ Use `codex mcp` to add/list/get/remove MCP server launchers defined in `config.t
 
 ### Notifications
 
-The legacy `notify` setting is deprecated and will be removed in a future release. Existing configurations still work, but new automation should use lifecycle hooks instead. The [notify documentation](../docs/config.md#notify) explains the remaining compatibility behavior. When Codex detects that it is running under WSL 2 inside Windows Terminal (`WT_SESSION` is set), the TUI automatically falls back to native Windows toast notifications so approval prompts and completed turns surface even though Windows Terminal does not implement OSC 9.
+You can enable notifications by configuring a script that is run whenever the agent finishes a turn. The [notify documentation](../docs/config.md#notify) includes a detailed example that explains how to get desktop notifications via [terminal-notifier](https://github.com/julienXX/terminal-notifier) on macOS. When Codex detects that it is running under WSL 2 inside Windows Terminal (`WT_SESSION` is set), the TUI automatically falls back to native Windows toast notifications so approval prompts and completed turns surface even though Windows Terminal does not implement OSC 9.
 
 ### `codex exec` to run Codex programmatically/non-interactively
 

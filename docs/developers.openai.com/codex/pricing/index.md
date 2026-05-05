@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-04-25T06:28:15Z'
-source_etag: 'W/"77ba0796bb862949ba8d240729283090"'
+source_last_modified: '2026-05-05T17:59:09Z'
+source_etag: 'W/"ed36c63b5d0f9c0a1bca9fa9ab44c279"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -228,6 +228,10 @@ API Key
 | For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
+Codex usage limits are shared with other agentic features once pricing for
+those features is effective. This currently includes [ChatGPT for
+Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
+
 Speed configurations increase credit consumption for all applicable models, so
 they also use included limits faster. Fast mode consumes credits at a higher
 rate for supported models. See [Speed](/codex/speed) for supported models and
@@ -341,7 +345,7 @@ Fast mode consumes credits at a higher rate for supported models. See
 [Speed](/codex/speed) for supported models and rates.
 
 [Learn more about credits in ChatGPT Plus and
-Pro.](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-freegopluspro-sora)
+Pro.](https://help.openai.com/en/articles/12642688)
 
 [Learn more about credits in ChatGPT Business, Enterprise, and
 Edu.](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans)

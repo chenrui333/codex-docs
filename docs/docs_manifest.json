@@ -1019,10 +1019,10 @@
         "codex-cli 0.125.0",
         "codex-cli 0.128.0"
       ],
-      "sha256": "87e8fe7cf9e7e6ac605c87d8c5176e9aae2bcb17114e30b23e8cd9b47149b335",
+      "sha256": "d93dc949df4579a7515f3a7c06514acb9ba8cba5c40cb71c7964472606a552ca",
       "source_area": "codex_reference",
-      "source_etag": "W/\"77ba0796bb862949ba8d240729283090\"",
-      "source_last_modified": "2026-04-25T06:28:15Z",
+      "source_etag": "W/\"ed36c63b5d0f9c0a1bca9fa9ab44c279\"",
+      "source_last_modified": "2026-05-05T17:59:09Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/pricing"
     },
@@ -1147,10 +1147,10 @@
         "codex-cli 0.125.0",
         "codex-cli 0.128.0"
       ],
-      "sha256": "adf18984438525d3848ee1280a351d5b0a8269caff92e2484a172ea4c672dae9",
+      "sha256": "4b20ba2b7f92b0680a6462c9a70af9a3956bdb7188d2baf12ae6edb5f768a1e2",
       "source_area": "codex_security",
-      "source_etag": "W/\"2636a4d4170fcd49a620940a1dd28ad7\"",
-      "source_last_modified": "2026-05-05T09:12:04Z",
+      "source_etag": "W/\"410f7831629aabbd960f26393bd412be\"",
+      "source_last_modified": "2026-05-05T18:28:01Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -2962,9 +2962,9 @@
         "codex-cli 0.125.0",
         "codex-cli 0.128.0"
       ],
-      "sha256": "f0cd89a643d4be424a0d3e2afe723965668494d7daed30522dd5c5ebdb2cb7f9",
+      "sha256": "5a51cec99f985a44f7dcf19a9f08f85ade48eefedb3b5726cca73ce90145a961",
       "source_area": "github_rust",
-      "source_etag": "W/\"5e4ba7eb24401a8ef1f9266bece5a5c0a7e9800cbd965a49f4db5793a4762d44\"",
+      "source_etag": "W/\"e2397790c15c65dc4abb5c7f2074cc0a8f0771a5ad42bb82358b77329ee9b762\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md"
     },
