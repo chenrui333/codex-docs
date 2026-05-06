@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/computer-use'
-source_last_modified: '2026-04-25T06:31:06Z'
-source_etag: 'W/"500ba8399fd0c370398c52e96a9b92d4"'
+source_last_modified: '2026-05-06T13:44:26Z'
+source_etag: 'W/"68dffd1b96d3eb8238277aaf8b42ffce"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -61,7 +61,7 @@ For web apps you are building locally, use the
 
 ## Start a computer use task
 
-Mention `@Computer Use` or `@AppName` in your prompt, or ask Codex to use
+Mention `@Computer` or `@AppName` in your prompt, or ask Codex to use
 computer use. Describe the exact app, window, or flow Codex should operate.
 
 ```

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
-source_last_modified: '2026-04-25T06:53:02Z'
-source_etag: 'W/"ef1d068fb74acbec873ac0c69ebde4cb"'
+source_last_modified: '2026-05-06T13:54:30Z'
+source_etag: 'W/"d6316d7739842dfd344314b812d84987"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -58,7 +58,7 @@ Related links
 
 ## Starter prompt
 
-@Computer Use Test my app in [environment].
+@Computer Test my app in [environment].
 Test these flows:
 - [hero use case 1]
 - [hero use case 2]
@@ -70,9 +70,9 @@ For every bug you find, include:
 - severity
 Keep going past non-blocking issues and end with a short triage summary.
 
-[Open in the Codex app](codex://new?prompt=%40Computer+Use+Test+my+app+in+%5Benvironment%5D.%0A%0ATest+these+flows%3A%0A-+%5Bhero+use+case+1%5D%0A-+%5Bhero+use+case+2%5D%0A-+%5Bhero+use+case+3%5D%0A%0AFor+every+bug+you+find%2C+include%3A%0A-+repro+steps%0A-+expected+result%0A-+actual+result%0A-+severity%0A%0AKeep+going+past+non-blocking+issues+and+end+with+a+short+triage+summary. "Open in the Codex app")
+[Open in the Codex app](codex://new?prompt=%40Computer+Test+my+app+in+%5Benvironment%5D.%0A%0ATest+these+flows%3A%0A-+%5Bhero+use+case+1%5D%0A-+%5Bhero+use+case+2%5D%0A-+%5Bhero+use+case+3%5D%0A%0AFor+every+bug+you+find%2C+include%3A%0A-+repro+steps%0A-+expected+result%0A-+actual+result%0A-+severity%0A%0AKeep+going+past+non-blocking+issues+and+end+with+a+short+triage+summary. "Open in the Codex app")
 
-@Computer Use Test my app in [environment].
+@Computer Test my app in [environment].
 Test these flows:
 - [hero use case 1]
 - [hero use case 2]
@@ -99,11 +99,11 @@ The key is to tell Codex what environment to test, which flows matter most, and 
 
 You can keep this broad:
 
-- `@Computer Use Test my app. Find any major issues and give me a report.`
+- `@Computer Test my app. Find any major issues and give me a report.`
 
 Or make it more explicit:
 
-- `@Computer Use Test my app in staging. Cover signup, invite a teammate, and upgrade billing. Log every bug with repro steps, expected result, actual result, and severity.`
+- `@Computer Test my app in staging. Cover signup, invite a teammate, and upgrade billing. Log every bug with repro steps, expected result, actual result, and severity.`
 
 If you already maintain a test-plan file in the repo, attach it to the thread or point Codex at it so the QA pass follows your existing flows.
 
@@ -129,7 +129,7 @@ After the QA pass, keep the same thread open and ask Codex to fix one of the bug
 
 **Run a Structured QA Pass**
 
-@Computer Use Test my app in [environment].
+@Computer Test my app in [environment].
 Test these flows:
 - [hero use case 1]
 - [hero use case 2]

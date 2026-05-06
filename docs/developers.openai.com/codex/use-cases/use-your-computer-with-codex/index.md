@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/use-your-computer-with-codex'
-source_last_modified: '2026-04-25T07:00:53Z'
-source_etag: 'W/"5153d6588c6d81dc69da999b177e369c"'
+source_last_modified: '2026-05-06T13:55:43Z'
+source_etag: 'W/"17e5e7113cd9291f012a2bcf01ce1eb8"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -58,15 +58,15 @@ Related links
 
 ## Starter prompt
 
-@Computer Use [do the task you want completed across your Mac]
+@Computer [do the task you want completed across your Mac]
 For example:
 - Play some music to help me focus.
 - Help me add my interview notes from Notes to Ashby.
 - Look through my Messages app for the trip ideas Brooke sent me this week, add the best options to a new note called "Yosemite ideas", and draft a reply back to her.
 
-[Open in the Codex app](codex://new?prompt=%40Computer+Use+%5Bdo+the+task+you+want+completed+across+your+Mac%5D%0A%0AFor+example%3A%0A-+Play+some+music+to+help+me+focus.%0A-+Help+me+add+my+interview+notes+from+Notes+to+Ashby.%0A-+Look+through+my+Messages+app+for+the+trip+ideas+Brooke+sent+me+this+week%2C+add+the+best+options+to+a+new+note+called+%22Yosemite+ideas%22%2C+and+draft+a+reply+back+to+her. "Open in the Codex app")
+[Open in the Codex app](codex://new?prompt=%40Computer+%5Bdo+the+task+you+want+completed+across+your+Mac%5D%0A%0AFor+example%3A%0A-+Play+some+music+to+help+me+focus.%0A-+Help+me+add+my+interview+notes+from+Notes+to+Ashby.%0A-+Look+through+my+Messages+app+for+the+trip+ideas+Brooke+sent+me+this+week%2C+add+the+best+options+to+a+new+note+called+%22Yosemite+ideas%22%2C+and+draft+a+reply+back+to+her. "Open in the Codex app")
 
-@Computer Use [do the task you want completed across your Mac]
+@Computer [do the task you want completed across your Mac]
 For example:
 - Play some music to help me focus.
 - Help me add my interview notes from Notes to Ashby.
@@ -81,7 +81,7 @@ This works especially well for tasks that jump between apps or windows, such as 
 ## How to use
 
 1. Install the [Computer Use plugin](/codex/app/computer-use).
-2. Start your request with `@Computer Use`, or mention a specific app such as `@Slack` or `@Messages`.
+2. Start your request with `@Computer`, or mention a specific app such as `@Slack` or `@Messages`.
 3. Describe the task and the outcome you want.
 4. Approve access when Codex needs it, then let it continue the task in the background.
 
@@ -89,9 +89,9 @@ If you mention a specific app and a plugin exists for that app, Codex may prefer
 
 For example:
 
-- `@Computer Use Play some music to help me focus.`
-- `@Computer Use Help me add my interview notes from Notes to Ashby.`
-- `@Computer Use Go through my Slack and add reminders for everything I need to do by end of day.`
+- `@Computer Play some music to help me focus.`
+- `@Computer Help me add my interview notes from Notes to Ashby.`
+- `@Computer Go through my Slack and add reminders for everything I need to do by end of day.`
 
 ## Practical tips
 
@@ -115,7 +115,7 @@ Once the task finishes, keep the same thread open if you want Codex to summarize
 
 **Hand Off One Computer Task**
 
-@Computer Use [do the task you want completed across your Mac]
+@Computer [do the task you want completed across your Mac]
 For example:
 - Play some music to help me focus.
 - Help me add my interview notes from Notes to Ashby.

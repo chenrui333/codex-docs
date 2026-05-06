@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
-source_last_modified: '2026-04-25T06:50:28Z'
-source_etag: 'W/"469f4db6dfe1e3069dbc90edde8bfc2f"'
+source_last_modified: '2026-05-06T14:21:04Z'
+source_etag: 'W/"0856f680f699103fb93311d7ed800c34"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -58,16 +58,16 @@ Related links
 
 ## Starter prompt
 
-@Computer Use Look at my messages from [person].
+@Computer Look at my messages from [person].
 Then:
 - understand the request
 - complete the task across the apps involved
 - draft a reply in the same thread
 Pause before anything irreversible, such as placing an order or confirming a booking.
 
-[Open in the Codex app](codex://new?prompt=%40Computer+Use+Look+at+my+messages+from+%5Bperson%5D.%0A%0AThen%3A%0A-+understand+the+request%0A-+complete+the+task+across+the+apps+involved%0A-+draft+a+reply+in+the+same+thread%0A%0APause+before+anything+irreversible%2C+such+as+placing+an+order+or+confirming+a+booking. "Open in the Codex app")
+[Open in the Codex app](codex://new?prompt=%40Computer+Look+at+my+messages+from+%5Bperson%5D.%0A%0AThen%3A%0A-+understand+the+request%0A-+complete+the+task+across+the+apps+involved%0A-+draft+a+reply+in+the+same+thread%0A%0APause+before+anything+irreversible%2C+such+as+placing+an+order+or+confirming+a+booking. "Open in the Codex app")
 
-@Computer Use Look at my messages from [person].
+@Computer Look at my messages from [person].
 Then:
 - understand the request
 - complete the task across the apps involved
@@ -89,7 +89,7 @@ This is a good fit when the message contains a concrete request and you want Cod
 
 For example:
 
-- `@Computer Use Look at my messages from [person]. Check my availability, find 2 dinner options in Hayes Valley, and draft a reply in the same thread. Check in with me before completing booking.`
+- `@Computer Look at my messages from [person]. Check my availability, find 2 dinner options in Hayes Valley, and draft a reply in the same thread. Check in with me before completing booking.`
 
 ## Practical tips
 
@@ -113,7 +113,7 @@ This same pattern can work for other inbox-style surfaces too, such as Slack or 
 
 **Finish One Task From a Message Thread**
 
-@Computer Use Look at my messages from [person].
+@Computer Look at my messages from [person].
 Then:
 - understand the request
 - complete the task across the apps involved
