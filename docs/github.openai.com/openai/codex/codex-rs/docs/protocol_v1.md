@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md'
-source_etag: 'W/"d0dd0576f3b6aaa27eda6907c85d65afa766db1654d7395f41092008cb9967c5"'
+source_etag: 'W/"c70ecda785c7cf848c18d25d5e74df521d7d79b4982a8c0337ae0ec2b9076555"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -79,7 +79,6 @@ For complete documentation of the `Op` and `EventMsg` variants, refer to [protoc
   - `Op::Interrupt` – Interrupts a running turn
   - `Op::ExecApproval` – Approve or deny code execution
   - `Op::UserInputAnswer` – Provide answers for a `request_user_input` tool call
-  - `Op::ListSkills` – Request skills for one or more cwd values (optionally `force_reload`)
   - `Op::UserTurn` and `Op::OverrideTurnContext` accept an optional `personality` override that updates the model’s communication style
 
 Valid `personality` values are `friendly`, `pragmatic`, and `none`. When `none` is selected, the personality placeholder is replaced with an empty string.
@@ -95,7 +94,6 @@ Valid `personality` values are `friendly`, `pragmatic`, and `none`. When `none` 
   - `EventMsg::Error` – A turn stopped with an error
   - `EventMsg::Warning` – A non-fatal warning that the client should surface to the user
   - `EventMsg::TurnComplete` – Contains a `response_id` bookmark for last `response_id` executed by the turn. This can be used to continue the turn at a later point in time, perhaps with additional user input.
-  - `EventMsg::ListSkillsResponse` – Response payload with per-cwd skill entries (`cwd`, `skills`, `errors`)
 
 ### UserInput items
 
