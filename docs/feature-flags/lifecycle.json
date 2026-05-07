@@ -459,6 +459,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "builtin_mcp": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "child_agents_md": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -611,6 +615,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
+    "responses_websocket_response_processed": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "responses_websockets": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -717,8 +725,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "b1035cabf64e1c4618fc756d1c608bced4663413997b378cbc29703670d54b90",
-    "features_rs_sha256": "ac571c4b827c69e34d0e95508770e892723e1dcf5079795a796c2e0b94a38d44"
+    "client_rs_sha256": "398462c0a3dcb3ff9e589e77da49a51ea0e72d2fe5729f0b6ad2350400e9b976",
+    "features_rs_sha256": "48ce5fdc215c02be0486a30421e3f776f8115cff209b277468115e4519f21686"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
