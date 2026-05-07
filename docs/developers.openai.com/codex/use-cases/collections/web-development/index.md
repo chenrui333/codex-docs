@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/web-development'
 source_last_modified: '2026-04-30T17:55:55Z'
 source_etag: 'W/"7a5d9fe1f764c8b19813f530390dc99f"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Web development – Codex | OpenAI Developers

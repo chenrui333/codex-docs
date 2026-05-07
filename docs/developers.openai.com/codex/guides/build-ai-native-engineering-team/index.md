@@ -4,8 +4,8 @@ source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/guides/build-ai-native-engineering-team'
 source_last_modified: '2026-04-25T06:40:54Z'
 source_etag: 'W/"d7c8b605057b345afd4b34158ffb68ee"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Building an AI-Native Engineering Team – Codex | OpenAI Developers

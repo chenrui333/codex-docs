@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ios-simulator-bug-debugging'
 source_last_modified: '2026-04-25T06:54:17Z'
 source_etag: 'W/"0ed61945221c8fcf69bf46031c86728c"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Debug in iOS simulator | Codex use cases

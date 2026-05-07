@@ -76,8 +76,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.128.0",
-    "version_raw": "codex-cli 0.128.0"
+    "version": "0.129.0",
+    "version_raw": "codex-cli 0.129.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -93,6 +93,7 @@
       "https://developers.openai.com/codex/app-server",
       "https://developers.openai.com/codex/app/automations",
       "https://developers.openai.com/codex/app/browser",
+      "https://developers.openai.com/codex/app/chrome-extension",
       "https://developers.openai.com/codex/app/commands",
       "https://developers.openai.com/codex/app/computer-use",
       "https://developers.openai.com/codex/app/features",
@@ -234,18 +235,19 @@
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/learn/codex",
+      "https://developers.openai.com/learn/developers-codex-plugin",
       "https://developers.openai.com/resources/codex",
       "https://developers.openai.com/showcase/codex-101"
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 155,
-      "mirrored_urls": 140,
+      "codex_related_urls": 157,
+      "mirrored_urls": 141,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 15,
-      "unclassified_skipped_codex_related_urls": 0
+      "skipped_codex_related_urls": 16,
+      "unclassified_skipped_codex_related_urls": 1
     },
     "mirrored_urls": [
       "https://developers.openai.com/codex",
@@ -254,6 +256,7 @@
       "https://developers.openai.com/codex/app-server",
       "https://developers.openai.com/codex/app/automations",
       "https://developers.openai.com/codex/app/browser",
+      "https://developers.openai.com/codex/app/chrome-extension",
       "https://developers.openai.com/codex/app/commands",
       "https://developers.openai.com/codex/app/computer-use",
       "https://developers.openai.com/codex/app/features",
@@ -389,9 +392,16 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
-    "new_unclassified_skipped_codex_related_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/app/chrome-extension",
+      "https://developers.openai.com/learn/developers-codex-plugin"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/app/chrome-extension"
+    ],
+    "new_unclassified_skipped_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/learn/developers-codex-plugin"
+    ],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
@@ -503,11 +513,14 @@
       "https://developers.openai.com/cookbook/gpt-5-codex-prompting-guide",
       "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide",
       "https://developers.openai.com/learn/codex",
+      "https://developers.openai.com/learn/developers-codex-plugin",
       "https://developers.openai.com/showcase/codex-101"
     ],
-    "unclassified_skipped_codex_related_urls": []
+    "unclassified_skipped_codex_related_urls": [
+      "https://developers.openai.com/learn/developers-codex-plugin"
+    ]
   },
-  "generated_at": "2026-05-03T18:23:11+00:00",
+  "generated_at": "2026-05-07T18:40:12+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-05-02T01:18:41Z'
-source_etag: 'W/"98943e094aa392de10d24b7ad6e34c0b"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+source_last_modified: '2026-05-07T18:36:34Z'
+source_etag: 'W/"b66aedbf9f7f7a4fdf22bfc1285dee02"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Settings – Codex app | OpenAI Developers
@@ -88,10 +88,11 @@ also apply to the Codex CLI and IDE extension because the MCP configuration live
 
 ## Browser use
 
-Use these settings to install or enable the bundled Browser plugin and manage
-allowed and blocked websites. Codex asks before using a website unless you’ve
-allowed it. Removing a site from the blocked list lets Codex ask
-again before using it in the browser.
+Use these settings to install or enable the bundled Browser plugin, set up the
+[Codex Chrome extension](/codex/app/chrome-extension), and manage allowlisted
+and blocklisted websites. Codex asks before using a website unless you’ve
+allowlisted it. Removing a site from the blocklist lets Codex ask again before
+using it in the browser.
 
 See [In-app browser](/codex/app/browser) for browser preview, comment, and
 browser use workflows.

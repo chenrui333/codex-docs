@@ -4,8 +4,8 @@ source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/skills'
 source_last_modified: '2026-04-25T06:31:15Z'
 source_etag: 'W/"f9f78a930fbbeb9fbe5751f28d8a8b26"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Agent Skills – Codex | OpenAI Developers

@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_imagegen'
 source_url: 'codex-cli://skills/.system/imagegen/references/codex-network.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Codex network approvals / sandbox notes

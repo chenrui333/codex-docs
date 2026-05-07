@@ -4,8 +4,8 @@ source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/features'
 source_last_modified: '2026-04-30T17:49:26Z'
 source_etag: 'W/"ac4adbc61ea8f454bf77c1a24bec6b22"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Features – Codex CLI | OpenAI Developers

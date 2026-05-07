@@ -4,8 +4,8 @@ source_area: 'codex_changelog'
 source_url: 'https://developers.openai.com/codex/changelog'
 source_last_modified: '2026-04-30T08:57:33Z'
 source_etag: 'W/"9f683798bbfb2f1084e70514638597a2"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Changelog – Codex | OpenAI Developers

@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md'
 source_etag: 'W/"c70ecda785c7cf848c18d25d5e74df521d7d79b4982a8c0337ae0ec2b9076555"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 Overview of Protocol defined in [protocol.rs](../protocol/src/protocol.rs) and [agent.rs](../core/src/agent.rs).

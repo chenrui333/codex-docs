@@ -4,8 +4,8 @@ source_area: 'codex_auth'
 source_url: 'https://developers.openai.com/codex/auth'
 source_last_modified: '2026-04-25T06:31:11Z'
 source_etag: 'W/"20ca5f146e1b50b7b725ae257388b141"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Authentication – Codex | OpenAI Developers

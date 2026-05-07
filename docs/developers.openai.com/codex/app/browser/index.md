@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/browser'
-source_last_modified: '2026-04-25T06:31:26Z'
-source_etag: 'W/"84f36644fed499a11dcb8cb85bea1365"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+source_last_modified: '2026-05-07T18:33:50Z'
+source_etag: 'W/"34c9f5d0182e744413514d3b7071d71f"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # In-app browser – Codex app | OpenAI Developers
@@ -18,7 +18,8 @@ preview pages and attach visual comments.
 
 Use it for local development servers, file-backed previews, and public pages
 that don’t require sign-in. For anything that depends on login state or browser
-extensions, use your regular browser.
+extensions, use your regular browser or the
+[Codex Chrome extension](/codex/app/chrome-extension).
 
 Open the in-app browser from the toolbar, by clicking a URL, by navigating
 manually in the browser, or by pressing `Cmd`+`Shift`+`B`
@@ -53,6 +54,9 @@ bug, and fix only the overflowing controls.
 Codex asks before using a website unless you’ve allowed it. Removing a site from
 the allowed list means Codex asks again before using it; removing a site from the
 blocked list means Codex can ask again instead of treating it as blocked.
+
+For signed-in websites in Chrome, see
+[Codex Chrome extension](/codex/app/chrome-extension).
 
 ## Preview a page
 

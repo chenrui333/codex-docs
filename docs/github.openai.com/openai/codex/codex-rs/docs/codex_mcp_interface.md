@@ -2,9 +2,9 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md'
-source_etag: 'W/"210c31dbf5f5b0b809de5027529492f0be0e0fe04478a0ef3eae4193b3555aa1"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+source_etag: 'W/"2b2ccbcfe113d088bfa68373ec86d3d963133eed84d2ad1d69c1f8e544f96092"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # Codex MCP Server Interface [experimental]
@@ -61,7 +61,7 @@ Use the separate `codex mcp` subcommand to manage configured MCP server launcher
 
 Use the v2 thread and turn APIs for all new integrations. `thread/start` creates a thread, `turn/start` submits user input, `turn/interrupt` stops an in-flight turn, and `thread/list` / `thread/read` expose persisted history.
 
-`getConversationSummary` remains as a compatibility helper for clients that still need a summary lookup by `conversationId` or `rolloutPath`.
+`getConversationSummary` remains as a compatibility helper for clients that still need a summary lookup by `conversationId` or `rolloutPath`. Lookups by `conversationId` are preferred; lookups by `rolloutPath` won't work with non-local thread stores.
 
 For complete request and response shapes, see the app-server README and the protocol definitions in `app-server-protocol/src/protocol/v2.rs`.
 

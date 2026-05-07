@@ -3,18 +3,20 @@
   "sources": {
     "codex_capabilities.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "001967e822d23196f53c51f1658ab6fe69d61184c3a1a610adf3c60c2839b7f6",
+      "sha256": "a17d1d5073ae9d82744dbe7566b2a67ea09a4badc889083cc45d97ee9bdf898d",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -23,13 +25,15 @@
     "developers.openai.com/codex/agent-approvals-security/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "947ccf8b38897d8ecf99aaea0379739e42e5413161487ed2d79e841249ce1918",
+      "sha256": "7d426ce29239e343ee89530c2e0a8c467882044e4c4d06ca6345cdbd644a068f",
       "source_area": "codex_security",
       "source_etag": "W/\"fb144142ea5519cd93b76b7ab588beda\"",
       "source_last_modified": "2026-04-30T17:49:09Z",
@@ -39,13 +43,15 @@
     "developers.openai.com/codex/app-server/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a45886bda5e77b07021ba9a4a1b57712aba3d43d72dafbee5ce871ab471900db",
+      "sha256": "aa569b74530e826b9c00ed3d8b579886ce06cfd979f6b99443c0d8759c70a6de",
       "source_area": "codex_app",
       "source_etag": "W/\"28a595adb9a5ab4cad23a86f64040c61\"",
       "source_last_modified": "2026-04-30T17:49:31Z",
@@ -55,13 +61,15 @@
     "developers.openai.com/codex/app/automations/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "dbde65f1c6c1079373131bac023dec2309396785d79ed4486cb8cb5b826a9b54",
+      "sha256": "1d0e4ca03565dd5f7f62c1dd9ec831a90e749bac74c1f391631ca05e36830397",
       "source_area": "codex_app",
       "source_etag": "W/\"c7adda360e618461bee467f95b756941\"",
       "source_last_modified": "2026-04-25T06:31:36Z",
@@ -71,29 +79,47 @@
     "developers.openai.com/codex/app/browser/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "34e2bf9e1e1d056dd3a0686021555423dbeb0db0c5fdb26533af362d21192a32",
+      "sha256": "560ef2164caa0815e14b677788632ff6deafc45ae5f6d1dcf0b950f379f19ef7",
       "source_area": "codex_app",
-      "source_etag": "W/\"84f36644fed499a11dcb8cb85bea1365\"",
-      "source_last_modified": "2026-04-25T06:31:26Z",
+      "source_etag": "W/\"34c9f5d0182e744413514d3b7071d71f\"",
+      "source_last_modified": "2026-05-07T18:33:50Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/browser"
+    },
+    "developers.openai.com/codex/app/chrome-extension/index.md": {
+      "codex_cli_versions": [
+        "0.129.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.129.0"
+      ],
+      "sha256": "cc87d3ed773ab270d360dd82bc701a8bbe389b49f9e99f932ef7aa4ab5f59ad9",
+      "source_area": "codex_app",
+      "source_etag": "W/\"a36403a017ab9c6e5e849d61f3eaaf10\"",
+      "source_last_modified": "2026-05-07T18:39:53Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/app/chrome-extension"
     },
     "developers.openai.com/codex/app/commands/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "dd8cf9dc8b6116381c99388e91d38e8eade7b807e3db1e712fc925389bc38d16",
+      "sha256": "7a3b5319d0dfb52fe1d646e0b16db5307b7fbdfb9dc956f5ef685a578a5b0a71",
       "source_area": "codex_app",
       "source_etag": "W/\"88a1b7116add206986a2dde19944c5fa\"",
       "source_last_modified": "2026-04-25T06:34:54Z",
@@ -103,13 +129,15 @@
     "developers.openai.com/codex/app/computer-use/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "74a641748c44260280927d69411d875c7d7540a791627a4a1c4d5f02020a126c",
+      "sha256": "8a6e356c852b2561f04b32b30f71e0f6587412bf2340eac919f1195211b3599f",
       "source_area": "codex_app",
       "source_etag": "W/\"68dffd1b96d3eb8238277aaf8b42ffce\"",
       "source_last_modified": "2026-05-06T13:44:26Z",
@@ -119,13 +147,15 @@
     "developers.openai.com/codex/app/features/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "58ea6044cc26d2858f8ac851271caf17e6e5db35035166f32979c585078ab5f8",
+      "sha256": "bd7603b74c0ee443387bf72a2311ab3f39729245b1997eddc6728fc29a52b707",
       "source_area": "codex_app",
       "source_etag": "W/\"d444543b229a117cf14c8339c64f8399\"",
       "source_last_modified": "2026-04-25T06:31:36Z",
@@ -135,29 +165,33 @@
     "developers.openai.com/codex/app/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8fe10ff78a56b753b308c141d97ccd21e37596fc0a38d575a74a413dd6f1f375",
+      "sha256": "413cb07341f2a551664e2853802ab7b9692a2cf58a2d793940fa5a9e32d8b10d",
       "source_area": "codex_app",
-      "source_etag": "W/\"b340b340f97b89836a87226ebca16984\"",
-      "source_last_modified": "2026-04-25T06:29:13Z",
+      "source_etag": "W/\"d81591262bb33c42b04a43ac7af4ce3a\"",
+      "source_last_modified": "2026-05-07T18:32:37Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app"
     },
     "developers.openai.com/codex/app/local-environments/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "cb50af830b25edbe7547ce89cd93dfe5cdda2cf4f41007353bf057c1bde4ec87",
+      "sha256": "0c814b97a1b654ea810b76066680b65c6c0dce0ec8e710aaa304c78cdba9446b",
       "source_area": "codex_app",
       "source_etag": "W/\"46ba4645d67b69154542628625d527aa\"",
       "source_last_modified": "2026-04-25T06:34:53Z",
@@ -167,13 +201,15 @@
     "developers.openai.com/codex/app/review/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "3fb9e177647be439d602b5822e62e09725e7f4adfa3c9bead36759f02b2dd947",
+      "sha256": "89ce3c31cc41a5a953ce9197d8e984b3df0b3ea31dda107488ff1bab2109f308",
       "source_area": "codex_app",
       "source_etag": "W/\"7c4a3cf8927515733caf8cf1b2d49826\"",
       "source_last_modified": "2026-04-25T06:31:37Z",
@@ -183,29 +219,33 @@
     "developers.openai.com/codex/app/settings/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "b401df71d21afbfafad3fa93822ad6cbe2ff732eab68683eb9315e8c280cba62",
+      "sha256": "6d85ad63fbd0a23a694a6e262c4608b3af3a2806ebc6e13de86e025cb7f52f9a",
       "source_area": "codex_app",
-      "source_etag": "W/\"98943e094aa392de10d24b7ad6e34c0b\"",
-      "source_last_modified": "2026-05-02T01:18:41Z",
+      "source_etag": "W/\"b66aedbf9f7f7a4fdf22bfc1285dee02\"",
+      "source_last_modified": "2026-05-07T18:36:34Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/settings"
     },
     "developers.openai.com/codex/app/troubleshooting/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a12e1af070a1dd2a39689163c05b934c5a27ac561826309f457471ce8414358e",
+      "sha256": "f15034c230cf8827a1e4eb8dafe3f215434955d6e7ad192bd09b8b850c646620",
       "source_area": "codex_app",
       "source_etag": "W/\"90c0ad20719188747a2498a3961bf8f3\"",
       "source_last_modified": "2026-04-25T06:30:22Z",
@@ -215,13 +255,15 @@
     "developers.openai.com/codex/app/windows/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "294100b8cb7f58aa1b3cfdba7cc3a45bc8527879af97710d0050200f3912045a",
+      "sha256": "5fe81365f9f1dab44426d47d2b6901fd5b76dbdd8bcb14d59c79c15bfcb272db",
       "source_area": "codex_app",
       "source_etag": "W/\"131220190f81fcf73c2fddc5e80d6e81\"",
       "source_last_modified": "2026-04-25T06:32:09Z",
@@ -231,13 +273,15 @@
     "developers.openai.com/codex/app/worktrees/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "1bc8e4bd73866fb5163be564e423fa0e281c7eca093d1b36f65a49ed9dc08052",
+      "sha256": "d4942291d6754e84fe0145e03d1f72d846bbfb0c3eca203badfce7c98b37fdab",
       "source_area": "codex_app",
       "source_etag": "W/\"45b9408ffe43e8c6cc7a98cc8677056b\"",
       "source_last_modified": "2026-04-25T06:32:01Z",
@@ -247,13 +291,15 @@
     "developers.openai.com/codex/auth/ci-cd-auth/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "24a352164a5450ee240690f513a5104d9773339e9ecbae0267e971b132a52290",
+      "sha256": "3c92a51bc5b0ae70a236b2789d6ed25f14816db823bd08cc81fc6d3452579f17",
       "source_area": "codex_auth",
       "source_etag": "W/\"5debbabc95f60626109d4c40fdb1114c\"",
       "source_last_modified": "2026-04-25T06:55:25Z",
@@ -263,13 +309,15 @@
     "developers.openai.com/codex/auth/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "7aea66fa1b50998e9e5e6744bc5d03564fee3e3d3e561c0ca53b1771062f96ba",
+      "sha256": "a697c3429dbdd66cf9bc58434c17548ac6f9b68ea39950e49ad85f58b38ffc14",
       "source_area": "codex_auth",
       "source_etag": "W/\"20ca5f146e1b50b7b725ae257388b141\"",
       "source_last_modified": "2026-04-25T06:31:11Z",
@@ -279,13 +327,15 @@
     "developers.openai.com/codex/changelog/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "bf8470143116818e278cd7db8f4337b66d6487b7cb3ef0c0135732b74782577e",
+      "sha256": "b4bfc4fa72e4fec846a3405caf721d586d0e58cdce7d54622b91e78491066d8e",
       "source_area": "codex_changelog",
       "source_etag": "W/\"9f683798bbfb2f1084e70514638597a2\"",
       "source_last_modified": "2026-04-30T08:57:33Z",
@@ -295,13 +345,15 @@
     "developers.openai.com/codex/cli/features/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "306bf2769d2094cb372d0424047430bfcecb302f0d648540eb58a21793e29f43",
+      "sha256": "16a7aaf43f617efa4057abbcc506054edcb7809bbd087c4472b4453bfcc2186a",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"ac4adbc61ea8f454bf77c1a24bec6b22\"",
       "source_last_modified": "2026-04-30T17:49:26Z",
@@ -311,13 +363,15 @@
     "developers.openai.com/codex/cli/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d184be5919ec3c5980e5ed937fe09e5e6818bc0d429acbc0ebd253c977e3bce1",
+      "sha256": "42f4f6b3b0acfa6b825fc0593695a79fdca233cd9fab4941878dacc290fea2b4",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"512d7dbf13ae7ddef15b23e59f7de202\"",
       "source_last_modified": "2026-04-25T06:30:09Z",
@@ -327,13 +381,15 @@
     "developers.openai.com/codex/cli/reference/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "11a0a2bdb555758def8f5bf7e707ea2212ea6aa91711d4e8d75698ef3be90a37",
+      "sha256": "06815e5a7cb253bff6483f5bca3e0c54315df060b7c840c6be87f924d130fac5",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"c671f54a66f9e58efa1f1a54ad1c1a08\"",
       "source_last_modified": "2026-04-30T17:51:41Z",
@@ -343,29 +399,33 @@
     "developers.openai.com/codex/cli/slash-commands/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "2991683937786cbf4c339e55d2c6ad2afe827e35fe1c281872f731db2ad2e2f6",
+      "sha256": "9a070c34ee0384cc99e12a3c9f1e31a50b69f671f349868004cffe2a13262ed0",
       "source_area": "codex_cli_docs",
-      "source_etag": "W/\"bd7a63c7c49d49a5cab8ac37673e495e\"",
-      "source_last_modified": "2026-04-30T17:52:32Z",
+      "source_etag": "W/\"874685d95fdcd96c928a07409965db22\"",
+      "source_last_modified": "2026-05-07T18:37:10Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/cli/slash-commands"
     },
     "developers.openai.com/codex/cloud/environments/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "37d6af6c78e0f583773ac743275e0043644727c21cbb0866ecf84316f4ee1a41",
+      "sha256": "9fc2c6d0652df7a58d2fc40064a7515b6e8ce9ffb1bd7e4cce685bda41a2c615",
       "source_area": "codex_cloud",
       "source_etag": "W/\"7ab307e08863cf1d9e8e4bd73977d039\"",
       "source_last_modified": "2026-04-25T06:34:55Z",
@@ -375,13 +435,15 @@
     "developers.openai.com/codex/cloud/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "0de172e782304b17fa99ff7b51fc7ddc948c25548e94aff12cbd9927aeb131e3",
+      "sha256": "5e893911cb7dc09858a76bafc0fbd5dcbb77a13f1bbdf82da25a70f4f70783d9",
       "source_area": "codex_cloud",
       "source_etag": "W/\"811c50ed4d0be6d3a95860d70f537cfd\"",
       "source_last_modified": "2026-04-25T06:30:21Z",
@@ -391,13 +453,15 @@
     "developers.openai.com/codex/cloud/internet-access/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "c55b7ad427b88e6f59f12b1e86a7302a88e42aeb32e961dec1902da3a7e5d396",
+      "sha256": "dbc973c34efb05205681c095005557fcea4b10c3737c51101376cd130927f27e",
       "source_area": "codex_cloud",
       "source_etag": "W/\"1d9cb59701860657398326e2a5ca90da\"",
       "source_last_modified": "2026-04-25T06:29:32Z",
@@ -407,13 +471,15 @@
     "developers.openai.com/codex/codex-for-oss-terms/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "4bfe0998045a2e29bfa9ec3d57b8fabb198fbe7c799fc2536a98071881c20d18",
+      "sha256": "442a150638c5aff7a0df5de5e95fd840c652993fe4363b585b1fb1c5d3d3b9c9",
       "source_area": "codex_open_source",
       "source_etag": "W/\"2cb0db5354aaf0393610d311f33410d7\"",
       "source_last_modified": "2026-04-25T06:49:47Z",
@@ -423,13 +489,15 @@
     "developers.openai.com/codex/concepts/customization/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "7eb43574ba8fe78bd83b2a896d996103fb9e7578dd3be639d821068bb240d9d2",
+      "sha256": "5e92f2fa3e78a4e8171c5e8c9420346d46513cc3f1f1eaefccf4fa2d510c2310",
       "source_area": "codex_concept",
       "source_etag": "W/\"88b76544a58f0652a83414205cb719e2\"",
       "source_last_modified": "2026-04-25T06:34:03Z",
@@ -439,13 +507,15 @@
     "developers.openai.com/codex/concepts/cyber-safety/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "e561c6b4f0c798c5d1a811d98e5da890e2a9ec0f26fe122ac3be30867027342f",
+      "sha256": "7ee93f4c19646d56e1536cc56eb6d2c57212ec16b6fe15306466fb7a36f2e334",
       "source_area": "codex_concept",
       "source_etag": "W/\"08d8005f6ac679273727c72992fbdf50\"",
       "source_last_modified": "2026-04-25T06:31:36Z",
@@ -455,13 +525,15 @@
     "developers.openai.com/codex/concepts/sandboxing/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "42736d21025f4e7adaf196f43764fcd5fba9b96a9b60df21c05529931015fe6e",
+      "sha256": "4a14ac1f80fae14c84eba161a95255a407824a0052ce19fc237d1e3b6781ea71",
       "source_area": "codex_concept",
       "source_etag": "W/\"9a936929ec3e89ebef719c9db2acb8cd\"",
       "source_last_modified": "2026-04-30T17:54:12Z",
@@ -471,13 +543,15 @@
     "developers.openai.com/codex/concepts/subagents/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "edcb42db9b094eb9799eca4585249f241f88bd526b3968a269d7f11e0093a6b7",
+      "sha256": "2579e5fe5251be408a5242a0f1a76045a1cedc2b9fb461ad5bc53067ffee5893",
       "source_area": "codex_concept",
       "source_etag": "W/\"d387a077534daf38dd7007de0cd25f6a\"",
       "source_last_modified": "2026-04-25T06:39:23Z",
@@ -487,13 +561,15 @@
     "developers.openai.com/codex/config-advanced/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f18e351c157360faa58f1ae09833aea3f5a0087b3b1c74ce693445e072a8448e",
+      "sha256": "497e8a19b3f2e4bac286ec2008d02ec29831e54a32f71342400784640ebb05ae",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"3037301ecb5fd02614c66392fa2a6737\"",
       "source_last_modified": "2026-04-30T17:50:19Z",
@@ -503,13 +579,15 @@
     "developers.openai.com/codex/config-basic/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8394b8431287c8daebb8ec2cc396b4dd3e89e9436612c1415c087482ceeca4ab",
+      "sha256": "60e14189d450895f4cef0e602bfe93070d9961c6ca46462cbcf72b467ddfe6ab",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"4a969b692419b946812cf887b2bd2124\"",
       "source_last_modified": "2026-04-30T17:48:55Z",
@@ -519,13 +597,15 @@
     "developers.openai.com/codex/config-reference/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8af23cc6d8ee8b2bcdd1622a99e2e2183d8d238aae46afb8b512d85778019112",
+      "sha256": "d7c5ca76ade4822df496500ecdee89ccc2a353b0b22d5e9b98f639dbe61f1333",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"4c796df780dce08af4c28cae24e883c5\"",
       "source_last_modified": "2026-04-30T17:50:10Z",
@@ -535,13 +615,15 @@
     "developers.openai.com/codex/config-sample/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "389404f0e50c6223d852231b1509096f9ab9e0976441293cfd601641d11b9d71",
+      "sha256": "8d781551274223a8d951fece6ea98ab1d409dd41c520781f45b901a7630703ef",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"1eeeeb5de296c3046894a936003cbee3\"",
       "source_last_modified": "2026-04-30T17:50:09Z",
@@ -551,13 +633,15 @@
     "developers.openai.com/codex/custom-prompts/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "7d47e3b64adce5dbc1180d8bb355a01dd91e87e415b6802579e5a9529e91f238",
+      "sha256": "b5a42498a45b941ad3c20225a0e47fc6590d08c2466b2c407dba26280d9a489a",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"2ea34e9910ab9e2df0cb296413cb427c\"",
       "source_last_modified": "2026-04-25T06:50:21Z",
@@ -567,13 +651,15 @@
     "developers.openai.com/codex/enterprise/admin-setup/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "752df8b597e377a421d5358a9abc2bc1b23e3821adfaf7e445f3f4bf4bbeefbc",
+      "sha256": "438eeb206bfc9ac092bc382b3dc68f07fbd0c4c139a852678451fd4bbf1d14a8",
       "source_area": "codex_enterprise",
       "source_etag": "W/\"e8f0cc569889a0b39cfea3b32d4bc19d\"",
       "source_last_modified": "2026-04-29T00:02:09Z",
@@ -583,13 +669,15 @@
     "developers.openai.com/codex/enterprise/governance/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "c22734a24e5cc6e436ac59d8b0f0236777a3238af7188edfd6a16e82c7272ed7",
+      "sha256": "7fe4542b27a3938564e05b9248a7821167680a9ae91e1d67657d1c3fd0c4a722",
       "source_area": "codex_enterprise",
       "source_etag": "W/\"8be169e2e0768aa2b1b5a259538f693e\"",
       "source_last_modified": "2026-04-25T06:31:37Z",
@@ -599,13 +687,15 @@
     "developers.openai.com/codex/enterprise/managed-configuration/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "dc4b705a965b55ee6a38602ab9d3e5c010922e528dfac0ffd0fafb6f82f1505c",
+      "sha256": "0685020d3e6636e3581cb0bf7b232090e865cb02df919b58a8d041f5d5a7b6f0",
       "source_area": "codex_enterprise",
       "source_etag": "W/\"c5f2bbe3a23cd2f25ae4c5baa4efaf51\"",
       "source_last_modified": "2026-04-28T23:56:55Z",
@@ -615,13 +705,15 @@
     "developers.openai.com/codex/feature-maturity/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "43cad0fd897ffc9388675ae2a373b11bf21eca276142f2494174bc84fe75e0d3",
+      "sha256": "0c780a3f129c2da5c36c9502f84d680d033dc5cdb843e0a324f055e84c800c07",
       "source_area": "codex_reference",
       "source_etag": "W/\"30ebdaa829ebe9bde76da3206067bfe8\"",
       "source_last_modified": "2026-04-25T06:56:28Z",
@@ -631,13 +723,15 @@
     "developers.openai.com/codex/github-action/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "4e9e861c7c0bd132d9311740e53dd3df23e414623a17dd20749c0e1abe8bdba0",
+      "sha256": "3ac7d49356a08daf45d69d6b2791b090730a90254c46241e503e3e89d6beb379",
       "source_area": "codex_integration",
       "source_etag": "W/\"7fbed672c56513200bbb794148e87255\"",
       "source_last_modified": "2026-04-30T17:49:41Z",
@@ -647,13 +741,15 @@
     "developers.openai.com/codex/guides/agents-md/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "85560593d103cec6067949693a199587c50690172c2b0bb5a504ec12e02c2801",
+      "sha256": "e01b3c16bccc9f7d9081d266028f03b875ce3e1860f145529b6039514fd10ba4",
       "source_area": "codex_guide",
       "source_etag": "W/\"1115b7d9a27ab2cdab491ff09aa946bf\"",
       "source_last_modified": "2026-04-25T06:36:11Z",
@@ -663,13 +759,15 @@
     "developers.openai.com/codex/guides/agents-sdk/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "58d30aef2106a130703be58540c9baff26927c93a950816f17da9e97a1bb0771",
+      "sha256": "604574b94b09e7996887cd1150e699b35dcb4bdfdadf9101194c21809082e306",
       "source_area": "codex_guide",
       "source_etag": "W/\"3a17b112412ca461ad4136079523363a\"",
       "source_last_modified": "2026-04-25T06:30:33Z",
@@ -679,13 +777,15 @@
     "developers.openai.com/codex/guides/build-ai-native-engineering-team/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "589aba68ad9f0e490f6b28214339148629e1883c50eb094fc26f6c6e1145d1f2",
+      "sha256": "8c830962f33dc5b739b7fbd19d9e25c8c76187af4f8bf13c1c9d1e4728f1072e",
       "source_area": "codex_guide",
       "source_etag": "W/\"d7c8b605057b345afd4b34158ffb68ee\"",
       "source_last_modified": "2026-04-25T06:40:54Z",
@@ -695,13 +795,15 @@
     "developers.openai.com/codex/hooks/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "ac3d92c3ad8d5e2fb8e55e0062029097efd208707701a9cc318a484c565aa01d",
+      "sha256": "71446f518208b348067d7d8a5bce12e5d2b4197ed527baef5923d66cb16622aa",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"c5a7b9dde06117ce1306b12c83be87c1\"",
       "source_last_modified": "2026-04-30T17:51:11Z",
@@ -711,13 +813,15 @@
     "developers.openai.com/codex/ide/commands/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "e7efe98a5692f7462c0b24dba1dfb044bd829bbe327fe3c200d911e76aebe995",
+      "sha256": "44fcb72d7f69138774a16ca394f7a9df133ff9ebc2dfa14af82d59188f690a74",
       "source_area": "codex_ide",
       "source_etag": "W/\"5be07632ccd60e5563d207a6c860f829\"",
       "source_last_modified": "2026-04-25T06:50:32Z",
@@ -727,13 +831,15 @@
     "developers.openai.com/codex/ide/features/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f959398a4605e0202a76bd445e6b9877aef2512d13df1891161c9f4897269c72",
+      "sha256": "0655760bba52eea5572cb193d083a7ff445c828322ca90380ce86a817ed6c582",
       "source_area": "codex_ide",
       "source_etag": "W/\"a6d237c113fc2edb6af9ef63f35212d9\"",
       "source_last_modified": "2026-04-25T06:41:15Z",
@@ -743,13 +849,15 @@
     "developers.openai.com/codex/ide/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d9a418be0caff4076ba2474c639dce8495f5bbecb70363b733da067c54758ca4",
+      "sha256": "ace2eb200f9854703fd259fb0ddd38b4a6742be211310944fba65a302235ae47",
       "source_area": "codex_ide",
       "source_etag": "W/\"959f374755a7b978f40b75048db4c5bb\"",
       "source_last_modified": "2026-04-25T06:31:51Z",
@@ -759,13 +867,15 @@
     "developers.openai.com/codex/ide/settings/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "dfdfb54d21a40b18c1a0a016092b39f33aefc985bab6b26df4ba13b36fa0884d",
+      "sha256": "b1e0f17c326f03683063e1796be67607f5f3563e038fa4e04262d6aa847abd4b",
       "source_area": "codex_ide",
       "source_etag": "W/\"f7967ea037e46d6ebcd3f5fef5f7554c\"",
       "source_last_modified": "2026-04-25T06:59:52Z",
@@ -775,13 +885,15 @@
     "developers.openai.com/codex/ide/slash-commands/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "12b92c58a4a9bdc7e279b65693de005c0b7a809f61a699c3962bbf52cf3acdca",
+      "sha256": "b6a09d4c85460c16cf7777c2233e1f01aee812a006df428266d314defcd787c9",
       "source_area": "codex_ide",
       "source_etag": "W/\"cd0bd1e7c43713a6ded2fa693993c5ef\"",
       "source_last_modified": "2026-04-25T06:40:05Z",
@@ -791,13 +903,15 @@
     "developers.openai.com/codex/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "351a7a8ba3a0acdd185662587e8e9d87b221ac85ee2ef594fdd605aa68e91c0b",
+      "sha256": "eb8ac9714285b60a8508135cf2f2a2ee594b1d9b451aa17ae686f14047f037f2",
       "source_area": "codex_overview",
       "source_etag": "W/\"9d7f3ddce23ffe958a10bd2b58f9bc9b\"",
       "source_last_modified": "2026-04-25T06:29:06Z",
@@ -807,13 +921,15 @@
     "developers.openai.com/codex/integrations/github/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f6884fd98ea959851761533339ac7817466aaa5a5bd6d55dae578734cf372844",
+      "sha256": "31094d1762707b47ede4c07e55fc19e9aa57205983f568d7d16884c131262cdf",
       "source_area": "codex_integration",
       "source_etag": "W/\"1b8c5a9c8d7a00017c3883f5c481d3f6\"",
       "source_last_modified": "2026-04-30T17:49:13Z",
@@ -823,13 +939,15 @@
     "developers.openai.com/codex/integrations/linear/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "25d10a7f80b6d3ad52dc0dbb7af75003ceda788c610804aa0d39e347492421bc",
+      "sha256": "824b5086ad51ca39714a096034e3bbfda2c10b50561afcc7a0edf2fb24785898",
       "source_area": "codex_integration",
       "source_etag": "W/\"b892206bf5994cc5ee91627a455fbc96\"",
       "source_last_modified": "2026-04-25T06:46:48Z",
@@ -839,13 +957,15 @@
     "developers.openai.com/codex/integrations/slack/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "6103af687d0b2802161e8d6c8d7fa2aecee065444f90c3c423b4c02e15027c15",
+      "sha256": "23dc96d5b8465b93ab3d61f7f82ca5c7f8df0bc2f276feeb02b4be1158df9534",
       "source_area": "codex_integration",
       "source_etag": "W/\"b9c38f0c9177cdc9aaf8689b8ac082ac\"",
       "source_last_modified": "2026-04-25T06:44:46Z",
@@ -855,13 +975,15 @@
     "developers.openai.com/codex/learn/best-practices/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "0e1a4ad0e0a318384548d03886c455cfef40516bc9e1f4aac71d54d74569c519",
+      "sha256": "a34c60cf97ad5d14ec3f5bd6bb997ad2f1b6c2c246db21ef238de25960e869c7",
       "source_area": "codex_guide",
       "source_etag": "W/\"b560c5751470cec7dbe1cffe297df731\"",
       "source_last_modified": "2026-04-25T06:30:43Z",
@@ -871,13 +993,15 @@
     "developers.openai.com/codex/mcp/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "af6be2b40c6b0aafabae41294fb5c768b159a1e10439efdc24d28fedc419eea1",
+      "sha256": "0b64266bfaa660c195b277fc817c2ce66ad5d6bd3a2d66977ebc37e4a5713929",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"698d6e79016d8393640e1d71bf1fd8f3\"",
       "source_last_modified": "2026-04-25T06:32:59Z",
@@ -887,13 +1011,15 @@
     "developers.openai.com/codex/memories/chronicle/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8294a6e68cdb5ff344976782abfa7bf5f64f32881cd40e359ad65d15ff1213a1",
+      "sha256": "2a93480a70f284e49b5c92e189d1f913572db9674fee5349bf4b7274afb1c39b",
       "source_area": "codex_memory",
       "source_etag": "W/\"e771fa0796018a67046a13d3122649de\"",
       "source_last_modified": "2026-04-25T06:38:17Z",
@@ -903,13 +1029,15 @@
     "developers.openai.com/codex/memories/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "85526de6057bdd4106e9ec3b0829ae22418d23176e2c1fcb53b633c76445df43",
+      "sha256": "fc69a716b69ef604ce74cd78e4a5ef48b06eb5a6f8fe64721facf1ff1965dae3",
       "source_area": "codex_memory",
       "source_etag": "W/\"3427ab6387936f2d71f70f237b941f07\"",
       "source_last_modified": "2026-04-29T12:31:07Z",
@@ -918,12 +1046,14 @@
     },
     "developers.openai.com/codex/migrate/index.md": {
       "codex_cli_versions": [
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "ae44aa2527ecd0951a3700d53e99ad7f0e8b743ac76efc846a10625299c18a7f",
+      "sha256": "28920b201ae93eb2fca75cbc55b645b5aa92f6f948334058387925943d17070e",
       "source_area": "codex_migrate",
       "source_etag": "W/\"344b0640ed63fc28b79b8ee1e109ed9a\"",
       "source_last_modified": "2026-05-01T23:22:21Z",
@@ -933,13 +1063,15 @@
     "developers.openai.com/codex/models/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "39da60add565cbb77801fca08904174d84f5632f8bb05de36260ab4b8b4e9b40",
+      "sha256": "1e45ec14b3a14a7e603c9700d9c33c7984853a776a140eb06da5025b76146d99",
       "source_area": "codex_reference",
       "source_etag": "W/\"517666cfa0713d869bdbe864cbb911a7\"",
       "source_last_modified": "2026-04-25T06:52:19Z",
@@ -949,13 +1081,15 @@
     "developers.openai.com/codex/noninteractive/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "048cbd612afae3f19be8ce303875b838488be6a499f981eb6137e32cdc5834eb",
+      "sha256": "1b4e63d4d890d7abff173cfbfc46d5b5b64ea66622d90f2890a2ed517df02cda",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"956f066a981279aea994c5a92e80fb61\"",
       "source_last_modified": "2026-04-30T17:49:17Z",
@@ -965,13 +1099,15 @@
     "developers.openai.com/codex/open-source/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "804270f3e87452f0c7f868537b40f880b5f26e61978468bc5bbb981daa747df4",
+      "sha256": "78e766a2cba1d376d2abb0719ac47e4997ebb5d9a88acb99d247f02cbbf61a20",
       "source_area": "codex_open_source",
       "source_etag": "W/\"afec9ed6e97faccabb80c7dc3540c3fb\"",
       "source_last_modified": "2026-04-25T06:50:05Z",
@@ -981,13 +1117,15 @@
     "developers.openai.com/codex/plugins/build/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "07ed084f6d2e5e6a47252432c536158bb4112fe9ff4f1a8bbc0b2c961a42ee48",
+      "sha256": "5aca0802b96bf843d19ec1e48f868fe8883dd29a6465746c023cff2d100218dc",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"d3f17684652e99232056ddcf0096ac2d\"",
       "source_last_modified": "2026-04-30T17:50:16Z",
@@ -997,13 +1135,15 @@
     "developers.openai.com/codex/plugins/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "bd6b2b9c7c144a2381b6bb319e09beac18452d34a7b43ec32505e583b737a95e",
+      "sha256": "3b565fa2befc51439317bce420c88894a9297cc50e30677fd03b20f5279772f9",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"945a58d0db0c966bad2a7eece5474067\"",
       "source_last_modified": "2026-04-30T17:49:49Z",
@@ -1013,13 +1153,15 @@
     "developers.openai.com/codex/pricing/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a9887c31f244d07493087f741dfd3f21688242f73ec7a6fac35962f73a760428",
+      "sha256": "97699ab33071309472fbf4d1988139fb20da4e075a9e27e14edc636eafe8c444",
       "source_area": "codex_reference",
       "source_etag": "W/\"887edd73bb00781dcb29bf58ba35aa3c\"",
       "source_last_modified": "2026-05-07T01:27:27Z",
@@ -1029,13 +1171,15 @@
     "developers.openai.com/codex/prompting/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "524f9ff14b081bbbeb08b38ab64e27d6b2de4f8cf2a9865173209ee701334dc1",
+      "sha256": "202e9c13df00889f2da1d0f6bec4e9391a6753f7961b0fd7af615ec020ea622b",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"f63af68db03bd299047313fe461338ea\"",
       "source_last_modified": "2026-04-25T06:41:42Z",
@@ -1045,13 +1189,15 @@
     "developers.openai.com/codex/quickstart/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "171115babf4d3aac9496939f2c0e0a1a9ad348ad102746a1ff621bc398dd4a16",
+      "sha256": "696e057e5a65f630051091872cd18097f210d851985b3cd8a6db021c00956621",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"603169b9a9666abd2e7f176b443f31e8\"",
       "source_last_modified": "2026-05-01T23:21:05Z",
@@ -1061,13 +1207,15 @@
     "developers.openai.com/codex/remote-connections/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "9ce1c4be0704566e5801611cfe352fb038aba5dd70ff483a4d5d914a19da1512",
+      "sha256": "1f4bee986d091484912a61100917f0712f15d271b410a74800d72e9859fc92de",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"d56c230534f185f73d307d95896ddfbc\"",
       "source_last_modified": "2026-04-25T06:40:25Z",
@@ -1077,13 +1225,15 @@
     "developers.openai.com/codex/rules/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d3b52724ca5264e9c5e39f2d9f5825ce01b5848543f0c905830d14748c0cf568",
+      "sha256": "e5f7ecd3dad3d11d3b6a2c839361e0d088d5b9fd793d8d5858f0573539bb272c",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"38cd685208e3bf7534a3b20be061e185\"",
       "source_last_modified": "2026-04-25T06:42:22Z",
@@ -1093,13 +1243,15 @@
     "developers.openai.com/codex/sdk/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "6ecbd6fe8de580b0c074e83ab7ac3ab9277f10516f58d6d18cfeba9e43560cd9",
+      "sha256": "a371a0710544dba8e99b8d7061822b353e5aa747adf515ef50d2e4927cf0c5a5",
       "source_area": "codex_sdk",
       "source_etag": "W/\"28bd573a593b19ab68c959d1ee4f6338\"",
       "source_last_modified": "2026-04-25T06:33:55Z",
@@ -1109,13 +1261,15 @@
     "developers.openai.com/codex/security/faq/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "c04ba3164de11c79412e17a39ede0fc9ad9b7c8ae0a138260520faa0e14ac7fa",
+      "sha256": "95eb363ac71e651478aaa5cedf36dca9c09d64d78898b533207b95579cbe94a0",
       "source_area": "codex_security",
       "source_etag": "W/\"db0aaaaa66881587735043eacabab19e\"",
       "source_last_modified": "2026-04-25T06:54:23Z",
@@ -1125,13 +1279,15 @@
     "developers.openai.com/codex/security/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "396bc4f4db06744444af958394191a4e3e604915050afba56f5f92679028ff45",
+      "sha256": "5cc66032a2e2d4e4225abb92715b94100efc60316995641f044ac577f28574a6",
       "source_area": "codex_security",
       "source_etag": "W/\"ee5dac943b013db158328dcd96fc8ed7\"",
       "source_last_modified": "2026-04-25T06:28:04Z",
@@ -1141,29 +1297,33 @@
     "developers.openai.com/codex/security/setup/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "033397d5ee5e0208053eb6056dc9ef8bc6fd782eee67d7eae078db6c1b0d9470",
+      "sha256": "4edfc6f459656abd87b95d4ef279e3a397824f2106f45923d22e2cf4c356c6df",
       "source_area": "codex_security",
-      "source_etag": "W/\"3d29eabba6796beeb103b1849c0d51fa\"",
-      "source_last_modified": "2026-05-07T12:45:40Z",
+      "source_etag": "W/\"df2fa3d3d9ab956868d0c24b9053ed23\"",
+      "source_last_modified": "2026-05-07T18:34:27Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
     "developers.openai.com/codex/security/threat-model/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "7bacbef93512ae8974995302ff480153f1bc45f79a76c2eb5e07ab6d64a5359e",
+      "sha256": "29292959bbe80d7855014b06114dcd16e8a36e03220029016daa11e080ea7c0d",
       "source_area": "codex_security",
       "source_etag": "W/\"399ea380546ebd8a7a83bc79f6b9debf\"",
       "source_last_modified": "2026-04-25T06:50:21Z",
@@ -1173,13 +1333,15 @@
     "developers.openai.com/codex/skills/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "ec4c4afe291219fc9873b2659acb9802f6926eb082297aed1689ff796cf43fd7",
+      "sha256": "eb84ec931b8850633016855067e77b1da009b72e46268bc014779107795a08a8",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"f9f78a930fbbeb9fbe5751f28d8a8b26\"",
       "source_last_modified": "2026-04-25T06:31:15Z",
@@ -1189,13 +1351,15 @@
     "developers.openai.com/codex/speed/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "965cd301a23103f7f8c51608a875cead64be87c741e298646d6ea016fcc18a09",
+      "sha256": "12cd14ffa9f22b0e5846107bf7bbd879283f4719b47ae1787c82bbb38cbb99a6",
       "source_area": "codex_reference",
       "source_etag": "W/\"7519f69d0295f8db589cbd228c494e83\"",
       "source_last_modified": "2026-04-25T06:36:12Z",
@@ -1205,13 +1369,15 @@
     "developers.openai.com/codex/subagents/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "94f6905b5f0bd43ea74c38718dd8ad93004da2e18a2d35408f03c2cb7a3afbaf",
+      "sha256": "0ef7e5e3315569d80a51b2554ff475400827cc55f0ca9adcd699534dae9ad688",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"77dceea9a92fd811d6cadb6132b8191d\"",
       "source_last_modified": "2026-04-25T06:33:00Z",
@@ -1221,13 +1387,15 @@
     "developers.openai.com/codex/tracks/game-development/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "563fce3da432d18e8d4efeb257cce811343aa2af356d62ed22a20df5c348569d",
+      "sha256": "f01e01d2946b16dc7b5333a627f0c55829cd4a0f1c32158023174eb649279e50",
       "source_area": "codex_track",
       "source_etag": "\"b2596ee03cfc43a1c8b04a1b93abf0d2\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -1237,13 +1405,15 @@
     "developers.openai.com/codex/tracks/native-development/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "c7673777b341d02cd25c3b7c9221342b3c50e3b9f4b743f2647de49d928d19fc",
+      "sha256": "1c26b92547637a81b5b398b82bd78129187652266a036d5a0d6333d6b5d85eef",
       "source_area": "codex_track",
       "source_etag": "\"a2af58e9b50bb66c0bd91aeb35cc5f39\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -1253,13 +1423,15 @@
     "developers.openai.com/codex/tracks/production-systems/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f5f9678b8fb53e17d6f31c96192a7bf29681e06d14cec65a5f842c91483a2636",
+      "sha256": "86cfabef9555597cc2b290a13b2e3223294d09d66a367231f1b8a9215d39502d",
       "source_area": "codex_track",
       "source_etag": "\"6ba4d7d74377412b3644c6dbcffae9bd\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -1269,13 +1441,15 @@
     "developers.openai.com/codex/tracks/productivity-and-collaboration/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "3d65c17fb4142fae08b4779630a241e5a7d3b2274ceb34a3576dde755e932bea",
+      "sha256": "a2fa83f2dd6135e9914916f0f3fb875485af64c475e2f9c5a1dfd246fcd9d766",
       "source_area": "codex_track",
       "source_etag": "\"be91cdeb9ddd9c92abd6501b0a697a46\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -1285,13 +1459,15 @@
     "developers.openai.com/codex/tracks/web-development/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "b7481bb3f5992be202dde8981204009d27cac22a2f9d0148d1775b5fd7c77380",
+      "sha256": "44bb9157319bacab51264014d024acbbceab6cfa4f371ef46e31dc74f012e83a",
       "source_area": "codex_track",
       "source_etag": "\"3f297b9a9a0f29b433f3a7863a7b45e8\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -1301,13 +1477,15 @@
     "developers.openai.com/codex/use-cases/agent-friendly-clis/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8361622ad03afd25389a5208c9a78bd68bc7a5e67766abc67c2a2aa7012b4481",
+      "sha256": "0b2098d07122fd246f5a8f088207c71becf037d852145d833abf99e50c7fa374",
       "source_area": "codex_use_case",
       "source_etag": "W/\"309fd6d6ddf39564bd4ecb3d98e2529c\"",
       "source_last_modified": "2026-04-25T06:52:55Z",
@@ -1317,13 +1495,15 @@
     "developers.openai.com/codex/use-cases/analyze-data-export/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "6415eefbc161e313f901b00ec52d161b565a64f4fdcb0df4292cf0ad23a66d8b",
+      "sha256": "f5edcafb3060a0a0017f63e157ffc8cb24a31f51de3d8c49c4f7e9cd43937114",
       "source_area": "codex_use_case",
       "source_etag": "W/\"7514da513a53b6efb789b36e6044ef5f\"",
       "source_last_modified": "2026-04-30T17:59:11Z",
@@ -1333,13 +1513,15 @@
     "developers.openai.com/codex/use-cases/api-integration-migrations/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f8199c730f115e0506f8fd270d4e13a482d71019591995de75e1722bd5d891c6",
+      "sha256": "72c0aea0edb927c65f023108be3beceba0c2d9d7f7b81337ef0a69aaeecc5601",
       "source_area": "codex_use_case",
       "source_etag": "W/\"cca2ac9798c858d272162638a7f37774\"",
       "source_last_modified": "2026-04-25T06:49:53Z",
@@ -1349,13 +1531,15 @@
     "developers.openai.com/codex/use-cases/automation-bug-triage/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "763f6415ca8031b9076653fac1141e2a41ce81bc55648a23affe5e071410642a",
+      "sha256": "41c18d50fbc70c3fd76f9bedbe3dfdaa7a89c2f4daacce992e39555e971ea153",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c229c2cb29c0aa3759a0ca446faa50cb\"",
       "source_last_modified": "2026-04-25T06:36:15Z",
@@ -1365,13 +1549,15 @@
     "developers.openai.com/codex/use-cases/browser-games/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "be0f39388fb979cb7d9cd88997d6887b8ebf82c1136d1bd01505e8a3d0fe34dc",
+      "sha256": "1d51f17f5d71e80d5aca4c711f9a3f97859fc1c0044780e69f4fed7cfcb25d4d",
       "source_area": "codex_use_case",
       "source_etag": "W/\"abfbbca8d71da90f5d96f6ac103b550c\"",
       "source_last_modified": "2026-04-25T06:50:34Z",
@@ -1381,13 +1567,15 @@
     "developers.openai.com/codex/use-cases/chatgpt-apps/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "edb3498c46eb537bea535c2d3112bd65d23e25fa4ba05214bd85fba1bbaa55ec",
+      "sha256": "ba41dbe977c6157fec054bdea1fbb5dd0c3f6dca59b736d5e44e6c88b4411c77",
       "source_area": "codex_use_case",
       "source_etag": "W/\"3ab54160c7b1c9e872c606be456f9199\"",
       "source_last_modified": "2026-04-25T06:55:22Z",
@@ -1397,13 +1585,15 @@
     "developers.openai.com/codex/use-cases/clean-messy-data/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8be3f1c3ab2fef10811aa329c67c401bae74874d3b247ad06bdc117cdf1a507d",
+      "sha256": "db12eccc2b6270d3546769cf3d8f6c9ddb1a64067213c65f8186931021d21188",
       "source_area": "codex_use_case",
       "source_etag": "W/\"a83dcce8283db1de37f1569c14130d47\"",
       "source_last_modified": "2026-04-30T17:51:37Z",
@@ -1413,13 +1603,15 @@
     "developers.openai.com/codex/use-cases/code-migrations/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "7b8ca8203dfca74771664906abcd8dfd952ecda4b09dae8a8aeee60762d20dad",
+      "sha256": "6f71880a232577ef32e9d3369770968587842ced554a8630351fc10a84ef8000",
       "source_area": "codex_use_case",
       "source_etag": "W/\"8402887ad418634d43fab9949307a749\"",
       "source_last_modified": "2026-04-25T06:37:10Z",
@@ -1429,13 +1621,15 @@
     "developers.openai.com/codex/use-cases/codebase-onboarding/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "90cd20daaeb76a7d309ea1783f6bbf89e4e37069a2b75195bd5333931869f9d1",
+      "sha256": "aabf23e31877404cb6c5322638bafdcde07769f26f7e87722211114ea47ae1fb",
       "source_area": "codex_use_case",
       "source_etag": "W/\"82688ad60830f3fecf6b2cd46a8f87d0\"",
       "source_last_modified": "2026-04-25T06:37:46Z",
@@ -1445,13 +1639,15 @@
     "developers.openai.com/codex/use-cases/collections/game-development/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d782691d760859e5a74f6c17e14d85bc73971cfc334852807a38a63dd8cfb307",
+      "sha256": "5bfb5a9c8fa87ef1e32a08ac06eb8bd7c511ce5bccc607fdabb1e2a03a13a2c2",
       "source_area": "codex_use_case",
       "source_etag": "W/\"ef9ecff0fe45fe5d70611067fd32629d\"",
       "source_last_modified": "2026-04-30T17:52:55Z",
@@ -1461,13 +1657,15 @@
     "developers.openai.com/codex/use-cases/collections/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "3622ebc0fe64a5ae63127462b361f60b46795171cb406d8633e2f3a223c80699",
+      "sha256": "d9388f17364b4a154cd69a7ac5e72582ec872ac5081cb99675cefbf6711cec53",
       "source_area": "codex_use_case",
       "source_etag": "W/\"779d76f280e44a3bc8f7018509b1b6c0\"",
       "source_last_modified": "2026-04-25T06:37:08Z",
@@ -1477,13 +1675,15 @@
     "developers.openai.com/codex/use-cases/collections/native-development/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "72b22cc4d376dc2b546f3c46a82edd0373e68461e8f7085cde78fa9301d03c7a",
+      "sha256": "444163df81d5dda8a8acdbd3dffbbcbb14a93eee2e713dc8096f1ee21ccbb268",
       "source_area": "codex_use_case",
       "source_etag": "W/\"1e4ce00e42a23908636ac57691873781\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -1493,13 +1693,15 @@
     "developers.openai.com/codex/use-cases/collections/production-systems/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f9f58b9468db0b16b42d0ebf8d2894e0f190082db266fcaeebf6fda2ec90f140",
+      "sha256": "4037253d4aa5433f4492fd10b1d5db7582a06ce2e5b6d55cd99ab42312c134ca",
       "source_area": "codex_use_case",
       "source_etag": "W/\"f5cac888a2fae893d79448061e26ff59\"",
       "source_last_modified": "2026-04-30T17:52:43Z",
@@ -1509,13 +1711,15 @@
     "developers.openai.com/codex/use-cases/collections/productivity-and-collaboration/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "0c3c448aac22ceb10b637c231cdf7f6d72f055f44d5e5c8bad558781540ceada",
+      "sha256": "67c291871d57e6df81fa30f9fbab15078eec7c433afca365ccc5336ad4ba38e4",
       "source_area": "codex_use_case",
       "source_etag": "W/\"9f313fbedfab7674aaecd71417e844e5\"",
       "source_last_modified": "2026-04-25T06:29:08Z",
@@ -1525,13 +1729,15 @@
     "developers.openai.com/codex/use-cases/collections/web-development/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "191abd7a43787c43f5efd7ba74eebcf91cf77077e0903f28d579cade857a1e01",
+      "sha256": "0751677e6d1a521511365667c52068dac07c701d53f915a7ff8fc6b5279a2cc8",
       "source_area": "codex_use_case",
       "source_etag": "W/\"7a5d9fe1f764c8b19813f530390dc99f\"",
       "source_last_modified": "2026-04-30T17:55:55Z",
@@ -1541,13 +1747,15 @@
     "developers.openai.com/codex/use-cases/complete-tasks-from-messages/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "fff5b3aa10fea89d4d20b837d784e945ebd88d0b114b208313b25e53d12cdab6",
+      "sha256": "af780f8152c3f0dab5bfdee0caa13c67fb3d5e54491beef4332b9cb2a11c33e0",
       "source_area": "codex_use_case",
       "source_etag": "W/\"0856f680f699103fb93311d7ed800c34\"",
       "source_last_modified": "2026-05-06T14:21:04Z",
@@ -1557,13 +1765,15 @@
     "developers.openai.com/codex/use-cases/datasets-and-reports/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d5bf167ca703d75860f970ffacd72f38afb980874648947a422a829234dd10fa",
+      "sha256": "50eb5bfcc35079166aca3a7009a30d35b89c37f5f235d1066833aed576f7d868",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e30eccd5690502f0c5ed59e40250a00b\"",
       "source_last_modified": "2026-04-25T06:30:51Z",
@@ -1573,13 +1783,15 @@
     "developers.openai.com/codex/use-cases/deploy-app-or-website/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "464a35e33265f141ea99f3099032cfc9a6532087ce99a76e4f3999e6e27aa43e",
+      "sha256": "1c9bb822b82744e2845c4cd37bce82313f74296aa3e76a21c364c3ac566b0439",
       "source_area": "codex_use_case",
       "source_etag": "W/\"1fd8a8e9097f9a2d94055cf7161284da\"",
       "source_last_modified": "2026-04-25T06:49:50Z",
@@ -1589,13 +1801,15 @@
     "developers.openai.com/codex/use-cases/feedback-synthesis/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "c6d5e849b6dc8e490f80ade042dbbd77892ed1109b85afcd12aba8c01aded067",
+      "sha256": "9917638e0ae5e8f41e5902572e87d1d7ab37a05c572ee794c31c3552262a5921",
       "source_area": "codex_use_case",
       "source_etag": "W/\"d6f22bcc8d5467b17ac1bb490335fe77\"",
       "source_last_modified": "2026-04-25T06:52:27Z",
@@ -1605,13 +1819,15 @@
     "developers.openai.com/codex/use-cases/figma-designs-to-code/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "093878f196e3ac106527df26d0b5d414e73178ec5ecb55327a47daea0857ded6",
+      "sha256": "f2abb896980d97b03e4eb34f9d7aab12443e001324e591c991c6b135fc23eaa4",
       "source_area": "codex_use_case",
       "source_etag": "W/\"113b01d3d3857423e4869e6679e9e583\"",
       "source_last_modified": "2026-04-25T06:51:43Z",
@@ -1621,13 +1837,15 @@
     "developers.openai.com/codex/use-cases/frontend-designs/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "5cf8860f99b6ff1785e7b692675a67beb5170878297808bcf75d201d65172391",
+      "sha256": "9d9487654ab3b57cf92b5ac573f6871f3e0e4a4797bdc2607430098ace0fcfa3",
       "source_area": "codex_use_case",
       "source_etag": "W/\"1d7b415298dc0c03dfe7d45e6d0a47b7\"",
       "source_last_modified": "2026-04-25T06:37:43Z",
@@ -1637,13 +1855,15 @@
     "developers.openai.com/codex/use-cases/generate-slide-decks/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "35a10499c63354e779cd11428e65e6f722551919cf5ec945bf72b3a1ad87da6c",
+      "sha256": "99440379220b57235d958da5da6644c3efa3d7ed59619a23014d0300369c8272",
       "source_area": "codex_use_case",
       "source_etag": "W/\"2b4f81ba5c961575e8f60ce3d932b33d\"",
       "source_last_modified": "2026-04-30T17:49:22Z",
@@ -1653,13 +1873,15 @@
     "developers.openai.com/codex/use-cases/github-code-reviews/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "ed05e2794aae9f4e81d59457c455bbc5096ac0afa87895eadbda99f80d2ccc7e",
+      "sha256": "f5852adf8c93494587ea44b4708c501755156b5481bb3937124b9eb911884ee2",
       "source_area": "codex_use_case",
       "source_etag": "W/\"d9cf2f284ef85f9244cf0660d3428222\"",
       "source_last_modified": "2026-04-30T17:49:13Z",
@@ -1669,13 +1891,15 @@
     "developers.openai.com/codex/use-cases/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "27c1fdbf457764db9505c2561b5fa89213621bdbb0fa0656c7e622a7e8fdc2a5",
+      "sha256": "0fe7940b11693d1a3fc3251185015127f782bbdf2bb500029e0ad9f813ed1064",
       "source_area": "codex_use_case",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases"
@@ -1683,13 +1907,15 @@
     "developers.openai.com/codex/use-cases/ios-app-intents/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "2f3307fb8b36c0c40c957e35d381dd3047d50abbb76cf33f99aed23e554c6d42",
+      "sha256": "51fe010194c4c8235f23cbc531fc4bed6acedfa46d9215ef6ea511582a81ebfa",
       "source_area": "codex_use_case",
       "source_etag": "W/\"a0f07fe577bca9c68ad3399c1cacc313\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -1699,13 +1925,15 @@
     "developers.openai.com/codex/use-cases/ios-liquid-glass/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a015dd7f4cbb641dcaa5764a541d3606c908897c7fb91e47fa04a4f2a72ead71",
+      "sha256": "6809df49786effaff992b6380c623bf6d4cbf3d9c8752e3e223e03089502f609",
       "source_area": "codex_use_case",
       "source_etag": "W/\"d874c4059ad708db4a81d12ec2e9c9c0\"",
       "source_last_modified": "2026-04-30T17:51:28Z",
@@ -1715,13 +1943,15 @@
     "developers.openai.com/codex/use-cases/ios-simulator-bug-debugging/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "36dad04d293d9f6382060187bde66cd8a995e08d6d43e3d44a831de63300262c",
+      "sha256": "22fc6b07af2a8565bb32b306b3a54442014e9b334924595e7ae86c119035329b",
       "source_area": "codex_use_case",
       "source_etag": "W/\"0ed61945221c8fcf69bf46031c86728c\"",
       "source_last_modified": "2026-04-25T06:54:17Z",
@@ -1731,13 +1961,15 @@
     "developers.openai.com/codex/use-cases/ios-swiftui-view-refactor/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "64589328687ce4db7f599055ddaa9d3061e0c6a2a6e0438973424868d995f695",
+      "sha256": "88f522d0e897900f33e9ed1c316a3cae56750b3a514d96bce58ae30dfad93783",
       "source_area": "codex_use_case",
       "source_etag": "W/\"57eecd6d44c7ae331b284471aa30b6cd\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -1747,13 +1979,15 @@
     "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "fa3f410266853dd0dc873770a6930378ff9b862623a6ff86f03b828dfcd35382",
+      "sha256": "260881a97a7d4664a36ce6033c99f6644832ef14e0d0dfbe1b949a76a121f39e",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c10a16ceeb23d4d10f254fb2c7e25096\"",
       "source_last_modified": "2026-04-25T06:50:24Z",
@@ -1763,13 +1997,15 @@
     "developers.openai.com/codex/use-cases/learn-a-new-concept/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "8dd0a7e78af0cedcbad3fe9e781b0e670c401a149cc89ab1057cdf4d0513384d",
+      "sha256": "83aa071defcbf91071a616d6fc43e612851caefffe5b72b28c6b50fa51ccfa01",
       "source_area": "codex_use_case",
       "source_etag": "W/\"86a9f3b6381c1687f92ae75d39aa3549\"",
       "source_last_modified": "2026-04-30T17:52:06Z",
@@ -1779,13 +2015,15 @@
     "developers.openai.com/codex/use-cases/macos-sidebar-detail-inspector/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "eaa42bd4da2235aed3b65feb28946d6d1e6e45a463db3511190a06f3cfed43ff",
+      "sha256": "912cd80e3eadd2a6f3b317dadf454fa0511ea677e10b5541083aad1b4e3ec53f",
       "source_area": "codex_use_case",
       "source_etag": "W/\"baa8c19a1ee6f8de23264c3a1ad648b5\"",
       "source_last_modified": "2026-04-25T06:53:41Z",
@@ -1795,13 +2033,15 @@
     "developers.openai.com/codex/use-cases/macos-telemetry-logs/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a03ce54e88fda88e8298c572d550f5de8548bb0b5fad2321609450baff11dcaf",
+      "sha256": "04ab677591457ecffb88bf8117c687f827d9cc46ea202e0990d18c58693c7f14",
       "source_area": "codex_use_case",
       "source_etag": "W/\"ee43ed8ae10c1658dd025acb61680bb2\"",
       "source_last_modified": "2026-04-25T06:58:00Z",
@@ -1811,13 +2051,15 @@
     "developers.openai.com/codex/use-cases/make-granular-ui-changes/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a86f1ae45ca6825cd7c28f08b9a4db8d1c261338e76ab1f2d5f7cd7ab93c8575",
+      "sha256": "5ec1942f23d9fc397db0a70c4983e0e3cf1ac4facb482edb7bbdb8aed788d3f0",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e3b0ac8fbfbaca947c7664752d77c326\"",
       "source_last_modified": "2026-04-25T06:47:46Z",
@@ -1827,13 +2069,15 @@
     "developers.openai.com/codex/use-cases/manage-your-inbox/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "33901069424108f5d6f1fd631087d4a303b4bfea2db0c613b56fbd1dd0727f5f",
+      "sha256": "9052d485ef14a4be96b5bbd39305ac115151ca4ebb7adbe036168872fb5c9af2",
       "source_area": "codex_use_case",
       "source_etag": "W/\"4c10a95c6556f10368b10198d64fc978\"",
       "source_last_modified": "2026-04-25T06:54:35Z",
@@ -1843,13 +2087,15 @@
     "developers.openai.com/codex/use-cases/native-ios-apps/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "0402e9b7e436bb7caeaf225d3c135b721c62e196725075d1dd3b10c83db7641c",
+      "sha256": "a8fcbaf46e2d8d58f00573e88d704fc54ab38532e6aafb884e03bfc2c6683c4d",
       "source_area": "codex_use_case",
       "source_etag": "W/\"421fa201e3b4caf2994b54a9e6629b67\"",
       "source_last_modified": "2026-04-25T06:33:56Z",
@@ -1859,13 +2105,15 @@
     "developers.openai.com/codex/use-cases/native-macos-apps/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "aab3ad6befd6d5c9d3b8245fd547a95b3e4db6a0add35f05668397d9c60ec977",
+      "sha256": "92746b70d60503f497dfd006695ca7c87b9c98400e373bde886f88ed434006ea",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c0b15aea93407c70386daaee4d1e26dd\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -1875,13 +2123,15 @@
     "developers.openai.com/codex/use-cases/new-hire-onboarding/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d8b97925d465cd29019a5938db203ad70b052a2cca2d2c4e0ba5d75fc5f86598",
+      "sha256": "d9b365ad19c6df5d84fa799a72a1208b848cc7bccde7f13439c7d7e12bc3f502",
       "source_area": "codex_use_case",
       "source_etag": "W/\"a4860336f6acab13daea5c07ec8c62e1\"",
       "source_last_modified": "2026-04-30T17:55:14Z",
@@ -1891,13 +2141,15 @@
     "developers.openai.com/codex/use-cases/proactive-teammate/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a198e0af789ce5ffcd3abca6b55b695f478fdcb451710e60d6799a2c228f47a4",
+      "sha256": "950a7974fec381e3b99826f9f3b589c4c47c5156fc493842ee0ae84e57610c7d",
       "source_area": "codex_use_case",
       "source_etag": "W/\"91cc4a596599e393c7830c78c39bdb98\"",
       "source_last_modified": "2026-04-25T06:56:49Z",
@@ -1907,13 +2159,15 @@
     "developers.openai.com/codex/use-cases/qa-your-app-with-computer-use/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d542cefc51639c0acf77d87352f70086d93d98ad682e2c3730771d88ca1bc049",
+      "sha256": "9fc214f7a30b47b6d9a8efe117d9c9d786e2f6abc5bcdd0dc74815c1bddbbfcd",
       "source_area": "codex_use_case",
       "source_etag": "W/\"d6316d7739842dfd344314b812d84987\"",
       "source_last_modified": "2026-05-06T13:54:30Z",
@@ -1923,13 +2177,15 @@
     "developers.openai.com/codex/use-cases/refactor-your-codebase/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "7641d82a936c36b9a0c64997b4f0b8dfe726db63d22dab6f494f9fa363152ebb",
+      "sha256": "6bd24cd1410611c2a03c84ef82d1cbf4e550bcc6ab71956b74e23180f3a75c21",
       "source_area": "codex_use_case",
       "source_etag": "W/\"0317812e83a13c67f88158ed4e4455df\"",
       "source_last_modified": "2026-04-30T17:51:00Z",
@@ -1939,13 +2195,15 @@
     "developers.openai.com/codex/use-cases/reusable-codex-skills/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "084cf4c7008d493feaf6e42bafe03140d22d79ef38cd5e3d04240922a33667b0",
+      "sha256": "96a04a814042bb1c01447f043a8f09122c3e17c1e6a6d5a6639a97547403e1ca",
       "source_area": "codex_use_case",
       "source_etag": "W/\"6cb889c766dc776c4011eafa497dfbe5\"",
       "source_last_modified": "2026-04-25T06:51:28Z",
@@ -1955,13 +2213,15 @@
     "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d9499d1190f3bcf7a737717f6628ab0953f29ebd80287a18f7019adb79be007a",
+      "sha256": "296bb00406501e1497ceff5e8f1924059cc8b513cdf952d36fb0d8ba6d9c12f7",
       "source_area": "codex_use_case",
       "source_etag": "W/\"f997c50c416b7e8f16a6e4fb6f604689\"",
       "source_last_modified": "2026-04-25T06:40:25Z",
@@ -1971,13 +2231,15 @@
     "developers.openai.com/codex/use-cases/tracks/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f69ab0470f69e0e103e7bb729493ecd171fa7611ab5203e5b0ab8be183970498",
+      "sha256": "389be3bd8a104414f1119e4b3cfd510cd3de71b15e69e4fbc03de71bbe70fa0d",
       "source_area": "codex_use_case",
       "source_etag": "\"6325591e50158ed2648e113209fc07a4\"",
       "source_last_modified": "2026-04-25T12:19:52Z",
@@ -1987,13 +2249,15 @@
     "developers.openai.com/codex/use-cases/use-your-computer-with-codex/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "39a15de5ba38979633069a5fd967b51cca46f4c08f9b6bf576e72fb71ddeec98",
+      "sha256": "a1c0062ace154d974c7fe3902f4bd1485c197a7025b0a0e02ae8b0e9f2a5ae84",
       "source_area": "codex_use_case",
       "source_etag": "W/\"17e5e7113cd9291f012a2bcf01ce1eb8\"",
       "source_last_modified": "2026-05-06T13:55:43Z",
@@ -2003,13 +2267,15 @@
     "developers.openai.com/codex/videos/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "214a07a2a2676e03e6e07751ec2a5bbe789564cd2954a77092c928ceb75e9ca5",
+      "sha256": "ff060593b9d036111bec2816f29f976d3af583bffe068ee8431cbd7083219dc2",
       "source_area": "codex_media",
       "source_etag": "W/\"f8c5b3b38c693aaa79571f8ba3f0c9fb\"",
       "source_last_modified": "2026-04-25T06:33:28Z",
@@ -2019,13 +2285,15 @@
     "developers.openai.com/codex/windows/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "e144854535099621ff3fa84fb226e81aacd2ec4ea30bfc0858ebcff6c8cc522a",
+      "sha256": "d201428b6d1a5b3c980edae24190f988520045472d5d89057917ccfdccee2ed3",
       "source_area": "codex_app",
       "source_etag": "W/\"de6ab17f784ea2b9bbac7f20a7fb292f\"",
       "source_last_modified": "2026-04-25T06:28:04Z",
@@ -2035,13 +2303,15 @@
     "developers.openai.com/codex/workflows/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "85b92b8ebbbd1003ed32a754412e819c33b51cf65f9cb9cf2fabe4453897ec9b",
+      "sha256": "46e5c8941ceb327fd5ef1dbdebc962c21202d43c835d20b62c61471cf56f0e48",
       "source_area": "codex_reference",
       "source_etag": "W/\"d6a99925f1c9b673aa7e39380f5aa788\"",
       "source_last_modified": "2026-04-25T06:41:43Z",
@@ -2051,13 +2321,15 @@
     "developers.openai.com/cookbook/articles/codex_exec_plans/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "bf648c24b883346e91ee317dda4b6cffe2c552df111354be72ff70f66db4d530",
+      "sha256": "5abc5679f8c36ba42dd7a795bc61a288b1d971e5d733cf08eff2945ac719f028",
       "source_area": "cookbook",
       "source_etag": "W/\"d60804650c2f49d95afd697bbc4c1f4c\"",
       "source_last_modified": "2026-04-25T06:41:02Z",
@@ -2067,13 +2339,15 @@
     "developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "2dfa7af5c1799a0dd4039363e6087e1dacff7eea581601e2d5cada68adc9e166",
+      "sha256": "732434dc7a0bc63c8d294778b416d9c3b11b7680043915c2c20e28bc97335422",
       "source_area": "cookbook",
       "source_etag": "\"3a5ee90efb6ccf42712ec7097f044bf0\"",
       "source_last_modified": "2026-04-25T12:19:52Z",
@@ -2083,13 +2357,15 @@
     "developers.openai.com/cookbook/examples/codex/autofix-github-actions/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "94536a7c9bc8abca3efa8603049e0399f547bc02d8f3ae822499f2f20767ba4f",
+      "sha256": "3eeb4963df34ec0837f757b5134282684aea9352626365cc99b77739d45ad5d9",
       "source_area": "cookbook",
       "source_etag": "W/\"25267233acd6a5c02b5b246c64a4dd32\"",
       "source_last_modified": "2026-04-25T06:49:59Z",
@@ -2099,13 +2375,15 @@
     "developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "37ac18980ab22687a61ae62d83ed099f71d13ea755a0c1c4884516d3703a8270",
+      "sha256": "89f84f21f84cc56c52ad914147aa6cc31265c158a40b7875e9f5d33e00c13738",
       "source_area": "cookbook",
       "source_etag": "W/\"64692bed0646f72b944d00ec378aa442\"",
       "source_last_modified": "2026-04-29T00:02:36Z",
@@ -2115,13 +2393,15 @@
     "developers.openai.com/cookbook/examples/codex/code_modernization/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d7a1044d41ec6f53707e72c1cca6aaa51565924e1592ddfd503112defa0be07f",
+      "sha256": "a8340e124eaa95b193e32a5f7a4485eaa76b72d279bf96adc3582fef4a95205b",
       "source_area": "cookbook",
       "source_etag": "W/\"e1fa0454e42b0805f62e4d6011c0692f\"",
       "source_last_modified": "2026-04-25T06:42:06Z",
@@ -2131,13 +2411,15 @@
     "developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "12ce8ad953f9fd2d415df90675e686a9ee42b4fea3f9ecb08b22db55f6826221",
+      "sha256": "993733a3ca7b27a0acc646d7a4b7f45a1fc5041abd4886ab26220746ce1fc1fb",
       "source_area": "cookbook",
       "source_etag": "\"8938ed3f9077d079beef44001b0eb17f\"",
       "source_last_modified": "2026-04-25T12:19:53Z",
@@ -2147,13 +2429,15 @@
     "developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a54f47be1a11b4ac180191dd1b54350a0301ed33e32a2e59668fd6ff2726eacf",
+      "sha256": "db0b27c351bb466091db66b71616706fcdfd387d01ac34fb7b959c489bf2f17b",
       "source_area": "cookbook",
       "source_etag": "W/\"c77baeb2f8180ce654f72fbb89671186\"",
       "source_last_modified": "2026-04-25T07:01:12Z",
@@ -2163,13 +2447,15 @@
     "developers.openai.com/cookbook/examples/codex/jira-github.ipynb/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "741e1d4b5ac7ead58240c3b370d1a8d4bb813593d539da7f3c025e119b375abf",
+      "sha256": "a778491e9c0b58ffe9b137a792b618c1061d4f69a16ad99259c3b9275584e70e",
       "source_area": "cookbook",
       "source_etag": "\"8aeebe45fb6503336717940818ee587c\"",
       "source_last_modified": "2026-04-25T12:19:53Z",
@@ -2179,13 +2465,15 @@
     "developers.openai.com/cookbook/examples/codex/jira-github/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "59a564a8ff68fe460d0f1fc9a21c4f07ed1766761e5bf3ea86eb835fb15baecb",
+      "sha256": "fc6deaa95b631b382d5b53ac67024e47174d6c9926fd0a6a9b2ba29c35407c10",
       "source_area": "cookbook",
       "source_etag": "W/\"4ee310f9ea42fc45555b0af4b75c1dcc\"",
       "source_last_modified": "2026-04-25T06:58:18Z",
@@ -2195,13 +2483,15 @@
     "developers.openai.com/cookbook/examples/codex/secure_quality_gitlab/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "b27b5d72fc92a84cbc294b373a20062eed3ccc1d85927762b7debbfb0cfbf195",
+      "sha256": "847ca72fbfbf9c42fcfb4c0e82a1224f7047c37699780db8d082291ff7cf5142",
       "source_area": "cookbook",
       "source_etag": "W/\"8ca9ef2c65083088b0441ce942e75ab8\"",
       "source_last_modified": "2026-04-25T06:43:54Z",
@@ -2211,13 +2501,15 @@
     "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "586ce9cf029ba2cc0d9c09643da39b889105b1c1afd48fa64236ece1b8393840",
+      "sha256": "4625ce950bfd818bade3d311cdd08a46c650cf764db2c082b756c1d0958cface",
       "source_area": "cookbook",
       "source_etag": "W/\"4f9e1c42917ce0b6e966b3c0d5682663\"",
       "source_last_modified": "2026-04-25T06:41:24Z",
@@ -2227,13 +2519,15 @@
     "developers.openai.com/cookbook/topic/codex/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "0806a76c0b50c45936dc667c69b367d8e6cfda2ca08c4135d50287bdbd63fc37",
+      "sha256": "fc4f3fc40c7f688890b57c00b4bdbc17b1491bee4016fc6d683c1220c511d0a6",
       "source_area": "cookbook",
       "source_etag": "W/\"33901d45c82049b5e222465505d65d4a\"",
       "source_last_modified": "2026-04-25T06:31:37Z",
@@ -2243,13 +2537,15 @@
     "developers.openai.com/resources/codex/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "bc7bee3b9e9c7a12190081e089bc881121c99e868c2bd27f1553a86598b259ae",
+      "sha256": "809b77d07d671178dcad5a142794cef9bdc726951a69967b1d756dfa0f6905a4",
       "source_area": "resource",
       "source_etag": "\"256d647990a8e3feeb4322b9a08d1e29\"",
       "source_last_modified": "2026-04-25T12:19:54Z",
@@ -2258,10 +2554,10 @@
     },
     "dot_codex/skills/dot_system/dot_codex-system-skills.marker": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "fe088caca7ae8afb0aa250bab41f6663ab2b413674f678893d93424bd0e3cd2f",
+      "sha256": "b14e5b426c24cc711ce0ce1e30a962912c7b5252621f910237380830bce2ad88",
       "source_area": "system_skill_inventory",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2280,18 +2576,20 @@
     },
     "dot_codex/skills/dot_system/imagegen/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "38da19b701e86f8e0ef1343a2b3eb3133a57efe97f36b39af90390d5ce18004b",
+      "sha256": "5f23b075193001b632be579b9112b31136d02b3d93269c094978410abdf9c0b7",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2332,18 +2630,20 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/cli.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "6b25eab2f21b285233a9a4878a2e13dd89e74f570e67ba2df248fdae94fbf843",
+      "sha256": "0edd7fcbd82171daeb6665d73c2d284ba4f3eb2424981fd46c16e65054ba3934",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2351,18 +2651,20 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/codex-network.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "d3f7673a5639b475a235cd37d59b99c38d1b45cac327186451f22458b55d900c",
+      "sha256": "fd341ab56609dd3be71ec49cf123626e91082c2e75083b54c1c51176d59cd42b",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2370,18 +2672,20 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/image-api.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a28c959b93eb804f4ec9c0fb07ca644c1fae22f7fc6dcaf205f40b11b48962d4",
+      "sha256": "e556b86433c8f05eed08180ce2b9119a06538307b129c674cd683735505d3d8a",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2389,18 +2693,20 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/prompting.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "5034f0f554031ae1d80dacd30cd54850e22b79f362fd01b5023a346cd8c65430",
+      "sha256": "b7dbb80cdc1d02962891a239e6236df8c068052820687c7c51df6f492a36d461",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2408,18 +2714,20 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "16fafc7173f49a0cafdbe232e66d1cffe4524726bcb2acf72608572052ff90b6",
+      "sha256": "7a2c36ada48cd054fe4aa98db103f71d6b6345feafb24612ba51738431333d7e",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2460,18 +2768,20 @@
     },
     "dot_codex/skills/dot_system/openai-docs/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "02e9963252e9f954789114fa8ec9b5ebc8cc2d34a6e223caa123bfb7ca4f3bee",
+      "sha256": "84f36ba27629f07c41fe77b8b635a3430964d79461e80f67b487b0cbdf17e79f",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2512,18 +2822,20 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/latest-model.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "1eba6d722e7422f81c311752d60b7b77329c3d8d8f046421e09ae4d110c7f7c1",
+      "sha256": "5a3110360d61f431e57a50241b5d4ad00085be60db8d06cb0525604a0f8cb13f",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2531,18 +2843,20 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "8734a52a151802b96bfe79d3580d8718cc7b3a215f8a68543d859140f729c9bd",
+      "sha256": "e83d662525c176f194ee86d196db4925fea5eabb2f4474219aa1c717f855cad1",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2550,18 +2864,20 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "72e7d0b2133ddedc65ed3beebc74fc2e01bb90f236cf4e1dcb01b2246c95b5c7",
+      "sha256": "960f4cb883b1663beaef73f174aed9f829ffdf7c358e7c9c5239dc01845329b9",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2580,18 +2896,20 @@
     },
     "dot_codex/skills/dot_system/plugin-creator/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "888c6fde6713d4273d05d237121c9c3d8d318f45b573b212f2597e7312458eab",
+      "sha256": "b394ecea250ba04af14961f025a693b688e87b111ace500a091aa567aa972fb3",
       "source_area": "system_skill_plugin_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2632,18 +2950,20 @@
     },
     "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a7af0614463399ddcb4bc77829cd1ab540ecae213a4d22760ade06571a0c7cfa",
+      "sha256": "38ce84be63bd1a1a18d14360e2334bf7354a63bc90a9deccf47e2b85f55faa1d",
       "source_area": "system_skill_plugin_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2662,18 +2982,20 @@
     },
     "dot_codex/skills/dot_system/skill-creator/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "c34833aac0e156144a3e7b14315158c51b9299ac39fa62185ad5a86851673953",
+      "sha256": "9a3b2808b7127df6e7bb62f8829387f7c2a8b4811c24b433092ec090ce9c448e",
       "source_area": "system_skill_skill_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2725,18 +3047,20 @@
     },
     "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "c4da9b81d807c856170597c8f48cd269414a878dccb43e45e72c330183f8b42f",
+      "sha256": "4754f840900e30a0600ee5a6f34af88c17d40c3dfb9e6cef7e85c04496f84044",
       "source_area": "system_skill_skill_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2788,18 +3112,20 @@
     },
     "dot_codex/skills/dot_system/skill-installer/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.128.0",
-      "codex_cli_version_raw": "codex-cli 0.128.0",
+      "codex_cli_version": "0.129.0",
+      "codex_cli_version_raw": "codex-cli 0.129.0",
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "79c63024d5ed3741c94a3ad598140dbc71ec577e50f24b2b018fb43a3a0ec635",
+      "sha256": "7f5b92d690009b7d052ccd18e2e36d7f54249aec6087c42a6af008d50832707e",
       "source_area": "system_skill_skill_installer",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2874,13 +3200,15 @@
     "github.openai.com/openai/codex/AGENTS.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "36f6110c24d4818ec558d0b7f85d92dd218bb78cccdedd74be8c437734bcf084",
+      "sha256": "f4d907fe6849de9d97cb0f53055cd710afaa2af7c3dc4ab284f7426ec9ae6a68",
       "source_area": "github_root",
       "source_etag": "W/\"fc71e0d2c5fe7a66ef198398047df5bd5b2cb589375a56e9a4248c8605dbd317\"",
       "source_type": "github",
@@ -2889,13 +3217,15 @@
     "github.openai.com/openai/codex/CHANGELOG.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "ddb04e24b9dbb892ad71c6a50032198820246eb96f8e9e74fa51cdf3ef4ab479",
+      "sha256": "47422dab25fda041ccdbfa75563aec35ee6e768e6bcc331e77ec94fddbb4aa9b",
       "source_area": "github_root",
       "source_etag": "W/\"41819f5a6fdaca6446706c4a3c1e08cff36ff8f265ef9aa22dad0b3178c1e3cb\"",
       "source_type": "github",
@@ -2911,13 +3241,15 @@
     "github.openai.com/openai/codex/README.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a47858cc26cf520da30ffe4733f214f23ab488c849f752a63444bd6a88fd0588",
+      "sha256": "5b4bc1d31ae31869c8ff2919ea633096a6f46fae887416fe1d4484a7845f55b2",
       "source_area": "github_root",
       "source_etag": "W/\"cadb80e3b5db0a130a92e87890edc98be6c8e1f75aa85ec69d75f104e9767e10\"",
       "source_type": "github",
@@ -2926,13 +3258,15 @@
     "github.openai.com/openai/codex/SECURITY.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "f03dceba30146a5843b7da5c3f4b8797afa1331398340e4c1d44b089a8f0c9f2",
+      "sha256": "682c4c867cc497f59d2526d0657461b9b631eb5f5431a0946a42d7ad4cd9c78b",
       "source_area": "github_root",
       "source_etag": "W/\"85cdf55682402eb9dba63777e1e7c541827d10bc2edd355da5d28a4f9af6bb1d\"",
       "source_type": "github",
@@ -2941,13 +3275,15 @@
     "github.openai.com/openai/codex/codex-cli/scripts/README.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "9abfca93a97f9a76400964e66a63c6134bc5dea8628cb8b4958aed378df28e8e",
+      "sha256": "7814f39597b54b7e5b78486f3c00d0e7a5978c3f608544ef29b3409eba401657",
       "source_area": "github_cli",
       "source_etag": "W/\"fa7dd93991ef5360685f582a0924b65861f981e38d6525dcbabf49036800605a\"",
       "source_type": "github",
@@ -2956,13 +3292,15 @@
     "github.openai.com/openai/codex/codex-rs/README.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "5a51cec99f985a44f7dcf19a9f08f85ade48eefedb3b5726cca73ce90145a961",
+      "sha256": "d1058c5454127186f46598997376e666b11dbb34ad3fb31be1d3008babad8531",
       "source_area": "github_rust",
       "source_etag": "W/\"e2397790c15c65dc4abb5c7f2074cc0a8f0771a5ad42bb82358b77329ee9b762\"",
       "source_type": "github",
@@ -2971,13 +3309,15 @@
     "github.openai.com/openai/codex/codex-rs/config.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "1e5a3c8948e79e08cdb2edf58e002725210b9294034fa4f929fde1d0e1dc9d1b",
+      "sha256": "728cfd6738b2530df046d1d6b574f0701aa068e6c28106c8f0c8fe36ce1d48dd",
       "source_area": "github_rust",
       "source_etag": "W/\"cd2985bdf6cc7ad38e875eed0d1f108cae6851563b87c99073213e96eaf37d8d\"",
       "source_type": "github",
@@ -2986,13 +3326,15 @@
     "github.openai.com/openai/codex/codex-rs/docs/bazel.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "81fda0d73cc3601e4b24468ffc8bd3d302ec06fce1419ab6fabf5af68b9e7776",
+      "sha256": "08b26cd024deee5a4f4e9078e9e4ca9e6accfd566957d7814b2ec5bdc0a12412",
       "source_area": "github_rust",
       "source_etag": "W/\"104f3cba98114f0675e8a50bb5fdb0ba075b4e360ad126534d9b166115426220\"",
       "source_type": "github",
@@ -3001,28 +3343,32 @@
     "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "b44eb4e3f9a91bc59f719a76f1ccd0d82a9bf4226ab934731ba4b588e0342142",
+      "sha256": "05e542aa0edd94163d6ccade19d59924914be5c3296ed5c845482d7db84d14f5",
       "source_area": "github_rust",
-      "source_etag": "W/\"210c31dbf5f5b0b809de5027529492f0be0e0fe04478a0ef3eae4193b3555aa1\"",
+      "source_etag": "W/\"2b2ccbcfe113d088bfa68373ec86d3d963133eed84d2ad1d69c1f8e544f96092\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
     },
     "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "4a1ede5af1fe94f1b541cc3c5a09f1bdb988d5acda8c10e6d236752e278b094b",
+      "sha256": "8a1ed9c15daa7294d309335dee7204db3c2eef38f74595faf463786b0ab85713",
       "source_area": "github_rust",
       "source_etag": "W/\"c70ecda785c7cf848c18d25d5e74df521d7d79b4982a8c0337ae0ec2b9076555\"",
       "source_type": "github",
@@ -3031,13 +3377,15 @@
     "github.openai.com/openai/codex/docs/CLA.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "cf77fcf499635768ed73339c31dd1eef3d56731be07e649dce355b6acef33bb9",
+      "sha256": "c0faaaad912477226ca7b548f6565c4e949ca9b6b93ed3bd93fac5e054d54a95",
       "source_area": "github_docs",
       "source_etag": "W/\"eb27d3139c1961daea50174a9fe876cfe113044ef06f80e73f3e68ec99ab8135\"",
       "source_type": "github",
@@ -3046,13 +3394,15 @@
     "github.openai.com/openai/codex/docs/agents_md.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "425e9d2df5e994427d6f3c1bedbde1f152c6be685888c39f3d97d6c68059b59b",
+      "sha256": "7ca5870264b95857c3b4c262bfe7733d570e236d0ce28986d862360b846ab488",
       "source_area": "github_docs",
       "source_etag": "W/\"06f117ede2b232d44da360094b1416dbe24a93f8364a56928937f83d5815a283\"",
       "source_type": "github",
@@ -3061,13 +3411,15 @@
     "github.openai.com/openai/codex/docs/authentication.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "17e25bc1d62d0c26c48838ee368b8105984acfae8d900289c32d8b2b289dc34f",
+      "sha256": "5d897df44a316b013c38ce271ff687e8cae723bcc12912fd26e12a8cbe608efb",
       "source_area": "github_docs",
       "source_etag": "W/\"e5349891f8df99ec8d9e9b9fd394eb0357453da1778864da32348a2a54b452a8\"",
       "source_type": "github",
@@ -3076,13 +3428,15 @@
     "github.openai.com/openai/codex/docs/config.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "a8bbb16aa3ed07bc03ba709ca061f72425a9f8e7b8e90a9f202e0f2f774ee480",
+      "sha256": "68d08270e96ba3bbc2fabe557f437f210ff7955796893f6aad335683d22c86fe",
       "source_area": "github_docs",
       "source_etag": "W/\"48dfe8612428c39649c5fe6adb86cd853ef07f1bc8dd185b67f86470f5293d45\"",
       "source_type": "github",
@@ -3091,13 +3445,15 @@
     "github.openai.com/openai/codex/docs/contributing.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d1ea00d2f285cb45f5ccdfc6a66ed6e7451fc15fb50b4f4498e8426e9128ecf2",
+      "sha256": "2a8450d4c4e4bc36df790353d61549a524a18587d01109ae23ea59553a1260ca",
       "source_area": "github_docs",
       "source_etag": "W/\"59af4d84a58c8605f562b572812cd808b33c9319c0b39a018c942692b48a45ec\"",
       "source_type": "github",
@@ -3106,13 +3462,15 @@
     "github.openai.com/openai/codex/docs/example-config.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "d6d31354acd0306509314fd7f0525902b26fde6d68633e4c5518ab7cab9a76f9",
+      "sha256": "5ed3f5e5c72be3472d6eae80f61b8d5587a7202752d5ee0b30741a0ee3e5c39b",
       "source_area": "github_docs",
       "source_etag": "W/\"b5e0c4896e74c34bc7cfb63a3049d7339e499a95bd599af755bd77bb2f113834\"",
       "source_type": "github",
@@ -3121,13 +3479,15 @@
     "github.openai.com/openai/codex/docs/exec.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "b0b04cd7ab30bbbc8d9d639f4e07f73ffbf3177ba176139b88c1a41c9872c233",
+      "sha256": "8340cd145ad01960ca43e4bced2f8aa25bc7dcf090d16e5efee2a161540e5295",
       "source_area": "github_docs",
       "source_etag": "W/\"dcf1e3a75ec1080431c4ae55a70cb03c5124551b901ea3a5cdec01f14860c50b\"",
       "source_type": "github",
@@ -3136,13 +3496,15 @@
     "github.openai.com/openai/codex/docs/execpolicy.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "fb00d8e4c727e20c5cd0ae4664fcda9362ecae7d177ee85f4d5aaf44a289b55b",
+      "sha256": "622890bf31c4ca30c847d5a6f8c105643a7333ce1e492711e16cecff08129a10",
       "source_area": "github_docs",
       "source_etag": "W/\"fd39160d926f9439ca12d1a51f9dd74b2de78cde9b8478acb9f540dafc3b08b6\"",
       "source_type": "github",
@@ -3151,13 +3513,15 @@
     "github.openai.com/openai/codex/docs/getting-started.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "843ca3af4e722b8a29ba132da54e86b176a4658b42f6760af3efecf5bbb3c30a",
+      "sha256": "8e35617a21232d0e87de48238b390de79628a8244500e195bac127bf7fc4a960",
       "source_area": "github_docs",
       "source_etag": "W/\"82e24d79cb87d803a45e293541d6e49716158943df1eae47611ccda006bad8ca\"",
       "source_type": "github",
@@ -3166,13 +3530,15 @@
     "github.openai.com/openai/codex/docs/install.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "dbc838618443ba28852f355d5df8d78fe7cc710d4bb76ee9dd99e4817e4612e0",
+      "sha256": "0a8cf24aa8c2aabc35afea3c9baf8940d43490faa3fe481595e5069738ddec54",
       "source_area": "github_docs",
       "source_etag": "W/\"12afca7725364956272758278a977b2fa3265350a01940ee406f770c27f65b65\"",
       "source_type": "github",
@@ -3181,13 +3547,15 @@
     "github.openai.com/openai/codex/docs/license.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "c79b6cd1e40d1d22a14340d1f08c4a502ede438d1281a484981871e017afe1d9",
+      "sha256": "b79799b8615218d9866f2c2cd395aba28de068d1dd9d8fc3a58708b67ac17c87",
       "source_area": "github_docs",
       "source_etag": "W/\"5e2091c10ba6fda84bf6ae22b1c8c1f557e61b08c73dd2ffcf13911453d4a1f8\"",
       "source_type": "github",
@@ -3196,13 +3564,15 @@
     "github.openai.com/openai/codex/docs/open-source-fund.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "014fe64da5dde4e59de12cd80c3a368734eb64bd47bf2b09ef9ca520798b05c2",
+      "sha256": "b0b659aec43117ec6ed9b2928ca99f183d02d9dd261053bffc3b99edaaf005ee",
       "source_area": "github_docs",
       "source_etag": "W/\"090e142cb811aa9aa4c9af31688872308cf68af2d6471e87665ed43f3f17c37c\"",
       "source_type": "github",
@@ -3211,13 +3581,15 @@
     "github.openai.com/openai/codex/docs/sandbox.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "df7751b417fa90f5c72d7f1621d9ab64141c7cce3d832d7d9605cbf8c35f8731",
+      "sha256": "e3f4df6710664b581a5251d05ae804ebe82cdcd44435e83ef36ed95fdd006f70",
       "source_area": "github_docs",
       "source_etag": "W/\"e2f71f0fae297ce95471d539c52107f55aa67d565488302138ccbf6bafb999b3\"",
       "source_type": "github",
@@ -3226,13 +3598,15 @@
     "github.openai.com/openai/codex/docs/skills.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "08917ae472a4e060341086590575dc87f61f631a4dab9beeecc18847d1689f99",
+      "sha256": "c085079ebbb0363a161ee16e226ebcc7b51c4541dc10f64ecf89d5b07c242c40",
       "source_area": "github_docs",
       "source_etag": "W/\"98db015a71bd40cdb336e59ad7d775aa63b119b711ec2622a8c9c4dd7e2fdc3f\"",
       "source_type": "github",
@@ -3241,13 +3615,15 @@
     "github.openai.com/openai/codex/docs/slash_commands.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "01daa0bb828f0c794ac20a087e521e09ce82d7b0c16ef5fd6a7915de353abcac",
+      "sha256": "73ba26692d9a7e3be032f9a5c7014e4ff6d9c8316eb3232a7b45aac74f11d167",
       "source_area": "github_docs",
       "source_etag": "W/\"a7d2abcaac56b52a8be40a5fbadd01885cd23676eb02c75088ba36d7e0d1791c\"",
       "source_type": "github",
@@ -3256,13 +3632,15 @@
     "platform.openai.com/docs/guides/tools-web-search/index.md": {
       "codex_cli_versions": [
         "0.125.0",
-        "0.128.0"
+        "0.128.0",
+        "0.129.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
-        "codex-cli 0.128.0"
+        "codex-cli 0.128.0",
+        "codex-cli 0.129.0"
       ],
-      "sha256": "3e57579d712254808ad8eab83050d69b4ac119f13a58672a6cd6f2619e69db19",
+      "sha256": "77c207905b2eae13b2e905868483840a3e9769b158dc69f2abad4c4b7bc62fd1",
       "source_area": "tool_guide_web_search",
       "source_etag": "W/\"90cfe7e498dd5091fa20702d2f36ac94\"",
       "source_last_modified": "2026-04-29T17:54:13Z",

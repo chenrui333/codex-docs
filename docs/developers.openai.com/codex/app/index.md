@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app'
-source_last_modified: '2026-04-25T06:29:13Z'
-source_etag: 'W/"b340b340f97b89836a87226ebca16984"'
-codex_cli_versions: ["0.125.0", "0.128.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
+source_last_modified: '2026-05-07T18:32:37Z'
+source_etag: 'W/"d81591262bb33c42b04a43ac7af4ce3a"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
 
 # App – Codex | OpenAI Developers
@@ -78,7 +78,9 @@ Inspect diffs, address PR feedback, stage files, commit, and push.](/codex/app/r
 
 Run commands in each thread and launch repeatable project actions.](/codex/app/features#integrated-terminal)[### In-app browser
 
-Open rendered pages, leave comments, or let Codex operate local browser flows.](/codex/app/browser)[### Image generation
+Open rendered pages, leave comments, or let Codex operate local browser flows.](/codex/app/browser)[### Chrome extension
+
+Add the Chrome plugin so Codex can use Chrome for signed-in browser tasks while you manage website approvals.](/codex/app/chrome-extension)[### Image generation
 
 Generate or edit images in a thread while you work on the surrounding code and assets.](/codex/app/features#image-generation)[### Automations
 
