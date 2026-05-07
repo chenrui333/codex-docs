@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-05-05T17:59:09Z'
-source_etag: 'W/"ed36c63b5d0f9c0a1bca9fa9ab44c279"'
+source_last_modified: '2026-05-07T01:27:27Z'
+source_etag: 'W/"887edd73bb00781dcb29bf58ba35aa3c"'
 codex_cli_versions: ["0.125.0", "0.128.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 ---
@@ -11,12 +11,6 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0"]
 # Pricing – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/pricing
-
-Teams can now get started with Codex with no fixed monthly costs. For a
-limited time, eligible ChatGPT Business workspaces can earn up to $500 in
-credits when their team members start using Codex. [View
-terms](https://help.openai.com/en/articles/20001150-codex-for-business-promotion-earn-up-to-500-in-credits)
-or [get started](https://chatgpt.com/codex/team/start).
 
 ## Pricing options
 
