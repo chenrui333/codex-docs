@@ -26,9 +26,24 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "auth_elicitation",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "browser_use",
       "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "browser_use_external",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "builtin_mcp",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -54,11 +69,6 @@
       "enabled": false,
       "key": "codex_git_commit",
       "stage": "under development"
-    },
-    {
-      "enabled": true,
-      "key": "codex_hooks",
-      "stage": "stable"
     },
     {
       "enabled": true,
@@ -118,11 +128,16 @@
     {
       "enabled": false,
       "key": "goals",
-      "stage": "under development"
+      "stage": "experimental"
     },
     {
       "enabled": true,
       "key": "guardian_approval",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "hooks",
       "stage": "stable"
     },
     {
@@ -192,6 +207,11 @@
     },
     {
       "enabled": false,
+      "key": "remote_compaction_v2",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "remote_control",
       "stage": "under development"
     },
@@ -214,6 +234,11 @@
       "enabled": false,
       "key": "request_rule",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "responses_websocket_response_processed",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -346,13 +371,16 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.128.0",
+  "codex_cli_version": "codex-cli 0.129.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
       "apply_patch_streaming_events",
       "apps_mcp_path_override",
       "artifact",
+      "auth_elicitation",
+      "browser_use_external",
+      "builtin_mcp",
       "child_agents_md",
       "chronicle",
       "code_mode",
@@ -368,6 +396,7 @@
       "external_migration",
       "goals",
       "guardian_approval",
+      "hooks",
       "image_detail_original",
       "image_generation",
       "js_repl",
@@ -376,11 +405,13 @@
       "plugin_hooks",
       "plugins",
       "realtime_conversation",
+      "remote_compaction_v2",
       "remote_control",
       "remote_models",
       "remote_plugin",
       "request_permissions_tool",
       "request_rule",
+      "responses_websocket_response_processed",
       "responses_websockets",
       "responses_websockets_v2",
       "runtime_metrics",
@@ -402,6 +433,7 @@
       "workspace_owner_usage_nudge"
     ],
     "stale_in_docs": [
+      "codex_hooks",
       "web_search"
     ]
   },
