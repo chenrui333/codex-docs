@@ -1,21 +1,8 @@
 {
-  "added": [
-    "developers.openai.com/codex/use-cases/ai-app-evals/index.md",
-    "developers.openai.com/codex/use-cases/budget-vs-actuals-review/index.md",
-    "developers.openai.com/codex/use-cases/cash-flow-forecast/index.md",
-    "developers.openai.com/codex/use-cases/dcf-model/index.md",
-    "developers.openai.com/codex/use-cases/draft-prds-from-sources/index.md",
-    "developers.openai.com/codex/use-cases/follow-goals/index.md",
-    "developers.openai.com/codex/use-cases/idea-to-proof-of-concept/index.md",
-    "developers.openai.com/codex/use-cases/react-native-expo-apps/index.md",
-    "developers.openai.com/codex/use-cases/slack-action-triage/index.md",
-    "developers.openai.com/codex/use-cases/update-documentation/index.md",
-    "developers.openai.com/codex/use-cases/user-stories-to-ui-mocks/index.md",
-    "developers.openai.com/codex/use-cases/verified-operations-workflows/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-08T00:50:07+00:00",
+  "generated_at": "2026-05-08T06:43:16+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -26,29 +13,6 @@
   },
   "total_files": 227,
   "updated": [
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/use-cases/agent-friendly-clis/index.md",
-    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md",
-    "developers.openai.com/codex/use-cases/code-migrations/index.md",
-    "developers.openai.com/codex/use-cases/codebase-onboarding/index.md",
-    "developers.openai.com/codex/use-cases/collections/production-systems/index.md",
-    "developers.openai.com/codex/use-cases/collections/web-development/index.md",
-    "developers.openai.com/codex/use-cases/complete-tasks-from-messages/index.md",
-    "developers.openai.com/codex/use-cases/deploy-app-or-website/index.md",
-    "developers.openai.com/codex/use-cases/frontend-designs/index.md",
-    "developers.openai.com/codex/use-cases/generate-slide-decks/index.md",
-    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
-    "developers.openai.com/codex/use-cases/index.md",
-    "developers.openai.com/codex/use-cases/iterate-on-difficult-problems/index.md",
-    "developers.openai.com/codex/use-cases/make-granular-ui-changes/index.md",
-    "developers.openai.com/codex/use-cases/manage-your-inbox/index.md",
-    "developers.openai.com/codex/use-cases/new-hire-onboarding/index.md",
-    "developers.openai.com/codex/use-cases/qa-your-app-with-computer-use/index.md",
-    "developers.openai.com/codex/use-cases/refactor-your-codebase/index.md",
-    "developers.openai.com/codex/use-cases/reusable-codex-skills/index.md",
-    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md",
-    "github.openai.com/openai/codex/AGENTS.md",
-    "github.openai.com/openai/codex/docs/config.md",
-    "github.openai.com/openai/codex/docs/install.md"
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }
