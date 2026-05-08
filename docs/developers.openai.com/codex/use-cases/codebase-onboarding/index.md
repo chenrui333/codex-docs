@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/codebase-onboarding'
-source_last_modified: '2026-04-25T06:37:46Z'
-source_etag: 'W/"82688ad60830f3fecf6b2cd46a8f87d0"'
+source_last_modified: '2026-05-08T00:33:23Z'
+source_etag: 'W/"83914035cd6ae5e709aeb213a34603ff"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -112,15 +112,15 @@ Give Codex an evaluation system, such as scripts and reviewable artifacts, so it
 
 Engineering  Analysis](/codex/use-cases/iterate-on-difficult-problems)[![](/images/codex/codex-wallpaper-1.webp)
 
+### Build React Native apps with Expo
+
+Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
+
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-1.webp)
+
 ### Create browser-based games
 
 Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Learn a new concept
-
-Use Codex to study material such as research papers or courses, split the reading across...
-
-Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)
+Engineering  Code](/codex/use-cases/browser-games)
 

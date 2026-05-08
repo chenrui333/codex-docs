@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/new-hire-onboarding'
-source_last_modified: '2026-04-30T17:55:14Z'
-source_etag: 'W/"a4860336f6acab13daea5c07ec8c62e1"'
+source_last_modified: '2026-05-08T00:31:46Z'
+source_etag: 'W/"4b1ba684c4b514d628017a494de0f1c3"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -320,17 +320,17 @@ Rules:
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-2.webp)
+
+### Draft PRDs from internal context
+
+Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
+
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/images/codex/codex-wallpaper-3.webp)
 
 ### Generate slide decks
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Query tabular data
-
-Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or local data file to...
-
-Data  Knowledge Work](/codex/use-cases/analyze-data-export)
+Data  Integrations](/codex/use-cases/generate-slide-decks)
 

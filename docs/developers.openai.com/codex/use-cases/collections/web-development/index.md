@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/web-development'
-source_last_modified: '2026-04-30T17:55:55Z'
-source_etag: 'W/"7a5d9fe1f764c8b19813f530390dc99f"'
+source_last_modified: '2026-05-08T00:44:26Z'
+source_etag: 'W/"0499ba94d5a38848c8a28e11ed0d76bd"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -14,6 +14,18 @@ Source: https://developers.openai.com/codex/use-cases/collections/web-developmen
 
 Codex works great with existing design systems, taking into account constraints and visual inputs to produce a responsive UI.
 These use cases are helpful when you are building web apps and need to iterate on frontend designs.
+
+## Get from idea to prototype
+
+Use Codex to turn a rough idea into a visual direction and implement a first prototype.
+
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Get from idea to proof of concept
+
+Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
+
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)
 
 ## Build from Figma
 

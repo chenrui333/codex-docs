@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_docs'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/docs/install.md'
-source_etag: 'W/"12afca7725364956272758278a977b2fa3265350a01940ee406f770c27f65b65"'
+source_etag: 'W/"b41b4d663ea499aac435e0a381ee4501a60aa1da3850952d42ec4faf4f4fda00"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -34,7 +34,7 @@ source "$HOME/.cargo/env"
 rustup component add rustfmt
 rustup component add clippy
 # Install helper tools used by the workspace justfile:
-cargo install just
+cargo install --locked just
 # Optional: install nextest for the `just test` helper
 cargo install --locked cargo-nextest
 

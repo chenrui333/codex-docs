@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
-source_last_modified: '2026-05-06T13:54:30Z'
-source_etag: 'W/"d6316d7739842dfd344314b812d84987"'
+source_last_modified: '2026-05-08T00:33:20Z'
+source_etag: 'W/"e29cc56aa78beb9c0186d63413bd08d8"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -145,21 +145,21 @@ Keep going past non-blocking issues and end with a short triage summary.
 
 [![](/images/codex/codex-wallpaper-3.webp)
 
+### Add evals to your AI application
+
+Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
+
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-3.webp)
+
 ### Automate bug triage
 
 Ask Codex to check recent alerts, issues, failed checks, logs, and chat reports, tune the...
 
-Automation  Quality](/codex/use-cases/automation-bug-triage)[![](/images/codex/codex-wallpaper-2.webp)
+Automation  Quality](/codex/use-cases/automation-bug-triage)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Debug in iOS simulator
+### Follow a goal
 
-Use Codex to discover the right Xcode scheme and simulator, launch the app, inspect the UI...
+Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-iOS  Code](/codex/use-cases/ios-simulator-bug-debugging)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Deploy an app or website
-
-Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
-
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)
+Engineering  Automation](/codex/use-cases/follow-goals)
 

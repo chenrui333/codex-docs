@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
-source_last_modified: '2026-05-06T14:21:04Z'
-source_etag: 'W/"0856f680f699103fb93311d7ed800c34"'
+source_last_modified: '2026-05-08T00:33:07Z'
+source_etag: 'W/"ceab29c56427f72baf36578d03e5c60b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -128,17 +128,17 @@ Pause before anything irreversible, such as placing an order or confirming a boo
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
+
+### Draft PRDs from internal context
+
+Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
+
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/images/codex/codex-wallpaper-3.webp)
 
 ### Generate slide decks
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-3.webp)
-
-### Turn feedback into actions
-
-Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
-
-Data  Integrations](/codex/use-cases/feedback-synthesis)
+Data  Integrations](/codex/use-cases/generate-slide-decks)
 

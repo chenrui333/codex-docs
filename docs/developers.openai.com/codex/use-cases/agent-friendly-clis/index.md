@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/agent-friendly-clis'
-source_last_modified: '2026-04-25T06:52:55Z'
-source_etag: 'W/"309fd6d6ddf39564bd4ecb3d98e2529c"'
+source_last_modified: '2026-05-08T00:31:12Z'
+source_etag: 'W/"ab0d649386d6e830767bb69c96265bec"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -162,23 +162,23 @@ For recurring work, test the skill once in a normal thread, then ask Codex to tu
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/images/codex/codex-wallpaper-3.webp)
 
-### Create browser-based games
+### Add evals to your AI application
 
-Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
+Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-2.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Deploy an app or website
+### Follow a goal
 
-Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
+Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/images/codex/codex-wallpaper-2.webp)
+Engineering  Automation](/codex/use-cases/follow-goals)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Refactor your codebase
+### Build React Native apps with Expo
 
-Use Codex to remove dead code, untangle large files, collapse duplicated logic, and...
+Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Engineering  Code](/codex/use-cases/refactor-your-codebase)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
 

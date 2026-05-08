@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deploy-app-or-website'
-source_last_modified: '2026-04-25T06:49:50Z'
-source_etag: 'W/"1fd8a8e9097f9a2d94055cf7161284da"'
+source_last_modified: '2026-05-08T00:49:54Z'
+source_etag: 'W/"376d13d21558bb88ef37e93ff780e0c1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -135,17 +135,17 @@ Good follow-ups are specific:
 
 Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
 
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-1.webp)
+Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Add iOS app intents
+### Follow a goal
 
-Use Codex and the Build iOS Apps plugin to identify the actions and entities your app should...
+Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-iOS  Code](/codex/use-cases/ios-app-intents)[![](/images/codex/codex-wallpaper-2.webp)
+Engineering  Automation](/codex/use-cases/follow-goals)[![](/images/codex/codex-wallpaper-2.webp)
 
-### Adopt liquid glass
+### Get from idea to proof of concept
 
-Use Codex and the Build iOS Apps plugin to audit existing iPhone and iPad UI, replace custom...
+Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
 
-iOS  Code](/codex/use-cases/ios-liquid-glass)
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)
 

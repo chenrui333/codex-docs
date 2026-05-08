@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-coding-tasks'
-source_last_modified: '2026-04-25T06:40:25Z'
-source_etag: 'W/"f997c50c416b7e8f16a6e4fb6f604689"'
+source_last_modified: '2026-05-08T00:38:22Z'
+source_etag: 'W/"8913fe7d7be5318de428fd53e68c0ca8"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -91,11 +91,11 @@ Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![]
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
 
-### Generate slide decks
+### Draft PRDs from internal context
 
-Use Codex to update existing presentations or build new decks by editing slides directly...
+Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)
 

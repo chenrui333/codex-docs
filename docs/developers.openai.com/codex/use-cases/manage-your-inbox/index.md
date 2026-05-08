@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/manage-your-inbox'
-source_last_modified: '2026-04-25T06:54:35Z'
-source_etag: 'W/"4c10a95c6556f10368b10198d64fc978"'
+source_last_modified: '2026-05-08T00:29:29Z'
+source_etag: 'W/"31b4ee3efd5cbdd7ca370eead4c126b5"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -139,6 +139,12 @@ For deletion, make the instruction explicit and narrow. Drafting replies is safe
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
+### Prioritize Slack action items
+
+Use Codex with Slack and the tools where work happens to find direct asks, implicit...
+
+Automation  Integrations](/codex/use-cases/slack-action-triage)[![](/images/codex/codex-wallpaper-1.webp)
+
 ### Set up a teammate
 
 Connect the tools where work happens, teach one thread what matters, then add an automation...
@@ -149,11 +155,5 @@ Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/images/codex
 
 Use Computer Use to read one Messages thread, complete the task, and draft a reply.
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Coordinate new-hire onboarding
-
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
-
-Integrations  Data](/codex/use-cases/new-hire-onboarding)
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
 

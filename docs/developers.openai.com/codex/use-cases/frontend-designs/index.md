@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/frontend-designs'
-source_last_modified: '2026-04-25T06:37:43Z'
-source_etag: 'W/"1d7b415298dc0c03dfe7d45e6d0a47b7"'
+source_last_modified: '2026-05-08T00:29:35Z'
+source_etag: 'W/"9e4da34d6ba426f33a9177800f2fd037"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -148,21 +148,21 @@ This doesn't look right. Make sure to implement something that matches closely t
 
 [![](/images/codex/codex-wallpaper-2.webp)
 
+### Get from idea to proof of concept
+
+Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
+
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)[![](/images/codex/codex-wallpaper-2.webp)
+
 ### Turn Figma designs into code
 
 Use Codex to pull design context, assets, and variants from Figma, translate them into code...
 
 Front-end  Design](/codex/use-cases/figma-designs-to-code)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Generate slide decks
+### Turn user stories into UI mocks
 
-Use Codex to update existing presentations or build new decks by editing slides directly...
+Use Codex to gather product feedback from Slack, Linear, Google Drive, normalize it into...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Make granular UI changes
-
-Use Codex to make one small UI adjustment at a time in an existing app, verify it in the...
-
-Front-end  Design](/codex/use-cases/make-granular-ui-changes)
+Integrations  Knowledge Work](/codex/use-cases/user-stories-to-ui-mocks)
 

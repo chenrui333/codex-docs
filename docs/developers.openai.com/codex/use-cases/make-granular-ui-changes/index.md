@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/make-granular-ui-changes'
-source_last_modified: '2026-04-25T06:47:46Z'
-source_etag: 'W/"e3b0ac8fbfbaca947c7664752d77c326"'
+source_last_modified: '2026-05-08T00:49:56Z'
+source_etag: 'W/"7430f4ce58c7eb8c639fac1054db2026"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -132,23 +132,23 @@ Fast UI iteration works best when Codex is adjusting an already-understood surfa
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Get from idea to proof of concept
+
+Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
+
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)[![](/images/codex/codex-wallpaper-1.webp)
+
+### Build React Native apps with Expo
+
+Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
+
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-1.webp)
 
 ### Add iOS app intents
 
 Use Codex and the Build iOS Apps plugin to identify the actions and entities your app should...
 
-iOS  Code](/codex/use-cases/ios-app-intents)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Adopt liquid glass
-
-Use Codex and the Build iOS Apps plugin to audit existing iPhone and iPad UI, replace custom...
-
-iOS  Code](/codex/use-cases/ios-liquid-glass)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Build a Mac app shell
-
-Use Codex and the Build macOS Apps plugin to turn an app idea into a desktop-native...
-
-macOS  Code](/codex/use-cases/macos-sidebar-detail-inspector)
+iOS  Code](/codex/use-cases/ios-app-intents)
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
-source_last_modified: '2026-04-30T17:49:13Z'
-source_etag: 'W/"d9cf2f284ef85f9244cf0660d3428222"'
+source_last_modified: '2026-05-08T00:37:29Z'
+source_etag: 'W/"bc0fc0f75a3712329b6c4b353af6ece6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -106,17 +106,17 @@ Codex applies guidance from the closest `AGENTS.md` to each changed file. You ca
 
 Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
 
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/images/codex/codex-wallpaper-1.webp)
+Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Bring your app to ChatGPT
+### Run verified operations
 
-Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
+Use Codex to normalize inputs, run approved scripts or APIs, retry bounded failures, and...
 
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-1.webp)
+Automation  Integrations](/codex/use-cases/verified-operations-workflows)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Complete tasks from messages
+### Add evals to your AI application
 
-Use Computer Use to read one Messages thread, complete the task, and draft a reply.
+Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)
 

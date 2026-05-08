@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/reusable-codex-skills'
-source_last_modified: '2026-04-25T06:51:28Z'
-source_etag: 'W/"6cb889c766dc776c4011eafa497dfbe5"'
+source_last_modified: '2026-05-08T00:47:36Z'
+source_etag: 'W/"f17c8c949220c101509162262bec7c07"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -146,23 +146,23 @@ Use the same pattern when future threads should read the same runbook, run the s
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/images/codex/codex-wallpaper-3.webp)
 
-### Create a CLI Codex can use
+### Follow a goal
 
-Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
+Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/images/codex/codex-wallpaper-1.webp)
+Engineering  Automation](/codex/use-cases/follow-goals)[![](/images/codex/codex-wallpaper-3.webp)
 
-### Create browser-based games
+### Add evals to your AI application
 
-Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
+Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-2.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-1.webp)
 
-### Deploy an app or website
+### Build React Native apps with Expo
 
-Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
+Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
 

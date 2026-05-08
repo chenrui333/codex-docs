@@ -10,7 +10,7 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/use-cases
 
-[Workflow](/codex/use-cases?search=Workflow)  [Integrations](/codex/use-cases?search=Integrations)  [Knowledge Work](/codex/use-cases?search=Knowledge+Work)
+[Workflow](/codex/use-cases?search=Workflow)  [Knowledge Work](/codex/use-cases?search=Knowledge+Work)  [Analysis](/codex/use-cases?search=Analysis)
 
 ## Collections
 
@@ -55,6 +55,14 @@ Turn screenshots and visual references into responsive UI with visual checks.
 Front-end  Design](/codex/use-cases/frontend-designs)
 
 ## All use cases
+
+[![](/images/codex/codex-wallpaper-3.webp)
+
+### Add evals to your AI application
+
+Use Codex to turn expected behavior into a Promptfoo eval suite.
+
+Evaluation  Quality](/codex/use-cases/ai-app-evals)
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
@@ -128,6 +136,14 @@ Use Codex to scaffold, build, and debug native Mac apps with SwiftUI.
 
 macOS  Code](/codex/use-cases/native-macos-apps)
 
+[![](/images/codex/codex-wallpaper-1.webp)
+
+### Build React Native apps with Expo
+
+Go from a mobile-app idea to a working Expo app with the dedicated plugin.
+
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
+
 [![](/images/codex/codex-wallpaper-2.webp)
 
 ### Build responsive front-end designs
@@ -200,6 +216,30 @@ Build or update a web app, deploy a preview, and get a live URL.
 
 Front-end  Integrations](/codex/use-cases/deploy-app-or-website)
 
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Draft PRDs from internal context
+
+Create product requirements documents from Linear, Slack, source documents, and meeting notes.
+
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)
+
+[![](/images/codex/codex-wallpaper-3.webp)
+
+### Follow a goal
+
+Give Codex a durable objective for long-running work.
+
+Engineering  Automation](/codex/use-cases/follow-goals)
+
+[![](/images/codex/codex-wallpaper-3.webp)
+
+### Forecast cash flow
+
+Find the liquidity low point in an editable forecast workbook.
+
+Data  Knowledge Work](/codex/use-cases/cash-flow-forecast)
+
 [![](/images/codex/codex-wallpaper-3.webp)
 
 ### Generate slide decks
@@ -208,6 +248,14 @@ Manipulate pptx files and use image generation to automate slide creation.
 
 Data  Integrations](/codex/use-cases/generate-slide-decks)
 
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Get from idea to proof of concept
+
+Explore the concept visually with ImageGen and build a first version of your idea.
+
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)
+
 [![](/images/codex/codex-wallpaper-3.webp)
 
 ### Iterate on difficult problems
@@ -215,6 +263,14 @@ Data  Integrations](/codex/use-cases/generate-slide-decks)
 Use Codex as a scored improvement loop to solve hard tasks.
 
 Engineering  Analysis](/codex/use-cases/iterate-on-difficult-problems)
+
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Keep documentation up-to-date
+
+Use code and other sources to automate docs updates.
+
+Engineering  Code](/codex/use-cases/update-documentation)
 
 [![](/images/codex/codex-wallpaper-2.webp)
 
@@ -250,6 +306,22 @@ Automation  Integrations](/codex/use-cases/manage-your-inbox)
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
+### Model a DCF valuation
+
+Turn financial inputs into an editable valuation workbook.
+
+Data  Knowledge Work](/codex/use-cases/dcf-model)
+
+[![](/images/codex/codex-wallpaper-1.webp)
+
+### Prioritize Slack action items
+
+Turn Slack threads and DMs into a ranked queue of next steps.
+
+Automation  Integrations](/codex/use-cases/slack-action-triage)
+
+[![](/images/codex/codex-wallpaper-1.webp)
+
 ### QA your app with Computer Use
 
 Click through real product flows and log what breaks.
@@ -282,11 +354,27 @@ Engineering  Code](/codex/use-cases/refactor-your-codebase)
 
 [![](/images/codex/codex-wallpaper-2.webp)
 
+### Review budget vs. actuals
+
+Turn plan, actuals, and close notes into a variance workbook.
+
+Data  Knowledge Work](/codex/use-cases/budget-vs-actuals-review)
+
+[![](/images/codex/codex-wallpaper-2.webp)
+
 ### Run code migrations
 
 Migrate legacy stacks in controlled checkpoints.
 
 Engineering  Code](/codex/use-cases/code-migrations)
+
+[![](/images/codex/codex-wallpaper-3.webp)
+
+### Run verified operations
+
+Run repeatable workflows and verify the result.
+
+Automation  Integrations](/codex/use-cases/verified-operations-workflows)
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
@@ -319,6 +407,14 @@ Data  Integrations](/codex/use-cases/feedback-synthesis)
 Turn Figma selections into polished UI with structured design context and visual checks.
 
 Front-end  Design](/codex/use-cases/figma-designs-to-code)
+
+[![](/images/codex/codex-wallpaper-3.webp)
+
+### Turn user stories into UI mocks
+
+Convert product feedback, issue threads, and design context into mockups your team can react...
+
+Integrations  Knowledge Work](/codex/use-cases/user-stories-to-ui-mocks)
 
 [![](/images/codex/codex-wallpaper-1.webp)
 
@@ -363,6 +459,7 @@ Try clearing a few filters or searching for a broader term.
 ### Native
 
 - [iOS](/codex/use-cases?category=ios)
+- [Mobile](/codex/use-cases?category=mobile)
 - [macOS](/codex/use-cases?category=macos)
 
 ### Workflows
@@ -377,6 +474,7 @@ Try clearing a few filters or searching for a broader term.
 - [All](/codex/use-cases)
 - [Design](/codex/use-cases?team=design-engineering)
 - [Engineering](/codex/use-cases?team=engineering)
+- [Finance](/codex/use-cases?team=finance)
 - [Operations](/codex/use-cases?team=operations)
 - [Product](/codex/use-cases?team=product)
 - [QA](/codex/use-cases?team=quality-engineering)

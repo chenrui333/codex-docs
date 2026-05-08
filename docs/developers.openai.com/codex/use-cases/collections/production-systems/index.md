@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/production-systems'
-source_last_modified: '2026-04-30T17:52:43Z'
-source_etag: 'W/"f5cac888a2fae893d79448061e26ff59"'
+source_last_modified: '2026-05-08T00:34:59Z'
+source_etag: 'W/"53ee5dafa40f56c8f81c618e17ab59ed"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -63,6 +63,18 @@ Ask Codex to turn repo-specific workflows or checklists into a skill, so that al
 Turn a working Codex thread, review rules, test commands, release checklists, design...
 
 Engineering  Workflow](/codex/use-cases/reusable-codex-skills)
+
+## Keep documentation current
+
+Ask Codex to compare source changes with existing docs, update the smallest useful docs surface, and verify the changes.
+
+[![](/images/codex/codex-wallpaper-2.webp)
+
+### Keep documentation up-to-date
+
+Use Codex to compare source code changes, public docs, release notes, and PR context, then...
+
+Engineering  Code](/codex/use-cases/update-documentation)
 
 ## Maintain system health
 

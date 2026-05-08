@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
-source_etag: 'W/"fc71e0d2c5fe7a66ef198398047df5bd5b2cb589375a56e9a4248c8605dbd317"'
+source_etag: 'W/"c8742e437f3dd54cd1530195937b328fc0a24e19da051915bf152d5c2593c1a0"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -139,7 +139,7 @@ When UI or text output changes intentionally, update the snapshots as follows:
 
 If you don’t have the tool:
 
-- `cargo install cargo-insta`
+- `cargo install --locked cargo-insta`
 
 ### Test assertions
 

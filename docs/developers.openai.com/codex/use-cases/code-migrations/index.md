@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/code-migrations'
-source_last_modified: '2026-04-25T06:37:10Z'
-source_etag: 'W/"8402887ad418634d43fab9949307a749"'
+source_last_modified: '2026-05-08T00:47:21Z'
+source_etag: 'W/"464119d72439b6cc60b5685933b8c4ca"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
 ---
@@ -49,7 +49,7 @@ Advanced
 
 Related links
 
-[Modernizing your Codebase with Codex](/cookbook/examples/codex/code_modernization)  [Worktrees in the Codex app](/codex/app/worktrees)
+[Modernizing your Codebase with Codex](/cookbook/examples/codex/code_modernization)  [Follow a goal](/codex/use-cases/follow-goals)  [Worktrees in the Codex app](/codex/app/worktrees)
 
 ## Best for
 
@@ -102,7 +102,7 @@ Requirements:
 
 ## Introduction
 
-When you are moving from one stack to another, you can leverage codex to map and execute a controlled migration: routing, data models, configuration, auth, background jobs, build tooling, deployment, tests, or even the language and framework conventions themselves.
+When you are moving from one stack to another, you can leverage Codex to map and execute a controlled migration: routing, data models, configuration, auth, background jobs, build tooling, deployment, tests, or even the language and framework conventions themselves.
 
 Codex is useful here because it can inventory the legacy system, map old concepts to new ones, and land the change in checkpoints instead of one giant rewrite. That matters when you are moving off a legacy framework, porting to a new runtime, or incrementally replacing one stack with another while the product still has to keep working.
 
@@ -120,25 +120,29 @@ Codex is useful here because it can inventory the legacy system, map old concept
 In our [code modernization cookbook](/cookbook/examples/codex/code_modernization), we introduce ExecPlans: documents that let Codex keep an overview of the cleanup, spell out the intended end state, and log validation after each pass.
 When you ask Codex to run a complex migration, ask it to create an ExecPlan for each part of the system to make sure every decision and tech stack choice is recorded and can be reviewed later.
 
+## Combine with a goal
+
+For long-running migration slices, use a [goal](/codex/use-cases/follow-goals) to guide Codex through the work. Set the goal with a clear end state, parity checks, rollback expectations, and a stopping condition.
+
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/images/codex/codex-wallpaper-3.webp)
+
+### Add evals to your AI application
+
+Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
+
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-1.webp)
+
+### Build React Native apps with Expo
+
+Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
+
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-2.webp)
 
 ### Create a CLI Codex can use
 
 Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
 
-Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Create browser-based games
-
-Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
-
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Refactor your codebase
-
-Use Codex to remove dead code, untangle large files, collapse duplicated logic, and...
-
-Engineering  Code](/codex/use-cases/refactor-your-codebase)
+Engineering  Code](/codex/use-cases/agent-friendly-clis)
 
