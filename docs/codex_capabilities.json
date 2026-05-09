@@ -2,17 +2,19 @@
   "capabilities": [
     {
       "category": "system_prompt_snapshot",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "first_seen_path": "system_prompts/codex-cli/prompt-input.json",
       "id": "system_prompt:prompt-input",
@@ -29,17 +31,19 @@
     },
     {
       "category": "system_skill",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "description": "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas.",
       "first_seen_path": "dot_codex/skills/dot_system/imagegen/SKILL.md",
@@ -52,17 +56,19 @@
     },
     {
       "category": "system_skill",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "description": "Use when the user asks how to build with OpenAI products or APIs and needs up-to-date official documentation with citations, help choosing the latest model for a use case, or model upgrade and prompt-upgrade guidance; prioritize OpenAI docs MCP tools, use bundled references only as helper context, and restrict any fallback browsing to official OpenAI domains.",
       "first_seen_path": "dot_codex/skills/dot_system/openai-docs/SKILL.md",
@@ -75,17 +81,19 @@
     },
     {
       "category": "system_skill",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "description": "Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, and baseline placeholders you can edit before publishing or testing. Use when Codex needs to create a new local plugin, add optional plugin structure, or generate or update repo-root `.agents/plugins/marketplace.json` entries for plugin ordering and availability metadata.",
       "first_seen_path": "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
@@ -98,17 +106,19 @@
     },
     {
       "category": "system_skill",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
       "first_seen_path": "dot_codex/skills/dot_system/skill-creator/SKILL.md",
@@ -121,17 +131,19 @@
     },
     {
       "category": "system_skill",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "description": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).",
       "first_seen_path": "dot_codex/skills/dot_system/skill-installer/SKILL.md",
@@ -144,17 +156,19 @@
     },
     {
       "category": "linked_tool_guide",
-      "codex_cli_version": "0.129.0",
-      "codex_cli_version_raw": "codex-cli 0.129.0",
+      "codex_cli_version": "0.130.0",
+      "codex_cli_version_raw": "codex-cli 0.130.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
-        "0.129.0"
+        "0.129.0",
+        "0.130.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
         "codex-cli 0.128.0",
-        "codex-cli 0.129.0"
+        "codex-cli 0.129.0",
+        "codex-cli 0.130.0"
       ],
       "first_seen_path": "developers.openai.com/codex/agent-approvals-security/index.md",
       "id": "tool_guide:web_search",
@@ -171,17 +185,19 @@
       "title": "Web search"
     }
   ],
-  "codex_cli_version": "0.129.0",
-  "codex_cli_version_raw": "codex-cli 0.129.0",
+  "codex_cli_version": "0.130.0",
+  "codex_cli_version_raw": "codex-cli 0.130.0",
   "codex_cli_versions": [
     "0.125.0",
     "0.128.0",
-    "0.129.0"
+    "0.129.0",
+    "0.130.0"
   ],
   "codex_cli_versions_raw": [
     "codex-cli 0.125.0",
     "codex-cli 0.128.0",
-    "codex-cli 0.129.0"
+    "codex-cli 0.129.0",
+    "codex-cli 0.130.0"
   ],
   "counts": {
     "by_category": {

@@ -4,8 +4,8 @@ source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/cyber-safety'
 source_last_modified: '2026-04-25T06:31:36Z'
 source_etag: 'W/"08d8005f6ac679273727c72992fbdf50"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Cyber Safety – Codex | OpenAI Developers

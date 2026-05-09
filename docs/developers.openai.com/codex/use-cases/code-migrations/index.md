@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/code-migrations'
 source_last_modified: '2026-05-08T00:47:21Z'
 source_etag: 'W/"464119d72439b6cc60b5685933b8c4ca"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Run code migrations | Codex use cases

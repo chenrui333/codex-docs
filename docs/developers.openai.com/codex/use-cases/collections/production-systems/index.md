@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/production-systems'
 source_last_modified: '2026-05-08T00:34:59Z'
 source_etag: 'W/"53ee5dafa40f56c8f81c618e17ab59ed"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Production systems – Codex | OpenAI Developers

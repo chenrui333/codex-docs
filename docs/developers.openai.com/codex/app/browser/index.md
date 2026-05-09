@@ -4,8 +4,8 @@ source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/browser'
 source_last_modified: '2026-05-07T18:33:50Z'
 source_etag: 'W/"34c9f5d0182e744413514d3b7071d71f"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # In-app browser – Codex app | OpenAI Developers

@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
 source_last_modified: '2026-05-08T00:37:29Z'
 source_etag: 'W/"bc0fc0f75a3712329b6c4b353af6ece6"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Codex code review for GitHub pull requests | Codex use cases

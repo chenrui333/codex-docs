@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dcf-model'
 source_last_modified: '2026-05-08T00:29:37Z'
 source_etag: 'W/"9c3c8ed38c97bee9cc4930e9c863bba7"'
-codex_cli_versions: ["0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0"]
+codex_cli_versions: ["0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Model a DCF valuation | Codex use cases

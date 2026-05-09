@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-action-triage'
 source_last_modified: '2026-05-08T00:29:37Z'
 source_etag: 'W/"5ecdb76fcd7c375e74e827f51b894b78"'
-codex_cli_versions: ["0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0"]
+codex_cli_versions: ["0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Prioritize Slack action items | Codex use cases

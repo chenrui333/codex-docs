@@ -4,8 +4,8 @@ source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/sandboxing'
 source_last_modified: '2026-04-30T17:54:12Z'
 source_etag: 'W/"9a936929ec3e89ebef719c9db2acb8cd"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Sandbox – Codex | OpenAI Developers

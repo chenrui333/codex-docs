@@ -76,8 +76,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.129.0",
-    "version_raw": "codex-cli 0.129.0"
+    "version": "0.130.0",
+    "version_raw": "codex-cli 0.130.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -537,7 +537,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-08T06:42:44+00:00",
+  "generated_at": "2026-05-09T00:50:04+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

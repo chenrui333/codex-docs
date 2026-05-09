@@ -4,8 +4,8 @@ source_area: 'codex_auth'
 source_url: 'https://developers.openai.com/codex/auth/ci-cd-auth'
 source_last_modified: '2026-04-25T06:55:25Z'
 source_etag: 'W/"5debbabc95f60626109d4c40fdb1114c"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Maintain Codex account auth in CI/CD (advanced) | OpenAI Developers

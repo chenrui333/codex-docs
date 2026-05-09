@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/governance'
-source_last_modified: '2026-04-25T06:31:37Z'
-source_etag: 'W/"8be169e2e0768aa2b1b5a259538f693e"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0"]
+source_last_modified: '2026-05-08T23:52:09Z'
+source_etag: 'W/"563ad733147afb257fa7d8b8e1f01f2b"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Governance – Codex | OpenAI Developers
@@ -26,65 +26,71 @@ There are three ways to monitor Codex usage, depending on what you need:
 
 ## Analytics Dashboard
 
-![Codex analytics dashboard](/images/codex/enterprise/analytics.png)
+![Codex analytics dashboard](/images/codex/enterprise/analytics-dashboard.png)
 
-### Dashboards
+### Dashboard views
 
-The [analytics dashboard](https://chatgpt.com/codex/settings/analytics) allows ChatGPT workspace administrators to track feature adoption.
+The [analytics dashboard](https://chatgpt.com/codex/cloud/settings/analytics#usage) allows ChatGPT workspace administrators and analytics viewers to track Codex adoption, usage, and Code Review feedback. Usage data can lag by up to 12 hours.
 
-Codex provides the following dashboards:
+Codex provides date-range controls for daily and weekly views. Key charts include:
 
-- Daily users by product (CLI, IDE, cloud, Code Review)
-- Daily code review users
-- Daily code reviews
-- Code reviews by priority level
-- Daily code reviews by feedback sentiment
-- Daily cloud tasks
-- Daily cloud users
-- Daily VS Code extension users
-- Daily CLI users
+- Active users by product surface, including CLI, IDE extension, cloud, desktop, and Code Review
+- Workspace and personal usage breakdowns, including credit and token usage by product surface
+- Product activity for threads and turns by client
+- User ranking table, with filters for client and sort options such as credits, threads, turns, text tokens, and current streak
+- Code Review activity, including PRs reviewed, issues by priority, comments, replies, reactions, and feedback sentiment
+- Skill invocations and agent identity usage when your workspace has those features
 
 ### Data export
 
 Administrators can also export Codex analytics data in CSV or JSON format. Codex provides the following export options:
 
-- Code review users and reviews (Daily unique users and total reviews completed in Code Review)
-- Code review findings and feedback (Daily counts of comments, reactions, replies, and priority-level findings)
-- cloud users and tasks (daily unique cloud users and tasks completed)
-- CLI and VS Code users (Daily unique users for the Codex CLI and VS Code extension)
-- Sessions and messages per user (Daily session starts and user message counts for each Codex user across surfaces)
+- Workspace usage, including daily active users, threads, turns, and credits by surface
+- Usage per user, including daily threads, turns, and credits across surfaces, with optional email addresses when allowed
+- Code Review details, including daily comments, reactions, replies, and priority-level findings
 
 ## Analytics API
 
-Use the [Analytics API](https://chatgpt.com/codex/settings/apireference) when you want to automate reporting, build internal dashboards, or join Codex metrics with your existing engineering data.
+Use the [Analytics API](https://chatgpt.com/codex/cloud/settings/apireference) when you want to automate reporting, build internal dashboards, or join Codex metrics with your existing engineering data.
 
 ### What it measures
 
-The Analytics API provides daily, time-series metrics for a workspace, with optional per-user breakdowns and per-client usage.
+The enterprise Analytics API returns daily or weekly UTC buckets for a workspace. It supports workspace-level and per-user usage, per-client breakdowns, Code Review throughput, Code Review comment priority, and user engagement with Code Review comments.
 
 ### Endpoints
 
-#### Daily usage and adoption
+The base URL is `https://api.chatgpt.com/v1/analytics/codex`. All endpoints return paginated `page` objects with `has_more` and `next_page`.
 
-- Daily totals for threads, turns, and credits
-- Breakdown by client surface
-- Optional per-user reporting for adoption and power-user analysis
+Use `start_time` for the inclusive Unix timestamp at the beginning of the reporting window, `end_time` for the exclusive Unix timestamp at the end of the reporting window, `group_by` for `day` or `week` buckets, `limit` for page size, and `page` to continue from a previous response. Requests can look back up to 90 days.
+
+#### Usage
+
+`GET /workspaces/{workspace_id}/usage`
+
+- Returns totals for threads, turns, credits, and per-client usage in daily or weekly buckets.
+- Omit `group` to return per-user rows.
+- Set `group=workspace` to return workspace-wide rows.
+- Includes text input, cached input, and output token fields.
 
 #### Code review activity
 
-- Pull request reviews completed by Codex
-- Total comments generated by Codex
-- Severity breakdown of comments
+`GET /workspaces/{workspace_id}/code_reviews`
+
+- Returns pull request reviews completed by Codex.
+- Returns total comments generated by Codex.
+- Breaks comments down by P0, P1, and P2 priority.
 
 #### User engagement with code review
 
-- Replies to Codex comments
-- Reactions, including upvotes and downvotes
-- Engagement breakdowns for how teams respond to Codex feedback
+`GET /workspaces/{workspace_id}/code_review_responses`
+
+- Returns replies and reactions to Codex comments.
+- Breaks reactions down into positive, negative, and other reactions.
+- Counts comments that received reactions, replies, or either form of engagement.
 
 ### How it works
 
-Analytics is daily and time-windowed. Results are time-ordered and returned in pages with cursor-based pagination. You can query by workspace and optionally group by user or aggregate at the workspace level.
+Analytics uses time windows and supports day or week grouping. Results are time-ordered and returned in pages with cursor-based pagination. Use an API key scoped to `codex.enterprise.analytics.read`.
 
 ### Common use cases
 

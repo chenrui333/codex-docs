@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
 source_last_modified: '2026-05-08T00:29:07Z'
 source_etag: 'W/"90cfdf7a11bf41afb79b6cc3d5d7aef5"'
-codex_cli_versions: ["0.129.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0"]
+codex_cli_versions: ["0.129.0", "0.130.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
 
 # Follow a goal | Codex use cases
