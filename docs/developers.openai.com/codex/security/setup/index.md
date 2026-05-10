@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/setup'
-source_last_modified: '2026-05-09T21:25:06Z'
-source_etag: 'W/"df2df07af5b59d15a4cf035df0ccc4f3"'
+source_last_modified: '2026-05-10T04:35:51Z'
+source_etag: 'W/"f93ce014ac902fd3f171bd7ac2840105"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -87,7 +87,7 @@ You can use two views:
 - **Recommended Findings**: an evolving top 10 list of the most critical issues in the repo
 - **All Findings**: a sortable, filterable table of findings across the repository
 
-![Recommended findings view](/_astro/aardvark_recommended_findings.Dj6eIPV0_ZhRjOL.webp?dpl=dpl_3onCnkBki5EWhraDsK519Qm4NPV3)
+![Recommended findings view](/_astro/aardvark_recommended_findings.Dj6eIPV0_ZhRjOL.webp?dpl=dpl_6tQAMVK6uoKpR2qXSXNyu4NRnSZp)
 
 Click a finding to open its detail page, which includes:
 
