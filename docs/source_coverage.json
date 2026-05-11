@@ -233,6 +233,8 @@
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk",
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/code_modernization",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
@@ -253,8 +255,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 169,
-      "mirrored_urls": 153,
+      "codex_related_urls": 171,
+      "mirrored_urls": 155,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -406,6 +408,8 @@
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk",
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/code_modernization",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
@@ -416,8 +420,14 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
+      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -537,7 +547,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-09T00:50:04+00:00",
+  "generated_at": "2026-05-11T18:43:38+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

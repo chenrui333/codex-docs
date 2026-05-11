@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-04-29T17:54:13Z'
-source_etag: 'W/"90cfe7e498dd5091fa20702d2f36ac94"'
+source_last_modified: '2026-05-11T18:44:02Z'
+source_etag: 'W/"c949ffebf2a8619dfde1bde5718b9407"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -22,15 +22,15 @@ There are three main types of web search available with OpenAI models:
 
 ## Choose an integration
 
-| Use case                                      | Recommended path                              | Notes                                                                                 |
-| --------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------- |
-| New web search integration                    | Responses API with `web_search` and `gpt-5.5` | Supports hosted web search controls such as filters, sources, and live-access control |
-| Existing Chat Completions search integration  | Chat Completions with `gpt-5-search-api`      | Use this only when you need to preserve a Chat Completions integration                |
-| Multi-step research or long-running reporting | `gpt-5.5` with `high` or `xhigh` reasoning    | Use background mode for reports that can take several minutes                         |
+| Use case                                      | Recommended path                              | Notes                                                                                                       |
+| --------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| New web search integration                    | Responses API with `web_search` and `gpt-5.5` | Supports hosted web search controls such as filters, sources, live-access control, and longer research runs |
+| Existing Chat Completions search integration  | Chat Completions with `gpt-5-search-api`      | Use this only when you need to preserve a Chat Completions integration                                      |
+| Multi-step research or long-running reporting | `gpt-5.5` with `high` or `xhigh` reasoning    | Use background mode for reports that can take several minutes                                               |
 
 Using the [Responses API](https://developers.openai.com/api/docs/api-reference/responses), you can enable web search by configuring it in the `tools` array in an API request to generate content. Like any other tool, the model can choose to search the web or not based on the content of the input prompt.
 
-For new Responses API integrations, use `{ "type": "web_search" }`. The earlier `web_search_preview` tool remains available for legacy integrations, but it does not support newer controls such as `filters` and `external_web_access`.
+For new Responses API integrations, use `{ "type": "web_search" }`. The earlier `web_search_preview` tool remains available for legacy integrations, but it does not support newer controls such as `filters`, `external_web_access`, and `return_token_budget`.
 
 ## Output and citations
 
@@ -87,15 +87,28 @@ When displaying web results or information contained in web results to end
 
 ## Migrating from legacy web search
 
-| If you use                                              | Recommended path                                                                                        | Notes                                                                                      |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `web_search_preview` in Responses                       | Migrate to `web_search`                                                                                 | `web_search` supports newer controls such as `filters` and `external_web_access`           |
-| `gpt-4o-search-preview` or `gpt-4o-mini-search-preview` | Migrate to Responses `web_search`, or use `gpt-5-search-api` if you must stay on Chat Completions       | The preview search models are deprecated and shut down on 2026-07-23                       |
-| Chat Completions search integrations                    | Use `gpt-5-search-api`, or migrate to Responses `web_search` for more tool controls and optional search | Chat Completions search models always search before responding; Responses search is a tool |
+| If you use                                              | Recommended path                                                                                        | Notes                                                                                                    |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `web_search_preview` in Responses                       | Migrate to `web_search`                                                                                 | `web_search` supports newer controls such as `filters`, `external_web_access`, and `return_token_budget` |
+| `gpt-4o-search-preview` or `gpt-4o-mini-search-preview` | Migrate to Responses `web_search`, or use `gpt-5-search-api` if you must stay on Chat Completions       | The preview search models are deprecated and shut down on 2026-07-23                                     |
+| Chat Completions search integrations                    | Use `gpt-5-search-api`, or migrate to Responses `web_search` for more tool controls and optional search | Chat Completions search models always search before responding; Responses search is a tool               |
 
 ## Search context size
 
 `search_context_size` controls how much context from web search results is made available to the model before it generates a response. Use `low` for simple lookups, `medium` for a balanced default, and `high` when the answer may require more detail from search results. This setting does not set an exact token count or guarantee a specific number of sources or citations.
+
+## Run longer web research
+
+`return_token_budget` controls how much web search result content the tool can return during a Responses API search run with GPT-5+ reasoning models. Keep the default for most requests. Set it to `unlimited` only for high-effort research or evaluation runs that need to inspect many pages and might otherwise stop at the standard returned-token cap.
+
+Use `unlimited` selectively because it can increase latency and cost. For long-running multi-search tasks, use background mode (`background: true`) so the request can keep running asynchronously and you can retrieve the final response later.
+
+| Value       | Behavior                                                                                                                     |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `default`   | Uses the standard returned-token budget for web search results. This is the same behavior as omitting `return_token_budget`. |
+| `unlimited` | Removes the default returned-token budget for the web search run.                                                            |
+
+This parameter applies only to the hosted Responses API `web_search` tool with GPT-5+ reasoning web search. It does not change the search context window, and it does not apply to non-reasoning web search, legacy Search API paths, container web search, Chat Completions search models, or `web_search_preview`. Only `default` and `unlimited` are supported values; `null`, numbers, and other strings are rejected.
 
 ## Domain filtering
 
@@ -129,7 +142,7 @@ Control whether the web search tool fetches live content or uses only cached/ind
 
 #### Chat Completions API
 
-The Chat Completions API supports only specialized search models for web search. These models do not support Responses API `web_search` features such as domain filters, complete source lists, live-access control.
+The Chat Completions API supports only specialized search models for web search. These models do not support Responses API `web_search` features such as domain filters, complete source lists, live-access control, and returned-token budget control.
 
 | Model                        | Context window | Limitation                                                                                                                                   |
 | ---------------------------- | -------------: | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -154,7 +167,7 @@ For Responses API web search, the search context window is limited to 128k, even
 - Web search does not support [`gpt-5`](https://developers.openai.com/api/docs/models/gpt-5) with `minimal` reasoning.
 - [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4) with reasoning effort set to `none` may produce lower-quality results.
 - Responses API web search uses the underlying model's tiered rate limits.
-- `web_search_preview` does not support `filters` and ignores `external_web_access`.
+- `web_search_preview` does not support `filters` or `return_token_budget`, and ignores `external_web_access`.
 - With `tool_choice: "auto"`, search is optional. Use `tool_choice: "required"` or a specific web search tool choice when search must run.
 
 ## Usage notes

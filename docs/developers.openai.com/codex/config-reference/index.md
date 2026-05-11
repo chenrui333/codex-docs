@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-04-30T17:50:10Z'
-source_etag: 'W/"4c796df780dce08af4c28cae24e883c5"'
+source_last_modified: '2026-05-11T17:58:04Z'
+source_etag: 'W/"99ae43e4ba691eee75a076326cf301da"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -52,7 +52,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `chatgpt_base_url` | `string` | Override the base URL used during the ChatGPT login flow. |
 | `check_for_update_on_startup` | `boolean` | Check for Codex updates on startup (set to false only when updates are centrally managed). |
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
-| `commit_attribution` | `string` | Override the commit co-author trailer text. Set an empty string to disable automatic attribution. |
+| `commit_attribution` | `string` | Commit co-author trailer used when `[features].codex_git_commit` is enabled. Defaults to `Codex <noreply@openai.com>`; set `""` to disable. |
 | `compact_prompt` | `string` | Inline override for the history compaction prompt. |
 | `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables. |
 | `developer_instructions` | `string` | Additional developer instructions injected into the session (optional). |
@@ -60,6 +60,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
 | `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
+| `features.codex_git_commit` | `boolean` | Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages. |
 | `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
@@ -624,7 +625,7 @@ Type / Values
 
 Details
 
-Override the commit co-author trailer text. Set an empty string to disable automatic attribution.
+Commit co-author trailer used when `[features].codex_git_commit` is enabled. Defaults to `Codex <noreply@openai.com>`; set `""` to disable.
 
 Key
 
@@ -709,6 +710,18 @@ Type / Values
 Details
 
 Enable ChatGPT Apps/connectors support (experimental).
+
+Key
+
+`features.codex_git_commit`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages.
 
 Key
 

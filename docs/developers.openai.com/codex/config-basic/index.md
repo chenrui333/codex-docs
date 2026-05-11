@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-basic'
-source_last_modified: '2026-04-30T17:48:55Z'
-source_etag: 'W/"4a969b692419b946812cf887b2bd2124"'
+source_last_modified: '2026-05-11T17:56:47Z'
+source_etag: 'W/"ccb956ff287ea28372c6052684f2c065"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -182,6 +182,7 @@ shell_snapshot = true           # Speed up repeated commands
 | Key | Default | Maturity | Description |
 | --- | --- | --- | --- |
 | `apps` | false | Experimental | Enable ChatGPT Apps/connectors support |
+| `codex_git_commit` | false | Experimental | Enable Codex-generated git commits and commit attribution trailers |
 | `codex_hooks` | true | Stable | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](/codex/hooks). |
 | `fast_mode` | true | Stable | Enable Fast mode selection and the `service_tier = "fast"` path |
 | `memories` | false | Stable | Enable [Memories](/codex/memories) |

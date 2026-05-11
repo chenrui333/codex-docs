@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-04-30T17:50:09Z'
-source_etag: 'W/"1eeeeb5de296c3046894a936003cbee3"'
+source_last_modified: '2026-05-11T17:58:34Z'
+source_etag: 'W/"85cc3024a0047327a63f1ae384ab3176"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -95,7 +95,9 @@ model_provider = "openai"
 # Inline override for the history compaction prompt. Default: unset.
 # compact_prompt = ""
 
-# Override the default commit co-author trailer. Set to "" to disable it.
+# Override the default commit co-author trailer. This only takes effect when
+# [features].codex_git_commit is enabled. When enabled and unset, Codex uses
+# "Codex <noreply@openai.com>". Set to "" to disable it.
 # commit_attribution = "Jane Doe <jane@example.com>"
 
 # Override built-in base instructions with a file path. Default: unset.
@@ -410,6 +412,7 @@ enabled = true
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
 # shell_tool = true
 # apps = false
+# codex_git_commit = false
 # codex_hooks = false
 # unified_exec = true
 # shell_snapshot = true
