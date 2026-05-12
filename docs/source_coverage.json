@@ -117,6 +117,7 @@
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/sandboxing",
+      "https://developers.openai.com/codex/concepts/sandboxing/auto-review",
       "https://developers.openai.com/codex/concepts/subagents",
       "https://developers.openai.com/codex/config-advanced",
       "https://developers.openai.com/codex/config-basic",
@@ -255,8 +256,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 171,
-      "mirrored_urls": 155,
+      "codex_related_urls": 172,
+      "mirrored_urls": 156,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -294,6 +295,7 @@
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/sandboxing",
+      "https://developers.openai.com/codex/concepts/sandboxing/auto-review",
       "https://developers.openai.com/codex/concepts/subagents",
       "https://developers.openai.com/codex/config-advanced",
       "https://developers.openai.com/codex/config-basic",
@@ -420,8 +422,12 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/concepts/sandboxing/auto-review"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/concepts/sandboxing/auto-review"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -541,7 +547,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-12T00:48:11+00:00",
+  "generated_at": "2026-05-12T07:06:39+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

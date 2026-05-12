@@ -37,10 +37,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "18a56186798a65c8eddb3ac7106a24106fce2d80d84538e77b989011c590c5dd",
+      "sha256": "3fe78cbc85a400472e7cba15a6b2063c000cf9736be9235001de7cdb3369b110",
       "source_area": "codex_security",
-      "source_etag": "W/\"fb144142ea5519cd93b76b7ab588beda\"",
-      "source_last_modified": "2026-04-30T17:49:09Z",
+      "source_etag": "W/\"2db71524894147216a3927955f20f494\"",
+      "source_last_modified": "2026-05-12T01:56:27Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/agent-approvals-security"
     },
@@ -580,6 +580,20 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/cyber-safety"
     },
+    "developers.openai.com/codex/concepts/sandboxing/auto-review/index.md": {
+      "codex_cli_versions": [
+        "0.130.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.130.0"
+      ],
+      "sha256": "d71589af7ac512c0751e07600e5b7c8b4cf5b5993ab24b3ad98c9b8c376a3630",
+      "source_area": "codex_concept",
+      "source_etag": "W/\"eec197fbdf8186d24452e7fc9a29dbff\"",
+      "source_last_modified": "2026-05-12T01:57:53Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/concepts/sandboxing/auto-review"
+    },
     "developers.openai.com/codex/concepts/sandboxing/index.md": {
       "codex_cli_versions": [
         "0.125.0",
@@ -593,10 +607,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "a858fcb2c26623de82ed2469bb18f81008bff3128afd69ec21fb2c0fe09848e7",
+      "sha256": "379f0f3498cc4cad75a5a6de241cb911d293c28cc0dd09e7c51451f73741b615",
       "source_area": "codex_concept",
-      "source_etag": "W/\"9a936929ec3e89ebef719c9db2acb8cd\"",
-      "source_last_modified": "2026-04-30T17:54:12Z",
+      "source_etag": "W/\"b08a3e6b5a997235adebbc71f38fbc4b\"",
+      "source_last_modified": "2026-05-12T01:59:52Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/sandboxing"
     },
@@ -1451,10 +1465,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "2d1d1a80eb120dcd0c674b6b4fdda5ce9ba05308b78d1f3cabf6d999d4d8ac74",
+      "sha256": "68fdff15f2f833ea77701fa86ef2af1b8956135be6a5a0d80e5abb2f2fc96c2b",
       "source_area": "codex_security",
-      "source_etag": "W/\"339a7e54de9e7da44d3b026d4a3ce62a\"",
-      "source_last_modified": "2026-05-11T17:58:08Z",
+      "source_etag": "W/\"583282229c58ab8bea9a270b15671155\"",
+      "source_last_modified": "2026-05-12T02:11:31Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -3029,10 +3043,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "36272d1a6d7f06f400902fa337803eb70a6c0a11c3cefc125062ef6e71f850db",
+      "sha256": "23cbd03321f00120068a3c37139cf1d3b83f58344480fae8ec50aef533a7620f",
       "source_area": "cookbook",
-      "source_etag": "W/\"46b57d08946b3b17a5cc7900c1fd4ebe\"",
-      "source_last_modified": "2026-05-11T17:59:20Z",
+      "source_etag": "W/\"ab765d18d383a85502e9269415fdf4c2\"",
+      "source_last_modified": "2026-05-12T02:01:06Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },

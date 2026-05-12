@@ -1,11 +1,10 @@
 {
   "added": [
-    "developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb/index.md",
-    "developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex/index.md"
+    "developers.openai.com/codex/concepts/sandboxing/auto-review/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-11T18:44:02+00:00",
+  "generated_at": "2026-05-12T07:07:06+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -14,14 +13,11 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 229,
+  "total_files": 230,
   "updated": [
-    "codex_capabilities.json",
-    "developers.openai.com/codex/config-basic/index.md",
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
+    "developers.openai.com/codex/agent-approvals-security/index.md",
+    "developers.openai.com/codex/concepts/sandboxing/index.md",
     "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/cookbook/topic/codex/index.md",
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "developers.openai.com/cookbook/topic/codex/index.md"
   ]
 }
