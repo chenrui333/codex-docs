@@ -385,7 +385,6 @@
       "chronicle",
       "code_mode",
       "code_mode_only",
-      "codex_git_commit",
       "collaboration_modes",
       "default_mode_request_user_input",
       "elevated_windows_sandbox",
@@ -440,6 +439,7 @@
   "docs_feature_keys": [
     "apps",
     "browser_use",
+    "codex_git_commit",
     "codex_hooks",
     "computer_use",
     "enable_request_compression",
@@ -490,10 +490,6 @@
     "browser_use_external": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
-    },
-    "builtin_mcp": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
     },
     "child_agents_md": {
       "default_enabled_expr": "false",
@@ -595,6 +591,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "experimental"
     },
+    "mentions_v2": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental"
+    },
     "multi_agent": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -602,6 +602,10 @@
     "multi_agent_v2": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
+    },
+    "network_proxy": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "experimental"
     },
     "personality": {
       "default_enabled_expr": "true",
@@ -757,8 +761,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "8abdf9d7620ce9754f4aefe3ea4fcad04cd5552195938171f582fa4d87d9c286",
-    "features_rs_sha256": "31c6d2cafe81e322d80d1e77dec1fcff18b8dc46a74bf4364b4bd55af87fe510"
+    "client_rs_sha256": "ac7877cbecd32945381e7750cd1996263cba4980991ef54b426a07bac50205bc",
+    "features_rs_sha256": "9b19d0078aeb50388e79f6dac1a5eaabbb8f659f1c0fe4e8b73064351a78b8bc"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
