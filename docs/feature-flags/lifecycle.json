@@ -615,6 +615,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "plugin_sharing": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
     "plugins": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -633,7 +637,7 @@
     },
     "remote_control": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "remote_models": {
       "default_enabled_expr": "false",
@@ -724,8 +728,8 @@
       "stage_from_source": "removed"
     },
     "unavailable_dummy_tools": {
-      "default_enabled_expr": "true",
-      "stage_from_source": "stable"
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
     },
     "undo": {
       "default_enabled_expr": "false",
@@ -757,12 +761,12 @@
     },
     "workspace_owner_usage_nudge": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "ac7877cbecd32945381e7750cd1996263cba4980991ef54b426a07bac50205bc",
-    "features_rs_sha256": "9b19d0078aeb50388e79f6dac1a5eaabbb8f659f1c0fe4e8b73064351a78b8bc"
+    "client_rs_sha256": "0dc32ad116092304e70078c97b3d0489dd07b81bb78dc3631ebea9feb5660e48",
+    "features_rs_sha256": "3646c4aa7ff44b131ef94b51ac9f4fcace35ecd011f511fdddf944407012633c"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
