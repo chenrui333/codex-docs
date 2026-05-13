@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/chrome-extension'
-source_last_modified: '2026-05-07T18:39:53Z'
-source_etag: 'W/"a36403a017ab9c6e5e849d61f3eaaf10"'
+source_last_modified: '2026-05-13T02:42:38Z'
+source_etag: 'W/"2218f92822586247fe02c66020312783"'
 codex_cli_versions: ["0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -33,8 +33,9 @@ Set up the extension from Codex:
 
 1. Open Codex and go to **Plugins**.
 2. Add the **Chrome** plugin.
-3. Follow the setup flow. It guides you through installing or connecting the
-   Chrome extension and approving Chrome’s permission prompts.
+3. Follow the setup flow. It guides you through installing the [Codex Chrome
+   extension](https://chromewebstore.google.com/detail/codex/hehggadaopoacecdllhhajmbjkdcmajg)
+   and approving Chrome’s permission prompts.
 4. Open Chrome and confirm the Codex extension shows **Connected**.
 
 After the plugin setup is complete, start a new Codex thread. Codex can suggest
