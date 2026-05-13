@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/subagents'
-source_last_modified: '2026-04-25T06:39:23Z'
-source_etag: 'W/"d387a077534daf38dd7007de0cd25f6a"'
+source_last_modified: '2026-05-13T00:15:10Z'
+source_etag: 'W/"bb314c1b31d1752ea2ad06eb6976f522"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -78,20 +78,19 @@ Different agents need different model and reasoning settings.
 If you don’t pin a model or `model_reasoning_effort`, Codex can choose a setup
 that balances intelligence, speed, and price for the task. It may favor
 `gpt-5.4-mini` for fast scans or a higher-effort `gpt-5.5` configuration for
-more demanding reasoning when that model is available. When you want finer
-control, steer that choice in your prompt or set `model` and
+more demanding reasoning. When you want finer control, steer that choice in
+your prompt or set `model` and
 `model_reasoning_effort` directly in the agent file.
 
-For most tasks in Codex, start with `gpt-5.5` when it is available. Continue
-using `gpt-5.4` during the rollout if `gpt-5.5` is not yet available. Use
-`gpt-5.4-mini` when you want a faster, lower-cost option for lighter subagent
-work. If you have ChatGPT Pro and want near-instant text-only iteration,
-`gpt-5.3-codex-spark` remains available in research preview.
+For most tasks in Codex, start with `gpt-5.5`. Use `gpt-5.4-mini` when you
+want a faster, lower-cost option for lighter subagent work. If you have
+ChatGPT Pro and want near-instant text-only iteration, `gpt-5.3-codex-spark`
+remains available in research preview.
 
 ### Model choice
 
-- **`gpt-5.5`**: Start here for demanding agents when it is available. It is strongest for ambiguous, multi-step work that needs planning, tool use, validation, and follow-through across a larger context.
-- **`gpt-5.4`**: Use this when `gpt-5.5` is not yet available or when a workflow is pinned to GPT-5.4. It combines strong coding, reasoning, tool use, and broader workflows.
+- **`gpt-5.5`**: Start here for demanding agents. It is strongest for ambiguous, multi-step work that needs planning, tool use, validation, and follow-through across a larger context.
+- **`gpt-5.4`**: Use this when a workflow is pinned to GPT-5.4. It combines strong coding, reasoning, tool use, and broader workflows.
 - **`gpt-5.4-mini`**: Use for agents that favor speed and efficiency over depth, such as exploration, read-heavy scans, large-file review, or processing supporting documents. It works well for parallel workers that return distilled results to the main agent.
 - **`gpt-5.3-codex-spark`**: If you have ChatGPT Pro, use this research preview model for near-instant, text-only iteration when latency matters more than broader capability.
 

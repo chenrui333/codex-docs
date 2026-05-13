@@ -627,10 +627,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "fecd92b8c433a8754d44f317cb2dcfacf534037047600935c5e9cb0e40231cc3",
+      "sha256": "22f0bda54da5b675aebd3fa6aa1628c8ef46dc4948d9dd51582d85e728fa6403",
       "source_area": "codex_concept",
-      "source_etag": "W/\"d387a077534daf38dd7007de0cd25f6a\"",
-      "source_last_modified": "2026-04-25T06:39:23Z",
+      "source_etag": "W/\"bb314c1b31d1752ea2ad06eb6976f522\"",
+      "source_last_modified": "2026-05-13T00:15:10Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/concepts/subagents"
     },
@@ -1205,10 +1205,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "84d0a6a70cb9217751c6b26e1658d90a3f0d0be19886b1a160094cd3f2156170",
+      "sha256": "cad508438d42365ade86351cd3a029fe7c449653c4f29c953e7328938dce6c40",
       "source_area": "codex_reference",
-      "source_etag": "W/\"517666cfa0713d869bdbe864cbb911a7\"",
-      "source_last_modified": "2026-04-25T06:52:19Z",
+      "source_etag": "W/\"3ae5711c675a23e08099fe3c9b913bb4\"",
+      "source_last_modified": "2026-05-13T00:17:30Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/models"
     },
@@ -1465,10 +1465,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "68fdff15f2f833ea77701fa86ef2af1b8956135be6a5a0d80e5abb2f2fc96c2b",
+      "sha256": "0fc30f7f85baffa486a9cff2701db9450c39fd7b4cf6f964dd5c3aa6c05976c0",
       "source_area": "codex_security",
-      "source_etag": "W/\"583282229c58ab8bea9a270b15671155\"",
-      "source_last_modified": "2026-05-12T02:11:31Z",
+      "source_etag": "W/\"78e8bc953af7f2478bf2e4b7bc79ded0\"",
+      "source_last_modified": "2026-05-13T00:16:57Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -3043,10 +3043,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "23cbd03321f00120068a3c37139cf1d3b83f58344480fae8ec50aef533a7620f",
+      "sha256": "384cdddfc3024984082a61824a9e4e0a208217bc0e6215ec7f0122173d122fdd",
       "source_area": "cookbook",
-      "source_etag": "W/\"ab765d18d383a85502e9269415fdf4c2\"",
-      "source_last_modified": "2026-05-12T02:01:06Z",
+      "source_etag": "W/\"f6a4c4a919efd9ab46c0999195a8abdf\"",
+      "source_last_modified": "2026-05-13T00:15:54Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },
