@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/topic/codex'
-source_last_modified: '2026-05-13T00:15:54Z'
-source_etag: 'W/"f6a4c4a919efd9ab46c0999195a8abdf"'
+source_last_modified: '2026-05-14T07:08:25Z'
+source_etag: 'W/"72580814ba9d4125035bb304b43cca6d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -12,7 +12,7 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/cookbook/topic/codex
 
-## All recipes10
+## All recipes11
 
 [Build an Agent Improvement Loop with Traces, Evals, and Codex
 
@@ -22,7 +22,11 @@ May 12, 2026](/cookbook/examples/agents_sdk/agent_improvement_loop)[Build iterat
 
 CodexEvals
 
-May 11, 2026](/cookbook/examples/codex/build_iterative_repair_loops_with_codex)[Codex Prompting Guide
+May 11, 2026](/cookbook/examples/codex/build_iterative_repair_loops_with_codex)[Using Goals in Codex
+
+Codex
+
+May 9, 2026](/cookbook/examples/codex/using_goals_in_codex)[Codex Prompting Guide
 
 CodexResponses
 

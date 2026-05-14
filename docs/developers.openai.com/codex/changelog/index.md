@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_changelog'
 source_url: 'https://developers.openai.com/codex/changelog'
-source_last_modified: '2026-05-13T15:04:12Z'
-source_etag: 'W/"dbe0ab7aea329c31b3479df13974a31d"'
+source_last_modified: '2026-05-14T06:45:23Z'
+source_etag: 'W/"39f2578ed37a8487ab915899e0651cff"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -12,66 +12,320 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/changelog
 
-Codex is becoming a broader workspace for getting work done with AI. This
-update makes it easier to start work with less setup, verify what Codex is
-building, create richer outputs, and keep momentum across longer-running tasks.
+```
+$ npm install -g @openai/codex@0.119.0
+```
 
-#### Verify more of your work
+  View details
 
-The Codex app now includes an early [**in-app browser**](/codex/app/browser). You
-can open local or public pages that don’t require sign-in, comment directly on
-the rendered page, and ask Codex to address page-level feedback.
+## New Features
 
-![Codex app showing a browser comment on a local web app preview](/images/codex/app/in-app-browser-light.webp)
+- Realtime voice sessions now default to the v2 WebRTC path, with configurable transport, voice selection, native TUI media support, and app-server coverage for the new flow ([#16960](https://github.com/openai/codex/pull/16960), [#17057](https://github.com/openai/codex/pull/17057), [#17058](https://github.com/openai/codex/pull/17058), [#17093](https://github.com/openai/codex/pull/17093), [#17097](https://github.com/openai/codex/pull/17097), [#17145](https://github.com/openai/codex/pull/17145), [#17165](https://github.com/openai/codex/pull/17165), [#17176](https://github.com/openai/codex/pull/17176), [#17183](https://github.com/openai/codex/pull/17183), [#17188](https://github.com/openai/codex/pull/17188)).
+- MCP Apps and custom MCP servers gained richer support, including resource reads, tool-call metadata, custom-server tool search, server-driven elicitations, file-parameter uploads, and more reliable plugin cache refreshes ([#16082](https://github.com/openai/codex/pull/16082), [#16465](https://github.com/openai/codex/pull/16465), [#16944](https://github.com/openai/codex/pull/16944), [#17043](https://github.com/openai/codex/pull/17043), [#15197](https://github.com/openai/codex/pull/15197), [#16191](https://github.com/openai/codex/pull/16191), [#16947](https://github.com/openai/codex/pull/16947)).
+- Remote/app-server workflows now support egress websocket transport, remote `--cd` forwarding, runtime remote-control enablement, sandbox-aware filesystem APIs, and an experimental `codex exec-server` subcommand ([#15951](https://github.com/openai/codex/pull/15951), [#16700](https://github.com/openai/codex/pull/16700), [#16973](https://github.com/openai/codex/pull/16973), [#16751](https://github.com/openai/codex/pull/16751), [#17059](https://github.com/openai/codex/pull/17059), [#17142](https://github.com/openai/codex/pull/17142), [#17162](https://github.com/openai/codex/pull/17162)).
+- The TUI can copy the latest agent response with `Ctrl+O`, including better clipboard behavior over SSH and across platforms ([#16966](https://github.com/openai/codex/pull/16966)).
+- `/resume` can now jump directly to a session by ID or name from the TUI ([#17222](https://github.com/openai/codex/pull/17222)).
+- TUI notifications are more configurable, including Warp OSC 9 support and an opt-in mode for notifications even while the terminal is focused ([#17174](https://github.com/openai/codex/pull/17174), [#17175](https://github.com/openai/codex/pull/17175)).
 
-[**Computer use**](/codex/app/computer-use) lets Codex operate macOS apps by seeing,
-clicking, and typing, which helps with native app testing, simulator flows,
-low-risk app settings, and GUI-only bugs.
+## Bug Fixes
 
-The feature isn’t available in the European Economic Area, the United Kingdom, or
-Switzerland at launch.
+- The TUI starts faster by fetching rate limits asynchronously, and `/status` now refreshes stale limits instead of showing frozen or misleading quota information ([#16201](https://github.com/openai/codex/pull/16201), [#17039](https://github.com/openai/codex/pull/17039)).
+- Resume flows are more stable: the picker no longer flashes false empty states, uses fresher thread names, stabilizes timestamp labels, preserves resume hints on zero-token exits, and avoids crashing when resuming the current thread ([#16591](https://github.com/openai/codex/pull/16591), [#16601](https://github.com/openai/codex/pull/16601), [#16822](https://github.com/openai/codex/pull/16822), [#16987](https://github.com/openai/codex/pull/16987), [#17086](https://github.com/openai/codex/pull/17086)).
+- Composer and chat behavior are smoother, including fixed paste teardown, CJK word navigation, stale `/copy` output, percent-decoded local file links, and clearer truncated exec-output hints ([#16202](https://github.com/openai/codex/pull/16202), [#16829](https://github.com/openai/codex/pull/16829), [#16648](https://github.com/openai/codex/pull/16648), [#16810](https://github.com/openai/codex/pull/16810), [#17076](https://github.com/openai/codex/pull/17076)).
+- Fast Mode no longer stays stuck on after `/fast off` in app-server-backed TUI sessions ([#16833](https://github.com/openai/codex/pull/16833)).
+- MCP status and startup are less noisy and faster: hyphenated server names list tools correctly, `/mcp` avoids slow full inventory probes, disabled servers skip auth probing, and residency headers are honored by `codex mcp-server` ([#16674](https://github.com/openai/codex/pull/16674), [#16831](https://github.com/openai/codex/pull/16831), [#17098](https://github.com/openai/codex/pull/17098), [#16952](https://github.com/openai/codex/pull/16952)).
+- Sandbox, network, and platform edge cases were tightened, including clearer read-only `apply_patch` errors, refreshed network proxy policy after sandbox changes, suppressed irrelevant bubblewrap warnings, a macOS HTTP-client sandbox panic fix, and Windows firewall address handling ([#16885](https://github.com/openai/codex/pull/16885), [#17040](https://github.com/openai/codex/pull/17040), [#16667](https://github.com/openai/codex/pull/16667), [#16670](https://github.com/openai/codex/pull/16670), [#17053](https://github.com/openai/codex/pull/17053)).
 
-#### Start, follow, and steer work
+## Documentation
 
-[**Chats**](/codex/app/features#projectless-threads) are threads you can start
-without choosing a project folder first. They’re useful for research, writing,
-planning, analysis, source gathering, and tool-driven work that doesn’t begin in
-a codebase.
+- The README now uses the current ChatGPT Business plan name ([#16348](https://github.com/openai/codex/pull/16348)).
+- Developer guidance for `argument_comment_lint` was updated to favor getting CI started instead of blocking on slow local lint runs ([#16375](https://github.com/openai/codex/pull/16375)).
+- Obsolete `codex-cli` README content was removed to avoid stale setup guidance ([#17096](https://github.com/openai/codex/pull/17096)).
+- `codex exec --help` now shows clearer usage and approval-mode wording ([#16881](https://github.com/openai/codex/pull/16881), [#16888](https://github.com/openai/codex/pull/16888)).
 
-For work that needs a later check-in,
-[**thread automations**](/codex/app/automations#thread-automations) can wake up
-the same thread on a schedule while preserving the conversation context. Use
-them to check a long-running process, watch for updates, or continue a
-follow-up loop without starting from scratch.
+## Chores
 
-[**The task sidebar**](/codex/app/features#task-sidebar) makes plans, sources,
-generated artifacts, and summaries easier to follow while Codex works.
-[**Context-aware suggestions**](/codex/app/settings#context-aware-suggestions)
-can also help you pick up relevant follow-ups when you start or return to Codex.
+- `codex-core` was slimmed down through major crate extractions for MCP, tools, config, model management, auth, feedback, protocol, and related ownership boundaries ([#15919](https://github.com/openai/codex/pull/15919), [#16379](https://github.com/openai/codex/pull/16379), [#16508](https://github.com/openai/codex/pull/16508), [#16523](https://github.com/openai/codex/pull/16523), [#16962](https://github.com/openai/codex/pull/16962)).
+- Rust CI and workspace guardrails were simplified by blocking new crate features and dropping routine `--all-features` runs ([#16455](https://github.com/openai/codex/pull/16455), [#16473](https://github.com/openai/codex/pull/16473)).
+- Core compile times were reduced by removing expensive async-trait expansion from hot tool/task abstractions ([#16630](https://github.com/openai/codex/pull/16630), [#16631](https://github.com/openai/codex/pull/16631)).
+- Bazel diagnostics and dependency wiring improved with compact execution logs, repository-cache persistence, remote downloader support, and several platform-specific build fixes ([#16577](https://github.com/openai/codex/pull/16577), [#16926](https://github.com/openai/codex/pull/16926), [#16928](https://github.com/openai/codex/pull/16928), [#16634](https://github.com/openai/codex/pull/16634), [#16744](https://github.com/openai/codex/pull/16744)).
 
-#### Stronger for software development
+## Changelog
 
-Codex now brings more of the **pull request workflow** into the app. You can
-inspect [**GitHub pull requests**](/codex/app/review#pull-request-reviews) in the
-sidebar, review comments in the diff, review changed files, then ask Codex to
-explain feedback, make changes, check them, and keep the review moving.
+Full Changelog: [rust-v0.118.0...rust-v0.119.0](https://github.com/openai/codex/compare/rust-v0.118.0...rust-v0.119.0)
 
-#### Review richer outputs
+- [#16308](https://github.com/openai/codex/pull/16308) fix: one shot end of turn [@jif-oai](https://github.com/jif-oai)
+- [#16238](https://github.com/openai/codex/pull/16238) fix: ma2 [@jif-oai](https://github.com/jif-oai)
+- [#16317](https://github.com/openai/codex/pull/16317) chore: clean wait v2 [@jif-oai](https://github.com/jif-oai)
+- [#16318](https://github.com/openai/codex/pull/16318) nit: update aborted line [@jif-oai](https://github.com/jif-oai)
+- [#15771](https://github.com/openai/codex/pull/15771) feat: fork pattern v2 [@jif-oai](https://github.com/jif-oai)
+- [#16322](https://github.com/openai/codex/pull/16322) fix: update fork boundaries computation [@jif-oai](https://github.com/jif-oai)
+- [#16325](https://github.com/openai/codex/pull/16325) feat: restrict spawn\_agent v2 to messages [@jif-oai](https://github.com/jif-oai)
+- [#16324](https://github.com/openai/codex/pull/16324) chore: drop interrupt from send\_message [@jif-oai](https://github.com/jif-oai)
+- [#16345](https://github.com/openai/codex/pull/16345) fix: fix clippy issue caught by cargo but not bazel [@bolinfest](https://github.com/bolinfest)
+- [#16184](https://github.com/openai/codex/pull/16184) Route TUI `/feedback` submission through the app server [@etraut-openai](https://github.com/etraut-openai)
+- [#16330](https://github.com/openai/codex/pull/16330) feat: log db better maintenance [@jif-oai](https://github.com/jif-oai)
+- [#15690](https://github.com/openai/codex/pull/15690) [codex-analytics] thread events [@rhan-oai](https://github.com/rhan-oai)
+- [#16363](https://github.com/openai/codex/pull/16363) Fix PR babysitter review comment monitoring [@etraut-openai](https://github.com/etraut-openai)
+- [#16356](https://github.com/openai/codex/pull/16356) Refactor external auth to use a single trait [@etraut-openai](https://github.com/etraut-openai)
+- [#16366](https://github.com/openai/codex/pull/16366) Fix Windows external bearer refresh test [@bolinfest](https://github.com/bolinfest)
+- [#16353](https://github.com/openai/codex/pull/16353) ci: verify codex-rs Cargo manifests inherit workspace settings [@bolinfest](https://github.com/bolinfest)
+- [#16361](https://github.com/openai/codex/pull/16361) Refactor chatwidget tests into topical modules [@etraut-openai](https://github.com/etraut-openai)
+- [#16201](https://github.com/openai/codex/pull/16201) Fix stale /status rate limits in active TUI sessions [@etraut-openai](https://github.com/etraut-openai)
+- [#16351](https://github.com/openai/codex/pull/16351) ci: sync Bazel clippy lints and fix uncovered violations [@bolinfest](https://github.com/bolinfest)
+- [#16378](https://github.com/openai/codex/pull/16378) fix: suppress status card expect\_used warnings after [#16351](https://github.com/openai/codex/pull/16351) [@bolinfest](https://github.com/bolinfest)
+- [#16406](https://github.com/openai/codex/pull/16406) Use message string in v2 spawn\_agent [@jif-oai](https://github.com/jif-oai)
+- [#16409](https://github.com/openai/codex/pull/16409) Use message string in v2 send\_message [@jif-oai](https://github.com/jif-oai)
+- [#16419](https://github.com/openai/codex/pull/16419) Use message string in v2 assign\_task [@jif-oai](https://github.com/jif-oai)
+- [#16424](https://github.com/openai/codex/pull/16424) feat: tasks can't be assigned to root agent [@jif-oai](https://github.com/jif-oai)
+- [#16425](https://github.com/openai/codex/pull/16425) nit: update wait v2 desc [@jif-oai](https://github.com/jif-oai)
+- [#16426](https://github.com/openai/codex/pull/16426) chore: interrupted as state [@jif-oai](https://github.com/jif-oai)
+- [#16427](https://github.com/openai/codex/pull/16427) nit: deny field v2 [@jif-oai](https://github.com/jif-oai)
+- [#16433](https://github.com/openai/codex/pull/16433) chore: drop log DB [@jif-oai](https://github.com/jif-oai)
+- [#16434](https://github.com/openai/codex/pull/16434) feat: auto vaccum state DB [@jif-oai](https://github.com/jif-oai)
+- [#16422](https://github.com/openai/codex/pull/16422) fix(core) rm execute\_exec\_request sandbox\_policy [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#16375](https://github.com/openai/codex/pull/16375) docs: update argument\_comment\_lint instructions in AGENTS.md [@bolinfest](https://github.com/bolinfest)
+- [#16449](https://github.com/openai/codex/pull/16449) fix: remove unused import [@bolinfest](https://github.com/bolinfest)
+- [#15772](https://github.com/openai/codex/pull/15772) Make fuzzy file search case insensitive [@meyers-oai](https://github.com/meyers-oai)
+- [#16455](https://github.com/openai/codex/pull/16455) ci: block new workspace crate features [@bolinfest](https://github.com/bolinfest)
+- [#16456](https://github.com/openai/codex/pull/16456) cloud-tasks: split the mock client out of cloud-tasks-client [@bolinfest](https://github.com/bolinfest)
+- [#16457](https://github.com/openai/codex/pull/16457) tui: remove debug/test-only crate features [@bolinfest](https://github.com/bolinfest)
+- [#16467](https://github.com/openai/codex/pull/16467) tui: remove the voice-input crate feature [@bolinfest](https://github.com/bolinfest)
+- [#16379](https://github.com/openai/codex/pull/16379) Extract tool config into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16469](https://github.com/openai/codex/pull/16469) otel: remove the last workspace crate feature [@bolinfest](https://github.com/bolinfest)
+- [#16471](https://github.com/openai/codex/pull/16471) Extract tool spec helpers into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16473](https://github.com/openai/codex/pull/16473) ci: stop running rust CI with --all-features [@bolinfest](https://github.com/bolinfest)
+- [#16477](https://github.com/openai/codex/pull/16477) Extract tool discovery helpers into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16480](https://github.com/openai/codex/pull/16480) login: treat provider auth refresh\_interval\_ms=0 as no auto-refresh [@bolinfest](https://github.com/bolinfest)
+- [#16448](https://github.com/openai/codex/pull/16448) fix(guardian): make GuardianAssessmentEvent.action strongly typed [@owenlin0](https://github.com/owenlin0)
+- [#16481](https://github.com/openai/codex/pull/16481) Extract update\_plan tool spec into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#15919](https://github.com/openai/codex/pull/15919) Extract MCP into codex-mcp crate [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16482](https://github.com/openai/codex/pull/16482) Remove client\_common tool re-exports [@bolinfest](https://github.com/bolinfest)
+- [#16495](https://github.com/openai/codex/pull/16495) fix: remove unused import [@bolinfest](https://github.com/bolinfest)
+- [#16493](https://github.com/openai/codex/pull/16493) Extract built-in tool spec constructors into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16273](https://github.com/openai/codex/pull/16273) Fix regression: "not available in TUI" error message [@etraut-openai](https://github.com/etraut-openai)
+- [#16497](https://github.com/openai/codex/pull/16497) Extract tool-search output helpers into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16498](https://github.com/openai/codex/pull/16498) fix: guard guardian\_command\_source\_tool\_name with cfg(unix) [@bolinfest](https://github.com/bolinfest)
+- [#16499](https://github.com/openai/codex/pull/16499) Extract tool-suggest wire helpers into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16284](https://github.com/openai/codex/pull/16284) Fix TUI app-server permission profile conversions [@etraut-openai](https://github.com/etraut-openai)
+- [#16202](https://github.com/openai/codex/pull/16202) Fix paste-driven bottom pane completion teardown [@etraut-openai](https://github.com/etraut-openai)
+- [#16504](https://github.com/openai/codex/pull/16504) core: use codex-tools config types directly [@bolinfest](https://github.com/bolinfest)
+- [#16503](https://github.com/openai/codex/pull/16503) Extract request\_user\_input normalization into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16510](https://github.com/openai/codex/pull/16510) core: use codex-mcp APIs directly [@bolinfest](https://github.com/bolinfest)
+- [#16509](https://github.com/openai/codex/pull/16509) Extract code-mode nested tool collection into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16512](https://github.com/openai/codex/pull/16512) core: remove cross-crate re-exports from lib.rs [@bolinfest](https://github.com/bolinfest)
+- [#16516](https://github.com/openai/codex/pull/16516) fix: add update to Cargo.lock that was missed in [#16512](https://github.com/openai/codex/pull/16512) [@bolinfest](https://github.com/bolinfest)
+- [#16513](https://github.com/openai/codex/pull/16513) Extract tool registry planning into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16521](https://github.com/openai/codex/pull/16521) Move tool registry plan tests into codex-tools [@bolinfest](https://github.com/bolinfest)
+- [#16523](https://github.com/openai/codex/pull/16523) [codex] Move config types into codex-config [@bolinfest](https://github.com/bolinfest)
+- [#16524](https://github.com/openai/codex/pull/16524) fix: move some test utilities out of codex-rs/core/src/tools/spec.rs [@bolinfest](https://github.com/bolinfest)
+- [#16529](https://github.com/openai/codex/pull/16529) [codex] Remove codex-core config type shim [@bolinfest](https://github.com/bolinfest)
+- [#16559](https://github.com/openai/codex/pull/16559) chore: memories mini model [@jif-oai](https://github.com/jif-oai)
+- [#16561](https://github.com/openai/codex/pull/16561) fix: race pending [@jif-oai](https://github.com/jif-oai)
+- [#16564](https://github.com/openai/codex/pull/16564) nit: lint [@jif-oai](https://github.com/jif-oai)
+- [#16566](https://github.com/openai/codex/pull/16566) fix: races in end of turn [@jif-oai](https://github.com/jif-oai)
+- [#16567](https://github.com/openai/codex/pull/16567) chore: rework state machine further [@jif-oai](https://github.com/jif-oai)
+- [#16569](https://github.com/openai/codex/pull/16569) nit: state machine desc [@jif-oai](https://github.com/jif-oai)
+- [#16571](https://github.com/openai/codex/pull/16571) chore: rename assign\_task for followup\_task [@jif-oai](https://github.com/jif-oai)
+- [#16577](https://github.com/openai/codex/pull/16577) ci: upload compact Bazel execution logs for bazel.yml [@bolinfest](https://github.com/bolinfest)
+- [#16581](https://github.com/openai/codex/pull/16581) chore: move codex-exec unit tests into sibling files [@bolinfest](https://github.com/bolinfest)
+- [#16590](https://github.com/openai/codex/pull/16590) Fix non-determinism in rules\_rs/crate\_git\_repository.bzl [@tyler-french](https://github.com/tyler-french)
+- [#16604](https://github.com/openai/codex/pull/16604) test: deflake external bearer auth token tests on Windows [@bolinfest](https://github.com/bolinfest)
+- [#16606](https://github.com/openai/codex/pull/16606) fix: add more detail to test assertion [@bolinfest](https://github.com/bolinfest)
+- [#16608](https://github.com/openai/codex/pull/16608) fix: increase timeout to account for slow PowerShell startup [@bolinfest](https://github.com/bolinfest)
+- [#16591](https://github.com/openai/codex/pull/16591) Fix resume picker initial loading state [@etraut-openai](https://github.com/etraut-openai)
+- [#16613](https://github.com/openai/codex/pull/16613) fix: increase another startup timeout for PowerShell [@bolinfest](https://github.com/bolinfest)
+- [#16601](https://github.com/openai/codex/pull/16601) Fix resume picker stale thread names [@etraut-openai](https://github.com/etraut-openai)
+- [#16616](https://github.com/openai/codex/pull/16616) Fixed some existing labels and added a few new ones [@etraut-openai](https://github.com/etraut-openai)
+- [#16588](https://github.com/openai/codex/pull/16588) Fix stale turn steering during TUI review follow-ups [@etraut-openai](https://github.com/etraut-openai)
+- [#16617](https://github.com/openai/codex/pull/16617) fix: add shell fallback paths for pwsh/powershell that work on GitHub Actions Windows runners [@bolinfest](https://github.com/bolinfest)
+- [#16596](https://github.com/openai/codex/pull/16596) Fix fork source display in /status (expose forked\_from\_id in app server) [@etraut-openai](https://github.com/etraut-openai)
+- [#16578](https://github.com/openai/codex/pull/16578) fix(tui): handle zellij redraw and composer rendering [@fcoury-oai](https://github.com/fcoury-oai)
+- [#16630](https://github.com/openai/codex/pull/16630) core: cut codex-core compile time 63% with native async ToolHandler [@bolinfest](https://github.com/bolinfest)
+- [#16631](https://github.com/openai/codex/pull/16631) core: cut codex-core compile time 48% with native async SessionTask [@bolinfest](https://github.com/bolinfest)
+- [#16492](https://github.com/openai/codex/pull/16492) Auto-trust cwd on thread start [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16633](https://github.com/openai/codex/pull/16633) fix: address unused variable on windows [@bolinfest](https://github.com/bolinfest)
+- [#16635](https://github.com/openai/codex/pull/16635) app-server: make thread/shellCommand tests shell-aware [@bolinfest](https://github.com/bolinfest)
+- [#16629](https://github.com/openai/codex/pull/16629) test: use cmd.exe for ProviderAuthScript on Windows [@bolinfest](https://github.com/bolinfest)
+- [#16634](https://github.com/openai/codex/pull/16634) build: fix Bazel lzma-sys wiring [@starr-openai](https://github.com/starr-openai)
+- [#16658](https://github.com/openai/codex/pull/16658) Fix deprecated login --api-key parsing [@etraut-openai](https://github.com/etraut-openai)
+- [#16508](https://github.com/openai/codex/pull/16508) extract models manager and related ownership from core [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16662](https://github.com/openai/codex/pull/16662) fix: changes to test that should help them pass on Windows under Bazel [@bolinfest](https://github.com/bolinfest)
+- [#16665](https://github.com/openai/codex/pull/16665) fix: use COMSPEC in Windows unicode shell test [@bolinfest](https://github.com/bolinfest)
+- [#16668](https://github.com/openai/codex/pull/16668) fix: use cmd.exe in Windows unicode shell test [@bolinfest](https://github.com/bolinfest)
+- [#16626](https://github.com/openai/codex/pull/16626) remove temporary ownership re-exports [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16648](https://github.com/openai/codex/pull/16648) Fix stale /copy output after commentary-only turns [@etraut-openai](https://github.com/etraut-openai)
+- [#16674](https://github.com/openai/codex/pull/16674) Fix MCP tool listing for hyphenated server names [@etraut-openai](https://github.com/etraut-openai)
+- [#16667](https://github.com/openai/codex/pull/16667) Suppress bwrap warning when sandboxing is bypassed [@etraut-openai](https://github.com/etraut-openai)
+- [#16670](https://github.com/openai/codex/pull/16670) Fix macOS sandbox panic in Codex HTTP client [@etraut-openai](https://github.com/etraut-openai)
+- [#16699](https://github.com/openai/codex/pull/16699) Fix macOS malloc diagnostics leaking into TUI composer [@etraut-openai](https://github.com/etraut-openai)
+- [#16700](https://github.com/openai/codex/pull/16700) Add remote --cd forwarding for app-server sessions [@etraut-openai](https://github.com/etraut-openai)
+- [#16707](https://github.com/openai/codex/pull/16707) fix: preserve platform-specific core shell env vars [@bolinfest](https://github.com/bolinfest)
+- [#16715](https://github.com/openai/codex/pull/16715) fix: address clippy violations that sneaked in [@bolinfest](https://github.com/bolinfest)
+- [#16722](https://github.com/openai/codex/pull/16722) fix windows-only clippy lint violation [@bolinfest](https://github.com/bolinfest)
+- [#16710](https://github.com/openai/codex/pull/16710) fix(tui): sort skill mentions by display name first [@fcoury-oai](https://github.com/fcoury-oai)
+- [#16709](https://github.com/openai/codex/pull/16709) Sanitize forked child history [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16711](https://github.com/openai/codex/pull/16711) Fix Windows Bazel app-server trust tests [@bolinfest](https://github.com/bolinfest)
+- [#16720](https://github.com/openai/codex/pull/16720) Remove OPENAI\_BASE\_URL config fallback [@etraut-openai](https://github.com/etraut-openai)
+- [#16528](https://github.com/openai/codex/pull/16528) Codex/windows bazel rust test coverage no rs [@bolinfest](https://github.com/bolinfest)
+- [#16450](https://github.com/openai/codex/pull/16450) bazel: lint rust\_test targets in clippy workflow [@bolinfest](https://github.com/bolinfest)
+- [#16735](https://github.com/openai/codex/pull/16735) [codex] allow disabling prompt instruction blocks [@tibo-openai](https://github.com/tibo-openai)
+- [#16745](https://github.com/openai/codex/pull/16745) [codex] allow disabling environment context injection [@tibo-openai](https://github.com/tibo-openai)
+- [#16725](https://github.com/openai/codex/pull/16725) Preempt mailbox mail after reasoning/commentary items [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16755](https://github.com/openai/codex/pull/16755) Use Node 24 for npm publish [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16753](https://github.com/openai/codex/pull/16753) [codex] add responses proxy JSON dumps [@tibo-openai](https://github.com/tibo-openai)
+- [#16746](https://github.com/openai/codex/pull/16746) Add spawn context for MultiAgentV2 children [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16757](https://github.com/openai/codex/pull/16757) Back out "bazel: lint rust\_test targets in clippy workflow ([#16450](https://github.com/openai/codex/pull/16450))" [@bolinfest](https://github.com/bolinfest)
+- [#16737](https://github.com/openai/codex/pull/16737) test: avoid PowerShell startup in Windows auth fixture [@bolinfest](https://github.com/bolinfest)
+- [#16740](https://github.com/openai/codex/pull/16740) ci: align Bazel repo cache and Windows clippy target handling [@bolinfest](https://github.com/bolinfest)
+- [#16758](https://github.com/openai/codex/pull/16758) [codex] add context-window lineage headers [@tibo-openai](https://github.com/tibo-openai)
+- [#16763](https://github.com/openai/codex/pull/16763) Add CODEX\_SKIP\_VENDORED\_BWRAP [@andmis](https://github.com/andmis)
+- [#15915](https://github.com/openai/codex/pull/15915) [codex-analytics] subagent analytics [@rhan-oai](https://github.com/rhan-oai)
+- [#16823](https://github.com/openai/codex/pull/16823) Fix flaky test relating to metadata remote URL [@etraut-openai](https://github.com/etraut-openai)
+- [#16825](https://github.com/openai/codex/pull/16825) Fix flaky permissions escalation test on Windows [@etraut-openai](https://github.com/etraut-openai)
+- [#16881](https://github.com/openai/codex/pull/16881) Fix misleading codex exec help usage [@etraut-openai](https://github.com/etraut-openai)
+- [#16888](https://github.com/openai/codex/pull/16888) Clarify `codex exec` approval help [@etraut-openai](https://github.com/etraut-openai)
+- [#16876](https://github.com/openai/codex/pull/16876) [codex] add response proxy subagent header test [@tibo-openai](https://github.com/tibo-openai)
+- [#16829](https://github.com/openai/codex/pull/16829) Fix CJK word navigation in the TUI composer [@etraut-openai](https://github.com/etraut-openai)
+- [#16833](https://github.com/openai/codex/pull/16833) Fix TUI fast mode toggle regression [@etraut-openai](https://github.com/etraut-openai)
+- [#16795](https://github.com/openai/codex/pull/16795) [regression] Fix ephemeral turn backfill in exec [@etraut-openai](https://github.com/etraut-openai)
+- [#16822](https://github.com/openai/codex/pull/16822) Fix resume picker timestamp labels and stability [@etraut-openai](https://github.com/etraut-openai)
+- [#16813](https://github.com/openai/codex/pull/16813) Annotate skill doc reads with skill names [@etraut-openai](https://github.com/etraut-openai)
+- [#16810](https://github.com/openai/codex/pull/16810) (tui): Decode percent-escaped bare local file links [@etraut-openai](https://github.com/etraut-openai)
+- [#16877](https://github.com/openai/codex/pull/16877) [codex-backend] Make thread metadata updates tolerate pending backfill [@joeytrasatti-openai](https://github.com/joeytrasatti-openai)
+- [#16701](https://github.com/openai/codex/pull/16701) feat(requirements): support allowed\_approval\_reviewers [@owenlin0](https://github.com/owenlin0)
+- [#16925](https://github.com/openai/codex/pull/16925) fix(bazel): fix simdutf [@owenlin0](https://github.com/owenlin0)
+- [#16926](https://github.com/openai/codex/pull/16926) bazel: Always save bazel repository cache [@euroelessar](https://github.com/euroelessar)
+- [#16928](https://github.com/openai/codex/pull/16928) bazel: Enable `--experimental_remote_downloader` [@euroelessar](https://github.com/euroelessar)
+- [#16462](https://github.com/openai/codex/pull/16462) fix(guardian): fix ordering of guardian events [@owenlin0](https://github.com/owenlin0)
+- [#16924](https://github.com/openai/codex/pull/16924) fix(sqlite): don't hard fail migrator if DB is newer [@owenlin0](https://github.com/owenlin0)
+- [#16744](https://github.com/openai/codex/pull/16744) build: restore lzma-sys Bazel wiring for devbox codex run [@starr-openai](https://github.com/starr-openai)
+- [#16764](https://github.com/openai/codex/pull/16764) app-server: centralize AuthManager initialization [@euroelessar](https://github.com/euroelessar)
+- [#16939](https://github.com/openai/codex/pull/16939) Fix clippy warning [@mzeng-openai](https://github.com/mzeng-openai)
+- [#16923](https://github.com/openai/codex/pull/16923) Revert "[codex-backend] Make thread metadata updates tolerate pending backfill" [@joeytrasatti-openai](https://github.com/joeytrasatti-openai)
+- [#15951](https://github.com/openai/codex/pull/15951) app-server: Add egress websocket transport [@euroelessar](https://github.com/euroelessar)
+- [#16945](https://github.com/openai/codex/pull/16945) [codex] Allow PyTorch libomp shm in Seatbelt [@viyatb-oai](https://github.com/viyatb-oai)
+- [#16947](https://github.com/openai/codex/pull/16947) feat: fallback curated plugin download from backend endpint. [@xl-openai](https://github.com/xl-openai)
+- [#16191](https://github.com/openai/codex/pull/16191) feat: refresh non-curated cache from plugin list. [@xl-openai](https://github.com/xl-openai)
+- [#16952](https://github.com/openai/codex/pull/16952) Respect residency requirements in mcp-server [@etraut-openai](https://github.com/etraut-openai)
+- [#16827](https://github.com/openai/codex/pull/16827) tui: route device-code auth through app server [@etraut-openai](https://github.com/etraut-openai)
+- [#16638](https://github.com/openai/codex/pull/16638) [codex-analytics] add protocol-native turn timestamps [@rhan-oai](https://github.com/rhan-oai)
+- [#16831](https://github.com/openai/codex/pull/16831) Speed up /mcp inventory listing [@etraut-openai](https://github.com/etraut-openai)
+- [#16349](https://github.com/openai/codex/pull/16349) Disable env-bound tools when exec server is none [@starr-openai](https://github.com/starr-openai)
+- [#16957](https://github.com/openai/codex/pull/16957) Promote image\_detail\_original to experimental [@fjord-oai](https://github.com/fjord-oai)
+- [#16962](https://github.com/openai/codex/pull/16962) Refactor config types into a separate crate [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16153](https://github.com/openai/codex/pull/16153) Add setTimeout support to code mode [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16961](https://github.com/openai/codex/pull/16961) app-server: Unify config changes handling a bit [@euroelessar](https://github.com/euroelessar)
+- [#16890](https://github.com/openai/codex/pull/16890) Validate exec input before starting app-server [@etraut-openai](https://github.com/etraut-openai)
+- [#16082](https://github.com/openai/codex/pull/16082) [mcp] Support MCP Apps part 1. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#15893](https://github.com/openai/codex/pull/15893) fix: warn when bwrap cannot create user namespaces [@viyatb-oai](https://github.com/viyatb-oai)
+- [#16946](https://github.com/openai/codex/pull/16946) [codex] Add danger-full-access denylist-only network mode [@viyatb-oai](https://github.com/viyatb-oai)
+- [#16972](https://github.com/openai/codex/pull/16972) app-server: Fix compilation of a test in mcp\_resource [@euroelessar](https://github.com/euroelessar)
+- [#15826](https://github.com/openai/codex/pull/15826) Make AGENTS.md discovery FS-aware [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16964](https://github.com/openai/codex/pull/16964) Honor null thread instructions [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16988](https://github.com/openai/codex/pull/16988) collapse dev message into one [@won-openai](https://github.com/won-openai)
+- [#16724](https://github.com/openai/codex/pull/16724) [codex] ez - rename env=>request in codex-rs/core/src/unified\_exec/process\_manager.rs [@starr-openai](https://github.com/starr-openai)
+- [#16999](https://github.com/openai/codex/pull/16999) feat: empty role ok [@jif-oai](https://github.com/jif-oai)
+- [#17002](https://github.com/openai/codex/pull/17002) chore: debug flag to hide some parameters [@jif-oai](https://github.com/jif-oai)
+- [#17005](https://github.com/openai/codex/pull/17005) feat: drop agent ID from v2 [@jif-oai](https://github.com/jif-oai)
+- [#17008](https://github.com/openai/codex/pull/17008) chore: send\_message and followup\_task do not return anything [@jif-oai](https://github.com/jif-oai)
+- [#17007](https://github.com/openai/codex/pull/17007) chore: hide nickname for debug flag [@jif-oai](https://github.com/jif-oai)
+- [#16442](https://github.com/openai/codex/pull/16442) feat: /feedback cascade [@jif-oai](https://github.com/jif-oai)
+- [#16978](https://github.com/openai/codex/pull/16978) [codex] reduce module visibility [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17009](https://github.com/openai/codex/pull/17009) chore: keep request\_user\_input tool to persist cache on multi-agents [@jif-oai](https://github.com/jif-oai)
+- [#16739](https://github.com/openai/codex/pull/16739) Stabilize flaky multi-agent followup interrupt test [@etraut-openai](https://github.com/etraut-openai)
+- [#16885](https://github.com/openai/codex/pull/16885) Fix read-only apply\_patch rejection message [@etraut-openai](https://github.com/etraut-openai)
+- [#16882](https://github.com/openai/codex/pull/16882) Fix nested exec thread ID restore [@etraut-openai](https://github.com/etraut-openai)
+- [#16976](https://github.com/openai/codex/pull/16976) Preserve null developer instructions [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#16987](https://github.com/openai/codex/pull/16987) Fix missing resume hint on zero-token exits [@etraut-openai](https://github.com/etraut-openai)
+- [#16912](https://github.com/openai/codex/pull/16912) feat(analytics): generate an installation\_id and pass it in responsesapi client\_metadata [@owenlin0](https://github.com/owenlin0)
+- [#16956](https://github.com/openai/codex/pull/16956) fix(guardian): don't throw away transcript when over budget [@owenlin0](https://github.com/owenlin0)
+- [#16981](https://github.com/openai/codex/pull/16981) [codex] Make AbsolutePathBuf joins infallible [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16348](https://github.com/openai/codex/pull/16348) Update README [@romainhuet](https://github.com/romainhuet)
+- [#16977](https://github.com/openai/codex/pull/16977) [codex] Make unified exec tests remote aware [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16465](https://github.com/openai/codex/pull/16465) [mcp] Support MCP Apps part 2 - Add meta to mcp tool call result. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#17026](https://github.com/openai/codex/pull/17026) app-server: Move watch\_id to request of fs/watch [@euroelessar](https://github.com/euroelessar)
+- [#16980](https://github.com/openai/codex/pull/16980) Add full-ci branch trigger [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16973](https://github.com/openai/codex/pull/16973) app-server: Allow enabling remote control in runtime [@euroelessar](https://github.com/euroelessar)
+- [#17032](https://github.com/openai/codex/pull/17032) [codex] Fix unified exec test build [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17031](https://github.com/openai/codex/pull/17031) fix(core) revert Command line in unified exec output [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#17027](https://github.com/openai/codex/pull/17027) [codex] Migrate apply\_patch to executor filesystem [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17044](https://github.com/openai/codex/pull/17044) [app-server-protocol] introduce generic ServerResponse for app-server-protocol [@rhan-oai](https://github.com/rhan-oai)
+- [#17047](https://github.com/openai/codex/pull/17047) fix(app-server) revert null instructions changes [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#16960](https://github.com/openai/codex/pull/16960) Add WebRTC transport to realtime start [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17053](https://github.com/openai/codex/pull/17053) Fix remote address format to work with Windows Firewall rules. [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#17048](https://github.com/openai/codex/pull/17048) [codex] Apply patches through executor filesystem [@pakrym-oai](https://github.com/pakrym-oai)
+- [#16949](https://github.com/openai/codex/pull/16949) Use model metadata for Fast Mode status [@pash-openai](https://github.com/pash-openai)
+- [#17039](https://github.com/openai/codex/pull/17039) fix(tui): reduce startup and new-session latency [@fcoury-oai](https://github.com/fcoury-oai)
+- [#17052](https://github.com/openai/codex/pull/17052) Add regression tests for JsonSchema [@vivi](https://github.com/vivi)
+- [#17059](https://github.com/openai/codex/pull/17059) Add remote exec start script [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17064](https://github.com/openai/codex/pull/17064) Add project-local codex bug triage skill [@etraut-openai](https://github.com/etraut-openai)
+- [#17040](https://github.com/openai/codex/pull/17040) fix: refresh network proxy settings when sandbox mode changes [@viyatb-oai](https://github.com/viyatb-oai)
+- [#16698](https://github.com/openai/codex/pull/16698) Remove expired April 2nd tooltip copy [@etraut-openai](https://github.com/etraut-openai)
+- [#17096](https://github.com/openai/codex/pull/17096) Remove obsolete codex-cli README [@etraut-openai](https://github.com/etraut-openai)
+- [#16875](https://github.com/openai/codex/pull/16875) Support anyOf and enum in JsonSchema [@vivi](https://github.com/vivi)
+- [#16880](https://github.com/openai/codex/pull/16880) Render function attribute descriptions [@vivi](https://github.com/vivi)
+- [#16879](https://github.com/openai/codex/pull/16879) Render namespace description for tools [@vivi](https://github.com/vivi)
+- [#16582](https://github.com/openai/codex/pull/16582) feat: single app-server bootstrap in TUI [@jif-oai](https://github.com/jif-oai)
+- [#17117](https://github.com/openai/codex/pull/17117) codex debug 1 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17119](https://github.com/openai/codex/pull/17119) codex debug 3 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17121](https://github.com/openai/codex/pull/17121) codex debug 5 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17123](https://github.com/openai/codex/pull/17123) codex debug 7 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17125](https://github.com/openai/codex/pull/17125) codex debug 9 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17127](https://github.com/openai/codex/pull/17127) codex debug 11 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17129](https://github.com/openai/codex/pull/17129) codex debug 13 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17131](https://github.com/openai/codex/pull/17131) codex debug 15 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17118](https://github.com/openai/codex/pull/17118) codex debug 2 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17120](https://github.com/openai/codex/pull/17120) codex debug 4 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17122](https://github.com/openai/codex/pull/17122) codex debug 6 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17124](https://github.com/openai/codex/pull/17124) codex debug 8 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17126](https://github.com/openai/codex/pull/17126) codex debug 10 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17128](https://github.com/openai/codex/pull/17128) codex debug 12 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17130](https://github.com/openai/codex/pull/17130) codex debug 14 (guardian approved) [@jif-oai](https://github.com/jif-oai)
+- [#17071](https://github.com/openai/codex/pull/17071) Configure multi\_agent\_v2 spawn agent hints [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17091](https://github.com/openai/codex/pull/17091) Show global AGENTS.md in /status [@etraut-openai](https://github.com/etraut-openai)
+- [#17086](https://github.com/openai/codex/pull/17086) Fix TUI crash when resuming the current thread [@etraut-openai](https://github.com/etraut-openai)
+- [#17098](https://github.com/openai/codex/pull/17098) Skip MCP auth probing for disabled servers [@etraut-openai](https://github.com/etraut-openai)
+- [#17097](https://github.com/openai/codex/pull/17097) Add realtime transport config [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17043](https://github.com/openai/codex/pull/17043) [mcp] Support server-driven elicitations [@mzeng-openai](https://github.com/mzeng-openai)
+- [#17058](https://github.com/openai/codex/pull/17058) Add WebRTC media transport to realtime TUI [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17063](https://github.com/openai/codex/pull/17063) Use AbsolutePathBuf for exec cwd plumbing [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17138](https://github.com/openai/codex/pull/17138) fix(debug-config, guardian): fix /debug-config rendering and guardian… [@owenlin0](https://github.com/owenlin0)
+- [#17046](https://github.com/openai/codex/pull/17046) release ready, enabling only for siwc users [@won-openai](https://github.com/won-openai)
+- [#16751](https://github.com/openai/codex/pull/16751) Add sandbox support to filesystem APIs [@starr-openai](https://github.com/starr-openai)
+- [#17142](https://github.com/openai/codex/pull/17142) [codex] Support remote exec cwd in TUI startup [@pakrym-oai](https://github.com/pakrym-oai)
+- [#17149](https://github.com/openai/codex/pull/17149) Fix missing fields [@canvrno-oai](https://github.com/canvrno-oai)
+- [#17154](https://github.com/openai/codex/pull/17154) Fix ToolsConfigParams initializer in tool registry test [@won-openai](https://github.com/won-openai)
+- [#17145](https://github.com/openai/codex/pull/17145) Wire realtime WebRTC native media into Bazel [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17057](https://github.com/openai/codex/pull/17057) Attach WebRTC realtime starts to sideband websocket [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17162](https://github.com/openai/codex/pull/17162) Add top-level exec-server subcommand [@starr-openai](https://github.com/starr-openai)
+- [#17061](https://github.com/openai/codex/pull/17061) Update guardian output schema [@maja-openai](https://github.com/maja-openai)
+- [#17164](https://github.com/openai/codex/pull/17164) Auto-approve MCP server elicitations in Full Access mode [@leoshimo-oai](https://github.com/leoshimo-oai)
+- [#17093](https://github.com/openai/codex/pull/17093) Add WebRTC realtime app-server e2e tests [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17174](https://github.com/openai/codex/pull/17174) Support Warp for OSC 9 notifications [@etraut-openai](https://github.com/etraut-openai)
+- [#16646](https://github.com/openai/codex/pull/16646) Fix stale thread-name resume lookups [@etraut-openai](https://github.com/etraut-openai)
+- [#17165](https://github.com/openai/codex/pull/17165) Move default realtime prompt into core [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17176](https://github.com/openai/codex/pull/17176) Add realtime voice selection [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17175](https://github.com/openai/codex/pull/17175) Add TUI notification condition config [@etraut-openai](https://github.com/etraut-openai)
+- [#17183](https://github.com/openai/codex/pull/17183) Default realtime startup to v2 model [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17186](https://github.com/openai/codex/pull/17186) Skip update prompts for source builds [@etraut-openai](https://github.com/etraut-openai)
+- [#17188](https://github.com/openai/codex/pull/17188) make webrtc the default experience [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#17163](https://github.com/openai/codex/pull/17163) [codex] Defer steering until after sampling the model post-compaction [@jgershen-oai](https://github.com/jgershen-oai)
+- [#17222](https://github.com/openai/codex/pull/17222) feat: /resume per ID/name [@jif-oai](https://github.com/jif-oai)
+- [#17226](https://github.com/openai/codex/pull/17226) feat: advanced announcements per OS and plans [@jif-oai](https://github.com/jif-oai)
+- [#17170](https://github.com/openai/codex/pull/17170) Render statusline context as a meter [@etraut-openai](https://github.com/etraut-openai)
+- [#17217](https://github.com/openai/codex/pull/17217) Skip local shell snapshots for remote unified exec [@jif-oai](https://github.com/jif-oai)
+- [#17116](https://github.com/openai/codex/pull/17116) chore: merge name and title [@jif-oai](https://github.com/jif-oai)
+- [#16276](https://github.com/openai/codex/pull/16276) [codex] add memory extensions [@kliu128](https://github.com/kliu128)
+- [#17168](https://github.com/openai/codex/pull/17168) refactor(proxy): clarify sandbox block messages [@viyatb-oai](https://github.com/viyatb-oai)
+- [#17076](https://github.com/openai/codex/pull/17076) [codex] Show ctrl + t hint on truncated exec output in TUI [@mom-oai](https://github.com/mom-oai)
+- [#15197](https://github.com/openai/codex/pull/15197) Add Codex Apps sediment file remapping [@caseychow-oai](https://github.com/caseychow-oai)
+- [#16009](https://github.com/openai/codex/pull/16009) Forward app-server turn clientMetadata to Responses [@neil-oai](https://github.com/neil-oai)
+- [#17256](https://github.com/openai/codex/pull/17256) app-server: Use shared receivers for app-server message processors [@euroelessar](https://github.com/euroelessar)
+- [#16944](https://github.com/openai/codex/pull/16944) [mcp] Expand tool search to custom MCPs. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#16966](https://github.com/openai/codex/pull/16966) feat(tui): Ctrl+O copy hotkey and harden copy-as-markdown behavior [@fcoury-oai](https://github.com/fcoury-oai)
+- [#17262](https://github.com/openai/codex/pull/17262) app-server: Fix clippy by removing extra `mut` [@euroelessar](https://github.com/euroelessar)
+- [#17258](https://github.com/openai/codex/pull/17258) Omit empty app-server instruction overrides [@aibrahim-oai](https://github.com/aibrahim-oai)
 
-The [**artifact viewer**](/codex/app/features#artifact-viewer) can preview
-generated files such as PDF files, spreadsheets, documents, and presentations in
-the sidebar before you commit or share them. [**Memories**](/codex/memories),
-where available, can also carry useful context from past tasks into future
-threads, including stable preferences, project conventions, and recurring work
-patterns.
-
-#### Other features
-
-- [Remote connections](/codex/remote-connections) - We are gradually rolling out SSH remote connections in alpha
-- Support for [multiple terminals](/codex/app/features#integrated-terminal)
-- macOS menu bar and [Windows system tray](/codex/app/windows) support
-- [Multi-window support](/codex/app/features#floating-pop-out-window)
-- [Intel Mac support](/codex/app)
-- [New plugins](/codex/plugins)
-- Improved thread and tool rendering
+[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.119.0)
 

@@ -373,10 +373,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "6c466ef8774cb6a1484369f5dd0a5af140493230b365fd5ed51b1eaf95a0a079",
+      "sha256": "98ad62753301dec40fedf4881f1734f648a0274125db7e5d0b24c749f07cfe1d",
       "source_area": "codex_changelog",
-      "source_etag": "W/\"dbe0ab7aea329c31b3479df13974a31d\"",
-      "source_last_modified": "2026-05-13T15:04:12Z",
+      "source_etag": "W/\"39f2578ed37a8487ab915899e0651cff\"",
+      "source_last_modified": "2026-05-14T06:45:23Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/changelog"
     },
@@ -1465,10 +1465,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "59c3f30ca8b2e574b94dd03eb426bf7c166f2083ba928f00e640a9f192bc7073",
+      "sha256": "7bb6c958f83f24b4a2b93f137534ec96b01517c368dd2ef3ce83d0603436fc10",
       "source_area": "codex_security",
-      "source_etag": "W/\"aa72fdf353f96a506c665160118f3f5c\"",
-      "source_last_modified": "2026-05-13T15:05:29Z",
+      "source_etag": "W/\"15993f0d10470d242e4517a0bad1baec\"",
+      "source_last_modified": "2026-05-14T07:08:09Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -3010,6 +3010,34 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab"
     },
+    "developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb/index.md": {
+      "codex_cli_versions": [
+        "0.130.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.130.0"
+      ],
+      "sha256": "a11629bbec40b6f86fbb19214b3da2a6302315c7434eeabb999bcb04c56d5c07",
+      "source_area": "cookbook",
+      "source_etag": "\"dd5affc2977ace4b6d41242164487c12\"",
+      "source_last_modified": "2026-05-14T07:08:25Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb"
+    },
+    "developers.openai.com/cookbook/examples/codex/using_goals_in_codex/index.md": {
+      "codex_cli_versions": [
+        "0.130.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.130.0"
+      ],
+      "sha256": "d4cac65a6588227793841718515a7baba9b986fc0c38de5067e631da7dbc3312",
+      "source_area": "cookbook",
+      "source_etag": "W/\"e616293ef80fb89eca87912f1200fa7a\"",
+      "source_last_modified": "2026-05-14T07:08:24Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex"
+    },
     "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md": {
       "codex_cli_versions": [
         "0.125.0",
@@ -3043,10 +3071,10 @@
         "codex-cli 0.129.0",
         "codex-cli 0.130.0"
       ],
-      "sha256": "384cdddfc3024984082a61824a9e4e0a208217bc0e6215ec7f0122173d122fdd",
+      "sha256": "e1de32241b0a79a16e95a09fc9da40297c31a0442d49c70036d279709793b7b5",
       "source_area": "cookbook",
-      "source_etag": "W/\"f6a4c4a919efd9ab46c0999195a8abdf\"",
-      "source_last_modified": "2026-05-13T00:15:54Z",
+      "source_etag": "W/\"72580814ba9d4125035bb304b43cca6d\"",
+      "source_last_modified": "2026-05-14T07:08:25Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },

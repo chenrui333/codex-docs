@@ -242,6 +242,8 @@
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb",
       "https://developers.openai.com/cookbook/gpt-5-1-codex-max-prompting-guide",
@@ -256,8 +258,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 172,
-      "mirrored_urls": 156,
+      "codex_related_urls": 174,
+      "mirrored_urls": 158,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -418,12 +420,20 @@
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -543,7 +553,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-12T12:48:16+00:00",
+  "generated_at": "2026-05-14T07:07:55+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
