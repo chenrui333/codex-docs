@@ -1,11 +1,8 @@
 {
-  "added": [
-    "developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb/index.md",
-    "developers.openai.com/cookbook/examples/codex/using_goals_in_codex/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-14T07:08:28+00:00",
+  "generated_at": "2026-05-14T12:44:50+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -16,8 +13,6 @@
   },
   "total_files": 232,
   "updated": [
-    "developers.openai.com/codex/changelog/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/cookbook/topic/codex/index.md"
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }
