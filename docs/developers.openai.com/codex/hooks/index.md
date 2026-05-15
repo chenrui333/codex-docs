@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/hooks'
-source_last_modified: '2026-04-30T17:51:11Z'
-source_etag: 'W/"c5a7b9dde06117ce1306b12c83be87c1"'
+source_last_modified: '2026-05-14T22:49:30Z'
+source_etag: 'W/"b3a8c9c8a274278c8a4ba98c1e0097b3"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -21,18 +21,26 @@ you to inject your own scripts into the agentic loop, enabling features such as:
 - Run a custom validation check when a conversation turn stops, enforcing standards
 - Customize prompting when in a certain directory
 
-Hooks are behind a feature flag in `config.toml`:
+Hooks are enabled by default. If you need to turn them off in `config.toml`,
+set:
 
 ```
 [features]
-codex_hooks = true
+hooks = false
 ```
+
+Use `hooks` as the canonical feature key. `codex_hooks` still works as a
+deprecated alias.
+
+Admins can force hooks off the same way in `requirements.toml` with
+`[features].hooks = false`.
 
 Runtime behavior to keep in mind:
 
 - Matching hooks from multiple files all run.
 - Multiple matching command hooks for the same event are launched concurrently,
   so one hook cannot prevent another matching hook from starting.
+- Non-managed command hooks must be reviewed and trusted before they run.
 - `PreToolUse`, `PermissionRequest`, `PostToolUse`, `UserPromptSubmit`, and
   `Stop` run at turn scope.
 
@@ -60,9 +68,23 @@ Higher-precedence config layers do not replace lower-precedence hooks.
 If a single layer contains both `hooks.json` and inline `[hooks]`, Codex
 merges them and warns at startup. Prefer one representation per layer.
 
+Plugin hooks are off by default in this release. If
+`[features].plugin_hooks = true`, Codex can also discover hooks bundled with
+enabled plugins. Otherwise, enabled plugins won’t run bundled hooks.
+
 Project-local hooks load only when the project `.codex/` layer is trusted. In
 untrusted projects, Codex still loads user and system hooks from their own
 active config layers.
+
+## Review and manage hooks
+
+Codex lists configured hooks before deciding which ones can run. Use `/hooks`
+in the CLI to inspect hook sources, review new or changed hooks, trust hooks, or
+disable individual non-managed hooks. If hooks need review at startup, Codex
+prints a warning that tells you to open `/hooks`.
+
+Managed hooks from system, MDM, cloud, or `requirements.toml` sources are marked
+as managed, trusted by policy, and can’t be disabled from the user hook browser.
 
 ## Config shape
 
@@ -153,6 +175,10 @@ Notes:
 - `timeout` is in seconds.
 - If `timeout` is omitted, Codex uses `600` seconds.
 - `statusMessage` is optional.
+- `async` is parsed, but async command hooks aren’t supported yet. Codex skips
+  handlers with `async: true`.
+- Only `type: "command"` handlers run today. `prompt` and `agent` handlers are
+  parsed but skipped.
 - Commands run with the session `cwd` as their working directory.
 - For repo-local hooks, prefer resolving from the git root instead of using a
   relative path such as `.codex/hooks/...`. Codex may be started from a
@@ -161,9 +187,6 @@ Notes:
 Equivalent inline TOML in `config.toml`:
 
 ```
-[features]
-codex_hooks = true
-
 [[hooks.PreToolUse]]
 matcher = "^Bash$"
 
@@ -188,10 +211,12 @@ statusMessage = "Reviewing Bash output"
 Enterprise-managed requirements can also define hooks inline under `[hooks]`.
 This is useful when admins want to enforce the hook configuration while
 delivering the actual scripts through MDM or another device-management system.
+To enforce managed hooks even for users who disabled hooks locally, pin
+`[features].hooks = true` in `requirements.toml` alongside `[hooks]`.
 
 ```
 [features]
-codex_hooks = true
+hooks = true
 
 [hooks]
 managed_dir = "/enterprise/hooks"
@@ -215,6 +240,46 @@ Notes for managed hooks:
   tooling must install and update them separately.
 - Managed hook commands should use absolute script paths under the configured
   managed directory.
+
+## Plugin-bundled hooks
+
+Plugin-bundled hooks are opt-in for this release. When
+`[features].plugin_hooks = true` and a plugin is enabled, Codex can load
+lifecycle hooks from that plugin alongside user, project, and managed hooks.
+
+```
+[features]
+plugin_hooks = true
+```
+
+By default, Codex looks for `hooks/hooks.json` inside the plugin root. A plugin
+manifest can override that default with a `hooks` entry in
+`.codex-plugin/plugin.json`. The manifest entry can be a `./`-prefixed path, an
+array of `./`-prefixed paths, an inline hooks object, or an array of inline
+hooks objects.
+
+```
+{
+  "name": "repo-policy",
+  "hooks": "./hooks/hooks.json"
+}
+```
+
+Manifest hook paths are resolved relative to the plugin root and must stay
+inside that root. If a manifest defines `hooks`, Codex uses those manifest
+entries instead of the default `hooks/hooks.json`.
+
+Plugin hook commands receive these environment variables:
+
+- `PLUGIN_ROOT` is a Codex-specific extension that points to the installed
+  plugin root.
+- `PLUGIN_DATA` is a Codex-specific extension that points to the plugin’s
+  writable data directory.
+- Codex also sets `CLAUDE_PLUGIN_ROOT` and `CLAUDE_PLUGIN_DATA` for
+  compatibility with existing plugin hooks.
+
+Plugin hooks use the same event schema as other hooks. They are non-managed
+hooks, so they require trust review before they run.
 
 ## Matcher patterns
 
@@ -256,9 +321,18 @@ These are the shared fields you will usually use:
 | `transcript_path` | `string | null` | Path to the session transcript file, if any |
 | `cwd` | `string` | Working directory for the session |
 | `hook_event_name` | `string` | Current hook event name |
-| `model` | `string` | Active model slug |
+| `model` | `string` | Codex-specific extension. Active model slug |
 
-Turn-scoped hooks list `turn_id` in their event-specific tables.
+Turn-scoped hooks list `turn_id` as a Codex-specific extension in their
+event-specific tables.
+
+`SessionStart`, `PreToolUse`, `PermissionRequest`, `PostToolUse`,
+`UserPromptSubmit`, and `Stop` also include `permission_mode`, which describes
+the current permission mode as `default`, `acceptEdits`, `plan`, `dontAsk`, or
+`bypassPermissions`.
+
+`transcript_path` points to a conversation transcript for convenience, but the
+transcript format is not a stable interface for hooks and may change over time.
 
 If you need the full wire format, see [Schemas](#schemas).
 
@@ -301,7 +375,7 @@ Fields in addition to [Common input fields](#common-input-fields):
 
 | Field | Type | Meaning |
 | --- | --- | --- |
-| `source` | `string` | How the session started: `startup` or `resume` |
+| `source` | `string` | How the session started: `startup`, `resume`, or `clear` |
 
 Plain text on `stdout` is added as extra developer context.
 
@@ -346,8 +420,8 @@ Fields in addition to [Common input fields](#common-input-fields):
 
 Plain text on `stdout` is ignored.
 
-JSON on `stdout` can use `systemMessage` and can block a Bash command with this
-hook-specific shape:
+JSON on `stdout` can use `systemMessage`. To deny a supported tool call, return
+this hook-specific shape:
 
 ```
 {
@@ -370,9 +444,21 @@ Codex also accepts this older block shape:
 
 You can also use exit code `2` and write the blocking reason to `stderr`.
 
-`permissionDecision: "allow"` and `"ask"`, legacy `decision: "approve"`,
-`updatedInput`, `additionalContext`, `continue: false`, `stopReason`, and
-`suppressOutput` are parsed but not supported yet, so they fail open.
+To add model-visible context without blocking, return
+`hookSpecificOutput.additionalContext`:
+
+```
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "additionalContext": "The pending command touches generated files."
+  }
+}
+```
+
+`permissionDecision: "ask"`, legacy `decision: "approve"`, `updatedInput`,
+`continue: false`, `stopReason`, and `suppressOutput` are parsed but not
+supported yet, so they fail open.
 
 ### PermissionRequest
 
@@ -392,9 +478,11 @@ Fields in addition to [Common input fields](#common-input-fields):
 | `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
 | `tool_name` | `string` | Canonical hook tool name, such as `Bash`, `apply_patch`, or an MCP name like `mcp__fs__read` |
 | `tool_input` | `JSON value` | Tool-specific input. `Bash` and `apply_patch` use `tool_input.command` while MCP tools send all the args. |
-| `tool_input.description` | `string | null` | Human-readable approval reason, when Codex has one |
 
 Plain text on `stdout` is ignored.
+
+Some tool inputs may include a human-readable description, but don’t rely on a
+`tool_input.description` field for every tool.
 
 To approve the request, return:
 
@@ -560,6 +648,9 @@ If any matching `Stop` hook returns `continue: false`, that takes precedence
 over continuation decisions from other matching `Stop` hooks.
 
 ## Schemas
+
+The linked `main` branch schemas may include hook fields that are not in the
+current release. Use this page as the release behavior reference.
 
 If you need the exact current wire format, see the generated schemas in the
 [Codex GitHub repository](https://github.com/openai/codex/tree/main/codex-rs/hooks/schema/generated).

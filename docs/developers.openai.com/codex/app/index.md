@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app'
-source_last_modified: '2026-05-07T18:32:37Z'
-source_etag: 'W/"d81591262bb33c42b04a43ac7af4ce3a"'
+source_last_modified: '2026-05-14T22:51:42Z'
+source_etag: 'W/"47aeffddaa6044a195f8351036caf888"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -70,7 +70,10 @@ If you used the Codex app, CLI, or IDE Extension before you’ll see past projec
 
 Run project threads side by side and switch between them quickly.](/codex/app/features#multitask-across-projects)[### Worktrees
 
-Keep parallel code changes isolated with built-in Git worktree support.](/codex/app/worktrees)[### Computer use
+Keep parallel code changes isolated with built-in Git worktree support.](/codex/app/worktrees)[### Remote connections
+
+Use the ChatGPT mobile app to start, steer, approve, and review Codex work on a
+connected host.](/codex/remote-connections)[### Computer use
 
 Let Codex use macOS apps for GUI tasks, browser flows, and native app testing.](/codex/app/computer-use)[### Review and ship changes
 

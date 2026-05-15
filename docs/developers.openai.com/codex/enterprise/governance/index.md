@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/governance'
-source_last_modified: '2026-05-08T23:52:09Z'
-source_etag: 'W/"563ad733147afb257fa7d8b8e1f01f2b"'
+source_last_modified: '2026-05-14T23:09:15Z'
+source_etag: 'W/"6774f8e57193a257b051065c956e209b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -39,7 +39,7 @@ Codex provides date-range controls for daily and weekly views. Key charts includ
 - Product activity for threads and turns by client
 - User ranking table, with filters for client and sort options such as credits, threads, turns, text tokens, and current streak
 - Code Review activity, including PRs reviewed, issues by priority, comments, replies, reactions, and feedback sentiment
-- Skill invocations and agent identity usage when your workspace has those features
+- Skill invocations, agent identity usage, and access token usage when your workspace has those features
 
 ### Data export
 
@@ -122,6 +122,7 @@ For Codex usage authenticated through ChatGPT, Compliance API exports provide au
 Use record metadata to answer questions like:
 
 - Who ran a task
+- Who created or revoked an access token
 - When it ran
 - Which model was used
 - How much content was processed

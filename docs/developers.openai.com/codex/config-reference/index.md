@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-11T17:58:04Z'
-source_etag: 'W/"99ae43e4ba691eee75a076326cf301da"'
+source_last_modified: '2026-05-14T22:50:04Z'
+source_etag: 'W/"fa1a007a8bda6ef1b3c28413c1fee77c"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -61,12 +61,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
 | `features.codex_git_commit` | `boolean` | Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages. |
-| `features.codex_hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
+| `features.hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. `features.codex_hooks` is a deprecated alias. |
 | `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
+| `features.plugin_hooks` | `boolean` | Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in. |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (stable; on by default). |
 | `features.shell_tool` | `boolean` | Enable the default `shell` tool for running commands (stable; on by default). |
@@ -725,18 +726,6 @@ Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution
 
 Key
 
-`features.codex_hooks`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config.
-
-Key
-
 `features.enable_request_compression`
 
 Type / Values
@@ -758,6 +747,18 @@ Type / Values
 Details
 
 Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default).
+
+Key
+
+`features.hooks`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. `features.codex_hooks` is a deprecated alias.
 
 Key
 
@@ -794,6 +795,18 @@ Type / Values
 Details
 
 Enable personality selection controls (stable; on by default).
+
+Key
+
+`features.plugin_hooks`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in.
 
 Key
 
@@ -3074,7 +3087,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `features.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. |
 | `guardian_policy_config` | `string` | Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored. |
 | `hooks` | `table` | Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`. |
-| `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`. |
+| `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `SessionStart`, `UserPromptSubmit`, or `Stop`. |
 | `hooks.<Event>[].hooks` | `array<table>` | Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped. |
 | `hooks.managed_dir` | `string (absolute path)` | Directory containing managed hook scripts on macOS and Linux. Codex validates that it is absolute and exists before loading managed hooks. |
 | `hooks.windows_managed_dir` | `string (absolute path)` | Directory containing managed hook scripts on Windows. Codex validates that it is absolute and exists before loading managed hooks. |
@@ -3236,7 +3249,7 @@ Type / Values
 
 Details
 
-Matcher groups for a hook event such as `PreToolUse`, `PostToolUse`, `PermissionRequest`, `SessionStart`, `UserPromptSubmit`, or `Stop`.
+Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `SessionStart`, `UserPromptSubmit`, or `Stop`.
 
 Key
 

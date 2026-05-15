@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-04-28T23:56:55Z'
-source_etag: 'W/"c5f2bbe3a23cd2f25ae4c5baa4efaf51"'
+source_last_modified: '2026-05-14T23:07:35Z'
+source_etag: 'W/"30654c1809b583910807d9669ed27085"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -197,9 +197,12 @@ Use `[hooks]` for the hook configuration itself, and point `managed_dir` at the
 directory where your MDM or endpoint-management tooling installs the referenced
 scripts.
 
+To enforce managed hooks even for users who disabled hooks locally, pin
+`[features].hooks = true` alongside `[hooks]`.
+
 ```
 [features]
-codex_hooks = true
+hooks = true
 
 [hooks]
 managed_dir = "/enterprise/hooks"

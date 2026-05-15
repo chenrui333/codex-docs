@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/slash-commands'
-source_last_modified: '2026-05-07T18:37:10Z'
-source_etag: 'W/"874685d95fdcd96c928a07409965db22"'
+source_last_modified: '2026-05-14T22:52:24Z'
+source_etag: 'W/"daafd79a6e5925da771311ea42b55323"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -40,6 +40,7 @@ completion still works before you queue the command.
 | [`/agent`](#switch-agent-threads-with-agent) | Switch the active agent thread. | Inspect or continue work in a spawned subagent thread. |
 | [`/apps`](#browse-apps-with-apps) | Browse apps (connectors) and insert them into your prompt. | Attach an app as `$app-slug` before asking Codex to use it. |
 | [`/plugins`](#browse-plugins-with-plugins) | Browse installed and discoverable plugins. | Inspect plugin tools, install suggested plugins, or manage plugin availability. |
+| [`/hooks`](#review-hooks-with-hooks) | Review lifecycle hooks. | Inspect configured hooks, trust new or changed hooks, or disable non-managed hooks before they run. |
 | [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a fresh start. |
 | [`/compact`](#keep-transcripts-lean-with-compact) | Summarize the visible conversation to free tokens. | Use after long runs so Codex retains key points without blowing the context window. |
 | [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. You can also press `Ctrl+O`. |
@@ -359,6 +360,16 @@ you can immediately ask Codex to use it.
 Expected: Codex opens the plugin browser so you can review installed plugins,
 discoverable plugins that your configuration allows, and installed plugin state.
 Press `Space` on an installed plugin to toggle its enabled state.
+
+### Review hooks with `/hooks`
+
+1. Type `/hooks`.
+2. Choose a hook event to inspect the matching handlers.
+3. Trust, disable, or re-enable non-managed hooks as needed.
+
+Expected: Codex opens the hook browser so you can review configured lifecycle
+hooks. Managed hooks appear as managed and can’t be disabled from the user hook
+browser.
 
 ### Switch agent threads with `/agent`
 

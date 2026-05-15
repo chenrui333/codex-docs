@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-advanced'
-source_last_modified: '2026-04-30T17:50:19Z'
-source_etag: 'W/"3037301ecb5fd02614c66392fa2a6737"'
+source_last_modified: '2026-05-14T22:50:03Z'
+source_etag: 'W/"ab02fccffb43c5f7e86015622a8dc894"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -100,12 +100,12 @@ For security, Codex loads project-scoped config files only when the project is t
 
 Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
-## Hooks (experimental)
+## Hooks
 
 Codex can also load lifecycle hooks from either `hooks.json` files or inline
 `[hooks]` tables in `config.toml` files that sit next to active config layers.
 
-In practice, the two most useful locations are:
+In practice, the four most useful locations are:
 
 - `~/.codex/hooks.json`
 - `~/.codex/config.toml`
@@ -114,13 +114,6 @@ In practice, the two most useful locations are:
 
 Project-local hooks load only when the project `.codex/` layer is trusted.
 User-level hooks remain independent of project trust.
-
-Turn hooks on with:
-
-```
-[features]
-codex_hooks = true
-```
 
 Inline TOML hooks use the same event structure as `hooks.json`:
 

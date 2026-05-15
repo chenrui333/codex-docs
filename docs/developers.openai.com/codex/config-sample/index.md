@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-11T17:58:34Z'
-source_etag: 'W/"85cc3024a0047327a63f1ae384ab3176"'
+source_last_modified: '2026-05-14T23:02:36Z'
+source_etag: 'W/"b3435c2873dd1e5113894109a4520e14"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
 ---
@@ -412,8 +412,9 @@ enabled = true
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
 # shell_tool = true
 # apps = false
+# hooks = false
+# plugin_hooks = false  # Default off; set true to opt into plugin-bundled hooks.
 # codex_git_commit = false
-# codex_hooks = false
 # unified_exec = true
 # shell_snapshot = true
 # multi_agent = true
