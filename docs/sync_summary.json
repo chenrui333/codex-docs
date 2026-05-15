@@ -1,10 +1,8 @@
 {
-  "added": [
-    "developers.openai.com/codex/enterprise/access-tokens/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-15T00:52:44+00:00",
+  "generated_at": "2026-05-15T07:16:10+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,20 +13,7 @@
   },
   "total_files": 233,
   "updated": [
-    "developers.openai.com/codex/app/index.md",
-    "developers.openai.com/codex/auth/index.md",
     "developers.openai.com/codex/changelog/index.md",
-    "developers.openai.com/codex/cli/slash-commands/index.md",
-    "developers.openai.com/codex/config-advanced/index.md",
-    "developers.openai.com/codex/config-basic/index.md",
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
-    "developers.openai.com/codex/enterprise/admin-setup/index.md",
-    "developers.openai.com/codex/enterprise/governance/index.md",
-    "developers.openai.com/codex/enterprise/managed-configuration/index.md",
-    "developers.openai.com/codex/hooks/index.md",
-    "developers.openai.com/codex/plugins/build/index.md",
-    "developers.openai.com/codex/remote-connections/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }
