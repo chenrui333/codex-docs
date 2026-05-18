@@ -4,8 +4,8 @@ source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/models'
 source_last_modified: '2026-05-13T00:17:30Z'
 source_etag: 'W/"3ae5711c675a23e08099fe3c9b913bb4"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Models – Codex | OpenAI Developers

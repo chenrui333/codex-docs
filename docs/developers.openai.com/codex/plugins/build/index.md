@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins/build'
-source_last_modified: '2026-05-14T22:53:42Z'
-source_etag: 'W/"09bfb6276d356e5e5406be1d7c196e42"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:38:30Z'
+source_etag: 'W/"df62214aede3030c2e46e0a8fc179cd7"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Build plugins – Codex | OpenAI Developers
@@ -455,6 +455,20 @@ Wrapped server map:
     }
   }
 }
+```
+
+After installation, users can enable or disable a bundled MCP server and tune
+tool approval policy from their Codex config without editing the plugin. Use
+`plugins.<plugin>.mcp_servers.<server>` for plugin-scoped MCP server policy:
+
+```
+[plugins."my-plugin".mcp_servers.docs]
+enabled = true
+default_tools_approval_mode = "prompt"
+enabled_tools = ["search"]
+
+[plugins."my-plugin".mcp_servers.docs.tools.search]
+approval_mode = "approve"
 ```
 
 Plugin hooks are off by default in this release. When

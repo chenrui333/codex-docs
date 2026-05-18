@@ -4,8 +4,8 @@ source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk'
 source_last_modified: '2026-04-29T00:02:36Z'
 source_etag: 'W/"64692bed0646f72b944d00ec378aa442"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Build Code Review with the Codex SDK

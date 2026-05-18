@@ -4,8 +4,8 @@ source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app'
 source_last_modified: '2026-05-14T22:51:42Z'
 source_etag: 'W/"47aeffddaa6044a195f8351036caf888"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # App – Codex | OpenAI Developers

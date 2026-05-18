@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/idea-to-proof-of-concept'
 source_last_modified: '2026-05-08T00:49:55Z'
 source_etag: 'W/"240c47dac95d1d1de759040ae1050b58"'
-codex_cli_versions: ["0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Get from idea to proof of concept | Codex use cases

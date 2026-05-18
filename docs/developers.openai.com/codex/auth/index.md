@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_auth'
 source_url: 'https://developers.openai.com/codex/auth'
-source_last_modified: '2026-05-14T23:27:04Z'
-source_etag: 'W/"1131e0dad1c9b54f3a10216d85ad38b8"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:39:31Z'
+source_etag: 'W/"db78c980f1d70860d353c85abc0f8b56"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Authentication – Codex | OpenAI Developers
@@ -31,6 +31,13 @@ For the CLI, Sign in with ChatGPT is the default authentication path when no val
 ### Sign in with ChatGPT
 
 When you sign in with ChatGPT from the Codex app, CLI, or IDE Extension, Codex opens a browser window for you to complete the login flow. After you sign in, the browser returns an access token to the CLI or IDE extension.
+
+If your environment already provides a ChatGPT access token, the CLI can read
+it from stdin:
+
+```
+printenv CODEX_ACCESS_TOKEN | codex login --with-access-token
+```
 
 ### Sign in with an API key
 
@@ -128,7 +135,7 @@ device-code failures, or when support asks for login-specific logs.
 If your network uses a corporate TLS proxy or private root CA, set
 `CODEX_CA_CERTIFICATE` to a PEM bundle before logging in. When
 `CODEX_CA_CERTIFICATE` is unset, Codex falls back to `SSL_CERT_FILE`. The same
-custom CA settings apply to login, normal HTTPS requests, and secure websocket
+custom CA settings apply to login, normal HTTPS requests, and secure WebSocket
 connections.
 
 ```

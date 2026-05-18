@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-14T22:50:04Z'
-source_etag: 'W/"fa1a007a8bda6ef1b3c28413c1fee77c"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:35:49Z'
+source_etag: 'W/"720c198a5f84155ebd9e4a4cf99eeb3b"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Configuration Reference – Codex | OpenAI Developers
@@ -17,6 +17,13 @@ Use this page as a searchable reference for Codex configuration files. For conce
 ## `config.toml`
 
 User-level configuration lives in `~/.codex/config.toml`. You can also add project-scoped overrides in `.codex/config.toml` files. Codex loads project-scoped config files only when you trust the project.
+
+Project-scoped config can’t override machine-local provider, auth,
+notification, profile, or telemetry routing keys. Codex ignores
+`openai_base_url`, `chatgpt_base_url`, `model_provider`, `model_providers`,
+`notify`, `profile`, `profiles`, `experimental_realtime_ws_base_url`, and
+`otel` when they appear in a project-local `.codex/config.toml`; put those in
+user-level config instead.
 
 For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
 
@@ -62,7 +69,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
 | `features.codex_git_commit` | `boolean` | Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages. |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
-| `features.fast_mode` | `boolean` | Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default). |
+| `features.fast_mode` | `boolean` | Enable model-catalog service tier selection in the TUI, including Fast-tier commands when the active model advertises them (stable; on by default). |
 | `features.hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. `features.codex_hooks` is a deprecated alias. |
 | `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
@@ -94,6 +101,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.bearer_token_env_var` | `string` | Environment variable sourcing the bearer token for an MCP HTTP server. |
 | `mcp_servers.<id>.command` | `string` | Launcher command for an MCP stdio server. |
 | `mcp_servers.<id>.cwd` | `string` | Working directory for the MCP stdio server process. |
+| `mcp_servers.<id>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for MCP tools on this server unless a per-tool override exists. |
 | `mcp_servers.<id>.disabled_tools` | `array<string>` | Deny list applied after `enabled_tools` for the MCP server. |
 | `mcp_servers.<id>.enabled` | `boolean` | Disable an MCP server without removing its configuration. |
 | `mcp_servers.<id>.enabled_tools` | `array<string>` | Allow list of tool names exposed by the MCP server. |
@@ -108,6 +116,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `mcp_servers.<id>.startup_timeout_ms` | `number` | Alias for `startup_timeout_sec` in milliseconds. |
 | `mcp_servers.<id>.startup_timeout_sec` | `number` | Override the default 10s startup timeout for an MCP server. |
 | `mcp_servers.<id>.tool_timeout_sec` | `number` | Override the default 60s per-tool timeout for an MCP server. |
+| `mcp_servers.<id>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Per-tool approval behavior override for one MCP tool on this server. |
 | `mcp_servers.<id>.url` | `string` | Endpoint for an MCP streamable HTTP server. |
 | `memories.consolidation_model` | `string` | Optional model override for global memory consolidation. |
 | `memories.disable_on_external_context` | `boolean` | When `true`, threads that use external context such as MCP tool calls, web search, or tool search are kept out of memory generation. Defaults to `false`. Legacy alias: `memories.no_memories_if_mcp_or_web_search`. |
@@ -197,6 +206,11 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `permissions.<name>.network.unix_sockets` | `map<string, allow | none>` | Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values. |
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
 | `plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in preset default. |
+| `plugins.<plugin>.mcp_servers.<server>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for tools on a plugin-provided MCP server. |
+| `plugins.<plugin>.mcp_servers.<server>.disabled_tools` | `array<string>` | Deny list applied after `enabled_tools` for a plugin-provided MCP server. |
+| `plugins.<plugin>.mcp_servers.<server>.enabled` | `boolean` | Enable or disable an MCP server bundled by an installed plugin without changing the plugin manifest. |
+| `plugins.<plugin>.mcp_servers.<server>.enabled_tools` | `array<string>` | Allow list of tools exposed from a plugin-provided MCP server. |
+| `plugins.<plugin>.mcp_servers.<server>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Per-tool approval behavior override for a plugin-provided MCP tool. |
 | `profile` | `string` | Default profile applied at startup (equivalent to `--profile`). |
 | `profiles.<name>.*` | `various` | Profile-scoped overrides for any of the supported configuration keys. |
 | `profiles.<name>.analytics.enabled` | `boolean` | Profile-scoped analytics enablement override. |
@@ -206,7 +220,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `profiles.<name>.oss_provider` | `lmstudio | ollama` | Profile-scoped OSS provider for `--oss` sessions. |
 | `profiles.<name>.personality` | `none | friendly | pragmatic` | Profile-scoped communication style override for supported models. |
 | `profiles.<name>.plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Profile-scoped Plan-mode reasoning override. |
-| `profiles.<name>.service_tier` | `flex | fast` | Profile-scoped service tier preference for new turns. |
+| `profiles.<name>.service_tier` | `string` | Profile-scoped service tier preference for new turns. |
 | `profiles.<name>.tools_view_image` | `boolean` | Enable or disable the `view_image` tool in that profile. |
 | `profiles.<name>.web_search` | `disabled | cached | live` | Profile-scoped web search mode override (default: `"cached"`). |
 | `profiles.<name>.windows.sandbox` | `unelevated | elevated` | Profile-scoped Windows sandbox mode override. |
@@ -220,7 +234,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `sandbox_workspace_write.exclude_tmpdir_env_var` | `boolean` | Exclude `$TMPDIR` from writable roots in workspace-write mode. |
 | `sandbox_workspace_write.network_access` | `boolean` | Allow outbound network access inside the workspace-write sandbox. |
 | `sandbox_workspace_write.writable_roots` | `array<string>` | Additional writable roots when `sandbox_mode = "workspace-write"`. |
-| `service_tier` | `flex | fast` | Preferred service tier for new turns. |
+| `service_tier` | `string` | Preferred service tier for new turns. Built-in values include `flex` and `fast`; legacy `fast` config maps to the request value `priority`, and catalog-provided tier IDs can also be stored. |
 | `shell_environment_policy.exclude` | `array<string>` | Glob patterns for removing environment variables after the defaults. |
 | `shell_environment_policy.experimental_use_profile` | `boolean` | Use the user shell profile when spawning subprocesses. |
 | `shell_environment_policy.ignore_default_excludes` | `boolean` | Keep variables containing KEY/SECRET/TOKEN before other filters run. |
@@ -242,15 +256,17 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `tui.alternate_screen` | `auto | always | never` | Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback). |
 | `tui.animations` | `boolean` | Enable terminal animations (welcome screen, shimmer, spinner) (default: true). |
 | `tui.keymap.<context>.<action>` | `string | array<string>` | Keyboard shortcut binding for a TUI action. Supported contexts include `global`, `chat`, `composer`, `editor`, `pager`, `list`, and `approval`; context-specific bindings override `tui.keymap.global`. |
-| `tui.keymap.<context>.<action> = []` | `empty array` | Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, or `page-down`. |
+| `tui.keymap.<context>.<action> = []` | `empty array` | Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, `page-down`, or `minus`. |
 | `tui.model_availability_nux.<model>` | `integer` | Internal startup-tooltip state keyed by model slug. |
 | `tui.notification_condition` | `unfocused | always` | Control whether TUI notifications fire only when the terminal is unfocused or regardless of focus. Defaults to `unfocused`. |
 | `tui.notification_method` | `auto | osc9 | bel` | Notification method for terminal notifications (default: auto). |
 | `tui.notifications` | `boolean | array<string>` | Enable TUI notifications; optionally restrict to specific event types. |
+| `tui.raw_output_mode` | `boolean` | Start the TUI in raw scrollback mode for copy-friendly terminal selection (default: false). You can toggle it with `/raw` or the default `alt-r` key binding. |
 | `tui.show_tooltips` | `boolean` | Show onboarding tooltips in the TUI welcome screen (default: true). |
 | `tui.status_line` | `array<string> | null` | Ordered list of TUI footer status-line item identifiers. `null` disables the status line. |
 | `tui.terminal_title` | `array<string> | null` | Ordered list of terminal window/tab title item identifiers. Defaults to `["spinner", "project"]`; `null` disables title updates. |
 | `tui.theme` | `string` | Syntax-highlighting theme override (kebab-case theme name). |
+| `tui.vim_mode_default` | `boolean` | Start the composer in Vim normal mode instead of insert mode (default: false). You can still toggle it per session with `/vim`. |
 | `web_search` | `disabled | cached | live` | Web search mode (default: `"cached"`; cached uses an OpenAI-maintained index and does not fetch live pages; if you use `--yolo` or another full access sandbox setting, it defaults to `"live"`). Use `"live"` to fetch the most recent data from the web, or `"disabled"` to remove the tool. |
 | `windows_wsl_setup_acknowledged` | `boolean` | Track Windows onboarding acknowledgement (Windows only). |
 | `windows.sandbox` | `unelevated | elevated` | Windows-only native sandbox mode when running Codex natively on Windows. |
@@ -746,7 +762,7 @@ Type / Values
 
 Details
 
-Enable Fast mode selection and the `service_tier = "fast"` path (stable; on by default).
+Enable model-catalog service tier selection in the TUI, including Fast-tier commands when the active model advertises them (stable; on by default).
 
 Key
 
@@ -1122,6 +1138,18 @@ Working directory for the MCP stdio server process.
 
 Key
 
+`mcp_servers.<id>.default_tools_approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Default approval behavior for MCP tools on this server unless a per-tool override exists.
+
+Key
+
 `mcp_servers.<id>.disabled_tools`
 
 Type / Values
@@ -1287,6 +1315,18 @@ Type / Values
 Details
 
 Override the default 60s per-tool timeout for an MCP server.
+
+Key
+
+`mcp_servers.<id>.tools.<tool>.approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Per-tool approval behavior override for one MCP tool on this server.
 
 Key
 
@@ -2358,6 +2398,66 @@ Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in p
 
 Key
 
+`plugins.<plugin>.mcp_servers.<server>.default_tools_approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Default approval behavior for tools on a plugin-provided MCP server.
+
+Key
+
+`plugins.<plugin>.mcp_servers.<server>.disabled_tools`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Deny list applied after `enabled_tools` for a plugin-provided MCP server.
+
+Key
+
+`plugins.<plugin>.mcp_servers.<server>.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable or disable an MCP server bundled by an installed plugin without changing the plugin manifest.
+
+Key
+
+`plugins.<plugin>.mcp_servers.<server>.enabled_tools`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Allow list of tools exposed from a plugin-provided MCP server.
+
+Key
+
+`plugins.<plugin>.mcp_servers.<server>.tools.<tool>.approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Per-tool approval behavior override for a plugin-provided MCP tool.
+
+Key
+
 `profile`
 
 Type / Values
@@ -2470,7 +2570,7 @@ Key
 
 Type / Values
 
-`flex | fast`
+`string`
 
 Details
 
@@ -2638,11 +2738,11 @@ Key
 
 Type / Values
 
-`flex | fast`
+`string`
 
 Details
 
-Preferred service tier for new turns.
+Preferred service tier for new turns. Built-in values include `flex` and `fast`; legacy `fast` config maps to the request value `priority`, and catalog-provided tier IDs can also be stored.
 
 Key
 
@@ -2906,7 +3006,7 @@ Type / Values
 
 Details
 
-Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, or `page-down`.
+Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, `page-down`, or `minus`.
 
 Key
 
@@ -2958,6 +3058,18 @@ Enable TUI notifications; optionally restrict to specific event types.
 
 Key
 
+`tui.raw_output_mode`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Start the TUI in raw scrollback mode for copy-friendly terminal selection (default: false). You can toggle it with `/raw` or the default `alt-r` key binding.
+
+Key
+
 `tui.show_tooltips`
 
 Type / Values
@@ -3003,6 +3115,18 @@ Type / Values
 Details
 
 Syntax-highlighting theme override (kebab-case theme name).
+
+Key
+
+`tui.vim_mode_default`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Start the composer in Vim normal mode instead of insert mode (default: false). You can still toggle it per session with `/vim`.
 
 Key
 

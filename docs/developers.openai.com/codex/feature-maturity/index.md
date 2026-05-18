@@ -4,8 +4,8 @@ source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/feature-maturity'
 source_last_modified: '2026-04-25T06:56:28Z'
 source_etag: 'W/"30ebdaa829ebe9bde76da3206067bfe8"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Feature Maturity – Codex | OpenAI Developers

@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/remote-connections'
-source_last_modified: '2026-05-14T22:49:59Z'
-source_etag: 'W/"270d80bc25f660f36457ff122127dae6"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:35:59Z'
+source_etag: 'W/"2d6e025b538802662478454d395b2284"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Remote connections – Codex | OpenAI Developers
@@ -184,12 +184,12 @@ unauthenticated public listeners.
 
 ## Authentication and network exposure
 
-Use SSH port forwarding with local-host WebSocket listeners. Don’t expose an
-unauthenticated app-server listener on a shared or public network.
+Remote connections use SSH to start and manage the remote Codex app server.
+Don’t expose app-server transports directly on a shared or public network.
 
-If you need to reach a remote machine outside your current network, use a VPN or
-mesh networking tool such as Tailscale instead of exposing the app server
-directly to the internet.
+If you need to reach a remote machine outside your current network, use a VPN
+or mesh networking tool instead of exposing the app server directly to the
+internet.
 
 ## Troubleshooting
 

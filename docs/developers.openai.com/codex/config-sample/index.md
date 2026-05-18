@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-14T23:02:36Z'
-source_etag: 'W/"b3435c2873dd1e5113894109a4520e14"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:39:41Z'
+source_etag: 'W/"d307567f816b9eb737734830c2c25992"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Sample Configuration – Codex | OpenAI Developers
@@ -54,8 +54,8 @@ model_provider = "openai"
 # Default OSS provider for --oss sessions. When unset, Codex prompts. Default: unset.
 # oss_provider = "ollama"
 
-# Preferred service tier. `fast` is honored only when enabled in [features].
-# service_tier = "flex"  # fast | flex
+# Preferred service tier. Built-in examples: fast | flex; model catalogs can add more.
+# service_tier = "flex"
 
 # Optional manual model metadata. When unset, Codex uses model or preset defaults.
 # model_context_window = 128000       # tokens; default: auto for model
@@ -593,7 +593,7 @@ enabled = true
 # model_provider = "openai"
 # approval_policy = "on-request"
 # sandbox_mode = "read-only"
-# service_tier = "flex"
+# service_tier = "flex" # or another supported service tier id
 # oss_provider = "ollama"
 # model_reasoning_effort = "medium"
 # plan_mode_reasoning_effort = "high"

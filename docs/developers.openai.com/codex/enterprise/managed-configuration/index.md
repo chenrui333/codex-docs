@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-05-14T23:07:35Z'
-source_etag: 'W/"30654c1809b583910807d9669ed27085"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:35:21Z'
+source_etag: 'W/"894db7aed024aa3b24f184af517b08d3"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Managed configuration – Codex | OpenAI Developers
@@ -88,7 +88,7 @@ allowed_sandbox_modes = ["read-only", "workspace-write"]
 
 Use `[[remote_sandbox_config]]` when one managed policy should apply different
 sandbox requirements on different hosts. For example, you can keep a stricter
-default for laptops while allowing workspace writes on matching devboxes or CI
+default for laptops while allowing workspace writes on matching dev boxes or CI
 runners. Host-specific entries currently override `allowed_sandbox_modes` only:
 
 ```
@@ -106,7 +106,7 @@ sequence of characters, and `?` matches one character.
 
 The first matching `[[remote_sandbox_config]]` entry wins within the same
 requirements source. If no entry matches, Codex keeps the top-level
-`allowed_sandbox_modes`. Hostname matching is for policy selection only; don’t
+`allowed_sandbox_modes`. Host name matching is for policy selection only; don’t
 treat it as authenticated device proof.
 
 You can also constrain web search mode:
@@ -139,7 +139,7 @@ Use the canonical feature keys from `config.toml`’s `[features]` table. Codex 
 - `in_app_browser = false` disables the in-app browser pane.
 - `browser_use = false` disables Browser Use and Browser Agent availability.
 - `computer_use = false` disables Computer Use availability and related
-  install or enablement flows.
+  install or setup flows.
 
 If omitted, these features are allowed by policy, subject to normal client,
 platform, and rollout availability.

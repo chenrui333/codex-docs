@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ai-app-evals'
 source_last_modified: '2026-05-08T00:35:28Z'
 source_etag: 'W/"0081d7f878762df90f49d0b3d74e588b"'
-codex_cli_versions: ["0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Add evals to your AI application | Codex use cases

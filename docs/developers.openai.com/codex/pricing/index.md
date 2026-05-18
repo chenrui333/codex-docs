@@ -4,8 +4,8 @@ source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
 source_last_modified: '2026-05-07T01:27:27Z'
 source_etag: 'W/"887edd73bb00781dcb29bf58ba35aa3c"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Pricing – Codex | OpenAI Developers

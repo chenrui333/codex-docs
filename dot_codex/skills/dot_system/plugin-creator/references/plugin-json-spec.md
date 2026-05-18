@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_plugin_creator'
 source_url: 'codex-cli://skills/.system/plugin-creator/references/plugin-json-spec.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Plugin JSON sample spec
@@ -108,8 +108,8 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 `marketplace.json` depends on where the plugin should live:
 
-- Repo plugin: `<repo-root>/.agents/plugins/marketplace.json`
-- Local plugin: `~/.agents/plugins/marketplace.json`
+- Personal plugin: `~/.agents/plugins/marketplace.json`
+- Repo/team plugin: `<repo-root>/.agents/plugins/marketplace.json`
 
 ```json
 {
@@ -152,9 +152,9 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 - `source` (`object`): Plugin source descriptor.
   - `source` (`string`): Use `local` for this repo workflow.
   - `path` (`string`): Relative plugin path based on the marketplace root.
-    - Repo plugin: `./plugins/<plugin-name>`
-    - Local plugin in `~/.agents/plugins/marketplace.json`: `./plugins/<plugin-name>`
-  - The same relative path convention is used for both repo-rooted and home-rooted marketplaces.
+    - Personal plugin in `~/.agents/plugins/marketplace.json`: `./plugins/<plugin-name>`
+    - Repo/team plugin: `./plugins/<plugin-name>`
+  - The same relative path convention is used for both personal and repo/team marketplaces.
     - Example: with `~/.agents/plugins/marketplace.json`, `./plugins/<plugin-name>` resolves to `~/plugins/<plugin-name>`.
 - `policy` (`object`): Marketplace policy block. Always include it.
   - `installation` (`string`): Availability policy.
@@ -174,6 +174,9 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 - Treat `policy.products` as an override and omit it unless explicitly requested.
 - Append new entries unless the user explicitly requests reordering.
 - Replace an existing entry for the same plugin only when overwrite is intentional.
-- Choose marketplace location to match the plugin destination:
-  - Repo plugin: `<repo-root>/.agents/plugins/marketplace.json`
-  - Local plugin: `~/.agents/plugins/marketplace.json`
+- Default new plugin creation to the personal marketplace.
+- If the current Git repo already has `.agents/plugins/marketplace.json` and the user has not said
+  personal or team, ask which marketplace to update before creating the entry.
+- Choose marketplace location to match the selected destination:
+  - Personal plugin: `~/.agents/plugins/marketplace.json`
+  - Repo/team plugin: `<repo-root>/.agents/plugins/marketplace.json`

@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks'
 source_last_modified: '2026-05-08T00:49:59Z'
 source_etag: 'W/"e5478b5f679bfcc14be60dff29d126f4"'
-codex_cli_versions: ["0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Turn user stories into UI mocks | Codex use cases

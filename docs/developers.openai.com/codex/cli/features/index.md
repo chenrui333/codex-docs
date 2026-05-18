@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/features'
-source_last_modified: '2026-04-30T17:49:26Z'
-source_etag: 'W/"ac4adbc61ea8f454bf77c1a24bec6b22"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:36:06Z'
+source_etag: 'W/"940269a6481f883466ee2f51191a09a8"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Features – Codex CLI | OpenAI Developers
@@ -60,69 +60,63 @@ Each resumed run keeps the original transcript, plan history, and approvals, so 
 
 ## Connect the TUI to a remote app server
 
-Remote TUI mode lets you run the Codex app server on one machine and use the Codex terminal UI from another machine. This is useful when the code, credentials, or execution environment live on a remote host, but you want the local interactive TUI experience.
-
-Start the app server on the machine that should own the workspace and run commands:
+Remote TUI mode lets you run the Codex app server on one machine and use the
+Codex terminal UI from another machine. Start the app server with a WebSocket
+listener:
 
 ```
 codex app-server --listen ws://127.0.0.1:4500
 ```
 
-Then connect from the machine running the TUI:
+Then connect the TUI to that endpoint:
 
 ```
 codex --remote ws://127.0.0.1:4500
 ```
 
-For access from another machine, bind the app server to a reachable interface, for example:
+For access from another machine, bind the app server to a reachable interface
+and configure WebSocket auth before remote use:
 
 ```
-codex app-server --listen ws://0.0.0.0:4500
-```
-
-`--remote` accepts explicit `ws://host:port` and `wss://host:port` addresses only. For plain WebSocket connections, prefer local-host addresses or SSH port forwarding. If you expose the listener beyond the local host, configure authentication before real remote use and put authenticated non-local connections behind TLS.
-
-Codex supports these WebSocket authentication modes for remote TUI connections:
-
-- **No WebSocket auth**: Best for local-host listeners or SSH port-forwarded connections. Codex can start non-local listeners without auth, but logs a warning and the startup banner reminds you to configure auth before real remote use.
-- **Capability token**: Store a shared token in a file on the app-server host, start the server with `--ws-auth capability-token --ws-token-file /abs/path/to/token`, then set the same token in an environment variable on the TUI host and pass `--remote-auth-token-env <ENV_VAR>`.
-- **Signed bearer token**: Store an HMAC shared secret in a file on the app-server host, start the server with `--ws-auth signed-bearer-token --ws-shared-secret-file /abs/path/to/secret`, and have the TUI send a signed JWT bearer token through `--remote-auth-token-env <ENV_VAR>`. The shared secret must be at least 32 bytes. Signed tokens use HS256 and must include `exp`; Codex also validates `nbf`, `iss`, and `aud` when those claims or server options are present.
-
-To create a capability token on the app-server host, generate a random token file with permissions that only your user can read:
-
-```
-TOKEN_FILE="$HOME/.codex/codex-app-server-token"
-install -d -m 700 "$(dirname "$TOKEN_FILE")"
+TOKEN_FILE="$HOME/.codex/app-server-token"
 openssl rand -base64 32 > "$TOKEN_FILE"
 chmod 600 "$TOKEN_FILE"
+codex app-server --listen ws://0.0.0.0:4500 --ws-auth capability-token --ws-token-file "$TOKEN_FILE"
 ```
 
-Treat the token file like a password, and regenerate it if it leaks.
+`--remote` accepts explicit `ws://host:port` and `wss://host:port` addresses.
+Plain WebSocket connections are appropriate for localhost and SSH
+port-forwarding workflows. For non-local clients, use WebSocket auth and put the
+connection behind TLS.
 
-Then start the app server with that token file. For example, with a capability token behind a TLS proxy:
+Codex supports these WebSocket authentication modes:
+
+- Capability token: start the server with `--ws-auth capability-token` and
+  either `--ws-token-file /absolute/path` or `--ws-token-sha256 HEX`.
+- Signed bearer token: start the server with
+  `--ws-auth signed-bearer-token --ws-shared-secret-file /absolute/path`, plus
+  optional `--ws-issuer`, `--ws-audience`, and `--ws-max-clock-skew-seconds`.
+
+The TUI sends the remote auth token as an `Authorization: Bearer <token>` header
+during the WebSocket handshake. Codex only accepts remote auth tokens over
+`wss://` URLs or loopback `ws://` URLs.
 
 ```
-# Remote host
-TOKEN_FILE="$HOME/.codex/codex-app-server-token"
-codex app-server \
-  --listen ws://0.0.0.0:4500 \
-  --ws-auth capability-token \
-  --ws-token-file "$TOKEN_FILE"
-
-# TUI host
-export CODEX_REMOTE_AUTH_TOKEN="$(ssh devbox 'cat ~/.codex/codex-app-server-token')"
-codex --remote wss://codex-devbox.example.com:4500 \
-  --remote-auth-token-env CODEX_REMOTE_AUTH_TOKEN
+export CODEX_REMOTE_TOKEN="$(cat "$TOKEN_FILE")"
+codex --remote wss://remote-host:4500 --remote-auth-token-env CODEX_REMOTE_TOKEN
 ```
 
-The TUI sends remote auth tokens as `Authorization: Bearer <token>` during the WebSocket handshake. Codex only sends those tokens over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`, so put non-local remote listeners behind TLS if clients need to authenticate over the network.
+For SSH remote projects in the Codex app, use
+[Remote connections](/codex/remote-connections). For managed remote-control
+clients, `codex remote-control` starts an app-server process with
+remote-control support enabled.
 
 ## Models and reasoning
 
-For most tasks in Codex, `gpt-5.5` is the recommended model when it is
-available. It is OpenAI’s newest frontier model for complex coding, computer
+For most tasks in Codex, `gpt-5.5` is the recommended model when it’s
+available. It’s OpenAI’s newest frontier model for complex coding, computer
 use, knowledge work, and research workflows, with stronger planning, tool use,
-and follow-through on multi-step tasks. If `gpt-5.5` is not yet available,
+and follow-through on multi-step tasks. If `gpt-5.5` isn’t yet available,
 continue using `gpt-5.4`. For extra fast tasks, ChatGPT Pro subscribers have
 access to the GPT-5.3-Codex-Spark model in research preview.
 

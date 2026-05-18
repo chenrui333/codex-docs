@@ -4,8 +4,8 @@ source_area: 'codex_ide'
 source_url: 'https://developers.openai.com/codex/ide/commands'
 source_last_modified: '2026-04-25T06:50:32Z'
 source_etag: 'W/"5be07632ccd60e5563d207a6c860f829"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Commands – Codex IDE | OpenAI Developers

@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/subagents'
-source_last_modified: '2026-04-25T06:33:00Z'
-source_etag: 'W/"77dceea9a92fd811d6cadb6132b8191d"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0"]
+source_last_modified: '2026-05-18T18:36:13Z'
+source_etag: 'W/"a7d2c03bffd1142250c024b05340e13c"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
 # Subagents – Codex | OpenAI Developers
@@ -72,7 +72,7 @@ parent workflow.
 
 Codex also reapplies the parent turn’s live runtime overrides when it spawns a
 child. That includes sandbox and approval choices you set interactively during
-the session, such as `/approvals` changes or `--yolo`, even if the selected
+the session, such as `/permissions` changes or `--yolo`, even if the selected
 custom agent file sets different defaults.
 
 You can also override the sandbox configuration for individual [custom agents](#custom-agents), such as explicitly marking one to work in read-only mode.
