@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/codex/codex-manual/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-19T07:21:49+00:00",
+  "generated_at": "2026-05-19T13:15:16+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,9 +13,9 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 233,
+  "total_files": 234,
   "updated": [
-    "developers.openai.com/codex/security/setup/index.md",
-    "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md"
+    "codex_capabilities.json",
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }

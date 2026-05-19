@@ -20,7 +20,7 @@
         "codex-cli 0.131.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "f77d672291d2c32d13d388d82c59d722fe69bc3b8c6cefc0175f03b6475bbf8b",
+      "sha256": "ddcea7035592199de0ea235af16637e9196050e940ac46ec35dc72fe9c298610",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -593,6 +593,20 @@
       "source_last_modified": "2026-04-25T06:49:47Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/codex-for-oss-terms"
+    },
+    "developers.openai.com/codex/codex-manual/index.md": {
+      "codex_cli_versions": [
+        "0.131.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.131.0"
+      ],
+      "sha256": "e4242151932c09005b6b7f363a059c9c292368b442b7bfacf331b62f3c9ace1e",
+      "source_area": "codex_codex_manual",
+      "source_etag": "W/\"6d43bfd5cb5cfdd6908e4a7abce03212\"",
+      "source_last_modified": "2026-05-19T13:14:50Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/codex/codex-manual"
     },
     "developers.openai.com/codex/concepts/customization/index.md": {
       "codex_cli_versions": [
@@ -1629,10 +1643,10 @@
         "codex-cli 0.130.0",
         "codex-cli 0.131.0"
       ],
-      "sha256": "50f7145f59b235dc38065c0619faec48f1ae5359a8a37aaf976abd49876e6aea",
+      "sha256": "0c410d7d4004964f40b9749d126540851b1175aa046456484ffb93f83ad138ae",
       "source_area": "codex_security",
-      "source_etag": "W/\"2a56d471a56ae87a891e98599fe3fad1\"",
-      "source_last_modified": "2026-05-19T06:19:41Z",
+      "source_etag": "W/\"7834d68da53ed2e3330ac1ce2f2e787c\"",
+      "source_last_modified": "2026-05-19T12:14:38Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
