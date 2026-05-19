@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-18T18:39:41Z'
-source_etag: 'W/"d307567f816b9eb737734830c2c25992"'
+source_last_modified: '2026-05-18T21:52:34Z'
+source_etag: 'W/"8f15979e301c76889684e23a87341afe"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -300,9 +300,20 @@ include_only = []
 experimental_use_profile = false
 
 ################################################################################
-# Managed network proxy settings
+# Sandboxed networking settings
 ################################################################################
 
+# Enable the feature before configuring sandboxed networking rules.
+# [features.network_proxy]
+# enabled = true
+# domains = { "api.openai.com" = "allow", "example.com" = "deny" }
+#
+# Exact hosts match only themselves.
+# "*.example.com" matches subdomains only; "**.example.com" matches the apex plus subdomains.
+# "*" allows any public host that is not denied, so prefer scoped rules when possible.
+# `allow_local_binding = false` blocks loopback and private destinations by default.
+# Add an exact local IP literal or `localhost` allow rule for one target, or set it to true only when broader local access is required.
+#
 # Set `default_permissions = "workspace"` before enabling this profile.
 # [permissions.workspace.network]
 # enabled = true
@@ -315,7 +326,6 @@ experimental_use_profile = false
 # dangerously_allow_non_loopback_proxy = false
 # dangerously_allow_non_loopback_admin = false
 # dangerously_allow_all_unix_sockets = false
-# mode = "limited"                           # limited | full
 # allow_local_binding = false
 #
 # [permissions.workspace.network.domains]
@@ -419,6 +429,7 @@ enabled = true
 # shell_snapshot = true
 # multi_agent = true
 # personality = true
+# network_proxy = false
 # fast_mode = true
 # enable_request_compression = true
 # skill_mcp_dependency_install = true

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-18T18:35:49Z'
-source_etag: 'W/"720c198a5f84155ebd9e4a4cf99eeb3b"'
+source_last_modified: '2026-05-18T21:47:38Z'
+source_etag: 'W/"3d0fa7181e506da678a6c058fa61be96"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -73,6 +73,18 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.hooks` | `boolean` | Enable lifecycle hooks loaded from `hooks.json` or inline `[hooks]` config. `features.codex_hooks` is a deprecated alias. |
 | `features.memories` | `boolean` | Enable [Memories](/codex/memories) (off by default). |
 | `features.multi_agent` | `boolean` | Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default). |
+| `features.network_proxy` | `boolean | table` | Enable sandboxed networking. Use a table form when setting network policy options such as `domains` (experimental; off by default). |
+| `features.network_proxy.allow_local_binding` | `boolean` | Allow broader local/private-network access. Defaults to `false`; exact local IP literal or `localhost` allow rules can still permit specific local targets. |
+| `features.network_proxy.allow_upstream_proxy` | `boolean` | Allow chaining through an upstream proxy from the environment. Defaults to `true`. |
+| `features.network_proxy.dangerously_allow_all_unix_sockets` | `boolean` | Permit arbitrary Unix socket destinations instead of allowlist-only access. Defaults to `false`; use only in tightly controlled environments. |
+| `features.network_proxy.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback listener addresses. Defaults to `false`; enabling it can expose proxy listeners beyond localhost. |
+| `features.network_proxy.domains` | `map<string, allow | deny>` | Domain policy for sandboxed networking. Unset by default, which means no external destinations are allowed until you add `allow` rules. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules; prefer scoped rules because `*` broadly opens public outbound access. Add `deny` rules for blocked destinations; `deny` wins on conflicts. |
+| `features.network_proxy.enable_socks5` | `boolean` | Expose SOCKS5 support. Defaults to `true`. |
+| `features.network_proxy.enable_socks5_udp` | `boolean` | Allow UDP over SOCKS5. Defaults to `true`. |
+| `features.network_proxy.enabled` | `boolean` | Enable sandboxed networking. Defaults to `false`. |
+| `features.network_proxy.proxy_url` | `string` | HTTP listener URL for sandboxed networking. Defaults to `"http://127.0.0.1:3128"`. |
+| `features.network_proxy.socks_url` | `string` | SOCKS5 listener URL. Defaults to `"http://127.0.0.1:8081"`. |
+| `features.network_proxy.unix_sockets` | `map<string, allow | none>` | Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets. |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.plugin_hooks` | `boolean` | Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in. |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
@@ -192,18 +204,17 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `permissions.<name>.filesystem.":project_roots".<subpath-or-glob>` | `"read" | "write" | "none"` | Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`. |
 | `permissions.<name>.filesystem.<path-or-glob>` | `"read" | "write" | "none" | table` | Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths. |
 | `permissions.<name>.filesystem.glob_scan_max_depth` | `number` | Maximum depth for expanding deny-read glob patterns on platforms that snapshot matches before sandbox startup. Must be at least `1` when set. |
-| `permissions.<name>.network.allow_local_binding` | `boolean` | Permit local bind/listen operations through the managed proxy. |
-| `permissions.<name>.network.allow_upstream_proxy` | `boolean` | Allow the managed proxy to chain to another upstream proxy. |
-| `permissions.<name>.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow the proxy to use arbitrary Unix sockets instead of the default restricted set. |
-| `permissions.<name>.network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback bind addresses for the managed proxy listener. |
-| `permissions.<name>.network.domains` | `map<string, allow | deny>` | Domain rules for the managed proxy. Use domain names or wildcard patterns as keys, with `allow` or `deny` values. |
-| `permissions.<name>.network.enable_socks5` | `boolean` | Expose a SOCKS5 listener when this permissions profile enables the managed network proxy. |
+| `permissions.<name>.network.allow_local_binding` | `boolean` | Permit broader local/private-network access through sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`. |
+| `permissions.<name>.network.allow_upstream_proxy` | `boolean` | Allow sandboxed networking to chain through another upstream proxy. |
+| `permissions.<name>.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow arbitrary Unix socket destinations instead of the default restricted set. Use only in tightly controlled environments. |
+| `permissions.<name>.network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback bind addresses for sandboxed networking listeners. Enabling it can expose listeners beyond localhost. |
+| `permissions.<name>.network.domains` | `map<string, allow | deny>` | Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts. |
+| `permissions.<name>.network.enable_socks5` | `boolean` | Expose SOCKS5 support when this permissions profile enables sandboxed networking. |
 | `permissions.<name>.network.enable_socks5_udp` | `boolean` | Allow UDP over the SOCKS5 listener when enabled. |
 | `permissions.<name>.network.enabled` | `boolean` | Enable network access for this named permissions profile. |
-| `permissions.<name>.network.mode` | `limited | full` | Network proxy mode used for subprocess traffic. |
-| `permissions.<name>.network.proxy_url` | `string` | HTTP proxy endpoint used when this permissions profile enables the managed network proxy. |
+| `permissions.<name>.network.proxy_url` | `string` | HTTP listener URL used when this permissions profile enables sandboxed networking. |
 | `permissions.<name>.network.socks_url` | `string` | SOCKS5 proxy endpoint used by this permissions profile. |
-| `permissions.<name>.network.unix_sockets` | `map<string, allow | none>` | Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values. |
+| `permissions.<name>.network.unix_sockets` | `map<string, allow | none>` | Unix socket rules for sandboxed networking. Use socket paths as keys, with `allow` or `none` values. |
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
 | `plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in preset default. |
 | `plugins.<plugin>.mcp_servers.<server>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for tools on a plugin-provided MCP server. |
@@ -799,6 +810,150 @@ Type / Values
 Details
 
 Enable multi-agent collaboration tools (`spawn_agent`, `send_input`, `resume_agent`, `wait_agent`, and `close_agent`) (stable; on by default).
+
+Key
+
+`features.network_proxy`
+
+Type / Values
+
+`boolean | table`
+
+Details
+
+Enable sandboxed networking. Use a table form when setting network policy options such as `domains` (experimental; off by default).
+
+Key
+
+`features.network_proxy.allow_local_binding`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow broader local/private-network access. Defaults to `false`; exact local IP literal or `localhost` allow rules can still permit specific local targets.
+
+Key
+
+`features.network_proxy.allow_upstream_proxy`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow chaining through an upstream proxy from the environment. Defaults to `true`.
+
+Key
+
+`features.network_proxy.dangerously_allow_all_unix_sockets`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Permit arbitrary Unix socket destinations instead of allowlist-only access. Defaults to `false`; use only in tightly controlled environments.
+
+Key
+
+`features.network_proxy.dangerously_allow_non_loopback_proxy`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Permit non-loopback listener addresses. Defaults to `false`; enabling it can expose proxy listeners beyond localhost.
+
+Key
+
+`features.network_proxy.domains`
+
+Type / Values
+
+`map<string, allow | deny>`
+
+Details
+
+Domain policy for sandboxed networking. Unset by default, which means no external destinations are allowed until you add `allow` rules. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules; prefer scoped rules because `*` broadly opens public outbound access. Add `deny` rules for blocked destinations; `deny` wins on conflicts.
+
+Key
+
+`features.network_proxy.enable_socks5`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Expose SOCKS5 support. Defaults to `true`.
+
+Key
+
+`features.network_proxy.enable_socks5_udp`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow UDP over SOCKS5. Defaults to `true`.
+
+Key
+
+`features.network_proxy.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable sandboxed networking. Defaults to `false`.
+
+Key
+
+`features.network_proxy.proxy_url`
+
+Type / Values
+
+`string`
+
+Details
+
+HTTP listener URL for sandboxed networking. Defaults to `"http://127.0.0.1:3128"`.
+
+Key
+
+`features.network_proxy.socks_url`
+
+Type / Values
+
+`string`
+
+Details
+
+SOCKS5 listener URL. Defaults to `"http://127.0.0.1:8081"`.
+
+Key
+
+`features.network_proxy.unix_sockets`
+
+Type / Values
+
+`map<string, allow | none>`
+
+Details
+
+Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets.
 
 Key
 
@@ -2238,7 +2393,7 @@ Type / Values
 
 Details
 
-Permit local bind/listen operations through the managed proxy.
+Permit broader local/private-network access through sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`.
 
 Key
 
@@ -2250,7 +2405,7 @@ Type / Values
 
 Details
 
-Allow the managed proxy to chain to another upstream proxy.
+Allow sandboxed networking to chain through another upstream proxy.
 
 Key
 
@@ -2262,7 +2417,7 @@ Type / Values
 
 Details
 
-Allow the proxy to use arbitrary Unix sockets instead of the default restricted set.
+Allow arbitrary Unix socket destinations instead of the default restricted set. Use only in tightly controlled environments.
 
 Key
 
@@ -2274,7 +2429,7 @@ Type / Values
 
 Details
 
-Permit non-loopback bind addresses for the managed proxy listener.
+Permit non-loopback bind addresses for sandboxed networking listeners. Enabling it can expose listeners beyond localhost.
 
 Key
 
@@ -2286,7 +2441,7 @@ Type / Values
 
 Details
 
-Domain rules for the managed proxy. Use domain names or wildcard patterns as keys, with `allow` or `deny` values.
+Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts.
 
 Key
 
@@ -2298,7 +2453,7 @@ Type / Values
 
 Details
 
-Expose a SOCKS5 listener when this permissions profile enables the managed network proxy.
+Expose SOCKS5 support when this permissions profile enables sandboxed networking.
 
 Key
 
@@ -2326,18 +2481,6 @@ Enable network access for this named permissions profile.
 
 Key
 
-`permissions.<name>.network.mode`
-
-Type / Values
-
-`limited | full`
-
-Details
-
-Network proxy mode used for subprocess traffic.
-
-Key
-
 `permissions.<name>.network.proxy_url`
 
 Type / Values
@@ -2346,7 +2489,7 @@ Type / Values
 
 Details
 
-HTTP proxy endpoint used when this permissions profile enables the managed network proxy.
+HTTP listener URL used when this permissions profile enables sandboxed networking.
 
 Key
 
@@ -2370,7 +2513,7 @@ Type / Values
 
 Details
 
-Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values.
+Unix socket rules for sandboxed networking. Use socket paths as keys, with `allow` or `none` values.
 
 Key
 
@@ -3204,6 +3347,19 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `experimental_network` | `table` | Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag. |
+| `experimental_network.allow_local_binding` | `boolean` | Permit broader local/private-network access for sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`. |
+| `experimental_network.allow_upstream_proxy` | `boolean` | Allow sandboxed networking to chain through an upstream proxy from the environment. |
+| `experimental_network.allowed_domains` | `array<string>` | List-shaped administrator allow rules for sandboxed networking. Do not combine this with `experimental_network.domains`. |
+| `experimental_network.dangerously_allow_all_unix_sockets` | `boolean` | Permit arbitrary Unix socket destinations instead of allowlist-only access. Use only in tightly controlled environments. |
+| `experimental_network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback listener addresses for `[experimental_network]` requirements. Enabling it can expose listeners beyond localhost. |
+| `experimental_network.denied_domains` | `array<string>` | List-shaped administrator deny rules for sandboxed networking. Do not combine this with `experimental_network.domains`. |
+| `experimental_network.domains` | `map<string, allow | deny>` | Map-shaped administrator domain policy for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules; prefer scoped rules because `*` broadly opens public outbound access. `deny` wins on conflicts. Do not combine this with `experimental_network.allowed_domains` or `experimental_network.denied_domains`. |
+| `experimental_network.enabled` | `boolean` | Enable sandboxed networking requirements. This does not grant network access when the active sandbox keeps command networking off. |
+| `experimental_network.http_port` | `integer` | Loopback HTTP listener port to use for `[experimental_network]` requirements. |
+| `experimental_network.managed_allowed_domains_only` | `boolean` | When `true`, only administrator-managed allow rules remain effective while sandboxed networking requirements are active; user allowlist additions are ignored. Without managed allow rules, user-added domain allow rules do not remain effective. |
+| `experimental_network.socks_port` | `integer` | Loopback SOCKS5 listener port to use for `[experimental_network]` requirements. |
+| `experimental_network.unix_sockets` | `map<string, allow | none>` | Administrator-managed Unix socket policy for sandboxed networking. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
 | `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
 | `features.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. |
@@ -3278,6 +3434,162 @@ Type / Values
 Details
 
 Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.
+
+Key
+
+`experimental_network`
+
+Type / Values
+
+`table`
+
+Details
+
+Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag.
+
+Key
+
+`experimental_network.allow_local_binding`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Permit broader local/private-network access for sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`.
+
+Key
+
+`experimental_network.allow_upstream_proxy`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow sandboxed networking to chain through an upstream proxy from the environment.
+
+Key
+
+`experimental_network.allowed_domains`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+List-shaped administrator allow rules for sandboxed networking. Do not combine this with `experimental_network.domains`.
+
+Key
+
+`experimental_network.dangerously_allow_all_unix_sockets`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Permit arbitrary Unix socket destinations instead of allowlist-only access. Use only in tightly controlled environments.
+
+Key
+
+`experimental_network.dangerously_allow_non_loopback_proxy`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Permit non-loopback listener addresses for `[experimental_network]` requirements. Enabling it can expose listeners beyond localhost.
+
+Key
+
+`experimental_network.denied_domains`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+List-shaped administrator deny rules for sandboxed networking. Do not combine this with `experimental_network.domains`.
+
+Key
+
+`experimental_network.domains`
+
+Type / Values
+
+`map<string, allow | deny>`
+
+Details
+
+Map-shaped administrator domain policy for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules; prefer scoped rules because `*` broadly opens public outbound access. `deny` wins on conflicts. Do not combine this with `experimental_network.allowed_domains` or `experimental_network.denied_domains`.
+
+Key
+
+`experimental_network.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable sandboxed networking requirements. This does not grant network access when the active sandbox keeps command networking off.
+
+Key
+
+`experimental_network.http_port`
+
+Type / Values
+
+`integer`
+
+Details
+
+Loopback HTTP listener port to use for `[experimental_network]` requirements.
+
+Key
+
+`experimental_network.managed_allowed_domains_only`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, only administrator-managed allow rules remain effective while sandboxed networking requirements are active; user allowlist additions are ignored. Without managed allow rules, user-added domain allow rules do not remain effective.
+
+Key
+
+`experimental_network.socks_port`
+
+Type / Values
+
+`integer`
+
+Details
+
+Loopback SOCKS5 listener port to use for `[experimental_network]` requirements.
+
+Key
+
+`experimental_network.unix_sockets`
+
+Type / Values
+
+`map<string, allow | none>`
+
+Details
+
+Administrator-managed Unix socket policy for sandboxed networking.
 
 Key
 

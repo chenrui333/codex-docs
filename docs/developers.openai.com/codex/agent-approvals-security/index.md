@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/agent-approvals-security'
-source_last_modified: '2026-05-12T01:56:27Z'
-source_etag: 'W/"2db71524894147216a3927955f20f494"'
+source_last_modified: '2026-05-18T21:45:36Z'
+source_etag: 'W/"b02fd58491bfdbaeb62e75577ff06de3"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -52,6 +52,113 @@ For the Codex app, CLI, or IDE Extension, the default `workspace-write` sandbox 
 [sandbox_workspace_write]
 network_access = true
 ```
+
+### Network isolation
+
+Network access is controlled through destination rules that apply to scripts,
+programs, and subprocesses spawned by commands. When command network access is
+already enabled, turn on the `network_proxy` feature to constrain that traffic
+to the network policy you configure.
+
+```
+[features.network_proxy]
+enabled = true
+domains = { "api.openai.com" = "allow", "example.com" = "deny" }
+```
+
+For a one-off CLI session, use the boolean shorthand when you only need the
+toggle, and the table form when you also set policy options:
+
+```
+codex \
+  -c 'features.network_proxy=true' \
+  -c 'sandbox_workspace_write.network_access=true'
+
+codex \
+  -c 'features.network_proxy.enabled=true' \
+  -c 'features.network_proxy.domains={ "api.openai.com" = "allow", "example.com" = "deny" }' \
+  -c 'sandbox_workspace_write.network_access=true'
+```
+
+The feature changes how enabled network access is enforced; it does not grant
+network access by itself. Use `sandbox_workspace_write.network_access` with
+`workspace-write` config to decide whether commands have network access at all:
+
+- Network off + `network_proxy` on: network stays off, and the feature does nothing.
+- Network on + `network_proxy` off: network stays on with unrestricted direct
+  outbound access.
+- Network on + `network_proxy` on: network stays on, and outbound traffic is
+  constrained by the configured network policy.
+
+Admin-managed `experimental_network` requirements are separate from the user
+feature toggle. They can configure and start sandboxed networking without
+`features.network_proxy`, but they do not turn on network access when the active
+sandbox keeps it off. See [Managed configuration](/codex/enterprise/managed-configuration#configure-network-access-requirements)
+for the administrator-side `requirements.toml` shape.
+
+#### Network policy
+
+Domain rules are allowlist-first:
+
+- Exact hosts match only themselves.
+- `*.example.com` matches subdomains such as `api.example.com`, but not
+  `example.com`.
+- `**.example.com` matches both the apex and subdomains.
+- A global `*` allow rule matches any public host that is not denied. Treat `*`
+  as broad network access and prefer scoped rules when you can.
+- `deny` always wins over `allow`, and global `*` is only valid for allow rules.
+
+#### Local and private destinations
+
+By default, `allow_local_binding = false` blocks loopback, link-local, and
+private destinations:
+
+- Specific exceptions: add an exact local IP literal or `localhost` allow rule
+  when a command needs one local target.
+- Broader access: set `allow_local_binding = true` only when you intentionally
+  want wider local/private reach.
+- Wildcards: wildcard rules do not count as explicit local exceptions.
+- Resolved addresses: hostnames that resolve to local/private IPs stay blocked
+  even if they match the allowlist.
+
+#### DNS rebinding protections
+
+Before allowing a hostname, Codex performs a best-effort DNS and IP
+classification check:
+
+- Lookups that fail or time out are blocked.
+- Hostnames that resolve to non-public addresses are blocked.
+- The check reduces DNS rebinding risk, but it does not eliminate it. Preventing
+  rebinding completely would require pinning resolved IPs through the transport
+  layer.
+
+If hostile DNS is in scope, enforce egress controls at a lower layer too.
+
+#### Dangerous settings
+
+Two settings deliberately widen the trust boundary:
+
+- `dangerously_allow_non_loopback_proxy = true` can expose proxy listeners beyond
+  loopback.
+- `dangerously_allow_all_unix_sockets = true` bypasses the Unix socket allowlist.
+
+Use them only in tightly controlled environments. When Unix socket proxying is
+enabled, listeners stay loopback-only even if non-loopback binding was requested,
+so sandboxed networking does not become a remote bridge into local daemons.
+
+`network_proxy` is off by default. When you enable it:
+
+| Setting | Default | Behavior |
+| --- | --- | --- |
+| `enabled` | `false` | Starts sandboxed networking only when command network access is already on. |
+| `domains` | unset | Uses allowlist behavior, so no external destinations are allowed until you add `allow` rules. Supports exact hosts, scoped wildcards, and global `*` allow rules; `deny` always wins. |
+| `unix_sockets` | unset | No Unix socket destinations are allowed until you add explicit `allow` rules. |
+| `allow_local_binding` | `false` | Blocks local and private-network destinations unless you add an exact local IP literal or `localhost` allow rule, or explicitly opt into broader local/private access. |
+| `enable_socks5` | `true` | Exposes SOCKS5 support when policy allows it. |
+| `enable_socks5_udp` | `true` | Allows UDP over SOCKS5 when SOCKS5 is available. |
+| `allow_upstream_proxy` | `true` | Lets sandboxed networking honor an upstream proxy from the environment. |
+| `dangerously_allow_non_loopback_proxy` | `false` | Keeps listener endpoints on loopback unless you deliberately expose them beyond localhost. |
+| `dangerously_allow_all_unix_sockets` | `false` | Keeps Unix socket access allowlist-based unless you deliberately bypass that protection. |
 
 You can also control the [web search tool](https://platform.openai.com/docs/guides/tools-web-search) without granting full network access to spawned commands. Codex defaults to using a web search cache to access results. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](#common-sandbox-and-approval-combinations), web search defaults to live results. Use `--search` or set `web_search = "live"` to allow live browsing, or set it to `"disabled"` to turn the tool off:
 

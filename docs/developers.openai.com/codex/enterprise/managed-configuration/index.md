@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-05-18T18:35:21Z'
-source_etag: 'W/"894db7aed024aa3b24f184af517b08d3"'
+source_last_modified: '2026-05-18T21:50:02Z'
+source_etag: 'W/"d2fb7d5b2ed7ed36b93956ef5d07f9e6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -117,6 +117,37 @@ allowed_web_search_modes = ["cached"] # "disabled" remains implicitly allowed
 
 `allowed_web_search_modes = []` allows only `"disabled"`.
 For example, `allowed_web_search_modes = ["cached"]` prevents live web search even in `danger-full-access` sessions.
+
+### Configure network access requirements
+
+Use `[experimental_network]` in `requirements.toml` when administrators should
+define network access requirements centrally. These requirements are separate
+from the user `features.network_proxy` toggle: they can configure sandboxed
+networking without that feature flag, but they do not grant command network
+access when the active sandbox keeps networking off.
+
+```
+experimental_network.enabled = true
+experimental_network.dangerously_allow_all_unix_sockets = true
+experimental_network.allow_local_binding = true
+experimental_network.allowed_domains = [
+  "api.openai.com",
+  "*.example.com",
+]
+experimental_network.denied_domains = [
+  "blocked.example.com",
+  "*.exfil.example.com",
+]
+```
+
+Use `experimental_network.managed_allowed_domains_only = true` only when you
+also define administrator-owned `allowed_domains` and want that allowlist to be
+exclusive. If it is `true` without managed allow rules, user-added domain allow
+rules do not remain effective.
+
+The domain syntax, local/private destination rules, deny-over-allow behavior,
+and DNS rebinding limitations are the same as the sandboxed networking behavior
+described in [Agent approvals & security](/codex/agent-approvals-security#network-isolation).
 
 ### Pin feature flags
 
