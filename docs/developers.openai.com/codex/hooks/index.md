@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/hooks'
-source_last_modified: '2026-05-18T18:35:43Z'
-source_etag: 'W/"170c06be90ad39c6cdd1263bca5f1ecd"'
+source_last_modified: '2026-05-19T18:14:25Z'
+source_etag: 'W/"f977bf4dbff79c7024a39150fdd39d99"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -361,6 +361,8 @@ Exit `0` with no output is treated as success and Codex continues.
 
 `PreToolUse` and `PermissionRequest` support `systemMessage`, but `continue`,
 `stopReason`, and `suppressOutput` aren’t currently supported for those events.
+If a `PreToolUse` hook returns one of those unsupported fields, Codex marks
+that hook run as failed, reports the error, and continues the tool call.
 
 `PostToolUse` supports `systemMessage`, `continue: false`, and `stopReason`.
 `suppressOutput` is parsed but not currently supported for that event.
@@ -456,9 +458,29 @@ To add model-visible context without blocking, return
 }
 ```
 
-`permissionDecision: "ask"`, legacy `decision: "approve"`, `updatedInput`,
-`continue: false`, `stopReason`, and `suppressOutput` are parsed but not
-supported yet, so they fail open.
+To rewrite a supported tool call without blocking, return
+`permissionDecision: "allow"` with `updatedInput`:
+
+```
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "allow",
+    "updatedInput": {
+      "command": "echo rewritten"
+    }
+  }
+}
+```
+
+For Bash commands and `apply_patch`, `updatedInput` must include a string
+`command` field. For MCP tools, `updatedInput` is the replacement arguments
+object. Return `updatedInput` only with `permissionDecision: "allow"`; other
+`updatedInput` shapes are reported as errors.
+
+`permissionDecision: "ask"`, legacy `decision: "approve"`, `continue: false`,
+`stopReason`, and `suppressOutput` are parsed but not supported yet. Codex marks
+the hook run as failed, reports the error, and continues the tool call.
 
 ### PermissionRequest
 
@@ -573,8 +595,9 @@ To stop normal processing of the original tool result after the command has
 already run, return `continue: false`. Codex will replace the tool result with
 your feedback or stop text and continue from there.
 
-`updatedMCPToolOutput` and `suppressOutput` are parsed but not supported yet,
-so they fail open.
+`updatedMCPToolOutput` and `suppressOutput` are parsed but not supported yet.
+Codex marks the hook run as failed, reports the error, and continues normal
+processing of the tool result.
 
 ### UserPromptSubmit
 

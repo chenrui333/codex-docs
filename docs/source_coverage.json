@@ -430,12 +430,8 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/codex-manual"
-    ],
-    "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/codex-manual"
-    ],
+    "new_codex_related_urls_since_last_run": [],
+    "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -555,7 +551,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-19T13:14:44+00:00",
+  "generated_at": "2026-05-19T18:42:59+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
