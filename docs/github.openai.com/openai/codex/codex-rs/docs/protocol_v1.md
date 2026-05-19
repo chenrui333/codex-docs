@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md'
-source_etag: 'W/"c70ecda785c7cf848c18d25d5e74df521d7d79b4982a8c0337ae0ec2b9076555"'
+source_etag: 'W/"abd8253e1a396937fa4daafaeb4fce5a6d9b9b98c121a870bc49393be5bdd519"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -79,7 +79,7 @@ For complete documentation of the `Op` and `EventMsg` variants, refer to [protoc
   - `Op::Interrupt` – Interrupts a running turn
   - `Op::ExecApproval` – Approve or deny code execution
   - `Op::UserInputAnswer` – Provide answers for a `request_user_input` tool call
-  - `Op::UserTurn` and `Op::OverrideTurnContext` accept an optional `personality` override that updates the model’s communication style
+  - `Op::UserInput` accepts an optional `personality` turn-context override that updates the model’s communication style
 
 Valid `personality` values are `friendly`, `pragmatic`, and `none`. When `none` is selected, the personality placeholder is replaced with an empty string.
 
