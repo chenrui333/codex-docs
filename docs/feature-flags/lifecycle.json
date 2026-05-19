@@ -3,7 +3,7 @@
     {
       "enabled": false,
       "key": "apply_patch_freeform",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -42,11 +42,6 @@
     },
     {
       "enabled": false,
-      "key": "builtin_mcp",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
       "key": "child_agents_md",
       "stage": "under development"
     },
@@ -68,7 +63,7 @@
     {
       "enabled": false,
       "key": "codex_git_commit",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -171,6 +166,11 @@
       "stage": "experimental"
     },
     {
+      "enabled": false,
+      "key": "mentions_v2",
+      "stage": "experimental"
+    },
+    {
       "enabled": true,
       "key": "multi_agent",
       "stage": "stable"
@@ -181,14 +181,24 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "network_proxy",
+      "stage": "experimental"
+    },
+    {
       "enabled": true,
       "key": "personality",
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "plugin_hooks",
-      "stage": "under development"
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "plugin_sharing",
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -213,7 +223,7 @@
     {
       "enabled": false,
       "key": "remote_control",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -326,9 +336,9 @@
       "stage": "removed"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "unavailable_dummy_tools",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -368,10 +378,10 @@
     {
       "enabled": false,
       "key": "workspace_owner_usage_nudge",
-      "stage": "under development"
+      "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.130.0",
+  "codex_cli_version": "codex-cli 0.131.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -380,7 +390,6 @@
       "artifact",
       "auth_elicitation",
       "browser_use_external",
-      "builtin_mcp",
       "child_agents_md",
       "chronicle",
       "code_mode",
@@ -399,7 +408,9 @@
       "image_generation",
       "js_repl",
       "js_repl_tools_only",
+      "mentions_v2",
       "multi_agent_v2",
+      "plugin_sharing",
       "plugins",
       "realtime_conversation",
       "remote_compaction_v2",
@@ -444,6 +455,7 @@
     "in_app_browser",
     "memories",
     "multi_agent",
+    "network_proxy",
     "personality",
     "plugin_hooks",
     "prevent_idle_sleep",
@@ -687,7 +699,7 @@
     },
     "skill_env_var_dependency_prompt": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "skill_mcp_dependency_install": {
       "default_enabled_expr": "true",
@@ -710,8 +722,8 @@
       "stage_from_source": "stable"
     },
     "tool_search": {
-      "default_enabled_expr": "true",
-      "stage_from_source": "stable"
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
     },
     "tool_search_always_defer_mcp_tools": {
       "default_enabled_expr": "false",
@@ -763,8 +775,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "0dc32ad116092304e70078c97b3d0489dd07b81bb78dc3631ebea9feb5660e48",
-    "features_rs_sha256": "3bea86683da716844fc4f30307ecf9870cd45f2fb2f18c8a2ff919bd4a154209"
+    "client_rs_sha256": "a0881956be07cad869236f1ab4b7833079a6ca7e9bb491c6f96c5eb8d96454f4",
+    "features_rs_sha256": "4e888f3fea66c4762e1a51cab48a82827a41c65d5f0658e2c20ccf6215fdebf9"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
