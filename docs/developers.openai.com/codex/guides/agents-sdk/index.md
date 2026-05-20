@@ -4,8 +4,8 @@ source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/guides/agents-sdk'
 source_last_modified: '2026-04-25T06:30:33Z'
 source_etag: 'W/"3a17b112412ca461ad4136079523363a"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
 
 # Use Codex with the Agents SDK | OpenAI Developers

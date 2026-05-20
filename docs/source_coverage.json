@@ -19,7 +19,7 @@
     "counts": {
       "prompt_snapshot_paths": 1,
       "source_errors": 0,
-      "system_skill_paths": 45
+      "system_skill_paths": 46
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
     "prompt_snapshot_command": "codex debug prompt-input",
@@ -58,6 +58,7 @@
       "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator.png",
       "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
       "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
+      "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py",
       "dot_codex/skills/dot_system/skill-creator/SKILL.md",
       "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml",
       "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg",
@@ -76,8 +77,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.131.0",
-    "version_raw": "codex-cli 0.131.0"
+    "version": "0.132.0",
+    "version_raw": "codex-cli 0.132.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -434,20 +435,8 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/permissions",
-      "https://developers.openai.com/codex/use-cases/dependency-incident-audits",
-      "https://developers.openai.com/codex/use-cases/event-launch-playbooks",
-      "https://developers.openai.com/codex/use-cases/meeting-prep-briefs",
-      "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups"
-    ],
-    "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/permissions",
-      "https://developers.openai.com/codex/use-cases/dependency-incident-audits",
-      "https://developers.openai.com/codex/use-cases/event-launch-playbooks",
-      "https://developers.openai.com/codex/use-cases/meeting-prep-briefs",
-      "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups"
-    ],
+    "new_codex_related_urls_since_last_run": [],
+    "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -567,7 +556,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-20T00:58:01+00:00",
+  "generated_at": "2026-05-20T07:22:02+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -656,7 +645,7 @@
   },
   "system_skills": {
     "counts": {
-      "mirrored_paths_count": 45,
+      "mirrored_paths_count": 46,
       "page_fetch_errors": 0
     },
     "mirrored_paths": [
@@ -688,6 +677,7 @@
       "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator.png",
       "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
       "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
+      "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py",
       "dot_codex/skills/dot_system/skill-creator/SKILL.md",
       "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml",
       "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg",
@@ -706,7 +696,7 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "mirrored_paths_count": 45,
+    "mirrored_paths_count": 46,
     "output_prefix": "dot_codex/skills/dot_system/",
     "page_fetch_errors": [],
     "source_kind": "installed_codex_cli"

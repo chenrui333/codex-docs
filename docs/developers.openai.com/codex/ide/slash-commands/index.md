@@ -4,8 +4,8 @@ source_area: 'codex_ide'
 source_url: 'https://developers.openai.com/codex/ide/slash-commands'
 source_last_modified: '2026-04-25T06:40:05Z'
 source_etag: 'W/"cd0bd1e7c43713a6ded2fa693993c5ef"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
 
 # Slash commands – Codex IDE | OpenAI Developers

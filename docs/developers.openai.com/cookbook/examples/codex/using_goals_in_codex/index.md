@@ -4,8 +4,8 @@ source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex'
 source_last_modified: '2026-05-14T07:08:24Z'
 source_etag: 'W/"e616293ef80fb89eca87912f1200fa7a"'
-codex_cli_versions: ["0.130.0", "0.131.0"]
-codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0"]
+codex_cli_versions: ["0.130.0", "0.131.0", "0.132.0"]
+codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
 
 # Using Goals in Codex
