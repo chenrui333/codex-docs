@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/code-migrations'
-source_last_modified: '2026-05-08T00:47:21Z'
-source_etag: 'W/"464119d72439b6cc60b5685933b8c4ca"'
+source_last_modified: '2026-05-20T00:58:21Z'
+source_etag: 'W/"f2d87d0d1281cd392245282c1cd10e12"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -126,19 +126,19 @@ For long-running migration slices, use a [goal](/codex/use-cases/follow-goals) t
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-1.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 
 Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-2.webp)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/codex/use-cases/agent-friendly-clis.webp)
 
 ### Create a CLI Codex can use
 

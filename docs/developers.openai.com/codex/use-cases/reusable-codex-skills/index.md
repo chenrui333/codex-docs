@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/reusable-codex-skills'
-source_last_modified: '2026-05-08T00:47:36Z'
-source_etag: 'W/"f17c8c949220c101509162262bec7c07"'
+source_last_modified: '2026-05-20T00:58:30Z'
+source_etag: 'W/"72ebd0c0fa518642159915d04cc5a3df"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -146,23 +146,23 @@ Use the same pattern when future threads should read the same runbook, run the s
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/follow-goals.webp)
 
 ### Follow a goal
 
 Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-Engineering  Automation](/codex/use-cases/follow-goals)[![](/images/codex/codex-wallpaper-3.webp)
+Engineering  Automation](/codex/use-cases/follow-goals)[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-1.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/dependency-incident-audits.webp)
 
-### Build React Native apps with Expo
+### Audit dependency incidents
 
-Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
+Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)
 

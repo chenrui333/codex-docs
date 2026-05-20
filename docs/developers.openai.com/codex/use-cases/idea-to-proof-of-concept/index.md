@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/idea-to-proof-of-concept'
-source_last_modified: '2026-05-08T00:49:55Z'
-source_etag: 'W/"240c47dac95d1d1de759040ae1050b58"'
+source_last_modified: '2026-05-20T00:58:26Z'
+source_etag: 'W/"a8f9712de7b528bb77a7919038425e2c"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -126,19 +126,19 @@ Feedback to apply:
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 
 Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-1.webp)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/codex/use-cases/browser-games.webp)
 
 ### Create browser-based games
 
 Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Engineering  Code](/codex/use-cases/browser-games)[![](/images/codex/codex-wallpaper-1.webp)
+Engineering  Code](/codex/use-cases/browser-games)[![](/codex/use-cases/make-granular-ui-changes.webp)
 
 ### Make granular UI changes
 

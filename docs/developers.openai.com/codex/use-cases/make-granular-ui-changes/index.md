@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/make-granular-ui-changes'
-source_last_modified: '2026-05-08T00:49:56Z'
-source_etag: 'W/"7430f4ce58c7eb8c639fac1054db2026"'
+source_last_modified: '2026-05-20T00:58:28Z'
+source_etag: 'W/"3476747a0b48791bb4dec1bc84ad3e3e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -132,19 +132,19 @@ Fast UI iteration works best when Codex is adjusting an already-understood surfa
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/idea-to-proof-of-concept.webp)
 
 ### Get from idea to proof of concept
 
 Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
 
-Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)[![](/images/codex/codex-wallpaper-1.webp)
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 
 Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-1.webp)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/codex/use-cases/ios-app-intents.webp)
 
 ### Add iOS app intents
 

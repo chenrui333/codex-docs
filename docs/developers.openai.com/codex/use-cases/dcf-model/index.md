@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dcf-model'
-source_last_modified: '2026-05-08T00:29:37Z'
-source_etag: 'W/"9c3c8ed38c97bee9cc4930e9c863bba7"'
+source_last_modified: '2026-05-20T00:58:23Z'
+source_etag: 'W/"45c2f279b3f4c3cb54b6aabf9d518d5a"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -126,19 +126,19 @@ Keep the old assumption visible in a note, update dependent formulas, and tell m
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/cash-flow-forecast.webp)
 
 ### Forecast cash flow
 
 Give Codex cash-flow inputs and model constraints, then ask it to create an editable...
 
-Data  Knowledge Work](/codex/use-cases/cash-flow-forecast)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Knowledge Work](/codex/use-cases/cash-flow-forecast)[![](/codex/use-cases/budget-vs-actuals-review.webp)
 
 ### Review budget vs. actuals
 
 Give Codex a budget, actuals export, and close notes, then ask it to map actuals to plan...
 
-Data  Knowledge Work](/codex/use-cases/budget-vs-actuals-review)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Knowledge Work](/codex/use-cases/budget-vs-actuals-review)[![](/codex/use-cases/clean-messy-data.webp)
 
 ### Clean and prepare messy data
 

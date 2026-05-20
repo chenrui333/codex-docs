@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/codebase-onboarding'
-source_last_modified: '2026-05-08T00:33:23Z'
-source_etag: 'W/"83914035cd6ae5e709aeb213a34603ff"'
+source_last_modified: '2026-05-20T00:53:54Z'
+source_etag: 'W/"579665263d49645226fe8a65dea70820"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -104,23 +104,23 @@ Once Codex gives you a first pass, keep going until the explanation is specific 
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/iterate-on-difficult-problems.webp)
 
 ### Iterate on difficult problems
 
 Give Codex an evaluation system, such as scripts and reviewable artifacts, so it can keep...
 
-Engineering  Analysis](/codex/use-cases/iterate-on-difficult-problems)[![](/images/codex/codex-wallpaper-1.webp)
+Engineering  Analysis](/codex/use-cases/iterate-on-difficult-problems)[![](/codex/use-cases/dependency-incident-audits.webp)
+
+### Audit dependency incidents
+
+Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
+
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 
 Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-1.webp)
-
-### Create browser-based games
-
-Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
-
-Engineering  Code](/codex/use-cases/browser-games)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
 

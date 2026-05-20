@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_concept'
 source_url: 'https://developers.openai.com/codex/concepts/sandboxing'
-source_last_modified: '2026-05-12T01:59:52Z'
-source_etag: 'W/"b08a3e6b5a997235adebbc71f38fbc4b"'
+source_last_modified: '2026-05-20T00:54:21Z'
+source_etag: 'W/"525233ccfcca2141b594eb6814566647"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -192,15 +192,6 @@ If you need Codex to work across more than one directory, writable roots let
 you extend the places it can modify without removing the sandbox entirely. If
 you need a broader or narrower trust boundary, adjust the default sandbox mode
 and approval policy instead of relying on one-off exceptions.
-
-For reusable permission sets, set `default_permissions` to a named profile and
-define `[permissions.<name>.filesystem]` or `[permissions.<name>.network]`.
-Managed network profiles use map tables such as
-`[permissions.<name>.network.domains]` and
-`[permissions.<name>.network.unix_sockets]` for domain and socket rules.
-Filesystem profiles can also deny reads for exact paths or glob patterns by
-setting matching entries to `"none"`; use this to keep files such as local
-secrets unreadable without turning off workspace writes.
 
 When a workflow needs a specific exception, use [rules](/codex/rules). Rules
 let you allow, prompt, or forbid command prefixes outside the sandbox, which is

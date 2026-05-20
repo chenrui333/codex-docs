@@ -2,13 +2,13 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
-source_last_modified: '2026-05-08T00:37:29Z'
-source_etag: 'W/"bc0fc0f75a3712329b6c4b353af6ece6"'
+source_last_modified: '2026-05-20T00:58:26Z'
+source_etag: 'W/"81c93b51e4feb18f5d17cd93a92ac8b9"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
-# Codex code review for GitHub pull requests | Codex use cases
+# Review GitHub pull requests | Codex use cases
 
 Source: https://developers.openai.com/codex/use-cases/github-code-reviews
 
@@ -20,7 +20,7 @@ Codex use cases
 
 Codex use case
 
-# Codex code review for GitHub pull requests
+# Review GitHub pull requests
 
 Catch regressions and potential issues before human review.
 
@@ -100,19 +100,19 @@ Codex applies guidance from the closest `AGENTS.md` to each changed file. You ca
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/deploy-app-or-website.webp)
 
 ### Deploy an app or website
 
 Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
 
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/images/codex/codex-wallpaper-3.webp)
+Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/codex/use-cases/verified-operations-workflows.webp)
 
 ### Run verified operations
 
 Use Codex to normalize inputs, run approved scripts or APIs, retry bounded failures, and...
 
-Automation  Integrations](/codex/use-cases/verified-operations-workflows)[![](/images/codex/codex-wallpaper-3.webp)
+Automation  Integrations](/codex/use-cases/verified-operations-workflows)[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 

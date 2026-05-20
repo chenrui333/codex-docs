@@ -2,13 +2,13 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/productivity-and-collaboration'
-source_last_modified: '2026-04-25T06:29:08Z'
-source_etag: 'W/"9f313fbedfab7674aaecd71417e844e5"'
+source_last_modified: '2026-05-20T00:58:22Z'
+source_etag: 'W/"76aa22a0043d0961da9cb36c9b3d4dc6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
 
-# Productivity and collaboration – Codex | OpenAI Developers
+# Productivity & Collaboration – Codex | OpenAI Developers
 
 Source: https://developers.openai.com/codex/use-cases/collections/productivity-and-collaboration
 
@@ -19,7 +19,7 @@ The use cases in this collection cover common workflows when the work starts in 
 
 Ask Codex to turn a dense paper, spec, or technical guide into definitions, examples, and questions you can review.
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/learn-a-new-concept.webp)
 
 ### Learn a new concept
 
@@ -31,13 +31,13 @@ Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)
 
 Use Codex to gather approved inputs from multiple apps and prepare new workflows, or let it take control of your computer to complete tasks across multiple apps.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-1.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/use-your-computer-with-codex.webp)
 
 ### Use your computer with Codex
 
@@ -49,19 +49,19 @@ Knowledge Work  Workflow](/codex/use-cases/use-your-computer-with-codex)
 
 Have Codex check the sources you approve and return only the items that need attention: real asks, changed artifacts, blocked handoffs, reply drafts, and decisions.
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/proactive-teammate.webp)
 
 ### Set up a teammate
 
 Connect the tools where work happens, teach one thread what matters, then add an automation...
 
-Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/images/codex/codex-wallpaper-2.webp)
+Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/codex/use-cases/manage-your-inbox.webp)
 
 ### Manage your inbox
 
 Use Codex with Gmail to find emails that need attention, draft responses in your voice, pull...
 
-Automation  Integrations](/codex/use-cases/manage-your-inbox)[![](/images/codex/codex-wallpaper-1.webp)
+Automation  Integrations](/codex/use-cases/manage-your-inbox)[![](/codex/use-cases/complete-tasks-from-messages.webp)
 
 ### Complete tasks from messages
 
@@ -73,19 +73,19 @@ Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
 
 Use Codex to explore datasets or clean up spreadsheets, explore hypotheses, ask questions or create visualizations.
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/clean-messy-data.webp)
 
 ### Clean and prepare messy data
 
 Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
 
-Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/images/codex/codex-wallpaper-1.webp)
+Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/codex/use-cases/analyze-data-export.webp)
 
 ### Query tabular data
 
 Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or local data file to...
 
-Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/codex/use-cases/datasets-and-reports.webp)
 
 ### Analyze datasets and ship reports
 
@@ -97,13 +97,13 @@ Data  Analysis](/codex/use-cases/datasets-and-reports)
 
 Let Codex turn approved inputs into outputs you can share: slides, messages, and other artifacts ready for review.
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/feedback-synthesis.webp)
 
 ### Turn feedback into actions
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/generate-slide-decks.webp)
 
 ### Generate slide decks
 

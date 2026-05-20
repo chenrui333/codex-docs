@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/budget-vs-actuals-review'
-source_last_modified: '2026-05-08T00:49:52Z'
-source_etag: 'W/"fe55ee44a6f0e9ffb93c99b5796221f2"'
+source_last_modified: '2026-05-20T00:58:20Z'
+source_etag: 'W/"0f83b41ba28e1ca37c2de4f85dd85430"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -116,19 +116,19 @@ Fix safe formatting or formula issues, then list anything finance should resolve
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/cash-flow-forecast.webp)
 
 ### Forecast cash flow
 
 Give Codex cash-flow inputs and model constraints, then ask it to create an editable...
 
-Data  Knowledge Work](/codex/use-cases/cash-flow-forecast)[![](/images/codex/codex-wallpaper-1.webp)
+Data  Knowledge Work](/codex/use-cases/cash-flow-forecast)[![](/codex/use-cases/dcf-model.webp)
 
 ### Model a DCF valuation
 
 Attach historical financials, valuation assumptions, and modeling notes, then ask Codex for...
 
-Data  Knowledge Work](/codex/use-cases/dcf-model)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Knowledge Work](/codex/use-cases/dcf-model)[![](/codex/use-cases/clean-messy-data.webp)
 
 ### Clean and prepare messy data
 

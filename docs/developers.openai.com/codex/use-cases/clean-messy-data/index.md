@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/clean-messy-data'
-source_last_modified: '2026-04-30T17:51:37Z'
-source_etag: 'W/"a83dcce8283db1de37f1569c14130d47"'
+source_last_modified: '2026-05-20T00:58:21Z'
+source_etag: 'W/"29fa2009d73815b6fd8478f473ff6519"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -120,19 +120,19 @@ Use the starter prompt on this page for the first cleaning pass. Replace the fil
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/analyze-data-export.webp)
 
 ### Query tabular data
 
 Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or local data file to...
 
-Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/codex/use-cases/feedback-synthesis.webp)
 
 ### Turn feedback into actions
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 

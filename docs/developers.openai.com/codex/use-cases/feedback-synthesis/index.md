@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/feedback-synthesis'
-source_last_modified: '2026-04-25T06:52:27Z'
-source_etag: 'W/"d6f22bcc8d5467b17ac1bb490335fe77"'
+source_last_modified: '2026-05-20T00:58:25Z'
+source_etag: 'W/"2e8f56273ef724be4b0054763d04ed47"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -141,19 +141,19 @@ Only update me when there is a new theme, stronger evidence for an existing them
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-1.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/analyze-data-export.webp)
 
 ### Query tabular data
 
 Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or local data file to...
 
-Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/codex/use-cases/clean-messy-data.webp)
 
 ### Clean and prepare messy data
 

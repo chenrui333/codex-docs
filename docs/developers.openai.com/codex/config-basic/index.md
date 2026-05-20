@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-basic'
-source_last_modified: '2026-05-14T22:49:19Z'
-source_etag: 'W/"92679d650a9a728a13df314c2db49a64"'
+source_last_modified: '2026-05-20T00:58:08Z'
+source_etag: 'W/"bfc22ff305b8148b9aa1045abf98daa6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -83,13 +83,10 @@ For mode-by-mode behavior (including protected `.git`/`.codex` paths and network
 
 #### Permission profiles
 
-Use a named permission profile when you want one reusable filesystem or network policy across sessions:
-
-```
-default_permissions = ":workspace"
-```
-
-Built-in profiles include `:read-only`, `:workspace`, and `:danger-no-sandbox`. For custom filesystem or network rules, define `[permissions.<name>]` tables and set `default_permissions` to that name.
+Codex also supports named permission profiles for reusable filesystem and
+network policies. Built-in profiles are `:read-only`, `:workspace`, and
+`:danger-full-access`. Custom profiles use `[permissions.<name>]` tables and a
+matching `default_permissions` value. See [Permissions](/codex/permissions).
 
 #### Windows sandbox mode
 

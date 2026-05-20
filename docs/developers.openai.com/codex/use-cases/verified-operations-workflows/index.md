@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/verified-operations-workflows'
-source_last_modified: '2026-05-08T00:49:59Z'
-source_etag: 'W/"2e5a34f6c736c07877b477829cc5c72c"'
+source_last_modified: '2026-05-20T00:58:31Z'
+source_etag: 'W/"b7e0abb6d5cef754b027de4345c03202"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -136,19 +136,19 @@ For scheduled operations, use an automation only after the manual run produces r
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/manage-your-inbox.webp)
 
 ### Manage your inbox
 
 Use Codex with Gmail to find emails that need attention, draft responses in your voice, pull...
 
-Automation  Integrations](/codex/use-cases/manage-your-inbox)[![](/images/codex/codex-wallpaper-1.webp)
+Automation  Integrations](/codex/use-cases/manage-your-inbox)[![](/codex/use-cases/slack-action-triage.webp)
 
 ### Prioritize Slack action items
 
 Use Codex with Slack and the tools where work happens to find direct asks, implicit...
 
-Automation  Integrations](/codex/use-cases/slack-action-triage)[![](/images/codex/codex-wallpaper-1.webp)
+Automation  Integrations](/codex/use-cases/slack-action-triage)[![](/codex/use-cases/proactive-teammate.webp)
 
 ### Set up a teammate
 

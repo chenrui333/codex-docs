@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-18T21:47:38Z'
-source_etag: 'W/"3d0fa7181e506da678a6c058fa61be96"'
+source_last_modified: '2026-05-20T00:58:09Z'
+source_etag: 'W/"5cb20072a1b808cb9f2a939249036715"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -25,7 +25,7 @@ notification, profile, or telemetry routing keys. Codex ignores
 `otel` when they appear in a project-local `.codex/config.toml`; put those in
 user-level config instead.
 
-For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
+For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access). For beta permission profiles, see [Permissions](/codex/permissions).
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
 | `commit_attribution` | `string` | Commit co-author trailer used when `[features].codex_git_commit` is enabled. Defaults to `Codex <noreply@openai.com>`; set `""` to disable. |
 | `compact_prompt` | `string` | Inline override for the history compaction prompt. |
-| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables. |
+| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables. |
 | `developer_instructions` | `string` | Additional developer instructions injected into the session (optional). |
 | `disable_paste_burst` | `boolean` | Disable burst-paste detection in the TUI. |
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
@@ -200,21 +200,26 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `otel.trace_exporter.<id>.tls.ca-certificate` | `string` | CA certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-certificate` | `string` | Client certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-private-key` | `string` | Client private key path for OTEL trace exporter TLS. |
-| `permissions.<name>.filesystem` | `table` | Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`. |
-| `permissions.<name>.filesystem.":project_roots".<subpath-or-glob>` | `"read" | "write" | "none"` | Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`. |
-| `permissions.<name>.filesystem.<path-or-glob>` | `"read" | "write" | "none" | table` | Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths. |
+| `permissions.<name>.filesystem` | `table` | Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:workspace_roots`. |
+| `permissions.<name>.filesystem.":workspace_roots".<subpath-or-glob>` | `"read" | "write" | "deny"` | Scoped filesystem access relative to each effective workspace root. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"deny"`. |
+| `permissions.<name>.filesystem.<path-or-glob>` | `"read" | "write" | "deny" | table` | Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"deny"` to deny reads for matching paths. |
 | `permissions.<name>.filesystem.glob_scan_max_depth` | `number` | Maximum depth for expanding deny-read glob patterns on platforms that snapshot matches before sandbox startup. Must be at least `1` when set. |
 | `permissions.<name>.network.allow_local_binding` | `boolean` | Permit broader local/private-network access through sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`. |
 | `permissions.<name>.network.allow_upstream_proxy` | `boolean` | Allow sandboxed networking to chain through another upstream proxy. |
 | `permissions.<name>.network.dangerously_allow_all_unix_sockets` | `boolean` | Allow arbitrary Unix socket destinations instead of the default restricted set. Use only in tightly controlled environments. |
 | `permissions.<name>.network.dangerously_allow_non_loopback_proxy` | `boolean` | Permit non-loopback bind addresses for sandboxed networking listeners. Enabling it can expose listeners beyond localhost. |
-| `permissions.<name>.network.domains` | `map<string, allow | deny>` | Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts. |
+| `permissions.<name>.network.domains` | `table` | Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts. |
+| `permissions.<name>.network.domains.<pattern>` | `allow | deny` | Allow or deny an exact host or scoped wildcard pattern such as `*.example.com` or `**.example.com`. |
 | `permissions.<name>.network.enable_socks5` | `boolean` | Expose SOCKS5 support when this permissions profile enables sandboxed networking. |
 | `permissions.<name>.network.enable_socks5_udp` | `boolean` | Allow UDP over the SOCKS5 listener when enabled. |
-| `permissions.<name>.network.enabled` | `boolean` | Enable network access for this named permissions profile. |
+| `permissions.<name>.network.enabled` | `boolean` | Enable network access for this named permissions profile. This changes the sandbox network policy; it does not start the network proxy by itself. |
+| `permissions.<name>.network.mode` | `limited | full` | Network proxy mode used for subprocess traffic. |
 | `permissions.<name>.network.proxy_url` | `string` | HTTP listener URL used when this permissions profile enables sandboxed networking. |
 | `permissions.<name>.network.socks_url` | `string` | SOCKS5 proxy endpoint used by this permissions profile. |
-| `permissions.<name>.network.unix_sockets` | `map<string, allow | none>` | Unix socket rules for sandboxed networking. Use socket paths as keys, with `allow` or `none` values. |
+| `permissions.<name>.network.unix_sockets` | `table` | Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `none` clears an inherited allow entry. |
+| `permissions.<name>.network.unix_sockets.<path>` | `allow | none` | Add an absolute Unix socket path to the effective allowlist with `allow`, or clear an inherited allow entry with `none`. `none` is not a separate deny-list decision. |
+| `permissions.<name>.workspace_roots` | `table` | Profile-defined workspace roots that receive `:workspace_roots` filesystem rules alongside the session's runtime workspace roots. |
+| `permissions.<name>.workspace_roots.<path>` | `boolean` | Opt a path into the profile's workspace root set when `true`. Disabled entries remain inactive. |
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
 | `plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in preset default. |
 | `plugins.<plugin>.mcp_servers.<server>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for tools on a plugin-provided MCP server. |
@@ -677,7 +682,7 @@ Type / Values
 
 Details
 
-Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-no-sandbox`; custom profile names require matching `[permissions.<name>]` tables.
+Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables.
 
 Key
 
@@ -2345,19 +2350,19 @@ Type / Values
 
 Details
 
-Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`.
+Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:workspace_roots`.
 
 Key
 
-`permissions.<name>.filesystem.":project_roots".<subpath-or-glob>`
+`permissions.<name>.filesystem.":workspace_roots".<subpath-or-glob>`
 
 Type / Values
 
-`"read" | "write" | "none"`
+`"read" | "write" | "deny"`
 
 Details
 
-Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`.
+Scoped filesystem access relative to each effective workspace root. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"deny"`.
 
 Key
 
@@ -2365,11 +2370,11 @@ Key
 
 Type / Values
 
-`"read" | "write" | "none" | table`
+`"read" | "write" | "deny" | table`
 
 Details
 
-Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths.
+Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"deny"` to deny reads for matching paths.
 
 Key
 
@@ -2437,11 +2442,23 @@ Key
 
 Type / Values
 
-`map<string, allow | deny>`
+`table`
 
 Details
 
 Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts.
+
+Key
+
+`permissions.<name>.network.domains.<pattern>`
+
+Type / Values
+
+`allow | deny`
+
+Details
+
+Allow or deny an exact host or scoped wildcard pattern such as `*.example.com` or `**.example.com`.
 
 Key
 
@@ -2477,7 +2494,19 @@ Type / Values
 
 Details
 
-Enable network access for this named permissions profile.
+Enable network access for this named permissions profile. This changes the sandbox network policy; it does not start the network proxy by itself.
+
+Key
+
+`permissions.<name>.network.mode`
+
+Type / Values
+
+`limited | full`
+
+Details
+
+Network proxy mode used for subprocess traffic.
 
 Key
 
@@ -2509,11 +2538,47 @@ Key
 
 Type / Values
 
-`map<string, allow | none>`
+`table`
 
 Details
 
-Unix socket rules for sandboxed networking. Use socket paths as keys, with `allow` or `none` values.
+Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `none` clears an inherited allow entry.
+
+Key
+
+`permissions.<name>.network.unix_sockets.<path>`
+
+Type / Values
+
+`allow | none`
+
+Details
+
+Add an absolute Unix socket path to the effective allowlist with `allow`, or clear an inherited allow entry with `none`. `none` is not a separate deny-list decision.
+
+Key
+
+`permissions.<name>.workspace_roots`
+
+Type / Values
+
+`table`
+
+Details
+
+Profile-defined workspace roots that receive `:workspace_roots` filesystem rules alongside the session's runtime workspace roots.
+
+Key
+
+`permissions.<name>.workspace_roots.<path>`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Opt a path into the profile's workspace root set when `true`. Disabled entries remain inactive.
 
 Key
 

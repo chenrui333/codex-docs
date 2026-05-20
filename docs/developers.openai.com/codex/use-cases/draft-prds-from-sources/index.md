@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/draft-prds-from-sources'
-source_last_modified: '2026-05-08T00:29:26Z'
-source_etag: 'W/"0f9c2d65886a5ef7af6a461046bf92c5"'
+source_last_modified: '2026-05-20T00:58:24Z'
+source_etag: 'W/"98d8fa773c0f3fbe3d029f120599019e"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -135,23 +135,23 @@ Keep the source appendix linked and easy to audit.
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/meeting-prep-briefs.webp)
 
-### Turn feedback into actions
+### Prepare meeting briefs
 
-Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
+Use Codex with Calendar, Drive, Slack, and Gmail to gather approved sources before a...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-1.webp)
+Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)[![](/codex/use-cases/event-launch-playbooks.webp)
 
-### Complete tasks from messages
+### Run event playbooks
 
-Use Computer Use to read one Messages thread, complete the task, and draft a reply.
+Use Codex with Slack, Google Drive, and Calendar to gather planning context, draft...
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
+Integrations  Knowledge Work](/codex/use-cases/event-launch-playbooks)
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ai-app-evals'
-source_last_modified: '2026-05-08T00:35:28Z'
-source_etag: 'W/"0081d7f878762df90f49d0b3d74e588b"'
+source_last_modified: '2026-05-20T00:58:19Z'
+source_etag: 'W/"65019a0d160c342c558c3007cd130234"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -161,23 +161,23 @@ After the first run, use the suite to compare app changes before they ship. Add 
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/api-integration-migrations.webp)
 
 ### Upgrade your API integration
 
 Use Codex to update your existing OpenAI API integration to the latest recommended models...
 
-Evaluation  Engineering](/codex/use-cases/api-integration-migrations)[![](/images/codex/codex-wallpaper-2.webp)
+Evaluation  Engineering](/codex/use-cases/api-integration-migrations)[![](/codex/use-cases/dependency-incident-audits.webp)
+
+### Audit dependency incidents
+
+Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
+
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/agent-friendly-clis.webp)
 
 ### Create a CLI Codex can use
 
 Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
 
-Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/images/codex/codex-wallpaper-3.webp)
-
-### Follow a goal
-
-Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
-
-Engineering  Automation](/codex/use-cases/follow-goals)
+Engineering  Code](/codex/use-cases/agent-friendly-clis)
 

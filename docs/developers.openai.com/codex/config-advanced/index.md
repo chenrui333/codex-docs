@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-advanced'
-source_last_modified: '2026-05-18T18:35:49Z'
-source_etag: 'W/"49d27c4544cf3c5b2081cfa3b3d047c4"'
+source_last_modified: '2026-05-20T00:58:08Z'
+source_etag: 'W/"0ca56f22a8014a5d52907918d7fa310e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -280,6 +280,8 @@ Pick approval strictness (affects when Codex pauses) and sandbox level (affects 
 
 For operational details to keep in mind while editing `config.toml`, see [Common sandbox and approval combinations](/codex/agent-approvals-security#common-sandbox-and-approval-combinations), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access).
 
+For beta permission profiles that configure filesystem and network access together, see [Permissions](/codex/permissions).
+
 You can also use a granular approval policy (`approval_policy = { granular = { ... } }`) to allow or auto-reject individual prompt categories. This is useful when you want normal interactive approvals for some cases but want others, such as `request_permissions` or skill-script prompts, to fail closed automatically.
 
 Set `approvals_reviewer = "auto_review"` to route eligible interactive approval
@@ -318,35 +320,12 @@ Use your organization's automatic review policy.
 
 ### Named permission profiles
 
-Set `default_permissions` to reuse a sandbox profile by name. Codex includes
-the built-in profiles `:read-only`, `:workspace`, and `:danger-no-sandbox`:
+For built-in profiles, custom profile syntax, and the full filesystem and
+network configuration model, see [Permissions](/codex/permissions).
 
-```
-default_permissions = ":workspace"
-```
-
-For custom profiles, point `default_permissions` at a name you define under
-`[permissions.<name>]`:
-
-```
-default_permissions = "workspace"
-
-[permissions.workspace.filesystem]
-":project_roots" = { "." = "write", "**/*.env" = "none" }
-glob_scan_max_depth = 3
-
-[permissions.workspace.network]
-enabled = true
-mode = "limited"
-
-[permissions.workspace.network.domains]
-"api.openai.com" = "allow"
-```
-
-Use built-in names with a leading colon. Custom names don’t use a leading
-colon and must have matching `permissions` tables.
-
-Need the complete key list (including profile-scoped overrides and requirements constraints)? See [Configuration Reference](/codex/config-reference) and [Managed configuration](/codex/enterprise/managed-configuration).
+For the complete key list, including profile-scoped overrides and requirements
+constraints, see [Configuration Reference](/codex/config-reference) and
+[Managed configuration](/codex/enterprise/managed-configuration).
 
 In workspace-write mode, some environments keep `.git/` and `.codex/`
 read-only even when the rest of the workspace is writable. This is why

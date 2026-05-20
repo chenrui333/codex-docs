@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/production-systems'
-source_last_modified: '2026-05-08T00:34:59Z'
-source_etag: 'W/"53ee5dafa40f56c8f81c618e17ab59ed"'
+source_last_modified: '2026-05-20T00:58:22Z'
+source_etag: 'W/"649d10e3197cb07c49789fa4b502a872"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -20,7 +20,7 @@ If you’re working on a production system, get familiar with these use cases to
 
 Use Codex to get familiar with a complex codebase, which is especially useful when onboarding onto a repo for production software.
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/codebase-onboarding.webp)
 
 ### Understand large codebases
 
@@ -32,19 +32,19 @@ Engineering  Analysis](/codex/use-cases/codebase-onboarding)
 
 Leverage Codex to plan tech stack migrations, upgrade your integration to the latest models if applicable, and refactor the codebase to improve readability and maintainability.
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/api-integration-migrations.webp)
 
 ### Upgrade your API integration
 
 Use Codex to update your existing OpenAI API integration to the latest recommended models...
 
-Evaluation  Engineering](/codex/use-cases/api-integration-migrations)[![](/images/codex/codex-wallpaper-2.webp)
+Evaluation  Engineering](/codex/use-cases/api-integration-migrations)[![](/codex/use-cases/refactor-your-codebase.webp)
 
 ### Refactor your codebase
 
 Use Codex to remove dead code, untangle large files, collapse duplicated logic, and...
 
-Engineering  Code](/codex/use-cases/refactor-your-codebase)[![](/images/codex/codex-wallpaper-2.webp)
+Engineering  Code](/codex/use-cases/refactor-your-codebase)[![](/codex/use-cases/code-migrations.webp)
 
 ### Run code migrations
 
@@ -56,7 +56,7 @@ Engineering  Code](/codex/use-cases/code-migrations)
 
 Ask Codex to turn repo-specific workflows or checklists into a skill, so that all repo contributors can benefit from a standardized process.
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/reusable-codex-skills.webp)
 
 ### Save workflows as skills
 
@@ -68,7 +68,7 @@ Engineering  Workflow](/codex/use-cases/reusable-codex-skills)
 
 Ask Codex to compare source changes with existing docs, update the smallest useful docs surface, and verify the changes.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/update-documentation.webp)
 
 ### Keep documentation up-to-date
 
@@ -80,13 +80,13 @@ Engineering  Code](/codex/use-cases/update-documentation)
 
 Let Codex pick up feature requests and bug fixes automatically by using it from Slack and connecting it to your alerting, issue tracking, and daily bug sweeps.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/slack-coding-tasks.webp)
 
 ### Kick off coding tasks from Slack
 
 Mention `@Codex` in Slack to start a task tied to the right repo and environment, then...
 
-Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Workflow](/codex/use-cases/slack-coding-tasks)[![](/codex/use-cases/automation-bug-triage.webp)
 
 ### Automate bug triage
 
@@ -98,13 +98,13 @@ Automation  Quality](/codex/use-cases/automation-bug-triage)
 
 Use Codex to automatically review PRs and run focused QA passes on critical flows, so you can catch issues quickly and ship updates confidently.
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/github-code-reviews.webp)
 
-### Codex code review for GitHub pull requests
+### Review GitHub pull requests
 
 Use Codex code review in GitHub to automatically surface regressions, missing tests, and...
 
-Integrations  Workflow](/codex/use-cases/github-code-reviews)[![](/images/codex/codex-wallpaper-1.webp)
+Integrations  Workflow](/codex/use-cases/github-code-reviews)[![](/codex/use-cases/qa-your-app-with-computer-use.webp)
 
 ### QA your app with Computer Use
 

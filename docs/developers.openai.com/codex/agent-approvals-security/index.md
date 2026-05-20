@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/agent-approvals-security'
-source_last_modified: '2026-05-18T21:45:36Z'
-source_etag: 'W/"b02fd58491bfdbaeb62e75577ff06de3"'
+source_last_modified: '2026-05-20T00:53:33Z'
+source_etag: 'W/"98fc6a51680704560ddb1bb5798d4582"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -191,26 +191,6 @@ In the default `workspace-write` sandbox policy, writable roots still include pr
 - `<writable_root>/.agents` is protected as read-only when it exists as a directory.
 - `<writable_root>/.codex` is protected as read-only when it exists as a directory.
 - Protection is recursive, so everything under those paths is read-only.
-
-### Deny reads with filesystem profiles
-
-Named permission profiles can also deny reads for exact paths or glob patterns.
-This is useful when a workspace should stay writable but specific sensitive
-files, such as local environment files, must stay unreadable:
-
-```
-default_permissions = "workspace"
-
-[permissions.workspace.filesystem]
-":project_roots" = { "." = "write", "**/*.env" = "none" }
-glob_scan_max_depth = 3
-```
-
-Use `"none"` for paths or globs that Codex shouldn’t read. The sandbox policy
-evaluates globs for local macOS and Linux command execution. On platforms that
-pre-expand glob matches before the sandbox starts, set `glob_scan_max_depth` for
-unbounded `**` patterns, or list explicit depths such as `*.env`, `*/*.env`, and
-`*/*/*.env`.
 
 ### Run without approval prompts
 

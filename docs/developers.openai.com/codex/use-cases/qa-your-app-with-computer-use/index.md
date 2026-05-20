@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
-source_last_modified: '2026-05-08T00:33:20Z'
-source_etag: 'W/"e29cc56aa78beb9c0186d63413bd08d8"'
+source_last_modified: '2026-05-20T00:56:27Z'
+source_etag: 'W/"3d0c16df844f0008557b9739a50d9a5e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -143,19 +143,19 @@ Keep going past non-blocking issues and end with a short triage summary.
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-3.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/automation-bug-triage.webp)
 
 ### Automate bug triage
 
 Ask Codex to check recent alerts, issues, failed checks, logs, and chat reports, tune the...
 
-Automation  Quality](/codex/use-cases/automation-bug-triage)[![](/images/codex/codex-wallpaper-3.webp)
+Automation  Quality](/codex/use-cases/automation-bug-triage)[![](/codex/use-cases/follow-goals.webp)
 
 ### Follow a goal
 

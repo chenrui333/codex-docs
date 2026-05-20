@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-coding-tasks'
-source_last_modified: '2026-05-08T00:38:22Z'
-source_etag: 'W/"8913fe7d7be5318de428fd53e68c0ca8"'
+source_last_modified: '2026-05-20T00:53:38Z'
+source_etag: 'W/"6f31a796646a7e1496b750239bfc8f20"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -79,19 +79,19 @@ You can learn more about how to use Codex in Slack in the [dedicated guide](/cod
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/complete-tasks-from-messages.webp)
 
 ### Complete tasks from messages
 
 Use Computer Use to read one Messages thread, complete the task, and draft a reply.
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/images/codex/codex-wallpaper-2.webp)
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
 
 ### Draft PRDs from internal context
 

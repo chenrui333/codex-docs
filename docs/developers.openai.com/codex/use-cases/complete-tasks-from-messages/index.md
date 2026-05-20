@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
-source_last_modified: '2026-05-08T00:33:07Z'
-source_etag: 'W/"ceab29c56427f72baf36578d03e5c60b"'
+source_last_modified: '2026-05-20T00:53:38Z'
+source_etag: 'W/"7218a0ee7e9a3967a0a8534a786ef571"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -122,19 +122,19 @@ Pause before anything irreversible, such as placing an order or confirming a boo
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
 
 ### Draft PRDs from internal context
 
 Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
 
-Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/generate-slide-decks.webp)
 
 ### Generate slide decks
 

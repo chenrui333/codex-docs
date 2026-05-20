@@ -104,7 +104,6 @@
       "https://developers.openai.com/codex/app/windows",
       "https://developers.openai.com/codex/app/worktrees",
       "https://developers.openai.com/codex/auth",
-      "https://developers.openai.com/codex/auth/ci-cd-auth",
       "https://developers.openai.com/codex/changelog",
       "https://developers.openai.com/codex/cli",
       "https://developers.openai.com/codex/cli/features",
@@ -113,8 +112,6 @@
       "https://developers.openai.com/codex/cloud",
       "https://developers.openai.com/codex/cloud/environments",
       "https://developers.openai.com/codex/cloud/internet-access",
-      "https://developers.openai.com/codex/codex-for-oss-terms",
-      "https://developers.openai.com/codex/codex-manual",
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/sandboxing",
@@ -151,6 +148,7 @@
       "https://developers.openai.com/codex/models",
       "https://developers.openai.com/codex/noninteractive",
       "https://developers.openai.com/codex/open-source",
+      "https://developers.openai.com/codex/permissions",
       "https://developers.openai.com/codex/plugins",
       "https://developers.openai.com/codex/plugins/build",
       "https://developers.openai.com/codex/pricing",
@@ -193,8 +191,10 @@
       "https://developers.openai.com/codex/use-cases/complete-tasks-from-messages",
       "https://developers.openai.com/codex/use-cases/datasets-and-reports",
       "https://developers.openai.com/codex/use-cases/dcf-model",
+      "https://developers.openai.com/codex/use-cases/dependency-incident-audits",
       "https://developers.openai.com/codex/use-cases/deploy-app-or-website",
       "https://developers.openai.com/codex/use-cases/draft-prds-from-sources",
+      "https://developers.openai.com/codex/use-cases/event-launch-playbooks",
       "https://developers.openai.com/codex/use-cases/feedback-synthesis",
       "https://developers.openai.com/codex/use-cases/figma-designs-to-code",
       "https://developers.openai.com/codex/use-cases/follow-goals",
@@ -212,6 +212,7 @@
       "https://developers.openai.com/codex/use-cases/macos-telemetry-logs",
       "https://developers.openai.com/codex/use-cases/make-granular-ui-changes",
       "https://developers.openai.com/codex/use-cases/manage-your-inbox",
+      "https://developers.openai.com/codex/use-cases/meeting-prep-briefs",
       "https://developers.openai.com/codex/use-cases/native-ios-apps",
       "https://developers.openai.com/codex/use-cases/native-macos-apps",
       "https://developers.openai.com/codex/use-cases/new-hire-onboarding",
@@ -227,6 +228,7 @@
       "https://developers.openai.com/codex/use-cases/use-your-computer-with-codex",
       "https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks",
       "https://developers.openai.com/codex/use-cases/verified-operations-workflows",
+      "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups",
       "https://developers.openai.com/codex/videos",
       "https://developers.openai.com/codex/windows",
       "https://developers.openai.com/codex/workflows",
@@ -260,8 +262,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 176,
-      "mirrored_urls": 160,
+      "codex_related_urls": 178,
+      "mirrored_urls": 162,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -286,7 +288,6 @@
       "https://developers.openai.com/codex/app/windows",
       "https://developers.openai.com/codex/app/worktrees",
       "https://developers.openai.com/codex/auth",
-      "https://developers.openai.com/codex/auth/ci-cd-auth",
       "https://developers.openai.com/codex/changelog",
       "https://developers.openai.com/codex/cli",
       "https://developers.openai.com/codex/cli/features",
@@ -295,8 +296,6 @@
       "https://developers.openai.com/codex/cloud",
       "https://developers.openai.com/codex/cloud/environments",
       "https://developers.openai.com/codex/cloud/internet-access",
-      "https://developers.openai.com/codex/codex-for-oss-terms",
-      "https://developers.openai.com/codex/codex-manual",
       "https://developers.openai.com/codex/concepts/customization",
       "https://developers.openai.com/codex/concepts/cyber-safety",
       "https://developers.openai.com/codex/concepts/sandboxing",
@@ -333,6 +332,7 @@
       "https://developers.openai.com/codex/models",
       "https://developers.openai.com/codex/noninteractive",
       "https://developers.openai.com/codex/open-source",
+      "https://developers.openai.com/codex/permissions",
       "https://developers.openai.com/codex/plugins",
       "https://developers.openai.com/codex/plugins/build",
       "https://developers.openai.com/codex/pricing",
@@ -375,8 +375,10 @@
       "https://developers.openai.com/codex/use-cases/complete-tasks-from-messages",
       "https://developers.openai.com/codex/use-cases/datasets-and-reports",
       "https://developers.openai.com/codex/use-cases/dcf-model",
+      "https://developers.openai.com/codex/use-cases/dependency-incident-audits",
       "https://developers.openai.com/codex/use-cases/deploy-app-or-website",
       "https://developers.openai.com/codex/use-cases/draft-prds-from-sources",
+      "https://developers.openai.com/codex/use-cases/event-launch-playbooks",
       "https://developers.openai.com/codex/use-cases/feedback-synthesis",
       "https://developers.openai.com/codex/use-cases/figma-designs-to-code",
       "https://developers.openai.com/codex/use-cases/follow-goals",
@@ -394,6 +396,7 @@
       "https://developers.openai.com/codex/use-cases/macos-telemetry-logs",
       "https://developers.openai.com/codex/use-cases/make-granular-ui-changes",
       "https://developers.openai.com/codex/use-cases/manage-your-inbox",
+      "https://developers.openai.com/codex/use-cases/meeting-prep-briefs",
       "https://developers.openai.com/codex/use-cases/native-ios-apps",
       "https://developers.openai.com/codex/use-cases/native-macos-apps",
       "https://developers.openai.com/codex/use-cases/new-hire-onboarding",
@@ -409,6 +412,7 @@
       "https://developers.openai.com/codex/use-cases/use-your-computer-with-codex",
       "https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks",
       "https://developers.openai.com/codex/use-cases/verified-operations-workflows",
+      "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups",
       "https://developers.openai.com/codex/videos",
       "https://developers.openai.com/codex/windows",
       "https://developers.openai.com/codex/workflows",
@@ -430,8 +434,20 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/permissions",
+      "https://developers.openai.com/codex/use-cases/dependency-incident-audits",
+      "https://developers.openai.com/codex/use-cases/event-launch-playbooks",
+      "https://developers.openai.com/codex/use-cases/meeting-prep-briefs",
+      "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/permissions",
+      "https://developers.openai.com/codex/use-cases/dependency-incident-audits",
+      "https://developers.openai.com/codex/use-cases/event-launch-playbooks",
+      "https://developers.openai.com/codex/use-cases/meeting-prep-briefs",
+      "https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -551,7 +567,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-05-19T18:42:59+00:00",
+  "generated_at": "2026-05-20T00:58:01+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -615,8 +631,7 @@
     ],
     "references_by_url": {
       "https://platform.openai.com/docs/guides/tools-web-search": [
-        "developers.openai.com/codex/agent-approvals-security/index.md",
-        "developers.openai.com/codex/codex-manual/index.md"
+        "developers.openai.com/codex/agent-approvals-security/index.md"
       ]
     },
     "source_errors": [],

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks'
-source_last_modified: '2026-05-08T00:49:59Z'
-source_etag: 'W/"e5478b5f679bfcc14be60dff29d126f4"'
+source_last_modified: '2026-05-20T00:58:31Z'
+source_etag: 'W/"91091fc3ed385c5c5ac487540ddf100f"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -129,19 +129,19 @@ Use this image as a reference and implement in this repository this feature. Use
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/generate-slide-decks.webp)
 
 ### Generate slide decks
 
 Use Codex to update existing presentations or build new decks by editing slides directly...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
 
 ### Draft PRDs from internal context
 

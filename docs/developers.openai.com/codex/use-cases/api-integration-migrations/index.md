@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/api-integration-migrations'
-source_last_modified: '2026-05-08T00:47:42Z'
-source_etag: 'W/"9cf0e606e971f5643c3a77834ec4e2a0"'
+source_last_modified: '2026-05-20T00:58:20Z'
+source_etag: 'W/"2b571e3ec893e894e4e8f89fc5802295"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -115,19 +115,19 @@ This [cookbook guide](/cookbook/examples/evaluation/building_resilient_prompts_u
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-2.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/macos-telemetry-logs.webp)
 
 ### Add Mac telemetry
 
 Use Codex and the Build macOS Apps plugin to add a few high-signal `Logger` events around...
 
-macOS  Code](/codex/use-cases/macos-telemetry-logs)[![](/images/codex/codex-wallpaper-1.webp)
+macOS  Code](/codex/use-cases/macos-telemetry-logs)[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 

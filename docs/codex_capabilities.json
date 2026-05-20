@@ -189,8 +189,7 @@
       "mirrored_path": "platform.openai.com/docs/guides/tools-web-search/index.md",
       "name": "web_search",
       "referenced_from": [
-        "developers.openai.com/codex/agent-approvals-security/index.md",
-        "developers.openai.com/codex/codex-manual/index.md"
+        "developers.openai.com/codex/agent-approvals-security/index.md"
       ],
       "source_area": "tool_guide_web_search",
       "source_etag": "W/\"c949ffebf2a8619dfde1bde5718b9407\"",

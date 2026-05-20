@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/analyze-data-export'
-source_last_modified: '2026-04-30T17:59:11Z'
-source_etag: 'W/"7514da513a53b6efb789b36e6044ef5f"'
+source_last_modified: '2026-05-20T00:58:20Z'
+source_etag: 'W/"8ffcbf33647620ad86fbca9ca8ebb0cf"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -116,19 +116,19 @@ You can keep going in the same thread: clean a column, exclude a test segment, c
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/feedback-synthesis.webp)
 
 ### Turn feedback into actions
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/clean-messy-data.webp)
 
 ### Clean and prepare messy data
 
 Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
 
-Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/images/codex/codex-wallpaper-2.webp)
+Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 

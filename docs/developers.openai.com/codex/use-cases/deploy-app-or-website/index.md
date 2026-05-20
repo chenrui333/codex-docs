@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deploy-app-or-website'
-source_last_modified: '2026-05-08T00:49:54Z'
-source_etag: 'W/"376d13d21558bb88ef37e93ff780e0c1"'
+source_last_modified: '2026-05-20T00:58:24Z'
+source_etag: 'W/"98309c56ef656383cfe74b368e716ca6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -129,19 +129,19 @@ Good follow-ups are specific:
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/chatgpt-apps.webp)
 
 ### Bring your app to ChatGPT
 
 Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
 
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/codex/use-cases/follow-goals.webp)
 
 ### Follow a goal
 
 Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-Engineering  Automation](/codex/use-cases/follow-goals)[![](/images/codex/codex-wallpaper-2.webp)
+Engineering  Automation](/codex/use-cases/follow-goals)[![](/codex/use-cases/idea-to-proof-of-concept.webp)
 
 ### Get from idea to proof of concept
 

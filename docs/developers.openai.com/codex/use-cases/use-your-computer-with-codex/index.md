@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/use-your-computer-with-codex'
-source_last_modified: '2026-05-06T13:55:43Z'
-source_etag: 'W/"17e5e7113cd9291f012a2bcf01ce1eb8"'
+source_last_modified: '2026-05-20T00:58:31Z'
+source_etag: 'W/"28597640088147013a40dfa22f7b752a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -123,19 +123,19 @@ For example:
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/clean-messy-data.webp)
 
 ### Clean and prepare messy data
 
 Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
 
-Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/images/codex/codex-wallpaper-1.webp)
+Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/codex/use-cases/complete-tasks-from-messages.webp)
 
 ### Complete tasks from messages
 
 Use Computer Use to read one Messages thread, complete the task, and draft a reply.
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/images/codex/codex-wallpaper-2.webp)
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 

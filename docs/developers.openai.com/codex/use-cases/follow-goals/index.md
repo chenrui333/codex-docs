@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-05-08T00:29:07Z'
-source_etag: 'W/"90cfdf7a11bf41afb79b6cc3d5d7aef5"'
+source_last_modified: '2026-05-20T00:58:25Z'
+source_etag: 'W/"265e9dc54f4a16fa1a93feb4893dc48c"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -62,17 +62,23 @@ Related links
 
 /goal Complete [objective] without stopping until [verifiable end state].
 
+[Open in the Codex app](codex://new?prompt=%2Fgoal+Complete+%5Bobjective%5D+without+stopping+until+%5Bverifiable+end+state%5D. "Open in the Codex app")
+
 /goal Complete [objective] without stopping until [verifiable end state].
 
 ## Introduction
 
-Use `/goal` when you want Codex to keep working toward one durable objective instead of stopping after one normal turn. It is useful for work that has a clear target, a validation loop, and enough room for Codex to make progress without asking you to steer every step. When you use `/goal`, Codex can work independently for multiple hours without needing your input.
+Use `/goal` when you want Codex to keep working toward one durable objective instead of stopping after one normal turn. It’s useful for work that has a clear target, a validation loop, and enough room for Codex to make progress without asking you to steer every step. When you use `/goal`, Codex can work independently for multiple hours without needing your input.
 
 `/goal` is an experimental Codex CLI feature. Enable it from `/experimental`, or add `goals = true` under `[features]` in `config.toml`. Then set a goal with `/goal <objective>`, check the current goal with `/goal`, and use `/goal pause`, `/goal resume`, or `/goal clear` when you need to control the run.
 
+Goals are in preview and are not yet fully supported in the Codex app, but you
+can still run goals from the app. Consider the behavior in the app
+experimental.
+
 ## Choose the right work
 
-A good goal is bigger than one prompt but smaller than an open-ended backlog. It should define what Codex should achieve, what it should not change, how it should validate progress, and when it should stop.
+A good goal is bigger than one prompt but smaller than an open-ended backlog. It should define what Codex should achieve, what it shouldn’t change, how it should validate progress, and when it should stop.
 
 This works well for:
 
@@ -98,10 +104,10 @@ build, then ask it to directly set a goal and start working.
 
 ## Let Codex work independently
 
-During a goal, ask for compact progress reports that make the run easy to trust. A useful status update names the current checkpoint, what was verified, what remains, and whether Codex is blocked.
-If the status becomes vague, tighten the goal rather than adding more ad hoc instructions. Tell Codex exactly which checkpoint matters next, which command proves it, and what should cause it to pause.
+During a goal, ask for compact progress reports that make the run easier to trust. A useful status update names the current checkpoint, what was verified, what remains, and whether Codex is blocked.
+If the status becomes vague, tighten the goal rather than adding more one-off instructions. Tell Codex exactly which checkpoint matters next, which command proves it, and what should cause it to pause.
 
-When Codex follows a goal, it can work independently for many hours without you having to check in. It will stop running when it is fairly confident it has reached the stopping condition, so you should think of `/goal` as a background task you don’t need to monitor.
+When Codex follows a goal, it can work independently for many hours without you having to check in. It will stop running when it’s confident it has reached the stopping condition, so you should think of `/goal` as a background task you don’t need to monitor.
 
 ## Example goals
 
@@ -125,19 +131,19 @@ When you have an eval suite, you can use `/goal` to optimize prompts against the
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-3.webp)
+[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/images/codex/codex-wallpaper-1.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 
 Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/images/codex/codex-wallpaper-2.webp)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/codex/use-cases/agent-friendly-clis.webp)
 
 ### Create a CLI Codex can use
 

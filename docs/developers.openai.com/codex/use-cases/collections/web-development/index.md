@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/web-development'
-source_last_modified: '2026-05-08T00:44:26Z'
-source_etag: 'W/"0499ba94d5a38848c8a28e11ed0d76bd"'
+source_last_modified: '2026-05-20T00:58:23Z'
+source_etag: 'W/"c531c3abfcae53ede873b26d89400518"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -19,7 +19,7 @@ These use cases are helpful when you are building web apps and need to iterate o
 
 Use Codex to turn a rough idea into a visual direction and implement a first prototype.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/idea-to-proof-of-concept.webp)
 
 ### Get from idea to proof of concept
 
@@ -31,7 +31,7 @@ Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)
 
 Use Codex to pull design context from Figma and turn it into code that follows the repo’s components, styling, and design system.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/figma-designs-to-code.webp)
 
 ### Turn Figma designs into code
 
@@ -43,13 +43,13 @@ Front-end  Design](/codex/use-cases/figma-designs-to-code)
 
 Leverage Codex to make targeted changes from visual inputs or prompts, and have it verify its work in the browser.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/frontend-designs.webp)
 
 ### Build responsive front-end designs
 
 Use Codex to translate screenshots and design briefs into code that matches the repo's...
 
-Front-end  Design](/codex/use-cases/frontend-designs)[![](/images/codex/codex-wallpaper-1.webp)
+Front-end  Design](/codex/use-cases/frontend-designs)[![](/codex/use-cases/make-granular-ui-changes.webp)
 
 ### Make granular UI changes
 
@@ -61,7 +61,7 @@ Front-end  Design](/codex/use-cases/make-granular-ui-changes)
 
 Tag Codex in Slack when there’s a feature request or a reported issue, so that it can pick up the task and work on it in the background.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/slack-coding-tasks.webp)
 
 ### Kick off coding tasks from Slack
 
@@ -73,7 +73,7 @@ Integrations  Workflow](/codex/use-cases/slack-coding-tasks)
 
 Use Codex to build or update a web app, deploy it with Vercel, and hand back a live URL you can share.
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/deploy-app-or-website.webp)
 
 ### Deploy an app or website
 
@@ -85,9 +85,9 @@ Front-end  Integrations](/codex/use-cases/deploy-app-or-website)
 
 Use Codex in GitHub to make sure changes are safe to merge so you can have a faster development loop.
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/github-code-reviews.webp)
 
-### Codex code review for GitHub pull requests
+### Review GitHub pull requests
 
 Use Codex code review in GitHub to automatically surface regressions, missing tests, and...
 

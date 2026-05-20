@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-action-triage'
-source_last_modified: '2026-05-08T00:29:37Z'
-source_etag: 'W/"5ecdb76fcd7c375e74e827f51b894b78"'
+source_last_modified: '2026-05-20T00:58:30Z'
+source_etag: 'W/"50aea0d791072e040ba888db16172904"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -156,23 +156,23 @@ Do not post it directly, but suggest drafts for my review.
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-1.webp)
+[![](/codex/use-cases/proactive-teammate.webp)
 
 ### Set up a teammate
 
 Connect the tools where work happens, teach one thread what matters, then add an automation...
 
-Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/images/codex/codex-wallpaper-2.webp)
+Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/codex/use-cases/zoom-meeting-follow-ups.webp)
+
+### Turn meetings into follow-ups
+
+Use Codex with Zoom transcripts and AI Companion summaries to draft customer follow-up...
+
+Automation  Integrations](/codex/use-cases/zoom-meeting-follow-ups)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-2.webp)
-
-### Draft PRDs from internal context
-
-Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
-
-Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/generate-slide-decks'
-source_last_modified: '2026-05-08T00:30:26Z'
-source_etag: 'W/"48fb80b5ec6a765eb886ff56f88b1f06"'
+source_last_modified: '2026-05-20T00:53:41Z'
+source_etag: 'W/"57a8d4ecc208c9dbe26057b8bc431d22"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0"]
 ---
@@ -184,19 +184,19 @@ Adjust the deck to make sure the following layout rules are followed:
 
 ## Related use cases
 
-[![](/images/codex/codex-wallpaper-2.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/images/codex/codex-wallpaper-3.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/feedback-synthesis.webp)
 
 ### Turn feedback into actions
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/images/codex/codex-wallpaper-3.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/user-stories-to-ui-mocks.webp)
 
 ### Turn user stories into UI mocks
 
