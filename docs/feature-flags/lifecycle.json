@@ -381,7 +381,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.131.0",
+  "codex_cli_version": "codex-cli 0.132.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -775,7 +775,7 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "a0881956be07cad869236f1ab4b7833079a6ca7e9bb491c6f96c5eb8d96454f4",
+    "client_rs_sha256": "0dc32ad116092304e70078c97b3d0489dd07b81bb78dc3631ebea9feb5660e48",
     "features_rs_sha256": "4e888f3fea66c4762e1a51cab48a82827a41c65d5f0658e2c20ccf6215fdebf9"
   },
   "source_urls": {
