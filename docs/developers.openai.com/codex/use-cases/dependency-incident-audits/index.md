@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dependency-incident-audits'
 source_last_modified: '2026-05-20T00:58:24Z'
 source_etag: 'W/"cbe205f07d2d4b96d3820ed42626e221"'
-codex_cli_versions: ["0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Audit dependency incidents | Codex use cases

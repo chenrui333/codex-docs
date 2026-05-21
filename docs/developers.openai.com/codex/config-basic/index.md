@@ -4,8 +4,8 @@ source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-basic'
 source_last_modified: '2026-05-20T00:58:08Z'
 source_etag: 'W/"bfc22ff305b8148b9aa1045abf98daa6"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Config basics – Codex | OpenAI Developers

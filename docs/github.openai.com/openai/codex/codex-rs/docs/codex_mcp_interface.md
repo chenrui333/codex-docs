@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md'
 source_etag: 'W/"2b2ccbcfe113d088bfa68373ec86d3d963133eed84d2ad1d69c1f8e544f96092"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Codex MCP Server Interface [experimental]

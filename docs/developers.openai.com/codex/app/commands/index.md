@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
-source_last_modified: '2026-04-25T06:34:54Z'
-source_etag: 'W/"88a1b7116add206986a2dde19944c5fa"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:10:50Z'
+source_etag: 'W/"adbd8c755d9fbbb03c32437af315170b"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Commands – Codex app | OpenAI Developers
@@ -55,10 +55,27 @@ Enabled skills also appear in the slash command list.
 | Slash command | Description |
 | --- | --- |
 | `/feedback` | Open the feedback dialog to submit feedback and optionally include logs. |
+| `/goal` | Set a persistent goal for Codex to work toward; use `/plan` first to shape it. |
 | `/mcp` | Open MCP status to view connected servers. |
-| `/plan-mode` | Toggle plan mode for multi-step planning. |
+| `/plan` | Toggle plan mode for multi-step planning. |
 | `/review` | Start code review mode to review uncommitted changes or compare against a base branch. |
 | `/status` | Show the thread ID, context usage, and rate limits. |
+
+### Set or manage a goal with `/goal`
+
+Use `/goal` in the app composer to start Goal mode. A goal is a persistent
+objective that Codex works toward until it finishes the task, pauses, or needs
+more input. To define the goal with Codex first, start with `/plan`, then set
+the refined goal with `/goal`.
+
+![Codex app goal progress controls above the composer](/images/codex/app/goal-dialog-light.webp)
+
+When a goal is active, the app shows its progress above the composer. Use the
+buttons in that progress row to pause or resume the goal, edit the goal text, or
+clear the goal instead of typing another slash command. You can keep steering
+Codex with follow-up messages while the goal runs.
+
+For guidance on writing effective goals, see [Goal mode](/codex/prompting#goal-mode).
 
 ## Deeplinks
 

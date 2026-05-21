@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/browser'
-source_last_modified: '2026-05-07T18:33:50Z'
-source_etag: 'W/"34c9f5d0182e744413514d3b7071d71f"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:06:43Z'
+source_etag: 'W/"52e9f23d74cd3058cc2fd46e71c6a805"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # In-app browser – Codex app | OpenAI Developers
@@ -37,7 +37,8 @@ Treat page content as untrusted context. Don’t paste secrets into browser flow
 
 Browser use lets Codex operate the in-app browser directly. Use it for local
 development servers and file-backed previews when Codex needs to click, type,
-inspect rendered state, take screenshots, or verify a fix in the page.
+inspect rendered state, take screenshots, download page assets, run read-only
+page inspection JavaScript, or verify a fix in the page.
 
 To use it, install and enable the Browser plugin. Then ask Codex to use the
 browser in your task, or reference it directly with `@Browser`. The app keeps
@@ -79,8 +80,8 @@ layout issues and keep the card structure unchanged.
 When a bug is visible only in the rendered page, use browser comments to give
 Codex precise feedback on the page.
 
-- Turn on comment mode, select an element or area, and submit a comment.
-- In comment mode, hold `Shift` and click to select an area.
+- Turn on Annotation mode, select an element or area, and submit a comment.
+- In Annotation mode, hold `Shift` and click to select an area.
 - Hold `Cmd` while clicking to send a comment immediately.
 
 After you leave comments, send a message in the thread asking Codex to address
@@ -97,6 +98,15 @@ otherwise wrap it without changing the card height.
 This tooltip covers the data point under the cursor. Reposition the tooltip so
 it stays inside the chart bounds.
 ```
+
+### Styling feedback
+
+When you add an annotation to a section on the page, press the config icon next
+to the text input to give Codex more granular style feedback. You can change
+values like font, text, spacing, and color, preview the result directly on the
+page, and then send the annotation so Codex has a clearer target for the change.
+
+![Codex app showing in-app browser annotation style controls](/images/codex/app/iab-annotations-light.webp)
 
 ## Keep browser tasks scoped
 

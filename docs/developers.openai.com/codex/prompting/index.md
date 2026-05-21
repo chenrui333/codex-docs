@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/prompting'
-source_last_modified: '2026-04-25T06:41:42Z'
-source_etag: 'W/"f63af68db03bd299047313fe461338ea"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:17:16Z'
+source_etag: 'W/"e3a7bcf1ec22ca0e45085baa5056f07a"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Prompting – Codex | OpenAI Developers
@@ -61,4 +61,43 @@ When you submit a prompt, include context that Codex can use, such as references
 As the agent works, it also gathers context from file contents, tool output, and an ongoing record of what it has done and what it still needs to do.
 
 All information in a thread must fit within the model’s **context window**, which varies by model. Codex monitors and reports the remaining space. For longer tasks, Codex may automatically **compact** the context by summarizing relevant information and discarding less relevant details. With repeated compaction, Codex can continue working on complex tasks over many steps.
+
+## Goal mode
+
+Goal mode gives Codex a persistent objective to work toward across a longer
+task. Use it when the work may take many steps, or when Codex needs a clear
+definition of done that it can keep checking as it works.
+
+![Codex app goal progress controls above the composer](/images/codex/app/goal-dialog-light.webp)
+
+When you set a goal, the goal text acts as both the starting prompt and the
+completion criteria. Codex uses it to decide what to do next and whether the
+task is complete. Start Goal mode with `/goal` in the [Codex
+app](/codex/app/commands#set-or-manage-a-goal-with-goal), [IDE
+extension](/codex/ide/slash-commands), or [CLI](/codex/cli/slash-commands#set-or-view-an-experimental-task-goal-with-goal).
+In the Codex app, progress appears above the composer with controls to pause,
+resume, edit, or clear the goal.
+
+Write goals so Codex can tell whether it has succeeded. Good goals include a
+specific outcome, measurable target, or test criteria. For example:
+
+```
+Migrate this codebase from JavaScript to TypeScript. The app should compile in
+strict mode without explicit `any` type definitions.
+```
+
+```
+Reduce the time to interactive of the home page to below 1 second.
+```
+
+If the goal is hard to define up front, start with `/plan` and ask Codex to
+shape it before implementation. You can also ask Codex to interview you and
+draft a goal with clear success criteria.
+
+You can continue steering Codex after the goal starts. Send follow-up messages
+to adjust constraints, such as asking Codex to use a particular library or
+avoid a specific approach. Use side chats when you want a status recap or
+explanation without interrupting the main task. For long-running work, pause
+the goal before you lose connectivity, then resume or edit it when you are
+ready to continue.
 

@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_plugin_creator'
 source_url: 'codex-cli://skills/.system/plugin-creator/references/plugin-json-spec.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Plugin JSON sample spec
@@ -156,7 +156,8 @@ personal marketplace unless the caller explicitly requests a repo-local destinat
     - Personal plugin in `~/.agents/plugins/marketplace.json`: `./plugins/<plugin-name>`
     - Repo/team plugin: `./plugins/<plugin-name>`
   - The same relative path convention is used for both personal and repo/team marketplaces.
-    - Example: with `~/.agents/plugins/marketplace.json`, `./plugins/<plugin-name>` resolves to `~/plugins/<plugin-name>`.
+    - Example: with `~/.agents/plugins/marketplace.json`, `./plugins/<plugin-name>` resolves to
+      `~/plugins/<plugin-name>`.
 - `policy` (`object`): Marketplace policy block. Always include it.
   - `installation` (`string`): Availability policy.
     - Allowed values: `NOT_AVAILABLE`, `AVAILABLE`, `INSTALLED_BY_DEFAULT`
@@ -177,6 +178,8 @@ personal marketplace unless the caller explicitly requests a repo-local destinat
 - Replace an existing entry for the same plugin only when overwrite is intentional.
 - Default new plugin creation to the personal marketplace.
 - Use a repo/team marketplace only when the user specifically requests that destination.
+- Only override the marketplace `name` when the default `personal` name is already taken or
+  installed and you need to seed a different new marketplace file.
 - Choose marketplace location to match the selected destination:
   - Personal plugin: `~/.agents/plugins/marketplace.json`
   - Repo/team plugin: `<repo-root>/.agents/plugins/marketplace.json`

@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md'
 source_etag: 'W/"e2397790c15c65dc4abb5c7f2074cc0a8f0771a5ad42bb82358b77329ee9b762"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Codex CLI (Rust Implementation)

@@ -3,8 +3,8 @@ source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/bazel.md'
 source_etag: 'W/"104f3cba98114f0675e8a50bb5fdb0ba075b4e360ad126534d9b166115426220"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Bazel in codex-rs

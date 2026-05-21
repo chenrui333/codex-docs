@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app'
-source_last_modified: '2026-05-14T22:51:42Z'
-source_etag: 'W/"47aeffddaa6044a195f8351036caf888"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:06:27Z'
+source_etag: 'W/"fc2108a356a2827b058aa441c3e98d48"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # App – Codex | OpenAI Developers
@@ -75,7 +75,9 @@ Keep parallel code changes isolated with built-in Git worktree support.](/codex/
 Use the ChatGPT mobile app to start, steer, approve, and review Codex work on a
 connected host.](/codex/remote-connections)[### Computer use
 
-Let Codex use macOS apps for GUI tasks, browser flows, and native app testing.](/codex/app/computer-use)[### Review and ship changes
+Let Codex use macOS apps for GUI tasks, browser flows, and native app testing.](/codex/app/computer-use)[### Appshots
+
+Send the frontmost Mac app window to Codex with a screenshot and available text.](/codex/appshots)[### Review and ship changes
 
 Inspect diffs, address PR feedback, stage files, commit, and push.](/codex/app/review)[### Terminal and actions
 

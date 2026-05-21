@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/computer-use'
-source_last_modified: '2026-05-06T13:44:26Z'
-source_etag: 'W/"68dffd1b96d3eb8238277aaf8b42ffce"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:06:40Z'
+source_etag: 'W/"0fb884bfc130ebafa20b425988a7341d"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Computer Use – Codex app | OpenAI Developers
@@ -98,6 +98,42 @@ Codex may also ask for permission before taking sensitive or disruptive actions.
 If Codex can’t see or control an app, open **System Settings > Privacy &
 Security** and check **Screen Recording** and **Accessibility** for the Codex
 app.
+
+## Locked use
+
+Locked computer use lets Codex use Computer Use after your Mac locks, but only
+after you enable it. Use it when a Codex task needs to use desktop apps from a
+connected device after the Mac locks.
+
+When you enable locked computer use, Codex installs an Apple
+[authorization plug-in](https://developer.apple.com/documentation/security/authorization-plug-ins)
+that participates in the macOS unlock flow.
+
+Locked use is intentionally narrow. It’s not a general-purpose remote-unlock
+path for your Mac, and it doesn’t let other apps or local processes unlock the
+computer.
+
+To use locked computer use:
+
+1. Open **Codex settings > Computer Use**.
+2. Enable locked computer use.
+3. Start a task that uses computer use from a connected device after your Mac’s
+   screen has locked.
+
+When a Codex task accesses an app via Computer Use after your Mac locks, Codex
+temporarily unlocks the Mac while blocking local use and preserving the locked
+screen protections. Before unlocking, Codex checks whether the unlock attempt is
+for an active, trusted computer use turn. Outside that short-lived window, Codex
+denies the unlock and asks you to unlock manually if needed.
+
+Locked use includes safeguards:
+
+- The authorization window is short-lived and scoped to the current unlock
+  attempt.
+- Automatic unlock is available only to Codex during active computer use turns.
+- Codex covers every display while the desktop is temporarily unlocked.
+- If Codex detects local keyboard or pointer input, it relocks the Mac and
+  pauses automatic unlock until you unlock it manually.
 
 ## Safety guidance
 

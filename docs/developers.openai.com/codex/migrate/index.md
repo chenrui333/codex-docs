@@ -4,8 +4,8 @@ source_area: 'codex_migrate'
 source_url: 'https://developers.openai.com/codex/migrate'
 source_last_modified: '2026-05-01T23:22:21Z'
 source_etag: 'W/"344b0640ed63fc28b79b8ee1e109ed9a"'
-codex_cli_versions: ["0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Migrate to Codex | OpenAI Developers

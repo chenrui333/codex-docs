@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups'
 source_last_modified: '2026-05-20T00:58:32Z'
 source_etag: 'W/"8f694046231b42c6fd443d35df386d92"'
-codex_cli_versions: ["0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Turn meetings into follow-ups | Codex use cases

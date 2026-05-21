@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-05-20T00:58:25Z'
-source_etag: 'W/"265e9dc54f4a16fa1a93feb4893dc48c"'
-codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:08:31Z'
+source_etag: 'W/"a1df17c3fa5dbfc8f50a6ac47132dc99"'
+codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Follow a goal | Codex use cases
@@ -50,7 +50,7 @@ Long-running
 
 Related links
 
-[`/goal` in CLI slash commands](/codex/cli/slash-commands#set-an-experimental-goal-with-goal)  [Codex workflows](/codex/workflows)  [Run code migrations](/codex/use-cases/code-migrations)  [Iterate on difficult problems](/codex/use-cases/iterate-on-difficult-problems)
+[`/goal` in CLI slash commands](/codex/cli/slash-commands#set-a-goal-with-goal)  [Codex workflows](/codex/workflows)  [Run code migrations](/codex/use-cases/code-migrations)  [Iterate on difficult problems](/codex/use-cases/iterate-on-difficult-problems)
 
 ## Best for
 
@@ -70,7 +70,7 @@ Related links
 
 Use `/goal` when you want Codex to keep working toward one durable objective instead of stopping after one normal turn. It’s useful for work that has a clear target, a validation loop, and enough room for Codex to make progress without asking you to steer every step. When you use `/goal`, Codex can work independently for multiple hours without needing your input.
 
-`/goal` is an experimental Codex CLI feature. Enable it from `/experimental`, or add `goals = true` under `[features]` in `config.toml`. Then set a goal with `/goal <objective>`, check the current goal with `/goal`, and use `/goal pause`, `/goal resume`, or `/goal clear` when you need to control the run.
+Set a goal with `/goal <objective>`, check the current goal with `/goal`, and use `/goal pause`, `/goal resume`, or `/goal clear` when you need to control the run.
 
 Goals are in preview and are not yet fully supported in the Codex app, but you
 can still run goals from the app. Consider the behavior in the app

@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/event-launch-playbooks'
 source_last_modified: '2026-05-20T00:58:25Z'
 source_etag: 'W/"10c7ab2a34fa245dc1bd289a66a66115"'
-codex_cli_versions: ["0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Run event playbooks | Codex use cases

@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/meeting-prep-briefs'
 source_last_modified: '2026-05-20T00:58:28Z'
 source_etag: 'W/"925523f2900baec4ecc93d8578954748"'
-codex_cli_versions: ["0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0"]
+codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Prepare meeting briefs | Codex use cases

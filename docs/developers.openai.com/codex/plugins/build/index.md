@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins/build'
-source_last_modified: '2026-05-18T18:38:30Z'
-source_etag: 'W/"df62214aede3030c2e46e0a8fc179cd7"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:05:37Z'
+source_etag: 'W/"0101a8557a42bebf76ccec6b341587ca"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Build plugins – Codex | OpenAI Developers
@@ -18,22 +18,22 @@ one repo or one personal workflow, start with a local skill. Build a plugin
 when you want to share that workflow across teams, bundle app integrations or
 MCP config, package lifecycle hooks, or publish a stable package.
 
-## Create a plugin with `$plugin-creator`
+## Create a plugin with `@plugin-creator`
 
-For the fastest setup, use the built-in `$plugin-creator` skill.
+For the fastest setup, use the built-in `@plugin-creator` skill.
 
 ![plugin-creator skill in Codex](/images/codex/plugins/plugin-creator.png)
 
 It scaffolds the required `.codex-plugin/plugin.json` manifest and can also
 generate a local marketplace entry for testing. If you already have a plugin
-folder, you can still use `$plugin-creator` to wire it into a local
+folder, you can still use `@plugin-creator` to wire it into a local
 marketplace.
 
 ![how to invoke the plugin-creator skill](/images/codex/plugins/plugin-creator-invoke.png)
 
 ### Build your own curated plugin list
 
-A marketplace is a JSON catalog of plugins. `$plugin-creator` can generate one
+A marketplace is a JSON catalog of plugins. `@plugin-creator` can generate one
 for a single plugin, and you can keep adding entries to that same marketplace
 to build your own curated list for a repo, team, or personal workflow.
 
@@ -119,7 +119,7 @@ description: Greet the user with a friendly message.
 Greet the user warmly and ask how you can help.
 ```
 
-3. Add the plugin to a marketplace. Use `$plugin-creator` to generate one, or
+3. Add the plugin to a marketplace. Use `@plugin-creator` to generate one, or
    follow [Build your own curated plugin list](#build-your-own-curated-plugin-list)
    to wire the plugin into Codex manually.
 
@@ -193,6 +193,32 @@ to the marketplace root, not relative to the `.agents/plugins/` folder. See
 
 After you change the plugin, update the plugin directory that your marketplace
 entry points to and restart Codex so the local install picks up the new files.
+
+### Share a local plugin with your workspace
+
+After you create a plugin and add it to Codex, you can share it with other
+members of your ChatGPT workspace from the Codex app.
+
+1. Open **Plugins** in the Codex app.
+2. Go to **Created by you** and open the plugin details page.
+3. Select **Share**.
+4. Add workspace members or copy a share link.
+5. Choose who has access, then send the invitation or link.
+
+People you share with can find the plugin under **Shared with you** in the
+plugin directory. Sharing a local plugin with your workspace doesn’t publish
+it to the public Plugin Directory. Shared plugins stay within your workspace
+and organization boundary; accounts that aren’t signed in to that workspace
+can’t access them. Use a marketplace when you want repo or CLI distribution,
+and use workspace sharing when you want selected teammates to install a plugin
+from the Codex app.
+
+Workspace admins can disable plugin sharing from cloud-managed requirements by
+adding `plugin_sharing = false` to `requirements.toml`:
+
+```
+plugin_sharing = false
+```
 
 ### Marketplace metadata
 

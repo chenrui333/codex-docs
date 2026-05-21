@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins'
-source_last_modified: '2026-04-30T17:49:49Z'
-source_etag: 'W/"945a58d0db0c966bad2a7eece5474067"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
+source_last_modified: '2026-05-21T18:06:33Z'
+source_etag: 'W/"45ad068b6a6c357f73f46568f37ad470"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
 
 # Plugins – Codex | OpenAI Developers
@@ -31,10 +31,12 @@ A plugin can contain:
   or helper scripts for a task.
 - **Apps:** connections to tools like GitHub, Slack, or Google Drive, so
   Codex can read information from those tools and take actions in them.
-- **MCP servers:** services that give Codex access to additional tools or
-  shared information, often from systems outside your local project.
+- **MCP servers:** services that give Codex access to more tools or shared
+  information, often from systems outside your local project.
 
-More plugin capabilities are coming soon.
+You can share plugins by publishing them through a marketplace source, such as a
+repo marketplace for a project or team. See [Build plugins](/codex/plugins/build)
+for marketplace setup, packaging, and distribution guidance.
 
 ## Use and install plugins
 
@@ -42,7 +44,14 @@ More plugin capabilities are coming soon.
 
 Open **Plugins** in the Codex app to browse and install curated plugins.
 
-![Codex Plugins page](/images/codex/plugins/directory.png)
+![Codex Plugins page](/images/codex/plugins/directory.webp)
+
+The plugin directory groups plugins into categories:
+
+- **Curated by OpenAI:** highlighted plugins available to all Codex users.
+- **Shared with you:** plugins shared by other members of your ChatGPT
+  workspace.
+- **Created by you:** plugins you created or added to your own workspace.
 
 ### Plugin directory in the CLI
 
@@ -103,7 +112,7 @@ privacy, and data-sharing policies.
 - Bundled skills are available as soon as you install the plugin.
 - If a plugin includes apps, Codex may prompt you to install or sign in to
   those apps in ChatGPT during setup or the first time you use them.
-- If a plugin includes MCP servers, they may require additional setup or
+- If a plugin includes MCP servers, they may require extra setup or
   authentication before you can use them.
 - When Codex sends data through a bundled app, that app’s terms and privacy
   policy apply.
@@ -128,5 +137,6 @@ enabled = false
 
 If you want to create, test, or distribute your own plugin, see
 [Build plugins](/codex/plugins/build). That page covers local scaffolding,
-manual marketplace setup, plugin manifests, and packaging guidance.
+manual marketplace setup, workspace sharing, plugin manifests, and packaging
+guidance.
 
