@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/features'
-source_last_modified: '2026-05-18T18:36:06Z'
-source_etag: 'W/"940269a6481f883466ee2f51191a09a8"'
+source_last_modified: '2026-05-20T21:08:47Z'
+source_etag: 'W/"ef4f2190e40d22cfbeced8f0a68fb61b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
@@ -113,11 +113,9 @@ remote-control support enabled.
 
 ## Models and reasoning
 
-For most tasks in Codex, `gpt-5.5` is the recommended model when it’s
-available. It’s OpenAI’s newest frontier model for complex coding, computer
+For most tasks in Codex, `gpt-5.5` is the recommended model. It is OpenAI’s newest frontier model for complex coding, computer
 use, knowledge work, and research workflows, with stronger planning, tool use,
-and follow-through on multi-step tasks. If `gpt-5.5` isn’t yet available,
-continue using `gpt-5.4`. For extra fast tasks, ChatGPT Pro subscribers have
+and follow-through on multi-step tasks. For extra fast tasks, ChatGPT Pro subscribers have
 access to the GPT-5.3-Codex-Spark model in research preview.
 
 Switch models mid-session with the `/model` command, or specify one when launching the CLI.

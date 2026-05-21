@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/make-granular-ui-changes'
-source_last_modified: '2026-05-20T00:58:28Z'
-source_etag: 'W/"3476747a0b48791bb4dec1bc84ad3e3e"'
+source_last_modified: '2026-05-20T21:09:36Z'
+source_etag: 'W/"7894f2c2ee2a3d48344947ffdf943fd6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
@@ -102,7 +102,7 @@ task. It is available on Pro plans.
 
 ## Pick your model
 
-For fast UI iteration, start with `gpt-5.3-codex-spark` if you have access to it. It is less capable that our general-purpose models, but is designed for real-time coding iteration. If you don’t have access to it, use our latest model with `medium` or `low` reasoning effort.
+For fast UI iteration, start with `gpt-5.3-codex-spark` if you have access to it. It is less capable that our general-purpose models, but is designed for real-time coding iteration. If you don’t have access to it, use `gpt-5.5` with `medium` or `low` reasoning effort.
 
 That tradeoff is useful for granular UI work. You usually do not need the deepest model to move a button, tune a breakpoint, or adjust a component state. You need a model that responds quickly, understands the local code, edits the right file, and can repeat the loop without making the iteration feel heavy.
 

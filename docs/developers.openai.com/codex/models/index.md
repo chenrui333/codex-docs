@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/models'
-source_last_modified: '2026-05-13T00:17:30Z'
-source_etag: 'W/"3ae5711c675a23e08099fe3c9b913bb4"'
+source_last_modified: '2026-05-20T21:08:53Z'
+source_etag: 'W/"d9fec97d37c41b2c7a0ccaa9e937526c"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
@@ -134,13 +134,18 @@ ChatGPT Credits
 
 API Access
 
-For most tasks in Codex, start with `gpt-5.5` when it appears in your model
-picker. It is strongest for complex coding, computer use, knowledge work, and
-research workflows. GPT-5.5 is currently available in Codex when you sign in
-with ChatGPT or API-key authentication. Use `gpt-5.4-mini` when you want a
-faster, lower-cost option for lighter coding tasks or subagents. The
-`gpt-5.3-codex-spark` model is available in research preview for ChatGPT Pro
-subscribers and is optimized for near-instant, real-time coding iteration.
+For most tasks in Codex, start with
+`gpt-5.5`. It is
+strongest for complex coding, computer use, knowledge work, and research
+workflows. GPT-5.5 is currently available in Codex when you sign in with
+ChatGPT or API-key authentication. Use
+
+`gpt-5.4-mini`
+
+when you want a faster, lower-cost option for lighter coding tasks or
+subagents. The `gpt-5.3-codex-spark` model is available in research preview
+for ChatGPT Pro subscribers and is optimized for near-instant, real-time
+coding iteration.
 
 ## Alternative models
 
@@ -174,8 +179,6 @@ The Codex CLI and IDE extension use the same `config.toml` [configuration file](
 ```
 model = "gpt-5.5"
 ```
-
-If `gpt-5.5` isn’t available in your account yet, use `gpt-5.4`.
 
 ### Choosing a different local model temporarily
 

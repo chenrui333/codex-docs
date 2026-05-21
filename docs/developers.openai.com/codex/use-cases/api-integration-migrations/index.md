@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/api-integration-migrations'
-source_last_modified: '2026-05-20T00:58:20Z'
-source_etag: 'W/"2b571e3ec893e894e4e8f89fc5802295"'
+source_last_modified: '2026-05-20T21:26:28Z'
+source_etag: 'W/"5973c774bfcae2b5acf079a453414eba"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
@@ -101,7 +101,7 @@ When migrating to a new model, you should make sure to not only make the necessa
 
 All the specifics about the new API features and model behavior are documented in our docs, in the [latest model](/api/docs/guides/latest-model) and [prompt guidance](/api/docs/guides/prompt-guidance) guides.
 
-The OpenAI Docs skill also includes [specific guidance](https://github.com/openai/codex/blob/6323f0104d17d211029faab149231ba787f7da37/codex-rs/skills/src/assets/samples/openai-docs/references/upgrading-to-gpt-5p4.md) as reference, codifying how to upgrade to the latest model–currently [GPT-5.4](/api/docs/models/gpt-5.4).
+The OpenAI Docs skill also includes [specific guidance](https://github.com/openai/codex/blob/6323f0104d17d211029faab149231ba787f7da37/codex-rs/skills/src/assets/samples/openai-docs/references/upgrading-to-gpt-5p4.md) as a concrete migration reference. For the current upgrade target, use the [latest model](/api/docs/guides/latest-model) guide.
 
 Codex now automatically comes with the OpenAI Docs skill, so make sure to mention it in your prompt to access all the latest documentation and guidance when building with the OpenAI API.
 
