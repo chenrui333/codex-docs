@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-05-18T21:50:02Z'
-source_etag: 'W/"d2fb7d5b2ed7ed36b93956ef5d07f9e6"'
+source_last_modified: '2026-05-21T01:05:00Z'
+source_etag: 'W/"380d09b253db2786093a602495972448"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0"]
 ---
@@ -211,8 +211,11 @@ configuration.
 ```
 [permissions.filesystem]
 deny_read = [
-  "/Users/alice/.ssh",
-  "./private/**/*.txt",
+  # values can be absolute paths...
+  "/**/*.env",
+  # ...or relative to $HOME/%USERPROFILE% using `~`.
+  "~/.ssh",
+  # But relative paths starting with `./` are not allowed.
 ]
 ```
 

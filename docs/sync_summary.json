@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-21T00:58:21+00:00",
+  "generated_at": "2026-05-21T07:25:42+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,13 +13,7 @@
   },
   "total_files": 237,
   "updated": [
-    "developers.openai.com/codex/cli/features/index.md",
-    "developers.openai.com/codex/concepts/subagents/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
-    "developers.openai.com/codex/models/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md",
-    "developers.openai.com/codex/use-cases/make-granular-ui-changes/index.md",
-    "github.openai.com/openai/codex/codex-cli/scripts/README.md"
+    "developers.openai.com/codex/enterprise/managed-configuration/index.md",
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }
