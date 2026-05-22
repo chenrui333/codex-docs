@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
-source_last_modified: '2026-05-21T18:10:50Z'
-source_etag: 'W/"adbd8c755d9fbbb03c32437af315170b"'
+source_last_modified: '2026-05-21T23:46:12Z'
+source_etag: 'W/"983012c0a5f4fb6abf787f6548118f1f"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -67,6 +67,16 @@ Use `/goal` in the app composer to start Goal mode. A goal is a persistent
 objective that Codex works toward until it finishes the task, pauses, or needs
 more input. To define the goal with Codex first, start with `/plan`, then set
 the refined goal with `/goal`.
+
+If `/goal` doesn’t appear in the slash command list, enable `features.goals`
+in `config.toml`:
+
+```
+[features]
+goals = true
+```
+
+You can also run `codex features enable goals` from the CLI or ask Codex to run it.
 
 ![Codex app goal progress controls above the composer](/images/codex/app/goal-dialog-light.webp)
 

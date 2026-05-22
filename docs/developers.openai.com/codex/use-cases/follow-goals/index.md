@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-05-21T18:08:31Z'
-source_etag: 'W/"a1df17c3fa5dbfc8f50a6ac47132dc99"'
+source_last_modified: '2026-05-21T23:47:45Z'
+source_etag: 'W/"9c72cdcad392d9a758f065d0193f07df"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -72,9 +72,15 @@ Use `/goal` when you want Codex to keep working toward one durable objective ins
 
 Set a goal with `/goal <objective>`, check the current goal with `/goal`, and use `/goal pause`, `/goal resume`, or `/goal clear` when you need to control the run.
 
-Goals are in preview and are not yet fully supported in the Codex app, but you
-can still run goals from the app. Consider the behavior in the app
-experimental.
+If `/goal` doesn’t appear in the slash command list, enable `features.goals`
+in `config.toml`:
+
+```
+[features]
+goals = true
+```
+
+You can also run `codex features enable goals` from the CLI or ask Codex to run it.
 
 ## Choose the right work
 
