@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/remote-connections'
-source_last_modified: '2026-05-18T21:46:01Z'
-source_etag: 'W/"5e4213f87e766fc56fb214a79314a19f"'
+source_last_modified: '2026-05-22T16:21:58Z'
+source_etag: 'W/"aadf0f85ecea02748e923b07404a7b50"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -36,6 +36,9 @@ App host. To connect Codex to a project on an SSH host, see
 ![Codex mobile setup screen alongside the ChatGPT mobile Codex project list](/images/codex/app/mobile-setup-light.webp)
 
 ## Before you set up mobile access
+
+Codex mobile setup currently requires the Codex App for macOS. The Codex App
+for Windows does not support mobile setup yet.
 
 Make sure you have:
 

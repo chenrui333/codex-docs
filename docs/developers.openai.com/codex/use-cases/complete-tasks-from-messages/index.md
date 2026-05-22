@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
-source_last_modified: '2026-05-20T00:53:38Z'
-source_etag: 'W/"7218a0ee7e9a3967a0a8534a786ef571"'
+source_last_modified: '2026-05-22T16:42:21Z'
+source_etag: 'W/"f40aad47d35ac52cf2f1bd39661ec97a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -65,7 +65,7 @@ Then:
 - draft a reply in the same thread
 Pause before anything irreversible, such as placing an order or confirming a booking.
 
-[Open in the Codex app](codex://new?prompt=%40Computer+Look+at+my+messages+from+%5Bperson%5D.%0A%0AThen%3A%0A-+understand+the+request%0A-+complete+the+task+across+the+apps+involved%0A-+draft+a+reply+in+the+same+thread%0A%0APause+before+anything+irreversible%2C+such+as+placing+an+order+or+confirming+a+booking. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=%40Computer+Look+at+my+messages+from+%5Bperson%5D.%0A%0AThen%3A%0A-+understand+the+request%0A-+complete+the+task+across+the+apps+involved%0A-+draft+a+reply+in+the+same+thread%0A%0APause+before+anything+irreversible%2C+such+as+placing+an+order+or+confirming+a+booking. "Open in the Codex app")
 
 @Computer Look at my messages from [person].
 Then:

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-05-21T23:47:45Z'
-source_etag: 'W/"9c72cdcad392d9a758f065d0193f07df"'
+source_last_modified: '2026-05-22T16:24:42Z'
+source_etag: 'W/"b0d971c35a32b6cd3d03177874b3ff8f"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -62,7 +62,7 @@ Related links
 
 /goal Complete [objective] without stopping until [verifiable end state].
 
-[Open in the Codex app](codex://new?prompt=%2Fgoal+Complete+%5Bobjective%5D+without+stopping+until+%5Bverifiable+end+state%5D. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=%2Fgoal+Complete+%5Bobjective%5D+without+stopping+until+%5Bverifiable+end+state%5D. "Open in the Codex app")
 
 /goal Complete [objective] without stopping until [verifiable end state].
 

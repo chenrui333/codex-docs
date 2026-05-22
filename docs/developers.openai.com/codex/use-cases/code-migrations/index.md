@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/code-migrations'
-source_last_modified: '2026-05-20T00:58:21Z'
-source_etag: 'W/"f2d87d0d1281cd392245282c1cd10e12"'
+source_last_modified: '2026-05-22T16:43:46Z'
+source_etag: 'W/"473ee72f365caaf960ab3a1e7a6b2cb6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -87,7 +87,7 @@ Requirements:
 - If validation fails, fix it before continuing.
 - Start by mapping the migration surface and proposing the checkpoint plan.
 
-[Open in the Codex app](codex://new?prompt=Migrate+this+codebase+from+%5Blegacy+stack+or+system%5D+to+%5Btarget+stack+or+system%5D.%0A%0ARequirements%3A%0A-+Start+by+inventorying+the+legacy+assumptions%3A+routing%2C+data+models%2C+auth%2C+configuration%2C+build+tooling%2C+tests%2C+deployment%2C+and+external+contracts.%0A-+Map+the+old+stack+to+the+new+one+and+call+out+anything+that+has+no+direct+equivalent.%0A-+Propose+an+incremental+migration+plan+with+compatibility+layers+or+checkpoints+instead+of+one+big+rewrite.%0A-+Keep+behavior+unchanged+unless+the+migration+explicitly+requires+a+user-visible+change.%0A-+Work+in+milestones+and+run+lint%2C+type-check%2C+and+focused+tests+after+each+milestone.%0A-+Keep+rollback+or+fallback+options+visible+until+the+transition+is+complete.%0A-+If+validation+fails%2C+fix+it+before+continuing.%0A-+Start+by+mapping+the+migration+surface+and+proposing+the+checkpoint+plan. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Migrate+this+codebase+from+%5Blegacy+stack+or+system%5D+to+%5Btarget+stack+or+system%5D.%0A%0ARequirements%3A%0A-+Start+by+inventorying+the+legacy+assumptions%3A+routing%2C+data+models%2C+auth%2C+configuration%2C+build+tooling%2C+tests%2C+deployment%2C+and+external+contracts.%0A-+Map+the+old+stack+to+the+new+one+and+call+out+anything+that+has+no+direct+equivalent.%0A-+Propose+an+incremental+migration+plan+with+compatibility+layers+or+checkpoints+instead+of+one+big+rewrite.%0A-+Keep+behavior+unchanged+unless+the+migration+explicitly+requires+a+user-visible+change.%0A-+Work+in+milestones+and+run+lint%2C+type-check%2C+and+focused+tests+after+each+milestone.%0A-+Keep+rollback+or+fallback+options+visible+until+the+transition+is+complete.%0A-+If+validation+fails%2C+fix+it+before+continuing.%0A-+Start+by+mapping+the+migration+surface+and+proposing+the+checkpoint+plan. "Open in the Codex app")
 
 Migrate this codebase from [legacy stack or system] to [target stack or system].
 Requirements:

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/update-documentation'
-source_last_modified: '2026-05-20T00:58:31Z'
-source_etag: 'W/"796b07687eb5bb17da2599220b401dfd"'
+source_last_modified: '2026-05-22T16:43:33Z'
+source_etag: 'W/"233752c379464d8d3a18740b8a614032"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -81,7 +81,7 @@ Then:
 Before finalizing, summarize what changed, what you verified, and any claims you could not prove from trusted sources.
 [link release notes or other references here]
 
-[Open in the Codex app](codex://new?prompt=Update+the+%5Bproduct%2Ffeature%5D+documentation+based+on+the+following+sources%3A%0A-+the+changed+source+files+in+%5Bthis+repo%2Fsource+linked+repo%5D%0A-+the+existing+docs+pages+that+mention+a+new+behavior%0A-+any+linked+issue%2C+PR%2C+release+note%2C+or+public+reference+I+provide+below%0A%0AThen%3A%0A-+identify+what+is+user-facing%0A-+update+only+the+docs+that+need+to+change%0A-+keep+unpublished+roadmap%2C+private+customer+details%2C+and+internal-only+context+out+of+public+docs%0A-+preserve+the+existing+docs+structure%2C+terminology%2C+and+cross-links%0A-+run+the+docs+checks+that+fit+the+change%0A%0ABefore+finalizing%2C+summarize+what+changed%2C+what+you+verified%2C+and+any+claims+you+could+not+prove+from+trusted+sources.%0A%0A%5Blink+release+notes+or+other+references+here%5D "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Update+the+%5Bproduct%2Ffeature%5D+documentation+based+on+the+following+sources%3A%0A-+the+changed+source+files+in+%5Bthis+repo%2Fsource+linked+repo%5D%0A-+the+existing+docs+pages+that+mention+a+new+behavior%0A-+any+linked+issue%2C+PR%2C+release+note%2C+or+public+reference+I+provide+below%0A%0AThen%3A%0A-+identify+what+is+user-facing%0A-+update+only+the+docs+that+need+to+change%0A-+keep+unpublished+roadmap%2C+private+customer+details%2C+and+internal-only+context+out+of+public+docs%0A-+preserve+the+existing+docs+structure%2C+terminology%2C+and+cross-links%0A-+run+the+docs+checks+that+fit+the+change%0A%0ABefore+finalizing%2C+summarize+what+changed%2C+what+you+verified%2C+and+any+claims+you+could+not+prove+from+trusted+sources.%0A%0A%5Blink+release+notes+or+other+references+here%5D "Open in the Codex app")
 
 Update the [product/feature] documentation based on the following sources:
 - the changed source files in [this repo/source linked repo]

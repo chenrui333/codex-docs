@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/analyze-data-export'
-source_last_modified: '2026-05-20T00:58:20Z'
-source_etag: 'W/"8ffcbf33647620ad86fbca9ca8ebb0cf"'
+source_last_modified: '2026-05-22T16:43:07Z'
+source_etag: 'W/"892cfa58c0755533de6f3a1309daa9ed"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -80,7 +80,7 @@ Please:
 - create a simple browser visualization as an HTML file
 - start a local preview so I can open it in the Codex browser
 
-[Open in the Codex app](codex://new?prompt=Analyze+%40sales-export.csv%0A%0AQuestion%3A+Which+customer+segment+changed+the+most+last+quarter%3F%0A%0APlease%3A%0A-+inspect+the+columns+before+analyzing%0A-+answer+the+question+from+the+data%0A-+create+a+simple+browser+visualization+as+an+HTML+file%0A-+start+a+local+preview+so+I+can+open+it+in+the+Codex+browser "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Analyze+%40sales-export.csv%0A%0AQuestion%3A+Which+customer+segment+changed+the+most+last+quarter%3F%0A%0APlease%3A%0A-+inspect+the+columns+before+analyzing%0A-+answer+the+question+from+the+data%0A-+create+a+simple+browser+visualization+as+an+HTML+file%0A-+start+a+local+preview+so+I+can+open+it+in+the+Codex+browser "Open in the Codex app")
 
 Analyze @sales-export.csv
 Question: Which customer segment changed the most last quarter?

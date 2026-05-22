@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/budget-vs-actuals-review'
-source_last_modified: '2026-05-20T00:58:20Z'
-source_etag: 'W/"0f83b41ba28e1ca37c2de4f85dd85430"'
+source_last_modified: '2026-05-22T16:21:43Z'
+source_etag: 'W/"66852359a7fd01271d6777abde6d3c79"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -74,7 +74,7 @@ Use $spreadsheets to update the budget vs. actuals review from the attached file
 Compare actuals to plan, map actuals to the right budget categories, summarize the major variances, and prepare a clean review view as an editable .xlsx workbook.
 Preserve the raw inputs, use formulas for dollar and percentage variance calculations, and flag categories that do not map cleanly instead of forcing a match. Use account type to determine favorable or unfavorable variance: revenue above plan is favorable, while expense above plan is unfavorable.
 
-[Open in the Codex app](codex://new?prompt=Use+%24spreadsheets+to+update+the+budget+vs.+actuals+review+from+the+attached+files.%0A%0ACompare+actuals+to+plan%2C+map+actuals+to+the+right+budget+categories%2C+summarize+the+major+variances%2C+and+prepare+a+clean+review+view+as+an+editable+.xlsx+workbook.%0A%0APreserve+the+raw+inputs%2C+use+formulas+for+dollar+and+percentage+variance+calculations%2C+and+flag+categories+that+do+not+map+cleanly+instead+of+forcing+a+match.+Use+account+type+to+determine+favorable+or+unfavorable+variance%3A+revenue+above+plan+is+favorable%2C+while+expense+above+plan+is+unfavorable. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Use+%24spreadsheets+to+update+the+budget+vs.+actuals+review+from+the+attached+files.%0A%0ACompare+actuals+to+plan%2C+map+actuals+to+the+right+budget+categories%2C+summarize+the+major+variances%2C+and+prepare+a+clean+review+view+as+an+editable+.xlsx+workbook.%0A%0APreserve+the+raw+inputs%2C+use+formulas+for+dollar+and+percentage+variance+calculations%2C+and+flag+categories+that+do+not+map+cleanly+instead+of+forcing+a+match.+Use+account+type+to+determine+favorable+or+unfavorable+variance%3A+revenue+above+plan+is+favorable%2C+while+expense+above+plan+is+unfavorable. "Open in the Codex app")
 
 Use $spreadsheets to update the budget vs. actuals review from the attached files.
 Compare actuals to plan, map actuals to the right budget categories, summarize the major variances, and prepare a clean review view as an editable .xlsx workbook.

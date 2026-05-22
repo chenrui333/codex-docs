@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/api-integration-migrations'
-source_last_modified: '2026-05-20T21:26:28Z'
-source_etag: 'W/"5973c774bfcae2b5acf079a453414eba"'
+source_last_modified: '2026-05-22T16:43:31Z'
+source_etag: 'W/"ec9cde6a44e3cfab8540e25ae98137be"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -77,7 +77,7 @@ Requirements:
 - Update prompts using the latest model prompt guidance.
 - Call out any prompt, tool, or response-shape changes we need to review manually.
 
-[Open in the Codex app](codex://new?prompt=Use+%24openai-docs+to+upgrade+this+OpenAI+integration+to+the+latest+recommended+model+and+API+features.%0A%0ASpecifically%2C+look+for+the+latest+model+and+prompt+guidance+for+this+specific+model.%0A%0ARequirements%3A%0A-+Start+by+inventorying+the+current+models%2C+endpoints%2C+and+tool+assumptions+in+the+repo.%0A-+Identify+the+smallest+migration+plan+that+gets+us+onto+the+latest+supported+path.%0A-+Preserve+behavior+unless+a+change+is+required+by+the+new+API+or+model.%0A-+Update+prompts+using+the+latest+model+prompt+guidance.+%0A-+Call+out+any+prompt%2C+tool%2C+or+response-shape+changes+we+need+to+review+manually. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Use+%24openai-docs+to+upgrade+this+OpenAI+integration+to+the+latest+recommended+model+and+API+features.%0A%0ASpecifically%2C+look+for+the+latest+model+and+prompt+guidance+for+this+specific+model.%0A%0ARequirements%3A%0A-+Start+by+inventorying+the+current+models%2C+endpoints%2C+and+tool+assumptions+in+the+repo.%0A-+Identify+the+smallest+migration+plan+that+gets+us+onto+the+latest+supported+path.%0A-+Preserve+behavior+unless+a+change+is+required+by+the+new+API+or+model.%0A-+Update+prompts+using+the+latest+model+prompt+guidance.+%0A-+Call+out+any+prompt%2C+tool%2C+or+response-shape+changes+we+need+to+review+manually. "Open in the Codex app")
 
 Use $openai-docs to upgrade this OpenAI integration to the latest recommended model and API features.
 Specifically, look for the latest model and prompt guidance for this specific model.

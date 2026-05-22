@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/codebase-onboarding'
-source_last_modified: '2026-05-20T00:53:54Z'
-source_etag: 'W/"579665263d49645226fe8a65dea70820"'
+source_last_modified: '2026-05-22T16:22:31Z'
+source_etag: 'W/"3bf9d9a40f301973c237c801ae234099"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -65,7 +65,7 @@ Include:
 - the top gotchas to watch for before making changes
 End with the files I should read next.
 
-[Open in the Codex app](codex://new?prompt=Explain+how+the+request+flows+through+%3Cname+of+the+system+area%3E+in+the+codebase.%0A%0AInclude%3A%0A-+which+modules+own+what%0A-+where+data+is+validated%0A-+the+top+gotchas+to+watch+for+before+making+changes%0A%0AEnd+with+the+files+I+should+read+next. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Explain+how+the+request+flows+through+%3Cname+of+the+system+area%3E+in+the+codebase.%0A%0AInclude%3A%0A-+which+modules+own+what%0A-+where+data+is+validated%0A-+the+top+gotchas+to+watch+for+before+making+changes%0A%0AEnd+with+the+files+I+should+read+next. "Open in the Codex app")
 
 Explain how the request flows through <name of the system area> in the codebase.
 Include:

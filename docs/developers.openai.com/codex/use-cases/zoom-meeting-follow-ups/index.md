@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups'
-source_last_modified: '2026-05-20T00:58:32Z'
-source_etag: 'W/"8f694046231b42c6fd443d35df386d92"'
+source_last_modified: '2026-05-22T16:51:33Z'
+source_etag: 'W/"448f834308bb2d2947419857ebee903c"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -88,7 +88,7 @@ Summarize the key takeaways, decisions, risks, opportunities, and action items. 
 Use evidence from the transcript where possible. Mark anything uncertain and keep internal-only details out of the customer draft.
 Do not send emails, post Slack messages, create docs, update CRM records, assign owners, or expose private data until I review and approve each action.
 
-[Open in the Codex app](codex://new?prompt=Use+my+most+recent+Zoom+meeting+with+%5Bcustomer+or+account%5D.%0A%0ARetrieve+the+Zoom+transcript+and+AI+Companion+summary.+Name+anything+you+cannot+access+before+drafting.%0A%0ASummarize+the+key+takeaways%2C+decisions%2C+risks%2C+opportunities%2C+and+action+items.+Then+draft%3A%0A-+a+customer+follow-up+email%0A-+a+Google+Docs+account+plan%0A-+a+CRM+update+with+notes%2C+risks%2C+next+steps%2C+and+owners%0A-+a+Slack+message+to+%5Bteam%2Fchannel%2Fperson%5D+with+the+most+important+details%0A%0AUse+evidence+from+the+transcript+where+possible.+Mark+anything+uncertain+and+keep+internal-only+details+out+of+the+customer+draft.%0A%0ADo+not+send+emails%2C+post+Slack+messages%2C+create+docs%2C+update+CRM+records%2C+assign+owners%2C+or+expose+private+data+until+I+review+and+approve+each+action. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Use+my+most+recent+Zoom+meeting+with+%5Bcustomer+or+account%5D.%0A%0ARetrieve+the+Zoom+transcript+and+AI+Companion+summary.+Name+anything+you+cannot+access+before+drafting.%0A%0ASummarize+the+key+takeaways%2C+decisions%2C+risks%2C+opportunities%2C+and+action+items.+Then+draft%3A%0A-+a+customer+follow-up+email%0A-+a+Google+Docs+account+plan%0A-+a+CRM+update+with+notes%2C+risks%2C+next+steps%2C+and+owners%0A-+a+Slack+message+to+%5Bteam%2Fchannel%2Fperson%5D+with+the+most+important+details%0A%0AUse+evidence+from+the+transcript+where+possible.+Mark+anything+uncertain+and+keep+internal-only+details+out+of+the+customer+draft.%0A%0ADo+not+send+emails%2C+post+Slack+messages%2C+create+docs%2C+update+CRM+records%2C+assign+owners%2C+or+expose+private+data+until+I+review+and+approve+each+action. "Open in the Codex app")
 
 Use my most recent Zoom meeting with [customer or account].
 Retrieve the Zoom transcript and AI Companion summary. Name anything you cannot access before drafting.

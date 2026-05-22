@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dependency-incident-audits'
-source_last_modified: '2026-05-20T00:58:24Z'
-source_etag: 'W/"cbe205f07d2d4b96d3820ed42626e221"'
+source_last_modified: '2026-05-22T16:22:43Z'
+source_etag: 'W/"f652cdf3464196732b555e7e82ade79b"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -90,7 +90,7 @@ Return:
 - caveats and recommended next steps
 Do not install packages, run lifecycle scripts, build the project, execute untrusted code, rotate credentials, or clean up files unless I explicitly approve that step.
 
-[Open in the Codex app](codex://new?prompt=Help+me+audit+this+repository+for+exposure+to+this+public+package+advisory%3A+%5Badvisory+URL%5D.%0A%0AStay+read-only+unless+I+explicitly+approve+a+remediation+step.%0A%0AFirst%2C+summarize%3A%0A-+affected+packages+and+version+ranges%0A-+authoritative+sources+versus+broader+reports%0A-+what+evidence+would+prove+exposure+in+this+repo%0A-+what+evidence+would+rule+it+out%0A%0AThen+inspect%3A%0A-+package+manifests+and+lock+files%0A-+CI+workflows+and+permissions%0A-+install%2C+build%2C+and+postinstall+scripts%0A-+vendored+artifacts%2C+containers%2C+or+generated+bundles+if+relevant%0A-+cache+or+token+exposure+paths+if+the+advisory+involves+CI+or+publishing%0A%0AReturn%3A%0A-+evidence+status%3A+confirmed+exposure%2C+needs+verification%2C+or+ruled+out%0A-+severity+and+blast-radius+notes%0A-+file+references+for+every+repo-specific+claim%0A-+caveats+and+recommended+next+steps%0A%0ADo+not+install+packages%2C+run+lifecycle+scripts%2C+build+the+project%2C+execute+untrusted+code%2C+rotate+credentials%2C+or+clean+up+files+unless+I+explicitly+approve+that+step. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Help+me+audit+this+repository+for+exposure+to+this+public+package+advisory%3A+%5Badvisory+URL%5D.%0A%0AStay+read-only+unless+I+explicitly+approve+a+remediation+step.%0A%0AFirst%2C+summarize%3A%0A-+affected+packages+and+version+ranges%0A-+authoritative+sources+versus+broader+reports%0A-+what+evidence+would+prove+exposure+in+this+repo%0A-+what+evidence+would+rule+it+out%0A%0AThen+inspect%3A%0A-+package+manifests+and+lock+files%0A-+CI+workflows+and+permissions%0A-+install%2C+build%2C+and+postinstall+scripts%0A-+vendored+artifacts%2C+containers%2C+or+generated+bundles+if+relevant%0A-+cache+or+token+exposure+paths+if+the+advisory+involves+CI+or+publishing%0A%0AReturn%3A%0A-+evidence+status%3A+confirmed+exposure%2C+needs+verification%2C+or+ruled+out%0A-+severity+and+blast-radius+notes%0A-+file+references+for+every+repo-specific+claim%0A-+caveats+and+recommended+next+steps%0A%0ADo+not+install+packages%2C+run+lifecycle+scripts%2C+build+the+project%2C+execute+untrusted+code%2C+rotate+credentials%2C+or+clean+up+files+unless+I+explicitly+approve+that+step. "Open in the Codex app")
 
 Help me audit this repository for exposure to this public package advisory: [advisory URL].
 Stay read-only unless I explicitly approve a remediation step.

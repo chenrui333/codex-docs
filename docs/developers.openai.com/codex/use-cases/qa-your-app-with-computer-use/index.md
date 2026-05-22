@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
-source_last_modified: '2026-05-20T00:56:27Z'
-source_etag: 'W/"3d0c16df844f0008557b9739a50d9a5e"'
+source_last_modified: '2026-05-22T16:45:13Z'
+source_etag: 'W/"053cab9dd2ddbce2fa3a3edf08051608"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -70,7 +70,7 @@ For every bug you find, include:
 - severity
 Keep going past non-blocking issues and end with a short triage summary.
 
-[Open in the Codex app](codex://new?prompt=%40Computer+Test+my+app+in+%5Benvironment%5D.%0A%0ATest+these+flows%3A%0A-+%5Bhero+use+case+1%5D%0A-+%5Bhero+use+case+2%5D%0A-+%5Bhero+use+case+3%5D%0A%0AFor+every+bug+you+find%2C+include%3A%0A-+repro+steps%0A-+expected+result%0A-+actual+result%0A-+severity%0A%0AKeep+going+past+non-blocking+issues+and+end+with+a+short+triage+summary. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=%40Computer+Test+my+app+in+%5Benvironment%5D.%0A%0ATest+these+flows%3A%0A-+%5Bhero+use+case+1%5D%0A-+%5Bhero+use+case+2%5D%0A-+%5Bhero+use+case+3%5D%0A%0AFor+every+bug+you+find%2C+include%3A%0A-+repro+steps%0A-+expected+result%0A-+actual+result%0A-+severity%0A%0AKeep+going+past+non-blocking+issues+and+end+with+a+short+triage+summary. "Open in the Codex app")
 
 @Computer Test my app in [environment].
 Test these flows:

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/frontend-designs'
-source_last_modified: '2026-05-20T00:58:25Z'
-source_etag: 'W/"77f9edc375d976b402d2023c4d1a01e0"'
+source_last_modified: '2026-05-22T16:29:32Z'
+source_etag: 'W/"4d10407cf483728e307ae7c73b89b625"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -80,7 +80,7 @@ Validation:
 - Compare the finished UI against the provided screenshots for both look and behavior.
 - Use $playwright-interactive to check that the UI matches the references and iterate as needed until it does.
 
-[Open in the Codex app](codex://new?prompt=Implement+this+UI+in+the+current+project+using+the+screenshots+and+notes+I+provide+as+the+source+of+truth.%0A%0ARequirements%3A%0A-+Reuse+the+existing+design+system+components+and+tokens.%0A-+Translate+the+screenshots+into+this+repo%27s+utilities+and+component+patterns+instead+of+inventing+a+parallel+system.%0A-+Match+spacing%2C+layout%2C+hierarchy%2C+and+responsive+behavior+closely.%0A-+Respect+the+repo%27s+routing%2C+state%2C+and+data-fetch+patterns.%0A-+Make+the+page+responsive+on+desktop+and+mobile.%0A-+If+any+screenshot+detail+is+ambiguous%2C+choose+the+simplest+implementation+that+still+matches+the+overall+direction+and+note+the+assumption+briefly.%0A%0AValidation%3A%0A-+Compare+the+finished+UI+against+the+provided+screenshots+for+both+look+and+behavior.%0A-+Use+%24playwright-interactive+to+check+that+the+UI+matches+the+references+and+iterate+as+needed+until+it+does. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Implement+this+UI+in+the+current+project+using+the+screenshots+and+notes+I+provide+as+the+source+of+truth.%0A%0ARequirements%3A%0A-+Reuse+the+existing+design+system+components+and+tokens.%0A-+Translate+the+screenshots+into+this+repo%27s+utilities+and+component+patterns+instead+of+inventing+a+parallel+system.%0A-+Match+spacing%2C+layout%2C+hierarchy%2C+and+responsive+behavior+closely.%0A-+Respect+the+repo%27s+routing%2C+state%2C+and+data-fetch+patterns.%0A-+Make+the+page+responsive+on+desktop+and+mobile.%0A-+If+any+screenshot+detail+is+ambiguous%2C+choose+the+simplest+implementation+that+still+matches+the+overall+direction+and+note+the+assumption+briefly.%0A%0AValidation%3A%0A-+Compare+the+finished+UI+against+the+provided+screenshots+for+both+look+and+behavior.%0A-+Use+%24playwright-interactive+to+check+that+the+UI+matches+the+references+and+iterate+as+needed+until+it+does. "Open in the Codex app")
 
 Implement this UI in the current project using the screenshots and notes I provide as the source of truth.
 Requirements:

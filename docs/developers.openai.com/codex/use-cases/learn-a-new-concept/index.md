@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/learn-a-new-concept'
-source_last_modified: '2026-05-20T00:58:27Z'
-source_etag: 'W/"8fd93fdbd9d8eff441feefbd6ad11f20"'
+source_last_modified: '2026-05-22T16:22:35Z'
+source_etag: 'W/"c71d771228debe2c89017c1d5cad91cc"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -87,7 +87,7 @@ Constraints:
 - separate what the paper claims from your interpretation
 - call out missing background, assumptions, and follow-up reading
 
-[Open in the Codex app](codex://new?prompt=I+want+to+learn+a+new+concept+from+this+research+paper%3A+%5Bpaper+path+or+URL%5D.%0A%0APlease+run+this+as+a+subagent+workflow%3A%0A-+Spawn+one+subagent+to+map+the+paper%27s+problem+statement%2C+contribution%2C+method%2C+experiments%2C+and+limitations.%0A-+Spawn+one+subagent+to+gather+prerequisite+context+and+explain+the+background+terms+I+need.%0A-+Spawn+one+subagent+to+inspect+the+figures%2C+tables%2C+notation%2C+and+any+claims+that+need+careful+verification.%0A-+Wait+for+all+subagents%2C+reconcile+disagreements%2C+and+avoid+overclaiming+beyond+the+source+material.%0A%0AFinal+output%3A%0A-+create+%60notes%2F%5Bconcept-name%5D-report.md%60%0A-+include+an+executive+summary%2C+glossary%2C+paper+walkthrough%2C+concept+map%2C+method+diagram%2C+evidence+table%2C+caveats%2C+and+open+questions%0A-+use+Markdown-native+Mermaid+diagrams+where+diagrams+help%0A-+use+imagegen+to+generate+illustrative%2C+non-exact+visual+assets+when+a+Markdown-native+diagram+is+not+enough%0A-+cite+paper+sections%2C+pages%2C+figures%2C+or+tables+whenever+possible%0A%0AConstraints%3A%0A-+do+not+treat+the+paper+as+ground+truth+if+the+evidence+is+weak%0A-+separate+what+the+paper+claims+from+your+interpretation%0A-+call+out+missing+background%2C+assumptions%2C+and+follow-up+reading "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=I+want+to+learn+a+new+concept+from+this+research+paper%3A+%5Bpaper+path+or+URL%5D.%0A%0APlease+run+this+as+a+subagent+workflow%3A%0A-+Spawn+one+subagent+to+map+the+paper%27s+problem+statement%2C+contribution%2C+method%2C+experiments%2C+and+limitations.%0A-+Spawn+one+subagent+to+gather+prerequisite+context+and+explain+the+background+terms+I+need.%0A-+Spawn+one+subagent+to+inspect+the+figures%2C+tables%2C+notation%2C+and+any+claims+that+need+careful+verification.%0A-+Wait+for+all+subagents%2C+reconcile+disagreements%2C+and+avoid+overclaiming+beyond+the+source+material.%0A%0AFinal+output%3A%0A-+create+%60notes%2F%5Bconcept-name%5D-report.md%60%0A-+include+an+executive+summary%2C+glossary%2C+paper+walkthrough%2C+concept+map%2C+method+diagram%2C+evidence+table%2C+caveats%2C+and+open+questions%0A-+use+Markdown-native+Mermaid+diagrams+where+diagrams+help%0A-+use+imagegen+to+generate+illustrative%2C+non-exact+visual+assets+when+a+Markdown-native+diagram+is+not+enough%0A-+cite+paper+sections%2C+pages%2C+figures%2C+or+tables+whenever+possible%0A%0AConstraints%3A%0A-+do+not+treat+the+paper+as+ground+truth+if+the+evidence+is+weak%0A-+separate+what+the+paper+claims+from+your+interpretation%0A-+call+out+missing+background%2C+assumptions%2C+and+follow-up+reading "Open in the Codex app")
 
 I want to learn a new concept from this research paper: [paper path or URL].
 Please run this as a subagent workflow:

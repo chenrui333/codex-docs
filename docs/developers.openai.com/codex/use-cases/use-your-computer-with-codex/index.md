@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/use-your-computer-with-codex'
-source_last_modified: '2026-05-20T00:58:31Z'
-source_etag: 'W/"28597640088147013a40dfa22f7b752a"'
+source_last_modified: '2026-05-22T16:21:58Z'
+source_etag: 'W/"c2c5a3e9bd99d797be244873ab6050cf"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -64,7 +64,7 @@ For example:
 - Help me add my interview notes from Notes to Ashby.
 - Look through my Messages app for the trip ideas Brooke sent me this week, add the best options to a new note called "Yosemite ideas", and draft a reply back to her.
 
-[Open in the Codex app](codex://new?prompt=%40Computer+%5Bdo+the+task+you+want+completed+across+your+Mac%5D%0A%0AFor+example%3A%0A-+Play+some+music+to+help+me+focus.%0A-+Help+me+add+my+interview+notes+from+Notes+to+Ashby.%0A-+Look+through+my+Messages+app+for+the+trip+ideas+Brooke+sent+me+this+week%2C+add+the+best+options+to+a+new+note+called+%22Yosemite+ideas%22%2C+and+draft+a+reply+back+to+her. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=%40Computer+%5Bdo+the+task+you+want+completed+across+your+Mac%5D%0A%0AFor+example%3A%0A-+Play+some+music+to+help+me+focus.%0A-+Help+me+add+my+interview+notes+from+Notes+to+Ashby.%0A-+Look+through+my+Messages+app+for+the+trip+ideas+Brooke+sent+me+this+week%2C+add+the+best+options+to+a+new+note+called+%22Yosemite+ideas%22%2C+and+draft+a+reply+back+to+her. "Open in the Codex app")
 
 @Computer [do the task you want completed across your Mac]
 For example:

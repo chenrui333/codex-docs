@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/refactor-your-codebase'
-source_last_modified: '2026-05-20T00:58:30Z'
-source_etag: 'W/"ae9f3f9578073d134fd41d3d822bbbbf"'
+source_last_modified: '2026-05-22T17:21:18Z'
+source_etag: 'W/"adb84bc3ce275a9b3d075b3a109acd2e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -83,7 +83,7 @@ Requirements:
 - If the work is broad, propose the docs, specs, and parity checks we should create before implementation.
 Propose a plan to do this.
 
-[Open in the Codex app](codex://new?prompt=Modernize+and+refactor+this+codebase.%0A%0ARequirements%3A%0A-+Preserve+behavior+unless+I+explicitly+ask+for+a+functional+change.%0A-+Start+by+identifying+dead+code%2C+duplicated+paths%2C+oversized+modules%2C+stale+abstractions%2C+and+legacy+patterns+that+are+slowing+changes+down.%0A-+For+each+proposed+pass%2C+name+the+current+behavior%2C+the+structural+improvement%2C+and+the+validation+check+that+should+prove+behavior+stayed+stable.%0A-+Break+the+work+into+small+reviewable+refactor+passes+such+as+deleting+dead+code%2C+simplifying+control+flow%2C+extracting+helpers%2C+or+replacing+outdated+patterns+with+the+repo%27s+current+conventions.%0A-+Keep+public+APIs+stable+unless+a+change+is+required+by+the+refactor.%0A-+Call+out+any+framework+migration%2C+dependency+upgrade%2C+API+change%2C+or+architecture+move+that+should+be+split+into+a+separate+migration+task.%0A-+If+the+work+is+broad%2C+propose+the+docs%2C+specs%2C+and+parity+checks+we+should+create+before+implementation.%0A%0APropose+a+plan+to+do+this. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Modernize+and+refactor+this+codebase.%0A%0ARequirements%3A%0A-+Preserve+behavior+unless+I+explicitly+ask+for+a+functional+change.%0A-+Start+by+identifying+dead+code%2C+duplicated+paths%2C+oversized+modules%2C+stale+abstractions%2C+and+legacy+patterns+that+are+slowing+changes+down.%0A-+For+each+proposed+pass%2C+name+the+current+behavior%2C+the+structural+improvement%2C+and+the+validation+check+that+should+prove+behavior+stayed+stable.%0A-+Break+the+work+into+small+reviewable+refactor+passes+such+as+deleting+dead+code%2C+simplifying+control+flow%2C+extracting+helpers%2C+or+replacing+outdated+patterns+with+the+repo%27s+current+conventions.%0A-+Keep+public+APIs+stable+unless+a+change+is+required+by+the+refactor.%0A-+Call+out+any+framework+migration%2C+dependency+upgrade%2C+API+change%2C+or+architecture+move+that+should+be+split+into+a+separate+migration+task.%0A-+If+the+work+is+broad%2C+propose+the+docs%2C+specs%2C+and+parity+checks+we+should+create+before+implementation.%0A%0APropose+a+plan+to+do+this. "Open in the Codex app")
 
 Modernize and refactor this codebase.
 Requirements:

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
-source_last_modified: '2026-05-21T23:46:12Z'
-source_etag: 'W/"983012c0a5f4fb6abf787f6548118f1f"'
+source_last_modified: '2026-05-22T16:24:54Z'
+source_etag: 'W/"2589d400f195f8cd96d6dc6b5149907b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -87,23 +87,115 @@ Codex with follow-up messages while the goal runs.
 
 For guidance on writing effective goals, see [Goal mode](/codex/prompting#goal-mode).
 
-## Deeplinks
+## Deep links
 
 The Codex app registers the `codex://` URL scheme so links can open specific parts of the app directly.
 
-| Deeplink | Opens | Supported query parameters |
+### Common links
+
+Use these links when you just need to open a common app destination. The sections below list the full reference by link type.
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://threads/new` | A new local thread. |
+| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be the thread’s session UUID. |
+| `codex://settings` | Settings. |
+| `codex://skills` | Skills. |
+| `codex://automations` | Automations with the create flow open. |
+
+### Threads
+
+Use these links when you need to open an existing local thread or start a new one.
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be the thread’s session UUID. |
+| `codex://threads/new` | A new local thread. |
+
+For `codex://threads/new`, add any of these query parameters as needed; you can combine them in the same URL.
+
+| Query parameter | Required | What it does |
 | --- | --- | --- |
-| `codex://settings` | Settings. | None. |
-| `codex://skills` | Skills. | None. |
-| `codex://automations` | Inbox in automation create mode. | None. |
-| `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be a UUID. | None. |
-| `codex://new` | A new thread. | Optional: `prompt`, `originUrl`, `path`. |
+| `prompt=<text>` | No | Sets the initial composer text. |
+| `path=<absolute-path>` | No | Opens the new thread in a local workspace. `path` must be an absolute path to a local directory. When valid, Codex uses that directory as the active workspace. |
+| `originUrl=<git-remote-url>` | No | Matches one of your current workspace roots by Git remote URL. If `path` is also present, Codex resolves `path` first. |
 
-For new-thread deeplinks:
+Example: [Show me some fun stats about how I’ve been using Codex](codex://threads/new?prompt=Show%20me%20some%20fun%20stats%20about%20how%20I%27ve%20been%20using%20Codex)
 
-- `prompt` sets the initial composer text.
-- `path` must be an absolute path to a local directory and, when valid, makes that directory the active workspace for the new thread.
-- `originUrl` tries to match one of your current workspace roots by Git remote URL. If both `path` and `originUrl` are present, Codex resolves `path` first.
+### Settings
+
+Use these links when you need to open Settings or a specific settings page.
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://settings` | Settings. |
+| `codex://settings/browser-use` | Browser use settings. |
+| `codex://settings/computer-use/google-chrome` | Google Chrome settings for computer use. |
+| `codex://settings/connections` | Remote connections settings. |
+
+### Skills
+
+Use these links when you need to open Skills.
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://skills` | Skills. |
+
+### Automations
+
+Use these links when you need to open Automations.
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://automations` | Automations with the create flow open. |
+
+### Plugins
+
+Plugin links use different forms depending on whether you are opening a plugin, installing from a marketplace, or working from a local `marketplace.json`. For plugin basics, see [Plugins](/codex/plugins). For local or repo marketplace setup, see [Build plugins](/codex/plugins/build#build-your-own-curated-plugin-list).
+
+#### Plugin detail
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://plugins/<plugin-id>` | A plugin detail page. |
+
+`<plugin-id>` must identify the plugin. For an OpenAI-curated plugin, use the form `<plugin-name>@openai-curated`.
+
+Codex-generated plugin links can also include these query parameters. Omit both when you handwrite a link.
+
+| Query parameter | Required | What it does |
+| --- | --- | --- |
+| `hostId=<host-id>` | No | Identifies the Codex host that owns the plugin context, such as `local` or one of your configured remote connections. Codex provides these IDs. |
+| `source=manage` | No | Preserves the app’s plugin-management entry point. It is not admin-only. |
+
+Example: [Open the OpenAI Developers plugin](codex://plugins/openai-developers@openai-curated)
+
+#### Local plugin
+
+For local or repo marketplace setup, see [Build plugins](/codex/plugins/build#build-your-own-curated-plugin-list).
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://plugins/<plugin-name>?marketplacePath=<absolute-marketplace-path>` | A local plugin detail page from a local marketplace. |
+
+| Query parameter | Required | What it does |
+| --- | --- | --- |
+| `marketplacePath=<absolute-marketplace-path>` | Yes | Absolute path to the local `marketplace.json`, for example `/Users/alex/.agents/plugins/marketplace.json`. |
+| `mode=share` | No | Opens the share flow for that local plugin. |
+
+### Pets
+
+Use these links to open the pet install flow when that feature is enabled.
+
+| Deep link | Opens |
+| --- | --- |
+| `codex://pets/install?name=<pet-name>&imageUrl=<https-image-url>` | The pet install flow. |
+
+| Query parameter | Required | What it does |
+| --- | --- | --- |
+| `name=<pet-name>` | Yes | Sets the pet name. |
+| `imageUrl=<https-image-url>` | Yes | Sets the pet image URL. `imageUrl` must be HTTPS. |
+| `description=<text>` | No | Sets the optional pet description. |
 
 ## See also
 

@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md'
-source_etag: 'W/"e2397790c15c65dc4abb5c7f2074cc0a8f0771a5ad42bb82358b77329ee9b762"'
+source_etag: 'W/"3dc8907e956b1ec6389ac6912e95e041604c3d51116f0f6263f2d7bba5c8e83a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -64,25 +64,16 @@ Use `codex exec --ephemeral ...` to run without persisting session rollout files
 
 ### Experimenting with the Codex Sandbox
 
-To test to see what happens when a command is run under the sandbox provided by Codex, we provide the following subcommands in Codex CLI:
+To test to see what happens when a command is run under the sandbox provided by Codex, use the `sandbox` subcommand in Codex CLI:
 
 ```
-# macOS
-codex sandbox macos [--log-denials] [COMMAND]...
+# Uses the sandbox implementation for the current host OS:
+# Seatbelt on macOS, the Linux sandbox on Linux, and Windows restricted token on Windows.
+codex sandbox [COMMAND]...
 
-# Linux
-codex sandbox linux [COMMAND]...
-
-# Windows
-codex sandbox windows [COMMAND]...
-
-# Legacy aliases
-codex debug seatbelt [--log-denials] [COMMAND]...
-codex debug landlock [COMMAND]...
+# macOS-only diagnostic option
+codex sandbox --log-denials [COMMAND]...
 ```
-
-To try a writable legacy sandbox mode with these commands, pass an explicit config override such
-as `-c 'sandbox_mode="workspace-write"'`.
 
 ### Selecting a sandbox policy via `--sandbox`
 
@@ -99,7 +90,6 @@ codex --sandbox workspace-write
 codex --sandbox danger-full-access
 ```
 
-The same setting can be persisted in `~/.codex/config.toml` via the top-level `sandbox_mode = "MODE"` key, e.g. `sandbox_mode = "workspace-write"`.
 In `workspace-write`, Codex also includes `~/.codex/memories` in its writable roots so memory maintenance does not require an extra approval.
 
 ## Code Organization

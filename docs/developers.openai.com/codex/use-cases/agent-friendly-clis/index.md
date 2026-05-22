@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/agent-friendly-clis'
-source_last_modified: '2026-05-20T00:58:19Z'
-source_etag: 'W/"961eae8d576e3a6c76b4f8c63a0beb02"'
+source_last_modified: '2026-05-22T16:22:17Z'
+source_etag: 'W/"006917c64502b8148ddfb98b4df6b9da"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -79,7 +79,7 @@ Optional write job: [create a draft comment, upload media, retry a failed job, o
 Command name: [cli-name, or recommend one].
 Before coding, show me the proposed command surface and ask only for missing details that would block the build.
 
-[Open in the Codex app](codex://new?prompt=Use+%24cli-creator+to+create+a+CLI+you+can+use%2C+and+use+%24skill-creator+to+create+the+companion+skill+in+this+same+thread.%0A%0ASource+to+learn+from%3A+%5Bdocs+URL%2C+OpenAPI+spec%2C+redacted+curl+command%2C+existing+script+path%2C+log+folder%2C+CSV+or+JSON+export%2C+SQLite+database+path%2C+or+pasted+--help+output%5D.%0A%0AFirst+job+the+CLI+should+support%3A+%5Bdownload+failed+CI+logs+from+a+build+URL%2C+search+support+tickets+and+read+one+by+ID%2C+query+an+admin+API%2C+read+a+local+database%2C+or+run+one+step+from+an+existing+script%5D.%0A%0AOptional+write+job%3A+%5Bcreate+a+draft+comment%2C+upload+media%2C+retry+a+failed+job%2C+or+read-only+for+now%5D.%0A%0ACommand+name%3A+%5Bcli-name%2C+or+recommend+one%5D.%0A%0ABefore+coding%2C+show+me+the+proposed+command+surface+and+ask+only+for+missing+details+that+would+block+the+build. "Open in the Codex app")
+[Open in the Codex app](codex://threads/new?prompt=Use+%24cli-creator+to+create+a+CLI+you+can+use%2C+and+use+%24skill-creator+to+create+the+companion+skill+in+this+same+thread.%0A%0ASource+to+learn+from%3A+%5Bdocs+URL%2C+OpenAPI+spec%2C+redacted+curl+command%2C+existing+script+path%2C+log+folder%2C+CSV+or+JSON+export%2C+SQLite+database+path%2C+or+pasted+--help+output%5D.%0A%0AFirst+job+the+CLI+should+support%3A+%5Bdownload+failed+CI+logs+from+a+build+URL%2C+search+support+tickets+and+read+one+by+ID%2C+query+an+admin+API%2C+read+a+local+database%2C+or+run+one+step+from+an+existing+script%5D.%0A%0AOptional+write+job%3A+%5Bcreate+a+draft+comment%2C+upload+media%2C+retry+a+failed+job%2C+or+read-only+for+now%5D.%0A%0ACommand+name%3A+%5Bcli-name%2C+or+recommend+one%5D.%0A%0ABefore+coding%2C+show+me+the+proposed+command+surface+and+ask+only+for+missing+details+that+would+block+the+build. "Open in the Codex app")
 
 Use $cli-creator to create a CLI you can use, and use $skill-creator to create the companion skill in this same thread.
 Source to learn from: [docs URL, OpenAPI spec, redacted curl command, existing script path, log folder, CSV or JSON export, SQLite database path, or pasted --help output].
