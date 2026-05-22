@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-22T00:56:45+00:00",
+  "generated_at": "2026-05-22T12:58:15+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,12 +13,6 @@
   },
   "total_files": 241,
   "updated": [
-    "developers.openai.com/codex/app/commands/index.md",
-    "developers.openai.com/codex/cli/slash-commands/index.md",
-    "developers.openai.com/codex/ide/slash-commands/index.md",
-    "developers.openai.com/codex/prompting/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/use-cases/follow-goals/index.md",
-    "github.openai.com/openai/codex/codex-cli/scripts/README.md"
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }
