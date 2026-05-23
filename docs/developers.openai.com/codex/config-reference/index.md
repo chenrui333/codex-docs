@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-21T18:10:50Z'
-source_etag: 'W/"b312c8bbcf5c8b8b763129c451a3603f"'
+source_last_modified: '2026-05-22T20:26:00Z'
+source_etag: 'W/"0170f09c0d274fc2517912f11b0667ee"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -86,7 +86,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.network_proxy.socks_url` | `string` | SOCKS5 listener URL. Defaults to `"http://127.0.0.1:8081"`. |
 | `features.network_proxy.unix_sockets` | `map<string, allow | none>` | Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets. |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
-| `features.plugin_hooks` | `boolean` | Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in. |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (stable; on by default). |
 | `features.shell_tool` | `boolean` | Enable the default `shell` tool for running commands (stable; on by default). |
@@ -104,6 +103,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `history.max_bytes` | `number` | If set, caps the history file size in bytes by dropping oldest entries. |
 | `history.persistence` | `save-all | none` | Control whether Codex saves session transcripts to history.jsonl. |
 | `hooks` | `table` | Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events. |
+| `hooks.<Event>` | `array<table>` | Matcher groups for hook events such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`. |
+| `hooks.<Event>[].hooks` | `array<table>` | Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped. |
+| `hooks.<Event>[].hooks[].commandWindows` | `string` | Windows-only command override for command hooks. The TOML alias `command_windows` is also accepted. |
 | `instructions` | `string` | Reserved for future use; prefer `model_instructions_file` or `AGENTS.md`. |
 | `log_dir` | `string (path)` | Directory where Codex writes log files (for example `codex-tui.log`); defaults to `$CODEX_HOME/log`. |
 | `mcp_oauth_callback_port` | `integer` | Optional fixed port for the local HTTP callback server used during MCP OAuth login. When unset, Codex binds to an ephemeral port chosen by the OS. |
@@ -974,18 +976,6 @@ Enable personality selection controls (stable; on by default).
 
 Key
 
-`features.plugin_hooks`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Opt into lifecycle hooks bundled with enabled plugins. Off by default in this release; set to `true` to opt in.
-
-Key
-
 `features.prevent_idle_sleep`
 
 Type / Values
@@ -1187,6 +1177,42 @@ Type / Values
 Details
 
 Lifecycle hooks configured inline in `config.toml`. Uses the same event schema as `hooks.json`; see the Hooks guide for examples and supported events.
+
+Key
+
+`hooks.<Event>`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Matcher groups for hook events such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.
+
+Key
+
+`hooks.<Event>[].hooks`
+
+Type / Values
+
+`array<table>`
+
+Details
+
+Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.
+
+Key
+
+`hooks.<Event>[].hooks[].commandWindows`
+
+Type / Values
+
+`string`
+
+Details
+
+Windows-only command override for command hooks. The TOML alias `command_windows` is also accepted.
 
 Key
 
@@ -3408,6 +3434,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
+| `allow_managed_hooks_only` | `boolean` | When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers. |
 | `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`). |
 | `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
@@ -3432,8 +3459,9 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `features.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. |
 | `guardian_policy_config` | `string` | Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored. |
 | `hooks` | `table` | Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`. |
-| `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `SessionStart`, `UserPromptSubmit`, or `Stop`. |
+| `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`. |
 | `hooks.<Event>[].hooks` | `array<table>` | Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped. |
+| `hooks.<Event>[].hooks[].commandWindows` | `string` | Windows-only command override for command hooks. The TOML alias `command_windows` is also accepted. |
 | `hooks.managed_dir` | `string (absolute path)` | Directory containing managed hook scripts on macOS and Linux. Codex validates that it is absolute and exists before loading managed hooks. |
 | `hooks.windows_managed_dir` | `string (absolute path)` | Directory containing managed hook scripts on Windows. Codex validates that it is absolute and exists before loading managed hooks. |
 | `mcp_servers` | `table` | Allowlist of MCP servers that may be enabled. Both the server name (`<id>`) and its identity must match for the MCP server to be enabled. Any configured MCP server not in the allowlist (or with a mismatched identity) is disabled. |
@@ -3452,6 +3480,18 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `rules.prefix_rules[].pattern` | `array<table>` | Command prefix expressed as pattern tokens. Each token sets either `token` or `any_of`. |
 | `rules.prefix_rules[].pattern[].any_of` | `array<string>` | A list of allowed alternative tokens at this position. |
 | `rules.prefix_rules[].pattern[].token` | `string` | A single literal token at this position. |
+
+Key
+
+`allow_managed_hooks_only`
+
+Type / Values
+
+`boolean`
+
+Details
+
+When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers.
 
 Key
 
@@ -3751,7 +3791,7 @@ Type / Values
 
 Details
 
-Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `SessionStart`, `UserPromptSubmit`, or `Stop`.
+Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.
 
 Key
 
@@ -3764,6 +3804,18 @@ Type / Values
 Details
 
 Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.
+
+Key
+
+`hooks.<Event>[].hooks[].commandWindows`
+
+Type / Values
+
+`string`
+
+Details
+
+Windows-only command override for command hooks. The TOML alias `command_windows` is also accepted.
 
 Key
 

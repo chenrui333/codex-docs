@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/reference'
-source_last_modified: '2026-05-18T18:36:06Z'
-source_etag: 'W/"a933374a2d84117b385d79cf0f432696"'
+source_last_modified: '2026-05-22T20:27:10Z'
+source_etag: 'W/"de11aaffd5c2a571aa42541bfb5e35f6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -30,6 +30,7 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--cd, -C` | `path` | Set the working directory for the agent before it starts processing your request. |
 | `--config, -c` | `key=value` | Override configuration values. Values parse as JSON if possible; otherwise the literal string is used. |
 | `--dangerously-bypass-approvals-and-sandbox, --yolo` | `boolean` | Run every command without approvals or sandboxing. Only use inside an externally hardened environment. |
+| `--dangerously-bypass-hook-trust` | `boolean` | Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources. |
 | `--disable` | `feature` | Force-disable a feature flag (translates to `-c features.<name>=false`). Repeatable. |
 | `--enable` | `feature` | Force-enable a feature flag (translates to `-c features.<name>=true`). Repeatable. |
 | `--image, -i` | `path[,path...]` | Attach one or more image files to the initial prompt. Separate multiple paths with commas or repeat the flag. |
@@ -102,6 +103,18 @@ Type / Values
 Details
 
 Run every command without approvals or sandboxing. Only use inside an externally hardened environment.
+
+Key
+
+`--dangerously-bypass-hook-trust`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources.
 
 Key
 
@@ -276,7 +289,7 @@ interpret these labels.
 | [`codex logout`](/codex/cli/reference#codex-logout) | Stable | Remove stored authentication credentials. |
 | [`codex mcp`](/codex/cli/reference#codex-mcp) | Experimental | Manage Model Context Protocol servers (list, add, remove, authenticate). |
 | [`codex mcp-server`](/codex/cli/reference#codex-mcp-server) | Experimental | Run Codex itself as an MCP server over stdio. Useful when another agent consumes Codex. |
-| [`codex plugin marketplace`](/codex/cli/reference#codex-plugin-marketplace) | Experimental | Add, upgrade, or remove plugin marketplaces from Git or local sources. |
+| [`codex plugin marketplace`](/codex/cli/reference#codex-plugin-marketplace) | Experimental | Add, list, upgrade, or remove plugin marketplaces from Git or local sources. |
 | [`codex remote-control`](/codex/cli/reference#codex-remote-control) | Experimental | Ensure the local app-server daemon is running with remote-control support enabled. |
 | [`codex resume`](/codex/cli/reference#codex-resume) | Stable | Continue a previous interactive session by ID or resume the most recent conversation. |
 | [`codex sandbox`](/codex/cli/reference#codex-sandbox) | Experimental | Run arbitrary commands inside Codex-provided macOS, Linux, or Windows sandboxes. |
@@ -484,7 +497,7 @@ Experimental
 
 Details
 
-Add, upgrade, or remove plugin marketplaces from Git or local sources.
+Add, list, upgrade, or remove plugin marketplaces from Git or local sources.
 
 Key
 
@@ -951,6 +964,7 @@ Use `codex exec` (or the short form `codex e`) for scripted or CI-style runs tha
 | `--cd, -C` | `path` | Set the workspace root before executing the task. |
 | `--color` | `always | never | auto` | Control ANSI color in stdout. |
 | `--dangerously-bypass-approvals-and-sandbox, --yolo` | `boolean` | Bypass approval prompts and sandboxing. Dangerous—only use inside an isolated runner. |
+| `--dangerously-bypass-hook-trust` | `boolean` | Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources. |
 | `--ephemeral` | `boolean` | Run without persisting session rollout files to disk. |
 | `--full-auto` | `boolean` | Deprecated compatibility flag. Prefer `--sandbox workspace-write`; Codex prints a warning when this flag is used. |
 | `--ignore-rules` | `boolean` | Do not load user or project execpolicy `.rules` files for this run. |
@@ -1003,6 +1017,18 @@ Type / Values
 Details
 
 Bypass approval prompts and sandboxing. Dangerous—only use inside an isolated runner.
+
+Key
+
+`--dangerously-bypass-hook-trust`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources.
 
 Key
 
@@ -1522,6 +1548,7 @@ Manage plugin marketplace sources that Codex can browse and install from.
 | Key | Type / Values | Details |
 | --- | --- | --- |
 | `add <source>` | `[--ref REF] [--sparse PATH]` | Install a plugin marketplace from GitHub shorthand, a Git URL, an SSH URL, or a local marketplace root directory. `--sparse` is supported only for Git sources and can be repeated. |
+| `list` |  | Show plugin marketplaces Codex is currently considering and the root path for each marketplace. |
 | `remove <marketplace-name>` |  | Remove a configured plugin marketplace. |
 | `upgrade [marketplace-name]` |  | Refresh one configured Git marketplace, or all configured Git marketplaces when no name is provided. |
 
@@ -1536,6 +1563,14 @@ Type / Values
 Details
 
 Install a plugin marketplace from GitHub shorthand, a Git URL, an SSH URL, or a local marketplace root directory. `--sparse` is supported only for Git sources and can be repeated.
+
+Key
+
+`list`
+
+Details
+
+Show plugin marketplaces Codex is currently considering and the root path for each marketplace.
 
 Key
 
@@ -1557,6 +1592,10 @@ Refresh one configured Git marketplace, or all configured Git marketplaces when 
 `owner/repo@ref`, HTTP or HTTPS Git URLs, SSH Git URLs, and local marketplace
 root directories. Use `--ref` to pin a Git ref, and repeat `--sparse PATH` to
 use a sparse checkout for Git-backed marketplace repositories.
+
+`codex plugin marketplace list` prints in-scope marketplace names and roots,
+including implicitly discovered default marketplaces and configured marketplace
+snapshots.
 
 ### `codex mcp-server`
 

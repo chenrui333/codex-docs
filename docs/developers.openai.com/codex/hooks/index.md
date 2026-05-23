@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/hooks'
-source_last_modified: '2026-05-19T18:14:25Z'
-source_etag: 'W/"f977bf4dbff79c7024a39150fdd39d99"'
+source_last_modified: '2026-05-22T20:25:51Z'
+source_etag: 'W/"dbdc864dd3d2182dd9b998ddae96fe46"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -41,8 +41,10 @@ Runtime behavior to keep in mind:
 - Multiple matching command hooks for the same event are launched concurrently,
   so one hook cannot prevent another matching hook from starting.
 - Non-managed command hooks must be reviewed and trusted before they run.
-- `PreToolUse`, `PermissionRequest`, `PostToolUse`, `UserPromptSubmit`, and
-  `Stop` run at turn scope.
+- `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`,
+  `PostCompact`, `UserPromptSubmit`, `SubagentStop`, and `Stop` run at turn
+  scope. `SessionStart` and `SubagentStart` run at thread or subagent-start
+  scope.
 
 ## Where Codex looks for hooks
 
@@ -68,29 +70,38 @@ Higher-precedence config layers don’t replace lower-precedence hooks.
 If a single layer contains both `hooks.json` and inline `[hooks]`, Codex
 merges them and warns at startup. Prefer one representation per layer.
 
-Plugin hooks are off by default in this release. If
-`[features].plugin_hooks = true`, Codex can also discover hooks bundled with
-enabled plugins. Otherwise, enabled plugins won’t run bundled hooks.
+Codex can also discover hooks bundled with enabled plugins. Plugin-bundled
+hooks load alongside other hook sources and use the same trust-review flow as
+other non-managed hooks.
 
 Project-local hooks load only when the project `.codex/` layer is trusted. In
 untrusted projects, Codex still loads user and system hooks from their own
 active config layers.
 
-## Review and manage hooks
+## Review and trust hooks
 
-Codex lists configured hooks before deciding which ones can run. Use `/hooks`
-in the CLI to inspect hook sources, review new or changed hooks, trust hooks, or
-disable individual non-managed hooks. If hooks need review at startup, Codex
-prints a warning that tells you to open `/hooks`.
+Codex lists configured hooks before deciding which ones can run. Before a
+non-managed command hook can run, Codex requires you to review and trust the
+exact hook definition. Codex records trust against the hook’s current hash, so
+new or changed hooks are marked for review and skipped until trusted.
+
+Use `/hooks` in the CLI to inspect hook sources, review new or changed hooks,
+trust hooks, or disable individual non-managed hooks. If hooks need review at
+startup, Codex prints a warning that tells you to open `/hooks`.
 
 Managed hooks from system, MDM, cloud, or `requirements.toml` sources are marked
 as managed, trusted by policy, and can’t be disabled from the user hook browser.
+
+For one-off automation that already vets hook sources outside Codex, pass
+`--dangerously-bypass-hook-trust` to run enabled hooks without requiring
+persisted hook trust for that invocation.
 
 ## Config shape
 
 Hooks are organized in three levels:
 
-- A hook event such as `PreToolUse`, `PostToolUse`, or `Stop`
+- A hook event such as `PreToolUse`, `PostToolUse`, `PreCompact`,
+  `SubagentStart`, or `Stop`
 - A matcher group that decides when that event matches
 - One or more hook handlers that run when the matcher group matches
 
@@ -175,6 +186,8 @@ Notes:
 - `timeout` is in seconds.
 - If `timeout` is omitted, Codex uses `600` seconds.
 - `statusMessage` is optional.
+- `commandWindows` is an optional Windows-only command override. In TOML, use
+  `command_windows` or `commandWindows`.
 - `async` is parsed, but async command hooks aren’t supported yet. Codex skips
   handlers with `async: true`.
 - Only `type: "command"` handlers run today. `prompt` and `agent` handlers are
@@ -212,9 +225,13 @@ Enterprise-managed requirements can also define hooks inline under `[hooks]`.
 This is useful when admins want to enforce the hook configuration while
 delivering the actual scripts through MDM or another device-management system.
 To enforce managed hooks even for users who disabled hooks locally, pin
-`[features].hooks = true` in `requirements.toml` alongside `[hooks]`.
+`[features].hooks = true` in `requirements.toml` alongside `[hooks]`. To ignore
+user, project, session, and plugin hooks while still allowing administrator
+managed hooks, set `allow_managed_hooks_only = true`.
 
 ```
+allow_managed_hooks_only = true
+
 [features]
 hooks = true
 
@@ -228,6 +245,7 @@ matcher = "^Bash$"
 [[hooks.PreToolUse.hooks]]
 type = "command"
 command = "python3 /enterprise/hooks/pre_tool_use_policy.py"
+command_windows = 'py -3 C:\enterprise\hooks\pre_tool_use_policy.py'
 timeout = 30
 statusMessage = "Checking managed Bash command"
 ```
@@ -240,17 +258,14 @@ Notes for managed hooks:
   tooling must install and update them separately.
 - Managed hook commands should use absolute script paths under the configured
   managed directory.
+- `allow_managed_hooks_only = true` skips hooks from user, project, session, and
+  plugin sources, but still loads managed hooks from `requirements.toml` and
+  other managed config layers.
 
 ## Plugin-bundled hooks
 
-Plugin-bundled hooks are opt-in for this release. When
-`[features].plugin_hooks = true` and a plugin is enabled, Codex can load
-lifecycle hooks from that plugin alongside user, project, and managed hooks.
-
-```
-[features]
-plugin_hooks = true
-```
+When a plugin is enabled, Codex can load lifecycle hooks from that plugin
+alongside user, project, and managed hooks.
 
 By default, Codex looks for `hooks/hooks.json` inside the plugin root. A plugin
 manifest can override that default with a `hooks` entry in
@@ -278,8 +293,9 @@ Plugin hook commands receive these environment variables:
 - Codex also sets `CLAUDE_PLUGIN_ROOT` and `CLAUDE_PLUGIN_DATA` for
   compatibility with existing plugin hooks.
 
-Plugin hooks use the same event schema as other hooks. They are non-managed
-hooks, so they require trust review before they run.
+Plugin hooks use the same event schema as other hooks. Installing or enabling a
+plugin doesn’t automatically trust its hooks; Codex skips plugin-bundled hooks
+until you review and trust the current hook definition.
 
 ## Matcher patterns
 
@@ -293,8 +309,12 @@ Only some current Codex events honor `matcher`:
 | --- | --- | --- |
 | `PermissionRequest` | tool name | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
 | `PostToolUse` | tool name | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
+| `PostCompact` | compaction trigger | Values are `manual` or `auto` |
+| `PreCompact` | compaction trigger | Values are `manual` or `auto` |
 | `PreToolUse` | tool name | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
-| `SessionStart` | start source | Current runtime values are `startup`, `resume`, and `clear` |
+| `SessionStart` | start source | Values are `startup`, `resume`, `clear`, and `compact` |
+| `SubagentStart` | subagent type | Values depend on the subagent that starts |
+| `SubagentStop` | subagent type | Values depend on the subagent that stops |
 | `UserPromptSubmit` | not supported | Any configured `matcher` is ignored for this event |
 | `Stop` | not supported | Any configured `matcher` is ignored for this event |
 
@@ -307,7 +327,8 @@ Examples:
 - `Edit|Write`
 - `mcp__filesystem__read_file`
 - `mcp__filesystem__.*`
-- `startup|resume|clear`
+- `startup|resume|clear|compact`
+- `manual|auto`
 
 ## Common input fields
 
@@ -317,7 +338,7 @@ These are the shared fields you will usually use:
 
 | Field | Type | Meaning |
 | --- | --- | --- |
-| `session_id` | `string` | Current session or thread id. |
+| `session_id` | `string` | Current Codex session id. Subagent hooks use the parent session id. |
 | `transcript_path` | `string | null` | Path to the session transcript file, if any |
 | `cwd` | `string` | Working directory for the session |
 | `hook_event_name` | `string` | Current hook event name |
@@ -327,9 +348,9 @@ Turn-scoped hooks list `turn_id` as a Codex-specific extension in their
 event-specific tables.
 
 `SessionStart`, `PreToolUse`, `PermissionRequest`, `PostToolUse`,
-`UserPromptSubmit`, and `Stop` also include `permission_mode`, which describes
-the current permission mode as `default`, `acceptEdits`, `plan`, `dontAsk`, or
-`bypassPermissions`.
+`UserPromptSubmit`, `SubagentStart`, `SubagentStop`, and `Stop` also include
+`permission_mode`, which describes the current permission mode as `default`,
+`acceptEdits`, `plan`, `dontAsk`, or `bypassPermissions`.
 
 `transcript_path` points to a conversation transcript for convenience, but the
 transcript format is not a stable interface for hooks and may change over time.
@@ -338,8 +359,10 @@ If you need the full wire format, see [Schemas](#schemas).
 
 ## Common output fields
 
-`SessionStart`, `UserPromptSubmit`, and `Stop` support these shared JSON
-fields:
+`SessionStart`, `PreCompact`, `PostCompact`, `UserPromptSubmit`,
+`SubagentStop`, and `Stop` support these shared JSON fields. `SubagentStart`
+accepts the same shape for `systemMessage` and hook-specific context, but
+`continue: false` doesn’t stop the subagent:
 
 ```
 {
@@ -377,7 +400,7 @@ Fields in addition to [Common input fields](#common-input-fields):
 
 | Field | Type | Meaning |
 | --- | --- | --- |
-| `source` | `string` | How the session started: `startup`, `resume`, or `clear` |
+| `source` | `string` | How the session started: `startup`, `resume`, `clear`, or `compact` |
 
 Plain text on `stdout` is added as extra developer context.
 
@@ -394,6 +417,36 @@ hook-specific shape:
 ```
 
 That `additionalContext` text is added as extra developer context.
+
+### SubagentStart
+
+`matcher` is applied to `agent_type` for this event.
+
+Fields in addition to [Common input fields](#common-input-fields):
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
+| `agent_id` | `string` | Identifier for the subagent |
+| `agent_type` | `string` | Subagent type or profile |
+| `permission_mode` | `string` | Current permission mode |
+
+Plain text on `stdout` is added as extra developer context for the subagent.
+
+JSON on `stdout` supports `systemMessage` and this hook-specific shape:
+
+```
+{
+  "hookSpecificOutput": {
+    "hookEventName": "SubagentStart",
+    "additionalContext": "Review the repository test conventions first."
+  }
+}
+```
+
+That `additionalContext` text is added as extra developer context for the
+subagent. `continue: false` is parsed for compatibility, but it doesn’t stop the
+subagent from starting.
 
 ### PreToolUse
 
@@ -599,6 +652,42 @@ your feedback or stop text and continue from there.
 Codex marks the hook run as failed, reports the error, and continues normal
 processing of the tool result.
 
+### PreCompact
+
+`PreCompact` runs before Codex compacts the conversation. `matcher` is applied
+to `trigger`, whose values are `manual` and `auto`.
+
+Fields in addition to [Common input fields](#common-input-fields):
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
+| `trigger` | `string` | What triggered compaction: `manual` or `auto` |
+
+Plain text on `stdout` is ignored.
+
+JSON on `stdout` supports [Common output fields](#common-output-fields). If a
+matching `PreCompact` hook returns `continue: false`, Codex stops before
+compacting.
+
+### PostCompact
+
+`PostCompact` runs after Codex compacts the conversation. `matcher` is applied
+to `trigger`, whose values are `manual` and `auto`.
+
+Fields in addition to [Common input fields](#common-input-fields):
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
+| `trigger` | `string` | What triggered compaction: `manual` or `auto` |
+
+Plain text on `stdout` is ignored.
+
+JSON on `stdout` supports [Common output fields](#common-output-fields). If a
+matching `PostCompact` hook returns `continue: false`, Codex stops after
+compacting.
+
 ### UserPromptSubmit
 
 `matcher` isn’t currently used for this event.
@@ -636,6 +725,40 @@ To block the prompt, return:
 ```
 
 You can also use exit code `2` and write the blocking reason to `stderr`.
+
+### SubagentStop
+
+`matcher` is applied to `agent_type` for this event.
+
+Fields in addition to [Common input fields](#common-input-fields):
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `turn_id` | `string` | Codex-specific extension. Active Codex turn id |
+| `agent_id` | `string` | Identifier for the subagent |
+| `agent_type` | `string` | Subagent type or profile |
+| `agent_transcript_path` | `string | null` | Path to the subagent transcript file, if any |
+| `stop_hook_active` | `boolean` | Whether this subagent was already continued |
+| `last_assistant_message` | `string | null` | Latest subagent assistant message, if available |
+
+`SubagentStop` expects JSON on `stdout` when it exits `0`. Plain text output is
+invalid for this event.
+
+JSON on `stdout` supports [Common output fields](#common-output-fields). To ask
+Codex to continue the subagent flow, return:
+
+```
+{
+  "decision": "block",
+  "reason": "Run one more focused pass inside the subagent."
+}
+```
+
+You can also use exit code `2` and write the continuation reason to `stderr`.
+
+If any matching `SubagentStop` hook returns `continue: false`, that takes
+precedence over continuation decisions from other matching `SubagentStop`
+hooks.
 
 ### Stop
 

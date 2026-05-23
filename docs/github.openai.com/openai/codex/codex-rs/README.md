@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/README.md'
-source_etag: 'W/"3dc8907e956b1ec6389ac6912e95e041604c3d51116f0f6263f2d7bba5c8e83a"'
+source_etag: 'W/"2a9449f9eda3859481bd0a8dcddcd7b8ce37f75fbdb3b7c476d1d4b49221c9f9"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -74,6 +74,10 @@ codex sandbox [COMMAND]...
 # macOS-only diagnostic option
 codex sandbox --log-denials [COMMAND]...
 ```
+
+`codex sandbox` also accepts `--profile NAME` (`-p NAME`) to layer
+`$CODEX_HOME/NAME.config.toml` onto the base user config for the sandboxed
+command.
 
 ### Selecting a sandbox policy via `--sandbox`
 

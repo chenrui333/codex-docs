@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/governance'
-source_last_modified: '2026-05-14T23:09:15Z'
-source_etag: 'W/"6774f8e57193a257b051065c956e209b"'
+source_last_modified: '2026-05-22T20:30:09Z'
+source_etag: 'W/"aafb5583682824202a38271f3b0245f5"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -20,22 +20,22 @@ Codex gives enterprise teams visibility into adoption and impact, plus the audit
 
 There are three ways to monitor Codex usage, depending on what you need:
 
-- **Analytics Dashboard**: quick visibility into adoption and code review impact.
+- **Analytics Dashboard**: quick visibility into adoption, usage, and code review impact.
 - **Analytics API**: pull structured daily metrics into your data warehouse or BI tools.
 - **Compliance API**: exports detailed activity logs for audit, monitoring, and investigations.
 
 ## Analytics Dashboard
 
-![Codex analytics dashboard](/images/codex/enterprise/analytics-dashboard.png)
+![Codex analytics dashboard showing credit and token usage by model](/images/codex/enterprise/analytics-dashboard.png)
 
 ### Dashboard views
 
-The [analytics dashboard](https://chatgpt.com/codex/cloud/settings/analytics#usage) allows ChatGPT workspace administrators and analytics viewers to track Codex adoption, usage, and Code Review feedback. Usage data can lag by up to 12 hours.
+The [analytics dashboard](https://admin.openai.com/analytics/codex) allows ChatGPT workspace administrators and analytics viewers to track Codex adoption, usage, and Code Review feedback. Usage data can lag by up to 12 hours.
 
 Codex provides date-range controls for daily and weekly views. Key charts include:
 
 - Active users by product surface, including CLI, IDE extension, cloud, desktop, and Code Review
-- Workspace and personal usage breakdowns, including credit and token usage by product surface
+- Workspace and personal usage breakdowns, including credit and token usage by product surface or model
 - Product activity for threads and turns by client
 - User ranking table, with filters for client and sort options such as credits, threads, turns, text tokens, and current streak
 - Code Review activity, including PRs reviewed, issues by priority, comments, replies, reactions, and feedback sentiment

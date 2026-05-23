@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-basic'
-source_last_modified: '2026-05-20T00:58:08Z'
-source_etag: 'W/"bfc22ff305b8148b9aa1045abf98daa6"'
+source_last_modified: '2026-05-22T20:25:41Z'
+source_etag: 'W/"55a917ba37e6ae0b6de59abc99ab3bf6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -181,7 +181,6 @@ shell_snapshot = true           # Speed up repeated commands
 | `apps` | false | Experimental | Enable ChatGPT Apps/connectors support |
 | `codex_git_commit` | false | Experimental | Enable Codex-generated git commits and commit attribution trailers |
 | `hooks` | true | Stable | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](/codex/hooks). |
-| `plugin_hooks` | false | Under development | Opt into lifecycle hooks bundled with plugins. See [Hooks](/codex/hooks#plugin-bundled-hooks). |
 | `fast_mode` | true | Stable | Enable Fast mode selection and the `service_tier = "fast"` path |
 | `memories` | false | Stable | Enable [Memories](/codex/memories) |
 | `multi_agent` | true | Stable | Enable subagent collaboration tools |

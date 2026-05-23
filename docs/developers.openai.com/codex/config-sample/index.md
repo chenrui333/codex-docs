@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-20T21:13:05Z'
-source_etag: 'W/"44652a085fd552380bb794b874389a0d"'
+source_last_modified: '2026-05-22T20:26:00Z'
+source_etag: 'W/"dad2d3c33986f6f4c8da819ce926fef0"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -1098,8 +1098,6 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 1071
 1072
 1073
-1074
-1075
 # Codex example configuration (config.toml)
 #
 # This file lists the main keys Codex reads from config.toml, along with default
@@ -1739,8 +1737,6 @@ enabled = true
 # apps = false
 
 # hooks = false
-
-# plugin_hooks = false # Default off; set true to opt into plugin-bundled hooks.
 
 # codex_git_commit = false
 

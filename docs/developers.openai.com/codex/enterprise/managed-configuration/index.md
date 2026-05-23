@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-05-21T01:05:00Z'
-source_etag: 'W/"380d09b253db2786093a602495972448"'
+source_last_modified: '2026-05-22T20:30:10Z'
+source_etag: 'W/"22e8bccbc9c71a975b156da47999398a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -232,9 +232,13 @@ directory where your MDM or endpoint-management tooling installs the referenced
 scripts.
 
 To enforce managed hooks even for users who disabled hooks locally, pin
-`[features].hooks = true` alongside `[hooks]`.
+`[features].hooks = true` alongside `[hooks]`. To skip user, project, session,
+and plugin hooks while still allowing managed hooks, set
+`allow_managed_hooks_only = true`.
 
 ```
+allow_managed_hooks_only = true
+
 [features]
 hooks = true
 
@@ -248,6 +252,7 @@ matcher = "^Bash$"
 [[hooks.PreToolUse.hooks]]
 type = "command"
 command = "python3 /enterprise/hooks/pre_tool_use_policy.py"
+command_windows = 'py -3 C:\enterprise\hooks\pre_tool_use_policy.py'
 timeout = 30
 statusMessage = "Checking managed Bash command"
 ```
@@ -259,6 +264,9 @@ Notes:
 - Deliver those scripts separately with your MDM or device-management solution.
 - Managed hook commands should reference absolute script paths under the
   configured managed directory.
+- `allow_managed_hooks_only = true` skips hooks from user, project, session, and
+  plugin sources, but still loads hooks from `requirements.toml` and other
+  managed config layers.
 
 ### Enforce command rules from requirements
 
