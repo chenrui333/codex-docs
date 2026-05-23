@@ -410,6 +410,7 @@
       "js_repl_tools_only",
       "mentions_v2",
       "multi_agent_v2",
+      "plugin_hooks",
       "plugin_sharing",
       "plugins",
       "realtime_conversation",
@@ -457,7 +458,6 @@
     "multi_agent",
     "network_proxy",
     "personality",
-    "plugin_hooks",
     "prevent_idle_sleep",
     "shell_snapshot",
     "shell_tool",
@@ -775,7 +775,7 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "752dfc2f5b61f8f3d50114b17a02f8a9f939958d78246968fedafe4fa9c6b160",
+    "client_rs_sha256": "07b7798e1a54ede18a1ced57035ba551fd4ad5c67f3f1bfe322152099ccb243f",
     "features_rs_sha256": "daab637bd75bfa78985c9efabdbdbb278e86964f7a29dbd572273ae554a7e844"
   },
   "source_urls": {
