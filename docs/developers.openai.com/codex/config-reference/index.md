@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-22T20:26:00Z'
-source_etag: 'W/"0170f09c0d274fc2517912f11b0667ee"'
+source_last_modified: '2026-05-26T18:41:11Z'
+source_etag: 'W/"97c33a16d0c1771936faae96e9e7e723"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -19,11 +19,15 @@ Use this page as a searchable reference for Codex configuration files. For conce
 User-level configuration lives in `~/.codex/config.toml`. You can also add project-scoped overrides in `.codex/config.toml` files. Codex loads project-scoped config files only when you trust the project.
 
 Project-scoped config can’t override machine-local provider, auth,
-notification, profile, or telemetry routing keys. Codex ignores
-`openai_base_url`, `chatgpt_base_url`, `model_provider`, `model_providers`,
-`notify`, `profile`, `profiles`, `experimental_realtime_ws_base_url`, and
-`otel` when they appear in a project-local `.codex/config.toml`; put those in
-user-level config instead.
+host-owned app request metadata, notification, configuration profile selection,
+or telemetry routing keys. Codex ignores `openai_base_url`,
+`chatgpt_base_url`, `apps_mcp_product_sku`, `model_provider`,
+`model_providers`, `notify`, `profile`, `profiles`,
+`experimental_realtime_ws_base_url`, and `otel` when they appear in a
+project-local `.codex/config.toml`; put provider, notification, and telemetry
+keys in user-level config instead. Config [profile files](/codex/config-advanced#profiles) live next to
+`config.toml` as `$CODEX_HOME/profile-name.config.toml`; select one with
+`--profile profile-name`.
 
 For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](/codex/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](/codex/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](/codex/agent-approvals-security#network-access). For beta permission profiles, see [Permissions](/codex/permissions).
 
@@ -145,7 +149,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `memories.use_memories` | `boolean` | When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`. |
 | `model` | `string` | Model to use (e.g., `gpt-5.5`). |
 | `model_auto_compact_token_limit` | `number` | Token threshold that triggers automatic history compaction (unset uses model defaults). |
-| `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile. |
+| `model_catalog_json` | `string (path)` | Optional path to a JSON model catalog loaded on startup. A selected `$CODEX_HOME/profile-name.config.toml` profile file can override this per profile. |
 | `model_context_window` | `number` | Context window tokens available to the active model. |
 | `model_instructions_file` | `string (path)` | Replacement for built-in instructions instead of `AGENTS.md`. |
 | `model_provider` | `string` | Provider id from `model_providers` (default: `openai`). |
@@ -229,19 +233,6 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `plugins.<plugin>.mcp_servers.<server>.enabled` | `boolean` | Enable or disable an MCP server bundled by an installed plugin without changing the plugin manifest. |
 | `plugins.<plugin>.mcp_servers.<server>.enabled_tools` | `array<string>` | Allow list of tools exposed from a plugin-provided MCP server. |
 | `plugins.<plugin>.mcp_servers.<server>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Per-tool approval behavior override for a plugin-provided MCP tool. |
-| `profile` | `string` | Default profile applied at startup (equivalent to `--profile`). |
-| `profiles.<name>.*` | `various` | Profile-scoped overrides for any of the supported configuration keys. |
-| `profiles.<name>.analytics.enabled` | `boolean` | Profile-scoped analytics enablement override. |
-| `profiles.<name>.experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec`. |
-| `profiles.<name>.model_catalog_json` | `string (path)` | Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model_catalog_json` for that profile). |
-| `profiles.<name>.model_instructions_file` | `string (path)` | Profile-scoped replacement for the built-in instruction file. |
-| `profiles.<name>.oss_provider` | `lmstudio | ollama` | Profile-scoped OSS provider for `--oss` sessions. |
-| `profiles.<name>.personality` | `none | friendly | pragmatic` | Profile-scoped communication style override for supported models. |
-| `profiles.<name>.plan_mode_reasoning_effort` | `none | minimal | low | medium | high | xhigh` | Profile-scoped Plan-mode reasoning override. |
-| `profiles.<name>.service_tier` | `string` | Profile-scoped service tier preference for new turns. |
-| `profiles.<name>.tools_view_image` | `boolean` | Enable or disable the `view_image` tool in that profile. |
-| `profiles.<name>.web_search` | `disabled | cached | live` | Profile-scoped web search mode override (default: `"cached"`). |
-| `profiles.<name>.windows.sandbox` | `unelevated | elevated` | Profile-scoped Windows sandbox mode override. |
 | `project_doc_fallback_filenames` | `array<string>` | Additional filenames to try when `AGENTS.md` is missing. |
 | `project_doc_max_bytes` | `number` | Maximum bytes read from `AGENTS.md` when building project instructions. |
 | `project_root_markers` | `array<string>` | List of project root marker filenames; used when searching parent directories for the project root. |
@@ -1692,7 +1683,7 @@ Type / Values
 
 Details
 
-Optional path to a JSON model catalog loaded on startup. Profile-level `profiles.<name>.model_catalog_json` can override this per profile.
+Optional path to a JSON model catalog loaded on startup. A selected `$CODEX_HOME/profile-name.config.toml` profile file can override this per profile.
 
 Key
 
@@ -2689,162 +2680,6 @@ Type / Values
 Details
 
 Per-tool approval behavior override for a plugin-provided MCP tool.
-
-Key
-
-`profile`
-
-Type / Values
-
-`string`
-
-Details
-
-Default profile applied at startup (equivalent to `--profile`).
-
-Key
-
-`profiles.<name>.*`
-
-Type / Values
-
-`various`
-
-Details
-
-Profile-scoped overrides for any of the supported configuration keys.
-
-Key
-
-`profiles.<name>.analytics.enabled`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Profile-scoped analytics enablement override.
-
-Key
-
-`profiles.<name>.experimental_use_unified_exec_tool`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Legacy name for enabling unified exec; prefer `[features].unified_exec`.
-
-Key
-
-`profiles.<name>.model_catalog_json`
-
-Type / Values
-
-`string (path)`
-
-Details
-
-Profile-scoped model catalog JSON path override (applied on startup only; overrides the top-level `model_catalog_json` for that profile).
-
-Key
-
-`profiles.<name>.model_instructions_file`
-
-Type / Values
-
-`string (path)`
-
-Details
-
-Profile-scoped replacement for the built-in instruction file.
-
-Key
-
-`profiles.<name>.oss_provider`
-
-Type / Values
-
-`lmstudio | ollama`
-
-Details
-
-Profile-scoped OSS provider for `--oss` sessions.
-
-Key
-
-`profiles.<name>.personality`
-
-Type / Values
-
-`none | friendly | pragmatic`
-
-Details
-
-Profile-scoped communication style override for supported models.
-
-Key
-
-`profiles.<name>.plan_mode_reasoning_effort`
-
-Type / Values
-
-`none | minimal | low | medium | high | xhigh`
-
-Details
-
-Profile-scoped Plan-mode reasoning override.
-
-Key
-
-`profiles.<name>.service_tier`
-
-Type / Values
-
-`string`
-
-Details
-
-Profile-scoped service tier preference for new turns.
-
-Key
-
-`profiles.<name>.tools_view_image`
-
-Type / Values
-
-`boolean`
-
-Details
-
-Enable or disable the `view_image` tool in that profile.
-
-Key
-
-`profiles.<name>.web_search`
-
-Type / Values
-
-`disabled | cached | live`
-
-Details
-
-Profile-scoped web search mode override (default: `"cached"`).
-
-Key
-
-`profiles.<name>.windows.sandbox`
-
-Type / Values
-
-`unelevated | elevated`
-
-Details
-
-Profile-scoped Windows sandbox mode override.
 
 Key
 

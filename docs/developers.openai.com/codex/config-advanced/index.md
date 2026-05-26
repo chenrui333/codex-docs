@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-advanced'
-source_last_modified: '2026-05-20T00:58:08Z'
-source_etag: 'W/"0ca56f22a8014a5d52907918d7fa310e"'
+source_last_modified: '2026-05-26T18:42:14Z'
+source_etag: 'W/"bc21976811d9dc0e7a5acb7872021a2d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -18,33 +18,38 @@ For background on project guidance, reusable capabilities, custom slash commands
 
 ## Profiles
 
-Profiles let you save named sets of configuration values and switch between them from the CLI.
+Profiles let you save named configuration layers and switch between them from
+the CLI. When you pass `--profile profile-name`, Codex loads
+`~/.codex/config.toml`, then overlays `~/.codex/profile-name.config.toml`.
+Profile names can contain letters, numbers, hyphens, and underscores.
 
-Profiles are experimental and may change or be removed in future releases.
-
-Profiles are not currently supported in the Codex IDE extension.
-
-Define profiles under `[profiles.<name>]` in `config.toml`, then run `codex --profile <name>`:
+Create a separate TOML file for each profile. Use top-level config keys in the
+profile file; don’t nest them under `[profiles.profile-name]`.
 
 ```
-model = "gpt-5.4"
+# ~/.codex/deep-review.config.toml
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
 approval_policy = "on-request"
-model_catalog_json = "/Users/me/.codex/model-catalogs/default.json"
-
-[profiles.deep-review]
-model = "gpt-5-pro"
-model_reasoning_effort = "high"
-approval_policy = "never"
 model_catalog_json = "/Users/me/.codex/model-catalogs/deep-review.json"
-
-[profiles.lightweight]
-model = "gpt-4.1"
-approval_policy = "untrusted"
 ```
 
-To make a profile the default, add `profile = "deep-review"` at the top level of `config.toml`. Codex loads that profile unless you override it on the command line.
+```
+codex --profile deep-review
+codex exec --profile deep-review "review this change"
+```
 
-Profiles can also override `model_catalog_json`. When both the top level and the selected profile set `model_catalog_json`, Codex prefers the profile value.
+Because the profile file is a layer above your base user config and below
+project and CLI config, it only needs the values that differ from your base
+config. Profile files can also override `model_catalog_json`; Codex uses the
+profile value when both files set it.
+
+In Codex 0.134.0 and later, `--profile` no longer reads `[profiles.profile-name]`
+from `config.toml`, and the top-level `profile = "profile-name"` selector is no
+longer supported. Move legacy profile settings into
+`~/.codex/profile-name.config.toml`, then remove the matching
+`[profiles.profile-name]` table and `profile = "profile-name"` selector from
+`config.toml`.
 
 ## One-off overrides from the CLI
 
@@ -100,13 +105,16 @@ For security, Codex loads project-scoped config files only when the project is t
 
 Relative paths inside a project config (for example, `model_instructions_file`) are resolved relative to the `.codex/` folder that contains the `config.toml`.
 
-Project config files can’t override settings that redirect credentials, change
-provider auth, or run machine-local notification/telemetry commands.
-Codex ignores the following keys in project-local `.codex/config.toml` and
-prints a startup warning when it sees them: `openai_base_url`,
-`chatgpt_base_url`, `model_provider`, `model_providers`, `notify`, `profile`,
-`profiles`, `experimental_realtime_ws_base_url`, and `otel`. Set those keys in
-your user-level `~/.codex/config.toml` instead.
+Project config files can’t override settings that redirect credentials, alter
+host-owned app request metadata, change provider auth, select config profiles,
+or run machine-local notification/telemetry commands. Codex ignores the
+following keys in project-local `.codex/config.toml` and prints a startup
+warning when it sees them: `openai_base_url`, `chatgpt_base_url`,
+`apps_mcp_product_sku`, `model_provider`, `model_providers`, `notify`,
+`profile`, `profiles`, `experimental_realtime_ws_base_url`, and `otel`. Set
+provider, notification, and telemetry keys in your user-level
+`~/.codex/config.toml`; select config profiles with `--profile profile-name`
+and `~/.codex/profile-name.config.toml`.
 
 ## Hooks
 
@@ -323,8 +331,8 @@ Use your organization's automatic review policy.
 For built-in profiles, custom profile syntax, and the full filesystem and
 network configuration model, see [Permissions](/codex/permissions).
 
-For the complete key list, including profile-scoped overrides and requirements
-constraints, see [Configuration Reference](/codex/config-reference) and
+For the complete key list and requirements constraints, see
+[Configuration Reference](/codex/config-reference) and
 [Managed configuration](/codex/enterprise/managed-configuration).
 
 In workspace-write mode, some environments keep `.git/` and `.codex/`

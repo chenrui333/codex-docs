@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/reference'
-source_last_modified: '2026-05-22T20:27:10Z'
-source_etag: 'W/"de11aaffd5c2a571aa42541bfb5e35f6"'
+source_last_modified: '2026-05-26T18:42:27Z'
+source_etag: 'W/"f22c65756156eb3b70ec8397d94c0402"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -37,7 +37,7 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--model, -m` | `string` | Override the model set in configuration (for example `gpt-5.4`). |
 | `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run). |
 | `--oss` | `boolean` | Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running. |
-| `--profile, -p` | `string` | Configuration profile name to load from `~/.codex/config.toml`. |
+| `--profile, -p` | `string` | Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config. |
 | `--remote` | `ws://host:port | wss://host:port` | Connect the interactive TUI to a remote app-server WebSocket endpoint. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode. |
 | `--remote-auth-token-env` | `ENV_VAR` | Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`. |
 | `--sandbox, -s` | `read-only | workspace-write | danger-full-access` | Select the sandbox policy for model-generated shell commands. |
@@ -198,7 +198,7 @@ Type / Values
 
 Details
 
-Configuration profile name to load from `~/.codex/config.toml`.
+Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config.
 
 Key
 
@@ -911,12 +911,12 @@ Shell to generate completions for. Output prints to stdout.
 
 ### `codex features`
 
-Manage feature flags stored in `~/.codex/config.toml`. The `enable` and `disable` commands persist changes so they apply to future sessions. When you launch with `--profile`, Codex writes to that profile instead of the root configuration.
+Manage feature flags stored in `~/.codex/config.toml` or the selected profile file. The `enable` and `disable` commands persist changes so they apply to future sessions. When you launch with `--profile profile-name`, Codex writes to `$CODEX_HOME/profile-name.config.toml` instead of the base user config.
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
-| `Disable subcommand` | `codex features disable <feature>` | Persistently disable a feature flag in `config.toml`. Respects the active `--profile` when provided. |
-| `Enable subcommand` | `codex features enable <feature>` | Persistently enable a feature flag in `config.toml`. Respects the active `--profile` when provided. |
+| `Disable subcommand` | `codex features disable <feature>` | Persistently disable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`. |
+| `Enable subcommand` | `codex features enable <feature>` | Persistently enable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`. |
 | `List subcommand` | `codex features list` | Show known feature flags, their maturity stage, and their effective state. |
 
 Key
@@ -929,7 +929,7 @@ Type / Values
 
 Details
 
-Persistently disable a feature flag in `config.toml`. Respects the active `--profile` when provided.
+Persistently disable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.
 
 Key
 
@@ -941,7 +941,7 @@ Type / Values
 
 Details
 
-Persistently enable a feature flag in `config.toml`. Respects the active `--profile` when provided.
+Persistently enable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.
 
 Key
 
@@ -975,7 +975,7 @@ Use `codex exec` (or the short form `codex e`) for scripted or CI-style runs tha
 | `--oss` | `boolean` | Use the local open source provider (requires a running Ollama instance). |
 | `--output-last-message, -o` | `path` | Write the assistant’s final message to a file. Useful for downstream scripting. |
 | `--output-schema` | `path` | JSON Schema file describing the expected final response shape. Codex validates tool output against it. |
-| `--profile, -p` | `string` | Select a configuration profile defined in config.toml. |
+| `--profile, -p` | `string` | Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config. |
 | `--sandbox, -s` | `read-only | workspace-write | danger-full-access` | Sandbox policy for model-generated commands. Defaults to configuration. |
 | `--skip-git-repo-check` | `boolean` | Allow running outside a Git repository (useful for one-off directories). |
 | `-c, --config` | `key=value` | Inline configuration override for the non-interactive run (repeatable). |
@@ -1160,7 +1160,7 @@ Type / Values
 
 Details
 
-Select a configuration profile defined in config.toml.
+Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config.
 
 Key
 

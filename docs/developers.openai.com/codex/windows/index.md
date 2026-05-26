@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/windows'
-source_last_modified: '2026-04-25T06:28:04Z'
-source_etag: 'W/"de6ab17f784ea2b9bbac7f20a7fb292f"'
+source_last_modified: '2026-05-26T18:40:53Z'
+source_etag: 'W/"c98f8b1690749e8dd8f48c7068473324"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -169,15 +169,8 @@ wsl
 Then run these commands from your WSL shell:
 
 ```
-# https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
-# Install Node.js in WSL (via nvm)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-
-# In a new tab or after exiting and running `wsl` again to install Node.js
-nvm install 22
-
 # Install and run Codex in WSL
-npm i -g @openai/codex
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
 codex
 ```
 

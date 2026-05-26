@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli'
-source_last_modified: '2026-04-25T06:30:09Z'
-source_etag: 'W/"512d7dbf13ae7ddef15b23e59f7de202"'
+source_last_modified: '2026-05-26T18:40:33Z'
+source_etag: 'W/"8b807e5e51a734069861a517aab53cb1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -19,19 +19,19 @@ ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more
 
 ## CLI setup
 
-Choose your package manager
+Choose your install option
 
-npmHomebrew
+macOS/LinuxWindowsnpmHomebrew
 
 1. 1
 
    ### Install
 
-   Install the Codex CLI with npm.
+   Install the Codex CLI with the standalone installer for macOS and Linux.
 
-   npm install command
+   macOS/Linux install command
 
-   npm i -g @openai/codexCopy
+   curl -fsSL https://chatgpt.com/codex/install.sh | shCopy
 2. 2
 
    ### Run
@@ -49,11 +49,11 @@ npmHomebrew
 
    ### Upgrade
 
-   New versions of the Codex CLI are released regularly. See the [changelog](/codex/changelog) for release notes. To upgrade with npm, run:
+   New versions of the Codex CLI are released regularly. See the [changelog](/codex/changelog) for release notes. To upgrade a standalone install, rerun the installer:
 
-   npm upgrade command
+   macOS/Linux upgrade command
 
-   npm i -g @openai/codex@latestCopy
+   curl -fsSL https://chatgpt.com/codex/install.sh | shCopy
 
 The Codex CLI is available on macOS, Windows, and Linux. On Windows, run Codex
 natively in PowerShell with the Windows sandbox, or use WSL2 when you need a

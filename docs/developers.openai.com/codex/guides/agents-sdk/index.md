@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/guides/agents-sdk'
-source_last_modified: '2026-04-25T06:30:33Z'
-source_etag: 'W/"3a17b112412ca461ad4136079523363a"'
+source_last_modified: '2026-05-26T18:41:03Z'
+source_etag: 'W/"9ef1c3089250773b81d250042ef92ecd"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -41,7 +41,7 @@ Send a `tools/list` request to see two tools:
 | `cwd` | `string` | Working directory for the session. If relative, resolved against the server process’s current directory. |
 | `include-plan-tool` | `boolean` | Whether to include the plan tool in the conversation. |
 | `model` | `string` | Optional override for the model name (for example, `o3`, `o4-mini`). |
-| `profile` | `string` | Configuration profile from `config.toml` to specify default options. |
+| `profile` | `string` | Configuration profile name; Codex loads `$CODEX_HOME/profile-name.config.toml` to specify default options. |
 | `sandbox` | `string` | Sandbox mode: `read-only`, `workspace-write`, or `danger-full-access`. |
 
 **`codex-reply`**: Continue a Codex session by providing the thread ID and prompt. The `codex-reply` tool takes these properties:
@@ -85,9 +85,9 @@ This guide walks through the same workflow showcased in the [OpenAI Cookbook](ht
 
 Before starting, make sure you have:
 
-- [Codex CLI](/codex/cli) installed locally so `npx codex` can run.
+- [Codex CLI](/codex/cli) installed locally so the `codex` command is available.
 - Python 3.10+ with `pip`.
-- Node.js 18+ (required for `npx`).
+- Node.js 18+ if you want to run the MCP Inspector example above.
 - An OpenAI API key stored locally. You can create or manage keys in the [OpenAI dashboard](https://platform.openai.com/account/api-keys).
 
 Create a working directory for the guide and add your API key to a `.env` file:
@@ -127,8 +127,8 @@ async def main() -> None:
     async with MCPServerStdio(
         name="Codex CLI",
         params={
-            "command": "npx",
-            "args": ["-y", "codex", "mcp-server"],
+            "command": "codex",
+            "args": ["mcp-server"],
         },
         client_session_timeout_seconds=360000,
     ) as codex_mcp_server:
@@ -173,8 +173,8 @@ async def main() -> None:
     async with MCPServerStdio(
         name="Codex CLI",
         params={
-            "command": "npx",
-            "args": ["-y", "codex", "mcp-server"],
+            "command": "codex",
+            "args": ["mcp-server"],
         },
         client_session_timeout_seconds=360000,
     ) as codex_mcp_server:
@@ -244,7 +244,7 @@ set_default_openai_api(os.getenv("OPENAI_API_KEY"))
 async def main() -> None:
     async with MCPServerStdio(
         name="Codex CLI",
-        params={"command": "npx", "args": ["-y", "codex", "mcp"]},
+        params={"command": "codex", "args": ["mcp"]},
         client_session_timeout_seconds=360000,
     ) as codex_mcp_server:
         designer_agent = Agent(

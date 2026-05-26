@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/noninteractive'
-source_last_modified: '2026-04-30T17:49:17Z'
-source_etag: 'W/"956f066a981279aea994c5a92e80fb61"'
+source_last_modified: '2026-05-26T18:42:38Z'
+source_etag: 'W/"1839ed3caac653a4768d2995cbbb4b19"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -136,14 +136,17 @@ Example final output (stdout):
 }
 ```
 
-## Authenticate in CI
+## Authenticate in automation
 
 `codex exec` reuses saved CLI authentication by default. In CI, it’s common to provide credentials explicitly:
 
-### Use API key auth (recommended)
+### Use API key auth
 
-- Set `CODEX_API_KEY` as a secret environment variable for the job.
-- Keep prompts and tool output in mind: they can include sensitive code or data.
+For GitHub Actions, use the [Codex GitHub Action](/codex/github-action) instead of installing and authenticating the CLI yourself. The action is designed to reduce API key exposure by installing Codex, starting a Responses API proxy, and running Codex with a configurable safety strategy.
+
+Do not set `OPENAI_API_KEY` or `CODEX_API_KEY` as a job-level environment variable in workflows that check out or run repository-controlled code. Build scripts, tests, dependency lifecycle hooks, or a compromised action in the same job can read those environment variables.
+
+For other automation environments, set `CODEX_API_KEY` only for the single `codex exec` invocation and make sure no untrusted code runs in the same process environment.
 
 To use a different API key for a single run, set `CODEX_API_KEY` inline:
 
@@ -192,17 +195,22 @@ Codex requires commands to run inside a Git repository to prevent destructive ch
 
 ### Example: Autofix CI failures in GitHub Actions
 
-You can use `codex exec` to automatically propose fixes when a CI workflow fails. The typical pattern is:
+For GitHub Actions workflows, use [`openai/codex-action`](https://github.com/openai/codex-action) instead of installing Codex and passing the API key to a shell step. The action starts a secure proxy for the OpenAI API key.
+
+You can use Codex to automatically propose fixes when a CI workflow fails. The pattern is:
 
 1. Trigger a follow-up workflow when your main CI workflow completes with an error.
-2. Check out the failing commit SHA.
-3. Install dependencies and run Codex with a narrow prompt and minimal permissions.
-4. Re-run the test command.
-5. Open a pull request with the resulting patch.
+2. Check out the failing commit with repository read permissions only.
+3. Run setup commands before Codex, without exposing your OpenAI API key to those steps.
+4. Run the Codex GitHub Action.
+5. Save Codex’s local changes as a patch artifact.
+6. In a separate job, apply the patch and open a pull request.
 
-#### Minimal workflow using the Codex CLI
+The Codex job below has only `contents: read`. After Codex runs, it only serializes the diff as an artifact. The `open_pr` job receives repository write permissions, but it does not receive `OPENAI_API_KEY`.
 
-The example below shows the core steps. Adjust the install and test commands to match your stack.
+The example assumes a Node.js project. Adjust the setup and test commands to match your stack.
+
+For a deeper security checklist, see the [Codex GitHub Action security guidance](https://github.com/openai/codex-action/blob/main/docs/security.md).
 
 ```
 name: Codex auto-fix on CI failure
@@ -212,23 +220,20 @@ on:
     workflows: ["CI"]
     types: [completed]
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
-  auto-fix:
+  generate_fix:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     runs-on: ubuntu-latest
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      FAILED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
-      FAILED_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+    permissions:
+      contents: read
+    outputs:
+      has_patch: ${{ steps.diff.outputs.has_patch }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
-          ref: ${{ env.FAILED_HEAD_SHA }}
+          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -236,34 +241,88 @@ jobs:
 
       - name: Install dependencies
         run: |
-          if [ -f package-lock.json ]; then npm ci; else npm i; fi
-
-      - name: Install Codex
-        run: npm i -g @openai/codex
-
-      - name: Authenticate Codex
-        run: codex login --api-key "$OPENAI_API_KEY"
+          if [ -f package-lock.json ]; then npm ci; fi
 
       - name: Run Codex
-        run: |
-          codex exec --sandbox workspace-write \
-            "Read the repository, run the test suite, identify the minimal change needed to make all tests pass, implement only that change, and stop. Do not refactor unrelated files."
-
-      - name: Verify tests
-        run: npm test --silent
-
-      - name: Create pull request
-        if: success()
-        uses: peter-evans/create-pull-request@v6
+        uses: openai/codex-action@v1
         with:
-          branch: codex/auto-fix-${{ github.event.workflow_run.run_id }}
-          base: ${{ env.FAILED_HEAD_BRANCH }}
-          title: "Auto-fix failing CI via Codex"
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt: |
+            The CI workflow "${{ github.event.workflow_run.name }}" failed for commit
+            ${{ github.event.workflow_run.head_sha }}.
+
+            Run `npm test --silent` to reproduce the failure. Identify the minimal
+            change needed to make the tests pass, implement only that change, and
+            run `npm test --silent` again.
+
+            Do not refactor unrelated files.
+
+      - name: Create patch artifact
+        id: diff
+        run: |
+          git add -N .
+          git diff --binary HEAD > codex.patch
+          if [ -s codex.patch ]; then
+            echo "has_patch=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_patch=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload patch artifact
+        if: steps.diff.outputs.has_patch == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-fix-patch
+          path: codex.patch
+          if-no-files-found: error
+
+  open_pr:
+    runs-on: ubuntu-latest
+    needs: generate_fix
+    if: needs.generate_fix.outputs.has_patch == 'true'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: codex-fix-patch
+
+      - name: Apply Codex patch
+        run: git apply --index codex.patch
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          FAILED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          RUN_ID: ${{ github.event.workflow_run.run_id }}
+        run: |
+          branch="codex/auto-fix-$RUN_ID"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -m "Auto-fix failing CI via Codex"
+          git push origin "$branch"
+
+          {
+            echo "Codex generated this patch after CI failed for \`$FAILED_HEAD_SHA\`."
+            echo
+            echo "Review the changes before merging."
+          } > pr-body.md
+
+          gh pr create \
+            --base "$FAILED_HEAD_BRANCH" \
+            --head "$branch" \
+            --title "Auto-fix failing CI via Codex" \
+            --body-file pr-body.md
 ```
-
-#### Alternative: Use the Codex GitHub Action
-
-If you want to avoid installing the CLI yourself, you can run `codex exec` through the [Codex GitHub Action](/codex/github-action) and pass the prompt as an input.
 
 ## Advanced stdin piping
 

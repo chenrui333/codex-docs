@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/quickstart'
-source_last_modified: '2026-05-01T23:21:05Z'
-source_etag: 'W/"603169b9a9666abd2e7f176b443f31e8"'
+source_last_modified: '2026-05-26T18:41:21Z'
+source_etag: 'W/"63f7496d55249576b1a145e47db43714"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -90,16 +90,26 @@ The Codex CLI is supported on macOS, Windows, and Linux.
 
 1. Install the Codex CLI
 
-   Install with npm:
+   On macOS or Linux, use the standalone installer:
+
+   ```
+   curl -fsSL https://chatgpt.com/codex/install.sh | sh
+   ```
+
+   On Windows, run:
+
+   ```
+   powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+   ```
+
+   You can also install Codex CLI with npm or Homebrew:
 
    ```
    npm install -g @openai/codex
    ```
 
-   Install with Homebrew:
-
    ```
-   brew install codex
+   brew install --cask codex
    ```
 2. Run `codex` and sign in
 

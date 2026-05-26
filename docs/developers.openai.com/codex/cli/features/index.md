@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/features'
-source_last_modified: '2026-05-20T21:08:47Z'
-source_etag: 'W/"ef4f2190e40d22cfbeced8f0a68fb61b"'
+source_last_modified: '2026-05-26T18:41:32Z'
+source_etag: 'W/"c67e093152bb09f9f18126854c819ff9"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -136,7 +136,7 @@ codex features enable unified_exec
 codex features disable shell_snapshot
 ```
 
-`codex features enable <feature>` and `codex features disable <feature>` write to `~/.codex/config.toml`. If you launch Codex with `--profile`, Codex stores the change in that profile rather than the root configuration.
+`codex features enable <feature>` and `codex features disable <feature>` write to `~/.codex/config.toml`. If you launch Codex with `--profile profile-name`, Codex writes to `$CODEX_HOME/profile-name.config.toml` instead.
 
 ## Subagents
 

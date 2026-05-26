@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-05-07T18:36:34Z'
-source_etag: 'W/"b66aedbf9f7f7a4fdf22bfc1285dee02"'
+source_last_modified: '2026-05-26T18:42:17Z'
+source_etag: 'W/"42bd5538fbd2bc98e145905d8a264a84"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -21,6 +21,13 @@ press `Cmd`+`,`.
 Choose where files open and how much command output appears in threads. You can also
 require `Cmd`+`Enter` for multiline prompts or prevent sleep while a
 thread runs.
+
+## Keyboard shortcuts
+
+Open **Keyboard Shortcuts** to review commands, change bindings, or reset custom
+shortcuts to their defaults. Use the search field to find shortcuts by command
+name, or switch to keystroke search and press a key combination to find the
+command that uses it.
 
 ## Notifications
 

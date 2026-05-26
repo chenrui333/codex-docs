@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-22T20:26:00Z'
-source_etag: 'W/"dad2d3c33986f6f4c8da819ce926fef0"'
+source_last_modified: '2026-05-26T18:47:45Z'
+source_etag: 'W/"ffded90cf1f03466de719bd213387f47"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
 ---
@@ -1106,7 +1106,7 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 # Notes
 # - Root keys must appear before tables in TOML.
 # - Optional keys that default to "unset" are shown commented out with notes.
-# - MCP servers, profiles, and model providers are examples; remove or edit.
+# - MCP servers, profile files, and model providers are examples; remove or edit.
 
 ################################################################################
 
@@ -1394,9 +1394,9 @@ check_for_update_on_startup = true
 
 web_search = "cached"
 
-# Active profile name. When unset, no profile is applied.
+# Config profiles are separate files under CODEX_HOME.
 
-# profile = "default"
+# Example: ~/.codex/ci.config.toml, selected with codex --profile ci.
 
 # Suppress the warning shown when under-development feature flags are enabled.
 
@@ -2038,17 +2038,17 @@ enabled = true
 
 ################################################################################
 
-# Profiles (named presets)
+# Config Profiles (separate files)
 
 ################################################################################
 
-[profiles]
+# To create a config profile, put overrides in a separate profile file under $CODEX_HOME.
 
-# [profiles.default]
+# Select it with codex --profile ci.
+
+# For example, a CI profile could live at $CODEX_HOME/ci.config.toml:
 
 # model = "gpt-5.4"
-
-# model_provider = "openai"
 
 # approval_policy = "on-request"
 
