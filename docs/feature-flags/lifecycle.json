@@ -191,9 +191,9 @@
       "stage": "stable"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "plugin_hooks",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -381,7 +381,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.133.0",
+  "codex_cli_version": "codex-cli 0.134.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -617,6 +617,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "experimental"
     },
+    "non_prefixed_mcp_tool_names": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "personality": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -709,6 +713,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
     },
+    "standalone_web_search": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "steer": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -776,7 +784,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "07b7798e1a54ede18a1ced57035ba551fd4ad5c67f3f1bfe322152099ccb243f",
-    "features_rs_sha256": "daab637bd75bfa78985c9efabdbdbb278e86964f7a29dbd572273ae554a7e844"
+    "features_rs_sha256": "de09fab6f9f557a5b55a1208b2280386cde6fc34913da5703fa681d555746846"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
