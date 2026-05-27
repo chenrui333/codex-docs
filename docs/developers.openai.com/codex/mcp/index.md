@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/mcp'
-source_last_modified: '2026-05-18T18:35:14Z'
-source_etag: 'W/"5391ed141318228da68ddf433b3cdcc5"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0"]
+source_last_modified: '2026-05-27T00:21:44Z'
+source_etag: 'W/"86fa5e918e63656f06892b98c836d831"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0"]
 ---
 
 # Model Context Protocol – Codex | OpenAI Developers
@@ -23,6 +23,9 @@ Codex supports MCP servers in both the CLI and the IDE extension.
 - **Streamable HTTP servers**: Servers that you access at an address.
   - Bearer token authentication
   - OAuth authentication (run `codex mcp login <server-name>` for servers that support OAuth)
+- **Server instructions**: Codex reads the MCP `instructions` field returned during initialization and uses it as server-wide guidance alongside the server’s tools.
+
+If you build or maintain an MCP server for Codex, use `instructions` for cross-tool workflows, constraints, and rate limits that apply across the server. Keep the first 512 characters self-contained so the most important guidance is available when Codex is deciding how to use the server.
 
 ## Connect Codex to an MCP server
 
