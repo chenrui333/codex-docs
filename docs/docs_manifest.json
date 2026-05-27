@@ -2059,10 +2059,10 @@
         "codex-cli 0.133.0",
         "codex-cli 0.134.0"
       ],
-      "sha256": "695c7194ac99f75e96a2cafb4708ff816f00895bd93acca2a7b6c6be2521cd2f",
+      "sha256": "c6dd606c39436aa52271331fa2249e00bb5ee9a1821a46eafcaa61d7208a6d8e",
       "source_area": "codex_security",
-      "source_etag": "W/\"496ecd89af7dbf28997b22b3e8fe103f\"",
-      "source_last_modified": "2026-05-27T11:44:37Z",
+      "source_etag": "W/\"f8c374e54c921badc4188bc0b6ee21f2\"",
+      "source_last_modified": "2026-05-27T17:58:58Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
