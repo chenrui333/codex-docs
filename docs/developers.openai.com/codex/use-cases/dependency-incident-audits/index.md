@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dependency-incident-audits'
-source_last_modified: '2026-05-22T16:22:43Z'
-source_etag: 'W/"f652cdf3464196732b555e7e82ade79b"'
+source_last_modified: '2026-05-28T18:58:35Z'
+source_etag: 'W/"c4e5cd5962c151c19f8cb0c5f5ebb969"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0"]
 ---
@@ -160,23 +160,23 @@ Do not make changes yet. Keep any command that could execute untrusted code out 
 
 ## Related use cases
 
-[![](/codex/use-cases/ai-app-evals.webp)
+[![](/codex/use-cases/deep-security-scan.webp)
+
+### Run a deep security scan
+
+Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats...
+
+Engineering  Quality](/codex/use-cases/deep-security-scan)[![](/codex/use-cases/scan-code-changes-for-security.webp)
+
+### Scan code changes for security
+
+Use the Codex Security plugin to examine a Git-backed change set, validate plausible...
+
+Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)[![](/codex/use-cases/ai-app-evals.webp)
 
 ### Add evals to your AI application
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/agent-friendly-clis.webp)
-
-### Create a CLI Codex can use
-
-Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
-
-Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/codex/use-cases/follow-goals.webp)
-
-### Follow a goal
-
-Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
-
-Engineering  Automation](/codex/use-cases/follow-goals)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)
 

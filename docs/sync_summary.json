@@ -1,8 +1,15 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/codex/security/plugin/index.md",
+    "developers.openai.com/codex/tracks/security/index.md",
+    "developers.openai.com/codex/use-cases/collections/security/index.md",
+    "developers.openai.com/codex/use-cases/deep-security-scan/index.md",
+    "developers.openai.com/codex/use-cases/remediate-vulnerability-backlog/index.md",
+    "developers.openai.com/codex/use-cases/scan-code-changes-for-security/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-28T00:52:41+00:00",
+  "generated_at": "2026-05-28T18:58:48+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,10 +18,17 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 241,
+  "total_files": 247,
   "updated": [
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/permissions/index.md",
-    "developers.openai.com/codex/security/setup/index.md"
+    "developers.openai.com/codex/changelog/index.md",
+    "developers.openai.com/codex/plugins/index.md",
+    "developers.openai.com/codex/security/index.md",
+    "developers.openai.com/codex/security/setup/index.md",
+    "developers.openai.com/codex/use-cases/agent-friendly-clis/index.md",
+    "developers.openai.com/codex/use-cases/ai-app-evals/index.md",
+    "developers.openai.com/codex/use-cases/api-integration-migrations/index.md",
+    "developers.openai.com/codex/use-cases/collections/index.md",
+    "developers.openai.com/codex/use-cases/dependency-incident-audits/index.md",
+    "developers.openai.com/codex/use-cases/index.md"
   ]
 }

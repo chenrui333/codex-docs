@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/api-integration-migrations'
-source_last_modified: '2026-05-22T16:43:31Z'
-source_etag: 'W/"ec9cde6a44e3cfab8540e25ae98137be"'
+source_last_modified: '2026-05-28T18:58:32Z'
+source_etag: 'W/"f1a76317efebbb45f28f93f8d309ef2a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0"]
 ---
@@ -121,17 +121,17 @@ This [cookbook guide](/cookbook/examples/evaluation/building_resilient_prompts_u
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/macos-telemetry-logs.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
+
+### Remediate a vulnerability backlog
+
+Bring in approved findings from ticketing tools or vulnerability reporting systems, then use...
+
+Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)[![](/codex/use-cases/macos-telemetry-logs.webp)
 
 ### Add Mac telemetry
 
 Use Codex and the Build macOS Apps plugin to add a few high-signal `Logger` events around...
 
-macOS  Code](/codex/use-cases/macos-telemetry-logs)[![](/codex/use-cases/react-native-expo-apps.webp)
-
-### Build React Native apps with Expo
-
-Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
-
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
+macOS  Code](/codex/use-cases/macos-telemetry-logs)
 

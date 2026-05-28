@@ -42,7 +42,7 @@ Engineering  Automation](/codex/use-cases/follow-goals)
 
 ## Collections
 
-[Productivity & Collaboration   Coordinate work across apps, data, and teams.](/codex/use-cases/collections/productivity-and-collaboration)  [Web development   Build responsive UI from designs and prompts.](/codex/use-cases/collections/web-development)  [Game development   Prototype loops, UI, and gameplay faster.](/codex/use-cases/collections/game-development)  [Native development   Build and debug iOS and macOS apps.](/codex/use-cases/collections/native-development)  [Production systems   Navigate, refactor, and review real codebases.](/codex/use-cases/collections/production-systems)
+[Productivity & Collaboration   Coordinate work across apps, data, and teams.](/codex/use-cases/collections/productivity-and-collaboration)  [Web development   Build responsive UI from designs and prompts.](/codex/use-cases/collections/web-development)  [Game development   Prototype loops, UI, and gameplay faster.](/codex/use-cases/collections/game-development)  [Native development   Build and debug iOS and macOS apps.](/codex/use-cases/collections/native-development)  [Production systems   Navigate, refactor, and review real codebases.](/codex/use-cases/collections/production-systems)  [Security   Find, review, and remediate vulnerabilities in authorized code.](/codex/use-cases/collections/security)
 
 ## All use cases
 
@@ -320,29 +320,29 @@ Use Codex and XcodeBuildMCP to drive your app in iOS Simulator, capture evidence
 
 iOS  Code](/codex/use-cases/ios-simulator-bug-debugging)
 
-[![](/codex/use-cases/dependency-incident-audits.webp)
+[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
-### Audit dependency incidents
+### Remediate a vulnerability backlog
 
-Turn a public package advisory into a safe repo-audit plan.
+Turn reviewed findings into minimal fixes with regression evidence.
 
-Engineering  Quality](/codex/use-cases/dependency-incident-audits)
+Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)
 
-[![](/codex/use-cases/meeting-prep-briefs.webp)
+[![](/codex/use-cases/deep-security-scan.webp)
 
-### Prepare meeting briefs
+### Run a deep security scan
 
-Turn calendar context into an agenda and notes plan.
+Search an authorized repository deeply for plausible vulnerabilities.
 
-Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)
+Engineering  Quality](/codex/use-cases/deep-security-scan)
 
-[![](/codex/use-cases/event-launch-playbooks.webp)
+[![](/codex/use-cases/scan-code-changes-for-security.webp)
 
-### Run event playbooks
+### Scan code changes for security
 
-Create repeatable workflows for event program management.
+Review a pull request or local diff for security regressions.
 
-Integrations  Knowledge Work](/codex/use-cases/event-launch-playbooks)
+Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)
 
 [![](/codex/use-cases/code-migrations.webp)
 
@@ -463,6 +463,30 @@ Automation  Integrations](/codex/use-cases/verified-operations-workflows)
 Convert Zoom meeting insights into actions across your tools.
 
 Automation  Integrations](/codex/use-cases/zoom-meeting-follow-ups)
+
+[![](/codex/use-cases/dependency-incident-audits.webp)
+
+### Audit dependency incidents
+
+Turn a public package advisory into a safe repo-audit plan.
+
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)
+
+[![](/codex/use-cases/meeting-prep-briefs.webp)
+
+### Prepare meeting briefs
+
+Turn calendar context into an agenda and notes plan.
+
+Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)
+
+[![](/codex/use-cases/event-launch-playbooks.webp)
+
+### Run event playbooks
+
+Create repeatable workflows for event program management.
+
+Integrations  Knowledge Work](/codex/use-cases/event-launch-playbooks)
 
 ## No use cases match these filters
 

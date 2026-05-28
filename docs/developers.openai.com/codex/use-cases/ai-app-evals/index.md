@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ai-app-evals'
-source_last_modified: '2026-05-22T16:25:23Z'
-source_etag: 'W/"a995d6e49821935e2e80345c405c72b1"'
+source_last_modified: '2026-05-28T18:58:31Z'
+source_etag: 'W/"7d8c48992eaeb8503691b02e66460c62"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0"]
 ---
@@ -161,23 +161,23 @@ After the first run, use the suite to compare app changes before they ship. Add 
 
 ## Related use cases
 
-[![](/codex/use-cases/api-integration-migrations.webp)
+[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
-### Upgrade your API integration
+### Remediate a vulnerability backlog
 
-Use Codex to update your existing OpenAI API integration to the latest recommended models...
+Bring in approved findings from ticketing tools or vulnerability reporting systems, then use...
 
-Evaluation  Engineering](/codex/use-cases/api-integration-migrations)[![](/codex/use-cases/dependency-incident-audits.webp)
+Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)[![](/codex/use-cases/deep-security-scan.webp)
 
-### Audit dependency incidents
+### Run a deep security scan
 
-Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
+Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats...
 
-Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/agent-friendly-clis.webp)
+Engineering  Quality](/codex/use-cases/deep-security-scan)[![](/codex/use-cases/scan-code-changes-for-security.webp)
 
-### Create a CLI Codex can use
+### Scan code changes for security
 
-Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
+Use the Codex Security plugin to examine a Git-backed change set, validate plausible...
 
-Engineering  Code](/codex/use-cases/agent-friendly-clis)
+Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)
 

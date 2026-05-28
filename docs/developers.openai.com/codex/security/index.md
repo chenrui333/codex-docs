@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security'
-source_last_modified: '2026-04-25T06:28:04Z'
-source_etag: 'W/"ee5dac943b013db158328dcd96fc8ed7"'
+source_last_modified: '2026-05-28T18:51:28Z'
+source_etag: 'W/"abc2d55c1fdb28c15a5816e923c91e5e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0"]
 ---
@@ -12,12 +12,26 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/security
 
-Codex Security helps engineering and security teams find, validate, and remediate likely vulnerabilities in connected GitHub repositories.
+[Install plugin in Codex App](https://chatgpt.com/plugins/share/676aca3811d54fa7bcdef5255236b3c4)
 
-This page covers Codex Security, the product that scans connected GitHub
-repositories for likely security issues. For Codex sandboxing, approvals,
+For installation steps, supported skills, and review boundaries, see the
+[Codex Security plugin guide](/codex/security/plugin).
+
+### Explore plugin use cases
+
+- [Run a deep security scan](/codex/use-cases/deep-security-scan) to perform a higher-recall repository-wide audit.
+- [Scan code changes for security](/codex/use-cases/scan-code-changes-for-security) before you merge a pull request or branch.
+- [Remediate a vulnerability backlog](/codex/use-cases/remediate-vulnerability-backlog) with bounded fixes for approved findings.
+
+The plugin runs in your Codex thread. Codex Security cloud scans connected
+GitHub repositories through Codex Web. For Codex sandboxing, approvals,
 network controls, and admin settings, see [Agent approvals &
 security](/codex/agent-approvals-security).
+
+## Codex Security cloud
+
+Codex Security cloud is currently in research preview. It scans connected
+GitHub repositories for likely security issues.
 
 It helps teams:
 
@@ -25,7 +39,7 @@ It helps teams:
 2. **Reduce noise** by validating findings before you review them.
 3. **Move findings toward fixes** with ranked results, evidence, and suggested patch options.
 
-## How it works
+## How Codex Security cloud works
 
 Codex Security scans connected repositories commit by commit.
 It builds scan context from your repo, checks likely vulnerabilities against that context, and validates high-signal issues in an isolated environment before surfacing them.
@@ -36,13 +50,14 @@ You get a workflow focused on:
 - validation evidence that helps reduce false positives
 - suggested fixes you can review in GitHub
 
-## Access and prerequisites
+## Codex Security cloud access and prerequisites
 
-Codex Security works with connected GitHub repositories through Codex Web. OpenAI manages access. If you need access or a repository isn’t visible, contact your OpenAI account team and confirm the repository is available through your Codex Web workspace.
+Codex Security is available for ChatGPT Enterprise, Edu, Business, and Pro users. It works with connected GitHub repositories through Codex Web. If you need access or a repository isn’t visible, confirm the repository is available through your Codex Web workspace or contact your OpenAI account team.
 
 ## Related docs
 
-- [Codex Security setup](/codex/security/setup) covers setup, scanning, and findings review.
-- [FAQ](/codex/security/faq) covers common product questions.
+- [Codex Security plugin guide](/codex/security/plugin) covers local repository and diff-review workflows in Codex.
+- [Codex Security cloud setup](/codex/security/setup) covers setup, scanning, and findings review.
 - [Improving the threat model](/codex/security/threat-model) explains how to tune scope, attack surface, and criticality assumptions.
+- [FAQ](/codex/security/faq) covers common product questions.
 
