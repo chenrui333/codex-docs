@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-26T18:41:11Z'
-source_etag: 'W/"97c33a16d0c1771936faae96e9e7e723"'
+source_last_modified: '2026-05-27T21:17:50Z'
+source_etag: 'W/"0cdc68f87050e149e5f0ce6af041000b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0"]
 ---
@@ -65,7 +65,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `cli_auth_credentials_store` | `file | keyring | auto` | Control where the CLI stores cached credentials (file-based auth.json vs OS keychain). |
 | `commit_attribution` | `string` | Commit co-author trailer used when `[features].codex_git_commit` is enabled. Defaults to `Codex <noreply@openai.com>`; set `""` to disable. |
 | `compact_prompt` | `string` | Inline override for the history compaction prompt. |
-| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables. |
+| `default_permissions` | `string` | Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables. Don't combine with `sandbox_mode` or `[sandbox_workspace_write]`. |
 | `developer_instructions` | `string` | Additional developer instructions injected into the session (optional). |
 | `disable_paste_burst` | `boolean` | Disable burst-paste detection in the TUI. |
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
@@ -206,6 +206,8 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `otel.trace_exporter.<id>.tls.ca-certificate` | `string` | CA certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-certificate` | `string` | Client certificate path for OTEL trace exporter TLS. |
 | `otel.trace_exporter.<id>.tls.client-private-key` | `string` | Client private key path for OTEL trace exporter TLS. |
+| `permissions.<name>.description` | `string` | Human-readable description for this named profile. A profile does not inherit its parent's description through `extends`. |
+| `permissions.<name>.extends` | `string` | Optional parent profile applied before this named profile. Set it to another named profile, `:read-only`, or `:workspace`; `:danger-full-access`, undefined parents, and cycles are rejected. |
 | `permissions.<name>.filesystem` | `table` | Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:workspace_roots`. |
 | `permissions.<name>.filesystem.":workspace_roots".<subpath-or-glob>` | `"read" | "write" | "deny"` | Scoped filesystem access relative to each effective workspace root. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"deny"`. |
 | `permissions.<name>.filesystem.<path-or-glob>` | `"read" | "write" | "deny" | table` | Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"deny"` to deny reads for matching paths. |
@@ -675,7 +677,7 @@ Type / Values
 
 Details
 
-Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables.
+Name of the default permissions profile to apply to sandboxed tool calls. Built-ins are `:read-only`, `:workspace`, and `:danger-full-access`; custom profile names require matching `[permissions.<name>]` tables. Don't combine with `sandbox_mode` or `[sandbox_workspace_write]`.
 
 Key
 
@@ -2356,6 +2358,30 @@ Type / Values
 Details
 
 Client private key path for OTEL trace exporter TLS.
+
+Key
+
+`permissions.<name>.description`
+
+Type / Values
+
+`string`
+
+Details
+
+Human-readable description for this named profile. A profile does not inherit its parent's description through `extends`.
+
+Key
+
+`permissions.<name>.extends`
+
+Type / Values
+
+`string`
+
+Details
+
+Optional parent profile applied before this named profile. Set it to another named profile, `:read-only`, or `:workspace`; `:danger-full-access`, undefined parents, and cycles are rejected.
 
 Key
 
