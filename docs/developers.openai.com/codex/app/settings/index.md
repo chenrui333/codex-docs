@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-05-26T18:42:17Z'
-source_etag: 'W/"42bd5538fbd2bc98e145905d8a264a84"'
+source_last_modified: '2026-05-29T17:40:09Z'
+source_etag: 'W/"913b1f8ace7eea7cec39a38ca07d8ffd"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -21,6 +21,12 @@ press `Cmd`+`,`.
 Choose where files open and how much command output appears in threads. You can also
 require `Cmd`+`Enter` for multiline prompts or prevent sleep while a
 thread runs.
+
+## Profile
+
+Use **Profile** to review stats such as lifetime tokens, peak tokens, streaks,
+your longest task, and token activity. You can also update your profile details,
+such as your picture, display name, and username.
 
 ## Keyboard shortcuts
 
@@ -96,20 +102,19 @@ also apply to the Codex CLI and IDE extension because the MCP configuration live
 ## Browser use
 
 Use these settings to install or enable the bundled Browser plugin, set up the
-[Codex Chrome extension](/codex/app/chrome-extension), and manage allowlisted
-and blocklisted websites. Codex asks before using a website unless you’ve
-allowlisted it. Removing a site from the blocklist lets Codex ask again before
-using it in the browser.
+[Codex Chrome extension](/codex/app/chrome-extension), and manage allowed and
+blocked websites. Codex asks before using a website unless you’ve allowed it.
+Removing a blocked site lets Codex ask again before using it in the browser.
 
 See [In-app browser](/codex/app/browser) for browser preview, comment, and
 browser use workflows.
 
 ## Computer Use
 
-On macOS, check your Computer Use settings to review desktop-app access and related
-preferences after setup. To revoke system-level access, update Screen Recording
-or Accessibility permissions in macOS Privacy & Security settings. The feature
-isn’t available in the EEA, the United Kingdom, or Switzerland at launch.
+Check your Computer Use settings to review desktop-app access and related
+preferences after setup. On macOS, revoke system-level access by updating Screen
+Recording or Accessibility permissions in macOS Privacy & Security settings. The
+feature isn’t available in the EEA, the United Kingdom, or Switzerland at launch.
 
 ## Personalization
 

@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-29T07:28:56+00:00",
+  "generated_at": "2026-05-29T18:58:34+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,8 +13,10 @@
   },
   "total_files": 247,
   "updated": [
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/permissions/index.md",
+    "developers.openai.com/codex/app/computer-use/index.md",
+    "developers.openai.com/codex/app/features/index.md",
+    "developers.openai.com/codex/app/settings/index.md",
+    "developers.openai.com/codex/remote-connections/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }

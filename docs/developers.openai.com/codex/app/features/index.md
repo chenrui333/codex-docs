@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/features'
-source_last_modified: '2026-04-25T06:31:36Z'
-source_etag: 'W/"d444543b229a117cf14c8339c64f8399"'
+source_last_modified: '2026-05-29T17:39:54Z'
+source_etag: 'W/"709b75a6fcc830464e4abaafb93ab219"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -167,10 +167,10 @@ blocked websites from settings.
 
 ## Computer use
 
-[Computer use](/codex/app/computer-use) helps Codex operate a macOS app by
-seeing, clicking, and typing. This is useful for testing desktop apps, checking
-browser or simulator flows, working with data sources that aren’t available as
-plugins, changing app settings, and reproducing GUI-only bugs.
+[Computer use](/codex/app/computer-use) helps Codex operate a macOS or Windows
+app by seeing, clicking, and typing. This is useful for testing desktop apps,
+checking browser or simulator flows, working with data sources that aren’t
+available as plugins, changing app settings, and reproducing GUI-only bugs.
 
 Because computer use can affect app and system state outside your project
 workspace, keep tasks narrow and review permission prompts before continuing.

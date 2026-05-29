@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/computer-use'
-source_last_modified: '2026-05-21T18:06:40Z'
-source_etag: 'W/"0fb884bfc130ebafa20b425988a7341d"'
+source_last_modified: '2026-05-29T17:39:29Z'
+source_etag: 'W/"f9131715f7994c28083d011c2e680f8a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -12,16 +12,16 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/app/computer-use
 
-In the Codex app, computer use is currently available on macOS, except in the
-European Economic Area, the United Kingdom, and Switzerland at launch. Install
-the Computer Use plugin, then grant Screen Recording and Accessibility
-permissions when macOS prompts you.
+In the Codex app, computer use is available on macOS and Windows, except in
+the European Economic Area, the United Kingdom, and Switzerland at launch.
+Install the Computer Use plugin. On macOS, grant Screen Recording and
+Accessibility permissions when prompted.
 
-With computer use, Codex can see and operate graphical user interfaces on macOS.
-Use it for tasks where command-line tools or structured integrations aren’t
-enough, such as checking a desktop app, using a browser, changing app settings,
-working with a data source that isn’t available as a plugin, or reproducing a
-bug that only happens in a graphical user interface.
+With computer use, Codex can see and operate graphical user interfaces on macOS
+or Windows. Use it for tasks where command-line tools or structured integrations
+aren’t enough, such as checking a desktop app, using a browser, changing app
+settings, working with a data source that isn’t available as a plugin, or
+reproducing a bug that only happens in a graphical user interface.
 
 Because computer use can affect app and system state outside your project
 workspace, use it for scoped tasks and review permission prompts before
@@ -30,11 +30,12 @@ continuing.
 ## Set up computer use
 
 In Codex settings, open **Computer Use** and click **Install** to install the
-Computer Use plugin before you ask Codex to operate desktop apps. When macOS
-prompts for access, grant Screen Recording and Accessibility permissions if you
-want Codex to see and interact with the target app.
+Computer Use plugin before you ask Codex to operate desktop apps. On Windows,
+keep the target app visible on the active desktop while the task runs. On
+macOS, grant Screen Recording and Accessibility permissions when prompted so
+Codex can see and interact with the target app.
 
-To use computer use, grant:
+On macOS, grant:
 
 - **Screen Recording** permission so Codex can see the target app.
 - **Accessibility** permission so Codex can click, type, and navigate.
@@ -46,18 +47,31 @@ hard to verify through files or command output alone.
 
 Good fits include:
 
-- Testing a macOS app, an iOS simulator flow, or another desktop app that Codex
-  is building.
+- Testing a macOS app, Windows app, iOS simulator flow, or another desktop app
+  that Codex is building.
 - Performing a task that requires your web browser.
 - Reproducing a bug that only appears in a graphical interface.
 - Changing app settings that require clicking through a UI.
 - Inspecting information in an app or data source that isn’t available through a
   plugin.
-- Running a scoped task in the background while you keep working elsewhere.
+- On macOS, running a scoped task in the background while you keep working
+  elsewhere.
 - Executing a workflow that spans more than one app.
 
 For web apps you are building locally, use the
 [in-app browser](/codex/app/browser) first.
+
+### Windows foreground use
+
+On Windows, computer use runs on the active desktop. It can’t operate in the
+background while you keep using the same Windows session, so expect Codex to
+move the pointer, type, and take over the foreground while the task runs.
+
+For Windows tasks that should continue while you step away, keep the Windows
+device unlocked and connected to the internet. Use
+[remote control](/codex/remote-connections) from your phone to check progress
+or send follow-up instructions, or run the Codex app inside a Windows virtual
+machine so computer use takes over the VM instead of your main desktop.
 
 ## Start a computer use task
 
@@ -80,10 +94,11 @@ computer use when Codex needs to inspect or operate the app visually.
 
 ## Permissions and approvals
 
-The macOS system permissions for computer use are separate from app approvals in
-Codex. The macOS permissions let Codex see and operate apps. App approvals
-determine which apps you allow Codex to use. File reads, file edits, and shell
-commands still follow the sandbox and approval settings for the thread.
+System permissions for computer use are separate from app approvals in Codex.
+On macOS, Screen Recording and Accessibility permissions let Codex see and
+operate apps. App approvals determine which apps you allow Codex to use. File
+reads, file edits, and shell commands still follow the sandbox and approval
+settings for the thread.
 
 With computer use, Codex can see and take action only in the apps you allow.
 During a task, Codex asks for your permission before it can use an app on your
@@ -97,9 +112,12 @@ Codex may also ask for permission before taking sensitive or disruptive actions.
 
 If Codex can’t see or control an app, open **System Settings > Privacy &
 Security** and check **Screen Recording** and **Accessibility** for the Codex
-app.
+app on macOS. On Windows, make sure the target app is visible in the active
+desktop session.
 
 ## Locked use
+
+Locked use is for macOS. On Windows, computer use works in the foreground.
 
 Locked computer use lets Codex use Computer Use after your Mac locks, but only
 after you enable it. Use it when a Codex task needs to use desktop apps from a
@@ -147,6 +165,8 @@ Keep tasks narrow and stay present for sensitive flows:
 - Give Codex one clear target app or flow at a time.
 - You can stop the task or take over your computer at any time.
 - Keep sensitive apps closed unless they’re required for the task.
+- On Windows, expect Codex to take over foreground input while it works; use a
+  secondary device, a VM, or stop the task before using that desktop yourself.
 - Avoid tasks that require secrets unless you’re present and can approve each
   step.
 - Review app permission prompts before allowing Codex to use an app.

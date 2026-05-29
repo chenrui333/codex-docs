@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/remote-connections'
-source_last_modified: '2026-05-22T16:21:58Z'
-source_etag: 'W/"aadf0f85ecea02748e923b07404a7b50"'
+source_last_modified: '2026-05-29T17:41:19Z'
+source_etag: 'W/"d540368614437546c8ecee653de0b2e6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -13,9 +13,9 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 Source: https://developers.openai.com/codex/remote-connections
 
 Remote connections let you use Codex from another device or another machine.
-Use Codex in the ChatGPT mobile app to work with Codex on a connected Mac,
-continue work from another Codex App device, or connect the Codex App to
-projects on an SSH host.
+Use Codex in the ChatGPT mobile app to work with Codex on a connected Mac or
+Windows device, continue work from another supported Codex App device, or connect
+the Codex App to projects on an SSH host.
 
 Remote access uses the connected host’s projects, threads, files, credentials,
 permissions, plugins, Computer Use, browser setup, and local tools.
@@ -37,17 +37,18 @@ App host. To connect Codex to a project on an SSH host, see
 
 ## Before you set up mobile access
 
-Codex mobile setup currently requires the Codex App for macOS. The Codex App
-for Windows does not support mobile setup yet.
+Codex mobile setup supports Codex App hosts on macOS and Windows. You can
+control a Windows host from ChatGPT on iOS or Android, or from a Mac running
+Codex. Windows can’t currently control another computer from the Codex App.
 
 Make sure you have:
 
 - Codex access in the ChatGPT account and workspace you want to use.
-- The latest ChatGPT mobile app on an iOS or Android device. If you do not see
+- The latest ChatGPT mobile app on an iOS or Android device. If you don’t see
   Codex in the ChatGPT mobile app, update ChatGPT first.
-- The latest Codex App for macOS running on a Mac host that is awake, online,
-  and signed in to the same account and workspace. Mobile setup starts from the
-  Codex App; you cannot set it up from the Codex CLI or IDE Extension.
+- The latest Codex App for macOS or Windows running on a host that’s awake,
+  online, and signed in to the same account and workspace. Mobile setup starts
+  from the Codex App; you can’t set it up from the Codex CLI or IDE Extension.
 - Any required multi-factor authentication, SSO, or passkey configuration for
   that account or workspace.
 
@@ -79,47 +80,52 @@ remote access for that host, then shows a QR code you can scan from your phone.
    devices. You can also choose whether to keep the computer awake, enable
    Computer Use, or install the Chrome extension.
 
-![Connections settings showing devices that can control this Mac and remote access settings](/images/codex/app/mobile-control-this-mac-framed-light.webp)
+![Connections settings showing devices that can control this host and remote access settings](/images/codex/app/mobile-control-this-mac-framed-light.webp)
 
 ## Choose what to connect
 
-Start with the Mac laptop or desktop where you already use Codex. Add an
-always-on Mac or SSH host when you need continuous access or a different
-environment.
+Start with the laptop or desktop where you already use Codex. Add an always-on
+computer or SSH host when you need continuous access or a different environment.
 
-### Your Mac laptop or desktop
+### Your laptop or desktop
 
-Connect the Mac where you already run Codex day to day. This gives remote access
-to the same projects, threads, credentials, plugins, and local setup you already
-use.
+Connect the Mac or Windows PC where you already run Codex day to day. This gives
+remote access to the same projects, threads, credentials, plugins, and local
+setup you already use.
 
-If that Mac sleeps, loses network access, or closes Codex, remote access stops
-until it is available again. If you use this computer as your host device, keep
-it plugged in and turn on **Keep this Mac awake** in the host’s connection
-settings.
+If that computer sleeps, loses network access, or closes Codex, remote access
+stops until it’s available again. If you use this computer as your host device,
+keep it plugged in and use the host’s connection settings to keep it awake where
+available.
 
-On a Mac laptop, remote access can stay available with the lid open while the
-computer is plugged in. With the lid closed, connect an external display as
-well. Choosing **Sleep** still stops remote access.
+On a Mac laptop, remote access can stay available with the lid open and power
+connected. With the lid closed, connect an external display as well. Choosing
+**Sleep** still stops remote access.
 
-### A dedicated always-on Mac
+On a Windows host, keep the session unlocked and available for tasks that use
+[Computer Use](/codex/app/computer-use). Computer use on Windows runs in the
+foreground, so remote control is best for starting or checking work while you
+dedicate the host desktop to the task.
 
-Use a dedicated always-on Mac when you want Codex to stay reachable for
-longer-running work.
+### A dedicated always-on computer
+
+Use a dedicated always-on Mac or Windows PC when you want Codex to stay
+reachable for longer-running work.
 
 Install the projects, credentials, plugins, MCP servers, and tools Codex should
 use on that machine.
 
 ### A remote development environment
 
-Use an SSH host or managed devbox when the project already lives in a remote
-environment. Connect the Codex App host to that environment first; your phone
-still connects to the Codex App host, and Codex works in the remote environment
-with its dependencies, security policies, and compute resources.
+Use an SSH host or managed remote development environment when the project
+already lives in a remote environment. Connect the Codex App host to that
+environment first; your phone still connects to the Codex App host, and Codex
+works in the remote environment with its dependencies, security policies, and
+compute resources.
 
 For SSH setup details, see [connect to an SSH host](#connect-to-an-ssh-host).
 
-For browser or desktop tasks on an always-on Mac or remote host, enable
+For browser or desktop tasks on an always-on computer or remote host, enable
 Computer Use and install the Chrome extension on that host.
 
 ## What comes from the connected host
@@ -136,8 +142,8 @@ That means:
   configuration.
 - Signed-in websites and desktop apps are available only when the host can
   access them.
-- Sandboxing, security controls, and action approvals still apply to the
-  connected session.
+- The sandboxing settings, security controls, and action approvals still apply
+  to the connected session.
 
 Codex uses a secure relay layer to keep trusted machines reachable across your
 authorized ChatGPT devices without exposing them directly to the public
@@ -145,14 +151,17 @@ internet.
 
 ## Pick up work from another device
 
-You can continue work from another signed-in Codex App device. For example, if
-your laptop is unavailable, you can start a thread from your phone on an
-always-on host, then later open Codex on your laptop and continue that same
-thread there.
+You can continue work from another signed-in Codex App device that supports
+remote control. For example, if your laptop is unavailable, you can start
+a thread from your phone on an always-on host, then later open Codex on your
+laptop and continue that same thread there.
 
-In Codex on the laptop, use **Settings > Connections > Control other devices**
-to add the other host. A device can allow remote access and control another
-device at the same time.
+In Codex on a Mac, use **Settings > Connections > Control other devices** to add
+the other host. A device can allow remote access and control another device at
+the same time. You can control Windows hosts from a Mac or from ChatGPT on iOS
+or Android, but you can’t use Windows to control another computer. For example,
+you can control a Windows device from your Mac or phone, but you can’t use a
+Windows device to control another Windows device.
 
 ![Connections settings showing another device available under Control other devices](/images/codex/app/mobile-control-other-devices-framed-light.webp)
 
@@ -203,18 +212,18 @@ internet.
 
 ## Troubleshooting
 
-### You do not see the host on your phone
+### You don’t see the host on your phone
 
-Confirm that the Codex App is running on the host, **Allow other devices to
-connect** is enabled, and the same ChatGPT account and workspace are selected on
-both devices.
+Confirm that the Codex App is running on the host, you’ve enabled **Allow other
+devices to connect**, and both devices use the same ChatGPT account and
+workspace.
 
-### The approval request does not appear
+### The approval request doesn’t appear
 
 Open Codex in the ChatGPT mobile app. Confirm that the phone and host use the
 same ChatGPT account and workspace, then scan the QR code again or restart setup
 from the host. If you use a ChatGPT workspace, ask your admin to confirm that
-Remote Control access is enabled.
+they’ve enabled Remote Control access.
 
 ### The remote session disconnects
 
@@ -226,7 +235,7 @@ Keep the host awake and connected while Codex works.
 Complete the account or workspace authentication prompt shown during setup. If
 your organization requires SSO, multi-factor authentication, or a passkey,
 finish that flow before trying again. If setup still fails, ask your workspace
-admin to confirm that Remote Control access is enabled.
+admin to confirm that they’ve enabled Remote Control access.
 
 ## See also
 
