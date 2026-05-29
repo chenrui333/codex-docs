@@ -186,6 +186,11 @@
       "stage": "experimental"
     },
     {
+      "enabled": false,
+      "key": "non_prefixed_mcp_tool_names",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "personality",
       "stage": "stable"
@@ -301,6 +306,11 @@
       "stage": "removed"
     },
     {
+      "enabled": false,
+      "key": "standalone_web_search",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "steer",
       "stage": "removed"
@@ -381,7 +391,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.134.0",
+  "codex_cli_version": "codex-cli 0.135.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -410,6 +420,7 @@
       "js_repl_tools_only",
       "mentions_v2",
       "multi_agent_v2",
+      "non_prefixed_mcp_tool_names",
       "plugin_hooks",
       "plugin_sharing",
       "plugins",
@@ -428,6 +439,7 @@
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
       "sqlite",
+      "standalone_web_search",
       "steer",
       "terminal_resize_reflow",
       "tool_call_mcp_elicitation",
@@ -585,6 +597,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "imagegenext": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "in_app_browser": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -603,7 +619,7 @@
     },
     "mentions_v2": {
       "default_enabled_expr": "false",
-      "stage_from_source": "experimental"
+      "stage_from_source": "under development"
     },
     "multi_agent": {
       "default_enabled_expr": "true",
@@ -783,8 +799,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "105c89b4c4640ad90eea4d17f9e23297ebf767478d0388a155ca2d97437edf70",
-    "features_rs_sha256": "de09fab6f9f557a5b55a1208b2280386cde6fc34913da5703fa681d555746846"
+    "client_rs_sha256": "bdc764555c2c227ae158c96ad30892bbbe3d83ed3176074d282c8d0ddfa94efd",
+    "features_rs_sha256": "8fb20f78e46b4a2203f10b447760f082d5495189b3d4a40a0fc52ba6c33d8358"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
