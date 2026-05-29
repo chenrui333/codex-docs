@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-05-27T21:17:50Z'
-source_etag: 'W/"0cdc68f87050e149e5f0ce6af041000b"'
+source_last_modified: '2026-05-29T06:20:00Z'
+source_etag: 'W/"22e08cfac3f2a405c8cbb8422b7db335"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -88,7 +88,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.network_proxy.enabled` | `boolean` | Enable sandboxed networking. Defaults to `false`. |
 | `features.network_proxy.proxy_url` | `string` | HTTP listener URL for sandboxed networking. Defaults to `"http://127.0.0.1:3128"`. |
 | `features.network_proxy.socks_url` | `string` | SOCKS5 listener URL. Defaults to `"http://127.0.0.1:8081"`. |
-| `features.network_proxy.unix_sockets` | `map<string, allow | none>` | Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets. |
+| `features.network_proxy.unix_sockets` | `map<string, allow | deny>` | Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets. |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (stable; on by default). |
@@ -224,8 +224,8 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `permissions.<name>.network.mode` | `limited | full` | Network proxy mode used for subprocess traffic. |
 | `permissions.<name>.network.proxy_url` | `string` | HTTP listener URL used when this permissions profile enables sandboxed networking. |
 | `permissions.<name>.network.socks_url` | `string` | SOCKS5 proxy endpoint used by this permissions profile. |
-| `permissions.<name>.network.unix_sockets` | `table` | Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `none` clears an inherited allow entry. |
-| `permissions.<name>.network.unix_sockets.<path>` | `allow | none` | Add an absolute Unix socket path to the effective allowlist with `allow`, or clear an inherited allow entry with `none`. `none` is not a separate deny-list decision. |
+| `permissions.<name>.network.unix_sockets` | `table` | Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `deny` rejects it. |
+| `permissions.<name>.network.unix_sockets.<path>` | `allow | deny` | Add an absolute Unix socket path to the effective allowlist with `allow`, or reject it with `deny`. Denied entries are omitted from the effective allowlist. |
 | `permissions.<name>.workspace_roots` | `table` | Profile-defined workspace roots that receive `:workspace_roots` filesystem rules alongside the session's runtime workspace roots. |
 | `permissions.<name>.workspace_roots.<path>` | `boolean` | Opt a path into the profile's workspace root set when `true`. Disabled entries remain inactive. |
 | `personality` | `none | friendly | pragmatic` | Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`. |
@@ -949,7 +949,7 @@ Key
 
 Type / Values
 
-`map<string, allow | none>`
+`map<string, allow | deny>`
 
 Details
 
@@ -2585,7 +2585,7 @@ Type / Values
 
 Details
 
-Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `none` clears an inherited allow entry.
+Unix socket allowlist overrides for sandboxed networking. Use socket paths as keys; `allow` adds a path, and `deny` rejects it.
 
 Key
 
@@ -2593,11 +2593,11 @@ Key
 
 Type / Values
 
-`allow | none`
+`allow | deny`
 
 Details
 
-Add an absolute Unix socket path to the effective allowlist with `allow`, or clear an inherited allow entry with `none`. `none` is not a separate deny-list decision.
+Add an absolute Unix socket path to the effective allowlist with `allow`, or reject it with `deny`. Denied entries are omitted from the effective allowlist.
 
 Key
 
@@ -3312,7 +3312,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `experimental_network.http_port` | `integer` | Loopback HTTP listener port to use for `[experimental_network]` requirements. |
 | `experimental_network.managed_allowed_domains_only` | `boolean` | When `true`, only administrator-managed allow rules remain effective while sandboxed networking requirements are active; user allowlist additions are ignored. Without managed allow rules, user-added domain allow rules do not remain effective. |
 | `experimental_network.socks_port` | `integer` | Loopback SOCKS5 listener port to use for `[experimental_network]` requirements. |
-| `experimental_network.unix_sockets` | `map<string, allow | none>` | Administrator-managed Unix socket policy for sandboxed networking. |
+| `experimental_network.unix_sockets` | `map<string, allow | deny>` | Administrator-managed Unix socket policy for sandboxed networking. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
 | `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
 | `features.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. |
@@ -3552,7 +3552,7 @@ Key
 
 Type / Values
 
-`map<string, allow | none>`
+`map<string, allow | deny>`
 
 Details
 
