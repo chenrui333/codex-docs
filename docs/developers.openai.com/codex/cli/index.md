@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli'
-source_last_modified: '2026-05-26T18:40:33Z'
-source_etag: 'W/"8b807e5e51a734069861a517aab53cb1"'
+source_last_modified: '2026-05-29T23:21:31Z'
+source_etag: 'W/"1fde1abea42f06082ab5cd2c7486855e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -32,6 +32,12 @@ macOS/LinuxWindowsnpmHomebrew
    macOS/Linux install command
 
    curl -fsSL https://chatgpt.com/codex/install.sh | shCopy
+
+   For unattended installs, set `CODEX_NON_INTERACTIVE=1` on the shell that runs the downloaded installer. See [Environment variables](/codex/environment-variables#installer-variables) for details.
+
+   macOS/Linux unattended install command
+
+   curl -fsSL https://chatgpt.com/codex/install.sh | CODEX\_NON\_INTERACTIVE=1 shCopy
 2. 2
 
    ### Run

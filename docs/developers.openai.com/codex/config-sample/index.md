@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-26T18:47:45Z'
-source_etag: 'W/"ffded90cf1f03466de719bd213387f47"'
+source_last_modified: '2026-05-29T23:31:25Z'
+source_etag: 'W/"c089def8462347d1c8c683cdc4914295"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -1150,7 +1150,7 @@ model_provider = "openai"
 
 # background_terminal_max_timeout = 300000 # ms; max empty write_stdin poll window (default 5m)
 
-# log_dir = "/absolute/path/to/codex-logs" # directory for Codex logs; default: "$CODEX_HOME/log"
+# log_dir = "/absolute/path/to/codex-logs" # log directory; setting explicitly enables codex-tui.log; default: "$CODEX_HOME/log"
 
 # sqlite_home = "/absolute/path/to/codex-state" # optional SQLite-backed runtime state directory
 

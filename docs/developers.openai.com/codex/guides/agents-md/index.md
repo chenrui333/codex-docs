@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_guide'
 source_url: 'https://developers.openai.com/codex/guides/agents-md'
-source_last_modified: '2026-04-25T06:36:11Z'
-source_etag: 'W/"1115b7d9a27ab2cdab491ff09aa946bf"'
+source_last_modified: '2026-05-29T23:34:15Z'
+source_etag: 'W/"a178226378db63131d46d6d678127093"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -141,7 +141,7 @@ Expected: The output lists files relative to the custom `.codex` directory.
 
 - Run `codex --ask-for-approval never "Summarize the current instructions."` from a repository root. Codex should echo guidance from global and project files in precedence order.
 - Use `codex --cd subdir --ask-for-approval never "Show which instruction files are active."` to confirm nested overrides replace broader rules.
-- Check `~/.codex/log/codex-tui.log` (or the most recent `session-*.jsonl` file if you enabled session logging) after a session if you need to audit which instruction files Codex loaded.
+- To audit which instruction files Codex loaded, opt into a plaintext TUI log with `codex -c log_dir=./.codex-log` and check `./.codex-log/codex-tui.log`, or inspect the most recent `session-*.jsonl` file if you enabled session logging.
 - If instructions look stale, restart Codex in the target directory. Codex rebuilds the instruction chain on every run (and at the start of each TUI session), so there is no cache to clear manually.
 
 ## Troubleshoot discovery issues
