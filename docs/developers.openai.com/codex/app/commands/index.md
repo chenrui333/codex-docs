@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
-source_last_modified: '2026-05-26T18:44:13Z'
-source_etag: 'W/"0fa2a5e9fb3828832ff51ec74505951f"'
+source_last_modified: '2026-05-30T06:49:19Z'
+source_etag: 'W/"30727cff40b19d8608e1e153fc908f8a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -33,6 +33,7 @@ Use these commands and keyboard shortcuts to navigate the Codex app.
 |  | Clear the terminal | `Ctrl` + `L` |
 | **Thread** |  |  |
 |  | New thread | `Cmd` + `N` or `Cmd` + `Shift` + `O` |
+|  | Search threads | `Cmd` + `G` |
 |  | Find in thread | `Cmd` + `F` |
 |  | Previous thread | `Cmd` + `Shift` + `[` |
 |  | Next thread | `Cmd` + `Shift` + `]` |
@@ -41,6 +42,17 @@ Use these commands and keyboard shortcuts to navigate the Codex app.
 To find, customize, or reset shortcuts, open **Settings > Keyboard Shortcuts**.
 You can search by command name or switch the search field into keystroke mode
 and press the shortcut you want to find.
+
+## Search past threads and find in a thread
+
+Use thread search (`Cmd`/`Ctrl` + `G`) to reopen a
+past conversation. When expanded matching is available in your Codex desktop
+app, it can also match conversation content and Git branch names, so you can
+search for a phrase from the thread or a branch such as `fix/login-redirect`.
+
+Use **Find in thread** (`Cmd` + `F`) after opening a thread
+to find text within that current conversation. It does not search across other
+threads.
 
 ## Slash commands
 

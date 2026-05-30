@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/features'
-source_last_modified: '2026-05-29T17:39:54Z'
-source_etag: 'W/"709b75a6fcc830464e4abaafb93ab219"'
+source_last_modified: '2026-05-30T06:49:21Z'
+source_etag: 'W/"105fe09a8eff48d1118819cec3618da0"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0"]
 ---
@@ -24,6 +24,11 @@ The sections below note platform-specific exceptions.
 
 Use one Codex app window to run tasks across projects. Add a project for each
 codebase and switch between them as needed.
+
+When available in your Codex desktop app, you can ask Codex to manage threads
+in your local projects or worktrees. For example, ask it to find a related
+thread, continue an existing thread, or pin or archive a thread. To create a
+separate background thread, make that request explicit: `Create a separate background thread in a worktree for this project to update the tests.`
 
 If you’ve used the [Codex CLI](/codex/cli), a project is like starting a
 session in a specific directory.
