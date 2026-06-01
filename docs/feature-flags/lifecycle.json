@@ -799,7 +799,7 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "0be2875a5704125c1a6a7896a18b88e1e99d335c50b37c1f52f23740e21cdb31",
+    "client_rs_sha256": "e76333f1be0ad8f360d8e712d7370a7ed26cf04cce6c0c0c36ee17547212fa59",
     "features_rs_sha256": "8fb20f78e46b4a2203f10b447760f082d5495189b3d4a40a0fc52ba6c33d8358"
   },
   "source_urls": {
