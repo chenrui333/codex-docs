@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-05-29T23:31:25Z'
-source_etag: 'W/"c089def8462347d1c8c683cdc4914295"'
+source_last_modified: '2026-06-01T23:11:16Z'
+source_etag: 'W/"0bf9a108c12db065fb8291c6b805c72f"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -1098,6 +1098,10 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 1071
 1072
 1073
+1074
+1075
+1076
+1077
 # Codex example configuration (config.toml)
 #
 # This file lists the main keys Codex reads from config.toml, along with default
@@ -1674,7 +1678,7 @@ show_tooltips = true
 
 # theme = "catppuccin-mocha"
 
-# Custom key bindings. Context-specific bindings override [tui.keymap.global].
+# Custom key bindings. Selected composer actions fall back to matching [tui.keymap.global] bindings.
 
 # Use [] to unbind an action.
 
@@ -1689,6 +1693,10 @@ show_tooltips = true
 # [tui.keymap.composer]
 
 # submit = ["enter", "ctrl-m"]
+
+# [tui.keymap.chat]
+
+# interrupt_turn = "f12"
 
 # Internal tooltip state keyed by model slug. Usually managed by Codex.
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/access-tokens'
-source_last_modified: '2026-05-14T23:16:34Z'
-source_etag: 'W/"e6f5ef1e7e16eaeda69719dfb2988501"'
+source_last_modified: '2026-06-01T23:15:18Z'
+source_etag: 'W/"6b8b675c3c48b2b2457e9ccec0eb7203"'
 codex_cli_versions: ["0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -49,12 +49,20 @@ Use the Codex Local controls in workspace settings to turn on access token creat
 
 ![Access token access permission in ChatGPT workspace RBAC settings](/images/codex/enterprise/rbac_access_token_access_permission.png)
 
-1. Go to [Workspace Settings > Settings and Permissions](https://chatgpt.com/admin/settings).
+1. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings).
 2. In the Codex Local section, make sure **Allow members to use Codex Local** is turned on.
 3. Turn on **Allow members to use Codex access tokens** if all allowed members should be able to create access tokens.
 4. If you use custom roles for a narrower rollout, assign the access token permission only to groups that need to create tokens.
 
 Keep access token creation limited to people or service owners who understand where the token will be stored, which automation will use it, and how it will be rotated.
+
+## Set an access token expiration limit
+
+Workspace owners and admins can set the longest expiration that members can choose when they create a Codex access token. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings), then set **Access token expiration limit** in the Codex Local section.
+
+![Access token expiration limit in ChatGPT workspace permissions settings](/images/codex/enterprise/access_token_expiration_limit.png)
+
+The limit applies to new access tokens. Existing tokens keep their current expiration.
 
 ## Create an access token
 

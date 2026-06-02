@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-advanced'
-source_last_modified: '2026-05-26T18:42:14Z'
-source_etag: 'W/"bc21976811d9dc0e7a5acb7872021a2d"'
+source_last_modified: '2026-06-01T23:07:25Z'
+source_etag: 'W/"cf221b7eb11003d69af805bb23b007cd"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -234,6 +234,9 @@ region = "eu-central-1"
 
 If you omit `profile`, Codex uses the standard AWS credential chain. Set
 `region` to the supported Bedrock region that should handle requests.
+
+For the full setup flow, authentication options, supported models, and feature
+availability, see [Use Codex with Amazon Bedrock](/codex/amazon-bedrock).
 
 ## OSS mode (local providers)
 

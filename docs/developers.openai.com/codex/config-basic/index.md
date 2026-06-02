@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-basic'
-source_last_modified: '2026-05-29T23:32:12Z'
-source_etag: 'W/"89cd8459f3193206e12991e04b656d17"'
+source_last_modified: '2026-06-01T23:07:05Z'
+source_etag: 'W/"ba3f032fe92809546ba0b4c8b8cb3b8b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -132,7 +132,7 @@ You can override this later in an active session with `/personality` or per thre
 
 #### TUI keymap
 
-Customize terminal shortcuts under `tui.keymap`. Context-specific bindings override `tui.keymap.global`, and an empty list unbinds the action.
+Customize terminal shortcuts under `tui.keymap`. Selected composer actions fall back to matching `tui.keymap.global` bindings; context-specific bindings take precedence when supported. An empty list unbinds the action.
 
 ```
 [tui.keymap.global]
@@ -140,6 +140,9 @@ open_transcript = "ctrl-t"
 
 [tui.keymap.composer]
 submit = ["enter", "ctrl-m"]
+
+[tui.keymap.chat]
+interrupt_turn = "f12"
 ```
 
 #### Command environment

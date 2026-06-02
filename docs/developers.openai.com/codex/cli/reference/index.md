@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/reference'
-source_last_modified: '2026-05-26T18:42:27Z'
-source_etag: 'W/"f22c65756156eb3b70ec8397d94c0402"'
+source_last_modified: '2026-06-01T23:19:45Z'
+source_etag: 'W/"39008bf37ea33c71dae28c576ec25bc8"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -28,7 +28,7 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--add-dir` | `path` | Grant additional directories write access alongside the main workspace. Repeat for multiple paths. |
 | `--ask-for-approval, -a` | `untrusted | on-request | never` | Control when Codex pauses for human approval before running a command. `on-failure` is deprecated; prefer `on-request` for interactive runs or `never` for non-interactive runs. |
 | `--cd, -C` | `path` | Set the working directory for the agent before it starts processing your request. |
-| `--config, -c` | `key=value` | Override configuration values. Values parse as JSON if possible; otherwise the literal string is used. |
+| `--config, -c` | `key=value` | Override configuration values. Values parse as TOML if possible; otherwise the literal string is used. |
 | `--dangerously-bypass-approvals-and-sandbox, --yolo` | `boolean` | Run every command without approvals or sandboxing. Only use inside an externally hardened environment. |
 | `--dangerously-bypass-hook-trust` | `boolean` | Run enabled hooks without requiring persisted hook trust for this invocation. Intended only for automation that already vets hook sources. |
 | `--disable` | `feature` | Force-disable a feature flag (translates to `-c features.<name>=false`). Repeatable. |
@@ -38,10 +38,11 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run). |
 | `--oss` | `boolean` | Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running. |
 | `--profile, -p` | `string` | Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config. |
-| `--remote` | `ws://host:port | wss://host:port` | Connect the interactive TUI to a remote app-server WebSocket endpoint. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode. |
-| `--remote-auth-token-env` | `ENV_VAR` | Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`. |
+| `--remote` | `ws://host:port | wss://host:port | unix:// | unix://PATH` | Connect the interactive TUI to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode. |
+| `--remote-auth-token-env` | `ENV_VAR` | Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or local-only `ws://` URLs. |
 | `--sandbox, -s` | `read-only | workspace-write | danger-full-access` | Select the sandbox policy for model-generated shell commands. |
 | `--search` | `boolean` | Enable live web search (sets `web_search = "live"` instead of the default `"cached"`). |
+| `--strict-config` | `boolean` | Error when `config.toml` contains fields this Codex version does not recognize. Supported by runtime commands such as `codex`, `exec`, `review`, `resume`, `fork`, `app-server`, `mcp-server`, and `exec-server`. |
 | `PROMPT` | `string` | Optional text instruction to start the session. Omit to launch the TUI without a pre-filled message. |
 
 Key
@@ -90,7 +91,7 @@ Type / Values
 
 Details
 
-Override configuration values. Values parse as JSON if possible; otherwise the literal string is used.
+Override configuration values. Values parse as TOML if possible; otherwise the literal string is used.
 
 Key
 
@@ -206,11 +207,11 @@ Key
 
 Type / Values
 
-`ws://host:port | wss://host:port`
+`ws://host:port | wss://host:port | unix:// | unix://PATH`
 
 Details
 
-Connect the interactive TUI to a remote app-server WebSocket endpoint. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.
+Connect the interactive TUI to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.
 
 Key
 
@@ -222,7 +223,7 @@ Type / Values
 
 Details
 
-Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`.
+Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or local-only `ws://` URLs.
 
 Key
 
@@ -250,6 +251,18 @@ Enable live web search (sets `web_search = "live"` instead of the default `"cach
 
 Key
 
+`--strict-config`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Error when `config.toml` contains fields this Codex version does not recognize. Supported by runtime commands such as `codex`, `exec`, `review`, `resume`, `fork`, `app-server`, `mcp-server`, and `exec-server`.
+
+Key
+
 `PROMPT`
 
 Type / Values
@@ -262,8 +275,10 @@ Optional text instruction to start the session. Omit to launch the TUI without a
 
 Expand to view all
 
-These options apply to the base `codex` command and propagate to each subcommand unless a section below specifies otherwise.
-When you run a subcommand, place global flags after it (for example, `codex exec --oss ...`) so Codex applies them as intended.
+These options apply to the base `codex` command. Most propagate to commands;
+see the notes above or the relevant command help for exceptions. For propagated
+flags, follow the relevant command help. For example, `codex exec --oss ...`
+applies `--oss` to `exec`.
 
 ## Command overview
 
@@ -281,6 +296,7 @@ interpret these labels.
 | [`codex completion`](/codex/cli/reference#codex-completion) | Stable | Generate shell completion scripts for Bash, Zsh, Fish, or PowerShell. |
 | [`codex debug app-server send-message-v2`](/codex/cli/reference#codex-debug-app-server-send-message-v2) | Experimental | Debug app-server by sending a single V2 message through the built-in test client. |
 | [`codex debug models`](/codex/cli/reference#codex-debug-models) | Experimental | Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog. |
+| [`codex doctor`](/codex/cli/reference#codex-doctor) | Stable | Generate a diagnostic report for local installation, config, auth, runtime, Git, terminal, app-server, and thread inventory issues. |
 | [`codex exec`](/codex/cli/reference#codex-exec) | Stable | Run Codex non-interactively. Alias: `codex e`. Stream results to stdout or JSONL and optionally resume previous sessions. |
 | [`codex execpolicy`](/codex/cli/reference#codex-execpolicy) | Experimental | Evaluate execpolicy rule files and see whether a command would be allowed, prompted, or blocked. |
 | [`codex features`](/codex/cli/reference#codex-features) | Stable | List feature flags and persistently enable or disable them in `config.toml`. |
@@ -390,6 +406,18 @@ Experimental
 Details
 
 Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog.
+
+Key
+
+[`codex doctor`](/codex/cli/reference#codex-doctor)
+
+Maturity
+
+Stable
+
+Details
+
+Generate a diagnostic report for local installation, config, auth, runtime, Git, terminal, app-server, and thread inventory issues.
 
 Key
 
@@ -555,7 +583,7 @@ Expand to view all
 
 Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing. For low-friction local work, use `--sandbox workspace-write --ask-for-approval on-request`.
 
-Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication.
+Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. For a local Unix socket, use `--remote unix://` for the default socket or `--remote unix://PATH` for an explicit path. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication.
 
 ### `codex app-server`
 
@@ -570,7 +598,8 @@ Launch the Codex app server locally. This is primarily for development and debug
 | `--ws-issuer` | `string` | Expected `iss` claim for signed bearer tokens. Requires `--ws-auth signed-bearer-token`. |
 | `--ws-max-clock-skew-seconds` | `number` | Clock skew allowance when validating signed bearer token `exp` and `nbf` claims. Requires `--ws-auth signed-bearer-token`. |
 | `--ws-shared-secret-file` | `absolute path` | File containing the HMAC shared secret used to validate signed JWT bearer tokens. Required with `--ws-auth signed-bearer-token`. |
-| `--ws-token-file` | `absolute path` | File containing the shared capability token. Required with `--ws-auth capability-token`. |
+| `--ws-token-file` | `absolute path` | File containing the shared capability token. Use with `--ws-auth capability-token` unless you provide `--ws-token-sha256` instead. |
+| `--ws-token-sha256` | `hexadecimal SHA-256 digest` | Expected SHA-256 digest for capability-token authentication. Use instead of `--ws-token-file` when the client token comes from another source. |
 
 Key
 
@@ -666,7 +695,19 @@ Type / Values
 
 Details
 
-File containing the shared capability token. Required with `--ws-auth capability-token`.
+File containing the shared capability token. Use with `--ws-auth capability-token` unless you provide `--ws-token-sha256` instead.
+
+Key
+
+`--ws-token-sha256`
+
+Type / Values
+
+`hexadecimal SHA-256 digest`
+
+Details
+
+Expected SHA-256 digest for capability-token authentication. Use instead of `--ws-token-file` when the client token comes from another source.
 
 `codex app-server --listen stdio://` keeps the default JSONL-over-stdio behavior. `--listen ws://IP:PORT` enables WebSocket transport for app-server clients. The server accepts `ws://` listen URLs; use TLS termination or a secure proxy when clients connect with `wss://`. Use `--listen unix://` to accept WebSocket handshakes on Codex’s default Unix socket, or `--listen unix:///absolute/path.sock` to choose a socket path. If you generate schemas for client bindings, add `--experimental` to include gated fields and methods.
 
@@ -909,14 +950,91 @@ Details
 
 Shell to generate completions for. Output prints to stdout.
 
-### `codex features`
+### `codex doctor`
 
-Manage feature flags stored in `~/.codex/config.toml` or the selected profile file. The `enable` and `disable` commands persist changes so they apply to future sessions. When you launch with `--profile profile-name`, Codex writes to `$CODEX_HOME/profile-name.config.toml` instead of the base user config.
+Generate a local diagnostic report before filing a support issue or
+while investigating a broken Codex installation. The report checks installation,
+configuration, authentication, runtime, Git, terminal, app-server, and thread
+inventory health.
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
-| `Disable subcommand` | `codex features disable <feature>` | Persistently disable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`. |
-| `Enable subcommand` | `codex features enable <feature>` | Persistently enable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`. |
+| `--all` | `boolean` | Expand long lists in the detailed human-readable report. |
+| `--ascii` | `boolean` | Use ASCII status labels and separators in human-readable output. |
+| `--json` | `boolean` | Emit a redacted machine-readable support report. |
+| `--no-color` | `boolean` | Disable ANSI color in human-readable output. |
+| `--summary` | `boolean` | Show grouped check rows and the final count summary only. |
+
+Key
+
+`--all`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Expand long lists in the detailed human-readable report.
+
+Key
+
+`--ascii`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Use ASCII status labels and separators in human-readable output.
+
+Key
+
+`--json`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Emit a redacted machine-readable support report.
+
+Key
+
+`--no-color`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Disable ANSI color in human-readable output.
+
+Key
+
+`--summary`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Show grouped check rows and the final count summary only.
+
+### `codex features`
+
+Manage feature flags stored in `$CODEX_HOME/config.toml`. The `enable` and
+`disable` commands persist changes so they apply to future sessions. The
+`features` subcommand doesn’t accept `--profile`.
+
+| Key | Type / Values | Details |
+| --- | --- | --- |
+| `Disable subcommand` | `codex features disable <feature>` | Persistently disable a feature flag in `$CODEX_HOME/config.toml`. |
+| `Enable subcommand` | `codex features enable <feature>` | Persistently enable a feature flag in `$CODEX_HOME/config.toml`. |
 | `List subcommand` | `codex features list` | Show known feature flags, their maturity stage, and their effective state. |
 
 Key
@@ -929,7 +1047,7 @@ Type / Values
 
 Details
 
-Persistently disable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.
+Persistently disable a feature flag in `$CODEX_HOME/config.toml`.
 
 Key
 
@@ -941,7 +1059,7 @@ Type / Values
 
 Details
 
-Persistently enable a feature flag in the active config file. With `--profile profile-name`, writes to `$CODEX_HOME/profile-name.config.toml`.
+Persistently enable a feature flag in `$CODEX_HOME/config.toml`.
 
 Key
 
@@ -1488,6 +1606,8 @@ The `add` subcommand supports both stdio and streamable HTTP transports:
 | --- | --- | --- |
 | `--bearer-token-env-var` | `ENV_VAR` | Environment variable whose value is sent as a bearer token when connecting to a streamable HTTP server. |
 | `--env KEY=VALUE` | `repeatable` | Environment variable assignments applied when launching a stdio server. |
+| `--oauth-client-id` | `CLIENT_ID` | OAuth client identifier for a streamable HTTP MCP server. Requires `--url`. |
+| `--oauth-resource` | `RESOURCE` | OAuth resource parameter to include during login for a streamable HTTP MCP server. Requires `--url`. |
 | `--url` | `https://…` | Register a streamable HTTP server instead of stdio. Mutually exclusive with `COMMAND...`. |
 | `COMMAND...` | `stdio transport` | Executable plus arguments to launch the MCP server. Provide after `--`. |
 
@@ -1514,6 +1634,30 @@ Type / Values
 Details
 
 Environment variable assignments applied when launching a stdio server.
+
+Key
+
+`--oauth-client-id`
+
+Type / Values
+
+`CLIENT_ID`
+
+Details
+
+OAuth client identifier for a streamable HTTP MCP server. Requires `--url`.
+
+Key
+
+`--oauth-resource`
+
+Type / Values
+
+`RESOURCE`
+
+Details
+
+OAuth resource parameter to include during login for a streamable HTTP MCP server. Requires `--url`.
 
 Key
 
@@ -1707,6 +1851,7 @@ Use the sandbox helper to run a command under the same policies Codex uses inter
 | `--include-managed-config` | `boolean` | Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`. |
 | `--log-denials` | `boolean` | Capture macOS sandbox denials with `log stream` while the command runs and print them after exit. |
 | `--permissions-profile` | `NAME` | Apply a named permissions profile from the active configuration stack. |
+| `--profile, -p` | `NAME` | Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config. |
 | `COMMAND...` | `var-args` | Shell command to execute under macOS Seatbelt. Everything after `--` is forwarded. |
 
 Key
@@ -1783,6 +1928,18 @@ Apply a named permissions profile from the active configuration stack.
 
 Key
 
+`--profile, -p`
+
+Type / Values
+
+`NAME`
+
+Details
+
+Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.
+
+Key
+
 `COMMAND...`
 
 Type / Values
@@ -1801,6 +1958,7 @@ Shell command to execute under macOS Seatbelt. Everything after `--` is forwarde
 | `--config, -c` | `key=value` | Configuration overrides applied before launching the sandbox (repeatable). |
 | `--include-managed-config` | `boolean` | Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`. |
 | `--permissions-profile` | `NAME` | Apply a named permissions profile from the active configuration stack. |
+| `--profile, -p` | `NAME` | Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config. |
 | `COMMAND...` | `var-args` | Command to execute under Landlock + seccomp. Provide the executable after `--`. |
 
 Key
@@ -1853,6 +2011,18 @@ Apply a named permissions profile from the active configuration stack.
 
 Key
 
+`--profile, -p`
+
+Type / Values
+
+`NAME`
+
+Details
+
+Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.
+
+Key
+
 `COMMAND...`
 
 Type / Values
@@ -1871,6 +2041,7 @@ Command to execute under Landlock + seccomp. Provide the executable after `--`.
 | `--config, -c` | `key=value` | Configuration overrides applied before launching the sandbox (repeatable). |
 | `--include-managed-config` | `boolean` | Include managed requirements while resolving an explicit permissions profile. Requires `--permissions-profile`. |
 | `--permissions-profile` | `NAME` | Apply a named permissions profile from the active configuration stack. |
+| `--profile, -p` | `NAME` | Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config. |
 | `COMMAND...` | `var-args` | Command to execute under the native Windows sandbox. Provide the executable after `--`. |
 
 Key
@@ -1920,6 +2091,18 @@ Type / Values
 Details
 
 Apply a named permissions profile from the active configuration stack.
+
+Key
+
+`--profile, -p`
+
+Type / Values
+
+`NAME`
+
+Details
+
+Layer `$CODEX_HOME/NAME.config.toml` on top of the base user config.
 
 Key
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/features'
-source_last_modified: '2026-05-26T18:41:32Z'
-source_etag: 'W/"c67e093152bb09f9f18126854c819ff9"'
+source_last_modified: '2026-06-01T23:04:59Z'
+source_etag: 'W/"32ac7dc433c76ba07a2e08866b9416f4"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -84,10 +84,11 @@ chmod 600 "$TOKEN_FILE"
 codex app-server --listen ws://0.0.0.0:4500 --ws-auth capability-token --ws-token-file "$TOKEN_FILE"
 ```
 
-`--remote` accepts explicit `ws://host:port` and `wss://host:port` addresses.
-Plain WebSocket connections are appropriate for localhost and SSH
-port-forwarding workflows. For non-local clients, use WebSocket auth and put the
-connection behind TLS.
+`--remote` accepts explicit `ws://host:port`, `wss://host:port`, `unix://`, and
+`unix://PATH` addresses. Use `unix://` for Codex’s default local Unix socket or
+`unix://PATH` for an explicit local socket path. Plain WebSocket connections are
+appropriate for localhost and SSH port-forwarding workflows. For non-local
+clients, use WebSocket auth and put the connection behind TLS.
 
 Codex supports these WebSocket authentication modes:
 
@@ -99,7 +100,7 @@ Codex supports these WebSocket authentication modes:
 
 The TUI sends the remote auth token as an `Authorization: Bearer <token>` header
 during the WebSocket handshake. Codex only accepts remote auth tokens over
-`wss://` URLs or loopback `ws://` URLs.
+`wss://` URLs or local-only `ws://` URLs.
 
 ```
 export CODEX_REMOTE_TOKEN="$(cat "$TOKEN_FILE")"
@@ -113,7 +114,7 @@ remote-control support enabled.
 
 ## Models and reasoning
 
-For most tasks in Codex, `gpt-5.5` is the recommended model. It is OpenAI’s newest frontier model for complex coding, computer
+For most tasks in Codex, `gpt-5.5` is the recommended model. It’s OpenAI’s newest frontier model for complex coding, computer
 use, knowledge work, and research workflows, with stronger planning, tool use,
 and follow-through on multi-step tasks. For extra fast tasks, ChatGPT Pro subscribers have
 access to the GPT-5.3-Codex-Spark model in research preview.
@@ -136,7 +137,9 @@ codex features enable unified_exec
 codex features disable shell_snapshot
 ```
 
-`codex features enable <feature>` and `codex features disable <feature>` write to `~/.codex/config.toml`. If you launch Codex with `--profile profile-name`, Codex writes to `$CODEX_HOME/profile-name.config.toml` instead.
+`codex features enable <feature>` and `codex features disable <feature>` write
+to `$CODEX_HOME/config.toml`. The `features` subcommand doesn’t accept
+`--profile`.
 
 ## Subagents
 
