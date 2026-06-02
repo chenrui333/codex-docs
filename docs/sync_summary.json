@@ -1,10 +1,8 @@
 {
-  "added": [
-    "developers.openai.com/codex/amazon-bedrock/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-02T01:03:11+00:00",
+  "generated_at": "2026-06-02T07:47:32+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,17 +13,6 @@
   },
   "total_files": 250,
   "updated": [
-    "developers.openai.com/codex/cli/features/index.md",
-    "developers.openai.com/codex/cli/reference/index.md",
-    "developers.openai.com/codex/cli/slash-commands/index.md",
-    "developers.openai.com/codex/config-advanced/index.md",
-    "developers.openai.com/codex/config-basic/index.md",
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
-    "developers.openai.com/codex/enterprise/access-tokens/index.md",
-    "developers.openai.com/codex/enterprise/admin-setup/index.md",
-    "developers.openai.com/codex/sdk/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
     "github.openai.com/openai/codex/AGENTS.md"
   ]
 }
