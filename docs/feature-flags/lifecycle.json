@@ -146,6 +146,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "imagegenext",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "in_app_browser",
       "stage": "stable"
@@ -168,7 +173,7 @@
     {
       "enabled": false,
       "key": "mentions_v2",
-      "stage": "experimental"
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -391,7 +396,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.135.0",
+  "codex_cli_version": "codex-cli 0.136.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -416,6 +421,7 @@
       "guardian_approval",
       "image_detail_original",
       "image_generation",
+      "imagegenext",
       "js_repl",
       "js_repl_tools_only",
       "mentions_v2",
@@ -613,6 +619,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
+    "local_thread_store_compression": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "memories": {
       "default_enabled_expr": "false",
       "stage_from_source": "experimental"
@@ -773,6 +783,10 @@
       "default_enabled_expr": "!cfg!(windows)",
       "stage_from_source": "stable"
     },
+    "unified_exec_zsh_fork": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "use_legacy_landlock": {
       "default_enabled_expr": "false",
       "stage_from_source": "deprecated"
@@ -800,7 +814,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "e76333f1be0ad8f360d8e712d7370a7ed26cf04cce6c0c0c36ee17547212fa59",
-    "features_rs_sha256": "8fb20f78e46b4a2203f10b447760f082d5495189b3d4a40a0fc52ba6c33d8358"
+    "features_rs_sha256": "01b5d09cb1cec4ab89b3f80942704435f6fc993dbaf413efc45e435ed821e026"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
