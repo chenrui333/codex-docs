@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-05-22T16:24:42Z'
-source_etag: 'W/"b0d971c35a32b6cd3d03177874b3ff8f"'
+source_last_modified: '2026-06-02T19:21:31Z'
+source_etag: 'W/"790b8d4c6738d0fa775979c12143095f"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -143,17 +143,17 @@ When you have an eval suite, you can use `/goal` to optimize prompts against the
 
 Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/react-native-expo-apps.webp)
+Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+
+### Build and deploy internal apps
+
+Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
+
+Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/react-native-expo-apps.webp)
 
 ### Build React Native apps with Expo
 
 Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/codex/use-cases/agent-friendly-clis.webp)
-
-### Create a CLI Codex can use
-
-Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
-
-Engineering  Code](/codex/use-cases/agent-friendly-clis)
+Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app'
-source_last_modified: '2026-05-21T18:06:27Z'
-source_etag: 'W/"fc2108a356a2827b058aa441c3e98d48"'
+source_last_modified: '2026-06-02T19:21:25Z'
+source_etag: 'W/"2b88f2c77760007ba0dadb96dba4d6a2"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -24,8 +24,8 @@ ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more
 
 The Codex app is available on macOS and Windows.
 
-Most Codex app features are available on both platforms. Platform-specific
-exceptions are noted in the relevant docs.
+Most Codex app features are available on both platforms. The relevant docs
+describe platform-specific exceptions.
 
 1. Download and install the Codex app
 
@@ -42,7 +42,7 @@ exceptions are noted in the relevant docs.
 
    Once you downloaded and installed the Codex app, open it and sign in with your ChatGPT account or an OpenAI API key.
 
-   If you sign in with an OpenAI API key, some functionality such as [cloud threads](/codex/prompting#threads) might not be available.
+   If you sign in with an OpenAI API key, [some functionality might not be available](/codex/pricing#feature-availability).
 3. Select a project
 
    Choose a project folder that you want Codex to work in.
@@ -95,7 +95,9 @@ Reuse instructions and workflows across the app, CLI, and IDE Extension.](/codex
 
 Follow plans, sources, task summaries, and generated file previews.](/codex/app/features#richer-outputs-and-artifacts)[### Plugins
 
-Connect apps, skills, and MCP servers to extend what Codex can do.](/codex/plugins)[### IDE Extension sync
+Connect apps, skills, and MCP servers to extend what Codex can do.](/codex/plugins)[### Sites
+
+Build and deploy hosted websites, web apps, and games with the Sites plugin.](/codex/sites)[### IDE Extension sync
 
 Share Auto Context and active threads across app and IDE sessions.](/codex/app/features#sync-with-the-ide-extension)
 

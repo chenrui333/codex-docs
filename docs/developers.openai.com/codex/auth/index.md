@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_auth'
 source_url: 'https://developers.openai.com/codex/auth'
-source_last_modified: '2026-05-18T18:39:31Z'
-source_etag: 'W/"db78c980f1d70860d353c85abc0f8b56"'
+source_last_modified: '2026-06-02T19:21:03Z'
+source_etag: 'W/"df6d5d50f37ae84dd547f28d11591e2b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -45,9 +45,13 @@ You can also sign in to the Codex app, CLI, or IDE Extension with an API key. Ge
 
 OpenAI bills API key usage through your OpenAI Platform account at standard API rates. See the [API pricing page](https://openai.com/api/pricing/).
 
-Features that rely on ChatGPT credits, such as [fast mode](/codex/speed), are
-available only when you sign in with ChatGPT. If you sign in with an API key,
-Codex uses standard API pricing instead.
+API key authentication supports local Codex workflows, but some features that
+rely on ChatGPT workspace access or cloud services are limited or unavailable.
+Compare support by plan in
+[Feature availability](/codex/pricing#feature-availability).
+
+When you sign in with an API key, Codex uses standard API pricing instead of
+included ChatGPT plan credits.
 
 We recommend API key authentication for programmatic Codex CLI workflows, such
 as CI/CD jobs. Don’t expose Codex execution in untrusted or public environments.

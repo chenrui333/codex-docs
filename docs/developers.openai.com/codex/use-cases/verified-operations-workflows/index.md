@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/verified-operations-workflows'
-source_last_modified: '2026-05-22T17:35:06Z'
-source_etag: 'W/"1fe438f40f4bf4ce565c42d668cd3ac3"'
+source_last_modified: '2026-06-02T19:22:12Z'
+source_etag: 'W/"7f2273a6089827b1194a420ba2ee2013"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -136,7 +136,13 @@ For scheduled operations, use an automation only after the manual run produces r
 
 ## Related use cases
 
-[![](/codex/use-cases/manage-your-inbox.webp)
+[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+
+### Build and deploy internal apps
+
+Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
+
+Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/manage-your-inbox.webp)
 
 ### Manage your inbox
 
@@ -148,11 +154,5 @@ Automation  Integrations](/codex/use-cases/manage-your-inbox)[![](/codex/use-cas
 
 Use Codex with Slack and the tools where work happens to find direct asks, implicit...
 
-Automation  Integrations](/codex/use-cases/slack-action-triage)[![](/codex/use-cases/proactive-teammate.webp)
-
-### Set up a teammate
-
-Connect the tools where work happens, teach one thread what matters, then add an automation...
-
-Automation  Integrations](/codex/use-cases/proactive-teammate)
+Automation  Integrations](/codex/use-cases/slack-action-triage)
 

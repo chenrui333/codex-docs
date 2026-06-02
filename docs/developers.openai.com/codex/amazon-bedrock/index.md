@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_amazon_bedrock'
 source_url: 'https://developers.openai.com/codex/amazon-bedrock'
-source_last_modified: '2026-06-01T23:04:47Z'
-source_etag: 'W/"11e7be682a0172c68a73d0859ac219f7"'
+source_last_modified: '2026-06-02T19:21:25Z'
+source_etag: 'W/"14f9a5e7669e80e69cc637fcc3235c7e"'
 codex_cli_versions: ["0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0"]
 ---
@@ -143,16 +143,73 @@ Fast Mode isn’t available with Amazon Bedrock. Fast Mode uses priority
 processing, and the initial Amazon Bedrock offering supports on-demand
 inference only.
 
-| Capability | State |
+Detailed feature availability
+
+| Feature | Amazon Bedrock |
 | --- | --- |
-| Codex CLI local workflows | Supported |
-| Codex desktop app local workflows | Supported |
-| Codex IDE extension local workflows | Supported |
-| Bedrock-backed inference with supported OpenAI models | Supported |
-| Locally configured MCP servers and connectors | Supported |
-| Hosted first-party plugin directory | Not available |
-| Codex cloud agents, including review, security, and web agents | Not available |
-| Image generation and voice transcription | Not available |
+| Access and surfaces | |
+| --- | --- |
+| [Codex web](/codex/cloud) | — |
+| [Codex app for local tasks](/codex/app) |  |
+| [Codex CLI](/codex/cli) |  |
+| [IDE extension](/codex/ide) |  |
+| [Codex SDK, `codex exec`, and scriptable workflows](/codex/sdk) |  |
+| Models and multimodal | |
+| [Bedrock-backed inference with supported OpenAI models](/codex/amazon-bedrock) |  |
+| [Fast mode](/codex/speed) | — |
+| [Image generation and editing](/codex/app/features#image-generation) | — |
+| [Voice dictation](/codex/app/features#voice-dictation) | — |
+| [Web search](/codex/app/features#web-search) | — |
+| Local features | |
+| [Local code review with `/review`](/codex/workflows#do-a-local-code-review) |  |
+| [Auto-review for approval requests](/codex/concepts/sandboxing/auto-review) |  |
+| [Sandboxing and permission controls](/codex/permissions) |  |
+| [Project and standalone app automations](/codex/app/automations) |  |
+| [Automations](/codex/app/automations) |  |
+| [Worktrees and built-in Git tools](/codex/app/worktrees) |  |
+| [Local environments and repeatable actions](/codex/app/local-environments) |  |
+| [Appshots](/codex/appshots) |  |
+| Browser and remote control | |
+| [In-app browser previews and comments](/codex/app/browser) |  |
+| [Browser Use automation](/codex/app/browser#browser-use) | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Chrome extension browser control](/codex/app/chrome-extension) | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Computer Use](/codex/app/computer-use) | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [SSH remote connections](/codex/remote-connections#connect-to-an-ssh-host) |  |
+| [Mobile remote control](/codex/remote-connections) | — |
+| Customization and extensions | |
+| [Custom instructions with `AGENTS.md`](/codex/guides/agents-md) |  |
+| [Skills](/codex/skills) |  |
+| [Plugins](/codex/plugins) | [Limited†](#codex-plan-plugin-limits "Available with plugin limits") |
+| [Plugin sharing](/codex/plugins/build#share-a-local-plugin-with-your-workspace) | — |
+| [App connectors](/codex/plugins) | — |
+| [MCP](/codex/mcp) |  |
+| [Subagents and custom agents](/codex/subagents) |  |
+| [Memories](/codex/memories) | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Chronicle](/codex/memories/chronicle) | — |
+| Cloud and integrations | |
+| [Codex cloud tasks](/codex/cloud) | — |
+| [Sites](/codex/sites) | — |
+| [GitHub issue and PR delegation with `@codex`](/codex/integrations/github#give-codex-other-tasks) | — |
+| [GitHub code review and automatic PR reviews](/codex/integrations/github) | — |
+| [Slack cloud integration](/codex/integrations/slack) | — |
+| [Linear cloud integration](/codex/integrations/linear) | — |
+| Admin, security, and analytics | |
+| [SAML SSO, MFA, and workspace user management](/codex/enterprise/admin-setup) | — |
+| [`requirements.toml` managed config](/codex/enterprise/managed-configuration) |  |
+| [Cloud-managed config policies](/codex/enterprise/managed-configuration#cloud-managed-requirements) | — |
+| [Codex RBAC and custom roles](/codex/enterprise/admin-setup#step-2-set-up-custom-roles-rbac) | — |
+| [SCIM, EKM, and domain verification](/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy) | — |
+| [Enterprise retention and residency controls](/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy) | — |
+| [No training on API or business data by default](https://openai.com/business-data/) |  |
+| [Analytics dashboard](/codex/enterprise/governance#analytics-dashboard) | — |
+| [Analytics API](/codex/enterprise/governance#analytics-api) | — |
+| [Compliance API and audit logs](/codex/enterprise/governance#compliance-api) | — |
+| [Codex Security for connected GitHub repositories](/codex/security) | — |
+
+\* Feature is currently limited to only specific regions. Check
+the individual feature documentation to learn more about geo restrictions.
+
+† Some first party plugins are not available.
 
 ## Troubleshooting
 

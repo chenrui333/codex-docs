@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
-source_last_modified: '2026-05-20T00:58:26Z'
-source_etag: 'W/"81c93b51e4feb18f5d17cd93a92ac8b9"'
+source_last_modified: '2026-06-02T19:22:02Z'
+source_etag: 'W/"8260163f5bff0c5848bdc4a705329f28"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -100,7 +100,13 @@ Codex applies guidance from the closest `AGENTS.md` to each changed file. You ca
 
 ## Related use cases
 
-[![](/codex/use-cases/deploy-app-or-website.webp)
+[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+
+### Build and deploy internal apps
+
+Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
+
+Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/deploy-app-or-website.webp)
 
 ### Deploy an app or website
 
@@ -112,11 +118,5 @@ Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/codex/use-
 
 Use Codex to normalize inputs, run approved scripts or APIs, retry bounded failures, and...
 
-Automation  Integrations](/codex/use-cases/verified-operations-workflows)[![](/codex/use-cases/ai-app-evals.webp)
-
-### Add evals to your AI application
-
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
-
-Evaluation  Quality](/codex/use-cases/ai-app-evals)
+Automation  Integrations](/codex/use-cases/verified-operations-workflows)
 

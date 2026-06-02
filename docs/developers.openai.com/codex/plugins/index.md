@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins'
-source_last_modified: '2026-05-28T18:53:16Z'
-source_etag: 'W/"f945d1d33bde2c79f9c6769882c79191"'
+source_last_modified: '2026-06-02T19:21:10Z'
+source_etag: 'W/"19690832b323fb2eed08d007fdc51fa1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -25,6 +25,8 @@ Extend what Codex can do, for example:
 - Install the Google Drive plugin to work across Drive, Docs, Sheets, and
   Slides.
 - Install the Slack plugin to summarize channels or draft replies.
+- Install [Sites](/codex/sites) to create and deploy hosted websites,
+  web apps, and games.
 
 A plugin can contain:
 

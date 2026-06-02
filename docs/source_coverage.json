@@ -170,6 +170,7 @@
       "https://developers.openai.com/codex/security/plugin",
       "https://developers.openai.com/codex/security/setup",
       "https://developers.openai.com/codex/security/threat-model",
+      "https://developers.openai.com/codex/sites",
       "https://developers.openai.com/codex/skills",
       "https://developers.openai.com/codex/speed",
       "https://developers.openai.com/codex/subagents",
@@ -187,6 +188,7 @@
       "https://developers.openai.com/codex/use-cases/automation-bug-triage",
       "https://developers.openai.com/codex/use-cases/browser-games",
       "https://developers.openai.com/codex/use-cases/budget-vs-actuals-review",
+      "https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps",
       "https://developers.openai.com/codex/use-cases/cash-flow-forecast",
       "https://developers.openai.com/codex/use-cases/chatgpt-apps",
       "https://developers.openai.com/codex/use-cases/clean-messy-data",
@@ -276,8 +278,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 187,
-      "mirrored_urls": 171,
+      "codex_related_urls": 189,
+      "mirrored_urls": 173,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -363,6 +365,7 @@
       "https://developers.openai.com/codex/security/plugin",
       "https://developers.openai.com/codex/security/setup",
       "https://developers.openai.com/codex/security/threat-model",
+      "https://developers.openai.com/codex/sites",
       "https://developers.openai.com/codex/skills",
       "https://developers.openai.com/codex/speed",
       "https://developers.openai.com/codex/subagents",
@@ -380,6 +383,7 @@
       "https://developers.openai.com/codex/use-cases/automation-bug-triage",
       "https://developers.openai.com/codex/use-cases/browser-games",
       "https://developers.openai.com/codex/use-cases/budget-vs-actuals-review",
+      "https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps",
       "https://developers.openai.com/codex/use-cases/cash-flow-forecast",
       "https://developers.openai.com/codex/use-cases/chatgpt-apps",
       "https://developers.openai.com/codex/use-cases/clean-messy-data",
@@ -457,8 +461,14 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/sites",
+      "https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/sites",
+      "https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -578,7 +588,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-06-02T07:47:03+00:00",
+  "generated_at": "2026-06-02T19:21:24+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

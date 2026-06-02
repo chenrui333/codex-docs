@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deploy-app-or-website'
-source_last_modified: '2026-05-22T16:40:36Z'
-source_etag: 'W/"7ae940b18f3c1ac65b694e9bb2aa50d2"'
+source_last_modified: '2026-06-02T19:22:00Z'
+source_etag: 'W/"d37defa8b1602af6d064afdcb7274559"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -129,7 +129,13 @@ Good follow-ups are specific:
 
 ## Related use cases
 
-[![](/codex/use-cases/chatgpt-apps.webp)
+[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+
+### Build and deploy internal apps
+
+Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
+
+Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/chatgpt-apps.webp)
 
 ### Bring your app to ChatGPT
 
@@ -141,11 +147,5 @@ Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/codex/use-cases/follow-g
 
 Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-Engineering  Automation](/codex/use-cases/follow-goals)[![](/codex/use-cases/idea-to-proof-of-concept.webp)
-
-### Get from idea to proof of concept
-
-Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
-
-Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)
+Engineering  Automation](/codex/use-cases/follow-goals)
 

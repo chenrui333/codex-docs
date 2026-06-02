@@ -456,6 +456,14 @@ Run repeatable workflows and verify the result.
 
 Automation  Integrations](/codex/use-cases/verified-operations-workflows)
 
+[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+
+### Build and deploy internal apps
+
+Turn a team workflow into a hosted internal app with Sites.
+
+Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)
+
 [![](/codex/use-cases/zoom-meeting-follow-ups.webp)
 
 ### Turn meetings into follow-ups

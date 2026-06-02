@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-01T07:02:09Z'
-source_etag: 'W/"e3222b5f95f95e9bb7ac06e2721202a8"'
+source_last_modified: '2026-06-02T19:20:39Z'
+source_etag: 'W/"0fd79ec60beaf18dafa3e0d97b339860"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -134,6 +134,11 @@ Great for automation in shared environments like CI.
   pricing](https://platform.openai.com/docs/pricing)
 
 ## Frequently asked questions
+
+### How much does Sites cost?
+
+[Sites](/codex/sites) is free while in preview. Pricing information will be
+available soon.
 
 ### What are the usage limits for my plan?
 
@@ -355,4 +360,231 @@ tips to maximize your limits:
 - **Switch to a smaller model for routine tasks.** Using GPT-5.4 or
   GPT-5.4-mini can extend your local-message usage limits, depending on the
   model you switch from.
+
+## Feature availability
+
+| Feature | ChatGPT Plus | ChatGPT Pro | ChatGPT Business | Enterprise / Education | API Key |
+| --- | --- | --- | --- | --- | --- |
+| Access and surfaces | | | | | |
+| --- | --- | --- | --- | --- | --- |
+| [Codex web](/codex/cloud) |  |  |  |  | — |
+| [Codex app for local tasks](/codex/app) |  |  |  |  |  |
+| [Codex CLI](/codex/cli) |  |  |  |  |  |
+| [IDE extension](/codex/ide) |  |  |  |  |  |
+| [Codex SDK, `codex exec`, and scriptable workflows](/codex/sdk) |  |  |  |  |  |
+| [Codex access tokens for trusted automation](/codex/enterprise/access-tokens) | — | — |  |  | — |
+| Models and multimodal | | | | | |
+| [Fast mode](/codex/speed) |  |  |  |  |  |
+| [Codex-Spark research preview](/codex/models) | — |  | — | — | — |
+| [Image generation and editing](/codex/app/features#image-generation) |  |  |  |  |  |
+| [Voice dictation](/codex/app/features#voice-dictation) |  |  |  |  | — |
+| [Web search](/codex/app/features#web-search) |  |  |  |  |  |
+| Local features | | | | | |
+| [Local code review with `/review`](/codex/workflows#do-a-local-code-review) |  |  |  |  |  |
+| [Auto-review for approval requests](/codex/concepts/sandboxing/auto-review) |  |  |  |  |  |
+| [Sandboxing and permission controls](/codex/permissions) |  |  |  |  |  |
+| [Project and standalone app automations](/codex/app/automations) |  |  |  |  |  |
+| [Automations](/codex/app/automations) |  |  |  |  |  |
+| [Worktrees and built-in Git tools](/codex/app/worktrees) |  |  |  |  |  |
+| [Local environments and repeatable actions](/codex/app/local-environments) |  |  |  |  |  |
+| [Appshots](/codex/appshots) |  |  |  | — |  |
+| Browser and remote control | | | | | |
+| [In-app browser previews and comments](/codex/app/browser) |  |  |  |  |  |
+| [Browser Use automation](/codex/app/browser#browser-use) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Chrome extension browser control](/codex/app/chrome-extension) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Computer Use](/codex/app/computer-use) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [SSH remote connections](/codex/remote-connections#connect-to-an-ssh-host) |  |  |  |  |  |
+| [Mobile remote control](/codex/remote-connections) |  |  |  |  | — |
+| Customization and extensions | | | | | |
+| [Custom instructions with `AGENTS.md`](/codex/guides/agents-md) |  |  |  |  |  |
+| [Skills](/codex/skills) |  |  |  |  |  |
+| [Plugins](/codex/plugins) |  |  |  |  | [Limited†](#codex-plan-plugin-limits "Available with plugin limits") |
+| [Plugin sharing](/codex/plugins/build#share-a-local-plugin-with-your-workspace) |  |  |  |  | — |
+| [App connectors](/codex/plugins) |  |  |  |  | — |
+| [MCP](/codex/mcp) |  |  |  |  |  |
+| [Subagents and custom agents](/codex/subagents) |  |  |  |  |  |
+| [Memories](/codex/memories) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Chronicle](/codex/memories/chronicle) | — | [Limited\*](#codex-plan-region-limits "Available with regional limits") | — | — | — |
+| Cloud and integrations | | | | | |
+| [Codex cloud tasks](/codex/cloud) |  |  |  |  | — |
+| [Cloud environments and setup scripts](/codex/cloud/environments) |  |  |  |  | — |
+| [Cloud agent internet access controls](/codex/cloud/internet-access) |  |  |  |  | — |
+| [Sites](/codex/sites) | — | — |  |  | — |
+| [GitHub issue and PR delegation with `@codex`](/codex/integrations/github#give-codex-other-tasks) |  |  |  |  | — |
+| [GitHub code review and automatic PR reviews](/codex/integrations/github) |  |  |  |  | — |
+| [Slack cloud integration](/codex/integrations/slack) |  |  |  |  | — |
+| [Linear cloud integration](/codex/integrations/linear) |  |  |  |  | — |
+| Admin, security, and analytics | | | | | |
+| [SAML SSO, MFA, and workspace user management](/codex/enterprise/admin-setup) | — | — |  |  | — |
+| [`requirements.toml` managed config](/codex/enterprise/managed-configuration) |  |  |  |  |  |
+| [Cloud-managed config policies](/codex/enterprise/managed-configuration#cloud-managed-requirements) | — | — |  |  | — |
+| [Codex RBAC and custom roles](/codex/enterprise/admin-setup#step-2-set-up-custom-roles-rbac) | — | — | — |  | — |
+| [SCIM, EKM, and domain verification](/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy) | — | — | — |  | — |
+| [Enterprise retention and residency controls](/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy) | — | — | — |  | — |
+| [No training on API or business data by default](https://openai.com/business-data/) | — | — |  |  |  |
+| [Analytics dashboard](/codex/enterprise/governance#analytics-dashboard) | — | — | — |  | — |
+| [Analytics API](/codex/enterprise/governance#analytics-api) | — | — | — |  | — |
+| [Compliance API and audit logs](/codex/enterprise/governance#compliance-api) | — | — | — |  | — |
+| [Codex Security for connected GitHub repositories](/codex/security) | — | — | — |  | — |
+
+#### Access and surfaces
+
+[Codex web](/codex/cloud)
+
+[Codex app for local tasks](/codex/app)
+
+[Codex CLI](/codex/cli)
+
+[IDE extension](/codex/ide)
+
+[Codex SDK and scripting](/codex/sdk)
+
+[Automation access tokens](/codex/enterprise/access-tokens)
+
+—
+
+#### Models and multimodal
+
+[Fast mode](/codex/speed)
+
+[Codex-Spark research preview](/codex/models)
+
+—
+
+[Image generation and editing](/codex/app/features#image-generation)
+
+[Voice dictation](/codex/app/features#voice-dictation)
+
+[Web search](/codex/app/features#web-search)
+
+#### Local features
+
+[Local code review](/codex/workflows#do-a-local-code-review)
+
+[Auto-review for approval requests](/codex/concepts/sandboxing/auto-review)
+
+[Sandboxing and permission controls](/codex/permissions)
+
+[App automations](/codex/app/automations)
+
+[Automations](/codex/app/automations)
+
+[Built-in Git tools](/codex/app/worktrees)
+
+[Repeatable actions](/codex/app/local-environments)
+
+[Appshots](/codex/appshots)
+
+#### Browser and remote control
+
+[In-app browser](/codex/app/browser)
+
+[Browser Use automation](/codex/app/browser#browser-use)
+
+[Limited\*](#codex-plan-region-limits "Available with regional limits")
+
+[Chrome browser control](/codex/app/chrome-extension)
+
+[Limited\*](#codex-plan-region-limits "Available with regional limits")
+
+[Computer Use](/codex/app/computer-use)
+
+[Limited\*](#codex-plan-region-limits "Available with regional limits")
+
+[SSH remote](/codex/remote-connections#connect-to-an-ssh-host)
+
+[Mobile remote control](/codex/remote-connections)
+
+#### Customization and extensions
+
+[Custom instructions](/codex/guides/agents-md)
+
+[Skills](/codex/skills)
+
+[Plugins](/codex/plugins)
+
+[Plugin sharing](/codex/plugins/build#share-a-local-plugin-with-your-workspace)
+
+[App connectors](/codex/plugins)
+
+[MCP](/codex/mcp)
+
+[Subagents](/codex/subagents)
+
+[Memories](/codex/memories)
+
+[Limited\*](#codex-plan-region-limits "Available with regional limits")
+
+[Chronicle](/codex/memories/chronicle)
+
+—
+
+#### Cloud and integrations
+
+[Cloud tasks](/codex/cloud)
+
+[Cloud environments](/codex/cloud/environments)
+
+[Internet controls](/codex/cloud/internet-access)
+
+[Sites](/codex/sites)
+
+—
+
+[GitHub delegation](/codex/integrations/github#give-codex-other-tasks)
+
+[GitHub PR reviews](/codex/integrations/github)
+
+[Slack integration](/codex/integrations/slack)
+
+[Linear integration](/codex/integrations/linear)
+
+#### Admin, security, and analytics
+
+[Workspace management](/codex/enterprise/admin-setup)
+
+—
+
+[`requirements.toml` config](/codex/enterprise/managed-configuration)
+
+[Cloud-managed policies](/codex/enterprise/managed-configuration#cloud-managed-requirements)
+
+—
+
+[RBAC and roles](/codex/enterprise/admin-setup#step-2-set-up-custom-roles-rbac)
+
+—
+
+[SCIM, EKM, and domains](/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy)
+
+—
+
+[Retention and residency](/codex/enterprise/admin-setup#enterprise-grade-security-and-privacy)
+
+—
+
+[No default training](https://openai.com/business-data/)
+
+—
+
+[Analytics dashboard](/codex/enterprise/governance#analytics-dashboard)
+
+—
+
+[Analytics API](/codex/enterprise/governance#analytics-api)
+
+—
+
+[Compliance and audit logs](/codex/enterprise/governance#compliance-api)
+
+—
+
+[Codex Security](/codex/security)
+
+—
+
+\* Feature is currently limited to only specific regions. Check the
+individual feature documentation to learn more about geo restrictions.
+
+† Some first party plugins are not available.
 
