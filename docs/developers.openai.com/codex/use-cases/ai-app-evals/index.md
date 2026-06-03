@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ai-app-evals'
-source_last_modified: '2026-05-28T18:58:31Z'
-source_etag: 'W/"7d8c48992eaeb8503691b02e66460c62"'
+source_last_modified: '2026-06-03T19:26:33Z'
+source_etag: 'W/"073e6a3de7dd7a082781ed2c6292a19d"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -161,7 +161,13 @@ After the first run, use the suite to compare app changes before they ship. Add 
 
 ## Related use cases
 
-[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
+[![](/codex/use-cases/api-integration-migrations.webp)
+
+### Upgrade your API integration
+
+Use Codex to update your existing OpenAI API integration to the latest recommended models...
+
+Evaluation  Engineering](/codex/use-cases/api-integration-migrations)[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
 ### Remediate a vulnerability backlog
 
@@ -173,11 +179,5 @@ Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)[![](/cod
 
 Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats...
 
-Engineering  Quality](/codex/use-cases/deep-security-scan)[![](/codex/use-cases/scan-code-changes-for-security.webp)
-
-### Scan code changes for security
-
-Use the Codex Security plugin to examine a Git-backed change set, validate plausible...
-
-Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)
+Engineering  Quality](/codex/use-cases/deep-security-scan)
 

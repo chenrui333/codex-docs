@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-action-triage'
-source_last_modified: '2026-05-22T17:06:30Z'
-source_etag: 'W/"15fcd2097aa43b6e513234b5eb50a524"'
+source_last_modified: '2026-06-03T19:26:52Z'
+source_etag: 'W/"f18cbb1943eee085351bdf6fbf8d4695"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -168,11 +168,11 @@ Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/codex/use-ca
 
 Use Codex with Zoom transcripts and AI Companion summaries to draft customer follow-up...
 
-Automation  Integrations](/codex/use-cases/zoom-meeting-follow-ups)[![](/codex/use-cases/new-hire-onboarding.webp)
+Automation  Integrations](/codex/use-cases/zoom-meeting-follow-ups)[![](/codex/use-cases/manage-your-inbox.webp)
 
-### Coordinate new-hire onboarding
+### Manage your inbox
 
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+Use Codex with Gmail to find emails that need attention, draft responses in your voice, pull...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)
+Automation  Integrations](/codex/use-cases/manage-your-inbox)
 

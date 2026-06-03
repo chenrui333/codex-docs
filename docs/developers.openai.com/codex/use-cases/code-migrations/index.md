@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/code-migrations'
-source_last_modified: '2026-05-22T16:43:46Z'
-source_etag: 'W/"473ee72f365caaf960ab3a1e7a6b2cb6"'
+source_last_modified: '2026-06-03T19:26:36Z'
+source_etag: 'W/"8e12961d75c1c310b726506d0e18667a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -126,23 +126,23 @@ For long-running migration slices, use a [goal](/codex/use-cases/follow-goals) t
 
 ## Related use cases
 
-[![](/codex/use-cases/ai-app-evals.webp)
-
-### Add evals to your AI application
-
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
-
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/react-native-expo-apps.webp)
-
-### Build React Native apps with Expo
-
-Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
-
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)[![](/codex/use-cases/agent-friendly-clis.webp)
+[![](/codex/use-cases/agent-friendly-clis.webp)
 
 ### Create a CLI Codex can use
 
 Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
 
-Engineering  Code](/codex/use-cases/agent-friendly-clis)
+Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/codex/use-cases/browser-games.webp)
+
+### Create browser-based games
+
+Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
+
+Engineering  Code](/codex/use-cases/browser-games)[![](/codex/use-cases/follow-goals.webp)
+
+### Follow a goal
+
+Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
+
+Engineering  Automation](/codex/use-cases/follow-goals)
 

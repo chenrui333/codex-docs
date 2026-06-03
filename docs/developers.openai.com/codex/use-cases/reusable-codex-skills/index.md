@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/reusable-codex-skills'
-source_last_modified: '2026-05-22T16:22:26Z'
-source_etag: 'W/"63e48f59ec6ddbb86de1a3d8e3a39a39"'
+source_last_modified: '2026-06-03T19:26:51Z'
+source_etag: 'W/"6b9f29576b51ff3b70c37290d81c9461"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -152,17 +152,17 @@ Use the same pattern when future threads should read the same runbook, run the s
 
 Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
 
-Engineering  Automation](/codex/use-cases/follow-goals)[![](/codex/use-cases/ai-app-evals.webp)
-
-### Add evals to your AI application
-
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
-
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/dependency-incident-audits.webp)
+Engineering  Automation](/codex/use-cases/follow-goals)[![](/codex/use-cases/dependency-incident-audits.webp)
 
 ### Audit dependency incidents
 
 Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
 
-Engineering  Quality](/codex/use-cases/dependency-incident-audits)
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/agent-friendly-clis.webp)
+
+### Create a CLI Codex can use
+
+Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
+
+Engineering  Code](/codex/use-cases/agent-friendly-clis)
 

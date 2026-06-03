@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/feedback-synthesis'
-source_last_modified: '2026-05-22T16:21:29Z'
-source_etag: 'W/"e8e2603d6f6b3afac2cdf0db5798557b"'
+source_last_modified: '2026-06-03T19:26:42Z'
+source_etag: 'W/"a56bfacfc5655b741b6e74b699e84bc5"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -141,13 +141,7 @@ Only update me when there is a new theme, stronger evidence for an existing them
 
 ## Related use cases
 
-[![](/codex/use-cases/new-hire-onboarding.webp)
-
-### Coordinate new-hire onboarding
-
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
-
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/analyze-data-export.webp)
+[![](/codex/use-cases/analyze-data-export.webp)
 
 ### Query tabular data
 
@@ -159,5 +153,11 @@ Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/codex/use-cases
 
 Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
 
-Data  Knowledge Work](/codex/use-cases/clean-messy-data)
+Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/codex/use-cases/generate-slide-decks.webp)
+
+### Generate slide decks
+
+Use Codex to update existing presentations or build new decks by editing slides directly...
+
+Data  Integrations](/codex/use-cases/generate-slide-decks)
 

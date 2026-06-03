@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/clean-messy-data'
-source_last_modified: '2026-05-22T16:27:35Z'
-source_etag: 'W/"8548e9f85e2757f5f31b6e6e849220df"'
+source_last_modified: '2026-06-03T19:26:36Z'
+source_etag: 'W/"029366d98e96e4bc26cc070ce20e4939"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -132,11 +132,11 @@ Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/codex/use-cases
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/new-hire-onboarding.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/cash-flow-forecast.webp)
 
-### Coordinate new-hire onboarding
+### Forecast cash flow
 
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+Give Codex cash-flow inputs and model constraints, then ask it to create an editable...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)
+Data  Knowledge Work](/codex/use-cases/cash-flow-forecast)
 

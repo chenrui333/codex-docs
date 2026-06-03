@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deep-security-scan'
-source_last_modified: '2026-05-28T18:58:35Z'
-source_etag: 'W/"79f35084a919b025456c7ee75cac3220"'
+source_last_modified: '2026-06-03T19:26:40Z'
+source_etag: 'W/"c6c0539a0bfc576cb9a8db00eb9c2da7"'
 codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -127,17 +127,17 @@ to fix findings one at a time with focused regression validation.
 
 Use the Codex Security plugin to examine a Git-backed change set, validate plausible...
 
-Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)[![](/codex/use-cases/ai-app-evals.webp)
-
-### Add evals to your AI application
-
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
-
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/dependency-incident-audits.webp)
+Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)[![](/codex/use-cases/dependency-incident-audits.webp)
 
 ### Audit dependency incidents
 
 Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
 
-Engineering  Quality](/codex/use-cases/dependency-incident-audits)
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
+
+### Remediate a vulnerability backlog
+
+Bring in approved findings from ticketing tools or vulnerability reporting systems, then use...
+
+Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dependency-incident-audits'
-source_last_modified: '2026-05-28T18:58:35Z'
-source_etag: 'W/"c4e5cd5962c151c19f8cb0c5f5ebb969"'
+source_last_modified: '2026-06-03T19:26:40Z'
+source_etag: 'W/"0ec4da8668311860198e6ea31e5c5b42"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -172,11 +172,11 @@ Engineering  Quality](/codex/use-cases/deep-security-scan)[![](/codex/use-cases/
 
 Use the Codex Security plugin to examine a Git-backed change set, validate plausible...
 
-Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)[![](/codex/use-cases/ai-app-evals.webp)
+Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
-### Add evals to your AI application
+### Remediate a vulnerability backlog
 
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
+Bring in approved findings from ticketing tools or vulnerability reporting systems, then use...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)
+Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)
 

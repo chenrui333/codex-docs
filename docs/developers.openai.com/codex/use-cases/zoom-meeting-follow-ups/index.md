@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/zoom-meeting-follow-ups'
-source_last_modified: '2026-05-22T16:51:33Z'
-source_etag: 'W/"448f834308bb2d2947419857ebee903c"'
+source_last_modified: '2026-06-03T19:26:54Z'
+source_etag: 'W/"53d87d92fc2052d14d68d66b24d8d531"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -172,23 +172,23 @@ Only update me when there is a meaningful change, a missing transcript, or a dec
 
 ## Related use cases
 
-[![](/codex/use-cases/new-hire-onboarding.webp)
+[![](/codex/use-cases/slack-action-triage.webp)
 
-### Coordinate new-hire onboarding
+### Prioritize Slack action items
 
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+Use Codex with Slack and the tools where work happens to find direct asks, implicit...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
+Automation  Integrations](/codex/use-cases/slack-action-triage)[![](/codex/use-cases/proactive-teammate.webp)
 
-### Draft PRDs from internal context
+### Set up a teammate
 
-Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
+Connect the tools where work happens, teach one thread what matters, then add an automation...
 
-Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/meeting-prep-briefs.webp)
+Automation  Integrations](/codex/use-cases/proactive-teammate)[![](/codex/use-cases/manage-your-inbox.webp)
 
-### Prepare meeting briefs
+### Manage your inbox
 
-Use Codex with Calendar, Drive, Slack, and Gmail to gather approved sources before a...
+Use Codex with Gmail to find emails that need attention, draft responses in your voice, pull...
 
-Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)
+Automation  Integrations](/codex/use-cases/manage-your-inbox)
 

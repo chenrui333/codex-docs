@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/new-hire-onboarding'
-source_last_modified: '2026-05-22T17:11:15Z'
-source_etag: 'W/"e8297f04bf3e78b9861e424d703e2029"'
+source_last_modified: '2026-06-03T19:26:49Z'
+source_etag: 'W/"8391614f1f0fb40cf5e9d53c4de8b06c"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -314,23 +314,23 @@ Rules:
 
 ## Related use cases
 
-[![](/codex/use-cases/feedback-synthesis.webp)
-
-### Turn feedback into actions
-
-Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
-
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/draft-prds-from-sources.webp)
+[![](/codex/use-cases/draft-prds-from-sources.webp)
 
 ### Draft PRDs from internal context
 
 Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
 
-Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/generate-slide-decks.webp)
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/meeting-prep-briefs.webp)
 
-### Generate slide decks
+### Prepare meeting briefs
 
-Use Codex to update existing presentations or build new decks by editing slides directly...
+Use Codex with Calendar, Drive, Slack, and Gmail to gather approved sources before a...
 
-Data  Integrations](/codex/use-cases/generate-slide-decks)
+Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)[![](/codex/use-cases/event-launch-playbooks.webp)
+
+### Run event playbooks
+
+Use Codex with Slack, Google Drive, and Calendar to gather planning context, draft...
+
+Integrations  Knowledge Work](/codex/use-cases/event-launch-playbooks)
 

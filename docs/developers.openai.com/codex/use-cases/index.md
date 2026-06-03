@@ -42,7 +42,7 @@ Engineering  Automation](/codex/use-cases/follow-goals)
 
 ## Collections
 
-[Productivity & Collaboration   Coordinate work across apps, data, and teams.](/codex/use-cases/collections/productivity-and-collaboration)  [Web development   Build responsive UI from designs and prompts.](/codex/use-cases/collections/web-development)  [Game development   Prototype loops, UI, and gameplay faster.](/codex/use-cases/collections/game-development)  [Native development   Build and debug iOS and macOS apps.](/codex/use-cases/collections/native-development)  [Production systems   Navigate, refactor, and review real codebases.](/codex/use-cases/collections/production-systems)  [Security   Find, review, and remediate vulnerabilities in authorized code.](/codex/use-cases/collections/security)
+[Productivity & Collaboration   Coordinate work across apps, data, and teams.](/codex/use-cases/collections/productivity-and-collaboration)  [Web development   Build responsive UI from designs and prompts.](/codex/use-cases/collections/web-development)  [Game development   Prototype loops, UI, and gameplay faster.](/codex/use-cases/collections/game-development)  [Native development   Build and debug iOS and macOS apps.](/codex/use-cases/collections/native-development)  [Production systems   Navigate, refactor, and review real codebases.](/codex/use-cases/collections/production-systems)  [Security   Find, review, and remediate vulnerabilities in authorized code.](/codex/use-cases/collections/security)  [Life Sciences   Use GPT-Rosalind to accelerate scientific research and drug discovery.](/codex/use-cases/collections/life-sciences)
 
 ## All use cases
 
@@ -272,6 +272,14 @@ Use Codex to scaffold, build, and debug SwiftUI apps for iPhone and iPad.
 
 iOS  Code](/codex/use-cases/native-ios-apps)
 
+[![](/codex/use-cases/discover-protein-folding-architectures.webp)
+
+### Discover protein folding architectures
+
+Turn protein-folding hypotheses into benchmarked experiment loops.
+
+Sciences  Engineering](/codex/use-cases/discover-protein-folding-architectures)
+
 [![](/codex/use-cases/refactor-your-codebase.webp)
 
 ### Refactor your codebase
@@ -319,6 +327,30 @@ macOS  Code](/codex/use-cases/macos-telemetry-logs)
 Use Codex and XcodeBuildMCP to drive your app in iOS Simulator, capture evidence, and...
 
 iOS  Code](/codex/use-cases/ios-simulator-bug-debugging)
+
+[![](/codex/use-cases/scrna-seq-post-count-qc.webp)
+
+### Annotate scRNA-seq data
+
+Review single-cell QC, annotations, and UMAPs in one thread.
+
+Sciences  Data](/codex/use-cases/scrna-seq-post-count-qc)
+
+[![](/codex/use-cases/target-prioritization.webp)
+
+### Prioritize drug targets
+
+Rank drug targets across multiple evidence lanes.
+
+Sciences  Data](/codex/use-cases/target-prioritization)
+
+[![](/codex/use-cases/bulk-rna-seq-fastq-qc.webp)
+
+### Validate bulk RNA-seq inputs
+
+Validate bulk RNA-seq inputs before differential expression.
+
+Sciences  Data](/codex/use-cases/bulk-rna-seq-fastq-qc)
 
 [![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
@@ -511,6 +543,7 @@ Try clearing a few filters or searching for a broader term.
 - [Evaluation](/codex/use-cases?category=evaluation)
 - [Front-end](/codex/use-cases?category=front-end)
 - [Quality](/codex/use-cases?category=quality)
+- [Sciences](/codex/use-cases?category=sciences)
 
 ### Native
 
@@ -534,6 +567,7 @@ Try clearing a few filters or searching for a broader term.
 - [Operations](/codex/use-cases?team=operations)
 - [Product](/codex/use-cases?team=product)
 - [QA](/codex/use-cases?team=quality-engineering)
+- [Research](/codex/use-cases?team=research)
 - [Sales](/codex/use-cases?team=sales)
 
 ### Task type

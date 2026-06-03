@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/github-code-reviews'
-source_last_modified: '2026-06-02T19:22:02Z'
-source_etag: 'W/"8260163f5bff0c5848bdc4a705329f28"'
+source_last_modified: '2026-06-03T19:26:43Z'
+source_etag: 'W/"46b3dd225bbebcf77de5533b2c417576"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -100,23 +100,23 @@ Codex applies guidance from the closest `AGENTS.md` to each changed file. You ca
 
 ## Related use cases
 
-[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+[![](/codex/use-cases/chatgpt-apps.webp)
 
-### Build and deploy internal apps
+### Bring your app to ChatGPT
 
-Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
+Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
 
-Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/deploy-app-or-website.webp)
+Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/codex/use-cases/new-hire-onboarding.webp)
 
-### Deploy an app or website
+### Coordinate new-hire onboarding
 
-Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
+Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/codex/use-cases/verified-operations-workflows.webp)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
 
-### Run verified operations
+### Draft PRDs from internal context
 
-Use Codex to normalize inputs, run approved scripts or APIs, retry bounded failures, and...
+Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
 
-Automation  Integrations](/codex/use-cases/verified-operations-workflows)
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks'
-source_last_modified: '2026-05-22T16:34:33Z'
-source_etag: 'W/"8857c454e811e28c5db13141ac8faae5"'
+source_last_modified: '2026-06-03T19:26:53Z'
+source_etag: 'W/"9eb9fb927c05352893468b9894dcd6ce"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -129,13 +129,7 @@ Use this image as a reference and implement in this repository this feature. Use
 
 ## Related use cases
 
-[![](/codex/use-cases/generate-slide-decks.webp)
-
-### Generate slide decks
-
-Use Codex to update existing presentations or build new decks by editing slides directly...
-
-Data  Integrations](/codex/use-cases/generate-slide-decks)[![](/codex/use-cases/new-hire-onboarding.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
@@ -147,5 +141,11 @@ Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/d
 
 Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
 
-Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/meeting-prep-briefs.webp)
+
+### Prepare meeting briefs
+
+Use Codex with Calendar, Drive, Slack, and Gmail to gather approved sources before a...
+
+Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)
 

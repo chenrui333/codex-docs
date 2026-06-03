@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/frontend-designs'
-source_last_modified: '2026-05-22T16:29:32Z'
-source_etag: 'W/"4d10407cf483728e307ae7c73b89b625"'
+source_last_modified: '2026-06-03T19:26:43Z'
+source_etag: 'W/"eadcdd0d42ae827f28b0af8132a74cbe"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -158,11 +158,11 @@ Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)[![](/codex/us
 
 Use Codex to pull design context, assets, and variants from Figma, translate them into code...
 
-Front-end  Design](/codex/use-cases/figma-designs-to-code)[![](/codex/use-cases/user-stories-to-ui-mocks.webp)
+Front-end  Design](/codex/use-cases/figma-designs-to-code)[![](/codex/use-cases/make-granular-ui-changes.webp)
 
-### Turn user stories into UI mocks
+### Make granular UI changes
 
-Use Codex to gather product feedback from Slack, Linear, Google Drive, normalize it into...
+Use Codex to make one small UI adjustment at a time in an existing app, verify it in the...
 
-Integrations  Knowledge Work](/codex/use-cases/user-stories-to-ui-mocks)
+Front-end  Design](/codex/use-cases/make-granular-ui-changes)
 

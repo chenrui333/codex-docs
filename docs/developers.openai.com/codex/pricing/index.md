@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-02T19:20:39Z'
-source_etag: 'W/"0fd79ec60beaf18dafa3e0d97b339860"'
+source_last_modified: '2026-06-03T19:25:24Z'
+source_etag: 'W/"5975307b19455413e9659b3a72f79824"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -164,7 +164,7 @@ Plus
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
+| For Enterprise/Edu users with flexible pricing, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 Pro 5x
@@ -178,7 +178,7 @@ Pro 5x
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
+| For Enterprise/Edu users with flexible pricing, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 Pro 20x
@@ -192,7 +192,7 @@ Pro 20x
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
+| For Enterprise/Edu users with flexible pricing, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 Business
@@ -206,7 +206,7 @@ Business
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
+| For Enterprise/Edu users with flexible pricing, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 API Key
@@ -220,7 +220,7 @@ API Key
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
-| For Enterprise/Edu users, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
+| For Enterprise/Edu users with flexible pricing, there are no fixed rate limits - usage scales with [credits](#credits-overview) | | | |
 | Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features | | | |
 
 Codex usage limits are shared with other agentic features once pricing for
@@ -275,28 +275,19 @@ Credits let you continue using Codex after you reach your included usage
 limits. Usage draws down from your available credits based on the models and
 features you use, allowing you to extend work without interruption.
 
-As of April 2nd, we’re moving pricing to API token-based rates. Credits remain
-the core pricing unit that customers purchase and consume, but usage is based
-on tokens consumed, calculated as credits per million input tokens, cached
-input tokens and output tokens your workspace consumes. Read about tokens
+Codex credit usage is based on API token-based rates. Credits remain the core
+pricing unit that customers purchase and consume, but usage is calculated as
+credits per million input tokens, cached input tokens, and output tokens your
+workspace consumes. Read about tokens
 [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
-This format replaces average per-message estimates for your plan with a direct
-mapping between token usage and credits. It’s most useful when you want a
-clearer view of how input, cached input, and output affect credit consumption.
+The rate card below shows the credit cost per million tokens for Codex models
+and features.
 
-Under this model, actual credit usage depends on the mix of input, cached input,
-and output tokens in each task. The new rate card is displayed in the table
-below, and is currently applicable to **new and existing Business customers,
-and new Enterprise customers**.
-
-**New and existing customers on all other plan types** should continue to use
-the previous message based rate card, until we migrate you to the new rates in
-the upcoming weeks.
-
-Select your appropriate plan type in the table below to see rates.
-
-Business & New Enterprise Customers
+A small subset of Enterprise customers should continue using the legacy rate
+card until we migrate you to the new token-based pricing for Codex. For more
+information, [contact OpenAI
+sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_codex).
 
 | Credits per 1M tokens | Input Tokens | Cached input tokens | Output Tokens |
 | --- | --- | --- | --- |
@@ -310,22 +301,9 @@ Business & New Enterprise Customers
 | GPT-Image-2 (text) | 125 credits | 31.25 credits | 250 credits |
 |  |  |  |  |
 | --- | --- | --- | --- |
+| GPT-5.5 usage averages 5-45 credits per message. | | | |
 | Fast mode consumes credits at a higher rate for supported models. See [Speed](/codex/speed) for rates. | | | |
 | Cloud tasks and code review run on GPT-5.3-Codex. | | | |
-
-Plus, Pro, Existing Enterprise/Edu and New Edu
-
-|  | Unit | GPT-5.5 | GPT-5.4 | GPT-5.3-Codex | GPT-5.4-mini |
-| --- | --- | --- | --- | --- | --- |
-| Local Tasks | 1 message | ~14 credits | ~7 credits | ~5 credits | ~2 credits |
-| Cloud Tasks | 1 message | Not available | Not available | ~25 credits | Not available |
-| Code Review | 1 pull request | Not available | Not available | ~25 credits | Not available |
-| Image generation | 1 image (1024px × 1024px) | ~5-6 credits | | | |
-| Image generation | 1 image (1024px × 1536px) | ~7-8 credits | | | |
-|  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
-| Fast mode consumes credits at a higher rate for supported models. See [Speed](/codex/speed) for rates. | | | | | |
-| These averages also apply to GPT-5.2. | | | | | |
 
 Speed configurations will increase credit consumption for all models that apply.
 Fast mode consumes credits at a higher rate for supported models. See

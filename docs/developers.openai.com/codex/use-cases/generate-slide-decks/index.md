@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/generate-slide-decks'
-source_last_modified: '2026-05-22T16:22:31Z'
-source_etag: 'W/"81cdb6777f314b72306fdbf5401199ac"'
+source_last_modified: '2026-06-03T19:26:43Z'
+source_etag: 'W/"06cb0b5f07c80cb54efc16336d1fb5f6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -184,23 +184,23 @@ Adjust the deck to make sure the following layout rules are followed:
 
 ## Related use cases
 
-[![](/codex/use-cases/new-hire-onboarding.webp)
-
-### Coordinate new-hire onboarding
-
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
-
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/feedback-synthesis.webp)
+[![](/codex/use-cases/feedback-synthesis.webp)
 
 ### Turn feedback into actions
 
 Connect Codex to multiple data sources such as Slack, GitHub, Linear, or Google Drive to...
 
-Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/user-stories-to-ui-mocks.webp)
+Data  Integrations](/codex/use-cases/feedback-synthesis)[![](/codex/use-cases/analyze-data-export.webp)
 
-### Turn user stories into UI mocks
+### Query tabular data
 
-Use Codex to gather product feedback from Slack, Linear, Google Drive, normalize it into...
+Use Codex with a CSV, spreadsheet, dashboard export, Google Sheet, or local data file to...
 
-Integrations  Knowledge Work](/codex/use-cases/user-stories-to-ui-mocks)
+Data  Knowledge Work](/codex/use-cases/analyze-data-export)[![](/codex/use-cases/clean-messy-data.webp)
+
+### Clean and prepare messy data
+
+Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
+
+Data  Knowledge Work](/codex/use-cases/clean-messy-data)
 

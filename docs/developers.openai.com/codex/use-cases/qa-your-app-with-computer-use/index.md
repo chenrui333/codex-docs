@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/qa-your-app-with-computer-use'
-source_last_modified: '2026-05-22T16:45:13Z'
-source_etag: 'W/"053cab9dd2ddbce2fa3a3edf08051608"'
+source_last_modified: '2026-06-03T19:26:49Z'
+source_etag: 'W/"7013ab92b45ebde7f3016b2ea290daa7"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -143,23 +143,23 @@ Keep going past non-blocking issues and end with a short triage summary.
 
 ## Related use cases
 
-[![](/codex/use-cases/ai-app-evals.webp)
-
-### Add evals to your AI application
-
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
-
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/automation-bug-triage.webp)
+[![](/codex/use-cases/automation-bug-triage.webp)
 
 ### Automate bug triage
 
 Ask Codex to check recent alerts, issues, failed checks, logs, and chat reports, tune the...
 
-Automation  Quality](/codex/use-cases/automation-bug-triage)[![](/codex/use-cases/follow-goals.webp)
+Automation  Quality](/codex/use-cases/automation-bug-triage)[![](/codex/use-cases/verified-operations-workflows.webp)
 
-### Follow a goal
+### Run verified operations
 
-Use `/goal` when a task needs Codex to keep working across turns toward a verifiable...
+Use Codex to normalize inputs, run approved scripts or APIs, retry bounded failures, and...
 
-Engineering  Automation](/codex/use-cases/follow-goals)
+Automation  Integrations](/codex/use-cases/verified-operations-workflows)[![](/codex/use-cases/zoom-meeting-follow-ups.webp)
+
+### Turn meetings into follow-ups
+
+Use Codex with Zoom transcripts and AI Companion summaries to draft customer follow-up...
+
+Automation  Integrations](/codex/use-cases/zoom-meeting-follow-ups)
 

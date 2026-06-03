@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/use-your-computer-with-codex'
-source_last_modified: '2026-05-22T16:21:58Z'
-source_etag: 'W/"c2c5a3e9bd99d797be244873ab6050cf"'
+source_last_modified: '2026-06-03T19:26:53Z'
+source_etag: 'W/"08bebbd722e949dffe79964cd08c8754"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -123,23 +123,23 @@ For example:
 
 ## Related use cases
 
-[![](/codex/use-cases/clean-messy-data.webp)
-
-### Clean and prepare messy data
-
-Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
-
-Data  Knowledge Work](/codex/use-cases/clean-messy-data)[![](/codex/use-cases/complete-tasks-from-messages.webp)
+[![](/codex/use-cases/complete-tasks-from-messages.webp)
 
 ### Complete tasks from messages
 
 Use Computer Use to read one Messages thread, complete the task, and draft a reply.
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/codex/use-cases/new-hire-onboarding.webp)
+Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/codex/use-cases/learn-a-new-concept.webp)
 
-### Coordinate new-hire onboarding
+### Learn a new concept
 
-Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
+Use Codex to study material such as research papers or courses, split the reading across...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)
+Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)[![](/codex/use-cases/clean-messy-data.webp)
+
+### Clean and prepare messy data
+
+Drag in or mention a messy CSV or spreadsheet, describe the problems you see, and ask Codex...
+
+Data  Knowledge Work](/codex/use-cases/clean-messy-data)
 

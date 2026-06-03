@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/complete-tasks-from-messages'
-source_last_modified: '2026-05-22T16:42:21Z'
-source_etag: 'W/"f40aad47d35ac52cf2f1bd39661ec97a"'
+source_last_modified: '2026-06-03T19:26:39Z'
+source_etag: 'W/"1dd2db2b2728e1fdb15ee02d327c6144"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -122,23 +122,23 @@ Pause before anything irreversible, such as placing an order or confirming a boo
 
 ## Related use cases
 
-[![](/codex/use-cases/new-hire-onboarding.webp)
+[![](/codex/use-cases/learn-a-new-concept.webp)
+
+### Learn a new concept
+
+Use Codex to study material such as research papers or courses, split the reading across...
+
+Knowledge Work  Data](/codex/use-cases/learn-a-new-concept)[![](/codex/use-cases/use-your-computer-with-codex.webp)
+
+### Use your computer with Codex
+
+Use Computer Use to hand off multi-step tasks across Mac apps, windows, and files.
+
+Knowledge Work  Workflow](/codex/use-cases/use-your-computer-with-codex)[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
-
-### Draft PRDs from internal context
-
-Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
-
-Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/generate-slide-decks.webp)
-
-### Generate slide decks
-
-Use Codex to update existing presentations or build new decks by editing slides directly...
-
-Data  Integrations](/codex/use-cases/generate-slide-decks)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)
 

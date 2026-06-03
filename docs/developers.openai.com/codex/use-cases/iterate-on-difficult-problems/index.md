@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems'
-source_last_modified: '2026-05-22T16:22:23Z'
-source_etag: 'W/"ab39d0adff32094912938c299d349a9b"'
+source_last_modified: '2026-06-03T19:26:46Z'
+source_etag: 'W/"93e2ceda8335cbef485255301bca6596"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -188,11 +188,11 @@ Engineering  Analysis](/codex/use-cases/codebase-onboarding)[![](/codex/use-case
 
 Use Codex to turn a public package or supply chain advisory into a read-only audit, then...
 
-Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/react-native-expo-apps.webp)
+Engineering  Quality](/codex/use-cases/dependency-incident-audits)[![](/codex/use-cases/browser-games.webp)
 
-### Build React Native apps with Expo
+### Create browser-based games
 
-Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
+Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
+Engineering  Code](/codex/use-cases/browser-games)
 

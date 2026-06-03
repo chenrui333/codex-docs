@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-06-02T19:21:31Z'
-source_etag: 'W/"790b8d4c6738d0fa775979c12143095f"'
+source_last_modified: '2026-06-03T19:26:43Z'
+source_etag: 'W/"bdba09ea6068dc5c4b95e92dfdbbfb16"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -137,23 +137,23 @@ When you have an eval suite, you can use `/goal` to optimize prompts against the
 
 ## Related use cases
 
-[![](/codex/use-cases/ai-app-evals.webp)
+[![](/codex/use-cases/agent-friendly-clis.webp)
 
-### Add evals to your AI application
+### Create a CLI Codex can use
 
-Ask Codex to inspect your AI application, identify the behavior you want to evaluate, and...
+Ask Codex to create a composable CLI it can run from any folder, combine with repo scripts...
 
-Evaluation  Quality](/codex/use-cases/ai-app-evals)[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
+Engineering  Code](/codex/use-cases/agent-friendly-clis)[![](/codex/use-cases/browser-games.webp)
 
-### Build and deploy internal apps
+### Create browser-based games
 
-Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
+Use Codex to turn a game brief into first a well-defined plan, and then a real browser-based...
 
-Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/react-native-expo-apps.webp)
+Engineering  Code](/codex/use-cases/browser-games)[![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
-### Build React Native apps with Expo
+### Remediate a vulnerability backlog
 
-Use Codex with the Expo plugin to scaffold React Native apps, stay inside Expo Router and...
+Bring in approved findings from ticketing tools or vulnerability reporting systems, then use...
 
-Mobile  Engineering](/codex/use-cases/react-native-expo-apps)
+Engineering  Quality](/codex/use-cases/remediate-vulnerability-backlog)
 

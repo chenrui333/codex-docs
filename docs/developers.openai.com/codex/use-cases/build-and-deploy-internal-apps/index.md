@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps'
-source_last_modified: '2026-06-02T19:21:55Z'
-source_etag: 'W/"6b7c7cf03628c8a41c1f895295c2dae0"'
+source_last_modified: '2026-06-03T19:26:35Z'
+source_etag: 'W/"d86358215eb3184e216f069545fdcd7a"'
 codex_cli_versions: ["0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0"]
 ---
@@ -163,17 +163,17 @@ Use those examples as starting points, then narrow the prompt around your teamâ€
 
 Use Codex with Build Web Apps and Vercel to turn a repo, screenshot, design, or rough app...
 
-Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/codex/use-cases/chatgpt-apps.webp)
+Front-end  Integrations](/codex/use-cases/deploy-app-or-website)[![](/codex/use-cases/idea-to-proof-of-concept.webp)
 
-### Bring your app to ChatGPT
+### Get from idea to proof of concept
 
-Build one narrow ChatGPT app outcome end to end: define the tools, scaffold the MCP server...
+Use Codex with ImageGen to turn a rough idea into a visual direction, implement the smallest...
 
-Integrations  Code](/codex/use-cases/chatgpt-apps)[![](/codex/use-cases/complete-tasks-from-messages.webp)
+Front-end  Engineering](/codex/use-cases/idea-to-proof-of-concept)[![](/codex/use-cases/make-granular-ui-changes.webp)
 
-### Complete tasks from messages
+### Make granular UI changes
 
-Use Computer Use to read one Messages thread, complete the task, and draft a reply.
+Use Codex to make one small UI adjustment at a time in an existing app, verify it in the...
 
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)
+Front-end  Design](/codex/use-cases/make-granular-ui-changes)
 

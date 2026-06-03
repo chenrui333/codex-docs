@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-coding-tasks'
-source_last_modified: '2026-06-02T19:22:10Z'
-source_etag: 'W/"32a4de2cb2a837bf3709723dba764435"'
+source_last_modified: '2026-06-03T19:26:52Z'
+source_etag: 'W/"5e790866b417d4b7b9898055b167cb17"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -79,23 +79,23 @@ You can learn more about how to use Codex in Slack in the [dedicated guide](/cod
 
 ## Related use cases
 
-[![](/codex/use-cases/build-and-deploy-internal-apps.webp)
-
-### Build and deploy internal apps
-
-Use Codex with Sites to build, test, and deploy internal apps, with built-in storage and...
-
-Front-end  Integrations](/codex/use-cases/build-and-deploy-internal-apps)[![](/codex/use-cases/complete-tasks-from-messages.webp)
-
-### Complete tasks from messages
-
-Use Computer Use to read one Messages thread, complete the task, and draft a reply.
-
-Knowledge Work  Integrations](/codex/use-cases/complete-tasks-from-messages)[![](/codex/use-cases/new-hire-onboarding.webp)
+[![](/codex/use-cases/new-hire-onboarding.webp)
 
 ### Coordinate new-hire onboarding
 
 Use Codex to gather approved new-hire context, stage tracker updates, draft team-by-team...
 
-Integrations  Data](/codex/use-cases/new-hire-onboarding)
+Integrations  Data](/codex/use-cases/new-hire-onboarding)[![](/codex/use-cases/draft-prds-from-sources.webp)
+
+### Draft PRDs from internal context
+
+Use Codex with the $documents skill and connected apps such as Linear, Slack, Notion or...
+
+Integrations  Knowledge Work](/codex/use-cases/draft-prds-from-sources)[![](/codex/use-cases/meeting-prep-briefs.webp)
+
+### Prepare meeting briefs
+
+Use Codex with Calendar, Drive, Slack, and Gmail to gather approved sources before a...
+
+Integrations  Knowledge Work](/codex/use-cases/meeting-prep-briefs)
 
