@@ -1,11 +1,8 @@
 {
-  "added": [
-    "developers.openai.com/codex/sites/index.md",
-    "developers.openai.com/codex/use-cases/build-and-deploy-internal-apps/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-02T19:22:25+00:00",
+  "generated_at": "2026-06-03T01:09:31+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -16,19 +13,7 @@
   },
   "total_files": 252,
   "updated": [
-    "developers.openai.com/codex/amazon-bedrock/index.md",
-    "developers.openai.com/codex/app/index.md",
-    "developers.openai.com/codex/auth/index.md",
-    "developers.openai.com/codex/changelog/index.md",
-    "developers.openai.com/codex/plugins/index.md",
-    "developers.openai.com/codex/pricing/index.md",
-    "developers.openai.com/codex/quickstart/index.md",
     "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/use-cases/deploy-app-or-website/index.md",
-    "developers.openai.com/codex/use-cases/follow-goals/index.md",
-    "developers.openai.com/codex/use-cases/github-code-reviews/index.md",
-    "developers.openai.com/codex/use-cases/index.md",
-    "developers.openai.com/codex/use-cases/slack-coding-tasks/index.md",
-    "developers.openai.com/codex/use-cases/verified-operations-workflows/index.md"
+    "github.openai.com/openai/codex/codex-rs/docs/bazel.md"
   ]
 }
