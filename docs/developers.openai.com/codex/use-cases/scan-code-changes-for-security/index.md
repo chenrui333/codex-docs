@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/scan-code-changes-for-security'
 source_last_modified: '2026-06-03T19:26:51Z'
 source_etag: 'W/"0275d8956436844cfb516f85f3aa5203"'
-codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0"]
-codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
+codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0"]
+codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
 
 # Scan code changes for security | Codex use cases

@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/discover-protein-folding-architectures'
 source_last_modified: '2026-06-03T19:26:41Z'
 source_etag: 'W/"9d403542ed76b5a0f4830c402d661d4a"'
-codex_cli_versions: ["0.136.0"]
-codex_cli_versions_raw: ["codex-cli 0.136.0"]
+codex_cli_versions: ["0.136.0", "0.137.0"]
+codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
 
 # Discover protein folding architectures | Codex use cases

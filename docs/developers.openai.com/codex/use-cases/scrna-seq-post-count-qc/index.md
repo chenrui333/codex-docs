@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/scrna-seq-post-count-qc'
 source_last_modified: '2026-06-03T19:26:52Z'
 source_etag: 'W/"78df786e5c5e55c03ff835f564b7faae"'
-codex_cli_versions: ["0.136.0"]
-codex_cli_versions_raw: ["codex-cli 0.136.0"]
+codex_cli_versions: ["0.136.0", "0.137.0"]
+codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
 
 # Annotate scRNA-seq data | Codex use cases
