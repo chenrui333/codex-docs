@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-05-29T17:40:09Z'
-source_etag: 'W/"913b1f8ace7eea7cec39a38ca07d8ffd"'
+source_last_modified: '2026-06-04T00:25:05Z'
+source_etag: 'W/"bbca9d39520e1f481b8312fa7cc0f2d9"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -18,9 +18,9 @@ press `Cmd`+`,`.
 
 ## General
 
-Choose where files open and how much command output appears in threads. You can also
-require `Cmd`+`Enter` for multiline prompts or prevent sleep while a
-thread runs.
+Choose where files open, how much command output appears in threads, and where
+terminal tabs open by default. You can also require `Cmd`+`Enter`
+for multiline prompts or prevent sleep while a thread runs.
 
 ## Profile
 

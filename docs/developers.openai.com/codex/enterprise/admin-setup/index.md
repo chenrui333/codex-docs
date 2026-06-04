@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
-source_last_modified: '2026-06-01T23:22:25Z'
-source_etag: 'W/"d2f3f6026982b4b090ca953f40bc2430"'
+source_last_modified: '2026-06-04T00:26:45Z'
+source_etag: 'W/"de9b4e838a08a30a4d808c0b63e7d309"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -262,7 +262,7 @@ Codex uses short-lived, least-privilege GitHub App installation tokens for each 
 
 ### Configure IP addresses
 
-If your GitHub organization controls the IP addresses that apps use to connect, make sure to include these [egress IP ranges](https://openai.com/chatgpt-agents.json).
+If your GitHub organization controls the IP addresses that apps use to connect, make sure to include the [Codex cloud egress IP ranges](/api/docs/guides/ip-addresses).
 
 These IP ranges can change. Consider checking them automatically and updating your allow list based on the latest values.
 

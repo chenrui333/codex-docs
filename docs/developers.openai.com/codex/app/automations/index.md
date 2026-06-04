@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/automations'
-source_last_modified: '2026-04-25T06:31:36Z'
-source_etag: 'W/"c7adda360e618461bee467f95b756941"'
+source_last_modified: '2026-06-04T00:25:06Z'
+source_etag: 'W/"c83f430124077911ff4f35ecf6ff552e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -14,8 +14,9 @@ Source: https://developers.openai.com/codex/app/automations
 
 Automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives the task if there’s nothing to report. You can combine automations with [skills](/codex/skills) for more complex tasks.
 
-For project-scoped automations, the app needs to be running, and the selected
-project needs to be available on disk.
+For project-scoped automations, the machine running the local Codex app must be
+powered on, Codex must be running, and the selected project must still be
+available on disk when the automation is scheduled to run.
 
 In Git repositories, you can choose whether an automation runs in your local
 project or on a new [worktree](/codex/app/worktrees). Both options run in the

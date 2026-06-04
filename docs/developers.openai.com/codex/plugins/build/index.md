@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins/build'
-source_last_modified: '2026-05-22T20:26:15Z'
-source_etag: 'W/"66e052d47b884d0b15c123bfbfb1ab93"'
+source_last_modified: '2026-06-04T00:43:15Z'
+source_etag: 'W/"e1a14a44640ebe871946349d179906c3"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0"]
 ---
@@ -207,16 +207,17 @@ members of your ChatGPT workspace from the Codex app.
 1. Open **Plugins** in the Codex app.
 2. Go to **Created by you** and open the plugin details page.
 3. Select **Share**.
-4. Add workspace members or copy a share link.
+4. Add workspace members or workspace groups, or copy a share link.
 5. Choose who has access, then send the invitation or link.
 
 People you share with can find the plugin under **Shared with you** in the
 plugin directory. Sharing a local plugin with your workspace doesn’t publish
 it to the public Plugin Directory. Shared plugins stay within your workspace
 and organization boundary; accounts that aren’t signed in to that workspace
-can’t access them. Use a marketplace when you want repo or CLI distribution,
-and use workspace sharing when you want selected teammates to install a plugin
-from the Codex app.
+can’t access them. Use groups when a team or role should share the same plugin
+access. Use a marketplace when you want repo or CLI distribution, and use
+workspace sharing when you want selected teammates to install a plugin from the
+Codex app.
 
 Workspace admins can disable plugin sharing from cloud-managed requirements by
 adding `plugin_sharing = false` to `requirements.toml`:
