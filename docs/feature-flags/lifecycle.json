@@ -167,6 +167,11 @@
     },
     {
       "enabled": false,
+      "key": "local_thread_store_compression",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "memories",
       "stage": "experimental"
     },
@@ -367,6 +372,11 @@
     },
     {
       "enabled": false,
+      "key": "unified_exec_zsh_fork",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "use_legacy_landlock",
       "stage": "deprecated"
     },
@@ -396,7 +406,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.136.0",
+  "codex_cli_version": "codex-cli 0.137.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -424,6 +434,7 @@
       "imagegenext",
       "js_repl",
       "js_repl_tools_only",
+      "local_thread_store_compression",
       "mentions_v2",
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
@@ -454,6 +465,7 @@
       "tool_suggest",
       "tui_app_server",
       "unavailable_dummy_tools",
+      "unified_exec_zsh_fork",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
       "workspace_dependencies",
