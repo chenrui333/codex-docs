@@ -451,10 +451,10 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "19f77dac6f92b90aa43a85e8e2dde2b58db137c94ad6de1848f5a6be7bbe6aa8",
+      "sha256": "c11af2965d5a103b19c918c241a99fc5d843c5b644ca1c05c49a21321332c7e7",
       "source_area": "codex_app",
-      "source_etag": "W/\"bbca9d39520e1f481b8312fa7cc0f2d9\"",
-      "source_last_modified": "2026-06-04T00:25:05Z",
+      "source_etag": "W/\"08a343fff2e54ebceaeaba285529a422\"",
+      "source_last_modified": "2026-06-05T00:28:41Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/settings"
     },
@@ -2075,10 +2075,10 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "e910b3e24fd0b2ffb1f369de9cbe20aab84302cf6260fae8bf9666482f529cc1",
+      "sha256": "fbd63222532535ffd30d60a3e1061ee83209417c8487a18556619326c0d36966",
       "source_area": "codex_reference",
-      "source_etag": "W/\"d9fec97d37c41b2c7a0ccaa9e937526c\"",
-      "source_last_modified": "2026-05-20T21:08:53Z",
+      "source_etag": "W/\"02ef280774bbd158a0a5566084f1303b\"",
+      "source_last_modified": "2026-06-05T00:32:22Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/models"
     },
@@ -2563,10 +2563,10 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "67ab328c5fc91a448940f6e2f83230254eef74b47608ebe8cbc35f89d161bcd6",
+      "sha256": "340899ee6a62e94e693177aa44d173edf9c483070be931240d4319c96110ac69",
       "source_area": "codex_security",
-      "source_etag": "W/\"773c25da0dbb1ccde0d7785eba415feb\"",
-      "source_last_modified": "2026-06-04T15:29:06Z",
+      "source_etag": "W/\"38efa8f7932c4323d52cea1080af6bfa\"",
+      "source_last_modified": "2026-06-05T00:49:33Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -6970,9 +6970,9 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "554790d51a544bb7882c5a81beba6641d4d60c9bd9af11102aee58628126caca",
+      "sha256": "5e2f2c0a60d3aa66a6ead08fcaebb04cab432dc1222dd3466943318c073125cc",
       "source_area": "github_rust",
-      "source_etag": "W/\"2b2ccbcfe113d088bfa68373ec86d3d963133eed84d2ad1d69c1f8e544f96092\"",
+      "source_etag": "W/\"e00e6212871e4f8c1f9f330ba14a4ee62609e27ab4050edf0148f809999deae8\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md"
     },

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-06-04T00:25:05Z'
-source_etag: 'W/"bbca9d39520e1f481b8312fa7cc0f2d9"'
+source_last_modified: '2026-06-05T00:28:41Z'
+source_etag: 'W/"08a343fff2e54ebceaeaba285529a422"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -24,9 +24,11 @@ for multiline prompts or prevent sleep while a thread runs.
 
 ## Profile
 
-Use **Profile** to review stats such as lifetime tokens, peak tokens, streaks,
-your longest task, and token activity. You can also update your profile details,
-such as your picture, display name, and username.
+Use **Profile** to review activity insights, lifetime tokens, peak tokens,
+streaks, your longest task, and token activity. You can also update your profile
+details, such as your picture, display name, and username, and save a profile
+card with usage highlights. Sharing profile cards is available on consumer
+ChatGPT plans.
 
 ## Keyboard shortcuts
 

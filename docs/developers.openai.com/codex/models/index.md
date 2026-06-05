@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/models'
-source_last_modified: '2026-05-20T21:08:53Z'
-source_etag: 'W/"d9fec97d37c41b2c7a0ccaa9e937526c"'
+source_last_modified: '2026-06-05T00:32:22Z'
+source_etag: 'W/"02ef280774bbd158a0a5566084f1303b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -42,7 +42,7 @@ API Access
 
 gpt-5.4
 
-Flagship frontier model for professional work that brings the industry-leading coding capabilities of GPT-5.3-Codex together with stronger reasoning, tool use, and agentic workflows.
+Flagship frontier model for professional work with strong coding, reasoning, tool use, and agentic workflow capabilities.
 
 codex -m gpt-5.4
 
@@ -69,30 +69,6 @@ gpt-5.4-mini
 Fast, efficient mini model for responsive coding tasks and subagents.
 
 codex -m gpt-5.4-mini
-
-Copy command
-
-Capability
-
-Speed
-
-Codex CLI & SDK
-
-Codex app & IDE extension
-
-Codex Cloud
-
-ChatGPT Credits
-
-API Access
-
-![gpt-5.3-codex](/images/codex/codex-wallpaper-1.webp)
-
-gpt-5.3-codex
-
-Industry-leading coding model for complex software engineering. Its coding capabilities now also power GPT-5.4.
-
-codex -m gpt-5.3-codex
 
 Copy command
 
@@ -147,28 +123,20 @@ subagents. The `gpt-5.3-codex-spark` model is available in research preview
 for ChatGPT Pro subscribers and is optimized for near-instant, real-time
 coding iteration.
 
-## Alternative models
-
-![gpt-5.2](/images/api/models/gpt-5.2.jpg)
-
-gpt-5.2
-
-Previous general-purpose model for coding and agentic tasks, including hard debugging tasks that benefit from deeper deliberation.
-
-codex -m gpt-5.2
-
-Copy command
-
-Show details
-
 ## Other models
 
-When you sign in with ChatGPT, Codex works best with the models listed above.
+When you sign in with ChatGPT, Codex works best with the recommended models listed above.
 
 You can also point Codex at any model and provider that supports either the [Chat Completions](https://platform.openai.com/docs/api-reference/chat) or [Responses APIs](https://platform.openai.com/docs/api-reference/responses) to fit your specific use case.
 
 Support for the Chat Completions API is deprecated and will be removed in
 future releases of Codex.
+
+## Deprecated Codex models
+
+The `gpt-5.2` and `gpt-5.3-codex` models are deprecated in Codex when you sign in with ChatGPT. If your scripts, configuration files, or `codex exec --model` commands still reference deprecated models, update them to the latest model listed above.
+
+Some models that are deprecated for ChatGPT sign-in may still be available in the API. If your workflow depends on one of those models, use API-key authentication and check the [API models page](/api/docs/models) for current availability.
 
 ## Configuring models
 

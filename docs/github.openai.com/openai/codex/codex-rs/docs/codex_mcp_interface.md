@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/codex_mcp_interface.md'
-source_etag: 'W/"2b2ccbcfe113d088bfa68373ec86d3d963133eed84d2ad1d69c1f8e544f96092"'
+source_etag: 'W/"e00e6212871e4f8c1f9f330ba14a4ee62609e27ab4050edf0148f809999deae8"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -77,7 +77,7 @@ Each response yields:
 - `data` - ordered list of models. A model includes:
   - `id`, `model`, `displayName`, `description`
   - `supportedReasoningEfforts` - array of objects with:
-    - `reasoningEffort` - one of `none|minimal|low|medium|high|xhigh`
+    - `reasoningEffort` - a string value advertised by the model; common values are `none|minimal|low|medium|high|xhigh`
     - `description` - human-friendly label for the effort
   - `defaultReasoningEffort` - suggested effort for the UI
   - `inputModalities` - accepted input types for the model
