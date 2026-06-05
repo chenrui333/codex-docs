@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks'
-source_last_modified: '2026-06-03T19:26:53Z'
-source_etag: 'W/"9eb9fb927c05352893468b9894dcd6ce"'
+source_last_modified: '2026-06-05T18:02:03Z'
+source_etag: 'W/"3674fdfd6e3e2feede9f8b8813f0306b"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -96,7 +96,7 @@ Turn this [user story/set of user feedbacks] into a UI mock for a feature that w
 - @google-drive [research notes, survey export, doc, sheet, or slide deck]
 Do that while respecting the current design system and existing UI [provide Figma file or screenshot as reference].
 
-[Open in the Codex app](codex://threads/new?prompt=Turn+this+%5Buser+story%2Fset+of+user+feedbacks%5D+into+a+UI+mock+for+a+feature+that+would+solve+the+problem%2C+using+these+sources+as+context%3A%0A-+%40slack+%5Bchannels+or+thread+links%5D%0A-+%40linear+%5Bissue+links%2C+project%2C+team%2C+or+view%5D%0A-+%40google-drive+%5Bresearch+notes%2C+survey+export%2C+doc%2C+sheet%2C+or+slide+deck%5D%0A%0ADo+that+while+respecting+the+current+design+system+and+existing+UI+%5Bprovide+Figma+file+or+screenshot+as+reference%5D. "Open in the Codex app")
+Open in the Codex app
 
 Turn this [user story/set of user feedbacks] into a UI mock for a feature that would solve the problem, using these sources as context:
 - @slack [channels or thread links]

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/api-integration-migrations'
-source_last_modified: '2026-05-28T18:58:32Z'
-source_etag: 'W/"f1a76317efebbb45f28f93f8d309ef2a"'
+source_last_modified: '2026-06-05T16:57:20Z'
+source_etag: 'W/"2f8b175b578c508a70993e88d9c6c505"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -77,7 +77,7 @@ Requirements:
 - Update prompts using the latest model prompt guidance.
 - Call out any prompt, tool, or response-shape changes we need to review manually.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%24openai-docs+to+upgrade+this+OpenAI+integration+to+the+latest+recommended+model+and+API+features.%0A%0ASpecifically%2C+look+for+the+latest+model+and+prompt+guidance+for+this+specific+model.%0A%0ARequirements%3A%0A-+Start+by+inventorying+the+current+models%2C+endpoints%2C+and+tool+assumptions+in+the+repo.%0A-+Identify+the+smallest+migration+plan+that+gets+us+onto+the+latest+supported+path.%0A-+Preserve+behavior+unless+a+change+is+required+by+the+new+API+or+model.%0A-+Update+prompts+using+the+latest+model+prompt+guidance.+%0A-+Call+out+any+prompt%2C+tool%2C+or+response-shape+changes+we+need+to+review+manually. "Open in the Codex app")
+Open in the Codex app
 
 Use $openai-docs to upgrade this OpenAI integration to the latest recommended model and API features.
 Specifically, look for the latest model and prompt guidance for this specific model.

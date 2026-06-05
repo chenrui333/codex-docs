@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/event-launch-playbooks'
-source_last_modified: '2026-05-22T16:26:28Z'
-source_etag: 'W/"eda411c5c4b239940f633c1ee1956a3b"'
+source_last_modified: '2026-06-05T16:59:42Z'
+source_etag: 'W/"7b27107444a7ac9dbbdc0f6cc27b935b"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -97,7 +97,7 @@ Split the output into:
 - source appendix
 Do not publish anything or assume missing details. Put unknowns in open questions and keep private operations out of the public copy.
 
-[Open in the Codex app](codex://threads/new?prompt=Create+a+source-backed+playbook+for+%5Bevent%5D.%0A%0ASources+to+use%3A%0A-+planning+channels+or+threads%3A+%5Blinks+or+names%5D%0A-+approved+docs%2C+decks%2C+sheets%2C+or+templates%3A+%5Blinks+or+names%5D%0A-+calendar+events+or+deadlines%3A+%5Blinks+or+dates%5D%0A%0ASplit+the+output+into%3A%0A-+attendee-facing+copy%0A-+private+operating+checklist%0A-+owner+map%0A-+support+plan+or+resources%0A-+approvals+still+needed%0A-+open+questions%0A-+source+appendix%0A%0ADo+not+publish+anything+or+assume+missing+details.+Put+unknowns+in+open+questions+and+keep+private+operations+out+of+the+public+copy. "Open in the Codex app")
+Open in the Codex app
 
 Create a source-backed playbook for [event].
 Sources to use:

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/feedback-synthesis'
-source_last_modified: '2026-06-03T19:26:42Z'
-source_etag: 'W/"a56bfacfc5655b741b6e74b699e84bc5"'
+source_last_modified: '2026-06-05T16:40:43Z'
+source_etag: 'W/"b40dd0e469b185bf2c8e7c558e3e59e2"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -92,7 +92,7 @@ Use these sources:
 In the sheet, group repeated feedback, include source links or IDs, mark confidence, and call out which items need product or engineering follow-up.
 Keep names and private quotes out of the visible summary unless I approve them. Do not post, send, create issues, or assign owners.
 
-[Open in the Codex app](codex://threads/new?prompt=Can+you+synthesize+the+beta+feedback+on+%5Bfeature+or+product+area%5D+into+a+%40google-sheets+review+sheet%3F%0A%0AUse+these+sources%3A%0A-+%40slack+%5Bfeedback+channel+or+thread+links%5D%0A-+%40github+%5Bissue+search+or+issue+links%5D%0A-+%40google-drive+%5Bsurvey+export%2C+notes+doc%2C+or+Drive+folder%5D%0A%0AIn+the+sheet%2C+group+repeated+feedback%2C+include+source+links+or+IDs%2C+mark+confidence%2C+and+call+out+which+items+need+product+or+engineering+follow-up.%0A%0AKeep+names+and+private+quotes+out+of+the+visible+summary+unless+I+approve+them.+Do+not+post%2C+send%2C+create+issues%2C+or+assign+owners. "Open in the Codex app")
+Open in the Codex app
 
 Can you synthesize the beta feedback on [feature or product area] into a @google-sheets review sheet?
 Use these sources:

@@ -136,6 +136,7 @@
       "https://developers.openai.com/codex/environment-variables",
       "https://developers.openai.com/codex/feature-maturity",
       "https://developers.openai.com/codex/github-action",
+      "https://developers.openai.com/codex/glossary",
       "https://developers.openai.com/codex/guides/agents-md",
       "https://developers.openai.com/codex/guides/agents-sdk",
       "https://developers.openai.com/codex/guides/build-ai-native-engineering-team",
@@ -258,24 +259,14 @@
       "https://developers.openai.com/community/codex-for-oss",
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
-      "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk",
       "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
-      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/code_modernization",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk",
-      "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
-      "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
-      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
-      "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb",
-      "https://developers.openai.com/cookbook/gpt-5-1-codex-max-prompting-guide",
-      "https://developers.openai.com/cookbook/gpt-5-1-codex-max_prompting_guide",
-      "https://developers.openai.com/cookbook/gpt-5-codex-prompting-guide",
-      "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/learn/codex",
       "https://developers.openai.com/learn/developers-codex-plugin",
@@ -283,13 +274,13 @@
       "https://developers.openai.com/showcase/codex-101"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 195,
-      "mirrored_urls": 179,
+      "classified_skipped_codex_related_urls": 10,
+      "codex_related_urls": 186,
+      "mirrored_urls": 175,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 16,
+      "skipped_codex_related_urls": 11,
       "unclassified_skipped_codex_related_urls": 1
     },
     "mirrored_urls": [
@@ -337,6 +328,7 @@
       "https://developers.openai.com/codex/environment-variables",
       "https://developers.openai.com/codex/feature-maturity",
       "https://developers.openai.com/codex/github-action",
+      "https://developers.openai.com/codex/glossary",
       "https://developers.openai.com/codex/guides/agents-md",
       "https://developers.openai.com/codex/guides/agents-sdk",
       "https://developers.openai.com/codex/guides/build-ai-native-engineering-team",
@@ -457,24 +449,23 @@
       "https://developers.openai.com/codex/workflows",
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
-      "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk",
       "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
-      "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/code_modernization",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk",
-      "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
-      "https://developers.openai.com/cookbook/examples/codex/jira-github.ipynb",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
-      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex.ipynb",
       "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/glossary"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/glossary"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -487,7 +478,6 @@
       "blog_post": 5,
       "community_page": 2,
       "learn_index": 1,
-      "redirect_alias": 5,
       "showcase_page": 1
     },
     "skipped_codex_related_url_details": [
@@ -532,36 +522,6 @@
         "url": "https://developers.openai.com/community/codex-for-oss"
       },
       {
-        "canonical_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
-        "classification": "redirect_alias",
-        "reason": "Redirects to an already mirrored canonical cookbook guide.",
-        "url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb"
-      },
-      {
-        "canonical_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
-        "classification": "redirect_alias",
-        "reason": "Redirects to an already mirrored canonical cookbook guide.",
-        "url": "https://developers.openai.com/cookbook/gpt-5-1-codex-max-prompting-guide"
-      },
-      {
-        "canonical_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
-        "classification": "redirect_alias",
-        "reason": "Redirects to an already mirrored canonical cookbook guide.",
-        "url": "https://developers.openai.com/cookbook/gpt-5-1-codex-max_prompting_guide"
-      },
-      {
-        "canonical_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
-        "classification": "redirect_alias",
-        "reason": "Redirects to an already mirrored canonical cookbook guide.",
-        "url": "https://developers.openai.com/cookbook/gpt-5-codex-prompting-guide"
-      },
-      {
-        "canonical_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide",
-        "classification": "redirect_alias",
-        "reason": "Redirects to an already mirrored canonical cookbook guide.",
-        "url": "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide"
-      },
-      {
         "classification": "learn_index",
         "reason": "Learning index pages are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/learn/codex"
@@ -581,11 +541,6 @@
       "https://developers.openai.com/blog/topic/codex",
       "https://developers.openai.com/community/codex-ambassadors",
       "https://developers.openai.com/community/codex-for-oss",
-      "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide.ipynb",
-      "https://developers.openai.com/cookbook/gpt-5-1-codex-max-prompting-guide",
-      "https://developers.openai.com/cookbook/gpt-5-1-codex-max_prompting_guide",
-      "https://developers.openai.com/cookbook/gpt-5-codex-prompting-guide",
-      "https://developers.openai.com/cookbook/gpt-5-codex_prompting_guide",
       "https://developers.openai.com/learn/codex",
       "https://developers.openai.com/learn/developers-codex-plugin",
       "https://developers.openai.com/showcase/codex-101"
@@ -594,7 +549,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-06-04T07:45:44+00:00",
+  "generated_at": "2026-06-05T18:44:42+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

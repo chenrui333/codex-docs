@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/idea-to-proof-of-concept'
-source_last_modified: '2026-06-03T19:26:44Z'
-source_etag: 'W/"53aa5e0b9c318c4ed7cb76a2930aa163"'
+source_last_modified: '2026-06-05T17:12:38Z'
+source_etag: 'W/"9354e9c86ff7fc7d057e0fde1ce5b5bb"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -85,7 +85,7 @@ Related links
 Use ImageGen to generate a high quality UI mockup for the following idea, then use the [Build Web Apps plugin/Game studio plugin] to implement it:
 [describe the idea, target user, and the main workflow]
 
-[Open in the Codex app](codex://threads/new?prompt=Use+ImageGen+to+generate+a+high+quality+UI+mockup+for+the+following+idea%2C+then+use+the+%5BBuild+Web+Apps+plugin%2FGame+studio+plugin%5D+to+implement+it%3A%0A%0A%5Bdescribe+the+idea%2C+target+user%2C+and+the+main+workflow%5D "Open in the Codex app")
+Open in the Codex app
 
 Use ImageGen to generate a high quality UI mockup for the following idea, then use the [Build Web Apps plugin/Game studio plugin] to implement it:
 [describe the idea, target user, and the main workflow]

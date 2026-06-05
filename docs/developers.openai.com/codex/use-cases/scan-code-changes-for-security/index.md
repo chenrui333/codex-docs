@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/scan-code-changes-for-security'
-source_last_modified: '2026-06-03T19:26:51Z'
-source_etag: 'W/"0275d8956436844cfb516f85f3aa5203"'
+source_last_modified: '2026-06-05T17:06:09Z'
+source_etag: 'W/"e02f41c12b47b9f8984ee19df775be83"'
 codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -78,7 +78,7 @@ Scope and rules:
 - Keep this pass read-only; do not modify code or open a pull request.
 Return the final Markdown report and any Codex app review directives for findings that require human review.
 
-[Open in the Codex app](codex://threads/new?prompt=%2Fgoal+Scan+this+PR%2C+commit%2C+branch+diff%2C+or+working-tree+patch+for+security+regressions.+Do+not+stop+until+all+in-scope+changed+files+are+covered+and+all+required+steps+are+complete.%0A%0AScope+and+rules%3A%0A-+Target%3A+%5Bthis+pull+request+%2F+commit+SHA+%2F+branch+diff+from+BASE+to+HEAD+%2F+the+current+working-tree+patch%5D%0A-+I+am+authorized+to+assess+this+repository+and+change+set.%0A-+Pay+particular+attention+to+%5Bauth%2C+input+handling%2C+secrets%2C+filesystem%2C+network%2C+dependencies%2C+or+other+sensitive+surface%5D.%0A-+Keep+this+pass+read-only%3B+do+not+modify+code+or+open+a+pull+request.%0A%0AReturn+the+final+Markdown+report+and+any+Codex+app+review+directives+for+findings+that+require+human+review. "Open in the Codex app")
+Open in the Codex app
 
 /goal Scan this PR, commit, branch diff, or working-tree patch for security regressions. Do not stop until all in-scope changed files are covered and all required steps are complete.
 Scope and rules:

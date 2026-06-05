@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/ai-app-evals'
-source_last_modified: '2026-06-03T19:26:33Z'
-source_etag: 'W/"073e6a3de7dd7a082781ed2c6292a19d"'
+source_last_modified: '2026-06-05T16:44:03Z'
+source_etag: 'W/"eb687692365fb2fcafea4fd72b5c4e7e"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -86,7 +86,7 @@ Finish with:
 - Passing and failing cases
 - Recommended next evals to add
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%24promptfoo-evals+to+add+a+Promptfoo+eval+suite+for+this+AI+application.+If+there+is+not+already+a+working+Promptfoo+provider+or+target+adapter%2C+use+%24promptfoo-provider-setup+first.%0A%0ABehavior+to+evaluate%3A+%5Bsupport+answer+quality+%2F+tool-call+correctness+%2F+retrieval+grounding+%2F+business+rules+%2F+agent+task+completion%5D%0A%0ABefore+editing%3A%0A-+Inspect+the+app+path+users+hit+and+any+existing+evals+or+tests.%0A-+Propose+the+smallest+useful+eval+plan%3A+target+adapter%2C+seed+cases%2C+assertions%2C+files%2C+commands%2C+and+required+env+vars+or+local+services.%0A-+Do+not+change+production+prompts%2C+model+settings%2C+or+app+behavior+until+the+baseline+eval+exists+and+has+been+run.%0A%0ARequirements%3A%0A-+Exercise+the+application+path+users+hit+when+possible%2C+not+only+the+raw+model+prompt.%0A-+Keep+fixtures+free+of+secrets%2C+customer+data%2C+and+sensitive+personal+data.%0A-+Add+a+local+eval+command+such+as+%60npm+run+evals%60+or+document+the+exact+command+to+run.%0A%0AFinish+with%3A%0A-+Files+changed%0A-+Eval+commands+run%0A-+Passing+and+failing+cases%0A-+Recommended+next+evals+to+add "Open in the Codex app")
+Open in the Codex app
 
 Use $promptfoo-evals to add a Promptfoo eval suite for this AI application. If there is not already a working Promptfoo provider or target adapter, use $promptfoo-provider-setup first.
 Behavior to evaluate: [support answer quality / tool-call correctness / retrieval grounding / business rules / agent task completion]

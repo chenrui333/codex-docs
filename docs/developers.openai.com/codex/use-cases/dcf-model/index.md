@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dcf-model'
-source_last_modified: '2026-05-22T16:49:21Z'
-source_etag: 'W/"9853fa3ca3b88ae48bd3a21d14f55d6c"'
+source_last_modified: '2026-06-05T16:58:22Z'
+source_etag: 'W/"ac98cfa0b5a20c1189426af3c37dd786"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -75,7 +75,7 @@ Include explicit operating drivers for revenue growth, margins, capex, and worki
 Use any assumptions included in the source files. If an assumption is missing, add a clearly labeled placeholder in the assumptions tab instead of hiding it in a formula. If full balance sheet or cash-flow statement inputs are missing, create the operating forecast needed for unlevered free cash flow and flag the missing statement inputs.
 Generate the result as an editable .xlsx workbook.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%24spreadsheets+to+build+a+DCF+workbook+for+the+company+in+the+attached+source+files.%0A%0AInclude+explicit+operating+drivers+for+revenue+growth%2C+margins%2C+capex%2C+and+working+capital.+Calculate+unlevered+free+cash+flow%2C+WACC%2C+terminal+value%2C+and+enterprise+value.+If+capital+structure+and+diluted+share+count+are+provided%2C+bridge+to+implied+equity+value+and+implied+equity+value+per+share.%0A%0AUse+any+assumptions+included+in+the+source+files.+If+an+assumption+is+missing%2C+add+a+clearly+labeled+placeholder+in+the+assumptions+tab+instead+of+hiding+it+in+a+formula.+If+full+balance+sheet+or+cash-flow+statement+inputs+are+missing%2C+create+the+operating+forecast+needed+for+unlevered+free+cash+flow+and+flag+the+missing+statement+inputs.%0A%0AGenerate+the+result+as+an+editable+.xlsx+workbook. "Open in the Codex app")
+Open in the Codex app
 
 Use $spreadsheets to build a DCF workbook for the company in the attached source files.
 Include explicit operating drivers for revenue growth, margins, capex, and working capital. Calculate unlevered free cash flow, WACC, terminal value, and enterprise value. If capital structure and diluted share count are provided, bridge to implied equity value and implied equity value per share.

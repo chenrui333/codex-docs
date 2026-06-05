@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/make-granular-ui-changes'
-source_last_modified: '2026-06-03T19:26:47Z'
-source_etag: 'W/"f0c6f6aae41496ab2fdb5ca498f8c879"'
+source_last_modified: '2026-06-05T16:36:06Z'
+source_etag: 'W/"2cd50fae08765d987607da0225ed1dc7"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -79,7 +79,7 @@ Constraints:
 - Start or reuse the dev server, inspect the current UI in the browser, make the smallest patch, and verify the result visually.
 Stop after this one change and summarize the files changed plus the browser check you ran.
 
-[Open in the Codex app](codex://threads/new?prompt=Make+this+UI+change+in+the+existing+app%3A%0A%5Bdescribe+the+exact+spacing%2C+alignment%2C+color%2C+copy%2C+responsive%2C+or+component-state+adjustment%5D%0A%0AConstraints%3A%0A-+Change+only+the+files+needed+for+this+UI+adjustment.%0A-+Reuse+existing+components%2C+tokens%2C+icons%2C+and+layout+patterns.%0A-+Keep+behavior%2C+data+flow%2C+and+routing+unchanged+unless+I+explicitly+ask+for+it.%0A-+Start+or+reuse+the+dev+server%2C+inspect+the+current+UI+in+the+browser%2C+make+the+smallest+patch%2C+and+verify+the+result+visually.%0A%0AStop+after+this+one+change+and+summarize+the+files+changed+plus+the+browser+check+you+ran. "Open in the Codex app")
+Open in the Codex app
 
 Make this UI change in the existing app:
 [describe the exact spacing, alignment, color, copy, responsive, or component-state adjustment]

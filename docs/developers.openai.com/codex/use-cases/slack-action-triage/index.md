@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/slack-action-triage'
-source_last_modified: '2026-06-03T19:26:52Z'
-source_etag: 'W/"f18cbb1943eee085351bdf6fbf8d4695"'
+source_last_modified: '2026-06-05T16:54:10Z'
+source_etag: 'W/"c852315a9b3bfe03b55abe5b1943f9d8"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -93,7 +93,7 @@ For each item, include:
 Before calling anything unresolved, read the latest thread replies and skip items that were already handled.
 Do not post messages directly but suggest drafts for my review.
 
-[Open in the Codex app](codex://threads/new?prompt=Can+you+check+%40slack+for+messages+to+me+about+%5Bworkstream%5D+from+%5Btime+window%5D+and+return+a+ranked+action+queue%3F%0A%0ALook+across+DMs%2C+group+DMs%2C+channel+mentions%2C+and+threads.%0A%0AFor+each+item%2C+include%3A%0A-+source+link+or+thread%0A-+what+is+being+asked%0A-+whether+it+needs+my+reply%2C+a+person+or+lead%2C+a+docs+or+code+change%2C+or+just+a+decision%0A-+why+it+matters%0A-+the+recommended+next+step%0A%0ABefore+calling+anything+unresolved%2C+read+the+latest+thread+replies+and+skip+items+that+were+already+handled.%0A%0ADo+not+post+messages+directly+but+suggest+drafts+for+my+review. "Open in the Codex app")
+Open in the Codex app
 
 Can you check @slack for messages to me about [workstream] from [time window] and return a ranked action queue?
 Look across DMs, group DMs, channel mentions, and threads.

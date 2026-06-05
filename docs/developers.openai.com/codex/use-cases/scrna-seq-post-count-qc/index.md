@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/scrna-seq-post-count-qc'
-source_last_modified: '2026-06-03T19:26:52Z'
-source_etag: 'W/"78df786e5c5e55c03ff835f564b7faae"'
+source_last_modified: '2026-06-05T16:47:11Z'
+source_etag: 'W/"099975f5bd46bcfd6f32942905592405"'
 codex_cli_versions: ["0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -79,7 +79,7 @@ Return:
 - threshold-justification plots
 - filtered .h5ad
 
-[Open in the Codex app](codex://threads/new?prompt=Use+the+NGS+Analysis+plugin.%0A%0ARoute+this+matrix-level+input+to+scrna-seq-qc+using+the+indicated+10x-style+matrix+bundle%2C+plus+the+manifest+and+dataset+metadata.%0A%0AChoose+QC+thresholds+from+the+observed+distributions%2C+preserve+raw+counts%2C+and+generate+global%2Fper-group+UMAPs.%0A%0AReturn%3A%0A-+summary.md%0A-+a+QC+summary+table+with+cells+removed+or+flagged+per+filter%0A-+threshold-justification+plots%0A-+filtered+.h5ad "Open in the Codex app")
+Open in the Codex app
 
 Use the NGS Analysis plugin.
 Route this matrix-level input to scrna-seq-qc using the indicated 10x-style matrix bundle, plus the manifest and dataset metadata.

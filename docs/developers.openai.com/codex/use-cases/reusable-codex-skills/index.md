@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/reusable-codex-skills'
-source_last_modified: '2026-06-03T19:26:51Z'
-source_etag: 'W/"6b9f29576b51ff3b70c37290d81c9461"'
+source_last_modified: '2026-06-05T16:40:45Z'
+source_etag: 'W/"919125750ab84747a8a4c467efc814ea"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -76,7 +76,7 @@ Use these sources when creating the skill:
 - Scripts or commands to reuse: [test command], [preview command], [log-fetch script], [release command]
 - Good output: [paste the Slack update, changelog entry, review comment, ticket, or final answer you want future threads to match]
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%24skill-creator+to+create+a+Codex+skill+that+%5Bfixes+failing+Buildkite+checks+on+a+GitHub+PR+%2F+turns+PR+notes+into+inline+review+comments+%2F+writes+our+release+notes+from+merged+PRs%5D%0A%0AUse+these+sources+when+creating+the+skill%3A%0A-+Working+example%3A+%5Bsay+%22use+this+thread%2C%22+link+a+merged+PR%2C+or+paste+a+good+Codex+answer%5D%0A-+Source%3A+%5Bpaste+a+Slack+thread%2C+PR+review+link%2C+runbook+URL%2C+docs+URL%2C+or+ticket%5D%0A-+Repo%3A+%5Brepo+path%2C+if+this+skill+depends+on+one+repo%5D%0A-+Scripts+or+commands+to+reuse%3A+%5Btest+command%5D%2C+%5Bpreview+command%5D%2C+%5Blog-fetch+script%5D%2C+%5Brelease+command%5D%0A-+Good+output%3A+%5Bpaste+the+Slack+update%2C+changelog+entry%2C+review+comment%2C+ticket%2C+or+final+answer+you+want+future+threads+to+match%5D "Open in the Codex app")
+Open in the Codex app
 
 Use $skill-creator to create a Codex skill that [fixes failing Buildkite checks on a GitHub PR / turns PR notes into inline review comments / writes our release notes from merged PRs]
 Use these sources when creating the skill:

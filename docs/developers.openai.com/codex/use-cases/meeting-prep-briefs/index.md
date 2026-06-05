@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/meeting-prep-briefs'
-source_last_modified: '2026-05-22T16:54:46Z'
-source_etag: 'W/"7f7ed274a86a08e34eca6af92aa2a750"'
+source_last_modified: '2026-06-05T16:56:17Z'
+source_etag: 'W/"406377a908e7c837393bf1cbfb2772b1"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -97,7 +97,7 @@ Return:
 - suggested notes template for the meeting
 Keep unsupported claims in a separate source gaps section. Do not update docs, send messages, or share the brief until I approve it.
 
-[Open in the Codex app](codex://threads/new?prompt=Help+me+prepare+for+%5Bmeeting%5D+on+%5Bdate%5D.%0A%0AUse+only+these+sources%3A%0A-+calendar+event%3A+%5Bevent+name+or+date+range%5D%0A-+docs+or+notes%3A+%5Blinks+or+names%5D%0A-+Slack+channels+or+threads%3A+%5Boptional%5D%0A-+Gmail+thread+or+sender%3A+%5Boptional%5D%0A%0AFirst%2C+inventory+the+sources+you+can+access+and+name+any+source+gaps.%0A%0AReturn%3A%0A-+meeting+objective%0A-+attendee+context%0A-+key+source-backed+facts%0A-+likely+agenda%0A-+open+questions%0A-+decisions+or+follow-ups+I+may+owe%0A-+suggested+notes+template+for+the+meeting%0A%0AKeep+unsupported+claims+in+a+separate+source+gaps+section.+Do+not+update+docs%2C+send+messages%2C+or+share+the+brief+until+I+approve+it. "Open in the Codex app")
+Open in the Codex app
 
 Help me prepare for [meeting] on [date].
 Use only these sources:

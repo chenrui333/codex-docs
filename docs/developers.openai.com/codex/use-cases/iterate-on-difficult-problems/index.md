@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems'
-source_last_modified: '2026-06-03T19:26:46Z'
-source_etag: 'W/"93e2ceda8335cbef485255301bca6596"'
+source_last_modified: '2026-06-05T17:28:33Z'
+source_etag: 'W/"7c06c6e59144f68e86c3b81ce5560335"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -79,7 +79,7 @@ Output:
 - log of major iterations
 - remaining risks or weak spots
 
-[Open in the Codex app](codex://threads/new?prompt=I+have+a+difficult+task+in+this+workspace+and+I+want+you+to+run+it+as+an+eval-driven+improvement+loop.%0A%0ABefore+changing+anything%3A%0A-+Read+%60AGENTS.md%60.%0A-+Find+the+script+or+command+that+scores+the+current+output.%0A%0AIteration+loop%3A%0A-+Make+one+focused+improvement+at+a+time.%0A-+Re-run+the+eval+command+after+each+meaningful+change.%0A-+Log+the+scores+and+what+changed.%0A-+Inspect+generated+artifacts+directly.+If+the+output+is+visual%2C+use+%60view_image%60.%0A-+Keep+going+until+both+the+overall+score+and+the+LLM+average+are+above+90%25.%0A%0AConstraints%3A%0A-+Do+not+stop+at+the+first+acceptable+result.%0A-+Do+not+revert+to+an+earlier+version+unless+the+new+result+is+clearly+worse+in+scores+or+artifacts.%0A-+If+the+eval+improves+but+is+still+below+target%2C+explain+the+bottleneck+and+continue.%0A%0AOutput%3A%0A-+current+best+scores%0A-+log+of+major+iterations%0A-+remaining+risks+or+weak+spots "Open in the Codex app")
+Open in the Codex app
 
 I have a difficult task in this workspace and I want you to run it as an eval-driven improvement loop.
 Before changing anything:

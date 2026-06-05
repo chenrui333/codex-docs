@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/manage-your-inbox'
-source_last_modified: '2026-05-22T16:21:58Z'
-source_etag: 'W/"3b61de72d2b567495f324893c136ebe6"'
+source_last_modified: '2026-06-05T16:52:48Z'
+source_etag: 'W/"17607cd2d64b72c26fc665b69fb91c3a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -80,7 +80,7 @@ Can you check my @gmail, figure out what I need to respond to, and write drafts 
 Use my recent sent replies or @google-drive [writing examples] for tone.
 Use @slack, @google-drive, or other sources where my work happens when the email is missing the latest decision, owner, file, or blocker.
 
-[Open in the Codex app](codex://threads/new?prompt=Can+you+check+my+%40gmail%2C+figure+out+what+I+need+to+respond+to%2C+and+write+drafts+in+my+voice.%0A%0AUse+my+recent+sent+replies+or+%40google-drive+%5Bwriting+examples%5D+for+tone.%0A%0AUse+%40slack%2C+%40google-drive%2C+or+other+sources+where+my+work+happens+when+the+email+is+missing+the+latest+decision%2C+owner%2C+file%2C+or+blocker. "Open in the Codex app")
+Open in the Codex app
 
 Can you check my @gmail, figure out what I need to respond to, and write drafts in my voice.
 Use my recent sent replies or @google-drive [writing examples] for tone.

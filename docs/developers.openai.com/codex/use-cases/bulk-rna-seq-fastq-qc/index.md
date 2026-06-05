@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/bulk-rna-seq-fastq-qc'
-source_last_modified: '2026-06-03T19:26:35Z'
-source_etag: 'W/"35ccd7bed7b8efccf8eef6786e037aaa"'
+source_last_modified: '2026-06-05T18:02:02Z'
+source_etag: 'W/"154d23be483e720b8202509f754d0b06"'
 codex_cli_versions: ["0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -79,7 +79,7 @@ Return:
 - validation and resource-readiness artifacts
 - a short QC interpretation that calls out mapping rate, duplication, library-type agreement, outlier samples, and anything that would block downstream differential expression
 
-[Open in the Codex app](codex://threads/new?prompt=Use+the+NGS+Analysis+plugin.%0A%0ARun+bulk+RNA-seq+FASTQ-to-count+QC+on+the+provided+sample+sheet%2C+FASTQ+root%2C+transcriptome+FASTA%2C+genome+FASTA%2C+and+GTF.%0A%0AReturn%3A%0A-+run_manifest.json%0A-+MultiQC+plus+browser-safe+review+links%0A-+Salmon+transcript-+and+gene-level+matrices%0A-+validation+and+resource-readiness+artifacts%0A-+a+short+QC+interpretation+that+calls+out+mapping+rate%2C+duplication%2C+library-type+agreement%2C+outlier+samples%2C+and+anything+that+would+block+downstream+differential+expression "Open in the Codex app")
+Open in the Codex app
 
 Use the NGS Analysis plugin.
 Run bulk RNA-seq FASTQ-to-count QC on the provided sample sheet, FASTQ root, transcriptome FASTA, genome FASTA, and GTF.

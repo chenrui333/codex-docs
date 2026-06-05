@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/discover-protein-folding-architectures'
-source_last_modified: '2026-06-03T19:26:41Z'
-source_etag: 'W/"9d403542ed76b5a0f4830c402d661d4a"'
+source_last_modified: '2026-06-05T18:14:01Z'
+source_etag: 'W/"81a1184c1ea1538681bb92a504903f08"'
 codex_cli_versions: ["0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -80,7 +80,7 @@ For each iteration:
 6. periodically reassess the architecture-level search direction rather than only tuning local hyperparameters.
 Do not claim generalization gains from smoke tests or single-chain overfit diagnostics. Prefer matched comparisons and preserve the evidence boundary.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+Goal+Mode+to+improve+the+validation+lDDT-C%CE%B1+score+of+this+AlphaFold2-style+protein-structure+model+on+the+NanoFold+public+benchmark.%0A%0AThe+scientific+hypothesis+is+that+persistent+higher-order+geometric+states+may+help+the+model+learn+protein+geometry+more+efficiently+from+limited+data%3A%0A%0A-+retain+the+standard+MSA+and+pairwise+representations%3B%0A-+add+sparse+learned+2-simplex+face+states+for+selected+residue+triplets%3B%0A-+add+sparse+learned+3-simplex+tetrahedral+states+for+selected+residue+quadruplets%3B%0A-+construct+topology+only+from+official+benchmark+inputs+and+model-generated+recycled+geometry%3B%0A-+keep+the+implementation+computationally+practical+under+NanoFold+constraints.%0A%0AMaintain+durable+tracking+files+for%3A%0A1.+The+current+strategy%2C+status%2C+and+proposed+next+steps+in+PLAN.md%0A2.+A+structured+log+of+experiments+and+results+in+EXPERIMENTS.md%0A3.+A+running+scratchpad+of+notes+and+thoughts+in+EXPERIMENT_NOTES.md%0A%0AFor+each+iteration%3A%0A1.+state+the+hypothesis+being+tested%3B%0A2.+make+the+smallest+coherent+code+or+configuration+change%3B%0A3.+run+the+relevant+tests+and+benchmark+slice%3B%0A4.+record+metrics%2C+latency%2C+memory%2C+and+failure+modes%3B%0A5.+decide+whether+to+keep%2C+revert%2C+or+refine+the+change%3B%0A6.+periodically+reassess+the+architecture-level+search+direction+rather+than+only+tuning+local+hyperparameters.%0A%0ADo+not+claim+generalization+gains+from+smoke+tests+or+single-chain+overfit+diagnostics.+Prefer+matched+comparisons+and+preserve+the+evidence+boundary. "Open in the Codex app")
+Open in the Codex app
 
 Use Goal Mode to improve the validation lDDT-Cα score of this AlphaFold2-style protein-structure model on the NanoFold public benchmark.
 The scientific hypothesis is that persistent higher-order geometric states may help the model learn protein geometry more efficiently from limited data:

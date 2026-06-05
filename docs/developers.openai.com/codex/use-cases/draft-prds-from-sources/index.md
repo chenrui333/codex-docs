@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/draft-prds-from-sources'
-source_last_modified: '2026-05-22T16:54:08Z'
-source_etag: 'W/"18e1633180835bc94e2233c12e93dbef"'
+source_last_modified: '2026-06-05T16:59:08Z'
+source_etag: 'W/"21cb53f838433e5cf3a536a36cf8b11e"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -88,7 +88,7 @@ Use $documents to create a PRD for [feature or product area] from @linear [proje
 Include the problem, users, goals/non-goals, requirements, UX, technical considerations, metrics, launch plan, risks, open questions, decisions, timeline, and source appendix.
 Cite the sources behind requirement-level claims. If sources disagree, call out the conflict instead of choosing silently. Draft only. Do not post, update Linear, or share the document until I approve it.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%24documents+to+create+a+PRD+for+%5Bfeature+or+product+area%5D+from+%40linear+%5Bproject+or+milestone%5D%2C+%40slack+%5Bchannel+or+thread%5D%2C+and+%40google-drive+or+%40notion+%5Bplanning+docs%2C+research+notes%2C+meeting+notes%2C+or+source+folder%5D.%0A%0AInclude+the+problem%2C+users%2C+goals%2Fnon-goals%2C+requirements%2C+UX%2C+technical+considerations%2C+metrics%2C+launch+plan%2C+risks%2C+open+questions%2C+decisions%2C+timeline%2C+and+source+appendix.%0A%0ACite+the+sources+behind+requirement-level+claims.+If+sources+disagree%2C+call+out+the+conflict+instead+of+choosing+silently.+Draft+only.+Do+not+post%2C+update+Linear%2C+or+share+the+document+until+I+approve+it. "Open in the Codex app")
+Open in the Codex app
 
 Use $documents to create a PRD for [feature or product area] from @linear [project or milestone], @slack [channel or thread], and @google-drive or @notion [planning docs, research notes, meeting notes, or source folder].
 Include the problem, users, goals/non-goals, requirements, UX, technical considerations, metrics, launch plan, risks, open questions, decisions, timeline, and source appendix.

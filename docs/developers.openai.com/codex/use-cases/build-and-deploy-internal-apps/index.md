@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/build-and-deploy-internal-apps'
-source_last_modified: '2026-06-03T19:26:35Z'
-source_etag: 'W/"d86358215eb3184e216f069545fdcd7a"'
+source_last_modified: '2026-06-05T16:46:50Z'
+source_etag: 'W/"86e0348d276920262163aff370b56f63"'
 codex_cli_versions: ["0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -82,7 +82,7 @@ Requirements:
 - Test the main flow, persistence, and responsive layout before deploying.
 Make it available to all workspace users.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%40sites+to+build+and+deploy+an+internal+app+for+%5Bteam+or+workflow%5D.%0A%0AGoal%3A%0A-+%5Bwhat+the+app+should+help+people+do%5D%0A-+%5Bwho+should+use+it%5D%0A-+%5Bsource+docs%2C+data%2C+or+connected+services+Codex+should+inspect%5D%0A%0ARequirements%3A%0A-+Keep+the+first+version+focused+on+one+useful+workflow.%0A-+Use+D1+for+structured+data+persistence.%0A-+Use+R2+for+user-uploaded+files+if+needed.%0A-+Test+the+main+flow%2C+persistence%2C+and+responsive+layout+before+deploying.%0A%0AMake+it+available+to+all+workspace+users. "Open in the Codex app")
+Open in the Codex app
 
 Use @sites to build and deploy an internal app for [team or workflow].
 Goal:

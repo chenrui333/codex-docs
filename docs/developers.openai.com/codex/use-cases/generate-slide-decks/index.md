@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/generate-slide-decks'
-source_last_modified: '2026-06-03T19:26:43Z'
-source_etag: 'W/"06cb0b5f07c80cb54efc16336d1fb5f6"'
+source_last_modified: '2026-06-05T16:36:40Z'
+source_etag: 'W/"25de5b62a633239972f60b3fb27fe0c7"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -87,7 +87,7 @@ Output:
 - A copy of the slide deck with the changes applied
 - notes on which slides were generated, rewritten, or left unchanged
 
-[Open in the Codex app](codex://threads/new?prompt=Use+the+%24slides+and+%24imagegen+skills+to+edit+this+slide+deck+in+the+following+way%3A%0A-+If+present%2C+add+logo.png+in+the+bottom+right+corner+on+every+slide%0A-+On+slides+X%2C+Y+and+Z%2C+move+the+text+to+the+left+and+use+image+generation+to+generate+an+illustration+%28style%3A+abstract%2C+digital+art%29+on+the+right%0A-+Preserve+text+as+text+and+simple+charts+as+native+PowerPoint+charts+where+practical.%0A-+Add+these+slides%3A+%5Bdescribe+new+slides+here%5D%0A-+Use+the+existing+branding+on+new+slides+and+new+text+%28colors%2C+fonts%2C+layout%2C+etc.%29+%0A-+Render+the+updated+deck+to+slide+images%2C+review+the+output%2C+and+fix+layout+issues+before+delivery.%0A-+Run+overflow+and+font-substitution+checks+before+delivery%2C+especially+if+the+deck+is+dense.%0A-+Save+reusable+prompts+or+generation+notes+when+you+create+a+batch+of+related+images.%0A%0AOutput%3A%0A-+A+copy+of+the+slide+deck+with+the+changes+applied%0A-+notes+on+which+slides+were+generated%2C+rewritten%2C+or+left+unchanged "Open in the Codex app")
+Open in the Codex app
 
 Use the $slides and $imagegen skills to edit this slide deck in the following way:
 - If present, add logo.png in the bottom right corner on every slide

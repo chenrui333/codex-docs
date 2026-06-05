@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/verified-operations-workflows'
-source_last_modified: '2026-06-03T19:26:54Z'
-source_etag: 'W/"be703e8638e80283b708f9aadd90381a"'
+source_last_modified: '2026-06-05T16:57:42Z'
+source_etag: 'W/"31d92c142a72c57b2dd897de4fce4a7e"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -76,7 +76,7 @@ Please:
 - summarize totals, failures, retries, and verification artifacts
 Pause before irreversible actions or scope changes.
 
-[Open in the Codex app](codex://threads/new?prompt=I+need+to+run+this+workflow%3A%0A%0AGoal%3A+%5Bwhat+should+happen%5D%0AInputs%3A+%5BCSV%2C+Google+Sheet%2C+list%2C+ticket%2C+or+file+path%5D%0AApproval+or+policy+source%3A+%5BSlack+thread%2C+doc%2C+ticket%2C+or+none%5D%0ARunner%3A+%5Bscript%2C+API%2C+CLI%2C+skill%2C+or+manual+app+workflow%5D%0AVerification+artifact%3A+%5Bresult+CSV%2C+log%2C+dashboard%2C+screenshot%2C+or+other+proof%5D%0A%0APlease%3A%0A-+inspect+the+inputs+and+ask+only+for+missing+required+fields%0A-+normalize+dates%2C+amounts%2C+owners%2C+and+IDs+before+running+the+workflow%0A-+run+a+dry+run+first+when+the+workflow+supports+it%0A-+run+only+the+approved+scope%0A-+record+one+success+or+failure+row+per+item%0A-+retry+transient+failures+once+without+restarting+successful+rows%0A-+summarize+totals%2C+failures%2C+retries%2C+and+verification+artifacts%0A%0APause+before+irreversible+actions+or+scope+changes. "Open in the Codex app")
+Open in the Codex app
 
 I need to run this workflow:
 Goal: [what should happen]

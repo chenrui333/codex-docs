@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/target-prioritization'
-source_last_modified: '2026-06-03T19:26:52Z'
-source_etag: 'W/"a2fe63adfa85dfa987ca8a4d6bc1048e"'
+source_last_modified: '2026-06-05T16:47:11Z'
+source_etag: 'W/"ceadab0de96cfe774528f384de78cfba"'
 codex_cli_versions: ["0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -88,7 +88,7 @@ Then synthesize:
 - a confidence assessment and the main caveats
 - two visuals: a prioritization heatmap and a GWAS summary figure with the lead asthma-linked variants for each target
 
-[Open in the Codex app](codex://threads/new?prompt=Use+the+Life+Science+Research+plugin+to+compare+TSLP%2C+IL33%2C+and+IL1RL1+for+asthma+target+prioritization.%0A%0ARun+these+independent+lanes+in+parallel+with+subagents%3A%0A-+Human+genetics+and+GWAS%3A+gwas-catalog-skill%2C+opentargets-skill%2C+gnomad-graphql-skill%0A-+Cohort+replication+and+PheWAS%3A+finngen-phewas-skill%2C+ukb-topmed-phewas-skill%2C+biobankjapan-phewas-skill%2C+tpmi-phewas-skill%0A-+Target-disease+evidence+and+disease+context%3A+opentargets-skill%2C+efo-ontology-skill%0A-+Clinical+and+regulatory+precedent%3A+clinicaltrials-skill%2C+opentargets-skill%2C+chembl-skill%2C+pharmgkb-skill%0A-+Literature+and+public-dataset+context%3A+ncbi-entrez-skill%2C+ncbi-pmc-skill%2C+biorxiv-skill%2C+ncbi-datasets-skill%2C+biostudies-arrayexpress-skill%0A-+Expression+and+tissue%2Fcell-type+context%3A+human-protein-atlas-skill%2C+gtex-eqtl-skill%2C+cellxgene-skill%2C+bgee-skill%0A%0AFor+each+lane%3A%0A-+score+TSLP%2C+IL33%2C+IL1RL1+on+a+1-5+scale%0A-+keep+direct+asthma+evidence+separate+from+adjacent+allergic%2Fatopic+phenotypes%0A-+save+raw+payloads+when+helpful%0A%0AThen+synthesize%3A%0A-+a+lane-by-target+score+table%0A-+a+final+rank+of+TSLP%2C+IL33%2C+IL1RL1%0A-+a+confidence+assessment+and+the+main+caveats%0A-+two+visuals%3A+a+prioritization+heatmap+and+a+GWAS+summary+figure+with+the+lead+asthma-linked+variants+for+each+target "Open in the Codex app")
+Open in the Codex app
 
 Use the Life Science Research plugin to compare TSLP, IL33, and IL1RL1 for asthma target prioritization.
 Run these independent lanes in parallel with subagents:

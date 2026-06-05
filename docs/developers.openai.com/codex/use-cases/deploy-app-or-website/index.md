@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deploy-app-or-website'
-source_last_modified: '2026-06-03T19:26:41Z'
-source_etag: 'W/"4395fe6d2857c9ce2d157d59933fc273"'
+source_last_modified: '2026-06-05T17:00:26Z'
+source_etag: 'W/"069160b17cf89d147c6a794b8b7ba5ec"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -83,7 +83,7 @@ Context:
 - [anything not to change]
 Before you hand it back, run the local build and verify the deployment is ready.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%40build-web-apps+to+turn+%5Brepo%2C+screenshot%2C+design%2C+or+rough+app+idea%5D+into+a+working+website.%0A%0AThen+use+%40vercel+to+deploy+a+preview+and+hand+me+the+live+URL.%0A%0AContext%3A%0A-+%5Bwhat+the+site+should+do%5D%0A-+%5Bsource+data%2C+API%2C+docs%2C+or+assets+to+use%5D%0A-+%5Bstyle+or+product+constraints%5D%0A-+%5Banything+not+to+change%5D%0A%0ABefore+you+hand+it+back%2C+run+the+local+build+and+verify+the+deployment+is+ready. "Open in the Codex app")
+Open in the Codex app
 
 Use @build-web-apps to turn [repo, screenshot, design, or rough app idea] into a working website.
 Then use @vercel to deploy a preview and hand me the live URL.

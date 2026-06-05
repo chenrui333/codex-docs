@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deep-security-scan'
-source_last_modified: '2026-06-03T19:26:40Z'
-source_etag: 'W/"c6c0539a0bfc576cb9a8db00eb9c2da7"'
+source_last_modified: '2026-06-05T17:42:54Z'
+source_etag: 'W/"4d05fd8f9152c2498e50d19646394e88"'
 codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -78,7 +78,7 @@ Scope and rules:
 - Keep the scan read-only; do not modify code, open pull requests, or test external targets.
 Return the final Markdown and HTML report paths and summarize the findings that require human review first.
 
-[Open in the Codex app](codex://threads/new?prompt=%2Fgoal+Run+a+deep+security+scan+on+this+repository.+Do+not+stop+until+all+required+steps+are+complete+and+the+final+report+is+ready.%0A%0AScope+and+rules%3A%0A-+I+am+authorized+to+assess+this+repository.%0A-+Treat+the+entire+repository+as+in+scope.%0A-+Use+the+Codex+Security+plugin%27s+deep+scan+workflow%3B+do+not+broaden+this+into+a+diff+or+scoped-path+review.%0A-+Keep+the+scan+read-only%3B+do+not+modify+code%2C+open+pull+requests%2C+or+test+external+targets.%0A%0AReturn+the+final+Markdown+and+HTML+report+paths+and+summarize+the+findings+that+require+human+review+first. "Open in the Codex app")
+Open in the Codex app
 
 /goal Run a deep security scan on this repository. Do not stop until all required steps are complete and the final report is ready.
 Scope and rules:

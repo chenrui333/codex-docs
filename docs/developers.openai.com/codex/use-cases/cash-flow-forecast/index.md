@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/cash-flow-forecast'
-source_last_modified: '2026-05-22T16:22:23Z'
-source_etag: 'W/"204260671c912f098e271cebfc46c752"'
+source_last_modified: '2026-06-05T16:54:46Z'
+source_etag: 'W/"db4cdf2066da893ee2f61de244c323dc"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -74,7 +74,7 @@ Use $spreadsheets to build an editable cash-flow forecast workbook from the atta
 Use beginning cash, expected receipts, payroll, vendor payments, debt, tax, capex, working-capital items, and timing assumptions where available. Preserve the source cadence, whether weekly or monthly.
 Include a summary view that flags the liquidity low point, the minimum ending cash balance, and any breach of the safety cash threshold. Use formulas so I can change assumptions later, and call out missing timing assumptions before using placeholders.
 
-[Open in the Codex app](codex://threads/new?prompt=Use+%24spreadsheets+to+build+an+editable+cash-flow+forecast+workbook+from+the+attached+source+files.%0A%0AUse+beginning+cash%2C+expected+receipts%2C+payroll%2C+vendor+payments%2C+debt%2C+tax%2C+capex%2C+working-capital+items%2C+and+timing+assumptions+where+available.+Preserve+the+source+cadence%2C+whether+weekly+or+monthly.%0A%0AInclude+a+summary+view+that+flags+the+liquidity+low+point%2C+the+minimum+ending+cash+balance%2C+and+any+breach+of+the+safety+cash+threshold.+Use+formulas+so+I+can+change+assumptions+later%2C+and+call+out+missing+timing+assumptions+before+using+placeholders. "Open in the Codex app")
+Open in the Codex app
 
 Use $spreadsheets to build an editable cash-flow forecast workbook from the attached source files.
 Use beginning cash, expected receipts, payroll, vendor payments, debt, tax, capex, working-capital items, and timing assumptions where available. Preserve the source cadence, whether weekly or monthly.
