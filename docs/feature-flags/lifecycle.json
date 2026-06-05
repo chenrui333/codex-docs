@@ -707,10 +707,6 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
-    "responses_websocket_response_processed": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
-    },
     "responses_websockets": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -825,8 +821,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "e76333f1be0ad8f360d8e712d7370a7ed26cf04cce6c0c0c36ee17547212fa59",
-    "features_rs_sha256": "01b5d09cb1cec4ab89b3f80942704435f6fc993dbaf413efc45e435ed821e026"
+    "client_rs_sha256": "df9f746ca4db1fbad450780d7f851f5082a276b58e0f6062bab30e8c0892ed9c",
+    "features_rs_sha256": "dcd87552a82c5e2ad5496c46b704de56dc5ce35d3879f197320a4ca7f8285a13"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
