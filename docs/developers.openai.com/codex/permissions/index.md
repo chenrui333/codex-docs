@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_permissions'
 source_url: 'https://developers.openai.com/codex/permissions'
-source_last_modified: '2026-05-29T06:20:50Z'
-source_etag: 'W/"92ff37ff215f097647c79306142b09d5"'
+source_last_modified: '2026-06-05T05:21:32Z'
+source_etag: 'W/"872b621c66be631c41df8fca701cbc66"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -42,7 +42,7 @@ For Codex cloud network settings, see [Internet Access](/codex/cloud/internet-ac
 Codex includes three built-in permission profiles:
 
 - `:read-only` keeps local command execution read-only.
-- `:workspace` allows writes inside the active workspace roots.
+- `:workspace` allows writes inside the active workspace roots and system temp directories.
 - `:danger-full-access` removes local sandbox restrictions and should be used
   only when that broad access is intentional.
 
@@ -228,6 +228,7 @@ Supported path forms:
 | `:minimal` | Platform and runtime paths needed by common tools | `.` only |
 | `:workspace_roots` | The current session’s workspace roots plus any enabled profile-defined workspace roots | Yes |
 | `:tmpdir` | The `$TMPDIR` location, when one is available | `.` only |
+| `:slash_tmp` | The `/tmp` folder, if it exists | `.` only |
 | `/absolute/path` | A platform absolute path, such as `/path` on macOS/Linux/WSL or `C:\path` on native Windows | Yes |
 | `~/path` | A path under the current user’s home directory | Yes |
 
@@ -474,6 +475,34 @@ enabled = true
 
 [permissions.readonly-net.network.domains]
 "api.openai.com" = "allow"
+```
+
+### File access limited to workspace
+
+Here is an example of a permission profile that will make your workspace folders writable by Codex while denying reads to the rest of the filesystem (with limited exceptions, as determined by `:minimal`).
+
+```
+default_permissions = "workspace-only"
+
+[permissions.workspace-only]
+# By extending the :workspace profile, you get Codex's safeguards to ensure
+# subfolders such as .codex/ and .git/ within a workspace root are read-only
+# while the rest of the folder is writable.
+extends = ":workspace"
+
+[permissions.workspace-only.filesystem]
+# By default, deny read access to all files on disk.
+":root" = "deny"
+
+# Though in practice, a software agent needs to be able to read folders that
+# contain common tools, such as `/usr/bin`, to get work done, so grant access
+# to a "minimal" set of files and folders, as determined by Codex.
+":minimal" = "read"
+
+# By extending the :workspace profile, :tmpdir and :slash_tmp are "write" by
+# default, though you can deny access to them altogether, if desired.
+":tmpdir" = "deny"
+":slash_tmp" = "deny"
 ```
 
 ### Workspace write without network

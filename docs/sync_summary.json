@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-05T01:00:42+00:00",
+  "generated_at": "2026-06-05T07:37:52+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,9 +13,8 @@
   },
   "total_files": 258,
   "updated": [
-    "developers.openai.com/codex/app/settings/index.md",
-    "developers.openai.com/codex/models/index.md",
+    "developers.openai.com/codex/permissions/index.md",
     "developers.openai.com/codex/security/setup/index.md",
-    "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md"
+    "github.openai.com/openai/codex/codex-rs/docs/bazel.md"
   ]
 }

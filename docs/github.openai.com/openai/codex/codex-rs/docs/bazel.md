@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/bazel.md'
-source_etag: 'W/"36f6380eb742537462773ddbdbb8eb273f2edb19300194bec6df3447d3f489d3"'
+source_etag: 'W/"6d78cbcbeb3f5510a37a5476ee886879fb092487ccfaa908312ec343e91de67c"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -90,7 +90,10 @@ GitHub Actions routes Bazel build and output-resolution commands through
 `.github/scripts/run-bazel-ci.sh` and `.github/scripts/rusty_v8_bazel.py`
 delegate remote configuration selection to that wrapper. The wrapper reads the
 GitHub Actions repository and event payload rather than relying on workflow
-files to duplicate tenant-selection logic.
+files to duplicate tenant-selection logic. It also normalizes GitHub Actions
+startup options so all Bazel launches in a job reuse the same server and
+in-memory analysis cache. Target-discovery and lockfile helpers delegate to the
+same wrapper so their callers do not need to select CI-specific startup options.
 
 Loading-phase target-discovery `bazel query` commands run locally because they
 only enumerate labels and do not need remote caches or execution.
