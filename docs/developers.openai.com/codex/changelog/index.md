@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_changelog'
 source_url: 'https://developers.openai.com/codex/changelog'
-source_last_modified: '2026-06-04T14:54:09Z'
-source_etag: 'W/"8643f77c7ff47779a23ddfc9352c9fa4"'
+source_last_modified: '2026-06-05T09:56:42Z'
+source_etag: 'W/"2cdb03db971f9c7b9b67a978471cb1ba"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -12,66 +12,317 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/changelog
 
-Codex is becoming a broader workspace for getting work done with AI. This
-update makes it easier to start work with less setup, verify what Codex is
-building, create richer outputs, and keep momentum across longer-running tasks.
+```
+$ npm install -g @openai/codex@0.131.0
+```
 
-#### Verify more of your work
+  View details
 
-The Codex app now includes an early [**in-app browser**](/codex/app/browser). You
-can open local or public pages that don’t require sign-in, comment directly on
-the rendered page, and ask Codex to address page-level feedback.
+## New Features
 
-![Codex app showing a browser comment on a local web app preview](/images/codex/app/in-app-browser-light.webp)
+- The TUI now offers richer session controls and display: data-driven service-tier commands, blended token usage, permissions/approval mode, effective workspace roots, and responsive Markdown tables. ([#21745](https://github.com/openai/codex/pull/21745), [#21906](https://github.com/openai/codex/pull/21906), [#21991](https://github.com/openai/codex/pull/21991), [#21669](https://github.com/openai/codex/pull/21669), [#21677](https://github.com/openai/codex/pull/21677), [#22052](https://github.com/openai/codex/pull/22052), [#22612](https://github.com/openai/codex/pull/22612))
+- `@` mentions now search files, directories, plugins, and skills in one picker, backed by app-server plugin metadata. ([#19068](https://github.com/openai/codex/pull/19068), [#22375](https://github.com/openai/codex/pull/22375))
+- Plugin workflows gained marketplace CLI commands, version-aware sharing, share checkout, clearer shared-workspace buckets, and default-enabled plugin hooks. ([#21396](https://github.com/openai/codex/pull/21396), [#22397](https://github.com/openai/codex/pull/22397), [#22425](https://github.com/openai/codex/pull/22425), [#22435](https://github.com/openai/codex/pull/22435), [#22549](https://github.com/openai/codex/pull/22549))
+- Remote workflows now support daemon-managed `codex remote-control`, runtime enable/disable APIs, status reads, and registry-backed/configured remote environments. ([#20718](https://github.com/openai/codex/pull/20718), [#22218](https://github.com/openai/codex/pull/22218), [#22562](https://github.com/openai/codex/pull/22562), [#22578](https://github.com/openai/codex/pull/22578), [#22877](https://github.com/openai/codex/pull/22877), [#20667](https://github.com/openai/codex/pull/20667), [#21323](https://github.com/openai/codex/pull/21323))
+- The Python SDK moved to `openai-codex` / `openai_codex`, with pinned runtime-generated types, concurrent turn routing, approval modes, and integration coverage. ([#21778](https://github.com/openai/codex/pull/21778), [#21891](https://github.com/openai/codex/pull/21891), [#21893](https://github.com/openai/codex/pull/21893), [#21896](https://github.com/openai/codex/pull/21896), [#21905](https://github.com/openai/codex/pull/21905), [#21910](https://github.com/openai/codex/pull/21910), [#22014](https://github.com/openai/codex/pull/22014))
+- Added `codex doctor` for support-ready diagnostics across runtime, auth, terminal, network, config, and local state. ([#22336](https://github.com/openai/codex/pull/22336))
 
-[**Computer use**](/codex/app/computer-use) lets Codex operate macOS apps by seeing,
-clicking, and typing, which helps with native app testing, simulator flows,
-low-risk app settings, and GUI-only bugs.
+## Bug Fixes
 
-The feature isn’t available in the European Economic Area, the United Kingdom, or
-Switzerland at launch.
+- Fixed several TUI interaction and rendering issues, including URL wrapping, light-mode selection contrast, Shift+Enter in tmux, `/review` MCP startup status, `/side` Esc handling, and network approval history text. ([#21760](https://github.com/openai/codex/pull/21760), [#21950](https://github.com/openai/codex/pull/21950), [#21943](https://github.com/openai/codex/pull/21943), [#21624](https://github.com/openai/codex/pull/21624), [#22710](https://github.com/openai/codex/pull/22710), [#22229](https://github.com/openai/codex/pull/22229))
+- Hardened Windows sandbox behavior around deny-read rules, scoped write roots, ineffective firewall policy, and PowerShell edge cases. ([#18202](https://github.com/openai/codex/pull/18202), [#21479](https://github.com/openai/codex/pull/21479), [#22353](https://github.com/openai/codex/pull/22353), [#21400](https://github.com/openai/codex/pull/21400), [#22643](https://github.com/openai/codex/pull/22643))
+- Preserved managed read restrictions during permission escalation and cleaned up workspace-root permission profile resolution. ([#15977](https://github.com/openai/codex/pull/15977), [#22624](https://github.com/openai/codex/pull/22624), [#22683](https://github.com/openai/codex/pull/22683))
+- Made app-server and local state startup safer by preserving SQLite data, failing closed when state cannot open, adding recovery paths, and softening optional metadata sync failures. ([#21831](https://github.com/openai/codex/pull/21831), [#21847](https://github.com/openai/codex/pull/21847), [#22580](https://github.com/openai/codex/pull/22580), [#22734](https://github.com/openai/codex/pull/22734), [#22899](https://github.com/openai/codex/pull/22899))
+- Improved Git and auth reliability by using root worktree hooks consistently, ignoring repo hook/fsmonitor config in helper commands, binding local MCP OAuth callbacks, and revoking superseded login tokens. ([#21969](https://github.com/openai/codex/pull/21969), [#22843](https://github.com/openai/codex/pull/22843), [#22652](https://github.com/openai/codex/pull/22652), [#20237](https://github.com/openai/codex/pull/20237), [#21747](https://github.com/openai/codex/pull/21747))
+- Reduced remote and Windows cleanup friction with longer exec-server transport timeouts, quieter `taskkill` cleanup, and non-queued plugin reads. ([#21825](https://github.com/openai/codex/pull/21825), [#21759](https://github.com/openai/codex/pull/21759), [#22058](https://github.com/openai/codex/pull/22058), [#22703](https://github.com/openai/codex/pull/22703))
 
-#### Start, follow, and steer work
+## Documentation
 
-[**Chats**](/codex/app/features#projectless-threads) are threads you can start
-without choosing a project folder first. They’re useful for research, writing,
-planning, analysis, source gathering, and tool-driven work that doesn’t begin in
-a codebase.
+- Clarified that general Codex product docs should not be added to this repo, while app-server API docs remain in scope. ([#21772](https://github.com/openai/codex/pull/21772))
+- Updated plugin-creator guidance for the simplified local plugin handoff links. ([#22240](https://github.com/openai/codex/pull/22240))
+- Documented new app-server/API contracts for remote environments and the desktop-owned config namespace. ([#21323](https://github.com/openai/codex/pull/21323), [#22584](https://github.com/openai/codex/pull/22584))
 
-For work that needs a later check-in,
-[**thread automations**](/codex/app/automations#thread-automations) can wake up
-the same thread on a schedule while preserving the conversation context. Use
-them to check a long-running process, watch for updates, or continue a
-follow-up loop without starting from scratch.
+## Chores
 
-[**The task sidebar**](/codex/app/features#task-sidebar) makes plans, sources,
-generated artifacts, and summaries easier to follow while Codex works.
-[**Context-aware suggestions**](/codex/app/settings#context-aware-suggestions)
-can also help you pick up relevant follow-ups when you start or return to Codex.
+- Improved CI and release reliability across Rust CI, exact PR-head checkout, Windows Bazel sharding, unsigned macOS artifacts, and signed macOS promotion. ([#21604](https://github.com/openai/codex/pull/21604), [#21628](https://github.com/openai/codex/pull/21628), [#21835](https://github.com/openai/codex/pull/21835), [#22408](https://github.com/openai/codex/pull/22408), [#22559](https://github.com/openai/codex/pull/22559), [#22649](https://github.com/openai/codex/pull/22649), [#22737](https://github.com/openai/codex/pull/22737), [#22788](https://github.com/openai/codex/pull/22788), [#22900](https://github.com/openai/codex/pull/22900))
+- Split large TUI ChatWidget, history, and composer code into focused modules without intended behavior changes. ([#21866](https://github.com/openai/codex/pull/21866), [#22269](https://github.com/openai/codex/pull/22269), [#22407](https://github.com/openai/codex/pull/22407), [#22433](https://github.com/openai/codex/pull/22433), [#22518](https://github.com/openai/codex/pull/22518), [#22537](https://github.com/openai/codex/pull/22537), [#22704](https://github.com/openai/codex/pull/22704), [#22581](https://github.com/openai/codex/pull/22581), [#22656](https://github.com/openai/codex/pull/22656))
+- Continued extracting extension and tool internals, including shared tool contracts plus guardian and memory extension plumbing. ([#21736](https://github.com/openai/codex/pull/21736), [#21737](https://github.com/openai/codex/pull/21737), [#21738](https://github.com/openai/codex/pull/21738), [#22138](https://github.com/openai/codex/pull/22138), [#22147](https://github.com/openai/codex/pull/22147), [#22216](https://github.com/openai/codex/pull/22216), [#22258](https://github.com/openai/codex/pull/22258), [#22344](https://github.com/openai/codex/pull/22344), [#22476](https://github.com/openai/codex/pull/22476), [#22480](https://github.com/openai/codex/pull/22480), [#22485](https://github.com/openai/codex/pull/22485), [#22498](https://github.com/openai/codex/pull/22498))
+- Removed obsolete tool paths, feature flags, config gates, and legacy hooks as defaults stabilized. ([#21651](https://github.com/openai/codex/pull/21651), [#21805](https://github.com/openai/codex/pull/21805), [#22173](https://github.com/openai/codex/pull/22173), [#22246](https://github.com/openai/codex/pull/22246), [#22565](https://github.com/openai/codex/pull/22565), [#22711](https://github.com/openai/codex/pull/22711), [#22717](https://github.com/openai/codex/pull/22717), [#22724](https://github.com/openai/codex/pull/22724), [#22730](https://github.com/openai/codex/pull/22730))
 
-#### Stronger for software development
+## Changelog
 
-Codex now brings more of the **pull request workflow** into the app. You can
-inspect [**GitHub pull requests**](/codex/app/review#pull-request-reviews) in the
-sidebar, review comments in the diff, review changed files, then ask Codex to
-explain feedback, make changes, check them, and keep the review moving.
+Full Changelog: [rust-v0.130.0...rust-v0.131.0](https://github.com/openai/codex/compare/rust-v0.130.0...rust-v0.131.0)
 
-#### Review richer outputs
+- [#21550](https://github.com/openai/codex/pull/21550) [codex] make shutdown pending-touch test deterministic [@jif-oai](https://github.com/jif-oai)
+- [#21697](https://github.com/openai/codex/pull/21697) Allow string service tiers in config TOML [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21687](https://github.com/openai/codex/pull/21687) [codex] Enable apply\_patch freeform by default [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#19896](https://github.com/openai/codex/pull/19896) Update models.json @github-actions
+- [#21669](https://github.com/openai/codex/pull/21669) Display blended token count in status line [@etraut-openai](https://github.com/etraut-openai)
+- [#21677](https://github.com/openai/codex/pull/21677) Show permissions and approval mode in the TUI status line [@etraut-openai](https://github.com/etraut-openai)
+- [#21757](https://github.com/openai/codex/pull/21757) api: send hyphenated session and thread headers [@jif-oai](https://github.com/jif-oai)
+- [#21763](https://github.com/openai/codex/pull/21763) nit: comment [@jif-oai](https://github.com/jif-oai)
+- [#21749](https://github.com/openai/codex/pull/21749) codex-otel: validate provider span attributes consistently [@bbrown-oai](https://github.com/bbrown-oai)
+- [#21767](https://github.com/openai/codex/pull/21767) chore: thread tui [@jif-oai](https://github.com/jif-oai)
+- [#21443](https://github.com/openai/codex/pull/21443) [sandboxing] Remove Darwin user cache write from Seatbelt network policy [@evawong-oai](https://github.com/evawong-oai)
+- [#21604](https://github.com/openai/codex/pull/21604) Fix `rust-ci-full` failures due to missing `bwrap` [@zanie-oai](https://github.com/zanie-oai)
+- [#21628](https://github.com/openai/codex/pull/21628) Use `CARGO_NET_GIT_FETCH_WITH_CLI` in `rust-ci-full` for more reliable git fetches [@zanie-oai](https://github.com/zanie-oai)
+- [#21745](https://github.com/openai/codex/pull/21745) [codex] Generalize service tier slash commands [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21772](https://github.com/openai/codex/pull/21772) Clarify docs folder guidance in AGENTS.md [@etraut-openai](https://github.com/etraut-openai)
+- [#21622](https://github.com/openai/codex/pull/21622) [codex] Address some more GHA hygiene issues [@ww-oai](https://github.com/ww-oai)
+- [#21662](https://github.com/openai/codex/pull/21662) feat: Use installation ID in remote enrollments [@ddr-oai](https://github.com/ddr-oai)
+- [#20667](https://github.com/openai/codex/pull/20667) Load configured environments from CODEX\_HOME [@starr-openai](https://github.com/starr-openai)
+- [#21776](https://github.com/openai/codex/pull/21776) Update models.json @github-actions
+- [#21787](https://github.com/openai/codex/pull/21787) Support resource binaries in Python runtime staging [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21784](https://github.com/openai/codex/pull/21784) Publish Python runtime wheels on release [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21601](https://github.com/openai/codex/pull/21601) Emit accepted line fingerprint analytics [@alexsong-oai](https://github.com/alexsong-oai)
+- [#21465](https://github.com/openai/codex/pull/21465) Remove ToolName display helper [@pakrym-oai](https://github.com/pakrym-oai)
+- [#20619](https://github.com/openai/codex/pull/20619) [codex] request desktop attestation from app [@jiamingz42](https://github.com/jiamingz42)
+- [#21810](https://github.com/openai/codex/pull/21810) Revert "Publish Python runtime wheels on release" [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21651](https://github.com/openai/codex/pull/21651) [codex] Delete function-style apply\_patch [@pakrym-oai](https://github.com/pakrym-oai)
+- [#21805](https://github.com/openai/codex/pull/21805) [codex] Remove legacy after tool use hooks [@pakrym-oai](https://github.com/pakrym-oai)
+- [#21616](https://github.com/openai/codex/pull/21616) Enable `--deny-warnings` for `cargo shear` [@charliemarsh-oai](https://github.com/charliemarsh-oai)
+- [#21497](https://github.com/openai/codex/pull/21497) Using cached connector directory for discoverable tools list [@mzeng-openai](https://github.com/mzeng-openai)
+- [#21835](https://github.com/openai/codex/pull/21835) ci: check out PR head commits in workflows [@bolinfest](https://github.com/bolinfest)
+- [#21794](https://github.com/openai/codex/pull/21794) Make environment provider snapshots path-free [@starr-openai](https://github.com/starr-openai)
+- [#21831](https://github.com/openai/codex/pull/21831) app-server: support daemon-safe restart handling [@euroelessar](https://github.com/euroelessar)
+- [#20293](https://github.com/openai/codex/pull/20293) Support openai library tool [@lt-oai](https://github.com/lt-oai)
+- [#21323](https://github.com/openai/codex/pull/21323) [codex] support executor registry remote environments [@miz-openai](https://github.com/miz-openai)
+- [#21825](https://github.com/openai/codex/pull/21825) Increase exec-server environment transport timeouts [@starr-openai](https://github.com/starr-openai)
+- [#20718](https://github.com/openai/codex/pull/20718) [daemon] Add app-server daemon lifecycle management [@euroelessar](https://github.com/euroelessar)
+- [#21840](https://github.com/openai/codex/pull/21840) feat: add Bedrock Mantle client agent header [@celia-oai](https://github.com/celia-oai)
+- [#21847](https://github.com/openai/codex/pull/21847) sqlite: no more destructive version bumps [@owenlin0](https://github.com/owenlin0)
+- [#21652](https://github.com/openai/codex/pull/21652) Reapply "Move skills watcher to app-server" [@pakrym-oai](https://github.com/pakrym-oai)
+- [#21290](https://github.com/openai/codex/pull/21290) Move file watcher out of core [@pakrym-oai](https://github.com/pakrym-oai)
+- [#21867](https://github.com/openai/codex/pull/21867) feat: Add role-aware plugin share context APIs [@xl-openai](https://github.com/xl-openai)
+- [#21875](https://github.com/openai/codex/pull/21875) [codex] compact network context rendering [@sayan-oai](https://github.com/sayan-oai)
+- [#21778](https://github.com/openai/codex/pull/21778) Route Python SDK turn notifications by ID [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21906](https://github.com/openai/codex/pull/21906) [codex] Lowercase TUI service tier commands [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21819](https://github.com/openai/codex/pull/21819) tests: cover sandbox link write behavior [@bolinfest](https://github.com/bolinfest)
+- [#21760](https://github.com/openai/codex/pull/21760) fix(tui): preserve wrapped prose beside URLs [@fcoury-oai](https://github.com/fcoury-oai)
+- [#21950](https://github.com/openai/codex/pull/21950) fix(tui): improve light-mode selection contrast [@fcoury-oai](https://github.com/fcoury-oai)
+- [#21755](https://github.com/openai/codex/pull/21755) Improve hooks trust flow in TUI [@abhinav-oai](https://github.com/abhinav-oai)
+- [#21870](https://github.com/openai/codex/pull/21870) Avoid blocking TUI on agent metadata hydration [@etraut-openai](https://github.com/etraut-openai)
+- [#21866](https://github.com/openai/codex/pull/21866) Split ChatWidget state into focused modules [@etraut-openai](https://github.com/etraut-openai)
+- [#21991](https://github.com/openai/codex/pull/21991) Persist 'priority' service tier as fast in config [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21943](https://github.com/openai/codex/pull/21943) fix(tui): preserve Shift+Enter in tmux csi-u panes [@fcoury-oai](https://github.com/fcoury-oai)
+- [#21759](https://github.com/openai/codex/pull/21759) fix(tui): suppress taskkill output for MCP teardown on Windows [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22039](https://github.com/openai/codex/pull/22039) Deduplicate issue digest interactions by user [@etraut-openai](https://github.com/etraut-openai)
+- [#22052](https://github.com/openai/codex/pull/22052) feat(tui): render responsive Markdown tables in TUI [@fcoury-oai](https://github.com/fcoury-oai)
+- [#20825](https://github.com/openai/codex/pull/20825) Read cached metadata for installed Git plugins [@xli-oai](https://github.com/xli-oai)
+- [#21736](https://github.com/openai/codex/pull/21736) extension: add initial typed extension API [@jif-oai](https://github.com/jif-oai)
+- [#21737](https://github.com/openai/codex/pull/21737) extension: wire extension registries into sessions [@jif-oai](https://github.com/jif-oai)
+- [#21738](https://github.com/openai/codex/pull/21738) extension: move git attribution into an extension [@jif-oai](https://github.com/jif-oai)
+- [#22138](https://github.com/openai/codex/pull/22138) refactor: extract executable tool contracts into codex-tool-api [@jif-oai](https://github.com/jif-oai)
+- [#22140](https://github.com/openai/codex/pull/22140) feat: drop `CodexExtension` [@jif-oai](https://github.com/jif-oai)
+- [#22143](https://github.com/openai/codex/pull/22143) [codex] default unknown contributed tools to mutating [@jif-oai](https://github.com/jif-oai)
+- [#22147](https://github.com/openai/codex/pull/22147) feat: wire extension tool bundles into core [@jif-oai](https://github.com/jif-oai)
+- [#22163](https://github.com/openai/codex/pull/22163) feat: move extensions tool [@jif-oai](https://github.com/jif-oai)
+- [#22113](https://github.com/openai/codex/pull/22113) Add x-codex-ws-stream-request-start-ms [@andmis](https://github.com/andmis)
+- [#21860](https://github.com/openai/codex/pull/21860) Persist /goal commands in history [@etraut-openai](https://github.com/etraut-openai)
+- [#22141](https://github.com/openai/codex/pull/22141) [codex] Harden overflow auto-compaction recovery [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#22170](https://github.com/openai/codex/pull/22170) Revert "[codex] Harden overflow auto-compaction recovery" [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#22106](https://github.com/openai/codex/pull/22106) Fix side conversation config inheritance [@etraut-openai](https://github.com/etraut-openai)
+- [#22045](https://github.com/openai/codex/pull/22045) Improve goal continuation based on feedback [@etraut-openai](https://github.com/etraut-openai)
+- [#21981](https://github.com/openai/codex/pull/21981) Use goal preview metadata for goal-first threads [@etraut-openai](https://github.com/etraut-openai)
+- [#21843](https://github.com/openai/codex/pull/21843) app-server: remove TCP websocket listener [@euroelessar](https://github.com/euroelessar)
+- [#22173](https://github.com/openai/codex/pull/22173) chore: drop built-in MCPs [@jif-oai](https://github.com/jif-oai)
+- [#21954](https://github.com/openai/codex/pull/21954) Fix goal update and add `/goal edit` command in TUI [@etraut-openai](https://github.com/etraut-openai)
+- [#22110](https://github.com/openai/codex/pull/22110) Make auto-review denial short-circuit use a rolling review window [@won-openai](https://github.com/won-openai)
+- [#21431](https://github.com/openai/codex/pull/21431) [codex-analytics] add turn tool counts to turn events [@rhan-oai](https://github.com/rhan-oai)
+- [#22154](https://github.com/openai/codex/pull/22154) Add process-scoped SQLite telemetry [@jif-oai](https://github.com/jif-oai)
+- [#19068](https://github.com/openai/codex/pull/19068) Unified mentions in TUI [@canvrno-oai](https://github.com/canvrno-oai)
+- [#20305](https://github.com/openai/codex/pull/20305) fix(exec-policy) use is\_known\_safe\_command less [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22058](https://github.com/openai/codex/pull/22058) fix(exec-server): suppress Windows taskkill output [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22178](https://github.com/openai/codex/pull/22178) fix(app-server): thread history redaction for remote clients [@owenlin0](https://github.com/owenlin0)
+- [#15977](https://github.com/openai/codex/pull/15977) fix(permissions): preserve managed deny-read during escalation [@viyatb-oai](https://github.com/viyatb-oai)
+- [#21061](https://github.com/openai/codex/pull/21061) feat(connectors): support managed app tool approval requirements [@viyatb-oai](https://github.com/viyatb-oai)
+- [#22188](https://github.com/openai/codex/pull/22188) [elicitation] Advertise new url elicitation capability when auth\_elicitation is enabled. [@mzeng-openai](https://github.com/mzeng-openai)
+- [#22192](https://github.com/openai/codex/pull/22192) config: accept `minus` in TUI keymap config [@fcoury-oai](https://github.com/fcoury-oai)
+- [#21853](https://github.com/openai/codex/pull/21853) daemon: refresh updater after validated binary rollout [@euroelessar](https://github.com/euroelessar)
+- [#21747](https://github.com/openai/codex/pull/21747) [login] revoke superseded auth tokens on relogin [@cooper-oai](https://github.com/cooper-oai)
+- [#20147](https://github.com/openai/codex/pull/20147) feat: add network proxy feature flag [@viyatb-oai](https://github.com/viyatb-oai)
+- [#21891](https://github.com/openai/codex/pull/21891) [1/8] Pin Python SDK runtime dependency [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21893](https://github.com/openai/codex/pull/21893) [2/8] Generate Python SDK types from pinned runtime [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21895](https://github.com/openai/codex/pull/21895) [3/8] Run Python SDK tests in CI [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21896](https://github.com/openai/codex/pull/21896) [4/8] Define Python SDK public API surface [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21905](https://github.com/openai/codex/pull/21905) [5/8] Rename Python SDK package to openai-codex [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#21910](https://github.com/openai/codex/pull/21910) [6/8] Add high-level Python SDK approval mode [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#22014](https://github.com/openai/codex/pull/22014) [7/8] Add Python SDK app-server integration harness [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#22021](https://github.com/openai/codex/pull/22021) [8/8] Add Python SDK Ruff formatting [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#18748](https://github.com/openai/codex/pull/18748) [codex-analytics] emit terminal review events [@rhan-oai](https://github.com/rhan-oai)
+- [#22159](https://github.com/openai/codex/pull/22159) Add Windows hook command overrides [@abhinav-oai](https://github.com/abhinav-oai)
+- [#22218](https://github.com/openai/codex/pull/22218) Update codex remote-control to start the daemon [@owenlin0](https://github.com/owenlin0)
+- [#22180](https://github.com/openai/codex/pull/22180) Stop uploading accepted line fingerprints [@alexsong-oai](https://github.com/alexsong-oai)
+- [#21617](https://github.com/openai/codex/pull/21617) Support multi-environment apply\_patch selection [@starr-openai](https://github.com/starr-openai)
+- [#22198](https://github.com/openai/codex/pull/22198) Add production startup and TTFT telemetry [@mzeng-openai](https://github.com/mzeng-openai)
+- [#21963](https://github.com/openai/codex/pull/21963) [exec-server] serve websocket listener via HTTP upgrade [@euroelessar](https://github.com/euroelessar)
+- [#21946](https://github.com/openai/codex/pull/21946) fix(tui): handle hidden app git directives [@fcoury-oai](https://github.com/fcoury-oai)
+- [#21595](https://github.com/openai/codex/pull/21595) Simplify MCP tool handler plumbing [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22221](https://github.com/openai/codex/pull/22221) feat(skills): default plugin creator to personal share flow [@efrazer-oai](https://github.com/efrazer-oai)
+- [#21861](https://github.com/openai/codex/pull/21861) Apply sandbox context to local view\_image reads [@starr-openai](https://github.com/starr-openai)
+- [#20527](https://github.com/openai/codex/pull/20527) Support PreToolUse updatedInput rewrites [@abhinav-oai](https://github.com/abhinav-oai)
+- [#22243](https://github.com/openai/codex/pull/22243) [codex] Filter legacy warning messages during compaction [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22254](https://github.com/openai/codex/pull/22254) [codex] Make handlers own parallel tool support [@pakrym-oai](https://github.com/pakrym-oai)
+- [#18202](https://github.com/openai/codex/pull/18202) feat(sandbox): add Windows deny-read parity [@viyatb-oai](https://github.com/viyatb-oai)
+- [#22265](https://github.com/openai/codex/pull/22265) feat: Normalize remote plugin summary identities. [@xl-openai](https://github.com/xl-openai)
+- [#22216](https://github.com/openai/codex/pull/22216) feat: guardian as an extension (contributors part) [@jif-oai](https://github.com/jif-oai)
+- [#22311](https://github.com/openai/codex/pull/22311) [rollout-trace] Add x-codex-inference-call-id header to inference calls. [@cassirer-openai](https://github.com/cassirer-openai)
+- [#21206](https://github.com/openai/codex/pull/21206) feat(tui): add ambient terminal pets [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22323](https://github.com/openai/codex/pull/22323) fix: uv lock [@jif-oai](https://github.com/jif-oai)
+- [#22207](https://github.com/openai/codex/pull/22207) [codex] Tighten unified exec sandbox setup [@bookholt-oai](https://github.com/bookholt-oai)
+- [#22382](https://github.com/openai/codex/pull/22382) tools: remove is\_mutating dispatch gating [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22383](https://github.com/openai/codex/pull/22383) chore(config) include\_collaboration\_mode\_instructions [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22377](https://github.com/openai/codex/pull/22377) code-mode: carry nested tool kind through runtime [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22392](https://github.com/openai/codex/pull/22392) test(tui): relax configured pet load timeout [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22343](https://github.com/openai/codex/pull/22343) feat(exec-server): use protobuf relay frames [@apanasenko-oai](https://github.com/apanasenko-oai)
+- [#20509](https://github.com/openai/codex/pull/20509) [codex] Remove workspace owner usage nudge gate [@richardopenai](https://github.com/richardopenai)
+- [#22256](https://github.com/openai/codex/pull/22256) Refactor namespaced tool spec registration [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22280](https://github.com/openai/codex/pull/22280) code-mode: Add pending-aware code mode execution [@cconger](https://github.com/cconger)
+- [#22266](https://github.com/openai/codex/pull/22266) core: box multi-agent handler futures [@bolinfest](https://github.com/bolinfest)
+- [#22398](https://github.com/openai/codex/pull/22398) [codex] Add search term coverage for tool\_search [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22236](https://github.com/openai/codex/pull/22236) Unify thread metadata updates above store [@wiltzius-openai](https://github.com/wiltzius-openai)
+- [#22269](https://github.com/openai/codex/pull/22269) Refactor chatwidget state into modules [@etraut-openai](https://github.com/etraut-openai)
+- [#22381](https://github.com/openai/codex/pull/22381) [codex] Remove tool search bucket limit override [@sayan-oai](https://github.com/sayan-oai)
+- [#22386](https://github.com/openai/codex/pull/22386) mark Feature::RemoteControl as removed [@owenlin0](https://github.com/owenlin0)
+- [#22240](https://github.com/openai/codex/pull/22240) docs(skills): simplify plugin creator deeplink shape [@efrazer-oai](https://github.com/efrazer-oai)
+- [#22397](https://github.com/openai/codex/pull/22397) feat: Expose plugin versions and gate plugin sharing [@xl-openai](https://github.com/xl-openai)
+- [#22404](https://github.com/openai/codex/pull/22404) Restore app-server websocket listener with auth guard [@etraut-openai](https://github.com/etraut-openai)
+- [#22258](https://github.com/openai/codex/pull/22258) feat: route guardian review model selection through providers [@celia-oai](https://github.com/celia-oai)
+- [#22268](https://github.com/openai/codex/pull/22268) hooks: use new session IDs instead of thread IDs for hooks, apply parent's session ID to subagents' hooks [@eternal-openai](https://github.com/eternal-openai)
+- [#20319](https://github.com/openai/codex/pull/20319) Add allow\_managed\_hooks\_only hook requirement [@eternal-openai](https://github.com/eternal-openai)
+- [#22413](https://github.com/openai/codex/pull/22413) Remove CODEX\_RS\_SSE\_FIXTURE test hook [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22406](https://github.com/openai/codex/pull/22406) tools: infer code-mode namespace descriptions from specs [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22261](https://github.com/openai/codex/pull/22261) Encapsulate tool search entries in handlers [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22425](https://github.com/openai/codex/pull/22425) feat: Split shared workspace plugins by discoverability [@xl-openai](https://github.com/xl-openai)
+- [#22414](https://github.com/openai/codex/pull/22414) Add support for UDS in `codex --remote` [@etraut-openai](https://github.com/etraut-openai)
+- [#22407](https://github.com/openai/codex/pull/22407) Refactor chatwidget input flow into modules [@etraut-openai](https://github.com/etraut-openai)
+- [#22439](https://github.com/openai/codex/pull/22439) Remove unavailable MCP placeholder tool backfill [@sayan-oai](https://github.com/sayan-oai)
+- [#21969](https://github.com/openai/codex/pull/21969) Use root repo hooks in linked worktrees [@abhinav-oai](https://github.com/abhinav-oai)
+- [#21768](https://github.com/openai/codex/pull/21768) add --dangerously-bypass-hook-trust CLI flag [@abhinav-oai](https://github.com/abhinav-oai)
+- [#22435](https://github.com/openai/codex/pull/22435) feat: Add plugin share checkout [@xl-openai](https://github.com/xl-openai)
+- [#22355](https://github.com/openai/codex/pull/22355) chore: Keep view\_image sandbox test in temp dir [@jif-oai](https://github.com/jif-oai)
+- [#22344](https://github.com/openai/codex/pull/22344) extension-api: add approval review contributor flow [@jif-oai](https://github.com/jif-oai)
+- [#22359](https://github.com/openai/codex/pull/22359) feat: extract shared tool executor interface [@jif-oai](https://github.com/jif-oai)
+- [#22369](https://github.com/openai/codex/pull/22369) Refactor extension tools onto shared ToolExecutor [@jif-oai](https://github.com/jif-oai)
+- [#22338](https://github.com/openai/codex/pull/22338) [app-server] Gate login issuer override constant [@cassirer-openai](https://github.com/cassirer-openai)
+- [#22437](https://github.com/openai/codex/pull/22437) [codex] isolate plugin/list from config serialization queue [@xli-oai](https://github.com/xli-oai)
+- [#22476](https://github.com/openai/codex/pull/22476) feat: add thread lifecycle contributor hooks [@jif-oai](https://github.com/jif-oai)
+- [#22479](https://github.com/openai/codex/pull/22479) nit: codeowners [@jif-oai](https://github.com/jif-oai)
+- [#22480](https://github.com/openai/codex/pull/22480) feat: add turn lifecycle contributors [@jif-oai](https://github.com/jif-oai)
+- [#22482](https://github.com/openai/codex/pull/22482) fix: emit thread stop lifecycle on implicit shutdown [@jif-oai](https://github.com/jif-oai)
+- [#22485](https://github.com/openai/codex/pull/22485) feat: add token usage contributor hook [@jif-oai](https://github.com/jif-oai)
+- [#22443](https://github.com/openai/codex/pull/22443) Scope macOS signing secrets to release environment [@shijie-oai](https://github.com/shijie-oai)
+- [#22490](https://github.com/openai/codex/pull/22490) feat: move extension scope ids into ExtensionData [@jif-oai](https://github.com/jif-oai)
+- [#22491](https://github.com/openai/codex/pull/22491) Make context contributors async [@jif-oai](https://github.com/jif-oai)
+- [#22214](https://github.com/openai/codex/pull/22214) feat(tui): remove Zellij TUI workarounds [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22139](https://github.com/openai/codex/pull/22139) Add service tier overrides to spawned agents [@aibrahim-oai](https://github.com/aibrahim-oai)
+- [#22488](https://github.com/openai/codex/pull/22488) feat: add config-change extension contributor [@jif-oai](https://github.com/jif-oai)
+- [#22498](https://github.com/openai/codex/pull/22498) feat: memories ext [@jif-oai](https://github.com/jif-oai)
+- [#22503](https://github.com/openai/codex/pull/22503) fix: main [@jif-oai](https://github.com/jif-oai)
+- [#22347](https://github.com/openai/codex/pull/22347) feat(tui): standardize picker navigation keys [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22500](https://github.com/openai/codex/pull/22500) refactor: split memories extension crate modules [@jif-oai](https://github.com/jif-oai)
+- [#22433](https://github.com/openai/codex/pull/22433) Refactor chatwidget protocol flows into modules (phase 3) [@etraut-openai](https://github.com/etraut-openai)
+- [#22505](https://github.com/openai/codex/pull/22505) fix: prevent fmt from updating Python SDK lockfile [@jif-oai](https://github.com/jif-oai)
+- [#22326](https://github.com/openai/codex/pull/22326) [rollout-trace] Add a trace ID to MCP calls. [@cassirer-openai](https://github.com/cassirer-openai)
+- [#20559](https://github.com/openai/codex/pull/20559) config: add strict config parsing [@bolinfest](https://github.com/bolinfest)
+- [#22489](https://github.com/openai/codex/pull/22489) Introduce tool exposure for deferred registration [@jif-oai](https://github.com/jif-oai)
+- [#22193](https://github.com/openai/codex/pull/22193) fix: drop underscored id headers [@jif-oai](https://github.com/jif-oai)
+- [#22246](https://github.com/openai/codex/pull/22246) [codex] Remove unused legacy shell tools [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22520](https://github.com/openai/codex/pull/22520) revert: mark Feature::RemoteControl as removed [@owenlin0](https://github.com/owenlin0)
+- [#22513](https://github.com/openai/codex/pull/22513) Revert "Scope macOS signing secrets to release environment" [@shijie-oai](https://github.com/shijie-oai)
+- [#22514](https://github.com/openai/codex/pull/22514) feat: expose multi-agent v2 as model-only tools [@jif-oai](https://github.com/jif-oai)
+- [#22366](https://github.com/openai/codex/pull/22366) Pass Codex product SKU to ChatGPT backend [@ericning-o](https://github.com/ericning-o)
+- [#22519](https://github.com/openai/codex/pull/22519) Deprecate TurnContext cwd and resolve\_path [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22518](https://github.com/openai/codex/pull/22518) Refactor chatwidget settings surfaces into modules (phase 4) [@etraut-openai](https://github.com/etraut-openai)
+- [#21479](https://github.com/openai/codex/pull/21479) [codex] Scope Windows sandbox write-root capability SIDs [@adrianbravo-oai](https://github.com/adrianbravo-oai)
+- [#22353](https://github.com/openai/codex/pull/22353) windows-sandbox: fail elevated setup when firewall policy is ineffective [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#22527](https://github.com/openai/codex/pull/22527) [codex] Reuse Apps MCP path override for plugin-service rollout [@adaley-openai](https://github.com/adaley-openai)
+- [#22412](https://github.com/openai/codex/pull/22412) chore(config) rm Feature::CodexGitCommit [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22501](https://github.com/openai/codex/pull/22501) chore(config) rm tools.view\_image [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22533](https://github.com/openai/codex/pull/22533) fix: prevent codex-backend from stealing originator [@owenlin0](https://github.com/owenlin0)
+- [#22408](https://github.com/openai/codex/pull/22408) Shard Bazel Windows tests across jobs [@starr-openai](https://github.com/starr-openai)
+- [#22542](https://github.com/openai/codex/pull/22542) Use selected environment cwd for filesystem helpers [@pakrym-oai](https://github.com/pakrym-oai)
+- [#20237](https://github.com/openai/codex/pull/20237) Add callback ids to local MCP OAuth redirects [@stevenlee-oai](https://github.com/stevenlee-oai)
+- [#22549](https://github.com/openai/codex/pull/22549) Enable plugin hooks by default [@abhinav-oai](https://github.com/abhinav-oai)
+- [#22375](https://github.com/openai/codex/pull/22375) Use plugin/list to get list of plugins for mentions [@canvrno-oai](https://github.com/canvrno-oai)
+- [#21235](https://github.com/openai/codex/pull/21235) [codex] Fix TUI wrapping for external borrowed slices [@canvrno-oai](https://github.com/canvrno-oai)
+- [#22336](https://github.com/openai/codex/pull/22336) feat(cli): add codex doctor diagnostics [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22543](https://github.com/openai/codex/pull/22543) clean up instructions [@sayan-oai](https://github.com/sayan-oai)
+- [#21400](https://github.com/openai/codex/pull/21400) Avoid PowerShell profiles in elevated Windows sandbox [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#22528](https://github.com/openai/codex/pull/22528) Make multi\_agent\_v2 wait\_agent timeouts configurable [@andmis](https://github.com/andmis)
+- [#22529](https://github.com/openai/codex/pull/22529) Spill oversized PreToolUse additionalContext [@abhinav-oai](https://github.com/abhinav-oai)
+- [#22556](https://github.com/openai/codex/pull/22556) feat: namespace in ext [@jif-oai](https://github.com/jif-oai)
+- [#22535](https://github.com/openai/codex/pull/22535) Remove resurrected `/collab` slash command [@etraut-openai](https://github.com/etraut-openai)
+- [#22537](https://github.com/openai/codex/pull/22537) Refactor chatwidget orchestration into modules (phase 5) [@etraut-openai](https://github.com/etraut-openai)
+- [#22564](https://github.com/openai/codex/pull/22564) [codex] Canonicalize shared workspace plugin IDs [@xl-openai](https://github.com/xl-openai)
+- [#22559](https://github.com/openai/codex/pull/22559) Add unsigned macOS release artifacts [@shijie-oai](https://github.com/shijie-oai)
+- [#22574](https://github.com/openai/codex/pull/22574) Deprecate issue labeler [@maxb-openai](https://github.com/maxb-openai)
+- [#22555](https://github.com/openai/codex/pull/22555) Remove connector\_openai prefix filtering [@ericning-o](https://github.com/ericning-o)
+- [#22580](https://github.com/openai/codex/pull/22580) fix: Block appserver startup if state db can't be opened [@ddr-oai](https://github.com/ddr-oai)
+- [#22565](https://github.com/openai/codex/pull/22565) chore(config) rm experimental\_use\_freeform\_apply\_patch [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22562](https://github.com/openai/codex/pull/22562) Improve remote-control daemon UX [@owenlin0](https://github.com/owenlin0)
+- [#22578](https://github.com/openai/codex/pull/22578) enable/disable remote control at runtime, not via features [@owenlin0](https://github.com/owenlin0)
+- [#22573](https://github.com/openai/codex/pull/22573) Simplify TUI startup test coverage [@etraut-openai](https://github.com/etraut-openai)
+- [#22594](https://github.com/openai/codex/pull/22594) Relax remote plugin sync gate [@xli-oai](https://github.com/xli-oai)
+- [#22587](https://github.com/openai/codex/pull/22587) Defer startup NUX impressions until startup succeeds [@etraut-openai](https://github.com/etraut-openai)
+- [#22560](https://github.com/openai/codex/pull/22560) feat: make ToolExecutor an async trait [@jif-oai](https://github.com/jif-oai)
+- [#22494](https://github.com/openai/codex/pull/22494) Wire turn item contributors into stream output [@jif-oai](https://github.com/jif-oai)
+- [#17141](https://github.com/openai/codex/pull/17141) feat: add layered --profile-v2 config files [@jif-oai](https://github.com/jif-oai)
+- [#22643](https://github.com/openai/codex/pull/22643) [codex] treat PowerShell stop-parsing forms as unsupported [@bookholt-oai](https://github.com/bookholt-oai)
+- [#22646](https://github.com/openai/codex/pull/22646) Fix abort-path turn extension data plumbing [@jif-oai](https://github.com/jif-oai)
+- [#22624](https://github.com/openai/codex/pull/22624) permissions: canonicalize workspace\_roots and danger-full-access names [@bolinfest](https://github.com/bolinfest)
+- [#22649](https://github.com/openai/codex/pull/22649) Chore: better published unsigned artifacts [@shijie-oai](https://github.com/shijie-oai)
+- [#22581](https://github.com/openai/codex/pull/22581) tui: split composer attachment and popup state [@etraut-openai](https://github.com/etraut-openai)
+- [#21396](https://github.com/openai/codex/pull/21396) [codex] add plugin marketplace CLI commands [@caseychow-oai](https://github.com/caseychow-oai)
+- [#22576](https://github.com/openai/codex/pull/22576) tests: avoid ambient temp sandbox roots [@starr-openai](https://github.com/starr-openai)
+- [#22652](https://github.com/openai/codex/pull/22652) [codex] Ignore fsmonitor config in Git metadata reads [@bookholt-oai](https://github.com/bookholt-oai)
+- [#22229](https://github.com/openai/codex/pull/22229) fix(tui): render network approval history by target [@fcoury-oai](https://github.com/fcoury-oai)
+- [#22547](https://github.com/openai/codex/pull/22547) Prefer the model list fetched from the backend for SIWC users [@jeevnayak](https://github.com/jeevnayak)
+- [#22666](https://github.com/openai/codex/pull/22666) [codex] fix plugin CLI active user layer compile [@caseychow-oai](https://github.com/caseychow-oai)
+- [#22575](https://github.com/openai/codex/pull/22575) Support explicit MCP OAuth client IDs [@mzeng-openai](https://github.com/mzeng-openai)
+- [#22512](https://github.com/openai/codex/pull/22512) test: isolate exec review policy config test [@bolinfest](https://github.com/bolinfest)
+- [#22572](https://github.com/openai/codex/pull/22572) Fix remote environment test fixtures [@starr-openai](https://github.com/starr-openai)
+- [#22563](https://github.com/openai/codex/pull/22563) tests: isolate codex home for live cli [@starr-openai](https://github.com/starr-openai)
+- [#18161](https://github.com/openai/codex/pull/18161) [codex] Support multiple forced ChatGPT workspaces [@rreichel3-oai](https://github.com/rreichel3-oai)
+- [#22702](https://github.com/openai/codex/pull/22702) make rust-release-prepare use env secret [@sayan-oai](https://github.com/sayan-oai)
+- [#22703](https://github.com/openai/codex/pull/22703) Unqueue plugin list and read requests [@xli-oai](https://github.com/xli-oai)
+- [#22687](https://github.com/openai/codex/pull/22687) Fix Windows sandbox clippy clones [@starr-openai](https://github.com/starr-openai)
+- [#22711](https://github.com/openai/codex/pull/22711) chore(features) rm Feature::ApplyPatchFreeform [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22717](https://github.com/openai/codex/pull/22717) chore(config) rm windows\_wsl\_setup\_acknowledged [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22695](https://github.com/openai/codex/pull/22695) Trim TUI legacy core helper usage [@etraut-openai](https://github.com/etraut-openai)
+- [#21624](https://github.com/openai/codex/pull/21624) Fix /review mode MCP startup render issue [@canvrno-oai](https://github.com/canvrno-oai)
+- [#22684](https://github.com/openai/codex/pull/22684) Remove SSE fixture loaders [@pakrym-oai](https://github.com/pakrym-oai)
+- [#22730](https://github.com/openai/codex/pull/22730) [codex] Group removed feature flags [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22724](https://github.com/openai/codex/pull/22724) [codex] Remove experimental instructions file config [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22237](https://github.com/openai/codex/pull/22237) Add `user_input_requested_during_turn` to MCP turn metadata [@mchen-oai](https://github.com/mchen-oai)
+- [#22737](https://github.com/openai/codex/pull/22737) ci: support signed macOS release promotion [@bolinfest](https://github.com/bolinfest)
+- [#22303](https://github.com/openai/codex/pull/22303) Stabilize compact rollback follow-up test [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
+- [#22683](https://github.com/openai/codex/pull/22683) permissions: resolve profile identity with constraints [@bolinfest](https://github.com/bolinfest)
+- [#22734](https://github.com/openai/codex/pull/22734) tui: recover local state db startup failures [@etraut-openai](https://github.com/etraut-openai)
+- [#22584](https://github.com/openai/codex/pull/22584) [codex] Add opaque desktop config namespace [@guinness-oai](https://github.com/guinness-oai)
+- [#22710](https://github.com/openai/codex/pull/22710) Prevent Esc from dismissing or rewinding `/side` [@etraut-openai](https://github.com/etraut-openai)
+- [#22704](https://github.com/openai/codex/pull/22704) TUI: split history cells into focused modules [@etraut-openai](https://github.com/etraut-openai)
+- [#22611](https://github.com/openai/codex/pull/22611) app-server: use permission ids and runtime workspace roots [@bolinfest](https://github.com/bolinfest)
+- [#22612](https://github.com/openai/codex/pull/22612) tui/exec: show effective workspace roots in summaries [@bolinfest](https://github.com/bolinfest)
+- [#22788](https://github.com/openai/codex/pull/22788) Fix signed macOS release promotion follow-up jobs [@shijie-oai](https://github.com/shijie-oai)
+- [#22647](https://github.com/openai/codex/pull/22647) Reject legacy [profiles] when using profile-v2 [@jif-oai](https://github.com/jif-oai)
+- [#22809](https://github.com/openai/codex/pull/22809) [codex] Use compaction\_trigger item for remote compaction v2 [@jif-oai](https://github.com/jif-oai)
+- [#22636](https://github.com/openai/codex/pull/22636) Simplify tool executor and registry plumbing [@jif-oai](https://github.com/jif-oai)
+- [#22820](https://github.com/openai/codex/pull/22820) Remove zombie tools spec module [@jif-oai](https://github.com/jif-oai)
+- [#22828](https://github.com/openai/codex/pull/22828) Run compact hooks for remote compaction v2 [@jif-oai](https://github.com/jif-oai)
+- [#22841](https://github.com/openai/codex/pull/22841) Move memory prompt injection to app-server extension [@jif-oai](https://github.com/jif-oai)
+- [#22789](https://github.com/openai/codex/pull/22789) guardian: use permission profile for review sandbox [@bolinfest](https://github.com/bolinfest)
+- [#22656](https://github.com/openai/codex/pull/22656) tui: split remaining composer draft and footer state [@etraut-openai](https://github.com/etraut-openai)
+- [#22843](https://github.com/openai/codex/pull/22843) Ignore configured hooks in git helpers [@bookholt-oai](https://github.com/bookholt-oai)
+- [#22790](https://github.com/openai/codex/pull/22790) context: remove legacy permissions instructions helper [@bolinfest](https://github.com/bolinfest)
+- [#22791](https://github.com/openai/codex/pull/22791) telemetry: tag sandboxes from permission profiles [@bolinfest](https://github.com/bolinfest)
+- [#22872](https://github.com/openai/codex/pull/22872) Forward apps MCP product SKU from Codex config [@kumquatexpress](https://github.com/kumquatexpress)
+- [#22582](https://github.com/openai/codex/pull/22582) Workflow updates [@viyatb-oai](https://github.com/viyatb-oai)
+- [#22792](https://github.com/openai/codex/pull/22792) app-server: stop returning thread permission profiles [@bolinfest](https://github.com/bolinfest)
+- [#22795](https://github.com/openai/codex/pull/22795) core: construct test permission profiles directly [@bolinfest](https://github.com/bolinfest)
+- [#22900](https://github.com/openai/codex/pull/22900) Disable DMG staging for signed macOS promotion [@shijie-oai](https://github.com/shijie-oai)
+- [#22877](https://github.com/openai/codex/pull/22877) feat(app-server): update remote control APIs for better UX [@owenlin0](https://github.com/owenlin0)
+- [#22899](https://github.com/openai/codex/pull/22899) [codex] Soften SQLite metadata sync failures [@wiltzius-openai](https://github.com/wiltzius-openai)
 
-The [**artifact viewer**](/codex/app/features#artifact-viewer) can preview
-generated files such as PDF files, spreadsheets, documents, and presentations in
-the sidebar before you commit or share them. [**Memories**](/codex/memories),
-where available, can also carry useful context from past tasks into future
-threads, including stable preferences, project conventions, and recurring work
-patterns.
-
-#### Other features
-
-- [Remote connections](/codex/remote-connections) - We are gradually rolling out SSH remote connections in alpha
-- Support for [multiple terminals](/codex/app/features#integrated-terminal)
-- macOS menu bar and [Windows system tray](/codex/app/windows) support
-- [Multi-window support](/codex/app/features#floating-pop-out-window)
-- [Intel Mac support](/codex/app)
-- [New plugins](/codex/plugins)
-- Improved thread and tool rendering
+[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.131.0)
 
