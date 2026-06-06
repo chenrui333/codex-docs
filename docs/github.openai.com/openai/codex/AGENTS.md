@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
-source_etag: 'W/"87320c7defc30509a2f4c6a4c25b0001e9271f1cc07f87ee21a1a2a56258e5f9"'
+source_etag: 'W/"a7a03aa0911b849ce57cdc334b544584bb03be634efea97a2d1f22415f34c4ea"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -200,6 +200,12 @@ When UI or text output changes intentionally, update the snapshots as follows:
 If you don’t have the tool:
 
 - `cargo install --locked cargo-insta`
+
+### Benchmarks
+
+cargo benchmarks can be run with `just bench`, use the divan crate to write new ones.
+
+Use `just bench-smoke` to dry-run the benchmark for a single iteration to ensure it works.
 
 ### Test assertions
 
