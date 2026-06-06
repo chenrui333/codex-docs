@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/windows'
-source_last_modified: '2026-05-26T18:40:53Z'
-source_etag: 'W/"c98f8b1690749e8dd8f48c7068473324"'
+source_last_modified: '2026-06-05T20:43:51Z'
+source_etag: 'W/"2185941e04a9d0fe6d3149e6f946a78d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -60,6 +60,20 @@ enterprise policy.
 If both modes are available, use `elevated`. If the default native sandbox
 doesn’t work in your environment, use `unelevated` as a fallback while you
 troubleshoot the setup.
+
+Enterprise administrators can constrain which native sandbox implementations
+Codex can use through [`requirements.toml`](/codex/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml):
+
+```
+[windows]
+allowed_sandbox_implementations = ["elevated"]
+```
+
+This example requires the `elevated` sandbox and prevents users from falling
+back to `unelevated`. To permit either implementation, include both values;
+Codex prefers `elevated` when no mode is selected. See the
+[`requirements.toml` reference](/codex/config-reference#requirementstoml) for
+the supported values.
 
 By default, both sandbox modes also use a private desktop for stronger UI
 isolation. Set `windows.sandbox_private_desktop = false` only if you need the

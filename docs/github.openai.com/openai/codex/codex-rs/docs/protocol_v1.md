@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md'
-source_etag: 'W/"abd8253e1a396937fa4daafaeb4fce5a6d9b9b98c121a870bc49393be5bdd519"'
+source_etag: 'W/"f2f99859b8dbe6411940e979dcba0b450385d8891d53e193551801a44a848141"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -63,6 +63,7 @@ Since only 1 `Task` can be run at a time, for parallel tasks it is recommended t
   - These are messages sent on the `SQ` (UI -> `Codex`)
   - Has an string ID provided by the UI, referred to as `sub_id`
   - `Op` refers to the enum of all possible `Submission` payloads
+  - In the current codebase these are primarily in-process Rust types rather than a stable serde wire contract
     - This enum is `non_exhaustive`; variants can be added at future dates
 - `Event`
   - These are messages sent on the `EQ` (`Codex` -> UI)
@@ -112,7 +113,7 @@ The `response_id` returned from each turn matches the OpenAI `response_id` store
 
 Can operate over any transport that supports bi-directional streaming. - cross-thread channels - IPC channels - stdin/stdout - TCP - HTTP2 - gRPC
 
-Non-framed transports, such as stdin/stdout and TCP, should use newline-delimited JSON in sending messages.
+Events still serialize cleanly to newline-delimited JSON for non-framed transports, such as stdin/stdout and TCP. Submission payloads should be treated as implementation details unless a specific transport owns an explicit adapter.
 
 ## Example Flows
 

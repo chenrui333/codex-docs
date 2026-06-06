@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-06-01T23:19:49Z'
-source_etag: 'W/"649f4ed0badeb7d5bf39312f5b23aecc"'
+source_last_modified: '2026-06-05T20:41:44Z'
+source_etag: 'W/"026f7f70a4530eccc9f738b2719828a1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
 ---
@@ -3341,6 +3341,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `rules.prefix_rules[].pattern` | `array<table>` | Command prefix expressed as pattern tokens. Each token sets either `token` or `any_of`. |
 | `rules.prefix_rules[].pattern[].any_of` | `array<string>` | A list of allowed alternative tokens at this position. |
 | `rules.prefix_rules[].pattern[].token` | `string` | A single literal token at this position. |
+| `windows.allowed_sandbox_implementations` | `array<string>` | Allowed native Windows sandbox implementations for `windows.sandbox` (`elevated` and `unelevated`). The list must not be empty. When both are allowed and no mode is selected, Codex prefers `elevated`. |
 
 Key
 
@@ -3893,6 +3894,18 @@ Type / Values
 Details
 
 A single literal token at this position.
+
+Key
+
+`windows.allowed_sandbox_implementations`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Allowed native Windows sandbox implementations for `windows.sandbox` (`elevated` and `unelevated`). The list must not be empty. When both are allowed and no mode is selected, Codex prefers `elevated`.
 
 Expand to view all
 

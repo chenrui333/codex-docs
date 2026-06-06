@@ -1147,10 +1147,10 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "a6b1c5dbe1cd21db74062b3e801d92a5949678f00314a26a7fa160a65713181c",
+      "sha256": "e21fbac57562652d41b47a0443290b7dc0cb69048fa21f86991cc552ef57d809",
       "source_area": "codex_cli_docs",
-      "source_etag": "W/\"649f4ed0badeb7d5bf39312f5b23aecc\"",
-      "source_last_modified": "2026-06-01T23:19:49Z",
+      "source_etag": "W/\"026f7f70a4530eccc9f738b2719828a1\"",
+      "source_last_modified": "2026-06-05T20:41:44Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/config-reference"
     },
@@ -2577,10 +2577,10 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "4229504ba564fcdfaf39c30d3286c7ba910aca9b875e4e6b245b4f70edcd905a",
+      "sha256": "0e575353ec9a55dea79ec684a16dcbca73f204cd1d6db18c28b6d516d8f4124e",
       "source_area": "codex_security",
-      "source_etag": "W/\"d6dd0c4ded107826fd399c1cd85131b1\"",
-      "source_last_modified": "2026-06-05T17:08:03Z",
+      "source_etag": "W/\"c6e67a0c4bca842445eaf95816402c26\"",
+      "source_last_modified": "2026-06-05T21:57:23Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -5137,10 +5137,10 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "86d3454b818ad26400ed8cbee2556a28f89b4850c6c822d80df0a766d9f5a426",
+      "sha256": "1b2ba65c54ffceeaa2f5fd27c3b1fedcdf5fb9056d124fe688b5db1aa35e2615",
       "source_area": "codex_app",
-      "source_etag": "W/\"c98f8b1690749e8dd8f48c7068473324\"",
-      "source_last_modified": "2026-05-26T18:40:53Z",
+      "source_etag": "W/\"2185941e04a9d0fe6d3149e6f946a78d\"",
+      "source_last_modified": "2026-06-05T20:43:51Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/windows"
     },
@@ -6859,9 +6859,9 @@
         "codex-cli 0.136.0",
         "codex-cli 0.137.0"
       ],
-      "sha256": "5795e4f20588f9560ece5ebfb117c50ba3490b92ffc5922fa0902c6d028cf832",
+      "sha256": "fc15cad11da19c4882f580d69cb1ce2121c4b36912d667a3014a1c2a16d25369",
       "source_area": "github_rust",
-      "source_etag": "W/\"abd8253e1a396937fa4daafaeb4fce5a6d9b9b98c121a870bc49393be5bdd519\"",
+      "source_etag": "W/\"f2f99859b8dbe6411940e979dcba0b450385d8891d53e193551801a44a848141\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md"
     },
