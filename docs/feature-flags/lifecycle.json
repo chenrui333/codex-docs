@@ -759,6 +759,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "experimental"
     },
+    "terminal_visualization_instructions": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "tool_call_mcp_elicitation": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -821,8 +825,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "df9f746ca4db1fbad450780d7f851f5082a276b58e0f6062bab30e8c0892ed9c",
-    "features_rs_sha256": "dcd87552a82c5e2ad5496c46b704de56dc5ce35d3879f197320a4ca7f8285a13"
+    "client_rs_sha256": "287b0aaf9a535f26eee34a523c9f38c28fe1aac4f90a04722a623ad71c374cf4",
+    "features_rs_sha256": "a50ba77eedb418a48685ca073a03612d08775f0bedf552ea5a3835f85c87f71c"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
