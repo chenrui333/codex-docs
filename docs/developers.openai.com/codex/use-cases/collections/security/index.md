@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/security'
 source_last_modified: '2026-06-05T10:18:50Z'
 source_etag: 'W/"80dc46923663c8cf8590992dc0d6e656"'
-codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0"]
-codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0"]
+codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
+codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
 
 # Security – Codex | OpenAI Developers
