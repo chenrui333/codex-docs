@@ -262,11 +262,6 @@
     },
     {
       "enabled": false,
-      "key": "responses_websocket_response_processed",
-      "stage": "under development"
-    },
-    {
-      "enabled": false,
       "key": "responses_websockets",
       "stage": "removed"
     },
@@ -329,6 +324,11 @@
       "enabled": true,
       "key": "terminal_resize_reflow",
       "stage": "experimental"
+    },
+    {
+      "enabled": false,
+      "key": "terminal_visualization_instructions",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -406,7 +406,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.137.0",
+  "codex_cli_version": "codex-cli 0.138.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -448,7 +448,6 @@
       "remote_plugin",
       "request_permissions_tool",
       "request_rule",
-      "responses_websocket_response_processed",
       "responses_websockets",
       "responses_websockets_v2",
       "runtime_metrics",
@@ -459,6 +458,7 @@
       "standalone_web_search",
       "steer",
       "terminal_resize_reflow",
+      "terminal_visualization_instructions",
       "tool_call_mcp_elicitation",
       "tool_search",
       "tool_search_always_defer_mcp_tools",
@@ -825,7 +825,7 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "287b0aaf9a535f26eee34a523c9f38c28fe1aac4f90a04722a623ad71c374cf4",
+    "client_rs_sha256": "97fecdce53912124ecb4ecbb4789b5ac8ba4c24413a8e0ec22e8e465cec0a1ce",
     "features_rs_sha256": "a50ba77eedb418a48685ca073a03612d08775f0bedf552ea5a3835f85c87f71c"
   },
   "source_urls": {
