@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_permissions'
 source_url: 'https://developers.openai.com/codex/permissions'
-source_last_modified: '2026-06-05T05:21:32Z'
-source_etag: 'W/"872b621c66be631c41df8fca701cbc66"'
+source_last_modified: '2026-06-09T06:23:43Z'
+source_etag: 'W/"ed3ed2d68f39ac48b77648de64eb47d0"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -17,9 +17,16 @@ Beta. Permission profiles are under active development and may change.
 Permission profiles do not compose with the older sandbox settings. Configure
 either `default_permissions` and `[permissions]`, or `sandbox_mode` /
 `sandbox_workspace_write`, but not both. If `sandbox_mode` appears in any
-active config layer, you pass `--sandbox`, or a config profile sets
+loaded config file, you pass `--sandbox`, or the selected config profile sets
 `sandbox_mode`, Codex uses those older sandbox settings instead of
 `default_permissions`.
+
+Managed `allowed_permission_profiles` is the exception: it makes Codex use
+permission profiles. Remove older settings such as
+`sandbox_mode` and `[sandbox_workspace_write]` before deploying a managed
+profile allowlist. For a mixed-version enterprise rollout, you can keep the
+managed `allowed_sandbox_modes` requirement as a temporary compatibility
+constraint until every client runs Codex 0.138.0 or later.
 
 Permission profiles let you apply least-privilege boundaries to local commands
 Codex runs on your behalf. A profile is a named policy that combines filesystem
@@ -50,6 +57,13 @@ Create a named profile under `[permissions.<name>]`, then set the top-level
 `default_permissions` key to that profile name or to one of the built-ins above.
 In this example, `project-edit` is a user-defined profile name, not a built-in
 value.
+
+Enterprise administrators can define profiles and restrict which profiles
+users may select through managed `requirements.toml`. Once
+`allowed_permission_profiles` is present, omitted profiles are denied,
+including omitted built-ins and profiles added in future Codex versions. See
+[Control available permission profiles](/codex/enterprise/managed-configuration#control-available-permission-profiles)
+for the recommended managed configuration.
 
 Custom profiles use two related concepts:
 
@@ -156,8 +170,8 @@ cycles.
 
 | Entry | Type / values | Default | Details |
 | --- | --- | --- | --- |
-| `default_permissions` | String profile name | None | Names the permissions profile Codex applies by default. The value must match a profile under `[permissions]` or a built-in profile such as `:workspace`. Required when permission profiles are active. If an older sandbox setting is active, Codex uses those older sandbox settings instead. |
-| `[permissions.<name>]` | Table | None | Defines a profile and its identifier. `default_permissions` selects one profile as the default; other permission-profile selectors also use the profile name. |
+| `default_permissions` | String profile name | None | Names the permissions profile Codex applies by default. It must match a profile under `[permissions]` or a built-in such as `:workspace`. Set it explicitly for predictable behavior; managed requirements may omit it only when both `:workspace` and `:read-only` are explicitly allowed. Codex uses older sandbox settings unless managed `allowed_permission_profiles` tells it to use permission profiles in this setup. |
+| `[permissions.<name>]` | Table | None | Defines a named profile. `default_permissions` selects one profile as the default; other permission-profile settings also use the profile name. |
 | `permissions.<name>.description` | String | None | Provides a human-readable description for the profile. A profile does not inherit its parent’s description through `extends`. |
 | `permissions.<name>.extends` | String profile name | None | Starts this profile from another named profile or the built-in `:read-only` or `:workspace` profile. Codex rejects `:danger-full-access`, unknown parents, and inheritance cycles. |
 | `[permissions.<name>.workspace_roots]` | Table | None | Adds profile-defined workspace roots that receive `:workspace_roots` filesystem rules alongside the current session’s runtime workspace roots. |

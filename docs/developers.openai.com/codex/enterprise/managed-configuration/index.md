@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-05-26T18:41:31Z'
-source_etag: 'W/"8608f0e6a546c7031ac73d0247299933"'
+source_last_modified: '2026-06-09T06:25:02Z'
+source_etag: 'W/"402ac5345bba5f141d783b3cc82e02af"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -19,21 +19,33 @@ Enterprise admins can control local Codex behavior in two ways:
 
 ## Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, web search mode, managed hooks, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, [profile files](/codex/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
+Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, permission profiles, web search mode, managed hooks, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, [profile files](/codex/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
 
 Requirements can also constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren’t always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
+
+For Codex 0.138.0 or later, prefer [permission profiles](/codex/permissions)
+with `allowed_permission_profiles` and managed `default_permissions`. Use
+`allowed_sandbox_modes` only for legacy deployments that still configure
+`sandbox_mode`.
 
 For the exact key list, see the [`requirements.toml` section in Configuration Reference](/codex/config-reference#requirementstoml).
 
 ### Locations and precedence
 
-Codex applies requirements layers in this order (earlier wins per field):
+Codex checks requirement sources in this order. If the same setting appears more
+than once, the first value wins:
 
 1. Cloud-managed requirements (ChatGPT Business or Enterprise)
 2. macOS managed preferences (MDM) via `com.openai.codex:requirements_toml_base64`
 3. System `requirements.toml` (`/etc/codex/requirements.toml` on Unix systems, including Linux/macOS, or `%ProgramData%\OpenAI\Codex\requirements.toml` on Windows)
 
-Across layers, Codex merges requirements per field: if an earlier layer sets a field (including an empty list), later layers don’t override that field, but lower layers can still fill fields that remain unset.
+Codex checks these sources from top to bottom. For ordinary settings and lists,
+it uses the first value it finds. A later source can still provide a setting
+that earlier sources leave unset.
+
+Tables combine one entry at a time. For `allowed_permission_profiles`, a later
+source can add profile names that earlier sources don’t mention. If two sources
+set the same profile name, the earlier source wins.
 
 For backwards compatibility, Codex also interprets legacy `managed_config.toml` fields `approval_policy` and `sandbox_mode` as requirements (allowing only that single value).
 
@@ -83,6 +95,121 @@ This example blocks `--ask-for-approval never` and `--sandbox danger-full-access
 allowed_approval_policies = ["untrusted", "on-request"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 ```
+
+### Control available permission profiles
+
+Use `allowed_permission_profiles` to control which built-in and custom
+[permission profiles](/codex/permissions) users can select. This is the
+permission-profile equivalent of `allowed_sandbox_modes`; use the allowlist that
+matches how your users select permissions.
+
+Permission-profile allowlists require Codex 0.138.0 or later. Codex 0.137.0 and
+earlier ignore `allowed_permission_profiles` and managed
+`default_permissions`.
+
+Use the permission-profile examples below only after every managed client runs a
+supporting release. Don’t deploy managed custom profiles until the fleet upgrade
+is complete.
+
+When the table is present, it is the complete list of allowed profiles. Profiles
+set to `true` are allowed. Profiles that are omitted or set to `false` are
+denied, including built-ins added in future Codex versions.
+
+#### Allow the standard profiles
+
+This policy allows read-only and workspace access, but not full access:
+
+```
+default_permissions = ":workspace"
+
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true
+# ":danger-full-access" is omitted, so it is denied.
+```
+
+#### Add a managed least-privilege default
+
+Admins can define a custom profile in the same requirements source. Use
+organization-specific profile names that won’t collide with names in users’
+loaded config. Custom names can’t start with `:` or use the reserved `filesystem`
+name.
+
+Don’t deploy managed custom profiles to clients running Codex 0.137.0 or
+earlier. Those clients recognize the profile table but not the managed default
+that selects it.
+
+For example:
+
+```
+default_permissions = "acme_review_only"
+
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true
+acme_review_only = true
+# ":danger-full-access" is intentionally omitted, so it is denied.
+
+[permissions.acme_review_only]
+description = "Review code without modifying the workspace."
+extends = ":read-only"
+```
+
+#### Allow only enterprise-defined profiles
+
+Omit all built-ins when users should select only admin-defined profiles:
+
+```
+default_permissions = "acme_workspace"
+
+[allowed_permission_profiles]
+acme_workspace = true
+
+[permissions.acme_workspace]
+description = "Workspace access with sensitive files denied."
+extends = ":workspace"
+
+[permissions.acme_workspace.filesystem]
+glob_scan_max_depth = 3
+
+[permissions.acme_workspace.filesystem.":workspace_roots"]
+"**/*.env" = "deny"
+```
+
+The custom profile can extend `:workspace` even though users can’t select the
+built-in `:workspace` profile directly.
+
+#### Turn off a profile allowed by another source
+
+Permission allowlists combine by profile name. Because Codex checks cloud
+requirements before system requirements, cloud requirements can use `false` to
+turn off a profile allowed by the system file.
+
+Cloud requirements:
+
+```
+default_permissions = ":read-only"
+
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = false
+```
+
+System requirements:
+
+```
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true  # Not honored because cloud requirements set this to false.
+```
+
+Set `default_permissions` explicitly to an allowed profile. If it is omitted,
+Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are
+explicitly allowed. When `allowed_permission_profiles` is absent, managed
+requirements don’t restrict which profile names users can select. Every entry
+must name a built-in profile or a custom profile defined in a loaded config or
+requirements source. Define custom profiles in managed requirements when their
+behavior should be controlled centrally.
 
 ### Override sandbox requirements by host
 
@@ -219,10 +346,10 @@ deny_read = [
 ]
 ```
 
-When deny-read requirements are present, Codex constrains local sandbox mode to
-`read-only` or `workspace-write` so Codex can enforce them. On native
-Windows, managed `deny_read` applies to direct file tools; shell subprocess
-reads don’t use this sandbox rule.
+When deny-read requirements are present, Codex rejects full-access permissions
+and keeps local execution in a read-only or workspace sandbox so it can enforce
+them. On native Windows, managed `deny_read` applies to direct file tools; shell
+subprocess reads don’t use this sandbox rule.
 
 ### Enforce managed hooks from requirements
 

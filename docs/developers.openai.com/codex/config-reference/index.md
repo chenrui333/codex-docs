@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-06-05T20:41:44Z'
-source_etag: 'W/"026f7f70a4530eccc9f738b2719828a1"'
+source_last_modified: '2026-06-09T06:23:20Z'
+source_etag: 'W/"937651dbd3a17e484d14f374781c5bdd"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -3293,13 +3293,24 @@ requirements. See the security page for precedence details.
 Use `[features]` in `requirements.toml` to pin feature flags by the same
 canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 
+Managed permission-profile allowlists require Codex 0.138.0 or later. Codex
+0.137.0 and earlier ignore `allowed_permission_profiles` and managed
+`default_permissions`.
+
+Use `allowed_sandbox_modes` with `sandbox_mode`. For permission-profile
+deployments, use `allowed_permission_profiles` with managed
+`default_permissions`.
+
 | Key | Type / Values | Details |
 | --- | --- | --- |
 | `allow_managed_hooks_only` | `boolean` | When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers. |
 | `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`). |
 | `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
+| `allowed_permission_profiles` | `table<boolean>` | Complete list of allowed permission profiles. Profiles set to `true` are allowed. Profiles that are omitted or set to `false` are denied, including profiles added in future versions. When requirements sources are combined, entries are matched by profile name. |
+| `allowed_permission_profiles.<name>` | `boolean` | Allow or deny a built-in or custom permission profile defined in a loaded config or requirements source. An earlier requirements source can use `false` to turn off a profile allowed by a later source. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `default_permissions` | `string` | Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed. |
 | `experimental_network` | `table` | Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag. |
 | `experimental_network.allow_local_binding` | `boolean` | Permit broader local/private-network access for sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`. |
 | `experimental_network.allow_upstream_proxy` | `boolean` | Allow sandboxed networking to chain through an upstream proxy from the environment. |
@@ -3329,6 +3340,7 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
 | `mcp_servers.<id>.identity` | `table` | Identity rule for a single MCP server. Set either `command` (stdio) or `url` (streamable HTTP). |
 | `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command. |
 | `mcp_servers.<id>.identity.url` | `string` | Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL. |
+| `permissions.<name>` | `table` | Admin-defined permission profile. The name can't start with `:`, use the reserved name `filesystem`, or duplicate a profile from a loaded config. Uses the same profile fields as `config.toml`; see the Permissions guide for the complete profile schema. |
 | `permissions.filesystem.deny_read` | `array<string>` | Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config. |
 | `plugin_sharing` | `boolean` | Set to `false` in cloud-managed `requirements.toml` to disable workspace sharing for locally built plugins. |
 | `remote_sandbox_config` | `array<table>` | Host-specific sandbox requirements. The first entry whose `hostname_patterns` match the resolved host name overrides top-level `allowed_sandbox_modes` for that requirements source. Host-specific entries currently override sandbox modes only. |
@@ -3381,6 +3393,30 @@ Allowed values for `approvals_reviewer`, such as `user` and `auto_review`.
 
 Key
 
+`allowed_permission_profiles`
+
+Type / Values
+
+`table<boolean>`
+
+Details
+
+Complete list of allowed permission profiles. Profiles set to `true` are allowed. Profiles that are omitted or set to `false` are denied, including profiles added in future versions. When requirements sources are combined, entries are matched by profile name.
+
+Key
+
+`allowed_permission_profiles.<name>`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Allow or deny a built-in or custom permission profile defined in a loaded config or requirements source. An earlier requirements source can use `false` to turn off a profile allowed by a later source.
+
+Key
+
 `allowed_sandbox_modes`
 
 Type / Values
@@ -3402,6 +3438,18 @@ Type / Values
 Details
 
 Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.
+
+Key
+
+`default_permissions`
+
+Type / Values
+
+`string`
+
+Details
+
+Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed.
 
 Key
 
@@ -3750,6 +3798,18 @@ Type / Values
 Details
 
 Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL.
+
+Key
+
+`permissions.<name>`
+
+Type / Values
+
+`table`
+
+Details
+
+Admin-defined permission profile. The name can't start with `:`, use the reserved name `filesystem`, or duplicate a profile from a loaded config. Uses the same profile fields as `config.toml`; see the Permissions guide for the complete profile schema.
 
 Key
 

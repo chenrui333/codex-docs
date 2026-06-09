@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
-source_last_modified: '2026-06-04T00:26:45Z'
-source_etag: 'W/"de9b4e838a08a30a4d808c0b63e7d309"'
+source_last_modified: '2026-06-09T06:25:13Z'
+source_etag: 'W/"7ca964a69f772724f2a837a4d8f7c9d1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -170,6 +170,10 @@ These cloud-managed policies apply across Codex local surfaces when users sign i
 
 Use cloud-managed `requirements.toml` policies to enforce the guardrails you want for each group. The snippets below are examples you can adapt, not required settings.
 
+For Codex 0.138.0 or later, prefer `allowed_permission_profiles` with managed
+`default_permissions`. Use `allowed_sandbox_modes` only for legacy deployments
+that still configure `sandbox_mode`.
+
 ![Example managed requirements policy](/images/codex/enterprise/example_policy.png)
 
 Example: limit web search, sandbox mode, and approvals for a standard local rollout:
@@ -178,6 +182,19 @@ Example: limit web search, sandbox mode, and approvals for a standard local roll
 allowed_web_search_modes = ["disabled", "cached"]
 allowed_sandbox_modes = ["workspace-write"]
 allowed_approval_policies = ["on-request"]
+```
+
+Example: allow the standard permission profiles for an upgraded fleet:
+
+Permission-profile allowlists require Codex 0.138.0 or later. Use this example
+only after every managed client runs a supporting release.
+
+```
+default_permissions = ":workspace"
+
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true
 ```
 
 Example: disable Browser Use, the in-app browser, and Computer Use:
