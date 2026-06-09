@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/slash-commands'
-source_last_modified: '2026-06-01T23:12:03Z'
-source_etag: 'W/"03abfbc256e07e8989a33465c0b18ab0"'
+source_last_modified: '2026-06-09T17:57:25Z'
+source_etag: 'W/"85c310cb26d9bc864137d5d7c3e1be99"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -45,6 +45,7 @@ completion still works before you queue the command.
 | [`/plugins`](#browse-plugins-with-plugins) | Browse installed and discoverable plugins. | Inspect plugin tools, install suggested plugins, or manage plugin availability. |
 | [`/hooks`](#review-hooks-with-hooks) | Review lifecycle hooks. | Inspect configured hooks, trust new or changed hooks, or disable non-managed hooks before they run. |
 | [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear) | Clear the terminal and start a fresh chat. | Reset the visible UI and conversation together when you want a fresh start. |
+| [`/archive`](#archive-the-current-session-with-archive) | Archive the current session and exit Codex. | Remove the current session from active session lists without deleting its transcript. |
 | [`/compact`](#keep-transcripts-lean-with-compact) | Summarize the visible conversation to free tokens. | Use after long runs so Codex retains key points without blowing the context window. |
 | [`/copy`](#copy-the-latest-response-with-copy) | Copy the latest completed Codex output. | Grab the latest finished response or plan text without manually selecting it. You can also press `Ctrl+O`. |
 | [`/diff`](#review-changes-with-diff) | Show the Git diff, including files Git isn’t tracking yet. | Review Codex’s edits before you commit or run tests. |
@@ -199,6 +200,17 @@ Unlike `Ctrl`+`L`, `/clear` starts a new conversation.
 
 `Ctrl`+`L` only clears the terminal view and keeps the current
 chat. Codex disables both actions while a task is in progress.
+
+### Archive the current session with `/archive`
+
+1. Type `/archive` and press Enter.
+2. Confirm that you want to archive the current session and exit Codex.
+
+Expected: Codex archives the current session and closes the interactive TUI.
+Codex keeps the session transcript stored locally; restore it later with
+`codex unarchive <SESSION>`.
+
+`/archive` is unavailable while a task is running.
 
 ### Update permissions with `/permissions`
 

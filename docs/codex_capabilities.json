@@ -290,8 +290,8 @@
         "developers.openai.com/codex/agent-approvals-security/index.md"
       ],
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"c949ffebf2a8619dfde1bde5718b9407\"",
-      "source_last_modified": "2026-05-11T18:44:02Z",
+      "source_etag": "W/\"f4f08757f8dd8d337d3b4d6b01cdcf78\"",
+      "source_last_modified": "2026-06-09T18:36:58Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
       "title": "Web search"

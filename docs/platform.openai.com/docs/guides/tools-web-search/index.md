@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-05-11T18:44:02Z'
-source_etag: 'W/"c949ffebf2a8619dfde1bde5718b9407"'
+source_last_modified: '2026-06-09T18:36:58Z'
+source_etag: 'W/"f4f08757f8dd8d337d3b4d6b01cdcf78"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -118,6 +118,46 @@ Domain filtering in web search lets you limit results to a specific set of domai
 
 To view all URLs retrieved during a web search, use the `sources` field. Unlike inline citations, which show only the most relevant references, sources returns the complete list of URLs the model consulted when forming its response.
 The number of sources is often greater than the number of citations. Real-time third-party feeds are also surfaced here and are labeled as `oai-sports`, `oai-weather`, or `oai-finance`. The sources field is available with both the `web_search` and `web_search_preview` tools.
+
+## Image search results
+
+Web search can return image results alongside regular text results. Use image search when your application needs current or web-grounded visuals, such as product photos, landmarks, places, events, or visual references.
+
+To use image search, set `search_content_types` to include `image`. Add `text` when you also want supporting text results that help the model summarize, rank, or explain the retrieved images.
+
+Use `image_settings` to control image-specific behavior:
+
+- `max_results`: Request a positive number of image results.
+- `caption`: Ask for short image descriptions when available.
+
+To inspect raw image results, include `web_search_call.results` in the request and read `web_search_call.results[]` from the response. Image results are returned separately from the assistant message, so parse the `web_search_call` item directly when your application needs the URLs or metadata.
+
+Each `image_result` includes:
+
+- `image_url`: The canonical image URL for the result.
+- `source_website_url`: The page where the image was found.
+- `thumbnail_url`: A thumbnail URL when available.
+- `caption`: A short caption or description when available.
+
+```json
+{
+  "output": [
+    {
+      "type": "web_search_call",
+      "status": "completed",
+      "results": [
+        {
+          "type": "image_result",
+          "image_url": "https://cdn.example/golden-gate-sunset.jpg",
+          "thumbnail_url": "https://cdn.example/golden-gate-sunset-thumb.jpg",
+          "source_website_url": "https://example.com/source-page",
+          "caption": "Golden Gate Bridge at sunset"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## User location
 

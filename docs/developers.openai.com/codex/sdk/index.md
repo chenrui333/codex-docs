@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_sdk'
 source_url: 'https://developers.openai.com/codex/sdk'
-source_last_modified: '2026-06-01T23:11:33Z'
-source_etag: 'W/"1a98d33b598e887364b49b68164e580c"'
+source_last_modified: '2026-06-09T17:53:49Z'
+source_etag: 'W/"a71cb851c75c9d6dbd5156a85704ff46"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
 ---
@@ -82,7 +82,11 @@ To install the SDK run:
 pip install openai-codex
 ```
 
-Published SDK builds automatically use their pinned runtime. Pass `AppServerConfig(codex_bin=...)` only when you intentionally want to run against a specific local app-server binary.
+Published SDK builds automatically use their pinned runtime. Pass `CodexConfig(codex_bin=...)` only when you intentionally want to run against a specific local Codex executable.
+
+While the Python SDK is in beta, `pip install openai-codex` selects the latest
+published beta build. After a stable SDK release exists, use
+`pip install --pre openai-codex` to opt in to newer prerelease builds.
 
 ### Usage
 
