@@ -406,7 +406,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.138.0",
+  "codex_cli_version": "codex-cli 0.139.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
