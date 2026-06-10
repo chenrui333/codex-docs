@@ -3,8 +3,8 @@
   "sources": {
     "codex_capabilities.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -17,7 +17,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -31,10 +32,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "28255c91006f5ff1fd1fa58c99de344e87bdea9d3f034f3ec01a28d2ad127c03",
+      "sha256": "afacec62a3a81764fd11a24702baefded875de53e0c9e0226f8806e7170665ff",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -53,7 +55,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -67,9 +70,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "85346182e52868c776e523df28f9e6703a6e5675ee75cddbcbf247cf89557c6a",
+      "sha256": "c85fc1a6717c2ce9bcdcbdb7e874a3b014a54a0da6fb8193a3998d1af176052b",
       "source_area": "codex_security",
       "source_etag": "W/\"27adc1096fec2d5e8f74795a2e656728\"",
       "source_last_modified": "2026-05-26T18:47:40Z",
@@ -80,14 +84,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c2c4ce29682c696b2c9b1f14703e7894725fcd2681f737e46cf042fcdab26558",
+      "sha256": "867457389015b97b43ac89a031dc40c3a2e948aeb4a6599ac41c0b5479b96a38",
       "source_area": "codex_amazon_bedrock",
       "source_etag": "W/\"14f9a5e7669e80e69cc637fcc3235c7e\"",
       "source_last_modified": "2026-06-02T19:21:25Z",
@@ -107,7 +113,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -121,9 +128,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "68ad68743019c7d2d4c1791363087349249bf833fedbf9d0d86a42281e701511",
+      "sha256": "bf9bfc768efb7973c252302cdf93103f4546a2a0bf93a66748648a19e5a92e3b",
       "source_area": "codex_app",
       "source_etag": "W/\"04c357c4c80daa921b6d9938d5e64737\"",
       "source_last_modified": "2026-05-21T18:16:27Z",
@@ -143,7 +151,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -157,9 +166,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "88e609e0186254282f2a9f5fdcf7c2cc8818044f1aa84d147747ce673b368b15",
+      "sha256": "62a129dd78b0e61801a173e2756add68b35bc8dd53b56788beca7459cbbc1993",
       "source_area": "codex_app",
       "source_etag": "W/\"c83f430124077911ff4f35ecf6ff552e\"",
       "source_last_modified": "2026-06-04T00:25:06Z",
@@ -179,7 +189,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -193,9 +204,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "d8d0b2de99f72b12a8d29396cf515a5fd3456d0b7e9781a605897c1efc794273",
+      "sha256": "4f7c51040ce6a84c42de8cee4b10356ee199e54a4de21b8389a169c60498dba2",
       "source_area": "codex_app",
       "source_etag": "W/\"52e9f23d74cd3058cc2fd46e71c6a805\"",
       "source_last_modified": "2026-05-21T18:06:43Z",
@@ -213,7 +225,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -225,9 +238,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0dd92932fc3851df5372648f49e839323634f532162871ee897ee0a39182c963",
+      "sha256": "27de92a0fcbb4643c15131e6faa2479a72d3551626cb4068ae97026cfdcabac4",
       "source_area": "codex_app",
       "source_etag": "W/\"2218f92822586247fe02c66020312783\"",
       "source_last_modified": "2026-05-13T02:42:38Z",
@@ -247,7 +261,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -261,12 +276,13 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "f2c34ba952e1d0f5cf45a7f2ebe6872c653a5849983146fe6425466075e7049c",
+      "sha256": "b679ca954cd70b3331b563e784d46fac26b43f685ffba6c5895c4f72ef4db821",
       "source_area": "codex_app",
-      "source_etag": "W/\"30727cff40b19d8608e1e153fc908f8a\"",
-      "source_last_modified": "2026-05-30T06:49:19Z",
+      "source_etag": "W/\"39ddd651a79153317b4e2216516c5b99\"",
+      "source_last_modified": "2026-06-09T23:45:13Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/app/commands"
     },
@@ -283,7 +299,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -297,9 +314,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "405e84772872b2a55ddbc06e5e11226faa11f22d60d6daad1652a055672ff912",
+      "sha256": "bd52f7fe68df06e18f4d4568a04f782dc4173b973ecb6c4a3ccb13e5d88f688d",
       "source_area": "codex_app",
       "source_etag": "W/\"f9131715f7994c28083d011c2e680f8a\"",
       "source_last_modified": "2026-05-29T17:39:29Z",
@@ -319,7 +337,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -333,9 +352,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c32f75590098e31591d7e052420cbb4b79e79987437a1a18fe34acdc8c83f116",
+      "sha256": "12b7a3e0baf5473938f9ac6ebd1171fc984dc9dabbf1b6dca0bc16a4b8ae90ee",
       "source_area": "codex_app",
       "source_etag": "W/\"105fe09a8eff48d1118819cec3618da0\"",
       "source_last_modified": "2026-05-30T06:49:21Z",
@@ -355,7 +375,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -369,9 +390,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2ccf3182c40d25ccb59239efa80dea49de786a16fa4d6230302d497b97ea8903",
+      "sha256": "0cfef3db0acd52a58d0e25faf2c1f3592658a8cf61bf218f3f9b2ab8c04b0b07",
       "source_area": "codex_app",
       "source_etag": "W/\"2b88f2c77760007ba0dadb96dba4d6a2\"",
       "source_last_modified": "2026-06-02T19:21:25Z",
@@ -391,7 +413,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -405,9 +428,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "803edb4fdb4efa058d5238d505d4c4ee8e026f4166f2b03d830eef3f5a91730e",
+      "sha256": "447a4bdb214e8c5d42a6119baa960eacdc7ef30b2836f0964bc4a65c881f7cdc",
       "source_area": "codex_app",
       "source_etag": "W/\"46ba4645d67b69154542628625d527aa\"",
       "source_last_modified": "2026-04-25T06:34:53Z",
@@ -427,7 +451,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -441,9 +466,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "5384c5d7d9f5f79a159776d92073495886a892624b6d87ebc1e284b5305d8d0f",
+      "sha256": "d77a4061a8c3b2f53d7e941607daf70c283350976f5321c80bd9ada7f6105144",
       "source_area": "codex_app",
       "source_etag": "W/\"7c4a3cf8927515733caf8cf1b2d49826\"",
       "source_last_modified": "2026-04-25T06:31:37Z",
@@ -463,7 +489,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -477,9 +504,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ae490069973e9d6016de802275fca17781fdebb6cec7c5662331d23e478ca213",
+      "sha256": "477cfb0a51d6c8c9eac93a77a443a1a02bbfad113a45cc19213eb34bee5fbc07",
       "source_area": "codex_app",
       "source_etag": "W/\"08a343fff2e54ebceaeaba285529a422\"",
       "source_last_modified": "2026-06-05T00:28:41Z",
@@ -499,7 +527,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -513,9 +542,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "778abb4afa4f02e751c5403a9830f07ac3c003553a38281e2688a43dd5cf52a3",
+      "sha256": "b2cfcf40859ed9fb7d2ce4c25e6530f401d7d6a6e490762312f7feff4f01f319",
       "source_area": "codex_app",
       "source_etag": "W/\"90c0ad20719188747a2498a3961bf8f3\"",
       "source_last_modified": "2026-04-25T06:30:22Z",
@@ -535,7 +565,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -549,9 +580,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2a705928578abb169e4f58bc05f9268a30b07595723f8ea0db8e2905fd946b73",
+      "sha256": "3c05e53d56fb1bebc3b413d1e79f3ed3516008c1f7db9d18105674ec2fabe4ab",
       "source_area": "codex_app",
       "source_etag": "W/\"131220190f81fcf73c2fddc5e80d6e81\"",
       "source_last_modified": "2026-04-25T06:32:09Z",
@@ -571,7 +603,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -585,9 +618,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9f94513e8ca36984387260731463608bbaf8eed7597ac775bb19cafa45189626",
+      "sha256": "3cea6549796e32e4a50230e545a46862abcd9aa2dd684380d9fa7b59ff0817cc",
       "source_area": "codex_app",
       "source_etag": "W/\"45b9408ffe43e8c6cc7a98cc8677056b\"",
       "source_last_modified": "2026-04-25T06:32:01Z",
@@ -601,7 +635,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.133.0",
@@ -609,9 +644,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e00ab8f3da4989dc93f3d54da1bd79a102edce84271b3077edcb017c6ab4a5db",
+      "sha256": "a344d3d88294b57b1df8c7a63bbb21b2fb02c742766ad8c1bccb6976584a106e",
       "source_area": "codex_appshots",
       "source_etag": "W/\"cf9b698680521e3d0f810ba442e9079d\"",
       "source_last_modified": "2026-05-21T18:05:21Z",
@@ -631,7 +667,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -645,9 +682,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "980bad64163a5f985fa83d761f39dd5ea4733c352feab762786d3a0304de9152",
+      "sha256": "5b111107a72235ecc0cb30c3661aa835e22296b49f067ef554accfc6708f3cb2",
       "source_area": "codex_auth",
       "source_etag": "W/\"df6d5d50f37ae84dd547f28d11591e2b\"",
       "source_last_modified": "2026-06-02T19:21:03Z",
@@ -667,7 +705,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -681,9 +720,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c6c7d6ca0ff2214639f74263320efb516a82753d5c8e866744899cf60f9c0956",
+      "sha256": "fb490faa9a08dd13df001153483c55c6c3c866f8e04be2717fe281d6d08212d1",
       "source_area": "codex_changelog",
       "source_etag": "W/\"4369eafa523b0e359cd0a25993eb3ac3\"",
       "source_last_modified": "2026-06-09T06:21:34Z",
@@ -703,7 +743,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -717,9 +758,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "952a106802b0abccf59de4ce8b3b17eae7b88e82308604c1731c51f7971eec73",
+      "sha256": "9868a01817f7d0cfaa6f74168b7abaa2b321384695cc09eeebee9af20385f809",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"32ac7dc433c76ba07a2e08866b9416f4\"",
       "source_last_modified": "2026-06-01T23:04:59Z",
@@ -739,7 +781,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -753,9 +796,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "5a4e3e3e84e3b607b62c2a047f53a0000cb29140037b0e69401d72d8dced1239",
+      "sha256": "78952477ed750e37214dd461a505e76fa387d83218504f8c0a1a8dbae4487c7c",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"1fde1abea42f06082ab5cd2c7486855e\"",
       "source_last_modified": "2026-05-29T23:21:31Z",
@@ -775,7 +819,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -789,9 +834,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "cc7ecaeed8f8a3bb54f3baa606a9e0ab1cc1b6cfe91da9ff68b564765473df76",
+      "sha256": "ffbc3d72850a2e1f290c0f1d17f0f0a5db923856100416ed8d75c0b707f59a3e",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"a659bef87a1b3be250f62b3c52a6d899\"",
       "source_last_modified": "2026-06-09T17:53:20Z",
@@ -811,7 +857,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -825,9 +872,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b05c9262baeebe153c57f2563ff1a8a10b4d8f238cd5948ef88da5d73cedaee5",
+      "sha256": "1f1fe2496042f19d775794040eab04540c178e8e0886316c9e4d82b7583c6d3a",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"85c310cb26d9bc864137d5d7c3e1be99\"",
       "source_last_modified": "2026-06-09T17:57:25Z",
@@ -847,7 +895,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -861,9 +910,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "01d059b6f8edfab3cf1cbdd05295c1831fc4eb99ff3061ee875bc12394cc9cdd",
+      "sha256": "a179b0d5deb0e65f7c3e9e9846490a064bf815f807f4af1cf9f7ad8a107a1739",
       "source_area": "codex_cloud",
       "source_etag": "W/\"7ab307e08863cf1d9e8e4bd73977d039\"",
       "source_last_modified": "2026-04-25T06:34:55Z",
@@ -883,7 +933,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -897,9 +948,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2a352fdf7c79d77e461a5b8fa4ca76ec5f7ad7e178580925490c965b66a18876",
+      "sha256": "d880349e52ac4c95dcba3346dc0226601e71af35e4376589d056535fa1405197",
       "source_area": "codex_cloud",
       "source_etag": "W/\"811c50ed4d0be6d3a95860d70f537cfd\"",
       "source_last_modified": "2026-04-25T06:30:21Z",
@@ -919,7 +971,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -933,9 +986,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "fbebffb08c81543abbf6df6c28ec045e742854fc86ff527df8adeac26ba7dfb6",
+      "sha256": "3add67e8d630d4d1ce7349e7523e7e03819e0e3545599c850e7a1b25966cee41",
       "source_area": "codex_cloud",
       "source_etag": "W/\"1d9cb59701860657398326e2a5ca90da\"",
       "source_last_modified": "2026-04-25T06:29:32Z",
@@ -955,7 +1009,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -969,9 +1024,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "934b22faac4c1ab4f46103a393741e8622d38b3a59acb2952a8468098bec3e38",
+      "sha256": "260fba81ed0e6fe9bf7e7f3b3f063c946ed1ad96312e5e09d1afd222bf61fd6e",
       "source_area": "codex_concept",
       "source_etag": "W/\"88b76544a58f0652a83414205cb719e2\"",
       "source_last_modified": "2026-04-25T06:34:03Z",
@@ -991,7 +1047,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1005,9 +1062,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "439445430b88e50c610ec289715eeaf06136511bed82a5c8d5d3a88d8421bf90",
+      "sha256": "43c6a1fbcf279829e1c5752c80f7d1b2121501f91b31b85031865bc04c74f4d6",
       "source_area": "codex_concept",
       "source_etag": "W/\"08d8005f6ac679273727c72992fbdf50\"",
       "source_last_modified": "2026-04-25T06:31:36Z",
@@ -1024,7 +1082,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.130.0",
@@ -1035,9 +1094,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "edd075ce8d5d0a511cc2f24bb8df9af68c83d9c4bda6e83d59fd915266fdccb3",
+      "sha256": "fa2aa1ea2d9b33a0d908e0eb811f0a047154c65b479da05e8457297797631265",
       "source_area": "codex_concept",
       "source_etag": "W/\"eec197fbdf8186d24452e7fc9a29dbff\"",
       "source_last_modified": "2026-05-12T01:57:53Z",
@@ -1057,7 +1117,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1071,9 +1132,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ef5c6d561dccee8162996ce111ba4d261257fe38323d2e9280e409bd941fd9b8",
+      "sha256": "2a80cc5c0015ff9a5f52a05fb5c8ed145cbfa3319a34ff679dba09b549cea93c",
       "source_area": "codex_concept",
       "source_etag": "W/\"525233ccfcca2141b594eb6814566647\"",
       "source_last_modified": "2026-05-20T00:54:21Z",
@@ -1093,7 +1155,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1107,9 +1170,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "31c2c87cb71f554c7bf31fe4fad1ce426850bce380ef7162ca00efc21da7ae2e",
+      "sha256": "4fc7f1b102061a99f24af298b2e26e88faf28ca0eeac9dc1d7eb54e0badb7db1",
       "source_area": "codex_concept",
       "source_etag": "W/\"2e676e5bea21204f3ab909e40949a366\"",
       "source_last_modified": "2026-05-20T21:26:27Z",
@@ -1129,7 +1193,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1143,9 +1208,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4a1851611fe582308e366e43fc4742e88e02a584cda2356fc6c1bfb6d3406ed6",
+      "sha256": "c1f12f6f01e1e523c9a3b2810edca50cbcfad9b4661b95a7a125bea5ad68f948",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"cf221b7eb11003d69af805bb23b007cd\"",
       "source_last_modified": "2026-06-01T23:07:25Z",
@@ -1165,7 +1231,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1179,9 +1246,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9c6bdcaa1e368ebba7821c9340ba5d8d92aedd7cd33c256f273361a7a323b216",
+      "sha256": "affe7e3cda1388b201335f4f5d0ec240e89ebd6295f1bc256dc8e4c86d553199",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"ba3f032fe92809546ba0b4c8b8cb3b8b\"",
       "source_last_modified": "2026-06-01T23:07:05Z",
@@ -1201,7 +1269,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1215,9 +1284,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "22e857bed9e8b9974c6c167a52cca0913ad825211ac2a103205d6e92145cf4fa",
+      "sha256": "28a57603ccce624963b373848b33314f75e1847a82619f3b3633904d1d92bd82",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"937651dbd3a17e484d14f374781c5bdd\"",
       "source_last_modified": "2026-06-09T06:23:20Z",
@@ -1237,7 +1307,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1251,9 +1322,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "6c09b1c6304846cc0860da74ce38e67773be60555b1715bef61080c4c1d3e8b1",
+      "sha256": "a44472b78e96f262cfb684820f0cb2e05d44d687ac1e3e7865459af73ea16bf0",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"0bf9a108c12db065fb8291c6b805c72f\"",
       "source_last_modified": "2026-06-01T23:11:16Z",
@@ -1273,7 +1345,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1287,9 +1360,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "3bf1b35b4e550e34b55f18f821c980f7f0e66a7f65554dbcf3acfcccbda3ca18",
+      "sha256": "5655c51243cc279b160257444ecf1dbd84c9d48265d54455125032d6560e1430",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"2ea34e9910ab9e2df0cb296413cb427c\"",
       "source_last_modified": "2026-04-25T06:50:21Z",
@@ -1306,7 +1380,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.130.0",
@@ -1317,9 +1392,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8ffafe32471980f4eff5a898b56e3689e1b6651e4e18539d83c0987fe9d27127",
+      "sha256": "8e4b6e655001283e3d946d6fdab51d69d68a05272c885d9fa14366a3968719ce",
       "source_area": "codex_enterprise",
       "source_etag": "W/\"6b8b675c3c48b2b2457e9ccec0eb7203\"",
       "source_last_modified": "2026-06-01T23:15:18Z",
@@ -1339,7 +1415,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1353,9 +1430,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "16127db5113c215ecdd2820683ad1394a63a0db47737d0ad3d4e1125f4f44a70",
+      "sha256": "168708583ab5cf3098cca92dc26239e4902184ae68ff8f588ba5fa06ba551133",
       "source_area": "codex_enterprise",
       "source_etag": "W/\"7ca964a69f772724f2a837a4d8f7c9d1\"",
       "source_last_modified": "2026-06-09T06:25:13Z",
@@ -1375,7 +1453,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1389,9 +1468,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "05a707b3936cde5779840b8a92f955d5f3166c34834a32458a913c9e5a7dc8ab",
+      "sha256": "1101f4b5c46c49bf2972614d5c41dcfa86937638b9fbdb9d30b4293d3e4b4104",
       "source_area": "codex_enterprise",
       "source_etag": "W/\"aafb5583682824202a38271f3b0245f5\"",
       "source_last_modified": "2026-05-22T20:30:09Z",
@@ -1411,7 +1491,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1425,12 +1506,13 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "a246ff41390e9448169378e4a57430d8098b8b7d2cea98eb47771a9810abb58f",
+      "sha256": "8a68c9c2beffe25ad02e3193f358d578baed84421a3f6035ea383d91220697d6",
       "source_area": "codex_enterprise",
-      "source_etag": "W/\"402ac5345bba5f141d783b3cc82e02af\"",
-      "source_last_modified": "2026-06-09T06:25:02Z",
+      "source_etag": "W/\"38d30a4e4cb68c708ce5d93e024daf0b\"",
+      "source_last_modified": "2026-06-09T23:46:54Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/enterprise/managed-configuration"
     },
@@ -1439,15 +1521,17 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "35fa51bbc61e308f7a9de09162ea5d32c1cf70b752a17bc37eb7f4e9fce69d8e",
+      "sha256": "3843e919dd00b6260813c79c30be31934022430d6ebbd6fbd4989a4797fb69d1",
       "source_area": "codex_environment_variables",
       "source_etag": "W/\"9a8f5a3201cef952cbb8dac5d3f3d867\"",
       "source_last_modified": "2026-05-29T23:21:47Z",
@@ -1467,7 +1551,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1481,9 +1566,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8fcd20e27e84b9abe7262e266661acbd7e4b94469ee7401b6d7bbe416bd9e026",
+      "sha256": "35fb195a77f19a47e2e7ca53485fe96e5649bd45c60957411d3c9afa49166fdf",
       "source_area": "codex_reference",
       "source_etag": "W/\"30ebdaa829ebe9bde76da3206067bfe8\"",
       "source_last_modified": "2026-04-25T06:56:28Z",
@@ -1503,7 +1589,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1517,9 +1604,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ed5a5d80f37a569347b68092c118a3e537b2eacad060d8a8064c0e93afe60e69",
+      "sha256": "dfc30e9da4201b7c0284250d526274d0f226ef434b6a832ba2d96abddebd2322",
       "source_area": "codex_integration",
       "source_etag": "W/\"e20d2bfe375af5f7dbe150b572a3f1b1\"",
       "source_last_modified": "2026-05-26T18:41:52Z",
@@ -1529,13 +1617,15 @@
     "developers.openai.com/codex/glossary/index.md": {
       "codex_cli_versions": [
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "74dd88d3b710e72153ed0f323678268407460774d16abb56328f3edf81faa97b",
+      "sha256": "79a2000b7a25195c5492d00ae9c3175d6c3e40a4f2404f19b79914dc03473944",
       "source_area": "codex_glossary",
       "source_etag": "W/\"471e05deb837536bdaadef64e5be6172\"",
       "source_last_modified": "2026-06-05T16:39:02Z",
@@ -1555,7 +1645,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1569,9 +1660,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b73dfa113a5a4f7193c9822caf22deb49694872bf3dc3b0c2ea74c31330bb926",
+      "sha256": "44f227e7ab6e4880b4658bc4f00efb05a0a8c869842976bd93fa377f16e9a78c",
       "source_area": "codex_guide",
       "source_etag": "W/\"a178226378db63131d46d6d678127093\"",
       "source_last_modified": "2026-05-29T23:34:15Z",
@@ -1591,7 +1683,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1605,9 +1698,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "43cbd273e1e0fdd803248840ef0e86fa27b7eaedffe94a2b325c64b0591e3a2e",
+      "sha256": "a5649a3f160d763eb8b30ac8db5af7eee3a38e2e1fab6167706d165de63aaeeb",
       "source_area": "codex_guide",
       "source_etag": "W/\"9ef1c3089250773b81d250042ef92ecd\"",
       "source_last_modified": "2026-05-26T18:41:03Z",
@@ -1627,7 +1721,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1641,9 +1736,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "5abddf073ad160f0c28530f93e7d112e3dbfa05856180481a401c26cc07c9708",
+      "sha256": "bb2911f75800d5ed0689454d0e4a7e333b69c99501b1e0737b4e331305e951e9",
       "source_area": "codex_guide",
       "source_etag": "W/\"d7c8b605057b345afd4b34158ffb68ee\"",
       "source_last_modified": "2026-04-25T06:40:54Z",
@@ -1663,7 +1759,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1677,9 +1774,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "d09546b8b4e92f74bd50df0f2e2d86cc35eb47e4619726f941139b9c406ef1f3",
+      "sha256": "86db79b780bf2817ad39356c0da3afdcf2bdc4d09cd09f335b18c9c283830ba0",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"dbdc864dd3d2182dd9b998ddae96fe46\"",
       "source_last_modified": "2026-05-22T20:25:51Z",
@@ -1699,7 +1797,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1713,9 +1812,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "5565868286cc2d0604882ccce5acf6cc752073cfad11965d58e687054353181b",
+      "sha256": "9ccc59e0b9c9166bd772bca803d95712ec0b92bbaa2480e0d2721e39b052bb60",
       "source_area": "codex_ide",
       "source_etag": "W/\"5be07632ccd60e5563d207a6c860f829\"",
       "source_last_modified": "2026-04-25T06:50:32Z",
@@ -1735,7 +1835,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1749,9 +1850,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4e4c91cfd3fb5dd8b6d73e8b52fd5f11fe9ad75cc0c6ac2593755b2df9facbcf",
+      "sha256": "9364d259ddf6d954d9a18c43453406a86a6ae00873d37123ff405a1078e86b9f",
       "source_area": "codex_ide",
       "source_etag": "W/\"a6d237c113fc2edb6af9ef63f35212d9\"",
       "source_last_modified": "2026-04-25T06:41:15Z",
@@ -1771,7 +1873,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1785,9 +1888,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "fff488266d2e37ef0ef4148d3a7c0ba1320eabca0da4d54350732e0fce17085f",
+      "sha256": "08c2dd2dc7ec371921c3d188ad957dc6e1ad76be6319220077bd12747bb79f8e",
       "source_area": "codex_ide",
       "source_etag": "W/\"959f374755a7b978f40b75048db4c5bb\"",
       "source_last_modified": "2026-04-25T06:31:51Z",
@@ -1807,7 +1911,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1821,9 +1926,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b66b5f627d0e9671291177989cb4da44dd493f7d7e9eb9861476aeede235dff1",
+      "sha256": "415234d1f929f08f0c0815b2cc35836211e2ad2dcc325105219e55ad877db46a",
       "source_area": "codex_ide",
       "source_etag": "W/\"f7967ea037e46d6ebcd3f5fef5f7554c\"",
       "source_last_modified": "2026-04-25T06:59:52Z",
@@ -1843,7 +1949,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1857,9 +1964,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ce5c256b560bd37a55c745ae0ffef0fee0b20463a7a646c759090cf16752b900",
+      "sha256": "ef7bd194925461bd8da5b21a8fe75ebe9c25d1eec2725ea3238d353f8e6c55ac",
       "source_area": "codex_ide",
       "source_etag": "W/\"b69ecfd9ec34d6f49977b3f8aa5a4a12\"",
       "source_last_modified": "2026-05-21T23:47:09Z",
@@ -1879,7 +1987,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1893,9 +2002,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "29414333515b41676251861649afcc44c917c945afdea7afa9ea2c534df8d3b2",
+      "sha256": "d97319bb6c7dc1b6a2c35193e5d3c11dcb177d7754af5bc529aa64e111b8d4dc",
       "source_area": "codex_overview",
       "source_etag": "W/\"9d7f3ddce23ffe958a10bd2b58f9bc9b\"",
       "source_last_modified": "2026-04-25T06:29:06Z",
@@ -1915,7 +2025,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1929,9 +2040,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4d9a7deed43d48cc906582b039dadbe7bca82e5e721f8b96814bcd39d72a6070",
+      "sha256": "6c7b6b7f73c45a5884add850e89225b243ef564abb9bd457efa1241fa12632ad",
       "source_area": "codex_integration",
       "source_etag": "W/\"1b8c5a9c8d7a00017c3883f5c481d3f6\"",
       "source_last_modified": "2026-04-30T17:49:13Z",
@@ -1951,7 +2063,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1965,9 +2078,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "41ef24450000b16250960dda9e780b74d2ce5b6e8796a06d2afe9606a9183a4f",
+      "sha256": "b2413ec5ca68a97c1bac2b1ae4272609882197f0306b9c256081f42424ab6737",
       "source_area": "codex_integration",
       "source_etag": "W/\"b892206bf5994cc5ee91627a455fbc96\"",
       "source_last_modified": "2026-04-25T06:46:48Z",
@@ -1987,7 +2101,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2001,9 +2116,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8155bb01b0a30ce09641d680da805a87f30546b423e0e3d72fceea79e2b64d07",
+      "sha256": "383a10021d31d88aabdf76453249ee7145752fc01131400e40f1d5521fa9d97d",
       "source_area": "codex_integration",
       "source_etag": "W/\"b9c38f0c9177cdc9aaf8689b8ac082ac\"",
       "source_last_modified": "2026-04-25T06:44:46Z",
@@ -2023,7 +2139,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2037,9 +2154,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "7bf1ffd12bac44d7c8e06a974af1e4161deeff924803d8fdad91cfbc92477615",
+      "sha256": "e273b36132b92ba24e99c02fc60569cf8701e1b5127b3e4667a86dfc45bbbcd5",
       "source_area": "codex_guide",
       "source_etag": "W/\"2b7b4946805c6200c024c2da025e1adf\"",
       "source_last_modified": "2026-05-26T18:40:32Z",
@@ -2059,7 +2177,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2073,9 +2192,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "461a8f0b707857c1220b4b83479ec8fae547465e63a68cf0ef113ebd9c3886f9",
+      "sha256": "8ccb1ff90bb09192e8b3c50dbb032d5a3101d8f420130f0d03925ae278b7f9d1",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"86fa5e918e63656f06892b98c836d831\"",
       "source_last_modified": "2026-05-27T00:21:44Z",
@@ -2095,7 +2215,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2109,9 +2230,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "411f52d6dcb46ba18a7e6187b66955ab0085736d2dc9072266df7899f0bcb86e",
+      "sha256": "29215014f9d58e6d5df0bc056ef097ea1b75e132b08cf10b88c59ffdde77f085",
       "source_area": "codex_memory",
       "source_etag": "W/\"e771fa0796018a67046a13d3122649de\"",
       "source_last_modified": "2026-04-25T06:38:17Z",
@@ -2131,7 +2253,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2145,9 +2268,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8067ae2c97ebcdeb50bb8ece754d5d8af080c618d989807b0df9cc7dff922521",
+      "sha256": "8bd65164fde43b53468d786c7540b842e869f54a03bbcf597b5f572a9e1aaba3",
       "source_area": "codex_memory",
       "source_etag": "W/\"3427ab6387936f2d71f70f237b941f07\"",
       "source_last_modified": "2026-04-29T12:31:07Z",
@@ -2166,7 +2290,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.128.0",
@@ -2179,9 +2304,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0513fb082e5c5d60ad4fb5d876784dbc19ae9edf11700dc44d290d569b67870d",
+      "sha256": "8216d2173157c2524933e0093a8f1bfbde304ff0ee5a65b882fe08fbc10480f1",
       "source_area": "codex_migrate",
       "source_etag": "W/\"344b0640ed63fc28b79b8ee1e109ed9a\"",
       "source_last_modified": "2026-05-01T23:22:21Z",
@@ -2201,7 +2327,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2215,9 +2342,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b69905ee48d13a08914efb47ad25097050929208f18a2c8a48ca30b9193589aa",
+      "sha256": "c4496017ea64990f24b3b116e95013419c1e5c08a89d50aaa9bcd9e746b2a785",
       "source_area": "codex_reference",
       "source_etag": "W/\"02ef280774bbd158a0a5566084f1303b\"",
       "source_last_modified": "2026-06-05T00:32:22Z",
@@ -2237,7 +2365,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2251,9 +2380,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "f159b4aa55f5f715fd3d1e7d353650b6087d056707c1a23b26e2973067cff221",
+      "sha256": "9efdced205a5e80869545034d8915c7e6b98d70b20fc39ae0dff85f46ea56731",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"1839ed3caac653a4768d2995cbbb4b19\"",
       "source_last_modified": "2026-05-26T18:42:38Z",
@@ -2273,7 +2403,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2287,9 +2418,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "6a230b33b9759fc309711b3fe5619f53188df7f0c14202a093d6b8fedd40949a",
+      "sha256": "f0858002eeb12047df3b46011187cee984e3150c32241acc82be3be1e4e309e7",
       "source_area": "codex_open_source",
       "source_etag": "W/\"afec9ed6e97faccabb80c7dc3540c3fb\"",
       "source_last_modified": "2026-04-25T06:50:05Z",
@@ -2305,7 +2437,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.131.0",
@@ -2315,9 +2448,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9647b4d9dd84b2e3cdb105c19334348d3b1bfc1338ea2319cb0ff2d8f2f025fe",
+      "sha256": "7b9b5f5465b4c966c389a81316eb1f2738216e1f4ad731224d228d7c3660f67b",
       "source_area": "codex_permissions",
       "source_etag": "W/\"ed3ed2d68f39ac48b77648de64eb47d0\"",
       "source_last_modified": "2026-06-09T06:23:43Z",
@@ -2337,7 +2471,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2351,9 +2486,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "44c6d5ac142cd6451ca5427e2b3bb6d752b32ebc38078f9cc7a6995f91ebbc9e",
+      "sha256": "97147d805e73469385bff4ad197811d0386bfadbb5df3935374d97b87ea70e30",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"e1a14a44640ebe871946349d179906c3\"",
       "source_last_modified": "2026-06-04T00:43:15Z",
@@ -2373,7 +2509,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2387,9 +2524,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "93867025ffdd0a668c0a877e8f7eccd0d9e81c99f9c9d334e6371dc7d5ff5dd4",
+      "sha256": "3e28eef7513a3d6c318eda7bc4710f435dc0e295fc1c5e52409f6645bbf57369",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"19690832b323fb2eed08d007fdc51fa1\"",
       "source_last_modified": "2026-06-02T19:21:10Z",
@@ -2409,7 +2547,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2423,9 +2562,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "1343b5ff6fd23e1b2e0d785cc04cbd793cdb5272f33b9ad10cdd580d5a8b0e78",
+      "sha256": "d1db5c0727bf407dfb6d7268aef3abbb0de3105dfd19161a9223d5397cfa67e5",
       "source_area": "codex_reference",
       "source_etag": "W/\"5975307b19455413e9659b3a72f79824\"",
       "source_last_modified": "2026-06-03T19:25:24Z",
@@ -2445,7 +2585,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2459,9 +2600,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "a0bcb9f69174c1b2d5347e7eb53b8166a7b873b489e4e96a59ee28bb4fec0724",
+      "sha256": "8c2af8b63c40a65398adb383261b5f12fc4e4f3d411ed2e83c94e7c6633e2a88",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"ec35bd1a6fcc5870768459df017c5fd3\"",
       "source_last_modified": "2026-05-21T23:45:36Z",
@@ -2481,7 +2623,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2495,9 +2638,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9b031e4d2ea07dab299a4f2e0f6289438426c8608a956ca0694ca9913623ce66",
+      "sha256": "46932f88b5f3edd6a2258bb8119756fd12e1abbe3be4a52d52590c4301f1c31a",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"14f063518e39cfb0d716c28dd2f1585d\"",
       "source_last_modified": "2026-06-02T19:20:54Z",
@@ -2517,7 +2661,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2531,9 +2676,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "499cc171399189412f338b839980962e185189710b65208a2166a89757bf1280",
+      "sha256": "04c9f15c6bb719df1b67baf2986465728839fefa87e8618c449bab84a0203523",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"d540368614437546c8ecee653de0b2e6\"",
       "source_last_modified": "2026-05-29T17:41:19Z",
@@ -2553,7 +2699,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2567,9 +2714,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e732ccc792223a662642e262fa4b7b8c2325839161ee60be856cca2c8730fb4f",
+      "sha256": "b63535c73d48e65e8db432ed4b549f1409b5c4f8bdaf3cd82be358f7cee022d1",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"38cd685208e3bf7534a3b20be061e185\"",
       "source_last_modified": "2026-04-25T06:42:22Z",
@@ -2589,7 +2737,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2603,9 +2752,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "dc47fe93eb985ca6a6c7c7feaa91a5084168ea9faa95a2e93d83e8edf2354a0c",
+      "sha256": "b4603f04c47ce6bbe0bc38898ae752f1c10e38cb7dff19299d2cc9ab3dacf4f6",
       "source_area": "codex_sdk",
       "source_etag": "W/\"a71cb851c75c9d6dbd5156a85704ff46\"",
       "source_last_modified": "2026-06-09T17:53:49Z",
@@ -2625,7 +2775,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2639,9 +2790,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "12da3c8a6595f52b0882d1913b9edb53db561fc4e53b2ffee898f7e3e7027a90",
+      "sha256": "5ad3c2be687a9c0162ec8ec63b33e58a63088b9f984d6eb6561cfaaa05f37b9b",
       "source_area": "codex_security",
       "source_etag": "W/\"db0aaaaa66881587735043eacabab19e\"",
       "source_last_modified": "2026-04-25T06:54:23Z",
@@ -2661,7 +2813,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2675,9 +2828,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "f623b6a3d37ccfd77625343c560595d0433016830305671d68b8358024753862",
+      "sha256": "ebbbdba279ffdddb6e0d763cf3a8abb19cd47061954e6b6ff005500e8bc9dfbb",
       "source_area": "codex_security",
       "source_etag": "W/\"abc2d55c1fdb28c15a5816e923c91e5e\"",
       "source_last_modified": "2026-05-28T18:51:28Z",
@@ -2690,16 +2844,18 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.134.0",
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "90b530e48cdde35cb8c68cd28d9095ee143a96f610bf6f7be9eb389c85f5f15a",
+      "sha256": "53b91c5fa812f74445af31635563d1ce4514f3354b48e39b64beb2a2596e6cbf",
       "source_area": "codex_security",
       "source_etag": "W/\"772379012d01e3a9352762c35f5794de\"",
       "source_last_modified": "2026-05-28T18:57:31Z",
@@ -2719,7 +2875,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2733,12 +2890,13 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "bbf2525086f9f49231c36ae10a278ca8950dc7db5abd44ae3a80a6abe086dafc",
+      "sha256": "9754ccdbbef050298c9b57bdc90554c6b51013f0884dd8e4a08882960b3c7708",
       "source_area": "codex_security",
-      "source_etag": "W/\"e02ca80927c43cdb5333b3f8a793d13d\"",
-      "source_last_modified": "2026-06-09T18:35:58Z",
+      "source_etag": "W/\"10256db43997240b1cf67c3ff0452f0c\"",
+      "source_last_modified": "2026-06-10T00:01:56Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -2755,7 +2913,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2769,9 +2928,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c79efd6f80505d925b1ab4d2426f061904ad40c7669ce756904023c5b53dc814",
+      "sha256": "73806d0d1e2bd42d49f34b247b84d0970149b4ab0178d1f0fa8c0683df744a42",
       "source_area": "codex_security",
       "source_etag": "W/\"399ea380546ebd8a7a83bc79f6b9debf\"",
       "source_last_modified": "2026-04-25T06:50:21Z",
@@ -2782,14 +2942,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "775b7f9f8a51694255e73c234c7dfa8a9bc97095c7f389bbd93842737b1b41e8",
+      "sha256": "fe867720ca94f0d98a59dc921c44c65f417987978eb5fecb265bc1941a392805",
       "source_area": "codex_sites",
       "source_etag": "W/\"6d7bcc6b92dbefe6451e2958608df816\"",
       "source_last_modified": "2026-06-02T19:20:44Z",
@@ -2809,7 +2971,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2823,9 +2986,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b47f9d6f7e171c2f6942df0af3a8f5357242d37d2c41f88b6037205179254e08",
+      "sha256": "643e50f7d6c25e1cec99d4ec99236f2c297d59e1af5bb6099901aa3c9102c12a",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"f9f78a930fbbeb9fbe5751f28d8a8b26\"",
       "source_last_modified": "2026-04-25T06:31:15Z",
@@ -2845,7 +3009,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2859,9 +3024,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "82d9e733ca4ddb7ef711d2fd547d78151b7def9fa9e2489c5839b55d16e3b525",
+      "sha256": "4ad318ccabc77cbebe01501a8a48483fd4b9eea3d64f17b8c20d36f429388202",
       "source_area": "codex_reference",
       "source_etag": "W/\"7519f69d0295f8db589cbd228c494e83\"",
       "source_last_modified": "2026-04-25T06:36:12Z",
@@ -2881,7 +3047,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2895,9 +3062,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c10fa3c39e410c78630583d26701bdbfdc3bec1eadb705d9e9b918db72fe4928",
+      "sha256": "54385dc774c9fbbd869d635baef6e4a37602d25c45e426592839e72040cd93a4",
       "source_area": "codex_cli_docs",
       "source_etag": "W/\"a7d2c03bffd1142250c024b05340e13c\"",
       "source_last_modified": "2026-05-18T18:36:13Z",
@@ -2917,7 +3085,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2931,9 +3100,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0019d9ab991aff2a9283ba4ceff19e59c25448eebc45735c7862fdf41a3e69d7",
+      "sha256": "af3404fe97285fc2cac8898c39964c310ebf2f9eaa111143a57af9b1630f62b0",
       "source_area": "codex_track",
       "source_etag": "\"b2596ee03cfc43a1c8b04a1b93abf0d2\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -2944,14 +3114,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "1fd290bbd70ae2ee86067ffa7f408c0b5360a30945c8679f301583ff6c3b5dcd",
+      "sha256": "ef048562b683f858847f10b3437226856650832e8ab144d20cb006f9c362b200",
       "source_area": "codex_track",
       "source_etag": "\"fbe949fd82f1d1aa80edef310cb31a20\"",
       "source_last_modified": "2026-06-03T19:26:31Z",
@@ -2971,7 +3143,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2985,9 +3158,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "d7d29048fea8e6d95bb6907f082a0bc41f9bcf57d8295373431d26fafc7e5610",
+      "sha256": "eb6b15988f6d6059fdb6f5e89afdfef4f2c1bcb569e3487f053c9611ce6e621a",
       "source_area": "codex_track",
       "source_etag": "\"a2af58e9b50bb66c0bd91aeb35cc5f39\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -3007,7 +3181,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3021,9 +3196,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "013ec3e288e6e8fe1072b5daa9f1b3af2cf3a730ea05b97e8aa2924be58ab010",
+      "sha256": "d864ff0dd5931cf56351141510afd749db2c024b42dc5e2923f89bae46514506",
       "source_area": "codex_track",
       "source_etag": "\"6ba4d7d74377412b3644c6dbcffae9bd\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -3043,7 +3219,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3057,9 +3234,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b07877b40203e3f5cf21d49ee4e759c338602cf79ee9a83b1dfe5e66bdd2cb3b",
+      "sha256": "7cf05015682e0e2c01fcbb2136aba80b7edf1e74636c7edaa0a5094944f65643",
       "source_area": "codex_track",
       "source_etag": "\"be91cdeb9ddd9c92abd6501b0a697a46\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -3072,16 +3250,18 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.134.0",
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e8e3551c9a4280d358d04ac88464197700b994c8282ca2e0ae9145089e5f1ee9",
+      "sha256": "56e920c2af5f8ad761dbbdbce27f47e9325280bf69ba8923883c32569cda1009",
       "source_area": "codex_track",
       "source_etag": "\"54527addf59c81a54ff25252fa7c3ab8\"",
       "source_last_modified": "2026-05-28T18:58:30Z",
@@ -3101,7 +3281,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3115,9 +3296,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "25cd73b7715470c7a6b43160d2477da83f48a344bb7b3eeab6a0af7c2c1da0b0",
+      "sha256": "abc02cd00cebceffc43be5a336f01db6dd432abd8e22ae6f92fed71e185e81b2",
       "source_area": "codex_track",
       "source_etag": "\"3f297b9a9a0f29b433f3a7863a7b45e8\"",
       "source_last_modified": "2026-04-25T12:19:47Z",
@@ -3137,7 +3319,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3151,9 +3334,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "43ed335660bd5279ae2d46c82563b5251212c5659d4ff8cff735c55262d5fde5",
+      "sha256": "a465595e8b0c8dff94ff4e66bd4a1e58dcd784521dff770211a0f72741547455",
       "source_area": "codex_use_case",
       "source_etag": "W/\"dfe20da4a48574c7a56bb87c3f50c2cc\"",
       "source_last_modified": "2026-06-05T17:37:06Z",
@@ -3171,7 +3355,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -3183,9 +3368,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "f29ba6442655999d62ca0a97f66b049beef33e2cd2b3b2b22e068d7d11af89df",
+      "sha256": "8dc1cce1d408acaff1e57b11615c046304aa989169883005b7972398b93fc26a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"eb687692365fb2fcafea4fd72b5c4e7e\"",
       "source_last_modified": "2026-06-05T16:44:03Z",
@@ -3205,7 +3391,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3219,9 +3406,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "3c2f19c28f78cce9895d7befe89f0c8808a71d4d14e60330a06acfa407fdb182",
+      "sha256": "864f48efd296b04afba36724889500ff1f6ab32b902de0c4b46e5f59f53be78a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"a3911d9427924167c59a8e139af10db6\"",
       "source_last_modified": "2026-06-05T16:50:09Z",
@@ -3241,7 +3429,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3255,9 +3444,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e9d778c574f5228bdf27b994016ab00eefefeaf22f600620416aa8a5cf0550ce",
+      "sha256": "7a78c06fce27f5bde80fd40afd0a8aed6bd69571e288175851de3cf09f622f92",
       "source_area": "codex_use_case",
       "source_etag": "W/\"2f8b175b578c508a70993e88d9c6c505\"",
       "source_last_modified": "2026-06-05T16:57:20Z",
@@ -3277,7 +3467,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3291,9 +3482,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b89da6a7ffce1f8ce3a68b71cc63c668c7b9eb773edc8cbbbe0c12f7188717ab",
+      "sha256": "73298653c3d61866e354c9e7146fed6e64bb3601233c724f06c58b431e5ade24",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c229c2cb29c0aa3759a0ca446faa50cb\"",
       "source_last_modified": "2026-04-25T06:36:15Z",
@@ -3313,7 +3505,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3327,9 +3520,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2ccd8f164a55b0f8e4881e6190e8988e218e786192a8ace502a285514c015ec3",
+      "sha256": "6367dc559d2b24d87e4574d7f392fcb9c55188b4ed43e7cdef77e90d6918a6ec",
       "source_area": "codex_use_case",
       "source_etag": "W/\"abfbbca8d71da90f5d96f6ac103b550c\"",
       "source_last_modified": "2026-04-25T06:50:34Z",
@@ -3347,7 +3541,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -3359,9 +3554,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8202a4ff40edc6391fbb76976637d9b3c9033421588e337e27f02d1d5eefaa0a",
+      "sha256": "76a35dd96c09748b48bed7797716cf08b6a0abd378e77e6ab1d39141eb7dc8d2",
       "source_area": "codex_use_case",
       "source_etag": "W/\"b3532cf4df38910fa6e00085e41b5d05\"",
       "source_last_modified": "2026-06-05T16:58:54Z",
@@ -3372,14 +3568,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4119f42cbb3323d974c7bbf48fbf750765ebf8b80862f68385a4e15ebd10cc19",
+      "sha256": "77ede8231bffb266176cf441212c33c2a2abcd974fa45085eec7db938bc31090",
       "source_area": "codex_use_case",
       "source_etag": "W/\"86e0348d276920262163aff370b56f63\"",
       "source_last_modified": "2026-06-05T16:46:50Z",
@@ -3390,14 +3588,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ea55734eb83bb8913da2d3575405adbd3c1230267f6c86cb257530226c760829",
+      "sha256": "386eccd8f8e979dc8a819a3fe597270f5af2040b05241d65042c0177eb015fdc",
       "source_area": "codex_use_case",
       "source_etag": "W/\"154d23be483e720b8202509f754d0b06\"",
       "source_last_modified": "2026-06-05T18:02:02Z",
@@ -3415,7 +3615,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -3427,9 +3628,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "579f0aae776416f79db49ad8394ae4bf4264257e6dab815405826d599787f4e6",
+      "sha256": "026e56d9bd83409c345327b89e0ef809d6aa4fbe720238a9bd05ac22bafdc05a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"db4cdf2066da893ee2f61de244c323dc\"",
       "source_last_modified": "2026-06-05T16:54:46Z",
@@ -3449,7 +3651,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3463,9 +3666,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b5ae745de294d55c29d80c5b865b3d53210ef9fc7a2a6ec8c6faec0d8e58ff86",
+      "sha256": "c6b5920a5171c07b569f33b833a6bb85edf385e5811a628334606047dfcf56bf",
       "source_area": "codex_use_case",
       "source_etag": "W/\"3ab54160c7b1c9e872c606be456f9199\"",
       "source_last_modified": "2026-04-25T06:55:22Z",
@@ -3485,7 +3689,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3499,9 +3704,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "46929390e52434c3b13f2736da0f91683f967a215f2cf1c190681ff72bc0a599",
+      "sha256": "26b7d18c19a81f8ea6b6d57c0cdb851b126f06f6f38dd56f5dfe52c2082842be",
       "source_area": "codex_use_case",
       "source_etag": "W/\"1eaf66c1e04df1edaf7420fd2dfbf2c4\"",
       "source_last_modified": "2026-06-05T16:53:10Z",
@@ -3521,7 +3727,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3535,9 +3742,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "98fb4f8db03c51ff2d83e9cde108e16157436a997aa7a710f0acd526afeab19a",
+      "sha256": "dd4ddeaec3284f4b21d750280062499fcb2bccb4b1ef729ebffc6800dc39ea03",
       "source_area": "codex_use_case",
       "source_etag": "W/\"084baf0b5173fb4836129aa3d1cd473f\"",
       "source_last_modified": "2026-06-05T17:28:33Z",
@@ -3557,7 +3765,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3571,9 +3780,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2dfab50a26d3a41654e6e823753104c54a2821152c4dc0f6294c3dfe69e5bf4e",
+      "sha256": "401f8dcb3c82a8edb962257dbc8f9274f2878bb845997c1b0df72841f626210e",
       "source_area": "codex_use_case",
       "source_etag": "W/\"a3fd019bafbc676b9c13e6a2cb12d36c\"",
       "source_last_modified": "2026-06-05T16:54:20Z",
@@ -3593,7 +3803,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3607,9 +3818,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "d04e303ce6ddd9656fb9129ea664e4b6a09b698ce1097acb38b36830470db358",
+      "sha256": "389c8e2f084a891e8439f0508df7062943ab8ff61d76dd40978b7cd5adf5a8fa",
       "source_area": "codex_use_case",
       "source_etag": "W/\"461acd8d53f5dbd6f437bcdd93e29ec0\"",
       "source_last_modified": "2026-05-20T00:58:22Z",
@@ -3629,7 +3841,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3643,9 +3856,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "651443528bc062b7089257cb09fdf040937993ec5270d3b37e9bf4656ec99f18",
+      "sha256": "5afc9809baef2cedce2017b7e88b9c3cdf8d591cd877d6b904276e2faf52630d",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c4ef61e6644bd4ca37ffe64255e0be52\"",
       "source_last_modified": "2026-06-05T10:11:22Z",
@@ -3656,14 +3870,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2d35b2e1bc100c01c498bd7c0683c2310188c0a032c842a0ac70f6761857db67",
+      "sha256": "2105ecf7298e068699b01e92feb0f98b2ad92bfa672d6e9357c69377ecad10e5",
       "source_area": "codex_use_case",
       "source_etag": "W/\"aca56b11d7d9377104d35a73e15d7f54\"",
       "source_last_modified": "2026-06-03T19:26:37Z",
@@ -3683,7 +3899,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3697,9 +3914,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4975b8ee3bfe9a64c6f5de7805616f021bcb62ad4f115a8a1df33a8af53e0bef",
+      "sha256": "115b7d8ff09948ae5c66a2f0f6a2c50e8a6bccf09bb35f09c7ff1699f5c5c253",
       "source_area": "codex_use_case",
       "source_etag": "W/\"53abdf991ebb76645d5aac1e062d987d\"",
       "source_last_modified": "2026-05-20T00:58:22Z",
@@ -3719,7 +3937,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3733,9 +3952,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "f31412983d684d3f9cf5c736738c964801e181a9dbbb66e3efe2d159bc3ed6bb",
+      "sha256": "124aa0be436d89c6dc125b8270d52c3b034c7816469e71975b9625aa14fd555e",
       "source_area": "codex_use_case",
       "source_etag": "W/\"649d10e3197cb07c49789fa4b502a872\"",
       "source_last_modified": "2026-05-20T00:58:22Z",
@@ -3755,7 +3975,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3769,9 +3990,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9cc7b3a84dd54ffd84d02ce7ec49d78887ef5a253d317fb8dcb9e7f460e5b6c3",
+      "sha256": "f1fe90a8950d540061448f96aef069ab5b71a459509eba8ba89ed2dbdffad9f5",
       "source_area": "codex_use_case",
       "source_etag": "W/\"76aa22a0043d0961da9cb36c9b3d4dc6\"",
       "source_last_modified": "2026-05-20T00:58:22Z",
@@ -3784,16 +4006,18 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.134.0",
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "6eee0fa3d880d6c14d4727a892818a147c347becb412acb28629461c2e87d8c2",
+      "sha256": "3eaf667cb5bf9cd2515e9a89d89d0d9058aa2cf08a5b93ab2747980735624c3a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"80dc46923663c8cf8590992dc0d6e656\"",
       "source_last_modified": "2026-06-05T10:18:50Z",
@@ -3813,7 +4037,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3827,9 +4052,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "641d3f14805e0bda6871ef088a2be02ae1ac96267e79d0cbeb91b4726f483f91",
+      "sha256": "cc3e6b6bcf69a79de4793c62857ad47d795368e265c8cdaf1f823bcde67757d7",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c531c3abfcae53ede873b26d89400518\"",
       "source_last_modified": "2026-05-20T00:58:23Z",
@@ -3849,7 +4075,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3863,9 +4090,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4a4b4992286016c872ad9e318f98bca7e57abdc22a2bdbedadb18abe64557f8e",
+      "sha256": "51b43e4936e53b7b09101be16a3c4ce838f1400931de6f962dec574868a312f7",
       "source_area": "codex_use_case",
       "source_etag": "W/\"675cb9817e38b5cac1632e0e23a70345\"",
       "source_last_modified": "2026-06-05T16:40:45Z",
@@ -3885,7 +4113,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3899,9 +4128,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "35078135fa6ff524d45eb78b9bb0dc61ee69a0c0e1a0b32cf29563e515575e33",
+      "sha256": "8c37ab2ad196d864e98bdf87d389fe23e9c2c79026efb6076471d2cc5490d897",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e30eccd5690502f0c5ed59e40250a00b\"",
       "source_last_modified": "2026-04-25T06:30:51Z",
@@ -3919,7 +4149,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -3931,9 +4162,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "6168ae6fbde7a48c8f8fe9195c259fac0a62c2b7fc7e48c7f2bb6e5a05c267a4",
+      "sha256": "f0c21520e5f5ea847607f25b92d7c975b927af1bdc874f4321b17dd2f9d732dc",
       "source_area": "codex_use_case",
       "source_etag": "W/\"ac98cfa0b5a20c1189426af3c37dd786\"",
       "source_last_modified": "2026-06-05T16:58:22Z",
@@ -3946,16 +4178,18 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.134.0",
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c7afcf553fa201cc4f7b25bfc194401dffd5eb0fbae8bc3d0a37e815f37d91a4",
+      "sha256": "68b32c354f23b65075cf52eff9877a35f6a32151fd1e9082862cebf6ea82c1fd",
       "source_area": "codex_use_case",
       "source_etag": "W/\"4d05fd8f9152c2498e50d19646394e88\"",
       "source_last_modified": "2026-06-05T17:42:54Z",
@@ -3971,7 +4205,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.131.0",
@@ -3981,9 +4216,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0c78496eff068ad4855a38cdf542cf8f67d8785ff28ea98f15310982def37fa6",
+      "sha256": "f868ce1aae8ea31f9a168ad1edbc32db61ce508744f2fc32585a4eb052d93bb6",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e91fe86647fbb168987b422687c5282d\"",
       "source_last_modified": "2026-06-05T18:45:05Z",
@@ -4003,7 +4239,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4017,9 +4254,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "51fc124bf3e6b4c840e80f4b98fc65c3766426c0260271a80f7d7643140cd72b",
+      "sha256": "49163310ab773b33c54c8a63a9bf1b2dd9f53f010e65f32f09ccbb5a3300d097",
       "source_area": "codex_use_case",
       "source_etag": "W/\"069160b17cf89d147c6a794b8b7ba5ec\"",
       "source_last_modified": "2026-06-05T17:00:26Z",
@@ -4030,14 +4268,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "fc5469e9d66c98de6930e739154b77132b186ad68e9058e7bf61c0893827bbe2",
+      "sha256": "bfc21094c3391b9b75f670a7f28cc43de10fa07ffe5e4d68380ded4acfa719ac",
       "source_area": "codex_use_case",
       "source_etag": "W/\"81a1184c1ea1538681bb92a504903f08\"",
       "source_last_modified": "2026-06-05T18:14:01Z",
@@ -4055,7 +4295,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -4067,9 +4308,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "85d142558b9ad5172b4ee1499d6b3f85628d52e5b068b4386398223e17def3b8",
+      "sha256": "08a1034f04e8d0cb43b45193e94c18f8fcd33efde0bb35cc9037872e37415c69",
       "source_area": "codex_use_case",
       "source_etag": "W/\"21cb53f838433e5cf3a536a36cf8b11e\"",
       "source_last_modified": "2026-06-05T16:59:08Z",
@@ -4085,7 +4327,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.131.0",
@@ -4095,9 +4338,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "95c74e73670c8d036b6bd5a19d150c043589b2c9470bf83c7a08de5bf11f25d6",
+      "sha256": "fbf2ba83a2513c7febce2b0af138e03e334b1551e4aa925c78de38bc55ff978f",
       "source_area": "codex_use_case",
       "source_etag": "W/\"7b27107444a7ac9dbbdc0f6cc27b935b\"",
       "source_last_modified": "2026-06-05T16:59:42Z",
@@ -4117,7 +4361,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4131,9 +4376,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "822bb2bf0ff25f5e1744a566e176af4433f1f9e0211b01a05e0cd471e7964641",
+      "sha256": "35b14a11fb8c093c1f11787f6f7f26780e326dd9205bf56a3a3a68a18bade22a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"b40dd0e469b185bf2c8e7c558e3e59e2\"",
       "source_last_modified": "2026-06-05T16:40:43Z",
@@ -4153,7 +4399,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4167,9 +4414,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4902603a2f3ed8e9ac61bab7ea7f3c88aab2c2ef06a09022e2eee649cf206309",
+      "sha256": "3f42ea8eb7690d2a491c03b76de2c93eb5d1bb17a673d184c3ccaee4ccd8e6a8",
       "source_area": "codex_use_case",
       "source_etag": "W/\"113b01d3d3857423e4869e6679e9e583\"",
       "source_last_modified": "2026-04-25T06:51:43Z",
@@ -4187,7 +4435,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -4199,9 +4448,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "a2450e6e318c6ae3af567fb06e9a605061f9b22655b48f6b15b8b5caac37c8b6",
+      "sha256": "49d25fb5ec4afc776a5a8068205cf5df3b4126ed76c2b55b662a9a8a01becc38",
       "source_area": "codex_use_case",
       "source_etag": "W/\"5a0a3afc69e326409b9b7568e4ff47b2\"",
       "source_last_modified": "2026-06-05T16:23:20Z",
@@ -4221,7 +4471,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4235,9 +4486,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ad286875fd359d32f922d229faadc6afef2601684a49620e920c2c0165e97c23",
+      "sha256": "51f20af9038ae2f6cb0ea4c23b4b4cf1b7fa5db376c0fcba4839948b1e0df2df",
       "source_area": "codex_use_case",
       "source_etag": "W/\"6dbc4a3cab119181a324531c092e0e16\"",
       "source_last_modified": "2026-06-05T16:52:14Z",
@@ -4257,7 +4509,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4271,9 +4524,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2e8a757d620b27ca0c6382b8b28b4d4d3c3aa029bf840cd3cb24c78397b29ea6",
+      "sha256": "040d6bf7041a0f6f64f0f4368fbd40dbaa8d3da775b78adaa745b096bfacbbde",
       "source_area": "codex_use_case",
       "source_etag": "W/\"25de5b62a633239972f60b3fb27fe0c7\"",
       "source_last_modified": "2026-06-05T16:36:40Z",
@@ -4293,7 +4547,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4307,9 +4562,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "67cc7704d04d9ca889e765ba6596b6e0f41fb87e0f8460b7deb2b4c41239d2c1",
+      "sha256": "84cdfd7c9011e1df33fac9d23c3e272674bf351f6902cfe046b62bd4375248fc",
       "source_area": "codex_use_case",
       "source_etag": "W/\"46b3dd225bbebcf77de5533b2c417576\"",
       "source_last_modified": "2026-06-03T19:26:43Z",
@@ -4327,7 +4583,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -4339,9 +4596,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "cf45975bddb8b30548460ae92b18e6582cebec61981977a05b0860b2be35c28b",
+      "sha256": "7dd24d51b2a38f734857e622a34259965c699aa6f9bbfd254211e0c6f9a9f34f",
       "source_area": "codex_use_case",
       "source_etag": "W/\"9354e9c86ff7fc7d057e0fde1ce5b5bb\"",
       "source_last_modified": "2026-06-05T17:12:38Z",
@@ -4361,7 +4619,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4375,9 +4634,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "6524104d02f9def11f23703efc51153d0d9f4a76cbc797955db284672880bc16",
+      "sha256": "c04158417105071d0d543fda801c69b43471e0da504cafaae7284cb8ffcd6691",
       "source_area": "codex_use_case",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/use-cases"
@@ -4395,7 +4655,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4409,9 +4670,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "35bf26a489f5d5d78b2c72536c80db7b3cb925ff2194487376d8b810008d84f8",
+      "sha256": "7ebc647c825f4186b7ea957ec24d090b8ced532a7faf1d3d350fa207c7cd98c5",
       "source_area": "codex_use_case",
       "source_etag": "W/\"a0f07fe577bca9c68ad3399c1cacc313\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -4431,7 +4693,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4445,9 +4708,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "aa91cb2227f3c37685845263b3f26c68f9157086d1f6596beba374f9de8a48a2",
+      "sha256": "cc561cc326deb2b469d5d5d686c6b319dcd7c95e12befa20fc1f4e61edfcac24",
       "source_area": "codex_use_case",
       "source_etag": "W/\"d874c4059ad708db4a81d12ec2e9c9c0\"",
       "source_last_modified": "2026-04-30T17:51:28Z",
@@ -4467,7 +4731,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4481,9 +4746,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "29d4b14d35835803aeceee8aebd3255d9f33a9e7bb2a238d44508449e8676aeb",
+      "sha256": "6592257a0b7c1f2af0aafcab787dc7bfbfb8dcafa940e984aa4d681c7cb9302a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"0ed61945221c8fcf69bf46031c86728c\"",
       "source_last_modified": "2026-04-25T06:54:17Z",
@@ -4503,7 +4769,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4517,9 +4784,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "138a6b40eafcf5c5dc74a3086f9f76ba0010831d63e8a4b934a53967d0c4bcb0",
+      "sha256": "04fe38553e614b97e1d492b55ffe9f319a6f6ac2b3f4b0ab9eefe5398e999022",
       "source_area": "codex_use_case",
       "source_etag": "W/\"57eecd6d44c7ae331b284471aa30b6cd\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -4539,7 +4807,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4553,9 +4822,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "79b3f7371e0e920d98b7cabb31ff49cfd87ce88172c89f77f371042414169977",
+      "sha256": "c6114509e6eb7731d35a1b3242382edbcef23a95157eef9aa3384af9e7000bef",
       "source_area": "codex_use_case",
       "source_etag": "W/\"7c06c6e59144f68e86c3b81ce5560335\"",
       "source_last_modified": "2026-06-05T17:28:33Z",
@@ -4575,7 +4845,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4589,9 +4860,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "17a19e960048e072826df2de9ac68090ca865af7844d8f0e686a4dccb602e377",
+      "sha256": "4f16b6e7dd38efdf95c8950462d283bbb5dd75c3d87188f016de019835c2bdc4",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e74a207a6dd15cfc806c8deca47b3bc2\"",
       "source_last_modified": "2026-06-05T17:00:29Z",
@@ -4611,7 +4883,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4625,9 +4898,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "83bfb2ef6419ba73d5bc845e81c249412fcc7905ad7b6567811633a5726b04a1",
+      "sha256": "eeb3338ea1f23ad7140bc87a6c193246c093077d6a8604b657a5def6aa07a126",
       "source_area": "codex_use_case",
       "source_etag": "W/\"baa8c19a1ee6f8de23264c3a1ad648b5\"",
       "source_last_modified": "2026-04-25T06:53:41Z",
@@ -4647,7 +4921,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4661,9 +4936,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "43e12c290d432476ef9b4f113f45025727b2f0d97f78bf3950bf050efadee9bc",
+      "sha256": "cfbac6e60518822a6ce6409b2d2890e1ffcfbaef6776ed556ccf45ca7f6daf48",
       "source_area": "codex_use_case",
       "source_etag": "W/\"ee43ed8ae10c1658dd025acb61680bb2\"",
       "source_last_modified": "2026-04-25T06:58:00Z",
@@ -4683,7 +4959,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4697,9 +4974,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c21b29eea79c9327b16c8369265b7cd660dda2691b7d6afcc6ef8e50e7d3f663",
+      "sha256": "0166c1b0358a8d3175ada4a3f3c024feb94092e042fade08f370ce4ea46638ba",
       "source_area": "codex_use_case",
       "source_etag": "W/\"2cd50fae08765d987607da0225ed1dc7\"",
       "source_last_modified": "2026-06-05T16:36:06Z",
@@ -4719,7 +4997,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4733,9 +5012,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8d4e7568409fb3ba5587c7f36db710fc307087a0eae29b89b3be9df2678db9c5",
+      "sha256": "beec4eb1185e380f136631fd964199e1ec04a6d11a3cf35332061c23a18ad0ba",
       "source_area": "codex_use_case",
       "source_etag": "W/\"17607cd2d64b72c26fc665b69fb91c3a\"",
       "source_last_modified": "2026-06-05T16:52:48Z",
@@ -4751,7 +5031,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.131.0",
@@ -4761,9 +5042,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0c2900f5fd2a9c3b5bf55ea33a8a92e46b050576dcbf9069f668aedbdacf1695",
+      "sha256": "68aba687a017b222bd22bbd5b9b7eb45b76a7d6bf299c96b2dbbaa10b7aeceab",
       "source_area": "codex_use_case",
       "source_etag": "W/\"406377a908e7c837393bf1cbfb2772b1\"",
       "source_last_modified": "2026-06-05T16:56:17Z",
@@ -4783,7 +5065,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4797,9 +5080,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4c671b70e494a63963f085577082e08f1b07d538d6d7ea642054fec6fdb100e8",
+      "sha256": "b45f54628d5a9e3cdd3a12294afca9b555964254c483d0260f22b4f3b2666b2b",
       "source_area": "codex_use_case",
       "source_etag": "W/\"421fa201e3b4caf2994b54a9e6629b67\"",
       "source_last_modified": "2026-04-25T06:33:56Z",
@@ -4819,7 +5103,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4833,9 +5118,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "14b9915c2a063665d68ac05da5144411c42aab3f93ca78bbc559beab8f30a58b",
+      "sha256": "a86c6657f57688d4e54ae64343994d20f9dc03c71ccfb96dce735e5ebb595f0a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c0b15aea93407c70386daaee4d1e26dd\"",
       "source_last_modified": "2026-04-25T06:49:17Z",
@@ -4855,7 +5141,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4869,9 +5156,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ba3a95fb6616d300c52415068389ad76df3aa426f614096ba766b40a5ce57560",
+      "sha256": "ea9fe6f66c7128b7cf974f0bbb530a7b2c910b647bec13c2548b728e02663e98",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e104a1cb23422ec985651804cf66975d\"",
       "source_last_modified": "2026-06-05T16:55:48Z",
@@ -4891,7 +5179,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4905,9 +5194,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "50130ab6bf309a7a3dc3e80f75b4fa99d7269db78e2adf433708a9ad86b49d51",
+      "sha256": "27c6f0e544bd27219e2cb224e2f50585ee66422512479f218405aaadcdd30f5c",
       "source_area": "codex_use_case",
       "source_etag": "W/\"91cc4a596599e393c7830c78c39bdb98\"",
       "source_last_modified": "2026-04-25T06:56:49Z",
@@ -4927,7 +5217,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4941,9 +5232,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "2d4023143fedaaa9198974a42e07a9ace21949fe8e1ac5fd52c13072e5d53dd8",
+      "sha256": "620e9a243c3826b5209dd1863a3139f7cc33295bc17a90d3ef64fc44db6f1f35",
       "source_area": "codex_use_case",
       "source_etag": "W/\"0a73244c882291902118a81114379678\"",
       "source_last_modified": "2026-06-05T16:44:10Z",
@@ -4961,7 +5253,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -4973,9 +5266,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "b29056a71407d6f27bff40948cbbbf72d9816243e273861742348f0a96cdb430",
+      "sha256": "cdfe8f6c3dec7120a580560fb0da4a17527a5414d8b932942a5e8f0ce52a6706",
       "source_area": "codex_use_case",
       "source_etag": "W/\"28936418fda39ce85bd0c40e17b7c6b7\"",
       "source_last_modified": "2026-05-08T00:47:34Z",
@@ -4995,7 +5289,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5009,9 +5304,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0b8bae4b3555ff7de45331f349df79b3269fb900414813d129ee897eaad3fe30",
+      "sha256": "4ee435789a21b9626112c5402e76ce3faa97615e803cb3a17946ad8d8e9155b3",
       "source_area": "codex_use_case",
       "source_etag": "W/\"2413474619ac2019befa2f9fe2f0c26f\"",
       "source_last_modified": "2026-06-05T16:40:51Z",
@@ -5024,16 +5320,18 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.134.0",
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c80aae5d806867889cd7676602c787b4970ebfce4fd6fe8225fca8be3a7b7817",
+      "sha256": "ab31244ff0837f4aedd72d4db8a18227b0d602f6d69c2fdd5b39802d313fe268",
       "source_area": "codex_use_case",
       "source_etag": "W/\"85f0c8e45daa6fbf18cb68e9c0f67d5a\"",
       "source_last_modified": "2026-06-05T18:12:50Z",
@@ -5053,7 +5351,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5067,9 +5366,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e7b224ce9e158831741ac026ce5522611075aff49aaca1221eb7cbedb5f83a39",
+      "sha256": "9fd936023202679df994b6236d8731fd813162bb5b8ebcb60a98ee1ad1eca37f",
       "source_area": "codex_use_case",
       "source_etag": "W/\"919125750ab84747a8a4c467efc814ea\"",
       "source_last_modified": "2026-06-05T16:40:45Z",
@@ -5082,16 +5382,18 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.134.0",
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8730f4b9dcfee8d09337ca85c532a197a0d5b637bd9a78a1a8fdd4efaa04a5f3",
+      "sha256": "8f3e898cf2b16edff029690e87ee4bdee2c8a9846c010fae24a200d6dad2df02",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e02f41c12b47b9f8984ee19df775be83\"",
       "source_last_modified": "2026-06-05T17:06:09Z",
@@ -5102,14 +5404,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "656c35feb6660faa53990bf5456a71ec589d5c1932038bc5bd6b86f50ce06f7f",
+      "sha256": "7d26a5560fa9c3b2df8ebdd4bfd587c5936b60654484f65152ecf574a779413d",
       "source_area": "codex_use_case",
       "source_etag": "W/\"099975f5bd46bcfd6f32942905592405\"",
       "source_last_modified": "2026-06-05T16:47:11Z",
@@ -5127,7 +5431,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -5139,9 +5444,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9395bf5039fed8972ae9884e442a3695970041d4603f44fbc90df04daca37c44",
+      "sha256": "c33a8b4cf092c3a98b54c790b398f020ac6c06c42957d3c1bcb9434874ae9243",
       "source_area": "codex_use_case",
       "source_etag": "W/\"c852315a9b3bfe03b55abe5b1943f9d8\"",
       "source_last_modified": "2026-06-05T16:54:10Z",
@@ -5161,7 +5467,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5175,9 +5482,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "12265b2fa3642853e9107b493f5f309754d4c244280657c27ff0645829b8c83b",
+      "sha256": "7a79ab7bf6e453ebb8423938a5205dda52f8435a8e4d52cd67ff48717f37dc0a",
       "source_area": "codex_use_case",
       "source_etag": "W/\"5e790866b417d4b7b9898055b167cb17\"",
       "source_last_modified": "2026-06-03T19:26:52Z",
@@ -5188,14 +5496,16 @@
       "codex_cli_versions": [
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4ae481b0916d5fe26a9a54de2f5aece767fffdeb8de008616d2998353b09131f",
+      "sha256": "e0a2e300a5be34fa34ca124c56c7eca98acd0e01ff4d33b98c718860513add9d",
       "source_area": "codex_use_case",
       "source_etag": "W/\"ceadab0de96cfe774528f384de78cfba\"",
       "source_last_modified": "2026-06-05T16:47:11Z",
@@ -5215,7 +5525,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5229,9 +5540,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "3ca4dcb95b2a7d8f551d0b6b5132356a96c54d41e1b1efe00283baf249db6dc9",
+      "sha256": "f5d905de7b4c7c46f0adebcc959148856ffb3ed64c53e933e8f8f731bfa1cef3",
       "source_area": "codex_use_case",
       "source_etag": "\"6325591e50158ed2648e113209fc07a4\"",
       "source_last_modified": "2026-04-25T12:19:52Z",
@@ -5249,7 +5561,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -5261,9 +5574,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "f3da027b321f80228406002f3c4327c7adf2deb79261a94e31e38e31cb8a34d6",
+      "sha256": "acc2f45c10869134d7a8728d9bcae6923a31a32eac363d7c92c0b1508af833aa",
       "source_area": "codex_use_case",
       "source_etag": "W/\"4656d2dac964add0470235c4869fc614\"",
       "source_last_modified": "2026-06-05T18:37:22Z",
@@ -5283,7 +5597,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5297,9 +5612,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "aa40621e6c0b0d2dae587dc7f7128a4c087f8196862ba613384182d41a438d67",
+      "sha256": "852d61aae05404528cc5d7abbb60166e44d37ec448e755c4229de474dec94569",
       "source_area": "codex_use_case",
       "source_etag": "W/\"e2bf260df7c4c29f8503f1534bc337c7\"",
       "source_last_modified": "2026-06-05T16:29:09Z",
@@ -5317,7 +5633,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -5329,9 +5646,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "37cbb5bcf408e48fe0ed482d6d7c1b73b46a32ed3f2e0d0a72bd3c3cc1fc0102",
+      "sha256": "a6fd8a911b4de6a85c85c91e3158f3aa49f9a813cd5ba65e1410096636efad0b",
       "source_area": "codex_use_case",
       "source_etag": "W/\"3674fdfd6e3e2feede9f8b8813f0306b\"",
       "source_last_modified": "2026-06-05T18:02:03Z",
@@ -5349,7 +5667,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.129.0",
@@ -5361,9 +5680,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "fe7b9ced180ae42ddaf3dc2d1fc334e7b5c6cd201ae1f6b2e8d1af01e1951a9a",
+      "sha256": "e5c13b44d64da0c5cd1b250cff331edc507bf8d348f4ae9a681e39d9ec03aee6",
       "source_area": "codex_use_case",
       "source_etag": "W/\"31d92c142a72c57b2dd897de4fce4a7e\"",
       "source_last_modified": "2026-06-05T16:57:42Z",
@@ -5379,7 +5699,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.131.0",
@@ -5389,9 +5710,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "77ec02be082ed7921ca1588a073bdbab38e02dca2ec878b51d7073b4e198488d",
+      "sha256": "0186e3e941024a6cce2071d2844f4cc96270f0ae63487649728e721c46f17d54",
       "source_area": "codex_use_case",
       "source_etag": "W/\"72f3bc86ae14cb0dd4d1a37f05ff83cc\"",
       "source_last_modified": "2026-06-05T16:54:07Z",
@@ -5411,7 +5733,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5425,9 +5748,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e175a13d44f4dd01db6ba60a548b67bfae3134de5dad06892aaea7dff0ba7132",
+      "sha256": "f4c49ae9bf5f2db86a7a9a5ad665aac4b916b5d8d689abd796e56ba9da3729e1",
       "source_area": "codex_media",
       "source_etag": "W/\"f8c5b3b38c693aaa79571f8ba3f0c9fb\"",
       "source_last_modified": "2026-04-25T06:33:28Z",
@@ -5447,7 +5771,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5461,9 +5786,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "700bb45a584c0d7138c2160ef5f4bb1e5c365aa7fbea34b289f55cfdb4c06d01",
+      "sha256": "bf08ea56234cfa765592e0ab3b69377c8b631a2b205fafd9a5b31426718b0322",
       "source_area": "codex_app",
       "source_etag": "W/\"2185941e04a9d0fe6d3149e6f946a78d\"",
       "source_last_modified": "2026-06-05T20:43:51Z",
@@ -5483,7 +5809,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5497,9 +5824,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8f27773ab685446d278111bbea11a863c1a7de18e3ea8b1cedc0da66a260f995",
+      "sha256": "4da329ca3bced4ffd3f8421ecd8df53491cf69ee14397afcb6514afea681c82a",
       "source_area": "codex_reference",
       "source_etag": "W/\"d6a99925f1c9b673aa7e39380f5aa788\"",
       "source_last_modified": "2026-04-25T06:41:43Z",
@@ -5519,7 +5847,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5533,9 +5862,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "0176839f0f0e1e89264e62e9e5ce677c907cb753cd9c9588a8b2803d6d21d3ca",
+      "sha256": "07f7409882b82942b10262f4aa42e2893a98d08e71c73b7f09e730179f6490e2",
       "source_area": "cookbook",
       "source_etag": "W/\"d60804650c2f49d95afd697bbc4c1f4c\"",
       "source_last_modified": "2026-04-25T06:41:02Z",
@@ -5555,7 +5885,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5569,9 +5900,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "9a2ec0969886e5f412ff94598fbf213f4f9eb15aa389c786186ecdc30cc5f5bd",
+      "sha256": "6d8b76b3b0ce73f0adcb38f311a163767fc97bc476e4dd2f6bfbef504100a4fe",
       "source_area": "cookbook",
       "source_etag": "W/\"25267233acd6a5c02b5b246c64a4dd32\"",
       "source_last_modified": "2026-04-25T06:49:59Z",
@@ -5591,7 +5923,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5605,9 +5938,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "58cfa221feeb5cc208899c66d62dca256eb1de3b99974bd8dfbb923b4bf3b073",
+      "sha256": "0d15c5acdea8278a5d5a0ed5eee608f3f205be6fc3b77708a97179541d3265a9",
       "source_area": "cookbook",
       "source_etag": "W/\"64692bed0646f72b944d00ec378aa442\"",
       "source_last_modified": "2026-04-29T00:02:36Z",
@@ -5624,7 +5958,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.130.0",
@@ -5635,9 +5970,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "92c73ee9c994ee5e700520e9cc8a8f1fd6923137d67ce33bb0b4326a11ff8123",
+      "sha256": "5cd7f0627ce2da0d4c3583ccba20a14bb36ed682e7ade3976b0927ea45c8b72f",
       "source_area": "cookbook",
       "source_etag": "W/\"62ab699ed4e09d43b7b22abe4f58e305\"",
       "source_last_modified": "2026-05-11T17:56:55Z",
@@ -5657,7 +5993,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5671,9 +6008,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "53dc0eeede04b456e0e501bd5229419db2aa87678543f85a111de1fe522c1d4d",
+      "sha256": "264aa5019e8da6e6cdddf483916ffe125324f129a57c49d871f66c5e92aa543c",
       "source_area": "cookbook",
       "source_etag": "W/\"e1fa0454e42b0805f62e4d6011c0692f\"",
       "source_last_modified": "2026-04-25T06:42:06Z",
@@ -5693,7 +6031,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5707,9 +6046,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "be54b5451fc5a4321027a08f87168dc3e404739c91173d726101414d62f072db",
+      "sha256": "82e449cc39e4394a94382c253904b39f6daeb336969c662d5b3332736bb75196",
       "source_area": "cookbook",
       "source_etag": "W/\"c77baeb2f8180ce654f72fbb89671186\"",
       "source_last_modified": "2026-04-25T07:01:12Z",
@@ -5729,7 +6069,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5743,9 +6084,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e827b70a53356e104df1ccdb06559cfb3e5d37416136695ea63de931303804a7",
+      "sha256": "576091c0444e144b07d5c44c5acd05034361742b76be374ad4440e5fbd9b49ab",
       "source_area": "cookbook",
       "source_etag": "W/\"4ee310f9ea42fc45555b0af4b75c1dcc\"",
       "source_last_modified": "2026-04-25T06:58:18Z",
@@ -5765,7 +6107,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5779,9 +6122,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8466b1e91225a23294efeb9321c19eaeae218382f28e8b171c1d7d3beb1cfe8b",
+      "sha256": "b77a8624f19efa9cf339cc4343cc2a79194e6dc488be975735172777603549da",
       "source_area": "cookbook",
       "source_etag": "W/\"8ca9ef2c65083088b0441ce942e75ab8\"",
       "source_last_modified": "2026-04-25T06:43:54Z",
@@ -5798,7 +6142,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.130.0",
@@ -5809,9 +6154,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "eaefd5ec6b6a8953f926e347b3f315924908a83eae366f5e2918b6d25f217cb4",
+      "sha256": "7145063d1a492c2d2285c13be9f29d5b716d5de80c7bbe138de795fa662f3ae6",
       "source_area": "cookbook",
       "source_etag": "W/\"e616293ef80fb89eca87912f1200fa7a\"",
       "source_last_modified": "2026-05-14T07:08:24Z",
@@ -5831,7 +6177,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5845,9 +6192,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "e743d252d59f9a86fa6e4fd26b15617d0069873da9485b3f413897dc6470f7b2",
+      "sha256": "3b2ede658d857a2dd7f3aa6100161b2e63e534dbdeb99a9c4851dbbad1bb4803",
       "source_area": "cookbook",
       "source_etag": "W/\"4f9e1c42917ce0b6e966b3c0d5682663\"",
       "source_last_modified": "2026-04-25T06:41:24Z",
@@ -5867,7 +6215,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5881,9 +6230,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "28ad486db97ccb7bc769f95dbc111b8e9083480065484cd2ecf9f1f567e27fd0",
+      "sha256": "3ab78b6a40b21d871fc58b4d6bfe2984c0db03c874e48609b1b73f980db31c9f",
       "source_area": "cookbook",
       "source_etag": "W/\"72580814ba9d4125035bb304b43cca6d\"",
       "source_last_modified": "2026-05-14T07:08:25Z",
@@ -5903,7 +6253,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5917,9 +6268,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "fc0ab291104c60025a0ada78e07f9cd30bd28807ca5b15cb83798ef33b0c81c9",
+      "sha256": "021cd7a38037180676d3dca1f886317daed565c83db5dfcca1a9dc755a7b004c",
       "source_area": "resource",
       "source_etag": "\"256d647990a8e3feeb4322b9a08d1e29\"",
       "source_last_modified": "2026-04-25T12:19:54Z",
@@ -5950,8 +6302,8 @@
     },
     "dot_codex/skills/dot_system/imagegen/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -5964,7 +6316,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5978,10 +6331,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "d15daa5a844d0be1e1ecbf92a437c41be6c82b8aca4c3c9dfaa0ec7e74c08253",
+      "sha256": "8ea0ccfb7dad94bd4e7bdca795b34547034dfcca06cbb28e23f06232f6a1e08a",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6022,8 +6376,8 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/cli.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6036,7 +6390,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6050,10 +6405,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "8220d0ac103f9a8f84181c5b18fb3e65e54829731c70a3fbe54f9a3d65000c49",
+      "sha256": "c67f9a31c75af04597b63d55ddf18139d87b53c6ad31c09742246997647a62de",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6061,8 +6417,8 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/codex-network.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6075,7 +6431,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6089,10 +6446,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "9bb67069a63526d78c4133b26f7a3ae719df6dec66f3c1dd44e1c565b41065a8",
+      "sha256": "0899b29d63304b461dcd66a4411ae592bd9737bd5bc2904877d4c18c220b9807",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6100,8 +6458,8 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/image-api.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6114,7 +6472,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6128,10 +6487,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "bb1b1d2355d8d09c40e2e68c99745e5a0144bea08c65337016a9c51040761622",
+      "sha256": "ee94a524e4e7898ae680d4fa866a49c6a8f4534a388c6042b87c78b3f666d3b7",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6139,8 +6499,8 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/prompting.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6153,7 +6513,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6167,10 +6528,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "7c8dbc9d856dbab01a72002e2c18ec179d6e3c47047f89e6ca3a28cd84a9448d",
+      "sha256": "d355afdd60989ea1fcc9bc6e99597fb549cee93519141b08ec3cd6b8d2b06b7d",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6178,8 +6540,8 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6192,7 +6554,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6206,10 +6569,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "b52ebb228caea926bc89f23746af9717e45a06b2b217cd17044fc3ab43ebaff3",
+      "sha256": "4043441ab78cc1cefa263bee21c71a5b35ca4e96f2286c294c0b0625b2559da5",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6250,8 +6614,8 @@
     },
     "dot_codex/skills/dot_system/openai-docs/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6264,7 +6628,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6278,10 +6643,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a35a645d1ff5609537586c2436acfaa72b47df0b4b3a1d7518fd61f62a66051f",
+      "sha256": "c525c139b380ed22a6fe0bac6b8d2e550a49dd3340ef15db1d3832f403d2b671",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6322,8 +6688,8 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/latest-model.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6336,7 +6702,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6350,10 +6717,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "03aa1666a9315a704c78dbd7b6e2a6f4ba3342b81cb8c85ccac909316845e913",
+      "sha256": "3a71f4c0997405e3b32301005495e69f0de3d54f13df22c7d44f6ac487621838",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6361,8 +6729,8 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6375,7 +6743,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6389,10 +6758,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "f77bbde4068501635908f6cf457c9da5a306b2e0885a6137db7858c87a772c0d",
+      "sha256": "6a25ab443ba7057f5ad01b083433a0a05fbf1d0b492b595673fc344b5b4206d9",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6400,8 +6770,8 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6414,7 +6784,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6428,10 +6799,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "b2a4c8ac821b7aacff89677919d500b110a943ab171d593c49d34687a0ea7584",
+      "sha256": "c3136ac16fbe4097560c544adf61ea8779f52e2f56c2bef600af46318fdced6c",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6461,8 +6833,8 @@
     },
     "dot_codex/skills/dot_system/plugin-creator/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6475,7 +6847,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6489,10 +6862,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "69f3a9a0b2cd0675a1c426df27d5562692599ea1da55fae0dd5a5c92f2079bf2",
+      "sha256": "adc22995cba385f6780af1e9c24513c67d74cc22111ae10eccc855854355ca77",
       "source_area": "system_skill_plugin_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6533,15 +6907,16 @@
     },
     "dot_codex/skills/dot_system/plugin-creator/references/installing-and-updating.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.133.0",
         "0.134.0",
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.133.0",
@@ -6549,10 +6924,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "8901aec0e957a7e1d8bda5ffa5d7419e680b5f5530998ca5e5e6aa8450056a96",
+      "sha256": "983c61455bb235313fb61480934c2384fcdd998ddec12a86a6e2a4772cdfde07",
       "source_area": "system_skill_plugin_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6560,8 +6936,8 @@
     },
     "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6574,7 +6950,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6588,10 +6965,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "8e44be4b78e6e22d24d1e10b1e9d208bbc4cfbd1659298492d3fbe123f362237",
+      "sha256": "fea54bbca9df4ff894dd44b00ee21390345c8ba20a3a89867202ead5f1580ac7",
       "source_area": "system_skill_plugin_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6643,8 +7021,8 @@
     },
     "dot_codex/skills/dot_system/skill-creator/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6657,7 +7035,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6671,10 +7050,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "6fab2419b15f42a63d0b82bbbb881cfb1a18101b1ab49a8f297421488c51e756",
+      "sha256": "e095c9d718fdbcfe590b4c3a6137d93484c156f0769fef4448ca09a5f3e57dd4",
       "source_area": "system_skill_skill_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6726,8 +7106,8 @@
     },
     "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6740,7 +7120,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6754,10 +7135,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "31a1bb94bccf4ba5cecc83c1945b4546fc7bd54dbe7e63c6a9469acced163fe0",
+      "sha256": "364a6847f88b25d967d36780e61c5d9f566ea9969c1f8e515cba6fc326a15100",
       "source_area": "system_skill_skill_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6809,8 +7191,8 @@
     },
     "dot_codex/skills/dot_system/skill-installer/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.138.0",
-      "codex_cli_version_raw": "codex-cli 0.138.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -6823,7 +7205,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6837,10 +7220,11 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "6a9264c9261202e01244fd79c2a8bc45c74b386627f99bb36119ae0da81ea9d1",
+      "sha256": "f1b43f4d564ab7d8e569fd7a2cc1115045599c09bdd13c3ac3b73187ee912fba",
       "source_area": "system_skill_skill_installer",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -6925,7 +7309,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6939,9 +7324,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "ddee42d352c611f6bf4770c5d1b64db5e56ab4ab6191c6e0481da35ab163b8d1",
+      "sha256": "fd1c43d808fa49a9872b7e79dd7f8e2f547056c93b895f607fe55ba2ab8f6f43",
       "source_area": "github_root",
       "source_etag": "W/\"a7a03aa0911b849ce57cdc334b544584bb03be634efea97a2d1f22415f34c4ea\"",
       "source_type": "github",
@@ -6960,7 +7346,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6974,9 +7361,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "7ceb93ed63f96977a4b466d6340da654298b12f4a97af192595c4601e56f65a8",
+      "sha256": "aceb671d41f596b1f987da9209534fff16589661818a495d1d23cfd615488a3c",
       "source_area": "github_root",
       "source_etag": "W/\"41819f5a6fdaca6446706c4a3c1e08cff36ff8f265ef9aa22dad0b3178c1e3cb\"",
       "source_type": "github",
@@ -7002,7 +7390,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7016,9 +7405,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "171d1115932ba4775c3ea0bdd8e7fbf2e30186071bbf857444efdc67d8f04f3d",
+      "sha256": "b26481f88fa96b27fbbc956d2568d1195026bc0224b227794d15126c456fd725",
       "source_area": "github_root",
       "source_etag": "W/\"0a6a7c1a14ae5f0928d3df619c3d89ebb9e9a3446862bccb318f24d234d39b12\"",
       "source_type": "github",
@@ -7037,7 +7427,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7051,9 +7442,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "1fc154ab9db2072debf218d6cf43c59a59b2fc3ac49c513d0abc57d563a9da13",
+      "sha256": "e97d98053cdcca2ab7ee89b72ffb67733f31b563ce637bfada54f7bf57080467",
       "source_area": "github_root",
       "source_etag": "W/\"85cdf55682402eb9dba63777e1e7c541827d10bc2edd355da5d28a4f9af6bb1d\"",
       "source_type": "github",
@@ -7072,7 +7464,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7086,9 +7479,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "99d8072f653faf5f4e1813c5fa3d33aa9329cab46323e420680878b7ccb28968",
+      "sha256": "2fe3df97d84685ca29cdb881f551ae64dc9d2b9ded264839797c89617c1aab67",
       "source_area": "github_cli",
       "source_etag": "W/\"42a2c0ccc689731b328ed7e69b8d581e08a492c77601dbfd6d02bb889a202945\"",
       "source_type": "github",
@@ -7107,7 +7501,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7121,9 +7516,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "40b2c52d3bb473eb82fb828fba97fc4b059cbba41401cfb7a258a90825ff64be",
+      "sha256": "92f4d34c5a9fdf7a6c387197dd262a1690bd11d647bc3fc740b2fba38a25aedd",
       "source_area": "github_rust",
       "source_etag": "W/\"6a110f913cb9c97e006894d137018e0d6f71abd1b21e2d5063c37d4fc6aaf023\"",
       "source_type": "github",
@@ -7142,7 +7538,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7156,9 +7553,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "3e0dc7692a3552ae123bf2628c79bc5b2bc81d8fbdab360ab38e64eb89c36090",
+      "sha256": "6aa243a0a3db924d078225eabf033241799434b6973b6871515dc0238904594c",
       "source_area": "github_rust",
       "source_etag": "W/\"cd2985bdf6cc7ad38e875eed0d1f108cae6851563b87c99073213e96eaf37d8d\"",
       "source_type": "github",
@@ -7177,7 +7575,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7191,9 +7590,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "699b8359a0373bd789395a438866d3b361ff60d51960bc7ab68d04904aeabe7d",
+      "sha256": "95abedc026ab103e02c798b809af73c1c583698e967e38bc4d6ede2718c8ef53",
       "source_area": "github_rust",
       "source_etag": "W/\"6d78cbcbeb3f5510a37a5476ee886879fb092487ccfaa908312ec343e91de67c\"",
       "source_type": "github",
@@ -7212,7 +7612,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7226,9 +7627,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "5902e0f693f63429da9402e4653cbc1a330f61fa8b10989f506186ed69910697",
+      "sha256": "4302ecf5aec57f24c42f6fb7142fb2e804ed0dc2b66d5aaaef08d5b6b6ad178b",
       "source_area": "github_rust",
       "source_etag": "W/\"e00e6212871e4f8c1f9f330ba14a4ee62609e27ab4050edf0148f809999deae8\"",
       "source_type": "github",
@@ -7247,7 +7649,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7261,9 +7664,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "d95f2b8fc19dbe1f6f845038c27539b5c4f7b6e1b8627250522e3ed5a8db1a5a",
+      "sha256": "f1a5e00917c15a2a1d3e8385d570853ea662f87b29158fd0cb7f480a89cb94c7",
       "source_area": "github_rust",
       "source_etag": "W/\"f2f99859b8dbe6411940e979dcba0b450385d8891d53e193551801a44a848141\"",
       "source_type": "github",
@@ -7282,7 +7686,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7296,9 +7701,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "94c255baa92471b73057adeb85edc3f9cbf8d9eeaec015a9d71fdbd361420f06",
+      "sha256": "ca5285c302ecc9be7c3f24847dc8f1f4995a02c5e796ef603c4a3b3c396a7290",
       "source_area": "github_docs",
       "source_etag": "W/\"eb27d3139c1961daea50174a9fe876cfe113044ef06f80e73f3e68ec99ab8135\"",
       "source_type": "github",
@@ -7317,7 +7723,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7331,9 +7738,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "fb24112f084d8482e0fa895f4262e73a3383530e16ce93ccf995344e25e09337",
+      "sha256": "9009e408ddfd202118a15d8a7c3b1909db3276f3e62747536571a9534f14aceb",
       "source_area": "github_docs",
       "source_etag": "W/\"06f117ede2b232d44da360094b1416dbe24a93f8364a56928937f83d5815a283\"",
       "source_type": "github",
@@ -7352,7 +7760,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7366,9 +7775,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "8792b2aff6a88e30d20a472f5ec0cfdbcfad0f62fd7dcde30f595be8ea600f85",
+      "sha256": "e047090b91fc7e31a94296f5df386ebecab77b20ecda3bb7ae2b86d5df65e629",
       "source_area": "github_docs",
       "source_etag": "W/\"e5349891f8df99ec8d9e9b9fd394eb0357453da1778864da32348a2a54b452a8\"",
       "source_type": "github",
@@ -7387,7 +7797,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7401,9 +7812,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "72e2a2a7c029dcb0ddee5c79e855f1fe8caf66b21164938ed960854657864012",
+      "sha256": "ec5e09379b4383728fef1d0e63806cb2c1cc648e0417bda37f78ce56e30f520d",
       "source_area": "github_docs",
       "source_etag": "W/\"49bad37e42f6d2d8c1720a46d1b18135c6d5407e1a770ff477b76585a843bb4a\"",
       "source_type": "github",
@@ -7422,7 +7834,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7436,9 +7849,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "64754c9d0240b398892c69bace77e91bd98381c06c1f7a618469d7aca67aa7be",
+      "sha256": "c682827f4dd654eea474ac2fb9b3282a84171c71658bf07e869ca2a56fc3c6c8",
       "source_area": "github_docs",
       "source_etag": "W/\"a1d6245261302deed33b0bafee19a81693567e56ee36eac98b0bbc1ce3aff61a\"",
       "source_type": "github",
@@ -7457,7 +7871,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7471,9 +7886,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "456913e455aae8e676653e8fdd75255b0507add12cfb25e90c256e6d8179def8",
+      "sha256": "44e9f604d87533015283467296c2578a78c5efc80146709be38c19036e009d4b",
       "source_area": "github_docs",
       "source_etag": "W/\"b5e0c4896e74c34bc7cfb63a3049d7339e499a95bd599af755bd77bb2f113834\"",
       "source_type": "github",
@@ -7492,7 +7908,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7506,9 +7923,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "d83087631a530d7fdc8ce80fcb90b5bb8ebc6aaf01343e17284a5a1df87d83a3",
+      "sha256": "9422ab328eec4a7e7f9f90a0c0561a036ecb4b693b6cb176bbeb16b6052c6501",
       "source_area": "github_docs",
       "source_etag": "W/\"dcf1e3a75ec1080431c4ae55a70cb03c5124551b901ea3a5cdec01f14860c50b\"",
       "source_type": "github",
@@ -7527,7 +7945,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7541,9 +7960,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "6cc63b2dbe28bcebf6f666f9b240e1dad7f68aa3b016ad2332ca4b0ee374ee93",
+      "sha256": "9119d8142c47751ab6bba5a519f0c116096ea7d7123ff168c2d4eec152c3d079",
       "source_area": "github_docs",
       "source_etag": "W/\"fd39160d926f9439ca12d1a51f9dd74b2de78cde9b8478acb9f540dafc3b08b6\"",
       "source_type": "github",
@@ -7562,7 +7982,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7576,9 +7997,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "518bc632bb2b5d36f4cc29628bf3fbf756dae45cf1b5205b9535e034b534e6d0",
+      "sha256": "71a76400ca274405a4be93fc56bd0cd319dbb02ec5123356ccf1b0a4b6a7f5b9",
       "source_area": "github_docs",
       "source_etag": "W/\"82e24d79cb87d803a45e293541d6e49716158943df1eae47611ccda006bad8ca\"",
       "source_type": "github",
@@ -7597,7 +8019,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7611,9 +8034,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "4aa7d4acbde0471148c0fdbeb57b683eaaf470044318f2a7bb804d22c4465137",
+      "sha256": "63a05eade41d137a3c5148ab818861d17171079bfaa048f8920469141cccc861",
       "source_area": "github_docs",
       "source_etag": "W/\"06848166e90202a72dafc677389dc031f3eca46915eac7d9abeb702d05c33a5e\"",
       "source_type": "github",
@@ -7632,7 +8056,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7646,9 +8071,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "978e697b73c477f8df4d746ff8090abb91f3ab9b2df1c241b674c4ee1a78d624",
+      "sha256": "c162d3207393b0efaedf1a6d0e9398f9a12b7b17c11d28f6421543a3933ddee8",
       "source_area": "github_docs",
       "source_etag": "W/\"5e2091c10ba6fda84bf6ae22b1c8c1f557e61b08c73dd2ffcf13911453d4a1f8\"",
       "source_type": "github",
@@ -7667,7 +8093,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7681,9 +8108,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "37062b692d0567fcb70258fd3e44b3dcdda5a00c9f3d38954b6eac50ff661416",
+      "sha256": "45487bf3e548e34eab4b8ace4513b1be54155e09ce008c959d8620c7007a5750",
       "source_area": "github_docs",
       "source_etag": "W/\"090e142cb811aa9aa4c9af31688872308cf68af2d6471e87665ed43f3f17c37c\"",
       "source_type": "github",
@@ -7702,7 +8130,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7716,9 +8145,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "61e7b4a1c83c4231df978aea0fbe9c7c96a5a01d114f912f567c7e047fcfb4fe",
+      "sha256": "17a88e5f7a2256461aba9bdc98ccd56821b92b23b8777c7e8cb877cd758fca9b",
       "source_area": "github_docs",
       "source_etag": "W/\"e2f71f0fae297ce95471d539c52107f55aa67d565488302138ccbf6bafb999b3\"",
       "source_type": "github",
@@ -7737,7 +8167,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7751,9 +8182,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "c06b90c23fd9ad254b2f94f6bb7b665ab9910c7eb14d4a74421771746adc480d",
+      "sha256": "c316fef194bbcb8b3f2767be61dbe1209a4430832454f5cfc0410aa6c9d9f384",
       "source_area": "github_docs",
       "source_etag": "W/\"98db015a71bd40cdb336e59ad7d775aa63b119b711ec2622a8c9c4dd7e2fdc3f\"",
       "source_type": "github",
@@ -7772,7 +8204,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7786,9 +8219,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "46fe4de373e2de93b34880b619e379472315063a5888f0f8a6c367c6e039118f",
+      "sha256": "ad22bc14d551c1e67c97ba4f26c1ebca7ac24b30172cf9e28bb9eb9741505f21",
       "source_area": "github_docs",
       "source_etag": "W/\"a7d2abcaac56b52a8be40a5fbadd01885cd23676eb02c75088ba36d7e0d1791c\"",
       "source_type": "github",
@@ -7807,7 +8241,8 @@
         "0.135.0",
         "0.136.0",
         "0.137.0",
-        "0.138.0"
+        "0.138.0",
+        "0.139.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7821,9 +8256,10 @@
         "codex-cli 0.135.0",
         "codex-cli 0.136.0",
         "codex-cli 0.137.0",
-        "codex-cli 0.138.0"
+        "codex-cli 0.138.0",
+        "codex-cli 0.139.0"
       ],
-      "sha256": "5707c8ecf71fb7d8a400db1f3c75bbe9dee4974a37cc7a4f80e6a16b68a1eba5",
+      "sha256": "4c68b210ffd21e154da70703a6cd3f9c7eda92b63bb988ca390618b6be8755d3",
       "source_area": "tool_guide_web_search",
       "source_etag": "W/\"f4f08757f8dd8d337d3b4d6b01cdcf78\"",
       "source_last_modified": "2026-06-09T18:36:58Z",
@@ -7832,10 +8268,10 @@
     },
     "system_prompts/codex-cli/prompt-input.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_version": "0.136.0",
-      "codex_cli_version_raw": "codex-cli 0.136.0",
+      "codex_cli_version": "0.139.0",
+      "codex_cli_version_raw": "codex-cli 0.139.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "04102b76f48ffcf389f633e4a98c131e7384fe4076a4fa9c73748eb5fe2e8b6f",
+      "sha256": "098a473a62786878c0b189b4a479eccefe55d733c36ea9670f64b680f2d997ac",
       "source_area": "system_prompt",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_prompt_input",

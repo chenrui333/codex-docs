@@ -4,8 +4,8 @@ source_area: 'codex_permissions'
 source_url: 'https://developers.openai.com/codex/permissions'
 source_last_modified: '2026-06-09T06:23:43Z'
 source_etag: 'W/"ed3ed2d68f39ac48b77648de64eb47d0"'
-codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
-codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
+codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
+codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
 
 # Permissions – Codex | OpenAI Developers

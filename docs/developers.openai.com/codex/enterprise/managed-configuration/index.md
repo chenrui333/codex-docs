@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-06-09T06:25:02Z'
-source_etag: 'W/"402ac5345bba5f141d783b3cc82e02af"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
+source_last_modified: '2026-06-09T23:46:54Z'
+source_etag: 'W/"38d30a4e4cb68c708ce5d93e024daf0b"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
 
 # Managed configuration – Codex | OpenAI Developers
@@ -95,6 +95,16 @@ This example blocks `--ask-for-approval never` and `--sandbox danger-full-access
 allowed_approval_policies = ["untrusted", "on-request"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 ```
+
+### Disable AppShots
+
+To disable AppShots for managed users, set the top-level `allow_appshots` requirement:
+
+```
+allow_appshots = false
+```
+
+Codex treats only `allow_appshots = false` as disabling AppShots. If the key is omitted, AppShots remains unconstrained by requirements and uses normal product availability checks. App-server clients that read effective requirements through `configRequirements/read` receive the same restriction as `allowAppshots`; an omitted or `null` `allowAppshots` value does not disable AppShots.
 
 ### Control available permission profiles
 

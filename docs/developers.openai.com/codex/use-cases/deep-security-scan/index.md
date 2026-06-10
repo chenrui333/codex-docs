@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deep-security-scan'
 source_last_modified: '2026-06-05T17:42:54Z'
 source_etag: 'W/"4d05fd8f9152c2498e50d19646394e88"'
-codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0"]
-codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0"]
+codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
+codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
 
 # Run a deep security scan | Codex use cases
