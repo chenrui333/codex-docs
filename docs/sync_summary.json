@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-10T07:37:59+00:00",
+  "generated_at": "2026-06-10T13:19:32+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,13 +13,8 @@
   },
   "total_files": 254,
   "updated": [
-    "developers.openai.com/codex/cli/index.md",
-    "developers.openai.com/codex/hooks/index.md",
-    "developers.openai.com/codex/permissions/index.md",
-    "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/use-cases/follow-goals/index.md",
-    "developers.openai.com/codex/use-cases/make-granular-ui-changes/index.md",
-    "developers.openai.com/codex/use-cases/user-stories-to-ui-mocks/index.md",
-    "developers.openai.com/codex/use-cases/verified-operations-workflows/index.md"
+    "developers.openai.com/codex/changelog/index.md",
+    "developers.openai.com/codex/pricing/index.md",
+    "developers.openai.com/codex/security/setup/index.md"
   ]
 }

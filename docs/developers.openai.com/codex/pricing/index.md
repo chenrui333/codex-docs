@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-03T19:25:24Z'
-source_etag: 'W/"5975307b19455413e9659b3a72f79824"'
+source_last_modified: '2026-06-10T12:40:11Z'
+source_etag: 'W/"a8cc0f081f231cd2fbf86f206f7dd97e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -160,7 +160,6 @@ Plus
 | GPT-5.5 | 15-80 | Not available | Not available |
 | GPT-5.4 | 20-100 | Not available | Not available |
 | GPT-5.4-mini | 60-350 | Not available | Not available |
-| GPT-5.3-Codex | 30-150 | 10-60 | 20-50 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -174,7 +173,6 @@ Pro 5x
 | GPT-5.5 | 80-400 | Not available | Not available |
 | GPT-5.4 | 100-500 | Not available | Not available |
 | GPT-5.4-mini | 300-1750 | Not available | Not available |
-| GPT-5.3-Codex | 150-750 | 50-300 | 100-250 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -188,7 +186,6 @@ Pro 20x
 | GPT-5.5 | 300-1600 | Not available | Not available |
 | GPT-5.4 | 400-2000 | Not available | Not available |
 | GPT-5.4-mini | 1200-7000 | Not available | Not available |
-| GPT-5.3-Codex | 600-3000 | 200-1200 | 400-1000 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -202,7 +199,6 @@ Business
 | GPT-5.5 | 15-80 | Not available | Not available |
 | GPT-5.4 | 20-100 | Not available | Not available |
 | GPT-5.4-mini | 60-350 | Not available | Not available |
-| GPT-5.3-Codex | 30-150 | 10-60 | 20-50 |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -216,7 +212,6 @@ API Key
 | GPT-5.5 | Not available | Not available | Not available |
 | GPT-5.4 | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 | GPT-5.4-mini | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
-| GPT-5.3-Codex | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -294,8 +289,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
 | GPT-5.5 | 125 credits | 12.50 credits | 750 credits |
 | GPT-5.4 | 62.50 credits | 6.250 credits | 375 credits |
 | GPT-5.4-mini | 18.75 credits | 1.875 credits | 113 credits |
-| GPT-5.3-Codex | 43.75 credits | 4.375 credits | 350 credits |
-| GPT-5.2 | 43.75 credits | 4.375 credits | 350 credits |
 | GPT-5.3-Codex-Spark | research preview | | |
 | GPT-Image-2 (image) | 200 credits | 50 credits | 750 credits |
 | GPT-Image-2 (text) | 125 credits | 31.25 credits | 250 credits |
@@ -303,7 +296,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
 | --- | --- | --- | --- |
 | GPT-5.5 usage averages 5-45 credits per message. | | | |
 | Fast mode consumes credits at a higher rate for supported models. See [Speed](/codex/speed) for rates. | | | |
-| Cloud tasks and code review run on GPT-5.3-Codex. | | | |
 
 Speed configurations will increase credit consumption for all models that apply.
 Fast mode consumes credits at a higher rate for supported models. See

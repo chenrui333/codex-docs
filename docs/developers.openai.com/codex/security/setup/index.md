@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/setup'
-source_last_modified: '2026-06-10T07:37:34Z'
-source_etag: 'W/"454ba0fc6277a4a6aebc4595e039a858"'
+source_last_modified: '2026-06-10T13:19:08Z'
+source_etag: 'W/"1c7ae4b9714341b89c69f682104615b9"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -87,7 +87,7 @@ You can use two views:
 - **Recommended Findings**: an evolving top 10 list of the most critical issues in the repo
 - **All Findings**: a sortable, filterable table of findings across the repository
 
-![Recommended findings view](/_astro/aardvark_recommended_findings.Dj6eIPV0_ZhRjOL.webp?dpl=dpl_9XstW6AQSLS1bFehw9MuuHt6DeGR)
+![Recommended findings view](/_astro/aardvark_recommended_findings.Dj6eIPV0_ZhRjOL.webp?dpl=dpl_56koKkFtrsxPdXE7XtrpUL2rSQQ3)
 
 Click a finding to open its detail page, which includes:
 
