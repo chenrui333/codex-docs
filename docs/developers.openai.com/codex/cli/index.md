@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli'
-source_last_modified: '2026-05-29T23:21:31Z'
-source_etag: 'W/"1fde1abea42f06082ab5cd2c7486855e"'
+source_last_modified: '2026-06-10T07:22:04Z'
+source_etag: 'W/"3d481298cb3201ee0fb8bcef87975944"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -76,7 +76,7 @@ If you’re new to Codex, read the [best practices guide](/codex/learn/best-prac
 
 Run `codex` to start an interactive terminal UI (TUI) session.](/codex/cli/features#running-in-interactive-mode)[### Control model and reasoning
 
-Use `/model` to switch between GPT-5.4, GPT-5.3-Codex, and other available models, or adjust reasoning levels.](/codex/cli/features#models-reasoning)[### Image inputs
+Use `/model` to switch between GPT-5.4, GPT-5.3-Codex, and other available models, or adjust reasoning levels.](/codex/cli/features#models-and-reasoning)[### Image inputs
 
 Attach screenshots or design specs so Codex reads them alongside your prompt.](/codex/cli/features#image-inputs)[### Image generation
 

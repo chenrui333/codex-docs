@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/verified-operations-workflows'
-source_last_modified: '2026-06-05T16:57:42Z'
-source_etag: 'W/"31d92c142a72c57b2dd897de4fce4a7e"'
+source_last_modified: '2026-06-10T07:37:49Z'
+source_etag: 'W/"f8bffc8309fac2cc8c80cce096c3fb13"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -115,7 +115,7 @@ Connect the tools you use to run the operation with [plugins](/codex/plugins), f
 
 ## Require proof to verify the result
 
-A useful operations run includes an artifact that you or a teammate can inspect, such as a result CSV, a log file, a dashboard link, a screenshot, a PR check, or any other proof that the operation was successful. When using the Codex app, you can inspect this [artifact](/codex/app/artifacts) directly in the artifact viewer after the run to verify the result.
+A useful operations run includes an artifact that you or a teammate can inspect, such as a result CSV, a log file, a dashboard link, a screenshot, a PR check, or any other proof that the operation was successful. When using the Codex app, you can inspect this [artifact](/codex/app/features#artifact-viewer) directly in the artifact viewer after the run to verify the result.
 
 ## Turn the run into a reusable workflow
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/follow-goals'
-source_last_modified: '2026-06-05T16:23:20Z'
-source_etag: 'W/"5a0a3afc69e326409b9b7568e4ff47b2"'
+source_last_modified: '2026-06-10T07:27:28Z'
+source_etag: 'W/"c291988ba7e4727d6f425c50eed37b4f"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -50,7 +50,7 @@ Long-running
 
 Related links
 
-[`/goal` in CLI slash commands](/codex/cli/slash-commands#set-a-goal-with-goal)  [Codex workflows](/codex/workflows)  [Run code migrations](/codex/use-cases/code-migrations)  [Iterate on difficult problems](/codex/use-cases/iterate-on-difficult-problems)
+[`/goal` in CLI slash commands](/codex/cli/slash-commands#set-or-view-a-task-goal-with-goal)  [Codex workflows](/codex/workflows)  [Run code migrations](/codex/use-cases/code-migrations)  [Iterate on difficult problems](/codex/use-cases/iterate-on-difficult-problems)
 
 ## Best for
 

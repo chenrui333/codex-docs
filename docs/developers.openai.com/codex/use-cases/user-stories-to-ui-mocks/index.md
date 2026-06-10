@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/user-stories-to-ui-mocks'
-source_last_modified: '2026-06-05T18:02:03Z'
-source_etag: 'W/"3674fdfd6e3e2feede9f8b8813f0306b"'
+source_last_modified: '2026-06-10T07:37:49Z'
+source_etag: 'W/"9f12aab9763be8bba799aebb62d8ace4"'
 codex_cli_versions: ["0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -123,7 +123,7 @@ Do this until you are satisfied with the mock. The more scoped the changes are, 
 ## Move from mock to prototype
 
 Use the final mock image that you want Codex to implement. Re-attach this image in a new turn rather than continuing the conversation directly.
-You can then ask Codex to implement the mock – optionally using the [Build Web Apps plugin](/codex/plugins/build-web-apps) if you’re building a web app – to turn it into a working prototype:
+You can then ask Codex to implement the mock – optionally using the [Build Web Apps plugin](https://github.com/openai/plugins/tree/main/plugins/build-web-apps) if you’re building a web app – to turn it into a working prototype:
 
 Use this image as a reference and implement in this repository this feature. Use this conversation as context to help you implement it with the right constraints. Minimize the creation of new components: explore the codebase and reuse existing components and design system when possible.
 

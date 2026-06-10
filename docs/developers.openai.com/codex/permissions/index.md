@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_permissions'
 source_url: 'https://developers.openai.com/codex/permissions'
-source_last_modified: '2026-06-09T06:23:43Z'
-source_etag: 'W/"ed3ed2d68f39ac48b77648de64eb47d0"'
+source_last_modified: '2026-06-10T07:22:21Z'
+source_etag: 'W/"83be4033aeb561dd7504d9f67d0a4b2f"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -39,8 +39,8 @@ let Codex inspect a project without editing it, while a write-capable profile
 can limit edits to selected workspace roots.
 
 Local permission profiles are supported on macOS, Linux, WSL, and native
-Windows. Platform-specific enforcement details and caveats are covered in
-[Security limitations](#security-limitations).
+Windows. See [Scope and enforcement](#scope-and-enforcement) for platform-specific
+details and caveats.
 
 For Codex cloud network settings, see [Internet Access](/codex/cloud/internet-access).
 
