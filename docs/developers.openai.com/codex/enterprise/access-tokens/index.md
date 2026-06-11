@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/access-tokens'
-source_last_modified: '2026-06-01T23:15:18Z'
-source_etag: 'W/"6b8b675c3c48b2b2457e9ccec0eb7203"'
+source_last_modified: '2026-06-11T19:05:32Z'
+source_etag: 'W/"df19e08f8612badd266549c9b9b08438"'
 codex_cli_versions: ["0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -12,7 +12,7 @@ codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/enterprise/access-tokens
 
-Codex access tokens let trusted automation run Codex local with a ChatGPT workspace identity. Use them when a script, scheduled job, or CI runner needs repeatable, non-interactive Codex access.
+Codex access tokens are ChatGPT access tokens scoped to Codex permissions that let trusted automation run Codex local with a ChatGPT workspace identity. Use them when a script, scheduled job, or CI runner needs repeatable, non-interactive Codex access.
 
 Codex access tokens are currently supported for ChatGPT Business and
 Enterprise workspaces.
@@ -22,6 +22,12 @@ Access tokens are created in the ChatGPT admin console at [Access tokens](https:
 If a Platform API key works for your automation, keep using API key auth. Use
 Codex access tokens when the workflow specifically needs ChatGPT workspace
 access, ChatGPT-managed Codex entitlements, or enterprise workspace controls.
+
+Need to trigger a published ChatGPT workspace agent from your own system? Use
+a Workspace Agent access token for the Workspace Agents API instead. Codex
+access tokens authenticate Codex local workflows; they do not authenticate
+workspace agent trigger calls. See [Authenticate with Workspace Agent access
+tokens](/workspace-agents/authentication).
 
 ## How access tokens work
 
@@ -41,18 +47,17 @@ Main risks to avoid:
 - **Untrusted runners:** public CI, forked pull requests, or shared machines can expose tokens to people outside your workspace. Use access tokens only on trusted runners.
 - **Shared identities:** one person’s token reused across unrelated teams makes ownership and audit trails harder to interpret. Create tokens for a specific workflow owner.
 - **Stale credentials:** long-lived tokens can remain active after the workflow changes. Prefer finite expirations and revoke tokens that are no longer used.
-- **Wrong credential type:** access tokens are for Codex local workflows. Use Platform API keys for general OpenAI API calls.
+- **Wrong credential type:** Codex access tokens are for Codex local workflows. Use Workspace Agent access tokens to trigger published ChatGPT workspace agents, and use Platform API keys for general OpenAI API calls.
 
 ## Enable access token creation
 
-Use the Codex Local controls in workspace settings to turn on access token creation for allowed members.
+Use the access token permission in workspace settings to turn on access token creation for allowed members.
 
 ![Access token access permission in ChatGPT workspace RBAC settings](/images/codex/enterprise/rbac_access_token_access_permission.png)
 
 1. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings).
-2. In the Codex Local section, make sure **Allow members to use Codex Local** is turned on.
-3. Turn on **Allow members to use Codex access tokens** if all allowed members should be able to create access tokens.
-4. If you use custom roles for a narrower rollout, assign the access token permission only to groups that need to create tokens.
+2. In the **Access tokens** section, turn on **Allow users to create access tokens** if all allowed members should be able to create access tokens.
+3. If members need to use those tokens with the Codex app, CLI, or IDE extension, make sure **Allow members to use Codex Local** is also turned on in the **Codex Local** section.
 
 Keep access token creation limited to people or service owners who understand where the token will be stored, which automation will use it, and how it will be rotated.
 
@@ -115,7 +120,7 @@ From the Access tokens page, workspace owners and admins can revoke any workspac
 
 ## Permission model
 
-Access token permissions are separate from the general Codex local permission. A member can have access to the Codex app, CLI, or IDE extension without being allowed to create access tokens.
+Access token creation is controlled by the workspace’s access token permission, which is separate from the general Codex local permission. A member can have access to the Codex app, CLI, or IDE extension without being allowed to create access tokens.
 
 | Capability | Workspace owners and admins | Member with access token permission | Member without access token permission |
 | --- | --- | --- | --- |
@@ -132,7 +137,7 @@ In short: workspace owners and admins manage access at the workspace level. Memb
 
 ### The access tokens page returns 404 or forbidden
 
-Ask a workspace owner or admin to confirm that Codex access tokens are enabled and that your role includes the access token permission.
+Ask a workspace owner or admin to confirm that your role includes **Allow users to create access tokens** and that **Allow members to use Codex Local** is enabled if you plan to use the token with Codex.
 
 ### `codex login --with-access-token` fails
 
