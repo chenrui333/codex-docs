@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/windows'
-source_last_modified: '2026-04-25T06:32:09Z'
-source_etag: 'W/"131220190f81fcf73c2fddc5e80d6e81"'
+source_last_modified: '2026-06-10T23:51:18Z'
+source_etag: 'W/"095a60ef6d18ffa1c4e29412ee514940"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -22,15 +22,11 @@ run in [Windows Subsystem for Linux 2 (WSL2)](#windows-subsystem-for-linux-wsl).
 
 ![Codex app for Windows showing a project sidebar, active thread, and review pane](/images/codex/windows/codex-windows-light.webp)
 
-## Download and update the Codex app
+## Download the Codex app
 
-Download the Codex app from the
-[Microsoft Store](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi).
+Download the [Codex app](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi) for Windows.
 
 Then follow the [quickstart](/codex/quickstart?setup=app) to get started.
-
-To update the app, open the Microsoft Store, go to **Downloads**, and click
-**Check for updates**. The Store installs the latest version afterward.
 
 For enterprises, administrators can deploy the app with Microsoft Store app
 distribution through enterprise management tools.
