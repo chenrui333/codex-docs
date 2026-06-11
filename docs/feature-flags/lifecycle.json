@@ -439,7 +439,6 @@
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
       "plugin_hooks",
-      "plugin_sharing",
       "plugins",
       "realtime_conversation",
       "remote_compaction_v2",
@@ -488,6 +487,7 @@
     "multi_agent",
     "network_proxy",
     "personality",
+    "plugin_sharing",
     "prevent_idle_sleep",
     "shell_snapshot",
     "shell_tool",
@@ -513,7 +513,7 @@
     },
     "apps_mcp_path_override": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "artifact": {
       "default_enabled_expr": "false",
@@ -589,7 +589,7 @@
     },
     "external_migration": {
       "default_enabled_expr": "false",
-      "stage_from_source": "experimental"
+      "stage_from_source": "removed"
     },
     "fast_mode": {
       "default_enabled_expr": "true",
@@ -707,6 +707,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
+    "resize_all_images": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "responses_websockets": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -760,6 +764,10 @@
       "stage_from_source": "experimental"
     },
     "terminal_visualization_instructions": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "token_budget": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -825,8 +833,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "97fecdce53912124ecb4ecbb4789b5ac8ba4c24413a8e0ec22e8e465cec0a1ce",
-    "features_rs_sha256": "a50ba77eedb418a48685ca073a03612d08775f0bedf552ea5a3835f85c87f71c"
+    "client_rs_sha256": "4f2904fd046fc88ac4c597e85ef32f190c0bb58e5f4e4cb9c68618ffa4e266c6",
+    "features_rs_sha256": "6cde081f52716adf40dbf51f50522532f7cf6236e599ce592aec047b4c699e38"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
