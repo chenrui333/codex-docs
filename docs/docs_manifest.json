@@ -36,7 +36,7 @@
         "codex-cli 0.139.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "afacec62a3a81764fd11a24702baefded875de53e0c9e0226f8806e7170665ff",
+      "sha256": "2010689f52481b22e3889878a4ca69a31ef8d9b3cecee4d467cd44fd809e587f",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -723,10 +723,10 @@
         "codex-cli 0.138.0",
         "codex-cli 0.139.0"
       ],
-      "sha256": "83ce9cb659d82784a7d2563d90b139645e405e034c0ba7320a135fde99abe1a0",
+      "sha256": "ff39fc3771996eec99eb84ec770fbb5c31f2d3c06415e4dfcbe2ed08922c4f12",
       "source_area": "codex_changelog",
-      "source_etag": "W/\"1deba5c864cd16b3217fa0e2d866cf4a\"",
-      "source_last_modified": "2026-06-10T12:40:44Z",
+      "source_etag": "W/\"41e2fe25a5e0382c2d765096cc4b16c2\"",
+      "source_last_modified": "2026-06-11T08:07:20Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/changelog"
     },
@@ -2893,10 +2893,10 @@
         "codex-cli 0.138.0",
         "codex-cli 0.139.0"
       ],
-      "sha256": "49198f642c77ec30562b6eb1ca117416c0cc44d07039cd3cf836a5fb82d4d7ec",
+      "sha256": "0eeb6c19c07e3b251194fc42492518aff0cfa3d390c4b79a24dba27308de03dc",
       "source_area": "codex_security",
-      "source_etag": "W/\"8896a6c83e5ea69e72e0e4fe98ac3ae5\"",
-      "source_last_modified": "2026-06-11T05:02:58Z",
+      "source_etag": "W/\"a05ac7779715f2e62e7f9a2b6c902975\"",
+      "source_last_modified": "2026-06-11T08:33:37Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
@@ -8259,10 +8259,10 @@
         "codex-cli 0.138.0",
         "codex-cli 0.139.0"
       ],
-      "sha256": "4c68b210ffd21e154da70703a6cd3f9c7eda92b63bb988ca390618b6be8755d3",
+      "sha256": "2dba3b67650cdbcb96ae51cc169699276a8e54442915ac154f6efa60b2732026",
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"f4f08757f8dd8d337d3b4d6b01cdcf78\"",
-      "source_last_modified": "2026-06-09T18:36:58Z",
+      "source_etag": "W/\"bc8b45c19f5461162affe2bac524de30\"",
+      "source_last_modified": "2026-06-11T09:31:14Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search"
     },

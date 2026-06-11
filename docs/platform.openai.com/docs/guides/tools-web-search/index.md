@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-06-09T18:36:58Z'
-source_etag: 'W/"f4f08757f8dd8d337d3b4d6b01cdcf78"'
+source_last_modified: '2026-06-11T09:31:14Z'
+source_etag: 'W/"bc8b45c19f5461162affe2bac524de30"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -97,6 +97,74 @@ When displaying web results or information contained in web results to end
 
 `search_context_size` controls how much context from web search results is made available to the model before it generates a response. Use `low` for simple lookups, `medium` for a balanced default, and `high` when the answer may require more detail from search results. This setting does not set an exact token count or guarantee a specific number of sources or citations.
 
+Set search context size
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    tools=[{
+        "type": "web_search",
+        "search_context_size": "low",
+    }],
+    input="What movie won best picture in 2025?",
+)
+
+print(response.output_text)
+```
+
+```csharp
+using OpenAI.Responses;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+
+ResponseCreationOptions options = new();
+options.Tools.Add(ResponseTool.CreateWebSearchTool(
+    searchContextSize: WebSearchToolContextSize.Low
+));
+
+OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
+    ResponseItem.CreateUserMessageItem([
+        ResponseContentPart.CreateInputTextPart(
+            "What movie won best picture in 2025?"
+        )
+    ])
+], options);
+
+Console.WriteLine(response.GetOutputText());
+```
+
+```javascript
+const openai = new OpenAI();
+
+const response = await openai.responses.create({
+    model: "gpt-5.5",
+    tools: [{
+        type: "web_search",
+        search_context_size: "low",
+    }],
+    input: "What movie won best picture in 2025?",
+});
+console.log(response.output_text);
+```
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.5",
+        "tools": [{
+            "type": "web_search",
+            "search_context_size": "low"
+        }],
+        "input": "What movie won best picture in 2025?"
+    }'
+```
+
 ## Run longer web research
 
 `return_token_budget` controls how much web search result content the tool can return during a Responses API search run with GPT-5+ reasoning models. Keep the default for most requests. Set it to `unlimited` only for high-effort research or evaluation runs that need to inspect many pages and might otherwise stop at the standard returned-token cap.
@@ -110,6 +178,78 @@ Use `unlimited` selectively because it can increase latency and cost. For long-r
 
 This parameter applies only to the hosted Responses API `web_search` tool with GPT-5+ reasoning web search. It does not change the search context window, and it does not apply to non-reasoning web search, legacy Search API paths, container web search, Chat Completions search models, or `web_search_preview`. Only `default` and `unlimited` are supported values; `null`, numbers, and other strings are rejected.
 
+Run longer web searches
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "reasoning": { "effort": "xhigh" },
+    "tools": [
+      {
+        "type": "web_search",
+        "return_token_budget": "unlimited"
+      }
+    ],
+    "input": "Research the economic impact of semaglutide on global healthcare systems.\n\nDo:\n- Include specific figures, trends, statistics, and measurable outcomes.\n- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.\n- Include inline citations and return all source metadata.\n\nBe analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling."
+  }'
+```
+
+```javascript
+const client = new OpenAI();
+
+const response = await client.responses.create({
+    model: "gpt-5.5",
+    reasoning: { effort: "xhigh" },
+    tools: [
+        {
+            type: "web_search",
+            return_token_budget: "unlimited",
+        },
+    ],
+    input: [
+        "Research the economic impact of semaglutide on global healthcare systems.",
+        "",
+        "Do:",
+        "- Include specific figures, trends, statistics, and measurable outcomes.",
+        "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
+        "- Include inline citations and return all source metadata.",
+        "",
+        "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
+    ].join("\n"),
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    reasoning={"effort": "xhigh"},
+    tools=[
+        {
+            "type": "web_search",
+            "return_token_budget": "unlimited",
+        }
+    ],
+    input="""Research the economic impact of semaglutide on global healthcare systems.
+
+Do:
+- Include specific figures, trends, statistics, and measurable outcomes.
+- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.
+- Include inline citations and return all source metadata.
+
+Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.""",
+)
+
+print(response.output_text)
+```
+
 ## Domain filtering
 
 Domain filtering in web search lets you limit results to a specific set of domains. With the `filters` parameter you can configure up to 100 `allowed_domains` or up to 100 `blocked_domains`. When formatting domains, omit the HTTP or HTTPS prefix. For example, use `openai.com` instead of `https://openai.com/`. This approach also includes subdomains in the search. Note that domain filtering is only available in the Responses API with the `web_search` tool.
@@ -118,6 +258,107 @@ Domain filtering in web search lets you limit results to a specific set of domai
 
 To view all URLs retrieved during a web search, use the `sources` field. Unlike inline citations, which show only the most relevant references, sources returns the complete list of URLs the model consulted when forming its response.
 The number of sources is often greater than the number of citations. Real-time third-party feeds are also surfaced here and are labeled as `oai-sports`, `oai-weather`, or `oai-finance`. The sources field is available with both the `web_search` and `web_search_preview` tools.
+
+List sources
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "reasoning": { "effort": "low" },
+    "tools": [
+      {
+        "type": "web_search",
+        "filters": {
+          "allowed_domains": [
+            "pubmed.ncbi.nlm.nih.gov",
+            "clinicaltrials.gov",
+            "www.who.int",
+            "www.cdc.gov",
+            "www.fda.gov"
+          ],
+          "blocked_domains": [
+            "reddit.com",
+            "quora.com",
+            "wikipedia.org"
+          ]
+        }
+      }
+    ],
+    "tool_choice": "auto",
+    "include": ["web_search_call.action.sources"],
+    "input": "Please perform a web search on how semaglutide is used in the treatment of diabetes."
+  }'
+```
+
+```javascript
+const client = new OpenAI();
+
+const response = await client.responses.create({
+    model: "gpt-5.5",
+    reasoning: { effort: "low" },
+    tools: [
+        {
+            type: "web_search",
+            filters: {
+                allowed_domains: [
+                    "pubmed.ncbi.nlm.nih.gov",
+                    "clinicaltrials.gov",
+                    "www.who.int",
+                    "www.cdc.gov",
+                    "www.fda.gov",
+                ],
+                blocked_domains: [
+                    "reddit.com",
+                    "quora.com",
+                    "wikipedia.org",
+                ],
+            },
+        },
+    ],
+    tool_choice: "auto",
+    include: ["web_search_call.action.sources"],
+    input: "Please perform a web search on how semaglutide is used in the treatment of diabetes.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    reasoning={"effort": "low"},
+    tools=[
+        {
+            "type": "web_search",
+            "filters": {
+                "allowed_domains": [
+                    "pubmed.ncbi.nlm.nih.gov",
+                    "clinicaltrials.gov",
+                    "www.who.int",
+                    "www.cdc.gov",
+                    "www.fda.gov",
+                ],
+                "blocked_domains": [
+                    "reddit.com",
+                    "quora.com",
+                    "wikipedia.org",
+                ],
+            },
+        }
+    ],
+    tool_choice="auto",
+    include=["web_search_call.action.sources"],
+    input="Please perform a web search on how semaglutide is used in the treatment of diabetes.",
+)
+
+print(response.output_text)
+```
 
 ## Image search results
 
@@ -131,6 +372,77 @@ Use `image_settings` to control image-specific behavior:
 - `caption`: Ask for short image descriptions when available.
 
 To inspect raw image results, include `web_search_call.results` in the request and read `web_search_call.results[]` from the response. Image results are returned separately from the assistant message, so parse the `web_search_call` item directly when your application needs the URLs or metadata.
+
+Search for images
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "reasoning": { "effort": "low" },
+    "tools": [
+      {
+        "type": "web_search",
+        "search_content_types": ["image", "text"],
+        "image_settings": {
+          "max_results": 3,
+          "caption": true
+        }
+      }
+    ],
+    "include": ["web_search_call.results"],
+    "input": "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset."
+  }'
+```
+
+```javascript
+const client = new OpenAI();
+
+const response = await client.responses.create({
+    model: "gpt-5.5",
+    reasoning: { effort: "low" },
+    tools: [
+        {
+            type: "web_search",
+            search_content_types: ["image", "text"],
+            image_settings: {
+                max_results: 3,
+                caption: true,
+            },
+        },
+    ],
+    include: ["web_search_call.results"],
+    input: "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
+});
+
+console.log(response.output);
+```
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    reasoning={"effort": "low"},
+    tools=[
+        {
+            "type": "web_search",
+            "search_content_types": ["image", "text"],
+            "image_settings": {
+                "max_results": 3,
+                "caption": True,
+            },
+        }
+    ],
+    include=["web_search_call.results"],
+    input="Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
+)
+
+print(response.output)
+```
 
 Each `image_result` includes:
 
@@ -170,6 +482,93 @@ To refine search results based on geography, you can specify an approximate user
 Note that user location is not supported for deep research models using web
   search.
 
+Customizing user location
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.5",
+    tools=[{
+        "type": "web_search",
+        "user_location": {
+            "type": "approximate",
+            "country": "GB",
+            "city": "London",
+            "region": "London",
+        }
+    }],
+    input="What are the best restaurants near me?",
+)
+
+print(response.output_text)
+```
+
+```csharp
+using OpenAI.Responses;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
+
+ResponseCreationOptions options = new();
+options.Tools.Add(ResponseTool.CreateWebSearchTool(
+    userLocation: WebSearchToolLocation.CreateApproximateLocation(
+        country: "GB",
+        city: "London",
+        region: "Granary Square"
+    )
+));
+
+OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
+    ResponseItem.CreateUserMessageItem([
+        ResponseContentPart.CreateInputTextPart(
+            "What are the best restaurants near me?"
+        )
+    ])
+], options);
+
+Console.WriteLine(response.GetOutputText());
+```
+
+```javascript
+const openai = new OpenAI();
+
+const response = await openai.responses.create({
+    model: "gpt-5.5",
+    tools: [{
+        type: "web_search",
+        user_location: {
+            type: "approximate",
+            country: "GB",
+            city: "London",
+            region: "London"
+        }
+    }],
+    input: "What are the best restaurants near me?",
+});
+console.log(response.output_text);
+```
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.5",
+        "tools": [{
+            "type": "web_search",
+            "user_location": {
+                "type": "approximate",
+                "country": "GB",
+                "city": "London",
+                "region": "London"
+            }
+        }],
+        "input": "What are the best restaurants near me?"
+    }'
+```
+
 ## Live internet access
 
 Control whether the web search tool fetches live content or uses only cached/indexed results in the Responses API.
@@ -177,6 +576,50 @@ Control whether the web search tool fetches live content or uses only cached/ind
 - Set `external_web_access: false` on the `web_search` tool to run in offline/cache‑only mode.
 - Default is `true` (live access) if you do not set it.
 - Preview variants (`web_search_preview`) ignore this parameter and behave as if `external_web_access` is `true`.
+
+Control live internet access
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.5",
+    "tools": [
+      { "type": "web_search", "external_web_access": false }
+    ],
+    "tool_choice": "auto",
+    "input": "Find when the Eiffel Tower opened to the public and cite the source."
+  }'
+```
+
+```javascript
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-5.5",
+  tools: [
+    { type: "web_search", external_web_access: false },
+  ],
+  tool_choice: "auto",
+  input: "Find when the Eiffel Tower opened to the public and cite the source.",
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+resp = client.responses.create(
+    model="gpt-5.5",
+    tools=[{"type": "web_search", "external_web_access": False}],
+    tool_choice="auto",
+    input="Find when the Eiffel Tower opened to the public and cite the source.",
+)
+print(resp.output_text)
+```
 
 ## Limitations
 
