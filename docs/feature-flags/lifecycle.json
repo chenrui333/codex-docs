@@ -684,8 +684,8 @@
       "stage_from_source": "under development"
     },
     "remote_compaction_v2": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "remote_control": {
       "default_enabled_expr": "false",
@@ -833,8 +833,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "4f2904fd046fc88ac4c597e85ef32f190c0bb58e5f4e4cb9c68618ffa4e266c6",
-    "features_rs_sha256": "6cde081f52716adf40dbf51f50522532f7cf6236e599ce592aec047b4c699e38"
+    "client_rs_sha256": "45ebd44e74ff10732dcee6593afcf4f8a63a966bf33d07ac428028cda0c40133",
+    "features_rs_sha256": "c12d57bb47c72559d13aa29a8fc786320a948d790796abf46d1a271ba64dec2b"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
