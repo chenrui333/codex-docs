@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_amazon_bedrock'
 source_url: 'https://developers.openai.com/codex/amazon-bedrock'
-source_last_modified: '2026-06-02T19:21:25Z'
-source_etag: 'W/"14f9a5e7669e80e69cc637fcc3235c7e"'
+source_last_modified: '2026-06-12T18:23:38Z'
+source_etag: 'W/"1304ef72db81997c868a0ab8cf996584"'
 codex_cli_versions: ["0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -209,7 +209,10 @@ Detailed feature availability
 \* Feature is currently limited to only specific regions. Check
 the individual feature documentation to learn more about geo restrictions.
 
-† Some first party plugins are not available.
+† Local plugin bundles are supported when their capabilities do
+not require ChatGPT authentication. OpenAI-curated plugin discovery and
+features that depend on app connectors or cloud-hosted sharing aren’t
+available.
 
 ## Troubleshooting
 

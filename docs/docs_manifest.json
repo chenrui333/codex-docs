@@ -93,10 +93,10 @@
         "codex-cli 0.138.0",
         "codex-cli 0.139.0"
       ],
-      "sha256": "867457389015b97b43ac89a031dc40c3a2e948aeb4a6599ac41c0b5479b96a38",
+      "sha256": "989793696fcab30378ff1404e774337f1b853648e45abb8f50e63f6fb54b0a19",
       "source_area": "codex_amazon_bedrock",
-      "source_etag": "W/\"14f9a5e7669e80e69cc637fcc3235c7e\"",
-      "source_last_modified": "2026-06-02T19:21:25Z",
+      "source_etag": "W/\"1304ef72db81997c868a0ab8cf996584\"",
+      "source_last_modified": "2026-06-12T18:23:38Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/amazon-bedrock"
     },
@@ -2893,10 +2893,10 @@
         "codex-cli 0.138.0",
         "codex-cli 0.139.0"
       ],
-      "sha256": "a1544717f07d5ef133078960be81a95ceb8eab173df62f1634b28c05d915d7fb",
+      "sha256": "a4e13341d903f29a9f407cdc4dfb8b11ca38bc98ffb20e2c559c7349f37aa107",
       "source_area": "codex_security",
-      "source_etag": "W/\"cfdcc7114538a7d86c2de4328bbe9b1f\"",
-      "source_last_modified": "2026-06-12T13:17:51Z",
+      "source_etag": "W/\"15803e084e524985cef4d2a4aa5f2850\"",
+      "source_last_modified": "2026-06-12T18:24:31Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
