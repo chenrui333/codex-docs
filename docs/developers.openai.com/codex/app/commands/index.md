@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
-source_last_modified: '2026-06-09T23:45:13Z'
-source_etag: 'W/"39ddd651a79153317b4e2216516c5b99"'
+source_last_modified: '2026-06-12T00:58:01Z'
+source_etag: 'W/"e7fffc40dab9cf64ba834d74105994bb"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -73,6 +73,7 @@ Enabled skills also appear in the slash command list.
 | --- | --- |
 | `/feedback` | Open the feedback dialog to submit feedback and optionally include logs. |
 | `/goal` | Set a persistent goal for Codex to work toward; use `/plan` first to shape it. |
+| `/init` | Generate an `AGENTS.md` scaffold for the current project. |
 | `/mcp` | Open MCP status to view connected servers. |
 | `/plan` | Toggle plan mode for multi-step planning. |
 | `/review` | Start code review mode to review uncommitted changes or compare against a base branch. |
@@ -153,7 +154,7 @@ Use these links when you need to open Settings or a specific settings page.
 | Deep link | Opens |
 | --- | --- |
 | `codex://settings` | Settings. |
-| `codex://settings/browser-use` | Browser use settings. |
+| `codex://settings/browser-use` | Browser settings. |
 | `codex://settings/computer-use/google-chrome` | Google Chrome settings for computer use. |
 | `codex://settings/connections` | Remote connections settings. |
 

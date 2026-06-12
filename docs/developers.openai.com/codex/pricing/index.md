@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-10T12:40:11Z'
-source_etag: 'W/"a8cc0f081f231cd2fbf86f206f7dd97e"'
+source_last_modified: '2026-06-12T00:55:35Z'
+source_etag: 'W/"52b468422831fb94ad9ec9cc8bce609e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -133,6 +133,26 @@ Great for automation in shared environments like CI.
 - Pay only for the tokens Codex uses, based on [API
   pricing](https://platform.openai.com/docs/pricing)
 
+## Invite friends and coworkers
+
+Eligible users can send Codex invitations from the profile menu in the
+lower-left corner of the app. Choose **Invite a friend** on an eligible personal
+plan or **Invite a coworker** in an eligible Business workspace, enter the
+recipient’s email address, and send the invitation.
+
+The invitation dialog shows the current reward, recipient requirements, invite
+limits, and when rewards expire for your plan or promotion. Personal and
+Business referral programs have separate rewards and eligibility rules.
+Referrals aren’t currently available for ChatGPT Enterprise.
+
+From June 11 through June 24, 2026, eligible Plus and Pro users can invite up to
+three friends. When an eligible recipient sends their first Codex message, both
+people receive a banked rate-limit reset. Banked rate-limit resets are usable for
+30 days after they are granted. Business referrals use separate shared-workspace
+credit rewards; review the
+[current terms](https://help.openai.com/en/articles/20001271) before you send an
+invitation.
+
 ## Frequently asked questions
 
 ### How much does Sites cost?
@@ -232,6 +252,10 @@ runs on specialized low-latency hardware, usage is governed by a separate usage
 limit that may adjust based on demand.
 
 ### What happens when you hit usage limits?
+
+We want you to be able to complete work already in progress. If you reach your
+usage limits during an active turn, the agent will be able to continue working
+on that turn, subject to fair use limits.
 
 ChatGPT Plus and Pro users who reach their usage limit can purchase additional
 credits to continue working without needing to upgrade their existing plan.

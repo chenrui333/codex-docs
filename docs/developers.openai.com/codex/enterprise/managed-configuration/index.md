@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-06-09T23:46:54Z'
-source_etag: 'W/"38d30a4e4cb68c708ce5d93e024daf0b"'
+source_last_modified: '2026-06-12T01:00:10Z'
+source_etag: 'W/"3a1d1c361b1cd636d77eefb24833ae79"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -311,6 +311,20 @@ Use the canonical feature keys from `config.toml`’s `[features]` table. Codex 
 
 If omitted, these features are allowed by policy, subject to normal client,
 platform, and rollout availability.
+
+### Restrict locked computer use
+
+To prevent [Computer Use](/codex/app/computer-use#locked-use) from operating
+after a managed Mac locks, add this requirement:
+
+```
+[computer_use]
+allow_locked_computer_use = false
+```
+
+This requirement doesn’t enable Computer Use. It only prevents locked use on
+macOS. If you omit it, locked use remains unconstrained by requirements and is
+still subject to normal product availability and the user’s local setting.
 
 ### Configure automatic review policy
 

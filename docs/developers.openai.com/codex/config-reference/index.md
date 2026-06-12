@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-06-11T04:25:33Z'
-source_etag: 'W/"a8813d155a62191120dac7da8ce5115e"'
+source_last_modified: '2026-06-12T00:58:23Z'
+source_etag: 'W/"20da5fc386cf98e3709fe6501b2e9ebe"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -3310,6 +3310,8 @@ deployments, use `allowed_permission_profiles` with managed
 | `allowed_permission_profiles.<name>` | `boolean` | Allow or deny a built-in or custom permission profile defined in a loaded config or requirements source. An earlier requirements source can use `false` to turn off a profile allowed by a later source. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `computer_use` | `table` | Computer Use requirements enforced from `requirements.toml`. |
+| `computer_use.allow_locked_computer_use` | `boolean` | Set to `false` to prevent Computer Use from operating after a managed macOS device locks. If omitted, locked use remains unconstrained by requirements. |
 | `default_permissions` | `string` | Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed. |
 | `experimental_network` | `table` | Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag. |
 | `experimental_network.allow_local_binding` | `boolean` | Permit broader local/private-network access for sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`. |
@@ -3438,6 +3440,30 @@ Type / Values
 Details
 
 Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`.
+
+Key
+
+`computer_use`
+
+Type / Values
+
+`table`
+
+Details
+
+Computer Use requirements enforced from `requirements.toml`.
+
+Key
+
+`computer_use.allow_locked_computer_use`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` to prevent Computer Use from operating after a managed macOS device locks. If omitted, locked use remains unconstrained by requirements.
 
 Key
 

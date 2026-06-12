@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/browser'
-source_last_modified: '2026-05-21T18:06:43Z'
-source_etag: 'W/"52e9f23d74cd3058cc2fd46e71c6a805"'
+source_last_modified: '2026-06-12T00:56:05Z'
+source_etag: 'W/"e30b46291fb2858a4076c202a1c728ef"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -122,4 +122,34 @@ enough to review in one pass.
 
 For repository changes, use the [review pane](/codex/app/review) to inspect the
 changes and leave comments.
+
+## Developer mode
+
+Developer mode works with Browser use in Chrome and the Codex in-app browser.
+It gives Codex controlled access to the Chrome DevTools Protocol (CDP). Use it
+when you want Codex to profile JavaScript, inspect console output and network
+traffic, examine page state such as the DOM and applied styles, or diagnose an
+issue directly in the live browser.
+
+To enable it, open [**Settings > Browser**](codex://settings/browser-use) and,
+under **Developer mode**, turn on **Enable full CDP access**. If your
+organization has disabled this setting, you can’t enable it locally.
+
+Full CDP access lets Codex inspect and control sensitive browser internals that
+may put your data at risk. Codex asks for explicit approval before it uses full
+CDP to inspect a website. Review the site, task, and requested access before you
+approve it.
+
+Use `@Browser` for the in-app browser. To use Developer mode in Chrome,
+[set up the Codex Chrome extension](/codex/app/chrome-extension) and invoke
+`@Chrome`.
+
+For example:
+
+```
+This app is slow. Use @Browser to capture a performance trace and inspect
+network traffic, then identify the bottleneck.
+```
+
+![Codex app Browser settings showing Developer mode with full CDP access enabled](/images/codex/app/browser-developer-mode-light.webp)
 

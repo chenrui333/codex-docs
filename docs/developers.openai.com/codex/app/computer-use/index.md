@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/computer-use'
-source_last_modified: '2026-05-29T17:39:29Z'
-source_etag: 'W/"f9131715f7994c28083d011c2e680f8a"'
+source_last_modified: '2026-06-12T00:55:25Z'
+source_etag: 'W/"09d888bd57f28081ab7fc139296e965d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -114,6 +114,27 @@ If Codex can’t see or control an app, open **System Settings > Privacy &
 Security** and check **Screen Recording** and **Accessibility** for the Codex
 app on macOS. On Windows, make sure the target app is visible in the active
 desktop session.
+
+Configure Windows app policy
+
+On Windows, Computer Use stores persistent app decisions in
+`$CODEX_HOME/computer-use/config.toml`. List apps that Computer Use can open
+without prompting and apps that it must decline:
+
+```
+[apps]
+allowed = ["mspaint.exe"]
+denied = ["calc.exe"]
+```
+
+Use the app identifier that Windows Computer Use reports, such as an executable
+name for a desktop app or an app user model ID for a packaged app. Denied apps
+take precedence over allowed apps. Codex prompts for apps that don’t appear in
+either list.
+
+This file stores local Computer Use decisions. It’s separate from the
+admin-enforced `requirements.toml`, where administrators can disable Computer
+Use with `[features].computer_use = false`.
 
 ## Locked use
 

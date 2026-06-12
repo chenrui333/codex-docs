@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/settings'
-source_last_modified: '2026-06-05T00:28:41Z'
-source_etag: 'W/"08a343fff2e54ebceaeaba285529a422"'
+source_last_modified: '2026-06-12T00:56:58Z'
+source_etag: 'W/"c7467012fa43ad8609ac3d51c4c4afdc"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -29,6 +29,12 @@ streaks, your longest task, and token activity. You can also update your profile
 details, such as your picture, display name, and username, and save a profile
 card with usage highlights. Sharing profile cards is available on consumer
 ChatGPT plans.
+
+Eligible users can also send Codex invitations from the profile menu. Choose
+**Invite a friend** on an eligible personal plan or **Invite a coworker** in an
+eligible Business workspace. See
+[Invite friends and coworkers](/codex/pricing#invite-friends-and-coworkers) for
+current rewards, limits, and eligibility.
 
 ## Keyboard shortcuts
 
@@ -101,12 +107,18 @@ add your own. If a server requires OAuth, the app starts the auth flow. These se
 also apply to the Codex CLI and IDE extension because the MCP configuration lives in
 `config.toml`. See the [Model Context Protocol docs](/codex/mcp) for details.
 
-## Browser use
+## Browser
 
 Use these settings to install or enable the bundled Browser plugin, set up the
 [Codex Chrome extension](/codex/app/chrome-extension), and manage allowed and
 blocked websites. Codex asks before using a website unless you’ve allowed it.
 Removing a blocked site lets Codex ask again before using it in the browser.
+
+Under **Developer mode**, turn on **Enable full CDP access** to let Codex use
+the Chrome DevTools Protocol for performance profiling and deeper browser
+debugging. If your organization has disabled full CDP access, you can’t enable
+it locally. See [Developer mode](/codex/app/browser#developer-mode) for setup,
+risk, and approval details.
 
 See [In-app browser](/codex/app/browser) for browser preview, comment, and
 browser use workflows.
