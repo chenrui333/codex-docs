@@ -414,7 +414,6 @@
       "apps_mcp_path_override",
       "artifact",
       "auth_elicitation",
-      "browser_use_external",
       "child_agents_md",
       "chronicle",
       "code_mode",
@@ -428,7 +427,6 @@
       "experimental_windows_sandbox",
       "external_migration",
       "goals",
-      "guardian_approval",
       "image_detail_original",
       "image_generation",
       "imagegenext",
@@ -439,7 +437,6 @@
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
       "plugin_hooks",
-      "plugins",
       "realtime_conversation",
       "remote_compaction_v2",
       "remote_control",
@@ -467,20 +464,23 @@
       "unified_exec_zsh_fork",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
-      "workspace_dependencies",
       "workspace_owner_usage_nudge"
     ],
     "stale_in_docs": [
+      "browser_use_full_cdp_access",
       "web_search"
     ]
   },
   "docs_feature_keys": [
     "apps",
     "browser_use",
+    "browser_use_external",
+    "browser_use_full_cdp_access",
     "codex_git_commit",
     "computer_use",
     "enable_request_compression",
     "fast_mode",
+    "guardian_approval",
     "hooks",
     "in_app_browser",
     "memories",
@@ -488,6 +488,7 @@
     "network_proxy",
     "personality",
     "plugin_sharing",
+    "plugins",
     "prevent_idle_sleep",
     "shell_snapshot",
     "shell_tool",
@@ -496,7 +497,8 @@
     "unified_exec",
     "web_search",
     "web_search_cached",
-    "web_search_request"
+    "web_search_request",
+    "workspace_dependencies"
   ],
   "source_defaults": {
     "apply_patch_freeform": {
@@ -640,8 +642,8 @@
       "stage_from_source": "experimental"
     },
     "mentions_v2": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "multi_agent": {
       "default_enabled_expr": "true",
@@ -726,6 +728,10 @@
     "search_tool": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
+    },
+    "secret_auth_storage": {
+      "default_enabled_expr": "cfg!(windows)",
+      "stage_from_source": "stable"
     },
     "shell_snapshot": {
       "default_enabled_expr": "true",
@@ -833,8 +839,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "45ebd44e74ff10732dcee6593afcf4f8a63a966bf33d07ac428028cda0c40133",
-    "features_rs_sha256": "c12d57bb47c72559d13aa29a8fc786320a948d790796abf46d1a271ba64dec2b"
+    "client_rs_sha256": "6762c5fb7fe201aea0952b998c54b13e1cb9868ecd59ea4e732d98eced24c142",
+    "features_rs_sha256": "4aba6f80af77a29c5673c3fc71bab4e80f80a1b0313f5e6171a7d9b6c71dd01d"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
