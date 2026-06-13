@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-12T00:55:35Z'
-source_etag: 'W/"52b468422831fb94ad9ec9cc8bce609e"'
+source_last_modified: '2026-06-13T00:21:50Z'
+source_etag: 'W/"c5922aa0010ea52c43f1c802a22a073d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -41,8 +41,8 @@ $20/month
 - Codex on the web, in the CLI, in the IDE extension, and on iOS
 - Cloud-based integrations like automatic code review and Slack
   integration
-- The latest models, including GPT-5.5, GPT-5.4, and GPT-5.3-Codex
-- GPT-5.4-mini for higher usage limits on routine local messages
+- The latest models, including GPT-5.5, GPT-5.4, and GPT-5.4 mini
+- GPT-5.4 mini for higher usage limits on routine local messages
 - Flexibly extend usage with [ChatGPT credits](#credits-overview)
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Plus plan
@@ -75,8 +75,7 @@ Great for automation in shared environments like CI.
 
 - Codex in the CLI, SDK, or IDE extension
 - No cloud-based features (GitHub code review, Slack, etc.)
-- Delayed access to new models like GPT-5.3-Codex and
-  GPT-5.3-Codex-Spark
+- Model availability follows the API models available to your key
 - Pay only for the tokens Codex uses, based on [API
   pricing](https://platform.openai.com/docs/pricing)
 
@@ -128,8 +127,7 @@ Great for automation in shared environments like CI.
 
 - Codex in the CLI, SDK, or IDE extension
 - No cloud-based features (GitHub code review, Slack, etc.)
-- Delayed access to new models like GPT-5.3-Codex and
-  GPT-5.3-Codex-Spark
+- Model availability follows the API models available to your key
 - Pay only for the tokens Codex uses, based on [API
   pricing](https://platform.openai.com/docs/pricing)
 
@@ -148,7 +146,7 @@ Referrals aren’t currently available for ChatGPT Enterprise.
 From June 11 through June 24, 2026, eligible Plus and Pro users can invite up to
 three friends. When an eligible recipient sends their first Codex message, both
 people receive a banked rate-limit reset. Banked rate-limit resets are usable for
-30 days after they are granted. Business referrals use separate shared-workspace
+30 days after they’re granted. Business referrals use separate shared-workspace
 credit rewards; review the
 [current terms](https://help.openai.com/en/articles/20001271) before you send an
 invitation.
@@ -179,7 +177,7 @@ Plus
 | --- | --- | --- | --- |
 | GPT-5.5 | 15-80 | Not available | Not available |
 | GPT-5.4 | 20-100 | Not available | Not available |
-| GPT-5.4-mini | 60-350 | Not available | Not available |
+| GPT-5.4 mini | 60-350 | Not available | Not available |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -192,7 +190,7 @@ Pro 5x
 | --- | --- | --- | --- |
 | GPT-5.5 | 80-400 | Not available | Not available |
 | GPT-5.4 | 100-500 | Not available | Not available |
-| GPT-5.4-mini | 300-1750 | Not available | Not available |
+| GPT-5.4 mini | 300-1750 | Not available | Not available |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -205,7 +203,7 @@ Pro 20x
 | --- | --- | --- | --- |
 | GPT-5.5 | 300-1600 | Not available | Not available |
 | GPT-5.4 | 400-2000 | Not available | Not available |
-| GPT-5.4-mini | 1200-7000 | Not available | Not available |
+| GPT-5.4 mini | 1200-7000 | Not available | Not available |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -218,7 +216,7 @@ Business
 | --- | --- | --- | --- |
 | GPT-5.5 | 15-80 | Not available | Not available |
 | GPT-5.4 | 20-100 | Not available | Not available |
-| GPT-5.4-mini | 60-350 | Not available | Not available |
+| GPT-5.4 mini | 60-350 | Not available | Not available |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -229,9 +227,9 @@ API Key
 
 |  | Local Messages[\*](#shared-limits-api-key) / 5h | Cloud Tasks[\*](#shared-limits-api-key) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
-| GPT-5.5 | Not available | Not available | Not available |
+| GPT-5.5 | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 | GPT-5.4 | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
-| GPT-5.4-mini | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
+| GPT-5.4 mini | [Usage-based](https://platform.openai.com/docs/pricing) | Not available | Not available |
 |  |  |  |  |
 | --- | --- | --- | --- |
 | \*The usage limits for local messages and cloud tasks share a **five-hour window**. Additional weekly limits may apply. | | | |
@@ -312,7 +310,7 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
 | --- | --- | --- | --- |
 | GPT-5.5 | 125 credits | 12.50 credits | 750 credits |
 | GPT-5.4 | 62.50 credits | 6.250 credits | 375 credits |
-| GPT-5.4-mini | 18.75 credits | 1.875 credits | 113 credits |
+| GPT-5.4 mini | 18.75 credits | 1.875 credits | 113 credits |
 | GPT-5.3-Codex-Spark | research preview | | |
 | GPT-Image-2 (image) | 200 credits | 50 credits | 750 credits |
 | GPT-Image-2 (text) | 125 credits | 31.25 credits | 250 credits |
@@ -352,7 +350,7 @@ tips to maximize your limits:
   to Codex adds more context to your messages and uses more of your limit.
   Disable MCP servers when you don’t need them.
 - **Switch to a smaller model for routine tasks.** Using GPT-5.4 or
-  GPT-5.4-mini can extend your local-message usage limits, depending on the
+  GPT-5.4 mini can extend your local-message usage limits, depending on the
   model you switch from.
 
 ## Feature availability

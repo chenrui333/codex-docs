@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
-source_etag: 'W/"689a1f42bc2f57925ab50698750a22fe1a805b2c55e4cc02de7b10a5be9a2fb0"'
+source_etag: 'W/"407dbe1e32331c8a3558254070224cc166e32b528f7cc450adfab95edaf0633b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -52,6 +52,10 @@ In the codex-rs folder where the rust code lives:
   directory reads, update the crate's `BUILD.bazel` (`compile_data`, `build_script_data`, or test
   data) or Bazel may fail even when Cargo passes.
 - Do not create small helper methods that are referenced only once.
+- For tracing async work, instrument the function or method definition with
+  `#[tracing::instrument(...)]` instead of attaching spans to futures with
+  `.instrument(...)` at call sites. Before adding instrumentation, check whether the callee—or
+  the implementation method it immediately delegates to—is already instrumented.
 - Avoid large modules:
   - Prefer adding new modules instead of growing existing ones.
   - Target Rust modules under 500 LoC, excluding tests.
@@ -89,6 +93,10 @@ Particularly when introducing a new concept/feature/API, before adding to `codex
 Likewise, when reviewing code, do not hesitate to push back on PRs that would unnecessarily add code to `codex-core`.
 
 ## Code Review Rules
+
+### Crate API surface
+
+Keep crate API surfaces as small as possible. Avoid proliferating test-only helpers.
 
 ### Model visible context
 
@@ -302,3 +310,7 @@ This project uses Python 3+. You should not use the `__future__` module.
 
 If you need to worry about feature compatibility between different 3.xx point releases, check the
 closest `pyproject.toml`'s `requires-python` field to see what minimum runtime version is supported.
+
+## Platform Support
+
+Tests and features must support Linux, macOS and Windows unless feature is explicitly OS-specific.

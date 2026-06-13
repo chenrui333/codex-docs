@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
-source_last_modified: '2026-06-11T19:03:39Z'
-source_etag: 'W/"1af4b860cfe074a851884271c46cc390"'
+source_last_modified: '2026-06-13T00:23:35Z'
+source_etag: 'W/"fb8a652b7c201597d6ed3615960a1021"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -197,11 +197,12 @@ default_permissions = ":workspace"
 ":workspace" = true
 ```
 
-Example: disable Browser Use, the in-app browser, and Computer Use:
+Example: constrain Browser Use, the in-app browser, and Computer Use:
 
 ```
 [features]
 browser_use = false
+browser_use_full_cdp_access = false
 in_app_browser = false
 computer_use = false
 ```

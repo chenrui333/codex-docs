@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/browser'
-source_last_modified: '2026-06-12T00:56:05Z'
-source_etag: 'W/"e30b46291fb2858a4076c202a1c728ef"'
+source_last_modified: '2026-06-13T00:24:45Z'
+source_etag: 'W/"2952ab2af59a22db433a4eae11d68f6b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -133,7 +133,9 @@ issue directly in the live browser.
 
 To enable it, open [**Settings > Browser**](codex://settings/browser-use) and,
 under **Developer mode**, turn on **Enable full CDP access**. If your
-organization has disabled this setting, you can’t enable it locally.
+organization has disabled this setting, you can’t enable it locally. Admins can
+set `browser_use_full_cdp_access = false` under `[features]` in
+[`requirements.toml`](/codex/enterprise/managed-configuration#pin-feature-flags).
 
 Full CDP access lets Codex inspect and control sensitive browser internals that
 may put your data at risk. Codex asks for explicit approval before it uses full

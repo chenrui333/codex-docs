@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-06-12T00:58:23Z'
-source_etag: 'W/"20da5fc386cf98e3709fe6501b2e9ebe"'
+source_last_modified: '2026-06-13T00:30:11Z'
+source_etag: 'W/"1b29643823da04e799cdb51035a01f99"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -3303,6 +3303,7 @@ deployments, use `allowed_permission_profiles` with managed
 
 | Key | Type / Values | Details |
 | --- | --- | --- |
+| `allow_appshots` | `boolean` | Set to `false` to disable Appshots for managed users. If omitted, Appshots remain unconstrained by requirements and follow normal product availability. |
 | `allow_managed_hooks_only` | `boolean` | When `true`, Codex skips user, project, session, and plugin hooks while still allowing managed hooks from `requirements.toml` and other managed config layers. |
 | `allowed_approval_policies` | `array<string>` | Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`). |
 | `allowed_approvals_reviewers` | `array<string>` | Allowed values for `approvals_reviewer`, such as `user` and `auto_review`. |
@@ -3310,9 +3311,13 @@ deployments, use `allowed_permission_profiles` with managed
 | `allowed_permission_profiles.<name>` | `boolean` | Allow or deny a built-in or custom permission profile defined in a loaded config or requirements source. An earlier requirements source can use `false` to turn off a profile allowed by a later source. |
 | `allowed_sandbox_modes` | `array<string>` | Allowed values for `sandbox_mode`. |
 | `allowed_web_search_modes` | `array<string>` | Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is always allowed; an empty list effectively allows only `disabled`. |
+| `apps` | `table` | Managed app requirements keyed by app identifier. Requirements can disable an app or constrain approval behavior for individual tools. |
+| `apps.<id>.enabled` | `boolean` | Set to `false` to disable an app. A disabled requirement remains restrictive when multiple requirements sources are merged. |
+| `apps.<id>.tools.<tool>.approval_mode` | `auto | prompt | approve` | Set the managed approval mode for one app tool. |
 | `computer_use` | `table` | Computer Use requirements enforced from `requirements.toml`. |
 | `computer_use.allow_locked_computer_use` | `boolean` | Set to `false` to prevent Computer Use from operating after a managed macOS device locks. If omitted, locked use remains unconstrained by requirements. |
 | `default_permissions` | `string` | Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed. |
+| `enforce_residency` | `string` | Require Codex service traffic to use a supported data residency. Currently accepts `us`. |
 | `experimental_network` | `table` | Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag. |
 | `experimental_network.allow_local_binding` | `boolean` | Permit broader local/private-network access for sandboxed networking. Exact local IP literal or `localhost` allow rules can still permit specific local targets when this stays `false`. |
 | `experimental_network.allow_upstream_proxy` | `boolean` | Allow sandboxed networking to chain through an upstream proxy from the environment. |
@@ -3328,10 +3333,19 @@ deployments, use `allowed_permission_profiles` with managed
 | `experimental_network.unix_sockets` | `map<string, allow | deny>` | Administrator-managed Unix socket policy for sandboxed networking. |
 | `features` | `table` | Pinned feature values keyed by the canonical names from `config.toml`'s `[features]` table. |
 | `features.<name>` | `boolean` | Require a specific canonical feature key to stay enabled or disabled. |
+| `features.apps` | `boolean` | Pin Apps integration availability on or off for managed users. |
 | `features.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. |
+| `features.browser_use_external` | `boolean` | Set to `false` in `requirements.toml` to disable external-browser Browser Use availability. |
+| `features.browser_use_full_cdp_access` | `boolean` | Set to `false` in `requirements.toml` to prevent users from enabling full Chrome DevTools Protocol access in Browser Developer mode. If omitted, normal product availability applies. |
 | `features.computer_use` | `boolean` | Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. |
+| `features.fast_mode` | `boolean` | Pin the canonical `fast_mode` feature on or off for managed users. |
+| `features.guardian_approval` | `boolean` | Pin Guardian approval availability on or off for managed users. |
 | `features.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. |
+| `features.memories` | `boolean` | Pin Memories availability on or off for managed users. |
+| `features.multi_agent` | `boolean` | Pin multi-agent availability on or off for managed users. |
 | `features.plugin_sharing` | `boolean` | Set to `false` in cloud-managed `requirements.toml` to disable workspace sharing for locally built plugins. |
+| `features.plugins` | `boolean` | Pin plugin availability on or off for managed users. |
+| `features.workspace_dependencies` | `boolean` | Pin bundled workspace-dependency runtime availability on or off for managed users. |
 | `guardian_policy_config` | `string` | Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored. |
 | `hooks` | `table` | Admin-enforced managed lifecycle hooks. Requires a managed hook directory and uses the same event schema as inline `[hooks]` in `config.toml`. |
 | `hooks.<Event>` | `array<table>` | Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`. |
@@ -3343,8 +3357,12 @@ deployments, use `allowed_permission_profiles` with managed
 | `mcp_servers.<id>.identity` | `table` | Identity rule for a single MCP server. Set either `command` (stdio) or `url` (streamable HTTP). |
 | `mcp_servers.<id>.identity.command` | `string` | Allow an MCP stdio server when its `mcp_servers.<id>.command` matches this command. |
 | `mcp_servers.<id>.identity.url` | `string` | Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this URL. |
+| `permissions` | `table` | Admin-defined permission profiles keyed by profile name. Uses the same profile fields as `config.toml`. |
 | `permissions.<name>` | `table` | Admin-defined permission profile. The name can't start with `:`, use the reserved name `filesystem`, or duplicate a profile from a loaded config. Uses the same profile fields as `config.toml`; see the Permissions guide for the complete profile schema. |
 | `permissions.filesystem.deny_read` | `array<string>` | Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config. |
+| `plugins` | `table` | Plugin-specific MCP server allowlists keyed by plugin identifier. |
+| `plugins.<plugin>.mcp_servers.<server>.identity.command` | `string` | Allow a plugin's stdio MCP server when its configured command matches this value. |
+| `plugins.<plugin>.mcp_servers.<server>.identity.url` | `string` | Allow a plugin's streamable HTTP MCP server when its configured URL matches this value. |
 | `remote_sandbox_config` | `array<table>` | Host-specific sandbox requirements. The first entry whose `hostname_patterns` match the resolved host name overrides top-level `allowed_sandbox_modes` for that requirements source. Host-specific entries currently override sandbox modes only. |
 | `remote_sandbox_config[].allowed_sandbox_modes` | `array<string>` | Allowed sandbox modes to apply when this host-specific entry matches. |
 | `remote_sandbox_config[].hostname_patterns` | `array<string>` | Case-insensitive host name patterns. Supports `*` for any sequence of characters and `?` for one character. |
@@ -3355,7 +3373,20 @@ deployments, use `allowed_permission_profiles` with managed
 | `rules.prefix_rules[].pattern` | `array<table>` | Command prefix expressed as pattern tokens. Each token sets either `token` or `any_of`. |
 | `rules.prefix_rules[].pattern[].any_of` | `array<string>` | A list of allowed alternative tokens at this position. |
 | `rules.prefix_rules[].pattern[].token` | `string` | A single literal token at this position. |
+| `windows` | `table` | Native Windows sandbox requirements. |
 | `windows.allowed_sandbox_implementations` | `array<string>` | Allowed native Windows sandbox implementations for `windows.sandbox` (`elevated` and `unelevated`). The list must not be empty. When both are allowed and no mode is selected, Codex prefers `elevated`. |
+
+Key
+
+`allow_appshots`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` to disable Appshots for managed users. If omitted, Appshots remain unconstrained by requirements and follow normal product availability.
 
 Key
 
@@ -3443,6 +3474,42 @@ Allowed values for `web_search` (`disabled`, `cached`, `live`). `disabled` is al
 
 Key
 
+`apps`
+
+Type / Values
+
+`table`
+
+Details
+
+Managed app requirements keyed by app identifier. Requirements can disable an app or constrain approval behavior for individual tools.
+
+Key
+
+`apps.<id>.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` to disable an app. A disabled requirement remains restrictive when multiple requirements sources are merged.
+
+Key
+
+`apps.<id>.tools.<tool>.approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Set the managed approval mode for one app tool.
+
+Key
+
 `computer_use`
 
 Type / Values
@@ -3476,6 +3543,18 @@ Type / Values
 Details
 
 Managed default permission profile. The profile must be allowed by `allowed_permission_profiles`. Set this explicitly for predictable behavior; if omitted, Codex defaults to `:workspace` only when both `:workspace` and `:read-only` are explicitly allowed.
+
+Key
+
+`enforce_residency`
+
+Type / Values
+
+`string`
+
+Details
+
+Require Codex service traffic to use a supported data residency. Currently accepts `us`.
 
 Key
 
@@ -3659,6 +3738,18 @@ Require a specific canonical feature key to stay enabled or disabled.
 
 Key
 
+`features.apps`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin Apps integration availability on or off for managed users.
+
+Key
+
 `features.browser_use`
 
 Type / Values
@@ -3668,6 +3759,30 @@ Type / Values
 Details
 
 Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability.
+
+Key
+
+`features.browser_use_external`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to disable external-browser Browser Use availability.
+
+Key
+
+`features.browser_use_full_cdp_access`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Set to `false` in `requirements.toml` to prevent users from enabling full Chrome DevTools Protocol access in Browser Developer mode. If omitted, normal product availability applies.
 
 Key
 
@@ -3683,6 +3798,30 @@ Set to `false` in `requirements.toml` to disable Computer Use availability and r
 
 Key
 
+`features.fast_mode`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin the canonical `fast_mode` feature on or off for managed users.
+
+Key
+
+`features.guardian_approval`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin Guardian approval availability on or off for managed users.
+
+Key
+
 `features.in_app_browser`
 
 Type / Values
@@ -3695,6 +3834,30 @@ Set to `false` in `requirements.toml` to disable the in-app browser pane.
 
 Key
 
+`features.memories`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin Memories availability on or off for managed users.
+
+Key
+
+`features.multi_agent`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin multi-agent availability on or off for managed users.
+
+Key
+
 `features.plugin_sharing`
 
 Type / Values
@@ -3704,6 +3867,30 @@ Type / Values
 Details
 
 Set to `false` in cloud-managed `requirements.toml` to disable workspace sharing for locally built plugins.
+
+Key
+
+`features.plugins`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin plugin availability on or off for managed users.
+
+Key
+
+`features.workspace_dependencies`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Pin bundled workspace-dependency runtime availability on or off for managed users.
 
 Key
 
@@ -3839,6 +4026,18 @@ Allow an MCP streamable HTTP server when its `mcp_servers.<id>.url` matches this
 
 Key
 
+`permissions`
+
+Type / Values
+
+`table`
+
+Details
+
+Admin-defined permission profiles keyed by profile name. Uses the same profile fields as `config.toml`.
+
+Key
+
 `permissions.<name>`
 
 Type / Values
@@ -3860,6 +4059,42 @@ Type / Values
 Details
 
 Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config.
+
+Key
+
+`plugins`
+
+Type / Values
+
+`table`
+
+Details
+
+Plugin-specific MCP server allowlists keyed by plugin identifier.
+
+Key
+
+`plugins.<plugin>.mcp_servers.<server>.identity.command`
+
+Type / Values
+
+`string`
+
+Details
+
+Allow a plugin's stdio MCP server when its configured command matches this value.
+
+Key
+
+`plugins.<plugin>.mcp_servers.<server>.identity.url`
+
+Type / Values
+
+`string`
+
+Details
+
+Allow a plugin's streamable HTTP MCP server when its configured URL matches this value.
 
 Key
 
@@ -3980,6 +4215,18 @@ Type / Values
 Details
 
 A single literal token at this position.
+
+Key
+
+`windows`
+
+Type / Values
+
+`table`
+
+Details
+
+Native Windows sandbox requirements.
 
 Key
 
