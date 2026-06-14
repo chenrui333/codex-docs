@@ -8037,9 +8037,9 @@
         "codex-cli 0.138.0",
         "codex-cli 0.139.0"
       ],
-      "sha256": "63a05eade41d137a3c5148ab818861d17171079bfaa048f8920469141cccc861",
+      "sha256": "b86650341ce5872a725739413df62b3b2c80dab6a9bb6956ab121dcb5da9e7d0",
       "source_area": "github_docs",
-      "source_etag": "W/\"06848166e90202a72dafc677389dc031f3eca46915eac7d9abeb702d05c33a5e\"",
+      "source_etag": "W/\"8999f341f8f5485217d6255c3c0f05c9b4b49bc00cad5d43c1b2fc6ed3714d2d\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/install.md"
     },
