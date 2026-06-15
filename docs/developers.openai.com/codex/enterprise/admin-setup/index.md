@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
-source_last_modified: '2026-06-13T00:23:35Z'
-source_etag: 'W/"fb8a652b7c201597d6ed3615960a1021"'
+source_last_modified: '2026-06-15T19:24:00Z'
+source_etag: 'W/"cfeb06f1a02329d2f42fbd9694e349b7"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
 ---
@@ -23,7 +23,6 @@ Use this page as the step-by-step rollout guide. For detailed policy, configurat
 Codex supports ChatGPT Enterprise security features, including:
 
 - No training on enterprise data
-- Zero data retention for the App, CLI, and IDE (code stays in the developer environment)
 - Residency and retention that follow ChatGPT Enterprise policies
 - Granular user access controls
 - Data encryption at rest (AES-256) and in transit (TLS 1.2+)

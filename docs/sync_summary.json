@@ -1,13 +1,9 @@
 {
-  "added": [
-    "developers.openai.com/codex/import/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-14T18:36:05+00:00",
-  "removed": [
-    "developers.openai.com/codex/migrate/index.md"
-  ],
+  "generated_at": "2026-06-15T19:24:33+00:00",
+  "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
     "codex_cli_version": "0.139.0",
@@ -17,6 +13,8 @@
   },
   "total_files": 254,
   "updated": [
+    "developers.openai.com/codex/changelog/index.md",
+    "developers.openai.com/codex/enterprise/admin-setup/index.md",
     "developers.openai.com/codex/security/setup/index.md"
   ]
 }
