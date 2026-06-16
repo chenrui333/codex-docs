@@ -4,8 +4,8 @@ source_area: 'codex_appshots'
 source_url: 'https://developers.openai.com/codex/appshots'
 source_last_modified: '2026-05-21T18:05:21Z'
 source_etag: 'W/"cf9b698680521e3d0f810ba442e9079d"'
-codex_cli_versions: ["0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
-codex_cli_versions_raw: ["codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
+codex_cli_versions: ["0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
+codex_cli_versions_raw: ["codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
 
 # Appshots – Codex | OpenAI Developers

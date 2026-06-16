@@ -4,8 +4,8 @@ source_area: 'codex_environment_variables'
 source_url: 'https://developers.openai.com/codex/environment-variables'
 source_last_modified: '2026-05-29T23:21:47Z'
 source_etag: 'W/"9a8f5a3201cef952cbb8dac5d3f3d867"'
-codex_cli_versions: ["0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0"]
-codex_cli_versions_raw: ["codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0"]
+codex_cli_versions: ["0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
+codex_cli_versions_raw: ["codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
 
 # Environment variables – Codex | OpenAI Developers
