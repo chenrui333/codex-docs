@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-13T00:21:50Z'
-source_etag: 'W/"c5922aa0010ea52c43f1c802a22a073d"'
+source_last_modified: '2026-06-16T01:31:35Z'
+source_etag: 'W/"7edaed8961e1b1d2ee7778779a7907a0"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -188,7 +188,7 @@ Pro 5x
 
 |  | Local Messages[\*](#shared-limits-pro) / 5h | Cloud Tasks[\*](#shared-limits-pro) / 5h | Code Reviews / 5h |
 | --- | --- | --- | --- |
-| GPT-5.5 | 80-400 | Not available | Not available |
+| GPT-5.5 | 75-400 | Not available | Not available |
 | GPT-5.4 | 100-500 | Not available | Not available |
 | GPT-5.4 mini | 300-1750 | Not available | Not available |
 |  |  |  |  |
