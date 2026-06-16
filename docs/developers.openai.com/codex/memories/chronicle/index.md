@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_memory'
 source_url: 'https://developers.openai.com/codex/memories/chronicle'
-source_last_modified: '2026-04-25T06:38:17Z'
-source_etag: 'W/"e771fa0796018a67046a13d3122649de"'
+source_last_modified: '2026-06-16T15:42:29Z'
+source_etag: 'W/"bd38761b7c59a3470c24f8fe7f4be649"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -13,9 +13,9 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 Source: https://developers.openai.com/codex/memories/chronicle
 
 Chronicle is in an **opt-in research preview**. It is only available for
-ChatGPT Pro subscribers on macOS, and is not yet available in the EU, UK and
-Switzerland. Please review the [Privacy and Security](#privacy-and-security)
-section for details and to understand the current risks before enabling.
+ChatGPT Pro subscribers on macOS. Please review the [Privacy and
+Security](#privacy-and-security) section for details and to understand the
+current risks before enabling.
 
 Chronicle augments Codex memories with context from your screen. When you prompt
 Codex, those memories can help it understand what you’ve been working on with
@@ -146,7 +146,6 @@ build that includes Chronicle and that you have Memories enabled inside Settings
 > Personalization.
 
 Chronicle is currently only available for ChatGPT Pro subscribers on macOS.
-Chronicle is not available in the EU, UK and Switzerland.
 
 If setup does not complete:
 

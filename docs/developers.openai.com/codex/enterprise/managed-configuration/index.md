@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-06-13T00:24:17Z'
-source_etag: 'W/"8b176a4ec71c538b245030568e73060f"'
+source_last_modified: '2026-06-16T15:40:49Z'
+source_etag: 'W/"7822808797f9dea493c71f03e4c89d7d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -105,6 +105,20 @@ allow_appshots = false
 ```
 
 Codex treats only `allow_appshots = false` as disabling Appshots. If the key is omitted, Appshots remain unconstrained by requirements and use normal product availability checks. App-server clients that read effective requirements through `configRequirements/read` receive the same restriction as `allowAppshots`; an omitted or `null` `allowAppshots` value doesn’t disable Appshots.
+
+### Disable device remote control
+
+To disable [device remote control](/codex/remote-connections#pick-up-work-from-another-device)
+for managed users, set the top-level `allow_remote_control` requirement:
+
+```
+allow_remote_control = false
+```
+
+Codex treats only `allow_remote_control = false` as disabling device remote
+control. If the key is omitted, device remote control remains unconstrained by
+requirements and uses normal product availability checks. This requirement does
+not disable SSH remote connections.
 
 ### Control available permission profiles
 

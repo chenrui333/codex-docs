@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/computer-use'
-source_last_modified: '2026-06-12T00:55:25Z'
-source_etag: 'W/"09d888bd57f28081ab7fc139296e965d"'
+source_last_modified: '2026-06-16T15:52:39Z'
+source_etag: 'W/"a2a38a3d3a83aa6ce12ff2ed390fe4e6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -12,9 +12,8 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/app/computer-use
 
-In the Codex app, computer use is available on macOS and Windows, except in
-the European Economic Area, the United Kingdom, and Switzerland at launch.
-Install the Computer Use plugin. On macOS, grant Screen Recording and
+In supported regions, computer use in the Codex app is available on macOS and
+Windows. Install the Computer Use plugin. On macOS, grant Screen Recording and
 Accessibility permissions when prompted.
 
 With computer use, Codex can see and operate graphical user interfaces on macOS
