@@ -18,7 +18,7 @@
     {
       "enabled": false,
       "key": "apps_mcp_path_override",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -113,7 +113,7 @@
     {
       "enabled": false,
       "key": "external_migration",
-      "stage": "experimental"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -176,9 +176,9 @@
       "stage": "experimental"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "mentions_v2",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -231,9 +231,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "remote_compaction_v2",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -262,6 +262,11 @@
     },
     {
       "enabled": false,
+      "key": "resize_all_images",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "responses_websockets",
       "stage": "removed"
     },
@@ -279,6 +284,11 @@
       "enabled": false,
       "key": "search_tool",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "secret_auth_storage",
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -328,6 +338,11 @@
     {
       "enabled": false,
       "key": "terminal_visualization_instructions",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "token_budget",
       "stage": "under development"
     },
     {
@@ -406,7 +421,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.139.0",
+  "codex_cli_version": "codex-cli 0.140.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -444,10 +459,12 @@
       "remote_plugin",
       "request_permissions_tool",
       "request_rule",
+      "resize_all_images",
       "responses_websockets",
       "responses_websockets_v2",
       "runtime_metrics",
       "search_tool",
+      "secret_auth_storage",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
       "sqlite",
@@ -455,6 +472,7 @@
       "steer",
       "terminal_resize_reflow",
       "terminal_visualization_instructions",
+      "token_budget",
       "tool_call_mcp_elicitation",
       "tool_search",
       "tool_search_always_defer_mcp_tools",
@@ -753,6 +771,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "sleep_tool": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "sqlite": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -767,7 +789,7 @@
     },
     "terminal_resize_reflow": {
       "default_enabled_expr": "true",
-      "stage_from_source": "experimental"
+      "stage_from_source": "removed"
     },
     "terminal_visualization_instructions": {
       "default_enabled_expr": "false",
@@ -839,8 +861,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "6762c5fb7fe201aea0952b998c54b13e1cb9868ecd59ea4e732d98eced24c142",
-    "features_rs_sha256": "4aba6f80af77a29c5673c3fc71bab4e80f80a1b0313f5e6171a7d9b6c71dd01d"
+    "client_rs_sha256": "7a6f5f06b6b6d58cdf4debcc9f0457454c91d67cce5ea6253841b43d2fc5e7ae",
+    "features_rs_sha256": "4e1a40930406b0e5271030c1d9822fe2f2bd9218de54abb5814ca94bbef9592f"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
