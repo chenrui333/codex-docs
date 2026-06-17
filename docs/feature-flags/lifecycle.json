@@ -731,6 +731,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "respect_system_proxy": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "responses_websockets": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -862,7 +866,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "7a6f5f06b6b6d58cdf4debcc9f0457454c91d67cce5ea6253841b43d2fc5e7ae",
-    "features_rs_sha256": "4e1a40930406b0e5271030c1d9822fe2f2bd9218de54abb5814ca94bbef9592f"
+    "features_rs_sha256": "13c32edab580004808bd89e9a0a74ff3b750b723d0b065cfc2e16eaa598d009a"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
