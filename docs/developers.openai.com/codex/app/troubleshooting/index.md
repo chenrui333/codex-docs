@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/troubleshooting'
-source_last_modified: '2026-04-25T06:30:22Z'
-source_etag: 'W/"90c0ad20719188747a2498a3961bf8f3"'
+source_last_modified: '2026-06-16T20:57:56Z'
+source_etag: 'W/"877cdfa7eeefb28e3a4d3a0d608d4297"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -51,12 +51,13 @@ section.
 
 ### Code doesn’t run on a worktree
 
-Worktrees are created in a different directory and only inherit the files that
-are checked into Git. Depending on how you manage dependencies and tooling
-for your project you might have to run some setup scripts on your worktree using a
-[local environment](/codex/app/local-environments). Alternatively you can check out
-the changes in your regular local project. Check out the
-[worktrees documentation](/codex/app/worktrees) to learn more.
+Worktrees are created in a different directory and inherit files checked into
+Git by default. Depending on how you manage dependencies and tooling for your
+project, you might have to run setup scripts on your worktree using a
+[local environment](/codex/app/local-environments) or copy ignored setup files
+with [`.worktreeinclude`](/codex/app/worktrees#copy-ignored-local-files-into-managed-worktrees).
+Alternatively, you can check out the changes in your regular local project. See
+the [worktrees documentation](/codex/app/worktrees) to learn more.
 
 ### App doesn’t pick up a teammate’s shared local environment
 

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/worktrees'
-source_last_modified: '2026-04-25T06:32:01Z'
-source_etag: 'W/"45b9408ffe43e8c6cc7a98cc8677056b"'
+source_last_modified: '2026-06-16T20:59:59Z'
+source_etag: 'W/"1ed76bb55efc9e03979412926e97d44b"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -85,7 +85,7 @@ Each thread keeps the same associated worktree over time. If you hand the thread
 
 You can also go the other direction. If you’re already working in Local and want to free up the foreground, use **Hand off** to move the thread to a worktree. This is useful when you want Codex to keep working in the background while you switch your attention back to something else locally.
 
-Since Handoff uses Git operations, any files that are part of your `.gitignore` file won’t move with the thread.
+Since Handoff uses Git operations, any files that are part of your `.gitignore` file won’t move with the thread unless Codex copies them into a local managed worktree with `.worktreeinclude`.
 
 ## Advanced details
 
@@ -93,11 +93,28 @@ Since Handoff uses Git operations, any files that are part of your `.gitignore` 
 
 By default, threads use a Codex-managed worktree. These are meant to feel lightweight and disposable. A Codex-managed worktree is typically dedicated to one thread, and Codex returns that thread to the same worktree if you hand it back there later.
 
-If you want a long-lived environment, create a permanent worktree from the three-dot menu on a project in the sidebar. This creates a new permanent worktree as its own project. Permanent worktrees are not automatically deleted, and you can start multiple threads from the same worktree.
+If you want a long-lived environment, create a permanent worktree from the three-dot menu on a project in the sidebar. This creates a new permanent worktree as its own project. Permanent worktrees aren’t automatically deleted, and you can start multiple threads from the same worktree.
 
 ### How Codex manages worktrees for you
 
 Codex creates worktrees in `$CODEX_HOME/worktrees`. The starting commit will be the `HEAD` commit of the branch selected when you start your thread. If you chose a branch with local changes, the uncommitted changes will be applied to the worktree as well. The worktree will *not* be checked out as a branch. It will be in a [detached HEAD](https://git-scm.com/docs/git-checkout#_detached_head) state. This lets Codex create several worktrees without polluting your branches.
+
+### Copy ignored local files into managed worktrees
+
+Local Codex-managed worktrees start from a Git checkout, so tracked files are already present. If your repository ignores local setup files that a new worktree needs, add a `.worktreeinclude` file to the repository root and list the ignored paths or `.gitignore`-style patterns to copy when Codex creates a managed worktree.
+
+Use this for files Git intentionally ignores, such as `.env`, `.env.local`, or `config/secrets.json`. Codex only copies ignored files that match `.worktreeinclude`; it doesn’t copy other local files that Git doesn’t track. Don’t list tracked files.
+
+Codex automatically copies an ignored `AGENTS.override.md` into local managed worktrees, so you don’t need to list it in `.worktreeinclude`.
+
+```
+# .worktreeinclude
+.env
+.env.local
+config/secrets.json
+```
+
+Codex skips source symlinks and won’t overwrite files that already exist in the new checkout. This behavior applies to local Codex app managed worktrees, not remote worktrees or Git worktrees you create yourself from the command line.
 
 ### Branch limitations
 
