@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-06-16T15:40:49Z'
-source_etag: 'W/"7822808797f9dea493c71f03e4c89d7d"'
+source_last_modified: '2026-06-17T17:35:59Z'
+source_etag: 'W/"510512e5272c09a12c9f25cd69a0ec3d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -271,6 +271,12 @@ For example, `allowed_web_search_modes = ["cached"]` prevents live web search ev
 
 ### Configure network access requirements
 
+`[experimental_network]` is experimental and may change. Do not enable these
+requirements broadly across an enterprise deployment without validating them
+on the Codex client versions and operating systems your users run. Windows
+support is still limited; avoid applying this policy to Windows users unless
+you have tested it in your environment.
+
 Use `[experimental_network]` in `requirements.toml` when administrators should
 define network access requirements centrally. These requirements are separate
 from the user `features.network_proxy` toggle: they can configure sandboxed
@@ -279,8 +285,6 @@ access when the active sandbox keeps networking off.
 
 ```
 experimental_network.enabled = true
-experimental_network.dangerously_allow_all_unix_sockets = true
-experimental_network.allow_local_binding = true
 experimental_network.allowed_domains = [
   "api.openai.com",
   "*.example.com",

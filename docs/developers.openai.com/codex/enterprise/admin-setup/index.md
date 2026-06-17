@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/admin-setup'
-source_last_modified: '2026-06-15T19:24:00Z'
-source_etag: 'W/"cfeb06f1a02329d2f42fbd9694e349b7"'
+source_last_modified: '2026-06-17T17:51:34Z'
+source_etag: 'W/"1bb72ef00052307c027f609200469885"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
 ---
@@ -152,7 +152,7 @@ This separation makes it easier to roll out Codex while keeping analytics, envir
 
 Codex Admins can deploy admin-enforced `requirements.toml` policies from the Codex [Policies page](https://chatgpt.com/codex/settings/policies).
 
-Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, network access requirements, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Pin feature flags](/codex/enterprise/managed-configuration#pin-feature-flags).
+Use this page when you want to apply different local Codex constraints to different groups without distributing device-level files first. The managed policy uses the same `requirements.toml` format described in [Managed configuration](/codex/enterprise/managed-configuration), so you can define allowed approval policies, sandbox modes, web search behavior, MCP server allowlists, feature pins, and restrictive command rules. To disable Browser Use, the in-app browser, or Computer Use, see [Pin feature flags](/codex/enterprise/managed-configuration#pin-feature-flags).
 
 ![Codex policies and configurations page](/images/codex/enterprise/policies_and_configurations_page.png)
 
@@ -204,22 +204,6 @@ browser_use = false
 browser_use_full_cdp_access = false
 in_app_browser = false
 computer_use = false
-```
-
-Example: define administrator-owned network requirements:
-
-```
-experimental_network.enabled = true
-experimental_network.dangerously_allow_all_unix_sockets = true
-experimental_network.allow_local_binding = true
-experimental_network.allowed_domains = [
-  "api.openai.com",
-  "*.example.com",
-]
-experimental_network.denied_domains = [
-  "blocked.example.com",
-  "*.exfil.example.com",
-]
 ```
 
 Example: add a restrictive command rule when you want admins to block or gate specific commands:
