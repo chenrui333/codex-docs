@@ -4,8 +4,8 @@ source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/life-sciences'
 source_last_modified: '2026-06-03T19:26:37Z'
 source_etag: 'W/"aca56b11d7d9377104d35a73e15d7f54"'
-codex_cli_versions: ["0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
-codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
+codex_cli_versions: ["0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
+codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
 
 # Life Sciences – Codex | OpenAI Developers

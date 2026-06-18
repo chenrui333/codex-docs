@@ -4,8 +4,8 @@ source_area: 'codex_amazon_bedrock'
 source_url: 'https://developers.openai.com/codex/amazon-bedrock'
 source_last_modified: '2026-06-12T18:23:38Z'
 source_etag: 'W/"1304ef72db81997c868a0ab8cf996584"'
-codex_cli_versions: ["0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0"]
-codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0"]
+codex_cli_versions: ["0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
+codex_cli_versions_raw: ["codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
 
 # Use Codex with Amazon Bedrock | OpenAI Developers
