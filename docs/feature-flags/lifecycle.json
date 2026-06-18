@@ -316,6 +316,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "sleep_tool",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "sqlite",
       "stage": "removed"
@@ -333,7 +338,7 @@
     {
       "enabled": true,
       "key": "terminal_resize_reflow",
-      "stage": "experimental"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -421,7 +426,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.140.0",
+  "codex_cli_version": "codex-cli 0.141.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -467,6 +472,7 @@
       "secret_auth_storage",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
+      "sleep_tool",
       "sqlite",
       "standalone_web_search",
       "steer",
