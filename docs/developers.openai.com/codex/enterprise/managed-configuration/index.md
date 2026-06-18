@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-06-17T17:35:59Z'
-source_etag: 'W/"510512e5272c09a12c9f25cd69a0ec3d"'
+source_last_modified: '2026-06-18T18:38:09Z'
+source_etag: 'W/"938466d13534fe3fb28b7757a9034179"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -279,7 +279,7 @@ you have tested it in your environment.
 
 Use `[experimental_network]` in `requirements.toml` when administrators should
 define network access requirements centrally. These requirements are separate
-from the user `features.network_proxy` toggle: they can configure sandboxed
+from the user `features.network_proxy` toggle: they can configure sandbox
 networking without that feature flag, but they don’t grant command network
 access when the active sandbox keeps networking off.
 
@@ -301,7 +301,7 @@ exclusive. If it’s `true` without managed allow rules, user-added domain allow
 rules don’t remain effective.
 
 The domain syntax, local/private destination rules, deny-over-allow behavior,
-and DNS rebinding limitations are the same as the sandboxed networking behavior
+and DNS rebinding limitations are the same as the sandbox networking behavior
 described in [Agent approvals & security](/codex/agent-approvals-security#network-isolation).
 
 ### Pin feature flags
@@ -327,7 +327,7 @@ Use the canonical feature keys from `config.toml`’s `[features]` table. Codex 
 - `browser_use = false` disables Browser Use and Browser Agent availability.
 - `browser_use_full_cdp_access = false` prevents users from enabling full CDP
   access in Browser Developer mode.
-- `computer_use = false` disables Computer Use availability and related
+- `computer_use = false` disables Computer Use, Record & Replay, and related
   install or setup flows.
 
 If omitted, these features are allowed by policy, subject to normal client,

@@ -163,6 +163,7 @@
       "https://developers.openai.com/codex/pricing",
       "https://developers.openai.com/codex/prompting",
       "https://developers.openai.com/codex/quickstart",
+      "https://developers.openai.com/codex/record-and-replay",
       "https://developers.openai.com/codex/remote-connections",
       "https://developers.openai.com/codex/rules",
       "https://developers.openai.com/codex/sdk",
@@ -275,8 +276,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 10,
-      "codex_related_urls": 186,
-      "mirrored_urls": 175,
+      "codex_related_urls": 187,
+      "mirrored_urls": 176,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -355,6 +356,7 @@
       "https://developers.openai.com/codex/pricing",
       "https://developers.openai.com/codex/prompting",
       "https://developers.openai.com/codex/quickstart",
+      "https://developers.openai.com/codex/record-and-replay",
       "https://developers.openai.com/codex/remote-connections",
       "https://developers.openai.com/codex/rules",
       "https://developers.openai.com/codex/sdk",
@@ -460,8 +462,12 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/codex/record-and-replay"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/codex/record-and-replay"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -545,7 +551,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-06-18T07:49:37+00:00",
+  "generated_at": "2026-06-18T18:53:59+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

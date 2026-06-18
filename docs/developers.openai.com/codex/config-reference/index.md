@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-reference'
-source_last_modified: '2026-06-16T15:39:12Z'
-source_etag: 'W/"a854960e1f6042bc1334b97edf4c86e8"'
+source_last_modified: '2026-06-18T18:36:06Z'
+source_etag: 'W/"b40857ff40a8bd3f0b79406e29c98efb"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -48,9 +48,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `approval_policy.granular.sandbox_approval` | `boolean` | When `true`, sandbox escalation approval prompts are allowed to surface. |
 | `approval_policy.granular.skill_approval` | `boolean` | When `true`, skill-script approval prompts are allowed to surface. |
 | `approvals_reviewer` | `user | auto_review` | Who reviews eligible approval prompts under `on-request` or granular approval policies. Defaults to `user`; `auto_review` uses the reviewer subagent. This setting doesn't change sandboxing or review actions already allowed inside the sandbox. |
+| `apps._default.approvals_reviewer` | `user | auto_review` | Default reviewer for app tool approval prompts unless overridden per app. When omitted, apps inherit the top-level `approvals_reviewer` value. |
+| `apps._default.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for app tools without per-app or per-tool overrides. |
 | `apps._default.destructive_enabled` | `boolean` | Default allow/deny for app tools with `destructive_hint = true`. |
 | `apps._default.enabled` | `boolean` | Default app enabled state for all apps unless overridden per app. |
 | `apps._default.open_world_enabled` | `boolean` | Default allow/deny for app tools with `open_world_hint = true`. |
+| `apps.<id>.approvals_reviewer` | `user | auto_review` | Reviewer for this app's tool approval prompts. Overrides `apps._default.approvals_reviewer`. |
 | `apps.<id>.default_tools_approval_mode` | `auto | prompt | approve` | Default approval behavior for tools in this app unless a per-tool override exists. |
 | `apps.<id>.default_tools_enabled` | `boolean` | Default enabled state for tools in this app unless a per-tool override exists. |
 | `apps.<id>.destructive_enabled` | `boolean` | Allow or block tools in this app that advertise `destructive_hint = true`. |
@@ -71,6 +74,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `experimental_compact_prompt_file` | `string (path)` | Load the compaction prompt override from a file (experimental). |
 | `experimental_use_unified_exec_tool` | `boolean` | Legacy name for enabling unified exec; prefer `[features].unified_exec` or `codex --enable unified_exec`. |
 | `features.apps` | `boolean` | Enable ChatGPT Apps/connectors support (experimental). |
+| `features.code_mode.direct_only_tool_namespaces` | `array<string>` | Tool namespaces code mode can use only through direct tool calls. |
+| `features.code_mode.enabled` | `boolean` | Enable code mode feature configuration. This feature is under development and off by default. |
+| `features.code_mode.excluded_tool_namespaces` | `array<string>` | Tool namespaces code mode excludes from nested code-mode tool guidance and executor exposure. |
 | `features.codex_git_commit` | `boolean` | Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages. |
 | `features.enable_request_compression` | `boolean` | Compress streaming request bodies with zstd when supported (stable; on by default). |
 | `features.fast_mode` | `boolean` | Enable model-catalog service tier selection in the TUI, including Fast-tier commands when the active model advertises them (stable; on by default). |
@@ -91,6 +97,11 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
 | `features.network_proxy.unix_sockets` | `map<string, allow | deny>` | Unix socket policy for sandboxed networking. Unset by default; add `allow` entries for permitted sockets. |
 | `features.personality` | `boolean` | Enable personality selection controls (stable; on by default). |
 | `features.prevent_idle_sleep` | `boolean` | Prevent the machine from sleeping while a turn is actively running (experimental; off by default). |
+| `features.rollout_budget.enabled` | `boolean` | Enable rollout budget tracking. This feature is under development and off by default. When enabled, `features.rollout_budget.limit_tokens` is required. |
+| `features.rollout_budget.limit_tokens` | `integer` | Positive token limit for rollout budget tracking. Required when rollout budget is enabled. |
+| `features.rollout_budget.prefill_token_weight` | `number` | Finite non-negative multiplier for prefill tokens in rollout budget accounting. Defaults to `1.0`. |
+| `features.rollout_budget.reminder_interval_tokens` | `integer` | Positive token interval between rollout budget reminders. Defaults to 10% of `limit_tokens`, with a minimum of 1 token. |
+| `features.rollout_budget.sampling_token_weight` | `number` | Finite non-negative multiplier for sampled tokens in rollout budget accounting. Defaults to `1.0`. |
 | `features.shell_snapshot` | `boolean` | Snapshot shell environment to speed up repeated commands (stable; on by default). |
 | `features.shell_tool` | `boolean` | Enable the default `shell` tool for running commands (stable; on by default). |
 | `features.skill_mcp_dependency_install` | `boolean` | Allow prompting and installing missing MCP dependencies for skills (stable; on by default). |
@@ -465,6 +476,30 @@ Who reviews eligible approval prompts under `on-request` or granular approval po
 
 Key
 
+`apps._default.approvals_reviewer`
+
+Type / Values
+
+`user | auto_review`
+
+Details
+
+Default reviewer for app tool approval prompts unless overridden per app. When omitted, apps inherit the top-level `approvals_reviewer` value.
+
+Key
+
+`apps._default.default_tools_approval_mode`
+
+Type / Values
+
+`auto | prompt | approve`
+
+Details
+
+Default approval behavior for app tools without per-app or per-tool overrides.
+
+Key
+
 `apps._default.destructive_enabled`
 
 Type / Values
@@ -498,6 +533,18 @@ Type / Values
 Details
 
 Default allow/deny for app tools with `open_world_hint = true`.
+
+Key
+
+`apps.<id>.approvals_reviewer`
+
+Type / Values
+
+`user | auto_review`
+
+Details
+
+Reviewer for this app's tool approval prompts. Overrides `apps._default.approvals_reviewer`.
 
 Key
 
@@ -741,6 +788,42 @@ Enable ChatGPT Apps/connectors support (experimental).
 
 Key
 
+`features.code_mode.direct_only_tool_namespaces`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Tool namespaces code mode can use only through direct tool calls.
+
+Key
+
+`features.code_mode.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable code mode feature configuration. This feature is under development and off by default.
+
+Key
+
+`features.code_mode.excluded_tool_namespaces`
+
+Type / Values
+
+`array<string>`
+
+Details
+
+Tool namespaces code mode excludes from nested code-mode tool guidance and executor exposure.
+
+Key
+
 `features.codex_git_commit`
 
 Type / Values
@@ -978,6 +1061,66 @@ Type / Values
 Details
 
 Prevent the machine from sleeping while a turn is actively running (experimental; off by default).
+
+Key
+
+`features.rollout_budget.enabled`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Enable rollout budget tracking. This feature is under development and off by default. When enabled, `features.rollout_budget.limit_tokens` is required.
+
+Key
+
+`features.rollout_budget.limit_tokens`
+
+Type / Values
+
+`integer`
+
+Details
+
+Positive token limit for rollout budget tracking. Required when rollout budget is enabled.
+
+Key
+
+`features.rollout_budget.prefill_token_weight`
+
+Type / Values
+
+`number`
+
+Details
+
+Finite non-negative multiplier for prefill tokens in rollout budget accounting. Defaults to `1.0`.
+
+Key
+
+`features.rollout_budget.reminder_interval_tokens`
+
+Type / Values
+
+`integer`
+
+Details
+
+Positive token interval between rollout budget reminders. Defaults to 10% of `limit_tokens`, with a minimum of 1 token.
+
+Key
+
+`features.rollout_budget.sampling_token_weight`
+
+Type / Values
+
+`number`
+
+Details
+
+Finite non-negative multiplier for sampled tokens in rollout budget accounting. Defaults to `1.0`.
 
 Key
 
@@ -3338,7 +3481,7 @@ deployments, use `allowed_permission_profiles` with managed
 | `features.browser_use` | `boolean` | Set to `false` in `requirements.toml` to disable Browser Use and Browser Agent availability. |
 | `features.browser_use_external` | `boolean` | Set to `false` in `requirements.toml` to disable external-browser Browser Use availability. |
 | `features.browser_use_full_cdp_access` | `boolean` | Set to `false` in `requirements.toml` to prevent users from enabling full Chrome DevTools Protocol access in Browser Developer mode. If omitted, normal product availability applies. |
-| `features.computer_use` | `boolean` | Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows. |
+| `features.computer_use` | `boolean` | Set to `false` in `requirements.toml` to disable Computer Use, Record & Replay, and related install or enablement flows. |
 | `features.fast_mode` | `boolean` | Pin the canonical `fast_mode` feature on or off for managed users. |
 | `features.guardian_approval` | `boolean` | Pin Guardian approval availability on or off for managed users. |
 | `features.in_app_browser` | `boolean` | Set to `false` in `requirements.toml` to disable the in-app browser pane. |
@@ -3807,7 +3950,7 @@ Type / Values
 
 Details
 
-Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.
+Set to `false` in `requirements.toml` to disable Computer Use, Record & Replay, and related install or enablement flows.
 
 Key
 

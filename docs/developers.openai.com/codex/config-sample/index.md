@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-06-01T23:11:16Z'
-source_etag: 'W/"0bf9a108c12db065fb8291c6b805c72f"'
+source_last_modified: '2026-06-18T18:37:16Z'
+source_etag: 'W/"986438599d65537270b56842eee5f610"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -1102,6 +1102,42 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 1075
 1076
 1077
+1078
+1079
+1080
+1081
+1082
+1083
+1084
+1085
+1086
+1087
+1088
+1089
+1090
+1091
+1092
+1093
+1094
+1095
+1096
+1097
+1098
+1099
+1100
+1101
+1102
+1103
+1104
+1105
+1106
+1107
+1108
+1109
+1110
+1111
+1112
+1113
 # Codex example configuration (config.toml)
 #
 # This file lists the main keys Codex reads from config.toml, along with default
@@ -1766,6 +1802,36 @@ enabled = true
 
 # prevent_idle_sleep = false
 
+# Code mode namespaces. This feature is under development and off by default.
+
+# [features.code_mode]
+
+# enabled = true
+
+# excluded_tool_namespaces = ["mcp__codex_apps"]
+
+# direct_only_tool_namespaces = ["mcp__history"]
+
+# Rollout budget tracking. This feature is under development and off by default.
+
+# limit_tokens is required when enabled.
+
+# Optional reminder_interval_tokens defaults to 10% of limit_tokens.
+
+# Token weights default to 1.0.
+
+# [features.rollout_budget]
+
+# enabled = true
+
+# limit_tokens = 100000
+
+# reminder_interval_tokens = 10000
+
+# sampling_token_weight = 1.0
+
+# prefill_token_weight = 1.0
+
 ################################################################################
 
 # Memories (table)
@@ -2004,6 +2070,10 @@ enabled = true
 
 # open_world_enabled = true
 
+# approvals_reviewer = "user" # user | auto_review
+
+# default_tools_approval_mode = "auto" # auto | prompt | approve
+
 #
 
 # [apps.google_drive]
@@ -2013,6 +2083,8 @@ enabled = true
 # destructive_enabled = false # block destructive-hint tools for this app
 
 # default_tools_enabled = true
+
+# approvals_reviewer = "auto_review"
 
 # default_tools_approval_mode = "prompt" # auto | prompt | approve
 

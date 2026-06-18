@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/cli/reference'
-source_last_modified: '2026-06-09T17:53:20Z'
-source_etag: 'W/"a659bef87a1b3be250f62b3c52a6d899"'
+source_last_modified: '2026-06-18T18:36:15Z'
+source_etag: 'W/"83a603cdecc95497b4dc3c16e5de02f7"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -38,7 +38,7 @@ basics](/codex/config-basic#configuration-precedence) for more information.
 | `--no-alt-screen` | `boolean` | Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run). |
 | `--oss` | `boolean` | Use the local open source model provider (equivalent to `-c model_provider="oss"`). Validates that Ollama is running. |
 | `--profile, -p` | `string` | Layer `$CODEX_HOME/profile-name.config.toml` on top of the base user config. |
-| `--remote` | `ws://host:port | wss://host:port | unix:// | unix://PATH` | Connect the interactive TUI to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode. |
+| `--remote` | `ws://host:port | wss://host:port | unix:// | unix://PATH` | Connect to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, `codex fork`, `codex archive`, `codex delete`, and `codex unarchive`; other subcommands reject remote mode. |
 | `--remote-auth-token-env` | `ENV_VAR` | Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or local-only `ws://` URLs. |
 | `--sandbox, -s` | `read-only | workspace-write | danger-full-access` | Select the sandbox policy for model-generated shell commands. |
 | `--search` | `boolean` | Enable live web search (sets `web_search = "live"` instead of the default `"cached"`). |
@@ -211,7 +211,7 @@ Type / Values
 
 Details
 
-Connect the interactive TUI to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.
+Connect to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, `codex fork`, `codex archive`, `codex delete`, and `codex unarchive`; other subcommands reject remote mode.
 
 Key
 
@@ -297,6 +297,7 @@ interpret these labels.
 | [`codex completion`](/codex/cli/reference#codex-completion) | Stable | Generate shell completion scripts for Bash, Zsh, Fish, or PowerShell. |
 | [`codex debug app-server send-message-v2`](/codex/cli/reference#codex-debug-app-server-send-message-v2) | Experimental | Debug app-server by sending a single V2 message through the built-in test client. |
 | [`codex debug models`](/codex/cli/reference#codex-debug-models) | Experimental | Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog. |
+| [`codex delete`](/codex/cli/reference#codex-delete) | Stable | Permanently delete a saved interactive session by session ID or session name. |
 | [`codex doctor`](/codex/cli/reference#codex-doctor) | Stable | Generate a diagnostic report for local installation, config, auth, runtime, Git, terminal, app-server, and thread inventory issues. |
 | [`codex exec`](/codex/cli/reference#codex-exec) | Stable | Run Codex non-interactively. Alias: `codex e`. Stream results to stdout or JSONL and optionally resume previous sessions. |
 | [`codex execpolicy`](/codex/cli/reference#codex-execpolicy) | Experimental | Evaluate execpolicy rule files and see whether a command would be allowed, prompted, or blocked. |
@@ -421,6 +422,18 @@ Experimental
 Details
 
 Print the raw model catalog Codex sees, including an option to inspect only the bundled catalog.
+
+Key
+
+[`codex delete`](/codex/cli/reference#codex-delete)
+
+Maturity
+
+Stable
+
+Details
+
+Permanently delete a saved interactive session by session ID or session name.
 
 Key
 
@@ -925,6 +938,75 @@ Type / Values
 Details
 
 Saved session to archive or restore. Session IDs take precedence over session names.
+
+### `codex delete`
+
+Permanently delete a saved interactive session by session ID or session name.
+Use this only when you want to remove the transcript instead of hiding it from
+active session lists.
+
+```
+codex delete <SESSION>
+codex delete <SESSION_UUID> --force
+```
+
+| Key | Type / Values | Details |
+| --- | --- | --- |
+| `--force` | `boolean` | Delete without prompting. The session argument must be a UUID; names still require interactive confirmation. |
+| `--remote` | `ws://host:port | wss://host:port | unix:// | unix://PATH` | Connect to a remote app-server endpoint before deleting the session. |
+| `--remote-auth-token-env` | `ENV_VAR` | Read a bearer token from this environment variable when `--remote` requires authentication. |
+| `SESSION` | `session ID | session name` | Saved session to delete. Session IDs take precedence over session names. |
+
+Key
+
+`--force`
+
+Type / Values
+
+`boolean`
+
+Details
+
+Delete without prompting. The session argument must be a UUID; names still require interactive confirmation.
+
+Key
+
+`--remote`
+
+Type / Values
+
+`ws://host:port | wss://host:port | unix:// | unix://PATH`
+
+Details
+
+Connect to a remote app-server endpoint before deleting the session.
+
+Key
+
+`--remote-auth-token-env`
+
+Type / Values
+
+`ENV_VAR`
+
+Details
+
+Read a bearer token from this environment variable when `--remote` requires authentication.
+
+Key
+
+`SESSION`
+
+Type / Values
+
+`session ID | session name`
+
+Details
+
+Saved session to delete. Session IDs take precedence over session names.
+
+Use `--force` only with a session UUID. Named sessions still require
+confirmation so Codex doesn’t delete a repeated or ambiguous name without a prompt.
 
 ### `codex cloud`
 

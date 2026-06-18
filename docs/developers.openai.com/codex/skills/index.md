@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/skills'
-source_last_modified: '2026-04-25T06:31:15Z'
-source_etag: 'W/"f9f78a930fbbeb9fbe5751f28d8a8b26"'
+source_last_modified: '2026-06-18T18:36:08Z'
+source_etag: 'W/"46522353255f24ead903da661809155d"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -20,7 +20,7 @@ Skills are available in the Codex CLI, IDE extension, and Codex app.
 
 Skills use **progressive disclosure** to manage context efficiently: Codex starts with each skill’s name, description, and file path. Codex loads the full `SKILL.md` instructions only when it decides to use a skill.
 
-Codex includes an initial list of available skills in context so it can choose the right skill for a task. To avoid crowding out the rest of the prompt, this list is capped at roughly 2% of the model’s context window, or 8,000 characters when the context window is unknown. If many skills are installed, Codex shortens skill descriptions first. For very large skill sets, some skills may be omitted from the initial list, and Codex will show a warning.
+Codex includes an initial list of available skills in context so it can choose the right skill for a task. To avoid crowding out the rest of the prompt, this list uses at most 2% of the model’s context window, or 8,000 characters when the context window is unknown. If many skills are installed, Codex shortens skill descriptions first. For large skill sets, Codex may omit some skills from the initial list and show a warning.
 
 This budget applies only to the initial skills list. When Codex selects a skill, it still reads the full SKILL.md instructions for that skill.
 
@@ -47,7 +47,11 @@ Because implicit matching depends on `description`, write concise descriptions w
 
 ## Create a skill
 
-Use the built-in creator first:
+If you already know the workflow and it’s easier to show than describe, use
+[Record & Replay](/codex/record-and-replay). Codex records the workflow,
+inspects the steps, and drafts a reusable skill from the demonstration.
+
+If you want to describe the skill instead, use the built-in creator:
 
 ```
 $skill-creator

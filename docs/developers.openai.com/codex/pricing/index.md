@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-16T01:31:35Z'
-source_etag: 'W/"7edaed8961e1b1d2ee7778779a7907a0"'
+source_last_modified: '2026-06-18T18:35:51Z'
+source_etag: 'W/"078e4dac9ee1c7b45e11bb1a5d1036f4"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -385,6 +385,7 @@ tips to maximize your limits:
 | [Browser Use automation](/codex/app/browser#browser-use) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
 | [Chrome extension browser control](/codex/app/chrome-extension) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
 | [Computer Use](/codex/app/computer-use) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
+| [Record & Replay (macOS)](/codex/record-and-replay) | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") | [Limited\*](#codex-plan-region-limits "Available with regional limits") |
 | [SSH remote connections](/codex/remote-connections#connect-to-an-ssh-host) |  |  |  |  |  |
 | [Mobile remote control](/codex/remote-connections) |  |  |  |  | — |
 | Customization and extensions | | | | | |
@@ -480,6 +481,10 @@ tips to maximize your limits:
 [Limited\*](#codex-plan-region-limits "Available with regional limits")
 
 [Computer Use](/codex/app/computer-use)
+
+[Limited\*](#codex-plan-region-limits "Available with regional limits")
+
+[Record & Replay](/codex/record-and-replay)
 
 [Limited\*](#codex-plan-region-limits "Available with regional limits")
 

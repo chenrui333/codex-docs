@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/plugins'
-source_last_modified: '2026-06-02T19:21:10Z'
-source_etag: 'W/"19690832b323fb2eed08d007fdc51fa1"'
+source_last_modified: '2026-06-18T18:35:48Z'
+source_etag: 'W/"14cc19f31463829499fc5125da032783"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -146,6 +146,8 @@ guidance.
 
 ## Plugin guides
 
+- [Record & Replay](/codex/record-and-replay): Show Codex a workflow
+  once and turn it into a reusable skill.
 - [Codex Security plugin](/codex/security/plugin): Scan authorized code,
   confirm findings, and prepare reviewed fixes.
 

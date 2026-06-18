@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app/commands'
-source_last_modified: '2026-06-12T00:58:01Z'
-source_etag: 'W/"e7fffc40dab9cf64ba834d74105994bb"'
+source_last_modified: '2026-06-18T18:37:49Z'
+source_etag: 'W/"ab697bb78cb824d6217ed86274da2c40"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -51,7 +51,7 @@ app, it can also match conversation content and Git branch names, so you can
 search for a phrase from the thread or a branch such as `fix/login-redirect`.
 
 Use **Find in thread** (`Cmd` + `F`) after opening a thread
-to find text within that current conversation. It does not search across other
+to find text within that current conversation. It doesn’t search across other
 threads.
 
 ## Slash commands
@@ -119,6 +119,8 @@ Use these canonical forms when you create links. The sections below list the ful
 | `codex://new?<query>` | A new local thread with at least one new-thread query parameter. |
 | `codex://threads/<thread-id>` | A local thread. `<thread-id>` must be the thread’s session UUID. |
 | `codex://settings` | Settings. |
+| `codex://settings/connections/<connection-type>` | Computer, device, or SSH connection settings. |
+| `codex://settings/connections/ssh/add?name=<ssh-config-host>` | Adds a host from your SSH config to Codex. |
 | `codex://skills` | Skills. |
 | `codex://automations` | Automations with the create flow open. |
 | `codex://plugins/install/<plugin-name>?marketplace=<marketplace-name>` | The install flow for a plugin from a known marketplace. |
@@ -157,6 +159,14 @@ Use these links when you need to open Settings or a specific settings page.
 | `codex://settings/browser-use` | Browser settings. |
 | `codex://settings/computer-use/google-chrome` | Google Chrome settings for computer use. |
 | `codex://settings/connections` | Remote connections settings. |
+| `codex://settings/connections/computer` | Settings for controlling this Mac or PC from another device. |
+| `codex://settings/connections/devices` | Settings for controlling other devices. |
+| `codex://settings/connections/ssh` | SSH connection settings. |
+| `codex://settings/connections/ssh/add?name=<ssh-config-host>` | Adds the named host alias as a Codex-managed connection, then opens SSH connection settings. |
+
+The `name` value must match a host alias in `~/.ssh/config`. The link disables
+automatic connection for the added host. If Codex can’t find the named host, it
+opens SSH connection settings and shows an error.
 
 Unsupported `codex://settings/...` paths open the main Settings page.
 
@@ -192,7 +202,7 @@ Use this form to open the install flow for a plugin from a marketplace that Code
 | --- | --- | --- |
 | `marketplace=<marketplace-name>` | Yes | Identifies the marketplace. For an OpenAI-curated plugin, use `openai-curated`. |
 
-The install link accepts only the `marketplace` query parameter. If Codex cannot find the requested marketplace or plugin, it opens the Plugins page instead.
+The install link accepts only the `marketplace` query parameter. If Codex can’t find the requested marketplace or plugin, it opens the Plugins page instead.
 
 #### Plugin detail
 
@@ -202,12 +212,12 @@ The install link accepts only the `marketplace` query parameter. If Codex cannot
 
 `<plugin-id>` must identify the plugin. For an OpenAI-curated plugin, use the form `<plugin-name>@openai-curated`.
 
-Codex-generated plugin links can also include these query parameters. Omit both when you handwrite a link.
+Codex-generated plugin links can also include these query parameters. Omit both when you write a link manually.
 
 | Query parameter | Required | What it does |
 | --- | --- | --- |
 | `hostId=<host-id>` | No | Identifies the Codex host that owns the plugin context, such as `local` or one of your configured remote connections. Codex provides these IDs. |
-| `source=manage` | No | Preserves the app’s plugin-management entry point. It is not admin-only. |
+| `source=manage` | No | Preserves the app’s plugin-management entry point. It’s not admin-only. |
 
 Example: [Open the OpenAI Developers plugin](codex://plugins/openai-developers@openai-curated)
 

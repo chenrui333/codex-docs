@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_app'
 source_url: 'https://developers.openai.com/codex/app-server'
-source_last_modified: '2026-05-21T18:16:27Z'
-source_etag: 'W/"04c357c4c80daa921b6d9938d5e64737"'
+source_last_modified: '2026-06-18T18:54:00Z'
+source_etag: 'W/"43cc83035eaf49a45cd36c908b637ad7"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -251,7 +251,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/resume` - reopen an existing thread by id so later `turn/start` calls append to it.
 - `thread/fork` - fork a thread into a new thread id by copying stored history; emits `thread/started` for the new thread. Returned threads include `forkedFromId` when available.
 - `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history. Returned `thread` objects include runtime `status`.
-- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, and `searchTerm` filters. Returned `thread` objects include runtime `status`.
+- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, `searchTerm`, and experimental `parentThreadId` filters. Returned `thread` objects include runtime `status`.
 - `thread/turns/list` - page through a stored thread’s turn history without resuming it. `itemsView` controls whether turn items are omitted, summarized, or fully loaded.
 - `thread/turns/items/list` - reserved for paged turn-item loading; currently returns unsupported.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
@@ -260,13 +260,16 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/goal/get` - read the current goal for a thread.
 - `thread/goal/clear` - clear the goal for a thread; emits `thread/goal/cleared`.
 - `thread/metadata/update` - patch SQLite-backed stored thread metadata; currently supports persisted `gitInfo`.
-- `thread/archive` - move a thread’s log file into the archived directory; returns `{}` on success and emits `thread/archived`.
+- `thread/archive` - move a thread’s log file into the archived directory and attempt to archive spawned descendant thread logs that aren’t already archived; returns `{}` on success and emits `thread/archived` for each archived thread.
+- `thread/delete` - permanently delete a persisted active or archived thread and any spawned descendant threads; returns `{}` on success and emits `thread/deleted` for each deleted thread.
 - `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread after a no-subscriber inactivity grace period and emits `thread/closed`.
 - `thread/unarchive` - restore an archived thread rollout back into the active sessions directory; returns the restored `thread` and emits `thread/unarchived`.
 - `thread/status/changed` - notification emitted when a loaded thread’s runtime `status` changes.
 - `thread/compact/start` - trigger conversation history compaction for a thread; returns `{}` immediately while progress streams via `turn/*` and `item/*` notifications.
 - `thread/shellCommand` - run a user-initiated shell command against a thread. This runs outside the sandbox with full access and doesn’t inherit the thread sandbox policy.
 - `thread/backgroundTerminals/clean` - stop all running background terminals for a thread (experimental; requires `capabilities.experimentalApi`).
+- `thread/backgroundTerminals/list` - list running background terminals for a loaded thread (experimental; requires `capabilities.experimentalApi`).
+- `thread/backgroundTerminals/terminate` - terminate one running background terminal by app-server `processId` (experimental; requires `capabilities.experimentalApi`).
 - `thread/rollback` - drop the last N turns from the in-memory context and persist a rollback marker; returns the updated `thread`.
 - `turn/start` - add user input to a thread and begin Codex generation; responds with the initial `turn` and streams events. For `collaborationMode`, `settings.developer_instructions: null` means “use built-in instructions for the selected mode.”
 - `thread/inject_items` - append raw Responses API items to a loaded thread’s model-visible history without starting a user turn.
@@ -293,7 +296,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `marketplace/add` - add a remote plugin marketplace and persist it into the user’s marketplace config.
 - `marketplace/upgrade` - refresh a configured Git marketplace, or all configured Git marketplaces when you omit the marketplace name.
 - `plugin/list` - list discovered plugin marketplaces and plugin state, including install/auth policy metadata, marketplace load errors, featured plugin ids, and local, Git, or remote plugin source metadata.
-- `plugin/read` - read one plugin by marketplace path or remote marketplace name and plugin name, including bundled skills, apps, and MCP server names when those details are available.
+- `plugin/read` - read one plugin by marketplace path or remote marketplace name and plugin name, including bundled skills, apps, MCP server names, and a remote plugin `shareUrl` when the remote catalog provides one.
 - `plugin/install` - install a plugin from a marketplace path or remote marketplace name.
 - `plugin/uninstall` - uninstall an installed plugin.
 - `app/list` - list available apps (connectors) with pagination plus accessibility/enabled metadata.
@@ -309,7 +312,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `feedback/upload` - submit a feedback report (classification + optional reason/logs + conversation id, plus optional `extraLogFiles` attachments).
 - `config/read` - fetch the effective configuration on disk after resolving configuration layering.
 - `externalAgentConfig/detect` - detect external-agent artifacts that can be migrated with `includeHome` and optional `cwds`; each detected item includes `cwd` (`null` for home).
-- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home). Supported item types include config, skills, `AGENTS.md`, plugins, MCP server config, subagents, hooks, commands, and sessions; plugin imports emit `externalAgentConfig/import/completed`.
+- `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home). Supported item types include config, skills, `AGENTS.md`, plugins, MCP server config, subagents, hooks, commands, and sessions; non-empty imports emit `externalAgentConfig/import/progress` and `externalAgentConfig/import/completed` as work finishes. Plugin and session imports can complete asynchronously.
 - `config/value/write` - write a single configuration key/value to the user’s `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user’s `config.toml` on disk.
 - `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven’t set any up).
@@ -393,9 +396,10 @@ Use this endpoint to discover feature flags with metadata and lifecycle stage:
 - `thread/turns/list` pages through a stored thread’s turn history without
   resuming it. Use `itemsView` to choose whether turn items are omitted,
   summarized, or fully loaded.
-- `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, and `searchTerm` filtering.
+- `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, `searchTerm`, and experimental `parentThreadId` filtering.
 - `thread/loaded/list` returns the thread IDs currently in memory.
-- `thread/archive` moves the thread’s persisted JSONL log into the archived directory.
+- `thread/archive` moves the thread’s persisted JSONL log into the archived directory and attempts to archive spawned descendant thread logs that aren’t already archived.
+- `thread/delete` permanently deletes a persisted active or archived thread and its spawned descendant threads.
 - `thread/metadata/update` patches stored thread metadata, currently including persisted `gitInfo`.
 - `thread/unsubscribe` unsubscribes the current connection from a loaded thread and can trigger `thread/closed` after an inactivity grace period.
 - `thread/unarchive` restores an archived thread rollout back into the active sessions directory.
@@ -549,12 +553,14 @@ current server returns an unsupported-method error.
 
 - `cursor` - opaque string from a prior response; omit for the first page.
 - `limit` - server defaults to a reasonable page size if unset.
-- `sortKey` - `created_at` (default) or `updated_at`.
+- `sortKey` - `created_at` (default), `updated_at`, or `recency_at`.
+- `sortDirection` - `desc` (default) or `asc`.
 - `modelProviders` - restrict results to specific providers; unset, null, or an empty array includes all providers.
 - `sourceKinds` - restrict results to specific thread sources. When omitted or `[]`, the server defaults to interactive sources only: `cli` and `vscode`.
 - `archived` - when `true`, list archived threads only. When `false` or omitted, list non-archived threads (default).
 - `cwd` - restrict results to threads whose session current working directory exactly matches this path.
 - `searchTerm` - search stored thread summaries and metadata before pagination.
+- `parentThreadId` - restrict results to direct child threads of the given parent thread. This filter is experimental and requires `capabilities.experimentalApi = true`.
 
 `sourceKinds` accepts the following values:
 
@@ -655,15 +661,30 @@ If the thread later expires:
 
 ### Archive a thread
 
-Use `thread/archive` to move the persisted thread log (stored as a JSONL file on disk) into the archived sessions directory.
+Use `thread/archive` to move the persisted thread log (stored as a JSONL file on disk) into the archived sessions directory. Archiving a thread also attempts to archive spawned descendant threads that aren’t already archived.
 
 ```
 { "method": "thread/archive", "id": 22, "params": { "threadId": "thr_b" } }
 { "id": 22, "result": {} }
 { "method": "thread/archived", "params": { "threadId": "thr_b" } }
+{ "method": "thread/archived", "params": { "threadId": "thr_child" } }
 ```
 
-Archived threads won’t appear in future calls to `thread/list` unless you pass `archived: true`.
+Archived threads won’t appear in future calls to `thread/list` unless you pass `archived: true`. The server emits one `thread/archived` notification for each thread it actually archives; if a spawned descendant can’t be archived, the request can still succeed without an archived notification for that descendant.
+
+### Delete a thread
+
+Use `thread/delete` to permanently delete a persisted active or archived thread
+and its spawned descendant threads. The server removes existing rollout files and
+associated metadata before returning success; missing rollout files are treated
+as already deleted. Ephemeral root threads can’t be deleted.
+
+```
+{ "method": "thread/delete", "id": 23, "params": { "threadId": "thr_b" } }
+{ "id": 23, "result": {} }
+{ "method": "thread/deleted", "params": { "threadId": "thr_b" } }
+{ "method": "thread/deleted", "params": { "threadId": "thr_child" } }
+```
 
 ### Unarchive a thread
 
@@ -708,13 +729,42 @@ Use `thread/backgroundTerminals/clean` to stop all running background terminals 
 { "id": 27, "result": {} }
 ```
 
+Use `thread/backgroundTerminals/list` to inspect running background terminals
+for a loaded thread. The request supports standard `cursor` and `limit`
+pagination, and the returned `processId` is the app-server process id. This
+method is experimental and requires `capabilities.experimentalApi = true`:
+
+```
+{ "method": "thread/backgroundTerminals/list", "id": 28, "params": { "threadId": "thr_b" } }
+{ "id": 28, "result": { "data": [
+  {
+    "itemId": "item_456",
+    "processId": "42",
+    "command": "python3 -m http.server",
+    "cwd": "/workspace",
+    "osPid": null,
+    "cpuPercent": null,
+    "rssKb": null
+  }
+], "nextCursor": null } }
+```
+
+Use `thread/backgroundTerminals/terminate` with that `processId` to stop one
+background terminal. This method is experimental and requires
+`capabilities.experimentalApi = true`:
+
+```
+{ "method": "thread/backgroundTerminals/terminate", "id": 29, "params": { "threadId": "thr_b", "processId": "42" } }
+{ "id": 29, "result": { "terminated": true } }
+```
+
 ### Roll back recent turns
 
 Use `thread/rollback` to remove the last `numTurns` entries from the in-memory context and persist a rollback marker in the rollout log. The returned `thread` includes `turns` populated after the rollback.
 
 ```
-{ "method": "thread/rollback", "id": 28, "params": { "threadId": "thr_b", "numTurns": 1 } }
-{ "id": 28, "result": { "thread": { "id": "thr_b", "name": "Bug bash notes", "ephemeral": false } } }
+{ "method": "thread/rollback", "id": 30, "params": { "threadId": "thr_b", "numTurns": 1 } }
+{ "id": 30, "result": { "thread": { "id": "thr_b", "name": "Bug bash notes", "ephemeral": false } } }
 ```
 
 ## Turns
@@ -1175,6 +1225,10 @@ Order of messages:
 
 When the client responds to `item/tool/requestUserInput`, app-server emits `serverRequest/resolved` with `{ threadId, requestId }`. If the pending request is cleared by turn start, turn completion, or turn interruption before the client answers, the server emits the same notification for that cleanup.
 
+Request params include `autoResolutionMs` as an integer millisecond timeout or
+`null`. When present, host clients can resolve the prompt automatically after that
+interval if the user doesn’t answer.
+
 ### Dynamic tool calls (experimental)
 
 `dynamicTools` on `thread/start` and the corresponding `item/tool/call` request or response flow are experimental APIs.
@@ -1387,11 +1441,14 @@ Read the effective app config shape (including `_default` and per-tool overrides
       "_default": {
         "enabled": true,
         "destructive_enabled": true,
-        "open_world_enabled": true
+        "open_world_enabled": true,
+        "approvals_reviewer": "user",
+        "default_tools_approval_mode": "auto"
       },
       "google_drive": {
         "enabled": true,
         "destructive_enabled": false,
+        "approvals_reviewer": "auto_review",
         "default_tools_approval_mode": "prompt",
         "tools": {
           "files/delete": { "enabled": false, "approval_mode": "approve" }
@@ -1401,6 +1458,13 @@ Read the effective app config shape (including `_default` and per-tool overrides
   }
 } }
 ```
+
+`apps._default.approvals_reviewer` sets the reviewer for all apps unless a
+per-app value overrides it. When both are omitted, the app inherits the
+top-level `approvals_reviewer` value. `apps._default.default_tools_approval_mode`
+sets the fallback approval mode for tools without a per-app or per-tool
+override. Managed approval-mode requirements override tool approval-mode
+settings.
 
 Update a single app setting:
 
@@ -1476,19 +1540,72 @@ Import example:
       "description": "Import /Users/me/project/CLAUDE.md to /Users/me/project/AGENTS.md.",
       "cwd": "/Users/me/project"
     }
-  ]
+  ],
+  "source": "claude-code"
 } }
-{ "id": 64, "result": {} }
+{ "id": 64, "result": { "importId": "8ae96ff3-3425-4f4c-8772-b6fd61502868" } }
 ```
 
-When a request includes plugin imports, the server emits `externalAgentConfig/import/completed` after the import finishes. This notification may arrive immediately after the response or after background remote imports complete.
+The optional top-level `source` import parameter labels the product that
+produced the selected migration items.
+
+The server emits `externalAgentConfig/import/progress` as item types complete,
+and `externalAgentConfig/import/completed` after all synchronous and background
+imports finish. These notifications include the same `importId` from the
+response and `itemTypeResults` with per-type `successes` and `failures`.
+Completion may arrive immediately after the response or after background remote
+imports complete.
+
+```
+{ "method": "externalAgentConfig/import/progress", "params": {
+  "importId": "8ae96ff3-3425-4f4c-8772-b6fd61502868",
+  "itemTypeResults": [
+    {
+      "itemType": "AGENTS_MD",
+      "successes": [
+        { "itemType": "AGENTS_MD", "cwd": "/Users/me/project", "source": null, "target": "/Users/me/project/AGENTS.md" }
+      ],
+      "failures": []
+    }
+  ]
+} }
+{ "method": "externalAgentConfig/import/completed", "params": {
+  "importId": "8ae96ff3-3425-4f4c-8772-b6fd61502868",
+  "itemTypeResults": [
+    {
+      "itemType": "AGENTS_MD",
+      "successes": [
+        { "itemType": "AGENTS_MD", "cwd": "/Users/me/project", "source": null, "target": "/Users/me/project/AGENTS.md" }
+      ],
+      "failures": []
+    }
+  ]
+} }
+```
+
+Read prior completed imports:
+
+```
+{ "method": "externalAgentConfig/import/readHistories", "id": 65 }
+{ "id": 65, "result": { "data": [
+  {
+    "importId": "8ae96ff3-3425-4f4c-8772-b6fd61502868",
+    "completedAtMs": 1781784000000,
+    "successes": [
+      { "itemType": "AGENTS_MD", "cwd": "/Users/me/project", "source": null, "target": "/Users/me/project/AGENTS.md" }
+    ],
+    "failures": []
+  }
+] } }
+```
 
 Supported `itemType` values are `AGENTS_MD`, `CONFIG`, `SKILLS`, `PLUGINS`,
-and `MCP_SERVER_CONFIG`. For `PLUGINS` items, `details.plugins` lists each
-`marketplaceName` and the `pluginNames` Codex can try to migrate. Detection
-returns only items that still have work to do. For example, Codex skips AGENTS
-migration when `AGENTS.md` already exists and is non-empty, and skill imports
-don’t overwrite existing skill directories.
+`MCP_SERVER_CONFIG`, `SUBAGENTS`, `HOOKS`, `COMMANDS`, and `SESSIONS`. For
+`PLUGINS` items, `details.plugins` lists each `marketplaceName` and the
+`pluginNames` Codex can try to migrate. Detection returns only items that still
+have work to do. For example, Codex skips AGENTS migration when `AGENTS.md`
+already exists and is non-empty, and skill imports don’t overwrite existing
+skill directories.
 
 When detecting plugins from `.claude/settings.json`, Codex reads configured
 marketplace sources from `extraKnownMarketplaces`. If `enabledPlugins` contains
@@ -1506,6 +1623,7 @@ Codex supports these authentication modes. `account/updated.authMode` shows the 
 - **API key (`apikey`)** - the caller supplies an OpenAI API key with `type: "apiKey"`, and Codex stores it for API requests.
 - **ChatGPT managed (`chatgpt`)** - Codex owns the ChatGPT OAuth flow, persists tokens, and refreshes them automatically. Start with `type: "chatgpt"` for the browser flow or `type: "chatgptDeviceCode"` for the device-code flow.
 - **ChatGPT external tokens (`chatgptAuthTokens`)** - experimental and intended for host apps that already own the user’s ChatGPT auth lifecycle. The host app supplies an `accessToken`, `chatgptAccountId`, and optional `chatgptPlanType` directly, and must refresh the token when asked.
+- **Amazon Bedrock** - `account/read` reports Bedrock accounts as `type: "amazonBedrock"` and indicates whether credentials come from a Codex-managed Bedrock API key (`credentialSource: "codexManaged"`) or the external AWS credential chain (`credentialSource: "awsManaged"`). `account/updated.authMode` uses `bedrockApiKey` for Codex-managed Bedrock API keys.
 
 ### API overview
 
@@ -1514,11 +1632,13 @@ Codex supports these authentication modes. `account/updated.authMode` shows the 
 - `account/login/completed` (notify) - emitted when a login attempt finishes (success or error).
 - `account/login/cancel` - cancel a pending managed ChatGPT login by `loginId`.
 - `account/logout` - sign out; triggers `account/updated`.
-- `account/updated` (notify) - emitted whenever auth mode changes (`authMode`: `apikey`, `chatgpt`, `chatgptAuthTokens`, or `null`) and includes `planType` when available.
+- `account/updated` (notify) - emitted whenever auth mode changes (`authMode`: `apikey`, `chatgpt`, `chatgptAuthTokens`, `agentIdentity`, `personalAccessToken`, `bedrockApiKey`, or `null`) and includes `planType` when available.
 - `account/chatgptAuthTokens/refresh` (server request) - request fresh externally managed ChatGPT tokens after an authorization error.
 - `account/rateLimits/read` - fetch ChatGPT rate limits.
 - `account/rateLimits/updated` (notify) - emitted whenever a user’s ChatGPT rate limits change.
 - `account/sendAddCreditsNudgeEmail` - ask ChatGPT to email a workspace owner about depleted credits or a reached usage limit.
+- `account/rateLimitResetCredit/consume` - consume one earned rate-limit reset using a caller-provided `idempotencyKey` value.
+- `account/usage/read` - fetch ChatGPT account token-activity summaries and daily buckets.
 - `mcpServer/oauthLogin/completed` (notify) - emitted after a `mcpServer/oauth/login` flow finishes; payload includes `{ name, success, error? }`.
 - `mcpServer/startupStatus/updated` (notify) - emitted when a configured MCP server’s startup status changes for a loaded thread; payload includes `{ name, status, error }`.
 
@@ -1552,6 +1672,32 @@ Response examples:
   "id": 1,
   "result": {
     "account": {
+      "type": "amazonBedrock",
+      "credentialSource": "codexManaged"
+    },
+    "requiresOpenaiAuth": false
+  }
+}
+```
+
+```
+{
+  "id": 1,
+  "result": {
+    "account": {
+      "type": "amazonBedrock",
+      "credentialSource": "awsManaged"
+    },
+    "requiresOpenaiAuth": false
+  }
+}
+```
+
+```
+{
+  "id": 1,
+  "result": {
+    "account": {
       "type": "chatgpt",
       "email": "user@example.com",
       "planType": "pro"
@@ -1565,6 +1711,11 @@ Field notes:
 
 - `refreshToken` (boolean): set `true` to force a token refresh in managed ChatGPT mode. In external token mode (`chatgptAuthTokens`), app-server ignores this flag.
 - `requiresOpenaiAuth` reflects the active provider; when `false`, Codex can run without OpenAI credentials.
+- Amazon Bedrock reports `credentialSource: "codexManaged"` when it uses a
+  Bedrock API key managed by Codex. It reports `credentialSource: "awsManaged"`
+  for the external AWS credential path. This identifies the selected credential
+  source; it doesn’t validate that the AWS credential chain can resolve
+  credentials.
 
 ### 2) Log in with an API key
 
@@ -1769,7 +1920,8 @@ The server retries the original request after a successful refresh response. Req
       "secondary": null,
       "rateLimitReachedType": null
     }
-  }
+  },
+  "rateLimitResetCredits": { "availableCount": 2 }
 } }
 { "method": "account/rateLimits/updated", "params": {
   "rateLimits": {
@@ -1791,14 +1943,62 @@ Field notes:
 - `planType` is included when the server returns the ChatGPT plan associated with a bucket.
 - `credits` is included when the server returns remaining workspace credit details.
 - `rateLimitReachedType` identifies the server-classified limit state when one has been reached.
+- `rateLimitResetCredits` contains the available earned-reset count when the service provides it. Fetch `account/rateLimits/read` after consuming a reset.
 
-### 7) Notify a workspace owner about a limit
+### 7) Token usage (ChatGPT)
+
+Use `account/usage/read` to fetch ChatGPT token-activity summary fields and
+optional daily buckets.
+
+```
+{ "method": "account/usage/read", "id": 7 }
+{ "id": 7, "result": {
+  "summary": {
+    "lifetimeTokens": 1234567,
+    "peakDailyTokens": 45678,
+    "longestRunningTurnSec": 540,
+    "currentStreakDays": 8,
+    "longestStreakDays": 14
+  },
+  "dailyUsageBuckets": [
+    { "startDate": "2026-06-18", "tokens": 12345 }
+  ]
+} }
+```
+
+Field notes:
+
+- `summary` values may be `null` when the service hasn’t returned that metric.
+- `dailyUsageBuckets` may be `null`; when present, each bucket includes `startDate` and `tokens`.
+- The endpoint requires authentication backed by Codex services. ChatGPT,
+  external ChatGPT tokens, agent identity, and personal access token auth work;
+  API-key-only and Bedrock auth don’t.
+
+### 8) Earned rate-limit resets (ChatGPT)
+
+Use `account/rateLimitResetCredit/consume` to consume one earned reset.
+
+```
+{ "method": "account/rateLimitResetCredit/consume", "id": 8, "params": { "idempotencyKey": "8ae96ff3-3425-4f4c-8772-b6fd61502868" } }
+{ "id": 8, "result": { "outcome": "reset" } }
+```
+
+Field notes:
+
+- `idempotencyKey` must be non-empty. Use a UUID for each logical redemption attempt and reuse the same value when retrying that attempt.
+- `reset` means a credit was consumed.
+- `alreadyRedeemed` means the same redemption completed previously. Treat it as an idempotent success and refresh account limits.
+- `nothingToReset` means there is no eligible rate-limit window to reset.
+- `noCredit` means the account has no earned reset credits available.
+- Fetch `account/rateLimits/read` after consuming a reset instead of inferring updated windows from this response.
+
+### 9) Notify a workspace owner about a limit
 
 Use `account/sendAddCreditsNudgeEmail` to ask ChatGPT to email a workspace owner when credits are depleted or a usage limit has been reached.
 
 ```
-{ "method": "account/sendAddCreditsNudgeEmail", "id": 7, "params": { "creditType": "credits" } }
-{ "id": 7, "result": { "status": "sent" } }
+{ "method": "account/sendAddCreditsNudgeEmail", "id": 9, "params": { "creditType": "credits" } }
+{ "id": 9, "result": { "status": "sent" } }
 ```
 
 Use `creditType: "credits"` when workspace credits are depleted, or `creditType: "usage_limit"` when the workspace usage limit has been reached. If the owner was already notified recently, the response status is `cooldown_active`.
