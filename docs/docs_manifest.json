@@ -3029,10 +3029,10 @@
         "codex-cli 0.139.0",
         "codex-cli 0.140.0"
       ],
-      "sha256": "42c76e03edf5bf4c379b8269458c69a6f71778a2a9556dfb461631878dd20fb6",
+      "sha256": "91ea3f80d57a67cc29b54c43a9e5da8c3c1f19278716ea89bd4629b6631789d6",
       "source_area": "codex_security",
-      "source_etag": "W/\"7d1c1713c9b545b1431ccdd1a153e382\"",
-      "source_last_modified": "2026-06-17T17:49:25Z",
+      "source_etag": "W/\"800f0577d14b70a71e1c4ea8a1fc03af\"",
+      "source_last_modified": "2026-06-17T21:35:14Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
