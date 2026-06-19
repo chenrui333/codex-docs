@@ -3299,10 +3299,10 @@
         "codex-cli 0.140.0",
         "codex-cli 0.141.0"
       ],
-      "sha256": "fd6ec0ee06b0144530acfb36e776bb22ac54b3c12cf7282ba8a3ffba60625e12",
+      "sha256": "6b143c9f47c91a8cb7d3e3b0969d6fa1e1b20d3a67e870576171f46787a97461",
       "source_area": "codex_security",
-      "source_etag": "W/\"5e1a7a0407f595d8a88c9b162e30ec52\"",
-      "source_last_modified": "2026-06-19T06:57:55Z",
+      "source_etag": "W/\"8d0dce3f5f46abc170ff42282b9594e2\"",
+      "source_last_modified": "2026-06-19T18:02:35Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
