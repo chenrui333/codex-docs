@@ -476,24 +476,8 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/security/plugin/changelog",
-      "https://developers.openai.com/codex/security/plugin/code-changes",
-      "https://developers.openai.com/codex/security/plugin/deep-scans",
-      "https://developers.openai.com/codex/security/plugin/export-findings",
-      "https://developers.openai.com/codex/security/plugin/fix-findings",
-      "https://developers.openai.com/codex/security/plugin/scans",
-      "https://developers.openai.com/codex/security/plugin/triage-backlog"
-    ],
-    "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/security/plugin/changelog",
-      "https://developers.openai.com/codex/security/plugin/code-changes",
-      "https://developers.openai.com/codex/security/plugin/deep-scans",
-      "https://developers.openai.com/codex/security/plugin/export-findings",
-      "https://developers.openai.com/codex/security/plugin/fix-findings",
-      "https://developers.openai.com/codex/security/plugin/scans",
-      "https://developers.openai.com/codex/security/plugin/triage-backlog"
-    ],
+    "new_codex_related_urls_since_last_run": [],
+    "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -577,7 +561,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-06-19T01:10:22+00:00",
+  "generated_at": "2026-06-19T08:00:12+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
