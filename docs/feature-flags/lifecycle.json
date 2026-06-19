@@ -557,10 +557,6 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
-    "child_agents_md": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
-    },
     "chronicle": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -585,7 +581,15 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "current_time_reminder": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "default_mode_request_user_input": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "deferred_executor": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -649,6 +653,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "item_ids": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "js_repl": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -672,6 +680,10 @@
     "multi_agent": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "multi_agent_mode": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "multi_agent_v2": {
       "default_enabled_expr": "false",
@@ -748,6 +760,10 @@
     "responses_websockets_v2": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
+    },
+    "rollout_budget": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "runtime_metrics": {
       "default_enabled_expr": "false",
@@ -845,6 +861,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "use_agent_identity": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "use_legacy_landlock": {
       "default_enabled_expr": "false",
       "stage_from_source": "deprecated"
@@ -871,8 +891,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "7a6f5f06b6b6d58cdf4debcc9f0457454c91d67cce5ea6253841b43d2fc5e7ae",
-    "features_rs_sha256": "13c32edab580004808bd89e9a0a74ff3b750b723d0b065cfc2e16eaa598d009a"
+    "client_rs_sha256": "b6b17b3860bdb3a3adb4e4744b7aa771d8efb5aa3dcb1f03d42e3c83d3de6a56",
+    "features_rs_sha256": "70bcec1a1c10293008b482ca7c1365133dc91d7a6572e3dabe7b5fabe1205b16"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
