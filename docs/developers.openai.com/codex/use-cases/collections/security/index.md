@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/collections/security'
-source_last_modified: '2026-06-05T10:18:50Z'
-source_etag: 'W/"80dc46923663c8cf8590992dc0d6e656"'
+source_last_modified: '2026-06-18T23:48:24Z'
+source_etag: 'W/"3a26446f93e7fb38b78d3a9f08503fb5"'
 codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -19,15 +19,16 @@ remediation.
 
 ## Assess a repository
 
-Use the Codex Security plugin to run a higher-recall scan across an authorized
+Use the Codex Security plugin to run a comprehensive scan across an authorized
 repository, review plausible findings, and produce reports that support human
-triage.
+triage. Comprehensive scans take longer because they repeat discovery across
+independent workers.
 
 [![](/codex/use-cases/deep-security-scan.webp)
 
 ### Run a deep security scan
 
-Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats...
+Use the Codex Security plugin to run a more comprehensive audit of a repository or scoped...
 
 Engineering  Quality](/codex/use-cases/deep-security-scan)
 

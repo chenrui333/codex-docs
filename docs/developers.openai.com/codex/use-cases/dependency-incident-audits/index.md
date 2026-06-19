@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/dependency-incident-audits'
-source_last_modified: '2026-06-05T18:45:05Z'
-source_etag: 'W/"e91fe86647fbb168987b422687c5282d"'
+source_last_modified: '2026-06-18T23:40:13Z'
+source_etag: 'W/"08466b92daa224baaa4db04c35074764"'
 codex_cli_versions: ["0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -164,7 +164,7 @@ Do not make changes yet. Keep any command that could execute untrusted code out 
 
 ### Run a deep security scan
 
-Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats...
+Use the Codex Security plugin to run a more comprehensive audit of a repository or scoped...
 
 Engineering  Quality](/codex/use-cases/deep-security-scan)[![](/codex/use-cases/scan-code-changes-for-security.webp)
 

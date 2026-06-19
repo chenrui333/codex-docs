@@ -328,30 +328,6 @@ Use Codex and XcodeBuildMCP to drive your app in iOS Simulator, capture evidence
 
 iOS  Code](/codex/use-cases/ios-simulator-bug-debugging)
 
-[![](/codex/use-cases/scrna-seq-post-count-qc.webp)
-
-### Annotate scRNA-seq data
-
-Review single-cell QC, annotations, and UMAPs in one thread.
-
-Sciences  Data](/codex/use-cases/scrna-seq-post-count-qc)
-
-[![](/codex/use-cases/target-prioritization.webp)
-
-### Prioritize drug targets
-
-Rank drug targets across multiple evidence lanes.
-
-Sciences  Data](/codex/use-cases/target-prioritization)
-
-[![](/codex/use-cases/bulk-rna-seq-fastq-qc.webp)
-
-### Validate bulk RNA-seq inputs
-
-Validate bulk RNA-seq inputs before differential expression.
-
-Sciences  Data](/codex/use-cases/bulk-rna-seq-fastq-qc)
-
 [![](/codex/use-cases/remediate-vulnerability-backlog.webp)
 
 ### Remediate a vulnerability backlog
@@ -375,6 +351,30 @@ Engineering  Quality](/codex/use-cases/deep-security-scan)
 Review a pull request or local diff for security regressions.
 
 Engineering  Quality](/codex/use-cases/scan-code-changes-for-security)
+
+[![](/codex/use-cases/scrna-seq-post-count-qc.webp)
+
+### Annotate scRNA-seq data
+
+Review single-cell QC, annotations, and UMAPs in one thread.
+
+Sciences  Data](/codex/use-cases/scrna-seq-post-count-qc)
+
+[![](/codex/use-cases/target-prioritization.webp)
+
+### Prioritize drug targets
+
+Rank drug targets across multiple evidence lanes.
+
+Sciences  Data](/codex/use-cases/target-prioritization)
+
+[![](/codex/use-cases/bulk-rna-seq-fastq-qc.webp)
+
+### Validate bulk RNA-seq inputs
+
+Validate bulk RNA-seq inputs before differential expression.
+
+Sciences  Data](/codex/use-cases/bulk-rna-seq-fastq-qc)
 
 [![](/codex/use-cases/code-migrations.webp)
 

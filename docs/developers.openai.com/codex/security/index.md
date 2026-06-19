@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security'
-source_last_modified: '2026-05-28T18:51:28Z'
-source_etag: 'W/"abc2d55c1fdb28c15a5816e923c91e5e"'
+source_last_modified: '2026-06-18T22:37:52Z'
+source_etag: 'W/"814330dc1da3d759f44aa3bf60fd7c8e"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -14,14 +14,18 @@ Source: https://developers.openai.com/codex/security
 
 [Install plugin in Codex App](https://chatgpt.com/plugins/share/676aca3811d54fa7bcdef5255236b3c4)
 
-For installation steps, supported skills, and review boundaries, see the
-[Codex Security plugin guide](/codex/security/plugin).
+For a prescriptive first local scan, start with the [Codex Security plugin
+quickstart](/codex/security/plugin).
 
 ### Explore plugin use cases
 
-- [Run a deep security scan](/codex/use-cases/deep-security-scan) to perform a higher-recall repository-wide audit.
-- [Scan code changes for security](/codex/use-cases/scan-code-changes-for-security) before you merge a pull request or branch.
-- [Remediate a vulnerability backlog](/codex/use-cases/remediate-vulnerability-backlog) with bounded fixes for approved findings.
+- [Run a security scan](/codex/security/plugin/scans) for a repository or one scoped folder.
+- [Run a deep security scan](/codex/security/plugin/deep-scans) when you need a more comprehensive scan and can wait longer for it to finish.
+- [Review code changes](/codex/security/plugin/code-changes) before you merge a pull request or branch.
+- [Triage a backlog](/codex/security/plugin/triage-backlog) when you have existing security findings to review.
+- [Fix and verify findings](/codex/security/plugin/fix-findings) with bounded patches for approved findings.
+- [Export or track findings](/codex/security/plugin/export-findings) as portable artifacts or approval-gated tracking destinations.
+- [See what’s new](/codex/security/plugin/changelog) in the Codex Security plugin.
 
 The plugin runs in your Codex thread. Codex Security cloud scans connected
 GitHub repositories through Codex Web. For Codex sandboxing, approvals,
@@ -56,8 +60,8 @@ Codex Security is available for ChatGPT Enterprise, Edu, Business, and Pro users
 
 ## Related docs
 
-- [Codex Security plugin guide](/codex/security/plugin) covers local repository and diff-review workflows in Codex.
-- [Codex Security cloud setup](/codex/security/setup) covers setup, scanning, and findings review.
+- [Codex Security plugin quickstart](/codex/security/plugin) walks through installation and a first local scan.
+- [Codex Security cloud setup](/codex/security/setup) details setup, scanning, and findings review.
 - [Improving the threat model](/codex/security/threat-model) explains how to tune scope, attack surface, and criticality assumptions.
 - [FAQ](/codex/security/faq) covers common product questions.
 

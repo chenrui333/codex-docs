@@ -170,6 +170,13 @@
       "https://developers.openai.com/codex/security",
       "https://developers.openai.com/codex/security/faq",
       "https://developers.openai.com/codex/security/plugin",
+      "https://developers.openai.com/codex/security/plugin/changelog",
+      "https://developers.openai.com/codex/security/plugin/code-changes",
+      "https://developers.openai.com/codex/security/plugin/deep-scans",
+      "https://developers.openai.com/codex/security/plugin/export-findings",
+      "https://developers.openai.com/codex/security/plugin/fix-findings",
+      "https://developers.openai.com/codex/security/plugin/scans",
+      "https://developers.openai.com/codex/security/plugin/triage-backlog",
       "https://developers.openai.com/codex/security/setup",
       "https://developers.openai.com/codex/security/threat-model",
       "https://developers.openai.com/codex/sites",
@@ -276,8 +283,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 10,
-      "codex_related_urls": 187,
-      "mirrored_urls": 176,
+      "codex_related_urls": 194,
+      "mirrored_urls": 183,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -363,6 +370,13 @@
       "https://developers.openai.com/codex/security",
       "https://developers.openai.com/codex/security/faq",
       "https://developers.openai.com/codex/security/plugin",
+      "https://developers.openai.com/codex/security/plugin/changelog",
+      "https://developers.openai.com/codex/security/plugin/code-changes",
+      "https://developers.openai.com/codex/security/plugin/deep-scans",
+      "https://developers.openai.com/codex/security/plugin/export-findings",
+      "https://developers.openai.com/codex/security/plugin/fix-findings",
+      "https://developers.openai.com/codex/security/plugin/scans",
+      "https://developers.openai.com/codex/security/plugin/triage-backlog",
       "https://developers.openai.com/codex/security/setup",
       "https://developers.openai.com/codex/security/threat-model",
       "https://developers.openai.com/codex/sites",
@@ -463,10 +477,22 @@
       "https://developers.openai.com/resources/codex"
     ],
     "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/codex/record-and-replay"
+      "https://developers.openai.com/codex/security/plugin/changelog",
+      "https://developers.openai.com/codex/security/plugin/code-changes",
+      "https://developers.openai.com/codex/security/plugin/deep-scans",
+      "https://developers.openai.com/codex/security/plugin/export-findings",
+      "https://developers.openai.com/codex/security/plugin/fix-findings",
+      "https://developers.openai.com/codex/security/plugin/scans",
+      "https://developers.openai.com/codex/security/plugin/triage-backlog"
     ],
     "new_mirrored_urls_since_last_run": [
-      "https://developers.openai.com/codex/record-and-replay"
+      "https://developers.openai.com/codex/security/plugin/changelog",
+      "https://developers.openai.com/codex/security/plugin/code-changes",
+      "https://developers.openai.com/codex/security/plugin/deep-scans",
+      "https://developers.openai.com/codex/security/plugin/export-findings",
+      "https://developers.openai.com/codex/security/plugin/fix-findings",
+      "https://developers.openai.com/codex/security/plugin/scans",
+      "https://developers.openai.com/codex/security/plugin/triage-backlog"
     ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
@@ -551,7 +577,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-06-18T18:53:59+00:00",
+  "generated_at": "2026-06-19T01:10:22+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

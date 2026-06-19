@@ -1,10 +1,16 @@
 {
   "added": [
-    "developers.openai.com/codex/record-and-replay/index.md"
+    "developers.openai.com/codex/security/plugin/changelog/index.md",
+    "developers.openai.com/codex/security/plugin/code-changes/index.md",
+    "developers.openai.com/codex/security/plugin/deep-scans/index.md",
+    "developers.openai.com/codex/security/plugin/export-findings/index.md",
+    "developers.openai.com/codex/security/plugin/fix-findings/index.md",
+    "developers.openai.com/codex/security/plugin/scans/index.md",
+    "developers.openai.com/codex/security/plugin/triage-backlog/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-18T18:54:32+00:00",
+  "generated_at": "2026-06-19T01:10:58+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,19 +19,21 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 255,
+  "total_files": 262,
   "updated": [
-    "developers.openai.com/codex/app-server/index.md",
-    "developers.openai.com/codex/app/commands/index.md",
     "developers.openai.com/codex/changelog/index.md",
-    "developers.openai.com/codex/cli/reference/index.md",
-    "developers.openai.com/codex/cli/slash-commands/index.md",
-    "developers.openai.com/codex/config-reference/index.md",
-    "developers.openai.com/codex/config-sample/index.md",
-    "developers.openai.com/codex/enterprise/managed-configuration/index.md",
     "developers.openai.com/codex/plugins/index.md",
-    "developers.openai.com/codex/pricing/index.md",
+    "developers.openai.com/codex/record-and-replay/index.md",
+    "developers.openai.com/codex/security/index.md",
+    "developers.openai.com/codex/security/plugin/index.md",
     "developers.openai.com/codex/security/setup/index.md",
-    "developers.openai.com/codex/skills/index.md"
+    "developers.openai.com/codex/use-cases/ai-app-evals/index.md",
+    "developers.openai.com/codex/use-cases/collections/security/index.md",
+    "developers.openai.com/codex/use-cases/deep-security-scan/index.md",
+    "developers.openai.com/codex/use-cases/dependency-incident-audits/index.md",
+    "developers.openai.com/codex/use-cases/index.md",
+    "developers.openai.com/codex/use-cases/remediate-vulnerability-backlog/index.md",
+    "developers.openai.com/codex/use-cases/scan-code-changes-for-security/index.md",
+    "github.openai.com/openai/codex/docs/agents_md.md"
   ]
 }

@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_record_and_replay'
 source_url: 'https://developers.openai.com/codex/record-and-replay'
-source_last_modified: '2026-06-18T18:36:10Z'
-source_etag: 'W/"e06ce62f967c458c977734df7a8d1459"'
+source_last_modified: '2026-06-18T22:37:25Z'
+source_etag: 'W/"fd1eaca6818979254173b67f4595190d"'
 codex_cli_versions: ["0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.141.0"]
 ---
@@ -13,7 +13,8 @@ codex_cli_versions_raw: ["codex-cli 0.141.0"]
 Source: https://developers.openai.com/codex/record-and-replay
 
 Record & Replay is available on macOS. Initial availability excludes the
-European Union. Computer Use must also be available and enabled.
+European Economic Area, the United Kingdom, and Switzerland. Computer Use must
+also be available and enabled.
 
 Record & Replay lets you demonstrate a workflow on your
 Mac and turn it into a reusable skill. Use it when the workflow is repetitive,

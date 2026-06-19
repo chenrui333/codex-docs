@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/scan-code-changes-for-security'
-source_last_modified: '2026-06-05T17:06:09Z'
-source_etag: 'W/"e02f41c12b47b9f8984ee19df775be83"'
+source_last_modified: '2026-06-18T23:13:09Z'
+source_etag: 'W/"b5c2ef6705d8c931294655f8c7b1f6ff"'
 codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -50,7 +50,7 @@ Intermediate
 
 Related links
 
-[Codex Security plugin](/codex/security/plugin)  [Review GitHub pull requests](/codex/use-cases/github-code-reviews)  [Agent approvals and security](/codex/agent-approvals-security)
+[Security change-review guide](/codex/security/plugin/code-changes)  [Review GitHub pull requests](/codex/use-cases/github-code-reviews)  [Agent approvals and security](/codex/agent-approvals-security)
 
 ## Best for
 
@@ -60,32 +60,30 @@ Related links
 
 ## Skills & Plugins
 
-- [Codex Security:security Diff Scan](/codex/security/plugin)
+- [Codex Security:security Diff Scan](/codex/security/plugin/code-changes)
 
   Review a pull request, commit, branch diff, or working-tree patch for security regressions with validation and attack-path evidence.
 
 | Skill | Why use it |
 | --- | --- |
-| [Codex Security:security Diff Scan](/codex/security/plugin) | Review a pull request, commit, branch diff, or working-tree patch for security regressions with validation and attack-path evidence. |
+| [Codex Security:security Diff Scan](/codex/security/plugin/code-changes) | Review a pull request, commit, branch diff, or working-tree patch for security regressions with validation and attack-path evidence. |
 
 ## Starter prompt
 
-/goal Scan this PR, commit, branch diff, or working-tree patch for security regressions. Do not stop until all in-scope changed files are covered and all required steps are complete.
+Use $codex-security:security-diff-scan to review this PR, commit, branch diff, or working-tree patch for security regressions.
 Scope and rules:
 - Target: [this pull request / commit SHA / branch diff from BASE to HEAD / the current working-tree patch]
 - I am authorized to assess this repository and change set.
 - Pay particular attention to [auth, input handling, secrets, filesystem, network, dependencies, or other sensitive surface].
-- Keep this pass read-only; do not modify code or open a pull request.
 Return the final Markdown report and any Codex app review directives for findings that require human review.
 
 Open in the Codex app
 
-/goal Scan this PR, commit, branch diff, or working-tree patch for security regressions. Do not stop until all in-scope changed files are covered and all required steps are complete.
+Use $codex-security:security-diff-scan to review this PR, commit, branch diff, or working-tree patch for security regressions.
 Scope and rules:
 - Target: [this pull request / commit SHA / branch diff from BASE to HEAD / the current working-tree patch]
 - I am authorized to assess this repository and change set.
 - Pay particular attention to [auth, input handling, secrets, filesystem, network, dependencies, or other sensitive surface].
-- Keep this pass read-only; do not modify code or open a pull request.
 Return the final Markdown report and any Codex app review directives for findings that require human review.
 
 ## Review the change instead of the whole repository
@@ -101,7 +99,7 @@ about security regressions, not a general style or test review.
 ## Run a focused pass
 
 1. Open the repository and check out or describe the exact Git-backed change set to review.
-2. Install the [Codex Security plugin](/codex/security/plugin) and specify the pull request, commit, branch diff, or working-tree patch in the starter prompt.
+2. Complete the [Codex Security plugin quickstart](/codex/security/plugin) and specify the pull request, commit, branch diff, or working-tree patch in the starter prompt.
 3. Name high-risk surfaces in the change, such as authentication, parsers, file paths, network requests, or credential handling.
 4. Run the prompt without requesting a fix so the first result remains a review artifact.
 5. Check each reported affected line, validation result, and stated proof gap before deciding whether to remediate.
@@ -115,13 +113,16 @@ fix task with the finding identifier or the relevant report section.
 See [Remediate a vulnerability backlog](/codex/use-cases/remediate-vulnerability-backlog)
 for the fix-and-validation loop.
 
+For change selectors, diff scope, and result review, see [Review code changes
+for security](/codex/security/plugin/code-changes).
+
 ## Related use cases
 
 [![](/codex/use-cases/deep-security-scan.webp)
 
 ### Run a deep security scan
 
-Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats...
+Use the Codex Security plugin to run a more comprehensive audit of a repository or scoped...
 
 Engineering  Quality](/codex/use-cases/deep-security-scan)[![](/codex/use-cases/dependency-incident-audits.webp)
 

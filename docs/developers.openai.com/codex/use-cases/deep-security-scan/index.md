@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_use_case'
 source_url: 'https://developers.openai.com/codex/use-cases/deep-security-scan'
-source_last_modified: '2026-06-05T17:42:54Z'
-source_etag: 'W/"4d05fd8f9152c2498e50d19646394e88"'
+source_last_modified: '2026-06-18T22:42:20Z'
+source_etag: 'W/"f0c9ed42294ba507a9cfb42e3e05e3a5"'
 codex_cli_versions: ["0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -28,12 +28,12 @@ Difficulty **Advanced**
 
 Time horizon **Long-running**
 
-Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats discovery, validates candidates, and produces reviewable report artifacts.
+Use the Codex Security plugin to run a more comprehensive audit of a repository or scoped folder that repeats discovery, validates candidates, and produces reviewable coverage and findings.
 
 ## Best for
 
-- Application security reviews of a complete repository that you own or are authorized to assess.
-- High-recall reviews where additional runtime and token use are appropriate for finding more candidate issues.
+- Application security reviews of a repository or component that you own or are authorized to assess.
+- More comprehensive reviews where additional runtime and token use are appropriate for finding more candidate issues.
 - Security teams that need traceable finding evidence before deciding what to remediate.
 
 # Contents
@@ -42,7 +42,7 @@ Use the Codex Security plugin to run a higher-recall, repository-wide audit that
 
 Copy page   [Export as PDF](/codex/use-cases/deep-security-scan/?export=pdf)
 
-Use the Codex Security plugin to run a higher-recall, repository-wide audit that repeats discovery, validates candidates, and produces reviewable report artifacts.
+Use the Codex Security plugin to run a more comprehensive audit of a repository or scoped folder that repeats discovery, validates candidates, and produces reviewable coverage and findings.
 
 Advanced
 
@@ -50,63 +50,61 @@ Long-running
 
 Related links
 
-[Codex Security plugin](/codex/security/plugin)  [Agent approvals and security](/codex/agent-approvals-security)  [Codex cyber safety](/codex/concepts/cyber-safety)
+[Deep-scan guide](/codex/security/plugin/deep-scans)  [Agent approvals and security](/codex/agent-approvals-security)  [Codex cyber safety](/codex/concepts/cyber-safety)
 
 ## Best for
 
-- Application security reviews of a complete repository that you own or are authorized to assess.
-- High-recall reviews where additional runtime and token use are appropriate for finding more candidate issues.
+- Application security reviews of a repository or component that you own or are authorized to assess.
+- More comprehensive reviews where additional runtime and token use are appropriate for finding more candidate issues.
 - Security teams that need traceable finding evidence before deciding what to remediate.
 
 ## Skills & Plugins
 
-- [Codex Security:deep Security Scan](/codex/security/plugin)
+- [Codex Security:deep Security Scan](/codex/security/plugin/deep-scans)
 
-  Run repeated repository-wide security discovery passes, validate surviving findings, analyze attack paths, and create reviewable reports.
+  Run repeated discovery passes over a repository or scoped folder, validate surviving findings, analyze attack paths, and generate reviewable artifacts.
 
 | Skill | Why use it |
 | --- | --- |
-| [Codex Security:deep Security Scan](/codex/security/plugin) | Run repeated repository-wide security discovery passes, validate surviving findings, analyze attack paths, and create reviewable reports. |
+| [Codex Security:deep Security Scan](/codex/security/plugin/deep-scans) | Run repeated discovery passes over a repository or scoped folder, validate surviving findings, analyze attack paths, and generate reviewable artifacts. |
 
 ## Starter prompt
 
-/goal Run a deep security scan on this repository. Do not stop until all required steps are complete and the final report is ready.
+Use $codex-security:deep-security-scan to run a deep security scan on [this repository / absolute path to a scoped folder].
 Scope and rules:
 - I am authorized to assess this repository.
-- Treat the entire repository as in scope.
-- Use the Codex Security plugin's deep scan workflow; do not broaden this into a diff or scoped-path review.
-- Keep the scan read-only; do not modify code, open pull requests, or test external targets.
-Return the final Markdown and HTML report paths and summarize the findings that require human review first.
+- Keep the scan within [the entire repository / the exact folder named above].
+- Use the Codex Security plugin's deep-scan workflow; do not reinterpret this as a pull request or diff review.
+Return the generated report path. Summarize the findings, reviewed surfaces, and proof gaps that require human review first.
 
 Open in the Codex app
 
-/goal Run a deep security scan on this repository. Do not stop until all required steps are complete and the final report is ready.
+Use $codex-security:deep-security-scan to run a deep security scan on [this repository / absolute path to a scoped folder].
 Scope and rules:
 - I am authorized to assess this repository.
-- Treat the entire repository as in scope.
-- Use the Codex Security plugin's deep scan workflow; do not broaden this into a diff or scoped-path review.
-- Keep the scan read-only; do not modify code, open pull requests, or test external targets.
-Return the final Markdown and HTML report paths and summarize the findings that require human review first.
+- Keep the scan within [the entire repository / the exact folder named above].
+- Use the Codex Security plugin's deep-scan workflow; do not reinterpret this as a pull request or diff review.
+Return the generated report path. Summarize the findings, reviewed surfaces, and proof gaps that require human review first.
 
 ## Choose a deep repository review
 
-Use a deep scan when you need high-recall vulnerability discovery across a
-complete repository and can budget for a longer run. The Codex Security plugin
-repeats discovery passes before validating and prioritizing findings, so this
-workflow takes more time and tokens than an ordinary scan.
+Use a deep scan when you need a more comprehensive vulnerability review across
+a repository or explicit folder and can budget for a longer run. The Codex
+Security plugin repeats discovery passes before validating and prioritizing
+findings, so this workflow takes more time and resources than an ordinary scan.
 
-A deep scan is for an entire repository. To review one package or directory,
-use `$codex-security:security-scan`. To review a pull request, commit, branch
-diff, or working-tree patch, use
+A deep scan can review an entire repository or one explicitly named package or
+directory. To review a pull request, commit, branch diff, or working-tree patch,
+use
 [$codex-security:security-diff-scan](/codex/use-cases/scan-code-changes-for-security).
 
 ## Prepare an authorized scan
 
-1. Open the repository in Codex and install the [Codex Security plugin](/codex/security/plugin).
+1. Open the repository in Codex and complete the [Codex Security plugin quickstart](/codex/security/plugin).
 2. Confirm that you own the repository or have authorization to assess it.
 3. Add repository-specific architecture, trust-boundary, build, test, and validation guidance in `AGENTS.md` when it will improve the review.
 4. Run the starter prompt and let the scan complete its repeated discovery, validation, attack-path analysis, and final reporting stages.
-5. Review the final reports before asking Codex to change code or reproduce a finding further.
+5. Review the findings workspace and any proof gaps before asking Codex to change code or reproduce a finding further.
 
 ## Review evidence before remediation
 
@@ -118,6 +116,9 @@ from validated findings.
 Start remediation only for a finding you have selected and reviewed. Use
 [Remediate a vulnerability backlog](/codex/use-cases/remediate-vulnerability-backlog)
 to fix findings one at a time with focused regression validation.
+
+For setup, preflight, scoped targets, and runtime expectations, see [Run a deep
+security scan](/codex/security/plugin/deep-scans).
 
 ## Related use cases
 
