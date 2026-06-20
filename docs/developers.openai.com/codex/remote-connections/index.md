@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/remote-connections'
-source_last_modified: '2026-05-29T17:41:19Z'
-source_etag: 'W/"d540368614437546c8ecee653de0b2e6"'
+source_last_modified: '2026-06-19T23:42:08Z'
+source_etag: 'W/"31909ddb25a5fe097048f0e9aafc3f4c"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -200,6 +200,33 @@ unauthenticated public listeners.
    host, then choose a remote project folder.
 
 ![Codex app settings showing SSH remote connections](/images/codex/app/remote-connections-light.webp)
+
+## Hand off a thread between hosts
+
+Handoff moves an existing thread and its Git state between your local computer
+and a connected remote host. Use it to start work locally, continue in a
+worktree on a remote computer, and bring the thread back later.
+
+Before you hand off a thread, connect the destination host and save a project
+for the same Git repository on that host. If the project is a subdirectory of
+the repository, save the same subdirectory on both hosts. Codex only shows
+destinations with a matching saved project.
+
+To hand off a thread:
+
+1. Open the thread in the Codex App.
+2. In the thread footer, select the current run location, then select the
+   destination host. Select **This computer** when handing a remote thread back
+   to your local computer.
+3. Review the destination and branch, then select **Hand off**.
+
+Codex creates or reuses a worktree on the destination host, transfers the
+thread and Git state, and switches the thread to that host. If the thread is
+running, handoff interrupts the current response before transferring it.
+
+You can also ask Codex in another thread to hand off a named thread to a
+connected host. Codex can’t hand off the thread making the request, and handoff
+to a Codex cloud environment isn’t supported.
 
 ## Authentication and network exposure
 
