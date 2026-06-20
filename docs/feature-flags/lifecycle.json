@@ -892,7 +892,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "b6b17b3860bdb3a3adb4e4744b7aa771d8efb5aa3dcb1f03d42e3c83d3de6a56",
-    "features_rs_sha256": "70bcec1a1c10293008b482ca7c1365133dc91d7a6572e3dabe7b5fabe1205b16"
+    "features_rs_sha256": "87ddc47817831022870b2612eb32876c120fce30ce8ba60fddddc557b96c4a58"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
