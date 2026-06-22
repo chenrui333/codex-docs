@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/config-sample'
-source_last_modified: '2026-06-20T03:08:24Z'
-source_etag: 'W/"fec1ca85fc18bf3a07286c12c2bb0ce9"'
+source_last_modified: '2026-06-22T18:38:00Z'
+source_etag: 'W/"654f77849dc35177819c616fa618b25a"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0"]
 ---
@@ -1140,7 +1140,6 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 1113
 1114
 1115
-1116
 # Codex example configuration (config.toml)
 #
 # This file lists the main keys Codex reads from config.toml, along with default
@@ -1363,8 +1362,7 @@ mcp_oauth_credentials_store = "auto"
 
 # Optional redirect URI override for MCP OAuth login (for example, remote devbox ingress).
 
-# Codex appends a server-specific callback ID before OAuth login, so register the
-# full derived URI with your provider, not just the base host or unsuffixed path.
+# Codex appends a server-specific callback ID before OAuth login, so register the full derived URI with your provider, not just the base host or unsuffixed path.
 
 # Custom callback paths are supported. `mcp_oauth_callback_port` still controls the listener port.
 
