@@ -4,8 +4,8 @@ source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/code-changes'
 source_last_modified: '2026-06-18T22:38:43Z'
 source_etag: 'W/"e4568fd53b425cdbac6b7205fe9ce2ee"'
-codex_cli_versions: ["0.141.0"]
-codex_cli_versions_raw: ["codex-cli 0.141.0"]
+codex_cli_versions: ["0.141.0", "0.142.0"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0"]
 ---
 
 # Review code changes for security – Codex Security | OpenAI Developers

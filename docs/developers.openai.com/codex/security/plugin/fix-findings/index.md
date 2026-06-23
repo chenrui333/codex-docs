@@ -4,8 +4,8 @@ source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/fix-findings'
 source_last_modified: '2026-06-18T22:38:19Z'
 source_etag: 'W/"efe548250045a50889339258b57be542"'
-codex_cli_versions: ["0.141.0"]
-codex_cli_versions_raw: ["codex-cli 0.141.0"]
+codex_cli_versions: ["0.141.0", "0.142.0"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0"]
 ---
 
 # Fix and verify security findings – Codex Security | OpenAI Developers
