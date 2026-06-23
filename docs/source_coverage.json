@@ -89,6 +89,7 @@
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
+      "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
       "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
       "https://developers.openai.com/blog/topic/codex",
@@ -282,13 +283,13 @@
       "https://developers.openai.com/showcase/codex-101"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 10,
-      "codex_related_urls": 194,
+      "classified_skipped_codex_related_urls": 11,
+      "codex_related_urls": 195,
       "mirrored_urls": 183,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 11,
+      "skipped_codex_related_urls": 12,
       "unclassified_skipped_codex_related_urls": 1
     },
     "mirrored_urls": [
@@ -476,7 +477,9 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/blog/mastering-codex-remote-for-engineering"
+    ],
     "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
@@ -487,7 +490,7 @@
     ],
     "skipped_codex_related_url_counts_by_classification": {
       "blog_index": 1,
-      "blog_post": 5,
+      "blog_post": 6,
       "community_page": 2,
       "learn_index": 1,
       "showcase_page": 1
@@ -507,6 +510,11 @@
         "classification": "blog_post",
         "reason": "Blog posts are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/blog/codex-for-documentation-dagster"
+      },
+      {
+        "classification": "blog_post",
+        "reason": "Blog posts are intentionally excluded from the docs mirror.",
+        "url": "https://developers.openai.com/blog/mastering-codex-remote-for-engineering"
       },
       {
         "classification": "blog_post",
@@ -548,6 +556,7 @@
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
+      "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
       "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
       "https://developers.openai.com/blog/topic/codex",
@@ -561,7 +570,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-06-23T00:56:03+00:00",
+  "generated_at": "2026-06-23T13:05:37+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
