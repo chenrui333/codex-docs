@@ -32,6 +32,11 @@
     },
     {
       "enabled": true,
+      "key": "auto_compaction",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "browser_use",
       "stage": "stable"
     },
@@ -39,11 +44,6 @@
       "enabled": true,
       "key": "browser_use_external",
       "stage": "stable"
-    },
-    {
-      "enabled": false,
-      "key": "child_agents_md",
-      "stage": "under development"
     },
     {
       "enabled": false,
@@ -77,7 +77,17 @@
     },
     {
       "enabled": false,
+      "key": "current_time_reminder",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "default_mode_request_user_input",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "deferred_executor",
       "stage": "under development"
     },
     {
@@ -157,6 +167,11 @@
     },
     {
       "enabled": false,
+      "key": "item_ids",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "js_repl",
       "stage": "removed"
     },
@@ -184,6 +199,11 @@
       "enabled": true,
       "key": "multi_agent",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "multi_agent_mode",
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -261,8 +281,13 @@
       "stage": "removed"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "resize_all_images",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "respect_system_proxy",
       "stage": "under development"
     },
     {
@@ -274,6 +299,11 @@
       "enabled": false,
       "key": "responses_websockets_v2",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "rollout_budget",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -397,6 +427,11 @@
     },
     {
       "enabled": false,
+      "key": "use_agent_identity",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "use_legacy_landlock",
       "stage": "deprecated"
     },
@@ -426,7 +461,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.141.0",
+  "codex_cli_version": "codex-cli 0.142.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -434,12 +469,14 @@
       "apps_mcp_path_override",
       "artifact",
       "auth_elicitation",
-      "child_agents_md",
+      "auto_compaction",
       "chronicle",
       "code_mode",
       "code_mode_only",
       "collaboration_modes",
+      "current_time_reminder",
       "default_mode_request_user_input",
+      "deferred_executor",
       "elevated_windows_sandbox",
       "enable_fanout",
       "enable_mcp_apps",
@@ -450,10 +487,12 @@
       "image_detail_original",
       "image_generation",
       "imagegenext",
+      "item_ids",
       "js_repl",
       "js_repl_tools_only",
       "local_thread_store_compression",
       "mentions_v2",
+      "multi_agent_mode",
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
       "plugin_hooks",
@@ -465,8 +504,10 @@
       "request_permissions_tool",
       "request_rule",
       "resize_all_images",
+      "respect_system_proxy",
       "responses_websockets",
       "responses_websockets_v2",
+      "rollout_budget",
       "runtime_metrics",
       "search_tool",
       "secret_auth_storage",
@@ -486,6 +527,7 @@
       "tui_app_server",
       "unavailable_dummy_tools",
       "unified_exec_zsh_fork",
+      "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
       "workspace_owner_usage_nudge"
@@ -558,6 +600,10 @@
       "stage_from_source": "stable"
     },
     "browser_use_external": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "browser_use_full_cdp_access": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
@@ -750,8 +796,8 @@
       "stage_from_source": "removed"
     },
     "resize_all_images": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "removed"
     },
     "respect_system_proxy": {
       "default_enabled_expr": "false",
@@ -838,8 +884,8 @@
       "stage_from_source": "removed"
     },
     "tool_search_always_defer_mcp_tools": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "removed"
     },
     "tool_suggest": {
       "default_enabled_expr": "true",
@@ -895,8 +941,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "b6b17b3860bdb3a3adb4e4744b7aa771d8efb5aa3dcb1f03d42e3c83d3de6a56",
-    "features_rs_sha256": "9278b5a4bb1af5db592094089de6d970e1247e8dc440922d20d79d436634e497"
+    "client_rs_sha256": "18ee1a55881ff53be4830ada2c857f6c85fa045e6407047511110bb82b27f1b9",
+    "features_rs_sha256": "95423724721732d931b54ca8ede9a847c8da90686778a95b79394b01edc2894a"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
