@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-06-24T07:19:30+00:00",
+  "generated_at": "2026-06-24T18:41:28+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,6 +13,8 @@
   },
   "total_files": 262,
   "updated": [
+    "developers.openai.com/codex/changelog/index.md",
+    "developers.openai.com/codex/security/setup/index.md",
     "github.openai.com/openai/codex/AGENTS.md"
   ]
 }
