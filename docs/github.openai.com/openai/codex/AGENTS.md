@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
-source_etag: 'W/"8183ee699ffabea4c566ce2ddd7f6151ae2849b2bcac9ca7dafa56518355b7ef"'
+source_etag: 'W/"fab75a9a2c03f9baa2165c33cd9c9fd51bbc052031c7017ef12ada097ff58aa3"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0"]
 ---
@@ -229,10 +229,13 @@ Use `just bench-smoke` to dry-run the benchmark for a single iteration to ensure
   - Under Bazel, binaries and resources may live under runfiles; use `codex_utils_cargo_bin::cargo_bin` to resolve absolute paths that remain stable after `chdir`.
 - When locating fixture files or test resources under Bazel, avoid `env!("CARGO_MANIFEST_DIR")`. Prefer `codex_utils_cargo_bin::find_resource!` so paths resolve correctly under both Cargo and Bazel runfiles.
 
-### Integration tests (core)
+### Integration tests
+
+#### codex_core integration testing
 
 - Prefer the utilities in `core_test_support::responses` when writing end-to-end Codex tests.
-
+- Use `TestCodexBuilder::build_with_auto_env()` by default to ensure that new tests work with
+  foreign app/exec OSes. See $remote-tests for details.
 - All `mount_sse*` helpers return a `ResponseMock`; hold onto it so you can assert against outbound `/responses` POST bodies.
 - Use `ResponseMock::single_request()` when a test should only issue one POST, or `ResponseMock::requests()` to inspect every captured `ResponsesRequest`.
 - `ResponsesRequest` exposes helpers (`body_json`, `input`, `function_call_output`, `custom_tool_call_output`, `call_output`, `header`, `path`, `query_param`) so assertions can target structured payloads instead of manual JSON digging.
@@ -255,6 +258,14 @@ Use `just bench-smoke` to dry-run the benchmark for a single iteration to ensure
   let request = mock.single_request();
   // assert using request.function_call_output(call_id) or request.json_body() or other helpers.
   ```
+
+#### app-server integration testing
+
+- Tests should exercise app-server's public JSON-RPC API.
+- Use similar server mocking as for core integration tests.
+- Use `TestAppServer::new_with_auto_env()` and `TestAppServer::send_thread_start_request_with_auto_env()`
+  by default to ensure that new tests work with foreign app/exec OSes. See `$remote-tests` for
+  details.
 
 ## App-server API Development Best Practices
 
@@ -316,3 +327,6 @@ closest `pyproject.toml`'s `requires-python` field to see what minimum runtime v
 ## Platform Support
 
 Tests and features must support Linux, macOS and Windows unless feature is explicitly OS-specific.
+
+Codex supports running connected app-server and exec-server on different operating systems. See the
+`$remote-tests` skill for details about integration testing these configurations.

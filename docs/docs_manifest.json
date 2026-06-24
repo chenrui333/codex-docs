@@ -8591,9 +8591,9 @@
         "codex-cli 0.141.0",
         "codex-cli 0.142.0"
       ],
-      "sha256": "bf934d406864de9b1a31d72f957fc181c756f7da2f1be0196b9f44c1499502e1",
+      "sha256": "701ecaa73bef5d528f458782b872ca04c7eab0e2e89709ecbf02ead32a88ddec",
       "source_area": "github_root",
-      "source_etag": "W/\"8183ee699ffabea4c566ce2ddd7f6151ae2849b2bcac9ca7dafa56518355b7ef\"",
+      "source_etag": "W/\"fab75a9a2c03f9baa2165c33cd9c9fd51bbc052031c7017ef12ada097ff58aa3\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
     },
