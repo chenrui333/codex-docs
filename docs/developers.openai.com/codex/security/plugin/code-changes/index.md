@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/code-changes'
-source_last_modified: '2026-06-18T22:38:43Z'
-source_etag: 'W/"e4568fd53b425cdbac6b7205fe9ce2ee"'
-codex_cli_versions: ["0.141.0", "0.142.0"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0"]
+source_last_modified: '2026-06-25T00:57:55Z'
+source_etag: 'W/"1287537064de2b2d48fea0fb848b85f7"'
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1"]
 ---
 
 # Review code changes for security – Codex Security | OpenAI Developers
@@ -60,111 +60,41 @@ findings](/codex/security/plugin/export-findings).
 
 ## Automate reviews in CI/CD
 
-You can run a change review from any CI/CD system that can check out the target
-revisions and invoke the Codex CLI without interaction. Resolve the exact base
-and head revisions, use a read-only sandbox, save the Markdown result, and
-publish it through your CI/CD system.
+Run the same `$codex-security:security-diff-scan` skill from CI when the runner
+can invoke the Codex CLI without interaction. The runner must already have
+Codex Security installed in the `CODEX_HOME` used by `codex exec`. A fresh
+runner doesn’t have marketplace plugins installed by default, and
+`openai/codex-action` doesn’t install the plugin.
 
-### GitHub Actions example
+Before running the scan:
 
-The following GitHub Actions workflow is one implementation of this pattern. It
-uses `openai/codex-action` to install the Codex CLI and run `codex exec` with a
-read-only sandbox. It produces a Markdown review for every in-scope pull
-request.
+1. Provision Codex Security in the runner’s `CODEX_HOME`.
+2. Check out the exact base and head revisions with their Git history.
+3. Set the runner’s platform temporary directory, such as `TMPDIR`, to a
+   writable artifact location. The diff-scan workflow reviews the checkout
+   without changing it, but it writes its sealed scan bundle and final report
+   outside the repository.
+4. Start with advisory results. Review scan quality and runtime before making
+   the job a required check.
 
-Before you add the workflow:
-
-1. Create an `OPENAI_API_KEY` repository or organization secret.
-2. Save the workflow as `.github/workflows/codex-security-review.yml`.
-3. Start with advisory comments. Tune the prompt and review the results before
-   making the workflow a required check.
+Then invoke the plugin explicitly:
 
 ```
-name: Codex Security pull request review
+export CODEX_HOME=/path/to/provisioned-codex-home
+export TMPDIR=/path/to/writable/temp
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-
-jobs:
-  security_review:
-    if: github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    outputs:
-      final_message: ${{ steps.run_codex.outputs.final-message }}
-
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          ref: refs/pull/${{ github.event.pull_request.number }}/merge
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Fetch pull request refs
-        env:
-          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: |
-          git fetch --no-tags origin \
-            "$PR_BASE_REF" \
-            "+refs/pull/$PR_NUMBER/head"
-
-      - name: Run Codex Security review
-        id: run_codex
-        uses: openai/codex-action@v1
-        with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          sandbox: read-only
-          output-file: codex-security-review.md
-          prompt: |
-            Review the pull request changes from
-            ${{ github.event.pull_request.base.sha }} to
-            ${{ github.event.pull_request.head.sha }} for security regressions.
-
-            Focus on authentication, authorization, input handling, filesystem
-            access, network requests, secrets, and changes to shared security
-            controls. Return a concise Markdown review with affected paths and
-            lines, evidence, impact, and remediation guidance. If there are no
-            findings, summarize the security-sensitive surfaces reviewed and
-            any coverage gaps.
-
-      - name: Upload the review
-        uses: actions/upload-artifact@v4
-        with:
-          name: codex-security-review
-          path: codex-security-review.md
-
-  post_review:
-    needs: security_review
-    if: needs.security_review.outputs.final_message != ''
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-
-    steps:
-      - name: Post the review
-        uses: actions/github-script@v7
-        env:
-          CODEX_FINAL_MESSAGE: ${{ needs.security_review.outputs.final_message }}
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              body: process.env.CODEX_FINAL_MESSAGE,
-            });
+codex exec \
+  --sandbox workspace-write \
+  --output-last-message "$TMPDIR/codex-security-review.md" \
+  'Use $codex-security:security-diff-scan to review changes from <base-revision> to <head-revision> for security regressions. Do not modify the checkout. Return the final report path, findings summary, reviewed surfaces, deferred coverage, and open questions.'
 ```
 
-This workflow checks out the pull request merge commit and fetches the base and
-head refs so Codex can resolve the exact change. The security review job has
-read-only repository permissions. A separate job receives permission to post
-the final Markdown review, but it never receives the OpenAI API key.
+Archive the generated scan bundle and final report, then publish the Markdown
+summary through your CI/CD system. If you use `openai/codex-action`, point its
+`codex-home` input at the same provisioned directory and pass the skill prompt
+above. The action can install and run the Codex CLI, but plugin provisioning is
+a separate prerequisite.
 
-For action inputs, privilege controls, and troubleshooting, see the [Codex
-GitHub Action guide](/codex/github-action).
+For API-key handling, sandbox controls, fork protections, and a GitHub Actions
+workflow, see the [Codex GitHub Action guide](/codex/github-action).
 

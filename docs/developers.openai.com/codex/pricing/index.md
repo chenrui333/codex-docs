@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_reference'
 source_url: 'https://developers.openai.com/codex/pricing'
-source_last_modified: '2026-06-18T18:35:51Z'
-source_etag: 'W/"078e4dac9ee1c7b45e11bb1a5d1036f4"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0"]
+source_last_modified: '2026-06-25T00:54:24Z'
+source_etag: 'W/"f90195ff540aa29cf28bd6ddd6ec9571"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1"]
 ---
 
 # Pricing – Codex | OpenAI Developers
@@ -83,15 +83,11 @@ Great for automation in shared environments like CI.
 
 Bring Codex into your startup or growing business.
 
-Pay as you go
+$20/ user / month\*
 
-[Get Business](https://chatgpt.com/codex/team/start)
+[Get Business](https://chatgpt.com/team-sign-up)
 
-Everything in Plus and:
-
-- Assign standard or usage-based Codex seats based on your team’s needs.
-  [Learn
-  more](https://help.openai.com/en/articles/8792828-what-is-chatgpt-business)
+- Access ChatGPT and Codex across desktop and mobile apps
 - Larger virtual machines to run cloud tasks faster
 - Flexibly extend usage with [ChatGPT credits](#credits-overview)
 - A secure, dedicated workspace with essential admin controls, SAML SSO,
@@ -100,6 +96,8 @@ Everything in Plus and:
   more](https://openai.com/business-data/)
 - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
   Business plan
+
+\*2+ users, billed annually. $25 per user per month when billed monthly.
 
 ### Enterprise & Edu
 

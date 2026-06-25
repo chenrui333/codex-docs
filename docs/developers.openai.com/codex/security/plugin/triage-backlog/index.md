@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/triage-backlog'
-source_last_modified: '2026-06-18T22:38:21Z'
-source_etag: 'W/"36c27714b330224c4ef64e8832350fe8"'
-codex_cli_versions: ["0.141.0", "0.142.0"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0"]
+source_last_modified: '2026-06-25T00:57:56Z'
+source_etag: 'W/"5a87adfb342aa7886c72678769bd0946"'
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1"]
 ---
 
 # Triage a backlog – Codex Security | OpenAI Developers
@@ -115,11 +115,11 @@ The workflow proceeds in this order:
 | `not_actionable` | Repository evidence rules out the claim, such as by showing an unaffected version, unreachable path, effective guard, or non-shipped surface. |
 | `needs_review` | Repository evidence isn’t enough to decide because required information is missing, ambiguous, runtime-dependent, environment-dependent, or policy-dependent. |
 
-Exploitability ranks use `P0`, `P1`, `P2`, and so on, independently within
-each verdict queue. This keeps remediation priorities separate from unresolved
-review work. `P0` is the most exploitable `confirmed` finding or the
-highest-priority `needs_review` finding in that result set. The rank isn’t a
-scanner severity score, and `not_actionable` findings aren’t ranked.
+Exploitability ranks use positive integers starting at `1`, independently
+within each verdict queue. This keeps remediation priorities separate from
+unresolved review work. Rank `1` is the most exploitable `confirmed` finding
+or the highest-priority `needs_review` finding in that result set. The rank
+isn’t a scanner severity score, and `not_actionable` findings aren’t ranked.
 
 For each finding, review:
 
