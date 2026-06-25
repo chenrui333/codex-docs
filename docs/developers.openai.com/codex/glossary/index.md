@@ -4,8 +4,8 @@ source_area: 'codex_glossary'
 source_url: 'https://developers.openai.com/codex/glossary'
 source_last_modified: '2026-06-05T16:39:02Z'
 source_etag: 'W/"471e05deb837536bdaadef64e5be6172"'
-codex_cli_versions: ["0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1"]
-codex_cli_versions_raw: ["codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1"]
+codex_cli_versions: ["0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2"]
+codex_cli_versions_raw: ["codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2"]
 ---
 
 # Glossary – Codex | OpenAI Developers

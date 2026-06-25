@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_plugin_creator'
 source_url: 'codex-cli://skills/.system/plugin-creator/references/plugin-json-spec.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2"]
 ---
 
 # Plugin JSON sample spec
@@ -45,6 +45,7 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
     "brandColor": "#3B82F6",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
     "screenshots": [
       "./assets/screenshot1.png",
       "./assets/screenshot2.png",
@@ -114,6 +115,7 @@ Or as an object directly in `plugin.json`:
 - `brandColor` (`string`): Theme color for the plugin card.
 - `composerIcon` (`string`): Path to icon asset.
 - `logo` (`string`): Path to logo asset.
+- `logoDark` (`string`): Optional path to the logo asset used in dark mode.
 - `screenshots` (`array` of `string`): List of screenshot asset paths.
   - Screenshot entries must be PNG filenames and stored under `./assets/`.
   - Keep file paths relative to plugin root.
@@ -214,7 +216,7 @@ personal marketplace unless the caller explicitly requests a repo-local destinat
 - `version` must use strict semver.
 - `websiteURL`, `privacyPolicyURL`, and `termsOfServiceURL` must be absolute `https://` URLs when
   present.
-- `composerIcon`, `logo`, and `screenshots` must point to real files inside the plugin archive when
+- `composerIcon`, `logo`, `logoDark`, and `screenshots` must point to real files inside the plugin archive when
   present.
 - `apps` should appear in `plugin.json` only when `.app.json` actually exists.
 - `mcpServers` may point to `.mcp.json` or contain the MCP server object directly in

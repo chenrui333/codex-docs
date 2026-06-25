@@ -4,8 +4,8 @@ source_area: 'codex_import'
 source_url: 'https://developers.openai.com/codex/import'
 source_last_modified: '2026-06-14T16:18:01Z'
 source_etag: 'W/"f13938be3c3210d02f9599502af34b34"'
-codex_cli_versions: ["0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1"]
-codex_cli_versions_raw: ["codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1"]
+codex_cli_versions: ["0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2"]
+codex_cli_versions_raw: ["codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2"]
 ---
 
 # Import to Codex | OpenAI Developers
