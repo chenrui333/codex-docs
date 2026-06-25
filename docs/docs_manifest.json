@@ -3821,10 +3821,10 @@
         "codex-cli 0.142.1",
         "codex-cli 0.142.2"
       ],
-      "sha256": "624444977ec48a6f0bcc246bd6e85745b41e09534efef38a88012b4b830caed0",
+      "sha256": "fae66485ea89e01f401a903b42bf463a2c43bf74d576c4942f33c834cf71d526",
       "source_area": "codex_security",
-      "source_etag": "W/\"b12d7c8bc5f65895f5faa05ccfeb13ed\"",
-      "source_last_modified": "2026-06-25T07:52:02Z",
+      "source_etag": "W/\"c0a59b486c79192cf844e4f09ad3dc86\"",
+      "source_last_modified": "2026-06-25T15:37:42Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
