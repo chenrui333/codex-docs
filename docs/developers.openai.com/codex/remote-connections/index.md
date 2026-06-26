@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_cli_docs'
 source_url: 'https://developers.openai.com/codex/remote-connections'
-source_last_modified: '2026-06-19T23:42:08Z'
-source_etag: 'W/"31909ddb25a5fe097048f0e9aafc3f4c"'
+source_last_modified: '2026-06-25T20:46:05Z'
+source_etag: 'W/"e8ecb1e93b2cd5a8e3064deae5c8e7e2"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2"]
 ---
@@ -59,6 +59,12 @@ Remote Control access before you can connect from your phone.
 
 Start in the Codex App on the host you want to connect. The setup flow enables
 remote access for that host, then shows a QR code you can scan from your phone.
+The QR code pairs that phone with that host. Pair every phone or supported Codex
+App device with every host you want it to control.
+
+Existing connections used since June 8, 2026, remain paired. If you haven’t
+used an existing connection since June 8, 2026, update both apps and pair the
+devices again.
 
 1. Start Codex mobile setup.
 
@@ -243,7 +249,17 @@ internet.
 
 Confirm that the Codex App is running on the host, you’ve enabled **Allow other
 devices to connect**, and both devices use the same ChatGPT account and
-workspace.
+workspace. If you haven’t used the connection since June 8, 2026, update both
+apps and pair the devices again.
+
+### Remote Control is off after you sign back in
+
+Signing out of ChatGPT turns off **Remote Control**, but it doesn’t remove your
+existing device pairings. After you sign back in, turn on **Remote Control** to
+restore the previous connection state.
+
+If you see an error after you turn on **Remote Control** and select **Add**,
+restart the Codex App on the host, then try again.
 
 ### The approval request doesn’t appear
 
