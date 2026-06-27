@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_enterprise'
 source_url: 'https://developers.openai.com/codex/enterprise/managed-configuration'
-source_last_modified: '2026-06-18T18:38:09Z'
-source_etag: 'W/"938466d13534fe3fb28b7757a9034179"'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2"]
+source_last_modified: '2026-06-26T23:20:54Z'
+source_etag: 'W/"7a4d346698f7804c708493c752ba816c"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3"]
 ---
 
 # Managed configuration – Codex | OpenAI Developers
@@ -19,7 +19,7 @@ Enterprise admins can control local Codex behavior in two ways:
 
 ## Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, permission profiles, web search mode, managed hooks, and optionally which MCP servers users can enable). When resolving configuration (for example from `config.toml`, [profile files](/codex/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
+Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, permission profiles, web search mode, managed hooks, which MCP servers users can enable, and which user-configured plugin marketplace sources they can add, install from, or refresh). When resolving configuration (for example from `config.toml`, [profile files](/codex/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, Codex falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, Codex enables an MCP server only when both its name and identity match an approved entry; otherwise, Codex disables it.
 
 Requirements can also constrain [feature flags](/codex/config-basic/#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren’t always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
@@ -467,7 +467,62 @@ identity = { command = "codex-mcp" }
 identity = { url = "https://example.com/mcp" }
 ```
 
+The string form of `identity.command` matches only the configured `command`. It
+doesn’t inspect `args`, `cwd`, `env`, or `env_vars`.
+
+To constrain a complete stdio invocation, match the executable and each
+positional argument:
+
+```
+[mcp_servers.internal.identity]
+command = { executable = "/usr/local/bin/codex-mcp", args = [
+  { match = "exact", value = "serve" },
+  { match = "prefix", value = "--workspace=" },
+] }
+```
+
+The executable, argument count, and argument order must match. Argument and URL
+rules support `exact`, `prefix`, and full-value `regex` matching. Structured
+command rules still don’t inspect `cwd`, `env`, or `env_vars`. Plugin-bundled
+MCP servers use the same identity shapes under
+`plugins.<plugin>.mcp_servers.<server>`.
+
 If `mcp_servers` is present but empty, Codex disables all MCP servers.
+
+### Restrict plugin marketplace sources
+
+To restrict operations on user-configured marketplace sources, set
+`restrict_to_allowed_sources = true` and define one or more source rules:
+
+```
+[marketplaces]
+restrict_to_allowed_sources = true
+
+[marketplaces.allowed_sources.company_plugins]
+source = "git"
+url = "https://github.com/example/company-plugins.git"
+ref = "main"
+
+[marketplaces.allowed_sources.internal_git]
+source = "host_pattern"
+host_pattern = '^git\.example\.com$'
+
+[marketplaces.allowed_sources.local_plugins]
+source = "local"
+path = "/opt/company/codex-plugins"
+```
+
+Git rules match the normalized repository URL and, when present, an exact
+`ref`. Host patterns are regular expressions matched against the lowercase Git
+host; use `^` and `$` for a whole-host match. Local rules require an absolute,
+normalized path. See the [`requirements.toml` reference](/codex/config-reference#requirementstoml)
+for the full schema and merge behavior.
+
+These requirements reject unmatched marketplace add, plugin install, and
+configured Git marketplace refresh operations for user-configured sources.
+Codex-managed OpenAI marketplaces remain available when their source and
+reserved name match. The requirements don’t filter already configured user
+marketplaces or their plugins at runtime.
 
 ## Managed defaults (`managed_config.toml`)
 

@@ -4,8 +4,8 @@ source_area: 'codex_record_and_replay'
 source_url: 'https://developers.openai.com/codex/record-and-replay'
 source_last_modified: '2026-06-18T22:37:25Z'
 source_etag: 'W/"fd1eaca6818979254173b67f4595190d"'
-codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2"]
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3"]
 ---
 
 # Record & Replay – Codex | OpenAI Developers
