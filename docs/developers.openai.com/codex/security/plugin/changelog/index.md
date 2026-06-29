@@ -4,8 +4,8 @@ source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/changelog'
 source_last_modified: '2026-06-18T22:38:19Z'
 source_etag: 'W/"5a0eab8f3093b4c271dce88b5af2d31b"'
-codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3"]
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4"]
 ---
 
 # Plugin changelog – Codex Security | OpenAI Developers
