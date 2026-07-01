@@ -4,8 +4,8 @@ source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/export-findings'
 source_last_modified: '2026-06-18T22:38:20Z'
 source_etag: 'W/"89ed02eff10baf2f27db9a6f62486ebe"'
-codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4"]
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5"]
 ---
 
 # Export and track security findings – Codex Security | OpenAI Developers

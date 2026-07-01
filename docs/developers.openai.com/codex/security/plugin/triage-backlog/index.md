@@ -4,8 +4,8 @@ source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/triage-backlog'
 source_last_modified: '2026-06-25T00:57:56Z'
 source_etag: 'W/"5a87adfb342aa7886c72678769bd0946"'
-codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4"]
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5"]
 ---
 
 # Triage a backlog – Codex Security | OpenAI Developers
