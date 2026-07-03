@@ -941,7 +941,7 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "5020b786b9523d8093017ab650869572fd34b30dfa9037c85c112e67f1586cb0",
+    "client_rs_sha256": "da20e876ecc3e64eb0c97958723e677a0e3cc8329b369bea7d21fa0ad80fb504",
     "features_rs_sha256": "36b1a98320ee23c6608a945d3dfbe82ded94216750d7fc091efcd47f93b6680a"
   },
   "source_urls": {
