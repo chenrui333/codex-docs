@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_changelog'
 source_url: 'https://developers.openai.com/codex/changelog'
-source_last_modified: '2026-07-02T07:15:03Z'
-source_etag: 'W/"4d59f39c657ea748dece07302571d842"'
+source_last_modified: '2026-07-05T03:41:46Z'
+source_etag: 'W/"4b6f6b8f8eb47181806541e3b581fd98"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5"]
 ---
@@ -12,236 +12,50 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/codex/changelog
 
-```
-$ npm install -g @openai/codex@0.140.0
-```
+### New features
 
-  View details
+- Added rate-limit reset banking for Plus and Pro users, including one free
+  reset at launch and
+  [referral invitations](/codex/pricing#invite-friends-and-coworkers) for
+  earning more during the current promotion. Eligible Business members can
+  invite coworkers to earn shared workspace credits through a separate
+  referral program.
+- Added [Developer mode](/codex/app/browser#developer-mode) for Browser use in
+  Chrome and the Codex in-app browser. It gives Codex controlled Chrome
+  DevTools Protocol (CDP) access for performance profiling and deeper debugging
+  of network traffic, console output, runtime errors, and page state.
+- Added the `/init` command to the app composer for creating project
+  instructions with the same initialization workflow as the Codex CLI.
+- Added customizable macOS Dock icons with light and dark Codex variants.
+- Added Computer Use for Enterprise users outside the European Economic Area,
+  the United Kingdom, and Switzerland.
+- Added support for configuring per-app access controls for Computer Use on
+  Windows.
+- Added an **Unread chats** section to the command menu, with the most recently
+  updated unread chat selected by default.
 
-## New Features
+### Performance improvements and bug fixes
 
-- Added `/usage` views for daily, weekly, and cumulative account token activity. ([#27925](https://github.com/openai/codex/pull/27925))
-- `/goal` now preserves oversized text, large pasted blocks, and image attachments, including in remote app-server sessions. ([#27508](https://github.com/openai/codex/pull/27508), [#27509](https://github.com/openai/codex/pull/27509), [#27510](https://github.com/openai/codex/pull/27510))
-- Added permanent session deletion through `codex delete`, `/delete`, and app-server `thread/delete`, with confirmation safeguards and subagent cleanup. ([#25018](https://github.com/openai/codex/pull/25018), [#27476](https://github.com/openai/codex/pull/27476))
-- Added `/import` for selectively importing setup, project configuration, and recent chats from Claude Code. ([#27070](https://github.com/openai/codex/pull/27070), [#27071](https://github.com/openai/codex/pull/27071), [#27703](https://github.com/openai/codex/pull/27703))
-- Typing `@` now opens the unified mentions menu for files, plugins, and skills by default. ([#27499](https://github.com/openai/codex/pull/27499))
-- Added managed Amazon Bedrock API-key authentication and encrypted local storage for CLI and MCP OAuth credentials. ([#27443](https://github.com/openai/codex/pull/27443), [#27689](https://github.com/openai/codex/pull/27689), [#27504](https://github.com/openai/codex/pull/27504), [#27535](https://github.com/openai/codex/pull/27535), [#27539](https://github.com/openai/codex/pull/27539), [#27541](https://github.com/openai/codex/pull/27541))
-
-## Bug Fixes
-
-- Corrupted SQLite state databases are now backed up and rebuilt automatically from rollout data, including malformed database-directory cases. ([#26859](https://github.com/openai/codex/pull/26859), [#27719](https://github.com/openai/codex/pull/27719))
-- Prevented `/review` from crashing when `Esc` is pressed with queued guidance, while preserving that guidance when the review is canceled. ([#22879](https://github.com/openai/codex/pull/22879))
-- Improved MCP reliability by retrying transient startup failures, reporting unusable OAuth credentials as logged out, and preserving explicitly disabled servers. ([#25147](https://github.com/openai/codex/pull/25147), [#26713](https://github.com/openai/codex/pull/26713), [#27414](https://github.com/openai/codex/pull/27414))
-- Fixed remote plugin uninstall requests and correctly surfaced apps requiring authentication during installation. ([#27085](https://github.com/openai/codex/pull/27085), [#27223](https://github.com/openai/codex/pull/27223))
-- Persisted “Don’t remind me” update dismissals reliably and cleared stale running-hook indicators after completed turns. ([#27619](https://github.com/openai/codex/pull/27619), [#27783](https://github.com/openai/codex/pull/27783))
-- Non-TTY background commands can now be interrupted with Ctrl-C while preserving their final output and exit status. ([#26734](https://github.com/openai/codex/pull/26734))
-
-## Documentation
-
-- Clarified contributor guidance around keeping crate APIs narrow and supporting Linux, macOS, and Windows. ([#27939](https://github.com/openai/codex/pull/27939), [#27966](https://github.com/openai/codex/pull/27966))
-
-## Chores
-
-- Improved responsiveness for large repositories and long sessions by preserving Git’s built-in filesystem monitor, avoiding duplicate history reads, accelerating archive lookup, and caching turn-diff rendering. ([#26880](https://github.com/openai/codex/pull/26880), [#27031](https://github.com/openai/codex/pull/27031), [#27276](https://github.com/openai/codex/pull/27276), [#27489](https://github.com/openai/codex/pull/27489))
-- Removed the experimental `/realtime` voice controls and related audio dependencies from the TUI. ([#27801](https://github.com/openai/codex/pull/27801))
-
-## Changelog
-
-Full Changelog: [rust-v0.139.0...rust-v0.140.0](https://github.com/openai/codex/compare/rust-v0.139.0...rust-v0.140.0)
-
-- [#26880](https://github.com/openai/codex/pull/26880) [codex] preserve fsmonitor for worktree Git reads [@tamird](https://github.com/tamird)
-- [#27085](https://github.com/openai/codex/pull/27085) Use server app auth requirements for remote plugin install [@xl-openai](https://github.com/xl-openai)
-- [#27098](https://github.com/openai/codex/pull/27098) [codex] Return workspace directory installed plugins [@xl-openai](https://github.com/xl-openai)
-- [#27007](https://github.com/openai/codex/pull/27007) multi-agent: add path-based v2 activity tracking [@jif-oai](https://github.com/jif-oai)
-- [#27166](https://github.com/openai/codex/pull/27166) app-server: clear stale thread watches after v2 agent interruption [@jif-oai](https://github.com/jif-oai)
-- [#27080](https://github.com/openai/codex/pull/27080) [codex] Ignore pending PR review comments [@anp-oai](https://github.com/anp-oai)
-- [#26420](https://github.com/openai/codex/pull/26420) Avoid no-op backfill state writes [@zanie-oai](https://github.com/zanie-oai)
-- [#27031](https://github.com/openai/codex/pull/27031) Avoid rereading rollout history during cold resume [@zanie-oai](https://github.com/zanie-oai)
-- [#22879](https://github.com/openai/codex/pull/22879) fix: Prevent /review crash when entering Esc on steer message [@canvrno-oai](https://github.com/canvrno-oai)
-- [#27173](https://github.com/openai/codex/pull/27173) app-server: reject direct input to multi-agent v2 sub-agents [@jif-oai](https://github.com/jif-oai)
-- [#27184](https://github.com/openai/codex/pull/27184) Load selected executor skills through extensions [@jif-oai](https://github.com/jif-oai)
-- [#26835](https://github.com/openai/codex/pull/26835) [codex] Test extension API contracts [@anp-oai](https://github.com/anp-oai)
-- [#27063](https://github.com/openai/codex/pull/27063) [codex-analytics] add extensible feature thread sources [@marksteinbrick-oai](https://github.com/marksteinbrick-oai)
-- [#26479](https://github.com/openai/codex/pull/26479) [codex] Speed up local nextest runs [@anp-oai](https://github.com/anp-oai)
-- [#27223](https://github.com/openai/codex/pull/27223) fix: use plugin service route for remote uninstall [@ericning-o](https://github.com/ericning-o)
-- [#22685](https://github.com/openai/codex/pull/22685) Add SOCKS5 TCP MITM coverage [@winston-openai](https://github.com/winston-openai)
-- [#26681](https://github.com/openai/codex/pull/26681) Allow creating a new goal after completion [@etraut-openai](https://github.com/etraut-openai)
-- [#26711](https://github.com/openai/codex/pull/26711) Reduce TUI legacy core dependencies [@etraut-openai](https://github.com/etraut-openai)
-- [#27110](https://github.com/openai/codex/pull/27110) [1/6] Add Python goal routing foundation [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#27191](https://github.com/openai/codex/pull/27191) Route hosted Apps MCP through extensions [@jif-oai](https://github.com/jif-oai)
-- [#26830](https://github.com/openai/codex/pull/26830) [codex] Characterize global instruction lifecycle [@anp-oai](https://github.com/anp-oai)
-- [#26713](https://github.com/openai/codex/pull/26713) [codex] Report unusable MCP OAuth credentials as logged out [@anp-oai](https://github.com/anp-oai)
-- [#26734](https://github.com/openai/codex/pull/26734) [codex] Handle Ctrl-C for non-TTY unified exec [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27116](https://github.com/openai/codex/pull/27116) Stop mirroring Codex user input into realtime [@guinness-oai](https://github.com/guinness-oai)
-- [#27111](https://github.com/openai/codex/pull/27111) [2/6] Add private Python goal operations [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#25147](https://github.com/openai/codex/pull/25147) [codex] Retry streamable HTTP initialize failures [@ssetty-oai](https://github.com/ssetty-oai)
-- [#27257](https://github.com/openai/codex/pull/27257) [codex] Tighten MCP connection manager API visibility and order [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#26701](https://github.com/openai/codex/pull/26701) TUI Plugin Sharing 1 - add remote plugin identity [@canvrno-oai](https://github.com/canvrno-oai)
-- [#27129](https://github.com/openai/codex/pull/27129) feat: use provider defaults for memory models [@celia-oai](https://github.com/celia-oai)
-- [#27094](https://github.com/openai/codex/pull/27094) Add spans to build\_tool\_router [@mchen-oai](https://github.com/mchen-oai)
-- [#24999](https://github.com/openai/codex/pull/24999) Add per-session realtime model and version overrides [@guinness-oai](https://github.com/guinness-oai)
-- [#27078](https://github.com/openai/codex/pull/27078) [codex-analytics] emit goal lifecycle analytics [@marksteinbrick-oai](https://github.com/marksteinbrick-oai)
-- [#27285](https://github.com/openai/codex/pull/27285) [codex] Fix post-merge analytics integration failures [@anp-oai](https://github.com/anp-oai)
-- [#27107](https://github.com/openai/codex/pull/27107) Add spans to run\_turn [@mchen-oai](https://github.com/mchen-oai)
-- [#27261](https://github.com/openai/codex/pull/27261) [codex] Make MCP connection startup fallible [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#27174](https://github.com/openai/codex/pull/27174) feat: keep child MCP warnings out of parent transcript [@jif-oai](https://github.com/jif-oai)
-- [#27198](https://github.com/openai/codex/pull/27198) Use plugin-service MCP as the hosted plugin runtime [@jif-oai](https://github.com/jif-oai)
-- [#27375](https://github.com/openai/codex/pull/27375) [codex] Tag multi-agent spawn metrics with version [@jif-oai](https://github.com/jif-oai)
-- [#27383](https://github.com/openai/codex/pull/27383) Remove async-trait from extension contributors [@jif-oai](https://github.com/jif-oai)
-- [#27259](https://github.com/openai/codex/pull/27259) Use latest-wins MCP manager replacement [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#27264](https://github.com/openai/codex/pull/27264) [codex] Store compact window id in rollout [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27280](https://github.com/openai/codex/pull/27280) [codex] add io PathUri native conversion APIs [@anp-oai](https://github.com/anp-oai)
-- [#27315](https://github.com/openai/codex/pull/27315) [codex] link Windows releases with LLD [@tamird](https://github.com/tamird)
-- [#27276](https://github.com/openai/codex/pull/27276) Reduce archive rollout lookup CPU [@etraut-openai](https://github.com/etraut-openai)
-- [#27299](https://github.com/openai/codex/pull/27299) [codex] Outline ToolExecutor handler bodies [@anp-oai](https://github.com/anp-oai)
-- [#27391](https://github.com/openai/codex/pull/27391) Index visible thread list ordering [@zanie-oai](https://github.com/zanie-oai)
-- [#27407](https://github.com/openai/codex/pull/27407) Fix compressed rollout search path matching [@jif-oai](https://github.com/jif-oai)
-- [#27304](https://github.com/openai/codex/pull/27304) [codex] Remove async\_trait from ToolExecutor [@anp-oai](https://github.com/anp-oai)
-- [#26041](https://github.com/openai/codex/pull/26041) Add app-server background terminal process APIs [@etraut-openai](https://github.com/etraut-openai)
-- [#25018](https://github.com/openai/codex/pull/25018) Add app-server `thread/delete` API [@etraut-openai](https://github.com/etraut-openai)
-- [#26859](https://github.com/openai/codex/pull/26859) fix: Auto-recover from corrupted sqlite databases [@ddr-oai](https://github.com/ddr-oai)
-- [#27064](https://github.com/openai/codex/pull/27064) [codex] remove blocking external agent migration flow [@stefanstokic-oai](https://github.com/stefanstokic-oai)
-- [#27421](https://github.com/openai/codex/pull/27421) [codex] Raise app-server recursion limit [@anp-oai](https://github.com/anp-oai)
-- [#27062](https://github.com/openai/codex/pull/27062) [codex] Retry transient Guardian review failures [@kbazzi](https://github.com/kbazzi)
-- [#27065](https://github.com/openai/codex/pull/27065) [codex] extract external agent import picker renderer [@stefanstokic-oai](https://github.com/stefanstokic-oai)
-- [#26409](https://github.com/openai/codex/pull/26409) [plugins] Inject remote\_plugin\_id into install elicitations [@adaley-openai](https://github.com/adaley-openai)
-- [#27439](https://github.com/openai/codex/pull/27439) feat: make ThreadStore available on ThreadExtensionDependencies [@bolinfest](https://github.com/bolinfest)
-- [#27343](https://github.com/openai/codex/pull/27343) Guard core test subprocess cleanup [@etraut-openai](https://github.com/etraut-openai)
-- [#27070](https://github.com/openai/codex/pull/27070) [codex] add external agent import picker UX [@stefanstokic-oai](https://github.com/stefanstokic-oai)
-- [#27321](https://github.com/openai/codex/pull/27321) [codex] Move release platform rules into bazel package [@anp-oai](https://github.com/anp-oai)
-- [#27071](https://github.com/openai/codex/pull/27071) [codex] add /import for external agents [@stefanstokic-oai](https://github.com/stefanstokic-oai)
-- [#27311](https://github.com/openai/codex/pull/27311) [codex] Skip local curated discovery for remote plugins [@xl-openai](https://github.com/xl-openai)
-- [#27414](https://github.com/openai/codex/pull/27414) [codex] Preserve disabled MCP servers across runtime overlays [@e-provencher](https://github.com/e-provencher)
-- [#27312](https://github.com/openai/codex/pull/27312) [codex] reuse release artifacts for npm staging [@tamird](https://github.com/tamird)
-- [#27319](https://github.com/openai/codex/pull/27319) Forward standalone assistant output to realtime [@guinness-oai](https://github.com/guinness-oai)
-- [#27057](https://github.com/openai/codex/pull/27057) [codex] Add reusable OTEL gauge instruments [@richardopenai](https://github.com/richardopenai)
-- [#27245](https://github.com/openai/codex/pull/27245) image: add shared data URL preparation utilities [@fjord-oai](https://github.com/fjord-oai)
-- [#27392](https://github.com/openai/codex/pull/27392) [codex-analytics] emit internally started turn events [@marksteinbrick-oai](https://github.com/marksteinbrick-oai)
-- [#27322](https://github.com/openai/codex/pull/27322) [codex] Preserve build-script dependencies in rules\_rs annotations [@anp-oai](https://github.com/anp-oai)
-- [#27489](https://github.com/openai/codex/pull/27489) core: cache turn diff rendering [@nornagon-openai](https://github.com/nornagon-openai)
-- [#27465](https://github.com/openai/codex/pull/27465) [codex] Remove redundant plugin app auth state [@xl-openai](https://github.com/xl-openai)
-- [#27484](https://github.com/openai/codex/pull/27484) Remove TUI legacy core test\_support dependencies [@etraut-openai](https://github.com/etraut-openai)
-- [#27476](https://github.com/openai/codex/pull/27476) Add session delete commands in CLI and TUI [@etraut-openai](https://github.com/etraut-openai)
-- [#27247](https://github.com/openai/codex/pull/27247) core: resize all history images behind a feature flag [@fjord-oai](https://github.com/fjord-oai)
-- [#27487](https://github.com/openai/codex/pull/27487) Trim TUI legacy telemetry and migration dependencies [@etraut-openai](https://github.com/etraut-openai)
-- [#27438](https://github.com/openai/codex/pull/27438) [codex] Add token budget context feature [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27501](https://github.com/openai/codex/pull/27501) [codex] Expand hosted web search citation guidance [@yuning-oai](https://github.com/yuning-oai)
-- [#27526](https://github.com/openai/codex/pull/27526) tools: simplify default tool search text [@sayan-oai](https://github.com/sayan-oai)
-- [#27488](https://github.com/openai/codex/pull/27488) [codex] Add new context window tool [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27443](https://github.com/openai/codex/pull/27443) feat: add Bedrock API key as a managed auth mode [@celia-oai](https://github.com/celia-oai)
-- [#27532](https://github.com/openai/codex/pull/27532) [codex] Add comp\_hash to model metadata [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#27246](https://github.com/openai/codex/pull/27246) core: strip image detail from Responses Lite requests [@fjord-oai](https://github.com/fjord-oai)
-- [#27517](https://github.com/openai/codex/pull/27517) [codex] Pass auth mode to plugin manager [@xl-openai](https://github.com/xl-openai)
-- [#27520](https://github.com/openai/codex/pull/27520) [codex] Compact when comp\_hash changes [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#27518](https://github.com/openai/codex/pull/27518) [codex] Add context remaining tool [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27266](https://github.com/openai/codex/pull/27266) image: preserve metadata when resizing prompt images [@fjord-oai](https://github.com/fjord-oai)
-- [#27103](https://github.com/openai/codex/pull/27103) [codex-analytics] report cached input tokens for v2 compaction [@rhan-oai](https://github.com/rhan-oai)
-- [#27356](https://github.com/openai/codex/pull/27356) Use generic search metadata for dynamic tools [@sayan-oai](https://github.com/sayan-oai)
-- [#27082](https://github.com/openai/codex/pull/27082) [codex-analytics] Emit structured compaction codex errors [@rhan-oai](https://github.com/rhan-oai)
-- [#26513](https://github.com/openai/codex/pull/26513) [codex] Tune cloud config cache intervals [@alexsong-oai](https://github.com/alexsong-oai)
-- [#27387](https://github.com/openai/codex/pull/27387) skills: make backend plugin skills invocable without an executor [@jif-oai](https://github.com/jif-oai)
-- [#27403](https://github.com/openai/codex/pull/27403) skills: cache remote catalog failures per thread [@jif-oai](https://github.com/jif-oai)
-- [#27573](https://github.com/openai/codex/pull/27573) core: enable remote compaction v2 by default [@jif-oai](https://github.com/jif-oai)
-- [#27388](https://github.com/openai/codex/pull/27388) skills: expose remote skill resource tools [@jif-oai](https://github.com/jif-oai)
-- [#27569](https://github.com/openai/codex/pull/27569) multi-agent: move concurrency guidance into v2 usage hints [@jif-oai](https://github.com/jif-oai)
-- [#27585](https://github.com/openai/codex/pull/27585) nit: cap error [@jif-oai](https://github.com/jif-oai)
-- [#27404](https://github.com/openai/codex/pull/27404) test: cover referenced backend skill reads without an executor [@jif-oai](https://github.com/jif-oai)
-- [#27591](https://github.com/openai/codex/pull/27591) skills: render catalog locators by authority [@jif-oai](https://github.com/jif-oai)
-- [#27413](https://github.com/openai/codex/pull/27413) skills: decouple the skills extension from core [@jif-oai](https://github.com/jif-oai)
-- [#27527](https://github.com/openai/codex/pull/27527) [codex] publish npm packages concurrently [@tamird](https://github.com/tamird)
-- [#27528](https://github.com/openai/codex/pull/27528) [codex] publish DotSlash alongside npm [@tamird](https://github.com/tamird)
-- [#27529](https://github.com/openai/codex/pull/27529) [codex] download only release artifacts [@tamird](https://github.com/tamird)
-- [#27490](https://github.com/openai/codex/pull/27490) Remove TUI legacy Windows sandbox dependency [@etraut-openai](https://github.com/etraut-openai)
-- [#27483](https://github.com/openai/codex/pull/27483) Emit plugin ID on MCP tool call analytics events [@chrisdong-oai](https://github.com/chrisdong-oai)
-- [#27417](https://github.com/openai/codex/pull/27417) Print TUI session info on fatal exits [@etraut-openai](https://github.com/etraut-openai)
-- [#27507](https://github.com/openai/codex/pull/27507) lint: allow self-documenting builder arguments [@anp-oai](https://github.com/anp-oai)
-- [#27420](https://github.com/openai/codex/pull/27420) [codex] Propagate plugin app categories [@charlesgong-openai](https://github.com/charlesgong-openai)
-- [#27454](https://github.com/openai/codex/pull/27454) [codex] add cross-platform filesystem adapter coverage [@anp-oai](https://github.com/anp-oai)
-- [#27415](https://github.com/openai/codex/pull/27415) [codex] Surface runtime warnings in codex exec [@anp-oai](https://github.com/anp-oai)
-- [#27639](https://github.com/openai/codex/pull/27639) [codex] revert concurrent npm publishing [@tamird](https://github.com/tamird)
-- [#27646](https://github.com/openai/codex/pull/27646) feat: disable orchestrator skills for now [@jif-oai](https://github.com/jif-oai)
-- [#27323](https://github.com/openai/codex/pull/27323) [codex] Provide ARM64 MinGW powl compatibility support [@anp-oai](https://github.com/anp-oai)
-- [#27433](https://github.com/openai/codex/pull/27433) [codex] remove EnvironmentPathRef [@anp-oai](https://github.com/anp-oai)
-- [#27424](https://github.com/openai/codex/pull/27424) [codex] migrate ExecutorFileSystem paths to PathUri [@anp-oai](https://github.com/anp-oai)
-- [#27101](https://github.com/openai/codex/pull/27101) [codex] Load user instructions through an injected provider [@anp-oai](https://github.com/anp-oai)
-- [#27634](https://github.com/openai/codex/pull/27634) Resolve MCP server registrations through a catalog [@jif-oai](https://github.com/jif-oai)
-- [#27122](https://github.com/openai/codex/pull/27122) core: Consolidate Responses API Codex metadata [@owenlin0](https://github.com/owenlin0)
-- [#27450](https://github.com/openai/codex/pull/27450) [codex-rs] enforce PAT workspace restrictions [@cooper-oai](https://github.com/cooper-oai)
-- [#27653](https://github.com/openai/codex/pull/27653) [codex] migrate exec-server filesystem protocol to PathUri [@anp-oai](https://github.com/anp-oai)
-- [#27663](https://github.com/openai/codex/pull/27663) Include thread id in token budget context [@pakrym-oai](https://github.com/pakrym-oai)
-- [#26418](https://github.com/openai/codex/pull/26418) [codex] Avoid duplicate hooks.json discovery with profiles [@abhinav-oai](https://github.com/abhinav-oai)
-- [#27689](https://github.com/openai/codex/pull/27689) feat: prefer managed Bedrock auth in model provider [@celia-oai](https://github.com/celia-oai)
-- [#27700](https://github.com/openai/codex/pull/27700) Remove fs/join and fs/parent from exec-server protocol [@anp-oai](https://github.com/anp-oai)
-- [#26426](https://github.com/openai/codex/pull/26426) Warn when hooks.json has unsupported top-level fields [@abhinav-oai](https://github.com/abhinav-oai)
-- [#27318](https://github.com/openai/codex/pull/27318) [codex] Move persistence policy application into ThreadStore [@wiltzius-openai](https://github.com/wiltzius-openai)
-- [#27498](https://github.com/openai/codex/pull/27498) Route image extension reads through turn environments v2 [@won-openai](https://github.com/won-openai)
-- [#27623](https://github.com/openai/codex/pull/27623) Add spans to turn lifecycle gaps [@mchen-oai](https://github.com/mchen-oai)
-- [#27619](https://github.com/openai/codex/pull/27619) tui: clear stale hook row after turn completion [@kotakem-openai](https://github.com/kotakem-openai)
-- [#27711](https://github.com/openai/codex/pull/27711) Fix image extension PathUri conversion [@anp-oai](https://github.com/anp-oai)
-- [#27475](https://github.com/openai/codex/pull/27475) [codex] Remove async\_trait from first-party code [@anp-oai](https://github.com/anp-oai)
-- [#27719](https://github.com/openai/codex/pull/27719) fix: Recover from sqlite directory being a file [@ddr-oai](https://github.com/ddr-oai)
-- [#27715](https://github.com/openai/codex/pull/27715) ci(v8): gate Windows source builds on relevant changes [@cconger](https://github.com/cconger)
-- [#27702](https://github.com/openai/codex/pull/27702) [codex] parallelize release code generation [@tamird](https://github.com/tamird)
-- [#27709](https://github.com/openai/codex/pull/27709) [codex] resolve environment shell metadata eagerly [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27445](https://github.com/openai/codex/pull/27445) feat(app-server): persist remote-control desired state [@apanasenko-oai](https://github.com/apanasenko-oai)
-- [#27508](https://github.com/openai/codex/pull/27508) [1 of 3] Support long raw TUI goal objectives [@etraut-openai](https://github.com/etraut-openai)
-- [#27256](https://github.com/openai/codex/pull/27256) Add request\_user\_input auto-resolution window contract [@shijie-oai](https://github.com/shijie-oai)
-- [#27724](https://github.com/openai/codex/pull/27724) code-mode standalone: extract protocol and add host crate [@cconger](https://github.com/cconger)
-- [#27778](https://github.com/openai/codex/pull/27778) Translate non-English issues [@etraut-openai](https://github.com/etraut-openai)
-- [#27316](https://github.com/openai/codex/pull/27316) Keep request\_user\_input direct-model only [@shijie-oai](https://github.com/shijie-oai)
-- [#27696](https://github.com/openai/codex/pull/27696) [codex] Load AGENTS.md from all bound environments [@anp-oai](https://github.com/anp-oai)
-- [#27670](https://github.com/openai/codex/pull/27670) Make MCP server contributions thread-scoped [@jif-oai](https://github.com/jif-oai)
-- [#27732](https://github.com/openai/codex/pull/27732) [code-mode] Reject remote image URLs from output helpers [@rka-oai](https://github.com/rka-oai)
-- [#27692](https://github.com/openai/codex/pull/27692) Add executor-owned plugin resolution [@jif-oai](https://github.com/jif-oai)
-- [#27863](https://github.com/openai/codex/pull/27863) Extract shared plugin MCP config parsing [@jif-oai](https://github.com/jif-oai)
-- [#27703](https://github.com/openai/codex/pull/27703) [codex] restore source-specific import copy [@stefanstokic-oai](https://github.com/stefanstokic-oai)
-- [#27879](https://github.com/openai/codex/pull/27879) fix: serialize auth environment tests [@jif-oai](https://github.com/jif-oai)
-- [#27791](https://github.com/openai/codex/pull/27791) Reject transcript backtrack in side conversations [@etraut-openai](https://github.com/etraut-openai)
-- [#27075](https://github.com/openai/codex/pull/27075) [ez][codex-rs] Support approvals reviewer in app defaults [@zamoshchin-openai](https://github.com/zamoshchin-openai)
-- [#27538](https://github.com/openai/codex/pull/27538) Use dependency groups for Python SDK tooling [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#27783](https://github.com/openai/codex/pull/27783) Persist update dismissal without cache [@etraut-openai](https://github.com/etraut-openai)
-- [#27814](https://github.com/openai/codex/pull/27814) tui: Allow extra o's in /goal command [@btraut-openai](https://github.com/btraut-openai)
-- [#27901](https://github.com/openai/codex/pull/27901) Use uv as Python SDK build backend [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#27720](https://github.com/openai/codex/pull/27720) realtime: add AVAS architecture override [@bakks](https://github.com/bakks)
-- [#27919](https://github.com/openai/codex/pull/27919) chore: prompt MAv2 [@jif-oai](https://github.com/jif-oai)
-- [#27816](https://github.com/openai/codex/pull/27816) sandboxing: migrate cwd inputs to PathUri [@anp-oai](https://github.com/anp-oai)
-- [#27890](https://github.com/openai/codex/pull/27890) [codex] expose remote plugin share URL [@ericning-o](https://github.com/ericning-o)
-- [#27913](https://github.com/openai/codex/pull/27913) [codex] unify apply patch parsing [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27920](https://github.com/openai/codex/pull/27920) Handle standalone image generation failures as terminal items [@won-openai](https://github.com/won-openai)
-- [#27927](https://github.com/openai/codex/pull/27927) [codex] Add size to internal filesystem metadata [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27504](https://github.com/openai/codex/pull/27504) feat: add secret auth storage configuration [@celia-oai](https://github.com/celia-oai)
-- [#27674](https://github.com/openai/codex/pull/27674) [login] revoke existing auth before starting login [@cooper-oai](https://github.com/cooper-oai)
-- [#27535](https://github.com/openai/codex/pull/27535) feat: add auth-specific encrypted secret namespaces [@celia-oai](https://github.com/celia-oai)
-- [#27939](https://github.com/openai/codex/pull/27939) [codex] Add crate API surface review rule [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27926](https://github.com/openai/codex/pull/27926) [codex] Align implicit skill reads with parser [@alexsong-oai](https://github.com/alexsong-oai)
-- [#23254](https://github.com/openai/codex/pull/23254) fix(plugins) rm plugin descriptions [@dylan-hurd-oai](https://github.com/dylan-hurd-oai)
-- [#27830](https://github.com/openai/codex/pull/27830) Support plaintext agent messages [@jif-oai](https://github.com/jif-oai)
-- [#27801](https://github.com/openai/codex/pull/27801) Remove TUI realtime voice support [@etraut-openai](https://github.com/etraut-openai)
-- [#27539](https://github.com/openai/codex/pull/27539) feat: use encrypted local secrets for CLI auth [@celia-oai](https://github.com/celia-oai)
-- [#27076](https://github.com/openai/codex/pull/27076) Warn for structured feature toggles [@canvrno-oai](https://github.com/canvrno-oai)
-- [#27541](https://github.com/openai/codex/pull/27541) feat: use encrypted local secrets for MCP OAuth [@celia-oai](https://github.com/celia-oai)
-- [#27936](https://github.com/openai/codex/pull/27936) [codex] add roles to realtime append text [@agamble-oai](https://github.com/agamble-oai)
-- [#27509](https://github.com/openai/codex/pull/27509) [2 of 3] Support long pasted text in TUI goals [@etraut-openai](https://github.com/etraut-openai)
-- [#27109](https://github.com/openai/codex/pull/27109) Add Guardian catalog diagnostics metadata [@won-openai](https://github.com/won-openai)
-- [#27966](https://github.com/openai/codex/pull/27966) Specify platform support in AGENTS.md [@anp-oai](https://github.com/anp-oai)
-- [#27855](https://github.com/openai/codex/pull/27855) [codex] parallelize Windows compression [@tamird](https://github.com/tamird)
-- [#27499](https://github.com/openai/codex/pull/27499) Promote TUI unified mentions in composer to default mentions feature [@canvrno-oai](https://github.com/canvrno-oai)
-- [#27972](https://github.com/openai/codex/pull/27972) [codex] Let generic test turns inherit their environment [@pakrym-oai](https://github.com/pakrym-oai)
-- [#27856](https://github.com/openai/codex/pull/27856) [codex] package Windows symbols in parallel [@tamird](https://github.com/tamird)
-- [#27976](https://github.com/openai/codex/pull/27976) [codex] make PathUri::from\_abs\_path infallible [@anp-oai](https://github.com/anp-oai)
-- [#27854](https://github.com/openai/codex/pull/27854) [codex] parallelize Windows package archives [@tamird](https://github.com/tamird)
-- [#27853](https://github.com/openai/codex/pull/27853) [codex] stage npm packages concurrently [@tamird](https://github.com/tamird)
-- [#27710](https://github.com/openai/codex/pull/27710) [codex] add latency tracing spans [@rphilizaire-openai](https://github.com/rphilizaire-openai)
-- [#27510](https://github.com/openai/codex/pull/27510) [3 of 3] Support images in TUI goals [@etraut-openai](https://github.com/etraut-openai)
-- [#27925](https://github.com/openai/codex/pull/27925) feat(tui): reland token activity command [@fcoury-oai](https://github.com/fcoury-oai)
-- [#27988](https://github.com/openai/codex/pull/27988) [codex] Limit app-based plugin suggestions to remote catalogs [@xl-openai](https://github.com/xl-openai)
-- [#27652](https://github.com/openai/codex/pull/27652) [codex] Add auth mode to plugin manager constructor [@felixxia-oai](https://github.com/felixxia-oai)
-- [#27964](https://github.com/openai/codex/pull/27964) [codex] Add hermetic Wine test support [@anp-oai](https://github.com/anp-oai)
-- [#27459](https://github.com/openai/codex/pull/27459) [codex] Gate plugin MCP servers by auth route [@felixxia-oai](https://github.com/felixxia-oai)
-- [#27961](https://github.com/openai/codex/pull/27961) feat(app-server): enforce managed remote control disable [@apanasenko-oai](https://github.com/apanasenko-oai)
-- [#27937](https://github.com/openai/codex/pull/27937) [codex] Add hermetic Wine exec-server test [@anp-oai](https://github.com/anp-oai)
-- [#27996](https://github.com/openai/codex/pull/27996) [codex] Send request-scoped turn state over WebSocket [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#28002](https://github.com/openai/codex/pull/28002) [codex] Send turn state through compact requests [@aibrahim-oai](https://github.com/aibrahim-oai)
-
-[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.140.0)
+- Made Browser use up to 2x faster through CDP and DOM snapshot optimizations
+  that reduce browser round trips.
+- Made command, browser, integration, and source activity summaries easier to
+  understand, and improved how completed chats present files, automations, and
+  other durable output.
+- Improved plugin management by including workspace plugins, refreshing plugin
+  state more reliably after installation or removal, and letting you upload a
+  new version of an already-shared plugin without changing its access.
+- Improved usage-limit errors with inline plan and workspace guidance,
+  including reset timing when available.
+- Added `Cmd`+`Enter` and `Ctrl`+`Enter` as
+  shortcuts for submitting custom approval feedback.
+- Fixed Browser use download handling and improved Developer mode recovery and
+  diagnostics.
+- Fixed scheduled automations so they honor the selected approval mode, and
+  fixed manual project ordering, Browser tab dragging, MCP app sizing after
+  right-pane transitions, and clickable ChatGPT thread mentions.
+- Fixed issues affecting background agent tab restoration, commit and pull
+  request message generation, sidebar pull request status updates, Codex Mobile
+  QR pairing, remote-control MFA, remote SSH installation and connection,
+  updater prompts, and overlay positioning at non-default zoom levels.
+- Additional performance improvements and bug fixes.
 
