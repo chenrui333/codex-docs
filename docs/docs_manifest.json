@@ -4343,10 +4343,10 @@
         "codex-cli 0.142.4",
         "codex-cli 0.142.5"
       ],
-      "sha256": "5da15e387f0a344ce04c341f2e0694d8e29c965be4a1276652415f4ff012a630",
+      "sha256": "bf42646b4f2b604a738826de558a7af51d1e9c6456e0742db6b1e732efd757a1",
       "source_area": "codex_security",
-      "source_etag": "W/\"5bc028b8af8bbe57bfa380e039e5567f\"",
-      "source_last_modified": "2026-07-06T23:01:47Z",
+      "source_etag": "W/\"3255cccea16c2c50012e86f76efa0898\"",
+      "source_last_modified": "2026-07-07T07:35:03Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
