@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_sdk'
 source_url: 'https://developers.openai.com/codex/sdk'
-source_last_modified: '2026-06-09T17:53:49Z'
-source_etag: 'W/"a71cb851c75c9d6dbd5156a85704ff46"'
+source_last_modified: '2026-07-06T23:05:07Z'
+source_etag: 'W/"8ccc58eaf0b1b07042e0d79eb6937cf3"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5"]
 ---
@@ -20,6 +20,8 @@ Use the SDK when you need to:
 - Create your own agent that can engage with Codex to perform complex engineering tasks
 - Build Codex into your own internal tools and workflows
 - Integrate Codex within your own application
+
+Use the Codex SDK for coding-focused Codex threads. If Codex is one specialist inside a broader orchestrated workflow, [run Codex CLI as an MCP server and orchestrate it with the Agents SDK](/codex/guides/agents-sdk).
 
 ## TypeScript library
 
