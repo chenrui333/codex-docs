@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_root'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/AGENTS.md'
-source_etag: 'W/"2f1995cb302290926d6a4401a207c4fe69c1ba5720b289f5340c1e9723ffad32"'
+source_etag: 'W/"d0c866faec7f14c355c017a5c9c0da37e490210cc095f71e76b4f64e2f978bb1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0"]
 ---
@@ -262,7 +262,7 @@ Use `just bench-smoke` to dry-run the benchmark for a single iteration to ensure
 
 - Tests should exercise app-server's public JSON-RPC API.
 - Use similar server mocking as for core integration tests.
-- Use `TestAppServer::new_with_auto_env()` and `TestAppServer::send_thread_start_request_with_auto_env()`
+- Use `TestAppServer::builder().build()` and `TestAppServer::send_thread_start_request_with_auto_env()`
   by default to ensure that new tests work with foreign app/exec OSes. See `$remote-tests` for
   details.
 
