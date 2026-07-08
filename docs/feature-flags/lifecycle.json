@@ -32,11 +32,6 @@
     },
     {
       "enabled": true,
-      "key": "auto_compaction",
-      "stage": "stable"
-    },
-    {
-      "enabled": true,
       "key": "browser_use",
       "stage": "stable"
     },
@@ -62,6 +57,11 @@
     },
     {
       "enabled": false,
+      "key": "code_mode_host",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "code_mode_only",
       "stage": "under development"
     },
@@ -79,6 +79,11 @@
       "enabled": true,
       "key": "computer_use",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "concurrent_reasoning_summaries",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -271,9 +276,9 @@
       "stage": "removed"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "remote_plugin",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -349,11 +354,6 @@
       "enabled": true,
       "key": "skill_mcp_dependency_install",
       "stage": "stable"
-    },
-    {
-      "enabled": false,
-      "key": "sleep_tool",
-      "stage": "under development"
     },
     {
       "enabled": true,
@@ -466,7 +466,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.142.5",
+  "codex_cli_version": "codex-cli 0.143.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -474,11 +474,12 @@
       "apps_mcp_path_override",
       "artifact",
       "auth_elicitation",
-      "auto_compaction",
       "chronicle",
       "code_mode",
+      "code_mode_host",
       "code_mode_only",
       "collaboration_modes",
+      "concurrent_reasoning_summaries",
       "current_time_reminder",
       "default_mode_request_user_input",
       "deferred_executor",
@@ -518,7 +519,6 @@
       "secret_auth_storage",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
-      "sleep_tool",
       "sqlite",
       "standalone_web_search",
       "steer",
@@ -592,8 +592,8 @@
       "stage_from_source": "under development"
     },
     "auth_elicitation": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "browser_use": {
       "default_enabled_expr": "true",
@@ -945,8 +945,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "9f81c0d4d30d420f9329d3edaff6b743e3283e5bbf858f1f8d05db801cdad092",
-    "features_rs_sha256": "b02c4dad1ae246465673d4ea7135ab573eeab1eae590970671eae27b4b39e79c"
+    "client_rs_sha256": "aa80799729b58d6d2303086a7e30f2c1d167bc23c28216430cd1f478bd64c52c",
+    "features_rs_sha256": "fd7ff021ca80e43a4f8c90f2550af36ea1c57a588c661deb38b9a109685c4f52"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
