@@ -2,10 +2,10 @@
 source_type: 'developers'
 source_area: 'codex_security'
 source_url: 'https://developers.openai.com/codex/security/plugin/scans'
-source_last_modified: '2026-06-18T22:38:50Z'
-source_etag: 'W/"a71cec3c3b2ca017a785e78e8505bf14"'
-codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5"]
-codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5"]
+source_last_modified: '2026-07-08T02:05:35Z'
+source_etag: 'W/"d25a9e892ee31050b170c132d0d97985"'
+codex_cli_versions: ["0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0"]
+codex_cli_versions_raw: ["codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0"]
 ---
 
 # Run a Codex Security scan | OpenAI Developers
@@ -48,10 +48,15 @@ For a large monorepo, start with one meaningful product or service boundary.
    specific area to prioritize.
 5. Select **Start scan**.
 
-Repository-specific guidance in `AGENTS.md` can also establish the product
-surfaces, trust boundaries, supported validation commands, and out-of-scope
-areas. Prefer concrete repository context over a generic planning step before
-the scan.
+For persistent repository security guidance, add a `SECURITY.md` at the
+repository root. Use it to describe the threat model, security invariants,
+reportable finding criteria, exclusions, and severity context. For
+directory-specific guidance, add nested `SECURITY.md` files. When policies
+conflict, the file closest to the code takes precedence. Codex Security treats
+this content as policy context, not executable instructions.
+
+Use `AGENTS.md` for supported build and validation commands and other
+repository-specific instructions.
 
 ## Let the phases complete
 
