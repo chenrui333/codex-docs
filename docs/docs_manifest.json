@@ -4517,10 +4517,10 @@
         "codex-cli 0.142.5",
         "codex-cli 0.143.0"
       ],
-      "sha256": "80888cfe0c324a30b9cf793e92834b0e69d1429b201a9cd6e3ec311b87953c2a",
+      "sha256": "309d163a52ce3238d9b38c08faec94c5629eff7860de9f4273d100f5cd7df062",
       "source_area": "codex_security",
-      "source_etag": "W/\"b591c5f49f67047de63a6d4e6b5d1be2\"",
-      "source_last_modified": "2026-07-08T04:49:38Z",
+      "source_etag": "W/\"bb48da72c60a906f57abbcf59d202676\"",
+      "source_last_modified": "2026-07-09T07:58:28Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/codex/security/setup"
     },
