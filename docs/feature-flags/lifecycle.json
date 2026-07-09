@@ -616,8 +616,8 @@
       "stage_from_source": "under development"
     },
     "code_mode_host": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "code_mode_only": {
       "default_enabled_expr": "false",
@@ -702,10 +702,6 @@
     "image_generation": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
-    },
-    "imagegenext": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
     },
     "in_app_browser": {
       "default_enabled_expr": "true",
@@ -945,8 +941,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "aa80799729b58d6d2303086a7e30f2c1d167bc23c28216430cd1f478bd64c52c",
-    "features_rs_sha256": "fd7ff021ca80e43a4f8c90f2550af36ea1c57a588c661deb38b9a109685c4f52"
+    "client_rs_sha256": "7ba8d278ccabae4c427ce15516c1ad24478904e8689e181dc77225dfda73dd06",
+    "features_rs_sha256": "67438e073ef25f02ed2b526e79e4034092345d323dc13bd1dec0100ae47a628b"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
