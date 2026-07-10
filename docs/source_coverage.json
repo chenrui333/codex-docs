@@ -80,8 +80,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.144.0",
-    "version_raw": "codex-cli 0.144.0"
+    "version": "0.144.1",
+    "version_raw": "codex-cli 0.144.1"
   },
   "developers": {
     "codex_related_urls": [
@@ -136,10 +136,7 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [
-      "https://developers.openai.com/showcase/codex-pet-arena",
-      "https://developers.openai.com/showcase/phantasy-codex-adventure"
-    ],
+    "new_codex_related_urls_since_last_run": [],
     "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
@@ -242,7 +239,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-07-09T19:48:10+00:00",
+  "generated_at": "2026-07-10T03:29:05+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
