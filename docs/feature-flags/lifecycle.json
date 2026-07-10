@@ -26,9 +26,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "auth_elicitation",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -56,9 +56,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "code_mode_host",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -164,11 +164,6 @@
       "enabled": true,
       "key": "image_generation",
       "stage": "stable"
-    },
-    {
-      "enabled": false,
-      "key": "imagegenext",
-      "stage": "under development"
     },
     {
       "enabled": true,
@@ -466,19 +461,25 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.143.0",
+  "codex_cli_version": "codex-cli 0.144.1",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
       "apply_patch_streaming_events",
+      "apps",
       "apps_mcp_path_override",
       "artifact",
       "auth_elicitation",
+      "browser_use",
+      "browser_use_external",
+      "browser_use_full_cdp_access",
       "chronicle",
       "code_mode",
       "code_mode_host",
       "code_mode_only",
+      "codex_git_commit",
       "collaboration_modes",
+      "computer_use",
       "concurrent_reasoning_summaries",
       "current_time_reminder",
       "default_mode_request_user_input",
@@ -486,22 +487,33 @@
       "elevated_windows_sandbox",
       "enable_fanout",
       "enable_mcp_apps",
+      "enable_request_compression",
       "exec_permission_approvals",
       "experimental_windows_sandbox",
       "external_migration",
+      "fast_mode",
       "goals",
+      "guardian_approval",
+      "hooks",
       "image_detail_original",
       "image_generation",
-      "imagegenext",
+      "in_app_browser",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
       "local_thread_store_compression",
+      "memories",
       "mentions_v2",
+      "multi_agent",
       "multi_agent_mode",
       "multi_agent_v2",
+      "network_proxy",
       "non_prefixed_mcp_tool_names",
+      "personality",
       "plugin_hooks",
+      "plugin_sharing",
+      "plugins",
+      "prevent_idle_sleep",
       "realtime_conversation",
       "remote_compaction_v2",
       "remote_control",
@@ -517,8 +529,11 @@
       "runtime_metrics",
       "search_tool",
       "secret_auth_storage",
+      "shell_snapshot",
+      "shell_tool",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
+      "skill_mcp_dependency_install",
       "sqlite",
       "standalone_web_search",
       "steer",
@@ -531,45 +546,20 @@
       "tool_suggest",
       "tui_app_server",
       "unavailable_dummy_tools",
+      "undo",
+      "unified_exec",
       "unified_exec_zsh_fork",
       "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
+      "web_search_cached",
+      "web_search_request",
+      "workspace_dependencies",
       "workspace_owner_usage_nudge"
     ],
-    "stale_in_docs": [
-      "web_search"
-    ]
+    "stale_in_docs": []
   },
-  "docs_feature_keys": [
-    "apps",
-    "browser_use",
-    "browser_use_external",
-    "browser_use_full_cdp_access",
-    "codex_git_commit",
-    "computer_use",
-    "enable_request_compression",
-    "fast_mode",
-    "guardian_approval",
-    "hooks",
-    "in_app_browser",
-    "memories",
-    "multi_agent",
-    "network_proxy",
-    "personality",
-    "plugin_sharing",
-    "plugins",
-    "prevent_idle_sleep",
-    "shell_snapshot",
-    "shell_tool",
-    "skill_mcp_dependency_install",
-    "undo",
-    "unified_exec",
-    "web_search",
-    "web_search_cached",
-    "web_search_request",
-    "workspace_dependencies"
-  ],
+  "docs_feature_keys": [],
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -725,7 +715,7 @@
     },
     "memories": {
       "default_enabled_expr": "false",
-      "stage_from_source": "experimental"
+      "stage_from_source": "stable"
     },
     "mentions_v2": {
       "default_enabled_expr": "true",
@@ -942,7 +932,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "7ba8d278ccabae4c427ce15516c1ad24478904e8689e181dc77225dfda73dd06",
-    "features_rs_sha256": "67438e073ef25f02ed2b526e79e4034092345d323dc13bd1dec0100ae47a628b"
+    "features_rs_sha256": "816cbe8d778b9bb99e7794b45f865e390f22761e642d4965c0d0a298a903c863"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
