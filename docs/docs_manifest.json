@@ -705,10 +705,10 @@
         "codex-cli 0.144.0",
         "codex-cli 0.144.1"
       ],
-      "sha256": "d9ddea59d918f65b5b0e494653e634e5de11f4744cf8bf399173b8b1f47c9170",
+      "sha256": "a9d4a8c6fcfced01db39107d85bb79910d61eccae508f0c3c4159396c4b1ef9f",
       "source_area": "cookbook",
-      "source_etag": "W/\"72580814ba9d4125035bb304b43cca6d\"",
-      "source_last_modified": "2026-05-14T07:08:25Z",
+      "source_etag": "W/\"ce1ca557dd14fa86bd2495f9e0efd275\"",
+      "source_last_modified": "2026-07-11T06:15:26Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },
@@ -2556,9 +2556,9 @@
         "codex-cli 0.144.0",
         "codex-cli 0.144.1"
       ],
-      "sha256": "1fa95d98316600200a1a2e5f965120247cfeb6f2b98ce1450c2c366949f83878",
+      "sha256": "f713dffe9292eadda2504898368baa405ca494859adc4dd1113ec3985269b44e",
       "source_area": "github_rust",
-      "source_etag": "W/\"cd2985bdf6cc7ad38e875eed0d1f108cae6851563b87c99073213e96eaf37d8d\"",
+      "source_etag": "W/\"b0bd83f283ccfb6aae247b8d2af236f3d717c235085c4f711b9c839393decc78\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/config.md"
     },
