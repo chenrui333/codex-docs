@@ -705,10 +705,10 @@
         "codex-cli 0.144.0",
         "codex-cli 0.144.1"
       ],
-      "sha256": "a9d4a8c6fcfced01db39107d85bb79910d61eccae508f0c3c4159396c4b1ef9f",
+      "sha256": "bc412d0fc67b64014f8c7dfeffb39a960863cf66a9be84cd0029cc698948804c",
       "source_area": "cookbook",
-      "source_etag": "W/\"ce1ca557dd14fa86bd2495f9e0efd275\"",
-      "source_last_modified": "2026-07-11T06:15:26Z",
+      "source_etag": "W/\"a9d799d316fdbdab47c51e1931e97281\"",
+      "source_last_modified": "2026-07-12T06:17:24Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },

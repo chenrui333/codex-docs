@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-07-11T07:58:13+00:00",
+  "generated_at": "2026-07-12T08:19:56+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,7 +13,6 @@
   },
   "total_files": 90,
   "updated": [
-    "developers.openai.com/cookbook/topic/codex/index.md",
-    "github.openai.com/openai/codex/codex-rs/config.md"
+    "developers.openai.com/cookbook/topic/codex/index.md"
   ]
 }
