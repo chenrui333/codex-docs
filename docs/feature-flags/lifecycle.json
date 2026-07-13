@@ -461,7 +461,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.144.1",
+  "codex_cli_version": "codex-cli 0.144.3",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -841,6 +841,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "skill_search": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "sqlite": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -932,7 +936,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "368589e73397075863ce98399c15878e9ec7117a639fc67ad690ef33cc03faf8",
-    "features_rs_sha256": "816cbe8d778b9bb99e7794b45f865e390f22761e642d4965c0d0a298a903c863"
+    "features_rs_sha256": "237487a84f7856588e97bc6dae01a7da69539542cbd4499df295d62a75741796"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
