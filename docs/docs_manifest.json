@@ -625,10 +625,10 @@
         "codex-cli 0.144.3",
         "codex-cli 0.144.4"
       ],
-      "sha256": "1098a74ed1bba1d1c399525ada858b87aa43b2d874115eb3fe5d4b20b79b49c8",
+      "sha256": "eccae75af3de71e41e2d4d3f530f8ab221b89e5339e6701656e4e84bb23f8878",
       "source_area": "cookbook",
-      "source_etag": "W/\"e616293ef80fb89eca87912f1200fa7a\"",
-      "source_last_modified": "2026-05-14T07:08:24Z",
+      "source_etag": "W/\"03da83b5c92e1ff35ed196459eea2bb5\"",
+      "source_last_modified": "2026-07-14T18:17:46Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex"
     },

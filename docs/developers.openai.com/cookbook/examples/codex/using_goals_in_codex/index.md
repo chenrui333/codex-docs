@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex'
-source_last_modified: '2026-05-14T07:08:24Z'
-source_etag: 'W/"e616293ef80fb89eca87912f1200fa7a"'
+source_last_modified: '2026-07-14T18:17:46Z'
+source_etag: 'W/"03da83b5c92e1ff35ed196459eea2bb5"'
 codex_cli_versions: ["0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4"]
 codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4"]
 ---
@@ -110,7 +110,7 @@ That makes Goals most useful when the correct next action depends on what Codex 
 /goal Reduce p95 checkout latency below 120 ms on the checkout benchmark while keeping the correctness suite green
 ```
 
-This is not just a request to improve performance. It gives Codex a measurable outcome, a verification surface, and a constraint. Codex can run the benchmark, inspect the hot path, make a targeted change, rerun the benchmark, run the correctness suite, and continue if the result is still not good enough.
+This request asks for more than better performance. It gives Codex a measurable outcome, a verification surface, and a constraint. Codex can run the benchmark, inspect the hot path, make a targeted change, rerun the benchmark, run the correctness suite, and continue if the result is still not good enough.
 
 The practical mental model is simple:
 
@@ -157,7 +157,7 @@ For research and investigation, the same principle applies. Define the evidence 
 /goal Produce the strongest evidence-backed reproduction of the paper using the available materials and local resources. Attempt the headline results where feasible, verify outputs where possible, and end with a report that separates confirmed findings, approximate reconstructions, blocked claims, and remaining uncertainty.
 ```
 
-That kind of Goal gives Codex room to investigate while keeping the final result honest. It does not just say “keep going.” It says what “done,” “blocked,” and “still uncertain” actually mean.
+That kind of Goal gives Codex room to investigate while keeping the final result honest. It goes beyond “keep going” by defining what “done,” “blocked,” and “still uncertain” mean.
 
 When the task is clear but the Goal is not, Codex can help write the Goal itself. A simple two-step workflow works well: first, describe the work in plain language and ask Codex to turn it into a draft Goal; second, review that draft and tighten the success condition, verification surface, constraints, and blocked stop condition before activating it.
 
@@ -310,7 +310,7 @@ Status: Close approximate reproduction.
 Remaining uncertainty: Original training paths, seeds, and checkpoints are unavailable.
 ```
 
-That is the demo value of Goals in research. They let Codex keep working through ambiguity while preventing a plausible artifact from becoming an overclaimed conclusion. The Goal does not just ask Codex to finish. It defines what finished means: a claim-by-claim audit grounded in evidence, explicit about approximations, and honest about the boundary between reproduction and replay.
+That is the demo value of Goals in research. They let Codex keep working through ambiguity while preventing a plausible artifact from becoming an overclaimed conclusion. The Goal defines what finished means: a claim-by-claim audit grounded in evidence, explicit about approximations, and honest about the boundary between reproduction and replay.
 
 ![p6.png](/cookbook/assets/notebook-attachments/examples/codex/using_goals_in_codex/60eac88a-11d6-4649-babe-873d0bfe88b7.png)
 
