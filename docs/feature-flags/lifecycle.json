@@ -661,6 +661,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "executor_capability_discovery": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "experimental_windows_sandbox": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -940,7 +944,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "4dfe7677643de7b4afc9b3244abb5e2e44d0a6abf700160adcc3712b99e2813c",
-    "features_rs_sha256": "a4c18d5ff2cc3d88c6c39c0f4172df760e6c13572dc0ff4c62d81b237c86cded"
+    "features_rs_sha256": "8d3aaa0924d510d514f7428ed4a20cbd941a66897f436381362cd7101d77ec45"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
