@@ -467,10 +467,10 @@
         "codex-cli 0.144.5",
         "codex-cli 0.144.6"
       ],
-      "sha256": "d21fc40f57bcd290cfa8faf3b8e0353cbfc00be8faa550ca28d8934aad5797dd",
+      "sha256": "334f7e25c87fb329d7e7ee00a04c88dbb626f30f8ad569f05fdbc970f583284d",
       "source_area": "cookbook",
-      "source_etag": "W/\"c77baeb2f8180ce654f72fbb89671186\"",
-      "source_last_modified": "2026-04-25T07:01:12Z",
+      "source_etag": "W/\"1b4ad19e9d551f57d1ba8df6e56ff1c6\"",
+      "source_last_modified": "2026-07-20T19:44:44Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk"
     },

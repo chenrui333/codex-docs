@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk'
-source_last_modified: '2026-04-25T07:01:12Z'
-source_etag: 'W/"c77baeb2f8180ce654f72fbb89671186"'
+source_last_modified: '2026-07-20T19:44:44Z'
+source_etag: 'W/"1b4ad19e9d551f57d1ba8df6e56ff1c6"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6"]
 ---
@@ -12,7 +12,7 @@ codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.
 
 Source: https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk
 
-### Ensuring Repeatable, Traceable, and Scaleable Agentic Development
+### Ensuring Repeatable, Traceable, and Scalable Agentic Development
 
 ## Introduction
 
@@ -186,13 +186,13 @@ For larger workflows, we introduce a team of agents:
 - **Backend Developer**: Implements APIs and logic.
 - **Tester**: Validates outputs against acceptance criteria.
 
-In this example, we intentionally have the Project Manager agent enforce gating logic between each of the specialized downstream agents. This ensures that artifacts exist before handoffs are made. This mirrors real world enterprise workflows such as JIRA task orchestration, long-chained rollouts, and QA sign-offs.
+In this example, we intentionally have the Project Manager agent enforce gating logic between each of the specialized downstream agents. This ensures that artifacts exist before handoffs are made. This mirrors real-world enterprise workflows such as JIRA task orchestration, long-chained rollouts, and QA sign-offs.
 
 ![Multi-Agent Codex Workflow with Codex MCP](/cookbook/assets/images/multi_agent_codex_workflow.png)
 
 *Multi-agent orchestration with Codex MCP and gated handoffs producing artifacts.*
 
-In this structure, each of our agents serve a specialized purpose. The Project Manager is overall responsible for coordinating across all other agents and ensuring the overall task is complete.
+In this structure, each of our agents serves a specialized purpose. The Project Manager is overall responsible for coordinating across all other agents and ensuring the overall task is complete.
 
 ## Define the Codex CLI MCP Server
 
@@ -215,7 +215,7 @@ async def main() -> None:
 
 ## Define each specialized agent
 
-Below we define each of our specialized agents and provide access to our Codex MCP server. Notice that we are also passing the `RECOMMMENDED_PROMPT_PREFIX` to each agent that helps the system optimize for handoffs between agents.
+Below we define each of our specialized agents and provide access to our Codex MCP server. Notice that we are also passing the `RECOMMENDED_PROMPT_PREFIX` to each agent that helps the system optimize for handoffs between agents.
 
 ```
 # Downstream agents are defined first for clarity, then PM references them in handoffs.
@@ -388,7 +388,7 @@ Constraints:
 """
 ```
 
-Next, run your system, sit back, and you’ll see the agents go to work and create a game in a few minutes! We’ve included the fully executable code below. Once it’s finished, you’ll notice the creation of the following files directory. Note that this multi-agent orchestration usually took about 11 mintues to fully complete.
+Next, run your system, sit back, and you’ll see the agents go to work and create a game in a few minutes! We’ve included the fully executable code below. Once it’s finished, you’ll notice the creation of the following files directory. Note that this multi-agent orchestration usually took about 11 minutes to fully complete.
 
 ```
 root_directory/
