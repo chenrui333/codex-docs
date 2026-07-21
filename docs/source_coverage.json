@@ -3,9 +3,9 @@
     "counts": {
       "by_category": {
         "system_prompt_snapshot": 1,
-        "system_skill": 5
+        "system_skill": 6
       },
-      "total": 6
+      "total": 7
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -18,7 +18,7 @@
     "counts": {
       "prompt_snapshot_paths": 1,
       "source_errors": 0,
-      "system_skill_paths": 50
+      "system_skill_paths": 54
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
     "prompt_snapshot_command": "codex debug prompt-input",
@@ -50,8 +50,10 @@
       "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
       "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
+      "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-5p6-sol.md",
       "dot_codex/skills/dot_system/openai-docs/scripts/fetch-codex-manual.mjs",
-      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.js",
+      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info",
+      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.cjs",
       "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
       "dot_codex/skills/dot_system/plugin-creator/agents/openai.yaml",
       "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator-small.svg",
@@ -62,6 +64,8 @@
       "dot_codex/skills/dot_system/plugin-creator/scripts/read_marketplace_name.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/update_plugin_cachebuster.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py",
+      "dot_codex/skills/dot_system/review-agent/SKILL.md",
+      "dot_codex/skills/dot_system/review-agent/agents/openai.yaml",
       "dot_codex/skills/dot_system/skill-creator/SKILL.md",
       "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml",
       "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg",
@@ -80,14 +84,15 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.144.6",
-    "version_raw": "codex-cli 0.144.6"
+    "version": "0.145.0",
+    "version_raw": "codex-cli 0.145.0"
   },
   "developers": {
     "codex_related_urls": [
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
+      "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
       "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
       "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
@@ -113,13 +118,13 @@
       "https://developers.openai.com/showcase/phantasy-codex-adventure"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 13,
-      "codex_related_urls": 26,
+      "classified_skipped_codex_related_urls": 14,
+      "codex_related_urls": 27,
       "mirrored_urls": 12,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 14,
+      "skipped_codex_related_urls": 15,
       "unclassified_skipped_codex_related_urls": 1
     },
     "mirrored_urls": [
@@ -136,7 +141,9 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/blog/custom-code-review-rules-for-codex"
+    ],
     "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
@@ -147,7 +154,7 @@
     ],
     "skipped_codex_related_url_counts_by_classification": {
       "blog_index": 1,
-      "blog_post": 6,
+      "blog_post": 7,
       "community_page": 2,
       "learn_index": 1,
       "showcase_page": 3
@@ -167,6 +174,11 @@
         "classification": "blog_post",
         "reason": "Blog posts are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/blog/codex-for-documentation-dagster"
+      },
+      {
+        "classification": "blog_post",
+        "reason": "Blog posts are intentionally excluded from the docs mirror.",
+        "url": "https://developers.openai.com/blog/custom-code-review-rules-for-codex"
       },
       {
         "classification": "blog_post",
@@ -223,6 +235,7 @@
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
+      "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
       "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
       "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
@@ -239,7 +252,7 @@
       "https://developers.openai.com/learn/developers-codex-plugin"
     ]
   },
-  "generated_at": "2026-07-18T19:06:19+00:00",
+  "generated_at": "2026-07-21T19:24:34+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -320,7 +333,7 @@
   },
   "system_skills": {
     "counts": {
-      "mirrored_paths_count": 50,
+      "mirrored_paths_count": 54,
       "page_fetch_errors": 0
     },
     "mirrored_paths": [
@@ -345,8 +358,10 @@
       "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
       "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
+      "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-5p6-sol.md",
       "dot_codex/skills/dot_system/openai-docs/scripts/fetch-codex-manual.mjs",
-      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.js",
+      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info",
+      "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.cjs",
       "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
       "dot_codex/skills/dot_system/plugin-creator/agents/openai.yaml",
       "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator-small.svg",
@@ -357,6 +372,8 @@
       "dot_codex/skills/dot_system/plugin-creator/scripts/read_marketplace_name.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/update_plugin_cachebuster.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py",
+      "dot_codex/skills/dot_system/review-agent/SKILL.md",
+      "dot_codex/skills/dot_system/review-agent/agents/openai.yaml",
       "dot_codex/skills/dot_system/skill-creator/SKILL.md",
       "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml",
       "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg",
@@ -375,7 +392,7 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "mirrored_paths_count": 50,
+    "mirrored_paths_count": 54,
     "output_prefix": "dot_codex/skills/dot_system/",
     "page_fetch_errors": [],
     "source_kind": "installed_codex_cli"
