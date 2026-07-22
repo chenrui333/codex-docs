@@ -56,6 +56,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "code_mode_buffered_exec",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "code_mode_host",
       "stage": "stable"
@@ -108,7 +113,7 @@
     {
       "enabled": false,
       "key": "enable_fanout",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -127,8 +132,18 @@
     },
     {
       "enabled": false,
+      "key": "executor_capability_discovery",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "experimental_windows_sandbox",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "external_agent_memory_import",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -193,7 +208,7 @@
     {
       "enabled": false,
       "key": "memories",
-      "stage": "experimental"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -213,7 +228,7 @@
     {
       "enabled": false,
       "key": "multi_agent_v2",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -352,6 +367,11 @@
     },
     {
       "enabled": true,
+      "key": "skill_search",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "sqlite",
       "stage": "removed"
     },
@@ -461,7 +481,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.144.6",
+  "codex_cli_version": "codex-cli 0.145.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -475,6 +495,7 @@
       "browser_use_full_cdp_access",
       "chronicle",
       "code_mode",
+      "code_mode_buffered_exec",
       "code_mode_host",
       "code_mode_only",
       "codex_git_commit",
@@ -489,7 +510,9 @@
       "enable_mcp_apps",
       "enable_request_compression",
       "exec_permission_approvals",
+      "executor_capability_discovery",
       "experimental_windows_sandbox",
+      "external_agent_memory_import",
       "external_migration",
       "fast_mode",
       "goals",
@@ -534,6 +557,7 @@
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
       "skill_mcp_dependency_install",
+      "skill_search",
       "sqlite",
       "standalone_web_search",
       "steer",
@@ -710,8 +734,8 @@
       "stage_from_source": "stable"
     },
     "item_ids": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "removed"
     },
     "js_repl": {
       "default_enabled_expr": "false",
@@ -947,8 +971,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "26c579a37d0f096f03f8771161b967680d0e85bc8a058da417eab30854c381a5",
-    "features_rs_sha256": "7d4c3d693bfffbc5ea76f7d43ec4a7894b3310c657ebe8b3613f8662363095b4"
+    "client_rs_sha256": "9e1e0651988e162c4f83cd90df379e7024b977699cfb2c558cb49a2d635e9725",
+    "features_rs_sha256": "02d6972b1150abaad990705d96d0d090a607602c8e52144695d6a4349abac4ec"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
