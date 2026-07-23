@@ -749,6 +749,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "mcp_2026_07_28": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "memories": {
       "default_enabled_expr": "false",
       "stage_from_source": "stable"
@@ -971,8 +975,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "9e1e0651988e162c4f83cd90df379e7024b977699cfb2c558cb49a2d635e9725",
-    "features_rs_sha256": "02d6972b1150abaad990705d96d0d090a607602c8e52144695d6a4349abac4ec"
+    "client_rs_sha256": "49cead56a5a4d0f390e404a21e5fe91d7b316e0ed4696cf77d89458387d7ae8b",
+    "features_rs_sha256": "c983bb45cc96104585f2971956bf14ee6dee66862b4723789adc70db3dd6d7d5"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
