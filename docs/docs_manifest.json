@@ -2696,9 +2696,9 @@
         "codex-cli 0.144.6",
         "codex-cli 0.145.0"
       ],
-      "sha256": "8dffaba8fc20b137d67917085057a601f5f60da4a407266934e29ca548a8923d",
+      "sha256": "457851cbc8fe6d0991a363139eff82b9917671c56fe1cc8d5b4c471b7aa32a99",
       "source_area": "github_root",
-      "source_etag": "W/\"31b73adf8ee3e46870e0077ab5c926bca70ce78ee9fb384460c068c032254ae8\"",
+      "source_etag": "W/\"4074f496d81d7e5fbb90de8ee7a13cf5fee5fbc179008fe66794850689b7cd53\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/README.md"
     },
