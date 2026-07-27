@@ -741,6 +741,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "in_app_updates": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
     "item_ids": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -984,7 +988,7 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "49cead56a5a4d0f390e404a21e5fe91d7b316e0ed4696cf77d89458387d7ae8b",
-    "features_rs_sha256": "311be8659e879e35c8190366a9d0676da4da478a451b340341016468bdae62c8"
+    "features_rs_sha256": "737c3c3511408a3d9f35bd544359f6a5aeca4777460b9f34f902ccd38ec2a46d"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
