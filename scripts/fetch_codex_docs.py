@@ -733,12 +733,19 @@ def discover_learn_urls(
     previous_discovered: set[str] = set()
     if isinstance(previous_learn, dict):
         previous_discovered = set(previous_learn.get("discovered_urls", []))
+    new_discovered = sorted(set(discovered_sorted) - previous_discovered)
+
+    if new_discovered:
+        LOG.info(
+            "Learn coverage: discovered %d new documentation URLs:\n%s",
+            len(new_discovered),
+            "\n".join(f"- {item}" for item in new_discovered[:30]),
+        )
 
     coverage = {
         "sitemap_index_url": LEARN_SITEMAP_INDEX_URL,
         "sitemap_urls": sitemap_urls,
         "discovered_urls": discovered_sorted,
-        "new_discovered_urls_since_last_run": sorted(set(discovered_sorted) - previous_discovered),
         "sitemap_fetch_errors": sitemap_fetch_errors,
         "counts": {
             "sitemap_urls": len(sitemap_urls),
@@ -1802,6 +1809,10 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
         }
         replacements = tuple(sorted(replacement_items.items(), key=lambda item: len(item[0]), reverse=True))
         prompt_payload = sanitize_prompt_payload(prompt_payload, replacements)
+        if isinstance(prompt_payload, list):
+            for message in prompt_payload:
+                if isinstance(message, dict):
+                    message.pop("id", None)
         prompt_content = json.dumps(prompt_payload, indent=2, ensure_ascii=False) + "\n"
         managed.append(
             ManagedFile(

@@ -1,7 +1,6 @@
 [
   {
     "type": "message",
-    "id": "msg_019fae17-e357-7723-ac38-352845c564b8",
     "role": "developer",
     "content": [
       {
@@ -19,7 +18,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fae17-e357-7723-ac38-3539528f8cab",
     "role": "developer",
     "content": [
       {
@@ -33,7 +31,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fae17-e357-7723-ac38-3549331274bd",
     "role": "developer",
     "content": [
       {
@@ -47,7 +44,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fae17-e357-7723-ac38-355f97997080",
     "role": "user",
     "content": [
       {
@@ -61,7 +57,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fae17-e357-7723-ac38-356639ed350a",
     "role": "user",
     "content": [
       {
