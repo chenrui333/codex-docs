@@ -1,0 +1,299 @@
+scripts/fetch_codex_docs.py
+  s_0fab98a25cdec4::t_745c193a86394b 2105,2154,2160,2196-2226,2265,2271,2296-2311,2413-2418
+  s_0fab98a25cdec4::t_af3056ae0a01c8 2,20,36,47,66,105,323-328,333-334,479-486,511-512
+  s_0fab98a25cdec4::t_3a2609fee6917b 693-751,761-766
+  s_0fab98a25cdec4::t_06ffa6e82ccd21 1140-1221
+  s_725e4c6983ed76::t_e3ad81a958b689 767-769
+AGENTS.md
+  s_0fab98a25cdec4::t_ea761f077d5708 8,27
+README.md
+  s_0fab98a25cdec4::t_ea761f077d5708 9,21,46,58
+docs/codex_capabilities.json
+  s_0fab98a25cdec4::t_c86752a8a21343 489-512,583,587
+docs/docs_manifest.json
+  s_0fab98a25cdec4::t_aacbd68a528bc1 73,4335-5977,5983
+docs/learn.chatgpt.com/docs/administration/index.md
+  s_0fab98a25cdec4::t_7126883578eb1f 1-197
+docs/learn.chatgpt.com/docs/agent-approvals-security/index.md
+  s_0fab98a25cdec4::t_ee6ceb2c7f6286 1-484
+docs/learn.chatgpt.com/docs/agent-configuration/agents-md/index.md
+  s_0fab98a25cdec4::t_740176d632b2ab 1-230
+docs/learn.chatgpt.com/docs/agent-configuration/rules/index.md
+  s_0fab98a25cdec4::t_fbe451d5608cee 1-146
+docs/learn.chatgpt.com/docs/agent-configuration/speed/index.md
+  s_0fab98a25cdec4::t_7b98fee1ccf92b 1-51
+docs/learn.chatgpt.com/docs/agent-configuration/subagents/index.md
+  s_0fab98a25cdec4::t_76bd982dc1f899 1-539
+docs/learn.chatgpt.com/docs/amazon-bedrock/index.md
+  s_0fab98a25cdec4::t_819bb8cc59768f 1-632
+docs/learn.chatgpt.com/docs/app-server/index.md
+  s_0fab98a25cdec4::t_d0d1513a2a41a8 1-2184
+docs/learn.chatgpt.com/docs/app/index.md
+  s_0fab98a25cdec4::t_ecbbde380ab64a 1-56
+docs/learn.chatgpt.com/docs/appshots/index.md
+  s_0fab98a25cdec4::t_df1bc53672756a 1-98
+docs/learn.chatgpt.com/docs/artifacts-viewer/index.md
+  s_0fab98a25cdec4::t_849ffbf769cb66 1-125
+docs/learn.chatgpt.com/docs/auth/index.md
+  s_0fab98a25cdec4::t_8ab1c8503140d7 1-394
+docs/learn.chatgpt.com/docs/automations/index.md
+  s_0fab98a25cdec4::t_91901a7446418e 1-368
+docs/learn.chatgpt.com/docs/browser/index.md
+  s_0fab98a25cdec4::t_c573ead21669f3 1-275
+docs/learn.chatgpt.com/docs/build-plugins/index.md
+  s_0fab98a25cdec4::t_0edd58e14cb69c 1-137
+docs/learn.chatgpt.com/docs/build-skills/index.md
+  s_0fab98a25cdec4::t_b0f6be5558a78e 1-241
+docs/learn.chatgpt.com/docs/changelog/index.md
+  s_0fab98a25cdec4::t_24092439fdf47d 1-396
+docs/learn.chatgpt.com/docs/chrome-extension/index.md
+  s_0fab98a25cdec4::t_827943458cf9d1 1-216
+docs/learn.chatgpt.com/docs/cli-customization/index.md
+  s_0fab98a25cdec4::t_c2638808e11279 1-59
+docs/learn.chatgpt.com/docs/cloud/index.md
+  s_0fab98a25cdec4::t_fb1d21b7106597 1-82
+docs/learn.chatgpt.com/docs/cloud/internet-access/index.md
+  s_0fab98a25cdec4::t_4cf94cdcb84c59 1-154
+docs/learn.chatgpt.com/docs/code-review/index.md
+  s_0fab98a25cdec4::t_342ca9bee58d0f 1-238
+docs/learn.chatgpt.com/docs/codex-sdk/index.md
+  s_0fab98a25cdec4::t_d816757672ce6d 1-115
+docs/learn.chatgpt.com/docs/codex/cli/index.md
+  s_0fab98a25cdec4::t_afeb6ec5785357 1-153
+docs/learn.chatgpt.com/docs/codex/ide/index.md
+  s_0fab98a25cdec4::t_de6a911cc13c51 1-83
+docs/learn.chatgpt.com/docs/computer-use/index.md
+  s_0fab98a25cdec4::t_f66644bacab189 1-241
+docs/learn.chatgpt.com/docs/config-file/config-advanced/index.md
+  s_0fab98a25cdec4::t_08cc63db9078a1 1-637
+docs/learn.chatgpt.com/docs/config-file/config-basic/index.md
+  s_0fab98a25cdec4::t_996e5e281ecc46 1-212
+docs/learn.chatgpt.com/docs/config-file/config-reference/index.md
+  s_0fab98a25cdec4::t_456aea3ee33c34 1-2279
+docs/learn.chatgpt.com/docs/config-file/config-sample/index.md
+  s_0fab98a25cdec4::t_e254ec2dec270c 1-1148
+docs/learn.chatgpt.com/docs/config-file/environment-variables/index.md
+  s_0fab98a25cdec4::t_1b9503430fb8f2 1-94
+docs/learn.chatgpt.com/docs/configuration/index.md
+  s_0fab98a25cdec4::t_2fa841a72bc14d 1-174
+docs/learn.chatgpt.com/docs/custom-prompts/index.md
+  s_0fab98a25cdec4::t_394124911e5d29 1-73
+docs/learn.chatgpt.com/docs/customization/chronicle/index.md
+  s_0fab98a25cdec4::t_e4acd16047adb8 1-190
+docs/learn.chatgpt.com/docs/customization/memories/index.md
+  s_0fab98a25cdec4::t_15bbe36bac8fb6 1-159
+docs/learn.chatgpt.com/docs/customization/overview/index.md
+  s_0fab98a25cdec4::t_8d28fcc3bfbfce 1-194
+docs/learn.chatgpt.com/docs/cyber-safety/index.md
+  s_0fab98a25cdec4::t_f8093f6299cd6b 1-53
+docs/learn.chatgpt.com/docs/developers/index.md
+  s_0fab98a25cdec4::t_2fb2d8b98e8c4c 1-199
+docs/learn.chatgpt.com/docs/enterprise/access-tokens/index.md
+  s_0fab98a25cdec4::t_a0e8581394b349 1-203
+docs/learn.chatgpt.com/docs/enterprise/admin-setup/index.md
+  s_0fab98a25cdec4::t_a22a6611cea82a 1-242
+docs/learn.chatgpt.com/docs/enterprise/analytics-api/index.md
+  s_0fab98a25cdec4::t_9c10d39ecadc2d 1-51
+docs/learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md
+  s_0fab98a25cdec4::t_3e215bbcbdc019 1-128
+docs/learn.chatgpt.com/docs/enterprise/compliance-api/index.md
+  s_0fab98a25cdec4::t_87a16347549b2c 1-76
+docs/learn.chatgpt.com/docs/enterprise/governance/index.md
+  s_0fab98a25cdec4::t_7f9432d2ac393b 1-120
+docs/learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md
+  s_0fab98a25cdec4::t_66226c8036b974 1-64
+docs/learn.chatgpt.com/docs/enterprise/managed-configuration/index.md
+  s_0fab98a25cdec4::t_9f83256ab23fd7 1-670
+docs/learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md
+  s_0fab98a25cdec4::t_6e8297995a953d 1-85
+docs/learn.chatgpt.com/docs/enterprise/skills/index.md
+  s_0fab98a25cdec4::t_af9f048923baa7 1-65
+docs/learn.chatgpt.com/docs/enterprise/usage-limits/index.md
+  s_0fab98a25cdec4::t_01c98af5d32415 1-48
+docs/learn.chatgpt.com/docs/enterprise/windows-deployment/index.md
+  s_0fab98a25cdec4::t_49e28d35013e49 1-82
+docs/learn.chatgpt.com/docs/enterprise/work-admin-faq/index.md
+  s_0fab98a25cdec4::t_88c3ac1f797ac1 1-448
+docs/learn.chatgpt.com/docs/enterprise/workspace-analytics/index.md
+  s_0fab98a25cdec4::t_92c6ed058403d8 1-68
+docs/learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md
+  s_0fab98a25cdec4::t_3c40c40988b807 1-71
+docs/learn.chatgpt.com/docs/environments/cloud-environment/index.md
+  s_0fab98a25cdec4::t_109b0c3c80341b 1-98
+docs/learn.chatgpt.com/docs/environments/git-worktrees/index.md
+  s_0fab98a25cdec4::t_fd79e07f84cac5 1-211
+docs/learn.chatgpt.com/docs/environments/local-environment/index.md
+  s_0fab98a25cdec4::t_7598644949e067 1-84
+docs/learn.chatgpt.com/docs/environments/modes/index.md
+  s_0fab98a25cdec4::t_3c2e6d929e2044 1-33
+docs/learn.chatgpt.com/docs/extend/mcp/index.md
+  s_0fab98a25cdec4::t_2514b4975311a5 1-274
+docs/learn.chatgpt.com/docs/extend/record-and-replay/index.md
+  s_0fab98a25cdec4::t_25055eb636b5b6 1-95
+docs/learn.chatgpt.com/docs/feature-maturity/index.md
+  s_0fab98a25cdec4::t_f78da9f3fe58ea 1-23
+docs/learn.chatgpt.com/docs/features/codex-micro/index.md
+  s_0fab98a25cdec4::t_81e2614f57df84 1-198
+docs/learn.chatgpt.com/docs/features/index.md
+  s_0fab98a25cdec4::t_c32206d4854aa4 1-192
+docs/learn.chatgpt.com/docs/features/voice/index.md
+  s_0fab98a25cdec4::t_e17db5e4f8656c 1-97
+docs/learn.chatgpt.com/docs/get-started-with-work/index.md
+  s_0fab98a25cdec4::t_2354eede8a2daa 1-200
+docs/learn.chatgpt.com/docs/github-action/index.md
+  s_0fab98a25cdec4::t_a183ed60ea0855 1-131
+docs/learn.chatgpt.com/docs/glossary/index.md
+  s_0fab98a25cdec4::t_ebb5926f6fc043 1-803
+docs/learn.chatgpt.com/docs/hooks/index.md
+  s_0fab98a25cdec4::t_151d298f02de11 1-951
+docs/learn.chatgpt.com/docs/image-generation/index.md
+  s_0fab98a25cdec4::t_9157d3b95a1b6f 1-214
+docs/learn.chatgpt.com/docs/image-inputs/index.md
+  s_0fab98a25cdec4::t_fe29456f98647f 1-75
+docs/learn.chatgpt.com/docs/import/index.md
+  s_0fab98a25cdec4::t_c58de258a36cbb 1-98
+docs/learn.chatgpt.com/docs/index.md
+  s_0fab98a25cdec4::t_97ab5e93ddbe8c 1-92
+docs/learn.chatgpt.com/docs/integrated-terminal/index.md
+  s_0fab98a25cdec4::t_229f68231ba847 1-49
+docs/learn.chatgpt.com/docs/long-running-work/index.md
+  s_0fab98a25cdec4::t_70db7e92be8896 1-201
+docs/learn.chatgpt.com/docs/mcp-server/index.md
+  s_0fab98a25cdec4::t_6b89bb2546096e 1-121
+docs/learn.chatgpt.com/docs/models/index.md
+  s_0fab98a25cdec4::t_f03e9f89ffee3f 1-436
+docs/learn.chatgpt.com/docs/non-interactive-mode/index.md
+  s_0fab98a25cdec4::t_587ae62f134d75 1-396
+docs/learn.chatgpt.com/docs/notifications/index.md
+  s_0fab98a25cdec4::t_3b74e9ce7f5f29 1-82
+docs/learn.chatgpt.com/docs/open-source/index.md
+  s_0fab98a25cdec4::t_a409fb2b2c2cb6 1-39
+docs/learn.chatgpt.com/docs/permission-modes/index.md
+  s_0fab98a25cdec4::t_3c1502f36508ca 1-68
+docs/learn.chatgpt.com/docs/permissions/index.md
+  s_0fab98a25cdec4::t_82d0e8ad04bada 1-557
+docs/learn.chatgpt.com/docs/personalize/index.md
+  s_0fab98a25cdec4::t_7f9cf6694f2c4c 1-59
+docs/learn.chatgpt.com/docs/pets/index.md
+  s_0fab98a25cdec4::t_4205923202d37f 1-135
+docs/learn.chatgpt.com/docs/plugins/index.md
+  s_0fab98a25cdec4::t_007e3a598972d5 1-290
+docs/learn.chatgpt.com/docs/pricing/index.md
+  s_0fab98a25cdec4::t_973546d4da9669 1-1602
+docs/learn.chatgpt.com/docs/projects/index.md
+  s_0fab98a25cdec4::t_5ca5911bf1ba01 1-334
+docs/learn.chatgpt.com/docs/prompting/index.md
+  s_0fab98a25cdec4::t_b1457800c03f76 1-752
+docs/learn.chatgpt.com/docs/quickstart/index.md
+  s_0fab98a25cdec4::t_0afdbc3cbf4279 1-163
+docs/learn.chatgpt.com/docs/reference/troubleshooting/index.md
+  s_0fab98a25cdec4::t_0721dc7f57c6ba 1-160
+docs/learn.chatgpt.com/docs/remote-connections/index.md
+  s_0fab98a25cdec4::t_4616d43b06daf7 1-345
+docs/learn.chatgpt.com/docs/sandboxing/auto-review/index.md
+  s_0fab98a25cdec4::t_1a36c0d758da70 1-178
+docs/learn.chatgpt.com/docs/sandboxing/index.md
+  s_0fab98a25cdec4::t_acf8c0c579c197 1-268
+docs/learn.chatgpt.com/docs/security-administration/index.md
+  s_0fab98a25cdec4::t_f8998a6ce3889f 1-138
+docs/learn.chatgpt.com/docs/security/cli/bulk-scans/index.md
+  s_0fab98a25cdec4::t_0877f6bea5d68b 1-236
+docs/learn.chatgpt.com/docs/security/cli/ci/index.md
+  s_0fab98a25cdec4::t_7dfb929946b52a 1-256
+docs/learn.chatgpt.com/docs/security/cli/faq/index.md
+  s_0fab98a25cdec4::t_47607dfc0987a6 1-250
+docs/learn.chatgpt.com/docs/security/cli/index.md
+  s_0fab98a25cdec4::t_4cbda81cce032c 1-318
+docs/learn.chatgpt.com/docs/security/cli/reference/index.md
+  s_0fab98a25cdec4::t_ec3116ad40ab88 1-682
+docs/learn.chatgpt.com/docs/security/faq/index.md
+  s_0fab98a25cdec4::t_27dc0dafffd1a6 1-126
+docs/learn.chatgpt.com/docs/security/index.md
+  s_0fab98a25cdec4::t_93b1a81c2b7763 1-110
+docs/learn.chatgpt.com/docs/security/plugin/changelog/index.md
+  s_0fab98a25cdec4::t_93bf2f497b749f 1-218
+docs/learn.chatgpt.com/docs/security/plugin/code-changes/index.md
+  s_0fab98a25cdec4::t_8088025a6e215c 1-387
+docs/learn.chatgpt.com/docs/security/plugin/deep-scans/index.md
+  s_0fab98a25cdec4::t_032f15d85dd0f9 1-97
+docs/learn.chatgpt.com/docs/security/plugin/export-findings/index.md
+  s_0fab98a25cdec4::t_be822098e82441 1-151
+docs/learn.chatgpt.com/docs/security/plugin/fix-findings/index.md
+  s_0fab98a25cdec4::t_082fe1b43fa6c3 1-161
+docs/learn.chatgpt.com/docs/security/plugin/index.md
+  s_0fab98a25cdec4::t_1fe3fa6ed16c81 1-221
+docs/learn.chatgpt.com/docs/security/plugin/scans/index.md
+  s_0fab98a25cdec4::t_037ffed5d969ab 1-161
+docs/learn.chatgpt.com/docs/security/plugin/security-hardening/index.md
+  s_0fab98a25cdec4::t_3dc4d97d178134 1-79
+docs/learn.chatgpt.com/docs/security/plugin/triage-backlog/index.md
+  s_0fab98a25cdec4::t_4292e1a2024c00 1-173
+docs/learn.chatgpt.com/docs/security/plugin/vulnerability-reports/index.md
+  s_0fab98a25cdec4::t_e8563659e61141 1-75
+docs/learn.chatgpt.com/docs/security/sdk/index.md
+  s_0fab98a25cdec4::t_f7e6952943de89 1-391
+docs/learn.chatgpt.com/docs/security/setup/index.md
+  s_0fab98a25cdec4::t_2b8aa9502bf7df 1-149
+docs/learn.chatgpt.com/docs/security/threat-model/index.md
+  s_0fab98a25cdec4::t_1277c364d67004 1-53
+docs/learn.chatgpt.com/docs/sites/index.md
+  s_0fab98a25cdec4::t_c664ea7b7a8557 1-432
+docs/learn.chatgpt.com/docs/skills-and-plugins/index.md
+  s_0fab98a25cdec4::t_f6c8873f3de841 1-112
+docs/learn.chatgpt.com/docs/third-party/github/index.md
+  s_0fab98a25cdec4::t_63233f338c3a08 1-146
+docs/learn.chatgpt.com/docs/third-party/linear/index.md
+  s_0fab98a25cdec4::t_d09dfea6d64085 1-140
+docs/learn.chatgpt.com/docs/third-party/slack/index.md
+  s_0fab98a25cdec4::t_3931b8553787ad 1-62
+docs/learn.chatgpt.com/docs/use-chatgpt/index.md
+  s_0fab98a25cdec4::t_3cce57fab5496c 1-210
+docs/learn.chatgpt.com/docs/visualizations/index.md
+  s_0fab98a25cdec4::t_6679d8cfd5a407 1-157
+docs/learn.chatgpt.com/docs/web-search/index.md
+  s_0fab98a25cdec4::t_a97bcc77dea891 1-77
+docs/learn.chatgpt.com/docs/web/index.md
+  s_0fab98a25cdec4::t_9f8dfc07ebcfb7 1-80
+docs/learn.chatgpt.com/docs/whats-new/index.md
+  s_0fab98a25cdec4::t_651968e87f20dd 1-535
+docs/learn.chatgpt.com/docs/windows/windows-app/index.md
+  s_0fab98a25cdec4::t_9c627512e0acba 1-261
+docs/learn.chatgpt.com/docs/windows/windows-sandbox/index.md
+  s_0fab98a25cdec4::t_89c914783dfd82 1-270
+docs/learn.chatgpt.com/docs/windows/wsl/index.md
+  s_0fab98a25cdec4::t_5463d5df169f6f 1-112
+docs/platform.openai.com/docs/guides/tools-web-search/index.md
+  s_0fab98a25cdec4::t_d937ea571e09d3 1-783
+docs/source_coverage.json
+  s_0fab98a25cdec4::t_1b948e80f93b8e 5,9,254,294-951,961,963,966-969,971-978
+docs/sync_summary.json
+  s_0fab98a25cdec4::t_066785003390aa 2-129,132,141,143
+system_prompts/codex-cli/prompt-input.json
+  s_0fab98a25cdec4::t_608eb66ef8da7a 4,22,36,50,64
+weekly/2026-07-29.md
+  s_0fab98a25cdec4::t_6e6728f4305c59 13,15-16,30-31,35,40-167,169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "e9fdea15e72d4f60bfc13e4a47726df988da880a",
+  "prompts": {},
+  "sessions": {
+    "s_0fab98a25cdec4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fadee-63f0-7431-9f9a-c2045f0a1cc0",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    },
+    "s_725e4c6983ed76": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fa3af-823c-7a13-8af1-e2c766b8a396",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
