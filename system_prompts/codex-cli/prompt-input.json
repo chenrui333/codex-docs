@@ -1,7 +1,6 @@
 [
   {
     "type": "message",
-    "id": "msg_019fad0a-428f-7632-bff6-06cb894b4ba0",
     "role": "developer",
     "content": [
       {
@@ -19,7 +18,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fad0a-428f-7632-bff6-06d7bf841c56",
     "role": "developer",
     "content": [
       {
@@ -33,7 +31,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fad0a-428f-7632-bff6-06e7c8a2e6c1",
     "role": "developer",
     "content": [
       {
@@ -47,7 +44,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fad0a-428f-7632-bff6-06f983262f7e",
     "role": "user",
     "content": [
       {
@@ -61,7 +57,6 @@
   },
   {
     "type": "message",
-    "id": "msg_019fad0a-4290-7fe3-8c57-3d9fe58d9a22",
     "role": "user",
     "content": [
       {

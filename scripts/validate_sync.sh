@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ ! -d .git ]]; then
+if [[ ! -e .git ]]; then
   echo "Run this script from the repository root."
   exit 1
 fi
@@ -19,27 +19,69 @@ if [[ "$strict_sync" == "1" ]]; then
   export CODEX_DOCS_STRICT_SYNC=1
 fi
 
-before="$tmpdir/status-before.bin"
-after_first="$tmpdir/status-after-first.bin"
-after_second="$tmpdir/status-after-second.bin"
+before="$tmpdir/tree-before.json"
+after_first="$tmpdir/tree-after-first.json"
+after_second="$tmpdir/tree-after-second.json"
 
-status_snapshot() {
-  git status --porcelain=v1 -z > "$1"
+content_snapshot() {
+  python3 - "$1" <<'PY'
+import hashlib
+import json
+import os
+import stat
+import sys
+from pathlib import Path
+
+
+root = Path.cwd()
+output = Path(sys.argv[1])
+entries = {}
+
+for directory, directory_names, file_names in os.walk(root):
+    directory_names[:] = sorted(name for name in directory_names if name not in {".git", ".venv"})
+    for name in sorted(file_names):
+        path = Path(directory) / name
+        rel = path.relative_to(root)
+        if rel.parts[0] in {".git", ".venv"}:
+            continue
+        mode = stat.S_IMODE(path.lstat().st_mode)
+        if path.is_symlink():
+            entries[str(rel)] = {"mode": mode, "symlink": str(path.readlink())}
+            continue
+
+        digest = hashlib.sha256()
+        with path.open("rb") as handle:
+            for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(chunk)
+        entries[str(rel)] = {"mode": mode, "sha256": digest.hexdigest()}
+
+output.write_text(json.dumps(entries, sort_keys=True))
+PY
 }
 
-status_snapshot "$before"
+content_snapshot "$before"
 
 . .venv/bin/activate
 python scripts/fetch_codex_docs.py
-status_snapshot "$after_first"
+content_snapshot "$after_first"
 
 python scripts/fetch_codex_docs.py
-status_snapshot "$after_second"
+content_snapshot "$after_second"
 
 if ! cmp -s "$after_first" "$after_second"; then
   echo "Non-idempotent output: second sync changed repository state."
-  echo "Current status:"
-  git status --short
+  python3 - "$after_first" "$after_second" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+
+first = json.loads(Path(sys.argv[1]).read_text())
+second = json.loads(Path(sys.argv[2]).read_text())
+for path in sorted(set(first) | set(second)):
+    if first.get(path) != second.get(path):
+        print(f"- {path}")
+PY
   exit 1
 fi
 
@@ -90,44 +132,16 @@ PY
 fi
 
 python - "$before" "$after_second" <<'PY'
+import json
 import sys
 from pathlib import Path
 
-after_path = Path(sys.argv[2])
-
-
-def parse_porcelain_z(blob: bytes) -> set[str]:
-    entries = set()
-    parts = blob.split(b"\0")
-    i = 0
-    while i < len(parts):
-        part = parts[i]
-        if not part:
-            i += 1
-            continue
-
-        text = part.decode("utf-8", errors="replace")
-        status = text[:2]
-        path = text[3:] if len(text) >= 4 else ""
-
-        # In -z mode, rename/copy stores old path in this record and new path
-        # in the following NUL-delimited entry.
-        if status and (status[0] in "RC" or status[1] in "RC"):
-            if i + 1 < len(parts) and parts[i + 1]:
-                path = parts[i + 1].decode("utf-8", errors="replace")
-                i += 1
-
-        if path:
-            entries.add(path)
-        i += 1
-
-    return entries
-
-after = parse_porcelain_z(after_path.read_bytes())
-dirty = sorted(after)
+before = json.loads(Path(sys.argv[1]).read_text())
+after = json.loads(Path(sys.argv[2]).read_text())
+changed = sorted(path for path in set(before) | set(after) if before.get(path) != after.get(path))
 
 allowed_prefixes = ("docs/", "dot_codex/", "system_prompts/", "weekly/")
-bad = [path for path in dirty if not path.startswith(allowed_prefixes)]
+bad = [path for path in changed if not path.startswith(allowed_prefixes)]
 
 if bad:
     print(

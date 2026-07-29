@@ -5,7 +5,7 @@
 - Keep changes focused on sync automation, output quality, and release hygiene.
 
 ## Generated content boundaries
-- Treat `docs/codex_capabilities.json`, `docs/developers.openai.com/**`, `docs/feature-flags/**`, `docs/github.openai.com/**`, `docs/platform.openai.com/**`, `dot_codex/skills/dot_system/**`, and `system_prompts/codex-cli/**` as generated output.
+- Treat `docs/codex_capabilities.json`, `docs/developers.openai.com/**`, `docs/learn.chatgpt.com/**`, `docs/feature-flags/**`, `docs/github.openai.com/**`, `docs/platform.openai.com/**`, `dot_codex/skills/dot_system/**`, and `system_prompts/codex-cli/**` as generated output.
 - Do not hand-edit mirrored docs, skills, or prompts unless doing a temporary emergency fix.
 - If an output problem exists, fix `scripts/fetch_codex_docs.py` instead.
 
@@ -24,7 +24,7 @@
 ## Validation expectations
 - After changing sync logic, run sync twice and confirm second run is idempotent (no new diffs).
 - Verify `docs/docs_manifest.json` and `docs/sync_summary.json` are updated consistently, including Codex CLI version metadata for CLI-backed changes.
-- Verify `docs/source_coverage.json` updates consistently and includes expected counts.
+- Verify `docs/source_coverage.json` updates consistently and includes expected counts, including complete ChatGPT Learn discovery and mirror coverage.
 - Keep `weekly/YYYY-MM-DD.md` generation deterministic for unchanged inputs.
 - For feature-flag automation or source-input changes, verify `docs/feature-flags/**` with `just check-feature-flags`.
 

@@ -1,0 +1,391 @@
+---
+source_type: 'learn'
+source_area: 'learn_security'
+source_url: 'https://learn.chatgpt.com/docs/security/sdk'
+source_kind: 'learn_markdown'
+codex_cli_versions: ["0.146.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0"]
+---
+
+# Codex Security TypeScript SDK
+
+Source: https://learn.chatgpt.com/docs/security/sdk
+
+> For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+Use the Codex Security TypeScript SDK to run security scans on repositories and
+code changes from your application or developer tool. The SDK returns typed
+findings, coverage details, and paths to scan artifacts. For longer scans, it
+supports preflight checks, cost limits, progress callbacks, and cancellation.
+
+The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22 or
+later. Scanning also requires Python 3.10 or later.
+
+The Codex Security SDK is in beta and requires access. Follow the installation
+  instructions provided with your access. For general coding agents, see the
+  [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI workflows, see the
+  [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
+
+## Set up the SDK
+
+Follow the installation instructions provided for your Codex Security access.
+Then set `OPENAI_API_KEY` or `CODEX_API_KEY`, or use an existing file-backed
+Codex sign-in before starting a scan.
+
+Depending on your account and repository, full-repository scans may also
+require [Trusted Access for Cyber](https://chatgpt.com/cyber), which signing in
+or providing an API key does not grant.
+
+## Run a scan
+
+Create one `CodexSecurity` client, run a standard repository scan, and close
+the client when the work completes. Pass `outputDir` to choose a private
+results directory outside the enclosing Git worktree.
+
+If you omit `outputDir`, Codex Security saves results in its own persistent
+state directory. Results can include source excerpts and vulnerability
+details, so choose appropriate permissions and retention policies.
+
+```ts
+
+const security = new CodexSecurity();
+
+try {
+  const result = await security.run("/path/to/repository", {
+    outputDir: "/path/outside/repository/results",
+  });
+
+  console.log(result.reportPath);
+  console.log(result.coverage.completeness);
+  console.log(result.findings.findings.length);
+} finally {
+  await security.close();
+}
+```
+
+`run` starts the scan, waits for completion, validates the sealed artifacts,
+and returns a `ScanResult`. `close` releases the isolated runtime and supports
+repeated calls.
+
+## Check inputs with preflight
+
+Use `preflight` to check a repository, target, mode, output location, and
+Codex configuration before starting a scan:
+
+```ts
+const plan = await security.preflight("/path/to/repository", {
+  target: ["services/billing", "packages/auth"],
+  outputDir: "/path/outside/repository/results",
+});
+
+console.log(plan.repository);
+console.log(plan.target.kind);
+console.log(plan.mode);
+console.log(plan.outputDir);
+```
+
+Preflight leaves the Codex runtime and credentials untouched. It also leaves
+plugin and Python discovery for the scan itself. This makes preflight useful
+for checking user input before a long-running or credentialed operation.
+
+To preview archival for an existing result directory, set
+`archiveExisting: true`:
+
+```ts
+const plan = await security.preflight("/path/to/repository", {
+  outputDir: "/path/outside/repository/results",
+  archiveExisting: true,
+});
+
+console.log(plan.archiveDir);
+```
+
+The returned `archiveDir` previews the archive naming. The final path can
+differ because `run` generates its own unique destination. Capture the actual
+archive path with `onOutputArchived`:
+
+```ts
+await security.run("/path/to/repository", {
+  outputDir: "/path/outside/repository/results",
+  archiveExisting: true,
+  onOutputArchived(archiveDir) {
+    console.log("Archived results:", archiveDir);
+  },
+});
+```
+
+The scan archives the earlier results and starts with an empty output
+directory.
+
+## Choose a scan target
+
+The SDK supports repository, path, committed-diff, and working-tree targets.
+The default target is the complete repository.
+
+### Scan selected paths
+
+Pass an array of paths inside the repository:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  target: ["services/billing", "packages/auth"],
+});
+```
+
+Paths can identify files or directories. The SDK resolves each path inside the
+repository and removes duplicates.
+
+### Scan committed changes
+
+Use `DiffTarget.refs` to scan committed changes between two locally available
+Git revisions:
+
+```ts
+
+const target = DiffTarget.refs({
+  base: "origin/main",
+  head: "HEAD",
+});
+
+const result = await security.run("/path/to/repository", { target });
+```
+
+The head defaults to `HEAD`. Diff targets require the repository argument to
+be the Git worktree root.
+
+### Scan the working tree
+
+Use `DiffTarget.workingTree` to scan staged and unstaged changes against a base
+revision:
+
+```ts
+const target = DiffTarget.workingTree({ base: "HEAD" });
+const result = await security.run("/path/to/repository", { target });
+```
+
+The base defaults to `HEAD`. Fetch the selected revisions before starting a
+diff or working-tree scan.
+
+### Select deep mode
+
+Set `mode: "deep"` for a repository or path scan that needs broader review:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  target: ["services/billing"],
+  mode: "deep",
+});
+```
+
+Deep mode supports repository and path targets. Use standard mode for diff and
+working-tree scans.
+
+### Add a security knowledge base
+
+Pass architecture documents, threat models, or security policies through
+`knowledgeBasePaths`:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  knowledgeBasePaths: [
+    "/path/to/architecture.md",
+    "/path/to/security-policies",
+  ],
+});
+```
+
+The SDK accepts files or directories and searches directories recursively.
+Supported document formats are `.md`, `.markdown`, `.txt`, `.pdf`, and `.docx`.
+The SDK rejects linked input paths, skips linked directory entries, and keeps
+extracted document content outside the saved scan results.
+
+### Set a scan budget
+
+Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
+Use `onCost` to track cost as the scan runs:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  maxCostUsd: 5,
+  onCost(cost) {
+    console.log(cost.estimatedUsd);
+  },
+});
+
+console.log(result.cost?.estimatedUsd);
+```
+
+The limit is an estimate, not a hard spending cap. Requests already in progress
+can finish above it. If the scan exceeds the limit, the SDK throws
+`ScanCostLimitExceededError` and preserves the available results.
+
+## Work with scan results
+
+`ScanResult` exposes the structured documents, scan metadata, and artifact
+paths:
+
+| Property        | Contents                                                                           |
+| --------------- | ---------------------------------------------------------------------------------- |
+| `manifest`      | The sealed scan manifest, including target, scope, producer, and artifact records. |
+| `findings`      | The findings document. Read finding objects from `findings.findings`.              |
+| `coverage`      | Reviewed surfaces, exclusions, deferred work, open questions, and completeness.    |
+| `scanDir`       | The scan directory.                                                                |
+| `threadId`      | The Codex thread identifier for the scan.                                          |
+| `turnResult`    | Turn status, response, and available usage metadata.                               |
+| `cost`          | Estimated model and token cost, or `null` when unavailable.                        |
+| `reportPath`    | The path to `report.md`.                                                           |
+| `manifestPath`  | The path to `scan-manifest.json`.                                                  |
+| `findingsPath`  | The path to `findings.json`.                                                       |
+| `coveragePath`  | The path to `coverage.json`.                                                       |
+| `artifactsDir`  | The supporting-artifacts directory.                                                |
+| `sarifPath`     | The generated SARIF path, or `null` when SARIF is absent.                          |
+| `pluginVersion` | The version recorded by the scan producer.                                         |
+
+Use the structured findings and coverage directly:
+
+```ts
+for (const finding of result.findings.findings) {
+  const location = finding.locations[0];
+  if (location === undefined) continue;
+
+  console.log(
+    finding.severity.level,
+    `${location.path}:${location.startLine}`,
+    finding.title
+  );
+}
+
+for (const deferred of result.coverage.deferred) {
+  console.log(deferred.id, deferred.reason);
+}
+```
+
+Coverage completeness is `complete`, `partial`, or `unknown`. Review deferred
+surfaces, exclusions, and open questions before using a scan as evidence for a
+security decision.
+
+`result.toJSON()` returns the manifest, findings, coverage, scan and thread
+identifiers, `reportPath`, `artifactsDir`, `sarifPath`, and turn metadata in
+one JSON-ready object.
+
+## Track or cancel a scan
+
+Pass `ScanOptions` callbacks to report scan startup, worker progress, and
+connection retries:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  outputDir: "/path/outside/repository/results",
+  onScanStarted() {
+    console.log("Scan started");
+  },
+  onWorkerStatus(status) {
+    console.log(status.kind, status);
+  },
+  onReconnect(attempt, maxAttempts) {
+    console.log(`Reconnect attempt ${attempt} of ${maxAttempts}`);
+  },
+  onObserverError(observer, error) {
+    console.error(`${observer} failed`, error);
+  },
+});
+
+console.log(result.reportPath);
+```
+
+Pass an `AbortSignal` when cancellation comes from a request, job controller,
+or timeout:
+
+```ts
+
+const controller = new AbortController();
+
+try {
+  const scan = security.run("/path/to/repository", {
+    outputDir: "/path/outside/repository/results",
+    signal: controller.signal,
+  });
+
+  controller.abort();
+  await scan;
+} catch (error) {
+  if (error instanceof ScanInterruptedError) {
+    console.error(error.scanDir);
+  } else {
+    throw error;
+  }
+}
+```
+
+An interrupted scan can leave partial output in `scanDir`. Preserve that
+directory when the result needs investigation.
+
+Applications that display scan setup progress can also use the `ScanOptions`
+lifecycle callbacks:
+
+| Callback                            | Called when                                      |
+| ----------------------------------- | ------------------------------------------------ |
+| `onOutputArchived(archiveDir)`      | Existing results move to the archive directory.  |
+| `onOutputDirReady(scanDir)`         | The private scan directory is ready.             |
+| `onScanStarted()`                   | Scan setup completes and execution begins.       |
+| `onReconnect(attempt, maxAttempts)` | The SDK retries a disconnected scan stream.      |
+| `onWorkerStatus(status)`            | Worker preflight or dispatch status changes.     |
+| `onCost(cost)`                      | An updated estimated scan cost is available.     |
+| `onObserverError(observer, error)`  | Another scan lifecycle callback raises an error. |
+
+## Configure the runtime and credentials
+
+Pass runtime configuration when you need a specific plugin, interpreter, or
+Codex setting:
+
+```ts
+const security = new CodexSecurity({
+  pluginPath: "/path/to/codex-security-plugin",
+  pythonPath: "/path/to/python",
+  codexOverrides: {
+    model: "<model>",
+  },
+});
+```
+
+`pluginPath` accepts a plugin directory or ZIP. `pythonPath` selects the
+plugin interpreter. `codexOverrides` merges supported values into the isolated
+Codex configuration.
+
+The client also exposes supported authentication methods:
+
+| Method                     | Purpose                                                     |
+| -------------------------- | ----------------------------------------------------------- |
+| `loginApiKey(apiKey)`      | Authenticate the isolated runtime with an API key.          |
+| `loginChatGPT()`           | Start a browser sign-in flow and return a login handle.     |
+| `loginChatGPTDeviceCode()` | Start a device-code sign-in flow and return a login handle. |
+| `account()`                | Return the current authentication state.                    |
+| `logout()`                 | Clear isolated authentication.                              |
+
+A login handle provides `waitForInstructions`, `authUrl`, `verificationUrl`,
+`userCode`, `wait`, and `cancel` so an application can present and complete the
+selected sign-in flow. The SDK can reuse a file-backed Codex sign-in. API keys
+are a useful fit for CI and server-side automation.
+
+## Handle scan errors
+
+Catch the exported error class that matches the action your application can
+take:
+
+| Error                            | Meaning                                                            |
+| -------------------------------- | ------------------------------------------------------------------ |
+| `AuthenticationRequiredError`    | A scan needs a supported credential.                               |
+| `ConfigurationError`             | Codex configuration or an override is unsuitable.                  |
+| `InvalidTargetError`             | The repository, path, mode, or Git target is unsuitable.           |
+| `OutputDirectoryError`           | The output location or its permissions are unsuitable.             |
+| `OutputInsideProtectedRootError` | The output directory is inside the scanned repository or worktree. |
+| `PluginPythonUnavailableError`   | A usable Python interpreter is unavailable.                        |
+| `PluginBootstrapError`           | The plugin runtime could not start.                                |
+| `ScanCostLimitExceededError`     | The scan exceeded its estimated cost limit.                        |
+| `IncompleteScanError`            | The scan ended before producing the required result.               |
+| `ContractValidationError`        | A completed scan returned a structured-contract error.             |
+| `ScanInterruptedError`           | An interruption stopped the scan and may have left partial output. |
+
+Continue with the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli), [CI
+guide](https://learn.chatgpt.com/docs/security/cli/ci), or [CLI
+reference](https://learn.chatgpt.com/docs/security/cli/reference).
