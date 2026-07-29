@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_review_agent'
 source_url: 'codex-cli://skills/.system/review-agent/SKILL.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.145.0"]
-codex_cli_versions_raw: ["codex-cli 0.145.0"]
+codex_cli_versions: ["0.145.0", "0.146.0"]
+codex_cli_versions_raw: ["codex-cli 0.145.0", "codex-cli 0.146.0"]
 name: 'review-agent'
 description: 'Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-branch diff, a commit, or custom review instructions.'
 ---
