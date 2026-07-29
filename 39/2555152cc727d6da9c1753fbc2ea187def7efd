@@ -1,0 +1,27 @@
+scripts/validate_sync.sh
+  s_c19ccd5d13cd61::t_24daea844993d8 22-24,26-29,31-39,52-59,62,66,69,73-84,135,139-141,144
+  s_c19ccd5d13cd61::t_aae3fd82789a3a 45-46
+  s_c19ccd5d13cd61::t_add9f71a67cbb9 30,40-44,47-51
+  s_c19ccd5d13cd61::t_2314fec93112a6 4
+scripts/fetch_codex_docs.py
+  s_c19ccd5d13cd61::t_b16c02f5e6f986 736-743
+  s_c19ccd5d13cd61::t_814a7124e2a861 1812-1815
+docs/docs_manifest.json
+  s_c19ccd5d13cd61::t_6015a4ba5bb694 5983
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "392555152cc727d6da9c1753fbc2ea187def7efd",
+  "prompts": {},
+  "sessions": {
+    "s_c19ccd5d13cd61": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fae24-7e5c-7993-9968-0104f4a9c46a",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
