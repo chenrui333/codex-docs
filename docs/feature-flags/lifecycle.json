@@ -107,6 +107,11 @@
     },
     {
       "enabled": false,
+      "key": "deferred_tool_world_state",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "elevated_windows_sandbox",
       "stage": "removed"
     },
@@ -166,6 +171,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "guardianv2",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "hooks",
       "stage": "stable"
@@ -186,9 +196,14 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
+      "key": "in_app_updates",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "item_ids",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -203,6 +218,11 @@
     {
       "enabled": false,
       "key": "local_thread_store_compression",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "mcp_2026_07_28",
       "stage": "under development"
     },
     {
@@ -481,7 +501,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.145.0",
+  "codex_cli_version": "codex-cli 0.146.0",
   "coverage": {
     "missing_in_docs": [
       "apply_patch_freeform",
@@ -505,6 +525,7 @@
       "current_time_reminder",
       "default_mode_request_user_input",
       "deferred_executor",
+      "deferred_tool_world_state",
       "elevated_windows_sandbox",
       "enable_fanout",
       "enable_mcp_apps",
@@ -517,14 +538,17 @@
       "fast_mode",
       "goals",
       "guardian_approval",
+      "guardianv2",
       "hooks",
       "image_detail_original",
       "image_generation",
       "in_app_browser",
+      "in_app_updates",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
       "local_thread_store_compression",
+      "mcp_2026_07_28",
       "memories",
       "mentions_v2",
       "multi_agent",
@@ -817,6 +841,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "recommended_plugins": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "stable"
+    },
     "remote_compaction_v2": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -987,8 +1015,8 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "49cead56a5a4d0f390e404a21e5fe91d7b316e0ed4696cf77d89458387d7ae8b",
-    "features_rs_sha256": "737c3c3511408a3d9f35bd544359f6a5aeca4777460b9f34f902ccd38ec2a46d"
+    "client_rs_sha256": "4f57e32507a1bb9633f9ea8d747fb0a0282bb1c90a13c332fa26998207173e32",
+    "features_rs_sha256": "cd8bf9a20131787ac2516ae02a38d1ed87642418ddde56e7c9a4cf125c902884"
   },
   "source_urls": {
     "client_rs": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs",
