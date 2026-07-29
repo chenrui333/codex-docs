@@ -4430,7 +4430,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "b68c0ea62de94872567696ae72bce28a749c43362b949e58b2c6872a820e87cc",
+      "sha256": "9cb5bd6c06d397c2784901397ce254bb35f7c5abd682a1e6e8b42e141f98f45a",
       "source_area": "learn_app_server",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4469,7 +4469,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "a7555d1703c4e549029be6c2db87a5809cc217772a464a0f670fbdf72091fa42",
+      "sha256": "141765497cbd2e5e546866659f2fd4071ce1ca3db7b685750c2e74d72066d5c6",
       "source_area": "learn_artifacts_viewer",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4705,7 +4705,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "c690b832a9aa09f35f1d7bb8888f983ae8265b380de5483ece3797c1bacfcaf2",
+      "sha256": "adfde173af3723230d07fae547eede5ec174ced99b3e7d78b86b2f2a4938e466",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4718,7 +4718,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "a682ab62f61e5133845d7814fa69bf651704a5e47d50002ed658fcbbf14760cb",
+      "sha256": "796d47e0becb20ac7b10e694a191c535f4617b3a7e4c716fc4746eb10de7d2a2",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5539,7 +5539,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "18c33a5ab724adda1255fd2e8694caab60baec70e13892361d48c041e8d60886",
+      "sha256": "0e4675255357064d904d93ae37884e60cb222986c2e781534dcf4c7cdd2811bf",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5565,7 +5565,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "15c602884def1293c8f89634376c22cdf3fbccd8e10e1444bf347aee21a5fc34",
+      "sha256": "8c35901aaf84f223bcb99c2d48f3a156857c0fef09fc12f82a5a643cdd8c27e2",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5578,7 +5578,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "8d247956d31abcff8ad8bf6f391143758d21354a36550f35cf0cdda5009254f9",
+      "sha256": "afe807426fe826efcb6a9aad1be59bc1b86e0a20cca05c460c5d1869013c525e",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5591,7 +5591,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "489810e7803cc1b696665ed26c9aa7854af69ca4fd8e5e00906b157996195e85",
+      "sha256": "cf030f5123c589a8993ff99ebe0c3987fecac73bbc15e90daa25d295b2c7f83d",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

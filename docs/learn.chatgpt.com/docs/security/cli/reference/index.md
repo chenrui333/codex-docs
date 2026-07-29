@@ -21,7 +21,7 @@ The Codex Security CLI is in beta and requires access. Follow the installation
   instructions provided with your access.
 
 When you install the package in a local project, invoke the executable as
-`npx codex-security`. Use `codex-security` directly when the executable is
+`npx @openai/codex-security`. Use `codex-security` directly when the executable is
 available on your `PATH`.
 
 ## Command overview
@@ -57,13 +57,13 @@ The CLI also provides these integration commands:
 List all available commands:
 
 ```bash
-npx codex-security --help
+npx @openai/codex-security --help
 ```
 
 Add `--help` to a command to inspect its arguments and options:
 
 ```bash
-npx codex-security scan --help
+npx @openai/codex-security scan --help
 ```
 
 `codex-security --version` prints the installed version and exits.
@@ -75,19 +75,19 @@ Neither command requires Python.
 Print the agent-readable command manifest:
 
 ```bash
-npx codex-security --llms
+npx @openai/codex-security --llms
 ```
 
 Inspect the scan argument schema as JSON:
 
 ```bash
-npx codex-security scan --schema --format json
+npx @openai/codex-security scan --schema --format json
 ```
 
 Generate shell completions for Bash:
 
 ```bash
-npx codex-security completions bash
+npx @openai/codex-security completions bash
 ```
 
 Replace `bash` with `zsh` or `fish` for those shells.
@@ -100,13 +100,13 @@ also lists `md`, but scan results don't support Markdown output.
 Register the CLI as an MCP server:
 
 ```bash
-npx codex-security mcp add
+npx @openai/codex-security mcp add
 ```
 
 Sync Codex Security skills to your agents:
 
 ```bash
-npx codex-security skills add
+npx @openai/codex-security skills add
 ```
 
 MCP exposes only the read-only `info` metadata command. Scans, exports,
@@ -154,31 +154,31 @@ worktree root. The selected refs must exist in that checkout.
 Scan the entire repository:
 
 ```bash
-npx codex-security scan .
+npx @openai/codex-security scan .
 ```
 
 Scan selected paths:
 
 ```bash
-npx codex-security scan . --path src --path tests
+npx @openai/codex-security scan . --path src --path tests
 ```
 
 Scan committed changes:
 
 ```bash
-npx codex-security scan . --diff origin/main --head HEAD
+npx @openai/codex-security scan . --diff origin/main --head HEAD
 ```
 
 Scan staged and unstaged changes:
 
 ```bash
-npx codex-security scan . --working-tree --base HEAD
+npx @openai/codex-security scan . --working-tree --base HEAD
 ```
 
 Run a deeper review of the repository:
 
 ```bash
-npx codex-security scan . --mode deep
+npx @openai/codex-security scan . --mode deep
 ```
 
 ### Add security context
@@ -187,7 +187,7 @@ Use `--knowledge-base PATH` to provide architecture documents, threat models,
 or security policies. Repeat the option for more files or directories:
 
 ```bash
-npx codex-security scan . \
+npx @openai/codex-security scan . \
   --knowledge-base /path/to/architecture.md \
   --knowledge-base /path/to/security-policies
 ```
@@ -226,7 +226,7 @@ directory must be private to the current user. A scan can replace an existing
 result directory with `--archive-existing`.
 
 ```bash
-npx codex-security scan . \
+npx @openai/codex-security scan . \
   --output-dir /path/outside/repository/results \
   --archive-existing
 ```
@@ -235,7 +235,7 @@ Scans are report-only by default. Add `--fail-on-severity` to evaluate a
 severity policy in CI:
 
 ```bash
-npx codex-security scan . \
+npx @openai/codex-security scan . \
   --diff origin/main \
   --output-dir /path/outside/repository/results \
   --json \
@@ -247,7 +247,7 @@ A dry run checks local inputs without loading credentials, starting Codex, or
 probing the plugin's Python interpreter:
 
 ```bash
-npx codex-security scan . --output-dir /path/outside/repository/results --dry-run
+npx @openai/codex-security scan . --output-dir /path/outside/repository/results --dry-run
 ```
 
 ### Configure the runtime
@@ -266,7 +266,7 @@ Quote string values passed through `--codex` so the TOML parser receives a
 string:
 
 ```bash
-npx codex-security scan . --codex 'model="<model>"'
+npx @openai/codex-security scan . --codex 'model="<model>"'
 ```
 
 Codex Security owns plugin-loading configuration and rejects conflicting
@@ -277,7 +277,7 @@ overrides. Use `--plugin-path` to select a plugin.
 Install a Git pre-commit security check for the current repository:
 
 ```bash
-npx codex-security install-hook
+npx @openai/codex-security install-hook
 ```
 
 The check scans staged and unstaged changes before each commit and blocks
@@ -286,7 +286,7 @@ not replace an existing pre-commit script. Set a different severity threshold
 when needed:
 
 ```bash
-npx codex-security install-hook . --fail-on-severity medium
+npx @openai/codex-security install-hook . --fail-on-severity medium
 ```
 
 ## `codex-security bulk-scan`
@@ -311,7 +311,7 @@ repositories interactively. This flow requires a GitHub CLI sign-in.
 For a prepared repository list, provide a CSV and `--output-dir`:
 
 ```bash
-npx codex-security bulk-scan repositories.csv \
+npx @openai/codex-security bulk-scan repositories.csv \
   --output-dir /path/outside/repositories/security-scans \
   --workers 4
 ```
@@ -341,19 +341,19 @@ Docker](https://learn.chatgpt.com/docs/security/cli/bulk-scans#run-bulk-scans-in
 List saved scans for the current directory:
 
 ```bash
-npx codex-security scans
+npx @openai/codex-security scans
 ```
 
 List scans for a different repository:
 
 ```bash
-npx codex-security scans list /path/to/repository
+npx @openai/codex-security scans list /path/to/repository
 ```
 
 Find scans stored under a specific output directory:
 
 ```bash
-npx codex-security scans list --scan-root /path/outside/repository/results
+npx @openai/codex-security scans list --scan-root /path/outside/repository/results
 ```
 
 ### Inspect or repeat a scan
@@ -361,13 +361,13 @@ npx codex-security scans list --scan-root /path/outside/repository/results
 Show a saved scan's results and configuration:
 
 ```bash
-npx codex-security scans show SCAN_ID
+npx @openai/codex-security scans show SCAN_ID
 ```
 
 Rerun the scan against the current checkout using its original configuration:
 
 ```bash
-npx codex-security scans rerun SCAN_ID
+npx @openai/codex-security scans rerun SCAN_ID
 ```
 
 ### Match and compare findings
@@ -375,14 +375,14 @@ npx codex-security scans rerun SCAN_ID
 Match findings that share the same root cause across two scans:
 
 ```bash
-npx codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
+npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
 Compare the matched scans to find new, persisting, reopened, resolved, and
 unknown findings:
 
 ```bash
-npx codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
+npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
 A finding is unknown when the later scan has incomplete coverage or doesn't
@@ -393,7 +393,7 @@ To match all completed scans for the current repository, including scans from
 other checkouts:
 
 ```bash
-npx codex-security scans match --all
+npx @openai/codex-security scans match --all
 ```
 
 Scan results can vary even when you rerun the same configuration. Matching and
@@ -413,13 +413,13 @@ usage: codex-security findings mark-false-positive OCCURRENCE_ID
 Inspect the saved scan to identify the finding occurrence:
 
 ```bash
-npx codex-security scans show SCAN_ID
+npx @openai/codex-security scans show SCAN_ID
 ```
 
 Record a specific explanation for the false positive:
 
 ```bash
-npx codex-security findings mark-false-positive FINDING_OCCURRENCE_ID \
+npx @openai/codex-security findings mark-false-positive FINDING_OCCURRENCE_ID \
   --reason "The framework escapes this input before it reaches the query"
 ```
 
@@ -462,7 +462,7 @@ scanned checkout.
 Write SARIF to a file:
 
 ```bash
-npx codex-security export /path/to/scan \
+npx @openai/codex-security export /path/to/scan \
   --export-format sarif \
   --source-root /path/to/repository \
   --output /path/outside/repository/exports/results.sarif
@@ -471,13 +471,13 @@ npx codex-security export /path/to/scan \
 Write SARIF to stdout:
 
 ```bash
-npx codex-security export /path/to/scan --export-format sarif --source-root . --output -
+npx @openai/codex-security export /path/to/scan --export-format sarif --source-root . --output -
 ```
 
 Export findings as JSON:
 
 ```bash
-npx codex-security export /path/to/scan \
+npx @openai/codex-security export /path/to/scan \
   --export-format json \
   --output /path/outside/repository/exports/findings.json
 ```
@@ -485,7 +485,7 @@ npx codex-security export /path/to/scan \
 Export findings as CSV:
 
 ```bash
-npx codex-security export /path/to/scan \
+npx @openai/codex-security export /path/to/scan \
   --export-format csv \
   --output /path/outside/repository/exports/findings.csv
 ```
@@ -495,13 +495,13 @@ npx codex-security export /path/to/scan \
 Check whether a candidate finding is valid:
 
 ```bash
-npx codex-security validate findings.json "Possible SQL injection in src/query.ts:42"
+npx @openai/codex-security validate findings.json "Possible SQL injection in src/query.ts:42"
 ```
 
 Generate a fix with the bundled remediation skill:
 
 ```bash
-npx codex-security patch findings.json "Missing authorization check in src/routes.ts:18"
+npx @openai/codex-security patch findings.json "Missing authorization check in src/routes.ts:18"
 ```
 
 Each argument can contain literal text or point to a file. Both commands work
@@ -515,43 +515,43 @@ commands without rebuilding the scanner.
 Sign in interactively:
 
 ```bash
-npx codex-security login
+npx @openai/codex-security login
 ```
 
 Use device authentication on a remote or headless machine:
 
 ```bash
-npx codex-security login --device-auth
+npx @openai/codex-security login --device-auth
 ```
 
 Check the current sign-in:
 
 ```bash
-npx codex-security login status
+npx @openai/codex-security login status
 ```
 
 Remove the stored sign-in:
 
 ```bash
-npx codex-security logout
+npx @openai/codex-security logout
 ```
 
 Store an API key by passing it on stdin:
 
 ```bash
-printenv OPENAI_API_KEY | npx codex-security login --with-api-key
+printenv OPENAI_API_KEY | npx @openai/codex-security login --with-api-key
 ```
 
 Store an enterprise access token:
 
 ```bash
-printenv CODEX_ACCESS_TOKEN | npx codex-security login --with-access-token
+printenv CODEX_ACCESS_TOKEN | npx @openai/codex-security login --with-access-token
 ```
 
 Inspect read-only SDK and bundled-plugin metadata:
 
 ```bash
-npx codex-security info --json
+npx @openai/codex-security info --json
 ```
 
 When you expose the CLI as an MCP server, `info` is the only available command.

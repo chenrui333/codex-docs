@@ -584,6 +584,12 @@ show_tooltips = true
 
 # alternate_screen = "auto"
 
+# Working directory for resumed or forked sessions: current | session.
+
+# Leave unset to choose when the current and saved session directories differ.
+
+# resume_cwd = "session"
+
 # Ordered list of footer status-line item IDs. When unset, Codex uses:
 
 # ["model-with-reasoning", "context-remaining", "current-dir"].

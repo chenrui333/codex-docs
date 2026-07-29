@@ -36,16 +36,16 @@ Follow the installation instructions provided for your Codex Security access.
 Check the installed version:
 
 ```bash
-npx codex-security --version
+npx @openai/codex-security --version
 ```
 
 List the available commands:
 
 ```bash
-npx codex-security --help
+npx @openai/codex-security --help
 ```
 
-Use `npx codex-security scan --help` or `npx codex-security export --help` for the
+Use `npx @openai/codex-security scan --help` or `npx @openai/codex-security export --help` for the
 complete command help. The [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference)
 covers each argument, output format, and exit code.
 
@@ -54,13 +54,13 @@ covers each argument, output format, and exit code.
 For local use, sign in with your ChatGPT account:
 
 ```bash
-npx codex-security login
+npx @openai/codex-security login
 ```
 
 On a remote or headless machine, use device authentication:
 
 ```bash
-npx codex-security login --device-auth
+npx @openai/codex-security login --device-auth
 ```
 
 For CI and other automated workflows, use an OpenAI API key instead:
@@ -92,7 +92,7 @@ so choose a private location and an appropriate retention policy.
 Check the repository, target, and output directory before starting a scan:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR" --dry-run
+npx @openai/codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR" --dry-run
 ```
 
 The dry run checks local inputs without starting Codex, loading credentials,
@@ -103,7 +103,7 @@ or probing the plugin's Python interpreter.
 Run a standard scan and keep its results in the selected directory:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR"
+npx @openai/codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR"
 ```
 
 The CLI writes the scan result to stdout and sends progress and its completion
@@ -117,7 +117,7 @@ codex-security: Next: codex-security export /path/outside/repository/codex-secur
 ```
 
 For a local package installation, run the suggested export command with
-`npx codex-security`.
+`npx @openai/codex-security`.
 
 Scans are report-only by default, so findings remain available for local
 review. You may want to add a severity threshold when you are ready to [run scans in
@@ -156,19 +156,19 @@ the full artifact and output contract.
 Use a path scan when a repository contains separate services or packages:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --path services/billing --path packages/auth
+npx @openai/codex-security scan "$REPOSITORY" --path services/billing --path packages/auth
 ```
 
 Review committed changes between the base revision and `HEAD`:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --diff origin/main --head HEAD
+npx @openai/codex-security scan "$REPOSITORY" --diff origin/main --head HEAD
 ```
 
 Review staged and unstaged changes against `HEAD`:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --working-tree --base HEAD
+npx @openai/codex-security scan "$REPOSITORY" --working-tree --base HEAD
 ```
 
 Diff and working-tree scans expect the repository argument to be the Git
@@ -177,7 +177,7 @@ worktree root. Fetch the selected revisions before starting a diff scan.
 Use deep mode when a repository or path needs broader review:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --mode deep
+npx @openai/codex-security scan "$REPOSITORY" --mode deep
 ```
 
 ## Add architecture and security context
@@ -187,7 +187,7 @@ context. This helps Codex Security evaluate findings against how your system
 actually works:
 
 ```bash
-npx codex-security scan "$REPOSITORY" \
+npx @openai/codex-security scan "$REPOSITORY" \
   --knowledge-base /path/to/architecture.md \
   --knowledge-base /path/to/security-policies
 ```
@@ -198,7 +198,7 @@ Use `--max-cost` to stop a scan when its estimated model cost exceeds a limit
 in USD:
 
 ```bash
-npx codex-security scan "$REPOSITORY" --max-cost 5
+npx @openai/codex-security scan "$REPOSITORY" --max-cost 5
 ```
 
 Requests already in progress can finish above the limit. Codex Security keeps
@@ -209,7 +209,7 @@ the available results when a scan stops.
 Install a Git pre-commit security check for your repository:
 
 ```bash
-npx codex-security install-hook
+npx @openai/codex-security install-hook
 ```
 
 The check scans staged and unstaged changes before each commit. It blocks
@@ -227,7 +227,7 @@ gh auth login
 Discover and select repositories from your GitHub account or organization:
 
 ```bash
-npx codex-security bulk-scan
+npx @openai/codex-security bulk-scan
 ```
 
 The interactive flow excludes archived repositories and forks. It asks you to
@@ -236,7 +236,7 @@ confirm the selected repositories before scanning.
 To scan a prepared repository list, provide a CSV and an output directory:
 
 ```bash
-npx codex-security bulk-scan repositories.csv \
+npx @openai/codex-security bulk-scan repositories.csv \
   --output-dir /path/outside/repositories/security-scans \
   --workers 4
 ```
@@ -274,31 +274,31 @@ access, also apply to containerized scans.
 List the saved scans for your repository:
 
 ```bash
-npx codex-security scans list "$REPOSITORY"
+npx @openai/codex-security scans list "$REPOSITORY"
 ```
 
 Copy a scan ID from the results to inspect its findings and configuration:
 
 ```bash
-npx codex-security scans show SCAN_ID
+npx @openai/codex-security scans show SCAN_ID
 ```
 
 Run the same scan against the current checkout using its original configuration:
 
 ```bash
-npx codex-security scans rerun SCAN_ID
+npx @openai/codex-security scans rerun SCAN_ID
 ```
 
 To compare two scans, first match findings that share the same root cause:
 
 ```bash
-npx codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
+npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
 Then check which findings are new, persisting, reopened, resolved, or unknown:
 
 ```bash
-npx codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
+npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
 For the bulk-scan CSV format, scan-history filters, and command options, see

@@ -286,9 +286,9 @@ If a client sends an experimental method or field without opting in, app-server 
 
 - `thread/start` - create a new thread; emits `thread/started` and automatically subscribes you to turn/item events for that thread.
 - `thread/resume` - reopen an existing thread by id so later `turn/start` calls append to it.
-- `thread/fork` - fork a thread into a new thread id by copying stored history. Pass `lastTurnId` to copy history through that turn and omit later turns. Emits `thread/started` for the new thread; returned threads include `forkedFromId` when available.
+- `thread/fork` - fork a thread into a new thread id by copying stored history. Pass `lastTurnId` to copy history through that turn and omit later turns, or `ephemeral: true` to create an in-memory fork. Emits `thread/started` for the new thread; returned threads include `forkedFromId` when available.
 - `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history. Returned `thread` objects include runtime `status`.
-- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, `useStateDbOnly`, `searchTerm`, and experimental `parentThreadId` or `ancestorThreadId` filters. Returned `thread` objects include runtime `status`.
+- `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, `isPinned`, `cwd`, `useStateDbOnly`, `searchTerm`, and experimental `parentThreadId` or `ancestorThreadId` filters. Returned `thread` objects include runtime `status`.
 - `thread/turns/list` - experimental; page through a stored thread's turn history without resuming it. `itemsView` controls whether turn items are omitted, summarized, or fully loaded.
 - `thread/items/list` - experimental; page through persisted thread items, optionally restricted to one `turnId`. The active thread store must support item pagination.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
@@ -296,7 +296,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/goal/set` - set the goal for a thread; emits `thread/goal/updated`.
 - `thread/goal/get` - read the current goal for a thread.
 - `thread/goal/clear` - clear the goal for a thread; emits `thread/goal/cleared`.
-- `thread/metadata/update` - patch SQLite-backed stored thread metadata; currently supports persisted `gitInfo`.
+- `thread/metadata/update` - patch SQLite-backed stored thread metadata, including persisted `gitInfo` and `isPinned`.
 - `thread/archive` - move a thread's log file into the archived directory and attempt to archive spawned descendant thread logs that aren't already archived; returns `{}` on success and emits `thread/archived` for each archived thread.
 - `thread/delete` - permanently delete a persisted active or archived thread and any spawned descendant threads; returns `{}` on success and emits `thread/deleted` for each deleted thread.
 - `thread/unsubscribe` - unsubscribe this connection from thread turn/item events. If this was the last subscriber, the server unloads the thread after a no-subscriber inactivity grace period and emits `thread/closed`.
@@ -342,7 +342,9 @@ If a client sends an experimental method or field without opting in, app-server 
 - `plugin/install` - under development; install a plugin from a marketplace path or remote marketplace name. Don't call this method from production clients yet.
 - `plugin/uninstall` - under development; uninstall an installed plugin. Don't call this method from production clients yet.
 - `plugin/skill/read` - read remote plugin skill Markdown on demand by remote marketplace, plugin id, and skill name.
+- `app/installed` - read installed app runtime state, including each app's effective enabled and callable states.
 - `app/list` - list available apps (connectors) with pagination plus accessibility/enabled metadata.
+- `app/read` - fetch metadata and optional display-only tool summaries for specific app ids.
 - `skills/config/write` - enable or disable skills by path.
 - `mcpServer/oauth/login` - start an OAuth login for a configured MCP server; returns an authorization URL and emits `mcpServer/oauthLogin/completed` on completion.
 - `tool/requestUserInput` - prompt the user with 1-3 short questions for a tool call (experimental); questions can set `isOther` for a free-form option.
@@ -360,7 +362,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home). Supported item types include config, skills, `AGENTS.md`, plugins, MCP server config, subagents, hooks, commands, and sessions; non-empty imports emit `externalAgentConfig/import/progress` and `externalAgentConfig/import/completed` as work finishes. Plugin and session imports can complete asynchronously.
 - `config/value/write` - write a single configuration key/value to the user's `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user's `config.toml` on disk.
-- `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including allow-lists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven't set any up).
+- `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including exact managed configuration, allowlists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven't set any up).
 - `fs/readFile`, `fs/writeFile`, `fs/createDirectory`, `fs/getMetadata`, `fs/readDirectory`, `fs/remove`, `fs/copy`, `fs/watch`, `fs/unwatch`, and `fs/changed` (notify) - operate on absolute filesystem paths through the app-server v2 filesystem API.
 
 Plugin summaries include a `source` union. Local plugins return
@@ -461,11 +463,11 @@ protocol failures return request errors.
   resuming it. Use `itemsView` to choose whether turn items are omitted,
   summarized, or fully loaded.
 - `thread/items/list` is experimental and pages through persisted thread items, optionally restricted to one turn.
-- `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, `cwd`, `useStateDbOnly`, `searchTerm`, and experimental `parentThreadId` or `ancestorThreadId` filtering.
+- `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, `isPinned`, `cwd`, `useStateDbOnly`, `searchTerm`, and experimental `parentThreadId` or `ancestorThreadId` filtering.
 - `thread/loaded/list` returns the thread IDs currently in memory.
 - `thread/archive` moves the thread's persisted JSONL log into the archived directory and attempts to archive spawned descendant thread logs that aren't already archived.
 - `thread/delete` permanently deletes a persisted active or archived thread and its spawned descendant threads.
-- `thread/metadata/update` patches stored thread metadata, currently including persisted `gitInfo`.
+- `thread/metadata/update` patches stored thread metadata, including persisted `gitInfo` and `isPinned`.
 - `thread/unsubscribe` unsubscribes the current connection from a loaded thread and can trigger `thread/closed` after an inactivity grace period.
 - `thread/unarchive` restores an archived thread rollout back into the active sessions directory.
 - `thread/compact/start` triggers compaction and returns `{}` immediately.
@@ -592,6 +594,34 @@ App-server rejects an in-progress `lastTurnId`. If you omit the field while the
 source thread is mid-turn, the fork records an interruption marker instead of
 retaining an unmarked partial turn.
 
+Pass `ephemeral: true` to create an in-memory fork without adding it to stored
+thread listings:
+
+```json
+{
+  "method": "thread/fork",
+  "id": 13,
+  "params": {
+    "threadId": "thr_123",
+    "ephemeral": true
+  }
+}
+{
+  "id": 13,
+  "result": {
+    "thread": {
+      "id": "thr_789",
+      "sessionId": "thr_789",
+      "forkedFromId": "thr_123",
+      "ephemeral": true
+    }
+  }
+}
+```
+
+Ephemeral forks of paginated threads also require `excludeTurns: true`. That
+field is experimental and requires `capabilities.experimentalApi = true`.
+
 When a user-facing thread title has been set, app-server hydrates `thread.name` on `thread/list`, `thread/read`, `thread/resume`, `thread/unarchive`, and `thread/rollback` responses. `thread/start` and `thread/fork` may omit `name` (or return `null`) until a title is set later.
 
 ### Read a stored thread (without resuming)
@@ -648,6 +678,7 @@ pagination; otherwise, the server returns an unsupported-method error.
 - `modelProviders` - restrict results to specific providers; unset, null, or an empty array includes all providers.
 - `sourceKinds` - restrict results to specific thread sources. When omitted or `[]`, the server defaults to interactive sources only: `cli` and `vscode`.
 - `archived` - when `true`, list archived threads only. When `false` or omitted, list non-archived threads (default).
+- `isPinned` - when provided, return only threads with the matching persisted pin state. Omit it to return pinned and unpinned threads.
 - `cwd` - restrict results to threads whose session current working directory exactly matches this path, or one of the paths in an array. Relative paths resolve from the app-server process working directory.
 - `useStateDbOnly` - when `true`, return state database results without scanning JSONL thread logs to repair metadata. Omit it or pass `false` for the default scan-and-repair behavior.
 - `searchTerm` - restrict results to threads whose extracted title contains this case-sensitive text fragment.
@@ -677,8 +708,8 @@ Example:
 } }
 { "id": 20, "result": {
   "data": [
-    { "id": "thr_a", "preview": "Create a TUI", "ephemeral": false, "modelProvider": "openai", "createdAt": 1730831111, "updatedAt": 1730831111, "name": "TUI prototype", "status": { "type": "notLoaded" } },
-    { "id": "thr_b", "preview": "Fix tests", "ephemeral": true, "modelProvider": "openai", "createdAt": 1730750000, "updatedAt": 1730750000, "status": { "type": "notLoaded" } }
+    { "id": "thr_a", "preview": "Create a TUI", "ephemeral": false, "isPinned": true, "modelProvider": "openai", "createdAt": 1730831111, "updatedAt": 1730831111, "name": "TUI prototype", "status": { "type": "notLoaded" } },
+    { "id": "thr_b", "preview": "Fix tests", "ephemeral": false, "isPinned": false, "modelProvider": "openai", "createdAt": 1730750000, "updatedAt": 1730750000, "status": { "type": "notLoaded" } }
   ],
   "nextCursor": "opaque-token-or-null"
 } }
@@ -688,16 +719,21 @@ When `nextCursor` is `null`, you have reached the final page.
 
 ### Update stored thread metadata
 
-Use `thread/metadata/update` to patch stored thread metadata without resuming the thread. Today this supports persisted `gitInfo`; omitted fields are left unchanged, and explicit `null` clears a stored value.
+Use `thread/metadata/update` to patch stored thread metadata without resuming the
+thread. Set `isPinned` to pin or unpin the thread, or update `gitInfo` to change
+persisted Git metadata. Omitted fields stay unchanged; explicit `null` clears a
+stored Git metadata value.
 
 ```json
 { "method": "thread/metadata/update", "id": 21, "params": {
   "threadId": "thr_123",
+  "isPinned": true,
   "gitInfo": { "branch": "feature/sidebar-pr" }
 } }
 { "id": 21, "result": {
   "thread": {
     "id": "thr_123",
+    "isPinned": true,
     "gitInfo": { "sha": null, "branch": "feature/sidebar-pr", "originUrl": null }
   }
 } }
@@ -1475,6 +1511,41 @@ To enable or disable a skill by path:
 
 ## Apps (connectors)
 
+Use `app/installed` to read the latest committed installed app runtime snapshot.
+Each result includes the app `id`, `runtimeName` (or `null`), effective
+`enabled` state, and `callable` state. An app is callable only when effective
+configuration enables it and at least one model-visible tool complies with the
+app and tool policies.
+
+```json
+{
+  "method": "app/installed",
+  "id": 49,
+  "params": {
+    "threadId": "thread-1",
+    "forceRefresh": false
+  }
+}
+{
+  "id": 49,
+  "result": {
+    "apps": [
+      {
+        "id": "demo-app",
+        "runtimeName": "Demo App",
+        "enabled": true,
+        "callable": true
+      }
+    ]
+  }
+}
+```
+
+Omit `threadId` to use the global configuration instead of a loaded thread's
+configuration. Set `forceRefresh: true` to refresh the connector runtime
+snapshot before reading it. When global or workspace policy blocks app access,
+an observed app can still appear with `enabled` and `callable` set to `false`.
+
 Use `app/list` to fetch available apps. In the CLI/TUI, `/apps` is the user-facing picker; in custom clients, call `app/list` directly. Each entry includes both `isAccessible` (available to the user) and `isEnabled` (enabled in `config.toml`) so clients can distinguish install/access from local enabled state. App entries can also include optional `branding`, `appMetadata`, and `labels` fields.
 
 ```json
@@ -1534,6 +1605,56 @@ The server also emits `app/list/updated` notifications whenever either source (a
   }
 }
 ```
+
+Use `app/read` when you already know the app ids and need app metadata rather
+than installed runtime state. Pass at most 100 `appIds`. The server keeps only
+the first occurrence of each repeated id and preserves that order in both
+`apps` and `missingAppIds`. Unknown or inaccessible apps are returned in
+`missingAppIds` without failing the entire request.
+
+```json
+{
+  "method": "app/read",
+  "id": 52,
+  "params": {
+    "appIds": ["demo-app", "missing-app"],
+    "includeTools": true
+  }
+}
+{
+  "id": 52,
+  "result": {
+    "apps": [
+      {
+        "id": "demo-app",
+        "name": "Demo App",
+        "description": "Example connector for documentation.",
+        "iconUrl": null,
+        "iconUrlDark": null,
+        "distributionChannel": null,
+        "installUrl": null,
+        "pluginDisplayNames": [],
+        "toolSummaries": [
+          {
+            "name": "search",
+            "title": "Search",
+            "description": "Search the app.",
+            "isEnabled": true,
+            "disabledReason": null,
+            "isReadOnly": true
+          }
+        ]
+      }
+    ],
+    "missingAppIds": ["missing-app"]
+  }
+}
+```
+
+Set `includeTools: true` to request display-only public tool summaries. The
+metadata response doesn't include installed app runtime state or authorize a
+tool call; use `app/installed` to check effective `enabled` and `callable`
+state.
 
 Invoke an app by inserting `$<app-slug>` in the text input and adding a `mention` input item with the `app://<id>` path (recommended).
 

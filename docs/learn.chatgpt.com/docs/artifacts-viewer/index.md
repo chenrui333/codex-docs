@@ -20,8 +20,15 @@ tools depend on the surface you use.
 <ContentModeSwitch group="codex-surface" id="app">
 
 The ChatGPT desktop app previews generated documents, presentations,
-spreadsheets, and PDF files alongside the chat. Use annotations to point at a
-specific part of a preview and request a focused revision.
+spreadsheets, and PDF files alongside the chat. When automatic previews are
+enabled, the app can open a generated file after a task finishes.
+
+When HTML previews are available, generated `.html` and `.htm` files can also
+open as interactive previews. Switch between the rendered preview and source
+view to inspect the output or its underlying HTML.
+
+Use annotations to point at a specific part of a supported preview and request
+a focused revision.
 
 </ContentModeSwitch>
 
