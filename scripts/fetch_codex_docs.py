@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync Codex-focused docs from developers.openai.com and openai/codex."""
+"""Sync Codex-focused docs from official OpenAI documentation sources."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence, Tuple
+from typing import Collection, Dict, Iterable, List, Sequence, Tuple
 from urllib.parse import ParseResult, urlparse, urlunparse
 
 import requests
@@ -33,6 +33,7 @@ COVERAGE_PATH = DOCS_DIR / "source_coverage.json"
 CAPABILITIES_PATH = DOCS_DIR / "codex_capabilities.json"
 CAPABILITIES_REL_PATH = str(CAPABILITIES_PATH.relative_to(DOCS_DIR))
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
+LEARN_ROOT = DOCS_DIR / "learn.chatgpt.com"
 GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
 PLATFORM_ROOT = DOCS_DIR / "platform.openai.com"
 SYSTEM_SKILLS_ROOT = ROOT / "dot_codex" / "skills" / "dot_system"
@@ -43,6 +44,7 @@ SYSTEM_PROMPT_OUTPUT_PREFIX = "system_prompts/codex-cli/"
 ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
 CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
 PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
+LEARN_SOURCE_TYPE = "learn"
 CAPABILITY_INVENTORY_SOURCE_TYPE = "capability_inventory"
 WEEKLY_REPORT_SOURCE_TYPE = "weekly_sync_report"
 WEEKLY_REPORT_SOURCE_AREA = "weekly"
@@ -61,6 +63,7 @@ SOURCE_METADATA_KEYS = (
 )
 
 SITEMAP_INDEX_URL = "https://developers.openai.com/sitemap-index.xml"
+LEARN_SITEMAP_INDEX_URL = "https://learn.chatgpt.com/sitemap-index.xml"
 GITHUB_TREE_URL = "https://api.github.com/repos/openai/codex/git/trees/main?recursive=1"
 GITHUB_RAW_URL_TEMPLATE = "https://raw.githubusercontent.com/openai/codex/main/{path}"
 PLATFORM_TOOL_GUIDE_URLS = (
@@ -99,6 +102,7 @@ NOISY_LINE_PATTERNS = (
 WEEKLY_CATEGORY_RULES: Sequence[Tuple[str, str]] = (
     ("System Skills", SYSTEM_SKILL_OUTPUT_PREFIX),
     ("System Prompts", SYSTEM_PROMPT_OUTPUT_PREFIX),
+    ("ChatGPT Learn Docs", "learn.chatgpt.com/docs/"),
     ("Developers Codex", "developers.openai.com/codex/"),
     ("Developers Cookbook", "developers.openai.com/cookbook/"),
     ("Developers Resources", "developers.openai.com/resources/"),
@@ -316,11 +320,18 @@ def is_codex_related_developers_url(url: str) -> bool:
     return "codex" in path.lower()
 
 
-def fetch_response(session: requests.Session, url: str, headers: Dict[str, str] | None = None) -> requests.Response:
+def fetch_response(
+    session: requests.Session,
+    url: str,
+    headers: Dict[str, str] | None = None,
+    allowed_statuses: Collection[int] = (),
+) -> requests.Response:
     last_error: Exception | None = None
     for attempt in range(1, REQUEST_MAX_RETRIES + 1):
         try:
             response = session.get(url, timeout=REQUEST_TIMEOUT_SECONDS, headers=headers)
+            if response.status_code in allowed_statuses:
+                return response
             response.raise_for_status()
             return response
         except requests.RequestException as exc:
@@ -465,6 +476,14 @@ def developers_source_area(url: str) -> str:
     return DEVELOPERS_CODEX_SOURCE_AREAS.get(segments[1], f"codex_{source_area_slug(segments[1])}")
 
 
+def learn_source_area(url: str) -> str:
+    parsed = urlparse(url)
+    segments = [segment for segment in parsed.path.split("/") if segment]
+    if len(segments) <= 1:
+        return "learn_docs"
+    return f"learn_{source_area_slug(segments[1])}"
+
+
 def github_source_area(url: str) -> str:
     parsed = urlparse(url)
     marker = "/openai/codex/main/"
@@ -489,6 +508,8 @@ def system_skill_source_area(rel_path: str) -> str:
 def source_area_for_managed_file(item: ManagedFile) -> str:
     if item.source_type == "developers":
         return developers_source_area(item.source_url)
+    if item.source_type == LEARN_SOURCE_TYPE:
+        return learn_source_area(item.source_url)
     if item.source_type == "github":
         return github_source_area(item.source_url)
     if item.source_type == PLATFORM_TOOL_GUIDE_SOURCE_TYPE:
@@ -669,12 +690,80 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
     return mirrored_sorted, coverage
 
 
+def is_learn_doc_url(url: str) -> bool:
+    parsed = urlparse(url)
+    path = parsed.path.rstrip("/") or "/"
+    return parsed.netloc == "learn.chatgpt.com" and (path == "/docs" or path.startswith("/docs/"))
+
+
+def discover_learn_urls(
+    session: requests.Session,
+) -> Tuple[List[str], Dict[str, object], List[Dict[str, str]]]:
+    LOG.info("Discovering documentation URLs from %s", LEARN_SITEMAP_INDEX_URL)
+    index_xml = fetch_text(session, LEARN_SITEMAP_INDEX_URL)
+    sitemap_urls = sorted({canonicalize_url(url) for url in parse_loc_tags(index_xml)})
+    if not sitemap_urls:
+        raise RuntimeError("Learn sitemap index did not contain any sitemap URLs")
+
+    discovered_urls: set[str] = set()
+    sitemap_fetch_errors: List[Dict[str, str]] = []
+    for sitemap_url in sitemap_urls:
+        try:
+            sitemap_xml = fetch_text(session, sitemap_url)
+        except requests.RequestException as exc:
+            LOG.warning("Skipping Learn sitemap %s due to error: %s", sitemap_url, exc)
+            sitemap_fetch_errors.append(
+                {
+                    "source": LEARN_SOURCE_TYPE,
+                    "stage": "sitemap_fetch",
+                    "url": sitemap_url,
+                    "error": str(exc),
+                }
+            )
+            continue
+
+        for raw_url in parse_loc_tags(sitemap_xml):
+            cleaned = canonicalize_url(raw_url)
+            if is_learn_doc_url(cleaned):
+                discovered_urls.add(cleaned)
+
+    discovered_sorted = sorted(discovered_urls)
+    previous_coverage = load_existing_coverage()
+    previous_learn = previous_coverage.get("learn", {})
+    previous_discovered: set[str] = set()
+    if isinstance(previous_learn, dict):
+        previous_discovered = set(previous_learn.get("discovered_urls", []))
+
+    coverage = {
+        "sitemap_index_url": LEARN_SITEMAP_INDEX_URL,
+        "sitemap_urls": sitemap_urls,
+        "discovered_urls": discovered_sorted,
+        "new_discovered_urls_since_last_run": sorted(set(discovered_sorted) - previous_discovered),
+        "sitemap_fetch_errors": sitemap_fetch_errors,
+        "counts": {
+            "sitemap_urls": len(sitemap_urls),
+            "discovered_urls": len(discovered_sorted),
+            "sitemap_fetch_errors": len(sitemap_fetch_errors),
+        },
+    }
+    return discovered_sorted, coverage, sitemap_fetch_errors
+
+
 def developers_url_to_rel_path(url: str) -> str:
     parsed = urlparse(url)
     segments = [segment for segment in parsed.path.split("/") if segment]
     if not segments:
         segments = ["root"]
     path = DEVELOPERS_ROOT.joinpath(*segments, "index.md")
+    return str(path.relative_to(DOCS_DIR))
+
+
+def learn_url_to_rel_path(url: str) -> str:
+    parsed = urlparse(url)
+    segments = [segment for segment in parsed.path.split("/") if segment]
+    if not segments:
+        segments = ["root"]
+    path = LEARN_ROOT.joinpath(*segments, "index.md")
     return str(path.relative_to(DOCS_DIR))
 
 
@@ -1045,6 +1134,88 @@ def build_developers_files(
         else:
             developers_section["counts"] = {"page_fetch_errors": len(fetch_errors)}
 
+    return managed, coverage, fetch_errors
+
+
+def fetch_learn_page(
+    session: requests.Session,
+    url: str,
+) -> Tuple[str, Dict[str, object], str]:
+    markdown_url = f"{url}.md"
+    markdown_response = fetch_response(session, markdown_url, allowed_statuses=(404,))
+    content_type = markdown_response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+    if markdown_response.status_code != 404 and content_type in {"text/markdown", "text/plain"}:
+        metadata: Dict[str, object] = response_source_metadata(markdown_response)
+        metadata["source_kind"] = "learn_markdown"
+        content = markdown_with_source(url, markdown_response.text, default_title="ChatGPT Learn Docs")
+        return content, metadata, "markdown"
+
+    if markdown_response.status_code != 404:
+        LOG.info("Learn Markdown endpoint returned %s for %s; using HTML fallback", content_type or "unknown", url)
+
+    html_response = fetch_response(session, url)
+    metadata = response_source_metadata(html_response)
+    metadata["source_kind"] = "learn_html_fallback"
+    return html_to_markdown(url, html_response.text), metadata, "html_fallback"
+
+
+def build_learn_files(
+    session: requests.Session,
+) -> Tuple[List[ManagedFile], Dict[str, object], List[Dict[str, str]]]:
+    managed: List[ManagedFile] = []
+    learn_urls, coverage, sitemap_fetch_errors = discover_learn_urls(session)
+    fetch_errors = list(sitemap_fetch_errors)
+    mirrored_urls: List[str] = []
+    markdown_urls: List[str] = []
+    html_fallback_urls: List[str] = []
+    page_fetch_errors: List[Dict[str, str]] = []
+
+    for url in learn_urls:
+        try:
+            content, source_metadata, fetch_mode = fetch_learn_page(session, url)
+        except requests.RequestException as exc:
+            LOG.warning("Skipping Learn URL %s due to error: %s", url, exc)
+            failure = {
+                "source": LEARN_SOURCE_TYPE,
+                "stage": "page_fetch",
+                "url": url,
+                "error": str(exc),
+            }
+            page_fetch_errors.append(failure)
+            fetch_errors.append(failure)
+            continue
+
+        mirrored_urls.append(url)
+        if fetch_mode == "markdown":
+            markdown_urls.append(url)
+        else:
+            html_fallback_urls.append(url)
+        managed.append(
+            ManagedFile(
+                rel_path=learn_url_to_rel_path(url),
+                source_type=LEARN_SOURCE_TYPE,
+                source_url=url,
+                content=content,
+                source_metadata=source_metadata,
+            )
+        )
+
+    coverage["mirrored_urls"] = mirrored_urls
+    coverage["markdown_urls"] = markdown_urls
+    coverage["html_fallback_urls"] = html_fallback_urls
+    coverage["page_fetch_errors"] = page_fetch_errors
+    counts = coverage.get("counts", {})
+    if not isinstance(counts, dict):
+        counts = {}
+        coverage["counts"] = counts
+    counts.update(
+        {
+            "mirrored_urls": len(mirrored_urls),
+            "markdown_pages": len(markdown_urls),
+            "html_fallback_pages": len(html_fallback_urls),
+            "page_fetch_errors": len(page_fetch_errors),
+        }
+    )
     return managed, coverage, fetch_errors
 
 
@@ -1931,6 +2102,7 @@ def apply_sync(
             abs_path.unlink()
 
     remove_empty_directories(DEVELOPERS_ROOT)
+    remove_empty_directories(LEARN_ROOT)
     remove_empty_directories(GITHUB_ROOT)
     remove_empty_directories(PLATFORM_ROOT)
     remove_empty_directories(ROOT / "dot_codex")
@@ -1979,11 +2151,13 @@ def main() -> int:
     failures: List[Dict[str, str]] = []
     preserve_missing_sources: set[str] = set()
     developers_files: List[ManagedFile] = []
+    learn_files: List[ManagedFile] = []
     github_files: List[ManagedFile] = []
     platform_tool_guide_files: List[ManagedFile] = []
     codex_cli_files: List[ManagedFile] = []
     capability_inventory_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
+    learn_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
     platform_tool_guide_fetch_errors: List[Dict[str, str]] = []
     platform_tool_guide_references_by_url: Dict[str, List[str]] = {}
@@ -2014,6 +2188,37 @@ def main() -> int:
                 "mirrored_urls": 0,
                 "sitemap_urls": 0,
                 "skipped_codex_related_urls": 0,
+                "sitemap_fetch_errors": 0,
+                "page_fetch_errors": 0,
+            },
+        }
+
+    try:
+        learn_files, learn_coverage, learn_fetch_errors = build_learn_files(session)
+        learn_files = add_source_area_metadata(learn_files)
+        coverage["learn"] = learn_coverage
+        failures.extend(learn_fetch_errors)
+        if learn_fetch_errors:
+            preserve_missing_sources.add(LEARN_SOURCE_TYPE)
+    except Exception as exc:
+        LOG.warning("Learn source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": LEARN_SOURCE_TYPE,
+            "stage": "source_build",
+            "url": "https://learn.chatgpt.com/docs",
+            "error": str(exc),
+        }
+        failures.append(failure)
+        preserve_missing_sources.add(LEARN_SOURCE_TYPE)
+        coverage["learn"] = {
+            "sitemap_index_url": LEARN_SITEMAP_INDEX_URL,
+            "error": str(exc),
+            "counts": {
+                "sitemap_urls": 0,
+                "discovered_urls": 0,
+                "mirrored_urls": 0,
+                "markdown_pages": 0,
+                "html_fallback_pages": 0,
                 "sitemap_fetch_errors": 0,
                 "page_fetch_errors": 0,
             },
@@ -2057,13 +2262,13 @@ def main() -> int:
 
     try:
         platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
-            build_platform_tool_guide_files(session, developers_files + github_files + codex_cli_files)
+            build_platform_tool_guide_files(session, developers_files + learn_files + github_files + codex_cli_files)
         )
         platform_tool_guide_files = add_source_area_metadata(platform_tool_guide_files)
         failures.extend(platform_tool_guide_fetch_errors)
         if platform_tool_guide_fetch_errors:
             preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
-        if ({"developers", "github"} | CODEX_CLI_SOURCE_TYPES) & preserve_missing_sources:
+        if ({"developers", LEARN_SOURCE_TYPE, "github"} | CODEX_CLI_SOURCE_TYPES) & preserve_missing_sources:
             preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
     except Exception as exc:
         LOG.warning("Platform tool guide source failed; continuing with remaining sources: %s", exc)
@@ -2087,6 +2292,22 @@ def main() -> int:
                 codex_cli_metadata,
             )
         ]
+
+    learn_source_errors = [
+        item for item in failures if item["source"] == LEARN_SOURCE_TYPE and item["stage"] == "source_build"
+    ]
+    learn_mirrored_paths = coverage_paths_for_source(learn_files, LEARN_SOURCE_TYPE, preserve_missing_sources)
+    learn_section = coverage.get("learn", {})
+    if isinstance(learn_section, dict):
+        learn_section["mirrored_paths_count"] = len(learn_mirrored_paths)
+        learn_section["mirrored_paths"] = learn_mirrored_paths
+        learn_section["source_errors"] = learn_source_errors
+        counts = learn_section.get("counts", {})
+        if not isinstance(counts, dict):
+            counts = {}
+            learn_section["counts"] = counts
+        counts["mirrored_paths_count"] = len(learn_mirrored_paths)
+        counts["source_errors"] = len(learn_source_errors)
 
     github_source_errors = [item for item in failures if item["source"] == "github" and item["stage"] == "source_build"]
     github_mirrored_paths = coverage_paths_for_source(github_files, "github", preserve_missing_sources)
@@ -2189,7 +2410,12 @@ def main() -> int:
     write_coverage(coverage)
 
     managed_files = annotate_markdown_files(
-        developers_files + github_files + platform_tool_guide_files + codex_cli_files + capability_inventory_files,
+        developers_files
+        + learn_files
+        + github_files
+        + platform_tool_guide_files
+        + codex_cli_files
+        + capability_inventory_files,
         codex_cli_metadata,
     )
     if not managed_files:

@@ -6,6 +6,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 
 ## What gets synced
 
+- All documentation pages discovered under `learn.chatgpt.com/docs`, including the Codex changelog
 - `developers.openai.com` Codex pages (`/codex/...`)
 - Codex-related cookbook/resources pages (`/cookbook/...codex...`, `/resources/codex`)
 - Markdown docs from `openai/codex` (README, CHANGELOG, `docs/*.md`, selected CLI/Rust docs)
@@ -17,6 +18,7 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 ## Repository layout
 
 - `docs/developers.openai.com/...` mirrored pages from the OpenAI Developers site
+- `docs/learn.chatgpt.com/docs/...` mirrored documentation from ChatGPT Learn
 - `docs/github.openai.com/openai/codex/...` mirrored markdown from `openai/codex`
 - `docs/platform.openai.com/...` mirrored linked platform tool guides
 - `dot_codex/skills/dot_system/...` mirrored Codex CLI system skills in installed-path shape
@@ -41,6 +43,7 @@ GitHub Actions workflow: `.github/workflows/update-docs.yml`
 
 Coverage watchdog behavior:
 
+- Records every discovered and mirrored ChatGPT Learn documentation URL, including Markdown and HTML-fallback counts
 - Logs codex-related sitemap URL counts and deltas on each run
 - Highlights newly discovered codex-related URLs in workflow logs
 - Optional strict mode: set `CODEX_DOCS_STRICT_COVERAGE=1` to fail when new codex-related URLs are discovered but none are mirrored
@@ -52,6 +55,7 @@ Resiliency controls:
 - `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
 - `CODEX_DOCS_STRICT_SYNC=1` fail the run if any source segment fails (otherwise partial-source runs are allowed and failures are recorded)
 - `just check-strict` runs the idempotence check with strict sync failure enforcement
+- ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not
 
 Release workflow: `.github/workflows/release.yml`
 

@@ -486,6 +486,30 @@
       "source_area": "system_skill_skill_installer",
       "source_type": "codex_cli_system_skill",
       "source_url": "codex-cli://skills/.system/skill-installer/SKILL.md"
+    },
+    {
+      "category": "linked_tool_guide",
+      "codex_cli_version": "0.146.0",
+      "codex_cli_version_raw": "codex-cli 0.146.0",
+      "codex_cli_versions": [
+        "0.146.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.146.0"
+      ],
+      "first_seen_path": "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+      "id": "tool_guide:web_search",
+      "mirrored_path": "platform.openai.com/docs/guides/tools-web-search/index.md",
+      "name": "web_search",
+      "referenced_from": [
+        "learn.chatgpt.com/docs/agent-approvals-security/index.md"
+      ],
+      "source_area": "tool_guide_web_search",
+      "source_etag": "W/\"966646a9b5db0cafc7ea78739de13438\"",
+      "source_last_modified": "2026-07-29T01:55:34Z",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "title": "Web search"
     }
   ],
   "codex_cli_version": "0.146.0",
@@ -556,10 +580,11 @@
   ],
   "counts": {
     "by_category": {
+      "linked_tool_guide": 1,
       "system_prompt_snapshot": 1,
       "system_skill": 6
     },
-    "total": 7
+    "total": 8
   },
   "schema_version": 1,
   "source_area": "capability_inventory",
