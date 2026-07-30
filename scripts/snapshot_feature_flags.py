@@ -19,9 +19,21 @@ DOCS_ROOT = ROOT / "docs"
 OUTPUT_DIR = DOCS_ROOT / "feature-flags"
 OUTPUT_JSON = OUTPUT_DIR / "lifecycle.json"
 OUTPUT_MD = OUTPUT_DIR / "lifecycle.md"
-CONFIG_BASIC_DOC = DOCS_ROOT / "developers.openai.com" / "codex" / "config-basic" / "index.md"
+CONFIG_BASIC_DOC = (
+    DOCS_ROOT
+    / "learn.chatgpt.com"
+    / "docs"
+    / "config-file"
+    / "config-basic"
+    / "index.md"
+)
 CONFIG_REFERENCE_DOC = (
-    DOCS_ROOT / "developers.openai.com" / "codex" / "config-reference" / "index.md"
+    DOCS_ROOT
+    / "learn.chatgpt.com"
+    / "docs"
+    / "config-file"
+    / "config-reference"
+    / "index.md"
 )
 
 OSS_REPOSITORY = "openai/codex"
@@ -173,11 +185,18 @@ def resolve_feature_source(
     fetch_json_fn: Callable[[str], Dict[str, object]] = fetch_json,
 ) -> tuple[str, str]:
     source_ref = feature_source_ref(codex_version_raw)
+    validated_override = None
     if override_commit:
-        return source_ref, validate_commit_sha(
+        validated_override = validate_commit_sha(
             override_commit, source=FEATURE_SOURCE_COMMIT_ENV
         )
-    return source_ref, resolve_tag_commit(source_ref, fetch_json_fn)
+    resolved_commit = resolve_tag_commit(source_ref, fetch_json_fn)
+    if validated_override and validated_override != resolved_commit:
+        raise SnapshotError(
+            f"{FEATURE_SOURCE_COMMIT_ENV} does not match {source_ref}: "
+            f"expected {resolved_commit}, received {validated_override}."
+        )
+    return source_ref, resolved_commit
 
 
 def source_url(commit: str, path: str) -> str:
@@ -329,24 +348,48 @@ def group_missing_in_docs(
 
 def parse_config_basic_feature_keys(path: Path) -> List[str]:
     if not path.exists():
-        return []
+        raise SnapshotError(f"Required mirrored config document is missing: {path}")
     text = path.read_text()
     section_match = re.search(
-        r"### Supported features\s+(.*?)(?:\n### |\Z)",
+        r"### Common feature flags\s+(.*?)(?:\n### |\Z)",
         text,
         flags=re.DOTALL,
     )
     if not section_match:
-        return []
+        raise SnapshotError(
+            f"Could not find the Common feature flags section in {path}"
+        )
     section = section_match.group(1)
-    return sorted(set(re.findall(r"\|\s*`([a-z0-9_]+)`\s*\|", section)))
+    keys = sorted(set(re.findall(r"^\|\s*`([a-z0-9_]+)`\s*\|", section, re.MULTILINE)))
+    if not keys:
+        raise SnapshotError(f"Parsed zero feature keys from {path}")
+    return keys
 
 
 def parse_config_reference_feature_keys(path: Path) -> List[str]:
     if not path.exists():
-        return []
+        raise SnapshotError(f"Required mirrored config document is missing: {path}")
     text = path.read_text()
-    return sorted(set(re.findall(r"\|\s*`features\.([a-z0-9_]+)`\s*\|", text)))
+    keys = sorted(
+        set(re.findall(r'^\s*key:\s*["\']features\.([a-z0-9_]+)["\']\s*,?$', text, re.MULTILINE))
+    )
+    if not keys:
+        raise SnapshotError(f"Parsed zero feature keys from {path}")
+    return keys
+
+
+def documentation_source_metadata(
+    path: Path, feature_keys: Sequence[str]
+) -> Dict[str, object]:
+    try:
+        rel_path = path.relative_to(ROOT).as_posix()
+    except ValueError:
+        rel_path = path.as_posix()
+    return {
+        "path": rel_path,
+        "sha256": sha256_text(path.read_text()),
+        "parsed_feature_key_count": len(feature_keys),
+    }
 
 
 def iter_feature_spec_blocks(features_rs_text: str) -> Iterable[str]:
@@ -454,6 +497,7 @@ def render_markdown(
     stale_in_docs: List[str],
     ws_precedence: Dict[str, object],
     source_hashes: Dict[str, str],
+    documentation_sources: Dict[str, Dict[str, object]] | None = None,
 ) -> str:
     docs_key_set = set(docs_keys)
     lines: List[str] = []
@@ -539,6 +583,11 @@ def render_markdown(
     lines.append(f"- Source commit: `{source_commit}`")
     lines.append(f"- `features/src/lib.rs` sha256: `{source_hashes['features_rs_sha256']}`")
     lines.append(f"- `client.rs` sha256: `{source_hashes['client_rs_sha256']}`")
+    for label, metadata in sorted((documentation_sources or {}).items()):
+        lines.append(
+            f"- `{metadata['path']}` sha256: `{metadata['sha256']}` "
+            f"({metadata['parsed_feature_key_count']} parsed keys; `{label}`)"
+        )
     lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
@@ -556,6 +605,7 @@ def render_markdown_document(
     stale_in_docs: List[str],
     ws_precedence: Dict[str, object],
     source_hashes: Dict[str, str],
+    documentation_sources: Dict[str, Dict[str, object]] | None = None,
 ) -> str:
     existing_metadata: Dict[str, object] = {}
     if OUTPUT_MD.exists():
@@ -574,6 +624,7 @@ def render_markdown_document(
         stale_in_docs=stale_in_docs,
         ws_precedence=ws_precedence,
         source_hashes=source_hashes,
+        documentation_sources=documentation_sources,
     )
     metadata: Dict[str, object] = {
         "source_type": FEATURE_LIFECYCLE_SOURCE_TYPE,
@@ -601,10 +652,19 @@ def main() -> int:
             features_raw = run_command(["codex", "features", "list"], env=isolated_env)
         cli_features = parse_features_list(features_raw)
 
-        docs_keys = sorted(
-            set(parse_config_basic_feature_keys(CONFIG_BASIC_DOC))
-            | set(parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC))
-        )
+        basic_docs_keys = parse_config_basic_feature_keys(CONFIG_BASIC_DOC)
+        reference_docs_keys = parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC)
+        docs_keys = sorted(set(basic_docs_keys) | set(reference_docs_keys))
+        if not docs_keys:
+            raise SnapshotError("Parsed zero documentation feature keys")
+        documentation_sources = {
+            "config_basic": documentation_source_metadata(
+                CONFIG_BASIC_DOC, basic_docs_keys
+            ),
+            "config_reference": documentation_source_metadata(
+                CONFIG_REFERENCE_DOC, reference_docs_keys
+            ),
+        }
         cli_keys = [str(item["key"]) for item in cli_features]
         (
             missing_in_docs,
@@ -625,12 +685,13 @@ def main() -> int:
         }
 
         payload: Dict[str, object] = {
-            "schema_version": 2,
+            "schema_version": 3,
             "codex_cli_version": codex_version,
             "source_ref": source_ref,
             "source_commit": source_commit,
             "cli_features": cli_features,
             "docs_feature_keys": docs_keys,
+            "documentation_sources": documentation_sources,
             "coverage": {
                 "actionable_stages": list(ACTIONABLE_STAGES),
                 "actionable_missing_in_docs": actionable_missing_in_docs,
@@ -660,6 +721,7 @@ def main() -> int:
             stale_in_docs=stale_in_docs,
             ws_precedence=ws_precedence,
             source_hashes=source_hashes,
+            documentation_sources=documentation_sources,
         )
 
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -8,8 +8,8 @@ on:
     paths:
       - ".github/workflows/update-feature-flags.yml"
       - "scripts/snapshot_feature_flags.py"
-      - "docs/developers.openai.com/codex/config-basic/index.md"
-      - "docs/developers.openai.com/codex/config-reference/index.md"
+      - "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md"
+      - "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md"
       - "docs/feature-flags/**"
 
 permissions:
