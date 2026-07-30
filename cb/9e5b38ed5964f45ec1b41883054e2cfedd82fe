@@ -1,0 +1,31 @@
+scripts/snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_0564fd4a72ac47 22-29,31-36,188,190,193-199,351,354,359-361,363-366,371,373-392,500,586-590,608,627,655-667,688,694,724
+.github/workflows/update-feature-flags.yml
+  s_02b7bd1417b3cb::t_0564fd4a72ac47 11-12
+tests/fixtures/config-reference-current.md
+  s_02b7bd1417b3cb::t_0564fd4a72ac47 1-14
+tests/test_snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_7b6693263974c6 12-13,102-122,177-191,194-196,198-201,203-205,233,236-241
+tests/fixtures/config-basic-current.md
+  s_02b7bd1417b3cb::t_0564fd4a72ac47 1-16
+docs/feature-flags/lifecycle.json
+  s_02b7bd1417b3cb::t_e0c7384f33dfa5 516,599,645,680-724,726
+docs/feature-flags/lifecycle.md
+  s_02b7bd1417b3cb::t_ca36a4e23b4f5a 27,31-33,41,50,56-58,60,63-64,70,72,75,77,79-81,86,97-98,101,116,121-123,128-130,141,143,209-210,224-225
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "cb9e5b38ed5964f45ec1b41883054e2cfedd82fe",
+  "prompts": {},
+  "sessions": {
+    "s_02b7bd1417b3cb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fae6b-74e6-7080-9a52-ad49a3349fd5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
