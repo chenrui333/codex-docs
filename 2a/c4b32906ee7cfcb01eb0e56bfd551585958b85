@@ -1,0 +1,28 @@
+tests/test_writer_safety.py
+  s_02b7bd1417b3cb::t_b4def148314008 1-6,8,10-77
+  s_02b7bd1417b3cb::t_107514348b4f1b 7,9
+scripts/check_writer_base.py
+  s_02b7bd1417b3cb::t_107514348b4f1b 1-73
+.github/workflows/update-docs.yml
+  s_02b7bd1417b3cb::t_b4def148314008 24,146,148,150-154,161-162
+  s_02b7bd1417b3cb::t_107514348b4f1b 142-143,149,159
+.github/workflows/update-feature-flags.yml
+  s_02b7bd1417b3cb::t_b4def148314008 30-31,110,145,147,149-153,159-160
+  s_02b7bd1417b3cb::t_107514348b4f1b 148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "2ac4b32906ee7cfcb01eb0e56bfd551585958b85",
+  "prompts": {},
+  "sessions": {
+    "s_02b7bd1417b3cb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fae6b-74e6-7080-9a52-ad49a3349fd5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
