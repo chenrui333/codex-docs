@@ -72,6 +72,30 @@ export OPENAI_API_KEY="<your-api-key>"
 Keep API keys in your shell or secret manager. Codex Security can also reuse an
 existing file-backed Codex sign-in.
 
+If a ChatGPT sign-in and `OPENAI_API_KEY` or `CODEX_API_KEY` are both
+available, interactive scans with text output ask which credential to use. CI,
+JSON and JSONL scans, and other scans without an interactive terminal use the
+environment API key by default. Dry runs don't prompt or load credentials.
+
+To use your stored sign-in for a scan, pass `--auth chatgpt`:
+
+```bash
+npx @openai/codex-security scan . --auth chatgpt
+```
+
+To use an environment API key, pass `--auth api-key`:
+
+```bash
+npx @openai/codex-security scan . --auth api-key
+```
+
+To make your stored sign-in the automatic default, unset both environment API
+keys:
+
+```bash
+unset OPENAI_API_KEY CODEX_API_KEY
+```
+
 Depending on your account and repository, full-repository scans may also
 require [Trusted Access for Cyber](https://chatgpt.com/cyber). Signing in or
 setting an API key doesn't grant that access.

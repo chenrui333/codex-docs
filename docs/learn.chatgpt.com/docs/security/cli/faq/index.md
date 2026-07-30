@@ -25,6 +25,24 @@ The Codex Security CLI and SDK are in limited beta. Approved customers and
 partners receive installation instructions with their access. Contact your
 account team if you need access.
 
+### Why does a scan use an API key after sign-in
+
+When your environment includes `OPENAI_API_KEY` or `CODEX_API_KEY`, scans
+without an interactive terminal and JSON and JSONL scans use the environment
+API key by default, even after a successful ChatGPT or access-token login.
+Interactive scans with text output ask you to choose when a ChatGPT sign-in is
+also available. Dry runs don't prompt or load credentials.
+
+To use your stored credentials for a scan, select them explicitly:
+
+```bash
+npx @openai/codex-security scan . --auth chatgpt
+```
+
+To make your stored credentials the automatic default, run
+`unset OPENAI_API_KEY CODEX_API_KEY`. For all supported authentication modes,
+see the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#select-scan-authentication).
+
 ### How does bulk repository scanning work
 
 Sign in with GitHub CLI:

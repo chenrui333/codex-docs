@@ -3,13 +3,13 @@ source_type: 'learn'
 source_area: 'learn_changelog'
 source_url: 'https://learn.chatgpt.com/docs/changelog'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-07-29T11:17:29Z'
-source_etag: 'W/"65f3590f14bc6aae81f928e743d038fc"'
+source_last_modified: '2026-07-29T22:22:19Z'
+source_etag: 'W/"392c91544eab14f5ec947c7031ce361a"'
 codex_cli_versions: ["0.146.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0"]
 ---
 
-# Codex changelog | ChatGPT Learn
+# ChatGPT & Codex changelog | ChatGPT Learn
 
 Source: https://learn.chatgpt.com/docs/changelog
 

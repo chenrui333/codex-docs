@@ -120,6 +120,7 @@ working tree.
 ```text
 usage: codex-security scan [-h] [--path PATH | --diff BASE | --working-tree]
                            [--head HEAD] [--base BASE]
+                           [--auth {auto,chatgpt,api-key}]
                            [--knowledge-base PATH]
                            [--mode {standard,deep}] [--model MODEL]
                            [--output-dir DIR]
@@ -130,6 +131,29 @@ usage: codex-security scan [-h] [--path PATH | --diff BASE | --working-tree]
 ```
 
 `repository` defaults to the current directory.
+
+### Select scan authentication
+
+Use `--auth auto`, the default, to select credentials automatically. When both
+a ChatGPT sign-in and `OPENAI_API_KEY` or `CODEX_API_KEY` are available,
+interactive scans with text output ask which credential to use. CI, JSON and
+JSONL scans, and other scans without an interactive terminal use the
+environment API key. Dry runs don't prompt or load credentials.
+
+To use your stored credentials, pass `--auth chatgpt`:
+
+```bash
+npx @openai/codex-security scan . --auth chatgpt
+```
+
+To use an environment API key, pass `--auth api-key`:
+
+```bash
+npx @openai/codex-security scan . --auth api-key
+```
+
+To make stored credentials the automatic default, run
+`unset OPENAI_API_KEY CODEX_API_KEY`.
 
 ### Select the scan target
 
@@ -665,9 +689,12 @@ runtime error.
 ## Authentication and prerequisites
 
 Set `OPENAI_API_KEY` or `CODEX_API_KEY`, sign in with `codex-security login`, or
-use an existing file-backed Codex sign-in. Environment API keys take precedence
-over stored credentials. For CI, keep the API key scoped to the scan step and
-use a trusted workflow.
+use an existing file-backed Codex sign-in. When a ChatGPT sign-in and an
+environment API key are both available, interactive scans with text output ask
+which credential to use. CI, JSON and JSONL scans, and other scans without an
+interactive terminal use the environment API key by default. Dry runs don't
+prompt or load credentials. Use `--auth` to select the credential explicitly.
+For CI, keep the API key scoped to the scan step and use a trusted workflow.
 
 The CLI requires Node.js 22 or later. Running a scan or exporting findings also
 requires Python 3.10 or later. Python 3.10 also requires `tomli`. Use `--python`
