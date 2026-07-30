@@ -1015,7 +1015,7 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "4f57e32507a1bb9633f9ea8d747fb0a0282bb1c90a13c332fa26998207173e32",
+    "client_rs_sha256": "650ba7def430a3d5c99b060b932c3fb24d87e0bce083113e9fee2aa6a49d0c62",
     "features_rs_sha256": "cd8bf9a20131787ac2516ae02a38d1ed87642418ddde56e7c9a4cf125c902884"
   },
   "source_urls": {
