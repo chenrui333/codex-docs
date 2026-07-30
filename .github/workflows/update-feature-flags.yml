@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Read snapshot CLI version
+      - name: Read snapshot inputs
         id: snapshot_cli
         run: |
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
@@ -46,18 +46,23 @@ jobs:
           import re
           from pathlib import Path
 
-          raw_version = json.loads(Path("docs/feature-flags/lifecycle.json").read_text())["codex_cli_version"]
+          snapshot = json.loads(Path("docs/feature-flags/lifecycle.json").read_text())
+          raw_version = snapshot["codex_cli_version"]
           match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", raw_version)
           if not match:
               raise SystemExit(f"Could not parse Codex CLI package version from {raw_version!r}")
 
           print(f"npm_version={match.group(1)}")
+          print(f"source_commit={snapshot['source_commit']}")
           PY
 
       - name: Install snapshot CLI version
         run: npm install -g "@openai/codex@${{ steps.snapshot_cli.outputs.npm_version }}"
 
       - name: Generate feature lifecycle snapshot
+        env:
+          CODEX_FEATURE_SOURCE_COMMIT: ${{ steps.snapshot_cli.outputs.source_commit }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python3 scripts/snapshot_feature_flags.py
 
       - name: Upload snapshot artifacts
@@ -112,6 +117,8 @@ jobs:
         run: npm install -g @openai/codex
 
       - name: Generate feature lifecycle snapshot
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python3 scripts/snapshot_feature_flags.py
 
       - name: Upload snapshot artifacts

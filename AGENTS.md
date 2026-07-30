@@ -29,7 +29,7 @@
 - Verify `docs/docs_manifest.json` and `docs/sync_summary.json` are updated consistently, including Codex CLI version metadata for CLI-backed changes.
 - Verify `docs/source_coverage.json` updates consistently and includes expected counts, including complete ChatGPT Learn discovery and mirror coverage.
 - Keep `weekly/YYYY-MM-DD.md` generation deterministic for unchanged inputs.
-- For feature-flag automation or source-input changes, verify `docs/feature-flags/**` with `just check-feature-flags`.
+- For feature-flag automation or source-input changes, verify `docs/feature-flags/**` with `just check-feature-flags`; snapshots must use the source commit resolved from the CLI release tag.
 
 ## CI behavior
 - `.github/workflows/update-docs.yml` is direct-push sync to `main`.

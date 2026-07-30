@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence
+from typing import Callable, Dict, Iterable, List, Sequence
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -24,10 +24,14 @@ CONFIG_REFERENCE_DOC = (
     DOCS_ROOT / "developers.openai.com" / "codex" / "config-reference" / "index.md"
 )
 
-OSS_FEATURES_RS_URL = (
-    "https://raw.githubusercontent.com/openai/codex/main/codex-rs/features/src/lib.rs"
-)
-OSS_CLIENT_RS_URL = "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/client.rs"
+OSS_REPOSITORY = "openai/codex"
+OSS_REPOSITORY_API_URL = f"https://api.github.com/repos/{OSS_REPOSITORY}"
+OSS_RAW_BASE_URL = f"https://raw.githubusercontent.com/{OSS_REPOSITORY}"
+OSS_FEATURES_RS_PATH = "codex-rs/features/src/lib.rs"
+OSS_CLIENT_RS_PATH = "codex-rs/core/src/client.rs"
+FEATURE_SOURCE_COMMIT_ENV = "CODEX_FEATURE_SOURCE_COMMIT"
+ACTIONABLE_STAGES = ("stable", "experimental")
+COMMIT_SHA_PATTERN = re.compile(r"[0-9a-f]{40}")
 HTTP_USER_AGENT = "codex-docs-feature-lifecycle/0.1 (+https://github.com/chenrui333/codex-docs)"
 FEATURE_LIFECYCLE_SOURCE_TYPE = "feature_flag_snapshot"
 FEATURE_LIFECYCLE_SOURCE_AREA = "feature_flags"
@@ -70,6 +74,23 @@ def fetch_text(url: str) -> str:
         return resp.read().decode("utf-8")
 
 
+def fetch_json(url: str) -> Dict[str, object]:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": HTTP_USER_AGENT,
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    req = Request(url, headers=headers)
+    with urlopen(req, timeout=30) as resp:  # noqa: S310 (trusted GitHub API URL)
+        payload = json.loads(resp.read().decode("utf-8"))
+    if not isinstance(payload, dict):
+        raise SnapshotError(f"Unexpected JSON object from {url}")
+    return payload
+
+
 def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
@@ -77,6 +98,64 @@ def sha256_text(text: str) -> str:
 def parse_codex_cli_version(version_raw: str) -> str:
     match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", version_raw)
     return match.group(1) if match else version_raw.strip()
+
+
+def validate_commit_sha(value: str, *, source: str) -> str:
+    normalized = value.strip().lower()
+    if not COMMIT_SHA_PATTERN.fullmatch(normalized):
+        raise SnapshotError(f"{source} must be a full 40-character commit SHA.")
+    return normalized
+
+
+def feature_source_ref(codex_version_raw: str) -> str:
+    version = parse_codex_cli_version(codex_version_raw)
+    if not re.fullmatch(r"\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?", version):
+        raise SnapshotError(
+            f"Could not derive an openai/codex release tag from {codex_version_raw!r}."
+        )
+    return f"rust-v{version}"
+
+
+def resolve_tag_commit(
+    source_ref: str,
+    fetch_json_fn: Callable[[str], Dict[str, object]] = fetch_json,
+) -> str:
+    payload = fetch_json_fn(f"{OSS_REPOSITORY_API_URL}/git/ref/tags/{source_ref}")
+    for _ in range(5):
+        target = payload.get("object")
+        if not isinstance(target, dict):
+            raise SnapshotError(f"Tag {source_ref} did not contain an object target.")
+        target_type = target.get("type")
+        if target_type == "commit":
+            return validate_commit_sha(str(target.get("sha", "")), source=f"Tag {source_ref}")
+        if target_type != "tag":
+            raise SnapshotError(
+                f"Tag {source_ref} resolved to unsupported object type {target_type!r}."
+            )
+        target_url = target.get("url")
+        if not isinstance(target_url, str) or not target_url.startswith(
+            f"{OSS_REPOSITORY_API_URL}/git/tags/"
+        ):
+            raise SnapshotError(f"Tag {source_ref} contained an invalid tag object URL.")
+        payload = fetch_json_fn(target_url)
+    raise SnapshotError(f"Tag {source_ref} exceeded the tag dereference limit.")
+
+
+def resolve_feature_source(
+    codex_version_raw: str,
+    override_commit: str | None = None,
+    fetch_json_fn: Callable[[str], Dict[str, object]] = fetch_json,
+) -> tuple[str, str]:
+    source_ref = feature_source_ref(codex_version_raw)
+    if override_commit:
+        return source_ref, validate_commit_sha(
+            override_commit, source=FEATURE_SOURCE_COMMIT_ENV
+        )
+    return source_ref, resolve_tag_commit(source_ref, fetch_json_fn)
+
+
+def source_url(commit: str, path: str) -> str:
+    return f"{OSS_RAW_BASE_URL}/{commit}/{path}"
 
 
 def strip_quotes(value: str) -> str:
@@ -198,6 +277,30 @@ def parse_features_list(raw: str) -> List[Dict[str, object]]:
     return rows
 
 
+def group_missing_in_docs(
+    cli_features: Sequence[Dict[str, object]], docs_keys: Sequence[str]
+) -> tuple[List[str], List[str], Dict[str, List[str]]]:
+    documented = set(docs_keys)
+    grouped: Dict[str, List[str]] = {}
+    for item in cli_features:
+        key = str(item["key"])
+        if key in documented:
+            continue
+        stage = str(item["stage"])
+        grouped.setdefault(stage, []).append(key)
+
+    ordered_grouped = {
+        stage: sorted(grouped[stage]) for stage in sorted(grouped)
+    }
+    missing = sorted(key for keys in ordered_grouped.values() for key in keys)
+    actionable = sorted(
+        key
+        for stage in ACTIONABLE_STAGES
+        for key in ordered_grouped.get(stage, [])
+    )
+    return missing, actionable, ordered_grouped
+
+
 def parse_config_basic_feature_keys(path: Path) -> List[str]:
     if not path.exists():
         return []
@@ -314,10 +417,14 @@ def derive_websocket_precedence(client_rs_text: str) -> Dict[str, object]:
 
 def render_markdown(
     codex_version: str,
+    source_ref: str,
+    source_commit: str,
     cli_features: List[Dict[str, object]],
     docs_keys: List[str],
     source_defaults: Dict[str, Dict[str, str]],
     missing_in_docs: List[str],
+    actionable_missing_in_docs: List[str],
+    missing_in_docs_by_stage: Dict[str, List[str]],
     stale_in_docs: List[str],
     ws_precedence: Dict[str, object],
     source_hashes: Dict[str, str],
@@ -329,11 +436,14 @@ def render_markdown(
     lines.append("Generated by `scripts/snapshot_feature_flags.py`.")
     lines.append("")
     lines.append(f"- Codex CLI version: `{codex_version}`")
+    lines.append(f"- Source release: `{source_ref}` at `{source_commit}`")
     lines.append("- Inputs:")
     lines.append(
         "  - `codex features list` from an isolated temporary `CODEX_HOME` (runtime behavior + lifecycle stage labels)"
     )
-    lines.append("  - `openai/codex` source (`features/src/lib.rs`, `client.rs`) for semantic checks")
+    lines.append(
+        "  - release-matched `openai/codex` source (`features/src/lib.rs`, `client.rs`) for semantic checks"
+    )
     lines.append("  - mirrored docs (`config-basic`, `config-reference`) for coverage comparison")
     lines.append("")
     lines.append("## Current CLI Feature Snapshot")
@@ -354,10 +464,26 @@ def render_markdown(
     lines.append("")
     lines.append("## Coverage Gaps")
     lines.append("")
-    lines.append(f"- Missing in docs: `{len(missing_in_docs)}`")
-    if missing_in_docs:
-        for key in missing_in_docs:
-            lines.append(f"  - `{key}`")
+    lines.append(f"- Missing in docs across all lifecycle stages: `{len(missing_in_docs)}`")
+    lines.append(
+        f"- Actionable missing in docs (`stable`, `experimental`): `{len(actionable_missing_in_docs)}`"
+    )
+    for stage in ACTIONABLE_STAGES:
+        keys = missing_in_docs_by_stage.get(stage, [])
+        lines.append(f"  - `{stage}`: `{len(keys)}`")
+        for key in keys:
+            lines.append(f"    - `{key}`")
+    lines.append("- Informational missing in docs:")
+    informational_stages = [
+        stage for stage in missing_in_docs_by_stage if stage not in ACTIONABLE_STAGES
+    ]
+    if not informational_stages:
+        lines.append("  - none")
+    for stage in informational_stages:
+        keys = missing_in_docs_by_stage[stage]
+        lines.append(f"  - `{stage}`: `{len(keys)}`")
+        for key in keys:
+            lines.append(f"    - `{key}`")
     lines.append(f"- Present in docs but not in current CLI list: `{len(stale_in_docs)}`")
     if stale_in_docs:
         for key in stale_in_docs:
@@ -383,6 +509,8 @@ def render_markdown(
     lines.append("")
     lines.append("## Source Fingerprints")
     lines.append("")
+    lines.append(f"- Release tag: `{source_ref}`")
+    lines.append(f"- Source commit: `{source_commit}`")
     lines.append(f"- `features/src/lib.rs` sha256: `{source_hashes['features_rs_sha256']}`")
     lines.append(f"- `client.rs` sha256: `{source_hashes['client_rs_sha256']}`")
     lines.append("")
@@ -391,10 +519,14 @@ def render_markdown(
 
 def render_markdown_document(
     codex_version: str,
+    source_ref: str,
+    source_commit: str,
     cli_features: List[Dict[str, object]],
     docs_keys: List[str],
     source_defaults: Dict[str, Dict[str, str]],
     missing_in_docs: List[str],
+    actionable_missing_in_docs: List[str],
+    missing_in_docs_by_stage: Dict[str, List[str]],
     stale_in_docs: List[str],
     ws_precedence: Dict[str, object],
     source_hashes: Dict[str, str],
@@ -405,10 +537,14 @@ def render_markdown_document(
 
     body = render_markdown(
         codex_version=codex_version,
+        source_ref=source_ref,
+        source_commit=source_commit,
         cli_features=cli_features,
         docs_keys=docs_keys,
         source_defaults=source_defaults,
         missing_in_docs=missing_in_docs,
+        actionable_missing_in_docs=actionable_missing_in_docs,
+        missing_in_docs_by_stage=missing_in_docs_by_stage,
         stale_in_docs=stale_in_docs,
         ws_precedence=ws_precedence,
         source_hashes=source_hashes,
@@ -430,6 +566,9 @@ def write_json(path: Path, payload: Dict[str, object]) -> None:
 def main() -> int:
     try:
         codex_version = run_command(["codex", "--version"], env=codex_subprocess_env())
+        source_ref, source_commit = resolve_feature_source(
+            codex_version, os.environ.get(FEATURE_SOURCE_COMMIT_ENV)
+        )
         with tempfile.TemporaryDirectory(prefix="codex-features-home-") as tmp_home:
             isolated_env = codex_subprocess_env()
             isolated_env["CODEX_HOME"] = tmp_home
@@ -441,11 +580,17 @@ def main() -> int:
             | set(parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC))
         )
         cli_keys = [str(item["key"]) for item in cli_features]
-        missing_in_docs = sorted([key for key in cli_keys if key not in set(docs_keys)])
+        (
+            missing_in_docs,
+            actionable_missing_in_docs,
+            missing_in_docs_by_stage,
+        ) = group_missing_in_docs(cli_features, docs_keys)
         stale_in_docs = sorted([key for key in docs_keys if key not in set(cli_keys)])
 
-        features_rs = fetch_text(OSS_FEATURES_RS_URL)
-        client_rs = fetch_text(OSS_CLIENT_RS_URL)
+        features_rs_url = source_url(source_commit, OSS_FEATURES_RS_PATH)
+        client_rs_url = source_url(source_commit, OSS_CLIENT_RS_PATH)
+        features_rs = fetch_text(features_rs_url)
+        client_rs = fetch_text(client_rs_url)
         source_defaults = parse_feature_defaults_from_source(features_rs)
         ws_precedence = derive_websocket_precedence(client_rs)
         source_hashes = {
@@ -454,28 +599,38 @@ def main() -> int:
         }
 
         payload: Dict[str, object] = {
+            "schema_version": 2,
             "codex_cli_version": codex_version,
+            "source_ref": source_ref,
+            "source_commit": source_commit,
             "cli_features": cli_features,
             "docs_feature_keys": docs_keys,
             "coverage": {
+                "actionable_stages": list(ACTIONABLE_STAGES),
+                "actionable_missing_in_docs": actionable_missing_in_docs,
                 "missing_in_docs": missing_in_docs,
+                "missing_in_docs_by_stage": missing_in_docs_by_stage,
                 "stale_in_docs": stale_in_docs,
             },
             "source_defaults": source_defaults,
             "websocket_precedence": ws_precedence,
             "source_fingerprints": source_hashes,
             "source_urls": {
-                "features_rs": OSS_FEATURES_RS_URL,
-                "client_rs": OSS_CLIENT_RS_URL,
+                "features_rs": features_rs_url,
+                "client_rs": client_rs_url,
             },
         }
 
         markdown = render_markdown_document(
             codex_version=codex_version,
+            source_ref=source_ref,
+            source_commit=source_commit,
             cli_features=cli_features,
             docs_keys=docs_keys,
             source_defaults=source_defaults,
             missing_in_docs=missing_in_docs,
+            actionable_missing_in_docs=actionable_missing_in_docs,
+            missing_in_docs_by_stage=missing_in_docs_by_stage,
             stale_in_docs=stale_in_docs,
             ws_precedence=ws_precedence,
             source_hashes=source_hashes,
@@ -488,6 +643,7 @@ def main() -> int:
         print(f"Wrote {OUTPUT_JSON.relative_to(ROOT)}")
         print(f"Wrote {OUTPUT_MD.relative_to(ROOT)}")
         print(f"Missing in docs: {len(missing_in_docs)}")
+        print(f"Actionable missing in docs: {len(actionable_missing_in_docs)}")
         return 0
     except SnapshotError as exc:
         print(f"error: {exc}", file=sys.stderr)
