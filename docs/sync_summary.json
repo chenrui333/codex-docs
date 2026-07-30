@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-07-30T12:54:18+00:00",
+  "generated_at": "2026-07-30T19:27:09+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,6 +13,6 @@
   },
   "total_files": 220,
   "updated": [
-    "learn.chatgpt.com/docs/features/codex-micro/index.md"
+    "learn.chatgpt.com/docs/pricing/index.md"
   ]
 }
