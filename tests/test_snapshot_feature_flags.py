@@ -1,4 +1,7 @@
+import json
+import tempfile
 import unittest
+from pathlib import Path
 from subprocess import TimeoutExpired
 from unittest import mock
 
@@ -6,6 +9,28 @@ from scripts import snapshot_feature_flags as snapshot
 
 
 class SnapshotFeatureFlagsTests(unittest.TestCase):
+    def test_command_timeout_and_failures(self):
+        with mock.patch.dict(snapshot.os.environ, {}, clear=True):
+            self.assertEqual(snapshot.command_timeout_seconds(), 120.0)
+        with mock.patch.dict(
+            snapshot.os.environ,
+            {"CODEX_DOCS_COMMAND_TIMEOUT_SECONDS": "0"},
+            clear=True,
+        ):
+            self.assertEqual(snapshot.command_timeout_seconds(), 0.1)
+        with mock.patch.dict(
+            snapshot.os.environ,
+            {"CODEX_DOCS_COMMAND_TIMEOUT_SECONDS": "bad"},
+            clear=True,
+        ):
+            with self.assertRaisesRegex(snapshot.SnapshotError, "must be a number"):
+                snapshot.command_timeout_seconds()
+
+        failed = mock.Mock(returncode=2, stdout="out", stderr="err")
+        with mock.patch.object(snapshot.subprocess, "run", return_value=failed):
+            with self.assertRaisesRegex(snapshot.SnapshotError, "Command failed"):
+                snapshot.run_command(["codex", "features", "list"])
+
     def test_parse_features_list(self):
         rows = snapshot.parse_features_list(
             "stable_flag  stable  true\nexperimental_flag  experimental  false\n"
@@ -77,6 +102,102 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
             snapshot.resolve_feature_source(
                 "codex-cli 0.146.0", fetch_json_fn=lambda _url: {}
             )
+
+    def test_tag_resolution_and_version_validation_fail_closed(self):
+        with self.assertRaisesRegex(snapshot.SnapshotError, "derive"):
+            snapshot.feature_source_ref("development")
+        with self.assertRaisesRegex(snapshot.SnapshotError, "unsupported"):
+            snapshot.resolve_tag_commit(
+                "rust-v1.2.3",
+                fetch_json_fn=lambda _url: {"object": {"type": "tree"}},
+            )
+        with self.assertRaisesRegex(snapshot.SnapshotError, "invalid tag object URL"):
+            snapshot.resolve_tag_commit(
+                "rust-v1.2.3",
+                fetch_json_fn=lambda _url: {
+                    "object": {"type": "tag", "url": "https://example.test/tag"}
+                },
+            )
+
+    def test_frontmatter_source_and_default_parsers(self):
+        content = snapshot.format_frontmatter(
+            {
+                "source_type": "snapshot",
+                "codex_cli_versions": ["1.2.3"],
+                "description": "deterministic snapshot",
+            },
+            "# Body\n",
+        )
+        metadata, body = snapshot.split_markdown_frontmatter(content)
+        self.assertEqual(metadata["codex_cli_versions"], ["1.2.3"])
+        self.assertEqual(metadata["description"], "deterministic snapshot")
+        self.assertEqual(body, "# Body\n")
+
+        source = """
+        FeatureSpec {
+            key: "alpha",
+            stage: Stage::Stable,
+            default_enabled: true,
+        }
+        FeatureSpec {
+            key: "beta",
+            stage: if cfg!(target_os = "macos") { Stage::Experimental } else { Stage::Removed },
+            default_enabled: cfg!(target_os = "macos"),
+        }
+        FeatureSpec { stage: Stage::Deprecated, default_enabled: false, }
+        """
+        parsed = snapshot.parse_feature_defaults_from_source(source)
+        self.assertEqual(parsed["alpha"]["stage_from_source"], "stable")
+        self.assertIn("platform-dependent", parsed["beta"]["stage_from_source"])
+        self.assertEqual(parsed["beta"]["default_enabled_expr"], 'cfg!(target_os = "macos")')
+
+    def test_current_config_parsers_handle_legacy_fixture_shapes(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            basic = root / "basic.md"
+            reference = root / "reference.md"
+            basic.write_text(
+                "### Supported features\n\n| Key | Stage |\n| --- | --- |\n| `alpha` | stable |\n\n### Next\n"
+            )
+            reference.write_text("| `features.beta` | boolean |\n")
+            self.assertEqual(snapshot.parse_config_basic_feature_keys(basic), ["alpha"])
+            self.assertEqual(snapshot.parse_config_reference_feature_keys(reference), ["beta"])
+            self.assertEqual(snapshot.parse_config_basic_feature_keys(root / "missing"), [])
+
+    def test_main_writes_snapshot_and_reports_errors(self):
+        features_source = 'FeatureSpec { key: "alpha", stage: Stage::Stable, default_enabled: true, }'
+        client_source = "(_, true) => Some(ResponsesWebsocketVersion::V2)\n(true, false) => Some(ResponsesWebsocketVersion::V1)\n(false, false) => None"
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            output_dir = root / "feature-flags"
+            output_json = output_dir / "lifecycle.json"
+            output_md = output_dir / "lifecycle.md"
+            command_outputs = [
+                "codex-cli 1.2.3",
+                "alpha  stable  true\nbeta  experimental  false",
+            ]
+            with (
+                mock.patch.object(snapshot, "ROOT", root),
+                mock.patch.object(snapshot, "OUTPUT_DIR", output_dir),
+                mock.patch.object(snapshot, "OUTPUT_JSON", output_json),
+                mock.patch.object(snapshot, "OUTPUT_MD", output_md),
+                mock.patch.object(snapshot, "run_command", side_effect=command_outputs),
+                mock.patch.object(snapshot, "resolve_feature_source", return_value=("rust-v1.2.3", "a" * 40)),
+                mock.patch.object(snapshot, "parse_config_basic_feature_keys", return_value=["alpha"]),
+                mock.patch.object(snapshot, "parse_config_reference_feature_keys", return_value=[]),
+                mock.patch.object(snapshot, "fetch_text", side_effect=[features_source, client_source]),
+            ):
+                self.assertEqual(snapshot.main(), 0)
+
+            payload = json.loads(output_json.read_text())
+            self.assertEqual(payload["source_commit"], "a" * 40)
+            self.assertEqual(payload["coverage"]["actionable_missing_in_docs"], ["beta"])
+            self.assertIn("Feature Flag Lifecycle Snapshot", output_md.read_text())
+
+        with mock.patch.object(
+            snapshot, "run_command", side_effect=snapshot.SnapshotError("offline")
+        ):
+            self.assertEqual(snapshot.main(), 1)
 
     def test_missing_docs_are_grouped_by_lifecycle(self):
         features = [

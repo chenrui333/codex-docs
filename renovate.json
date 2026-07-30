@@ -7,5 +7,18 @@
   "automergeType": "pr",
   "platformAutomerge": false,
   "minimumReleaseAge": "2 days",
-  "internalChecksFilter": "strict"
+  "internalChecksFilter": "strict",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^pyproject\\.toml$/"
+      ],
+      "matchStrings": [
+        "required-version = \\\"==(?<currentValue>[^\\\"]+)\\\""
+      ],
+      "depNameTemplate": "ruff",
+      "datasourceTemplate": "pypi"
+    }
+  ]
 }
