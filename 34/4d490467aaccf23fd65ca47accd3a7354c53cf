@@ -1,0 +1,64 @@
+AGENTS.md
+  s_02b7bd1417b3cb::t_c5c10af2f7e970 35,42-43
+scripts/snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_9b306a929a040b 35,56-69,78-87
+  s_02b7bd1417b3cb::t_2ecc6edac3aa76 88-89
+justfile
+  s_02b7bd1417b3cb::t_486efd683d5180 21-23,26-27
+  s_02b7bd1417b3cb::t_9b051d436fcfba 28
+.github/workflows/update-docs.yml
+  s_02b7bd1417b3cb::t_ae9987f82d9a1c 15-18,51,158-165,171-172
+scripts/fetch_codex_docs.py
+  s_02b7bd1417b3cb::t_9b306a929a040b 186-188,298-304,435-450
+tests/test_fetch_codex_docs.py
+  s_02b7bd1417b3cb::t_c287a5c3caa82d 7,20-35
+  s_02b7bd1417b3cb::t_7084cb5c77a993 36
+.github/workflows/release.yml
+  s_02b7bd1417b3cb::t_486efd683d5180 18
+.github/workflows/lint.yml
+  s_02b7bd1417b3cb::t_5f4ea35bdcdaaf 8,16
+  s_02b7bd1417b3cb::t_4b478ab4498ecc 83-86
+  s_02b7bd1417b3cb::t_486efd683d5180 91,93-95
+  s_02b7bd1417b3cb::t_33f324fd82b90d 87
+.github/scripts/sync-failure-issue.cjs
+  s_02b7bd1417b3cb::t_be32c278b4464c 1-136
+README.md
+  s_02b7bd1417b3cb::t_c5c10af2f7e970 40,42-43,55,58-59
+tests/test_snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_c287a5c3caa82d 2-3,33-40
+  s_02b7bd1417b3cb::t_82af6ea7d50f73 41
+.github/workflows/update-feature-flags.yml
+  s_02b7bd1417b3cb::t_486efd683d5180 22-25,97-100
+.github/workflows/propose-version-bump.yml
+  s_02b7bd1417b3cb::t_486efd683d5180 30
+tests/test_sync_failure_issue.cjs
+  s_02b7bd1417b3cb::t_5f4ea35bdcdaaf 62-76
+  s_02b7bd1417b3cb::t_be32c278b4464c 1-14,18-61,77-98
+  s_02b7bd1417b3cb::t_ffc64c5025f3b9 15-17
+docs/docs_manifest.json
+  s_02b7bd1417b3cb::t_4cad559d672a34 5124
+docs/learn.chatgpt.com/docs/features/codex-micro/index.md
+  s_02b7bd1417b3cb::t_0b03e32ff50b14 18-19,30-33,35-37,39-41,43-71,80-81,95-96,103-105,107-108,124-126,132-141,145-146,155,164-176,178-179,183,185-193,197,205-206,212,217-221,223,225-229,231-233,235-238,240,242-245
+docs/source_coverage.json
+  s_02b7bd1417b3cb::t_0a790c8380db6a 122,129,157,218-222,256,258
+docs/sync_summary.json
+  s_02b7bd1417b3cb::t_e8aa5c0f497dd1 5,16
+weekly/2026-07-30.md
+  s_02b7bd1417b3cb::t_bf96529d0f3d2b 13,16,33,39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "344d490467aaccf23fd65ca47accd3a7354c53cf",
+  "prompts": {},
+  "sessions": {
+    "s_02b7bd1417b3cb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fae6b-74e6-7080-9a52-ad49a3349fd5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
