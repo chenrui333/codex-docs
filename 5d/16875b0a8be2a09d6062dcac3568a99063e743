@@ -1,0 +1,35 @@
+justfile
+  s_02b7bd1417b3cb::t_548770de4338c0 24-26
+pyproject.toml
+  s_02b7bd1417b3cb::t_548770de4338c0 2,7-15
+scripts/requirements-dev.txt
+  s_02b7bd1417b3cb::t_548770de4338c0 1-2
+tests/test_fetch_codex_docs_extended.py
+  s_02b7bd1417b3cb::t_7e82ae499f8cc7 1-537
+renovate.json
+  s_02b7bd1417b3cb::t_548770de4338c0 10-23
+tests/test_snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_1c89bdea297758 127,133
+  s_02b7bd1417b3cb::t_7e82ae499f8cc7 1-2,4,12-33,106-126,128-132,134-200
+  s_02b7bd1417b3cb::t_4833bbdcbe39ba 201
+.gitignore
+  s_02b7bd1417b3cb::t_7b006ca6193281 7
+.github/workflows/lint.yml
+  s_02b7bd1417b3cb::t_548770de4338c0 89,92-94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "5d16875b0a8be2a09d6062dcac3568a99063e743",
+  "prompts": {},
+  "sessions": {
+    "s_02b7bd1417b3cb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fae6b-74e6-7080-9a52-ad49a3349fd5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
