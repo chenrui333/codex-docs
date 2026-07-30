@@ -183,6 +183,9 @@ def _env_float(name: str, default: float) -> float:
 REQUEST_TIMEOUT_SECONDS = _env_float("CODEX_DOCS_TIMEOUT_SECONDS", 30.0)
 REQUEST_MAX_RETRIES = max(_env_int("CODEX_DOCS_MAX_RETRIES", 3), 1)
 REQUEST_BACKOFF_SECONDS = max(_env_float("CODEX_DOCS_RETRY_BACKOFF_SECONDS", 1.5), 0.0)
+COMMAND_TIMEOUT_SECONDS = max(
+    _env_float("CODEX_DOCS_COMMAND_TIMEOUT_SECONDS", 120.0), 0.1
+)
 STRICT_SYNC_MODE = os.environ.get("CODEX_DOCS_STRICT_SYNC", "0") == "1"
 
 
@@ -290,6 +293,13 @@ def developers_skipped_url_detail(url: str) -> Dict[str, str] | None:
             "url": url,
             "classification": "learn_index",
             "reason": "Learning index pages are intentionally excluded from the docs mirror.",
+        }
+
+    if path == "/learn/developers-codex-plugin":
+        return {
+            "url": url,
+            "classification": "chatgpt_plugin_page",
+            "reason": "ChatGPT plugin guidance is covered by the ChatGPT Learn mirror.",
         }
 
     if path.startswith("/showcase/"):
@@ -422,15 +432,22 @@ def run_local_command(
     cwd: Path | None = None,
     env: Dict[str, str] | None = None,
 ) -> str:
-    result = subprocess.run(
-        list(args),
-        cwd=str(cwd) if cwd else None,
-        env=env,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            list(args),
+            cwd=str(cwd) if cwd else None,
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            timeout=COMMAND_TIMEOUT_SECONDS,
+        )
+    except subprocess.TimeoutExpired as exc:
+        joined = " ".join(args)
+        raise RuntimeError(
+            f"{joined} timed out after {COMMAND_TIMEOUT_SECONDS:g} seconds"
+        ) from exc
     if result.returncode != 0:
         stderr = result.stderr.strip()
         raise RuntimeError(f"{' '.join(args)} failed with exit code {result.returncode}: {stderr}")

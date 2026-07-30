@@ -119,14 +119,14 @@
       "https://developers.openai.com/showcase/phantasy-codex-adventure"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 14,
+      "classified_skipped_codex_related_urls": 15,
       "codex_related_urls": 27,
       "mirrored_urls": 12,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
       "skipped_codex_related_urls": 15,
-      "unclassified_skipped_codex_related_urls": 1
+      "unclassified_skipped_codex_related_urls": 0
     },
     "mirrored_urls": [
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
@@ -154,6 +154,7 @@
     "skipped_codex_related_url_counts_by_classification": {
       "blog_index": 1,
       "blog_post": 7,
+      "chatgpt_plugin_page": 1,
       "community_page": 2,
       "learn_index": 1,
       "showcase_page": 3
@@ -215,6 +216,11 @@
         "url": "https://developers.openai.com/learn/codex"
       },
       {
+        "classification": "chatgpt_plugin_page",
+        "reason": "ChatGPT plugin guidance is covered by the ChatGPT Learn mirror.",
+        "url": "https://developers.openai.com/learn/developers-codex-plugin"
+      },
+      {
         "classification": "showcase_page",
         "reason": "Showcase pages are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/showcase/codex-101"
@@ -247,11 +253,9 @@
       "https://developers.openai.com/showcase/codex-pet-arena",
       "https://developers.openai.com/showcase/phantasy-codex-adventure"
     ],
-    "unclassified_skipped_codex_related_urls": [
-      "https://developers.openai.com/learn/developers-codex-plugin"
-    ]
+    "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-07-29T13:36:55+00:00",
+  "generated_at": "2026-07-30T12:54:05+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

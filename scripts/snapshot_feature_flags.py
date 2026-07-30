@@ -32,6 +32,7 @@ OSS_CLIENT_RS_PATH = "codex-rs/core/src/client.rs"
 FEATURE_SOURCE_COMMIT_ENV = "CODEX_FEATURE_SOURCE_COMMIT"
 ACTIONABLE_STAGES = ("stable", "experimental")
 COMMIT_SHA_PATTERN = re.compile(r"[0-9a-f]{40}")
+COMMAND_TIMEOUT_SECONDS = 120.0
 HTTP_USER_AGENT = "codex-docs-feature-lifecycle/0.1 (+https://github.com/chenrui333/codex-docs)"
 FEATURE_LIFECYCLE_SOURCE_TYPE = "feature_flag_snapshot"
 FEATURE_LIFECYCLE_SOURCE_AREA = "feature_flags"
@@ -52,13 +53,38 @@ class SnapshotError(RuntimeError):
 
 
 def run_command(argv: List[str], env: Dict[str, str] | None = None) -> str:
-    proc = subprocess.run(argv, check=False, text=True, capture_output=True, env=env)
+    try:
+        proc = subprocess.run(
+            argv,
+            check=False,
+            text=True,
+            capture_output=True,
+            env=env,
+            timeout=command_timeout_seconds(),
+        )
+    except subprocess.TimeoutExpired as exc:
+        joined = " ".join(argv)
+        raise SnapshotError(
+            f"Command timed out after {command_timeout_seconds():g} seconds ({joined})."
+        ) from exc
     if proc.returncode != 0:
         joined = " ".join(argv)
         raise SnapshotError(
             f"Command failed ({joined}):\nSTDOUT:\n{proc.stdout}\nSTDERR:\n{proc.stderr}"
         )
     return proc.stdout.strip()
+
+
+def command_timeout_seconds() -> float:
+    raw = os.environ.get("CODEX_DOCS_COMMAND_TIMEOUT_SECONDS", "").strip()
+    if not raw:
+        return COMMAND_TIMEOUT_SECONDS
+    try:
+        return max(float(raw), 0.1)
+    except ValueError as exc:
+        raise SnapshotError(
+            "CODEX_DOCS_COMMAND_TIMEOUT_SECONDS must be a number."
+        ) from exc
 
 
 def codex_subprocess_env(base: Dict[str, str] | None = None) -> Dict[str, str]:

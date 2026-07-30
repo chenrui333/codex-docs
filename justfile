@@ -18,8 +18,13 @@ lint-actions:
 lint-python:
     . .venv/bin/activate && ruff check scripts tests
 
-test:
+test: test-python test-node
+
+test-python:
     . .venv/bin/activate && python -m unittest discover -s tests -v
+
+test-node:
+    node --test tests/*.cjs
 
 sync:
     . .venv/bin/activate && python scripts/fetch_codex_docs.py

@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from contextlib import ExitStack
 from pathlib import Path
+from subprocess import TimeoutExpired
 from unittest import mock
 
 from scripts import fetch_codex_docs as sync
@@ -15,6 +16,23 @@ class FetchCodexDocsTests(unittest.TestCase):
             sync.canonicalize_url("https://developers.openai.com/codex/cli/?q=1#top"),
             "https://developers.openai.com/codex/cli",
         )
+
+    def test_chatgpt_plugin_url_has_an_explicit_classification(self):
+        detail = sync.developers_skipped_url_detail(
+            "https://developers.openai.com/learn/developers-codex-plugin"
+        )
+
+        self.assertIsNotNone(detail)
+        self.assertEqual(detail["classification"], "chatgpt_plugin_page")
+
+    def test_local_command_timeout_is_reported(self):
+        with mock.patch.object(
+            sync.subprocess,
+            "run",
+            side_effect=TimeoutExpired(["codex", "--version"], 120),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "timed out after"):
+                sync.run_local_command(["codex", "--version"])
 
     def test_output_path_rejects_absolute_and_parent_paths(self):
         with self.assertRaisesRegex(ValueError, "Unsafe managed output path"):
