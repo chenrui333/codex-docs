@@ -1,15 +1,25 @@
 set shell := ["bash", "-ueo", "pipefail", "-c"]
 
+actionlint_version := "v1.7.7"
+python := env_var_or_default("CODEX_DOCS_PYTHON", "python3.14")
+
 default:
     @just --list
 
 setup:
-    python3 -m venv .venv
-    . .venv/bin/activate && pip install -r scripts/requirements.txt
+    {{python}} -m venv .venv
+    . .venv/bin/activate && python -m pip install -r scripts/requirements.txt -r scripts/requirements-dev.txt
 
-lint:
-    actionlint .github/workflows/*.yml
-    ruff check scripts
+lint: lint-actions lint-python
+
+lint-actions:
+    go run github.com/rhysd/actionlint/cmd/actionlint@{{actionlint_version}} .github/workflows/*.yml
+
+lint-python:
+    . .venv/bin/activate && ruff check scripts tests
+
+test:
+    . .venv/bin/activate && python -m unittest discover -s tests -v
 
 sync:
     . .venv/bin/activate && python scripts/fetch_codex_docs.py

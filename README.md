@@ -80,12 +80,16 @@ Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
 
 ```bash
 just setup
+just lint
+just test
 just sync
 just check
 just check-strict
 just feature-flags
 just check-feature-flags
 ```
+
+Local setup defaults to Python 3.14 to match CI. Set `CODEX_DOCS_PYTHON` to an equivalent Python 3.14 executable when needed. The actionlint recipe uses Go to run the same pinned actionlint release as CI.
 
 ## Notes
 
