@@ -21,8 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: main
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
@@ -49,7 +48,6 @@ jobs:
         continue-on-error: true
         env:
           CODEX_DOCS_STRICT_SYNC: "1"
-          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -o pipefail
           python scripts/fetch_codex_docs.py 2>&1 | tee sync.log
@@ -141,19 +139,27 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            cli_version="$(codex --version | awk '{print $NF}')"
+            echo "cli_version=${cli_version}" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit and push if changed
+      - name: Check writer base
         if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true'
+        id: writer_base
+        run: python3 scripts/check_writer_base.py >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push if changed
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true' && steps.writer_base.outputs.stale == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/ dot_codex/ system_prompts/ weekly/
-          cli_version="$(codex --version | awk '{print $NF}')"
+          cli_version="${{ steps.changed.outputs.cli_version }}"
           git commit -s -m "chore: sync docs for cli ${cli_version} ($(date -u +'%Y-%m-%d'))"
-          git fetch origin main
-          git pull --rebase origin main
-          git push
+          gh auth setup-git
+          git push origin HEAD:main
 
       - name: Close recovered failure issue
         if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true'
