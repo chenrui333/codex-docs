@@ -1,4 +1,6 @@
 import unittest
+from subprocess import TimeoutExpired
+from unittest import mock
 
 from scripts import snapshot_feature_flags as snapshot
 
@@ -27,6 +29,15 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
         )
 
         self.assertEqual(environment, {"PATH": "/bin"})
+
+    def test_command_timeout_is_reported(self):
+        with mock.patch.object(
+            snapshot.subprocess,
+            "run",
+            side_effect=TimeoutExpired(["codex", "--version"], 120),
+        ):
+            with self.assertRaisesRegex(snapshot.SnapshotError, "timed out after"):
+                snapshot.run_command(["codex", "--version"])
 
     def test_resolve_lightweight_release_tag(self):
         commit = "a" * 40

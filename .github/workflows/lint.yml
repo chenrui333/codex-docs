@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - ".github/scripts/**"
       - ".github/workflows/**"
       - "scripts/**"
       - "tests/**"
@@ -12,6 +13,7 @@ on:
       - "pyproject.toml"
   pull_request:
     paths:
+      - ".github/scripts/**"
       - ".github/workflows/**"
       - "scripts/**"
       - "tests/**"
@@ -78,8 +80,16 @@ jobs:
         with:
           python-version: "3.14"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: "24"
+
       - name: Install runtime dependencies
         run: python -m pip install -r scripts/requirements.txt
 
-      - name: Run tests
+      - name: Run Python tests
         run: python -m unittest discover -s tests -v
+
+      - name: Run Node.js tests
+        run: node --test tests/*.cjs

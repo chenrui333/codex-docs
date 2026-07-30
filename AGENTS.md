@@ -32,15 +32,15 @@
 - For feature-flag automation or source-input changes, verify `docs/feature-flags/**` with `just check-feature-flags`; snapshots must use the source commit resolved from the CLI release tag.
 
 ## CI behavior
-- `.github/workflows/update-docs.yml` is direct-push sync to `main`.
+- `.github/workflows/update-docs.yml` is a fail-closed direct-push sync to `main`; it must not commit partial-source output.
 - Keep direct-push model unless explicitly requested to move to PR-based flow.
 - `.github/workflows/release.yml` creates versioned releases from the root `VERSION` file.
 - `.github/workflows/propose-version-bump.yml` is an optional monthly/manual helper that opens a `VERSION` bump PR.
 - `.github/workflows/update-feature-flags.yml` keeps `docs/feature-flags/**` snapshots fresh and enforces freshness on related pull requests.
 
 ## Runtime controls
-- `CODEX_DOCS_TIMEOUT_SECONDS`, `CODEX_DOCS_MAX_RETRIES`, and `CODEX_DOCS_RETRY_BACKOFF_SECONDS` tune fetch behavior.
-- `CODEX_DOCS_STRICT_SYNC=1` converts partial-source warnings into hard failures.
+- `CODEX_DOCS_TIMEOUT_SECONDS`, `CODEX_DOCS_COMMAND_TIMEOUT_SECONDS`, `CODEX_DOCS_MAX_RETRIES`, and `CODEX_DOCS_RETRY_BACKOFF_SECONDS` tune fetch and subprocess behavior.
+- `CODEX_DOCS_STRICT_SYNC=1` converts partial-source warnings into hard failures and is mandatory in scheduled automation.
 - `CODEX_DOCS_STRICT_COVERAGE=1` fails when new codex-related sitemap URLs are discovered but none are newly mirrored.
 
 ## Versioning and releases

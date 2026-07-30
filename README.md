@@ -37,9 +37,10 @@ GitHub Actions workflow: `.github/workflows/update-docs.yml`
 
 - Runs every 6 hours
 - Executes `scripts/fetch_codex_docs.py`
-- Commits and pushes when content changes are detected
+- Commits and pushes only after a strict, failure-free sync
 - Uploads `docs/source_coverage.json` as a workflow artifact for visibility
-- On sync failure, creates or updates a daily issue with sync summary + log tail
+- Creates or updates one rolling failure issue, then comments and closes it after recovery
+- Serializes docs and feature-snapshot writers so their direct pushes cannot race
 
 Coverage watchdog behavior:
 
@@ -51,9 +52,11 @@ Coverage watchdog behavior:
 Resiliency controls:
 
 - `CODEX_DOCS_TIMEOUT_SECONDS` request timeout per call (default `30`)
+- `CODEX_DOCS_COMMAND_TIMEOUT_SECONDS` CLI subprocess timeout (default `120`)
 - `CODEX_DOCS_MAX_RETRIES` max request attempts (default `3`)
 - `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
-- `CODEX_DOCS_STRICT_SYNC=1` fail the run if any source segment fails (otherwise partial-source runs are allowed and failures are recorded)
+- `CODEX_DOCS_STRICT_SYNC=1` fails if any source segment fails; scheduled automation always enables it
+- Non-strict local runs retain partial output for diagnosis but automation never commits that state
 - `just check-strict` runs the idempotence check with strict sync failure enforcement
 - ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not
 
