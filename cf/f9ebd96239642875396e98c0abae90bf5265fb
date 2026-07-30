@@ -1,0 +1,46 @@
+AGENTS.md
+  s_02b7bd1417b3cb::t_50d0e3e8c21b37 32
+tests/test_snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_6248699e62b823 31-63,70-130
+  s_02b7bd1417b3cb::t_5f7cd4c5876110 64-69
+.github/workflows/update-feature-flags.yml
+  s_02b7bd1417b3cb::t_0bd5ba4dd767ba 41,49-50,56,63-65,120-121
+scripts/snapshot_feature_flags.py
+  s_02b7bd1417b3cb::t_9841c77f4716fa 280-303
+  s_02b7bd1417b3cb::t_b409c53ef7a541 420-421,426-427,439,444-446,467-486,512-513,522-523,528-529,540-541,546-547
+  s_02b7bd1417b3cb::t_010048b9fb2b72 569-571,583-587,590-593,602,604-605,609-610,612,619-620,626-627,632-633,646
+  s_02b7bd1417b3cb::t_4f16565826453e 14,27-34,77-93,103-158
+  s_dbc9b6fa0da2a9::t_cd29c6f05c9940 159-160
+justfile
+  s_02b7bd1417b3cb::t_4135374dbdf612 34,37
+README.md
+  s_02b7bd1417b3cb::t_50d0e3e8c21b37 75-76,78
+docs/feature-flags/lifecycle.json
+  s_02b7bd1417b3cb::t_c4b181a93d4b5c 506-546,649-760,764-765,1169-1170,1172,1174-1175
+docs/feature-flags/lifecycle.md
+  s_02b7bd1417b3cb::t_31e7b269856dc0 15,18,128-235,246-249
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "cff9ebd96239642875396e98c0abae90bf5265fb",
+  "prompts": {},
+  "sessions": {
+    "s_02b7bd1417b3cb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fae6b-74e6-7080-9a52-ad49a3349fd5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    },
+    "s_dbc9b6fa0da2a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c475242-6dc6-4153-8bc6-b422edb32c1a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
