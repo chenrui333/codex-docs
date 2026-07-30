@@ -72,9 +72,10 @@ Optional helper workflow: `.github/workflows/propose-version-bump.yml`
 Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
 
 - Runs daily (and manual dispatch) to snapshot current feature flags into `docs/feature-flags/`
-- Uses both `codex features list` and `openai/codex` source files for lifecycle + semantics checks
+- Resolves the CLI release tag to an immutable `openai/codex` commit before reading source semantics
+- Treats missing stable and experimental flags as actionable; other lifecycle stages remain informational
 - Commits updated snapshots on schedule/manual runs when drift is detected
-- Enforces freshness on pull requests touching feature-flag automation/docs inputs
+- Replays the stored CLI version and source commit when enforcing pull-request freshness
 
 ## Local usage
 
