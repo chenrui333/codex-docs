@@ -21,7 +21,9 @@ lint-python:
 test: test-python test-node
 
 test-python:
-    . .venv/bin/activate && python -m unittest discover -s tests -v
+    . .venv/bin/activate && coverage erase
+    . .venv/bin/activate && coverage run -m unittest discover -s tests -v
+    . .venv/bin/activate && coverage report
 
 test-node:
     node --test tests/*.cjs
