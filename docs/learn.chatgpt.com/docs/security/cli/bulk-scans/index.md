@@ -13,20 +13,21 @@ Source: https://learn.chatgpt.com/docs/security/cli/bulk-scans
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use `codex-security bulk-scan` to review repositories in one
-campaign. Discover repositories from a GitHub account or organization, or
-provide a CSV that pins every repository to an exact Git revision.
+Use `npx @openai/codex-security bulk-scan` to review repositories in one
+campaign. Discover repositories from your personal GitHub account or an
+organization, or provide a CSV that pins every repository to an exact Git
+revision.
 
-The Codex Security CLI is in beta and requires access. Follow the [CLI
-  quickstart](https://learn.chatgpt.com/docs/security/cli) to install the CLI and sign in before
-  starting a bulk scan.
+The `@openai/codex-security` package is public. Running scans requires Codex
+  Security access. Follow the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli) to install
+  the CLI and sign in.
 
 ## Choose a repository source
 
-| Source           | When to use it                                                           |
-| ---------------- | ------------------------------------------------------------------------ |
-| GitHub discovery | Choose repositories interactively from a GitHub account or organization. |
-| CSV inventory    | Run a repeatable, automated campaign against exact repository revisions. |
+| Source           | When to use it                                                                          |
+| ---------------- | --------------------------------------------------------------------------------------- |
+| GitHub discovery | Choose repositories interactively from your personal GitHub account or an organization. |
+| CSV inventory    | Run a repeatable, automated campaign against exact repository revisions.                |
 
 Both workflows save progress, preserve per-repository results, and let you
 resume a campaign after an interruption.
@@ -47,7 +48,7 @@ npx @openai/codex-security bulk-scan
 
 The CLI guides you through these steps:
 
-1. Choose a GitHub account or organization.
+1. Choose your personal GitHub account or an organization.
 2. Review repositories active within the last 90 days.
 3. Search the repository list and select repositories to scan.
 4. Choose a directory for scan results.
@@ -117,6 +118,27 @@ The CLI checks out each pinned revision, scans the selected target, records the
 result, and removes the temporary repository checkout. A repository counts as
 complete only when its scan has complete coverage and all required result
 artifacts exist.
+
+## Choose a model and reasoning effort
+
+Bulk scans use `gpt-5.6-sol` with `xhigh` reasoning effort by default. To
+choose another model and effort for a CSV campaign:
+
+```bash
+npx @openai/codex-security bulk-scan repositories.csv \
+  --output-dir /path/outside/repositories/security-scans \
+  --workers 4 \
+  --model gpt-5.6-terra \
+  --effort high
+```
+
+The same options work during interactive repository discovery:
+
+```bash
+npx @openai/codex-security bulk-scan --model gpt-5.6-terra --effort high
+```
+
+Supported effort levels are `minimal`, `low`, `medium`, `high`, and `xhigh`.
 
 ## Review campaign results
 

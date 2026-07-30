@@ -18,8 +18,8 @@ keep findings and coverage, and optionally fail the check at a chosen
 severity. Start with advisory results, review scan quality and runtime, then
 add a severity policy that fits your repository.
 
-The Codex Security CLI is in beta and requires access. Follow the installation
-  instructions provided with your access.
+Install the public `@openai/codex-security` package. Running scans still
+  requires Codex Security access.
 
 This guide uses GitHub Actions. The same scan and export commands work in other
 CI systems.
@@ -29,34 +29,25 @@ CI systems.
 Store an OpenAI API key as a repository or organization secret named
 `CODEX_SECURITY_API_KEY`.
 
-Map this secret directly to the scan step's `CODEX_API_KEY` environment
-variable. Keep the credential scoped to that variable within the scan process.
-
-Set the `CODEX_SECURITY_PACKAGE` repository or organization variable to an
-approved package source provided with your access, such as a trusted archive
-location or registry package specification. The source must be available to
-the runner before it checks out the repository.
+Map this secret directly to the scan step's `OPENAI_API_KEY` environment
+variable. Keep the credential scoped to the scan process and use
+`--auth api-key` to select it explicitly.
 
 The runner needs:
 
 - Node.js 22 or later.
 - Python 3.10 or later.
-- The Codex Security CLI, installed outside the repository checkout using the
-  instructions provided with your access.
+- The published `@openai/codex-security` package, installed outside the
+  repository checkout.
 - The pull-request head and base history so Git can calculate the merge base.
 - [GitHub Code Security](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github)
   enabled for private or internal repositories when you upload SARIF.
 
-The example skips pull requests from forks and Dependabot. These workflows
-  don't receive normal Actions secrets, and Dependabot receives a read-only
-  `GITHUB_TOKEN` by default. Keep scan credentials available only to trusted
-  workflows.
-
 ## Add the GitHub Actions workflow
 
 Create `.github/workflows/codex-security.yml`. Before checking out the pull
-request, install the approved package under `$RUNNER_TEMP/codex-security` so
-the trusted executable is available at
+request, install `@openai/codex-security@0.1.3` under
+`$RUNNER_TEMP/codex-security` so the trusted executable is available at
 `$RUNNER_TEMP/codex-security/node_modules/.bin/codex-security`:
 
 ```yaml
@@ -85,20 +76,14 @@ jobs:
           python-version: "3.14"
 
       - name: Install Codex Security
-        env:
-          CODEX_SECURITY_PACKAGE: ${{ vars.CODEX_SECURITY_PACKAGE }}
         run: |
           set -euo pipefail
-          if test -z "$CODEX_SECURITY_PACKAGE"; then
-            echo "Set the CODEX_SECURITY_PACKAGE repository or organization variable." >&2
-            exit 1
-          fi
           npm install \
             --prefix "$RUNNER_TEMP/codex-security" \
             --ignore-scripts \
             --no-audit \
             --no-fund \
-            "$CODEX_SECURITY_PACKAGE"
+            @openai/codex-security@0.1.3
 
       - name: Verify Codex Security
         env:
@@ -117,8 +102,9 @@ jobs:
 
       - name: Scan the pull request
         env:
-          CODEX_API_KEY: ${{ secrets.CODEX_SECURITY_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.CODEX_SECURITY_API_KEY }}
           CODEX_SECURITY_BIN: ${{ runner.temp }}/codex-security/node_modules/.bin/codex-security
+          CODEX_SECURITY_STATE_DIR: ${{ runner.temp }}/codex-security-state
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           SCAN_DIR: ${{ runner.temp }}/codex-security-results
@@ -128,6 +114,7 @@ jobs:
           "$CODEX_SECURITY_BIN" scan . \
             --diff "$BASE_REVISION" \
             --head "$HEAD_SHA" \
+            --auth api-key \
             --output-dir "$SCAN_DIR" \
             --json > "$RUNNER_TEMP/codex-security.json"
 
@@ -174,8 +161,9 @@ scans the committed changes between those revisions. Full history keeps the
 target exact. `persist-credentials: false` keeps the repository token out of
 the checked-out Git configuration. Installing the CLI before checkout and
 running its absolute path keeps repository-controlled executables away from
-the scan credential. Pinning each action to a verified commit prevents an
-upstream tag change from changing the workflow.
+the scan credential. `--auth api-key` explicitly selects the scoped API key.
+The scan saves its history in a writable state directory outside the
+repository.
 
 `--json` writes one complete JSON document to stdout, so the workflow can save
 it directly. Progress, completion summaries, and errors remain on stderr. This
@@ -239,7 +227,9 @@ The command archives the earlier results and starts with an empty scan directory
   directory already contains results.
 - **Missing credentials:** Confirm the `CODEX_SECURITY_API_KEY` repository
   secret is available to the trusted workflow and mapped directly to the scan
-  step's `CODEX_API_KEY` environment variable.
+  step's `OPENAI_API_KEY` environment variable.
+- **Scan history error:** Set `CODEX_SECURITY_STATE_DIR` to a writable
+  directory outside the repository.
 - **Python setup error:** Confirm that the runner uses Python 3.10 or later.
 - **Incomplete coverage:** Review `coverage.json`, including deferred surfaces
   and open questions, then rerun with an appropriate target or environment.

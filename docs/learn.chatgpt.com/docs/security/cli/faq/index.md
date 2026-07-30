@@ -21,9 +21,14 @@ with the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ### Who can use the CLI
 
-The Codex Security CLI and SDK are in limited beta. Approved customers and
-partners receive installation instructions with their access. Contact your
-account team if you need access.
+The `@openai/codex-security` package is public. Install the CLI and SDK:
+
+```bash
+npm install @openai/codex-security
+```
+
+Running scans requires Codex Security access. For best results, use an account
+verified for [Trusted Access for Cyber](https://chatgpt.com/cyber).
 
 ### Why does a scan use an API key after sign-in
 
@@ -37,6 +42,12 @@ To use your stored credentials for a scan, select them explicitly:
 
 ```bash
 npx @openai/codex-security scan . --auth chatgpt
+```
+
+To require an API key from `OPENAI_API_KEY` or `CODEX_API_KEY`:
+
+```bash
+npx @openai/codex-security scan . --auth api-key
 ```
 
 To make your stored credentials the automatic default, run
@@ -118,6 +129,16 @@ Each completed scan keeps its report, findings, coverage, and supporting
 artifacts together. See [Scan
 artifacts](https://learn.chatgpt.com/docs/security/cli/reference#scan-artifacts) for the full layout.
 
+### What if the CLI can't save scan history
+
+Codex Security keeps scan history in a workbench database. If the default
+state directory isn't writable, choose a private directory outside the
+repository:
+
+```bash
+export CODEX_SECURITY_STATE_DIR=/path/outside/repository/codex-security-state
+```
+
 ### How do scans distinguish new and known findings
 
 Match findings that share a root cause across the two scans:
@@ -147,7 +168,7 @@ npx @openai/codex-security scans show SCAN_ID
 Record why that finding doesn't apply:
 
 ```bash
-npx @openai/codex-security findings mark-false-positive FINDING_OCCURRENCE_ID \
+npx @openai/codex-security findings false-positive FINDING_OCCURRENCE_ID \
   --reason "The framework escapes this input before it reaches the query"
 ```
 

@@ -17,12 +17,17 @@ Use this reference to check the supported `codex-security` commands, flags,
 output formats, and exit behavior. For a guided first scan, start with the
 [CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
-The Codex Security CLI is in beta and requires access. Follow the installation
-  instructions provided with your access.
+The `@openai/codex-security` package is public. Running scans requires Codex
+  Security access.
 
-When you install the package in a local project, invoke the executable as
-`npx @openai/codex-security`. Use `codex-security` directly when the executable is
-available on your `PATH`.
+Install the published package in your project:
+
+```bash
+npm install @openai/codex-security
+```
+
+Invoke the installed package as `npx @openai/codex-security`. You can use
+`codex-security` directly when the executable is available on your `PATH`.
 
 ## Command overview
 
@@ -118,16 +123,19 @@ Run a scan against a repository, selected paths, committed changes, or the
 working tree.
 
 ```text
-usage: codex-security scan [-h] [--path PATH | --diff BASE | --working-tree]
+usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
+                           [--path PATH | --diff BASE | --working-tree]
                            [--head HEAD] [--base BASE]
-                           [--auth {auto,chatgpt,api-key}]
                            [--knowledge-base PATH]
                            [--mode {standard,deep}] [--model MODEL]
+                           [--effort {minimal,low,medium,high,xhigh}]
                            [--output-dir DIR]
                            [--archive-existing]
                            [--plugin-path PATH] [--python PATH]
                            [--codex KEY=VALUE] [--fail-on-severity LEVEL]
-                           [--max-cost USD] [--dry-run] [--json] [repository]
+                           [--max-cost USD] [--dry-run]
+                           [--json] [--format {toon,json,yaml,jsonl}]
+                           [--full-output] [repository]
 ```
 
 `repository` defaults to the current directory.
@@ -234,6 +242,8 @@ machine-readable result.
 | `--max-cost USD`           | Stop a scan when its estimated model cost exceeds the specified USD amount.                                                  |
 | `--dry-run`                | Check the repository, target, output directory, and Codex configuration without starting a scan.                             |
 | `--json`                   | Print manifest, findings, coverage, paths, and turn metadata as one JSON document.                                           |
+| `--format FORMAT`          | Print the complete scan result as `toon`, `json`, `yaml`, or `jsonl`.                                                        |
+| `--full-output`            | Print the complete result using the default structured output format.                                                        |
 
 The cost limit is an estimate, not a hard spending cap. Requests already in
 progress can finish above the limit, and partial scan results remain available.
@@ -245,9 +255,15 @@ defaults to `~/.codex`. Set `CODEX_SECURITY_STATE_DIR` to keep results under
 contain source excerpts and vulnerability details, so manage their permissions
 and retention accordingly.
 
-The output directory can be new or empty. On macOS and Linux, an existing
-directory must be private to the current user. A scan can replace an existing
-result directory with `--archive-existing`.
+The workbench keeps scan history in
+`$CODEX_HOME/state/plugins/codex-security/workbench.sqlite3`. Setting
+`CODEX_SECURITY_STATE_DIR` also moves the workbench database.
+
+The output directory must be outside the scanned directory and any enclosing
+Git worktree. A scan can replace an existing result directory with
+`--archive-existing`.
+
+To preserve earlier results before reusing an output directory:
 
 ```bash
 npx @openai/codex-security scan . \
@@ -271,7 +287,9 @@ A dry run checks local inputs without loading credentials, starting Codex, or
 probing the plugin's Python interpreter:
 
 ```bash
-npx @openai/codex-security scan . --output-dir /path/outside/repository/results --dry-run
+npx @openai/codex-security scan . \
+  --output-dir /path/outside/repository/results \
+  --dry-run
 ```
 
 ### Configure the runtime
@@ -279,22 +297,27 @@ npx @openai/codex-security scan . --output-dir /path/outside/repository/results 
 Use runtime options when you need an explicit model, interpreter, plugin, or
 Codex configuration value.
 
-| Argument             | Description                                                                                              |
-| -------------------- | -------------------------------------------------------------------------------------------------------- |
-| `--model MODEL`      | Select the model for the scan.                                                                           |
-| `--plugin-path PATH` | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                             |
-| `--python PATH`      | Select the Python interpreter for the plugin runtime.                                                    |
-| `--codex KEY=VALUE`  | Override an isolated Codex configuration value. Values use TOML syntax. Repeat the flag for more values. |
+| Argument                                   | Description                                                                                              |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `--auth {auto,chatgpt,api-key}`            | Select the scan credentials. The default is `auto`.                                                      |
+| `--model MODEL`                            | Select the OpenAI model. The default is `gpt-5.6-sol`.                                                   |
+| `--effort {minimal,low,medium,high,xhigh}` | Select the model's reasoning effort. The default is `xhigh`.                                             |
+| `--plugin-path PATH`                       | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                             |
+| `--python PATH`                            | Select the Python interpreter for the plugin runtime.                                                    |
+| `--codex KEY=VALUE`                        | Override an isolated Codex configuration value. Values use TOML syntax. Repeat the flag for more values. |
+
+To select a different model and reasoning effort without writing TOML:
+
+```bash
+npx @openai/codex-security scan . --model gpt-5.6-terra --effort high
+```
 
 Quote string values passed through `--codex` so the TOML parser receives a
 string:
 
 ```bash
-npx @openai/codex-security scan . --codex 'model="<model>"'
+npx @openai/codex-security scan . --codex 'model="gpt-5.6-terra"'
 ```
-
-Codex Security owns plugin-loading configuration and rejects conflicting
-overrides. Use `--plugin-path` to select a plugin.
 
 ## `codex-security install-hook`
 
@@ -325,12 +348,20 @@ scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans).
 ```text
 usage: codex-security bulk-scan [input] [--output-dir DIR]
                                 [--workers N] [--mode {standard,deep}]
+                                [--model MODEL]
+                                [--effort {minimal,low,medium,high,xhigh}]
                                 [--max-attempts N] [--plugin-path PATH]
                                 [--python PATH] [--codex KEY=VALUE]
 ```
 
-Run `codex-security bulk-scan` without arguments or options to select
+Run `npx @openai/codex-security bulk-scan` without arguments to select
 repositories interactively. This flow requires a GitHub CLI sign-in.
+
+To choose a model and reasoning effort during interactive discovery:
+
+```bash
+npx @openai/codex-security bulk-scan --model gpt-5.6-terra --effort high
+```
 
 For a prepared repository list, provide a CSV and `--output-dir`:
 
@@ -430,7 +461,7 @@ finding against the current code.
 Record a reviewed finding as a false positive:
 
 ```text
-usage: codex-security findings mark-false-positive OCCURRENCE_ID
+usage: codex-security findings false-positive OCCURRENCE_ID
                        --reason REASON
 ```
 
@@ -443,7 +474,7 @@ npx @openai/codex-security scans show SCAN_ID
 Record a specific explanation for the false positive:
 
 ```bash
-npx @openai/codex-security findings mark-false-positive FINDING_OCCURRENCE_ID \
+npx @openai/codex-security findings false-positive FINDING_OCCURRENCE_ID \
   --reason "The framework escapes this input before it reaches the query"
 ```
 
@@ -495,7 +526,10 @@ npx @openai/codex-security export /path/to/scan \
 Write SARIF to stdout:
 
 ```bash
-npx @openai/codex-security export /path/to/scan --export-format sarif --source-root . --output -
+npx @openai/codex-security export /path/to/scan \
+  --export-format sarif \
+  --source-root . \
+  --output -
 ```
 
 Export findings as JSON:
@@ -519,13 +553,15 @@ npx @openai/codex-security export /path/to/scan \
 Check whether a candidate finding is valid:
 
 ```bash
-npx @openai/codex-security validate findings.json "Possible SQL injection in src/query.ts:42"
+npx @openai/codex-security validate findings.json \
+  "Possible SQL injection in src/query.ts:42"
 ```
 
 Generate a fix with the bundled remediation skill:
 
 ```bash
-npx @openai/codex-security patch findings.json "Missing authorization check in src/routes.ts:18"
+npx @openai/codex-security patch findings.json \
+  "Missing authorization check in src/routes.ts:18"
 ```
 
 Each argument can contain literal text or point to a file. Both commands work
@@ -533,6 +569,12 @@ against the current directory. Use `validate` to directly recheck an original
 finding after a fix or when a later scan no longer reports it. A scan
 comparison alone doesn't prove that a fix worked. External tools can use these
 commands without rebuilding the scanner.
+
+Use `--effort` to select reasoning effort for either command:
+
+```bash
+npx @openai/codex-security validate "Possible SQL injection" --effort high
+```
 
 ## `codex-security login`, `logout`, and `info`
 
@@ -583,22 +625,22 @@ Scans, exports, sign-in, validation, and patching remain CLI-only.
 
 ## Read scan output
 
-The CLI writes structured command results to stdout and sends progress,
-completion summaries, and errors to stderr. This lets terminal users read a
-summary while automation captures a clean JSON or SARIF document.
+By default, scans send progress, completion summaries, and errors to stderr
+without writing the complete scan result to stdout. Request `--json`,
+`--format`, or `--full-output` to send structured scan results to stdout.
 
 ### Completion summary
 
 A completed scan writes its finding count, severity breakdown, coverage,
-elapsed time, result directory, and next step to stderr. It includes worker
-counts and token usage when available:
+elapsed time, report path, and result directory to stderr. It includes token
+usage and estimated cost when available:
 
 ```text
 codex-security: Findings: 4 (1 critical, 2 high, 1 informational). Coverage: complete.
-codex-security: Elapsed: 1s. Workers: 3/6.
+codex-security: Elapsed: 1s.
 codex-security: Tokens: 1,250 input, 200 cached, 30 output.
+codex-security: Report: /path/to/scan/report.md
 codex-security: Results: /path/to/scan
-codex-security: Next: codex-security export /path/to/scan --export-format sarif
 ```
 
 Informational findings count toward the summary total. Severity policies
@@ -682,18 +724,19 @@ The CLI uses these exit codes:
 | `143` | SIGTERM terminated a scan.                                                                                                                    |
 
 Any scan with `partial` or `unknown` coverage returns `2`, even without a
-severity policy. Completed scans still write the available results to stdout.
-The CLI prints the location of any partial output after an interruption or
-runtime error.
+severity policy. When you request structured output, completed scans still
+write the available results to stdout. The CLI prints the location of any
+partial output after an interruption or runtime error.
 
 ## Authentication and prerequisites
 
-Set `OPENAI_API_KEY` or `CODEX_API_KEY`, sign in with `codex-security login`, or
-use an existing file-backed Codex sign-in. When a ChatGPT sign-in and an
-environment API key are both available, interactive scans with text output ask
-which credential to use. CI, JSON and JSONL scans, and other scans without an
-interactive terminal use the environment API key by default. Dry runs don't
-prompt or load credentials. Use `--auth` to select the credential explicitly.
+Set `OPENAI_API_KEY` or `CODEX_API_KEY`, sign in with
+`npx @openai/codex-security login`, or use an existing file-backed Codex
+sign-in.
+
+For credential selection, see [Select scan
+authentication](#select-scan-authentication).
+
 For CI, keep the API key scoped to the scan step and use a trusted workflow.
 
 The CLI requires Node.js 22 or later. Running a scan or exporting findings also

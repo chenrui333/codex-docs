@@ -18,11 +18,10 @@ vulnerabilities. Use its command-line interface (CLI) to scan
 repositories you own or have permission to assess, review findings over time,
 and check changes before they land.
 
-The Codex Security CLI and SDK are in beta and require access. Follow the
-  installation instructions provided with your access. For an interactive scan
-  in Codex, start with the [Codex Security plugin
-  quickstart](https://learn.chatgpt.com/docs/security/plugin). For connected GitHub repositories, see
-  [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup).
+The `@openai/codex-security` package is public. Running scans requires Codex
+  Security access. For an interactive scan in Codex, start with the [Codex
+  Security plugin quickstart](https://learn.chatgpt.com/docs/security/plugin). For connected GitHub
+  repositories, see [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup).
 
 ## Check the prerequisites
 
@@ -32,7 +31,12 @@ prerequisites](https://learn.chatgpt.com/docs/security/cli/reference#authenticat
 
 ## Set up and verify the CLI
 
-Follow the installation instructions provided for your Codex Security access.
+Install the published package:
+
+```bash
+npm install @openai/codex-security
+```
+
 Check the installed version:
 
 ```bash
@@ -45,9 +49,10 @@ List the available commands:
 npx @openai/codex-security --help
 ```
 
-Use `npx @openai/codex-security scan --help` or `npx @openai/codex-security export --help` for the
-complete command help. The [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference)
-covers each argument, output format, and exit code.
+Use `npx @openai/codex-security scan --help` or
+`npx @openai/codex-security export --help` for complete command help. The
+[CLI reference](https://learn.chatgpt.com/docs/security/cli/reference) covers each argument, output
+format, and exit code.
 
 ## Sign in
 
@@ -63,27 +68,25 @@ On a remote or headless machine, use device authentication:
 npx @openai/codex-security login --device-auth
 ```
 
-For CI and other automated workflows, use an OpenAI API key instead:
+For CI and other automated workflows, set an OpenAI API key:
 
 ```bash
 export OPENAI_API_KEY="<your-api-key>"
 ```
 
 Keep API keys in your shell or secret manager. Codex Security can also reuse an
-existing file-backed Codex sign-in.
+existing file-backed Codex sign-in. When both a stored ChatGPT sign-in and an
+environment API key are available, interactive scans with text output ask
+which to use. CI, JSON and JSONL scans, and other unattended scans use the
+API key by default.
 
-If a ChatGPT sign-in and `OPENAI_API_KEY` or `CODEX_API_KEY` are both
-available, interactive scans with text output ask which credential to use. CI,
-JSON and JSONL scans, and other scans without an interactive terminal use the
-environment API key by default. Dry runs don't prompt or load credentials.
-
-To use your stored sign-in for a scan, pass `--auth chatgpt`:
+To use your ChatGPT sign-in when an API key is also set, select it explicitly:
 
 ```bash
 npx @openai/codex-security scan . --auth chatgpt
 ```
 
-To use an environment API key, pass `--auth api-key`:
+To require the environment API key, select API-key authentication:
 
 ```bash
 npx @openai/codex-security scan . --auth api-key
@@ -113,6 +116,13 @@ If you omit `--output-dir`, Codex Security saves results in its own persistent
 state directory. Results can include source excerpts and vulnerability details,
 so choose a private location and an appropriate retention policy.
 
+If the default state directory isn't writable, select a writable directory
+outside the scanned repository:
+
+```bash
+export CODEX_SECURITY_STATE_DIR=/path/outside/repository/codex-security-state
+```
+
 Check the repository, target, and output directory before starting a scan:
 
 ```bash
@@ -130,22 +140,40 @@ Run a standard scan and keep its results in the selected directory:
 npx @openai/codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR"
 ```
 
-The CLI writes the scan result to stdout and sends progress and its completion
-summary to stderr. A completed scan prints a summary like this:
+By default, the CLI writes scan progress and its completion summary to stderr.
+It doesn't print the full scan result to stdout. A completed scan prints a
+summary like this:
 
 ```text
 codex-security: Findings: 2 (1 high, 1 medium). Coverage: complete.
-codex-security: Elapsed: 42s. Workers: 3/6.
+codex-security: Elapsed: 42s.
+codex-security: Report: /path/outside/repository/codex-security-results/report.md
 codex-security: Results: /path/outside/repository/codex-security-results
-codex-security: Next: codex-security export /path/outside/repository/codex-security-results --export-format sarif
 ```
 
-For a local package installation, run the suggested export command with
-`npx @openai/codex-security`.
+Token usage and estimated cost appear when available. To print the complete
+result as machine-readable JSON, request structured output explicitly:
+
+```bash
+npx @openai/codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR" --json
+```
 
 Scans are report-only by default, so findings remain available for local
 review. You may want to add a severity threshold when you are ready to [run scans in
 CI](https://learn.chatgpt.com/docs/security/cli/ci).
+
+## Choose a model and reasoning effort
+
+Scans use `gpt-5.6-sol` with `xhigh` reasoning effort by default. Select a
+different model and effort when the task requires them:
+
+```bash
+npx @openai/codex-security scan "$REPOSITORY" \
+  --model gpt-5.6-terra \
+  --effort high
+```
+
+Supported effort levels are `minimal`, `low`, `medium`, `high`, and `xhigh`.
 
 ## Review the results
 
@@ -180,7 +208,9 @@ the full artifact and output contract.
 Use a path scan when a repository contains separate services or packages:
 
 ```bash
-npx @openai/codex-security scan "$REPOSITORY" --path services/billing --path packages/auth
+npx @openai/codex-security scan "$REPOSITORY" \
+  --path services/billing \
+  --path packages/auth
 ```
 
 Review committed changes between the base revision and `HEAD`:
@@ -203,6 +233,8 @@ Use deep mode when a repository or path needs broader review:
 ```bash
 npx @openai/codex-security scan "$REPOSITORY" --mode deep
 ```
+
+Deep mode supports repository and path targets, not diff or working-tree scans.
 
 ## Add architecture and security context
 
@@ -306,6 +338,16 @@ Copy a scan ID from the results to inspect its findings and configuration:
 ```bash
 npx @openai/codex-security scans show SCAN_ID
 ```
+
+To mark a reviewed finding as a false positive, explain why the finding doesn't
+apply:
+
+```bash
+npx @openai/codex-security findings false-positive FINDING_OCCURRENCE_ID \
+  --reason "The route already checks permissions"
+```
+
+Later scans consider that explanation but still recheck the current code.
 
 Run the same scan against the current checkout using its original configuration:
 

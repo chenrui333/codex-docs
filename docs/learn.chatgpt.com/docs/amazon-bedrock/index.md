@@ -76,37 +76,47 @@ Use this path when your organization manages Bedrock access through the AWS SDK
 credential chain. The local client can use these standard AWS SDK credential
 sources:
 
-1. Shared AWS `config` and `credentials` files.
+#### Shared AWS configuration files
+
+Configure the shared AWS `config` and `credentials` files:
 
 ```shell
-   aws configure
+aws configure
 ```
 
-2. Environment variables.
+#### Environment variables
+
+Set the standard AWS SDK credential environment variables:
 
 ```shell
-   export AWS_ACCESS_KEY_ID=<your-access-key-id>
-   export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
-   export AWS_SESSION_TOKEN=<your-session-token>
+export AWS_ACCESS_KEY_ID=<your-access-key-id>
+export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
+export AWS_SESSION_TOKEN=<your-session-token>
 ```
 
-3. AWS Management Console credentials.
+#### AWS Management Console credentials
+
+Log in with AWS Management Console credentials:
 
 ```shell
-   aws login
+aws login
 ```
 
-4. AWS SSO or a named profile.
+#### AWS SSO or a named profile
+
+Log in with AWS SSO and select the named profile:
 
 ```shell
-   aws sso login --profile codex-bedrock
-   export AWS_PROFILE=codex-bedrock
+aws sso login --profile codex-bedrock
+export AWS_PROFILE=codex-bedrock
 ```
 
-5. Federated identity configured with `credential_process`. For corporate SSO or
-   OIDC federation, configure the AWS profile outside the local client and let
-   the AWS SDK resolve credentials. Put browser login, token exchange, caching,
-   and refresh in your AWS profile's `credential_process` helper.
+#### Federated identity
+
+For corporate SSO or OIDC federation, configure a federated identity with
+`credential_process` outside the local client and let the AWS SDK resolve
+credentials. Put browser login, token exchange, caching, and refresh in your
+AWS profile's `credential_process` helper.
 
 ## Desktop app and IDE extension
 

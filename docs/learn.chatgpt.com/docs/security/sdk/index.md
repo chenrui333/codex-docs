@@ -21,20 +21,26 @@ supports preflight checks, cost limits, progress callbacks, and cancellation.
 The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22 or
 later. Scanning also requires Python 3.10 or later.
 
-The Codex Security SDK is in beta and requires access. Follow the installation
-  instructions provided with your access. For general coding agents, see the
-  [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI workflows, see the
-  [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
+The Codex Security SDK is [publicly available on
+  GitHub](https://github.com/openai/codex-security). Running scans requires
+  Codex Security access. For general coding agents, see the [Codex SDK
+  guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI workflows, see the [Codex
+  Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ## Set up the SDK
 
-Follow the installation instructions provided for your Codex Security access.
-Then set `OPENAI_API_KEY` or `CODEX_API_KEY`, or use an existing file-backed
-Codex sign-in before starting a scan.
+Install the SDK:
 
-Depending on your account and repository, full-repository scans may also
-require [Trusted Access for Cyber](https://chatgpt.com/cyber), which signing in
-or providing an API key does not grant.
+```bash
+npm install @openai/codex-security
+```
+
+Before starting a scan, set `OPENAI_API_KEY` or `CODEX_API_KEY`, or use an
+existing file-backed Codex sign-in.
+
+For best results, use an account verified for [Trusted Access for
+Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
+grant Trusted Access.
 
 ## Run a scan
 
@@ -343,14 +349,17 @@ const security = new CodexSecurity({
   pluginPath: "/path/to/codex-security-plugin",
   pythonPath: "/path/to/python",
   codexOverrides: {
-    model: "<model>",
+    model: "gpt-5.6-terra",
+    model_reasoning_effort: "high",
   },
 });
 ```
 
 `pluginPath` accepts a plugin directory or ZIP. `pythonPath` selects the
 plugin interpreter. `codexOverrides` merges supported values into the isolated
-Codex configuration.
+Codex configuration. Scans use `gpt-5.6-sol` with extra-high reasoning effort
+by default. Set `model` and `model_reasoning_effort` in `codexOverrides` to use
+a different model or reasoning effort.
 
 The client also exposes supported authentication methods:
 
@@ -366,6 +375,18 @@ A login handle provides `waitForInstructions`, `authUrl`, `verificationUrl`,
 `userCode`, `wait`, and `cancel` so an application can present and complete the
 selected sign-in flow. The SDK can reuse a file-backed Codex sign-in. API keys
 are a useful fit for CI and server-side automation.
+
+When both an API key and a stored sign-in are available, the SDK uses the API
+key by default. To use your ChatGPT sign-in instead, select it for the scan:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  auth: "chatgpt",
+});
+```
+
+Set `auth: "api-key"` to require an environment API key. `preflight` accepts
+the same `auth` option.
 
 ## Handle scan errors
 

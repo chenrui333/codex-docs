@@ -47,8 +47,16 @@ The plugin runs in your Codex chat. Codex Security cloud scans connected
 
 ## Codex Security CLI and SDK
 
-The Codex Security CLI and SDK are in limited beta and available only to
-approved customers and partners. Contact your account team for access.
+The CLI and TypeScript SDK are available as the public
+[`@openai/codex-security`](https://github.com/openai/codex-security) package.
+Install the package:
+
+```bash
+npm install @openai/codex-security
+```
+
+Running scans requires Codex Security access. For best results, use an account
+verified for [Trusted Access for Cyber](https://chatgpt.com/cyber).
 
 Use the same scanner as the plugin across repositories and over time. The CLI
 discovers GitHub repositories, resumes bulk scans, tracks findings across
