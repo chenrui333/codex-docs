@@ -13,11 +13,14 @@
 1. Preferred command runner: use `just`.
 2. Setup environment:
    - `just setup`
-3. Run sync:
+3. Run offline quality checks:
+   - `just lint`
+   - `just test`
+4. Run sync:
    - `just sync`
-4. Validate local idempotence + scope:
+5. Validate local idempotence + scope:
    - `just check`
-5. For feature-flag snapshot changes:
+6. For feature-flag snapshot changes:
    - `just feature-flags`
    - `just check-feature-flags`
 
