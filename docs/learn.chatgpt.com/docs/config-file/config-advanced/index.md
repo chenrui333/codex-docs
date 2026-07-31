@@ -63,10 +63,10 @@ Examples:
 
 ```shell
 # Dedicated flag
-codex --model gpt-5.4
+codex --model gpt-5.6-terra
 
 # Generic key/value override (value is TOML, not JSON)
-codex --config model='"gpt-5.4"'
+codex --config model='"gpt-5.6-terra"'
 codex --config sandbox_workspace_write.network_access=true
 codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
 ```
@@ -175,7 +175,7 @@ A model provider defines how Codex connects to a model (base URL, wire API, auth
 Define additional providers and point `model_provider` at them:
 
 ```toml
-model = "gpt-5.4"
+model = "gpt-5.6-terra"
 model_provider = "proxy"
 
 [model_providers.proxy]

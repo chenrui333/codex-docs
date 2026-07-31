@@ -186,5 +186,5 @@ specific model, update the `consolidation_model` in your
 
 ```toml
 [memories]
-consolidation_model = "gpt-5.4-mini"
+consolidation_model = "gpt-5.6-luna"
 ```

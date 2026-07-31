@@ -42,7 +42,7 @@ Send a `tools/list` request to see two tools:
 | `config`                 | `object` | Individual configuration settings that override what's in `$CODEX_HOME/config.toml`.                     |
 | `cwd`                    | `string` | Working directory for the session. If relative, resolved against the server process's current directory. |
 | `developer-instructions` | `string` | Developer instructions injected as a developer-role message.                                             |
-| `model`                  | `string` | Optional override for the model name (for example, `gpt-5.4`).                                           |
+| `model`                  | `string` | Optional override for the model name (for example, `gpt-5.6-terra`).                                     |
 | `sandbox`                | `string` | Sandbox mode: `read-only`, `workspace-write`, or `danger-full-access`.                                   |
 
 **`codex-reply`**: Continue a Codex session by providing the thread ID and prompt. The `codex-reply` tool takes these properties:

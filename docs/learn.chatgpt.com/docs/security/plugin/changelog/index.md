@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 Use this changelog to see what changed in Codex Security and which plugin
 versions are available from each installation source.
 
-**Latest release in the hosted Codex Security catalog:** `0.1.14`.
+**Latest release in the hosted Codex Security catalog:** `0.1.15`.
 
 **Latest release in the public Codex CLI plugin marketplace:** `0.1.11`.
 
@@ -26,6 +26,34 @@ the installed plugin version.
 
 These versions apply to the Codex Security plugin. The Codex app, Codex CLI,
 TypeScript SDK, and plugin app have separate version numbers.
+
+## 0.1.15 (July 30, 2026)
+
+### Keep scans accurate as projects change
+
+- Persist scan lifecycle and model metadata so scan history and progress remain
+  consistent across reloads.
+- Preserve completed scans when project files change and avoid reusing SQLite
+  scan directories.
+
+### Give feedback and recover findings
+
+- Submit false-positive feedback for findings from completed scans.
+- Recover malformed finding records during finalization instead of failing the
+  completed scan.
+
+### Handle more repository layouts and paths
+
+- Preserve literal candidate paths and expand `~` in `CODEX_HOME` during
+  preflight.
+- Handle Git-related target validation errors without crashing and support nested
+  Git repositories in scan snapshots.
+- Keep Windows and sandbox path handling consistent during scan recovery.
+
+### Reduce unnecessary scan work
+
+- Keep standard-scan discovery adaptive to the repository and candidate list.
+- Stop retrying policy failures and remove the legacy fanout prompt.
 
 ## 0.1.14 (July 28, 2026)
 

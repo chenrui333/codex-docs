@@ -4404,7 +4404,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "438cdc0a011d182d0530c83fc49eba4605dd69c5c17587450e4dad82d00d5692",
+      "sha256": "ae253c5fbde27551aed633c19784f12ac58ca2068bb220666024a4a9c7026e59",
       "source_area": "learn_agent_configuration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4430,7 +4430,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "9cb5bd6c06d397c2784901397ce254bb35f7c5abd682a1e6e8b42e141f98f45a",
+      "sha256": "d6fe12014692c58465ad95b1b6aaebff597290f9ad93cc0f843f7b80972c44df",
       "source_area": "learn_app_server",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4547,11 +4547,11 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "30d6385e646b4def2ea5dccffaa151cb095da9c7b343a7782ed86d5a6bf2ea33",
+      "sha256": "43494e8c61298c8f875d9a0756e1fa8c80012ae1bcf9a4d62cf99e5dd883aab9",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"7cf5a0496e2368d4ece094fdfbfc8310\"",
+      "source_etag": "W/\"7bb50d741d833de75a881d6f16121d92\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-07-31T06:46:04Z",
+      "source_last_modified": "2026-07-31T17:49:32Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -4627,7 +4627,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "b250b9912a5b3c700727a53e620257f55220dac91c0a704715365da7992fbfad",
+      "sha256": "3a062de2891217e45ddde2d7573aaee0174d7c7f32b6d8c3922a4574a42d98b7",
       "source_area": "learn_codex_sdk",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4679,7 +4679,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "55640140d6d479f2e3f48d0593423b57db66b09b89c8e9b8505e9b20c9bf20de",
+      "sha256": "47c31e2610be11e7712d6b75bdbb47e678b3f03bc66e3a301c87a7d7b2249903",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4718,7 +4718,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "796d47e0becb20ac7b10e694a191c535f4617b3a7e4c716fc4746eb10de7d2a2",
+      "sha256": "d547e22bcb242f633dc8a05586ba8a000c95cf86f141cc08912939252968079f",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4770,7 +4770,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "139defca7f6c05159269f2a3b005f689095ad1d566b64a75fecb18662893ead9",
+      "sha256": "4e71684cd39b4fab17d23e79d3d007299ec3f1f33b4ad48343a13e6edadb9dd3",
       "source_area": "learn_customization",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5292,7 +5292,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "c06e62e5bedbe8175abd8950d2fc98d2de47feccd87457e8e6ca99c9944f0f0a",
+      "sha256": "c49a3bcc30d077e0732573d33e0ecd920a7fd58b356364aa99a86662e6c1ea96",
       "source_area": "learn_mcp_server",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5422,7 +5422,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "c49d83ba9edc3af54dc97012f55239039497cc6ee6d8c9d6b58e7f30af75eb86",
+      "sha256": "89d42262679b8e7ccefc40e07a86cf4125a16f3279e2e59de8c6c2f8902826cb",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5630,7 +5630,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "b58b44f530cffec29332cf725b025ab52e4d1db4677f3903aa658992bb4afe2c",
+      "sha256": "8582c95a07bcccc408920b0c897f9b7acd71a490238de9721344071cd694a733",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

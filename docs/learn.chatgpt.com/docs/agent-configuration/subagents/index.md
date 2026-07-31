@@ -176,8 +176,8 @@ For most tasks in Codex, start with
 ### Model choice
 
 - **`gpt-5.6`**: Start here for demanding agents. It's strongest for ambiguous, multi-step work that needs planning, tool use, validation, and follow-through across a larger context.
-- **`gpt-5.4`**: Use this when a workflow is pinned to GPT-5.4. It combines strong coding, reasoning, tool use, and broader workflows.
 - **`gpt-5.6-terra`**: Use for agents that favor speed and efficiency over depth, such as exploration, read-heavy scans, large-file review, or processing supporting documents. It works well for parallel workers that return distilled results to the main agent.
+- **`gpt-5.6-luna`**: Use for fast, narrowly scoped agents handling clear, repeatable, or high-volume work.
 
 ### Reasoning effort (`model_reasoning_effort`)
 
@@ -435,7 +435,7 @@ Prefer fast search and targeted file reads over broad scans.
 ```toml
 name = "reviewer"
 description = "PR reviewer focused on correctness, security, and missing tests."
-model = "gpt-5.4"
+model = "gpt-5.6-terra"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 developer_instructions = """
@@ -450,7 +450,7 @@ Lead with concrete findings, include reproduction steps when possible, and avoid
 ```toml
 name = "docs_researcher"
 description = "Documentation specialist that uses the docs MCP server to verify APIs and framework behavior."
-model = "gpt-5.4-mini"
+model = "gpt-5.6-luna"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
@@ -485,7 +485,7 @@ max_concurrent_threads_per_session = 6
 ```toml
 name = "code_mapper"
 description = "Read-only codebase explorer for locating the relevant frontend and backend code paths."
-model = "gpt-5.4-mini"
+model = "gpt-5.6-luna"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
@@ -499,7 +499,7 @@ Identify entry points, state transitions, and likely files before the worker sta
 ```toml
 name = "browser_debugger"
 description = "UI debugger that uses browser tooling to reproduce issues and capture evidence."
-model = "gpt-5.4"
+model = "gpt-5.6-terra"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """

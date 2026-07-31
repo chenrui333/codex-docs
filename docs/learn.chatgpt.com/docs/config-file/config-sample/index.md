@@ -638,7 +638,7 @@ show_tooltips = true
 
 # [tui.model_availability_nux]
 
-# "gpt-5.4" = 1
+# "gpt-5.6-terra" = 1
 
 # Enable or disable analytics for this machine. When unset, Codex uses its default behavior.
 
@@ -664,7 +664,7 @@ enabled = true
 
 # "hide_gpt-5.1-codex-max_migration_prompt" = true
 
-# model_migrations = { "gpt-5.3-codex" = "gpt-5.4" }
+# model_migrations = { "gpt-5.4" = "gpt-5.6-terra" }
 
 ################################################################################
 
@@ -1028,7 +1028,7 @@ enabled = true
 
 # For example, a CI profile could live at $CODEX_HOME/ci.config.toml:
 
-# model = "gpt-5.4"
+# model = "gpt-5.6-terra"
 
 # approval_policy = "on-request"
 

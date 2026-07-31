@@ -842,8 +842,8 @@ tips to maximize your limits:
 - **Limit the number of MCP servers you use.** Every
   [MCP](https://learn.chatgpt.com/docs/extend/mcp) server adds more context to your messages and uses
   more of your limit. Disable MCP servers when you don’t need them.
-- **Switch to a smaller model for routine tasks.** Using GPT-5.4 or
-  GPT-5.4 mini can extend your local-message usage limits, depending on the
+- **Switch to a smaller model for routine tasks.** Using GPT-5.6 Terra or
+  GPT-5.6 Luna can extend your local-message usage limits, depending on the
   model you switch from.
 
 For guidance on choosing and scoping tasks, see [Use Work
