@@ -28,6 +28,19 @@ repositories.
 For a prescriptive first local scan, start with the [Codex Security plugin
 quickstart](https://learn.chatgpt.com/docs/security/plugin).
 
+## Use Codex Security in the desktop app
+
+Install and enable the Codex Security plugin to open **Security** in the
+desktop-app sidebar. The Security workbench keeps your scans, findings, and
+repositories in one place while Codex runs each scan in a task.
+
+- Use **Scans** to start scans, follow their progress, and review saved results.
+- Use **Findings** to inspect issues and evidence across completed scans.
+- Use **Repositories** to review repository history and open findings.
+
+See [Use the Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) for the
+complete desktop-app workflow.
+
 ### Explore plugin use cases
 
 - [Run a security scan](https://learn.chatgpt.com/docs/security/plugin/scans) for a repository or one scoped folder.
@@ -40,10 +53,10 @@ quickstart](https://learn.chatgpt.com/docs/security/plugin).
 - [Propose security hardening](https://learn.chatgpt.com/docs/security/plugin/security-hardening) from scan results or other security evidence.
 - [See what's new](https://learn.chatgpt.com/docs/security/plugin/changelog) in the Codex Security plugin.
 
-The plugin runs in your Codex chat. Codex Security cloud scans connected
-  GitHub repositories through Codex cloud. For Codex sandboxing, approvals,
-  network controls, and admin settings, see [Agent approvals &
-  security](https://learn.chatgpt.com/docs/agent-approvals-security).
+The desktop Security workbench and Codex CLI use the Codex Security plugin.
+  Codex Security cloud scans connected GitHub repositories through Codex cloud.
+  For Codex sandboxing, approvals, network controls, and admin settings, see
+  [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security).
 
 ## Codex Security CLI and SDK
 
@@ -109,6 +122,7 @@ Codex cloud workspace or contact your OpenAI account team.
 ## Related docs
 
 - [Codex Security plugin quickstart](https://learn.chatgpt.com/docs/security/plugin) walks through installation and a first local scan.
+- [Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) explains saved scans, findings, repositories, and scan activity in the desktop app.
 - [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli) walks through setup, preflight, and a first terminal scan.
 - [Run bulk security scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans) explains GitHub discovery, CSV inventories, campaign results, and resume behavior.
 - [Codex Security CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq) answers common questions about scans, findings, coverage, and costs.

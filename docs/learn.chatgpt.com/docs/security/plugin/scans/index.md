@@ -22,15 +22,20 @@ more extensively.
 
 ## Choose the scan area
 
+In the desktop app, open **Security**, select **Scans**, and select **+ Scan**.
+Choose an existing repository or another folder, then select **Codebase**.
+
 Scan the whole repository when you need broad coverage and the repository is a
-reasonable review unit:
+reasonable review unit. For a monorepo, choose one folder when a service,
+package, or component has a clear owner and security boundary.
+
+You can also start a scan from a Codex conversation:
 
 ```text
 Use $codex-security:security-scan to scan this repository for security vulnerabilities.
 ```
 
-Scan a folder when a monorepo is too large or one service, package, or component
-has a clear owner and security boundary:
+To focus that conversation on a particular folder, identify the component:
 
 ```text
 Use $codex-security:security-scan to scan this repository for security vulnerabilities, focusing on the services/billing component.
@@ -40,16 +45,19 @@ For a large monorepo, start with one meaningful product or service boundary.
 
 ## Configure the scan
 
+For the best scan quality, use `gpt-5.6-sol`
+with `xhigh` reasoning effort.
+
 <WorkflowSteps>
 
-1. Confirm **Scan type** is `Codebase` and leave **Deep scan** off.
-2. Confirm the **Codebase**, **Current branch**, and **Last commit**.
-3. Set **Scan area** to `Entire codebase` or enter one repository-relative
-   folder.
-4. Add threat-model guidance only when it changes the review. Useful guidance
+1. Select **Codebase** and leave **Deep scan** off.
+2. Confirm the selected repository, current branch, and latest revision.
+3. Set **Scan area** to the entire repository or choose one folder.
+4. Choose a model and reasoning effort.
+5. Open **Additional context** only when it changes the review. Useful context
    names attacker-controlled inputs, trust boundaries, sensitive actions, or a
    specific area to prioritize.
-5. Select **Start scan**.
+6. Select **Start scan**.
 
 </WorkflowSteps>
 
@@ -75,16 +83,17 @@ A scan runs these phases in order:
    or proof gaps.
 4. **Impact and path analysis** evaluates each candidate's realistic paths,
    impact, and severity.
-5. **Detailed reporting** creates one source-backed vulnerability report per
-   reportable finding, with supporting proof-of-concept files when available.
-6. **Structural hardening** analyzes the complete finding set and creates a
-   design portfolio when reportable findings remain.
+5. **Reporting** records validated findings, coverage, and scan metadata.
+   Detailed per-finding reports are optional for standard scans.
+6. **Structural hardening**, when available, analyzes the finding set and
+   creates design guidance.
 7. **Finalization** validates the structured scan contract and generates
-   `report.md`, which links the detailed reports and hardening portfolio.
+   `report.md`, including links to any detailed reports or hardening guidance.
 
-Codex reports phase and coverage progress as the scan runs. Wait for the
-complete result instead of judging early candidates or stopping because one
-phase takes longer than another.
+The workbench shows the active scan phase and any progress the plugin reports.
+Select **View activity** to inspect the Codex task. Wait for the complete
+result instead of judging early candidates or stopping because one phase takes
+longer than another.
 
 ## Review the completed scan
 
@@ -98,61 +107,41 @@ Review the result in this order:
 4. Dismiss findings whose evidence doesn't support the claimed path or impact.
 5. Select one accepted finding before starting a fix.
 
-  <figure>
+<figure className="not-prose my-8">
+  <CodexScreenshot
+    alt="Codex Security finding showing its severity, validation status, root cause, and attack path"
+    lightSrc={findingAttackPath.src}
+    darkSrc={findingAttackPathDark.src}
+    maxHeight="520px"
+  />
+  <figcaption className="mt-3 text-sm text-secondary">
+    Review the finding's severity, validation status, root cause, and attack
+    path.
+  </figcaption>
+</figure>
 
-      <img
-        src={findingsWorkspace.src}
-        alt="Completed Codex Security findings workspace for OWASP Juice Shop"
-        className="block h-auto w-full"
-      />
+## Reopen a previous scan
 
-    <figcaption className="mt-3 text-sm text-secondary">
-      The completed workspace summarizes scan status, coverage, severity, and
-      artifacts before listing the findings.
-    </figcaption>
-  </figure>
-
-  <figure>
-
-      <img
-        src={findingAttackPath.src}
-        alt="Codex Security finding evidence and attack-path analysis for OWASP Juice Shop"
-        className="block h-auto w-full"
-      />
-
-    <figcaption className="mt-3 text-sm text-secondary">
-      A finding connects the relevant source to its entry point, reachability,
-      likelihood, impact, and any limits or counterevidence.
-    </figcaption>
-  </figure>
-
-## Reopen or rerun a previous scan
-
-In the ChatGPT desktop app, open a completed scan from the security scan list
-to review its saved findings workspace. To update the results, rerun the saved
-configuration against the current code. The rerun creates a new scan and leaves
-the earlier scan and its artifacts unchanged.
-
-Scan history, rerun controls, and other workspace features depend on your Codex
-surface and installed plugin version. A rerun doesn't pin that version or
-guarantee that interrupted work will resume after a plugin update. Check the
-[plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you start or rerun
-a long-running scan.
+Open **Security**, then select a saved scan from **Scans** to review its
+findings, coverage, and available report artifacts. To assess the latest code,
+start a new scan for the same repository. The new scan doesn't replace the
+earlier scan or its artifacts.
 
 ## Use the results
 
-Use the findings workspace to review findings, coverage, and follow-up areas
-without inspecting raw JSON. Open `report.md` for the readable entry point to
-the complete scan directory. Keep the directory together when you share or
-archive it: the report links to detailed reports in `findings/` and, when
-reportable findings exist, structural hardening guidance in `hardening/`.
+Use the Security workbench to review findings, coverage, and follow-up areas
+without inspecting raw JSON. Open `report.md` when available for the readable
+entry point to the complete scan directory. Keep the directory together when
+you share or archive it: the report links to detailed reports in `findings/`
+and structural hardening guidance in `hardening/` when those optional artifacts
+are available.
 
 Behind the workspace, each scan preserves `scan-manifest.json`, `findings.json`,
 and `coverage.json` for automation and integrations. You normally don't need to
 open these files yourself.
 
-The findings workspace can also create portable JSON, CSV, and SARIF files. See
-[Export or track findings](https://learn.chatgpt.com/docs/security/plugin/export-findings).
+For portable artifacts or external issue tracking, see [Export or track
+findings](https://learn.chatgpt.com/docs/security/plugin/export-findings).
 
 ## Next step
 

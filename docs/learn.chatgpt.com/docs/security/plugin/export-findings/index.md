@@ -22,14 +22,25 @@ Use a completed Codex Security scan for either of these handoffs:
 
 Neither workflow changes the sealed scan bundle.
 
-Available export formats and workspace controls depend on your Codex surface
-  and installed plugin version. Check the [plugin
+Available artifact links and export formats depend on your Codex surface and
+  installed plugin version. Check the [plugin
   changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you use a format in
   automation.
 
 ## Export a portable artifact
 
-Open the completed findings workspace, select **Export**, and choose a format:
+In the desktop app, open a completed scan from **Security** > **Scans**. Use its
+available artifact links to inspect `report.md`, `findings.json`,
+`scan-manifest.json`, `coverage.json`, or a SARIF report when present.
+
+To create another supported format, ask Codex to export findings from the
+completed scan without modifying its sealed bundle:
+
+```text
+Export the findings from [completed scan directory] as [JSON, CSV, or SARIF]. Do not modify the sealed scan bundle or upload its contents.
+```
+
+Choose the format that fits your destination:
 
 | Format | Use it for                                                        |
 | ------ | ----------------------------------------------------------------- |
@@ -37,24 +48,40 @@ Open the completed findings workspace, select **Export**, and choose a format:
 | CSV    | Review findings and current local triage state in a spreadsheet.  |
 | SARIF  | Send findings to tools that support the SARIF interchange format. |
 
-Select **Export findings**, then use the returned artifact path. If another
-tool needs the complete scan context, keep the original `scan-manifest.json`,
-`findings.json`, and `coverage.json` together. The plugin generates SARIF
-locally. Exporting doesn't upload findings to a code-scanning service.
-
 <figure className="not-prose my-8">
-
-    <img
-      src={exportFindingsFormats.src}
-      alt="Export findings dialog with JSON, CSV, and SARIF format options"
-      className="block h-auto w-full"
-    />
-
+  <CodexScreenshot
+    alt="Completed Codex Security scan showing the real coverage, findings, manifest, Markdown, and SARIF artifacts"
+    lightSrc={exportFindingsFormats.src}
+    darkSrc={exportFindingsFormatsDark.src}
+    maxHeight="360px"
+  />
   <figcaption className="mt-3 text-sm text-secondary">
-    Export completed findings as JSON, CSV, or SARIF for downstream review and
-    tooling.
+    Open the coverage, findings, scan manifest, Markdown report, or SARIF
+    artifact from a completed scan.
   </figcaption>
 </figure>
+
+Select **Markdown report** to open `report.md` in your configured external
+editor. The editor depends on your system settings; the example below shows the
+generated report contents.
+
+<figure className="not-prose my-8">
+  <CodexScreenshot
+    alt="Example generated security report showing the scan scope, threat model, and validated findings"
+    lightSrc={exportFindingsReport.src}
+    darkSrc={exportFindingsReportDark.src}
+    maxHeight="600px"
+  />
+  <figcaption className="mt-3 text-sm text-secondary">
+    Review the scan scope, threat model, validated findings, and detailed report
+    links in the generated Markdown report.
+  </figcaption>
+</figure>
+
+Use the returned artifact path. If another tool needs the complete scan
+context, keep the original `scan-manifest.json`, `findings.json`, and
+`coverage.json` together. Exporting doesn't upload findings to a code-scanning
+service.
 
 ## Track selected findings
 
@@ -133,10 +160,8 @@ and approval of the complete content. Treat a draft advisory description as
 eventually public and remove credentials, private evidence, and unnecessary
 exploit details before approval.
 
-<VideoPlayer
-  src="/videos/codex/security/issue-preview-before-approval.mp4"
-  poster="/videos/codex/security/issue-preview-before-approval-poster.webp"
-/>
+Review and approve external actions in the Codex conversation. Approval
+doesn't create a separate issue or advisory screen in the Security workbench.
 
 ## Verify the tracked item
 

@@ -22,7 +22,12 @@ scan](https://learn.chatgpt.com/docs/security/plugin/scans).
 
 ## Run a manual review
 
-For uncommitted changes, ask Codex:
+In the desktop app, open **Security**, select **Scans**, and select **+ Scan**.
+Choose the repository, then select **Changes**. Review uncommitted changes, a
+single commit, or a base and head revision. **Deep scan** isn't available for a
+changes scan.
+
+You can also ask Codex to review uncommitted changes in a conversation:
 
 ```text
 Use $codex-security:security-diff-scan to review my current uncommitted changes for security regressions.
@@ -41,8 +46,8 @@ in the local checkout.
 
 <WorkflowSteps>
 
-1. Confirm **Scan type** is `Changes`.
-2. Confirm the checked-out **Codebase**, **Current branch**, and **Last commit**.
+1. Select **Changes**.
+2. Confirm the checked-out repository, current branch, and latest commit.
 3. Under **Changes to review**, choose:
    - `Uncommitted changes` for the current working tree.
    - The latest commit for a single-commit review.
@@ -103,14 +108,14 @@ still requires Codex to leave the source checkout unchanged.
 The scan writes its output to
 `$TMPDIR/codex-security-scans/<repository>/<scan-id>/`:
 
-| File                 | Contents                                                                                                                                                    |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `report.md`          | Primary readable entry point to the complete scan directory.                                                                                                |
-| `findings/<slug>/`   | One detailed vulnerability report per reportable finding, with supporting proof-of-concept files when available.                                            |
-| `hardening/`         | Structural hardening portfolio and supporting proposals or diagrams when the scan has reportable findings.                                                  |
-| `findings.json`      | Findings with stable identifiers, severity, confidence, source locations, and remediation. Use it to create pull-request comments or feed downstream tools. |
-| `scan-manifest.json` | Sealed scan receipt with the reviewed target, revisions, and artifact hashes.                                                                               |
-| `coverage.json`      | Reviewed and deferred surfaces, exclusions, and coverage completeness.                                                                                      |
+| File                 | Contents                                                                                                                                                  |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `report.md`          | Primary readable entry point to the complete scan directory.                                                                                              |
+| `findings/<slug>/`   | One detailed vulnerability report per reportable finding, with supporting proof-of-concept files when available.                                          |
+| `hardening/`         | Structural hardening portfolio and supporting proposals or diagrams when the scan has reportable findings.                                                |
+| `findings.json`      | Findings with stable identifiers, severity, confidence, source locations, and remediation. Feed approved internal security workflows or downstream tools. |
+| `scan-manifest.json` | Sealed scan receipt with the reviewed target, revisions, and artifact hashes.                                                                             |
+| `coverage.json`      | Reviewed and deferred surfaces, exclusions, and coverage completeness.                                                                                    |
 
 The [`findings.json` schema](https://github.com/openai/plugins/blob/main/plugins/codex-security/schemas/findings.schema.json)
 defines the complete structure. The schema includes these fields:
@@ -151,6 +156,10 @@ must be writable.
 
 Choose the example for your CI provider:
 
+Scan results can include sensitive vulnerability details. Keep artifacts
+private, and publish findings only after reviewing the audience, content, and
+required approvals.
+
 <Tabs
   id="codex-security-ci-examples"
   param="ci"
@@ -175,7 +184,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write
     steps:
       - uses: actions/checkout@v5
         with:
@@ -203,22 +211,6 @@ jobs:
             --sandbox workspace-write \
             "Use \$codex-security:security-diff-scan to review changes from $BASE_REVISION to $HEAD_REVISION for security regressions. Do not modify the checkout."
 
-      - name: Comment with findings
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: |
-          findings="$(find "${{ runner.temp }}/codex-security/codex-security-scans" -name findings.json -print -quit 2>/dev/null || true)"
-          test -n "$findings" || exit 0
-          jq -r '
-            "## Codex Security findings",
-            "",
-            if (.findings | length) == 0 then "No findings reported."
-            else .findings[] | "- **\(.severity.level | ascii_upcase)**: \(.title) (`\(.locations[0].path):\(.locations[0].startLine)`)\n  \(.summary)"
-            end
-          ' "$findings" | gh pr comment "$PR_NUMBER" --body-file -
-
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -226,8 +218,8 @@ jobs:
           path: ${{ runner.temp }}/codex-security/codex-security-scans
 ```
 
-Create masked `CODEX_SECURITY_API_KEY` and `GITLAB_TOKEN` CI/CD variables. The
-GitLab token needs API access to create a merge-request note.
+Create a masked `CODEX_SECURITY_API_KEY` CI/CD variable and review the scan
+artifacts privately before sharing findings.
 
 ```yaml
 codex-security-review:
@@ -238,7 +230,7 @@ codex-security-review:
   script:
     - |
       codex_security_api_key="$CODEX_SECURITY_API_KEY"
-      unset CODEX_SECURITY_API_KEY GITLAB_TOKEN
+      unset CODEX_SECURITY_API_KEY
       export CODEX_HOME="/tmp/codex-home-$CI_JOB_ID"
       export TMPDIR="/tmp/codex-security-$CI_JOB_ID"
       export BASE_REVISION="$CI_MERGE_REQUEST_DIFF_BASE_SHA"
@@ -250,23 +242,8 @@ codex-security-review:
         "Use \$codex-security:security-diff-scan to review changes from $BASE_REVISION to $HEAD_REVISION for security regressions. Do not modify the checkout."
   after_script:
     - |
-      gitlab_token="$GITLAB_TOKEN"
-      unset CODEX_SECURITY_API_KEY GITLAB_TOKEN
+      unset CODEX_SECURITY_API_KEY
       scan_root="/tmp/codex-security-$CI_JOB_ID/codex-security-scans"
-      findings="$(find "$scan_root" -name findings.json -print -quit 2>/dev/null || true)"
-      if [ -n "$findings" ]; then
-        jq -r '
-          "## Codex Security findings",
-          "",
-          if (.findings | length) == 0 then "No findings reported."
-          else .findings[] | "- **\(.severity.level | ascii_upcase)**: \(.title) (`\(.locations[0].path):\(.locations[0].startLine)`)\n  \(.summary)"
-          end
-        ' "$findings" > codex-security-comment.md
-        curl --fail --request POST \
-          --header "PRIVATE-TOKEN: $gitlab_token" \
-          --form "body=<codex-security-comment.md" \
-          "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$CI_MERGE_REQUEST_IID/notes"
-      fi
       if [ -d "$scan_root" ]; then
         tar -czf codex-security-artifacts.tar.gz -C "$scan_root" .
       fi

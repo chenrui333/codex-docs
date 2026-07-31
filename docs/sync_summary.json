@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/security/plugin/workbench/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-07-30T19:27:09+00:00",
+  "generated_at": "2026-07-31T02:55:17+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,8 +13,16 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 220,
+  "total_files": 221,
   "updated": [
-    "learn.chatgpt.com/docs/pricing/index.md"
+    "learn.chatgpt.com/docs/security/index.md",
+    "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
+    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
+    "learn.chatgpt.com/docs/security/plugin/export-findings/index.md",
+    "learn.chatgpt.com/docs/security/plugin/fix-findings/index.md",
+    "learn.chatgpt.com/docs/security/plugin/index.md",
+    "learn.chatgpt.com/docs/security/plugin/scans/index.md",
+    "learn.chatgpt.com/docs/security/plugin/triage-backlog/index.md",
+    "learn.chatgpt.com/docs/security/plugin/vulnerability-reports/index.md"
   ]
 }
