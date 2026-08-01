@@ -307,6 +307,14 @@ If Ultra doesn't appear in the desktop app's model slider, go to
 
 When you sign in with ChatGPT, Codex works best with the recommended models listed above.
 
+**
+    GPT-5.4 and GPT-5.4 mini retire from Codex on August 31, 2026.
+  **
+  If you sign in with ChatGPT, replace `gpt-5.4` with `gpt-5.6-terra` and
+  `gpt-5.4-mini` with `gpt-5.6-luna` in saved configurations, custom agents, and
+  scheduled tasks. The OpenAI API and Codex authenticated with your own API key
+  aren't affected.
+
 <ToggleSection title="View other models">
 
     <ModelDetails
@@ -414,9 +422,18 @@ Support for the Chat Completions API is deprecated and will be removed in
 
 ## Deprecated Codex models
 
-The `gpt-5.2` and `gpt-5.3-codex` models are deprecated in Codex when you sign in with ChatGPT. If your scripts, configuration files, or `codex exec --model` commands still reference deprecated models, update them to the latest model listed above.
+The `gpt-5.4` and `gpt-5.4-mini` models retire from Codex with ChatGPT sign-in
+on August 31, 2026. Replace `gpt-5.4` with `gpt-5.6-terra` and
+`gpt-5.4-mini` with `gpt-5.6-luna` in workspace defaults, saved model
+settings, managed configurations, custom agents, and scheduled tasks.
 
-Some models that are deprecated for ChatGPT sign-in may still be available in the API. If your workflow depends on one of those models, use API-key authentication and check the [API models page](https://developers.openai.com/api/docs/models) for current availability.
+The `gpt-5.2` and `gpt-5.3-codex` models are already deprecated in Codex when
+you sign in with ChatGPT. Update scripts, configuration files, and
+`codex exec --model` commands that still reference those models.
+
+The OpenAI API and Codex authenticated with your own API key aren't affected
+by the GPT-5.4 retirement. For current API model availability, see the
+[API models page](https://developers.openai.com/api/docs/models).
 
 ## Configure your default local model
 

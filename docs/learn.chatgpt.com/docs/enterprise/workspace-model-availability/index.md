@@ -34,6 +34,20 @@ copy a model catalog or assume that a ChatGPT model-picker setting has the same
 effect for Codex in the ChatGPT desktop app, Codex CLI, IDE extension, Codex
 cloud, and the API Platform.
 
+## Prepare for the GPT-5.4 retirement
+
+On August 31, 2026, GPT-5.4 and GPT-5.4 mini retire from Codex for users signed
+in with ChatGPT. Update affected workspace defaults, saved model settings,
+managed configurations, custom agents, and scheduled tasks before then:
+
+- Replace `gpt-5.4` with `gpt-5.6-terra` (GPT-5.6 Terra).
+- Replace `gpt-5.4-mini` with `gpt-5.6-luna` (GPT-5.6 Luna).
+
+The OpenAI API and Codex authenticated with your own API key aren't affected.
+See [Codex models](https://learn.chatgpt.com/docs/models#deprecated-codex-models) and
+[managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
+for migration details.
+
 ## Separate access from runtime permissions
 
 Model access determines whether a model is available to the authenticated user
