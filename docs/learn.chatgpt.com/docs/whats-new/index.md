@@ -17,6 +17,161 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## July 27–31, 2026
+
+### Use GPT-5.6 Terra and Luna at lower rates
+
+GPT-5.6 Terra now costs 20% less, and GPT-5.6 Luna costs 80% less. Input,
+cached input, and output rates decreased by the same proportions. The updated
+[usage limits and rates](https://learn.chatgpt.com/docs/pricing) make Terra a stronger fit for everyday
+work and Luna especially useful for focused coding and high-volume tasks.
+
+### Find useful context across your browser and open tabs
+
+In the ChatGPT desktop app, the [built-in browser](https://learn.chatgpt.com/docs/browser) can find
+pages from your browsing history or search Google directly from its address
+bar. ChatGPT can also search your browsing history when a task needs earlier
+context.
+
+The [Chrome extension](https://learn.chatgpt.com/docs/chrome-extension) lets you mention open tabs,
+bring selected page text into a side chat, ask questions about YouTube videos,
+or select **Ask ChatGPT** from a page's context menu. Review and approve
+requests to use browser history before ChatGPT includes that information in a
+task.
+
+### Review changes across repositories
+
+When a [local project contains more than one
+folder](https://learn.chatgpt.com/docs/projects#use-local-projects-for-folders-and-codebases), the
+desktop app shows every repository and the lines changed in each one. Select
+**Review** to inspect their diffs together without switching between separate
+review views.
+
+**Prompt:**
+
+```text
+Review the changes across every repository in this project, identify integration risks, and summarize the fixes needed before I open a pull request.
+```
+
+### Refine generated images in your conversation
+
+Open a generated image in the expanded viewer, then switch between
+**Focused view** and **Canvas view**. Add comments across images, select the
+versions you want to keep, and ask for targeted edits without leaving the chat.
+Learn more about [image generation](https://learn.chatgpt.com/docs/image-generation).
+
+### Find chats that need your attention
+
+The desktop app's new **Activity view** brings together chats you recently
+engaged with and work that needs your attention. Select the bell in the sidebar
+to open the view.
+
+[Read the July 30 desktop release
+notes](https://learn.chatgpt.com/docs/changelog#codex-2026-07-30-app).
+
+### Connect partner tools with Sign in with ChatGPT
+
+**Sign in with ChatGPT** is rolling out in beta to supported plugins and
+partner sites, beginning with Airtable, GitLab, HubSpot, Notion, Supabase, and
+Vercel. Use it to create or link a partner account with fewer steps, then start
+working with that service in ChatGPT or Codex.
+
+Partners receive only your name, email address, and profile picture when
+available. Each plugin's requested access still requires a separate review
+and approval. Read the [July 29 sign-in
+announcement](https://learn.chatgpt.com/docs/changelog#codex-2026-07-29).
+
+### Collaborate in a dedicated academic research workspace
+
+[ChatGPT for Academic Researchers](https://openai.com/index/chatgpt-for-academic-researchers/)
+offers eligible faculty and postdoctoral researchers 12 months of complimentary
+access to a dedicated ChatGPT workspace. Approved teams can include up to five
+verified researchers from the same institution and receive business data
+protections and ChatGPT Pro-level usage limits. Participants can use GPT-5.6
+across ChatGPT, ChatGPT Work, and Codex for research and coding workflows.
+
+The program covers ChatGPT access, not OpenAI API credits. Eligibility requires
+[institutional verification and a qualifying research
+paper](https://help.openai.com/en/articles/20001406).
+
+### Continue Codex tasks more reliably on iOS
+
+ChatGPT for iOS 1.2026.202 reconnects to tasks more reliably when you return to
+the app or unlock your device with Face ID. Voice conversations use your chosen
+ChatGPT voice and show usage-limit warnings, while the composer now suggests
+installed plugins and their skills consistently with the desktop app.
+
+The release also improves pause and resume controls for goals, inline tables
+and visual themes, large workspace diffs, selected-text references, and model
+restoration. Read the [July 27 iOS release
+notes](https://learn.chatgpt.com/docs/changelog#codex-2026-07-27-mobile).
+
+### Compare security scans and manage findings
+
+Hosted Codex Security plugin releases `0.1.14` and `0.1.15` add scan comparisons,
+false-positive feedback, scoped `SECURITY.md` policies, and clearer repository
+and finding histories. You can select findings for tracking in Linear or GitHub
+Issues, with Codex reviewing the proposed action before you approve it.
+
+Use the existing [Codex Security
+workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) to review saved scans, findings,
+repository history, and remediation in the desktop app. The hosted plugin
+catalog offers version `0.1.15`, while the public CLI plugin marketplace
+offers version `0.1.11`. Check the [Codex Security plugin
+changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before relying on a new feature.
+
+### Run security scans from the terminal, CI, or TypeScript
+
+The public `@openai/codex-security` CLI and TypeScript SDK reached version
+`0.1.5`, with release numbers separate from the Codex Security plugin. Use the
+package to [run scans from the CLI](https://learn.chatgpt.com/docs/security/cli), review pull-request
+changes and upload SARIF results in [CI](https://learn.chatgpt.com/docs/security/cli/ci), or run
+resumable [bulk scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans) across GitHub
+repositories or a pinned CSV inventory.
+
+The [Codex Security TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) also lets you build
+scanning, progress reporting, cost controls, and cancellation into your own
+tools. The package is public, but running scans still requires Codex Security
+access. Some full-repository scans also require Trusted Access for Cyber.
+
+### Organize sessions and extend Codex CLI 0.146.0
+
+[Codex CLI 0.146.0](https://github.com/openai/codex/releases/tag/rust-v0.146.0)
+lets you name a new chat with `/new release prep` or `/clear bug bash`, pin
+important threads, and switch between side conversations without closing them.
+It also adds temporary conversation forks, standalone web search for compatible
+custom model providers, executor-provided skills, and support for Agent Plugins
+manifests, workspace plugin publishing, and other plugin marketplaces.
+
+For custom clients, the [app server](https://learn.chatgpt.com/docs/app-server) can filter pinned
+threads, create in-memory forks, inspect installed connector state, and read
+connector metadata. Experimental WebSocket support also connects app-server to
+remote Code Mode hosts. Review the
+[app-server security requirements](https://learn.chatgpt.com/docs/app-server#connect-the-cli-terminal-ui)
+before exposing a remote connection. The release also improves proxy support,
+MCP reconnection, terminal responsiveness, and Windows sandbox reliability.
+
+### Use GPT-5.6 Sol for hosted Codex work
+
+[GPT-5.6 Sol](https://learn.chatgpt.com/docs/models#recommended-models) now powers Codex cloud code
+review and quality assurance for eligible customers. Sol is the flagship
+GPT-5.6 model for complex coding, research, computer use, and security work.
+Codex cloud selects its model automatically; Terra and Luna remain available on
+supported local and web surfaces.
+
+### Prepare for the GPT-5.4 model retirement
+
+On August 31, GPT-5.4 and GPT-5.4 mini will retire from Codex for users signed
+in with ChatGPT. Replace `gpt-5.4` with `gpt-5.6-terra` and `gpt-5.4-mini`
+with `gpt-5.6-luna` in workspace defaults, saved model settings, managed
+configurations, custom agents, and scheduled tasks.
+
+The OpenAI API and Codex sessions authenticated with an API key are not
+affected. Review the [deprecated Codex models](https://learn.chatgpt.com/docs/models#deprecated-codex-models)
+and [workspace model
+availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability) before the
+cutoff.
+
 ## July 20–24, 2026
 
 ### Talk through work with ChatGPT Voice
