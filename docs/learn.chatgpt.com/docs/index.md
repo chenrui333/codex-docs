@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-07-29T01:52:50Z'
-source_etag: 'W/"8f67a44ececf822a96a66c6eb05337bf"'
+source_last_modified: '2026-08-03T19:10:48Z'
+source_etag: 'W/"1fd0f67adf57a48044236f9b4f3e246d"'
 codex_cli_versions: ["0.146.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0"]
 ---
@@ -74,19 +74,19 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 [View all updates](/codex/whats-new)
 
-July 13–17, 2026
+July 27–31, 2026
 
-[### Keep Work conversations and Projects together on desktop
+[### Use GPT-5.6 Terra and Luna at lower rates
 
-Use cloud Work conversations across devices, keep local conversations on your computer, and open ChatGPT Projects in the desktop app.](/codex/whats-new#keep-work-conversations-and-projects-together-on-desktop)  [### Control parallel Codex work with Codex Micro
+GPT-5.6 Terra now costs 20% less, and GPT-5.6 Luna costs 80% less.](/codex/whats-new#use-gpt-56-terra-and-luna-at-lower-rates)  [### Find useful context across your browser and open tabs
 
-Use Codex Micro's Agent Keys, Command Keys, analog stick, and dial to control up to six chats from a physical desktop surface.](/codex/whats-new#control-parallel-codex-work-with-codex-micro)
+In the ChatGPT desktop app, the built-in browser can find pages from your browsing history or search Google directly from its address bar.](/codex/whats-new#find-useful-context-across-your-browser-and-open-tabs)
 
-July 6–10, 2026
+July 20–24, 2026
 
-[### Take on ambitious work in ChatGPT
+[### Talk through work with ChatGPT Voice
 
-ChatGPT Work can gather context across files and plugins, take action, and produce reviewable deliverables.](/codex/whats-new#take-on-ambitious-work-in-chatgpt)  [### Choose the right GPT-5.6 model
+ChatGPT Voice, powered by GPT-Live, lets you talk through work and coordinate tasks in Chat, Work, and Codex in the ChatGPT desktop app.](/codex/whats-new#talk-through-work-with-chatgpt-voice)  [### Work across multiple folders in one local project
 
-Compare Sol for flagship capability, Terra for balanced everyday work, and Luna for speed and lower cost.](/codex/whats-new#choose-the-right-gpt-56-model)
+Local projects in the ChatGPT desktop app can now include multiple related folders.](/codex/whats-new#work-across-multiple-folders-in-one-local-project)
 

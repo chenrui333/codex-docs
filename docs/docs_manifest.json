@@ -70,7 +70,7 @@
         "codex-cli 0.146.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a8ff9d7e7fe861ce0cb4222809559bd4a352c0f2c36a672328ea2e126ce94819",
+      "sha256": "00554cd1650024b6f733c1f8ab470213c00aff67f5a40472722bf7d3bb0e744c",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -5251,11 +5251,11 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "5d91f1c71d5ed5d5ca12fb4ded53d2984a7e9a8e3dfaad872155d26bb24452ed",
+      "sha256": "6023bbe9ade4a23842b3eea1be08fecc4f9834417ce3510b0dde84589a95b44f",
       "source_area": "learn_docs",
-      "source_etag": "W/\"8f67a44ececf822a96a66c6eb05337bf\"",
+      "source_etag": "W/\"1fd0f67adf57a48044236f9b4f3e246d\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-07-29T01:52:50Z",
+      "source_last_modified": "2026-08-03T19:10:48Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs"
     },
@@ -5344,7 +5344,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "12b4cc0581935bed4b7b7273bbe4fc355690080f23611d69e92f69127f62d135",
+      "sha256": "31fb4025c5c5be759846a550c6297dbdd8abfb65dc251aae1220b90dcabe03b5",
       "source_area": "learn_open_source",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5357,7 +5357,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "da05c3495e5ae1517e5cd61639953ef9440ce73a7f3209f3ad94bf56a28acf6b",
+      "sha256": "f833433d82d35e1d6b306b0442972f152a675277e2072584002ef4b9bb064c67",
       "source_area": "learn_permission_modes",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5877,7 +5877,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "bd21b85ecbaf89318a7c1b199eaeda8dcad4b76f7b222148ebd23ec721b06197",
+      "sha256": "bc8232cf847618cb148582479dbae5955eea9b50582e58204cc7c8fa5bb81c67",
       "source_area": "learn_use_chatgpt",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5981,10 +5981,10 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "b0a9785304b0f5c7d9c8a360978e3512d8a3eb4d335bc43abad737d2aa9f8036",
+      "sha256": "1ef64d3b269fb538d49ac8ff009cc98a0efaeaf94e4834755c7edd158b59a904",
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"966646a9b5db0cafc7ea78739de13438\"",
-      "source_last_modified": "2026-07-29T01:55:34Z",
+      "source_etag": "W/\"bbade76c69d670639ef78ff54f0b2a61\"",
+      "source_last_modified": "2026-08-03T19:39:05Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search"
     },

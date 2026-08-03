@@ -59,10 +59,6 @@ it sends requests to cross that boundary to automatic review.
 Use the permissions control below the composer in the ChatGPT desktop app or
 IDE extension.
 
-<Illustration description="Approval-mode menu with Approve for me selected.">
-  <PermissionModeComposerIllustration ariaLabel="Approval-mode menu with Approve for me selected." />
-</Illustration>
-
 In the CLI, enter `/permissions`. For technical details, see
 [Sandbox](https://learn.chatgpt.com/docs/sandboxing), [automatic review](https://learn.chatgpt.com/docs/sandboxing/auto-review), or
 [permission profiles](https://learn.chatgpt.com/docs/permissions).

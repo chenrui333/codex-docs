@@ -59,7 +59,19 @@ practices.
 ### What ChatGPT Work can do
 
 ChatGPT Work can plan a task, gather context, use tools, and carry the work
-through to a result you can review. Ask it to:
+through to a result you can review.
+
+<Illustration description="ChatGPT Work comparing vendors and producing a spreadsheet you can review.">
+  <CodexScreenshot
+    alt="ChatGPT Work comparing vendors in a spreadsheet"
+    lightSrc="/codex/get-started-with-work/comparison-spreadsheet.webp"
+    darkSrc="/codex/get-started-with-work/comparison-spreadsheet.webp"
+    maxHeight={520}
+    class="my-6 p-4 md:p-8"
+  />
+</Illustration>
+
+Ask it to:
 
 - **Research and analyze information.** Search the web, browse websites,
   compare sources, read files, analyze data, and summarize findings.
@@ -204,6 +216,16 @@ Plugins can connect ChatGPT to the tools and information you use for work, such
 as Google Drive, SharePoint, Salesforce, or Gong. Use them when a task depends
 on information outside the chat, actions in another system, or a
 repeatable workflow.
+
+<Illustration description="ChatGPT plugin directory showing connected tools such as Google Drive, Slack, and SharePoint.">
+  <CodexScreenshot
+    alt="ChatGPT plugin directory showing connected work tools"
+    lightSrc="/codex/get-started-with-work/plugins.webp"
+    darkSrc="/codex/get-started-with-work/plugins.webp"
+    maxHeight={520}
+    class="my-6 p-4 md:p-8"
+  />
+</Illustration>
 
 Plugin availability depends on your plan, workspace settings, and the plugin
 itself. Learn more about [skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins).

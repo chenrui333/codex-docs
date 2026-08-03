@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-07-29T01:55:34Z'
-source_etag: 'W/"966646a9b5db0cafc7ea78739de13438"'
+source_last_modified: '2026-08-03T19:39:05Z'
+source_etag: 'W/"bbade76c69d670639ef78ff54f0b2a61"'
 codex_cli_versions: ["0.146.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0"]
 ---
@@ -73,7 +73,7 @@ curl "https://api.openai.com/v1/responses" \
 }'
 ```
 
-```cli
+```bash
 openai responses create \
   --model gpt-5.6 \
   --raw-output \
