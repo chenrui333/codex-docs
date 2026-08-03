@@ -150,12 +150,23 @@ interrupt_turn = "f12"
 
 #### Command environment
 
-Control which environment variables Codex forwards to spawned commands.
+Control which environment variables Codex forwards to spawned commands. Use
+keyed filters to keep only the variables you need:
 
 ```toml
 [shell_environment_policy]
-include_only = ["PATH", "HOME"]
+ignore_default_excludes = false
+
+[shell_environment_policy.filters]
+"PATH" = "include"
+"HOME" = "include"
 ```
+
+`ignore_default_excludes` defaults to `true`, which skips automatic filtering
+for variable names containing `KEY`, `SECRET`, or `TOKEN`. Set it to `false`
+when you want that automatic filtering. For exclusion rules, precedence, and
+legacy configuration, see [Shell environment
+policy](https://learn.chatgpt.com/docs/config-file/config-advanced#shell-environment-policy).
 
 #### Log directory
 

@@ -82,6 +82,19 @@ By default, the review pane shows **Unstaged** changes. Use **Staged** for the
 Git index, **Commit** for a selected commit, **Branch** for the diff against your
 base branch, or **Last turn** for the most recent assistant turn.
 
+### Review multiple repositories
+
+When a [local project includes multiple folders](https://learn.chatgpt.com/docs/projects#use-local-projects-for-folders-and-codebases)
+backed by different Git repositories, the review pane can show changes from each
+repository. Open the repository selector in the review header to inspect
+another repository and see the lines added or removed without leaving the
+current review pane.
+
+Choose **Last turn** to see the assistant's latest changes across the attached
+repositories. The repository selector shows **All repos** for that view. Other
+review scopes, such as **Unstaged**, **Staged**, and **Branch**, apply to the
+repository you select.
+
 </ContentModeSwitch>
 
 <ContentModeSwitch group="codex-surface" id="cli">

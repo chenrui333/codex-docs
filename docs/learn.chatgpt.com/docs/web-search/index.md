@@ -67,6 +67,28 @@ search index gates the request. When Codex runs with full access, web search
 defaults to live results. See [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)
 for config file locations and precedence.
 
+### Search with a custom model provider
+
+A custom model provider can opt in to standalone web search when it supports
+a compatible search endpoint:
+
+```toml
+model_provider = "custom"
+web_search = "live"
+
+[model_providers.custom]
+name = "Custom Responses provider"
+base_url = "https://example.com/v1"
+env_key = "CUSTOM_RESPONSES_API_KEY"
+supports_standalone_web_search = true
+```
+
+Custom providers default to `supports_standalone_web_search = false`.
+Standalone web search remains under development and is off by default.
+Setting this provider capability doesn't enable the feature: the provider,
+selected model, and runtime must also support standalone search. Workspace and
+managed search restrictions still apply.
+
 </ContentModeSwitch>
 
 <ContentModeSwitch group="codex-surface" ids="app,cli,ide">

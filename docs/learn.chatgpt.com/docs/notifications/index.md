@@ -26,6 +26,17 @@ controls let you turn permission and question notifications on or off. Your
 operating system may ask you to grant notification permission to the ChatGPT
 desktop app.
 
+### Follow chats in Activity view
+
+When **Activity** is available, select the bell in the sidebar to see chats
+that are unread, running, or waiting for your response. You can also open or
+close Activity view with <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>U</kbd> on macOS
+or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>U</kbd> on Windows.
+
+Use the view's options to choose which chats appear. Depending on your current
+surface, the options can include **Work**, **Chat**, **Pinned**, and
+**Scheduled**. You can also select **Mark all as read** to clear unread items.
+
 <a id="follow-task-activity-with-a-pet"></a>
 
 ### Follow chat activity with a pet

@@ -13,10 +13,13 @@ Source: https://learn.chatgpt.com/docs/import
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use the import flow to bring your instructions, settings, skills, plugins,
-projects, and recent work from other agents into the ChatGPT desktop app. The
-app imports supported items directly and lets you finish setup for any imported
-plugins or connections that need authorization.
+Use the import flow to bring instructions, settings, skills, plugins, projects,
+and recent work from another agent into the ChatGPT desktop app or Codex CLI.
+Codex CLI can import from **Claude Code** or **Cursor**. The desktop app
+supports Claude Code, with Cursor import available as it rolls out.
+
+The desktop app imports supported items directly and lets you finish setup for
+imported plugins or connections that need authorization.
 
 Importing doesn't change or delete your existing agent setup.
 
@@ -25,6 +28,8 @@ Importing doesn't change or delete your existing agent setup.
 </Illustration>
 
 ## Start an import
+
+### Import in the desktop app
 
 <WorkflowSteps>
 
@@ -37,6 +42,19 @@ Importing doesn't change or delete your existing agent setup.
 5. After the import finishes, open an imported project or chat to continue working.
 
 </WorkflowSteps>
+
+### Import in Codex CLI
+
+1. Start a local Codex CLI session and type `/import`.
+2. Choose **Claude Code** or **Cursor**.
+3. Select the supported setup, project files, and recent chats you want to
+   import.
+4. Review the imported configuration and continue working in Codex.
+
+Codex CLI imports up to 50 chats from the last 30 days. The `/import` command
+isn't available during a running task, in a remote session, or while connected
+to a local app-server daemon. See [CLI slash
+commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli#cli-import-claude-code-or-cursor-configuration-with-import).
 
 <Illustration description="ChatGPT import screen for selecting setup, projects, and recent chats to import.">
   <ExternalAgentImportIllustration step="items" />
@@ -58,18 +76,19 @@ When you import, ChatGPT:
 
 ## What ChatGPT can import
 
-| Imported item               | Destination                                          |
-| --------------------------- | ---------------------------------------------------- |
-| Instruction files           | [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md)  |
-| `settings.json`             | [`config.toml`](https://learn.chatgpt.com/docs/config-file/config-basic)     |
-| Skills                      | [Skills](https://learn.chatgpt.com/docs/build-skills)                        |
-| Plugins                     | Plugins                                              |
-| Existing project folders    | Projects using the same folders                      |
-| Chats from the last 30 days | ChatGPT chats                                        |
-| MCP server configuration    | [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp)         |
-| Hooks                       | [Codex hooks](https://learn.chatgpt.com/docs/hooks)                          |
-| Slash commands              | [Skills](https://learn.chatgpt.com/docs/build-skills)                        |
-| Subagents                   | [Codex agents](https://learn.chatgpt.com/docs/agent-configuration/subagents) |
+| Imported item                     | Destination                                          |
+| --------------------------------- | ---------------------------------------------------- |
+| Instruction files                 | [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md)  |
+| `settings.json`                   | [`config.toml`](https://learn.chatgpt.com/docs/config-file/config-basic)     |
+| Skills                            | [Skills](https://learn.chatgpt.com/docs/build-skills)                        |
+| Plugins                           | Plugins                                              |
+| Existing project folders          | Projects using the same folders                      |
+| Project memories from Claude Code | [Memories](https://learn.chatgpt.com/docs/customization/memories)            |
+| Chats from the last 30 days       | ChatGPT chats                                        |
+| MCP server configuration          | [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp)         |
+| Hooks                             | [Codex hooks](https://learn.chatgpt.com/docs/hooks)                          |
+| Slash commands                    | [Skills](https://learn.chatgpt.com/docs/build-skills)                        |
+| Subagents                         | [Codex agents](https://learn.chatgpt.com/docs/agent-configuration/subagents) |
 
 ## Finish setup after importing
 

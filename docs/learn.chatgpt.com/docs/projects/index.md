@@ -204,11 +204,11 @@ Select **Add folder** to attach multiple folders. ChatGPT can read and change fi
 in every attached folder. To change the default working directory, point to a
 folder and select **Make primary**.
 
-New chats start in the primary folder. Codex also uses that folder for Git
-operations and automatic discovery of `AGENTS.md`, skills, and `config.toml`.
-Secondary folders remain available for file search, reading, and editing, but
-Codex doesn't automatically discover those project files from secondary
-folders.
+New chats start in the primary folder. Codex also uses that folder as the
+default for Git operations and automatic discovery of `AGENTS.md`, skills, and
+`config.toml`. Secondary folders remain available for file search, reading, and
+editing, but Codex doesn't automatically discover those project files from
+secondary folders.
 
 Use multiple folders when related work lives in different places, like an app and
 its documentation or a website and its backend. Create separate projects for
@@ -217,7 +217,9 @@ This keeps the working context focused. Remote projects currently support one
 folder.
 
 Use [local environments](https://learn.chatgpt.com/docs/environments/local-environment) to define setup
-actions and common commands for a project. Git review, pull request, and
+actions and common commands for a project. The [review
+pane](https://learn.chatgpt.com/docs/code-review?surface=app) can show changes across repositories
+attached to the same project. Pull request and
 [worktree](https://learn.chatgpt.com/docs/environments/git-worktrees) actions target the primary
 repository. When you start a chat in a worktree, the other folders remain
 attached.

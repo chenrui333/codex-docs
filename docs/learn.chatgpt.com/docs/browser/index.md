@@ -60,6 +60,27 @@ manually, or by pressing <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>
   variant="no-wallpaper"
 />
 
+## Search from the address bar
+
+Start typing in the built-in browser's address bar to find pages from its
+browsing history. Select a matching page to reopen it, or enter a search term
+to search Google when no history result matches.
+
+The built-in browser keeps its own profile and browsing history. Results don't
+automatically include pages from your regular Chrome profile or other browsers.
+
+## Manage browsing history
+
+Open **Settings > Browser** to search the built-in browser's history, reopen a
+visited page, or remove history entries when your organization permits it. Use
+**Clear browsing data** to choose a time range and the types of browsing data
+you want to remove.
+
+When available, ChatGPT can ask to search your browsing history to find a page
+that matters to the current task. Review the request before allowing access.
+Browsing history can include internal URLs, search terms, and other sensitive
+information, so allow it only when the task requires that context.
+
 <a id="browser-use"></a>
 
 ## Computer Use in the browser

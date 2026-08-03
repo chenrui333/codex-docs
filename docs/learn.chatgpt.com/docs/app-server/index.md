@@ -47,6 +47,24 @@ The `--remote` option accepts `ws://`, `wss://`, `unix://`, and
 `unix://PATH` endpoints. Use plain WebSockets only for localhost or an SSH
 port-forwarded connection.
 
+## Connect a remote Code Mode host
+
+By default, app-server starts a local Code Mode host. To use a remote host
+instead, pass its secure WebSocket URL:
+
+```bash
+codex app-server --code-mode-host wss://code-mode.example.com/host
+```
+
+`--code-mode-host` controls the outbound connection from app-server to its Code
+Mode host. It doesn't change `--listen`, which controls how clients connect to
+app-server. Every thread in the same app-server process shares the selected
+Code Mode host connection.
+
+Use `wss://` for a remote host. Use `ws://` only for a localhost or
+SSH-forwarded connection. The app-server command and WebSocket transport are
+experimental and aren't supported for production workloads.
+
 ## Protocol
 
 Like [MCP](https://modelcontextprotocol.io/), `codex app-server` supports bidirectional communication using JSON-RPC 2.0 messages (with the `"jsonrpc":"2.0"` header omitted on the wire).
