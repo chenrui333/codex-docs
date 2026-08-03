@@ -715,12 +715,12 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "7697f8cf3a00cbe7ae1124c04ac0d593b2634522579c1a13a025478358b1dfbd"
+      "sha256": "ecaafc409ae9268fcce7c09df0578a0f941d98df1847a254f065253b0da07320"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "adfde173af3723230d07fae547eede5ec174ced99b3e7d78b86b2f2a4938e466"
+      "sha256": "052c54ff70a207c270b9508643c95b3fea73e54f19080c756765bd89f4414486"
     }
   },
   "schema_version": 3,
