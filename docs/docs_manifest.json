@@ -70,7 +70,7 @@
         "codex-cli 0.146.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "00554cd1650024b6f733c1f8ab470213c00aff67f5a40472722bf7d3bb0e744c",
+      "sha256": "59a630899331f721c6b0779eba67aead37c92b0d34bc4109aed62acc68e7ac43",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -5981,10 +5981,10 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "1ef64d3b269fb538d49ac8ff009cc98a0efaeaf94e4834755c7edd158b59a904",
+      "sha256": "ee7d7724430bcb390b4613c804ea6639a52a0f81c6683b7c3a7c4e7e0082c55d",
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"bbade76c69d670639ef78ff54f0b2a61\"",
-      "source_last_modified": "2026-08-03T19:39:05Z",
+      "source_etag": "W/\"edbcf5629c1e16c8b61a085a476b804f\"",
+      "source_last_modified": "2026-08-04T17:28:55Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search"
     },

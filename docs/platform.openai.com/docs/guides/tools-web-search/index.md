@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-08-03T19:39:05Z'
-source_etag: 'W/"bbade76c69d670639ef78ff54f0b2a61"'
+source_last_modified: '2026-08-04T17:28:55Z'
+source_etag: 'W/"edbcf5629c1e16c8b61a085a476b804f"'
 codex_cli_versions: ["0.146.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0"]
 ---
@@ -62,28 +62,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "tools": [{"type": "web_search"}],
-        "input": "what was a positive news story from today?"
-}'
-```
-
-```bash
-openai responses create \
-  --model gpt-5.6 \
-  --raw-output \
-  --transform 'output.#(type=="message").content.0.text' <<'YAML'
-tools:
-  - type: web_search
-input: What was a positive news story from today?
-YAML
-```
-
 ```csharp
 using OpenAI.Responses;
 #pragma warning disable OPENAI001
@@ -114,6 +92,28 @@ response = openai.responses.create(
 )
 
 puts(response.output_text)
+```
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "tools": [{"type": "web_search"}],
+        "input": "what was a positive news story from today?"
+}'
+```
+
+```bash
+openai responses create \
+  --model gpt-5.6 \
+  --raw-output \
+  --transform 'output.#(type=="message").content.0.text' <<'YAML'
+tools:
+  - type: web_search
+input: What was a positive news story from today?
+YAML
 ```
 
 ## Output and citations
@@ -183,6 +183,22 @@ When displaying web results or information contained in web results to end
 
 Set search context size
 
+```javascript
+const openai = new OpenAI();
+
+const response = await openai.responses.create({
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "web_search",
+      search_context_size: "low",
+    },
+  ],
+  input: "What movie won best picture in 2025?",
+});
+console.log(response.output_text);
+```
+
 ```python
 from openai import OpenAI
 
@@ -224,22 +240,6 @@ ResponseResult response = await client.CreateResponseAsync(options);
 Console.WriteLine(response.GetOutputText());
 ```
 
-```javascript
-const openai = new OpenAI();
-
-const response = await openai.responses.create({
-  model: "gpt-5.6",
-  tools: [
-    {
-      type: "web_search",
-      search_context_size: "low",
-    },
-  ],
-  input: "What movie won best picture in 2025?",
-});
-console.log(response.output_text);
-```
-
 ```bash
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -268,23 +268,6 @@ Use `unlimited` selectively because it can increase latency and cost. For long-r
 This parameter applies only to the hosted Responses API `web_search` tool with GPT-5+ reasoning web search. It does not change the search context window, and it does not apply to non-reasoning web search, legacy Search API paths, container web search, Chat Completions search models, or `web_search_preview`. Only `default` and `unlimited` are supported values; `null`, numbers, and other strings are rejected.
 
 Run longer web searches
-
-```bash
-curl "https://api.openai.com/v1/responses" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "reasoning": { "effort": "xhigh" },
-    "tools": [
-      {
-        "type": "web_search",
-        "return_token_budget": "unlimited"
-      }
-    ],
-    "input": "Research the economic impact of semaglutide on global healthcare systems.\n\nDo:\n- Include specific figures, trends, statistics, and measurable outcomes.\n- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.\n- Include inline citations and return all source metadata.\n\nBe analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling."
-  }'
-```
 
 ```javascript
 const client = new OpenAI();
@@ -340,6 +323,23 @@ Be analytical, avoid generalities, and ensure that each section supports data-ba
 print(response.output_text)
 ```
 
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.6",
+    "reasoning": { "effort": "xhigh" },
+    "tools": [
+      {
+        "type": "web_search",
+        "return_token_budget": "unlimited"
+      }
+    ],
+    "input": "Research the economic impact of semaglutide on global healthcare systems.\n\nDo:\n- Include specific figures, trends, statistics, and measurable outcomes.\n- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.\n- Include inline citations and return all source metadata.\n\nBe analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling."
+  }'
+```
+
 ## Domain filtering
 
 Domain filtering in web search lets you limit results to a specific set of domains. With the `filters` parameter you can configure up to 100 `allowed_domains` or up to 100 `blocked_domains`. When formatting domains, omit the HTTP or HTTPS prefix. For example, use `openai.com` instead of `https://openai.com/`. This approach also includes subdomains in the search. Note that domain filtering is only available in the Responses API with the `web_search` tool.
@@ -350,38 +350,6 @@ To view all URLs retrieved during a web search, use the `sources` field. Unlike 
 The number of sources is often greater than the number of citations. Real-time third-party feeds are also surfaced here and are labeled as `oai-sports`, `oai-weather`, or `oai-finance`. The sources field is available with both the `web_search` and `web_search_preview` tools.
 
 List sources
-
-```bash
-curl "https://api.openai.com/v1/responses" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "reasoning": { "effort": "low" },
-    "tools": [
-      {
-        "type": "web_search",
-        "filters": {
-          "allowed_domains": [
-            "pubmed.ncbi.nlm.nih.gov",
-            "clinicaltrials.gov",
-            "www.who.int",
-            "www.cdc.gov",
-            "www.fda.gov"
-          ],
-          "blocked_domains": [
-            "reddit.com",
-            "quora.com",
-            "wikipedia.org"
-          ]
-        }
-      }
-    ],
-    "tool_choice": "auto",
-    "include": ["web_search_call.action.sources"],
-    "input": "Please perform a web search on how semaglutide is used in the treatment of diabetes."
-  }'
-```
 
 ```javascript
 const client = new OpenAI();
@@ -448,6 +416,38 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.6",
+    "reasoning": { "effort": "low" },
+    "tools": [
+      {
+        "type": "web_search",
+        "filters": {
+          "allowed_domains": [
+            "pubmed.ncbi.nlm.nih.gov",
+            "clinicaltrials.gov",
+            "www.who.int",
+            "www.cdc.gov",
+            "www.fda.gov"
+          ],
+          "blocked_domains": [
+            "reddit.com",
+            "quora.com",
+            "wikipedia.org"
+          ]
+        }
+      }
+    ],
+    "tool_choice": "auto",
+    "include": ["web_search_call.action.sources"],
+    "input": "Please perform a web search on how semaglutide is used in the treatment of diabetes."
+  }'
+```
+
 ## Image search results
 
 Web search can return image results alongside regular text results. Use image search when your application needs current or web-grounded visuals, such as product photos, landmarks, places, events, or visual references.
@@ -462,28 +462,6 @@ Use `image_settings` to control image-specific behavior:
 To inspect raw image results, include `web_search_call.results` in the request and read `web_search_call.results[]` from the response. Image results are returned separately from the assistant message, so parse the `web_search_call` item directly when your application needs the URLs or metadata.
 
 Search for images
-
-```bash
-curl "https://api.openai.com/v1/responses" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "reasoning": { "effort": "low" },
-    "tools": [
-      {
-        "type": "web_search",
-        "search_content_types": ["image", "text"],
-        "image_settings": {
-          "max_results": 3,
-          "caption": true
-        }
-      }
-    ],
-    "include": ["web_search_call.results"],
-    "input": "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset."
-  }'
-```
 
 ```javascript
 const client = new OpenAI();
@@ -534,6 +512,28 @@ response = client.responses.create(
 print(response.output)
 ```
 
+```bash
+curl "https://api.openai.com/v1/responses" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.6",
+    "reasoning": { "effort": "low" },
+    "tools": [
+      {
+        "type": "web_search",
+        "search_content_types": ["image", "text"],
+        "image_settings": {
+          "max_results": 3,
+          "caption": true
+        }
+      }
+    ],
+    "include": ["web_search_call.results"],
+    "input": "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset."
+  }'
+```
+
 Each `image_result` includes:
 
 - `image_url`: The canonical image URL for the result.
@@ -573,6 +573,27 @@ Note that user location is not supported for deep research models using web
   search.
 
 Customizing user location
+
+```javascript
+const openai = new OpenAI();
+
+const response = await openai.responses.create({
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "web_search",
+      user_location: {
+        type: "approximate",
+        country: "GB",
+        city: "London",
+        region: "London",
+      },
+    },
+  ],
+  input: "What are the best restaurants near me?",
+});
+console.log(response.output_text);
+```
 
 ```python
 from openai import OpenAI
@@ -622,27 +643,6 @@ options.InputItems.Add(
 ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
-```
-
-```javascript
-const openai = new OpenAI();
-
-const response = await openai.responses.create({
-  model: "gpt-5.6",
-  tools: [
-    {
-      type: "web_search",
-      user_location: {
-        type: "approximate",
-        country: "GB",
-        city: "London",
-        region: "London",
-      },
-    },
-  ],
-  input: "What are the best restaurants near me?",
-});
-console.log(response.output_text);
 ```
 
 ```bash
