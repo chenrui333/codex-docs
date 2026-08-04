@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-03T19:39:05+00:00",
+  "generated_at": "2026-08-04T02:39:00+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,11 +13,7 @@
   },
   "total_files": 221,
   "updated": [
-    "codex_capabilities.json",
-    "learn.chatgpt.com/docs/index.md",
-    "learn.chatgpt.com/docs/open-source/index.md",
-    "learn.chatgpt.com/docs/permission-modes/index.md",
-    "learn.chatgpt.com/docs/use-chatgpt/index.md",
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "developers.openai.com/cookbook/examples/codex/jira-github/index.md",
+    "learn.chatgpt.com/docs/import/index.md"
   ]
 }

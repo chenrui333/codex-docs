@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/jira-github'
-source_last_modified: '2026-04-25T06:58:18Z'
-source_etag: 'W/"4ee310f9ea42fc45555b0af4b75c1dcc"'
+source_last_modified: '2026-08-04T01:54:05Z'
+source_etag: 'W/"ba99c589ebd0dc3562dd82b75b6322b1"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0"]
 ---
@@ -122,11 +122,10 @@ jobs:
     # 5 – Let Codex implement & commit (no push yet)
     - name: Codex implement & commit
       env:
-        OPENAI_API_KEY:  ${{ secrets.OPENAI_API_KEY }}
-        CODEX_QUIET_MODE: "1"          # suppress chatty logs
+        CODEX_API_KEY:  ${{ secrets.OPENAI_API_KEY }}
       run: |
         set -e
-        codex --approval-mode full-auto --no-terminal --quiet \
+        codex exec --sandbox workspace-write \
               "Implement JIRA ticket $ISSUE_KEY: $TITLE. $DESC"
 
         git add -A
@@ -175,7 +174,7 @@ jobs:
 1. **Codex Implementation & Commit** (Step 5)
 
    - Uses OpenAI API to implement the JIRA ticket requirements
-   - Runs codex CLI in full-auto mode without terminal interaction
+   - Runs the Codex CLI non-interactively with workspace write access
    - Commits all changes with standardized commit message
 2. **Create Pull Request** (Step 6)
 

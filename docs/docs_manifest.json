@@ -567,10 +567,10 @@
         "codex-cli 0.145.0",
         "codex-cli 0.146.0"
       ],
-      "sha256": "08f1834a6a842c43c198fb3688708951ea09ad4778a19ea2fe46b4646fbb1f13",
+      "sha256": "1ebdbd4b7e748cf20a8010b6072e10ba15908704cece6ea4112236db3d2e2db6",
       "source_area": "cookbook",
-      "source_etag": "W/\"4ee310f9ea42fc45555b0af4b75c1dcc\"",
-      "source_last_modified": "2026-04-25T06:58:18Z",
+      "source_etag": "W/\"ba99c589ebd0dc3562dd82b75b6322b1\"",
+      "source_last_modified": "2026-08-04T01:54:05Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github"
     },
@@ -5238,7 +5238,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "d69e144d59ef8900b16db38a8c5f4207f6f377657f7a96f31a3452afd59511c9",
+      "sha256": "9b76aedfa508c8b200beb253ceada440264b8092f621d222bcbba7764ed76e8c",
       "source_area": "learn_import",
       "source_kind": "learn_markdown",
       "source_type": "learn",
