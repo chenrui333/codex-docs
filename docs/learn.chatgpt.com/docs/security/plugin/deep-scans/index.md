@@ -30,6 +30,32 @@ and results. Then use a deep scan when you need a more thorough assessment.
 | Runtime and resources   | Lower                                              | Higher                                                |
 | Pull requests and diffs | Use the change-review workflow                     | Not supported; use the change-review workflow instead |
 
+## Configure deep-scan runtime
+
+To control a deep scan's concurrency and duration, create or edit
+`~/.codex/codex-security/config.toml`. If you set `CODEX_HOME`, use
+`$CODEX_HOME/codex-security/config.toml` instead.
+
+For example, this profile runs a shorter scan with limited concurrency:
+
+```toml
+[deep_scan]
+workers = 2
+subagents = 0
+stop_after_no_new = 3
+max_discovery_runs = 10
+```
+
+| Setting              | Default | Description                                                                                      |
+| -------------------- | ------- | ------------------------------------------------------------------------------------------------ |
+| `workers`            | `auto`  | Number of discovery workers allowed to run at the same time. Set a positive integer or `"auto"`. |
+| `subagents`          | `3`     | Number of subagents each discovery worker may start. Set `0` to disable them.                    |
+| `stop_after_no_new`  | `6`     | Stop discovery after this many consecutive runs produce no new candidates.                       |
+| `max_discovery_runs` | `60`    | Limit on discovery runs before the scan moves to validation.                                     |
+
+Lower values can reduce scan time and token use but may miss findings.
+Configuration changes apply to new deep scans, not scans already in progress.
+
 ## Start the deep scan
 
 In the desktop app, open **Security**, select **Scans**, and select **+ Scan**.
