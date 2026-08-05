@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_get_started_with_work'
 source_url: 'https://learn.chatgpt.com/docs/get-started-with-work'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0"]
+codex_cli_versions: ["0.146.0", "0.146.1"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1"]
 ---
 
 # Get started with ChatGPT Work

@@ -2,10 +2,10 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-08-04T17:28:55Z'
-source_etag: 'W/"edbcf5629c1e16c8b61a085a476b804f"'
-codex_cli_versions: ["0.146.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0"]
+source_last_modified: '2026-08-05T18:39:37Z'
+source_etag: 'W/"593aa8167ab961879d497974cc752ff7"'
+codex_cli_versions: ["0.146.0", "0.146.1"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1"]
 ---
 
 # Web search
@@ -62,8 +62,9 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```csharp
-using OpenAI.Responses;
+```go
+package main
+
 #pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -218,8 +219,9 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```csharp
-using OpenAI.Responses;
+```go
+package main
+
 #pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -323,35 +325,9 @@ Be analytical, avoid generalities, and ensure that each section supports data-ba
 print(response.output_text)
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "reasoning": { "effort": "xhigh" },
-    "tools": [
-      {
-        "type": "web_search",
-        "return_token_budget": "unlimited"
-      }
-    ],
-    "input": "Research the economic impact of semaglutide on global healthcare systems.\n\nDo:\n- Include specific figures, trends, statistics, and measurable outcomes.\n- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.\n- Include inline citations and return all source metadata.\n\nBe analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling."
-  }'
-```
+```go
+package main
 
-## Domain filtering
-
-Domain filtering in web search lets you limit results to a specific set of domains. With the `filters` parameter you can configure up to 100 `allowed_domains` or up to 100 `blocked_domains`. When formatting domains, omit the HTTP or HTTPS prefix. For example, use `openai.com` instead of `https://openai.com/`. This approach also includes subdomains in the search. Note that domain filtering is only available in the Responses API with the `web_search` tool.
-
-## Sources
-
-To view all URLs retrieved during a web search, use the `sources` field. Unlike inline citations, which show only the most relevant references, sources returns the complete list of URLs the model consulted when forming its response.
-The number of sources is often greater than the number of citations. Real-time third-party feeds are also surfaced here and are labeled as `oai-sports`, `oai-weather`, or `oai-finance`. The sources field is available with both the `web_search` and `web_search_preview` tools.
-
-List sources
-
-```javascript
 const client = new OpenAI();
 
 const response = await client.responses.create({
@@ -416,54 +392,9 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "reasoning": { "effort": "low" },
-    "tools": [
-      {
-        "type": "web_search",
-        "filters": {
-          "allowed_domains": [
-            "pubmed.ncbi.nlm.nih.gov",
-            "clinicaltrials.gov",
-            "www.who.int",
-            "www.cdc.gov",
-            "www.fda.gov"
-          ],
-          "blocked_domains": [
-            "reddit.com",
-            "quora.com",
-            "wikipedia.org"
-          ]
-        }
-      }
-    ],
-    "tool_choice": "auto",
-    "include": ["web_search_call.action.sources"],
-    "input": "Please perform a web search on how semaglutide is used in the treatment of diabetes."
-  }'
-```
+```go
+package main
 
-## Image search results
-
-Web search can return image results alongside regular text results. Use image search when your application needs current or web-grounded visuals, such as product photos, landmarks, places, events, or visual references.
-
-To use image search, set `search_content_types` to include `image`. Add `text` when you also want supporting text results that help the model summarize, rank, or explain the retrieved images.
-
-Use `image_settings` to control image-specific behavior:
-
-- `max_results`: Request a positive number of image results.
-- `caption`: Ask for short image descriptions when available.
-
-To inspect raw image results, include `web_search_call.results` in the request and read `web_search_call.results[]` from the response. Image results are returned separately from the assistant message, so parse the `web_search_call` item directly when your application needs the URLs or metadata.
-
-Search for images
-
-```javascript
 const client = new OpenAI();
 
 const response = await client.responses.create({
@@ -512,69 +443,9 @@ response = client.responses.create(
 print(response.output)
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "reasoning": { "effort": "low" },
-    "tools": [
-      {
-        "type": "web_search",
-        "search_content_types": ["image", "text"],
-        "image_settings": {
-          "max_results": 3,
-          "caption": true
-        }
-      }
-    ],
-    "include": ["web_search_call.results"],
-    "input": "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset."
-  }'
-```
+```go
+package main
 
-Each `image_result` includes:
-
-- `image_url`: The canonical image URL for the result.
-- `source_website_url`: The page where the image was found.
-- `thumbnail_url`: A thumbnail URL when available.
-- `caption`: A short caption or description when available.
-
-```json
-{
-  "output": [
-    {
-      "type": "web_search_call",
-      "status": "completed",
-      "results": [
-        {
-          "type": "image_result",
-          "image_url": "https://cdn.example/golden-gate-sunset.jpg",
-          "thumbnail_url": "https://cdn.example/golden-gate-sunset-thumb.jpg",
-          "source_website_url": "https://example.com/source-page",
-          "caption": "Golden Gate Bridge at sunset"
-        }
-      ]
-    }
-  ]
-}
-```
-
-## User location
-
-To refine search results based on geography, you can specify an approximate user location using country, city, region, and/or timezone.
-
-- The `city` and `region` fields are free text strings, like `Minneapolis` and `Minnesota` respectively.
-- The `country` field is a two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1), like `US`.
-- The `timezone` field is an [IANA timezone](https://timeapi.io/documentation/iana-timezones) like `America/Chicago`.
-
-Note that user location is not supported for deep research models using web
-  search.
-
-Customizing user location
-
-```javascript
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
@@ -619,8 +490,9 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```csharp
-using OpenAI.Responses;
+```go
+package main
+
 #pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -715,69 +587,5 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-## Limitations
-
-#### Chat Completions API
-
-The Chat Completions API supports only specialized search models for web search. These models do not support Responses API `web_search` features such as domain filters, complete source lists, live-access control, and returned-token budget control.
-
-| Model                        | Context window | Limitation                                                                                                                                   |
-| ---------------------------- | -------------: | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `gpt-5-search-api`           |           200k | Uses the Chat Completions search model path                                                                                                  |
-| `gpt-4o-search-preview`      |           128k | Uses the Chat Completions search model path; [deprecated, shutdown 2026-07-23](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
-| `gpt-4o-mini-search-preview` |           128k | Uses the Chat Completions search model path; [deprecated, shutdown 2026-07-23](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
-
-#### Responses API
-
-Use the hosted `web_search` tool. The Responses API still accepts `web_search_preview` for legacy integrations, but use `web_search` for new integrations.
-
-For a larger model context window, use `gpt-5.5`. The web search context window remains 128k.
-
-| Model          | Model context window | Limitation                                                                                                                         |
-| -------------- | -------------------: | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `gpt-4.1`      |                   1M | Search context is limited to 128k                                                                                                  |
-| `gpt-4.1-mini` |                   1M | Search context is limited to 128k                                                                                                  |
-| `o4-mini`      |                 200k | Search context is limited to 128k; [deprecated, shutdown 2026-10-23](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
-
-For Responses API web search, the search context window is limited to 128k, even when the model context window is larger.
-
-- Web search does not support [`gpt-5`](https://developers.openai.com/api/docs/models/gpt-5) with `minimal` reasoning.
-- [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4) with reasoning effort set to `none` may produce lower-quality results.
-- Responses API web search uses the underlying model's tiered rate limits.
-- `web_search_preview` does not support `filters` or `return_token_budget`, and ignores `external_web_access`.
-- With `tool_choice: "auto"`, search is optional. Use `tool_choice: "required"` or a specific web search tool choice when search must run.
-
-## Usage notes
-
-<table>
-<tbody>
-
-<tr>
-  <th>API Availability</th>
-  <th>Rate limits</th>
-  <th>Notes</th>
-</tr>
-
-<tr>
-  <td>
-
-      [Responses](https://developers.openai.com/api/reference/resources/responses)
-
-      [Chat Completions](https://developers.openai.com/api/reference/resources/chat)
-
-      [Assistants](https://developers.openai.com/api/reference/resources/beta/subresources/assistants)
-
-  </td>
-  <td style={{ maxWidth: "150px" }}>
-    Same as tiered rate limits for underlying [model](https://developers.openai.com/api/docs/models) used
-    with the tool.
-  </td>
-  <td style={{ maxWidth: "150px" }}>
-    [Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools)
-
-    [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data)
-  </td>
-</tr>
-
-</tbody>
-</table>
+```go
+package main

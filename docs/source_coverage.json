@@ -85,8 +85,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.146.0",
-    "version_raw": "codex-cli 0.146.0"
+    "version": "0.146.1",
+    "version_raw": "codex-cli 0.146.1"
   },
   "developers": {
     "codex_related_urls": [
@@ -255,7 +255,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-05T02:37:21+00:00",
+  "generated_at": "2026-08-05T19:36:08+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

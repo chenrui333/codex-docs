@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_feature_maturity'
 source_url: 'https://learn.chatgpt.com/docs/feature-maturity'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0"]
+codex_cli_versions: ["0.146.0", "0.146.1"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1"]
 ---
 
 # Feature Maturity

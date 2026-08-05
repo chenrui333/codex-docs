@@ -5,8 +5,8 @@ source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
 source_last_modified: '2026-08-03T19:10:48Z'
 source_etag: 'W/"1fd0f67adf57a48044236f9b4f3e246d"'
-codex_cli_versions: ["0.146.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0"]
+codex_cli_versions: ["0.146.0", "0.146.1"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1"]
 ---
 
 # ChatGPT | ChatGPT Learn
