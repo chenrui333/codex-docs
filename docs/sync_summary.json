@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/enterprise/manage-app-updates/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-04T19:39:00+00:00",
+  "generated_at": "2026-08-05T02:37:34+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,9 +13,10 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 221,
+  "total_files": 222,
   "updated": [
-    "codex_capabilities.json",
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md"
   ]
 }

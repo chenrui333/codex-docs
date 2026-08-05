@@ -169,8 +169,15 @@ Source: https://learn.chatgpt.com/docs/administration
     {
       title: "Deployment and model providers",
       description:
-        "Deploy the Windows app, connect managed hosts, or configure a supported external model provider.",
+        "Deploy and update desktop apps, connect managed hosts, or configure a supported external model provider.",
       pages: [
+        {
+          title: "Manage app updates",
+          description:
+            "Control desktop app updates and deploy approved versions through your device management platform.",
+          href: "/codex/enterprise/manage-app-updates",
+          icon: "settings",
+        },
         {
           title: "Windows app deployment",
           description:

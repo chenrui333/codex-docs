@@ -351,6 +351,7 @@ browser_use = false
 browser_use_full_cdp_access = false
 browser_use_external = false
 in_app_browser = false
+in_app_updates = false
 computer_use = false
 ```
 
@@ -362,6 +363,10 @@ settings.
 <a id="disable-codex-feature-surfaces"></a>
 
 - `in_app_browser = false` disables the built-in browser pane.
+- `in_app_updates = false` disables the ChatGPT desktop app's own updater on
+  restart, where supported. It doesn't affect external package deployment or
+  extend support for older app versions. For setup and rollout guidance, see
+  [Manage app updates](https://learn.chatgpt.com/docs/enterprise/manage-app-updates).
 - `browser_use = false` disables Computer Use in browsers and Browser Agent availability.
 - `browser_use_full_cdp_access = false` disables full CDP access in the local
   runtime, including Browser Developer mode, and prevents the ChatGPT desktop

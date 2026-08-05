@@ -49,6 +49,13 @@ For setup details, see the following Microsoft documentation:
 - [MECM deployment guide](https://1drv.ms/b/c/123ec1ed6c72a14a/IQB829f_TSbkR7-H9qA4Q9ntAa9D2He3qMjXksWi2ozdeg8?e=GTKgAl)
 - [Add Microsoft Store apps to Microsoft Intune](https://learn.microsoft.com/en-us/intune/app-management/deployment/add-microsoft-store)
 
+<a id="manage-in-app-updates"></a>
+
+### Manage app updates
+
+For setup instructions and rollout guidance, see
+[Manage app updates](https://learn.chatgpt.com/docs/enterprise/manage-app-updates).
+
 ## Install without Microsoft distribution services
 
 If your environment can't use Microsoft app-distribution services for the
@@ -68,8 +75,9 @@ Ingest the appropriate MSIX and, when required, the license file into your MDM
 or software-deployment platform.
 
 After the initial installation, devices that can reach
-`persistent.oaistatic.com` can install updates automatically, so you don't
-need to redeploy newer packages through your management tool.
+`persistent.oaistatic.com` can install updates automatically unless managed
+configuration disables the app's built-in updater. If you disable in-app
+updates, deploy newer packages through your MDM or software-deployment tool.
 
 This deployment path:
 
@@ -79,4 +87,5 @@ This deployment path:
 
 ## Related resources
 
+- [Manage app updates](https://learn.chatgpt.com/docs/enterprise/manage-app-updates)
 - [ChatGPT desktop app for Windows](https://learn.chatgpt.com/docs/windows/windows-app)

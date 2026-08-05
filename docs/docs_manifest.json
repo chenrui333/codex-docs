@@ -4339,7 +4339,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "91bb69d0dd69df262e84645d1f2847269a2afcfb92ef50d1a9b7f4c1abf9baae",
+      "sha256": "156d7b27c7bff1c3b229e010028e4e9ad5088426bbb6af51c383587993f1ff1c",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4919,6 +4919,19 @@
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning"
     },
+    "learn.chatgpt.com/docs/enterprise/manage-app-updates/index.md": {
+      "codex_cli_versions": [
+        "0.146.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.146.0"
+      ],
+      "sha256": "2c855811d1f640dae2311bb83274498f7fdefda62ed2f71dbc661fc250a5d2c4",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/manage-app-updates"
+    },
     "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
       "codex_cli_versions": [
         "0.146.0"
@@ -4926,7 +4939,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "549608b76bbe43e971d1ad5bf901abf826ae4a0efea50ed0a72d420cf9911dee",
+      "sha256": "7ff1e5855ad8aa6df814dabfcd0935794cfae2c9896e1d4bde5d7df9b77ba75b",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -4978,7 +4991,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "ec68ab27aaca3960f534b206be96fb324435d529d89c91616264deda4a029d62",
+      "sha256": "80651c43258f3adacc36ad624c0632b57f7e9819cafe94a3e304c6f30d7d0836",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
