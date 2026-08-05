@@ -16,9 +16,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 Use this changelog to see what changed in Codex Security and which plugin
 versions are available from each installation source.
 
-**Latest release in the hosted Codex Security catalog:** `0.1.15`.
-
-**Latest release in the public Codex CLI plugin marketplace:** `0.1.11`.
+**Latest release in the hosted Codex Security catalog:** `0.1.17`.
 
 Check the plugin version in your current Codex environment before you use a
 feature from a newer release. Reopening or rerunning a saved scan doesn't pin
@@ -26,6 +24,67 @@ the installed plugin version.
 
 These versions apply to the Codex Security plugin. The Codex app, Codex CLI,
 TypeScript SDK, and plugin app have separate version numbers.
+
+## 0.1.17 (August 5, 2026)
+
+### Follow scan progress as it happens
+
+- Track the current scan phase, elapsed time, active workers, reviewed files, and
+  token usage from a single live progress view.
+- See repository review progress update as files finish instead of waiting for a
+  scan to complete.
+
+### Resume interrupted deep scans
+
+- Continue an in-progress deep scan after its coordinator restarts without
+  repeating completed file reviews.
+- Preserve completed discovery results, scan ownership, and pending work across
+  app updates or interrupted scan sessions.
+
+### Start and complete scans with less overhead
+
+- Start standard, change, and deep scans directly in native workflows without
+  opening the retired embedded scan widget.
+- Reuse completed scan summaries without reloading every finding unless you
+  request the complete structured results.
+
+## 0.1.16 (August 4, 2026)
+
+### Track measured scan usage
+
+- Review total, input, cached input, and output token usage across the main scan
+  and its delegated workers.
+- Distinguish complete, partial, and unavailable measurements instead of showing
+  missing usage as zero.
+
+### Run deeper scans with consistent results
+
+- Use the same threat-modeling, discovery, validation, attack-path analysis, and
+  reporting phases for standard and deep scans.
+- Configure deep scan workers, per-worker delegation, saturation, and discovery
+  limits from the CLI or SDK.
+- Run deep scans with the model's supported worker runtime and recover older
+  scan state without losing existing scan history.
+- Generate the primary report for change and deep scans without requiring
+  separate vulnerability write-ups or hardening recommendations.
+
+### Keep scan guidance and repository targets accurate
+
+- Update security guidance during an active scan and carry it into later phases
+  and delegated deep scan workers.
+- Preserve repository URLs, pull request references, and longer security context
+  without allowing network access you didn't request.
+- Fail scans when the repository or scan target changes during execution so
+  automation doesn't accept stale findings.
+- Honor enterprise proxy and trusted certificate settings in managed network
+  environments.
+
+### Write clearer vulnerability reports
+
+- Produce source-backed vulnerability reports that separate observed behavior
+  from unverified hypotheses.
+- Include realistic proof-of-concept limitations, affected versions, security
+  boundaries, and actionable remediation guidance.
 
 ## 0.1.15 (July 30, 2026)
 
@@ -53,7 +112,7 @@ TypeScript SDK, and plugin app have separate version numbers.
 ### Reduce unnecessary scan work
 
 - Keep standard-scan discovery adaptive to the repository and candidate list.
-- Stop retrying policy failures and remove the legacy fanout prompt.
+- Stop retrying policy failures and remove the legacy fan-out prompt.
 
 ## 0.1.14 (July 28, 2026)
 

@@ -5643,7 +5643,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.146.0"
       ],
-      "sha256": "8582c95a07bcccc408920b0c897f9b7acd71a490238de9721344071cd694a733",
+      "sha256": "471ddd7ed6b6b78ec9013c134ada2461017da4da19ea13dde92e9ca36dd0493f",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

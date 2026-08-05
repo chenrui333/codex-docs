@@ -1,10 +1,8 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/enterprise/manage-app-updates/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-05T02:37:34+00:00",
+  "generated_at": "2026-08-05T08:37:52+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,8 +13,6 @@
   },
   "total_files": 222,
   "updated": [
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md"
+    "learn.chatgpt.com/docs/security/plugin/changelog/index.md"
   ]
 }
