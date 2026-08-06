@@ -133,7 +133,7 @@ usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
                            [--archive-existing]
                            [--plugin-path PATH] [--python PATH]
                            [--codex KEY=VALUE] [--fail-on-severity LEVEL]
-                           [--max-cost USD] [--dry-run]
+                           [--max-cost USD] [--dry-run] [--verbose]
                            [--json] [--format {toon,json,yaml,jsonl}]
                            [--full-output] [repository]
 ```
@@ -241,6 +241,7 @@ machine-readable result.
 | `--fail-on-severity LEVEL` | Return exit `1` when a completed scan reports a finding at or above `critical`, `high`, `medium`, or `low`.                  |
 | `--max-cost USD`           | Stop a scan when its estimated model cost exceeds the specified USD amount.                                                  |
 | `--dry-run`                | Check the repository, target, output directory, and Codex configuration without starting a scan.                             |
+| `--verbose`                | Print redacted lifecycle, authentication, progress, and cost diagnostics to stderr.                                          |
 | `--json`                   | Print manifest, findings, coverage, paths, and turn metadata as one JSON document.                                           |
 | `--format FORMAT`          | Print the complete scan result as `toon`, `json`, `yaml`, or `jsonl`.                                                        |
 | `--full-output`            | Print the complete result using the default structured output format.                                                        |
@@ -628,6 +629,22 @@ Scans, exports, sign-in, validation, and patching remain CLI-only.
 By default, scans send progress, completion summaries, and errors to stderr
 without writing the complete scan result to stdout. Request `--json`,
 `--format`, or `--full-output` to send structured scan results to stdout.
+
+### Verbose diagnostics
+
+Add `--verbose` to print redacted lifecycle, authentication, progress, and cost
+diagnostics to stderr:
+
+```bash
+npx @openai/codex-security scan . --verbose
+```
+
+Set `CODEX_SECURITY_LOG_LEVEL=debug` to enable the same diagnostics without the
+flag. `LOG_LEVEL=debug` also enables diagnostics when
+`CODEX_SECURITY_LOG_LEVEL` is unset.
+
+These logging controls apply only to the CLI. Credentials and provider
+identifiers remain redacted, and structured scan results remain on stdout.
 
 ### Completion summary
 
