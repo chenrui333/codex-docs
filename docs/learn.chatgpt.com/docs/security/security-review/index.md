@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_security'
 source_url: 'https://learn.chatgpt.com/docs/security/security-review'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.1"]
-codex_cli_versions_raw: ["codex-cli 0.146.1"]
+codex_cli_versions: ["0.146.1", "0.147.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
 
 # Security Review
@@ -13,15 +13,15 @@ Source: https://learn.chatgpt.com/docs/security/security-review
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Security Review is available in research preview.
+Codex Security Review is available in research preview.
 It is available to ChatGPT Enterprise, Business, Edu, and Pro customers; it is
-not available on Plus. During the introductory period, Security Review does not
-consume ChatGPT credits. Usage limits may apply.
+not available on Plus. During the introductory period, Codex Security Review does
+not consume ChatGPT credits. Usage limits may apply.
 
-Security Review is an additional review for customers that want to
+Codex Security Review is an additional review for customers that want to
 pay particular attention to security issues in pull requests.
 
-Security Review goes deeper than [Code
+Codex Security Review goes deeper than [Code
 Review](https://learn.chatgpt.com/docs/third-party/github) on security-specific risks by analyzing the
 pull request diff, supporting repository context, and configured threat models
 or security guidance. Code Review can also identify security-related issues as
@@ -29,29 +29,31 @@ part of its general review, so you may see occasional overlap between findings.
 
 ## Before you start
 
-To configure automatic Security Review, you need:
+To configure automatic Codex Security Review, you need:
 
-- Security Review research preview access for your workspace
+- Codex Security Review research preview access for your workspace
 - [Codex cloud](https://learn.chatgpt.com/docs/cloud) set up with a connected GitHub repository
 - GitHub push or admin permission for the repository settings
 
 An existing Codex Security scan is optional.
 
-## Configure Security Review
+<a id="configure-security-review"></a>
+
+## Configure Codex Security Review
 
 1. Go to [Codex settings](https://chatgpt.com/codex/settings/code-review).
-2. Under **Repository preferences**, choose which pull requests get Security
-   Review:
+2. Under **Repository preferences**, choose which pull requests get Codex
+   Security Review:
    - **Follow personal** lets each contributor opt in with their personal
-     Security Review settings.
+     Codex Security Review settings.
    - **Review all PRs** applies to every pull request in the repository.
    - **Review team PRs**, when available, applies to pull requests opened by
      members of your ChatGPT workspace, not members of a GitHub team.
-3. Choose when Security Review runs:
+3. Choose when Codex Security Review runs:
    - **On PR open** runs independently when a pull request is opened.
    - **Every push** runs independently after new commits are pushed.
-   - **Whenever code review runs** requires Code Review and runs Security Review
-     alongside it.
+   - **Whenever code review runs** requires Code Review and runs Codex Security
+     Review alongside it.
 
 ## Add threat-model context
 
@@ -64,7 +66,7 @@ threat model for every review.
 
 ## Set reporting thresholds
 
-By default, automatic Security Reviews report **High** and **Critical**
+By default, automatic Codex Security Reviews report **High** and **Critical**
 findings, while manually requested reviews report **Medium**, **High**, and
 **Critical** findings. You can change the minimum severity independently for
 automatic and manual reviews, and add path-based overrides.
@@ -74,11 +76,14 @@ visibility. Anyone who can view the pull request can view those findings,
 including on public repositories or pull requests from contributors outside
 your workspace. Choose reporting thresholds carefully for repositories where
 pull request comments may be broadly visible. The reporting threshold controls
-what Codex posts to GitHub; the full Security Review report remains in Codex.
+what Codex posts to GitHub; the full Codex Security Review report remains in
+Codex.
 
-## Request a Security Review
+<a id="request-a-security-review"></a>
 
-To request a Security Review manually, add this comment to a pull request:
+## Request a Codex Security Review
+
+To request a Codex Security Review manually, add this comment to a pull request:
 
 `@codex security review`
 

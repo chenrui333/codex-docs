@@ -5,8 +5,8 @@ source_url: 'https://learn.chatgpt.com/docs/changelog'
 source_kind: 'learn_html_fallback'
 source_last_modified: '2026-08-03T07:19:07Z'
 source_etag: 'W/"408a4a878a8763b14da47309bfcbaa11"'
-codex_cli_versions: ["0.146.0", "0.146.1"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
 
 # ChatGPT & Codex changelog | ChatGPT Learn

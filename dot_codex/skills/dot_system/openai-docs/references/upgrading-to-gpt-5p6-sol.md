@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/references/upgrading-to-gpt-5p6-sol.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.145.0", "0.146.0", "0.146.1"]
-codex_cli_versions_raw: ["codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1"]
+codex_cli_versions: ["0.145.0", "0.146.0", "0.146.1", "0.147.0"]
+codex_cli_versions_raw: ["codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
 
 # Upgrading to GPT-5.6 Sol
@@ -13,7 +13,7 @@ Use this guide when the user asks to migrate an existing OpenAI API integration,
 
 The default explicit target is `gpt-5.6-sol`. The alias `gpt-5.6` routes to Sol; use it only when the repository intentionally prefers family aliases. Do not treat every old model usage as a Sol candidate: GPT-5.6 is a family with different cost, latency, context, and quality roles.
 
-Before changing code, use the OpenAI Docs MCP to fetch the current live GPT-5.6 model guidance:
+Before changing code, retrieve the current live GPT-5.6 model guidance using already-callable official documentation search and fetch, or immediately use official-domain web search and fetch:
 
 https://developers.openai.com/api/docs/guides/model-guidance?model=gpt-5.6
 
@@ -311,7 +311,7 @@ If migrating a legacy Pro slug, make the mode change explicit and evaluate it se
 
 ## Optional: Programmatic Tool Calling
 
-Programmatic Tool Calling is not a required part of moving to GPT-5.6. Consider it for bounded workflows where code can process several tool results or large intermediate outputs and return a much smaller structured result. Multiple, parallel, or dependent calls alone do not justify it.
+Programmatic Tool Calling is not a required part of moving to GPT-5.6. Add it only when code can reduce large structured intermediate results before they return to model context.
 
 Good candidates:
 
@@ -345,7 +345,7 @@ Request-shape requirements:
 
 Do not nest `programmatic_tool_calling` under another `tools` property. When enabled, the host must handle `program`, program-issued `function_call`, `function_call_output`, and `program_output` items. Preserve the original `call_id` and `caller` when returning function results.
 
-Constrain the stage, eligible read-only tools, output schema, retry limit, and handoff back to direct judgment. Test both the `program_output` item and final assistant `message`; a program can return the correct records while the message omits a required field, citation, or caveat.
+Constrain the stage, eligible read-only tools, output schema, retry limit, and handoff back to direct judgment. Validate the final user-visible answer; a correct program result can still become an incorrect final answer.
 
 ## Optional: multi-agent beta
 
@@ -368,21 +368,20 @@ After the model and API baseline is working, run representative traces before ed
 
 For GPT-5.6, prefer:
 
-- leaner, outcome-oriented prompts that remove repeated scaffolding while preserving product requirements;
+- shorter, outcome-oriented prompts;
 - explicit success criteria, dependencies, stopping conditions, and completion boundaries;
 - preserved user-provided values;
 - decision criteria for implicit choices instead of universal defaults or keyword maps;
 - explicit autonomy and permission boundaries;
 - explicit tool routing, resource links, breadcrumbs, and expected tool choice;
-- `text.verbosity` for the default level of detail, with prompt instructions for required task-specific content;
 - staged plans, current-layer awareness, and concise handoffs for long work;
 - real validation before declaring completion.
 
 Avoid:
 
-- untested generic style or process instructions that do not change measured behavior;
+- generic `be brief`, `be thorough`, or `think step by step` instructions;
 - blanket language instructions that can cause unwanted language switching;
-- repeating approval warnings throughout the prompt instead of keeping one clear autonomy policy;
+- repeating `ask first` until safe local work becomes blocked;
 - giant prompt rewrites that make the source of a regression impossible to identify;
 - telling the model to minimize tool loops when correctness, evidence, or required validation needs more work.
 

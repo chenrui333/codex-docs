@@ -19,7 +19,7 @@
     "counts": {
       "prompt_snapshot_paths": 1,
       "source_errors": 0,
-      "system_skill_paths": 54
+      "system_skill_paths": 59
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
     "prompt_snapshot_command": "codex debug prompt-input",
@@ -48,7 +48,12 @@
       "dot_codex/skills/dot_system/openai-docs/agents/openai.yaml",
       "dot_codex/skills/dot_system/openai-docs/assets/openai-small.svg",
       "dot_codex/skills/dot_system/openai-docs/assets/openai.png",
+      "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md",
       "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
+      "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md",
+      "dot_codex/skills/dot_system/openai-docs/references/model-migration.md",
+      "dot_codex/skills/dot_system/openai-docs/references/model-selection.md",
+      "dot_codex/skills/dot_system/openai-docs/references/official-docs.md",
       "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-5p6-sol.md",
@@ -85,8 +90,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.146.1",
-    "version_raw": "codex-cli 0.146.1"
+    "version": "0.147.0",
+    "version_raw": "codex-cli 0.147.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -255,7 +260,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-07T00:02:26+00:00",
+  "generated_at": "2026-08-07T07:17:20+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -891,7 +896,7 @@
   },
   "system_skills": {
     "counts": {
-      "mirrored_paths_count": 54,
+      "mirrored_paths_count": 59,
       "page_fetch_errors": 0
     },
     "mirrored_paths": [
@@ -913,7 +918,12 @@
       "dot_codex/skills/dot_system/openai-docs/agents/openai.yaml",
       "dot_codex/skills/dot_system/openai-docs/assets/openai-small.svg",
       "dot_codex/skills/dot_system/openai-docs/assets/openai.png",
+      "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md",
       "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
+      "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md",
+      "dot_codex/skills/dot_system/openai-docs/references/model-migration.md",
+      "dot_codex/skills/dot_system/openai-docs/references/model-selection.md",
+      "dot_codex/skills/dot_system/openai-docs/references/official-docs.md",
       "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-5p6-sol.md",
@@ -950,7 +960,7 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "mirrored_paths_count": 54,
+    "mirrored_paths_count": 59,
     "output_prefix": "dot_codex/skills/dot_system/",
     "page_fetch_errors": [],
     "source_kind": "installed_codex_cli"
