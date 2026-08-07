@@ -137,6 +137,11 @@
     },
     {
       "enabled": false,
+      "key": "executed_tool_call_metadata",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "executor_capability_discovery",
       "stage": "under development"
     },
@@ -189,6 +194,11 @@
       "enabled": true,
       "key": "image_generation",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "image_resize_notice",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -289,6 +299,11 @@
       "enabled": false,
       "key": "realtime_conversation",
       "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "recommended_plugins",
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -481,6 +496,11 @@
       "stage": "removed"
     },
     {
+      "enabled": true,
+      "key": "view_image",
+      "stage": "stable"
+    },
+    {
       "enabled": false,
       "key": "web_search_cached",
       "stage": "deprecated"
@@ -501,7 +521,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.146.1",
+  "codex_cli_version": "codex-cli 0.147.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -509,11 +529,13 @@
       "image_generation",
       "mentions_v2",
       "multi_agent_v2",
+      "recommended_plugins",
       "remote_compaction_v2",
       "secret_auth_storage",
       "skill_search",
       "tool_call_mcp_elicitation",
-      "tool_suggest"
+      "tool_suggest",
+      "view_image"
     ],
     "actionable_stages": [
       "stable",
@@ -541,6 +563,7 @@
       "enable_fanout",
       "enable_mcp_apps",
       "exec_permission_approvals",
+      "executed_tool_call_metadata",
       "executor_capability_discovery",
       "experimental_windows_sandbox",
       "external_agent_memory_import",
@@ -548,6 +571,7 @@
       "guardianv2",
       "image_detail_original",
       "image_generation",
+      "image_resize_notice",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
@@ -559,6 +583,7 @@
       "non_prefixed_mcp_tool_names",
       "plugin_hooks",
       "realtime_conversation",
+      "recommended_plugins",
       "remote_compaction_v2",
       "remote_control",
       "remote_models",
@@ -592,6 +617,7 @@
       "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
+      "view_image",
       "workspace_owner_usage_nudge"
     ],
     "missing_in_docs_by_stage": {
@@ -638,11 +664,13 @@
         "image_generation",
         "mentions_v2",
         "multi_agent_v2",
+        "recommended_plugins",
         "remote_compaction_v2",
         "secret_auth_storage",
         "skill_search",
         "tool_call_mcp_elicitation",
-        "tool_suggest"
+        "tool_suggest",
+        "view_image"
       ],
       "under development": [
         "apply_patch_streaming_events",
@@ -658,9 +686,11 @@
         "deferred_tool_world_state",
         "enable_mcp_apps",
         "exec_permission_approvals",
+        "executed_tool_call_metadata",
         "executor_capability_discovery",
         "external_agent_memory_import",
         "guardianv2",
+        "image_resize_notice",
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "non_prefixed_mcp_tool_names",
@@ -715,16 +745,16 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "92b9deb6e08c9556f49ed603d3658395bf78ff143232c0fa3d7e50d3306ec498"
+      "sha256": "b389a1d25773008a17404365271878abb319d5dd7e376f0720d10d37dfa5fdef"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "4d42dfa88a8f98f8875c7c7f284463810e37e026623f165d7b64f3527ed20b84"
+      "sha256": "11790a97f32c20cd1b9ba7bf7c0cf2bc7f813d9a2f82e184e2a31770ff7e4eb2"
     }
   },
   "schema_version": 3,
-  "source_commit": "79b4f03d35962b005b007a015113b38930711665",
+  "source_commit": "be6e8eac029b183056b7e4402879f15d2c85f61b",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -834,6 +864,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "executed_tool_call_metadata": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "executor_capability_discovery": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -877,6 +911,10 @@
     "image_generation": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "image_resize_notice": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "in_app_browser": {
       "default_enabled_expr": "true",
@@ -957,6 +995,10 @@
     "realtime_conversation": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
+    },
+    "recommended_plugins": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "stable"
     },
     "remote_compaction_v2": {
       "default_enabled_expr": "true",
@@ -1110,6 +1152,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
+    "view_image": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
     "web_search_cached": {
       "default_enabled_expr": "false",
       "stage_from_source": "deprecated"
@@ -1128,13 +1174,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "49cead56a5a4d0f390e404a21e5fe91d7b316e0ed4696cf77d89458387d7ae8b",
-    "features_rs_sha256": "737c3c3511408a3d9f35bd544359f6a5aeca4777460b9f34f902ccd38ec2a46d"
+    "client_rs_sha256": "ac595b26fb7cf1c222cd273b8c9048a5f4e366dc33b50088302c916a4d9563a5",
+    "features_rs_sha256": "8437206e83806c546f9c8cf7002384c8d9be1740c1f4c78f44ef9417d7e61344"
   },
-  "source_ref": "rust-v0.146.1",
+  "source_ref": "rust-v0.147.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/79b4f03d35962b005b007a015113b38930711665/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/79b4f03d35962b005b007a015113b38930711665/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/be6e8eac029b183056b7e4402879f15d2c85f61b/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/be6e8eac029b183056b7e4402879f15d2c85f61b/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
