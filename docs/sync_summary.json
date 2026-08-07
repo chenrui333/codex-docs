@@ -1,8 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/remote/index.md",
+    "learn.chatgpt.com/docs/security/security-review/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-06T08:37:55+00:00",
+  "generated_at": "2026-08-07T00:02:52+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,8 +14,16 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 222,
+  "total_files": 224,
   "updated": [
-    "learn.chatgpt.com/docs/security/cli/reference/index.md"
+    "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+    "learn.chatgpt.com/docs/features/index.md",
+    "learn.chatgpt.com/docs/remote-connections/index.md",
+    "learn.chatgpt.com/docs/security-administration/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md",
+    "learn.chatgpt.com/docs/third-party/github/index.md"
   ]
 }

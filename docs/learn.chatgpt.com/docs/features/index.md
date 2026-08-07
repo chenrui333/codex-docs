@@ -38,6 +38,13 @@ Source: https://learn.chatgpt.com/docs/features
           icon: "folder",
         },
         {
+          title: "Codex Remote",
+          description:
+            "Start tasks, approve actions, and review work from your phone.",
+          href: "/codex/remote",
+          icon: "connect",
+        },
+        {
           title: "Sites",
           description:
             "Create, save, and publish interactive websites and apps in ChatGPT.",

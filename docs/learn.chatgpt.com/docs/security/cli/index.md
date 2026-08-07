@@ -37,22 +37,13 @@ Install the published package:
 npm install @openai/codex-security
 ```
 
-Check the installed version:
-
-```bash
-npx @openai/codex-security --version
-```
-
 List the available commands:
 
 ```bash
 npx @openai/codex-security --help
 ```
 
-Use `npx @openai/codex-security scan --help` or
-`npx @openai/codex-security export --help` for complete command help. The
-[CLI reference](https://learn.chatgpt.com/docs/security/cli/reference) covers each argument, output
-format, and exit code.
+See also [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference).
 
 ## Sign in
 
@@ -74,11 +65,8 @@ For CI and other automated workflows, set an OpenAI API key:
 export OPENAI_API_KEY="<your-api-key>"
 ```
 
-Keep API keys in your shell or secret manager. Codex Security can also reuse an
-existing file-backed Codex sign-in. When both a stored ChatGPT sign-in and an
-environment API key are available, interactive scans with text output ask
-which to use. CI, JSON and JSONL scans, and other unattended scans use the
-API key by default.
+For AWS credentials, see [Amazon Bedrock
+setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock).
 
 To use your ChatGPT sign-in when an API key is also set, select it explicitly:
 
@@ -92,16 +80,8 @@ To require the environment API key, select API-key authentication:
 npx @openai/codex-security scan . --auth api-key
 ```
 
-To make your stored sign-in the automatic default, unset both environment API
-keys:
-
-```bash
-unset OPENAI_API_KEY CODEX_API_KEY
-```
-
 Depending on your account and repository, full-repository scans may also
-require [Trusted Access for Cyber](https://chatgpt.com/cyber). Signing in or
-setting an API key doesn't grant that access.
+require [Trusted Access for Cyber](https://chatgpt.com/cyber).
 
 ## Prepare a scan
 

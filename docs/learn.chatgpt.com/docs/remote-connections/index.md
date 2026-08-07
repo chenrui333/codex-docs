@@ -85,7 +85,9 @@ Existing connections used since June 8, 2026, remain paired. If you haven't
 
 1. Start Remote setup.
 
-   Open the app on the host and select **Set up Remote** in the sidebar.
+   Open the ChatGPT desktop app on the host. Go to **Settings** >
+   **Connections** > **Control this Mac or PC**, then select **Set up** or
+   **Add**. Approve remote access and complete any requested verification.
 
 2. Scan the QR code.
 
@@ -101,7 +103,7 @@ Existing connections used since June 8, 2026, remain paired. If you haven't
 
 4. Review host settings.
 
-   In the app on the host, use **Settings > Connections** to manage connected
+   In the app on the host, use **Settings** > **Connections** to manage connected
    devices. You can also choose whether to keep the computer awake, enable
    Computer Use, or install the Chrome extension.
 

@@ -211,6 +211,13 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
               },
             },
             {
+              name: "Codex Security CLI",
+              href: "/codex/security/cli",
+              availability: {
+                bedrock: "available",
+              },
+            },
+            {
               name: "IDE extension",
               href: "/codex/ide",
               availability: {
@@ -271,6 +278,14 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
         {
           title: "Local features",
           features: [
+            {
+              name: "Codex Security plugin and local scans",
+              shortName: "Codex Security plugin",
+              href: "/codex/security/plugin",
+              availability: {
+                bedrock: "available",
+              },
+            },
             {
               name: "Local code review with `/review`",
               shortName: "Local code review",
@@ -588,9 +603,9 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
               },
             },
             {
-              name: "Codex Security for connected GitHub repositories",
-              shortName: "Codex Security",
-              href: "/codex/security",
+              name: "Codex Security cloud for connected GitHub repositories",
+              shortName: "Codex Security cloud",
+              href: "/codex/security/setup",
               availability: {
                 bedrock: "unavailable",
               },
@@ -612,10 +627,10 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
     id="codex-plan-plugin-limits"
     className="not-prose mt-1 text-sm text-secondary"
   >
-    <sup>†</sup> Local plugin bundles are supported when their capabilities do
-    not require ChatGPT authentication. OpenAI-curated plugin discovery and
-    features that depend on connectors or cloud-hosted sharing aren't
-    available.
+    <sup>†</sup> Local plugin bundles and OpenAI-curated plugins that don't
+    require ChatGPT authentication, including Codex Security, are available.
+    Plugins that require ChatGPT authentication, connectors, or cloud-hosted
+    sharing aren't available.
 
 </ToggleSection>
 

@@ -128,5 +128,6 @@ Codex cloud workspace or contact your OpenAI account team.
 - [Codex Security CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq) answers common questions about scans, findings, coverage, and costs.
 - [Codex Security TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) explains how to run scans from an application or developer tool.
 - [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup) details setup, scanning, and findings review.
+- [Security Review](https://learn.chatgpt.com/docs/security/security-review) explains how to run in-depth security reviews on GitHub pull requests.
 - [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model) explains how to tune scope, entry points, and criticality assumptions.
 - [Codex Security cloud FAQ](https://learn.chatgpt.com/docs/security/faq) covers common cloud product questions.

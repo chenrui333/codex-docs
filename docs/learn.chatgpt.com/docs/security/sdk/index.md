@@ -35,8 +35,10 @@ Install the SDK:
 npm install @openai/codex-security
 ```
 
-Before starting a scan, set `OPENAI_API_KEY` or `CODEX_API_KEY`, or use an
-existing file-backed Codex sign-in.
+Before starting a scan, set `OPENAI_API_KEY` or `CODEX_API_KEY`, use an
+existing file-backed Codex sign-in, or [configure Amazon
+Bedrock](#configure-the-runtime-and-credentials) with AWS credentials and
+explicit `model_provider` and `model` overrides.
 
 For best results, use an account verified for [Trusted Access for
 Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
@@ -359,7 +361,9 @@ const security = new CodexSecurity({
 plugin interpreter. `codexOverrides` merges supported values into the isolated
 Codex configuration. Scans use `gpt-5.6-sol` with extra-high reasoning effort
 by default. Set `model` and `model_reasoning_effort` in `codexOverrides` to use
-a different model or reasoning effort.
+a different model or reasoning effort. To use [Amazon
+Bedrock](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock), set
+`model_provider` and `model` in `codexOverrides`.
 
 The client also exposes supported authentication methods:
 

@@ -7,7 +7,7 @@ codex_cli_versions: ["0.146.0", "0.146.1"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1"]
 ---
 
-# Codex code review in GitHub
+# Review GitHub pull requests with Codex
 
 Source: https://learn.chatgpt.com/docs/third-party/github
 
@@ -15,7 +15,9 @@ Source: https://learn.chatgpt.com/docs/third-party/github
 
 Use Codex code review to get another high-signal review pass on GitHub pull
 requests. Codex reviews the pull request diff, follows your repository guidance,
-and posts a standard GitHub code review focused on serious issues.
+and posts a standard GitHub code review focused on serious issues. Security
+Review, available in research preview, provides a more in-depth review of
+potential security issues in a pull request.
 
 <YouTubeEmbed
   title="Codex code review walkthrough"
@@ -32,6 +34,9 @@ Make sure you have:
 - An `AGENTS.md` file if you want Codex to follow repository-specific review guidance.
 
 ## Set up Codex code review
+
+To configure automatic reviews, you need a connected GitHub repository and
+GitHub push or admin permission for its settings.
 
 1. Set up [Codex cloud](https://learn.chatgpt.com/docs/cloud).
 2. Go to [Codex settings](https://chatgpt.com/codex/settings/code-review).
@@ -113,7 +118,40 @@ required approvals.
 
 For a one-off focus, add it to your pull request comment:
 
-`@codex review for security regressions`
+`@codex review for issues in the database migration`
+
+## Security Review
+
+Security Review is an additional review for customers that want to
+pay particular attention to security issues in pull requests. It goes deeper
+than Code Review on security-specific risks by analyzing the pull request diff,
+supporting repository context, and configured threat models or security
+guidance.
+
+Code Review can also identify security-related issues as part of its general
+review, so you may see occasional overlap between Code Review and Security
+Review findings.
+
+### Set up Security Review
+
+For more detailed setup instructions and configuration options, see [Security
+Review](https://learn.chatgpt.com/docs/security/security-review).
+
+1. Set up [Codex cloud](https://learn.chatgpt.com/docs/cloud).
+2. Go to [Codex settings](https://chatgpt.com/codex/settings/code-review).
+3. Under **Repository preferences**, choose which pull requests get Security
+   Review and when it runs. Select **Whenever code review runs** to run it
+   alongside Code Review.
+
+### Request a Security Review
+
+To request a Security Review manually, add this comment to a pull request:
+
+`@codex security review`
+
+Codex reacts while the review is running, then posts security findings directly
+on the pull request. Open the associated Codex task and select the **Security
+Report** tab to view the full report.
 
 ## Act on review findings
 

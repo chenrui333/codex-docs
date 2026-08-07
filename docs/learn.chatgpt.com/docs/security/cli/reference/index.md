@@ -124,6 +124,7 @@ working tree.
 
 ```text
 usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
+                           [--provider {openai,openrouter,fireworks,amazon-bedrock}]
                            [--path PATH | --diff BASE | --working-tree]
                            [--head HEAD] [--base BASE]
                            [--knowledge-base PATH]
@@ -162,6 +163,23 @@ npx @openai/codex-security scan . --auth api-key
 
 To make stored credentials the automatic default, run
 `unset OPENAI_API_KEY CODEX_API_KEY`.
+
+### Use Amazon Bedrock
+
+Select Amazon Bedrock with `--provider amazon-bedrock` and specify an explicit
+Bedrock model with `--model`:
+
+```bash
+npx @openai/codex-security scan . \
+  --provider amazon-bedrock \
+  --model openai.gpt-5.6-sol
+```
+
+Set `AWS_REGION` and authenticate with `AWS_BEARER_TOKEN_BEDROCK`, standard AWS
+access keys, an AWS profile, web identity, container credentials, or the
+default AWS credential chain. Bedrock scans use AWS credentials instead of
+`--auth`, ChatGPT sign-in, or an OpenAI API key. Both `scan` and `bulk-scan`
+support `--provider`.
 
 ### Select the scan target
 
@@ -298,14 +316,15 @@ npx @openai/codex-security scan . \
 Use runtime options when you need an explicit model, interpreter, plugin, or
 Codex configuration value.
 
-| Argument                                   | Description                                                                                              |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `--auth {auto,chatgpt,api-key}`            | Select the scan credentials. The default is `auto`.                                                      |
-| `--model MODEL`                            | Select the OpenAI model. The default is `gpt-5.6-sol`.                                                   |
-| `--effort {minimal,low,medium,high,xhigh}` | Select the model's reasoning effort. The default is `xhigh`.                                             |
-| `--plugin-path PATH`                       | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                             |
-| `--python PATH`                            | Select the Python interpreter for the plugin runtime.                                                    |
-| `--codex KEY=VALUE`                        | Override an isolated Codex configuration value. Values use TOML syntax. Repeat the flag for more values. |
+| Argument                                                  | Description                                                                                              |
+| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `--auth {auto,chatgpt,api-key}`                           | Select the scan credentials. The default is `auto`.                                                      |
+| `--provider {openai,openrouter,fireworks,amazon-bedrock}` | Select the inference provider. The default is `openai`.                                                  |
+| `--model MODEL`                                           | Select the model. The default is `gpt-5.6-sol`. Required with `--provider amazon-bedrock`.               |
+| `--effort {minimal,low,medium,high,xhigh}`                | Select the model's reasoning effort. The default is `xhigh`.                                             |
+| `--plugin-path PATH`                                      | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                             |
+| `--python PATH`                                           | Select the Python interpreter for the plugin runtime.                                                    |
+| `--codex KEY=VALUE`                                       | Override an isolated Codex configuration value. Values use TOML syntax. Repeat the flag for more values. |
 
 To select a different model and reasoning effort without writing TOML:
 
@@ -349,6 +368,7 @@ scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans).
 ```text
 usage: codex-security bulk-scan [input] [--output-dir DIR]
                                 [--workers N] [--mode {standard,deep}]
+                                [--provider {openai,openrouter,fireworks,amazon-bedrock}]
                                 [--model MODEL]
                                 [--effort {minimal,low,medium,high,xhigh}]
                                 [--max-attempts N] [--plugin-path PATH]
@@ -749,7 +769,8 @@ partial output after an interruption or runtime error.
 
 Set `OPENAI_API_KEY` or `CODEX_API_KEY`, sign in with
 `npx @openai/codex-security login`, or use an existing file-backed Codex
-sign-in.
+sign-in. For Amazon Bedrock, use a Bedrock API key or the standard AWS
+credential chain instead.
 
 For credential selection, see [Select scan
 authentication](#select-scan-authentication).
