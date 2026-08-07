@@ -260,7 +260,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-07T07:17:20+00:00",
+  "generated_at": "2026-08-07T18:58:33+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -302,11 +302,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 129,
+      "discovered_urls": 130,
       "html_fallback_pages": 2,
-      "markdown_pages": 127,
-      "mirrored_paths_count": 129,
-      "mirrored_urls": 129,
+      "markdown_pages": 128,
+      "mirrored_paths_count": 130,
+      "mirrored_urls": 130,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -361,6 +361,7 @@
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
       "https://learn.chatgpt.com/docs/enterprise/manage-app-updates",
       "https://learn.chatgpt.com/docs/enterprise/managed-configuration",
+      "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
@@ -494,6 +495,7 @@
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
       "https://learn.chatgpt.com/docs/enterprise/manage-app-updates",
       "https://learn.chatgpt.com/docs/enterprise/managed-configuration",
+      "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
@@ -624,6 +626,7 @@
       "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md",
       "learn.chatgpt.com/docs/enterprise/manage-app-updates/index.md",
       "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+      "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md",
       "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
       "learn.chatgpt.com/docs/enterprise/skills/index.md",
       "learn.chatgpt.com/docs/enterprise/usage-limits/index.md",
@@ -707,7 +710,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 129,
+    "mirrored_paths_count": 130,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -757,6 +760,7 @@
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
       "https://learn.chatgpt.com/docs/enterprise/manage-app-updates",
       "https://learn.chatgpt.com/docs/enterprise/managed-configuration",
+      "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",

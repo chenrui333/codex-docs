@@ -4652,7 +4652,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "3e4349ce52e2a292b781c102126f0ab9e8764e1d4751c51169d85a01c2abaded",
+      "sha256": "2c8f2169a2b3f2d59a4c2eec793135f2406b701ba2c5e05c48ea08eabc5eebd5",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5441,6 +5441,19 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/managed-configuration"
+    },
+    "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md": {
+      "codex_cli_versions": [
+        "0.147.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.147.0"
+      ],
+      "sha256": "d8c2f0565472d842be0d4824de5961d434e4cc10a46f05fab55b8f5846cd1ff3",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/prisma-airs"
     },
     "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md": {
       "codex_cli_versions": [
