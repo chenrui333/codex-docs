@@ -79,9 +79,9 @@ repository list, use a CSV inventory instead.
 Create a CSV with one row for each repository and pinned revision:
 
 ```csv
-id,repository,revision,scope,mode
-payments,https://github.com/example/payments.git,0123456789abcdef0123456789abcdef01234567,services/api,standard
-identity,https://github.com/example/identity.git,fedcba9876543210fedcba9876543210fedcba98,,deep
+id,repository,revision,scope,mode,prompt
+payments,https://github.com/example/payments.git,0123456789abcdef0123456789abcdef01234567,services/api,standard,Review payment authorization and refunds.
+identity,https://github.com/example/identity.git,fedcba9876543210fedcba9876543210fedcba98,,deep,Review session and identity boundaries.
 ```
 
 The CSV supports these columns:
@@ -93,6 +93,7 @@ The CSV supports these columns:
 | `revision`   | Yes      | Full 40- or 64-character Git commit SHA. Branch names, tags, and shortened commit hashes aren't supported. |
 | `scope`      | No       | A repository-relative directory to scan. Omit the value to scan the full repository.                       |
 | `mode`       | No       | `standard` or `deep`. Omit the value to use the command's selected mode.                                   |
+| `prompt`     | No       | Scan instructions specific to this repository.                                                             |
 
 To find a local repository's full commit SHA, run:
 
@@ -110,14 +111,43 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --workers 4
 ```
 
-`--workers` controls the number of concurrent repository scans and defaults to
-`4`. Use `--mode deep` to select deep scanning for rows without their own
-`mode`. Each CSV row can still choose its own scan mode and repository scope.
+`--workers` controls concurrent repository scans and defaults to `4`. It does
+not set the number of discovery workers within each deep scan; configure those
+limits through [`[deep_scan]`](/codex/security/cli/reference#configure-deep-scans).
+Use `--mode deep` to select deep scanning for rows without their own `mode`.
+Each CSV row can still choose its own scan mode and repository scope.
 
 The CLI checks out each pinned revision, scans the selected target, records the
 result, and removes the temporary repository checkout. A repository counts as
 complete only when its scan has complete coverage and all required result
 artifacts exist.
+
+## Share security context and instructions
+
+Add architecture documents, threat models, or security policies to every scan
+with `--knowledge-base`. Repeat the flag for more files or directories:
+
+```bash
+npx @openai/codex-security bulk-scan repositories.csv \
+  --output-dir /path/outside/repositories/security-scans \
+  --knowledge-base /path/to/architecture.md \
+  --knowledge-base /path/to/security-policies
+```
+
+To add shared scan instructions or run a follow-up after each completed scan,
+provide prompt files:
+
+```bash
+npx @openai/codex-security bulk-scan repositories.csv \
+  --output-dir /path/outside/repositories/security-scans \
+  --scan-prompt-file scan-instructions.md \
+  --post-scan-prompt-file follow-up.md
+```
+
+The CLI appends each repository's CSV `prompt` after the shared scan
+instructions. Follow-up instructions run in the same authenticated session only
+after a validated scan has complete coverage. Prompt file paths resolve from
+your current directory.
 
 ## Choose a model and reasoning effort
 
@@ -139,6 +169,12 @@ npx @openai/codex-security bulk-scan --model gpt-5.6-terra --effort high
 ```
 
 Supported effort levels are `minimal`, `low`, `medium`, `high`, and `xhigh`.
+
+To use OpenRouter or Fireworks, set `OPENROUTER_API_KEY` or `FIREWORKS_API_KEY`,
+respectively, and specify `--provider` and `--model`. For credentials and
+examples, see [OpenRouter or Fireworks
+setup](https://learn.chatgpt.com/docs/security/cli/reference#use-openrouter-or-fireworks) or [Amazon
+Bedrock setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock).
 
 ## Review campaign results
 
@@ -165,8 +201,8 @@ security-scans/
             └── report.md
 ```
 
-- `manifest.json` records the repositories, pinned revisions, scopes, and scan
-  modes in the campaign.
+- `manifest.json` records the repositories, pinned revisions, scopes, scan
+  modes, and shared or repository-specific instructions in the campaign.
 - `results.jsonl` records each repository attempt, its status, artifact
   directory, and any available cost or error details.
 - `report.md` provides a readable report for one repository attempt.
@@ -196,13 +232,14 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --workers 4
 ```
 
-The CLI resumes repositories that still need work. It skips a completed
-repository only when the corresponding receipt and all required scan artifacts
-still exist.
+The CLI resumes unfinished repository scans and skips completed ones. Scans
+with incomplete coverage aren't retried. Their results remain available, and
+the command exits with code `2`.
 
-Don't change the repository inventory for an existing output directory. The CLI
-checks the pinned manifest and rejects a different campaign. Use a new output
-directory when you change repositories, revisions, scopes, or scan modes.
+Don't change the repository inventory or scan and follow-up instructions for
+an existing output directory. The CLI checks the pinned manifest and rejects a
+different campaign. Use a new output directory when you change repositories,
+revisions, scopes, scan modes, or shared or repository-specific instructions.
 
 ## Retry repository errors
 
@@ -217,7 +254,9 @@ npx @openai/codex-security bulk-scan repositories.csv \
 ```
 
 The default is one attempt per repository. Every attempt receives its own
-receipt and artifact directory.
+receipt and artifact directory. Retries cover checkout errors, scan failures,
+and missing required artifacts. Completed scans with incomplete coverage
+aren't retried.
 
 Bulk scans use these exit codes:
 

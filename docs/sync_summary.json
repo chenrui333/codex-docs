@@ -1,10 +1,8 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-07T18:58:57+00:00",
+  "generated_at": "2026-08-08T06:55:20+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,6 +13,11 @@
   },
   "total_files": 230,
   "updated": [
-    "learn.chatgpt.com/docs/administration/index.md"
+    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+    "learn.chatgpt.com/docs/security/cli/ci/index.md",
+    "learn.chatgpt.com/docs/security/cli/faq/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

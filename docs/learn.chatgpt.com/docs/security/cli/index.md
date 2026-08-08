@@ -25,8 +25,8 @@ The `@openai/codex-security` package is public. Running scans requires Codex
 
 ## Check the prerequisites
 
-The CLI requires Node.js 22 or later. Running a scan or exporting findings also
-requires Python 3.10 or later. For more detail, see [Authentication and
+The CLI requires Node.js 22.13.0 or later. Running a scan or exporting findings
+also requires Python 3.10 or later. For more detail, see [Authentication and
 prerequisites](https://learn.chatgpt.com/docs/security/cli/reference#authentication-and-prerequisites).
 
 ## Set up and verify the CLI
@@ -66,7 +66,9 @@ export OPENAI_API_KEY="<your-api-key>"
 ```
 
 For AWS credentials, see [Amazon Bedrock
-setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock).
+setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock). For [OpenRouter or
+Fireworks](https://learn.chatgpt.com/docs/security/cli/reference#use-openrouter-or-fireworks), set the
+provider's API key and select a model with `--provider` and `--model`.
 
 To use your ChatGPT sign-in when an API key is also set, select it explicitly:
 
@@ -109,8 +111,9 @@ Check the repository, target, and output directory before starting a scan:
 npx @openai/codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR" --dry-run
 ```
 
-The dry run checks local inputs without starting Codex, loading credentials,
-or probing the plugin's Python interpreter.
+The dry run checks local inputs, including any `--knowledge-base` paths,
+without starting Codex, loading credentials, or probing the plugin's Python
+interpreter.
 
 ## Run your first scan
 
@@ -119,6 +122,10 @@ Run a standard scan and keep its results in the selected directory:
 ```bash
 npx @openai/codex-security scan "$REPOSITORY" --output-dir "$SCAN_DIR"
 ```
+
+Interactive terminals show a live scan dashboard. Add `--headless` to show
+plain progress lines instead. CI and terminals without an interactive session
+use plain progress automatically.
 
 By default, the CLI writes scan progress and its completion summary to stderr.
 It doesn't print the full scan result to stdout. A completed scan prints a
@@ -214,7 +221,20 @@ Use deep mode when a repository or path needs broader review:
 npx @openai/codex-security scan "$REPOSITORY" --mode deep
 ```
 
-Deep mode supports repository and path targets, not diff or working-tree scans.
+To control discovery workers, subagents, and when the scan stops:
+
+```bash
+npx @openai/codex-security scan "$REPOSITORY" \
+  --mode deep \
+  --workers 2 \
+  --subagents 0 \
+  --stop-after-no-new 3 \
+  --max-discovery-runs 10
+```
+
+These options require deep mode, which supports repository and path targets,
+not diff or working-tree scans. Here, `--workers` controls discovery workers
+within one scan; `bulk-scan --workers` controls concurrent repository scans.
 
 ## Add architecture and security context
 
@@ -228,6 +248,20 @@ npx @openai/codex-security scan "$REPOSITORY" \
   --knowledge-base /path/to/security-policies
 ```
 
+## Add custom scan instructions
+
+Add instructions that focus the scan on your security priorities. Use a
+second file for a follow-up after a validated scan with complete coverage:
+
+```bash
+npx @openai/codex-security scan "$REPOSITORY" \
+  --scan-prompt-file /path/to/scan.md \
+  --post-scan-prompt-file /path/to/follow-up.md
+```
+
+The follow-up runs in the same authenticated session. Both options also work
+with `bulk-scan`; a CSV `prompt` column adds repository-specific instructions.
+
 ## Set a scan budget
 
 Use `--max-cost` to stop a scan when its estimated model cost exceeds a limit
@@ -237,8 +271,8 @@ in USD:
 npx @openai/codex-security scan "$REPOSITORY" --max-cost 5
 ```
 
-Requests already in progress can finish above the limit. Codex Security keeps
-the available results when a scan stops.
+Requests already in progress can finish slightly above the limit. If a scan
+aborts due to the cost limit, partial scan results remain available on disk.
 
 ## Scan changes before each commit
 
@@ -277,9 +311,9 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --workers 4
 ```
 
-Run the same command again to resume an existing bulk scan. Completed
-repositories with intact result artifacts aren't scanned again. Add
-`--max-attempts 3` when you want to retry temporary repository or scan errors.
+Run the same command again to resume an existing bulk scan. Codex Security
+skips completed repositories. Add `--max-attempts 3` when you want to retry
+temporary repository or scan errors.
 
 For GitHub discovery, CSV preparation, campaign results, and Docker setup, see
 [Run bulk security scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans).
@@ -299,11 +333,11 @@ docker compose run --rm codex-security \
   --workers 4
 ```
 
-The container runs bulk scans without prompts. Use the CLI outside Docker when
-you want to discover repositories interactively. For private repositories,
-provide `GH_TOKEN` or `GITHUB_TOKEN` through your environment or secret
-manager. The [sign-in requirements](#sign-in), including account and repository
-access, also apply to containerized scans.
+The container runs bulk scans without interactive prompts. Use the CLI outside
+Docker when you want to discover repositories interactively. For private
+repositories, provide `GH_TOKEN` or `GITHUB_TOKEN` through your environment or
+secret manager. The [sign-in requirements](#sign-in), including account and
+repository access, also apply to containerized scans.
 
 ## Revisit a saved scan
 
@@ -335,17 +369,15 @@ Run the same scan against the current checkout using its original configuration:
 npx @openai/codex-security scans rerun SCAN_ID
 ```
 
-To compare two scans, first match findings that share the same root cause:
-
-```bash
-npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
-```
-
-Then check which findings are new, persisting, reopened, resolved, or unknown:
+Compare two scans to find new, persisting, reopened, resolved, or unknown
+findings:
 
 ```bash
 npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
+
+The comparison automatically matches findings by root cause and reuses saved
+matches.
 
 For the bulk-scan CSV format, scan-history filters, and command options, see
 the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference).

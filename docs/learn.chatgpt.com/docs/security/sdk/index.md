@@ -18,8 +18,8 @@ code changes from your application or developer tool. The SDK returns typed
 findings, coverage details, and paths to scan artifacts. For longer scans, it
 supports preflight checks, cost limits, progress callbacks, and cancellation.
 
-The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22 or
-later. Scanning also requires Python 3.10 or later.
+The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22.13.0
+or later. Scanning also requires Python 3.10 or later.
 
 The Codex Security SDK is [publicly available on
   GitHub](https://github.com/openai/codex-security). Running scans requires
@@ -36,9 +36,10 @@ npm install @openai/codex-security
 ```
 
 Before starting a scan, set `OPENAI_API_KEY` or `CODEX_API_KEY`, use an
-existing file-backed Codex sign-in, or [configure Amazon
-Bedrock](#configure-the-runtime-and-credentials) with AWS credentials and
-explicit `model_provider` and `model` overrides.
+existing file-backed Codex sign-in, or [configure another
+provider](#configure-the-runtime-and-credentials). Amazon Bedrock uses AWS
+credentials; OpenRouter and Fireworks use provider-specific API keys and
+configuration.
 
 For best results, use an account verified for [Trusted Access for
 Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
@@ -77,12 +78,13 @@ repeated calls.
 
 ## Check inputs with preflight
 
-Use `preflight` to check a repository, target, mode, output location, and
-Codex configuration before starting a scan:
+Use `preflight` to check a repository, target, mode, knowledge-base documents,
+output location, and Codex configuration before starting a scan:
 
 ```ts
 const plan = await security.preflight("/path/to/repository", {
   target: ["services/billing", "packages/auth"],
+  knowledgeBasePaths: ["/path/to/architecture.md"],
   outputDir: "/path/outside/repository/results",
 });
 
@@ -182,11 +184,17 @@ Set `mode: "deep"` for a repository or path scan that needs broader review:
 const result = await security.run("/path/to/repository", {
   target: ["services/billing"],
   mode: "deep",
+  workers: 2,
+  subagents: 0,
+  stopAfterNoNew: 3,
+  maxDiscoveryRuns: 10,
 });
 ```
 
 Deep mode supports repository and path targets. Use standard mode for diff and
-working-tree scans.
+working-tree scans. The optional settings control concurrent discovery workers,
+subagents per worker, consecutive discovery runs without new findings, and the
+total number of discovery runs. They require `mode: "deep"`.
 
 ### Add a security knowledge base
 
@@ -207,6 +215,21 @@ Supported document formats are `.md`, `.markdown`, `.txt`, `.pdf`, and `.docx`.
 The SDK rejects linked input paths, skips linked directory entries, and keeps
 extracted document content outside the saved scan results.
 
+### Add scan and follow-up instructions
+
+Use `scanPrompt` to focus the scan and `postScanPrompt` to request a follow-up
+after a completed scan:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  scanPrompt: "Focus on tenant isolation and authorization checks.",
+  postScanPrompt: "Write confirmed findings to post-scan-summary.md.",
+});
+```
+
+The follow-up runs in the same authenticated session only after the scan
+finishes with complete coverage.
+
 ### Set a scan budget
 
 Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
@@ -223,9 +246,9 @@ const result = await security.run("/path/to/repository", {
 console.log(result.cost?.estimatedUsd);
 ```
 
-The limit is an estimate, not a hard spending cap. Requests already in progress
-can finish above it. If the scan exceeds the limit, the SDK throws
-`ScanCostLimitExceededError` and preserves the available results.
+The limit estimates spending but isn't a hard cap, so requests already in
+progress can finish slightly above it. If the scan exceeds the limit, the SDK
+throws `ScanCostLimitExceededError` and preserves the available results.
 
 ## Work with scan results
 
@@ -287,6 +310,9 @@ const result = await security.run("/path/to/repository", {
   onScanStarted() {
     console.log("Scan started");
   },
+  onProgress(progress) {
+    console.log(progress.phase, progress.filesCompleted, progress.filesTotal);
+  },
   onWorkerStatus(status) {
     console.log(status.kind, status);
   },
@@ -331,15 +357,23 @@ directory when the result needs investigation.
 Applications that display scan setup progress can also use the `ScanOptions`
 lifecycle callbacks:
 
-| Callback                            | Called when                                      |
-| ----------------------------------- | ------------------------------------------------ |
-| `onOutputArchived(archiveDir)`      | Existing results move to the archive directory.  |
-| `onOutputDirReady(scanDir)`         | The private scan directory is ready.             |
-| `onScanStarted()`                   | Scan setup completes and execution begins.       |
-| `onReconnect(attempt, maxAttempts)` | The SDK retries a disconnected scan stream.      |
-| `onWorkerStatus(status)`            | Worker preflight or dispatch status changes.     |
-| `onCost(cost)`                      | An updated estimated scan cost is available.     |
-| `onObserverError(observer, error)`  | Another scan lifecycle callback raises an error. |
+| Callback                            | Called when                                          |
+| ----------------------------------- | ---------------------------------------------------- |
+| `onAuthentication(authentication)`  | The scan selects its authentication method.          |
+| `onOutputArchived(archiveDir)`      | Existing results move to the archive directory.      |
+| `onOutputDirReady(scanDir)`         | The private scan directory is ready.                 |
+| `onScanStarted()`                   | Scan setup completes and execution begins.           |
+| `onTrustedAccessStatus(status)`     | Trusted Access status becomes available.             |
+| `onReconnect(attempt, maxAttempts)` | The SDK retries a disconnected scan stream.          |
+| `onActivity(activity)`              | A command, tool, reasoning step, or message updates. |
+| `onProgress(progress)`              | The scan phase or reviewed file count changes.       |
+| `onWorkerStatus(status)`            | Worker preflight or dispatch status changes.         |
+| `onCost(cost)`                      | An updated estimated scan cost is available.         |
+| `onWarning(warning)`                | The scan reports a warning.                          |
+| `onObserverError(observer, error)`  | Another scan lifecycle callback raises an error.     |
+
+Trusted Access status is `granted`, `not_granted`, or `unknown`. Missing or
+unknown access also triggers `onWarning`.
 
 ## Configure the runtime and credentials
 
@@ -364,6 +398,32 @@ by default. Set `model` and `model_reasoning_effort` in `codexOverrides` to use
 a different model or reasoning effort. To use [Amazon
 Bedrock](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock), set
 `model_provider` and `model` in `codexOverrides`.
+
+For OpenRouter or Fireworks, also provide the matching API key and a complete
+provider configuration in `codexOverrides`. For example, set
+`OPENROUTER_API_KEY` and configure OpenRouter:
+
+```ts
+const security = new CodexSecurity({
+  codexOverrides: {
+    model: "anthropic/claude-sonnet-4.5",
+    model_provider: "openrouter",
+    model_providers: {
+      openrouter: {
+        name: "OpenRouter",
+        base_url: "https://openrouter.ai/api/v1",
+        env_key: "OPENROUTER_API_KEY",
+        wire_api: "responses",
+      },
+    },
+  },
+});
+```
+
+For Fireworks, change both `openrouter` keys to `fireworks`, set `name` to
+`Fireworks AI`, set `env_key` to `FIREWORKS_API_KEY`, use
+`https://api.fireworks.ai/inference/v1` as `base_url`, and select a Fireworks
+model.
 
 The client also exposes supported authentication methods:
 

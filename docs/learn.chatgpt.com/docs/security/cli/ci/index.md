@@ -35,7 +35,7 @@ variable. Keep the credential scoped to the scan process and use
 
 The runner needs:
 
-- Node.js 22 or later.
+- Node.js 22.13.0 or later.
 - Python 3.10 or later.
 - The published `@openai/codex-security` package, installed outside the
   repository checkout.

@@ -127,14 +127,17 @@ usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
                            [--provider {openai,openrouter,fireworks,amazon-bedrock}]
                            [--path PATH | --diff BASE | --working-tree]
                            [--head HEAD] [--base BASE]
-                           [--knowledge-base PATH]
-                           [--mode {standard,deep}] [--model MODEL]
+                           [--knowledge-base PATH] [--scan-prompt-file FILE]
+                           [--post-scan-prompt-file FILE]
+                           [--mode {standard,deep}] [--workers N]
+                           [--subagents N] [--stop-after-no-new N]
+                           [--max-discovery-runs N] [--model MODEL]
                            [--effort {minimal,low,medium,high,xhigh}]
                            [--output-dir DIR]
                            [--archive-existing]
                            [--plugin-path PATH] [--python PATH]
                            [--codex KEY=VALUE] [--fail-on-severity LEVEL]
-                           [--max-cost USD] [--dry-run] [--verbose]
+                           [--max-cost USD] [--dry-run] [--headless] [--verbose]
                            [--json] [--format {toon,json,yaml,jsonl}]
                            [--full-output] [repository]
 ```
@@ -163,6 +166,28 @@ npx @openai/codex-security scan . --auth api-key
 
 To make stored credentials the automatic default, run
 `unset OPENAI_API_KEY CODEX_API_KEY`.
+
+### Use OpenRouter or Fireworks
+
+Select OpenRouter with its API key and an explicit model:
+
+```bash
+export OPENROUTER_API_KEY="your-openrouter-api-key"
+npx @openai/codex-security scan . \
+  --provider openrouter \
+  --model anthropic/claude-sonnet-4.5
+```
+
+Select Fireworks with its API key and an explicit model:
+
+```bash
+export FIREWORKS_API_KEY="your-fireworks-api-key"
+npx @openai/codex-security scan . \
+  --provider fireworks \
+  --model accounts/fireworks/models/qwen3-235b-a22b
+```
+
+Both providers also support `bulk-scan`.
 
 ### Use Amazon Bedrock
 
@@ -231,6 +256,47 @@ Run a deeper review of the repository:
 npx @openai/codex-security scan . --mode deep
 ```
 
+### Configure deep scans
+
+Use these options with `--mode deep` to control discovery concurrency and
+runtime:
+
+| Argument                 | Description                                                             |
+| ------------------------ | ----------------------------------------------------------------------- |
+| `--workers N`            | Limit on concurrent discovery workers. Defaults to automatic selection. |
+| `--subagents N`          | Subagents available to each discovery worker. Defaults to `3`.          |
+| `--stop-after-no-new N`  | Stop after `N` consecutive runs find no new issues. Defaults to `6`.    |
+| `--max-discovery-runs N` | Limit on total discovery runs. Defaults to `60`.                        |
+
+`--subagents` accepts zero or a positive integer. The other options require a
+positive integer. These options aren't available for standard scans.
+
+For example, limit a deep scan to two discovery workers and ten total runs:
+
+```bash
+npx @openai/codex-security scan . \
+  --mode deep \
+  --workers 2 \
+  --subagents 0 \
+  --stop-after-no-new 3 \
+  --max-discovery-runs 10
+```
+
+Set persistent defaults in `~/.codex/codex-security/config.toml`, or in
+`$CODEX_HOME/codex-security/config.toml` when you set `CODEX_HOME`:
+
+```toml
+[deep_scan]
+workers = 2
+subagents = 0
+stop_after_no_new = 3
+max_discovery_runs = 10
+```
+
+Command-line options override these defaults. `scan --workers` controls
+discovery workers within one scan; `bulk-scan --workers` controls concurrent
+repository scans.
+
 ### Add security context
 
 Use `--knowledge-base PATH` to provide architecture documents, threat models,
@@ -247,6 +313,22 @@ files. The CLI searches directories recursively, rejects linked input paths,
 skips linked directory entries, and keeps extracted document content
 outside the saved scan results.
 
+### Add scan instructions
+
+To add scan instructions, provide a text or Markdown file with
+`--scan-prompt-file`. Use `--post-scan-prompt-file` to run follow-up
+instructions in the same authenticated session after a completed scan with
+complete coverage:
+
+```bash
+npx @openai/codex-security scan . \
+  --scan-prompt-file security-focus.md \
+  --post-scan-prompt-file follow-up.md
+```
+
+For example, use the scan prompt to focus on authorization boundaries and ask
+the follow-up to write a new `post-scan-summary.md` in the scan directory.
+
 ### Set output and policy options
 
 Use these options to keep artifacts, preserve earlier results, or create a
@@ -258,14 +340,16 @@ machine-readable result.
 | `--archive-existing`       | Move existing results to `DIR.previous-<timestamp>-<id>` and start with an empty output directory. Requires `--output-dir`.  |
 | `--fail-on-severity LEVEL` | Return exit `1` when a completed scan reports a finding at or above `critical`, `high`, `medium`, or `low`.                  |
 | `--max-cost USD`           | Stop a scan when its estimated model cost exceeds the specified USD amount.                                                  |
-| `--dry-run`                | Check the repository, target, output directory, and Codex configuration without starting a scan.                             |
+| `--dry-run`                | Check the repository, target, knowledge base, output directory, and Codex configuration without starting a scan.             |
+| `--headless`               | Show plain-text progress instead of the interactive scan dashboard.                                                          |
 | `--verbose`                | Print redacted lifecycle, authentication, progress, and cost diagnostics to stderr.                                          |
 | `--json`                   | Print manifest, findings, coverage, paths, and turn metadata as one JSON document.                                           |
 | `--format FORMAT`          | Print the complete scan result as `toon`, `json`, `yaml`, or `jsonl`.                                                        |
 | `--full-output`            | Print the complete result using the default structured output format.                                                        |
 
 The cost limit is an estimate, not a hard spending cap. Requests already in
-progress can finish above the limit, and partial scan results remain available.
+progress can finish slightly above the limit. If a scan aborts due to the cost
+limit, partial scan results remain available on disk.
 
 When you omit `--output-dir`, results persist under
 `$CODEX_HOME/state/plugins/codex-security/scans/<repository>`. `CODEX_HOME`
@@ -302,8 +386,9 @@ npx @openai/codex-security scan . \
   > /path/outside/repository/codex-security.json
 ```
 
-A dry run checks local inputs without loading credentials, starting Codex, or
-probing the plugin's Python interpreter:
+A dry run checks local inputs, including knowledge-base documents, without
+loading credentials, starting Codex, or probing the plugin's Python
+interpreter:
 
 ```bash
 npx @openai/codex-security scan . \
@@ -320,7 +405,7 @@ Codex configuration value.
 | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `--auth {auto,chatgpt,api-key}`                           | Select the scan credentials. The default is `auto`.                                                      |
 | `--provider {openai,openrouter,fireworks,amazon-bedrock}` | Select the inference provider. The default is `openai`.                                                  |
-| `--model MODEL`                                           | Select the model. The default is `gpt-5.6-sol`. Required with `--provider amazon-bedrock`.               |
+| `--model MODEL`                                           | Select the model. The default is `gpt-5.6-sol`. Required for OpenRouter, Fireworks, and Amazon Bedrock.  |
 | `--effort {minimal,low,medium,high,xhigh}`                | Select the model's reasoning effort. The default is `xhigh`.                                             |
 | `--plugin-path PATH`                                      | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                             |
 | `--python PATH`                                           | Select the Python interpreter for the plugin runtime.                                                    |
@@ -371,6 +456,9 @@ usage: codex-security bulk-scan [input] [--output-dir DIR]
                                 [--provider {openai,openrouter,fireworks,amazon-bedrock}]
                                 [--model MODEL]
                                 [--effort {minimal,low,medium,high,xhigh}]
+                                [--knowledge-base PATH]
+                                [--scan-prompt-file FILE]
+                                [--post-scan-prompt-file FILE]
                                 [--max-attempts N] [--plugin-path PATH]
                                 [--python PATH] [--codex KEY=VALUE]
 ```
@@ -393,19 +481,28 @@ npx @openai/codex-security bulk-scan repositories.csv \
 ```
 
 The CSV requires `id`, `repository`, and `revision` columns. Revisions must be
-full commit hashes. Optional `scope` and `mode` columns configure individual
-repositories:
+full commit hashes. Optional `scope`, `mode`, and `prompt` columns configure
+individual repositories:
 
 ```csv
-id,repository,revision,scope,mode
-service,https://github.com/example/service.git,0123456789abcdef0123456789abcdef01234567,src,standard
+id,repository,revision,scope,mode,prompt
+service,https://github.com/example/service.git,0123456789abcdef0123456789abcdef01234567,src,standard,Review authorization boundaries.
 ```
 
-`--workers` limits simultaneous scans and defaults to `4`. `--mode` defaults to
-`standard`, and `--max-attempts` defaults to `1`. Set `--max-attempts` when
-you want to retry a repository after an error. Run the same command again to
-resume a bulk scan from its existing output directory. The CLI skips completed
-repositories only when their recorded result artifacts are still present.
+Use `--knowledge-base PATH` to share security documents across every
+repository. Use `--scan-prompt-file FILE` to add shared scan instructions; the
+CSV `prompt` column adds repository-specific instructions after that shared
+prompt. `--post-scan-prompt-file FILE` runs follow-up instructions after each
+completed scan with complete coverage.
+
+`--workers` limits simultaneous repository scans and defaults to `4`. `--mode`
+defaults to `standard`, and `--max-attempts` defaults to `1`. Set
+`--max-attempts` to retry repository or scan errors. Completed scans with
+incomplete coverage aren't retried. Their results remain available, and the
+command returns exit code `2`.
+
+Run the same command again to resume from an existing output directory. The CLI
+skips completed scans, including scans with incomplete coverage.
 
 For containerized campaigns, see [Run bulk scans in
 Docker](https://learn.chatgpt.com/docs/security/cli/bulk-scans#run-bulk-scans-in-docker).
@@ -448,17 +545,18 @@ npx @openai/codex-security scans rerun SCAN_ID
 
 ### Match and compare findings
 
-Match findings that share the same root cause across two scans:
-
-```bash
-npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
-```
-
-Compare the matched scans to find new, persisting, reopened, resolved, and
-unknown findings:
+Compare two scans to find new, persisting, reopened, resolved, and unknown
+findings:
 
 ```bash
 npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
+```
+
+The comparison automatically matches findings that share the same root cause
+and reuses saved matches. To save matches explicitly, use `scans match`:
+
+```bash
+npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
 A finding is unknown when the later scan has incomplete coverage or doesn't
@@ -650,6 +748,15 @@ By default, scans send progress, completion summaries, and errors to stderr
 without writing the complete scan result to stdout. Request `--json`,
 `--format`, or `--full-output` to send structured scan results to stdout.
 
+Interactive terminals show a live dashboard with the current scan phase,
+reviewed files, activity, token usage, and estimated cost. CI and redirected
+output use plain-text progress. Add `--headless` to use plain-text progress in
+an interactive terminal:
+
+```bash
+npx @openai/codex-security scan . --headless
+```
+
 ### Verbose diagnostics
 
 Add `--verbose` to print redacted lifecycle, authentication, progress, and cost
@@ -769,7 +876,8 @@ partial output after an interruption or runtime error.
 
 Set `OPENAI_API_KEY` or `CODEX_API_KEY`, sign in with
 `npx @openai/codex-security login`, or use an existing file-backed Codex
-sign-in. For Amazon Bedrock, use a Bedrock API key or the standard AWS
+sign-in. For OpenRouter or Fireworks, set the provider's API key and select a
+model. For Amazon Bedrock, use a Bedrock API key or the standard AWS
 credential chain instead.
 
 For credential selection, see [Select scan
@@ -777,9 +885,10 @@ authentication](#select-scan-authentication).
 
 For CI, keep the API key scoped to the scan step and use a trusted workflow.
 
-The CLI requires Node.js 22 or later. Running a scan or exporting findings also
-requires Python 3.10 or later. Python 3.10 also requires `tomli`. Use `--python`
-or `PYTHON` to select an interpreter when automatic discovery is unsuitable.
+The CLI requires Node.js 22.13.0 or later. Running a scan or exporting findings
+also requires Python 3.10 or later. Python 3.10 also requires `tomli`. Use
+`--python` or `PYTHON` to select an interpreter when automatic discovery is
+unsuitable.
 
 Continue with the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli), [bulk-scan
 guide](https://learn.chatgpt.com/docs/security/cli/bulk-scans), [CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq), [CI

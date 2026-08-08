@@ -82,8 +82,7 @@ discovery, the CSV format, campaign results, and available options.
 ### Can an interrupted bulk scan resume
 
 Yes. Run the same bulk-scan command with the original CSV and output directory.
-Codex Security skips completed repositories when their recorded scan artifacts
-remain intact.
+Codex Security skips completed repositories.
 
 Add `--max-attempts 3` to retry temporary repository or scan errors:
 
@@ -93,6 +92,10 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --workers 4 \
   --max-attempts 3
 ```
+
+A completed scan with `partial` or `unknown` coverage keeps its results and
+causes the campaign to exit with code `2`. It isn't retried, even with
+`--max-attempts`.
 
 ### How can a scan use architecture and security policies
 
@@ -141,19 +144,14 @@ export CODEX_SECURITY_STATE_DIR=/path/outside/repository/codex-security-state
 
 ### How do scans distinguish new and known findings
 
-Match findings that share a root cause across the two scans:
-
-```bash
-npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
-```
-
-Compare the matched findings:
+Compare findings across the two scans:
 
 ```bash
 npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
-The comparison identifies new, persisting, reopened, resolved, and unknown
+The comparison automatically matches findings by root cause, reuses saved
+matches, and identifies new, persisting, reopened, resolved, and unknown
 findings. A finding counts as resolved only when the later scan covers its
 original target and affected path without coverage gaps.
 
@@ -188,13 +186,7 @@ rerunning your baseline scan:
 npx @openai/codex-security scans rerun BASELINE_SCAN_ID
 ```
 
-Match the baseline findings to the new scan:
-
-```bash
-npx @openai/codex-security scans match BASELINE_SCAN_ID REPEAT_SCAN_ID
-```
-
-Compare the matched results:
+Compare the baseline with the new scan:
 
 ```bash
 npx @openai/codex-security scans compare BASELINE_SCAN_ID REPEAT_SCAN_ID
@@ -213,13 +205,7 @@ After applying a fix, rerun the original scan:
 npx @openai/codex-security scans rerun BEFORE_SCAN_ID
 ```
 
-Match the original findings to the new scan:
-
-```bash
-npx @openai/codex-security scans match BEFORE_SCAN_ID AFTER_SCAN_ID
-```
-
-Compare the matched findings:
+Compare the original findings with the new scan:
 
 ```bash
 npx @openai/codex-security scans compare BEFORE_SCAN_ID AFTER_SCAN_ID
