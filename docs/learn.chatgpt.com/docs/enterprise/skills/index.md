@@ -36,9 +36,9 @@ surface-specific plugin installation are separate paths. Moving a skill doesn't
 transfer ChatGPT workspace ownership, sharing, role assignments, plugin
 installation state, or connector authorization.
 
-Plugins are available with ChatGPT Work on the web, with ChatGPT Work and Codex
-in the ChatGPT desktop app, and through the Codex CLI plugin browser. They
-aren't available in Chat, the IDE extension, or mobile.
+Plugins work in Chat and Work across ChatGPT on the web, desktop, and mobile,
+in Codex in the ChatGPT desktop app, and through the Codex CLI plugin browser.
+They aren't available in the IDE extension.
 Those supported surfaces draw public plugins from one universal directory
 shared by ChatGPT and Codex.
 

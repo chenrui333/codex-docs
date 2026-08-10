@@ -23,6 +23,19 @@ Auto-review only applies when approvals are interactive. In practice, that
   still surfaces the relevant prompt category. With `approval_policy = "never"`,
   there is nothing to review.
 
+In the ChatGPT desktop app, selecting an approved Daybreak model
+automatically switches the permissions control to **Approve for me** when that
+mode is available for your account and allowed by organization policy. This
+also applies when you use the desktop app's `/model` command. If that mode
+isn't available, the current permission mode stays unchanged. Model selection
+never overrides managed organization requirements.
+
+Before enabling **Full Access** for an approved security model, the
+ChatGPT desktop app shows a model-specific warning about dangerous actions. The
+warning recommends **Approve for me** instead and links to
+[reviewer-policy configuration](#configuration). The warning doesn't restore
+the sandbox boundary or override organization policy.
+
 ## How auto-review works
 
 At a high level, the flow is:
@@ -143,6 +156,101 @@ YOUR POLICY GOES HERE
 
 To customize the policy, copy the whole default policy wording first, then
 iterate based on your individual risk profile.
+
+## Configure an authorized cybersecurity engagement
+
+For authorized security work, combine automatic review with a written
+engagement scope and a least-privilege [permission profile](https://learn.chatgpt.com/docs/permissions).
+Use an approved lab target, document the actions and engagement window, and
+keep production systems, unrelated hosts, credentials, and persistent changes
+out of scope unless explicitly authorized.
+
+Both `[auto_review].policy` and `guardian_policy_config` replace your current
+reviewer policy. They don't merge with policies bundled with your model or
+managed by your organization. The built-in review instructions and response
+format still apply. Before using either example, copy the complete current
+policy, keep every existing rule, and add the rules for your approved work.
+Replace the uppercase placeholder with that complete policy. If you can't
+access the current policy, don't override it.
+
+The following local `config.toml` template enables review and adds scoped
+conditions after the existing reviewer policy:
+
+```toml
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+default_permissions = ":workspace"
+
+[auto_review]
+policy = """
+PASTE THE COMPLETE ACTIVE REVIEWER POLICY HERE BEFORE USING THIS EXAMPLE.
+
+## Environment Profile
+- Authorized target: lab.example.com.
+- Approved actions: inspect the target, reproduce authorized vulnerabilities,
+  and validate fixes within the documented engagement window.
+
+## Tenant Risk Taxonomy and Allow/Deny Rules
+- Allow only actions against the approved target that match the documented
+  engagement scope and approved actions.
+- Deny out-of-scope or unknown hosts, production access, credential theft,
+  persistence, data exfiltration, destructive operations, and policy bypass.
+- Deny ambiguous actions and high-impact changes until a human explicitly
+  approves the exact target, action, and side effects.
+"""
+```
+
+Replace the example target and allowed actions with the actual approved scope.
+Enforce target restrictions with independent filesystem and network rules;
+reviewer instructions don't replace those boundaries.
+
+Organizations can enforce the same conditions in managed `requirements.toml`:
+
+```toml
+allowed_approval_policies = ["on-request"]
+allowed_approvals_reviewers = ["auto_review"]
+allowed_sandbox_modes = ["read-only", "workspace-write"]
+default_permissions = ":workspace"
+
+guardian_policy_config = """
+PASTE THE COMPLETE ACTIVE REVIEWER POLICY HERE BEFORE USING THIS EXAMPLE.
+
+## Environment Profile
+- Authorized target: lab.example.com.
+
+## Tenant Risk Taxonomy and Allow/Deny Rules
+- Allow only approved actions against the documented engagement target.
+- Deny out-of-scope hosts, production access, credential theft, persistence,
+  data exfiltration, destructive operations, and attempts to bypass policy.
+- Deny ambiguous or high-impact actions until a human explicitly approves the
+  exact target, action, and side effects.
+"""
+
+[allowed_permission_profiles]
+":read-only" = true
+":workspace" = true
+# ":danger-full-access" is omitted, so it is denied.
+```
+
+`allowed_permission_profiles` controls current permission profiles.
+`allowed_sandbox_modes` also prevents full access in deployments that still use
+legacy `sandbox_mode`.
+
+Managed `guardian_policy_config` takes precedence over a user's local
+`[auto_review].policy`. Keep `approval_policy = "on-request"` or another
+eligible interactive approval policy and keep an enforceable sandbox boundary.
+With `approval_policy = "never"`, `:danger-full-access`, or `--yolo`, an action
+can avoid creating the boundary-crossing approval request that review requires.
+
+A network destination on the allowlist doesn't trigger review by itself. Add
+explicit [command rules](https://learn.chatgpt.com/docs/agent-configuration/rules) with
+`decision = "prompt"`, or configure sensitive MCP tools to require approval,
+when actions inside the sandbox must still reach the reviewer.
+
+See [Cyber Safety](https://learn.chatgpt.com/docs/cyber-safety) for model access, engagement setup, and
+custom agent workflows, and [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy)
+for enterprise precedence and supported client versions. For custom API or
+Agents SDK harnesses, use [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution).
 
 ## Reduce review volume without weakening security
 

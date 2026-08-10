@@ -24,10 +24,9 @@ When a plugin includes a connector, workspace admins must make the plugin
 available through plugin controls and configure connector access before members
 can use the connector-backed capability.
 
-Plugins are available with ChatGPT Work on the web, and with ChatGPT Work and Codex
-in the ChatGPT desktop app, and through the Codex CLI plugin browser.
-Availability on those surfaces doesn't make plugins available in Chat,
-the IDE extension, or mobile.
+Plugins work in Chat and Work across ChatGPT on the web, desktop, and mobile,
+in Codex in the ChatGPT desktop app, and through the Codex CLI plugin browser.
+They aren't available in the IDE extension.
 
 For the complete administration model, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).

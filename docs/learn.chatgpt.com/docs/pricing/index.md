@@ -745,6 +745,18 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">750 credits</td>
       </tr>
       <tr>
+        <td>Daybreak Blue</td>
+        <td style="text-align:center">125 credits</td>
+        <td style="text-align:center">12.5 credits</td>
+        <td style="text-align:center">750 credits</td>
+      </tr>
+      <tr>
+        <td>Daybreak Red</td>
+        <td style="text-align:center">312.5 credits</td>
+        <td style="text-align:center">31.25 credits</td>
+        <td style="text-align:center">1875 credits</td>
+      </tr>
+      <tr>
         <td>GPT-5.6 Terra</td>
         <td style="text-align:center">50 credits</td>
         <td style="text-align:center">5 credits</td>
@@ -803,6 +815,14 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td colspan="4" style="text-align:center">
           Fast mode consumes credits at a higher rate for supported models. See
           [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for rates.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center">
+          Daybreak access requires [Trusted Access for
+          Cyber](https://learn.chatgpt.com/docs/cyber-safety#trusted-access-for-cyber) approval.
+          Daybreak Blue uses GPT-5.6 Sol credit rates. Daybreak Red requires
+          separate approval and provisioning.
         </td>
       </tr>
     </tfoot>

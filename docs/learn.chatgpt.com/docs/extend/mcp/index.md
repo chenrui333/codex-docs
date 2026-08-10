@@ -72,13 +72,14 @@ to view connected servers.
 
 ## Use MCP-backed tools in ChatGPT web
 
-In a hosted ChatGPT Work chat, install a [plugin](https://learn.chatgpt.com/docs/plugins) to use
-its bundled connectors and remote MCP tools. Workspace administrators can
-control which plugins and tools are available.
+In a hosted ChatGPT Work chat, install a [plugin](https://learn.chatgpt.com/docs/plugins) to use its
+bundled connectors and remote MCP tools. After installation, Chat and Work can
+use those tools. Workspace administrators can control which plugins and tools
+are available.
 
 ChatGPT web doesn't read local Codex configuration files or expose the local
-Codex command menu. Browse and manage available tools through **Plugins** in
-ChatGPT Work.
+Codex command menu. Open the **Plugins** tab to browse and manage available
+tools.
 
 </ContentModeSwitch>
 

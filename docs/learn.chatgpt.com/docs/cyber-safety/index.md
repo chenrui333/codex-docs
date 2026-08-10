@@ -13,41 +13,150 @@ Source: https://learn.chatgpt.com/docs/cyber-safety
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-[GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/) is the first model we are treating as High cybersecurity capability under our [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf), which requires additional safeguards. These safeguards include training the model to refuse clearly malicious requests like stealing credentials.
+Daybreak Blue and Daybreak Red help approved users move from findings to validated fixes during authorized defensive cybersecurity work. Combine the right model with a controlled environment, a written engagement scope, least-privilege permissions, and automatic review before sensitive actions run.
 
-In addition to safety training, automated classifier-based monitors detect signals of suspicious cyber activity and route high-risk traffic to a less cyber-capable model (GPT-5.2). We expect a very small portion of traffic to be affected by these mitigations, and are working to refine our policies, classifiers, and in-product notifications.
+## Choose the right access tier
 
-## Why we’re doing this
+Start with **Daybreak Blue**, which provides access to frontier models such as GPT-5.6 Sol, for most authorized defensive work, including:
 
-Over recent months, we’ve seen meaningful gains in model performance on cybersecurity tasks, benefiting both developers and security professionals. As our models improve at cybersecurity-related tasks like vulnerability discovery, we’re taking a precautionary approach: expanding protections and enforcement to support legitimate research while slowing misuse.
+- Vulnerability discovery and triage.
+- Secure code review and threat modeling.
+- Detection engineering and incident response.
+- Malware analysis in a controlled environment.
+- Remediation and patch validation.
 
-Cyber capabilities are inherently dual-use. The same knowledge and techniques that underpin important defensive work — penetration testing, vulnerability research, high-scale scanning, malware analysis, and threat intelligence — can also enable real-world harm.
+**Daybreak Red** provides separately approved access to purpose-trained cybersecurity models such as GPT-5.6 Cyber for explicitly authorized specialist workflows, including controlled vulnerability reproduction, proof-of-concept or exploit validation, penetration testing, red teaming, and complex system analysis. It isn't the default choice for routine security work, and access isn't available automatically or on every surface.
 
-These capabilities and techniques need to be available and easier to use in contexts where they can be used to improve security. Our [Trusted Access for Cyber](https://openai.com/index/trusted-access-for-cyber/) pilot enables individuals and organizations to continue using models for potentially high-risk cybersecurity activity without disruption.
+These advanced workflows can resemble malicious activity without the authorized engagement context. Use the approved model and surface only for systems you own or are explicitly authorized to assess, and keep appropriate human oversight in place.
 
-## How it works
+For example:
 
-Developers and security professionals doing cybersecurity-related work or similar activity that could be [mistaken](#false-positives) by automated detection systems may have requests rerouted to GPT-5.2 as a fallback. We expect a very small portion of traffic to affected by mitigations, and are actively working to calibrate our policies and classifiers.
-
-The latest alpha version of the Codex CLI includes in-product messaging for
-  when requests are rerouted. This messaging will be supported in all clients in
-  the next few days.
-
-Accounts impacted by mitigations can regain access to GPT-5.3-Codex by joining the [Trusted Access](#trusted-access-for-cyber) program below.
-
-We recognize that joining Trusted Access may not be a good fit for everyone, so we plan to move from account-level safety checks to request-level checks in most cases as we scale these mitigations and [strengthen](https://openai.com/index/strengthening-cyber-resilience/) cyber resilience.
+- **Daybreak Blue:** Review the approved lab repository for authentication weaknesses, rank findings by evidence and impact, and propose patches without accessing external systems.
+- **Daybreak Red:** Within the approved lab and engagement window, reproduce the documented authentication flaw, validate a minimal proof of concept, and stop before credential access, persistence, or production changes.
 
 ## Trusted Access for Cyber
 
-We are piloting "trusted access" which allows developers to retain advanced capabilities while we continue to calibrate policies and classifiers for general availability. Our goal is for very few users to need to join [Trusted Access for Cyber](https://openai.com/index/trusted-access-for-cyber/).
+[Trusted Access for Cyber](https://openai.com/index/trusted-access-for-cyber/) is the reviewed access program; Daybreak Blue and Daybreak Red are access tiers for approved models. Access depends on approval and provisioning for your specific identity or service, ChatGPT workspace or API organization and project, authorized model, and allowed product surface.
 
-To use models for potentially high-risk cybersecurity work:
+- Individuals can request access through the [individual Trusted Access application](https://chatgpt.com/cyber).
+- Organizations can submit the [enterprise Trusted Access request form](https://openai.com/form/enterprise-trusted-access-for-cyber/) and coordinate with their OpenAI representative.
 
-- Users can verify their identity at [chatgpt.com/cyber](https://chatgpt.com/cyber)
-- Enterprises can request [trusted access](https://openai.com/form/enterprise-trusted-access-for-cyber/) for their entire team by default through their OpenAI representative
+Submitting an application or completing identity verification doesn't guarantee approval.
 
-Security researchers and teams who may need access to even more cyber-capable or permissive models to accelerate legitimate defensive work can express interest in our [invite-only program⁠](https://docs.google.com/forms/d/e/1FAIpQLSea_ptovrS3xZeZ9FoZFkKtEJFWGxNrZb1c52GW4BVjB2KVNA/viewform?usp=header). Users with trusted access must still abide by our [Usage Policies⁠](https://openai.com/policies/usage-policies/) and [Terms of Use⁠](https://openai.com/policies/row-terms-of-use/).
+Applying, verifying your identity, or receiving approval for Daybreak Blue
+  doesn't grant access to Daybreak Red. Specialist access requires separate
+  approval and provisioning.
+
+For enterprise access, use the approved workspace, API organization, or project only for your organization's authorized internal work. Don't extend it to external users, third-party customers, externally offered services, downstream product features, or systems outside the approved engagement. If the approved identity, workspace, API organization, project, model, or surface is unclear, stop and confirm it with your OpenAI representative.
+
+Trusted Access doesn't automatically grant [Zero Data Retention](https://developers.openai.com/api/docs/guides/your-data#data-retention-controls-for-abuse-monitoring). Confirm any separately approved retention controls for the exact API organization and applicable endpoint before you begin.
+
+## Configure a controlled cybersecurity engagement
+
+Trusted Access governs approved model access, but it doesn't configure your environment or enforce your engagement scope. Your team must set up the following isolation, permission, review, and human-oversight controls.
+
+### Isolate the environment
+
+Run the engagement in a controlled lab or sandbox. Start without unrestricted internet access, access to sensitive production systems, or access to unrelated infrastructure. Keep secrets, credentials, persistent access, and durable system changes out of reach unless the written engagement explicitly requires and authorizes them.
+
+Test filesystem and network boundaries before beginning higher-risk work. Keep the host environment isolated even when the model or reviewer approves an individual action.
+
+### Define and enforce the engagement scope
+
+Document the rules of engagement before the model starts. Include:
+
+- Approved target systems, hosts, and environments.
+- Excluded systems, including production and unrelated infrastructure.
+- Approved and prohibited actions.
+- The engagement window and data-handling requirements.
+- Vulnerability disclosure, patch approval, and maintainer coordination.
+- Stop conditions and actions that require explicit human approval.
+
+Give the agent the relevant scope as task context. This written scope doesn't enforce itself: apply independent filesystem, network, identity, and tool controls to make unauthorized actions impossible whenever practical.
+
+Use Codex [permission profiles](https://learn.chatgpt.com/docs/permissions) to create a least-privilege boundary. Choose `:read-only` when the task doesn't require changes, or extend `:workspace` when the engagement needs workspace edits. For example:
+
+```toml
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+default_permissions = "cyber-lab"
+
+[permissions.cyber-lab]
+description = "Limit security testing to the approved lab and workspace."
+extends = ":workspace"
+
+[permissions.cyber-lab.filesystem]
+glob_scan_max_depth = 3
+
+[permissions.cyber-lab.filesystem.":workspace_roots"]
+"**/.env*" = "deny"
+"**/*.pem" = "deny"
+
+[permissions.cyber-lab.network]
+enabled = true
+# Uncomment only for an approved host that resolves to a private address.
+# allow_local_binding = true
+
+[permissions.cyber-lab.network.domains]
+"lab.example.com" = "allow"
+```
+
+Replace `lab.example.com` with an approved target. The bounded filesystem scan avoids searching the entire workspace on Linux, WSL, and Windows; increase the depth or use exact deny paths if sensitive files appear deeper. Don't combine permission profiles with legacy `sandbox_mode` settings; follow the [permission-profile configuration guidance](https://learn.chatgpt.com/docs/permissions#define-and-select-a-profile).
+
+If the approved lab host resolves to a private address, Codex blocks it by default even when the host is on the allowlist. Set `allow_local_binding = true` only for an explicitly approved private-network engagement, keep the destination allowlist narrow, and review the [local and private network guidance](https://learn.chatgpt.com/docs/permissions#local-and-private-networks). You can also allowlist the exact approved private IP address.
+
+Avoid `:danger-full-access` and `--yolo` for cybersecurity engagements. Full Access removes the enforceable sandbox boundary that automatic review depends on. Managed organizations can exclude `:danger-full-access`, limit allowed approval policies, and require automatic review through [enterprise-managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy).
+
+Before enabling **Full Access** for an approved security model, the
+ChatGPT desktop app shows a model-specific warning about dangerous actions. The
+warning recommends **Approve for me** instead and links to
+[reviewer-policy configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration).
+The warning doesn't restore the sandbox boundary or override organization
+policy.
+
+### Review sensitive actions before execution
+
+[Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review) routes eligible sandbox-boundary approval requests to a separate reviewer before the proposed action runs. The reviewer considers the proposed action, bounded task context, and applicable policy, then allows or denies the request. Organizations can customize that policy for their approved targets, prohibited actions, and required human-review conditions.
+
+In the ChatGPT desktop app, selecting an approved Daybreak model
+automatically switches the permissions control to **Approve for me** when that
+mode is available for your account and allowed by organization policy. This
+also applies when you use the desktop app's `/model` command. If that mode
+isn't available, the current permission mode stays unchanged. Model selection
+never overrides managed organization requirements.
+
+For automatic review to run, keep all three controls in place:
+
+1. Use an interactive approval policy such as `approval_policy = "on-request"`.
+2. Set `approvals_reviewer = "auto_review"`.
+3. Keep an enforceable sandbox or permission-profile boundary.
+
+Requests to a target on the network allowlist stay inside the network boundary and don't automatically trigger Auto-review. To review a sensitive command even when its destination is on the allowlist, create an explicit [command rule](https://learn.chatgpt.com/docs/agent-configuration/rules) under `~/.codex/rules/`:
+
+```python
+prefix_rule(
+    pattern = ["curl"],
+    decision = "prompt",
+    justification = "Review requests to the approved cybersecurity target.",
+)
+```
+
+Restart Codex after adding the rule. With `approvals_reviewer = "auto_review"`, matching commands go to the reviewer before execution. Add corresponding prompt rules for every sensitive command, or use `approval_mode = "prompt"` for individual [MCP tools](https://learn.chatgpt.com/docs/extend/mcp). Actions that require a person's decision still need explicit human approval.
+
+Auto-review doesn't inspect routine actions that are already permitted inside the sandbox. With `approval_policy = "never"` or Full Access, a sensitive action might not create a reviewable approval request. Automatic review can make mistakes and doesn't replace isolation, written scope, monitoring, or explicit human oversight.
+
+For a scoped policy and organization-wide enforcement, see [Configure an authorized cybersecurity engagement](https://learn.chatgpt.com/docs/sandboxing/auto-review#configure-an-authorized-cybersecurity-engagement).
+
+## Apply the same controls in custom agent workflows
+
+If you build with the Responses API, the Agents SDK, or another harness, add review at the tool-execution boundary. Check sensitive proposed actions against the approved engagement scope before execution, route ambiguous or high-risk actions to a person, enforce independent filesystem and network restrictions, keep audit logs, and fail closed if the reviewer or policy is unavailable.
+
+Codex Auto-review doesn't automatically protect custom tools or external harnesses. Use [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution) for the Agents SDK pattern and the [open-source reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md) as a reference.
+
+Codex product-side sandboxing and review are separate from [API cybersecurity checks](https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity). API safeguards can return `cyber_policy` errors, and per-user `safety_identifier` values can help limit the impact of a safeguard action.
 
 ## False positives
 
-Legitimate or non-cybersecurity activity may occasionally be flagged. When rerouting occurs, the responding model will be visible in API request logs and in with an in-product notice in the CLI, soon all surfaces. If you're experiencing rerouting that you believe is incorrect, please report via `/feedback` for false positives.
+Legitimate cybersecurity or unrelated activity can still trigger a safeguard. If a safeguard blocks, reroutes, or limits a request, inspect the available client notice and request logs. Report suspected Codex false positives through `/feedback` when available. For API access restrictions and appeals, follow the [API cybersecurity checks guidance](https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity#appeals).
+
+All users remain subject to the [Usage Policies](https://openai.com/policies/usage-policies/) and [Terms of Use](https://openai.com/policies/row-terms-of-use/).

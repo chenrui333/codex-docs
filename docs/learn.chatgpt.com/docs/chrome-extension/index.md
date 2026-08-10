@@ -77,9 +77,8 @@ use or act on that information.
 
 ## Set up the Chrome extension
 
-In the ChatGPT desktop app, open the Plugins Directory and install **Chrome**.
-Other Chromium-based browsers aren't currently supported. Follow the setup flow
-to:
+Open the **Plugins** tab and install **Chrome**. Other Chromium-based browsers
+aren't currently supported. Follow the setup flow to:
 
 1. Install the [Chrome
    extension](https://chromewebstore.google.com/detail/chatgpt/hehggadaopoacecdllhhajmbjkdcmajg).
@@ -107,9 +106,9 @@ to:
 
 ## Start a Chrome task from ChatGPT
 
-After the plugin setup is complete, start a new ChatGPT Work or Codex chat. ChatGPT
-can use Chrome automatically when a task needs a website and you're already
-signed in to Chrome. You can also invoke it directly in a prompt:
+After the plugin setup is complete, start a new ChatGPT Work or Codex chat.
+ChatGPT can use Chrome automatically when a task needs a website and you're
+already signed in to Chrome. You can also invoke it directly in a prompt:
 
 ```text
 @Chrome open Salesforce and update the account from these call notes.

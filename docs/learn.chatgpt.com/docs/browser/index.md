@@ -90,9 +90,8 @@ built-in browser directly. The selected experience can open pages, click, type,
 inspect rendered state, take screenshots, and verify the result of its work in
 the page.
 
-Select ChatGPT and turn on Work in the switcher, or select Codex. Open the Plugins
-Directory and install **Browser**. Then ask ChatGPT or Codex to use the browser
-in your task, or reference it directly with `@Browser`.
+Open the **Plugins** tab and install **Browser**. Then ask ChatGPT or Codex to
+use the browser in your task, or reference it directly with `@Browser`.
 
 For example:
 

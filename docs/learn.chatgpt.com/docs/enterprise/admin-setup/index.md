@@ -180,9 +180,9 @@ Before including a plugin or skill in the rollout:
 3. Test it with non-sensitive data and the least access it needs.
 4. Record who owns re-review and retirement.
 
-Plugins are available with ChatGPT Work on the web, with ChatGPT Work and Codex
-in the ChatGPT desktop app, and through the Codex CLI plugin browser. They
-aren't available in Chat, the IDE extension, or mobile.
+Plugins work in Chat and Work across ChatGPT on the web, desktop, and mobile,
+in Codex in the ChatGPT desktop app, and through the Codex CLI plugin browser.
+They aren't available in the IDE extension.
 ChatGPT and Codex share one universal public plugin directory; workspace
 controls determine which of those plugins members can access.
 

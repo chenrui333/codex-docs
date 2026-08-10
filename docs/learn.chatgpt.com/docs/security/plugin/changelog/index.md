@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 Use this changelog to see what changed in Codex Security and which plugin
 versions are available from each installation source.
 
-**Latest release in the hosted Codex Security catalog:** `0.1.17`.
+**Latest release in the hosted Codex Security catalog:** `0.1.18`.
 
 Check the plugin version in your current Codex environment before you use a
 feature from a newer release. Reopening or rerunning a saved scan doesn't pin
@@ -24,6 +24,34 @@ the installed plugin version.
 
 These versions apply to the Codex Security plugin. The Codex app, Codex CLI,
 TypeScript SDK, and plugin app have separate version numbers.
+
+## 0.1.18 (August 7, 2026)
+
+### Use Amazon Bedrock for security scans
+
+- Run scans with Amazon Bedrock bearer tokens and AWS profiles, regional
+  settings, web identity, or container credentials.
+- Keep AWS authentication available to delegated deep-scan workers.
+
+### Run standard scans with less coordination
+
+- Use a simpler workflow for standard repository and scoped-path scans.
+- Preserve nested `SECURITY.md` guidance, exact scan scope, progress updates,
+  and final scan reports.
+
+### Start and complete scans more reliably
+
+- Give prompt-started scans up to five minutes to initialize large
+  repositories instead of timing out after 30 seconds.
+- Complete standard and deep scans when a host enforces tool-name length
+  limits.
+
+### Keep remediation available after filesystem changes
+
+- Remediate findings from completed scans after a filesystem remount changes
+  its device identifier.
+- Continue requiring the original checkout and Git revision before applying a
+  fix.
 
 ## 0.1.17 (August 5, 2026)
 
