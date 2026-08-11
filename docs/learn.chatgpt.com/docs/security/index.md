@@ -62,10 +62,10 @@ The desktop Security workbench and Codex CLI use the Codex Security plugin.
 
 The CLI and TypeScript SDK are available as the public
 [`@openai/codex-security`](https://github.com/openai/codex-security) package.
-Install the package:
+Run the CLI with `npx`:
 
 ```bash
-npm install @openai/codex-security
+npx @openai/codex-security --help
 ```
 
 Running scans requires Codex Security access. For best results, use an account

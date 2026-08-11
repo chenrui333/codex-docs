@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-10T18:58:30+00:00",
+  "generated_at": "2026-08-11T01:50:07+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,19 +13,9 @@
   },
   "total_files": 230,
   "updated": [
-    "learn.chatgpt.com/docs/automations/index.md",
-    "learn.chatgpt.com/docs/browser/index.md",
-    "learn.chatgpt.com/docs/build-skills/index.md",
-    "learn.chatgpt.com/docs/chrome-extension/index.md",
-    "learn.chatgpt.com/docs/cyber-safety/index.md",
-    "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
-    "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/skills/index.md",
-    "learn.chatgpt.com/docs/extend/mcp/index.md",
-    "learn.chatgpt.com/docs/plugins/index.md",
-    "learn.chatgpt.com/docs/pricing/index.md",
-    "learn.chatgpt.com/docs/sandboxing/auto-review/index.md",
-    "learn.chatgpt.com/docs/security/plugin/changelog/index.md"
+    "learn.chatgpt.com/docs/security/cli/faq/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/index.md"
   ]
 }

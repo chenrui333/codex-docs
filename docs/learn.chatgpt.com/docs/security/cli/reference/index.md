@@ -20,14 +20,7 @@ output formats, and exit behavior. For a guided first scan, start with the
 The `@openai/codex-security` package is public. Running scans requires Codex
   Security access.
 
-Install the published package in your project:
-
-```bash
-npm install @openai/codex-security
-```
-
-Invoke the installed package as `npx @openai/codex-security`. You can use
-`codex-security` directly when the executable is available on your `PATH`.
+Run the CLI with `npx @openai/codex-security`.
 
 ## Command overview
 

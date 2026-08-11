@@ -21,11 +21,7 @@ with the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ### Who can use the CLI
 
-The `@openai/codex-security` package is public. Install the CLI and SDK:
-
-```bash
-npm install @openai/codex-security
-```
+The `@openai/codex-security` package is public.
 
 Running scans requires Codex Security access. For best results, use an account
 verified for [Trusted Access for Cyber](https://chatgpt.com/cyber).

@@ -31,10 +31,10 @@ prerequisites](https://learn.chatgpt.com/docs/security/cli/reference#authenticat
 
 ## Set up and verify the CLI
 
-Install the published package:
+Run the CLI with `npx` and check its version:
 
 ```bash
-npm install @openai/codex-security
+npx @openai/codex-security --version
 ```
 
 List the available commands:
