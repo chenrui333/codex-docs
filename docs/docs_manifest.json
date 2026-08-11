@@ -4924,11 +4924,11 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "f30bc50a3441806d15bc2fe134d5db28bc7fb60f6e2aa1d7559e1db0a4d6963c",
+      "sha256": "0835a01f294c3e02bdeac6799eea6347973c91e070d5ce522a81365da49a77ae",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"2f1180fb813c1a8d4b04f798d38af5f2\"",
+      "source_etag": "W/\"17a979e3e04ac55743586e550d61e3dc\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-08-11T05:17:30Z",
+      "source_last_modified": "2026-08-11T08:28:11Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -5266,11 +5266,24 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "ffc1362d2a61aaf2be5bd964eefb3107ab17308ff08157c2c5075d5e4e79b696",
+      "sha256": "fc0a65fd431c4c2c12eb1e9ac7f5f5d6f3960ec8a1eebd8b586b4606ad171b1c",
       "source_area": "learn_cyber_safety",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/cyber-safety"
+    },
+    "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md": {
+      "codex_cli_versions": [
+        "0.147.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.147.0"
+      ],
+      "sha256": "aa4032aee5245daea116028e562668d9469bccdacef19810f59331d997eea6d4",
+      "source_area": "learn_cyber_safety",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration"
     },
     "learn.chatgpt.com/docs/developers/index.md": {
       "codex_cli_versions": [
@@ -6214,7 +6227,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "5e0a986a6ee203b826468deda5503abfd23f803621f9a4c9faf3d4c94892dd92",
+      "sha256": "0738b5110cf621b11cacaa9d7d0f3ae3b6cd68e90a1fb36f92099b054349ec04",
       "source_area": "learn_sandboxing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6248,7 +6261,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "bdb417ddfab98a69134ac5abea0ce5beaf8208a5fac902bc2c81efd09fd34344",
+      "sha256": "9884fa016946d9ef63f67acd6ad51297ce6a938e3af0ceaf30e2774665795414",
       "source_area": "learn_security_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",

@@ -247,8 +247,9 @@ explicit [command rules](https://learn.chatgpt.com/docs/agent-configuration/rule
 `decision = "prompt"`, or configure sensitive MCP tools to require approval,
 when actions inside the sandbox must still reach the reviewer.
 
-See [Cyber Safety](https://learn.chatgpt.com/docs/cyber-safety) for model access, engagement setup, and
-custom agent workflows, and [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy)
+See [Models and Trusted Access](https://learn.chatgpt.com/docs/cyber-safety) and [recommended
+configuration](https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration) for model access,
+engagement setup, and custom agent workflows. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy)
 for enterprise precedence and supported client versions. For custom API or
 Agents SDK harnesses, use [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution).
 

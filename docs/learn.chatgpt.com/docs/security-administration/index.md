@@ -128,15 +128,22 @@ Source: https://learn.chatgpt.com/docs/security-administration
       ],
     },
     {
-      title: "Safety",
-      description: "Review policy and safeguards for cybersecurity tasks.",
+      title: "Cyber safety",
+      description: "Choose approved models and configure safe engagements.",
       pages: [
         {
-          title: "Cyber safety",
+          title: "Models & Trusted Access",
           description:
-            "Understand how Codex handles security-sensitive requests.",
+            "Choose a cybersecurity model and request Trusted Access.",
           href: "/codex/cyber-safety",
           icon: "userLock",
+        },
+        {
+          title: "Recommended configuration",
+          description:
+            "Isolate the environment, enforce scope, and review sensitive actions.",
+          href: "/codex/cyber-safety/recommended-configuration",
+          icon: "settings",
         },
       ],
     },
