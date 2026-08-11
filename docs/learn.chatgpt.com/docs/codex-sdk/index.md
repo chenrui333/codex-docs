@@ -90,9 +90,9 @@ pip install openai-codex
 
 Published SDK builds automatically use their pinned runtime. Pass `CodexConfig(codex_bin=...)` only when you intentionally want to run against a specific local Codex executable.
 
-While the Python SDK is in beta, `pip install openai-codex` selects the latest
-published beta build. After a stable SDK release exists, use
-`pip install --pre openai-codex` to opt in to newer prerelease builds.
+The Python SDK is available as a stable release. `pip install openai-codex`
+installs the latest stable release. Use `pip install --pre openai-codex` to opt
+in to newer prerelease builds.
 
 ### Usage
 
