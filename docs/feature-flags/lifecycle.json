@@ -750,7 +750,7 @@
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "11790a97f32c20cd1b9ba7bf7c0cf2bc7f813d9a2f82e184e2a31770ff7e4eb2"
+      "sha256": "1d7a2aaf5e1565fcf0fc579e270219ec78ea2ffcba4635ecf525145ae42e5914"
     }
   },
   "schema_version": 3,
