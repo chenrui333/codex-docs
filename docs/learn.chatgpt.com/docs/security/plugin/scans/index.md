@@ -120,6 +120,36 @@ Review the result in this order:
   </figcaption>
 </figure>
 
+## Assess a first scan
+
+Before scanning, choose two to four evaluation criteria, such as independent
+discovery, evidence quality, false positives, or remediation quality. If you
+test against a known finding, record whether you provided it to Codex or
+withheld it from the scan.
+
+Record the repository revision, plugin version, model, and reasoning effort.
+Use this baseline to compare later scans after the code, security controls, or
+scan settings change.
+
+## Choose a scan cadence
+
+Set your scan cadence based on the repository's risk and your team's capacity
+to address findings. Scan at these points:
+
+- **Baseline:** Run a standard scan when you onboard a repository, take
+  ownership of a component, or need a starting point for a new threat model.
+- **Code changes:** [Review code
+  changes](https://learn.chatgpt.com/docs/security/plugin/code-changes) when a pull request or commit
+  changes security-sensitive code or an external integration.
+- **Regular review:** Set a recurring review interval based on your system's
+  exposure and how often the code changes. Adjust it to your team's capacity to
+  address findings.
+- **After a fix:** [Fix and verify the
+  finding](https://learn.chatgpt.com/docs/security/plugin/fix-findings). Confirm that the issue no
+  longer reproduces and keep the original scan for comparison.
+
+These scan triggers don't create an automated schedule.
+
 ## Reopen a previous scan
 
 Open **Security**, then select a saved scan from **Scans** to review its

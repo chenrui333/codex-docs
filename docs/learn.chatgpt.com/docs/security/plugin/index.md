@@ -209,6 +209,8 @@ links from `report.md` continue to work.
   need a repeatable terminal workflow with structured results.
 - [Run a standard or scoped scan](https://learn.chatgpt.com/docs/security/plugin/scans) to review a
   repository or one folder with the default workflow.
+- [Assess a first scan](https://learn.chatgpt.com/docs/security/plugin/scans#assess-a-first-scan)
+  to check the results against known issues and decide when to scan again.
 - [Run a deep scan](https://learn.chatgpt.com/docs/security/plugin/deep-scans) for a more thorough scan
   when you can allow for a longer runtime.
 - [Review code changes](https://learn.chatgpt.com/docs/security/plugin/code-changes) to assess a pull

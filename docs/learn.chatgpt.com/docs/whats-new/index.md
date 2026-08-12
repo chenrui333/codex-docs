@@ -17,6 +17,104 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## August 3–7, 2026
+
+### Talk through files and projects with ChatGPT Voice
+
+[ChatGPT Voice](https://learn.chatgpt.com/docs/features/voice) now supports uploaded files and
+[ChatGPT Projects](https://learn.chatgpt.com/docs/projects). Ask questions about a document during a
+voice conversation, or continue a project using its recent chats, sources, and
+instructions.
+
+**Prompt:**
+
+```text
+Review the research brief I uploaded, explain the main tradeoffs out loud, and compare them with the sources already in this project.
+```
+
+### Study and teach with dedicated education plugins
+
+Three new [plugins](https://learn.chatgpt.com/docs/plugins) bring classroom-specific workflows to
+ChatGPT Work and Codex. **College Student** creates study guides, practice
+quizzes, flashcards, and interactive explanations. **College Educator** helps
+develop course plans, materials, and assessments. **K–12 Educator** supports
+lesson planning, classroom resources, and materials adapted for different
+learners.
+
+The plugins are available through ChatGPT Edu and ChatGPT for Teachers district
+deployments. Schools control which tools and permissions are available. Read
+the [education plugins
+announcement](https://openai.com/index/learn-teach-chatgpt-work-codex/).
+
+### Reuse saved files and find past work faster
+
+On the web, add a saved Library file to a conversation without uploading it
+again, search within Library, and paste formatted text without losing headings,
+links, or lists. Search also matches folders and conversation titles across the
+web, iOS, and Android.
+
+Pastes longer than 10,000 characters now become attachments on every ChatGPT
+plan, including Enterprise and Edu. Select **Show in text field** if you want
+to move the content back into your message.
+
+Read the [ChatGPT release
+notes](https://help.openai.com/en/articles/6825453-chatgpt-release-notes).
+
+### See your remaining ChatGPT Work usage
+
+Eligible users on personal plans and ChatGPT Business can check their remaining
+ChatGPT Work usage directly in the web sidebar. Available credit options depend
+on your account and workspace permissions. ChatGPT Work and Codex continue to
+share the same [usage limits and credits](https://learn.chatgpt.com/docs/pricing).
+
+### Choose how GPT-5.6 responds in ChatGPT
+
+ChatGPT Plus and Pro users can adjust how much thought GPT-5.6 Sol puts into a
+response with a new slider. The updated model also provides more reliable facts
+and focused answers. GPT-5.6 Luna becomes the default ChatGPT model on the Free
+and Go plans.
+
+These changes apply to ChatGPT conversations. They don't change model behavior
+in ChatGPT Work or Codex. Read the [ChatGPT release
+notes](https://help.openai.com/en/articles/6825453-chatgpt-release-notes).
+
+### Organize work and switch agents in Codex CLI 0.147.0
+
+[Codex CLI 0.147.0](https://github.com/openai/codex/releases/tag/rust-v0.147.0)
+adds persistent, manually ordered chat sections and portable Agent Plugins.
+Search across local, personal, workspace, and remote plugin catalogs, or
+[import Cursor and Claude Code setup](https://learn.chatgpt.com/docs/import) without duplicating
+synced conversations.
+
+Use `--approve-for-me` to enable [automatic approval
+review](https://learn.chatgpt.com/docs/sandboxing/auto-review) for eligible requests without expanding
+filesystem or network permissions. Amazon Bedrock sessions also gain cached
+web search and remote conversation compaction.
+
+### Follow and resume deeper security scans
+
+Hosted Codex Security plugin versions `0.1.16` through `0.1.18` add live scan
+progress, measured token usage, resumable deep scans, and configurable
+discovery limits. The latest release also supports Amazon Bedrock
+authentication for repository scans and their delegated workers.
+
+Use the [Codex Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) to review
+scan progress and findings, or [configure a deep
+scan](https://learn.chatgpt.com/docs/security/plugin/deep-scans) when you need a more thorough
+assessment. Check the [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) to
+confirm which features your installed version supports.
+
+### Review GitHub pull requests for security risks
+
+[Codex Security Review](https://learn.chatgpt.com/docs/security/security-review) analyzes pull-request
+changes alongside repository context, threat models, and security guidance.
+Configure automatic reviews when a pull request opens or receives new
+commits, or request one directly with `@codex security review`.
+
+The feature is available in research preview to eligible ChatGPT Enterprise,
+Business, Edu, and Pro customers. It isn't available on Plus, and usage limits
+can apply.
+
 ## July 27–31, 2026
 
 ### Use GPT-5.6 Terra and Luna at lower rates

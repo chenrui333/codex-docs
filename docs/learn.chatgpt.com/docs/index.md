@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-08-03T19:10:48Z'
-source_etag: 'W/"1fd0f67adf57a48044236f9b4f3e246d"'
+source_last_modified: '2026-08-12T18:42:43Z'
+source_etag: 'W/"319bf0d83ccde14889a99db44bdec5f0"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
@@ -74,6 +74,14 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 [View all updates](/codex/whats-new)
 
+August 3–7, 2026
+
+[### Talk through files and projects with ChatGPT Voice
+
+ChatGPT Voice now supports uploaded files and ChatGPT Projects.](/codex/whats-new#talk-through-files-and-projects-with-chatgpt-voice)  [### Study and teach with dedicated education plugins
+
+Three new plugins bring classroom-specific workflows to ChatGPT Work and Codex.](/codex/whats-new#study-and-teach-with-dedicated-education-plugins)
+
 July 27–31, 2026
 
 [### Use GPT-5.6 Terra and Luna at lower rates
@@ -81,12 +89,4 @@ July 27–31, 2026
 GPT-5.6 Terra now costs 20% less, and GPT-5.6 Luna costs 80% less.](/codex/whats-new#use-gpt-56-terra-and-luna-at-lower-rates)  [### Find useful context across your browser and open tabs
 
 In the ChatGPT desktop app, the built-in browser can find pages from your browsing history or search Google directly from its address bar.](/codex/whats-new#find-useful-context-across-your-browser-and-open-tabs)
-
-July 20–24, 2026
-
-[### Talk through work with ChatGPT Voice
-
-ChatGPT Voice, powered by GPT-Live, lets you talk through work and coordinate tasks in Chat, Work, and Codex in the ChatGPT desktop app.](/codex/whats-new#talk-through-work-with-chatgpt-voice)  [### Work across multiple folders in one local project
-
-Local projects in the ChatGPT desktop app can now include multiple related folders.](/codex/whats-new#work-across-multiple-folders-in-one-local-project)
 
