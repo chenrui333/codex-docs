@@ -1,10 +1,8 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-11T13:08:22+00:00",
+  "generated_at": "2026-08-12T02:02:21+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,9 +13,13 @@
   },
   "total_files": 231,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/cyber-safety/index.md",
-    "learn.chatgpt.com/docs/sandboxing/auto-review/index.md",
-    "learn.chatgpt.com/docs/security-administration/index.md"
+    "learn.chatgpt.com/docs/app-server/index.md",
+    "learn.chatgpt.com/docs/artifacts-viewer/index.md",
+    "learn.chatgpt.com/docs/automations/index.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/developers/index.md",
+    "learn.chatgpt.com/docs/hooks/index.md",
+    "learn.chatgpt.com/docs/import/index.md",
+    "learn.chatgpt.com/docs/skills-and-plugins/index.md"
   ]
 }

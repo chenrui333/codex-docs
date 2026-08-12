@@ -198,8 +198,8 @@ Notes:
   preview instead. See [Large hook output](#large-hook-output).
 - `commandWindows` is an optional Windows-only command override. In TOML, use
   `command_windows` or `commandWindows`.
-- The `async` option is parsed, but asynchronous command hooks aren't supported
-  yet.
+- Set `async` to `true` to [run a command hook in the
+  background](#run-hooks-in-the-background).
 - Only `type: "command"` handlers run today. `prompt` and `agent` handlers are
   parsed but skipped.
 - Commands run with the session `cwd` as their working directory.
@@ -485,6 +485,83 @@ prompts keep the default limit.
 Because oversized output can be written to disk, avoid returning secrets or
 other sensitive data in hook output.
 
+## Run hooks in the background
+
+By default, Codex waits for a command hook to finish before continuing the
+operation that triggered it. Set `async` to `true` to run a command hook in the
+background while Codex continues.
+
+### Configure a background hook
+
+Add `"async": true` to a command handler in `hooks.json`:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.codex/hooks/post_tool_use.py",
+            "async": true,
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+For an inline hook in `config.toml`, set `async = true`:
+
+```toml
+[[hooks.PostToolUse]]
+matcher = "Bash"
+
+[[hooks.PostToolUse.hooks]]
+type = "command"
+command = "python3 ~/.codex/hooks/post_tool_use.py"
+async = true
+timeout = 120
+```
+
+Background hooks use the same input, matcher, trust review, timeout, and
+[large-output handling](#large-hook-output) as synchronous command hooks. As
+with other command hooks, `timeout` is measured in seconds and defaults to
+`600`.
+
+### How background hooks run
+
+When a background hook finishes, Codex delivers supported informational output
+at the next safe point in the conversation:
+
+- If a turn is active, Codex waits for the current model request and tool calls
+  to finish, then makes the output available to the next model request in that
+  turn.
+- If no turn is active, Codex waits until the next user turn. Finishing a
+  background hook doesn't start a new turn.
+
+Use the same event-specific JSON output as a synchronous hook. Codex adds
+`additionalContext` to the model's context and surfaces `systemMessage` as a
+warning.
+
+Background hooks can't block, approve, rewrite, or otherwise control the
+  operation that triggered them. Use synchronous hooks for tool policies,
+  permission decisions, prompt rejection, or turn continuation.
+
+### Limitations
+
+- Codex runs up to eight background hooks concurrently per session. Additional
+  hooks wait until a running hook finishes.
+- Each matching invocation runs independently, and background hooks can finish
+  in a different order than they started.
+- When the session ends, Codex cancels unfinished background hooks and discards
+  output that hasn't been delivered.
+- `SessionEnd` hooks always run synchronously.
+
 ## Hooks
 
 ### SessionStart
@@ -553,9 +630,9 @@ For example, a `SessionEnd` command receives:
 }
 ```
 
-`SessionEnd` hooks are advisory. Their output won't steer Codex or keep the
-thread open. If a command times out or exits with an error, Codex reports it as
-a hook failure.
+`SessionEnd` hooks always run synchronously, even when `async` is `true`. They
+are advisory, so their output won't steer Codex or keep the thread open. If a
+command times out or exits with an error, Codex reports it as a hook failure.
 
 ### SubagentStart
 

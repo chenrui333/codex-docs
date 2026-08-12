@@ -17,6 +17,10 @@ Source: https://learn.chatgpt.com/docs/developers
   title="Developers"
   description="Use Codex with codebases, development environments, automation, and your team's tools."
   intro="Codex supports everyday code work and deeper integrations across local and cloud environments. Its developer workflows span code review, the integrated terminal, reusable skills and plugins, automation with the SDK and App Server, team tools, and reference material for each surface."
+  video={{
+    title: "What's new in Codex for engineers",
+    videoId: "eiQgljOrkWU",
+  }}
   primaryCta={{
     label: "Explore workflows",
     href: "/codex/code-review?surface=app",

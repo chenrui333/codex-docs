@@ -17,6 +17,8 @@ Schedule recurring tasks to run in the background. Review active, paused, and
 completed tasks and recent runs in **Scheduled**. You can combine scheduled
 tasks with [skills](https://learn.chatgpt.com/docs/build-skills) for more complex work.
 
+<YouTubeEmbed title="Schedule tasks with ChatGPT" videoId="CToxp125mhc" />
+
 <ContentModeSwitch group="codex-surface" id="app">
 
 In the ChatGPT desktop app, scheduled tasks can work with local projects and

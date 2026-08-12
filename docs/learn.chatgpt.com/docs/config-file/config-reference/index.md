@@ -447,6 +447,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
     },
     {
+      key: "hooks.<Event>[].hooks[].async",
+      type: "boolean",
+      description:
+        "Run a command hook in the background without delaying the triggering operation. Defaults to `false`; `SessionEnd` always runs synchronously. See [Run hooks in the background](https://learn.chatgpt.com/docs/hooks#run-hooks-in-the-background).",
+    },
+    {
       key: "hooks.<Event>[].hooks[].additionalContextLimit",
       type: "integer",
       description:
@@ -2073,6 +2079,12 @@ model fields; `service_tier` is independent.
       type: "array<table>",
       description:
         "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
+    },
+    {
+      key: "hooks.<Event>[].hooks[].async",
+      type: "boolean",
+      description:
+        "Run a command hook in the background without delaying the triggering operation. Defaults to `false`; `SessionEnd` always runs synchronously. See [Run hooks in the background](https://learn.chatgpt.com/docs/hooks#run-hooks-in-the-background).",
     },
     {
       key: "hooks.<Event>[].hooks[].additionalContextLimit",

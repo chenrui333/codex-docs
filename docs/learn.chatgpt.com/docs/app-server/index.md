@@ -1285,7 +1285,7 @@ The fuzzy file search session API emits per-query notifications:
 - `turn/completed` - `{ turn }` where `turn.status` is `completed`, `interrupted`, or `failed`; failures carry `{ error: { message, codexErrorInfo?, additionalDetails? } }`.
 - `turn/diff/updated` - `{ threadId, turnId, diff }` with the latest aggregated unified diff across every file change in the turn.
 - `turn/plan/updated` - `{ turnId, explanation?, plan }` whenever the agent shares or changes its plan; each `plan` entry is `{ step, status }` with `status` in `pending`, `inProgress`, or `completed`.
-- `hook/started` and `hook/completed` - `{ threadId, turnId?, run }` when a lifecycle hook starts and when its final run summary is available.
+- `hook/started` and `hook/completed` - `{ threadId, turnId?, run }` when a synchronous lifecycle hook starts and when its final run summary is available. These notifications aren't emitted for asynchronous hooks.
 - `model/safetyBuffering/updated` - `{ threadId, turnId, model, useCases, reasons, showBufferingUi, fasterModel }` when a response enters transient safety buffering.
 - `model/rerouted` - `{ threadId, turnId, fromModel, toModel, reason }` when the service routes a request to another model.
 - `model/verification` - `{ threadId, turnId, verifications }` when the service requires additional account verification.

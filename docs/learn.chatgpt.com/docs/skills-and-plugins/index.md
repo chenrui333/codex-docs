@@ -17,6 +17,8 @@ Skills and plugins help ChatGPT and Codex complete repeatable work with the
 right instructions, resources, and tools. They reduce the need to paste the
 same prompt, template, requirements, or process into every chat.
 
+<YouTubeEmbed title="Plugins in ChatGPT" videoId="pKwRNdDtai0" />
+
 - A **skill** packages instructions and supporting resources for a specific
   task or workflow.
 - A **plugin** is an installable bundle that can include skills, connectors, or
