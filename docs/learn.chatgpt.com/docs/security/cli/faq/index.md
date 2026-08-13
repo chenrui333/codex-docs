@@ -128,6 +128,9 @@ Each completed scan keeps its report, findings, coverage, and supporting
 artifacts together. See [Scan
 artifacts](https://learn.chatgpt.com/docs/security/cli/reference#scan-artifacts) for the full layout.
 
+To inspect saved scan and worker events, run `scans logs SCAN_ID`. These logs
+aren't redacted and can contain source code or credentials.
+
 ### What if the CLI can't save scan history
 
 Codex Security keeps scan history in a workbench database. If the default
@@ -139,6 +142,15 @@ export CODEX_SECURITY_STATE_DIR=/path/outside/repository/codex-security-state
 ```
 
 ### How do scans distinguish new and known findings
+
+List the open findings from all scans of a repository:
+
+```bash
+npx @openai/codex-security findings list /path/to/repository
+```
+
+The list identifies findings confirmed in the latest scan and earlier open
+findings that the scan didn't confirm.
 
 Compare findings across the two scans:
 

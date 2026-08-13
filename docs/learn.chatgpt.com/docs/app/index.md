@@ -27,13 +27,14 @@ Run projects in parallel, work with files, use your computer, and keep long-runn
 
 Install ChatGPT, sign in, choose where to work, and send your first message.
 
-1. **Install the ChatGPT desktop app.** [Download ChatGPT](https://chatgpt.com/download/) for Windows or macOS.
+1. **Install the ChatGPT desktop app.** [Download ChatGPT](https://chatgpt.com/download/) for macOS or Windows, or follow the [Linux installation guide](https://learn.chatgpt.com/docs/linux/linux-app).
 2. **Open ChatGPT and sign in.** Open the app, then sign in with your ChatGPT account.
 3. **Choose where to work.** Start a chat, create a project, or open a folder. ChatGPT can use the files and context in the location you choose. [Learn about chats and projects](https://learn.chatgpt.com/docs/projects).
 4. **Send your first message.** Choose ChatGPT or Codex. In ChatGPT, use the toggle above the composer to select Chat or Work. In Codex, start with New chat. For a quick question, point to New chat and select the Quick chat icon on its right. Then describe the result you want and add any files or context ChatGPT needs. [Learn how to use ChatGPT](https://learn.chatgpt.com/docs/use-chatgpt).
 
 ### Next steps
 
+- [Install on Linux](https://learn.chatgpt.com/docs/linux/linux-app)
 - [Organize work with projects](https://learn.chatgpt.com/docs/projects)
 - [Create and inspect files](https://learn.chatgpt.com/docs/artifacts-viewer)
 - [Use the browser and your computer](https://learn.chatgpt.com/docs/computer-use)

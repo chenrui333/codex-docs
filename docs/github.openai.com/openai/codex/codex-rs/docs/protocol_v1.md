@@ -2,7 +2,7 @@
 source_type: 'github'
 source_area: 'github_rust'
 source_url: 'https://raw.githubusercontent.com/openai/codex/main/codex-rs/docs/protocol_v1.md'
-source_etag: 'W/"f2f99859b8dbe6411940e979dcba0b450385d8891d53e193551801a44a848141"'
+source_etag: 'W/"68ecec6b064af5b64d18b33390adb11d15164f96e38dc84c62e22948db8cc0ee"'
 codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0"]
 codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
@@ -32,7 +32,7 @@ These are entities exit on the codex backend. The intent of this section is to e
 3. `Task`
    - A `Task` is `Codex` executing work in response to user input.
    - `Session` has at most one `Task` running at a time.
-   - Receiving `Op::UserTurn` starts a `Task` (`Op::UserInput` is legacy)
+   - Receiving user turn input starts a `Task`
    - Consists of a series of `Turn`s
    - The `Task` executes to until:
      - The `Model` completes the task and there is no output to feed into an additional `Turn`
@@ -76,13 +76,9 @@ For complete documentation of the `Op` and `EventMsg` variants, refer to [protoc
 
 - `Op`
   - `Op::UserTurn` – Any input from the user to kick off a `Turn`, including full per-turn context such as cwd, model, sandbox, approval policy, and optional `approvals_reviewer`
-  - `Op::UserInput` – Legacy form of user input
   - `Op::Interrupt` – Interrupts a running turn
   - `Op::ExecApproval` – Approve or deny code execution
   - `Op::UserInputAnswer` – Provide answers for a `request_user_input` tool call
-  - `Op::UserInput` accepts an optional `personality` turn-context override that updates the model’s communication style
-
-Valid `personality` values are `friendly`, `pragmatic`, and `none`. When `none` is selected, the personality placeholder is replaced with an empty string.
 
 - `EventMsg`
   - `EventMsg::AgentMessage` – Messages from the `Model`

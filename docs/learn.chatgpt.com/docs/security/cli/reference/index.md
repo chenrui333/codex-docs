@@ -35,7 +35,7 @@ The CLI provides these commands:
 | `codex-security scan`         | Run a Codex Security scan.                            |
 | `codex-security install-hook` | Install a Git pre-commit security scan.               |
 | `codex-security bulk-scan`    | Discover repositories and run resumable bulk scans.   |
-| `codex-security scans`        | List, inspect, match, rerun, and compare saved scans. |
+| `codex-security scans`        | List, inspect, compare, and retrieve saved scan logs. |
 | `codex-security findings`     | Review and update saved security findings.            |
 | `codex-security export`       | Export completed findings as CSV, JSON, or SARIF.     |
 | `codex-security validate`     | Check one or more candidate security findings.        |
@@ -310,8 +310,8 @@ outside the saved scan results.
 
 To add scan instructions, provide a text or Markdown file with
 `--scan-prompt-file`. Use `--post-scan-prompt-file` to run follow-up
-instructions in the same authenticated session after a completed scan with
-complete coverage:
+instructions in the same authenticated session after successful scans and
+scans with incomplete coverage or errors:
 
 ```bash
 npx @openai/codex-security scan . \
@@ -321,6 +321,8 @@ npx @openai/codex-security scan . \
 
 For example, use the scan prompt to focus on authorization boundaries and ask
 the follow-up to write a new `post-scan-summary.md` in the scan directory.
+The follow-up doesn't run after cancellation or when the scan reaches its cost
+limit.
 
 ### Set output and policy options
 
@@ -486,7 +488,8 @@ Use `--knowledge-base PATH` to share security documents across every
 repository. Use `--scan-prompt-file FILE` to add shared scan instructions; the
 CSV `prompt` column adds repository-specific instructions after that shared
 prompt. `--post-scan-prompt-file FILE` runs follow-up instructions after each
-completed scan with complete coverage.
+scan, including scans with incomplete coverage or errors. It doesn't run after
+cancellation or when a scan reaches its cost limit.
 
 `--workers` limits simultaneous repository scans and defaults to `4`. `--mode`
 defaults to `standard`, and `--max-attempts` defaults to `1`. Set
@@ -530,11 +533,23 @@ Show a saved scan's results and configuration:
 npx @openai/codex-security scans show SCAN_ID
 ```
 
+Add `--show-linked-findings` to include finding links from earlier scans.
+
 Rerun the scan against the current checkout using its original configuration:
 
 ```bash
 npx @openai/codex-security scans rerun SCAN_ID
 ```
+
+### Inspect saved scan logs
+
+Read the complete saved session events for a scan and its workers:
+
+```bash
+npx @openai/codex-security scans logs SCAN_ID
+```
+
+Add `--json` for a machine-formatted result containing full information.
 
 ### Match and compare findings
 
@@ -570,7 +585,25 @@ finding against the current code.
 
 ## `codex-security findings`
 
-Record a reviewed finding as a false positive:
+List open findings across the current repository's scans:
+
+```bash
+npx @openai/codex-security findings list
+```
+
+Pass a repository path to inspect another checkout:
+
+```bash
+npx @openai/codex-security findings list /path/to/repository
+```
+
+Add `--json` for structured output. The list identifies findings seen in the
+latest scan and earlier findings that weren't confirmed in that scan.
+
+Note that earlier findings remain open until resolved or dismissed (absence
+from the latest scan is not interpreted as proof that it's fixed).
+
+To record a reviewed finding as a false positive:
 
 ```text
 usage: codex-security findings false-positive OCCURRENCE_ID
@@ -763,25 +796,25 @@ Set `CODEX_SECURITY_LOG_LEVEL=debug` to enable the same diagnostics without the
 flag. `LOG_LEVEL=debug` also enables diagnostics when
 `CODEX_SECURITY_LOG_LEVEL` is unset.
 
-These logging controls apply only to the CLI. Credentials and provider
-identifiers remain redacted, and structured scan results remain on stdout.
-
 ### Completion summary
 
-A completed scan writes its finding count, severity breakdown, coverage,
-elapsed time, report path, and result directory to stderr. It includes token
-usage and estimated cost when available:
+A completed scan writes its open repository finding count, severity breakdown,
+coverage, elapsed time, report path, and result directory to stderr. It
+includes token usage and estimated cost when available:
 
 ```text
-codex-security: Findings: 4 (1 critical, 2 high, 1 informational). Coverage: complete.
-codex-security: Elapsed: 1s.
-codex-security: Tokens: 1,250 input, 200 cached, 30 output.
-codex-security: Report: /path/to/scan/report.md
-codex-security: Results: /path/to/scan
+  REPORT    /path/to/scan/report.md
+
+  FINDINGS  4 (3 confirmed this scan; 1 previously found; 1 critical, 2 high, 1 informational)
+  COVERAGE  complete
+  ELAPSED   1s
+  TOKENS    1,250 input, 200 cached, 30 output
+  RESULTS   /path/to/scan
 ```
 
 Informational findings count toward the summary total. Severity policies
-evaluate only `critical`, `high`, `medium`, and `low` findings.
+evaluate only `critical`, `high`, `medium`, and `low` findings from the current
+scan, not earlier findings shown in the repository total.
 
 ### JSON output
 
@@ -790,6 +823,7 @@ is:
 
 ```text
 manifest
+repositoryFindings
 findings
 coverage
 scanDir
@@ -797,6 +831,7 @@ threadId
 reportPath
 artifactsDir
 sarifPath
+cost
 turn
   id
   status

@@ -111,8 +111,8 @@ The scan writes its output to
 | File                 | Contents                                                                                                                                                  |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `report.md`          | Primary readable entry point to the complete scan directory.                                                                                              |
-| `findings/<slug>/`   | One detailed vulnerability report per reportable finding, with supporting proof-of-concept files when available.                                          |
-| `hardening/`         | Structural hardening portfolio and supporting proposals or diagrams when the scan has reportable findings.                                                |
+| `findings/<slug>/`   | Detailed vulnerability reports and supporting proof-of-concept files, when requested.                                                                     |
+| `hardening/`         | Structural hardening guidance and supporting proposals, when requested.                                                                                   |
 | `findings.json`      | Findings with stable identifiers, severity, confidence, source locations, and remediation. Feed approved internal security workflows or downstream tools. |
 | `scan-manifest.json` | Sealed scan receipt with the reviewed target, revisions, and artifact hashes.                                                                             |
 | `coverage.json`      | Reviewed and deferred surfaces, exclusions, and coverage completeness.                                                                                    |
@@ -353,9 +353,9 @@ pipeline {
 The examples skip forked pull requests. Run credentialed jobs only from a
 protected pipeline definition and only for contributors trusted with the scan
 credential. Archive `codex-security-scans` to keep the structured findings,
-manifest, coverage artifacts, `report.md`, and its linked `findings/` and
-`hardening/` outputs together. Start with advisory results and review coverage
-and runtime before making the job a required check.
+manifest, coverage, and `report.md` together, along with any requested
+`findings/` or `hardening/` outputs. Start with advisory results and review
+coverage and runtime before making the job a required check.
 
 For API-key handling and sandbox controls, see [Non-interactive
 mode](https://learn.chatgpt.com/docs/non-interactive-mode). If your organization permits the [Codex

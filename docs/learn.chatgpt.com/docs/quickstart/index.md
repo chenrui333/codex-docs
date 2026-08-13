@@ -40,8 +40,10 @@ If you're a developer and want to use Codex in your terminal or code editor,
   ]}
 >
 
-The ChatGPT desktop app is available for Windows and macOS. Use it for projects,
-local files, longer tasks, and quick chats.
+The ChatGPT desktop app is available for macOS, Windows, and Linux. Use it for
+projects, local files, longer tasks, and quick chats. For supported Linux
+distributions and package installation, see the
+[Linux desktop app guide](https://learn.chatgpt.com/docs/linux/linux-app).
 
 <WorkflowSteps variant="headings">
 1. <h3 id="setup-app-install">Install the ChatGPT desktop app</h3>

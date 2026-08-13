@@ -68,11 +68,10 @@ findings or the implemented fix.
 
 ## Use hardening guidance from a scan
 
-When a standard, deep, or change scan has reportable findings, Codex runs this
-workflow once after the detailed vulnerability reports are ready. It writes the
-portfolio to `hardening/hardening.md`, structured analysis to
-`hardening/hardening.json`, and supporting proposals or diagrams under
-`hardening/`. The scan links the portfolio from `report.md`.
+You can request a hardening portfolio for a standard, deep, or change scan with
+reportable findings. Codex writes the portfolio to `hardening/hardening.md`,
+structured analysis to `hardening/hardening.json`, and supporting proposals
+or diagrams under `hardening/`. The scan links the portfolio from `report.md`.
 
 Keep the full scan directory together so those links remain usable. To review
 the individual reports that inform the portfolio, see [Write vulnerability

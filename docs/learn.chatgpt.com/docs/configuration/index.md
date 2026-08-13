@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/configuration
 <CodexDocsOverviewLanding
   title="Configuration"
   description="Set defaults, add durable context, and customize how ChatGPT and Codex developer tools work."
-  intro="Configuration shapes how ChatGPT and Codex developer tools behave across chats, repositories, and machines. Durable context, config files, repository guidance, subagents, external connections, and Windows setup work together to keep those workflows consistent for individuals and teams."
+  intro="Configuration shapes how ChatGPT and Codex developer tools behave across chats, repositories, and machines. Durable context, config files, repository guidance, subagents, external connections, and Linux and Windows setup work together to keep those workflows consistent for individuals and teams."
   primaryCta={{
     label: "Explore customization",
     href: "/codex/customization/overview",
@@ -141,6 +141,19 @@ Source: https://learn.chatgpt.com/docs/configuration
             "Connect Codex developer tools to external tools and context.",
           href: "/codex/extend/mcp",
           icon: "connect",
+        },
+      ],
+    },
+    {
+      title: "Linux",
+      description: "Install and update ChatGPT on a supported Linux desktop.",
+      pages: [
+        {
+          title: "ChatGPT desktop app",
+          description:
+            "Install the Linux preview on Ubuntu, Debian, or Fedora.",
+          href: "/codex/linux/linux-app",
+          icon: "computerUse",
         },
       ],
     },

@@ -84,8 +84,8 @@ A scan runs these phases in order:
 4. **Impact and path analysis** evaluates each candidate's realistic paths,
    impact, and severity.
 5. **Reporting** records validated findings, coverage, and scan metadata.
-   Detailed per-finding reports are optional for standard scans.
-6. **Structural hardening**, when available, analyzes the finding set and
+   Detailed per-finding reports are available when requested.
+6. **Structural hardening**, when requested, analyzes the finding set and
    creates design guidance.
 7. **Finalization** validates the structured scan contract and generates
    `report.md`, including links to any detailed reports or hardening guidance.

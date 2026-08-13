@@ -134,8 +134,8 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --knowledge-base /path/to/security-policies
 ```
 
-To add shared scan instructions or run a follow-up after each completed scan,
-provide prompt files:
+To add shared scan instructions or run a follow-up after each scan, provide
+prompt files:
 
 ```bash
 npx @openai/codex-security bulk-scan repositories.csv \
@@ -145,9 +145,10 @@ npx @openai/codex-security bulk-scan repositories.csv \
 ```
 
 The CLI appends each repository's CSV `prompt` after the shared scan
-instructions. Follow-up instructions run in the same authenticated session only
-after a validated scan has complete coverage. Prompt file paths resolve from
-your current directory.
+instructions. Follow-up instructions run in the same authenticated session
+after successful scans and scans with incomplete coverage or errors, but not
+after cancellation or a scan that reaches its cost limit. Prompt file paths
+resolve from your current directory.
 
 ## Choose a model and reasoning effort
 

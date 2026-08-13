@@ -122,9 +122,9 @@ update the plugin or start a long-running scan.
 
 Deep scans use the same saved scan details and complete scan directory as
 standard scans. Open the completed scan in **Scans** or review its findings in
-**Findings**. When available, `report.md` links to one detailed report for each
-reportable finding and a structural hardening portfolio when findings remain.
-Keep the linked `findings/` and `hardening/` directories with the report when
+**Findings**. The generated `report.md` links to detailed vulnerability reports
+or structural hardening guidance when you request those outputs.
+Keep any linked `findings/` and `hardening/` directories with the report when
 sharing or archiving the result.
 
 Review the coverage summary before the findings. Even a deep scan has limits,

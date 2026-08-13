@@ -132,10 +132,12 @@ It doesn't print the full scan result to stdout. A completed scan prints a
 summary like this:
 
 ```text
-codex-security: Findings: 2 (1 high, 1 medium). Coverage: complete.
-codex-security: Elapsed: 42s.
-codex-security: Report: /path/outside/repository/codex-security-results/report.md
-codex-security: Results: /path/outside/repository/codex-security-results
+  REPORT    /path/outside/repository/codex-security-results/report.md
+
+  FINDINGS  2 (2 confirmed this scan; 0 previously found; 1 high, 1 medium)
+  COVERAGE  complete
+  ELAPSED   42s
+  RESULTS   /path/outside/repository/codex-security-results
 ```
 
 Token usage and estimated cost appear when available. To print the complete
@@ -251,7 +253,7 @@ npx @openai/codex-security scan "$REPOSITORY" \
 ## Add custom scan instructions
 
 Add instructions that focus the scan on your security priorities. Use a
-second file for a follow-up after a validated scan with complete coverage:
+second file for follow-up instructions:
 
 ```bash
 npx @openai/codex-security scan "$REPOSITORY" \
@@ -259,8 +261,10 @@ npx @openai/codex-security scan "$REPOSITORY" \
   --post-scan-prompt-file /path/to/follow-up.md
 ```
 
-The follow-up runs in the same authenticated session. Both options also work
-with `bulk-scan`; a CSV `prompt` column adds repository-specific instructions.
+The follow-up runs in the same authenticated session after successful scans
+and scans with incomplete coverage or errors. It doesn't run after cancellation
+or a scan that reaches its cost limit. Both options also work with
+`bulk-scan`; a CSV `prompt` column adds repository-specific instructions.
 
 ## Set a scan budget
 
@@ -352,6 +356,23 @@ Copy a scan ID from the results to inspect its findings and configuration:
 ```bash
 npx @openai/codex-security scans show SCAN_ID
 ```
+
+To inspect the saved events from a scan and its workers:
+
+```bash
+npx @openai/codex-security scans logs SCAN_ID
+```
+
+Saved logs aren't redacted and can contain source code or credentials. Review
+them before sharing.
+
+List open findings across the repository's scans:
+
+```bash
+npx @openai/codex-security findings list "$REPOSITORY"
+```
+
+An earlier finding stays open when the latest scan doesn't confirm it.
 
 To mark a reviewed finding as a false positive, explain why the finding doesn't
 apply:

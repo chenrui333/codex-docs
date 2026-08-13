@@ -344,7 +344,8 @@ command:
 ```
 
 The supported thresholds are `critical`, `high`, `medium`, and `low`. A
-threshold includes findings at that severity and above.
+threshold includes findings from the current scan at that severity and above.
+Earlier open findings shown in the repository summary don't affect the policy.
 
 The scan step uses these exit codes:
 

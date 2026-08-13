@@ -217,8 +217,7 @@ extracted document content outside the saved scan results.
 
 ### Add scan and follow-up instructions
 
-Use `scanPrompt` to focus the scan and `postScanPrompt` to request a follow-up
-after a completed scan:
+Use `scanPrompt` to focus the scan and `postScanPrompt` to request a follow-up:
 
 ```ts
 const result = await security.run("/path/to/repository", {
@@ -226,9 +225,6 @@ const result = await security.run("/path/to/repository", {
   postScanPrompt: "Write confirmed findings to post-scan-summary.md.",
 });
 ```
-
-The follow-up runs in the same authenticated session only after the scan
-finishes with complete coverage.
 
 ### Set a scan budget
 
@@ -255,22 +251,23 @@ throws `ScanCostLimitExceededError` and preserves the available results.
 `ScanResult` exposes the structured documents, scan metadata, and artifact
 paths:
 
-| Property        | Contents                                                                           |
-| --------------- | ---------------------------------------------------------------------------------- |
-| `manifest`      | The sealed scan manifest, including target, scope, producer, and artifact records. |
-| `findings`      | The findings document. Read finding objects from `findings.findings`.              |
-| `coverage`      | Reviewed surfaces, exclusions, deferred work, open questions, and completeness.    |
-| `scanDir`       | The scan directory.                                                                |
-| `threadId`      | The Codex thread identifier for the scan.                                          |
-| `turnResult`    | Turn status, response, and available usage metadata.                               |
-| `cost`          | Estimated model and token cost, or `null` when unavailable.                        |
-| `reportPath`    | The path to `report.md`.                                                           |
-| `manifestPath`  | The path to `scan-manifest.json`.                                                  |
-| `findingsPath`  | The path to `findings.json`.                                                       |
-| `coveragePath`  | The path to `coverage.json`.                                                       |
-| `artifactsDir`  | The supporting-artifacts directory.                                                |
-| `sarifPath`     | The generated SARIF path, or `null` when SARIF is absent.                          |
-| `pluginVersion` | The version recorded by the scan producer.                                         |
+| Property             | Contents                                                                           |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| `manifest`           | The sealed scan manifest, including target, scope, producer, and artifact records. |
+| `findings`           | Findings from the current scan. Read finding objects from `findings.findings`.     |
+| `repositoryFindings` | Open findings across repository scans, when scan history is available.             |
+| `coverage`           | Reviewed surfaces, exclusions, deferred work, open questions, and completeness.    |
+| `scanDir`            | The scan directory.                                                                |
+| `threadId`           | The Codex thread identifier for the scan.                                          |
+| `turnResult`         | Turn status, response, and available usage metadata.                               |
+| `cost`               | Estimated model and token cost, or `null` when unavailable.                        |
+| `reportPath`         | The path to `report.md`.                                                           |
+| `manifestPath`       | The path to `scan-manifest.json`.                                                  |
+| `findingsPath`       | The path to `findings.json`.                                                       |
+| `coveragePath`       | The path to `coverage.json`.                                                       |
+| `artifactsDir`       | The supporting-artifacts directory.                                                |
+| `sarifPath`          | The generated SARIF path, or `null` when SARIF is absent.                          |
+| `pluginVersion`      | The version recorded by the scan producer.                                         |
 
 Use the structured findings and coverage directly:
 
@@ -291,13 +288,22 @@ for (const deferred of result.coverage.deferred) {
 }
 ```
 
+For repository-wide findings, `confirmedInLatestScan` distinguishes findings
+seen in the latest scan from earlier findings that remain open:
+
+```ts
+for (const finding of result.repositoryFindings ?? []) {
+  console.log(finding.title, finding.confirmedInLatestScan);
+}
+```
+
 Coverage completeness is `complete`, `partial`, or `unknown`. Review deferred
 surfaces, exclusions, and open questions before using a scan as evidence for a
 security decision.
 
-`result.toJSON()` returns the manifest, findings, coverage, scan and thread
-identifiers, `reportPath`, `artifactsDir`, `sarifPath`, and turn metadata in
-one JSON-ready object.
+`result.toJSON()` returns the manifest, repository and current-scan findings,
+coverage, scan and thread identifiers, `reportPath`, `artifactsDir`,
+`sarifPath`, cost, and turn metadata in one JSON-ready object.
 
 ## Track or cancel a scan
 

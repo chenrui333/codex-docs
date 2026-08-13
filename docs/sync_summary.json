@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/linux/linux-app/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-12T19:02:56+00:00",
+  "generated_at": "2026-08-13T02:04:37+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,11 +13,22 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 231,
+  "total_files": 232,
   "updated": [
-    "learn.chatgpt.com/docs/index.md",
-    "learn.chatgpt.com/docs/security/plugin/index.md",
+    "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md",
+    "learn.chatgpt.com/docs/app/index.md",
+    "learn.chatgpt.com/docs/configuration/index.md",
+    "learn.chatgpt.com/docs/quickstart/index.md",
+    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+    "learn.chatgpt.com/docs/security/cli/ci/index.md",
+    "learn.chatgpt.com/docs/security/cli/faq/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
+    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
     "learn.chatgpt.com/docs/security/plugin/scans/index.md",
-    "learn.chatgpt.com/docs/whats-new/index.md"
+    "learn.chatgpt.com/docs/security/plugin/security-hardening/index.md",
+    "learn.chatgpt.com/docs/security/plugin/vulnerability-reports/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }
