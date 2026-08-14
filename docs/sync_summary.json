@@ -1,11 +1,14 @@
 {
   "added": [
-    "learn.chatgpt.com/docs/linux/linux-app/index.md"
+    "learn.chatgpt.com/docs/customization/computer-history/index.md",
+    "learn.chatgpt.com/docs/enterprise/service-accounts/index.md"
   ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-13T02:04:37+00:00",
-  "removed": [],
+  "generated_at": "2026-08-14T02:02:16+00:00",
+  "removed": [
+    "learn.chatgpt.com/docs/customization/chronicle/index.md"
+  ],
   "source_metadata": {
     "codex_cli_command": "codex --version",
     "codex_cli_version": "0.147.0",
@@ -13,22 +16,18 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 232,
+  "total_files": 233,
   "updated": [
-    "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md",
-    "learn.chatgpt.com/docs/app/index.md",
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/amazon-bedrock/index.md",
     "learn.chatgpt.com/docs/configuration/index.md",
-    "learn.chatgpt.com/docs/quickstart/index.md",
-    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/index.md",
-    "learn.chatgpt.com/docs/security/cli/faq/index.md",
-    "learn.chatgpt.com/docs/security/cli/index.md",
-    "learn.chatgpt.com/docs/security/cli/reference/index.md",
-    "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
-    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
-    "learn.chatgpt.com/docs/security/plugin/scans/index.md",
-    "learn.chatgpt.com/docs/security/plugin/security-hardening/index.md",
-    "learn.chatgpt.com/docs/security/plugin/vulnerability-reports/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md"
+    "learn.chatgpt.com/docs/customization/memories/index.md",
+    "learn.chatgpt.com/docs/enterprise/access-tokens/index.md",
+    "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
+    "learn.chatgpt.com/docs/glossary/index.md",
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/personalize/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md"
   ]
 }

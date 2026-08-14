@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-08-12T18:42:43Z'
-source_etag: 'W/"319bf0d83ccde14889a99db44bdec5f0"'
+source_last_modified: '2026-08-14T01:53:50Z'
+source_etag: 'W/"98d305fdc1cc3940886938d5651c0e0c"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
@@ -74,6 +74,14 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 [View all updates](/codex/whats-new)
 
+August 10–14, 2026
+
+[### Find earlier work with Computer History
+
+Computer History turns activity across your apps and websites into a searchable timeline and memories that ChatGPT and Codex can use.](/codex/whats-new#find-earlier-work-with-computer-history)  [### Use the ChatGPT desktop app on Linux
+
+The ChatGPT desktop app for Linux is now available in preview.](/codex/whats-new#use-the-chatgpt-desktop-app-on-linux)
+
 August 3–7, 2026
 
 [### Talk through files and projects with ChatGPT Voice
@@ -81,12 +89,4 @@ August 3–7, 2026
 ChatGPT Voice now supports uploaded files and ChatGPT Projects.](/codex/whats-new#talk-through-files-and-projects-with-chatgpt-voice)  [### Study and teach with dedicated education plugins
 
 Three new plugins bring classroom-specific workflows to ChatGPT Work and Codex.](/codex/whats-new#study-and-teach-with-dedicated-education-plugins)
-
-July 27–31, 2026
-
-[### Use GPT-5.6 Terra and Luna at lower rates
-
-GPT-5.6 Terra now costs 20% less, and GPT-5.6 Luna costs 80% less.](/codex/whats-new#use-gpt-56-terra-and-luna-at-lower-rates)  [### Find useful context across your browser and open tabs
-
-In the ChatGPT desktop app, the built-in browser can find pages from your browsing history or search Google directly from its address bar.](/codex/whats-new#find-useful-context-across-your-browser-and-open-tabs)
 

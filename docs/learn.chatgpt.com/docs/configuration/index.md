@@ -46,10 +46,10 @@ Source: https://learn.chatgpt.com/docs/configuration
           icon: "threads",
         },
         {
-          title: "Chronicle",
+          title: "Computer History",
           description:
-            "Understand how durable memory is collected and managed.",
-          href: "/codex/customization/chronicle",
+            "Use recent computer activity as context and manage what is included.",
+          href: "/codex/customization/computer-history",
           icon: "stack",
         },
       ],

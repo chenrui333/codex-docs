@@ -461,8 +461,8 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
               },
             },
             {
-              name: "Chronicle",
-              href: "/codex/customization/chronicle",
+              name: "Computer History",
+              href: "/codex/customization/computer-history",
               availability: {
                 bedrock: "unavailable",
               },

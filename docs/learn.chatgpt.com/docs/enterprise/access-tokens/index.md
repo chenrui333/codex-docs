@@ -18,7 +18,7 @@ Codex access tokens are ChatGPT workspace credentials scoped to Codex permission
 Codex access tokens are currently supported for ChatGPT Business and
   Enterprise workspaces.
 
-Access tokens are created in the ChatGPT admin console at [Access tokens](https://chatgpt.com/admin/access-tokens). They're tied to the ChatGPT user who creates them and that user's workspace. The tokens act as agent identities for programmatic local workflows.
+Personal access tokens created from the ChatGPT admin console's [Access tokens](https://chatgpt.com/admin/access-tokens) page are tied to the ChatGPT user who creates them and that user's workspace. The tokens act as agent identities for programmatic local workflows. For tokens created from a dedicated non-human workspace identity's detail page, see [Service accounts](https://learn.chatgpt.com/docs/enterprise/service-accounts).
 
 If a Platform API key works for your automation, keep using API key auth. Use
   Codex access tokens when a trusted local workflow specifically needs ChatGPT
@@ -196,6 +196,7 @@ Confirm that you copied the generated access token, not a browser session token 
 ## Related docs
 
 - [Authentication](https://learn.chatgpt.com/docs/auth)
+- [Service accounts](https://learn.chatgpt.com/docs/enterprise/service-accounts)
 - [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)
 - [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup)
 - [Groups and provisioning](https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning)

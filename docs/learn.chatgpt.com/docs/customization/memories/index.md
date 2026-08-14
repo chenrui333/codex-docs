@@ -61,8 +61,9 @@ CLI.
 
 <ContentModeSwitch group="codex-surface" id="app">
 
-[Chronicle](https://learn.chatgpt.com/docs/customization/chronicle) is a desktop-only feature that helps
-Codex recover recent working context from your screen to build up memory.
+[Computer History](https://learn.chatgpt.com/docs/customization/computer-history) is a macOS desktop
+feature that turns activity across allowed apps and websites into memories and
+a timeline that ChatGPT and Codex can reference.
 
 </ContentModeSwitch>
 

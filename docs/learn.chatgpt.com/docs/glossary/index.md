@@ -131,11 +131,11 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
         "Authentication using a ChatGPT account and workspace permissions.",
     },
     {
-      key: "Chronicle",
-      href: "/codex/customization/chronicle",
+      key: "Computer History",
+      href: "/codex/customization/computer-history",
       appliesTo: "Desktop app",
       description:
-        "Opt-in feature that builds memories from recent screen context.",
+        "Opt-in macOS feature that builds memories and a timeline from interaction events across allowed apps and websites.",
     },
     {
       key: "Cloud",

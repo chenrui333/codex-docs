@@ -59,6 +59,24 @@ permission list and setup procedure:
 - [Configure role-based access control](https://help.openai.com/en/articles/11750701-rbac)
 - [Manage groups](https://help.openai.com/en/articles/9083985-group-permissions-in-gpts)
 
+### Control Computer History access
+
+[Computer History](https://learn.chatgpt.com/docs/customization/computer-history) is off by default for
+Business and Enterprise workspaces. Members cannot turn it on until an
+administrator explicitly grants access. Enterprise administrators can grant
+access by role:
+
+1. Open [**Workspace Settings > Permissions & roles**](https://chatgpt.com/admin/settings).
+2. Find **Computer History** and choose the workspace role that should have
+   access.
+3. Turn on **Enable Computer History** for that role.
+
+This permission only allows assigned members to turn on Computer History; it
+does not turn on the feature for them. Each member must opt in from the ChatGPT
+desktop app on macOS and can choose which apps and websites contribute. Members
+without the required workspace permission cannot enable the feature through
+local settings.
+
 ## Apply local runtime policy
 
 Local runtime policy constrains covered capabilities in the ChatGPT desktop

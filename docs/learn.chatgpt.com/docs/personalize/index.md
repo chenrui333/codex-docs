@@ -41,15 +41,16 @@ project conventions, and other context you would otherwise need to repeat.
 Memories are separate from required project guidance. Keep instructions that
 must always apply in `AGENTS.md` or checked-in project documentation.
 
-## Add recent screen context with Chronicle
+## Add recent activity with Computer History
 
-[Chronicle](https://learn.chatgpt.com/docs/customization/chronicle) is an opt-in research preview that can
-augment memories with recent screen context. It's available to eligible
-ChatGPT Pro subscribers in the macOS desktop app and requires Screen Recording
-and Accessibility permissions.
+[Computer History](https://learn.chatgpt.com/docs/customization/computer-history) is an opt-in macOS
+desktop feature that can turn activity across allowed apps and websites into
+memories and a timeline. It records interaction events rather than screenshots
+or audio.
 
-Review Chronicle's privacy, security, storage, and rate-limit considerations
-before enabling it. You can pause or disable Chronicle at any time.
+Review what Computer History includes before enabling it. You can pause it,
+exclude apps and websites, inspect or delete individual timeline items, and
+clear recent or all history at any time.
 
 ## Manage personalization
 

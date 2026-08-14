@@ -17,6 +17,65 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## August 10–14, 2026
+
+### Find earlier work with Computer History
+
+[Computer History](https://learn.chatgpt.com/docs/customization/computer-history) turns activity across
+your apps and websites into a searchable timeline and memories that ChatGPT
+and Codex can use. Turn it on only if you want to share that context, then
+choose which apps and websites contribute, pause collection, and review or
+delete your history at any time.
+
+Computer History is available in the ChatGPT desktop app on macOS for ChatGPT
+Pro, Business, and Enterprise customers. Business and Enterprise
+administrators must first enable access. Initial availability excludes the
+European Union, Switzerland, and the United Kingdom.
+
+**Prompt:**
+
+```text
+Find the document and Slack thread I was reviewing earlier, then summarize the decisions I still need to act on.
+```
+
+### Use the ChatGPT desktop app on Linux
+
+The [ChatGPT desktop app for Linux](https://learn.chatgpt.com/docs/linux/linux-app) is now available in
+preview. Install a `.deb` package on supported Ubuntu or Debian distributions,
+or an `.rpm` package on Fedora. Packages are available for both x64 and ARM64
+processors.
+
+Sign in with your ChatGPT account to work with projects, local files, and
+Codex. Some features, including Computer Use, aren't yet available in the
+Linux preview.
+
+### Bring your existing agent setup and work with you
+
+[Import instructions, settings, skills, plugins, projects, and recent
+work](https://learn.chatgpt.com/docs/import) from **Claude Code**, **Claude Cowork**, or
+**Cursor** into the ChatGPT desktop app. Turn on automatic updates in
+**Settings > Import** to keep your imported work in sync.
+
+In Codex CLI, use `/import` to bring supported setup and recent chats from
+Claude Code or Cursor into your local session.
+
+[Read the August 11 desktop and CLI release
+notes](https://learn.chatgpt.com/docs/changelog#codex-2026-08-11-app).
+
+### Choose the right access for defensive security work
+
+Daybreak now offers two tiers for approved defenders. **Daybreak Blue** supports
+general defensive work, such as secure code review, incident response, and
+patch validation. **Daybreak Red** requires its own approval and provides
+access to purpose-trained models for authorized security assessments.
+
+Access requires [Trusted Access for
+Cyber](https://learn.chatgpt.com/docs/cyber-safety#trusted-access-for-cyber) and applies only to the
+approved identity, workspace or organization, model, and product surface.
+
+[Read the August 10 Daybreak
+announcement](https://learn.chatgpt.com/docs/changelog#codex-2026-08-10-daybreak).
+
 ## August 3–7, 2026
 
 ### Talk through files and projects with ChatGPT Voice
