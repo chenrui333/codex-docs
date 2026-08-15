@@ -18,7 +18,9 @@ output formats, and exit behavior. For a guided first scan, start with the
 [CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 The `@openai/codex-security` package is public. Running scans requires Codex
-  Security access.
+  Security access. Scans use your local permissions and don't pause for
+  approval. Before you start, review [Local scan
+  permissions](#local-scan-permissions).
 
 Run the CLI with `npx @openai/codex-security`.
 
@@ -124,7 +126,8 @@ usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
                            [--post-scan-prompt-file FILE]
                            [--mode {standard,deep}] [--workers N]
                            [--subagents N] [--stop-after-no-new N]
-                           [--max-discovery-runs N] [--model MODEL]
+                           [--max-discovery-runs N] [--max-time-hours HOURS]
+                           [--model MODEL]
                            [--effort {minimal,low,medium,high,xhigh}]
                            [--output-dir DIR]
                            [--archive-existing]
@@ -260,11 +263,14 @@ runtime:
 | `--subagents N`          | Subagents available to each discovery worker. Defaults to `3`.          |
 | `--stop-after-no-new N`  | Stop after `N` consecutive runs find no new issues. Defaults to `6`.    |
 | `--max-discovery-runs N` | Limit on total discovery runs. Defaults to `60`.                        |
+| `--max-time-hours HOURS` | Discovery time limit in hours. Defaults to `96`; accepts fractions.     |
 
-`--subagents` accepts zero or a positive integer. The other options require a
-positive integer. These options aren't available for standard scans.
+`--subagents` accepts zero or a positive integer. `--max-time-hours` accepts a
+positive number no greater than `96`. The remaining options require a positive
+integer. These options aren't available for standard scans.
 
-For example, limit a deep scan to two discovery workers and ten total runs:
+For example, use two discovery workers, allow up to ten runs, and stop
+discovery after 1.5 hours:
 
 ```bash
 npx @openai/codex-security scan . \
@@ -272,8 +278,14 @@ npx @openai/codex-security scan . \
   --workers 2 \
   --subagents 0 \
   --stop-after-no-new 3 \
-  --max-discovery-runs 10
+  --max-discovery-runs 10 \
+  --max-time-hours 1.5
 ```
+
+The time limit applies only to discovery. When it expires, the scan stops
+unfinished discovery, keeps completed discovery results, and continues with
+validation and reporting. If no source review finishes, the scan records
+partial coverage and returns exit code `2`.
 
 Set persistent defaults in `~/.codex/codex-security/config.toml`, or in
 `$CODEX_HOME/codex-security/config.toml` when you set `CODEX_HOME`:
@@ -284,11 +296,13 @@ workers = 2
 subagents = 0
 stop_after_no_new = 3
 max_discovery_runs = 10
+max_time_hours = 1.5
 ```
 
 Command-line options override these defaults. `scan --workers` controls
 discovery workers within one scan; `bulk-scan --workers` controls concurrent
-repository scans.
+repository scans. Set `stop_after_consecutive_errors` only in the TOML file;
+its default is `3`.
 
 ### Add security context
 
@@ -321,6 +335,7 @@ npx @openai/codex-security scan . \
 
 For example, use the scan prompt to focus on authorization boundaries and ask
 the follow-up to write a new `post-scan-summary.md` in the scan directory.
+If the follow-up fails, the CLI reports a warning and keeps the completed scan.
 The follow-up doesn't run after cancellation or when the scan reaches its cost
 limit.
 
@@ -343,8 +358,10 @@ machine-readable result.
 | `--full-output`            | Print the complete result using the default structured output format.                                                        |
 
 The cost limit is an estimate, not a hard spending cap. Requests already in
-progress can finish slightly above the limit. If a scan aborts due to the cost
-limit, partial scan results remain available on disk.
+progress can finish slightly above the limit. If a deep scan reaches the limit
+after discovery finishes, the CLI seals the available results, marks coverage
+as `partial`, and returns exit code `2`. Otherwise, it returns `2` and leaves
+any available partial output on disk.
 
 When you omit `--output-dir`, results persist under
 `$CODEX_HOME/state/plugins/codex-security/scans/<repository>`. `CODEX_HOME`
@@ -541,9 +558,15 @@ Rerun the scan against the current checkout using its original configuration:
 npx @openai/codex-security scans rerun SCAN_ID
 ```
 
+The rerun requires the plugin version recorded by the original scan. If the
+installed version differs, the command stops instead of running with a
+different plugin.
+
 ### Inspect saved scan logs
 
-Read the complete saved session events for a scan and its workers:
+Read the complete saved session events for a scan and its workers. These logs
+aren't redacted and can contain source code or credentials, so review them
+before sharing:
 
 ```bash
 npx @openai/codex-security scans logs SCAN_ID
@@ -900,6 +923,22 @@ severity policy. When you request structured output, completed scans still
 write the available results to stdout. The CLI prints the location of any
 partial output after an interruption or runtime error.
 
+## Local scan permissions
+
+CLI and SDK scans run with your local operating-system permissions. Every scan
+uses the `codex_security_scan` filesystem profile and sets `approvalPolicy` to
+`"never"`. The profile permits reading the local filesystem and writing to
+workspace roots and the selected scan state directory. Scans don't stop to
+request interactive approval.
+
+Settings supplied through CLI `--codex` or SDK `codexOverrides`, including
+`approval_policy`, `sandbox_mode`, and filesystem permissions, can't replace
+or restrict these scan controls. Host and network restrictions still apply.
+
+Scan and workbench processes can inherit your environment, including unrelated
+API tokens and cloud credentials. Scan only repositories you trust and have
+permission to assess, and provide only the credentials the scan requires.
+
 ## Authentication and prerequisites
 
 Set `OPENAI_API_KEY` or `CODEX_API_KEY`, sign in with
@@ -913,10 +952,10 @@ authentication](#select-scan-authentication).
 
 For CI, keep the API key scoped to the scan step and use a trusted workflow.
 
-The CLI requires Node.js 22.13.0 or later. Running a scan or exporting findings
-also requires Python 3.10 or later. Python 3.10 also requires `tomli`. Use
-`--python` or `PYTHON` to select an interpreter when automatic discovery is
-unsuitable.
+The CLI requires Node.js 22 (22.13.0 or later), 24, or 26. Scans, bulk scans,
+exports, scan history, and saved findings also require Python 3.10 or later.
+Python 3.10 also requires `tomli`. Use `--python` with `scan`, `bulk-scan`, or
+`export`, or set `PYTHON` for any Python-backed command.
 
 Continue with the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli), [bulk-scan
 guide](https://learn.chatgpt.com/docs/security/cli/bulk-scans), [CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq), [CI

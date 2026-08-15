@@ -13,17 +13,35 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use this changelog to see what changed in Codex Security and which plugin
-versions are available from each installation source.
+Use this changelog to see what changed in the Codex Security plugin.
 
-**Latest release in the hosted Codex Security catalog:** `0.1.18`.
+**Latest plugin version:** `0.1.19`.
 
 Check the plugin version in your current Codex environment before you use a
-feature from a newer release. Reopening or rerunning a saved scan doesn't pin
-the installed plugin version.
+feature from a newer release.
 
-These versions apply to the Codex Security plugin. The Codex app, Codex CLI,
-TypeScript SDK, and plugin app have separate version numbers.
+Changelog entries follow the plugin version, not the package version. CLI and
+SDK users can run `npx @openai/codex-security info --json` to check the
+package and bundled plugin versions together.
+
+## 0.1.19 (August 13, 2026)
+
+### Set a time limit for deep scans
+
+- Set `[deep_scan].max_time_hours` to a positive duration of up to 96 hours.
+  You can use fractional hours.
+- Keep completed discovery results when the deadline expires, then continue
+  with validation and reporting.
+- Mark the report as partial if no source review finishes before the deadline.
+
+### Improve scan reliability
+
+- Keep completed discovery work when a worker stops or a reducer retries.
+- Read larger source files and generate reports without the previous fixed
+  size limits.
+- Read committed changes from the selected revision and preserve
+  repository-relative paths on Windows.
+- Pass OpenRouter and Fireworks credentials to deep-scan workers.
 
 ## 0.1.18 (August 7, 2026)
 

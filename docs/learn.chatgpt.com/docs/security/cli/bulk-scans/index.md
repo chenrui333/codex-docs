@@ -117,6 +117,9 @@ limits through [`[deep_scan]`](/codex/security/cli/reference#configure-deep-scan
 Use `--mode deep` to select deep scanning for rows without their own `mode`.
 Each CSV row can still choose its own scan mode and repository scope.
 
+Set `[deep_scan].max_time_hours` to limit discovery for each deep scan in the
+campaign. The `--max-time-hours` flag works with `scan`, not `bulk-scan`.
+
 The CLI checks out each pinned revision, scans the selected target, records the
 result, and removes the temporary repository checkout. A repository counts as
 complete only when its scan has complete coverage and all required result

@@ -313,7 +313,9 @@ Use `[experimental_network]` in `requirements.toml` when administrators should
 define network access requirements centrally. These requirements are separate
 from the user `features.network_proxy` toggle: they can configure sandbox
 networking without that feature flag, but they don't grant command network
-access when the active sandbox keeps networking off.
+access when the active sandbox keeps networking off. Set
+`experimental_network.enabled = true` to activate the managed proxy; an
+allowlist alone does not make the proxy active.
 
 ```toml
 experimental_network.enabled = true
@@ -335,6 +337,22 @@ rules don't remain effective.
 The domain syntax, local/private destination rules, deny-over-allow behavior,
 and DNS rebinding limitations are the same as the sandbox networking behavior
 described in [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security#network-isolation).
+
+These requirements apply only to local commands that run inside the sandbox.
+They do not route or filter web search, apps and connectors, MCP servers,
+browser or Computer Use activity, Codex service requests, or Codex cloud
+traffic. Use the controls for each surface:
+
+- Use `allowed_web_search_modes` to restrict web search.
+- Use `features.apps = false` to disable app and connector integrations, and
+  `features.plugins = false` to disable plugins where supported.
+- Use the managed `mcp_servers` approved list to restrict MCP servers.
+- Use feature requirements such as `browser_use`, `in_app_browser`, and
+  `computer_use` to restrict browser and computer-use capabilities.
+- Configure Codex cloud network access in its cloud environment settings.
+
+A command domain allowlist does not replace these capability-specific
+controls.
 
 ### Pin feature flags
 

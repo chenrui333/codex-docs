@@ -194,6 +194,9 @@ rerunning your baseline scan:
 npx @openai/codex-security scans rerun BASELINE_SCAN_ID
 ```
 
+The rerun keeps the original scan configuration and requires the same plugin
+version. If the installed plugin has changed, the command stops.
+
 Compare the baseline with the new scan:
 
 ```bash
@@ -243,6 +246,23 @@ cover that finding's original path.
 
 ## Automation and cost
 
+### How do deep-scan time limits work
+
+Set a discovery deadline when starting a deep scan:
+
+```bash
+npx @openai/codex-security scan . --mode deep --max-time-hours 1.5
+```
+
+The default is `96` hours. Use any positive value up to `96`, including
+fractions. The limit applies only to discovery, so validation and reporting
+can continue after the deadline. If no source review finishes, the report
+records partial coverage and the CLI returns exit code `2`.
+
+For persistent settings or bulk campaigns, set `max_time_hours` under
+`[deep_scan]` in the [deep-scan
+configuration](https://learn.chatgpt.com/docs/security/cli/reference#configure-deep-scans).
+
 ### How do scan cost limits work
 
 Set an estimated cost limit in USD before starting the scan:
@@ -252,8 +272,9 @@ npx @openai/codex-security scan . --max-cost 5
 ```
 
 The limit is an estimate, not a hard spending cap. Requests already in
-progress can finish above the limit. Codex Security keeps available results
-when the scan stops.
+progress can finish above it. If a deep scan reaches the limit after discovery
+finishes, the CLI saves the completed report with partial coverage and exits
+with code `2`. Otherwise, it preserves any available partial output.
 
 ### Can scans check commits and pull requests
 

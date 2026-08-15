@@ -44,17 +44,28 @@ workers = 2
 subagents = 0
 stop_after_no_new = 3
 max_discovery_runs = 10
+max_time_hours = 1.5
 ```
 
-| Setting              | Default | Description                                                                                      |
-| -------------------- | ------- | ------------------------------------------------------------------------------------------------ |
-| `workers`            | `auto`  | Number of discovery workers allowed to run at the same time. Set a positive integer or `"auto"`. |
-| `subagents`          | `3`     | Number of subagents each discovery worker may start. Set `0` to disable them.                    |
-| `stop_after_no_new`  | `6`     | Stop discovery after this many consecutive runs produce no new candidates.                       |
-| `max_discovery_runs` | `60`    | Limit on discovery runs before the scan moves to validation.                                     |
+| Setting                         | Default | Description                                                                                      |
+| ------------------------------- | ------- | ------------------------------------------------------------------------------------------------ |
+| `workers`                       | `auto`  | Number of discovery workers allowed to run at the same time. Set a positive integer or `"auto"`. |
+| `subagents`                     | `3`     | Number of subagents each discovery worker may start. Set `0` to disable them.                    |
+| `stop_after_no_new`             | `6`     | Stop discovery after this many consecutive runs produce no new candidates.                       |
+| `stop_after_consecutive_errors` | `3`     | Stop discovery after this many consecutive worker errors.                                        |
+| `max_discovery_runs`            | `60`    | Limit on discovery runs before the scan moves to validation.                                     |
+| `max_time_hours`                | `96`    | Limit discovery to a positive number of hours up to `96`; use fractions as needed.               |
 
 Lower values can reduce scan time and token use but may miss findings.
 Configuration changes apply to new deep scans, not scans already in progress.
+
+The time limit applies only to discovery. When it expires, Codex Security
+stops unfinished discovery, keeps completed results, and continues with
+validation and reporting. If no source review finishes before the deadline,
+the report records partial coverage.
+
+The `max_time_hours` setting requires plugin version `0.1.19` or later. See the
+[plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) for release details.
 
 ## Start the deep scan
 

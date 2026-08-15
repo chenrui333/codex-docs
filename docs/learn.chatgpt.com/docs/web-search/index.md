@@ -60,6 +60,13 @@ For local Codex chats, Codex enables cached search by default. Cached mode uses
 an OpenAI-maintained index instead of fetching arbitrary pages live, which
 lowers—but doesn't remove—prompt injection risk.
 
+Web search is a hosted tool, separate from sandboxed local command networking.
+It does not use the permission profile's network proxy or domain allowlist, and
+it can remain available when command network access is disabled. Configure
+search with `web_search`, `tools.web_search.allowed_domains`, and managed
+`allowed_web_search_modes` as appropriate. Search-domain filters do not restrict
+local command traffic, apps, connectors, or MCP servers.
+
 Use live search when your task depends on the latest information. Set
 `web_search = "live"` in `config.toml`. Set `web_search = "disabled"` to turn
 the tool off. The `"indexed"` mode permits external web access only when the

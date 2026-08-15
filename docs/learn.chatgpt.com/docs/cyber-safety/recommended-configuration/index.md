@@ -55,6 +55,9 @@ approval_policy = "on-request"
 approvals_reviewer = "auto_review"
 default_permissions = "cyber-lab"
 
+[features]
+network_proxy = true
+
 [permissions.cyber-lab]
 description = "Limit security testing to the approved lab and workspace."
 extends = ":workspace"
@@ -74,6 +77,12 @@ enabled = true
 [permissions.cyber-lab.network.domains]
 "lab.example.com" = "allow"
 ```
+
+The `network_proxy` feature enforces the approved domain. Without it,
+`network.enabled = true` permits direct network access and the lab allowlist
+does not restrict destinations. Web search, apps, connectors, MCP servers,
+browser activity, and Codex cloud use separate controls; restrict or turn off
+each surface that your approved workflow does not require.
 
 Replace `lab.example.com` with an approved target. The bounded filesystem scan is designed to avoid searching the entire workspace on Linux, WSL, and Windows; increase the depth or use exact deny paths if sensitive files appear deeper. Don't combine permission profiles with legacy `sandbox_mode` settings; follow the [permission-profile configuration guidance](https://learn.chatgpt.com/docs/permissions#define-and-select-a-profile).
 

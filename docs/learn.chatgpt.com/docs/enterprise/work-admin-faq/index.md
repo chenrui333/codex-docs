@@ -25,56 +25,64 @@ ChatGPT Work lets users delegate longer, multi-step tasks to ChatGPT. It can gat
 information from connected sources, reason across steps, create documents,
 presentations, or analyses, and return results for review.
 
-ChatGPT Work launched July 9, 2026. For Enterprise and Edu, web and mobile access is
-off by default during a two-week preview. Admins can enable billable usage, and
-explicit opt-outs persist when the default changes. Desktop access remains
-governed separately through Codex Local permissions and managed configuration.
+ChatGPT Work is available on supported web, mobile, and desktop surfaces for
+eligible plans and workspaces. Where supported, workspace owners or authorized
+admins can manage Work Cloud, Work Local, and Codex Local through distinct
+permissions. For eligible Enterprise and Edu workspaces, the default workspace
+role includes Work unless an authorized administrator turns it off. Browser and
+network controls further restrict Work Cloud, and availability depends on role,
+plan, workspace, and region. See
+[ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex).
 
 This FAQ explains how admins manage ChatGPT Work: access and data controls,
 compliance and visibility, usage and spend, incident response, and rollout
-practices.
+practices. For the hosted execution model and security boundaries, see
+[ChatGPT Work Overview](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview).
 
 ## Core administrative controls
 
-Administrators govern ChatGPT Work through several control layers:
+Administrators govern ChatGPT Work through these control layers:
 
 - **Access to the enterprise workspace:** Identity and access controls manage
   authentication and access to the workspace. Depending on the plan and
   configuration, administrator-controlled identity features can include SSO,
   domain verification, SCIM provisioning, user lifecycle management, and
-  identity-group synchronization. Users can enable account-level OpenAI MFA;
-  enforce workspace-wide MFA through your identity provider. Manage SSO and
-  related identity settings in the
+  identity-group synchronization. SCIM and synchronized identity groups aren't
+  included with ChatGPT Business. Users can enable account-level OpenAI MFA.
+  ChatGPT doesn't provide workspace-wide MFA enforcement; organizations that
+  require it should enforce SSO and MFA through their identity provider. Manage
+  SSO and related identity settings in the
   [Global Admin Console](https://help.openai.com/en/articles/12289294-admin-portal).
-- **Access to ChatGPT Work within the workspace:** On web and mobile, admins use the
-  ChatGPT Work access control and role-based access control (RBAC) to decide who can
-  use it. Enterprise and Edu access is off during the two-week preview;
-  admins can enable it, and explicit opt-outs persist when the default changes.
-  Desktop access follows separate Codex Local permissions and
-  [managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration). Controls
-  vary by plan and surface.
-- **Group membership:** Groups can be synchronized through SCIM and an identity
-  provider so access updates automatically as employees join the organization,
+  See [Multi-factor authentication](https://help.openai.com/en/articles/7967234-enabling-or-disabling-multi-factor-authentication-mfa).
+- **Access to ChatGPT Work within the workspace:** Where available, Work Cloud
+  governs hosted Work across supported web, mobile, and desktop surfaces. Work
+  Local governs local desktop Work, while Codex Local controls supported local
+  Codex access in desktop, CLI, and IDE clients. Cloud browser and network
+  settings further restrict Work Cloud. Custom role-based access control (RBAC)
+  and available permissions depend on the plan and workspace.
+- **Group membership:** On plans that support SCIM, synchronize groups through
+  an identity provider so access updates as employees join the organization,
   change roles, or leave. See
   [Groups and provisioning](https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning).
-- **Workspace and member roles:** Built-in Owner, Admin, and Member roles
-  determine who can administer the workspace. Custom roles and member RBAC
-  separately control end-user access to ChatGPT Work, plugins, and other capabilities.
-  See
+- **Workspace and member roles:** Built-in Enterprise roles include Owner,
+  Admin, Member, and Analytics Viewer. On supported plans, custom roles and
+  member RBAC control access to ChatGPT Work, plugins, and other capabilities.
+  Where seat types apply, members also need a seat that includes ChatGPT; a
+  Codex-only seat doesn't grant access to Work. See
   [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
-- **Plugins and connectors:** Plugin policy governs plugin availability and
-  installation. Connector access, action controls, and approval behavior are
-  configured separately, and Workspace Agents have additional per-agent
-  controls. See [Plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors),
+- **Plugins and apps:** Plugin policy governs plugin availability and
+  installation. App access, action controls, and approval behavior are
+  configured separately. Workspace Agents have their own controls where
+  available. See [Plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors),
   [Plugins](https://learn.chatgpt.com/docs/plugins), and the
   [App security white paper](https://cdn.openai.com/business-guides-and-resources/app-security-whitepaper.pdf).
 - **Source-system permissions:** A user can access only the content and actions
   allowed by the account or shared connection in the native application. See
   [Admin controls, security, and compliance in apps](https://help.openai.com/en/articles/11509118-admin-controls-security-and-compliance-in-apps-enterprise-edu-and-business).
-- **Approval and action restrictions:** For connectors that support Action control,
+- **Approval and action restrictions:** For apps that support Action control,
   admins can allow all actions, read-only actions, or a custom set and decide
   how newly added actions are handled. App permissions separately determine
-  when ChatGPT asks before using a connector.
+  when ChatGPT asks before using an app.
 - **Credits:** ChatGPT Work and Codex share pricing, credits, and usage limits.
   Eligible Enterprise and Edu admins can set monthly per-user limits through a
   workspace default, group defaults, and individual overrides. Users can
@@ -94,19 +102,22 @@ Administrators govern ChatGPT Work through several control layers:
 
 ChatGPT Work is governed by the identity, access, and permission controls already
 established in your ChatGPT workspace. Administrators use identity management,
-[RBAC](https://help.openai.com/en/articles/11750701-rbac), and workspace roles
-to determine who can use ChatGPT Work.
+workspace roles, and, on eligible plans,
+[RBAC](https://help.openai.com/en/articles/11750701-rbac) to determine who can
+use ChatGPT Work.
 
 Where supported, access can be synchronized with your identity provider through
 [SCIM](https://help.openai.com/en/articles/10011769-openai-platform-scim-integration-faq)
 and group synchronization. This lets you manage access and permissions centrally
 as employees join the organization, change roles, or leave.
 
-Underlying source systems continue to enforce access to enterprise data. ChatGPT Work
-respects the permissions defined in connected applications, so users and agents
-can access only files, repositories, channels, records, and actions they are
-authorized to use. ChatGPT Work doesn't bypass existing access controls or grant new
-permissions in connected systems.
+Underlying source systems enforce the permissions of the account or approved
+shared connection used for the operation. An individual connection uses that
+person's source-system access. An agent-owned or shared connection can give
+authorized agent users access through the connected account, including data or
+actions their own account couldn't access. Restrict the connection's scopes,
+available actions, and agent audience to the intended business need. See
+[Workspace Agent connections and permissions](https://help.openai.com/en/articles/20001143-chatgpt-workspace-agents-for-enterprise-and-business).
 
 <a id="how-does-work-access-data-and-context"></a>
 <a id="how-does-work-mode-access-data-and-context"></a>
@@ -114,11 +125,12 @@ permissions in connected systems.
 ### How does ChatGPT Work access data and context?
 
 ChatGPT Work can use the current chat, uploaded files, workspace resources, and
-connected systems through plugins. Depending on enabled capabilities and
-permissions, this can include documents, repositories, tickets, channels,
-email, and calendars. Files from earlier chats or memory can be available
-when included in the current chat or project, or when applicable
-workspace and user memory controls are enabled.
+connected systems through approved apps and, when applicable, plugins.
+Depending on enabled capabilities and permissions, this can include documents,
+repositories, tickets, channels, email, and calendars. Earlier files can be
+available through the current chat, supported projects, authorized Library
+access, or enabled automatic Library references. Saved memories follow their
+own workspace and user controls.
 
 Each context source keeps its own controls: users supply chat context,
 admins manage workspace resources, and connected systems enforce authentication
@@ -146,8 +158,8 @@ Common action categories include:
   documents, tickets, repositories, or project-management tools.
 - **Share:** Send, publish, or otherwise make information available to more
   people, systems, or external destinations.
-- **Scheduled:** Start a task at a future time or on a recurring schedule
-  without requiring a user to initiate each run.
+- **Schedule:** Start a task at a future time or on a recurring schedule
+  without requiring a user to start each run.
 - **Execute:** Run code, shell commands, browser automation, or other
   tool-driven tasks that interact directly with external environments.
 
@@ -169,8 +181,8 @@ and region. For ChatGPT Enterprise, this includes
 encryption in transit and at rest, workspace-level access controls, and
 supported audit logging.
 
-Coverage for data residency, inference residency, FedRAMP, HIPAA, or a Business
-Associate Agreement isn't universal. Confirm current
+Coverage for data residency, inference residency, HIPAA, or a Business Associate
+Agreement isn't universal. Confirm current
 [data and inference residency guidance](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt)
 and the customer's agreement for the features and regions in use.
 
@@ -188,9 +200,10 @@ repositories, configured tools, and related activity. Review
 
 Data retention and deletion for ChatGPT Work are governed by the ChatGPT workspace
 plan, administrative settings, and the capabilities in use. Retention can vary
-across the information ChatGPT Work accesses. Data stored by ChatGPT follows the
-configured workspace retention policies, while connected applications continue
-to manage their own data and lifecycle policies. See
+across the information ChatGPT Work accesses. Conversations and eligible Library
+files follow their applicable workspace settings. Project files, transient
+uploads, saved memories, compliance events, synchronized app data, and
+third-party records can have separate retention and deletion rules. See
 [Chat and file retention policies](https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt).
 
 ChatGPT Work can create chat content, uploaded or generated files, artifacts,
@@ -208,17 +221,26 @@ record-retention policies apply to each system.
 ### What usage data is available to admins or owners?
 
 Admins and owners can use product analytics and compliance logs for different
-kinds of visibility. The Global Admin Console shows adoption and credit use by
-user, product, and model, including the ability to drill down across Chat, Work,
-and Codex usage. The Compliance API covers all user messages and responses
-across Chat, Work, and Codex. See
+kinds of visibility. The Global Admin Console provides supported ChatGPT and
+Codex adoption and credit-usage views; available user, product, agent, and model
+breakdowns depend on the analytics surface and workspace. For eligible
+workspaces, the Compliance API provides covered ChatGPT conversation records,
+including supported cloud Work activity. Coverage depends on the product,
+surface, permissions, available endpoint, and documented event schema. See
 [Workspace analytics](https://learn.chatgpt.com/docs/enterprise/workspace-analytics) and the
 [Compliance API](https://learn.chatgpt.com/docs/enterprise/compliance-api).
 
 ### Are prompts, outputs, files, actions, or tool calls logged?
 
-The Compliance Logs Platform provides user prompts and agent responses. It
-doesn't track files, actions, or tool calls.
+For eligible Enterprise and Edu workspaces, the Compliance Logs Platform
+provides Work user prompts and agent responses.
+[Connected app calls are separately logged](https://help.openai.com/en/articles/11509118-admin-controls-security-and-compliance-in-apps-enterprise-edu-and-business),
+and eligible workspaces can access active Library files through supported
+[Library-specific Compliance API endpoints](https://help.openai.com/en/articles/20001052-library-for-chatgpt).
+These records don't establish a complete audit trail for every hosted file
+operation, shell command, browser interaction, tool invocation, or approval.
+Confirm the current event and product coverage in the authenticated Compliance
+API documentation.
 
 The Compliance Logs Platform retains data for 30 days. Export records
 continuously to an approved electronic discovery, data loss prevention, SIEM,
@@ -229,11 +251,12 @@ or data-lake system when your organization requires longer retention. See the
 
 Workspace analytics, compliance logs, and connected monitoring tools help
 admins review usage and investigate supported ChatGPT, Work, and Codex
-activity. Signals can include active users, messages, tool activity, agent
-activity, authentication and administrative events, and credit consumption.
-Exported logs can support electronic discovery, data loss prevention, SIEM,
-auditing, and investigations. Detection quality depends on plan, event
-coverage, attribution, freshness, and configured rules.
+activity. Depending on the selected reporting surface, signals can include
+active users, supported messages, app activity, agent usage, authentication or
+administrative events, and credit consumption. Exported logs can support
+electronic discovery, data loss prevention, SIEM, auditing, and investigations.
+Detection quality depends on plan, event coverage, attribution, freshness, and
+configured rules.
 
 Signals that can warrant review include unexpected increases in usage or credit
 consumption, unusual user or agent activity, recurring operational errors, and
@@ -247,6 +270,8 @@ metadata, tool-approval decisions, and tool results. Prompt contents are
 redacted unless `otel.log_user_prompt = true` is enabled as a separate explicit
 opt-in. See
 [Monitoring and telemetry](https://learn.chatgpt.com/docs/agent-approvals-security#monitoring-and-telemetry).
+This local Codex telemetry doesn't provide an OpenTelemetry export for ChatGPT
+Work on the web.
 
 ## Governance
 
@@ -257,10 +282,10 @@ Governance spans three related but separate layers:
 - **ChatGPT Work access controls** determine who can use ChatGPT Work on
   each surface.
 - **Workspace Agent controls** determine who can build, publish, share,
-  schedule, or configure reusable agents and shared connections.
-- **Codex managed configuration** governs covered local runtime behavior,
-  including permissions, approvals, filesystem and network access, MCP servers,
-  hooks, and command rules.
+  schedule, or configure reusable agents and shared connections, where
+  Workspace Agents are available.
+- **Codex managed configuration** governs covered local Codex runtime behavior
+  and doesn't configure hosted ChatGPT Work.
 
 Managed configuration constrains supported runtime behavior. It doesn't grant
 workspace access, replace RBAC, or revoke a user's workspace access. These
@@ -268,37 +293,34 @@ layers aren't one uniform ChatGPT Work policy surface. Analytics and compliance 
 provide additional visibility within their documented product and event
 scopes.
 
-Enterprise administrators can use
-[managed requirements](https://learn.chatgpt.com/docs/enterprise/managed-configuration) to enforce
-supported settings that users can't override while the requirements are
-active. Supported policies cover approval behavior, permission profiles, web
-search, hooks, MCP servers, feature flags, command rules, and filesystem
-access. Network requirements are experimental and should be tested on the
-client versions and operating systems in your deployment before broad use. For
-current Codex clients, managed
-[permission profiles](https://learn.chatgpt.com/docs/permissions) are the preferred way to define
-filesystem, network, and runtime access.
+For supported local Codex clients, enterprise administrators can apply
+[managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) and
+[permission profiles](https://learn.chatgpt.com/docs/permissions). Those local-client controls don't
+grant access to, or replace the workspace permissions for, hosted ChatGPT Work.
 
 ### Can access be scoped by group, role, workspace, or capability?
 
-Yes. ChatGPT Work capabilities can be scoped with workspace roles, identity groups,
-and administrator-defined permissions. Assign capabilities to groups based on
-business need and organizational policy instead of giving every user identical
-access. See the
+Yes. On eligible Enterprise and Edu plans that support custom member RBAC,
+ChatGPT Work capabilities can be scoped with workspace roles, identity groups,
+and administrator-defined permissions. ChatGPT Business uses applicable
+workspace-level controls but doesn't include custom member RBAC or SCIM group
+synchronization. Assign supported capabilities based on business need and
+organizational policy. See the
 [RBAC guide](https://help.openai.com/en/articles/11750701-rbac) and this
 [RBAC walkthrough](https://vimeo.com/1207482321/d1286e4467?share=copy&fl=sv&fe=ci).
 
-Organizations can use RBAC to determine which users can access ChatGPT Work, manage
-workspace settings, configure approved plugins, or build and publish Workspace
-Agents. For eligible Enterprise and Edu workspaces, monthly usage limits can
-support a phased rollout through a workspace default, group defaults, and user
-overrides.
+Where custom RBAC is available, organizations can use it to determine which
+users can access ChatGPT Work, manage workspace settings, configure approved
+plugins, or use supported Workspace Agent features. For eligible Enterprise and
+Edu workspaces, monthly usage limits can support a phased rollout through a
+workspace default, group defaults, and user overrides.
 
 Access to connected systems remains independently governed. Scope plugins, shared
 credentials, repositories, and write-capable actions to the minimum required
 audience using workspace permissions, plugin settings, and the source system's
-controls. For higher-trust environments, use managed policies to restrict
-runtime capabilities further.
+controls. For supported local Codex clients, managed configuration can further
+restrict local runtime capabilities. Hosted Work follows its own workspace and
+product-specific controls.
 
 ### How are runtime and network boundaries governed?
 
@@ -306,19 +328,21 @@ The security boundaries for ChatGPT Work depend on the task. A standard Chat con
 connected workflow, a scheduled task, and a Codex chat can run in different
 environments with different permissions, tools, and network access.
 
-Govern each execution environment through its applicable controls. ChatGPT Work
-permissions on web and mobile govern access to ChatGPT Work and supported browser or
-network capabilities. Search, plugins, Workspace Agents, and
-source-system permissions remain separate controls. Desktop and Codex chats
-follow Codex permissions, managed configuration, MCP policy, sandboxing, and
-approval controls. These controls aren't interchangeable.
+Govern each execution environment through its applicable controls. Work Cloud
+governs hosted Work across supported web, mobile, and desktop surfaces. Work
+Local governs local desktop Work, and Codex Local controls supported local
+Codex access in desktop, CLI, and IDE clients. Browser and shell network
+permissions further restrict Work Cloud. Search, apps, plugins, available
+Workspace Agents, and source-system permissions remain separate controls.
+Applicable managed configuration and local runtime policies govern only their
+supported local experiences. These controls aren't interchangeable.
 
 For Codex activity, local runs in the ChatGPT desktop app, CLI, and IDE execute
 on the user's machine with operating-system sandboxing and approval policies.
-Codex cloud runs chats in isolated OpenAI-managed environments. Enterprise
-administrators can use managed requirements to constrain permission profiles,
-approvals, filesystem and network access, MCP servers, hooks, command rules,
-and other supported runtime behavior.
+Codex cloud runs chats in isolated OpenAI-managed environments. For supported
+local clients, enterprise administrators can use managed requirements to
+constrain permission profiles, approvals, filesystem and network access, MCP
+servers, hooks, command rules, and other supported runtime behavior.
 
 ## Usage and cost
 
@@ -332,11 +356,12 @@ Consumption varies with the model and capability, context size, task duration,
 tool use, and output size. Standard Chat usage is separate.
 
 The highest-variance patterns are often workflows that run frequently,
-retrieve or process large amounts of information, call multiple tools or connectors,
+retrieve or process large amounts of information, call multiple tools or apps,
 retry after failures, or produce large artifacts. Cost-sensitive examples
-include scheduled or recurring work, high-volume triggers, large files, broad
-retrieval across enterprise sources, repeated connector calls, and Codex chats that
-process repositories, run commands, or use cloud environments.
+include scheduled or recurring work, large files, broad
+retrieval across enterprise sources, repeated app calls, and Codex chats that
+process repositories, run commands, or use cloud environments. Workspace Agent
+API triggers can also add usage where available.
 
 Use spend controls, usage analytics, and reporting to monitor these patterns
 over time. Review usage by the dimensions supported in the current analytics
@@ -381,38 +406,41 @@ and the
 
 ### How can admins stop access or activity?
 
-Admins can need to stop users, plugins, shared credentials, workflows, schedules,
-or Codex credentials during user removal or incident review.
+During user removal or incident review, admins might need to stop access,
+disable apps, revoke shared credentials, pause scheduled tasks, or revoke Codex
+credentials.
 
 Revocation paths include:
 
 - Remove a user's workspace or group access. For SCIM-managed users, remove
   access at the identity provider; otherwise, a later synchronization can
   provision the user again.
-- Disable or restrict the relevant plugin or connector.
+- Disable or restrict the relevant plugin or app.
 - Revoke a shared connection, bot, or service account through its owning
   surface. Workspace owners and admins can separately revoke Codex workspace
   access tokens.
 - Remove a Workspace Agent from publication or delete it through its agent owner
   or workspace administrator.
-- Disable the relevant schedule or trigger.
+- Disable the relevant scheduled task or, where available, Workspace Agent API
+  trigger.
 - For Codex access, separately revoke the relevant access token, repository
   connection, and cloud-environment access. Managed configuration isn't an
   access-revocation mechanism.
 
 ## Additional resources for your teams
 
-| Topic                    | Use this when explaining                                                   | Learn ChatGPT page                                               |
-| ------------------------ | -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Workspace setup and RBAC | Who can use and administer Codex                                           | [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup)             |
-| Authentication           | How ChatGPT sign-in, API key sign-in, and workspace policy differ          | [Authentication](https://learn.chatgpt.com/docs/auth)                                    |
-| Approvals and sandboxing | How Codex controls file, command, network, and side-effecting tool actions | [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)  |
-| Managed policy           | How admins enforce Codex settings users can't override                     | [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) |
-| Runtime environments     | How Codex cloud setup, secrets, caches, and task phases work               | [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)      |
-| Internet access          | How Codex cloud domain allowlists and HTTP methods work                    | [Agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access)            |
-| Permissions              | How filesystem, network, and deny-read controls work                       | [Permissions](https://learn.chatgpt.com/docs/permissions)                                |
-| Observability            | How analytics, reporting, and compliance exports work                      | [Governance](https://learn.chatgpt.com/docs/enterprise/governance)                       |
-| Automation credentials   | How access tokens are created, limited, revoked, and audited               | [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens)                 |
+| Topic                    | Use this when explaining                                                      | Learn ChatGPT page                                               |
+| ------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Work overview            | How cloud execution, browser access, network policy, and data boundaries work | [ChatGPT Work Overview](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview) |
+| Workspace setup and RBAC | Who can use and administer Codex                                              | [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup)             |
+| Authentication           | How ChatGPT sign-in, API key sign-in, and workspace policy differ             | [Authentication](https://learn.chatgpt.com/docs/auth)                                    |
+| Approvals and sandboxing | How Codex controls file, command, network, and side-effecting tool actions    | [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)  |
+| Managed policy           | How admins enforce Codex settings users can't override                        | [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) |
+| Runtime environments     | How Codex cloud setup, secrets, caches, and task phases work                  | [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)      |
+| Internet access          | How Codex cloud domain allowlists and HTTP methods work                       | [Agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access)            |
+| Permissions              | How filesystem, network, and deny-read controls work                          | [Permissions](https://learn.chatgpt.com/docs/permissions)                                |
+| Observability            | How analytics, reporting, and compliance exports work                         | [Governance](https://learn.chatgpt.com/docs/enterprise/governance)                       |
+| Automation credentials   | How access tokens are created, limited, revoked, and audited                  | [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens)                 |
 
 ## Recommended admin actions
 
@@ -424,7 +452,7 @@ Revocation paths include:
   and governance expectations.
 - **Review plugins and data sources.** ChatGPT Work is most useful with approved
   business context such as files, email, calendars, Slack, or CRM. Review
-  enabled plugins, their audiences, and whether connector policies still match how users
+  enabled plugins, their audiences, and whether app policies still match how users
   should delegate work.
 - **Set expectations for appropriate use cases.** Position ChatGPT Work for multi-step,
   higher-value tasks such as research, synthesis, analysis, file creation,

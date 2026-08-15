@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-08-05T18:39:37Z'
-source_etag: 'W/"593aa8167ab961879d497974cc752ff7"'
+source_last_modified: '2026-08-15T01:15:47Z'
+source_etag: 'W/"a6db6c7ebbb7291e2f86e0b1388fea9c"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
 ---
@@ -240,6 +240,20 @@ options.InputItems.Add(
 ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What movie won best picture in 2025?",
+  tools: [{type: :web_search, search_context_size: :low}]
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -515,6 +529,30 @@ options.InputItems.Add(
 ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What are the best restaurants near me?",
+  tools: [
+    {
+      type: :web_search,
+      user_location: {
+        type: :approximate,
+        country: "GB",
+        city: "London",
+        region: "London"
+      }
+    }
+  ]
+)
+
+puts(response.output_text)
 ```
 
 ```bash

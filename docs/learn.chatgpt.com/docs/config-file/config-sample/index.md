@@ -452,6 +452,12 @@ experimental_use_profile = false
 
 # Enable the feature before configuring sandboxed networking rules.
 
+# A profile's network.enabled allows direct network access; its domain rules
+
+# apply only when the network proxy feature is enabled.
+
+# Web search, apps, connectors, and MCP servers use separate controls.
+
 # [features.network_proxy]
 
 # enabled = true
@@ -700,7 +706,7 @@ enabled = true
 
 # personality = true
 
-# network_proxy = false
+# network_proxy = true # required to enforce permission-profile domain rules
 
 # fast_mode = true
 

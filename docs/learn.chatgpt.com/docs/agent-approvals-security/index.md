@@ -59,7 +59,8 @@ network_access = true
 Network access is controlled through destination rules that apply to scripts,
 programs, and subprocesses spawned by commands. When command network access is
 already enabled, turn on the `network_proxy` feature to constrain that traffic
-to the network policy you configure.
+to the network policy you configure. Adding domain rules does not enable the
+proxy by itself.
 
 ```toml
 [features.network_proxy]
@@ -90,6 +91,30 @@ network access by itself. Use `sandbox_workspace_write.network_access` with
   outbound access.
 - Network on + `network_proxy` on: network stays on, and outbound traffic is
   constrained by the configured network policy.
+
+The proxy feature also applies to [permission profiles](https://learn.chatgpt.com/docs/permissions#network-permissions).
+A profile's `network.enabled = true` grants command network access, while
+`features.network_proxy = true` activates enforcement of that profile's domain
+rules:
+
+```toml
+default_permissions = "project-edit"
+
+[features]
+network_proxy = true
+
+[permissions.project-edit]
+extends = ":workspace"
+
+[permissions.project-edit.network]
+enabled = true
+
+[permissions.project-edit.network.domains]
+"api.openai.com" = "allow"
+```
+
+If you omit the proxy feature in this example, commands have direct network
+access and the `api.openai.com` allow rule does not restrict their destinations.
 
 Admin-managed `experimental_network` requirements are separate from the user
 feature toggle. They can configure and start sandboxed networking without
@@ -160,6 +185,20 @@ so sandboxed networking does not become a remote bridge into local daemons.
 | `allow_upstream_proxy`                 | `true`  | Lets sandboxed networking honor an upstream proxy from the environment.                                                                                                               |
 | `dangerously_allow_non_loopback_proxy` | `false` | Keeps listener endpoints on loopback unless you deliberately expose them beyond localhost.                                                                                            |
 | `dangerously_allow_all_unix_sockets`   | `false` | Keeps Unix socket access allowlist-based unless you deliberately bypass that protection.                                                                                              |
+
+### Traffic outside the command network proxy
+
+The network proxy filters scripts, programs, and child processes that run
+inside the local command sandbox. It does not filter web search, app or
+connector tool calls, MCP server connections, browser or Computer Use activity,
+Codex cloud tasks, or the client's model and authentication requests. These
+surfaces use separate service connections, feature settings, workspace
+policies, or environment controls.
+
+For managed users, combine command network policy with controls such as
+`allowed_web_search_modes`, approved `mcp_servers`, and feature requirements
+for apps, plugins, browsers, or Computer Use. See
+[Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration).
 
 You can also control the [web search tool](https://platform.openai.com/docs/guides/tools-web-search) without granting full network access to spawned commands. Codex defaults to using a web search cache to access results. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](#common-sandbox-and-approval-combinations), web search defaults to live results. Use `--search` or set `web_search = "live"` to allow live browsing, or set it to `"disabled"` to turn the tool off:
 

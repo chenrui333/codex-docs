@@ -25,8 +25,9 @@ The `@openai/codex-security` package is public. Running scans requires Codex
 
 ## Check the prerequisites
 
-The CLI requires Node.js 22.13.0 or later. Running a scan or exporting findings
-also requires Python 3.10 or later. For more detail, see [Authentication and
+The CLI requires Node.js 22 (22.13.0 or later), 24, or 26. Scans, bulk scans,
+exports, scan history, and saved findings also require Python 3.10 or later.
+For more detail, see [Authentication and
 prerequisites](https://learn.chatgpt.com/docs/security/cli/reference#authentication-and-prerequisites).
 
 ## Set up and verify the CLI
@@ -35,6 +36,12 @@ Run the CLI with `npx` and check its version:
 
 ```bash
 npx @openai/codex-security --version
+```
+
+To see both the package version and the version of its bundled plugin, run:
+
+```bash
+npx @openai/codex-security info --json
 ```
 
 List the available commands:
@@ -87,7 +94,13 @@ require [Trusted Access for Cyber](https://chatgpt.com/cyber).
 
 ## Prepare a scan
 
-Choose a repository to scan and a directory to write results.
+Choose a repository you trust and have permission to assess. Scans use your
+local operating-system permissions and don't pause for approval. Scan
+processes can inherit your environment, so remove unrelated credentials before
+you start. See [Local scan
+permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions).
+
+Choose a directory outside the repository for the scan results:
 
 ```bash
 REPOSITORY=/path/to/repository
@@ -231,12 +244,16 @@ npx @openai/codex-security scan "$REPOSITORY" \
   --workers 2 \
   --subagents 0 \
   --stop-after-no-new 3 \
-  --max-discovery-runs 10
+  --max-discovery-runs 10 \
+  --max-time-hours 1.5
 ```
 
 These options require deep mode, which supports repository and path targets,
 not diff or working-tree scans. Here, `--workers` controls discovery workers
 within one scan; `bulk-scan --workers` controls concurrent repository scans.
+`--max-time-hours` accepts a positive number up to `96`, including fractional
+hours. When discovery reaches that limit, the scan preserves completed work
+and continues with validation and reporting.
 
 ## Add architecture and security context
 
@@ -262,9 +279,10 @@ npx @openai/codex-security scan "$REPOSITORY" \
 ```
 
 The follow-up runs in the same authenticated session after successful scans
-and scans with incomplete coverage or errors. It doesn't run after cancellation
-or a scan that reaches its cost limit. Both options also work with
-`bulk-scan`; a CSV `prompt` column adds repository-specific instructions.
+and scans with incomplete coverage or errors. If the follow-up fails, the CLI
+reports a warning and keeps the completed scan. It doesn't run after
+cancellation or a scan that reaches its cost limit. Both options also work
+with `bulk-scan`; a CSV `prompt` column adds repository-specific instructions.
 
 ## Set a scan budget
 
@@ -275,8 +293,11 @@ in USD:
 npx @openai/codex-security scan "$REPOSITORY" --max-cost 5
 ```
 
-Requests already in progress can finish slightly above the limit. If a scan
-aborts due to the cost limit, partial scan results remain available on disk.
+Requests already in progress can finish slightly above the limit. If a deep
+scan reaches the limit after discovery finishes, the CLI saves the completed
+report, marks its coverage as `partial`, and returns exit code `2`. If the
+scan can't produce a completed report, any available partial output stays on
+disk.
 
 ## Scan changes before each commit
 

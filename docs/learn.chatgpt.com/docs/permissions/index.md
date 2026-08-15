@@ -34,6 +34,12 @@ Codex runs on your behalf. A profile is a named policy that combines filesystem
 rules, which define what commands can read or write, with network rules, which
 define which destinations commands can reach.
 
+A profile's `network.enabled = true` permits command network access, but it
+  does not start the network proxy. To enforce profile domain rules, also set
+  `features.network_proxy = true` in `config.toml`, or use enabled,
+  administrator-managed `[experimental_network]` requirements. Without an active
+  proxy, profile domain rules do not restrict direct network access.
+
 Use profiles to give Codex enough access for the current chat without granting
 broad access to your machine or network. For example, a read-only profile can
 let Codex inspect a project without editing it, while a write-capable profile
@@ -99,6 +105,9 @@ profile.
 ```toml
 default_permissions = "project-edit"
 
+[features]
+network_proxy = true
+
 [permissions.project-edit.workspace_roots]
 "~/code/app" = true
 "~/code/shared-lib" = true
@@ -147,6 +156,9 @@ differ.
 ```toml
 default_permissions = "project-edit"
 
+[features]
+network_proxy = true
+
 [permissions.project-edit]
 description = "Project editing with OpenAI API access."
 extends = ":workspace"
@@ -181,9 +193,9 @@ cycles.
 | `permissions.<name>.filesystem.glob_scan_max_depth`               | Number                     | None                    | Limits deny-read glob expansion on Linux, WSL, and native Windows when Codex snapshots matches before sandbox startup. Larger values can increase startup scanning work. Use a value of at least `1` when an unbounded `**` pattern needs bounded pre-expansion.                                                                                                                                                              |
 | `[permissions.<name>.filesystem]."<path>"`                        | `read`, `write`, or `deny` | None                    | Grants direct access for a supported path. `deny` denies access and wins over equally specific `write` or `read` entries. Codex rejects direct write rules that the active runtime cannot enforce.                                                                                                                                                                                                                            |
 | `[permissions.<name>.filesystem."<path>"]."<subpath>"`            | `read`, `write`, or `deny` | None                    | Grants access to a descendant of `<path>`. Use `.` for the base path. Other subpaths must be relative descendants and cannot contain `.` or `..` components.                                                                                                                                                                                                                                                                  |
-| `[permissions.<name>.network]`                                    | Table                      | None                    | Configures the network sandbox proxy and the sandbox network policy for the profile.                                                                                                                                                                                                                                                                                                                                          |
-| `permissions.<name>.network.enabled`                              | Boolean                    | `false`                 | Enables network access for sandboxed commands in the profile. This changes the sandbox network policy; it does not start the network proxy by itself.                                                                                                                                                                                                                                                                         |
-| `[permissions.<name>.network.domains]`                            | Table                      | None                    | Maps host patterns to `allow` or `deny`. If there are no `allow` entries, domain requests are blocked. Deny entries override allow entries.                                                                                                                                                                                                                                                                                   |
+| `[permissions.<name>.network]`                                    | Table                      | None                    | Configures command network access and the policy that an active network proxy enforces. Enable `features.network_proxy` unless administrator-managed network requirements start the proxy.                                                                                                                                                                                                                                    |
+| `permissions.<name>.network.enabled`                              | Boolean                    | `false`                 | Enables network access for commands in the profile. It does not start the network proxy; without an active proxy, commands can connect directly without domain restrictions.                                                                                                                                                                                                                                                  |
+| `[permissions.<name>.network.domains]`                            | Table                      | None                    | Maps host patterns to `allow` or `deny`. Rules apply only when the network proxy is active. The active proxy blocks domain requests if there are no `allow` entries, and deny entries override allow entries.                                                                                                                                                                                                                 |
 | `permissions.<name>.network.domains."<pattern>"`                  | `allow` or `deny`          | None                    | Supports exact hosts, `*.example.com` for subdomains, `**.example.com` for apex plus subdomains, and `*` as an allow-only global wildcard. Host patterns are normalized by trimming, lowercasing, stripping a trailing dot, and stripping simple ports or brackets.                                                                                                                                                           |
 | `[permissions.<name>.network.unix_sockets]`                       | Table                      | None                    | Maps Unix socket allowlist overrides. Use only for local integrations such as Docker.                                                                                                                                                                                                                                                                                                                                         |
 | `permissions.<name>.network.unix_sockets."<path>"`                | `allow` or `deny`          | None                    | Adds an absolute Unix socket path to the effective allowlist with `allow`, or rejects it with `deny`. Denied entries are omitted from the effective allowlist.                                                                                                                                                                                                                                                                |
@@ -329,17 +341,17 @@ On native Windows, drive-letter paths such as `D:\work` and UNC paths such as
 
 ## Network permissions
 
-Set `enabled = true` to allow network access for the selected profile:
+Network access and network filtering are separate settings. Set
+`permissions.<name>.network.enabled = true` to let commands access the network,
+and enable `features.network_proxy` to enforce the profile's domain rules:
 
 ```toml
+[features]
+network_proxy = true
+
 [permissions.project-edit.network]
 enabled = true
-```
 
-When network access is enabled, Codex uses full network behavior by default.
-Most profiles should also define domain rules:
-
-```toml
 [permissions.project-edit.network.domains]
 "example.com" = "allow"      # exact host
 "*.example.com" = "allow"    # subdomains only
@@ -347,7 +359,23 @@ Most profiles should also define domain rules:
 "ads.example.com" = "deny"   # deny wins over allow
 ```
 
-The network sandbox proxy binds to local listeners by default:
+The resulting behavior depends on both settings:
+
+- Network off: Commands cannot access the network, regardless of the proxy
+  feature.
+- Network on, proxy off: Commands have direct, unrestricted network
+  access. Domain rules in the permission profile are not enforced.
+- Network on, proxy on: Commands use the proxy, which enforces the profile's
+  domain rules. If the active proxy has no allowed domains, it blocks external
+  destinations.
+
+Adding `[permissions.<name>.network.domains]` or setting
+`permissions.<name>.network.enabled = true` does not enable
+`features.network_proxy`. As an alternative, administrators can enable the
+proxy with `[experimental_network]` in `requirements.toml`. See
+[Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-network-access-requirements).
+
+When active, the network sandbox proxy binds to local listeners by default:
 
 ```toml
 [permissions.project-edit.network]
@@ -364,9 +392,10 @@ specialized environments and should not be used for ordinary local development.
 
 ### Local and private networks
 
-Codex applies a local/private-network guard by default as a defense against DNS
-rebinding and accidental access to local services. To intentionally allow a
-literal local target, allowlist the exact host or IP literal:
+When the network proxy is active, Codex applies a local/private-network guard by
+default as a defense against DNS rebinding and accidental access to local
+services. To intentionally allow a literal local target, allowlist the exact
+host or IP literal:
 
 ```toml
 [permissions.project-edit.network.domains]
@@ -428,7 +457,8 @@ for admin-enforced filesystem and network constraints.
 
 Permission profiles define the boundaries for local sandboxed command
 execution. Use them together with approval policies and the separate controls
-for connectors, MCP servers, the built-in browser, Computer Use, and Codex cloud.
+for web search, connectors, MCP servers, the built-in browser, Computer Use,
+and Codex cloud.
 
 ### What profiles control
 
@@ -441,12 +471,36 @@ for connectors, MCP servers, the built-in browser, Computer Use, and Codex cloud
   files, and shared directories as sensitive because later tools or users can
   execute those files outside the original sandbox context.
 - **Outbound destinations:** Network domain rules constrain where sandboxed
-  command traffic can go through the network proxy. They do not determine
-  whether an allowed destination is trustworthy, and wildcard allow rules stay
-  broad.
-- **Local services:** Local and private network targets are blocked by default.
-  Allowlisting `localhost`, private IPs, Unix sockets, or setting
+  command traffic can go only while the network proxy is active. They do not
+  determine whether an allowed destination is trustworthy, and wildcard allow
+  rules stay broad.
+- **Local services:** An active network proxy blocks local and private network
+  targets by default. Allowlisting `localhost`, private IPs, Unix sockets, or setting
   `allow_local_binding = true` explicitly opens access to local services.
+
+### What the network proxy does not control
+
+The network proxy only filters traffic from local commands that run inside the
+sandbox. It does not apply the profile's domain allowlist to:
+
+- **Web search:** The hosted search tool uses its own access settings. Use
+  `web_search` and, for managed clients, `allowed_web_search_modes` to control
+  it. `tools.web_search.allowed_domains` filters search results, not command
+  network access.
+- **Apps and connectors:** Connector-backed tools use their own service-side
+  connections, workspace permissions, and app or tool settings.
+- **MCP servers:** Local and remote MCP servers use their own process or
+  transport. Control them with `mcp_servers` configuration and managed server
+  allowlists.
+- **Browser and Computer Use:** Browser navigation and computer-use actions
+  use their own feature and approval controls.
+- **Codex service traffic:** Model, authentication, and other client service
+  requests use the client's separate HTTP and system-proxy settings.
+- **Codex cloud:** These tasks use their environment's own
+  [internet access settings](https://learn.chatgpt.com/docs/cloud/internet-access).
+
+To limit these surfaces, configure each capability directly. A command network
+allowlist is not a global network policy for every action Codex can perform.
 
 ### How enforcement works
 
@@ -478,6 +532,9 @@ handling, and allow rules aligned with that access level.
 
 ```toml
 default_permissions = "readonly-net"
+
+[features]
+network_proxy = true
 
 [permissions.readonly-net.filesystem]
 ":minimal" = "read"
@@ -539,6 +596,9 @@ enabled = false
 
 ```toml
 default_permissions = "workspace-net"
+
+[features]
+network_proxy = true
 
 [permissions.workspace-net.filesystem]
 ":minimal" = "read"

@@ -13,63 +13,70 @@ Source: https://learn.chatgpt.com/docs/enterprise/apps-and-connectors
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-A plugin extends ChatGPT and Codex by packaging skills and optional connectors
-so teams can distribute workflows and knowledge. The products share one
-universal plugin directory, while admins control availability and installation
-for their workspace. Learn more about [plugins](https://learn.chatgpt.com/docs/plugins),
+Plugins package reusable workflows and can include skills and apps that connect
+to other tools. ChatGPT and Codex use the same public plugin directory on
+supported surfaces, while admins decide which plugins are available in their workspace.
+Learn more about [plugins](https://learn.chatgpt.com/docs/plugins),
 [skills](https://learn.chatgpt.com/docs/skills-and-plugins), and
 [apps and connectors](https://help.openai.com/en/articles/11487775).
 
-When a plugin includes a connector, workspace admins must make the plugin
-available through plugin controls and configure connector access before members
-can use the connector-backed capability.
+A member can use a connector-backed capability only when the plugin and app are
+available to their role and they have access to the connected service.
 
 Plugins work in Chat and Work across ChatGPT on the web, desktop, and mobile,
 in Codex in the ChatGPT desktop app, and through the Codex CLI plugin browser.
 They aren't available in the IDE extension.
 
-For the complete administration model, see
+To see how these controls fit with workspace roles and permissions, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
 
 ## Understand the capability chain
 
-Each layer has a separate scope and control surface:
+A plugin can span these control layers:
 
-| Layer                                | What it determines                                                           | Where to manage it                                                                                                              |
-| ------------------------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Plugin availability and installation | Whether the plugin bundle is available to the user                           | [Workspace settings](https://chatgpt.com/admin/settings) for supported web and desktop surfaces; the CLI plugin browser for CLI |
-| Bundled skills                       | Which reusable instructions the installed plugin contributes                 | The plugin package and [Skill controls](https://learn.chatgpt.com/docs/enterprise/skills)                                                               |
-| Connector access                     | Whether users can use a connector-backed capability                          | [Workspace apps](https://chatgpt.com/admin/ca) and [Permissions & roles](https://chatgpt.com/admin/settings)                    |
-| Connector actions and permissions    | Which actions users can run and when ChatGPT asks before using the connector | The connector's Action control and App permissions in [Workspace apps](https://chatgpt.com/admin/ca)                            |
-| Source-system authorization          | Which external data and actions the authenticated identity can access        | The connected service and its identity provider                                                                                 |
-| Runtime permissions                  | What an agent can do after it receives data or a tool                        | The runtime, sandbox, and approval controls for the active surface                                                              |
+| Layer                   | What it determines                                                           | Where to manage it                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Availability            | Whether the plugin bundle is available to the user                           | [Workspace settings](https://chatgpt.com/admin/settings) for supported web and desktop surfaces; the CLI plugin browser for CLI |
+| Included skills         | Which reusable instructions the installed plugin contributes                 | The plugin package and [Skill controls](https://learn.chatgpt.com/docs/enterprise/skills)                                                               |
+| App access              | Whether users can use a connector-backed capability                          | [Workspace apps](https://chatgpt.com/admin/ca) and [Permissions & roles](https://chatgpt.com/admin/settings)                    |
+| Actions and permissions | Which actions users can run and when ChatGPT asks before using the connector | The connector's Action control and App permissions in [Workspace apps](https://chatgpt.com/admin/ca)                            |
+| Service authorization   | Which external data and actions the authenticated identity can access        | The connected service and its identity provider                                                                                 |
+| Runtime permissions     | What an agent can do after it receives data or a tool                        | The runtime, sandbox, and approval controls for the active surface                                                              |
 
-Depending on the workflow, admins can govern plugin availability, connector
-access, connector actions and permissions, provider authorization, and runtime
-policy independently.
+Use these layers as a two-step rollout: first make the right plugins available,
+then configure the capabilities and permissions each workflow needs.
 
-## Plugin availability controls
+## Step 1: Enable plugin availability
 
-Workspace plugin controls determine whether a plugin is available or installed
-for supported workspace roles. The Codex CLI plugin browser controls CLI
-installation through its own path. See [Build plugins](https://developers.openai.com/plugins/build/plugins) for
+For supported web and desktop surfaces, workspace plugin controls determine
+which roles can use or install a plugin. The Codex CLI uses its own plugin
+browser for installation. See
+[Build plugins](https://developers.openai.com/plugins/build/plugins) for
 packaging and distribution.
 
-## Connector-backed capability controls
+## Step 2: Manage capabilities
+
+<WarningTip>
+  Making an app or plugin available in ChatGPT doesn't grant access to files,
+  records, or actions in the connected service. Before troubleshooting or
+  expanding access, check the member's workspace role and approved action
+  settings. Then confirm the authenticated account or shared connection has the
+  expected permissions in the connected service.
+</WarningTip>
 
 Plugins in ChatGPT and Codex can include connectors that search, retrieve, sync,
-or act on external systems. Workspace admins configure plugin availability
-separately from the access and actions granted to each connector.
+or act on external systems. Plugin availability and the access and actions
+granted to each connector are separate controls.
 
 Manage connector-backed capabilities from
 [Workspace apps](https://chatgpt.com/admin/ca) and
 [Permissions & roles](https://chatgpt.com/admin/settings). Available controls
 let admins:
 
-- Enable reviewed connectors and assign access by workspace role.
+- Enable apps or connectors and assign access by workspace role.
 - For connectors that support Action control, allow read-only actions or an
   approved custom set, including how the workspace handles newly added actions.
-- Set App permissions that determine when ChatGPT asks before using a connector.
+- Set App permissions that determine when ChatGPT asks before using an app.
 - Keep access within the scopes and permissions granted by each connected
   service and authenticated user.
 
@@ -78,44 +85,60 @@ For current availability and procedures, see
 
 <a id="choose-a-starting-set-of-apps"></a>
 
-## Choose a starting set of plugins
+## Choose a focused initial set
 
-For a broad initial rollout, consider plugin categories teams use every day:
-email, calendar, and file or document systems such as Google Drive or Notion.
-Use the [Plugins Directory](https://chatgpt.com/apps) to confirm current
-availability and capabilities across supported ChatGPT and Codex surfaces.
+Start with plugins that support a clear business need. Decide whether to make
+each plugin available to everyone, limit it to a role or pilot group, or require
+further review.
 
-Start with read actions. Enable write actions only after reviewing the plugin's
-owner, each connector's requested scopes, data access, external effects, and
-recovery path.
+For each connected service, record the business owner, permitted data, approved
+read or write actions, authentication method, and a support or removal contact.
+
+Before enabling write actions or publishing a new connected capability, verify
+its role scope and test with an account that has only the intended permissions
+in the connected service.
+
+For a broad rollout, begin with categories teams use every day, such as email,
+calendar, and file or document systems. Use the
+[Plugins Directory](https://chatgpt.com/apps) to confirm current availability
+and capabilities across supported ChatGPT and Codex surfaces.
+
+Whatever the initial set, start with read actions. Before enabling write
+actions, identify the plugin owner, review connector scopes and service
+permissions, confirm data access, and document external effects and a recovery
+path.
 
 ## Understand data flow and security
 
-When ChatGPT uses a connector-backed plugin, the connector sends a request to
-the connected service and returns data or action results allowed by the
-authenticated user's provider permissions. Custom MCP servers expose these
-operations as tools through Model Context Protocol (MCP).
+When ChatGPT uses an app or connector included with a plugin, it sends a request
+to the connected service and returns data or action results allowed by the
+authenticated user's permissions in that service.
 
-For non-synced connector use, ChatGPT processes data from Chat and deep
-research transiently and doesn't index it. Connectors with sync index selected
-connected content in advance. This indexing distinction doesn't replace normal
-chat-retention controls; chats that use plugins remain available through the
-Compliance API.
+ChatGPT handles connected app data in two ways:
 
-OpenAI's current connector guidance also documents encryption in transit and at
-rest, per-user authorization, role and action controls, restricted network
-access for chats that use plugins, and no model training on information accessed
-through plugins for Business, Enterprise, and Edu customers. Review the
-connected service's scopes, retention, and data-residency policies because those
-policies apply when a request reaches that service.
+- **Non-synced:** ChatGPT processes data from Chat and deep research transiently
+  and doesn't index it.
+- **Synced:** ChatGPT indexes selected connected content in advance. You can see
+  whether an app supports sync on its plugin page.
+
+The mode changes how ChatGPT indexes connected content; it doesn't replace
+normal chat-retention controls. ChatGPT conversations that use apps remain
+available through the Compliance API.
+
+OpenAI's app guidance documents encryption in transit and at rest, per-user
+authorization, role and action controls, restricted network access for
+conversations that use apps, and no model training on information accessed
+through apps for Business, Enterprise, and Edu customers. When a request reaches
+a connected service, that service's scopes, retention, data residency, and other
+policies also apply.
 
 See [app security and compliance](https://help.openai.com/en/articles/11509118)
-and [apps with sync](https://help.openai.com/en/articles/10847137) for the
-current data-handling details. For locally configured MCP servers in the
-ChatGPT desktop app, Codex CLI, or IDE extension, see
+and [apps with sync](https://help.openai.com/en/articles/10847137) for current
+data-handling details. For locally configured MCP servers in the ChatGPT desktop
+app, Codex CLI, or IDE extension, see
 [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp).
 
-## Use current procedures
+## Use current procedures and references
 
 - [Admin controls, security, and compliance in apps](https://help.openai.com/en/articles/11509118)
 - [Apps in ChatGPT](https://help.openai.com/en/articles/11487775)

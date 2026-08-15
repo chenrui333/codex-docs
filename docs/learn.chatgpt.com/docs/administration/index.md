@@ -40,6 +40,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "users",
         },
         {
+          title: "ChatGPT Work Overview",
+          description:
+            "Understand hosted execution, network controls, data boundaries, and audit visibility.",
+          href: "/codex/enterprise/chatgpt-work-overview",
+          icon: "shieldCheck",
+        },
+        {
           title: "ChatGPT Work admin FAQ",
           description:
             "Review access, data, governance, usage, and incident controls for ChatGPT Work.",
@@ -92,6 +99,13 @@ Source: https://learn.chatgpt.com/docs/administration
           description:
             "Use the canonical map of workspace, runtime, API, plugin, and source-system controls.",
           href: "/codex/enterprise/roles-and-workspace-permissions",
+          icon: "userLock",
+        },
+        {
+          title: "GPTs and Sharing",
+          description:
+            "Manage GPT sharing, ownership, connected apps, and third-party actions across your workspace.",
+          href: "/codex/enterprise/gpts-and-sharing",
           icon: "userLock",
         },
         {

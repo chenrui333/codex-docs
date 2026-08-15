@@ -88,8 +88,7 @@ Install the Codex Security plugin in the CLI:
 codex plugin add codex-security@openai-curated
 ```
 
-The install command uses the public Codex CLI plugin marketplace, which can
-offer a different version from the hosted desktop-app catalog. Check the
+The install command uses the public Codex CLI plugin marketplace. Check the
 [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you depend on a
 specific plugin version or feature in CI.
 

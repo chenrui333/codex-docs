@@ -33,9 +33,14 @@ Map this secret directly to the scan step's `OPENAI_API_KEY` environment
 variable. Keep the credential scoped to the scan process and use
 `--auth api-key` to select it explicitly.
 
+Run the workflow only for repositories and pull requests you trust. Scans use
+the runner's local permissions and don't pause for approval. Scan processes
+can inherit the job environment, so keep unrelated tokens and cloud
+credentials out of it.
+
 The runner needs:
 
-- Node.js 22.13.0 or later.
+- Node.js 22 (22.13.0 or later), 24, or 26.
 - Python 3.10 or later.
 - The published `@openai/codex-security` package, installed outside the
   repository checkout.

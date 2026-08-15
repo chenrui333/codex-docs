@@ -372,7 +372,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "features.apps",
       type: "boolean",
       description:
-        "Enable app (connector) integrations (stable; on by default).",
+        "Enable app (connector) integrations (stable; on by default). App and connector traffic is not controlled by the sandboxed-command network proxy or its domain allowlist.",
     },
     {
       key: "features.hooks",
@@ -749,12 +749,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "features.network_proxy",
       type: "boolean | table",
       description:
-        "Enable sandboxed networking. Use a table form when setting network policy options such as `domains` (experimental; off by default).",
+        "Start the network proxy for sandboxed commands (experimental; off by default). Required to enforce permission-profile domain rules unless enabled administrator-managed `experimental_network` requirements start the proxy. Use a table when setting feature-level policy options such as `domains`. Does not filter web search, apps, MCP, or other hosted tools.",
     },
     {
       key: "features.network_proxy.enabled",
       type: "boolean",
-      description: "Enable sandboxed networking. Defaults to `false`.",
+      description:
+        "Start the sandboxed-command network proxy when command network access is enabled. Defaults to `false`; permission-profile domain rules are not enforced while the proxy is off.",
     },
     {
       key: "features.network_proxy.domains",
@@ -1435,7 +1436,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "tools.web_search",
       type: 'boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }',
       description:
-        "Optional web search tool configuration. The legacy boolean form is still accepted, but the object form lets you set search context size, allowed domains, and approximate user location.",
+        "Optional web search tool configuration. The object form can set search context size, allowed search domains, and approximate user location. These search-domain filters are separate from sandboxed-command network domain rules and do not restrict connectors or MCP servers.",
     },
     {
       key: "tools.view_image",
@@ -1506,7 +1507,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "permissions.<name>.network.enabled",
       type: "boolean",
       description:
-        "Enable network access for this named permissions profile. This changes the sandbox network policy; it does not start the network proxy by itself.",
+        "Enable network access for commands in this permission profile. This does not start the network proxy. Without `features.network_proxy` or enabled administrator-managed networking requirements, command network access is direct and profile domain rules are not enforced.",
     },
     {
       key: "permissions.<name>.network.proxy_url",
@@ -1557,7 +1558,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "permissions.<name>.network.domains",
       type: "table",
       description:
-        "Domain rules for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. `deny` wins on conflicts.",
+        "Domain rules for sandboxed commands. Enforced only when `features.network_proxy` or enabled administrator-managed networking requirements activate the proxy. Supports exact hosts, `*.example.com`, `**.example.com`, and global `*` allow rules; `deny` wins. Does not restrict web search, apps, or MCP servers.",
     },
     {
       key: "permissions.<name>.network.domains.<pattern>",
@@ -1976,7 +1977,7 @@ model fields; `service_tier` is independent.
       key: "experimental_network",
       type: "table",
       description:
-        "Network access requirements enforced from `requirements.toml`. These constraints are separate from `features.network_proxy` and can configure sandboxed networking without the user feature flag.",
+        "Administrator-managed network requirements for sandboxed local commands, enforced from `requirements.toml`. When enabled, these requirements can start the command network proxy without `features.network_proxy`. They do not control web search, apps, MCP servers, browsers, or Codex cloud networking.",
     },
     {
       key: "experimental_network.enabled",
@@ -2024,7 +2025,7 @@ model fields; `service_tier` is independent.
       key: "experimental_network.allowed_domains",
       type: "array<string>",
       description:
-        "List-shaped administrator allow rules for sandboxed networking. Do not combine this with `experimental_network.domains`.",
+        "Administrator allow rules for sandboxed-command networking while the managed network proxy is enabled. These rules do not apply to web search, apps, or MCP servers. Do not combine this with `experimental_network.domains`.",
     },
     {
       key: "experimental_network.denied_domains",

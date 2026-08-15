@@ -18,8 +18,9 @@ code changes from your application or developer tool. The SDK returns typed
 findings, coverage details, and paths to scan artifacts. For longer scans, it
 supports preflight checks, cost limits, progress callbacks, and cancellation.
 
-The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22.13.0
-or later. Scanning also requires Python 3.10 or later.
+The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22
+(22.13.0 or later), 24, or 26. Scanning also requires Python 3.10 or later.
+Python 3.10 also requires the `tomli` package.
 
 The Codex Security SDK is [publicly available on
   GitHub](https://github.com/openai/codex-security). Running scans requires
@@ -46,6 +47,12 @@ Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
 grant Trusted Access.
 
 ## Run a scan
+
+Scan only repositories you trust and have permission to assess. The SDK runs
+with your local operating-system permissions and never pauses for approval.
+Scan processes can inherit your environment, so remove unrelated credentials
+before you start. See [Local scan
+permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions).
 
 Create one `CodexSecurity` client, run a standard repository scan, and close
 the client when the work completes. Pass `outputDir` to choose a private
@@ -188,13 +195,20 @@ const result = await security.run("/path/to/repository", {
   subagents: 0,
   stopAfterNoNew: 3,
   maxDiscoveryRuns: 10,
+  maxTimeHours: 1.5,
 });
 ```
 
 Deep mode supports repository and path targets. Use standard mode for diff and
 working-tree scans. The optional settings control concurrent discovery workers,
 subagents per worker, consecutive discovery runs without new findings, and the
-total number of discovery runs. They require `mode: "deep"`.
+total number and duration of discovery runs. They require `mode: "deep"`.
+
+`maxTimeHours` defaults to `96` and accepts a positive number up to `96`,
+including fractional hours. At the deadline, Codex Security stops unfinished
+discovery, keeps completed discovery results, and continues with validation
+and reporting. Review `result.coverage.completeness` before treating a
+time-limited scan as evidence of full coverage.
 
 ### Add a security knowledge base
 
@@ -226,6 +240,10 @@ const result = await security.run("/path/to/repository", {
 });
 ```
 
+If the follow-up fails, the SDK keeps the completed scan and reports the
+error through `onWarning`. It restores any completed scan artifacts that the
+follow-up changed.
+
 ### Set a scan budget
 
 Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
@@ -243,8 +261,12 @@ console.log(result.cost?.estimatedUsd);
 ```
 
 The limit estimates spending but isn't a hard cap, so requests already in
-progress can finish slightly above it. If the scan exceeds the limit, the SDK
-throws `ScanCostLimitExceededError` and preserves the available results.
+progress can finish slightly above it. If a deep scan reaches the limit after
+discovery finishes, `run` returns a result with `coverage.completeness` set to
+`"partial"` and reports the budget warning through `onWarning`.
+
+If the scan can't produce a completed partial result, `run` throws
+`ScanCostLimitExceededError` and preserves any available output.
 
 ## Work with scan results
 
@@ -268,6 +290,10 @@ paths:
 | `artifactsDir`       | The supporting-artifacts directory.                                                |
 | `sarifPath`          | The generated SARIF path, or `null` when SARIF is absent.                          |
 | `pluginVersion`      | The version recorded by the scan producer.                                         |
+
+To require the same plugin for a later scan, pass
+`expectedPluginVersion: result.pluginVersion`. The SDK rejects the scan if
+the installed plugin version differs.
 
 Use the structured findings and coverage directly:
 
@@ -404,6 +430,10 @@ by default. Set `model` and `model_reasoning_effort` in `codexOverrides` to use
 a different model or reasoning effort. To use [Amazon
 Bedrock](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock), set
 `model_provider` and `model` in `codexOverrides`.
+
+`codexOverrides` can't restrict the scan's filesystem access or change its
+approval policy. See [Local scan
+permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions).
 
 For OpenRouter or Fireworks, also provide the matching API key and a complete
 provider configuration in `codexOverrides`. For example, set

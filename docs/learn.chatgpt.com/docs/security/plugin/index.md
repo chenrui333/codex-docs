@@ -60,11 +60,10 @@ This page covers the Codex Security plugin in the desktop app or Codex CLI. To
 
 </ContentModeSwitch>
 
-The hosted desktop-app catalog and public Codex CLI marketplace can offer
-  different plugin versions. Check the [plugin
-  changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you rely on a feature or
-  start a long-running scan. If **Security** doesn't appear in the desktop-app
-  sidebar, update the app and plugin and confirm that the plugin is enabled.
+Check the [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you rely
+  on a feature or start a long-running scan. If **Security** doesn't appear in
+  the desktop-app sidebar, update the app and plugin and confirm that the plugin
+  is enabled.
 
 ## Run your first scan
 
