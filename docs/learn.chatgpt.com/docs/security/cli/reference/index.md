@@ -40,6 +40,7 @@ The CLI provides these commands:
 | `codex-security scans`        | List, inspect, compare, and retrieve saved scan logs. |
 | `codex-security findings`     | Review and update saved security findings.            |
 | `codex-security export`       | Export completed findings as CSV, JSON, or SARIF.     |
+| `codex-security publish`      | Publish completed scan findings to Linear.            |
 | `codex-security validate`     | Check one or more candidate security findings.        |
 | `codex-security patch`        | Patch one or more security issues.                    |
 | `codex-security login`        | Sign in, store credentials, or check sign-in status.  |
@@ -716,6 +717,87 @@ npx @openai/codex-security export /path/to/scan \
   --output /path/outside/repository/exports/findings.csv
 ```
 
+## `codex-security publish scan`
+
+Publish every finding from a completed scan to Linear:
+
+```text
+usage: codex-security publish scan [SCAN_DIR] --to linear
+                                   [--linear-team TEAM_ID]
+                                   [--project PROJECT_ID]
+                                   [--linear-api-key KEY]
+                                   [--linear-assignee EMAIL_OR_USER_ID]
+                                   [--dry-run] [--json]
+```
+
+`SCAN_DIR` must contain a completed, sealed scan. Omit it in an interactive
+terminal to select a completed scan from local scan history. Creating issues
+also requires the scan and its findings to exist in local scan history. A dry
+run validates the sealed artifacts without this persistence check.
+
+| Argument                             | Description                                                                                                                                                      |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--to linear`                        | Publish to Linear. This argument is required.                                                                                                                    |
+| `--linear-team TEAM_ID`              | Select the Linear team. Uses `CODEX_SECURITY_LINEAR_TEAM` when omitted; one of them is required.                                                                 |
+| `--project PROJECT_ID`               | Select a Linear project. Uses `CODEX_SECURITY_LINEAR_PROJECT` when omitted. If neither is set, issues are created directly in the team.                          |
+| `--linear-api-key KEY`               | Use a Linear personal API key for direct publication. Uses `CODEX_SECURITY_LINEAR_API_KEY` when omitted.                                                         |
+| `--linear-assignee EMAIL_OR_USER_ID` | Assign created issues by email address or Linear user ID. Requires `--linear-api-key` or `CODEX_SECURITY_LINEAR_API_KEY`. Issues remain unassigned when omitted. |
+| `--dry-run`                          | Prepare issue payloads without starting Codex, contacting Linear, creating issues, or writing publication state.                                                 |
+| `--json`                             | Write structured publication results to stdout. Progress remains on stderr.                                                                                      |
+
+Linear issue descriptions and dry-run output can include source code snippets
+  and vulnerability details. Publish only to an authorized Linear team or
+  project, and treat saved output as sensitive.
+
+Each non-dry-run invocation attempts to create a new issue for every finding.
+Publishing the same scan again doesn't match, update, or reuse existing issues.
+If some findings fail, the command preserves successfully created issues and
+returns exit code `2`.
+With `--json`, review the `created` and `failed` results before retrying to
+avoid duplicates.
+
+Preview the issue payloads before publishing:
+
+```bash
+npx @openai/codex-security publish scan /path/to/completed-scan \
+  --to linear \
+  --linear-team TEAM_ID \
+  --dry-run \
+  --json
+```
+
+### Publish with the connected Linear app
+
+Without a Linear API key, the command starts Codex using your existing
+configuration and connected Linear app. Sign in and connect Linear to your
+Codex account before publishing:
+
+```bash
+npx @openai/codex-security login
+npx @openai/codex-security publish scan /path/to/completed-scan \
+  --to linear \
+  --linear-team TEAM_ID \
+  --project PROJECT_ID
+```
+
+### Publish with a Linear API key
+
+Supplying `--linear-api-key` or `CODEX_SECURITY_LINEAR_API_KEY` publishes
+directly through the Linear API and doesn't start Codex. Direct publication
+leaves issues unassigned unless you select an assignee:
+
+```bash
+export CODEX_SECURITY_LINEAR_API_KEY=YOUR_LINEAR_PERSONAL_API_KEY
+npx @openai/codex-security publish scan /path/to/completed-scan \
+  --to linear \
+  --linear-team TEAM_ID \
+  --linear-assignee teammate@example.com
+```
+
+Command-line values override their matching environment variables. For API
+keys, prefer `CODEX_SECURITY_LINEAR_API_KEY` over `--linear-api-key` because
+command-line arguments can appear in shell history and process listings.
+
 ## `codex-security validate` and `codex-security patch`
 
 Check whether a candidate finding is valid:
@@ -789,7 +871,7 @@ npx @openai/codex-security info --json
 ```
 
 When you expose the CLI as an MCP server, `info` is the only available command.
-Scans, exports, sign-in, validation, and patching remain CLI-only.
+Scans, exports, publication, sign-in, validation, and patching remain CLI-only.
 
 ## Read scan output
 
@@ -910,18 +992,19 @@ coverage as evidence for a security decision.
 
 The CLI uses these exit codes:
 
-| Exit  | Condition                                                                                                                                     |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `0`   | A scan completed with complete coverage and passed its severity policy, a bulk scan completed without failures, or another command succeeded. |
-| `1`   | A completed scan reports a finding at or above the configured severity.                                                                       |
-| `2`   | The CLI found an input, runtime, or export error, a scan has incomplete coverage, or a bulk scan has repositories with errors.                |
-| `130` | Ctrl-C interrupted a scan.                                                                                                                    |
-| `143` | SIGTERM terminated a scan.                                                                                                                    |
+| Exit  | Condition                                                                                                                                                                     |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `0`   | A scan completed with complete coverage and passed its severity policy, a bulk scan or publication completed without failures, or another command succeeded.                  |
+| `1`   | A completed scan reports a finding at or above the configured severity.                                                                                                       |
+| `2`   | The CLI found an input, runtime, or export error, a scan has incomplete coverage, a bulk scan has repositories with errors, or a publication has one or more failed findings. |
+| `130` | Ctrl-C interrupted a scan or publication.                                                                                                                                     |
+| `143` | SIGTERM terminated a scan or publication.                                                                                                                                     |
 
 Any scan with `partial` or `unknown` coverage returns `2`, even without a
-severity policy. When you request structured output, completed scans still
-write the available results to stdout. The CLI prints the location of any
-partial output after an interruption or runtime error.
+severity policy. When you request structured output, completed scans and
+partial publications still write the available results to stdout. The CLI
+prints the location of any partial output after an interruption or runtime
+error.
 
 ## Local scan permissions
 

@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-15T06:39:25+00:00",
+  "generated_at": "2026-08-17T18:40:43+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,6 +13,7 @@
   },
   "total_files": 235,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md"
+    "developers.openai.com/cookbook/topic/codex/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md"
   ]
 }

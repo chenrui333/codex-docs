@@ -897,10 +897,10 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "889992bda3fc4b2109b05caf2de809c788f793b85e671c27831bbef0fc501189",
+      "sha256": "5034a27ddfe3adf5987ede858a10f197b26a355880c35712a1bed3d42470dcfe",
       "source_area": "cookbook",
-      "source_etag": "W/\"a9d799d316fdbdab47c51e1931e97281\"",
-      "source_last_modified": "2026-07-12T06:17:24Z",
+      "source_etag": "W/\"28ac206e48a7b727e2cdd5900ffa6faa\"",
+      "source_last_modified": "2026-08-17T18:28:59Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },
@@ -6394,7 +6394,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "8cf935905f3ec6be3f96fcd7b4c8041c57d6fcc49428ad242b3eb11e8fb4dcd7",
+      "sha256": "acc4522990dc8d835c9c66d6da6940c9717a88f2ec519dca9884dfa605dacf70",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
