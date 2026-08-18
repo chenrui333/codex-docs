@@ -200,15 +200,16 @@ const result = await security.run("/path/to/repository", {
 ```
 
 Deep mode supports repository and path targets. Use standard mode for diff and
-working-tree scans. The optional settings control concurrent discovery workers,
-subagents per worker, consecutive discovery runs without new findings, and the
-total number and duration of discovery runs. They require `mode: "deep"`.
+working-tree scans. The optional settings control concurrent independent
+standard-scan workers, subagents per worker, consecutive completed worker scans
+without new findings, and the total number and duration of worker runs. They
+require `mode: "deep"`.
 
 `maxTimeHours` defaults to `96` and accepts a positive number up to `96`,
 including fractional hours. At the deadline, Codex Security stops unfinished
-discovery, keeps completed discovery results, and continues with validation
-and reporting. Review `result.coverage.completeness` before treating a
-time-limited scan as evidence of full coverage.
+workers, keeps completed scan results, and aggregates them into the final
+report. Review `result.coverage.completeness` before treating a time-limited
+scan as evidence of full coverage.
 
 ### Add a security knowledge base
 
@@ -262,8 +263,9 @@ console.log(result.cost?.estimatedUsd);
 
 The limit estimates spending but isn't a hard cap, so requests already in
 progress can finish slightly above it. If a deep scan reaches the limit after
-discovery finishes, `run` returns a result with `coverage.completeness` set to
-`"partial"` and reports the budget warning through `onWarning`.
+Codex Security aggregates completed worker results, `run` returns a result
+with `coverage.completeness` set to `"partial"` and reports the budget warning
+through `onWarning`.
 
 If the scan can't produce a completed partial result, `run` throws
 `ScanCostLimitExceededError` and preserves any available output.

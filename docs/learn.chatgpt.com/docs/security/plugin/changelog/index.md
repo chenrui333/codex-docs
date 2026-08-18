@@ -15,7 +15,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 
 Use this changelog to see what changed in the Codex Security plugin.
 
-**Latest plugin version:** `0.1.19`.
+**Latest plugin version:** `0.1.20`.
 
 Check the plugin version in your current Codex environment before you use a
 feature from a newer release.
@@ -23,6 +23,49 @@ feature from a newer release.
 Changelog entries follow the plugin version, not the package version. CLI and
 SDK users can run `npx @openai/codex-security info --json` to check the
 package and bundled plugin versions together.
+
+## 0.1.20 (August 17, 2026)
+
+### Run deep scans as complete independent audits
+
+- Run each deep scan worker through the same end-to-end audit used by standard
+  scans, including threat modeling, validation, attack-path analysis, and
+  coverage reporting.
+- Combine completed worker reports into one scan while preserving configured
+  time limits, partial coverage, restart recovery, and cancellation.
+- Use four concurrent workers by default, stop after four consecutive completed
+  scans add no new findings, and limit a deep scan to 40 worker runs. Existing
+  `workers = "auto"` settings now resolve to four workers. See
+  [Configure deep-scan runtime](https://learn.chatgpt.com/docs/security/plugin/deep-scans#configure-deep-scan-runtime).
+- Resume workers that finished source review but lost their final draft instead
+  of repeating the complete audit.
+
+### Check Trusted Access for Cyber before hosted scans
+
+- In Codex hosts that expose the Codex Security Access app, check Trusted Access
+  status before standard, change, and deep scans begin.
+- See a prominent warning when protected scan output might not be available,
+  with an enrollment link when access isn't granted.
+- Continue the scan when the check can't verify Trusted Access status or access
+  isn't granted; the advisory doesn't control whether the scan runs.
+- The public CLI and SDK packages don't run this advisory in `0.1.20`.
+
+### Run deep scans in more environments
+
+- Launch deep scan workers from packaged CLI and SDK installations, including
+  Windows installations without a global `codex` executable.
+- Keep standalone CLI and SDK deep scan settings isolated from other running
+  scans.
+- Keep non-interactive approval settings in nested deep scan workers.
+
+### Preserve scan results through more failures
+
+- Preserve more saved scans and completed worker results across restart,
+  archive, and handoff recovery paths.
+- Recover valid findings from older or incomplete scan data.
+- Complete scans when independent coverage reports overlap.
+- Report cached input correctly in token usage totals across current and older
+  provider responses.
 
 ## 0.1.19 (August 13, 2026)
 

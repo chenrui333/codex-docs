@@ -255,23 +255,22 @@ npx @openai/codex-security scan . --mode deep
 
 ### Configure deep scans
 
-Use these options with `--mode deep` to control discovery concurrency and
-runtime:
+Use these options with `--mode deep` to control worker concurrency and runtime:
 
-| Argument                 | Description                                                             |
-| ------------------------ | ----------------------------------------------------------------------- |
-| `--workers N`            | Limit on concurrent discovery workers. Defaults to automatic selection. |
-| `--subagents N`          | Subagents available to each discovery worker. Defaults to `3`.          |
-| `--stop-after-no-new N`  | Stop after `N` consecutive runs find no new issues. Defaults to `6`.    |
-| `--max-discovery-runs N` | Limit on total discovery runs. Defaults to `60`.                        |
-| `--max-time-hours HOURS` | Discovery time limit in hours. Defaults to `96`; accepts fractions.     |
+| Argument                 | Description                                                                            |
+| ------------------------ | -------------------------------------------------------------------------------------- |
+| `--workers N`            | Limit on concurrent independent standard-scan workers. Defaults to `4`.                |
+| `--subagents N`          | Subagents available to each worker. Defaults to `3`.                                   |
+| `--stop-after-no-new N`  | Stop after `N` consecutive completed worker scans find no new issues. Defaults to `4`. |
+| `--max-discovery-runs N` | Limit on total independent standard-scan runs. Defaults to `40`.                       |
+| `--max-time-hours HOURS` | Worker execution time limit in hours. Defaults to `96`; accepts fractions.             |
 
 `--subagents` accepts zero or a positive integer. `--max-time-hours` accepts a
 positive number no greater than `96`. The remaining options require a positive
 integer. These options aren't available for standard scans.
 
-For example, use two discovery workers, allow up to ten runs, and stop
-discovery after 1.5 hours:
+For example, use two workers, allow up to ten runs, and stop worker execution
+after 1.5 hours:
 
 ```bash
 npx @openai/codex-security scan . \
@@ -283,10 +282,9 @@ npx @openai/codex-security scan . \
   --max-time-hours 1.5
 ```
 
-The time limit applies only to discovery. When it expires, the scan stops
-unfinished discovery, keeps completed discovery results, and continues with
-validation and reporting. If no source review finishes, the scan records
-partial coverage and returns exit code `2`.
+When the time limit expires, the scan stops unfinished workers, keeps completed
+scan results, and aggregates them into the final report. If no worker finishes
+source review, the scan records partial coverage and returns exit code `2`.
 
 Set persistent defaults in `~/.codex/codex-security/config.toml`, or in
 `$CODEX_HOME/codex-security/config.toml` when you set `CODEX_HOME`:
@@ -301,9 +299,9 @@ max_time_hours = 1.5
 ```
 
 Command-line options override these defaults. `scan --workers` controls
-discovery workers within one scan; `bulk-scan --workers` controls concurrent
-repository scans. Set `stop_after_consecutive_errors` only in the TOML file;
-its default is `3`.
+independent standard-scan workers within one deep scan; `bulk-scan --workers`
+controls concurrent repository scans. Set `stop_after_consecutive_errors` only
+in the TOML file; its default is `3`.
 
 ### Add security context
 
@@ -360,9 +358,9 @@ machine-readable result.
 
 The cost limit is an estimate, not a hard spending cap. Requests already in
 progress can finish slightly above the limit. If a deep scan reaches the limit
-after discovery finishes, the CLI seals the available results, marks coverage
-as `partial`, and returns exit code `2`. Otherwise, it returns `2` and leaves
-any available partial output on disk.
+after Codex Security aggregates completed worker results, the CLI seals the
+available results, marks coverage as `partial`, and returns exit code `2`.
+Otherwise, it returns `2` and leaves any available partial output on disk.
 
 When you omit `--output-dir`, results persist under
 `$CODEX_HOME/state/plugins/codex-security/scans/<repository>`. `CODEX_HOME`

@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-18T01:16:54+00:00",
+  "generated_at": "2026-08-18T06:44:18+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,11 +13,13 @@
   },
   "total_files": 235,
   "updated": [
-    "github.openai.com/openai/codex/docs/contributing.md",
-    "learn.chatgpt.com/docs/app-server/index.md",
-    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
-    "learn.chatgpt.com/docs/customization/computer-history/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/personalize/index.md"
+    "learn.chatgpt.com/docs/extend/mcp/index.md",
+    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+    "learn.chatgpt.com/docs/security/cli/faq/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/plugin/changelog/index.md",
+    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

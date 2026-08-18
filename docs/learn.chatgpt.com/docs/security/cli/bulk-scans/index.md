@@ -112,13 +112,14 @@ npx @openai/codex-security bulk-scan repositories.csv \
 ```
 
 `--workers` controls concurrent repository scans and defaults to `4`. It does
-not set the number of discovery workers within each deep scan; configure those
-limits through [`[deep_scan]`](/codex/security/cli/reference#configure-deep-scans).
-Use `--mode deep` to select deep scanning for rows without their own `mode`.
-Each CSV row can still choose its own scan mode and repository scope.
+not set the number of independent standard-scan workers within each deep scan;
+configure those limits through
+[`[deep_scan]`](/codex/security/cli/reference#configure-deep-scans). Use `--mode
+deep` to select deep scanning for rows without their own `mode`. Each CSV row
+can still choose its own scan mode and repository scope.
 
-Set `[deep_scan].max_time_hours` to limit discovery for each deep scan in the
-campaign. The `--max-time-hours` flag works with `scan`, not `bulk-scan`.
+Set `[deep_scan].max_time_hours` to limit worker execution for each deep scan in
+the campaign. The `--max-time-hours` flag works with `scan`, not `bulk-scan`.
 
 The CLI checks out each pinned revision, scans the selected target, records the
 result, and removes the temporary repository checkout. A repository counts as

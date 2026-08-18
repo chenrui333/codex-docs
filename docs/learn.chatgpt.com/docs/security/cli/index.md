@@ -236,7 +236,7 @@ Use deep mode when a repository or path needs broader review:
 npx @openai/codex-security scan "$REPOSITORY" --mode deep
 ```
 
-To control discovery workers, subagents, and when the scan stops:
+To control workers, subagents, and when the scan stops:
 
 ```bash
 npx @openai/codex-security scan "$REPOSITORY" \
@@ -249,11 +249,11 @@ npx @openai/codex-security scan "$REPOSITORY" \
 ```
 
 These options require deep mode, which supports repository and path targets,
-not diff or working-tree scans. Here, `--workers` controls discovery workers
-within one scan; `bulk-scan --workers` controls concurrent repository scans.
-`--max-time-hours` accepts a positive number up to `96`, including fractional
-hours. When discovery reaches that limit, the scan preserves completed work
-and continues with validation and reporting.
+not diff or working-tree scans. Here, `--workers` controls independent
+standard-scan workers within one scan; `bulk-scan --workers` controls concurrent
+repository scans. `--max-time-hours` accepts a positive number up to `96`,
+including fractional hours. At the limit, the scan stops unfinished workers,
+preserves completed scan results, and aggregates them into the final report.
 
 ## Add architecture and security context
 
@@ -294,10 +294,10 @@ npx @openai/codex-security scan "$REPOSITORY" --max-cost 5
 ```
 
 Requests already in progress can finish slightly above the limit. If a deep
-scan reaches the limit after discovery finishes, the CLI saves the completed
-report, marks its coverage as `partial`, and returns exit code `2`. If the
-scan can't produce a completed report, any available partial output stays on
-disk.
+scan reaches the limit after Codex Security aggregates completed worker
+results, the CLI saves the completed report, marks its coverage as `partial`,
+and returns exit code `2`. If the scan can't produce a completed report, any
+available partial output stays on disk.
 
 ## Scan changes before each commit
 

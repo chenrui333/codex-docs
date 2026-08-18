@@ -36,7 +36,8 @@ host. Hosted plugin tools can have different capabilities.
   - Environment variables
 - **Streamable HTTP servers**: Servers that you access at an address.
   - Bearer token authentication
-  - OAuth authentication
+  - OAuth authentication, including Client ID Metadata Documents (CIMD) and
+    Dynamic Client Registration (DCR)
   - ChatGPT session authentication for trusted first-party servers
 - **Server instructions**: Codex reads the MCP `instructions` field returned during initialization and uses it as server-wide guidance alongside the server's tools.
 
@@ -203,6 +204,56 @@ If your MCP OAuth flow must use a specific callback URL (for example, a remote D
 If the MCP server advertises `scopes_supported`, Codex prefers those
 server-advertised scopes during OAuth login. Otherwise, Codex falls back to the
 scopes configured in `config.toml`.
+
+#### OAuth client registration
+
+Codex supports [OAuth Client ID Metadata Documents (CIMD)](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/)
+and Dynamic Client Registration (DCR). By default, Codex automatically chooses
+CIMD when the authorization server advertises
+`client_id_metadata_document_supported: true`, includes `none` in
+`token_endpoint_auth_methods_supported`, and the callback uses a supported
+loopback URL. Otherwise, Codex uses DCR when available. A configured OAuth client
+ID always takes precedence and skips client registration.
+
+For CIMD, Codex uses a ChatGPT-hosted metadata document specific to the MCP
+server:
+
+```text
+https://chatgpt.com/oauth/codex/<callback_id>/client.json
+```
+
+Codex derives `<callback_id>` from the MCP server URL and includes it in the
+loopback redirect URI, such as
+`http://127.0.0.1:<port>/callback/<callback_id>`. The metadata document registers
+the matching loopback URI without a port. Authorization servers must accept the
+port selected at login while matching the host and path exactly, as required by
+[RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3). Custom
+callback hosts, paths, or query parameters require DCR or a configured OAuth
+client ID.
+
+Support for a stable, shared CIMD document is in development and coming soon:
+
+```text
+https://chatgpt.com/oauth/codex/client.json
+```
+
+Codex will use the stable document with the shared `/callback` path when the
+authorization server advertises
+`authorization_response_iss_parameter_supported: true`, provides a valid
+`issuer` in its metadata, and includes a matching `iss` in authorization
+responses. Servers without issuer-bound responses will continue using the
+callback-specific document.
+
+To choose a registration method for one CLI login, use
+`--oauth-client-registration`:
+
+```bash
+codex mcp login <server-name> --oauth-client-registration cimd
+codex mcp login <server-name> --oauth-client-registration dcr
+```
+
+The default is `auto`. Registration choices apply only to the current login and
+aren't stored in `config.toml`.
 
 #### config.toml examples
 

@@ -47,22 +47,22 @@ max_discovery_runs = 10
 max_time_hours = 1.5
 ```
 
-| Setting                         | Default | Description                                                                                      |
-| ------------------------------- | ------- | ------------------------------------------------------------------------------------------------ |
-| `workers`                       | `auto`  | Number of discovery workers allowed to run at the same time. Set a positive integer or `"auto"`. |
-| `subagents`                     | `3`     | Number of subagents each discovery worker may start. Set `0` to disable them.                    |
-| `stop_after_no_new`             | `6`     | Stop discovery after this many consecutive runs produce no new candidates.                       |
-| `stop_after_consecutive_errors` | `3`     | Stop discovery after this many consecutive worker errors.                                        |
-| `max_discovery_runs`            | `60`    | Limit on discovery runs before the scan moves to validation.                                     |
-| `max_time_hours`                | `96`    | Limit discovery to a positive number of hours up to `96`; use fractions as needed.               |
+| Setting                         | Default | Description                                                                                                        |
+| ------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| `workers`                       | `4`     | Number of independent standard-scan workers allowed to run at the same time. Legacy `"auto"` also resolves to `4`. |
+| `subagents`                     | `3`     | Number of subagents each worker may start. Set `0` to disable them.                                                |
+| `stop_after_no_new`             | `4`     | Stop after this many consecutive completed worker scans produce no new findings.                                   |
+| `stop_after_consecutive_errors` | `3`     | Stop after this many consecutive worker errors.                                                                    |
+| `max_discovery_runs`            | `40`    | Limit the number of independent standard-scan runs before aggregation.                                             |
+| `max_time_hours`                | `96`    | Limit worker execution to a positive number of hours up to `96`; use fractions as needed.                          |
 
 Lower values can reduce scan time and token use but may miss findings.
 Configuration changes apply to new deep scans, not scans already in progress.
 
-The time limit applies only to discovery. When it expires, Codex Security
-stops unfinished discovery, keeps completed results, and continues with
-validation and reporting. If no source review finishes before the deadline,
-the report records partial coverage.
+When the time limit expires, Codex Security stops unfinished workers, keeps
+completed scan results, and aggregates them into the final report. If no worker
+finishes source review before the deadline, the report records partial
+coverage.
 
 The `max_time_hours` setting requires plugin version `0.1.19` or later. See the
 [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) for release details.
@@ -102,19 +102,15 @@ with `xhigh` reasoning effort.
 4. Open **Additional context** for concrete attack vectors, sensitive
    application areas, or repository context that the code can't reveal.
 5. Select **Start scan**.
-6. Review any setup or capability warning before you approve a configuration
-   change.
 
 </WorkflowSteps>
 
-Deep scans require delegated workers. If the current runtime doesn't meet the
-capability requirements, use a standard scan or try again when enough capacity
-is available.
-
-Discovery workers inherit your selected model and reasoning settings. Follow
-the saved scan from **Scans**, or select **View activity** to inspect its Codex
-task. Check the [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you
-update the plugin or start a long-running scan.
+Deep scan workers inherit your selected model and reasoning settings. Each
+worker runs a complete standard scan, and Codex Security aggregates the
+completed results. Follow the saved scan from **Scans**, or select **View
+activity** to inspect its Codex task. Check the [plugin
+changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you update the plugin or
+start a long-running scan.
 
 <figure className="not-prose my-8">
   <CodexScreenshot
