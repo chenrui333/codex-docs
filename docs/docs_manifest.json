@@ -530,6 +530,20 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk"
     },
+    "developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex/index.md": {
+      "codex_cli_versions": [
+        "0.147.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.147.0"
+      ],
+      "sha256": "36d5b90439a2979e76dba25310890991fa6b316dca60be86660974bfbd4d637f",
+      "source_area": "cookbook",
+      "source_etag": "W/\"2d440254c76253950980efc7ce236578\"",
+      "source_last_modified": "2026-08-18T17:23:54Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex"
+    },
     "developers.openai.com/cookbook/examples/codex/jira-github/index.md": {
       "codex_cli_versions": [
         "0.125.0",
@@ -897,10 +911,10 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "5034a27ddfe3adf5987ede858a10f197b26a355880c35712a1bed3d42470dcfe",
+      "sha256": "ed27e977bbaffd8cd1d1a5000a389eaada103beb2e5fe68d1233f8aad101c564",
       "source_area": "cookbook",
-      "source_etag": "W/\"28ac206e48a7b727e2cdd5900ffa6faa\"",
-      "source_last_modified": "2026-08-17T18:28:59Z",
+      "source_etag": "W/\"20ef318cffbbc24f30dba08cc271477c\"",
+      "source_last_modified": "2026-08-18T17:21:09Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/topic/codex"
     },

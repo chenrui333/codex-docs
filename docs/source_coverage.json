@@ -111,6 +111,7 @@
       "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
       "https://developers.openai.com/cookbook/examples/codex/code_modernization",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk",
+      "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
@@ -125,8 +126,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 27,
-      "mirrored_urls": 12,
+      "codex_related_urls": 28,
+      "mirrored_urls": 13,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -140,6 +141,7 @@
       "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex",
       "https://developers.openai.com/cookbook/examples/codex/code_modernization",
       "https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk",
+      "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex",
       "https://developers.openai.com/cookbook/examples/codex/jira-github",
       "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab",
       "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
@@ -147,8 +149,12 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
-    "new_mirrored_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex"
+    ],
+    "new_mirrored_urls_since_last_run": [
+      "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex"
+    ],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
     "sitemap_fetch_errors": [],
@@ -260,7 +266,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-15T01:17:16+00:00",
+  "generated_at": "2026-08-18T18:38:59+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

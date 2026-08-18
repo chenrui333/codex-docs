@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-18T12:49:03+00:00",
+  "generated_at": "2026-08-18T18:39:31+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,8 +13,8 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 235,
+  "total_files": 236,
   "updated": [
-    "learn.chatgpt.com/docs/sites/index.md"
+    "developers.openai.com/cookbook/topic/codex/index.md"
   ]
 }
