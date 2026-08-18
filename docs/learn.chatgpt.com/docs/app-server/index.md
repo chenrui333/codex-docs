@@ -380,7 +380,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `externalAgentConfig/import` - apply selected external-agent migration items by passing explicit `migrationItems` with `cwd` (`null` for home). Supported item types include config, skills, `AGENTS.md`, plugins, MCP server config, subagents, hooks, commands, and sessions; non-empty imports emit `externalAgentConfig/import/progress` and `externalAgentConfig/import/completed` as work finishes. Plugin and session imports can complete asynchronously.
 - `config/value/write` - write a single configuration key/value to the user's `config.toml` on disk.
 - `config/batchWrite` - apply configuration edits atomically to the user's `config.toml` on disk.
-- `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including exact managed configuration, allowlists, pinned `featureRequirements`, and residency/network requirements (or `null` if you haven't set any up).
+- `configRequirements/read` - fetch requirements from `requirements.toml` and/or MDM, including exact managed configuration, allowlists, pinned `featureRequirements`, and network requirements (or `null` if you haven't set any up).
 - `fs/readFile`, `fs/writeFile`, `fs/createDirectory`, `fs/getMetadata`, `fs/readDirectory`, `fs/remove`, `fs/copy`, `fs/watch`, `fs/unwatch`, and `fs/changed` (notify) - operate on absolute filesystem paths through the app-server v2 filesystem API.
 
 Plugin summaries include a `source` union. Local plugins return

@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-17T18:40:43+00:00",
+  "generated_at": "2026-08-18T01:16:54+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,7 +13,11 @@
   },
   "total_files": 235,
   "updated": [
-    "developers.openai.com/cookbook/topic/codex/index.md",
-    "learn.chatgpt.com/docs/security/cli/reference/index.md"
+    "github.openai.com/openai/codex/docs/contributing.md",
+    "learn.chatgpt.com/docs/app-server/index.md",
+    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+    "learn.chatgpt.com/docs/customization/computer-history/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/personalize/index.md"
   ]
 }

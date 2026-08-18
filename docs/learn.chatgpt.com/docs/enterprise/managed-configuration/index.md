@@ -65,12 +65,11 @@ a delivery channel for `requirements.toml`-compatible policy. It doesn't grant
 workspace access or replace workspace RBAC.
 
 Open [Managed configuration](https://chatgpt.com/codex/settings/managed-configs)
-to create and assign cloud-managed requirements. For example, this policy
-requires supported clients to use United States data residency, limits approval
-and sandbox choices, and prompts before a supported shell entry point runs:
+to create and assign cloud-managed requirements. For example, this policy limits
+approval and sandbox choices and prompts before a supported shell entry point
+runs:
 
 ```toml
-enforce_residency = "us"
 allowed_approval_policies = ["on-request"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 

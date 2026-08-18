@@ -45,8 +45,9 @@ must always apply in `AGENTS.md` or checked-in project documentation.
 
 [Computer History](https://learn.chatgpt.com/docs/customization/computer-history) is an opt-in macOS
 desktop feature that can turn activity across allowed apps and websites into
-memories and a timeline. It records interaction events rather than screenshots
-or audio.
+memories and a timeline. It uses interaction events, along with text and other
+context available through macOS accessibility features. It does not include
+screenshots in your history or record audio.
 
 Review what Computer History includes before enabling it. You can pause it,
 exclude apps and websites, inspect or delete individual timeline items, and

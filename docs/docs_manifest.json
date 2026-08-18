@@ -3885,9 +3885,9 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "22ce317be94ad2255ead9bbefa58687f9573f2e0248a5708a16098536c3a527b",
+      "sha256": "6d5ad9d91f2503904e8d11d0a506cae0b38615e42a050c43196e1243cbefb4bc",
       "source_area": "github_docs",
-      "source_etag": "W/\"a1d6245261302deed33b0bafee19a81693567e56ee36eac98b0bbc1ce3aff61a\"",
+      "source_etag": "W/\"2463afb8447481c92119835e6e02329d0b3a9b1baf71b59e74c6c301888fcf10\"",
       "source_type": "github",
       "source_url": "https://raw.githubusercontent.com/openai/codex/main/docs/contributing.md"
     },
@@ -4771,7 +4771,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "8b0bbaf9152f3aa7fecba805b6e95963ae90506977fda6449592cabd6a12dc21",
+      "sha256": "0c6d8583e196fad2fe3da86a797732ff9f38d87da83ba2de1cff1536bffab866",
       "source_area": "learn_app_server",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5096,7 +5096,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "47da7d79027e52037696032c71334356bd21f3e0d97a36f482f874eb6deffb9d",
+      "sha256": "97dc92a1f6ccc1f6135bf2316f32a3582804f89f1958d7de04f9e7c2b5f12b9f",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5211,7 +5211,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.147.0"
       ],
-      "sha256": "69b2e71d49c73eacb620bcf148bb0381be358e843f1a9b7f13a923dc37325faf",
+      "sha256": "57f5b031048a9741f7d1884d4569e667f44e4f0cc0401ed9ead7f3b9f1a49089",
       "source_area": "learn_customization",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -5471,7 +5471,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "46cdb976e0b3de22d8b932ea44946537359dcf99b15e4ed079ddf5a57b2af126",
+      "sha256": "a8f9edf9576c5e5d601c3221a2e80b815ff2b1a86481cab61707662050bab12e",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6107,7 +6107,7 @@
         "codex-cli 0.146.1",
         "codex-cli 0.147.0"
       ],
-      "sha256": "5b9061aeb79d0deced6fe4e5ac62afd49c979f296fe0ac58d15dfee3e5ad149d",
+      "sha256": "6def66ca9b30cfb83462e7b720892db027e1f36cc89f268a2ed05614a80a8c96",
       "source_area": "learn_personalize",
       "source_kind": "learn_markdown",
       "source_type": "learn",

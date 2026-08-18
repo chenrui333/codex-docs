@@ -32,8 +32,11 @@ and websites contribute, can see and pause collection from the macOS menu bar,
 and can inspect or delete your history at any time.
 
 Computer History replaces the earlier Chronicle research preview, but it is a
-rebuilt system rather than a rename. Chronicle used screenshots. Computer
-History records interaction events and does not capture your screen or audio.
+rebuilt system rather than a rename. It uses interaction events, along with
+text and other context available through macOS accessibility features, to
+create summaries you can review and delete. It does not include screenshots in
+your history or record audio, and private-mode web browsing activity is never
+included.
 
 <Illustration description="Computer History timeline showing activity summaries, contributing apps, and suggested skills and automations">
   <ComputerHistoryTimelineIllustration />
@@ -87,8 +90,8 @@ and context that macOS exposes through its accessibility system. Computer
 History periodically turns these events into text summaries and local memory
 files.
 
-Computer History does **not** capture screenshots, screen recordings,
-microphone input, or system audio. Private-mode web browsing activity is never
+Computer History does not include screenshots in your history or record
+microphone input or system audio. Private-mode web browsing activity is never
 included.
 
 In **Settings > Computer history > History**, the timeline groups summaries by
@@ -201,9 +204,11 @@ created from them. This cannot be undone.
 ## Privacy and local storage
 
 Computer History stores the interaction-event stream temporarily on your Mac so
-ChatGPT and Codex can generate memories and build suggested workflows. It does
-**not** capture screenshots, screen recordings, microphone input, or system
-audio.
+ChatGPT and Codex can generate memories and build suggested workflows. The
+stream can include activity such as clicks and typing, along with text and other
+context available through macOS accessibility features. Computer History does
+not include screenshots in your history or record microphone input or system
+audio. Private-mode web browsing activity is never included.
 
 Temporary event files are retained for up to 48 hours. Generated memory files
 remain on your filesystem until you delete or clear them, and you can reveal
