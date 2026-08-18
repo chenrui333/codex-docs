@@ -13,12 +13,12 @@ Source: https://learn.chatgpt.com/docs/sites
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Sites is in public beta. Availability can depend on your plan, region, and
-  workspace settings. Plan-specific usage limits apply across all Sites during
-  the beta. ChatGPT shows the current limits and notifies you as you approach
-  one. Reaching a limit can prevent you from creating a Site, adding storage, or
-  keeping a high-usage Site public, but you can still edit and manage existing
-  Sites.
+Sites is in public beta and is available with ChatGPT Plus, Pro, Business,
+  Enterprise and Edu plans. Plan-specific usage limits apply across all Sites
+  during the beta. ChatGPT shows the current limits and notifies you as you
+  approach one. Reaching a limit can prevent you from creating a Site, adding
+  storage, or keeping a high-usage Site public, but you can still edit and
+  manage existing Sites.
 
 Sites lets ChatGPT create, host, refine, and share websites, web apps, and games.
 Use Sites when you want to turn a prompt or compatible existing project into a
@@ -388,6 +388,13 @@ Deleting a Site permanently removes it. You can't restore a deleted Site.
 Sites hosts web experiences that run in the supported Sites runtime. Some
 frameworks, private networks, databases, background services, and hosting
 patterns aren't supported.
+
+Each Site has these storage limits:
+
+| Resource            | Limit                  |
+| ------------------- | ---------------------- |
+| D1 database storage | 10 GB                  |
+| R2 object storage   | No fixed storage limit |
 
 Sites doesn't support data residency or inference residency at launch. This
 includes deployed Sites, Site code, D1 and R2 data and file storage, generated
