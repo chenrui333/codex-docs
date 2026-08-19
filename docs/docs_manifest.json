@@ -5910,7 +5910,7 @@
         "codex-cli 0.147.0",
         "codex-cli 0.148.0"
       ],
-      "sha256": "69982a776b904c89a6128eb2a6400ce9c01a7c8a24cdf43aa4d004f5db56e24e",
+      "sha256": "08b4de7e2fd59e3f8cc8d84a68df6885fe7b1336299b17fe35cd325e4a1f1567",
       "source_area": "learn_environments",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7341,7 +7341,7 @@
       "codex_cli_version": "0.148.0",
       "codex_cli_version_raw": "codex-cli 0.148.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a384ffc7cc3778c153efea8cd61b66b79b0067286b51d25315c75f58346b9481",
+      "sha256": "c9b352b2b9bdec2c32de66a40c28f3ff50aedbdb5af44723454b5e9962faaa69",
       "source_area": "system_prompt",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_prompt_input",
