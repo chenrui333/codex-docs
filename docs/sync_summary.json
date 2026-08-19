@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-19T12:49:27+00:00",
+  "generated_at": "2026-08-19T18:36:42+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,6 +13,7 @@
   },
   "total_files": 236,
   "updated": [
+    "learn.chatgpt.com/docs/agent-configuration/subagents/index.md",
     "system_prompts/codex-cli/prompt-input.json"
   ]
 }

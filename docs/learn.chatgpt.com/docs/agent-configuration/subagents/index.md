@@ -165,8 +165,15 @@ delegated in parallel.
 
 <ContentModeSwitch group="codex-surface" ids="app,cli,ide">
 
-If you don't pin a model or `model_reasoning_effort`, Codex can choose a setup
-that balances intelligence, speed, and price for the task. It may favor `gpt-5.6-terra` for fast scans or a higher-effort `gpt-5.6` configuration for more demanding reasoning. When you want finer control, steer that choice in your prompt or set `model` and `model_reasoning_effort` directly in the agent file.
+If you don't configure a subagent model or `model_reasoning_effort`, the
+subagent inherits the parent agent's model and reasoning effort. If an explicit
+spawn request or an `[agents]` default selects a model without an
+explicit or configured reasoning effort, the subagent uses that model's default
+reasoning effort. To balance intelligence, speed, and price for each task,
+request a specific model or reasoning effort in your prompt,
+configure `[agents]` defaults in `config.toml`, or set `model` and
+`model_reasoning_effort` directly in the custom agent file.
+For example, use `gpt-5.6-terra` for fast scans or a higher-effort `gpt-5.6` configuration for more demanding reasoning.
 
 For most tasks in Codex, start with
   `gpt-5.6`. Use
@@ -353,12 +360,16 @@ Every standalone custom agent file must define:
 - `developer_instructions`
 
 If a custom agent file sets `model` or `model_reasoning_effort`, the value in
-the file takes precedence. Otherwise, Codex resolves each setting independently:
-an explicit spawn value, then the corresponding `[agents]` default, then the
-parent's value. If a spawn selects a different model and neither an explicit nor
-configured effort is present, Codex uses that model's default effort. Other
-session settings, such as `sandbox_mode`, `mcp_servers`, and `skills.config`,
-inherit from the parent when the custom agent file omits them.
+the file takes precedence. Before applying the file, Codex resolves each setting
+from an explicit spawn value, then the corresponding `[agents]` default, then
+the parent's value. If an explicit spawn request or an `[agents]` default
+selects a model and neither supplies a reasoning effort, Codex uses
+that model's default effort. A custom agent file that sets only `model`
+preserves this previously resolved effort. Set `model_reasoning_effort` in the
+file too if the selected model doesn't support that effort or you want a
+different one. Other session settings, such as `sandbox_mode`, `mcp_servers`,
+and `skills.config`, inherit from the parent when the custom agent file omits
+them.
 
 ### Global settings
 

@@ -96,6 +96,7 @@
   "developers": {
     "codex_related_urls": [
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
+      "https://developers.openai.com/blog/codex-as-a-platform",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
       "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
@@ -125,13 +126,13 @@
       "https://developers.openai.com/showcase/phantasy-codex-adventure"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 15,
-      "codex_related_urls": 28,
+      "classified_skipped_codex_related_urls": 16,
+      "codex_related_urls": 29,
       "mirrored_urls": 13,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 15,
+      "skipped_codex_related_urls": 16,
       "unclassified_skipped_codex_related_urls": 0
     },
     "mirrored_urls": [
@@ -149,7 +150,9 @@
       "https://developers.openai.com/cookbook/topic/codex",
       "https://developers.openai.com/resources/codex"
     ],
-    "new_codex_related_urls_since_last_run": [],
+    "new_codex_related_urls_since_last_run": [
+      "https://developers.openai.com/blog/codex-as-a-platform"
+    ],
     "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
@@ -160,7 +163,7 @@
     ],
     "skipped_codex_related_url_counts_by_classification": {
       "blog_index": 1,
-      "blog_post": 7,
+      "blog_post": 8,
       "chatgpt_plugin_page": 1,
       "community_page": 2,
       "learn_index": 1,
@@ -171,6 +174,11 @@
         "classification": "blog_post",
         "reason": "Blog posts are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma"
+      },
+      {
+        "classification": "blog_post",
+        "reason": "Blog posts are intentionally excluded from the docs mirror.",
+        "url": "https://developers.openai.com/blog/codex-as-a-platform"
       },
       {
         "classification": "blog_post",
@@ -245,6 +253,7 @@
     ],
     "skipped_codex_related_urls": [
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
+      "https://developers.openai.com/blog/codex-as-a-platform",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
       "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
@@ -262,7 +271,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-19T01:18:04+00:00",
+  "generated_at": "2026-08-19T18:36:16+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
