@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/references/codex-self-knowledge.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.147.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0"]
+codex_cli_versions: ["0.147.0", "0.148.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0"]
 ---
 
 # Codex self-knowledge

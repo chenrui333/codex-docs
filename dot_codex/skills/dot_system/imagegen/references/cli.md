@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_imagegen'
 source_url: 'codex-cli://skills/.system/imagegen/references/cli.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
 ---
 
 # CLI reference (`scripts/image_gen.py`)
@@ -68,7 +68,7 @@ python "$IMAGE_GEN" edit \
 - Use the bundled CLI directly (`python "$IMAGE_GEN" ...`) after activating the correct environment.
 - Do **not** create one-off runners (for example `gen_images.py`) unless the user explicitly asks for a custom wrapper.
 - **Never modify** `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
-- Do not silently downgrade from CLI `gpt-image-2` or built-in `image_gen` to CLI `gpt-image-1.5`; ask first unless the user already explicitly requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback.
+- Do not silently downgrade from CLI `gpt-image-2` or built-in `image_gen` to CLI `gpt-image-1.5`; ask first unless the user explicitly requested `gpt-image-1.5`.
 
 ## Defaults
 - Model: `gpt-image-2`
@@ -88,7 +88,7 @@ python "$IMAGE_GEN" edit \
 - Square images are typically fastest. Use `--size 1024x1024` for quick square drafts.
 - If the user asks for 4K-style output, use `--size 3840x2160` for landscape or `--size 2160x3840` for portrait.
 - Do not pass `--input-fidelity` with `gpt-image-2`; this model always uses high fidelity for image inputs.
-- Do not use `--background transparent` with `gpt-image-2`; the default transparent-image workflow uses built-in `image_gen` on a flat chroma-key background plus local removal. Use `gpt-image-1.5` only after the user explicitly confirms the true-transparent CLI fallback, unless they already requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback.
+- Do not use `--background transparent` with CLI `gpt-image-2`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
 
 Popular `gpt-image-2` sizes:
 - `1024x1024`
@@ -139,7 +139,7 @@ python "$IMAGE_GEN" generate \
 
 True transparent fallback request:
 
-Ask for confirmation before using this command unless the user already explicitly requested `gpt-image-1.5`, `scripts/image_gen.py`, or CLI fallback.
+Ask for confirmation before using this command unless the user explicitly requested `gpt-image-1.5`.
 
 ```bash
 python "$IMAGE_GEN" generate \
@@ -150,7 +150,7 @@ python "$IMAGE_GEN" generate \
   --out output/imagegen/product-cutout.png
 ```
 
-When using this path, explain briefly that built-in `image_gen` plus chroma-key removal is the default transparent-image path, but this request needs true model-native transparency. `gpt-image-2` does not support `background=transparent`, so `gpt-image-1.5` is required for this confirmed fallback.
+Explain that CLI `gpt-image-2` does not support `background=transparent`, so transparent CLI output requires the confirmed `gpt-image-1.5` fallback.
 
 ## Quality, input fidelity, and masks (CLI fallback only)
 These are explicit CLI controls. They are not built-in `image_gen` tool arguments.
@@ -248,4 +248,4 @@ Notes:
 - API parameter quick reference for fallback CLI mode: `references/image-api.md`
 - Prompt examples shared across both top-level modes: `references/sample-prompts.md`
 - Network/sandbox notes for fallback CLI mode: `references/codex-network.md`
-- Built-in-first transparent image workflow: `SKILL.md` and `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`
+- Built-in-first transparent image workflow: `SKILL.md`

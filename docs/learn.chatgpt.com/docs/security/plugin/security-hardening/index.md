@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_security'
 source_url: 'https://learn.chatgpt.com/docs/security/plugin/security-hardening'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
 ---
 
 # Propose security hardening

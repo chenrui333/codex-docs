@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_cyber_safety'
 source_url: 'https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.147.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0"]
+codex_cli_versions: ["0.147.0", "0.148.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0"]
 ---
 
 # Recommended configuration

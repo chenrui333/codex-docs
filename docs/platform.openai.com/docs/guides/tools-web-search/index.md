@@ -4,8 +4,8 @@ source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
 source_last_modified: '2026-08-15T01:15:47Z'
 source_etag: 'W/"a6db6c7ebbb7291e2f86e0b1388fea9c"'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
 ---
 
 # Web search
