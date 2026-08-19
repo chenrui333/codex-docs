@@ -7,6 +7,11 @@
     },
     {
       "enabled": false,
+      "key": "apply_patch_preserve_line_endings",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "apply_patch_streaming_events",
       "stage": "under development"
     },
@@ -29,6 +34,11 @@
       "enabled": true,
       "key": "auth_elicitation",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "background_paginated_rollout_migration",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -58,12 +68,17 @@
     {
       "enabled": false,
       "key": "code_mode_buffered_exec",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": true,
       "key": "code_mode_host",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "code_mode_interrupt",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -174,6 +189,21 @@
       "enabled": true,
       "key": "guardian_approval",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "guardian_enhanced_node_repl_transcripts",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "guardian_node_repl_transcript_images",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "guardian_reuse_parent_compaction",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -297,6 +327,11 @@
     },
     {
       "enabled": false,
+      "key": "psp",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "realtime_conversation",
       "stage": "under development"
     },
@@ -354,6 +389,11 @@
       "enabled": false,
       "key": "responses_websockets_v2",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "retain_client_developer_messages",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -466,6 +506,11 @@
       "stage": "removed"
     },
     {
+      "enabled": true,
+      "key": "unbounded_connection_retries",
+      "stage": "stable"
+    },
+    {
       "enabled": false,
       "key": "undo",
       "stage": "removed"
@@ -478,6 +523,11 @@
     {
       "enabled": false,
       "key": "unified_exec_zsh_fork",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "unified_image_budget",
       "stage": "under development"
     },
     {
@@ -521,7 +571,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.147.0",
+  "codex_cli_version": "codex-cli 0.148.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -535,6 +585,7 @@
       "skill_search",
       "tool_call_mcp_elicitation",
       "tool_suggest",
+      "unbounded_connection_retries",
       "view_image"
     ],
     "actionable_stages": [
@@ -543,14 +594,17 @@
     ],
     "missing_in_docs": [
       "apply_patch_freeform",
+      "apply_patch_preserve_line_endings",
       "apply_patch_streaming_events",
       "apps_mcp_path_override",
       "artifact",
       "auth_elicitation",
+      "background_paginated_rollout_migration",
       "chronicle",
       "code_mode",
       "code_mode_buffered_exec",
       "code_mode_host",
+      "code_mode_interrupt",
       "code_mode_only",
       "codex_git_commit",
       "collaboration_modes",
@@ -568,6 +622,9 @@
       "experimental_windows_sandbox",
       "external_agent_memory_import",
       "external_migration",
+      "guardian_enhanced_node_repl_transcripts",
+      "guardian_node_repl_transcript_images",
+      "guardian_reuse_parent_compaction",
       "guardianv2",
       "image_detail_original",
       "image_generation",
@@ -582,6 +639,7 @@
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
       "plugin_hooks",
+      "psp",
       "realtime_conversation",
       "recommended_plugins",
       "remote_compaction_v2",
@@ -593,6 +651,7 @@
       "respect_system_proxy",
       "responses_websockets",
       "responses_websockets_v2",
+      "retain_client_developer_messages",
       "rollout_budget",
       "runtime_metrics",
       "search_tool",
@@ -612,8 +671,10 @@
       "tool_suggest",
       "tui_app_server",
       "unavailable_dummy_tools",
+      "unbounded_connection_retries",
       "undo",
       "unified_exec_zsh_fork",
+      "unified_image_budget",
       "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
@@ -627,6 +688,7 @@
       "removed": [
         "apply_patch_freeform",
         "apps_mcp_path_override",
+        "code_mode_buffered_exec",
         "codex_git_commit",
         "collaboration_modes",
         "elevated_windows_sandbox",
@@ -670,14 +732,17 @@
         "skill_search",
         "tool_call_mcp_elicitation",
         "tool_suggest",
+        "unbounded_connection_retries",
         "view_image"
       ],
       "under development": [
+        "apply_patch_preserve_line_endings",
         "apply_patch_streaming_events",
         "artifact",
+        "background_paginated_rollout_migration",
         "chronicle",
         "code_mode",
-        "code_mode_buffered_exec",
+        "code_mode_interrupt",
         "code_mode_only",
         "concurrent_reasoning_summaries",
         "current_time_reminder",
@@ -689,14 +754,19 @@
         "executed_tool_call_metadata",
         "executor_capability_discovery",
         "external_agent_memory_import",
+        "guardian_enhanced_node_repl_transcripts",
+        "guardian_node_repl_transcript_images",
+        "guardian_reuse_parent_compaction",
         "guardianv2",
         "image_resize_notice",
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "non_prefixed_mcp_tool_names",
+        "psp",
         "realtime_conversation",
         "request_permissions_tool",
         "respect_system_proxy",
+        "retain_client_developer_messages",
         "rollout_budget",
         "runtime_metrics",
         "shell_zsh_fork",
@@ -704,6 +774,7 @@
         "terminal_visualization_instructions",
         "token_budget",
         "unified_exec_zsh_fork",
+        "unified_image_budget",
         "use_agent_identity"
       ]
     },
@@ -745,20 +816,24 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "b389a1d25773008a17404365271878abb319d5dd7e376f0720d10d37dfa5fdef"
+      "sha256": "fe987d01e7d99fd8aad6e0baa03586d2ec544226bc9db619b2298be0051e2214"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "c026ac38fdf99939f28f25c414cd71f6ffaf3808a64d3278b9ce00dff3b953cb"
+      "sha256": "d468274250db531965aadd7848d0f4da44e8b52f3cdb47675a8987c3f20b6e48"
     }
   },
   "schema_version": 3,
-  "source_commit": "be6e8eac029b183056b7e4402879f15d2c85f61b",
+  "source_commit": "3ba0f711642a888aec92a611a3f3b2211157ff89",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
+    },
+    "apply_patch_preserve_line_endings": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "apply_patch_streaming_events": {
       "default_enabled_expr": "false",
@@ -779,6 +854,10 @@
     "auth_elicitation": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "background_paginated_rollout_migration": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "browser_use": {
       "default_enabled_expr": "true",
@@ -802,11 +881,15 @@
     },
     "code_mode_buffered_exec": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "code_mode_host": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "code_mode_interrupt": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "code_mode_only": {
       "default_enabled_expr": "false",
@@ -895,6 +978,18 @@
     "guardian_approval": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "guardian_enhanced_node_repl_transcripts": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "guardian_node_repl_transcript_images": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "guardian_reuse_parent_compaction": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "guardianv2": {
       "default_enabled_expr": "false",
@@ -992,6 +1087,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "experimental/under development (platform-dependent)"
     },
+    "psp": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "realtime_conversation": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -1039,6 +1138,10 @@
     "responses_websockets_v2": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
+    },
+    "retain_client_developer_messages": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "rollout_budget": {
       "default_enabled_expr": "false",
@@ -1128,15 +1231,23 @@
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
+    "unbounded_connection_retries": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
     "undo": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
     },
     "unified_exec": {
-      "default_enabled_expr": "!cfg!(windows)",
+      "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
     "unified_exec_zsh_fork": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "unified_image_budget": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -1174,13 +1285,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "ac595b26fb7cf1c222cd273b8c9048a5f4e366dc33b50088302c916a4d9563a5",
-    "features_rs_sha256": "8437206e83806c546f9c8cf7002384c8d9be1740c1f4c78f44ef9417d7e61344"
+    "client_rs_sha256": "4b4d00234a7fb649525fdcc913ffe288e4ef3348a916acbd265c22607fd8652d",
+    "features_rs_sha256": "a6ef7ca16634626ce2197c08ddc8001988c4feeeba8c2cd66f6679fd908822bd"
   },
-  "source_ref": "rust-v0.147.0",
+  "source_ref": "rust-v0.148.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/be6e8eac029b183056b7e4402879f15d2c85f61b/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/be6e8eac029b183056b7e4402879f15d2c85f61b/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/3ba0f711642a888aec92a611a3f3b2211157ff89/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/3ba0f711642a888aec92a611a3f3b2211157ff89/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
