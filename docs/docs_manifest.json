@@ -7341,7 +7341,7 @@
       "codex_cli_version": "0.148.0",
       "codex_cli_version_raw": "codex-cli 0.148.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "c9b352b2b9bdec2c32de66a40c28f3ff50aedbdb5af44723454b5e9962faaa69",
+      "sha256": "6da4c6ff456e878fbc903159fcaf3a1c031bff9aa40fc6be384bf0bdb41ee763",
       "source_area": "system_prompt",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_prompt_input",
