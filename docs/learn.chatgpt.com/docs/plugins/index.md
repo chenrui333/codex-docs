@@ -194,6 +194,55 @@ Choose a specific plugin
 
 </ContentModeSwitch>
 
+<ContentModeSwitch group="codex-surface" id="app">
+
+### Use Apple Messages from Codex
+
+The Apple Messages plugin is available on all plans in the ChatGPT desktop app
+for macOS. In Codex and ChatGPT Work, it can read and search iMessage, SMS, and
+RCS chats on your Mac and send messages on your behalf through the Messages app.
+It doesn't let you interact with ChatGPT remotely through Messages, and it
+doesn't work in regular ChatGPT chats.
+
+For this release, the Messages plugin is included only in the Apple Silicon
+(arm64) build of the ChatGPT desktop app.
+
+<WorkflowSteps>
+
+1. Open **Plugins**, find the Apple Messages plugin, and install it.
+2. Start a new Codex or ChatGPT Work chat and ask it to find, summarize, draft,
+   or send a message.
+3. Grant the requested macOS permissions before ChatGPT reads Messages.
+4. Review the message and its recipients before allowing a send.
+
+</WorkflowSteps>
+
+By default, ChatGPT sends messages only after you approve the message and its
+recipients. Choose **Allow once** to approve only that send. If you select
+**Always allow sending to this chat**, ChatGPT can send future messages to that
+Messages chat without another send approval.
+
+Keep per-send approval for chats that may contain untrusted or misleading
+instructions. Persistent approval removes your final chance to review a message
+before ChatGPT sends it as you. Use it only when you accept that risk.
+
+To restore per-send approval, open **Settings** > **Computer use** and select
+**Manage** next to **Messages**. Under **Always allowed to send**, select the
+trash icon next to the chat, then confirm **Remove**. ChatGPT will ask
+before sending to that chat again.
+
+**Known issue:** If your task is set to **Full access** or otherwise disables
+approval prompts, Apple Messages may be unable to show the confirmation needed
+to send. Switch to **Ask for approval** or **Approve for me** and try again.
+
+Apple Messages runs on your Mac. It isn't directly available in ChatGPT on the
+web or mobile, Codex CLI, or the IDE extension.
+
+In managed workspaces, administrators can disable Apple Messages through the
+existing Computer Use control.
+
+</ContentModeSwitch>
+
 <ContentModeSwitch group="codex-surface" id="cli">
 
 <a id="plugin-directory-in-codex-cli"></a>

@@ -13,9 +13,10 @@ Source: https://learn.chatgpt.com/docs/enterprise/workspace-model-availability
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Model availability depends on the product surface and authentication boundary.
-A ChatGPT workspace model setting isn't a universal model switch for Codex in
-the ChatGPT desktop app, Codex CLI, IDE extension, Codex cloud, or Platform API.
+The models available to someone depend on the product surface and how they
+signed in. A model setting in your ChatGPT workspace doesn't automatically
+apply to Codex in the ChatGPT desktop app, Codex CLI, the IDE extension, Codex
+cloud, or the OpenAI API.
 
 For the complete administration model, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
@@ -33,6 +34,26 @@ Check the current source for the surface the user is actually using. Don't
 copy a model catalog or assume that a ChatGPT model-picker setting has the same
 effect for Codex in the ChatGPT desktop app, Codex CLI, IDE extension, Codex
 cloud, and the API Platform.
+
+## Set a clear starting experience for employees
+
+Review [Models settings](https://help.openai.com/en/articles/8411955) for your
+workspace before inviting a pilot group. Workspace owners and admins can
+configure separate starting defaults for Chat and for Work and Codex. Where
+supported, choose a starting model, reasoning level, speed, and new-chat
+behavior for Chat, Work, and local Codex surfaces.
+
+Treat these choices as defaults, not permissions. Available models still depend
+on the member's seat, role, workspace or API identity, enforced workspace
+requirements, and the specific surface they're using. Starting defaults don't
+grant access to unavailable models or override those requirements. Codex cloud
+doesn't support changing its default model.
+
+Fast mode availability depends on the workspace, product surface, and any
+enforced `features.fast_mode` setting in
+[`requirements.toml`](https://learn.chatgpt.com/docs/config-file/config-reference#requirementstoml).
+This setting can pin Fast mode on or off for managed local Codex clients; it
+isn't a starting default and can't override workspace or product availability.
 
 ## Prepare for the GPT-5.4 retirement
 

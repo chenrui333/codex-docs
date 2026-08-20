@@ -17,6 +17,61 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## August 17–21, 2026
+
+### Work with more of your apps and content
+
+- **Apple Messages:** [Find chats, summarize messages, prepare replies, and send through Messages on your Mac](https://learn.chatgpt.com/docs/plugins?surface=app#app-use-apple-messages-from-codex). The plugin is available on all plans in the ChatGPT desktop app for macOS. Use it in ChatGPT Work and Codex, not in regular ChatGPT chats. By default, ChatGPT sends messages only after you approve the message and its recipients.
+
+- **Site co-editing:** Where available, [invite active members of your workspace as editors](https://learn.chatgpt.com/docs/sites#collaborate-on-a-site). Editors can refine the Site and publish updates after its owner publishes it for the first time. Invited editors can read the Site's live database data; owners retain control of sharing and settings.
+
+- **Editable Site URLs:** Where available, [choose a new ChatGPT-hosted address for an existing Site](https://learn.chatgpt.com/docs/sites#change-a-site-url) without redeploying it. The previous address redirects to the new one.
+
+- **Computer History in Europe:** Use [Computer History](https://learn.chatgpt.com/docs/customization/computer-history) in the EEA, Switzerland, and the United Kingdom. It remains off by default for ChatGPT Pro, Business, and Enterprise users on macOS. Business and Enterprise administrators must enable access first.
+
+- **Shared thread snapshots:** [Share a read-only snapshot of a local Codex thread](https://learn.chatgpt.com/docs/use-chatgpt#share-a-read-only-snapshot-of-a-codex-thread) from the ChatGPT desktop app for macOS. Personal-account links are viewable by anyone with the link; workspace-account links are limited to the originating workspace. Codex redacts known secret patterns, but review the snapshot before sharing because sensitive content may remain.
+
+- **Unified pinned threads:** Keep your [pinned chats](https://learn.chatgpt.com/docs/projects?surface=app#app-organize-projects-and-chats) in sync between desktop and iOS.
+
+**Prompt:**
+
+```text
+Find the latest Messages conversation about tomorrow's launch, summarize the open questions, and draft a reply without sending it.
+```
+
+[Read the August 20 release notes](https://learn.chatgpt.com/docs/changelog#codex-2026-08-20-app).
+
+### Work with GitLab projects in Codex cloud
+
+[GitLab support](https://learn.chatgpt.com/docs/third-party/gitlab) is available in beta on all ChatGPT
+plans. Connect a project, create a cloud environment, start tasks from issues
+or merge requests with `@codex`, and request one-off or automatic merge request
+reviews.
+
+The integration runs in Codex cloud, and a managed workspace admin can disable
+it. GitLab-triggered activity requires permission to configure the applicable
+webhook. GitLab Self-Managed and GitLab Dedicated connections require
+workspace admin setup; webhook activity requires GitLab 19.0 or later.
+
+[Read the August 19 GitLab release
+notes](https://learn.chatgpt.com/docs/changelog#codex-2026-08-19-gitlab).
+
+### Export public plugin metadata for review
+
+Eligible ChatGPT Enterprise workspace owners and admins can download a CSV of
+the public plugins visible to their workspace. In
+[Admin > Plugins](https://chatgpt.com/admin/plugins), select **Public**, then
+select the download icon (**Export CSV**).
+
+The export lists plugin, app, and Chat skill names and descriptions, together
+with developer, version, date added in UTC, and OpenAI verification metadata.
+It uses a public-catalog snapshot that can be up to 48 hours old and excludes
+plugins created for the workspace. The export isn't available in FedRAMP
+workspaces.
+
+[Read the August 17 admin export release
+notes](https://learn.chatgpt.com/docs/changelog#codex-2026-08-17-admin-csv).
+
 ## August 10–14, 2026
 
 ### Find earlier work with Computer History

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-08-14T01:53:50Z'
-source_etag: 'W/"98d305fdc1cc3940886938d5651c0e0c"'
+source_last_modified: '2026-08-20T18:36:24Z'
+source_etag: 'W/"61323290cb75448d7ada37ca55602468"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
 ---
@@ -74,6 +74,14 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 [View all updates](/codex/whats-new)
 
+August 17–21, 2026
+
+[### Work with more of your apps and content
+
+<PromptComponent prompt={Find the latest Messages conversation about tomorrow's launch, summarize the open questions, and draft a reply without sending it.}](/codex/whats-new#work-with-more-of-your-apps-and-content)  [### Work with GitLab projects in Codex cloud
+
+GitLab support is available in beta on all ChatGPT plans.](/codex/whats-new#work-with-gitlab-projects-in-codex-cloud)
+
 August 10–14, 2026
 
 [### Find earlier work with Computer History
@@ -81,12 +89,4 @@ August 10–14, 2026
 Computer History turns activity across your apps and websites into a searchable timeline and memories that ChatGPT and Codex can use.](/codex/whats-new#find-earlier-work-with-computer-history)  [### Use the ChatGPT desktop app on Linux
 
 The ChatGPT desktop app for Linux is now available in preview.](/codex/whats-new#use-the-chatgpt-desktop-app-on-linux)
-
-August 3–7, 2026
-
-[### Talk through files and projects with ChatGPT Voice
-
-ChatGPT Voice now supports uploaded files and ChatGPT Projects.](/codex/whats-new#talk-through-files-and-projects-with-chatgpt-voice)  [### Study and teach with dedicated education plugins
-
-Three new plugins bring classroom-specific workflows to ChatGPT Work and Codex.](/codex/whats-new#study-and-teach-with-dedicated-education-plugins)
 

@@ -13,14 +13,24 @@ Source: https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Groups organize ChatGPT workspace access for a set of members and can carry
-custom roles. Group membership is separate from local runtime policy and
-permissions in connected systems.
+Groups organize people in a ChatGPT workspace and can carry custom roles. Group
+membership doesn't replace seat assignments, grant workspace feature permissions
+by itself, override local runtime policy, or provide access to the Platform API
+or connected systems.
 
 For the complete control model, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
 
 ## Compare membership sources
+
+Use groups for people with a shared access need, such as a pilot cohort,
+workspace operators, or members who need the same supported feature.
+
+### Create a group for a shared access need
+
+Workspace owners and admins can create and manage groups. Create a manually
+managed group for a small or temporary audience, or sync an established group
+from your identity provider when membership should follow your directory.
 
 Each group has one authoritative membership source:
 
@@ -35,6 +45,15 @@ updates can overwrite workspace-side changes. The Help Center owns current SCIM
 behavior, supported attributes, and setup steps.
 
 ## Understand the access boundary
+
+Group membership by itself doesn't grant a workspace feature permission.
+
+### Connect a group to the right permissions
+
+Workspace owners can assign custom roles to groups or, where available, directly
+to members. Check every applicable role: an explicit **Off** in any role
+denies that permission, even when another role grants it. A member's seat type
+and product eligibility still apply.
 
 SCIM provisions workspace membership and group assignments. It doesn't grant
 permissions in GitHub, Google Drive, Slack, or another connected system. It also
@@ -55,6 +74,18 @@ steps, availability, and limits:
 - [Manage groups](https://help.openai.com/en/articles/9083985-group-permissions-in-gpts)
 - [SCIM integration FAQ](https://help.openai.com/en/articles/10011769-openai-platform-scim-integration-faq)
 - [Manage workspace settings](https://help.openai.com/en/articles/8411955)
+
+### Verify joiners, movers, and leavers
+
+- **Joiners:** Confirm the member accepts any pending workspace invitation and
+  receives the intended seat, group memberships, permissions, and supported
+  features.
+- **Movers:** Update the authoritative membership source and verify the
+  member's effective permissions across all applicable roles.
+- **Leavers:** Remove a SCIM-managed member's access through the identity
+  provider and confirm that the member can no longer access the workspace. If
+  you remove the member only from the workspace, a later sync can restore
+  access.
 
 ## Related docs
 

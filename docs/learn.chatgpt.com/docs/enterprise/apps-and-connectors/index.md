@@ -54,6 +54,30 @@ browser for installation. See
 [Build plugins](https://developers.openai.com/plugins/build/plugins) for
 packaging and distribution.
 
+### Export the public catalog for review
+
+Eligible ChatGPT Enterprise workspace owners and admins can download a CSV of
+the public plugins available to their workspace. Use the export to review
+plugin, app, and skill metadata before changing plugin availability.
+
+1. Open [Admin > Plugins](https://chatgpt.com/admin/plugins).
+2. Select **Public**.
+3. Select the download icon (**Export CSV**) in the page header.
+
+The download uses the filename `public-plugins-security-review.csv` and includes:
+
+- Plugin metadata: `Plugin Name`, `Plugin Description`, `Date Added (UTC)`,
+  `OpenAI Verified`, `Developer Name`, and `Version`.
+- App metadata: `App Name(s)` and `App Description(s)`.
+- Chat skill metadata: `Skill Name(s)` and `Skill Description(s)`.
+
+When a plugin includes more than one app or skill, semicolons separate the
+corresponding values. The export uses a public-catalog snapshot that can be up
+to 48 hours old,
+includes only public plugins visible to the current workspace, and does not
+include plugins created for that workspace. It isn't available in FedRAMP
+workspaces.
+
 ## Step 2: Manage capabilities
 
 <WarningTip>

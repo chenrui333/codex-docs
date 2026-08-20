@@ -13,9 +13,10 @@ Source: https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permission
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Administration spans six control boundaries. Granting access at one boundary
-doesn't grant access at another. Use this page as the canonical map,
-then follow the linked source for current settings and procedures.
+Different settings cover different parts of your organization's ChatGPT
+experience. Giving someone access in one area doesn't automatically give them
+access in another. Use this page to see how the six control boundaries work
+together, then follow the linked guidance for current setup steps.
 
 In workspace settings, **Codex Local** is a grouping label for certain local
 access and access-token controls, not a separate product or client. Individual
@@ -45,15 +46,66 @@ model.
 ## Assign workspace access
 
 ChatGPT workspace administration separates product access from administrative
-authority. The workspace plan and a member's seat determine which product
-surfaces are available. Built-in workspace roles determine who can administer
-the workspace. Role-based access control (RBAC) determines which supported
-features members can use.
+authority.
 
-Administrators can assign custom roles through groups, and a member can receive
-access from more than one group. Because available seats, roles, and permissions
-change with product and plan updates, use the Help Center for the current
-permission list and setup procedure:
+### Understand the difference between a seat, an admin role, and a custom role
+
+A seat determines which product surfaces a member can access. Depending on the
+workspace plan, available seat types can include ChatGPT and Codex seats.
+
+Built-in workspace roles determine administrative authority. The **Owner** role
+manages workspace-wide settings, the **Admin** role manages supported operations
+and groups, the **Member** role doesn't have administrative rights, and the
+**Analytics Viewer** role can access workspace analytics.
+
+Custom roles define which supported features a member can use. They don't
+replace seat or plan eligibility, grant permissions in a connected system, or
+change local runtime requirements.
+
+  <iframe
+    src="https://player.vimeo.com/video/1215495812"
+    title="Role-based access control walkthrough"
+    loading="lazy"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowFullScreen
+    referrerPolicy="strict-origin-when-cross-origin"
+    class="h-full w-full border-0"
+  ></iframe>
+
+### Set the workspace default, then create targeted custom roles
+
+Only workspace owners can configure role-based access control (RBAC) and create
+custom roles. Workspace settings establish the baseline for eligible
+permissions. Owners can assign custom roles through manually managed or
+SCIM-synced groups, or directly to individual members where supported. A member
+can receive more than one custom role.
+
+For eligible permissions, **Default** inherits the workspace setting, **On**
+grants access, and **Off** explicitly denies access. An explicit **Off** in any
+applicable role blocks access even when another role grants it. Available
+permission states can vary by feature.
+
+### Review Work Local and Work Cloud permissions
+
+When your workspace offers **Work Local** and **Work Cloud**, check both the
+workspace default and each applicable custom role. Work is available only to
+eligible workspaces, and available controls can differ by plan, workspace
+configuration, and rollout. A role can't expand the access allowed by a
+member's seat.
+
+**Work Cloud** governs supported ChatGPT Work tasks in the cloud. **Work
+Local** without **Work Cloud** allows local work in the ChatGPT desktop app but
+doesn't allow members to start cloud tasks. Codex Local access instead uses the
+separate **Allow members to use Codex Local** permission. Changing a Work
+permission doesn't change Codex Local access or replace local runtime
+requirements.
+
+For current eligibility and settings, see
+[ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex).
+
+Because available seats, roles, and permissions change with product and plan
+updates, use the Help Center for the current permission list and setup
+procedure:
 
 - [Manage members, seat types, roles, and access](https://help.openai.com/en/articles/8266401-managing-members-seat-types-roles-and-access-in-chatgpt-enterprise)
 - [Configure role-based access control](https://help.openai.com/en/articles/11750701-rbac)

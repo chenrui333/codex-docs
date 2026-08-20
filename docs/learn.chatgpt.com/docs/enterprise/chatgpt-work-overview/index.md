@@ -33,17 +33,21 @@ configuration.
 The files and tools available to ChatGPT Work depend on where Work is running,
 user permissions and admin configuration.
 
-**Local Work** runs tasks through the ChatGPT desktop app on the user's device.
+### Local Work
+
+Local Work runs tasks through the ChatGPT desktop app on the user's device.
 It can access local files, applications, and other resources made available to
 it, subject to the user's permissions, applicable workspace controls, and device
 security policies. Unlike Work on the Web, local Work can operate on resources
 that remain on your computer without requiring you to upload files to a cloud
 conversation.
 
-**Cloud Work**, accessed via the web or mobile, runs the Codex harness in an
-isolated environment on OpenAI-managed infrastructure. Cloud conversations can
-be available across supported web, mobile, and desktop surfaces, and supported
-tasks can continue while the user is away from the conversation.
+### Cloud Work
+
+Cloud Work is available on supported web, mobile, and desktop surfaces. It runs
+the Codex harness in an isolated environment on OpenAI-managed infrastructure.
+Cloud conversations can sync across these surfaces, and supported tasks can
+continue while the user is away from the conversation.
 
 Work on the web can't directly access files, applications, or open browser tabs
 on the user's computer. A user can provide files by uploading them, adding them
@@ -70,8 +74,9 @@ tasks. Each of these tools has configurable permissions.
 
 - **Code and shell commands**: Public internet access depends on the applicable
   workspace policy and individual Work network setting. When public internet
-  access isn't allowed, commands can still reach required destinations on a
-  managed allowlist.
+  access isn't allowed, commands can still reach OpenAI-approved destinations
+  required for Work to function. This controls network destinations, not which
+  commands can run.
 - **Web search**: Search has controls separate from the Work code and shell
   network setting.
 

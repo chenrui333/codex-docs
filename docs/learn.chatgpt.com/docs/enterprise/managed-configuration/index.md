@@ -111,6 +111,17 @@ other requirements layers described above. A background refresh can update the
 cache for a later start; it doesn't replace the requirements already loaded
 into the current process.
 
+### Confirm the admin and employee experience
+
+Assign a person to own each managed policy, record which users or groups should
+receive it, and document the business reason for any filesystem, network,
+approval, or permission-profile restriction.
+
+Before expanding the rollout, test an approved workflow and an intentionally
+disallowed workflow with a representative user. Verify the effective settings
+in the supported client rather than assuming a workspace role or group alone
+enforces the local restriction.
+
 ### Example requirements.toml
 
 This example blocks `--ask-for-approval never` and `--sandbox danger-full-access` (including `--yolo`):
@@ -609,10 +620,10 @@ add plugins to the IDE extension.
 
 ## Managed defaults (`managed_config.toml`)
 
-Managed defaults merge on top of a user's local `config.toml` and take
-precedence over any CLI `--config` overrides, setting the starting values when a
-supported local client launches. Users can still change those settings during a
-run; the client reapplies managed defaults the next time it starts.
+Managed defaults set the configuration a supported local client starts with. At
+startup, they override the user's local `config.toml` and any CLI `--config`
+overrides. Users can still change those settings during the current run, and the
+defaults apply again the next time the client starts.
 
 If a managed default, macOS MDM profile, or saved configuration pins `gpt-5.4`
 or `gpt-5.4-mini` for users signed in with ChatGPT, update it before August 31, 2026. Replace `gpt-5.4` with `gpt-5.6-terra` and `gpt-5.4-mini` with

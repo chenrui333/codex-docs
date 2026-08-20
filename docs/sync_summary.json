@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/third-party/gitlab/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-20T12:51:23+00:00",
+  "generated_at": "2026-08-20T18:40:17+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -11,10 +13,23 @@
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 236,
+  "total_files": 237,
   "updated": [
-    "learn.chatgpt.com/docs/security/index.md",
-    "learn.chatgpt.com/docs/security/plugin/workbench/index.md",
+    "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+    "learn.chatgpt.com/docs/cloud/index.md",
+    "learn.chatgpt.com/docs/customization/computer-history/index.md",
+    "learn.chatgpt.com/docs/developers/index.md",
+    "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-work-overview/index.md",
+    "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
+    "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md",
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/plugins/index.md",
+    "learn.chatgpt.com/docs/sites/index.md",
+    "learn.chatgpt.com/docs/use-chatgpt/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md",
     "system_prompts/codex-cli/prompt-input.json"
   ]
 }

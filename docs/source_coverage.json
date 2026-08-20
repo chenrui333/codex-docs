@@ -269,7 +269,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-20T01:17:36+00:00",
+  "generated_at": "2026-08-20T18:39:51+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -311,11 +311,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 135,
+      "discovered_urls": 136,
       "html_fallback_pages": 2,
-      "markdown_pages": 133,
-      "mirrored_paths_count": 135,
-      "mirrored_urls": 135,
+      "markdown_pages": 134,
+      "mirrored_paths_count": 136,
+      "mirrored_urls": 136,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -447,6 +447,7 @@
       "https://learn.chatgpt.com/docs/sites",
       "https://learn.chatgpt.com/docs/skills-and-plugins",
       "https://learn.chatgpt.com/docs/third-party/github",
+      "https://learn.chatgpt.com/docs/third-party/gitlab",
       "https://learn.chatgpt.com/docs/third-party/linear",
       "https://learn.chatgpt.com/docs/third-party/slack",
       "https://learn.chatgpt.com/docs/use-chatgpt",
@@ -586,6 +587,7 @@
       "https://learn.chatgpt.com/docs/sites",
       "https://learn.chatgpt.com/docs/skills-and-plugins",
       "https://learn.chatgpt.com/docs/third-party/github",
+      "https://learn.chatgpt.com/docs/third-party/gitlab",
       "https://learn.chatgpt.com/docs/third-party/linear",
       "https://learn.chatgpt.com/docs/third-party/slack",
       "https://learn.chatgpt.com/docs/use-chatgpt",
@@ -723,6 +725,7 @@
       "learn.chatgpt.com/docs/sites/index.md",
       "learn.chatgpt.com/docs/skills-and-plugins/index.md",
       "learn.chatgpt.com/docs/third-party/github/index.md",
+      "learn.chatgpt.com/docs/third-party/gitlab/index.md",
       "learn.chatgpt.com/docs/third-party/linear/index.md",
       "learn.chatgpt.com/docs/third-party/slack/index.md",
       "learn.chatgpt.com/docs/use-chatgpt/index.md",
@@ -734,7 +737,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 135,
+    "mirrored_paths_count": 136,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -861,6 +864,7 @@
       "https://learn.chatgpt.com/docs/sites",
       "https://learn.chatgpt.com/docs/skills-and-plugins",
       "https://learn.chatgpt.com/docs/third-party/github",
+      "https://learn.chatgpt.com/docs/third-party/gitlab",
       "https://learn.chatgpt.com/docs/third-party/linear",
       "https://learn.chatgpt.com/docs/third-party/slack",
       "https://learn.chatgpt.com/docs/use-chatgpt",
