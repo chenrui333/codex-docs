@@ -30,9 +30,10 @@ quickstart](https://learn.chatgpt.com/docs/security/plugin).
 
 ## Use Codex Security in the desktop app
 
+In the ChatGPT desktop app, open the ChatGPT dropdown and select **Codex**.
 Install and enable the Codex Security plugin to open **Security** in the
-desktop-app sidebar. The Security workbench keeps your scans, findings, and
-repositories in one place while Codex runs each scan in a task.
+sidebar. The Security workbench keeps your scans, findings, and repositories in
+one place while Codex runs each scan in a task.
 
 - Use **Scans** to start scans, follow their progress, and review saved results.
 - Use **Findings** to inspect issues and evidence across completed scans.
