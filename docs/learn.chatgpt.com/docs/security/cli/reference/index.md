@@ -129,11 +129,13 @@ usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
                            [--subagents N] [--stop-after-no-new N]
                            [--max-discovery-runs N] [--max-time-hours HOURS]
                            [--model MODEL]
-                           [--effort {minimal,low,medium,high,xhigh}]
+                           [--effort {minimal,low,medium,high,xhigh,max}]
                            [--output-dir DIR]
                            [--archive-existing]
                            [--plugin-path PATH] [--python PATH]
                            [--codex KEY=VALUE] [--fail-on-severity LEVEL]
+                           [--patch] [--patch-severity {critical,high,medium,low}]
+                           [--create-pr]
                            [--max-cost USD] [--dry-run] [--headless] [--verbose]
                            [--json] [--format {toon,json,yaml,jsonl}]
                            [--full-output] [repository]
@@ -348,6 +350,9 @@ machine-readable result.
 | `--output-dir DIR`         | Write scan artifacts to a private directory outside the enclosing Git worktree. Defaults to persistent Codex Security state. |
 | `--archive-existing`       | Move existing results to `DIR.previous-<timestamp>-<id>` and start with an empty output directory. Requires `--output-dir`.  |
 | `--fail-on-severity LEVEL` | Return exit `1` when a completed scan reports a finding at or above `critical`, `high`, `medium`, or `low`.                  |
+| `--patch`                  | Fix and verify selected findings after a complete scan.                                                                      |
+| `--patch-severity LEVEL`   | Patch findings at or above `critical`, `high`, `medium`, or `low`. Defaults to `low`.                                        |
+| `--create-pr`              | Commit verified patch files and open a GitHub pull request. Requires `--patch`.                                              |
 | `--max-cost USD`           | Stop a scan when its estimated model cost exceeds the specified USD amount.                                                  |
 | `--dry-run`                | Check the repository, target, knowledge base, output directory, and Codex configuration without starting a scan.             |
 | `--headless`               | Show plain-text progress instead of the interactive scan dashboard.                                                          |
@@ -417,7 +422,7 @@ Codex configuration value.
 | `--auth {auto,chatgpt,api-key}`                           | Select the scan credentials. The default is `auto`.                                                      |
 | `--provider {openai,openrouter,fireworks,amazon-bedrock}` | Select the inference provider. The default is `openai`.                                                  |
 | `--model MODEL`                                           | Select the model. The default is `gpt-5.6-sol`. Required for OpenRouter, Fireworks, and Amazon Bedrock.  |
-| `--effort {minimal,low,medium,high,xhigh}`                | Select the model's reasoning effort. The default is `xhigh`.                                             |
+| `--effort {minimal,low,medium,high,xhigh,max}`            | Select the model's reasoning effort. The default is `xhigh`.                                             |
 | `--plugin-path PATH`                                      | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                             |
 | `--python PATH`                                           | Select the Python interpreter for the plugin runtime.                                                    |
 | `--codex KEY=VALUE`                                       | Override an isolated Codex configuration value. Values use TOML syntax. Repeat the flag for more values. |
@@ -466,7 +471,7 @@ usage: codex-security bulk-scan [input] [--output-dir DIR]
                                 [--workers N] [--mode {standard,deep}]
                                 [--provider {openai,openrouter,fireworks,amazon-bedrock}]
                                 [--model MODEL]
-                                [--effort {minimal,low,medium,high,xhigh}]
+                                [--effort {minimal,low,medium,high,xhigh,max}]
                                 [--knowledge-base PATH]
                                 [--scan-prompt-file FILE]
                                 [--post-scan-prompt-file FILE]
@@ -812,17 +817,76 @@ npx @openai/codex-security patch findings.json \
   "Missing authorization check in src/routes.ts:18"
 ```
 
-Each argument can contain literal text or point to a file. Both commands work
-against the current directory. Use `validate` to directly recheck an original
-finding after a fix or when a later scan no longer reports it. A scan
-comparison alone doesn't prove that a fix worked. External tools can use these
-commands without rebuilding the scanner.
+Each positional argument accepts literal text or a file path. These inputs use
+the current directory. Use `validate` to recheck a finding after a fix or when a
+later scan no longer reports it. Comparing scans alone doesn't prove that a fix
+worked.
 
 Use `--effort` to select reasoning effort for either command:
 
 ```bash
 npx @openai/codex-security validate "Possible SQL injection" --effort high
 ```
+
+### Patch findings after a scan
+
+Use `scan --patch` to fix findings after a complete scan. This requires
+`@openai/codex-security` 0.1.15 or later. The default severity threshold is
+`low`. This command selects high and critical findings:
+
+```bash
+npx @openai/codex-security scan . --patch --patch-severity high --json
+```
+
+Verified and already-fixed findings don't trigger `--fail-on-severity`.
+
+### Patch saved findings
+
+Pass a finding or occurrence ID to patch its original repository, or select
+findings from a saved scan:
+
+```bash
+npx @openai/codex-security patch OCCURRENCE_ID
+npx @openai/codex-security patch --scan SCAN_ID --severity high --json
+npx @openai/codex-security patch --scan latest --severity medium
+```
+
+`--scan latest` selects the latest completed scan for the current repository.
+Saved-finding commands support `--json`; literal-text and file inputs don't.
+
+Add `--create-pr` to commit only verified patch files and open a pull request
+with the GitHub CLI:
+
+```bash
+npx @openai/codex-security patch --scan SCAN_ID --severity high --create-pr
+```
+
+If the push or pull request fails, run the printed `patch --resume-pr BRANCH`
+command from the same repository to retry.
+
+### Patch Linear issues
+
+Set `CODEX_SECURITY_LINEAR_API_KEY` or `LINEAR_API_KEY` for a personal API key,
+or `LINEAR_ACCESS_TOKEN` for an OAuth token. Prefer an environment variable to
+`--linear-api-key KEY` to keep the key out of shell history.
+
+Import an issue by ID or URL. Repeat `--linear-issue` to select more than one
+issue:
+
+```bash
+npx @openai/codex-security patch --linear-issue SEC-123 --linear-issue SEC-124
+```
+
+Use `--linear-project` to select a project's open issues. Add `--linear-filter`
+to narrow the selection:
+
+```bash
+npx @openai/codex-security patch --linear-project "Security backlog" \
+  --linear-filter '{"labels":{"name":{"eq":"security"}}}'
+```
+
+The CLI excludes completed and canceled issues unless the filter sets `state`.
+It doesn't change the Linear issues.
 
 ## `codex-security login`, `logout`, and `info`
 
@@ -886,6 +950,9 @@ an interactive terminal:
 npx @openai/codex-security scan . --headless
 ```
 
+The dashboard also shows live session details. They aren't redacted and can
+contain source code or credentials. Review them before sharing.
+
 ### Verbose diagnostics
 
 Add `--verbose` to print redacted lifecycle, authentication, progress, and cost
@@ -942,6 +1009,9 @@ turn
   finalResponse
   usage
 ```
+
+When [patching](#patch-findings-after-a-scan), JSON output also includes patch
+results and any created pull request.
 
 Progress, completion summaries, archive notices, and errors remain on stderr.
 A completed scan still prints the full JSON result when a severity policy

@@ -44,6 +44,9 @@ To see both the package version and the version of its bundled plugin, run:
 npx @openai/codex-security info --json
 ```
 
+See the [CLI and SDK releases](https://github.com/openai/codex-security/releases)
+for package changes.
+
 List the available commands:
 
 ```bash
@@ -140,6 +143,9 @@ Interactive terminals show a live scan dashboard. Add `--headless` to show
 plain progress lines instead. CI and terminals without an interactive session
 use plain progress automatically.
 
+The dashboard also shows live session details. These can contain source code
+or credentials, so review them before sharing.
+
 By default, the CLI writes scan progress and its completion summary to stderr.
 It doesn't print the full scan result to stdout. A completed scan prints a
 summary like this:
@@ -175,7 +181,8 @@ npx @openai/codex-security scan "$REPOSITORY" \
   --effort high
 ```
 
-Supported effort levels are `minimal`, `low`, `medium`, `high`, and `xhigh`.
+Supported effort levels are `minimal`, `low`, `medium`, `high`, `xhigh`, and
+`max`.
 
 ## Review the results
 
@@ -204,6 +211,24 @@ Coverage can be `complete`, `partial`, or `unknown`. Read any deferred areas or
 open questions before treating the scan as evidence of review.
 The [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#scan-artifacts) describes
 the full artifact and output contract.
+
+## Review and patch findings
+
+After a complete interactive scan with findings, the CLI offers a finding
+browser. Review the evidence and choose which findings to fix. You can find
+the saved tasks in the Codex desktop app.
+
+To patch high and critical findings without the browser:
+
+```bash
+npx @openai/codex-security scan "$REPOSITORY" \
+  --patch --patch-severity high --json
+```
+
+Add `--create-pr` to commit verified patches and open a GitHub pull request.
+
+You can also patch saved findings or import Linear issues. See the
+[`validate` and `patch` reference](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-validate-and-codex-security-patch).
 
 ## Choose the next scan
 

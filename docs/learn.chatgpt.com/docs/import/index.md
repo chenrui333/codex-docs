@@ -91,19 +91,19 @@ When you import, ChatGPT:
 
 ## What ChatGPT can import
 
-| Imported item                     | Destination                                          |
-| --------------------------------- | ---------------------------------------------------- |
-| Instruction files                 | [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md)  |
-| `settings.json`                   | [`config.toml`](https://learn.chatgpt.com/docs/config-file/config-basic)     |
-| Skills                            | [Skills](https://learn.chatgpt.com/docs/build-skills)                        |
-| Plugins                           | Plugins                                              |
-| Existing project folders          | Projects using the same folders                      |
-| Project memories from Claude Code | [Memories](https://learn.chatgpt.com/docs/customization/memories)            |
-| Chats from the last 30 days       | ChatGPT chats                                        |
-| MCP server configuration          | [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp)         |
-| Hooks                             | [Codex hooks](https://learn.chatgpt.com/docs/hooks)                          |
-| Slash commands                    | [Skills](https://learn.chatgpt.com/docs/build-skills)                        |
-| Subagents                         | [Codex agents](https://learn.chatgpt.com/docs/agent-configuration/subagents) |
+| Imported item                     | Destination                                             |
+| --------------------------------- | ------------------------------------------------------- |
+| Instruction files                 | [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md)     |
+| `settings.json`                   | [`config.toml`](https://learn.chatgpt.com/docs/config-file/config-basic)        |
+| Skills                            | [Skills](https://learn.chatgpt.com/docs/build-skills)                           |
+| Plugins                           | Plugins                                                 |
+| Existing project folders          | Projects using the same folders                         |
+| Project memories from Claude Code | [Memories](https://learn.chatgpt.com/docs/customization/memories)               |
+| Chats from the last 30 days       | ChatGPT chats                                           |
+| MCP server configuration          | [Codex MCP configuration](https://learn.chatgpt.com/docs/extend/mcp)            |
+| Hooks                             | [Codex hooks](https://learn.chatgpt.com/docs/hooks)                             |
+| Slash commands                    | [Skills](https://learn.chatgpt.com/docs/build-skills)                           |
+| Subagents                         | [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) |
 
 ## Finish setup after importing
 
