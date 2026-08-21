@@ -3,8 +3,8 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_plugin_creator'
 source_url: 'codex-cli://skills/.system/plugin-creator/references/installing-and-updating.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0"]
-codex_cli_versions_raw: ["codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
+codex_cli_versions: ["0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
+codex_cli_versions_raw: ["codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
 ---
 
 # Updating Existing Local Plugins
@@ -28,13 +28,31 @@ flow first and only then switch to this reinstall flow.
 
 ## Update Loop
 
-1. Update the plugin manifest to a single Codex cachebuster suffix:
+1. Before changing the plugin, read the marketplace name from the personal marketplace file:
+
+```bash
+python3 scripts/read_marketplace_name.py
+```
+
+Here, "personal marketplace" means the marketplace whose file is at
+`~/.agents/plugins/marketplace.json`. On Windows, use the equivalent path under the user profile.
+The helper uses Python's home-directory resolution and prints the validated marketplace name to use
+when constructing the install command. If the helper fails, stop.
+
+To read the name from a different marketplace file, pass the path directly:
+
+```bash
+python3 scripts/read_marketplace_name.py --marketplace-path <path-to-marketplace.json>
+```
+
+2. Update the plugin manifest to a single Codex cachebuster suffix:
 
 ```bash
 python3 scripts/update_plugin_cachebuster.py \
   <plugin-path>
 ```
 
+The helper validates the plugin name before changing the manifest. If validation fails, stop.
 Prefer the default helper behavior here. If you omit `--cachebuster`, the helper uses a UTC
 timestamp down to seconds, which is the recommended path for routine local iteration.
 
@@ -45,23 +63,6 @@ outside Codex depends on a specific token:
 python3 scripts/update_plugin_cachebuster.py \
   <plugin-path> \
   --cachebuster local-20260519-184516
-```
-
-2. For the default scaffolded flow, read the marketplace name from the personal marketplace file:
-
-```bash
-python3 scripts/read_marketplace_name.py
-```
-
-Here, "personal marketplace" means the marketplace whose file is at
-`~/.agents/plugins/marketplace.json`. On Windows, use the equivalent path under the user profile.
-The helper uses Python's home-directory resolution and prints the marketplace name to use when
-constructing the install command.
-
-To read the name from a different marketplace file, pass the path directly:
-
-```bash
-python3 scripts/read_marketplace_name.py --marketplace-path <path-to-marketplace.json>
 ```
 
 3. Reinstall from that marketplace name:

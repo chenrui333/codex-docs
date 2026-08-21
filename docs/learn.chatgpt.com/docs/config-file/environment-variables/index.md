@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_config_file'
 source_url: 'https://learn.chatgpt.com/docs/config-file/environment-variables'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
 ---
 
 # Environment variables
@@ -55,12 +55,15 @@ $env:CODEX_NON_INTERACTIVE=1; irm https://chatgpt.com/codex/install.ps1 | iex
 
 ## Authentication and network
 
-| Variable               | Used by                             | Description                                                                                                                                                               |
-| ---------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CODEX_API_KEY`        | `codex exec`                        | Provides an API key for a single non-interactive run. This is only supported in `codex exec`; set it inline rather than job-wide when running repository-controlled code. |
-| `CODEX_ACCESS_TOKEN`   | CLI, app-server, trusted automation | Provides a ChatGPT or Codex access token for trusted automation. For persisted login, pipe it to `codex login --with-access-token`.                                       |
-| `CODEX_CA_CERTIFICATE` | HTTPS, login, and WebSocket clients | Points to a PEM CA bundle for environments with corporate TLS interception or private root CAs. Takes precedence over `SSL_CERT_FILE`.                                    |
-| `SSL_CERT_FILE`        | HTTPS, login, and WebSocket clients | Fallback PEM CA bundle path when `CODEX_CA_CERTIFICATE` is unset.                                                                                                         |
+| Variable                           | Used by                                          | Description                                                                                                                                     |
+| ---------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CODEX_API_KEY`                    | Exec, review, TypeScript SDK, remote exec-server | Provides an API key to a non-interactive Codex process. Set it inline rather than job-wide when running repository-controlled code.             |
+| `CODEX_ACCESS_TOKEN`               | CLI, app-server, trusted automation              | Provides a ChatGPT or Codex access token for trusted automation. For persisted login, pipe it to `codex login --with-access-token`.             |
+| `OPENAI_FEDERATION_RULE_ID`        | Workload identity                                | Selects the federation rule configured for the workload.                                                                                        |
+| `OPENAI_IDENTITY_TOKEN_FILE`       | Workload identity                                | Points to the absolute path of the file that contains the current OIDC token or SPIFFE JWT-SVID.                                                |
+| `OPENAI_WORKLOAD_IDENTITY_CONTEXT` | Workload identity                                | Optionally supplies bounded JSON identifiers for client-reported audit attribution. It does not affect authentication or authorization.         |
+| `CODEX_CA_CERTIFICATE`             | HTTPS, login, and WebSocket clients              | Points to a PEM CA bundle for environments with corporate TLS interception or private root certificates. Takes precedence over `SSL_CERT_FILE`. |
+| `SSL_CERT_FILE`                    | HTTPS, login, and WebSocket clients              | Fallback PEM CA bundle path when `CODEX_CA_CERTIFICATE` is unset.                                                                               |
 
 For provider API keys, set
 [`env_key`](https://learn.chatgpt.com/docs/config-file/config-advanced#custom-model-providers) in the model provider
@@ -70,6 +73,8 @@ name itself is not a fixed Codex environment variable.
 For automation secret handling, see
 [Use API key auth](https://learn.chatgpt.com/docs/non-interactive-mode#use-api-key-auth).
 For access token setup, see [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens).
+For workload identity setup, see
+[Workload identity federation](https://learn.chatgpt.com/docs/enterprise/workload-identity).
 
 ## Diagnostics
 

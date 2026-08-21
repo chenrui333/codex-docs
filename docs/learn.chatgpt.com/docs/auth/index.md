@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_auth'
 source_url: 'https://learn.chatgpt.com/docs/auth'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
 ---
 
 # Authentication
@@ -19,7 +19,7 @@ Source: https://learn.chatgpt.com/docs/auth
 
 <ContentModeSwitch group="codex-surface" ids="app,cli,ide">
 
-Codex supports two ways to sign in when using OpenAI models:
+Codex supports two ways for a person to sign in when using OpenAI models:
 
 - Sign in with ChatGPT for subscription access
 - Sign in with an API key for usage-based access
@@ -166,8 +166,10 @@ Open the profile menu to see the active account or API key status. Select
 
 <ContentModeSwitch group="codex-surface" id="cli">
 
-Run `codex login status` to see the active authentication method. Run
-`codex logout` to clear the current credentials.
+Run `codex login status` to see the active authentication method. For stored
+authentication, run `codex logout` to clear the current credentials. When
+the process selects workload identity, Codex rejects `codex login` and
+`codex logout` because the process environment controls authentication.
 
 </ContentModeSwitch>
 
@@ -193,6 +195,11 @@ runners. For general OpenAI API calls, continue to use Platform API keys.
 
 For setup steps, permissions, rotation, and revocation guidance, see
 [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens).
+
+If your cloud platform, CI system, or cluster already issues short-lived
+workload tokens, use
+[workload identity federation](https://learn.chatgpt.com/docs/enterprise/workload-identity)
+instead of storing an OpenAI credential.
 
 </ContentModeSwitch>
 

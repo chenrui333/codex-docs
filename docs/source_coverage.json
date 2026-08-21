@@ -19,7 +19,7 @@
     "counts": {
       "prompt_snapshot_paths": 1,
       "source_errors": 0,
-      "system_skill_paths": 59
+      "system_skill_paths": 60
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
     "prompt_snapshot_command": "codex debug prompt-input",
@@ -67,6 +67,7 @@
       "dot_codex/skills/dot_system/plugin-creator/references/installing-and-updating.md",
       "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
       "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
+      "dot_codex/skills/dot_system/plugin-creator/scripts/identifier_validation.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/read_marketplace_name.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/update_plugin_cachebuster.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py",
@@ -90,8 +91,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.148.0",
-    "version_raw": "codex-cli 0.148.0"
+    "version": "0.149.0",
+    "version_raw": "codex-cli 0.149.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -269,7 +270,7 @@
     ],
     "unclassified_skipped_codex_related_urls": []
   },
-  "generated_at": "2026-08-20T18:39:51+00:00",
+  "generated_at": "2026-08-21T01:21:09+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -311,11 +312,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 136,
+      "discovered_urls": 137,
       "html_fallback_pages": 2,
-      "markdown_pages": 134,
-      "mirrored_paths_count": 136,
-      "mirrored_urls": 136,
+      "markdown_pages": 135,
+      "mirrored_paths_count": 137,
+      "mirrored_urls": 137,
       "page_fetch_errors": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
@@ -380,6 +381,7 @@
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
       "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
       "https://learn.chatgpt.com/docs/enterprise/work-admin-faq",
+      "https://learn.chatgpt.com/docs/enterprise/workload-identity",
       "https://learn.chatgpt.com/docs/enterprise/workspace-analytics",
       "https://learn.chatgpt.com/docs/enterprise/workspace-model-availability",
       "https://learn.chatgpt.com/docs/environments/cloud-environment",
@@ -520,6 +522,7 @@
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
       "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
       "https://learn.chatgpt.com/docs/enterprise/work-admin-faq",
+      "https://learn.chatgpt.com/docs/enterprise/workload-identity",
       "https://learn.chatgpt.com/docs/enterprise/workspace-analytics",
       "https://learn.chatgpt.com/docs/enterprise/workspace-model-availability",
       "https://learn.chatgpt.com/docs/environments/cloud-environment",
@@ -657,6 +660,7 @@
       "learn.chatgpt.com/docs/enterprise/usage-limits/index.md",
       "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
       "learn.chatgpt.com/docs/enterprise/work-admin-faq/index.md",
+      "learn.chatgpt.com/docs/enterprise/workload-identity/index.md",
       "learn.chatgpt.com/docs/enterprise/workspace-analytics/index.md",
       "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md",
       "learn.chatgpt.com/docs/environments/cloud-environment/index.md",
@@ -737,7 +741,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 136,
+    "mirrored_paths_count": 137,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -797,6 +801,7 @@
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
       "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
       "https://learn.chatgpt.com/docs/enterprise/work-admin-faq",
+      "https://learn.chatgpt.com/docs/enterprise/workload-identity",
       "https://learn.chatgpt.com/docs/enterprise/workspace-analytics",
       "https://learn.chatgpt.com/docs/enterprise/workspace-model-availability",
       "https://learn.chatgpt.com/docs/environments/cloud-environment",
@@ -933,7 +938,7 @@
   },
   "system_skills": {
     "counts": {
-      "mirrored_paths_count": 59,
+      "mirrored_paths_count": 60,
       "page_fetch_errors": 0
     },
     "mirrored_paths": [
@@ -974,6 +979,7 @@
       "dot_codex/skills/dot_system/plugin-creator/references/installing-and-updating.md",
       "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
       "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
+      "dot_codex/skills/dot_system/plugin-creator/scripts/identifier_validation.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/read_marketplace_name.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/update_plugin_cachebuster.py",
       "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py",
@@ -997,7 +1003,7 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "mirrored_paths_count": 59,
+    "mirrored_paths_count": 60,
     "output_prefix": "dot_codex/skills/dot_system/",
     "page_fetch_errors": [],
     "source_kind": "installed_codex_cli"

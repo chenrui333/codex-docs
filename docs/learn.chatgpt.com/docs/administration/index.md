@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_administration'
 source_url: 'https://learn.chatgpt.com/docs/administration'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
 ---
 
 # Administration
@@ -65,6 +65,13 @@ Source: https://learn.chatgpt.com/docs/administration
           description:
             "Compare sign-in methods, credential storage, and enforcement controls.",
           href: "/codex/auth",
+          icon: "key",
+        },
+        {
+          title: "Workload identity",
+          description:
+            "Let trusted workloads use Codex without long-lived credentials.",
+          href: "/codex/enterprise/workload-identity",
           icon: "key",
         },
         {

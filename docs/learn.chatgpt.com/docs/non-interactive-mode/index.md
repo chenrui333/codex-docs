@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_non_interactive_mode'
 source_url: 'https://learn.chatgpt.com/docs/non-interactive-mode'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
 ---
 
 # Non-interactive mode
@@ -49,7 +49,7 @@ codex exec --ephemeral "triage this repository and suggest next steps"
 
 If stdin is piped and you also provide a prompt argument, Codex treats the prompt as the instruction and the piped content as additional context.
 
-This makes it easy to generate input with one command and hand it directly to Codex:
+This lets you generate input with one command and hand it directly to Codex:
 
 ```bash
 curl -s https://jsonplaceholder.typicode.com/comments \
@@ -141,13 +141,20 @@ Example final output (stdout):
 
 `codex exec` reuses saved CLI authentication by default. In CI, it's common to provide credentials explicitly:
 
+If your trusted cloud or CI runtime already receives short-lived workload
+tokens, use
+[workload identity federation](https://learn.chatgpt.com/docs/enterprise/workload-identity)
+instead of storing an OpenAI credential.
+
 ### Use API key auth
 
 For GitHub Actions, use the [Codex GitHub Action](https://learn.chatgpt.com/docs/github-action) instead of installing and authenticating the CLI yourself. The action is designed to reduce API key exposure by installing Codex, starting a Responses API proxy, and running Codex with a configurable safety strategy.
 
 Do not set `OPENAI_API_KEY` or `CODEX_API_KEY` as a job-level environment variable in workflows that check out or run repository-controlled code. Build scripts, tests, dependency lifecycle hooks, or a compromised action in the same job can read those environment variables.
 
-For other automation environments, set `CODEX_API_KEY` only for the single `codex exec` invocation and make sure no untrusted code runs in the same process environment.
+For other automation environments, set `CODEX_API_KEY` only for the Codex
+invocation that needs it, and make sure no untrusted code runs in the same
+process environment.
 
 To use a different API key for a single run, set `CODEX_API_KEY` inline:
 
@@ -155,7 +162,8 @@ To use a different API key for a single run, set `CODEX_API_KEY` inline:
 CODEX_API_KEY=<api-key> codex exec --json "triage open bug reports"
 ```
 
-`CODEX_API_KEY` is only supported in `codex exec`.
+You can use `CODEX_API_KEY` with `codex exec`, `codex review`, the TypeScript
+SDK, and `codex exec-server --remote`.
 
 <ToggleSection title="Use ChatGPT-managed auth in CI/CD (advanced)">
 Read this if you need to run CI/CD jobs with a Codex user account instead of an
