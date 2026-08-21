@@ -112,6 +112,11 @@
     },
     {
       "enabled": false,
+      "key": "cwd_relative_turn_diffs",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "default_mode_request_user_input",
       "stage": "under development"
     },
@@ -233,6 +238,16 @@
     {
       "enabled": true,
       "key": "in_app_browser",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "in_app_chat",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "in_app_dictation",
       "stage": "stable"
     },
     {
@@ -416,6 +431,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "send_async_message",
+      "stage": "removed"
+    },
+    {
       "enabled": true,
       "key": "shell_snapshot",
       "stage": "stable"
@@ -571,12 +591,14 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.148.0",
+  "codex_cli_version": "codex-cli 0.149.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
       "code_mode_host",
       "image_generation",
+      "in_app_chat",
+      "in_app_dictation",
       "mentions_v2",
       "multi_agent_v2",
       "recommended_plugins",
@@ -610,6 +632,7 @@
       "collaboration_modes",
       "concurrent_reasoning_summaries",
       "current_time_reminder",
+      "cwd_relative_turn_diffs",
       "default_mode_request_user_input",
       "deferred_executor",
       "deferred_tool_world_state",
@@ -629,6 +652,8 @@
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
+      "in_app_chat",
+      "in_app_dictation",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
@@ -656,6 +681,7 @@
       "runtime_metrics",
       "search_tool",
       "secret_auth_storage",
+      "send_async_message",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
       "skill_search",
@@ -708,6 +734,7 @@
         "responses_websockets",
         "responses_websockets_v2",
         "search_tool",
+        "send_async_message",
         "skill_env_var_dependency_prompt",
         "sqlite",
         "steer",
@@ -724,6 +751,8 @@
         "auth_elicitation",
         "code_mode_host",
         "image_generation",
+        "in_app_chat",
+        "in_app_dictation",
         "mentions_v2",
         "multi_agent_v2",
         "recommended_plugins",
@@ -746,6 +775,7 @@
         "code_mode_only",
         "concurrent_reasoning_summaries",
         "current_time_reminder",
+        "cwd_relative_turn_diffs",
         "default_mode_request_user_input",
         "deferred_executor",
         "deferred_tool_world_state",
@@ -816,16 +846,16 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "fe987d01e7d99fd8aad6e0baa03586d2ec544226bc9db619b2298be0051e2214"
+      "sha256": "dd64039f5a1e7fbb3d5f0d0216a3083cabc58ca1b355795ea143a90553da4b02"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "d468274250db531965aadd7848d0f4da44e8b52f3cdb47675a8987c3f20b6e48"
+      "sha256": "e0084346b1d2de4add2ffffc58081286bc1ee4d126161870fd4aae277e1b2131"
     }
   },
   "schema_version": 3,
-  "source_commit": "3ba0f711642a888aec92a611a3f3b2211157ff89",
+  "source_commit": "758ef40f50c1a458425c7cfbf1eb12cbc07af0b0",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -912,6 +942,10 @@
       "stage_from_source": "under development"
     },
     "current_time_reminder": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "cwd_relative_turn_diffs": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -1012,6 +1046,14 @@
       "stage_from_source": "under development"
     },
     "in_app_browser": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "in_app_chat": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "in_app_dictation": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
@@ -1159,6 +1201,10 @@
       "default_enabled_expr": "cfg!(windows)",
       "stage_from_source": "stable"
     },
+    "send_async_message": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "removed"
+    },
     "shell_snapshot": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -1285,13 +1331,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "4b4d00234a7fb649525fdcc913ffe288e4ef3348a916acbd265c22607fd8652d",
-    "features_rs_sha256": "a6ef7ca16634626ce2197c08ddc8001988c4feeeba8c2cd66f6679fd908822bd"
+    "client_rs_sha256": "7af5d4c0c15673564b455725c98d34379c4bdf579f52c4d89aecb4ceb4b190fe",
+    "features_rs_sha256": "803a1e291c5df27daa9ee7b6ca4d164bf607fb8bbbeefa3c614791eeddf28dcc"
   },
-  "source_ref": "rust-v0.148.0",
+  "source_ref": "rust-v0.149.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/3ba0f711642a888aec92a611a3f3b2211157ff89/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/3ba0f711642a888aec92a611a3f3b2211157ff89/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/758ef40f50c1a458425c7cfbf1eb12cbc07af0b0/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/758ef40f50c1a458425c7cfbf1eb12cbc07af0b0/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
