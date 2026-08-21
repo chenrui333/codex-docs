@@ -76,7 +76,7 @@ distributions and package installation, see the
 
                 Learn more about [using ChatGPT](https://learn.chatgpt.com/docs/use-chatgpt).
 
-          <ChatGPTModeDropdown client:load />
+          <ChatGPTModeDropdown client:visible />
 
 5.  <h3 id="setup-app-send-message">Send your first message</h3>
 
@@ -120,7 +120,7 @@ Go to [chatgpt.com](https://chatgpt.com) and sign in with your ChatGPT account.
 
                 Learn more about [using ChatGPT](https://learn.chatgpt.com/docs/use-chatgpt).
 
-          <ChatWorkSegmentPicker client:load />
+          <ChatWorkSegmentPicker client:visible />
 
 3.  <h3 id="setup-web-select-workspace">Select where ChatGPT should work</h3>
 

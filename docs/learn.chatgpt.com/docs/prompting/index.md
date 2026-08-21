@@ -192,9 +192,9 @@ asks for a final check without spelling out every step.
 
 ## Use voice dictation
 
-In the ChatGPT desktop app, hold <kbd>Ctrl</kbd>+<kbd>M</kbd> while the composer is
-visible, then start talking. ChatGPT transcribes your speech into the composer so
-you can review and edit it before sending the prompt.
+In the ChatGPT desktop app, press <kbd>Ctrl+Shift+D</kbd> while the composer is
+visible, then start talking. ChatGPT transcribes your speech into the composer
+so you can review and edit it before sending the prompt.
 
 <CodexScreenshot
   alt="Voice dictation indicator in the composer with a transcribed prompt"

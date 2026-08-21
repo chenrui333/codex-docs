@@ -5265,11 +5265,11 @@
         "codex-cli 0.148.0",
         "codex-cli 0.149.0"
       ],
-      "sha256": "5862739db95713143fc8a2e580c5088f1ca2d40846238a060c78f98c2fd1bec1",
+      "sha256": "5ab072e94cabd9916a91a7b50b438566d6359990f24f2af4e3201e05ff3eca8b",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"c2ca08e87e87e60bd53486b14085ea89\"",
+      "source_etag": "W/\"c793af7fcef8f61378588f5fe0d5ea9d\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-08-18T23:48:29Z",
+      "source_last_modified": "2026-08-21T18:29:55Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -6829,7 +6829,7 @@
         "codex-cli 0.148.0",
         "codex-cli 0.149.0"
       ],
-      "sha256": "e82aeee91490ec75f5006e9e70155f1c6e112e58ea756bb84a6ba352f5c0a1c7",
+      "sha256": "e55352a20edc4cf0c717e3cc0ce9907811cd2cbf4342bf1b3d1f17b1495c86bd",
       "source_area": "learn_projects",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6850,7 +6850,7 @@
         "codex-cli 0.148.0",
         "codex-cli 0.149.0"
       ],
-      "sha256": "a020fecdd5f22ae725ce2596133a1eebb1187c7c668c22c4ee4a46d1d6bfeb06",
+      "sha256": "cc1100d2d797037435ce05234f8f3074102152ed170b645a0d5bbde032025178",
       "source_area": "learn_prompting",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6871,7 +6871,7 @@
         "codex-cli 0.148.0",
         "codex-cli 0.149.0"
       ],
-      "sha256": "a89f31ba652ad48e0197103f4c02e4ab6ed0ff6d5a9fb5b130d4334ec4b9f3ad",
+      "sha256": "79041495a5db0c861bc39de46c166d7b99b08c52e562167c781d1de1ec5de320",
       "source_area": "learn_quickstart",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7776,7 +7776,7 @@
       "codex_cli_version": "0.149.0",
       "codex_cli_version_raw": "codex-cli 0.149.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a43e29d51720b891447b88b5c9dd5290a58666f5b1a6518d82619d03650454a4",
+      "sha256": "9b4f3ccd4d87cf0877978063918fac6e0ccacbf15103e3df04008befea0c4710",
       "source_area": "system_prompt",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_prompt_input",

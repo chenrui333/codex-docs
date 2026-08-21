@@ -147,9 +147,10 @@ Keep active work visible and move finished work out of the way:
   project.
 - **Rename a chat** with a short title that describes its outcome, such as “Q3
   launch brief” or “Checkout accessibility review.”
-- **Search projects** from the Projects view. Press
-  <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>G</kbd> to search past chats when you
-  remember a phrase or branch name but not the title.
+- **Search projects** from the Projects view. Open **Search chats** from the
+  sidebar to find a past chat when you remember a phrase or branch name but not
+  the title. Search chats doesn't have a default shortcut, but you can assign
+  one under **Settings > Keyboard Shortcuts**.
 - **Archive a chat** when you finish the work. From a project's menu, select
   **Archive chats** to archive its chats together.
 
@@ -272,8 +273,9 @@ Codex sidebar, which contains your Codex chats and projects.
 Point to **New chat**, then select the **Quick chat** icon on its right. You can
 also press
 
-<kbd>Cmd+Option+N</kbd> on macOS or <kbd>Ctrl+Alt+N</kbd> on Windows. From **New
-chat**, you can open an existing ChatGPT chat and add it to a Codex chat.
+<kbd>Cmd+Option+N</kbd> on macOS or <kbd>Ctrl+Alt+N</kbd> on Windows and Linux.
+From **New chat**, you can open an existing ChatGPT chat and add it to a Codex
+chat.
 
 </ContentModeSwitch>
 
