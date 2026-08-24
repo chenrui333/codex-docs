@@ -96,6 +96,11 @@
       "stage": "removed"
     },
     {
+      "enabled": false,
+      "key": "compaction_image_budget",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "computer_use",
       "stage": "stable"
@@ -591,7 +596,7 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.149.0",
+  "codex_cli_version": "codex-cli 0.149.1",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -630,6 +635,7 @@
       "code_mode_only",
       "codex_git_commit",
       "collaboration_modes",
+      "compaction_image_budget",
       "concurrent_reasoning_summaries",
       "current_time_reminder",
       "cwd_relative_turn_diffs",
@@ -773,6 +779,7 @@
         "code_mode",
         "code_mode_interrupt",
         "code_mode_only",
+        "compaction_image_budget",
         "concurrent_reasoning_summaries",
         "current_time_reminder",
         "cwd_relative_turn_diffs",
@@ -855,7 +862,7 @@
     }
   },
   "schema_version": 3,
-  "source_commit": "758ef40f50c1a458425c7cfbf1eb12cbc07af0b0",
+  "source_commit": "ff29a44391deccde0aba0f8390337d7f3c319ea4",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -932,6 +939,10 @@
     "collaboration_modes": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
+    },
+    "compaction_image_budget": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "computer_use": {
       "default_enabled_expr": "true",
@@ -1332,12 +1343,12 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "7af5d4c0c15673564b455725c98d34379c4bdf579f52c4d89aecb4ceb4b190fe",
-    "features_rs_sha256": "803a1e291c5df27daa9ee7b6ca4d164bf607fb8bbbeefa3c614791eeddf28dcc"
+    "features_rs_sha256": "791121524b5269c72254911823b77253cc98121d1dd29608663dd9d73fa7d61a"
   },
-  "source_ref": "rust-v0.149.0",
+  "source_ref": "rust-v0.149.1",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/758ef40f50c1a458425c7cfbf1eb12cbc07af0b0/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/758ef40f50c1a458425c7cfbf1eb12cbc07af0b0/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/ff29a44391deccde0aba0f8390337d7f3c319ea4/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/ff29a44391deccde0aba0f8390337d7f3c319ea4/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
