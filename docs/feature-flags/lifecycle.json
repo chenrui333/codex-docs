@@ -96,9 +96,9 @@
       "stage": "removed"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "compaction_image_budget",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -108,6 +108,11 @@
     {
       "enabled": false,
       "key": "concurrent_reasoning_summaries",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "content_item_kinds",
       "stage": "under development"
     },
     {
@@ -207,6 +212,11 @@
     },
     {
       "enabled": false,
+      "key": "guardian_ext",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "guardian_node_repl_transcript_images",
       "stage": "under development"
     },
@@ -253,6 +263,11 @@
     {
       "enabled": true,
       "key": "in_app_dictation",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "in_app_local_automation",
       "stage": "stable"
     },
     {
@@ -446,6 +461,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "shell_snapshot_v2",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "shell_tool",
       "stage": "stable"
@@ -521,6 +541,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "transcript_v2",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "tui_app_server",
       "stage": "removed"
@@ -546,9 +571,9 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "unified_exec_zsh_fork",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -596,14 +621,16 @@
       "stage": "removed"
     }
   ],
-  "codex_cli_version": "codex-cli 0.149.1",
+  "codex_cli_version": "codex-cli 0.150.1",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
       "code_mode_host",
+      "compaction_image_budget",
       "image_generation",
       "in_app_chat",
       "in_app_dictation",
+      "in_app_local_automation",
       "mentions_v2",
       "multi_agent_v2",
       "recommended_plugins",
@@ -637,6 +664,7 @@
       "collaboration_modes",
       "compaction_image_budget",
       "concurrent_reasoning_summaries",
+      "content_item_kinds",
       "current_time_reminder",
       "cwd_relative_turn_diffs",
       "default_mode_request_user_input",
@@ -652,6 +680,7 @@
       "external_agent_memory_import",
       "external_migration",
       "guardian_enhanced_node_repl_transcripts",
+      "guardian_ext",
       "guardian_node_repl_transcript_images",
       "guardian_reuse_parent_compaction",
       "guardianv2",
@@ -660,6 +689,7 @@
       "image_resize_notice",
       "in_app_chat",
       "in_app_dictation",
+      "in_app_local_automation",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
@@ -688,6 +718,7 @@
       "search_tool",
       "secret_auth_storage",
       "send_async_message",
+      "shell_snapshot_v2",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
       "skill_search",
@@ -701,6 +732,7 @@
       "tool_search",
       "tool_search_always_defer_mcp_tools",
       "tool_suggest",
+      "transcript_v2",
       "tui_app_server",
       "unavailable_dummy_tools",
       "unbounded_connection_retries",
@@ -750,15 +782,18 @@
         "tui_app_server",
         "unavailable_dummy_tools",
         "undo",
+        "unified_exec_zsh_fork",
         "use_linux_sandbox_bwrap",
         "workspace_owner_usage_nudge"
       ],
       "stable": [
         "auth_elicitation",
         "code_mode_host",
+        "compaction_image_budget",
         "image_generation",
         "in_app_chat",
         "in_app_dictation",
+        "in_app_local_automation",
         "mentions_v2",
         "multi_agent_v2",
         "recommended_plugins",
@@ -779,8 +814,8 @@
         "code_mode",
         "code_mode_interrupt",
         "code_mode_only",
-        "compaction_image_budget",
         "concurrent_reasoning_summaries",
+        "content_item_kinds",
         "current_time_reminder",
         "cwd_relative_turn_diffs",
         "default_mode_request_user_input",
@@ -792,6 +827,7 @@
         "executor_capability_discovery",
         "external_agent_memory_import",
         "guardian_enhanced_node_repl_transcripts",
+        "guardian_ext",
         "guardian_node_repl_transcript_images",
         "guardian_reuse_parent_compaction",
         "guardianv2",
@@ -806,11 +842,12 @@
         "retain_client_developer_messages",
         "rollout_budget",
         "runtime_metrics",
+        "shell_snapshot_v2",
         "shell_zsh_fork",
         "standalone_web_search",
         "terminal_visualization_instructions",
         "token_budget",
-        "unified_exec_zsh_fork",
+        "transcript_v2",
         "unified_image_budget",
         "use_agent_identity"
       ]
@@ -862,7 +899,7 @@
     }
   },
   "schema_version": 3,
-  "source_commit": "ff29a44391deccde0aba0f8390337d7f3c319ea4",
+  "source_commit": "90854393966b21e9ebfd21b122334eb09a20c93d",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -941,14 +978,18 @@
       "stage_from_source": "removed"
     },
     "compaction_image_budget": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "computer_use": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
     "concurrent_reasoning_summaries": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "content_item_kinds": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -1028,6 +1069,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "guardian_ext": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "guardian_node_repl_transcript_images": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -1065,6 +1110,10 @@
       "stage_from_source": "stable"
     },
     "in_app_dictation": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
+    },
+    "in_app_local_automation": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
@@ -1220,6 +1269,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "shell_snapshot_v2": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "shell_tool": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -1280,6 +1333,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "transcript_v2": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "tui_app_server": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -1301,8 +1358,8 @@
       "stage_from_source": "stable"
     },
     "unified_exec_zsh_fork": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "removed"
     },
     "unified_image_budget": {
       "default_enabled_expr": "false",
@@ -1342,13 +1399,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "7af5d4c0c15673564b455725c98d34379c4bdf579f52c4d89aecb4ceb4b190fe",
-    "features_rs_sha256": "791121524b5269c72254911823b77253cc98121d1dd29608663dd9d73fa7d61a"
+    "client_rs_sha256": "e85e8f5051092a66e8bf441dec3cf2d92996c82f281c78b8101fb94f531d19d9",
+    "features_rs_sha256": "d2212fefac9ebf116547d5bd520aefd00cae782a98cb7790785512bb66c0b989"
   },
-  "source_ref": "rust-v0.149.1",
+  "source_ref": "rust-v0.150.1",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/ff29a44391deccde0aba0f8390337d7f3c319ea4/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/ff29a44391deccde0aba0f8390337d7f3c319ea4/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/90854393966b21e9ebfd21b122334eb09a20c93d/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/90854393966b21e9ebfd21b122334eb09a20c93d/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
