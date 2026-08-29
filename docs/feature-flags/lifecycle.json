@@ -41,6 +41,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "bedrock_setup_wizard",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "browser_use",
       "stage": "stable"
@@ -87,6 +92,11 @@
     },
     {
       "enabled": false,
+      "key": "code_mode_prewarm",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "codex_git_commit",
       "stage": "removed"
     },
@@ -111,9 +121,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "content_item_kinds",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -491,6 +501,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "skip_host_skill_discovery",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "sqlite",
       "stage": "removed"
@@ -504,6 +519,11 @@
       "enabled": true,
       "key": "steer",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "step_model_switching",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -619,14 +639,20 @@
       "enabled": false,
       "key": "workspace_owner_usage_nudge",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "write_stdin_approval",
+      "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.150.1",
+  "codex_cli_version": "codex-cli 0.151.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
       "code_mode_host",
       "compaction_image_budget",
+      "content_item_kinds",
       "image_generation",
       "in_app_chat",
       "in_app_dictation",
@@ -654,12 +680,14 @@
       "artifact",
       "auth_elicitation",
       "background_paginated_rollout_migration",
+      "bedrock_setup_wizard",
       "chronicle",
       "code_mode",
       "code_mode_buffered_exec",
       "code_mode_host",
       "code_mode_interrupt",
       "code_mode_only",
+      "code_mode_prewarm",
       "codex_git_commit",
       "collaboration_modes",
       "compaction_image_budget",
@@ -722,9 +750,11 @@
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
       "skill_search",
+      "skip_host_skill_discovery",
       "sqlite",
       "standalone_web_search",
       "steer",
+      "step_model_switching",
       "terminal_resize_reflow",
       "terminal_visualization_instructions",
       "token_budget",
@@ -743,7 +773,8 @@
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
       "view_image",
-      "workspace_owner_usage_nudge"
+      "workspace_owner_usage_nudge",
+      "write_stdin_approval"
     ],
     "missing_in_docs_by_stage": {
       "deprecated": [
@@ -790,6 +821,7 @@
         "auth_elicitation",
         "code_mode_host",
         "compaction_image_budget",
+        "content_item_kinds",
         "image_generation",
         "in_app_chat",
         "in_app_dictation",
@@ -810,12 +842,13 @@
         "apply_patch_streaming_events",
         "artifact",
         "background_paginated_rollout_migration",
+        "bedrock_setup_wizard",
         "chronicle",
         "code_mode",
         "code_mode_interrupt",
         "code_mode_only",
+        "code_mode_prewarm",
         "concurrent_reasoning_summaries",
-        "content_item_kinds",
         "current_time_reminder",
         "cwd_relative_turn_diffs",
         "default_mode_request_user_input",
@@ -844,12 +877,15 @@
         "runtime_metrics",
         "shell_snapshot_v2",
         "shell_zsh_fork",
+        "skip_host_skill_discovery",
         "standalone_web_search",
+        "step_model_switching",
         "terminal_visualization_instructions",
         "token_budget",
         "transcript_v2",
         "unified_image_budget",
-        "use_agent_identity"
+        "use_agent_identity",
+        "write_stdin_approval"
       ]
     },
     "stale_in_docs": [
@@ -899,7 +935,7 @@
     }
   },
   "schema_version": 3,
-  "source_commit": "90854393966b21e9ebfd21b122334eb09a20c93d",
+  "source_commit": "78c290807ce710180111df227df3b7a4fe845452",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -930,6 +966,10 @@
       "stage_from_source": "stable"
     },
     "background_paginated_rollout_migration": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "bedrock_setup_wizard": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -969,6 +1009,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "code_mode_prewarm": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "codex_git_commit": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
@@ -990,8 +1034,8 @@
       "stage_from_source": "under development"
     },
     "content_item_kinds": {
-      "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "current_time_reminder": {
       "default_enabled_expr": "false",
@@ -1293,6 +1337,10 @@
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
     },
+    "skip_host_skill_discovery": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "sqlite": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
@@ -1304,6 +1352,10 @@
     "steer": {
       "default_enabled_expr": "true",
       "stage_from_source": "removed"
+    },
+    "step_model_switching": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "terminal_resize_reflow": {
       "default_enabled_expr": "true",
@@ -1396,16 +1448,20 @@
     "workspace_owner_usage_nudge": {
       "default_enabled_expr": "false",
       "stage_from_source": "removed"
+    },
+    "write_stdin_approval": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "e85e8f5051092a66e8bf441dec3cf2d92996c82f281c78b8101fb94f531d19d9",
-    "features_rs_sha256": "d2212fefac9ebf116547d5bd520aefd00cae782a98cb7790785512bb66c0b989"
+    "client_rs_sha256": "113bde60551abdbf96e3603b4f1754a072886e712ef0d0049f360a64dddec375",
+    "features_rs_sha256": "62ac7c6f6109a1e984a0257aa1096753094b5d9dca9d638d19d75dc07b0c7940"
   },
-  "source_ref": "rust-v0.150.1",
+  "source_ref": "rust-v0.151.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/90854393966b21e9ebfd21b122334eb09a20c93d/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/90854393966b21e9ebfd21b122334eb09a20c93d/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/78c290807ce710180111df227df3b7a4fe845452/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/78c290807ce710180111df227df3b7a4fe845452/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
