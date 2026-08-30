@@ -203,10 +203,44 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
             with self.assertRaisesRegex(snapshot.SnapshotError, "Common feature flags"):
                 snapshot.parse_config_basic_feature_keys(basic)
 
+            basic.write_text(
+                "### Common feature flags\n\n"
+                "| Key | Default | Description |\n"
+                "| --- | --- | --- |\n"
+                "| `alpha` | true | Enable alpha |\n"
+            )
+            with self.assertRaisesRegex(snapshot.SnapshotError, "Key and Maturity"):
+                snapshot.parse_config_basic_feature_metadata(basic)
+
+            basic.write_text(
+                "### Common feature flags\n\n"
+                "| Key | Maturity | Default |\n"
+                "| --- | invalid | --- |\n"
+                "| `alpha` | Stable | true |\n"
+            )
+            with self.assertRaisesRegex(snapshot.SnapshotError, "invalid separator"):
+                snapshot.parse_config_basic_feature_metadata(basic)
+
             reference = root / "reference.md"
             reference.write_text('key: "features.alpha.enabled"\n')
             with self.assertRaisesRegex(snapshot.SnapshotError, "zero feature keys"):
                 snapshot.parse_config_reference_feature_keys(reference)
+
+    def test_config_basic_parser_locates_reordered_maturity_column(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            basic = Path(temporary_directory) / "basic.md"
+            basic.write_text(
+                "### Common feature flags\n\n"
+                "| Key | Maturity | Default | Description |\n"
+                "| --- | --- | --- | --- |\n"
+                "| `alpha` | Experimental | false | Enable alpha |\n"
+                "| `beta` | Stable | true | Enable beta |\n"
+            )
+
+            self.assertEqual(
+                snapshot.parse_config_basic_feature_metadata(basic),
+                {"alpha": "experimental", "beta": "stable"},
+            )
 
     def test_main_writes_snapshot_and_reports_errors(self):
         features_source = 'FeatureSpec { key: "alpha", stage: Stage::Stable, default_enabled: true, }'

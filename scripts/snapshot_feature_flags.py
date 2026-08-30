@@ -359,13 +359,69 @@ def parse_config_basic_feature_metadata(path: Path) -> Dict[str, str]:
         raise SnapshotError(
             f"Could not find the Common feature flags section in {path}"
         )
-    section = section_match.group(1)
-    rows = re.findall(
-        r"^\|\s*`([a-z0-9_]+)`\s*\|[^|]*\|\s*([^|]+?)\s*\|",
-        section,
-        re.MULTILINE,
-    )
-    metadata = {key: maturity.strip().lower() for key, maturity in rows}
+    section_lines = section_match.group(1).splitlines()
+
+    def table_cells(line: str) -> List[str] | None:
+        stripped = line.strip()
+        if not stripped.startswith("|") or not stripped.endswith("|"):
+            return None
+        return [
+            cell.strip().replace(r"\|", "|")
+            for cell in re.split(r"(?<!\\)\|", stripped[1:-1])
+        ]
+
+    header_index = None
+    header: List[str] = []
+    for index, line in enumerate(section_lines):
+        cells = table_cells(line)
+        if cells is None:
+            continue
+        normalized = [cell.casefold() for cell in cells]
+        if "key" in normalized or "maturity" in normalized:
+            if normalized.count("key") != 1 or normalized.count("maturity") != 1:
+                raise SnapshotError(
+                    f"Feature flag table in {path} must contain exactly one Key and Maturity column"
+                )
+            header_index = index
+            header = normalized
+            break
+    if header_index is None:
+        raise SnapshotError(
+            f"Could not find Key and Maturity columns in the feature flag table in {path}"
+        )
+
+    separator_index = header_index + 1
+    if separator_index >= len(section_lines):
+        raise SnapshotError(f"Feature flag table in {path} is missing its separator row")
+    separator = table_cells(section_lines[separator_index])
+    if (
+        separator is None
+        or len(separator) != len(header)
+        or not all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in separator)
+    ):
+        raise SnapshotError(f"Feature flag table in {path} has an invalid separator row")
+
+    key_column = header.index("key")
+    maturity_column = header.index("maturity")
+    metadata: Dict[str, str] = {}
+    for line in section_lines[separator_index + 1 :]:
+        cells = table_cells(line)
+        if cells is None:
+            if metadata:
+                break
+            continue
+        if len(cells) != len(header):
+            raise SnapshotError(f"Feature flag table in {path} has a malformed row: {line!r}")
+        key_match = re.fullmatch(r"`([a-z0-9_]+)`", cells[key_column])
+        if not key_match:
+            raise SnapshotError(f"Feature flag table in {path} has an invalid key cell: {line!r}")
+        key = key_match.group(1)
+        maturity = cells[maturity_column].strip().lower()
+        if not maturity:
+            raise SnapshotError(f"Feature flag {key!r} in {path} has no maturity label")
+        if key in metadata:
+            raise SnapshotError(f"Feature flag table in {path} contains duplicate key {key!r}")
+        metadata[key] = maturity
     if not metadata:
         raise SnapshotError(f"Parsed zero feature keys from {path}")
     return dict(sorted(metadata.items()))
