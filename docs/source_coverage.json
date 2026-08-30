@@ -1,7 +1,7 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 899,
+      "active": 890,
       "by_category": {
         "cli_command": 93,
         "cli_option": 329,
@@ -18,7 +18,7 @@
         "stable": 41,
         "under development": 48
       },
-      "inactive": 35,
+      "inactive": 44,
       "total": 934
     },
     "mirrored_paths": [
@@ -277,7 +277,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-08-30T01:46:45+00:00",
+  "generated_at": "2026-08-30T02:49:27+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

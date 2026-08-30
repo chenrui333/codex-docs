@@ -38,7 +38,7 @@
       ]
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_command",
       "cli_command": "codex app",
       "codex_cli_versions": [
@@ -52,7 +52,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "app",
@@ -1468,7 +1469,7 @@
       "source_url": "codex-cli://help"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_command",
       "cli_command": "codex help app",
       "codex_cli_versions": [
@@ -1482,7 +1483,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "app",
@@ -5091,7 +5093,7 @@
       "synopsis": "--ws-token-sha256 <HEX>"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5109,7 +5111,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--config",
@@ -5130,7 +5133,7 @@
       "synopsis": "-c, --config <key=value>"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5147,7 +5150,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--disable",
@@ -5168,7 +5172,7 @@
       "synopsis": "--disable <FEATURE>"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5185,7 +5189,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--download-url",
@@ -5206,7 +5211,7 @@
       "synopsis": "--download-url <DOWNLOAD_URL_OVERRIDE>"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5223,7 +5228,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--enable",
@@ -5244,7 +5250,7 @@
       "synopsis": "--enable <FEATURE>"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5262,7 +5268,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--help",
@@ -14698,7 +14705,7 @@
       "synopsis": "--uncommitted"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex sandbox",
       "cli_flags": [
@@ -14715,7 +14722,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--allow-unix-socket",
@@ -14967,7 +14975,7 @@
       "synopsis": "--include-managed-config"
     },
     {
-      "active": true,
+      "active": false,
       "category": "cli_option",
       "cli_command": "codex sandbox",
       "cli_flags": [
@@ -14984,7 +14992,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "status": "active"
+        "removed_in_version": "0.151.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--log-denials",
@@ -32678,7 +32687,7 @@
     "codex-cli 0.151.0"
   ],
   "counts": {
-    "active": 899,
+    "active": 890,
     "by_category": {
       "cli_command": 93,
       "cli_option": 329,
@@ -32695,7 +32704,7 @@
       "stable": 41,
       "under development": 48
     },
-    "inactive": 35,
+    "inactive": 44,
     "total": 934
   },
   "evidence_types": {
