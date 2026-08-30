@@ -48,6 +48,7 @@ jobs:
         continue-on-error: true
         env:
           CODEX_DOCS_STRICT_SYNC: "1"
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -o pipefail
           python scripts/fetch_codex_docs.py 2>&1 | tee sync.log
