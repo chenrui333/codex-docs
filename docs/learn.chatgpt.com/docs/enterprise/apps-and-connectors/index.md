@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/apps-and-connectors'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Plugin controls
@@ -53,6 +53,9 @@ which roles can use or install a plugin. The Codex CLI uses its own plugin
 browser for installation. See
 [Build plugins](https://developers.openai.com/plugins/build/plugins) for
 packaging and distribution.
+
+To import workspace plugins from GitHub and keep them up to date, see
+[Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management).
 
 ### Export the public catalog for review
 

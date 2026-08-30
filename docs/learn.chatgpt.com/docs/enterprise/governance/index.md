@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/governance'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Governance
@@ -34,9 +34,9 @@ different purposes.
 - Open [Workspace analytics](https://chatgpt.com/admin/usage) for interactive
   workspace reporting. The [Workspace analytics guide](https://help.openai.com/en/articles/10875114-workspace-analytics-for-chatgpt-enterprise-and-edu)
   describes the current roles and views.
-- Open the authenticated [Codex Analytics API reference](https://chatgpt.com/codex/cloud/settings/apireference)
+- Open the [Codex Analytics API reference](https://chatgpt.com/public/admin/api-reference#tag/Codex%20Enterprise%20Analytics)
   when you need scheduled, programmatic reporting.
-- Open the authenticated [Admin API reference](https://chatgpt.com/admin/api-reference)
+- Open the [Admin API reference](https://chatgpt.com/public/admin/api-reference)
   and the [Compliance Platform guide](https://help.openai.com/en/articles/9261474-compliance-api-for-chatgpt-enterprise-edu-and-chatgpt-for-teachers)
   for audit and investigation integrations.
 
@@ -85,7 +85,7 @@ Use the Analytics API for programmatic, aggregated Codex reporting. It's
 appropriate for data warehouses, business intelligence systems, and internal
 reporting that shouldn't depend on an interactive dashboard.
 
-The authenticated API reference owns access requirements, routes, schemas,
+The API reference owns access requirements, routes, schemas,
 fields, reporting windows, and pagination. See
 [Analytics API](https://learn.chatgpt.com/docs/enterprise/analytics-api) for the conceptual integration
 boundary and the canonical reference link.
@@ -102,7 +102,7 @@ boundary and the canonical reference link.
 Use the Compliance API for security, legal, and governance workflows that need
 auditable records. It's not an adoption or productivity dashboard.
 
-The authenticated API reference owns event coverage, schemas, permissions,
+The API reference owns event coverage, schemas, permissions,
 filters, retention, and request behavior. See
 [Compliance API](https://learn.chatgpt.com/docs/enterprise/compliance-api) for the conceptual
 integration boundary and the canonical reference link.

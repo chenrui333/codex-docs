@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_remote_connections'
 source_url: 'https://learn.chatgpt.com/docs/remote-connections'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Remote connections
@@ -35,14 +35,7 @@ The next sections cover opening **Remote** in the ChatGPT mobile app to access a
 desktop host. To connect Codex to a project on an SSH host, see
 [connect to an SSH host](#connect-to-an-ssh-host).
 
-  <CodexScreenshot
-    alt="Remote setup screen in the ChatGPT mobile app"
-    lightSrc="/images/codex/app/mobile-setup-light.webp"
-    darkSrc="/images/codex/app/mobile-setup-dark.webp"
-    variant="no-wallpaper"
-    maxHeight="none"
-    maxWidth="420px"
-  />
+> Illustration: Remote setup screen in the ChatGPT mobile app
 
 <a id="before-you-set-up-mobile-access"></a>
 
@@ -109,12 +102,7 @@ Existing connections used since June 8, 2026, remain paired. If you haven't
 
 </WorkflowSteps>
 
-<Illustration description="Connections controls for allowing devices to control this Mac and keeping it awake.">
-  <RemoteConnectionsIllustration
-    view="control-this-mac"
-    ariaLabel="Connections controls for allowing devices to control this Mac and keeping it awake."
-  />
-</Illustration>
+> Illustration: Connections controls for allowing devices to control this Mac and keeping it awake.
 
 ## Choose what to connect
 
@@ -204,12 +192,7 @@ On a Mac or Windows device where the feature is available, use **Settings >
 Connections > Control other devices** to add the other host. A device can allow
 remote access and control another device at the same time.
 
-<Illustration description="Connections setup card for controlling another device from this Mac.">
-  <RemoteConnectionsIllustration
-    view="control-other-devices"
-    ariaLabel="Connections setup card for controlling another device from this Mac."
-  />
-</Illustration>
+> Illustration: Connections setup card for controlling another device from this Mac.
 
 ## Connect to an SSH host
 
@@ -252,12 +235,7 @@ unauthenticated public listeners.
 
 </WorkflowSteps>
 
-<Illustration description="Connections SSH list with three remote hosts.">
-  <RemoteConnectionsIllustration
-    view="ssh"
-    ariaLabel="Connections SSH list with three remote hosts."
-  />
-</Illustration>
+> Illustration: Connections SSH list with three remote hosts.
 
 <a id="hand-off-a-thread-between-hosts"></a>
 <a id="hand-off-a-chat-between-hosts"></a>

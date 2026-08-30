@@ -19,10 +19,18 @@ function runUrl(context) {
   return `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
 }
 
-function buildFailureBody({ date, workflowRunUrl, syncLog, syncSummary, sourceCoverage }) {
+function buildFailureBody({
+  date,
+  workflowRunUrl,
+  syncLog,
+  syncSummary,
+  sourceCoverage,
+  freshnessStatus = '',
+}) {
   const syncLogTail = tailLines(syncLog, 120).slice(-12000) || '(no log available)';
   const summary = syncSummary.slice(-12000) || '(no sync summary available)';
   const coverage = sourceCoverage.slice(-12000) || '(no source coverage available)';
+  const freshness = freshnessStatus.slice(-12000) || '(no freshness report available)';
 
   return [
     `Automated docs sync failed or recorded source failures on ${date}.`,
@@ -37,6 +45,11 @@ function buildFailureBody({ date, workflowRunUrl, syncLog, syncSummary, sourceCo
     '### Source coverage',
     '```json',
     coverage,
+    '```',
+    '',
+    '### Freshness status',
+    '```json',
+    freshness,
     '```',
     '',
     '### Sync log tail',
@@ -77,6 +90,7 @@ async function recordFailure({ github, context, reader = readFileSync, now = new
     syncLog: readText('sync.log', reader),
     syncSummary: readText('docs/sync_summary.json', reader),
     sourceCoverage: readText('docs/source_coverage.json', reader),
+    freshnessStatus: readText('docs/freshness.json', reader),
   });
   const issue = await findOpenFailureIssue({ github, context });
   const repository = { owner: context.repo.owner, repo: context.repo.repo };

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_plugins'
 source_url: 'https://learn.chatgpt.com/docs/plugins'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Plugins
@@ -113,11 +113,7 @@ ChatGPT desktop app, open the **Plugins** tab to browse and install plugins.
 
 <ContentModeSwitch group="codex-surface" id="app">
 
-<CodexScreenshot
-  alt="Plugins Directory in the ChatGPT desktop app"
-  lightSrc="/images/codex/plugins/directory.webp"
-  darkSrc="/images/codex/plugins/directory-dark.webp"
-/>
+> Illustration: Plugins Directory in the ChatGPT desktop app
 
 </ContentModeSwitch>
 
@@ -131,6 +127,10 @@ The Plugins Directory organizes plugins into tabs:
   **Shared with me** sections when those plugins are available.
 
 Use the separate **Installed** row to review plugins you already installed.
+
+Workspace admins can import and sync a GitHub marketplace for their team. See
+[Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management) for setup and access
+requirements.
 
 ### Install and use a plugin
 
@@ -166,11 +166,7 @@ After you install a plugin, you can use it directly in the prompt window:
 
 <ContentModeSwitch group="codex-surface" id="app">
 
-<CodexScreenshot
-  alt="Installed plugin on the Plugins page"
-  lightSrc="/images/codex/plugins/plugin-github-invoke.png"
-  darkSrc="/images/codex/plugins/plugin-github-invoke-dark.png"
-/>
+> Illustration: Installed plugin on the Plugins page
 
 </ContentModeSwitch>
 
@@ -256,11 +252,7 @@ codex
 /plugins
 ```
 
-<CodexScreenshot
-  alt="Plugins list in Codex CLI"
-  lightSrc="/images/codex/plugins/cli_light.png"
-  darkSrc="/images/codex/plugins/codex-plugin-cli.png"
-/>
+> Illustration: Plugins list in Codex CLI
 
 The CLI plugin browser groups plugins by marketplace. Use the marketplace tabs
 to switch sources, open a plugin to inspect details, install or uninstall

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_third_party'
 source_url: 'https://learn.chatgpt.com/docs/third-party/slack'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Use Codex in Slack
@@ -15,10 +15,7 @@ Source: https://learn.chatgpt.com/docs/third-party/slack
 
 Use Codex in Slack to kick off coding work from channels and threads. Mention `@Codex` with a prompt, and Codex creates a cloud chat and replies with the results.
 
-  <img src="https://developers.openai.com/images/codex/integrations/slack-example.png"
-    alt="Codex Slack integration in action"
-    class="block h-auto w-full mx-0!"
-  />
+> Illustration: Codex Slack integration in action
 
 ## Set up the Slack app
 

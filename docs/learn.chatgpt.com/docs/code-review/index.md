@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_code_review'
 source_url: 'https://learn.chatgpt.com/docs/code-review'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Code review
@@ -136,12 +136,7 @@ Reviews run in the current chat by default. Under **Settings** > **General** >
 **Code review**, choose **Detached** to start a separate review chat. See
 [developer settings](https://learn.chatgpt.com/docs/developer-settings?surface=app#app-code-review).
 
-<CodexScreenshot
-  alt="Inline code review comments displayed in the review pane"
-  lightSrc="/images/codex/app/inline-code-review-light.webp"
-  darkSrc="/images/codex/app/inline-code-review-dark.webp"
-  maxHeight="400px"
-/>
+> Illustration: Inline code review comments displayed in the review pane
 
 </ContentModeSwitch>
 

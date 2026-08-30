@@ -35,10 +35,13 @@ test('failure body keeps only the log tail', () => {
     syncLog,
     syncSummary: '{}',
     sourceCoverage: '{}',
+    freshnessStatus: '{"status":"stale"}',
   });
 
   assert.doesNotMatch(body, /line-0\n/);
   assert.match(body, /line-129/);
+  assert.match(body, /Freshness status/);
+  assert.match(body, /"status":"stale"/);
 });
 
 test('failure adopts a legacy daily issue as the rolling incident', async () => {

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_browser'
 source_url: 'https://learn.chatgpt.com/docs/browser'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Browser
@@ -45,20 +45,15 @@ Browser downloads go to your system Downloads folder by default. In **Settings >
 Browser**, you can choose another download location, reset it to the system
 default, or turn on **Ask where to save downloads**.
 
-Use the [Chrome extension](https://learn.chatgpt.com/docs/chrome-extension) instead when ChatGPT needs
-to work in an existing Chrome tab or use your regular Chrome profile.
+Use the [browser extension](https://learn.chatgpt.com/docs/chrome-extension) instead when ChatGPT needs
+to work in an existing Chrome, Edge, Brave, Opera, or Vivaldi tab or use your
+regular browser profile.
 
 Open the built-in browser from the toolbar, by clicking a URL, by navigating
 manually, or by pressing <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>
 (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> on Windows).
 
-<CodexScreenshot
-  alt="ChatGPT desktop app showing a browser comment on a local web app preview"
-  lightSrc="/images/codex/app/in-app-browser-light.webp"
-  darkSrc="/images/codex/app/in-app-browser-dark.webp"
-  maxHeight="420px"
-  variant="no-wallpaper"
-/>
+> Illustration: ChatGPT desktop app showing a browser comment on a local web app preview
 
 ## Search from the address bar
 
@@ -90,8 +85,9 @@ built-in browser directly. The selected experience can open pages, click, type,
 inspect rendered state, take screenshots, and verify the result of its work in
 the page.
 
-Open the **Plugins** tab and install **Browser**. Then ask ChatGPT or Codex to
-use the browser in your task, or reference it directly with `@Browser`.
+Browser is included with the desktop app and installs automatically. Ask ChatGPT
+or Codex to use the built-in browser in your task, or reference it directly with
+`@Browser`.
 
 For example:
 
@@ -157,12 +153,7 @@ the text input to give ChatGPT more granular style feedback. You can change
 values such as font, text, spacing, and color, preview the result on the page,
 and then send the annotation with a clearer target.
 
-<CodexScreenshot
-  alt="ChatGPT desktop app showing built-in browser annotation style controls"
-  lightSrc="/images/codex/app/iab-annotations-light.webp"
-  darkSrc="/images/codex/app/iab-annotations-dark.webp"
-  maxHeight="420px"
-/>
+> Illustration: ChatGPT desktop app showing built-in browser annotation style controls
 
 </section>
 
@@ -211,12 +202,7 @@ This app is slow. Use @Browser to capture a performance trace and inspect
 network traffic, then identify the bottleneck.
 ```
 
-<CodexScreenshot
-  alt="ChatGPT desktop app Browser settings showing Developer mode with full CDP access enabled"
-  lightSrc="/images/codex/app/browser-developer-mode-light.webp"
-  darkSrc="/images/codex/app/browser-developer-mode-dark.webp"
-  maxHeight="420px"
-/>
+> Illustration: ChatGPT desktop app Browser settings showing Developer mode with full CDP access enabled
 
 </section>
 
@@ -224,72 +210,107 @@ network traffic, then identify the bottleneck.
 
 <ContentModeSwitch group="codex-surface" id="web">
 
-With ChatGPT Work on the web, ChatGPT can use a cloud-operated browser to
-research and interact with public websites. It runs separately from the
-browser on your device, so you can delegate web tasks without giving ChatGPT
-access to your open tabs or personal browser history.
+## Use ChatGPT Work to get things done across the web
+
+ChatGPT Work can complete tasks across websites, including sites where you need to sign in.
+
+Work uses its own browser, running on a separate computer in the cloud, not the browser on your phone or laptop.
+
+Start a task from ChatGPT Work on web or mobile, and ChatGPT can continue working even if you step away and close your computer. Using its computer, Work can accomplish a wide variety of tasks on the internet by reading, clicking, and typing into web pages. Depending on your request, it may use a plugin, its browser, or both.
+
+For example, ChatGPT can help you:
+
+- Find and book a DMV appointment.
+- Sign in to your utility account and compare plans.
+- Find and save apartments that match your criteria.
+- Research competitors on social media.
+- Close the books in your accounting software.
+
+You control which websites ChatGPT can access, and it is trained to ask for confirmation before consequential actions, such as completing a booking or payment. If ChatGPT is ever blocked for any reason, you can take over its computer and use it yourself on mobile and desktop.
+
+The ability for ChatGPT Work to navigate to websites that need authentication is available on web and mobile on Plus and Pro plans.
+
+Availability depends on rollout. Website sign-in isn't available for Enterprise or Edu workspaces.
+
+## How ChatGPT Work's computer works
+
+When your task requires a website, ChatGPT uses its own browser to navigate pages, gather information, and complete steps online.
+
+By default, ChatGPT asks before accessing a new website. You can choose to approve requests individually or adjust your settings to let ChatGPT automatically approve websites relevant to your task. ChatGPT Work will always ask for confirmation before consequential actions, such as submitting your information to book an appointment or completing a payment.
+
+## Sign in to a website
+
+If a website requires you to sign in, ChatGPT Work will ask you to sign in. After you authenticate, it will continue working on the signed-in website. Your session will remain active for future tasks, so you do not need to sign in every time.
+
+### Use the secure sign-in form
+
+ChatGPT cannot see your username or password, and they are never seen by the model or used in model training. ChatGPT does not store your username or passwords. You can delete your browsing history from all sites or one site individually at any time from **Settings** > **Cloud browser** > **Browser data**, which will log you out from that site.
+
+When ChatGPT encounters a login screen, it pauses and asks you to enter your credentials and two-factor authentication codes as needed. On iOS, you can use a supported password manager to sign in seamlessly.
+
+Use the sign-in form provided by ChatGPT. Don't send passwords in the chat.
+
+![ChatGPT Work on iOS pausing a DMV task and showing a secure sign-in form with the website address and a masked password.](https://developers.openai.com/images/codex/cloud-browser-auth/sign-in.webp)
+
+### Sign in on the web page
+
+If offered, select **Sign in on web page instead** to sign in directly in the cloud browser. The task pauses while you sign in. Select **I'm done** to return control to ChatGPT, or skip or cancel the request.
 
 <a id="start-a-browser-task"></a>
+<a id="start-browser-work"></a>
+<a id="web-start-browser-work"></a>
 
-## Start browser work
+## How to get started with a task in ChatGPT Work
 
-1. Select **ChatGPT**, switch to **Work** in the switcher, and describe the result you want. Include relevant
-   websites or constraints when they matter.
-2. If ChatGPT needs a website, review the site-access request before allowing
-   it.
-3. Follow the browser's progress in the chat. Open **Cloud browser** to inspect
-   the page screenshots and replay.
-4. Review the result and any sources before using the information.
+1. Open ChatGPT on web or mobile and start a task in Work.
+2. Describe what you want ChatGPT to do.
+3. Approve website access if prompted.
+4. Sign in directly if a website requires it.
+5. Follow the task's progress in the conversation.
+6. Review the result and approve any consequential actions.
 
-For example:
+You don't need to select the browser separately. ChatGPT decides when to use it based on your request.
 
-```text
-Compare the publicly listed prices and cancellation terms for these three
-venues. Return a table with links to each source and flag anything that needs a
-phone call to confirm.
-```
+Some websites block access. If that happens, ChatGPT will let you know and, when possible, try another way to complete the task.
 
-Other useful browser tasks include checking public inventory or appointment
-times, gathering details from an interactive site, and comparing options whose
-information is spread across several pages.
+<a id="website-permissions-and-confirmations"></a>
+<a id="web-website-permissions-and-confirmations"></a>
 
-## Website permissions and confirmations
+## Security and user controls
 
-ChatGPT asks before accessing a new website by default. The permission applies
-to the site shown in the request, so check the hostname before allowing it.
+In ChatGPT settings, open **Cloud browser** to manage website permissions. Available options include:
 
-In ChatGPT settings, open **Cloud browser** to manage website permissions. You
-can choose **Always ask**, **Auto approve**, or **Always allow**, and you can
-allow or block individual sites. **Auto approve** lets ChatGPT approve requests
-after its risk checks; **Always allow** removes that review step for website
-access. Use the least-permissive setting that works for your task.
+- **Always ask**: Review every website access request manually.
+- **Auto approve**: Let ChatGPT automatically approve access after it checks for the relevancy of the website to your task.
+- **Always allow**: Allow website access without that additional review step. We offer this option for minimal friction, but do not recommend this option.
 
-A website permission doesn't approve every action. ChatGPT may ask separately
-for permission before performing consequential actions.
+![Cloud browser settings showing the Always ask, Auto approve, and Always allow website permission options.](https://developers.openai.com/images/codex/cloud-browser-auth/website-permissions.webp)
 
-## Browser data
+You can also allow or block individual websites to override your default permissions.
 
-The cloud-operated browser keeps its cookies and browser data separate from the
-browser on your device. Clearing cloud browser data doesn't clear cookies from
-your device. To remove its cookies, open **Cloud browser** in ChatGPT settings,
-select **Browser data**, and choose **Clear all**.
+Before ChatGPT asks you to sign in to any website, an additional review model checks the sign-in request and where your information will be entered for signs of phishing or deception. We test the agent against risks including prompt injection, phishing, and unintended actions.
 
-Don't rely on open pages or browser history being available in a later chat.
-Include the important sites and context when you start new work.
+For full transparency, you'll see the website's address and a preview of its sign-in form, and you can inspect the live website before continuing. Credentials entered through the secure sign-in form go directly to the browser and are not visible to the model.
+
+<a id="browser-data"></a>
+<a id="web-browser-data"></a>
+
+## Privacy and browser data
+
+ChatGPT Work's computer runs separately from the browser on your device. It maintains its own cookies, browser data, and signed-in sessions. Information ChatGPT uses while completing a task follows the ChatGPT data-control settings you choose. You can review these in ChatGPT web and mobile under **Settings** > **Data controls**.
+
+It doesn't use your personal browser's open tabs, browsing history, saved passwords, cookies, extensions, or existing signed-in sessions.
+
+To clear browser data, go to **Settings** > **Cloud browser** > **Browser data** > **Clear all**. This signs you out of websites in ChatGPT Work's browser, so you'll need to sign in again for future tasks.
+
+![Cloud browser settings with a Browser data section and a Cookies control for managing cookies saved by the cloud browser.](https://developers.openai.com/images/codex/cloud-browser-auth/browser-data.webp)
 
 ## Limitations
 
-- The browser supports public, signed-out websites. It can't sign in to an
-  account, ask for credentials, or use the signed-in session from your browser.
-- Some sites block automated browsers or require a CAPTCHA. ChatGPT may not be
-  able to complete a task on those sites.
-- The browser is separate from the browser on your device. It can't use your
-  open tabs, extensions, saved passwords, or local browser history.
-- Availability can depend on your plan, workspace settings, and rollout. It is
-  available in all regions on paid plans other than Free and Go. Enterprise
-  admins must enable it for their workspace.
+- Website sign-in isn't available in every workspace or rollout. If a task requires a sign-in method that isn't supported, complete that step yourself or use another available tool.
+- Some sites block automated browsers or require a CAPTCHA. ChatGPT may not be able to complete a task on those sites.
+- Availability of cloud browsing can depend on your plan, workspace settings, and rollout. Cloud browsing is available in all regions on paid plans other than Free and Go. Enterprise admins must enable cloud browsing for their workspace.
 
-During rollout, the browser might not appear immediately even when your plan
-supports it.
+During rollout, the browser might not appear immediately even when your plan supports it.
 
 </ContentModeSwitch>

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_developers'
 source_url: 'https://learn.chatgpt.com/docs/developers'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Developers
@@ -67,6 +67,13 @@ Source: https://learn.chatgpt.com/docs/developers
           description: "Package skills and MCP servers for ChatGPT and Codex.",
           href: "/codex/build-plugins",
           icon: "connect",
+        },
+        {
+          title: "Site tools (WebMCP)",
+          description:
+            "Use WebMCP to give AI agents a direct way to work with your website.",
+          href: "/codex/webmcp",
+          icon: "tools",
         },
         {
           title: "Hooks",

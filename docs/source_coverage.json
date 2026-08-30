@@ -1,12 +1,25 @@
 {
   "capability_inventory": {
     "counts": {
+      "active": 899,
       "by_category": {
+        "cli_command": 93,
+        "cli_option": 329,
+        "config_key": 375,
+        "feature_flag": 129,
         "linked_tool_guide": 1,
         "system_prompt_snapshot": 1,
         "system_skill": 6
       },
-      "total": 8
+      "by_maturity": {
+        "deprecated": 3,
+        "experimental": 2,
+        "removed": 35,
+        "stable": 41,
+        "under development": 48
+      },
+      "inactive": 35,
+      "total": 934
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -16,7 +29,11 @@
     "source_type": "capability_inventory"
   },
   "codex_cli": {
+    "cli_surface_paths": [
+      "codex_cli_surface.json"
+    ],
     "counts": {
+      "cli_surface_paths": 1,
       "prompt_snapshot_paths": 1,
       "source_errors": 0,
       "system_skill_paths": 60
@@ -91,11 +108,12 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.149.0",
-    "version_raw": "codex-cli 0.149.0"
+    "version": "0.151.0",
+    "version_raw": "codex-cli 0.151.0"
   },
   "developers": {
     "codex_related_urls": [
+      "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-as-a-platform",
       "https://developers.openai.com/blog/codex-at-devday",
@@ -123,20 +141,34 @@
       "https://developers.openai.com/learn/developers-codex-plugin",
       "https://developers.openai.com/resources/codex",
       "https://developers.openai.com/showcase/codex-101",
+      "https://developers.openai.com/showcase/codex-modeling-studio",
       "https://developers.openai.com/showcase/codex-pet-arena",
-      "https://developers.openai.com/showcase/phantasy-codex-adventure"
+      "https://developers.openai.com/showcase/phantasy-codex-adventure",
+      "https://developers.openai.com/training/codex",
+      "https://developers.openai.com/training/hands-on/codex"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 16,
-      "codex_related_urls": 29,
-      "mirrored_urls": 13,
+      "classified_skipped_codex_related_urls": 11,
+      "codex_related_urls": 33,
+      "mirrored_urls": 22,
       "page_fetch_errors": 0,
+      "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 16,
+      "skipped_codex_related_urls": 11,
+      "tombstoned_urls": 0,
       "unclassified_skipped_codex_related_urls": 0
     },
     "mirrored_urls": [
+      "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
+      "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
+      "https://developers.openai.com/blog/codex-as-a-platform",
+      "https://developers.openai.com/blog/codex-at-devday",
+      "https://developers.openai.com/blog/codex-for-documentation-dagster",
+      "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
+      "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
+      "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
+      "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
       "https://developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk",
@@ -155,6 +187,9 @@
     "new_mirrored_urls_since_last_run": [],
     "new_unclassified_skipped_codex_related_urls_since_last_run": [],
     "page_fetch_errors": [],
+    "redirected_urls": [],
+    "removed_codex_related_urls_since_last_run": [],
+    "removed_mirrored_urls_since_last_run": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://developers.openai.com/sitemap-index.xml",
     "sitemap_urls": [
@@ -162,53 +197,13 @@
     ],
     "skipped_codex_related_url_counts_by_classification": {
       "blog_index": 1,
-      "blog_post": 8,
       "chatgpt_plugin_page": 1,
       "community_page": 2,
       "learn_index": 1,
-      "showcase_page": 3
+      "showcase_page": 4,
+      "training_page": 2
     },
     "skipped_codex_related_url_details": [
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/codex-as-a-platform"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/codex-at-devday"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/codex-for-documentation-dagster"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/custom-code-review-rules-for-codex"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/mastering-codex-remote-for-engineering"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex"
-      },
-      {
-        "classification": "blog_post",
-        "reason": "Blog posts are intentionally excluded from the docs mirror.",
-        "url": "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp"
-      },
       {
         "classification": "blog_index",
         "reason": "Blog listing pages are intentionally excluded from the docs mirror.",
@@ -242,35 +237,47 @@
       {
         "classification": "showcase_page",
         "reason": "Showcase pages are intentionally excluded from the docs mirror.",
+        "url": "https://developers.openai.com/showcase/codex-modeling-studio"
+      },
+      {
+        "classification": "showcase_page",
+        "reason": "Showcase pages are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/showcase/codex-pet-arena"
       },
       {
         "classification": "showcase_page",
         "reason": "Showcase pages are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/showcase/phantasy-codex-adventure"
+      },
+      {
+        "classification": "training_page",
+        "reason": "Interactive course landing pages are excluded from the versioned docs mirror.",
+        "url": "https://developers.openai.com/training/codex"
+      },
+      {
+        "classification": "training_page",
+        "reason": "Interactive course landing pages are excluded from the versioned docs mirror.",
+        "url": "https://developers.openai.com/training/hands-on/codex"
       }
     ],
     "skipped_codex_related_urls": [
-      "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
-      "https://developers.openai.com/blog/codex-as-a-platform",
-      "https://developers.openai.com/blog/codex-at-devday",
-      "https://developers.openai.com/blog/codex-for-documentation-dagster",
-      "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
-      "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
-      "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
-      "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
       "https://developers.openai.com/blog/topic/codex",
       "https://developers.openai.com/community/codex-ambassadors",
       "https://developers.openai.com/community/codex-for-oss",
       "https://developers.openai.com/learn/codex",
       "https://developers.openai.com/learn/developers-codex-plugin",
       "https://developers.openai.com/showcase/codex-101",
+      "https://developers.openai.com/showcase/codex-modeling-studio",
       "https://developers.openai.com/showcase/codex-pet-arena",
-      "https://developers.openai.com/showcase/phantasy-codex-adventure"
+      "https://developers.openai.com/showcase/phantasy-codex-adventure",
+      "https://developers.openai.com/training/codex",
+      "https://developers.openai.com/training/hands-on/codex"
     ],
-    "unclassified_skipped_codex_related_urls": []
+    "tombstoned_urls": [],
+    "unclassified_skipped_codex_related_urls": [],
+    "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-08-21T01:21:09+00:00",
+  "generated_at": "2026-08-30T01:46:45+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -308,19 +315,23 @@
     "mirrored_paths_count": 26,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_errors": []
+    "source_commit": "78c290807ce710180111df227df3b7a4fe845452",
+    "source_errors": [],
+    "source_ref": "rust-v0.151.0"
   },
   "learn": {
     "counts": {
-      "discovered_urls": 137,
+      "discovered_urls": 145,
       "html_fallback_pages": 2,
-      "markdown_pages": 135,
-      "mirrored_paths_count": 137,
-      "mirrored_urls": 137,
+      "markdown_pages": 142,
+      "mirrored_paths_count": 144,
+      "mirrored_urls": 144,
       "page_fetch_errors": 0,
+      "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "source_errors": 0
+      "source_errors": 0,
+      "tombstoned_urls": 1
     },
     "discovered_urls": [
       "https://learn.chatgpt.com/docs",
@@ -364,16 +375,21 @@
       "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
       "https://learn.chatgpt.com/docs/developers",
       "https://learn.chatgpt.com/docs/enterprise/access-tokens",
+      "https://learn.chatgpt.com/docs/enterprise/admin-plugin",
       "https://learn.chatgpt.com/docs/enterprise/admin-setup",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
       "https://learn.chatgpt.com/docs/enterprise/governance",
       "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
       "https://learn.chatgpt.com/docs/enterprise/manage-app-updates",
       "https://learn.chatgpt.com/docs/enterprise/managed-configuration",
+      "https://learn.chatgpt.com/docs/enterprise/plugin-management",
       "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
@@ -423,11 +439,13 @@
       "https://learn.chatgpt.com/docs/remote-connections",
       "https://learn.chatgpt.com/docs/sandboxing",
       "https://learn.chatgpt.com/docs/sandboxing/auto-review",
+      "https://learn.chatgpt.com/docs/screenshot-review",
       "https://learn.chatgpt.com/docs/security",
       "https://learn.chatgpt.com/docs/security-administration",
       "https://learn.chatgpt.com/docs/security/cli",
       "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
       "https://learn.chatgpt.com/docs/security/cli/ci",
+      "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
       "https://learn.chatgpt.com/docs/security/cli/faq",
       "https://learn.chatgpt.com/docs/security/cli/reference",
       "https://learn.chatgpt.com/docs/security/faq",
@@ -456,6 +474,7 @@
       "https://learn.chatgpt.com/docs/visualizations",
       "https://learn.chatgpt.com/docs/web",
       "https://learn.chatgpt.com/docs/web-search",
+      "https://learn.chatgpt.com/docs/webmcp",
       "https://learn.chatgpt.com/docs/whats-new",
       "https://learn.chatgpt.com/docs/windows/windows-app",
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
@@ -505,16 +524,21 @@
       "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
       "https://learn.chatgpt.com/docs/developers",
       "https://learn.chatgpt.com/docs/enterprise/access-tokens",
+      "https://learn.chatgpt.com/docs/enterprise/admin-plugin",
       "https://learn.chatgpt.com/docs/enterprise/admin-setup",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
       "https://learn.chatgpt.com/docs/enterprise/governance",
       "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
       "https://learn.chatgpt.com/docs/enterprise/manage-app-updates",
       "https://learn.chatgpt.com/docs/enterprise/managed-configuration",
+      "https://learn.chatgpt.com/docs/enterprise/plugin-management",
       "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
@@ -569,6 +593,7 @@
       "https://learn.chatgpt.com/docs/security/cli",
       "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
       "https://learn.chatgpt.com/docs/security/cli/ci",
+      "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
       "https://learn.chatgpt.com/docs/security/cli/faq",
       "https://learn.chatgpt.com/docs/security/cli/reference",
       "https://learn.chatgpt.com/docs/security/faq",
@@ -597,6 +622,7 @@
       "https://learn.chatgpt.com/docs/visualizations",
       "https://learn.chatgpt.com/docs/web",
       "https://learn.chatgpt.com/docs/web-search",
+      "https://learn.chatgpt.com/docs/webmcp",
       "https://learn.chatgpt.com/docs/whats-new",
       "https://learn.chatgpt.com/docs/windows/windows-app",
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
@@ -643,16 +669,21 @@
       "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
       "learn.chatgpt.com/docs/developers/index.md",
       "learn.chatgpt.com/docs/enterprise/access-tokens/index.md",
+      "learn.chatgpt.com/docs/enterprise/admin-plugin/index.md",
       "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
       "learn.chatgpt.com/docs/enterprise/analytics-api/index.md",
       "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
+      "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
+      "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-work-overview/index.md",
+      "learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost/index.md",
       "learn.chatgpt.com/docs/enterprise/compliance-api/index.md",
       "learn.chatgpt.com/docs/enterprise/governance/index.md",
       "learn.chatgpt.com/docs/enterprise/gpts-and-sharing/index.md",
       "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md",
       "learn.chatgpt.com/docs/enterprise/manage-app-updates/index.md",
       "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+      "learn.chatgpt.com/docs/enterprise/plugin-management/index.md",
       "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md",
       "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
       "learn.chatgpt.com/docs/enterprise/service-accounts/index.md",
@@ -705,6 +736,7 @@
       "learn.chatgpt.com/docs/sandboxing/index.md",
       "learn.chatgpt.com/docs/security-administration/index.md",
       "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+      "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md",
       "learn.chatgpt.com/docs/security/cli/ci/index.md",
       "learn.chatgpt.com/docs/security/cli/faq/index.md",
       "learn.chatgpt.com/docs/security/cli/index.md",
@@ -736,12 +768,13 @@
       "learn.chatgpt.com/docs/visualizations/index.md",
       "learn.chatgpt.com/docs/web-search/index.md",
       "learn.chatgpt.com/docs/web/index.md",
+      "learn.chatgpt.com/docs/webmcp/index.md",
       "learn.chatgpt.com/docs/whats-new/index.md",
       "learn.chatgpt.com/docs/windows/windows-app/index.md",
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 137,
+    "mirrored_paths_count": 144,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -784,16 +817,21 @@
       "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
       "https://learn.chatgpt.com/docs/developers",
       "https://learn.chatgpt.com/docs/enterprise/access-tokens",
+      "https://learn.chatgpt.com/docs/enterprise/admin-plugin",
       "https://learn.chatgpt.com/docs/enterprise/admin-setup",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview",
+      "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
       "https://learn.chatgpt.com/docs/enterprise/governance",
       "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
       "https://learn.chatgpt.com/docs/enterprise/manage-app-updates",
       "https://learn.chatgpt.com/docs/enterprise/managed-configuration",
+      "https://learn.chatgpt.com/docs/enterprise/plugin-management",
       "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
@@ -848,6 +886,7 @@
       "https://learn.chatgpt.com/docs/security/cli",
       "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
       "https://learn.chatgpt.com/docs/security/cli/ci",
+      "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
       "https://learn.chatgpt.com/docs/security/cli/faq",
       "https://learn.chatgpt.com/docs/security/cli/reference",
       "https://learn.chatgpt.com/docs/security/faq",
@@ -876,18 +915,35 @@
       "https://learn.chatgpt.com/docs/visualizations",
       "https://learn.chatgpt.com/docs/web",
       "https://learn.chatgpt.com/docs/web-search",
+      "https://learn.chatgpt.com/docs/webmcp",
       "https://learn.chatgpt.com/docs/whats-new",
       "https://learn.chatgpt.com/docs/windows/windows-app",
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
       "https://learn.chatgpt.com/docs/windows/wsl"
     ],
+    "new_discovered_urls_since_last_run": [],
     "page_fetch_errors": [],
+    "redirected_urls": [],
+    "removed_from_sitemap_urls_since_last_run": [],
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://learn.chatgpt.com/sitemap-index.xml",
     "sitemap_urls": [
       "https://learn.chatgpt.com/chatgpt-sitemap-0.xml"
     ],
-    "source_errors": []
+    "source_errors": [],
+    "tombstoned_urls": [
+      {
+        "confirmation": "all_attempted_representations_http_404_or_410",
+        "endpoint_statuses": [
+          404,
+          404
+        ],
+        "state": "confirmed_tombstone",
+        "status_code": 404,
+        "url": "https://learn.chatgpt.com/docs/screenshot-review"
+      }
+    ],
+    "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
   "platform_tool_guides": {
     "candidate_urls": [
@@ -919,9 +975,57 @@
     "source_errors": [],
     "source_type": "platform_tool_guide"
   },
+  "source_state_semantics": {
+    "available": {
+      "meaning": "The discovered source was fetched and mirrored successfully.",
+      "preserve_last_known_good": false,
+      "strict_failure": false
+    },
+    "confirmed_tombstone": {
+      "meaning": "Every attempted canonical representation of a sitemap-discovered page returned HTTP 404 or 410. It is recorded as a stale/tombstoned sitemap entry and is no longer mirrored.",
+      "preserve_last_known_good": false,
+      "strict_failure": false
+    },
+    "extractor_or_malformed_source": {
+      "meaning": "Fetched content could not be parsed or produced an invalid source shape.",
+      "preserve_last_known_good": true,
+      "strict_failure": true
+    },
+    "partial_coverage": {
+      "meaning": "Only part of a source family was fetched; its prior mirror is preserved.",
+      "preserve_last_known_good": true,
+      "strict_failure": true
+    },
+    "redirected": {
+      "meaning": "The source redirected successfully; the final canonical URL is recorded.",
+      "preserve_last_known_good": false,
+      "strict_failure": false
+    },
+    "removed_from_sitemap": {
+      "meaning": "A previously discovered page disappeared from a complete sitemap fetch and is treated as an intentional upstream removal.",
+      "preserve_last_known_good": false,
+      "strict_failure": false
+    },
+    "sitemap_unavailable": {
+      "meaning": "A sitemap or sitemap index could not be fetched completely.",
+      "preserve_last_known_good": true,
+      "strict_failure": true
+    },
+    "source_unavailable": {
+      "meaning": "A complete canonical source family could not be built.",
+      "preserve_last_known_good": true,
+      "strict_failure": true
+    },
+    "transient_page_failure": {
+      "meaning": "A page failed with a network, timeout, rate-limit, or server error.",
+      "preserve_last_known_good": true,
+      "strict_failure": true
+    }
+  },
   "sync": {
     "failure_count": 0,
-    "preserve_missing_sources": []
+    "preserve_missing_sources": [],
+    "status": "complete"
   },
   "system_prompts": {
     "counts": {

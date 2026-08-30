@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_hooks'
 source_url: 'https://learn.chatgpt.com/docs/hooks'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Hooks
@@ -13,8 +13,8 @@ Source: https://learn.chatgpt.com/docs/hooks
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Hooks are an extensibility framework for Codex. They allow
-you to inject your own scripts into the agentic loop, enabling features such as:
+Hooks are an extensibility framework for Codex. They let you run scripts or MCP
+tools during the agentic loop, enabling features such as:
 
 - Send the chat to a custom logging/analytics engine
 - Scan your team's prompts to block accidentally pasting API keys
@@ -27,7 +27,7 @@ Runtime behavior to keep in mind:
 - Matching hooks from multiple files all run.
 - Multiple matching command hooks for the same event are launched concurrently,
   so one hook can't prevent another matching hook from starting.
-- Non-managed command hooks must be reviewed and trusted before they run.
+- Non-managed hooks must be reviewed and trusted before they run.
 
 Hooks run at different points in a conversation:
 
@@ -72,9 +72,9 @@ active config layers.
 ## Review and trust hooks
 
 Codex lists configured hooks before deciding which ones can run. Before a
-non-managed command hook can run, Codex requires you to review and trust the
-exact hook definition. Codex records trust against the hook's current hash, so
-new or changed hooks are marked for review and skipped until trusted.
+non-managed hook can run, Codex requires you to review and trust the exact hook
+definition. Codex records trust against the hook's current hash, so new or
+changed hooks are marked for review and skipped until trusted.
 
 Use `/hooks` in the CLI to inspect hook sources, review new or changed hooks,
 trust hooks, or disable individual non-managed hooks. If hooks need review at
@@ -200,8 +200,8 @@ Notes:
   `command_windows` or `commandWindows`.
 - Set `async` to `true` to [run a command hook in the
   background](#run-hooks-in-the-background).
-- Only `type: "command"` handlers run today. `prompt` and `agent` handlers are
-  parsed but skipped.
+- `command` and `mcp_tool` handlers are supported. `prompt` and `agent`
+  handlers are parsed but skipped.
 - Commands run with the session `cwd` as their working directory.
 - For repo-local hooks, prefer resolving from the git root instead of using a
   relative path such as `.codex/hooks/...`. Codex may be started from a
@@ -236,6 +236,88 @@ command = '/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/post_
 timeout = 30
 statusMessage = "Reviewing Bash output"
 ```
+
+## MCP tool hooks
+
+An MCP tool hook lets a lifecycle event call a tool on an already-connected MCP
+server. It sends structured arguments directly to the tool and uses the same
+trust review and output contract as a command hook.
+
+### Configure an MCP tool hook
+
+This hook asks the `scanner` MCP server to scan each patch after Codex writes or
+edits files:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "scanner",
+            "tool": "scan_patch",
+            "input": { "patch": "${tool_input.command}" },
+            "timeout": 30,
+            "statusMessage": "Scanning edited files"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+| Field           | Meaning                                                          |
+| --------------- | ---------------------------------------------------------------- |
+| `type`          | Must be `mcp_tool`.                                              |
+| `server`        | Required name of an already-connected MCP server.                |
+| `tool`          | Required name of a tool exposed by that server.                  |
+| `input`         | Optional JSON object of argument templates. Defaults to `{}`.    |
+| `timeout`       | Optional active execution timeout in seconds. Defaults to `600`. |
+| `statusMessage` | Optional message shown while the hook runs.                      |
+
+### Expand arguments from the hook event
+
+Use `${field.nested}` to read a dotted field from the hook event. A placeholder
+that fills an entire value keeps its JSON type. A placeholder inside a larger
+string is rendered as text. Codex expands objects and arrays recursively.
+
+For an event containing `{"tool_input":{"file_path":"src/main.rs","count":3}}`,
+this argument template:
+
+```json
+{
+  "path": "${tool_input.file_path}",
+  "count": "${tool_input.count}",
+  "message": "Scanning ${tool_input.file_path}"
+}
+```
+
+becomes:
+
+```json
+{
+  "path": "src/main.rs",
+  "count": 3,
+  "message": "Scanning src/main.rs"
+}
+```
+
+### Execution and lifecycle
+
+- Hooks use an existing MCP connection. They don't start or reconnect servers.
+- A hook can block an operation when the tool returns a blocking decision.
+  Errors, missing servers, and unavailable tools don't block the operation.
+- MCP tool hooks run synchronously. They don't request tool approval or trigger
+  other hooks.
+- The shorter hook or server timeout applies. Time spent waiting for an MCP
+  elicitation response doesn't count against the timeout.
+- `SessionStart` hooks can run before an MCP server is ready. If that happens,
+  they don't block the session.
+- `SessionEnd` doesn't support MCP tool hooks.
 
 ## Turn hooks off
 

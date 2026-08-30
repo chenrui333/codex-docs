@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_pricing'
 source_url: 'https://learn.chatgpt.com/docs/pricing'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Pricing
@@ -135,7 +135,7 @@ Source: https://learn.chatgpt.com/docs/pricing
           analytics, domain verification, and role-based access control
           ([RBAC](https://help.openai.com/en/articles/11750701-rbac))
         - Audit logs and usage monitoring via the [Compliance
-          API](https://chatgpt.com/admin/api-reference#tag/Codex-Tasks)
+          API](https://chatgpt.com/public/admin/api-reference#tag/Codex%20Tasks)
         - Data retention and data residency controls
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Enterprise plan
@@ -209,417 +209,114 @@ Choose the GPT-5.6 model that best fits your work:
   classification, extraction, support, background automation, and focused coding
   tasks.
 
-  <ContentSwitcher
-    id="codex-usage-limits"
-    initialValue="plus"
-    align="right"
-    options={[
-      {
-        label: "Plus",
-        value: "plus",
-      },
-      {
-        label: "Pro 5x",
-        value: "pro",
-      },
-      {
-        label: "Pro 20x",
-        value: "pro-20x",
-      },
-      {
-        label: "Business",
-        value: "business",
-      },
-      {
-        label: "API Key",
-        value: "api-key",
-      },
-    ]}
-  >
+The estimates below show local messages per five-hour window. Cloud chats on
+ChatGPT plans use GPT-5.6 Sol and may use more of your allowance than local
+messages.
 
-Plus
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Local Messages[\*](#shared-limits-plus) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Cloud chats[\*](#shared-limits-plus) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Code Reviews / 5h
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-5.6 Sol</td>
-            <td style="text-align:center">10-100</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Terra</td>
-            <td style="text-align:center">25-200</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Luna</td>
-            <td style="text-align:center">250-2,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.5</td>
-            <td style="text-align:center">15-80</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4</td>
-            <td style="text-align:center">20-100</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4 mini</td>
-            <td style="text-align:center">60-350</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              <a id="shared-limits-plus" class="footnote">
-                *The usage limits for local messages and cloud chats share a
-                **five-hour window**. Additional weekly limits may apply.
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users with flexible pricing, there are no
-              fixed rate limits - usage scales with
-              [credits](#credits-overview)
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Enterprise and Edu plans without flexible pricing have the same
-              per-seat usage limits as Plus for most features
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-Pro 5x
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Local Messages[\*](#shared-limits-pro) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Cloud chats[\*](#shared-limits-pro) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Code Reviews / 5h
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-5.6 Sol</td>
-            <td style="text-align:center">50-500</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Terra</td>
-            <td style="text-align:center">125-1,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Luna</td>
-            <td style="text-align:center">1,250-10,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.5</td>
-            <td style="text-align:center">75-400</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4</td>
-            <td style="text-align:center">100-500</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4 mini</td>
-            <td style="text-align:center">300-1750</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              <a id="shared-limits-pro" class="footnote">
-                *The usage limits for local messages and cloud chats share a
-                **five-hour window**. Additional weekly limits may apply.
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users with flexible pricing, there are no
-              fixed rate limits - usage scales with
-              [credits](#credits-overview)
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Enterprise and Edu plans without flexible pricing have the same
-              per-seat usage limits as Plus for most features
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-Pro 20x
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Local Messages[\*](#shared-limits-pro-20x) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Cloud chats[\*](#shared-limits-pro-20x) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Code Reviews / 5h
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-5.6 Sol</td>
-            <td style="text-align:center">200-2,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Terra</td>
-            <td style="text-align:center">500-4,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Luna</td>
-            <td style="text-align:center">5,000-40,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.5</td>
-            <td style="text-align:center">300-1600</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4</td>
-            <td style="text-align:center">400-2000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4 mini</td>
-            <td style="text-align:center">1200-7000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              <a id="shared-limits-pro-20x" class="footnote">
-                *The usage limits for local messages and cloud chats share a
-                **five-hour window**. Additional weekly limits may apply.
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users with flexible pricing, there are no
-              fixed rate limits - usage scales with
-              [credits](#credits-overview)
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Enterprise and Edu plans without flexible pricing have the same
-              per-seat usage limits as Plus for most features
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-Business
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Local Messages[\*](#shared-limits-business) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Cloud chats[\*](#shared-limits-business) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Code Reviews / 5h
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-5.6 Sol</td>
-            <td style="text-align:center">10-100</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Terra</td>
-            <td style="text-align:center">25-200</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Luna</td>
-            <td style="text-align:center">250-2,000</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.5</td>
-            <td style="text-align:center">15-80</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4</td>
-            <td style="text-align:center">20-100</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4 mini</td>
-            <td style="text-align:center">60-350</td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              <a id="shared-limits-business" class="footnote">
-                *The usage limits for local messages and cloud chats share a
-                **five-hour window**. Additional weekly limits may apply.
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users with flexible pricing, there are no
-              fixed rate limits - usage scales with
-              [credits](#credits-overview)
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Enterprise and Edu plans without flexible pricing have the same
-              per-seat usage limits as Plus for most features
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-API Key
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" style="text-align:center">
-              Local Messages[\*](#shared-limits-api-key) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Cloud chats[\*](#shared-limits-api-key) / 5h
-            </th>
-            <th scope="col" style="text-align:center">
-              Code Reviews / 5h
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-5.6 Sol</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Terra</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.6 Luna</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.5</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4 mini</td>
-            <td style="text-align:center">
-              [Usage-based](https://platform.openai.com/docs/pricing)
-            </td>
-            <td style="text-align:center">Not available</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              <a id="shared-limits-api-key" class="footnote">
-                *The usage limits for local messages and cloud chats share a
-                **five-hour window**. Additional weekly limits may apply.
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              For Enterprise/Edu users with flexible pricing, there are no
-              fixed rate limits - usage scales with
-              [credits](#credits-overview)
-            </td>
-          </tr>
-          <tr>
-            <td colspan="4" style="text-align:center">
-              Enterprise and Edu plans without flexible pricing have the same
-              per-seat usage limits as Plus for most features
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-  </ContentSwitcher>
+<TableWrapper class="w-full min-w-[46rem]">
+  <thead class="whitespace-nowrap">
+    <tr>
+      <th scope="col">Model</th>
+      <th scope="col" style="text-align:center">
+        Plus
+      </th>
+      <th scope="col" style="text-align:center">
+        Pro 5x
+      </th>
+      <th scope="col" style="text-align:center">
+        Pro 20x
+      </th>
+      <th scope="col" style="text-align:center">
+        Business
+      </th>
+      <th scope="col" style="text-align:center">
+        API Key
+      </th>
+    </tr>
+  </thead>
+  <tbody class="whitespace-nowrap">
+    <tr>
+      <td>GPT-5.6 Sol</td>
+      <td style="text-align:center">10-100</td>
+      <td style="text-align:center">50-500</td>
+      <td style="text-align:center">200-2,000</td>
+      <td style="text-align:center">10-100</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-5.6 Terra</td>
+      <td style="text-align:center">25-200</td>
+      <td style="text-align:center">125-1,000</td>
+      <td style="text-align:center">500-4,000</td>
+      <td style="text-align:center">25-200</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-5.6 Luna</td>
+      <td style="text-align:center">250-2,000</td>
+      <td style="text-align:center">1,250-10,000</td>
+      <td style="text-align:center">5,000-40,000</td>
+      <td style="text-align:center">250-2,000</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-5.5</td>
+      <td style="text-align:center">15-80</td>
+      <td style="text-align:center">75-400</td>
+      <td style="text-align:center">300-1,600</td>
+      <td style="text-align:center">15-80</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-5.4</td>
+      <td style="text-align:center">20-100</td>
+      <td style="text-align:center">100-500</td>
+      <td style="text-align:center">400-2,000</td>
+      <td style="text-align:center">20-100</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-5.4 mini</td>
+      <td style="text-align:center">60-350</td>
+      <td style="text-align:center">300-1,750</td>
+      <td style="text-align:center">1,200-7,000</td>
+      <td style="text-align:center">60-350</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="6" style="text-align:center">
+        On ChatGPT plans, local messages and cloud chats share a **five-hour
+        window**. Additional weekly limits may apply.
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6" style="text-align:center">
+        For Enterprise/Edu users with flexible pricing, there are no fixed rate
+        limits—usage scales with [credits](#credits-overview).
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6" style="text-align:center">
+        Enterprise and Edu plans without flexible pricing have the same per-seat
+        usage limits as Plus for most features.
+      </td>
+    </tr>
+  </tfoot>
+</TableWrapper>
 
 Usage limits are shared with other agentic features once pricing for those
 features is effective. This currently includes [ChatGPT for
@@ -740,15 +437,15 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
     <tbody>
       <tr>
         <td>GPT-5.6 Sol</td>
-        <td style="text-align:center">125 credits</td>
-        <td style="text-align:center">12.5 credits</td>
-        <td style="text-align:center">750 credits</td>
+        <td style="text-align:center">100 credits</td>
+        <td style="text-align:center">10 credits</td>
+        <td style="text-align:center">500 credits</td>
       </tr>
       <tr>
         <td>Daybreak Blue</td>
-        <td style="text-align:center">125 credits</td>
-        <td style="text-align:center">12.5 credits</td>
-        <td style="text-align:center">750 credits</td>
+        <td style="text-align:center">100 credits</td>
+        <td style="text-align:center">10 credits</td>
+        <td style="text-align:center">500 credits</td>
       </tr>
       <tr>
         <td>Daybreak Red</td>
@@ -808,7 +505,7 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
     <tfoot>
       <tr>
         <td colspan="4" style="text-align:center">
-          GPT-5.6 usage averages 5-40 credits per message.
+          GPT-5.6 usage averages 5-30 credits per message.
         </td>
       </tr>
       <tr>
@@ -827,6 +524,8 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
       </tr>
     </tfoot>
   </table>
+
+_GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026._
 
 Speed configurations will increase credit consumption for all models that apply.
 Fast mode consumes credits at a higher rate for supported models. See

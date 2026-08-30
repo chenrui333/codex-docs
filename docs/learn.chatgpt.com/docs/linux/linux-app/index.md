@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_linux'
 source_url: 'https://learn.chatgpt.com/docs/linux/linux-app'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # ChatGPT desktop app for Linux

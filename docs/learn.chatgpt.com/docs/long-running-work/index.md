@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_long_running_work'
 source_url: 'https://learn.chatgpt.com/docs/long-running-work'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Long-running work
@@ -54,12 +54,7 @@ workspace. Continue the same chat to steer the task while it runs.
 
 <ContentModeSwitch group="codex-surface" id="app">
 
-<CodexScreenshot
-  alt="ChatGPT desktop app goal progress controls above the composer"
-  lightSrc="/images/codex/app/goal-dialog-light.webp"
-  darkSrc="/images/codex/app/goal-dialog-dark.webp"
-  class="my-8"
-/>
+> Illustration: ChatGPT desktop app goal progress controls above the composer
 
 </ContentModeSwitch>
 

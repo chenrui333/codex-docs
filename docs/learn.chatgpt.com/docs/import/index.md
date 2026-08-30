@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_import'
 source_url: 'https://learn.chatgpt.com/docs/import'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Import from another agent
@@ -24,17 +24,7 @@ imported work in sync with automatic updates.
 
 Importing doesn't change or delete your existing agent setup.
 
-<Illustration description="ChatGPT import screen for choosing other AI apps to import from.">
-  <ExternalAgentImportIllustration
-    step="providers"
-    providers={[
-      { label: "Claude Code", icon: "code", selected: true },
-      { label: "Claude Cowork", icon: "tasks", selected: true },
-      { label: "Cursor", icon: "code", selected: true },
-    ]}
-    note="Your existing agent setup won't be affected."
-  />
-</Illustration>
+> Illustration: ChatGPT import screen for choosing other AI apps to import from.
 
 ## Start an import
 
@@ -71,9 +61,7 @@ isn't available during a running task, in a remote session, or while connected
 to a local app-server daemon. See [CLI slash
 commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli#cli-import-claude-code-or-cursor-setup-with-import).
 
-<Illustration description="ChatGPT import screen for selecting setup, projects, and recent chats to import.">
-  <ExternalAgentImportIllustration step="items" />
-</Illustration>
+> Illustration: ChatGPT import screen for selecting setup, projects, and recent chats to import.
 
 ## How importing works
 

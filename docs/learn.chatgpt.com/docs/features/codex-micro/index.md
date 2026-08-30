@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_features'
 source_url: 'https://learn.chatgpt.com/docs/features/codex-micro'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Codex Micro
@@ -18,11 +18,7 @@ works with the ChatGPT desktop app, giving you a quick way to check on chats,
 jump between them, use voice input, and trigger common actions or skills without
 leaving the keyboard.
 
-    <Illustration description="Interactive Codex Micro keyboard with illuminated Agent Keys, customizable Command Keys, a dial, and an analog stick">
-      <CodexMicroKeyboardIllustration
-        ariaLabel="Interactive Codex Micro keyboard with illuminated Agent Keys, customizable Command Keys, a dial, and an analog stick"
-      />
-    </Illustration>
+> Illustration: Interactive Codex Micro keyboard with illuminated Agent Keys, customizable Command Keys, a dial, and an analog stick
 
 ## Set up Codex Micro
 

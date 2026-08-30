@@ -60,6 +60,11 @@ class WriterWorkflowTests(unittest.TestCase):
         ]
         workflows = [path.read_text() for path in workflow_paths]
 
+        self.assertIn(
+            "GITHUB_TOKEN: ${{ github.token }}",
+            workflows[0],
+        )
+
         for content in workflows:
             self.assertIn("persist-credentials: false", content)
             self.assertNotIn("git pull --rebase", content)

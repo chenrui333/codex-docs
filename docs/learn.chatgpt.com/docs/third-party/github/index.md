@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_third_party'
 source_url: 'https://learn.chatgpt.com/docs/third-party/github'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Review GitHub pull requests with Codex
@@ -19,11 +19,7 @@ and posts a standard GitHub code review focused on serious issues. Security
 Review, available in research preview, provides a more in-depth review of
 potential security issues in a pull request.
 
-<YouTubeEmbed
-  title="Codex code review walkthrough"
-  videoId="HwbSWVg5Ln4"
-  class="max-w-md mr-auto"
-/>
+[Watch: Codex code review walkthrough](https://www.youtube.com/watch?v=HwbSWVg5Ln4)
 
 ## Before you start
 
@@ -42,29 +38,20 @@ GitHub push or admin permission for its settings.
 2. Go to [Codex settings](https://chatgpt.com/codex/settings/code-review).
 3. Turn on **Code review** for your repository.
 
-  <img src="https://developers.openai.com/images/codex/code-review/code-review-settings.png"
-    alt="Codex settings showing the Code review toggle"
-    class="block h-auto w-full mx-0!"
-  />
+> Illustration: Codex settings showing the Code review toggle
 
 ## Request a Codex review
 
 1. In a pull request comment, mention `@codex review`.
 2. Wait for Codex to react (👀) and post a review.
 
-  <img src="https://developers.openai.com/images/codex/code-review/review-trigger.png"
-    alt="A pull request comment with @codex review"
-    class="block h-auto w-full mx-0!"
-  />
+> Illustration: A pull request comment with @codex review
 
 Codex posts a review on the pull request, just like a teammate would. In
 GitHub, Codex flags only P0 and P1 issues so review comments stay focused on
 high-priority risks.
 
-  <img src="https://developers.openai.com/images/codex/code-review/review-example.png"
-    alt="Example Codex code review on a pull request"
-    class="block h-auto w-full mx-0!"
-  />
+> Illustration: Example Codex code review on a pull request
 
 ## Enable automatic reviews
 

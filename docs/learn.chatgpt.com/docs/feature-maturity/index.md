@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_feature_maturity'
 source_url: 'https://learn.chatgpt.com/docs/feature-maturity'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Feature Maturity
@@ -21,3 +21,4 @@ Some ChatGPT and Codex features ship behind a maturity label so you can understa
 | Experimental      | Unstable and OpenAI may remove or change it.                                                                  | Use at your own risk.                                                         |
 | Beta              | Ready for broad testing; complete in most respects, but some aspects may change based on user feedback.       | OK for most evaluation and pilots; expect small changes.                      |
 | Stable            | Fully supported, documented, and ready for broad use; behavior and configuration remain consistent over time. | Safe for production use; removals typically go through a deprecation process. |
+| Deprecated        | Still available for compatibility, but no longer recommended; OpenAI may remove it in a future release.       | Avoid new use and plan to migrate.                                            |

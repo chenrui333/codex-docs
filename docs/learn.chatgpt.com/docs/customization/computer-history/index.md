@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_customization'
 source_url: 'https://learn.chatgpt.com/docs/customization/computer-history'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Computer History
@@ -38,9 +38,7 @@ create summaries you can review and delete. It does not include screenshots in
 your history or record audio, and private-mode web browsing activity is never
 included.
 
-<Illustration description="Computer History timeline showing activity summaries, contributing apps, and suggested skills and automations">
-  <ComputerHistoryTimelineIllustration />
-</Illustration>
+> Illustration: Computer History timeline showing activity summaries, contributing apps, and suggested skills and automations
 
 ## How Computer History helps
 

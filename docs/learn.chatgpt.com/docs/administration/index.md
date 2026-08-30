@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_administration'
 source_url: 'https://learn.chatgpt.com/docs/administration'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Administration
@@ -47,11 +47,32 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "shieldCheck",
         },
         {
+          title: "ChatGPT Work cloud security",
+          description:
+            "Review hosted execution, connected accounts, access controls, retention, and audit visibility.",
+          href: "/codex/enterprise/chatgpt-work-cloud-security",
+          icon: "shieldCheck",
+        },
+        {
+          title: "ChatGPT Work local security",
+          description:
+            "Review local execution, device and browser access, managed policies, data handling, and audit limitations.",
+          href: "/codex/enterprise/chatgpt-work-local-security",
+          icon: "shieldCheck",
+        },
+        {
           title: "ChatGPT Work admin FAQ",
           description:
             "Review access, data, governance, usage, and incident controls for ChatGPT Work.",
           href: "/codex/enterprise/work-admin-faq",
           icon: "userLock",
+        },
+        {
+          title: "ChatGPT Work: usage and cost",
+          description:
+            "Understand shared credits, billing impact, spending controls, and adoption planning.",
+          href: "/codex/enterprise/chatgpt-work-usage-and-cost",
+          icon: "dataControls",
         },
       ],
     },
@@ -158,6 +179,12 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "connect",
         },
         {
+          title: "Plugin management",
+          description: "Import and sync workspace plugins from GitHub.",
+          href: "/codex/enterprise/plugin-management",
+          icon: "connect",
+        },
+        {
           title: "Skill controls",
           description:
             "Compare ChatGPT workspace, local filesystem, and plugin skill controls.",
@@ -177,6 +204,13 @@ Source: https://learn.chatgpt.com/docs/administration
             "Choose the right analytics, spend, and audit surface for each question.",
           href: "/codex/enterprise/governance",
           icon: "shieldCheck",
+        },
+        {
+          title: "Admin plugin",
+          description:
+            "Use the Admin plugin for permissions, approvals, and supported administrative workflows.",
+          href: "/codex/enterprise/admin-plugin",
+          icon: "tools",
         },
         {
           title: "Workspace analytics",

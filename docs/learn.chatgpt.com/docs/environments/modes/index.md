@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_environments'
 source_url: 'https://learn.chatgpt.com/docs/environments/modes'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Codex environments
@@ -24,10 +24,4 @@ Both **Local** and **Worktree** chats run on your computer.
 
 For the full glossary and concepts, explore the [concepts section](https://learn.chatgpt.com/docs/prompting).
 
-<CodexScreenshot
-  alt="New chat composer with Local, Worktree, and Cloud environment options"
-  lightSrc="/images/codex/app/modes-light.webp"
-  darkSrc="/images/codex/app/modes-dark.webp"
-  maxHeight="400px"
-  class="my-8"
-/>
+> Illustration: New chat composer with Local, Worktree, and Cloud environment options

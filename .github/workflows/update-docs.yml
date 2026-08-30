@@ -48,9 +48,11 @@ jobs:
         continue-on-error: true
         env:
           CODEX_DOCS_STRICT_SYNC: "1"
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -o pipefail
           python scripts/fetch_codex_docs.py 2>&1 | tee sync.log
+          python scripts/check_codex_freshness.py --strict 2>&1 | tee -a sync.log
 
       - name: Upload sync log
         if: always()
@@ -66,6 +68,14 @@ jobs:
         with:
           name: source-coverage
           path: docs/source_coverage.json
+          if-no-files-found: warn
+
+      - name: Upload freshness report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: codex-freshness
+          path: docs/freshness.json
           if-no-files-found: warn
 
       - name: Check recorded sync failures

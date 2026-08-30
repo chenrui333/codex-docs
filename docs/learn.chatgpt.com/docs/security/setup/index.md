@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_security'
 source_url: 'https://learn.chatgpt.com/docs/security/setup'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Codex Security cloud setup
@@ -36,11 +36,7 @@ Go to [Codex environments](https://chatgpt.com/codex/settings/environments) and 
   class="my-8"
 />
 
-  <img
-    src={createEnvironment.src}
-    alt="Codex environments"
-    class="block h-auto w-full"
-  />
+> Illustration: Codex environments
 
 ## 2. New security scan
 
@@ -64,11 +60,7 @@ To configure a repository:
 5. Choose a **history window**. Longer windows provide more context, but backfill takes longer.
 6. Click **Create**.
 
-  <img
-    src={createScan.src}
-    alt="Create a security scan"
-    class="block h-auto w-full"
-  />
+> Illustration: Create a security scan
 
 ## 3. Initial scans can take a while
 
@@ -88,11 +80,7 @@ Initial scan setup is automatic and thorough. This can take a few hours. Don’t
   class="my-8"
 />
 
-  <img
-    src={reviewThreatModel.src}
-    alt="Threat model editor in Codex Security"
-    class="block h-auto w-full"
-  />
+> Illustration: Threat model editor in Codex Security
 
 When the initial scan finishes, open the scan and review the threat model that was generated.
 After initial findings appear, update the threat model so it matches your architecture, trust boundaries, and business context.
@@ -122,7 +110,7 @@ You can use two views:
 - **Recommended Findings**: an evolving top 10 list of the most critical issues in the repo
 - **All Findings**: a sortable, filterable table of findings across the repository
 
-![Recommended findings view](https://learn.chatgpt.com/docs/security/images/aardvark_recommended_findings.png)
+> Illustration: Recommended findings view
 
 Click a finding to open its detail page, which includes:
 

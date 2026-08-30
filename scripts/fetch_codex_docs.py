@@ -13,6 +13,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -32,6 +33,9 @@ SUMMARY_PATH = DOCS_DIR / "sync_summary.json"
 COVERAGE_PATH = DOCS_DIR / "source_coverage.json"
 CAPABILITIES_PATH = DOCS_DIR / "codex_capabilities.json"
 CAPABILITIES_REL_PATH = str(CAPABILITIES_PATH.relative_to(DOCS_DIR))
+CLI_SURFACE_PATH = DOCS_DIR / "codex_cli_surface.json"
+CLI_SURFACE_REL_PATH = str(CLI_SURFACE_PATH.relative_to(DOCS_DIR))
+FEATURE_LIFECYCLE = DOCS_DIR / "feature-flags" / "lifecycle.json"
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
 LEARN_ROOT = DOCS_DIR / "learn.chatgpt.com"
 GITHUB_ROOT = DOCS_DIR / "github.openai.com" / "openai" / "codex"
@@ -42,10 +46,15 @@ SYSTEM_PROMPTS_ROOT = ROOT / "system_prompts" / "codex-cli"
 SYSTEM_SKILL_OUTPUT_PREFIX = "dot_codex/skills/dot_system/"
 SYSTEM_PROMPT_OUTPUT_PREFIX = "system_prompts/codex-cli/"
 ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
-CODEX_CLI_SOURCE_TYPES = {"codex_cli_system_skill", "codex_cli_prompt_input"}
+CODEX_CLI_SOURCE_TYPES = {
+    "codex_cli_system_skill",
+    "codex_cli_prompt_input",
+    "codex_cli_surface",
+}
 PLATFORM_TOOL_GUIDE_SOURCE_TYPE = "platform_tool_guide"
 LEARN_SOURCE_TYPE = "learn"
 CAPABILITY_INVENTORY_SOURCE_TYPE = "capability_inventory"
+CLI_SURFACE_SOURCE_TYPE = "codex_cli_surface"
 WEEKLY_REPORT_SOURCE_TYPE = "weekly_sync_report"
 WEEKLY_REPORT_SOURCE_AREA = "weekly"
 WEEKLY_REPORT_SOURCE_KIND = "generated_weekly_report"
@@ -54,18 +63,101 @@ SOURCE_METADATA_KEYS = (
     "source_kind",
     "source_last_modified",
     "source_etag",
+    "source_redirect_url",
+    "upstream_source_ref",
+    "upstream_source_commit",
     "codex_cli_versions",
     "codex_cli_versions_raw",
+    "codex_cli_release_ref",
+    "codex_cli_source_commit",
     "codex_cli_version",
     "codex_cli_version_raw",
     "codex_cli_command",
     "codex_prompt_snapshot_command",
 )
 
+PERMANENT_MISSING_HTTP_STATUSES = (404, 410)
+SOURCE_STATE_SEMANTICS = {
+    "available": {
+        "strict_failure": False,
+        "preserve_last_known_good": False,
+        "meaning": "The discovered source was fetched and mirrored successfully.",
+    },
+    "redirected": {
+        "strict_failure": False,
+        "preserve_last_known_good": False,
+        "meaning": "The source redirected successfully; the final canonical URL is recorded.",
+    },
+    "confirmed_tombstone": {
+        "strict_failure": False,
+        "preserve_last_known_good": False,
+        "meaning": (
+            "Every attempted canonical representation of a sitemap-discovered page returned "
+            "HTTP 404 or 410. It is recorded as a stale/tombstoned sitemap entry and is no "
+            "longer mirrored."
+        ),
+    },
+    "removed_from_sitemap": {
+        "strict_failure": False,
+        "preserve_last_known_good": False,
+        "meaning": (
+            "A previously discovered page disappeared from a complete sitemap fetch and is "
+            "treated as an intentional upstream removal."
+        ),
+    },
+    "transient_page_failure": {
+        "strict_failure": True,
+        "preserve_last_known_good": True,
+        "meaning": "A page failed with a network, timeout, rate-limit, or server error.",
+    },
+    "sitemap_unavailable": {
+        "strict_failure": True,
+        "preserve_last_known_good": True,
+        "meaning": "A sitemap or sitemap index could not be fetched completely.",
+    },
+    "source_unavailable": {
+        "strict_failure": True,
+        "preserve_last_known_good": True,
+        "meaning": "A complete canonical source family could not be built.",
+    },
+    "extractor_or_malformed_source": {
+        "strict_failure": True,
+        "preserve_last_known_good": True,
+        "meaning": "Fetched content could not be parsed or produced an invalid source shape.",
+    },
+    "partial_coverage": {
+        "strict_failure": True,
+        "preserve_last_known_good": True,
+        "meaning": "Only part of a source family was fetched; its prior mirror is preserved.",
+    },
+}
+PROMPT_VOLATILE_KEYS = {"internal_chat_message_metadata_passthrough"}
+SAFE_CODEX_ENV_KEYS = {
+    "COMSPEC",
+    "LANG",
+    "LC_ALL",
+    "PATH",
+    "PATHEXT",
+    "SSL_CERT_DIR",
+    "SSL_CERT_FILE",
+    "SYSTEMROOT",
+    "TMPDIR",
+}
+CLI_OPTION_CONFIG_KEYS = {
+    "--ask-for-approval": ["approval_policy"],
+    "--local-provider": ["oss_provider"],
+    "--model": ["model"],
+    "--oss": ["oss_provider"],
+    "--sandbox": ["sandbox_mode"],
+}
+
 SITEMAP_INDEX_URL = "https://developers.openai.com/sitemap-index.xml"
 LEARN_SITEMAP_INDEX_URL = "https://learn.chatgpt.com/sitemap-index.xml"
-GITHUB_TREE_URL = "https://api.github.com/repos/openai/codex/git/trees/main?recursive=1"
-GITHUB_RAW_URL_TEMPLATE = "https://raw.githubusercontent.com/openai/codex/main/{path}"
+GITHUB_TREE_URL_TEMPLATE = (
+    "https://api.github.com/repos/openai/codex/git/trees/{ref}?recursive=1"
+)
+GITHUB_REPOSITORY_API_URL = "https://api.github.com/repos/openai/codex"
+GITHUB_RAW_URL_TEMPLATE = "https://raw.githubusercontent.com/openai/codex/{ref}/{path}"
 PLATFORM_TOOL_GUIDE_URLS = (
     "https://developers.openai.com/api/docs/guides/tools-apply-patch",
     "https://developers.openai.com/api/docs/guides/tools-computer-use",
@@ -198,6 +290,28 @@ class ManagedFile:
     source_metadata: Dict[str, object] | None = None
 
 
+@dataclass(frozen=True)
+class SourceTombstone(Exception):
+    """A sitemap-advertised canonical page returned a permanent missing status."""
+
+    url: str
+    status_code: int
+    endpoint_statuses: Tuple[int, ...] = ()
+
+    def as_coverage(self) -> Dict[str, object]:
+        return {
+            "url": self.url,
+            "status_code": self.status_code,
+            "endpoint_statuses": list(self.endpoint_statuses),
+            "state": "confirmed_tombstone",
+            "confirmation": "all_attempted_representations_http_404_or_410",
+        }
+
+
+class SourceContentError(RuntimeError):
+    """A fetched source had an unexpected or malformed representation."""
+
+
 def now_utc_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
@@ -223,8 +337,31 @@ def canonicalize_url(url: str) -> str:
     return urlunparse(cleaned)
 
 
-def parse_loc_tags(xml_text: str) -> List[str]:
-    return re.findall(r"<loc>([^<]+)</loc>", xml_text)
+def parse_sitemap_loc_tags(
+    xml_text: str,
+    *,
+    source_url: str,
+    expected_root: str,
+) -> List[str]:
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError as exc:
+        raise SourceContentError(f"Malformed sitemap XML from {source_url}: {exc}") from exc
+
+    root_name = root.tag.rsplit("}", 1)[-1]
+    if root_name != expected_root:
+        raise SourceContentError(
+            f"Unexpected sitemap root from {source_url}: expected {expected_root}, got {root_name}"
+        )
+
+    locations = [
+        str(element.text).strip()
+        for element in root.iter()
+        if element.tag.rsplit("}", 1)[-1] == "loc" and element.text and element.text.strip()
+    ]
+    if not locations:
+        raise SourceContentError(f"Sitemap from {source_url} did not contain any loc entries")
+    return locations
 
 
 def keep_developers_url(url: str) -> bool:
@@ -253,6 +390,9 @@ def keep_developers_url(url: str) -> bool:
     if path == "/cookbook/examples/gpt-5/codex_prompting_guide":
         return True
 
+    if path.startswith("/blog/") and path != "/blog/topic/codex" and "codex" in path.lower():
+        return True
+
     return False
 
 
@@ -272,13 +412,6 @@ def developers_skipped_url_detail(url: str) -> Dict[str, str] | None:
             "url": url,
             "classification": "blog_index",
             "reason": "Blog listing pages are intentionally excluded from the docs mirror.",
-        }
-
-    if path.startswith("/blog/"):
-        return {
-            "url": url,
-            "classification": "blog_post",
-            "reason": "Blog posts are intentionally excluded from the docs mirror.",
         }
 
     if path.startswith("/community/"):
@@ -307,6 +440,13 @@ def developers_skipped_url_detail(url: str) -> Dict[str, str] | None:
             "url": url,
             "classification": "showcase_page",
             "reason": "Showcase pages are intentionally excluded from the docs mirror.",
+        }
+
+    if path.startswith("/training/"):
+        return {
+            "url": url,
+            "classification": "training_page",
+            "reason": "Interactive course landing pages are excluded from the versioned docs mirror.",
         }
 
     return None
@@ -393,6 +533,37 @@ def response_source_metadata(response: requests.Response) -> Dict[str, str]:
     return metadata
 
 
+def response_content_type(response: requests.Response) -> str:
+    return response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+
+
+def validate_text_response(
+    response: requests.Response,
+    *,
+    source_url: str,
+    allowed_content_types: Collection[str],
+) -> str:
+    content_type = response_content_type(response)
+    if content_type not in allowed_content_types:
+        rendered_type = content_type or "missing"
+        raise SourceContentError(
+            f"Unexpected Content-Type {rendered_type!r} from {source_url}"
+        )
+    if not response.text.strip():
+        raise SourceContentError(f"Empty response body from {source_url}")
+    return content_type
+
+
+def response_redirect_metadata(
+    response: requests.Response, requested_url: str
+) -> Dict[str, str]:
+    final_url = canonicalize_url(str(getattr(response, "url", "") or requested_url))
+    requested = canonicalize_url(requested_url)
+    if final_url and final_url != requested:
+        return {"source_redirect_url": final_url}
+    return {}
+
+
 def fetch_text_with_source_metadata(session: requests.Session, url: str) -> Tuple[str, Dict[str, str]]:
     response = fetch_response(session, url)
     return response.text, response_source_metadata(response)
@@ -422,8 +593,65 @@ def github_api_headers() -> Dict[str, str]:
     return headers
 
 
-def github_raw_url(path: str) -> str:
-    return GITHUB_RAW_URL_TEMPLATE.format(path=path)
+def github_raw_url(path: str, ref: str = "main") -> str:
+    return GITHUB_RAW_URL_TEMPLATE.format(ref=ref, path=path)
+
+
+def resolve_github_tag_commit(session: requests.Session, source_ref: str) -> str:
+    payload = fetch_json(
+        session,
+        f"{GITHUB_REPOSITORY_API_URL}/git/ref/tags/{source_ref}",
+        headers=github_api_headers(),
+    )
+    for _ in range(5):
+        target = payload.get("object")
+        if not isinstance(target, dict):
+            raise RuntimeError(f"Tag {source_ref} did not contain an object target")
+        target_type = target.get("type")
+        if target_type == "commit":
+            commit = str(target.get("sha", "")).lower()
+            if not re.fullmatch(r"[0-9a-f]{40}", commit):
+                raise RuntimeError(f"Tag {source_ref} did not resolve to a full commit")
+            return commit
+        if target_type != "tag":
+            raise RuntimeError(
+                f"Tag {source_ref} resolved to unsupported type {target_type!r}"
+            )
+        target_url = target.get("url")
+        if not isinstance(target_url, str) or not target_url.startswith(
+            f"{GITHUB_REPOSITORY_API_URL}/git/tags/"
+        ):
+            raise RuntimeError(f"Tag {source_ref} contained an invalid tag object URL")
+        payload = fetch_json(session, target_url, headers=github_api_headers())
+    raise RuntimeError(f"Tag {source_ref} exceeded the dereference limit")
+
+
+def add_cli_release_provenance(
+    session: requests.Session,
+    files: Sequence[ManagedFile],
+    metadata: Dict[str, str],
+) -> Tuple[List[ManagedFile], Dict[str, str]]:
+    version = metadata.get("codex_cli_version", "")
+    if not re.fullmatch(r"\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?", version):
+        raise RuntimeError(f"Cannot resolve a release tag for Codex CLI {version!r}")
+    source_ref = f"rust-v{version}"
+    source_commit = resolve_github_tag_commit(session, source_ref)
+    enriched_metadata = {
+        **metadata,
+        "codex_cli_release_ref": source_ref,
+        "codex_cli_source_commit": source_commit,
+    }
+    enriched_files = [
+        ManagedFile(
+            rel_path=item.rel_path,
+            source_type=item.source_type,
+            source_url=item.source_url,
+            content=item.content,
+            source_metadata={**(item.source_metadata or {}), **enriched_metadata},
+        )
+        for item in files
+    ]
+    return enriched_files, enriched_metadata
 
 
 def run_local_command(
@@ -461,6 +689,13 @@ def codex_subprocess_env(base: Dict[str, str] | None = None) -> Dict[str, str]:
     return env
 
 
+def isolated_codex_subprocess_env(
+    base: Dict[str, str] | None = None,
+) -> Dict[str, str]:
+    source = os.environ if base is None else base
+    return {key: value for key, value in source.items() if key in SAFE_CODEX_ENV_KEYS}
+
+
 def parse_codex_cli_version(version_raw: str) -> str:
     match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", version_raw)
     return match.group(1) if match else version_raw.strip()
@@ -483,6 +718,8 @@ def developers_source_area(url: str) -> str:
 
     if segments[0] == "cookbook":
         return "cookbook"
+    if segments[0] == "blog":
+        return "codex_blog"
     if segments[0] == "resources":
         return "resource"
     if segments[0] != "codex":
@@ -503,8 +740,8 @@ def learn_source_area(url: str) -> str:
 
 def github_source_area(url: str) -> str:
     parsed = urlparse(url)
-    marker = "/openai/codex/main/"
-    path = parsed.path.split(marker, 1)[1] if marker in parsed.path else parsed.path.lstrip("/")
+    match = re.match(r"^/openai/codex/[^/]+/(.+)$", parsed.path)
+    path = match.group(1) if match else parsed.path.lstrip("/")
     if path.startswith("docs/"):
         return "github_docs"
     if path.startswith("codex-cli/"):
@@ -535,6 +772,8 @@ def source_area_for_managed_file(item: ManagedFile) -> str:
         return system_skill_source_area(item.rel_path)
     if item.source_type == "codex_cli_prompt_input":
         return "system_prompt"
+    if item.source_type == CLI_SURFACE_SOURCE_TYPE:
+        return "codex_cli_surface"
     if item.source_type == CAPABILITY_INVENTORY_SOURCE_TYPE:
         return "capability_inventory"
     return source_area_slug(item.source_type) or "unknown"
@@ -573,7 +812,11 @@ def sanitize_prompt_payload(value, replacements: Sequence[Tuple[str, str]]):
     if isinstance(value, list):
         return [sanitize_prompt_payload(item, replacements) for item in value]
     if isinstance(value, dict):
-        return {key: sanitize_prompt_payload(item, replacements) for key, item in value.items()}
+        return {
+            key: sanitize_prompt_payload(item, replacements)
+            for key, item in value.items()
+            if key not in PROMPT_VOLATILE_KEYS
+        }
     return value
 
 
@@ -595,7 +838,11 @@ def load_existing_coverage() -> Dict[str, object]:
 def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict[str, object]]:
     LOG.info("Discovering Codex URLs from %s", SITEMAP_INDEX_URL)
     index_xml = fetch_text(session, SITEMAP_INDEX_URL)
-    sitemap_urls = parse_loc_tags(index_xml)
+    sitemap_urls = parse_sitemap_loc_tags(
+        index_xml,
+        source_url=SITEMAP_INDEX_URL,
+        expected_root="sitemapindex",
+    )
     mirrored_urls: set[str] = set()
     codex_related_urls: set[str] = set()
     sitemap_fetch_errors: List[Dict[str, str]] = []
@@ -603,19 +850,29 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
     for sitemap_url in sitemap_urls:
         try:
             sitemap_xml = fetch_text(session, sitemap_url)
-        except requests.RequestException as exc:
+            sitemap_page_urls = parse_sitemap_loc_tags(
+                sitemap_xml,
+                source_url=sitemap_url,
+                expected_root="urlset",
+            )
+        except (requests.RequestException, SourceContentError) as exc:
             LOG.warning("Skipping sitemap %s due to error: %s", sitemap_url, exc)
             sitemap_fetch_errors.append(
                 {
                     "source": "developers",
                     "stage": "sitemap_fetch",
+                    "state": (
+                        "sitemap_unavailable"
+                        if isinstance(exc, requests.RequestException)
+                        else "extractor_or_malformed_source"
+                    ),
                     "url": sitemap_url,
                     "error": str(exc),
                 }
             )
             continue
 
-        for raw_url in parse_loc_tags(sitemap_xml):
+        for raw_url in sitemap_page_urls:
             cleaned = canonicalize_url(raw_url)
             if is_codex_related_developers_url(cleaned):
                 codex_related_urls.add(cleaned)
@@ -646,6 +903,14 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
 
     new_codex_related = sorted(set(codex_related_sorted) - previous_codex_related)
     new_mirrored = sorted(set(mirrored_sorted) - previous_mirrored)
+    removed_codex_related_candidates = sorted(
+        previous_codex_related - set(codex_related_sorted)
+    )
+    removed_mirrored_candidates = sorted(previous_mirrored - set(mirrored_sorted))
+    removed_codex_related = (
+        removed_codex_related_candidates if not sitemap_fetch_errors else []
+    )
+    removed_mirrored = removed_mirrored_candidates if not sitemap_fetch_errors else []
     new_unclassified_skipped = sorted(set(unclassified_skipped_codex_related) - previous_unclassified_skipped)
 
     LOG.info(
@@ -677,6 +942,7 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
 
     coverage = {
         "generated_at": now_utc_iso(),
+        "source_state_semantics": SOURCE_STATE_SEMANTICS,
         "developers": {
             "sitemap_index_url": SITEMAP_INDEX_URL,
             "sitemap_urls": sitemap_urls,
@@ -691,6 +957,11 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
             "new_codex_related_urls_since_last_run": new_codex_related,
             "new_mirrored_urls_since_last_run": new_mirrored,
             "new_unclassified_skipped_codex_related_urls_since_last_run": new_unclassified_skipped,
+            "removed_codex_related_urls_since_last_run": removed_codex_related,
+            "removed_mirrored_urls_since_last_run": removed_mirrored,
+            "unconfirmed_removed_urls_due_to_partial_sitemap": (
+                removed_codex_related_candidates if sitemap_fetch_errors else []
+            ),
             "counts": {
                 "sitemap_urls": len(sitemap_urls),
                 "codex_related_urls": len(codex_related_sorted),
@@ -718,28 +989,45 @@ def discover_learn_urls(
 ) -> Tuple[List[str], Dict[str, object], List[Dict[str, str]]]:
     LOG.info("Discovering documentation URLs from %s", LEARN_SITEMAP_INDEX_URL)
     index_xml = fetch_text(session, LEARN_SITEMAP_INDEX_URL)
-    sitemap_urls = sorted({canonicalize_url(url) for url in parse_loc_tags(index_xml)})
-    if not sitemap_urls:
-        raise RuntimeError("Learn sitemap index did not contain any sitemap URLs")
+    sitemap_urls = sorted(
+        {
+            canonicalize_url(url)
+            for url in parse_sitemap_loc_tags(
+                index_xml,
+                source_url=LEARN_SITEMAP_INDEX_URL,
+                expected_root="sitemapindex",
+            )
+        }
+    )
 
     discovered_urls: set[str] = set()
     sitemap_fetch_errors: List[Dict[str, str]] = []
     for sitemap_url in sitemap_urls:
         try:
             sitemap_xml = fetch_text(session, sitemap_url)
-        except requests.RequestException as exc:
+            sitemap_page_urls = parse_sitemap_loc_tags(
+                sitemap_xml,
+                source_url=sitemap_url,
+                expected_root="urlset",
+            )
+        except (requests.RequestException, SourceContentError) as exc:
             LOG.warning("Skipping Learn sitemap %s due to error: %s", sitemap_url, exc)
             sitemap_fetch_errors.append(
                 {
                     "source": LEARN_SOURCE_TYPE,
                     "stage": "sitemap_fetch",
+                    "state": (
+                        "sitemap_unavailable"
+                        if isinstance(exc, requests.RequestException)
+                        else "extractor_or_malformed_source"
+                    ),
                     "url": sitemap_url,
                     "error": str(exc),
                 }
             )
             continue
 
-        for raw_url in parse_loc_tags(sitemap_xml):
+        for raw_url in sitemap_page_urls:
             cleaned = canonicalize_url(raw_url)
             if is_learn_doc_url(cleaned):
                 discovered_urls.add(cleaned)
@@ -751,6 +1039,10 @@ def discover_learn_urls(
     if isinstance(previous_learn, dict):
         previous_discovered = set(previous_learn.get("discovered_urls", []))
     new_discovered = sorted(set(discovered_sorted) - previous_discovered)
+    removed_discovered_candidates = sorted(previous_discovered - set(discovered_sorted))
+    removed_discovered = (
+        removed_discovered_candidates if not sitemap_fetch_errors else []
+    )
 
     if new_discovered:
         LOG.info(
@@ -763,6 +1055,11 @@ def discover_learn_urls(
         "sitemap_index_url": LEARN_SITEMAP_INDEX_URL,
         "sitemap_urls": sitemap_urls,
         "discovered_urls": discovered_sorted,
+        "new_discovered_urls_since_last_run": new_discovered,
+        "removed_from_sitemap_urls_since_last_run": removed_discovered,
+        "unconfirmed_removed_urls_due_to_partial_sitemap": (
+            removed_discovered_candidates if sitemap_fetch_errors else []
+        ),
         "sitemap_fetch_errors": sitemap_fetch_errors,
         "counts": {
             "sitemap_urls": len(sitemap_urls),
@@ -870,7 +1167,7 @@ def html_to_markdown(url: str, html: str) -> str:
 
     heading = f"# {title or 'Codex Docs'}"
     source_line = f"Source: {url}"
-    return f"{heading}\n\n{source_line}\n\n{markdown_body}\n"
+    return f"{heading}\n\n{source_line}\n\n{markdown_body.rstrip()}\n"
 
 
 def keep_github_markdown_path(path: str) -> bool:
@@ -900,9 +1197,15 @@ def keep_github_markdown_path(path: str) -> bool:
     return False
 
 
-def discover_github_paths(session: requests.Session) -> List[str]:
+def discover_github_paths(
+    session: requests.Session, source_commit: str = "main"
+) -> List[str]:
     LOG.info("Discovering markdown files from openai/codex GitHub tree")
-    payload = fetch_json(session, GITHUB_TREE_URL, headers=github_api_headers())
+    payload = fetch_json(
+        session,
+        GITHUB_TREE_URL_TEMPLATE.format(ref=source_commit),
+        headers=github_api_headers(),
+    )
     tree = payload.get("tree", [])
 
     paths = [
@@ -1121,17 +1424,59 @@ def build_developers_files(
 ) -> Tuple[List[ManagedFile], Dict[str, object], List[Dict[str, str]]]:
     managed: List[ManagedFile] = []
     fetch_errors: List[Dict[str, str]] = []
+    tombstones: List[Dict[str, object]] = []
+    redirects: List[Dict[str, str]] = []
     developers_urls, coverage = discover_developers_urls(session)
     for url in developers_urls:
         try:
-            html, source_metadata = fetch_text_with_source_metadata(session, url)
-            content = html_to_markdown(url, html)
+            response = fetch_response(
+                session, url, allowed_statuses=PERMANENT_MISSING_HTTP_STATUSES
+            )
+            if response.status_code in PERMANENT_MISSING_HTTP_STATUSES:
+                tombstones.append(
+                    SourceTombstone(
+                        url=url,
+                        status_code=response.status_code,
+                        endpoint_statuses=(response.status_code,),
+                    ).as_coverage()
+                )
+                continue
+            source_metadata = response_source_metadata(response)
+            redirect_metadata = response_redirect_metadata(response, url)
+            source_metadata.update(redirect_metadata)
+            if redirect_metadata:
+                redirects.append(
+                    {
+                        "url": url,
+                        "redirect_url": redirect_metadata["source_redirect_url"],
+                        "state": "redirected",
+                    }
+                )
+            validate_text_response(
+                response,
+                source_url=url,
+                allowed_content_types={"text/html", "application/xhtml+xml"},
+            )
+            content = html_to_markdown(url, response.text)
         except requests.RequestException as exc:
             LOG.warning("Skipping developers URL %s due to error: %s", url, exc)
             fetch_errors.append(
                 {
                     "source": "developers",
                     "stage": "page_fetch",
+                    "state": "transient_page_failure",
+                    "url": url,
+                    "error": str(exc),
+                }
+            )
+            continue
+        except SourceContentError as exc:
+            LOG.warning("Skipping malformed developers URL %s: %s", url, exc)
+            fetch_errors.append(
+                {
+                    "source": "developers",
+                    "stage": "page_extract",
+                    "state": "extractor_or_malformed_source",
                     "url": url,
                     "error": str(exc),
                 }
@@ -1152,9 +1497,13 @@ def build_developers_files(
     developers_section = coverage.get("developers", {})
     if isinstance(developers_section, dict):
         developers_section["page_fetch_errors"] = fetch_errors
+        developers_section["tombstoned_urls"] = tombstones
+        developers_section["redirected_urls"] = redirects
         counts = developers_section.get("counts", {})
         if isinstance(counts, dict):
             counts["page_fetch_errors"] = len(fetch_errors)
+            counts["tombstoned_urls"] = len(tombstones)
+            counts["redirected_urls"] = len(redirects)
         else:
             developers_section["counts"] = {"page_fetch_errors": len(fetch_errors)}
 
@@ -1166,19 +1515,48 @@ def fetch_learn_page(
     url: str,
 ) -> Tuple[str, Dict[str, object], str]:
     markdown_url = f"{url}.md"
-    markdown_response = fetch_response(session, markdown_url, allowed_statuses=(404,))
-    content_type = markdown_response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
-    if markdown_response.status_code != 404 and content_type in {"text/markdown", "text/plain"}:
+    markdown_response = fetch_response(
+        session, markdown_url, allowed_statuses=PERMANENT_MISSING_HTTP_STATUSES
+    )
+    content_type = response_content_type(markdown_response)
+    markdown_missing = markdown_response.status_code in PERMANENT_MISSING_HTTP_STATUSES
+    if not markdown_missing and content_type in {"text/markdown", "text/plain"}:
+        validate_text_response(
+            markdown_response,
+            source_url=markdown_url,
+            allowed_content_types={"text/markdown", "text/plain"},
+        )
         metadata: Dict[str, object] = response_source_metadata(markdown_response)
+        metadata.update(response_redirect_metadata(markdown_response, markdown_url))
         metadata["source_kind"] = "learn_markdown"
         content = markdown_with_source(url, markdown_response.text, default_title="ChatGPT Learn Docs")
         return content, metadata, "markdown"
 
-    if markdown_response.status_code != 404:
+    if not markdown_missing:
         LOG.info("Learn Markdown endpoint returned %s for %s; using HTML fallback", content_type or "unknown", url)
 
-    html_response = fetch_response(session, url)
+    html_response = fetch_response(
+        session, url, allowed_statuses=PERMANENT_MISSING_HTTP_STATUSES
+    )
+    if html_response.status_code in PERMANENT_MISSING_HTTP_STATUSES:
+        if not markdown_missing:
+            raise SourceContentError(
+                f"HTML representation returned HTTP {html_response.status_code} for {url}, "
+                f"but {markdown_url} remained available with unexpected Content-Type "
+                f"{(content_type or 'missing')!r}"
+            )
+        raise SourceTombstone(
+            url=url,
+            status_code=html_response.status_code,
+            endpoint_statuses=(markdown_response.status_code, html_response.status_code),
+        )
+    validate_text_response(
+        html_response,
+        source_url=url,
+        allowed_content_types={"text/html", "application/xhtml+xml"},
+    )
     metadata = response_source_metadata(html_response)
+    metadata.update(response_redirect_metadata(html_response, url))
     metadata["source_kind"] = "learn_html_fallback"
     return html_to_markdown(url, html_response.text), metadata, "html_fallback"
 
@@ -1193,15 +1571,38 @@ def build_learn_files(
     markdown_urls: List[str] = []
     html_fallback_urls: List[str] = []
     page_fetch_errors: List[Dict[str, str]] = []
+    tombstones: List[Dict[str, object]] = []
+    redirects: List[Dict[str, str]] = []
 
     for url in learn_urls:
         try:
             content, source_metadata, fetch_mode = fetch_learn_page(session, url)
+        except SourceTombstone as tombstone:
+            LOG.info(
+                "Recording sitemap tombstone for Learn URL %s (HTTP %d)",
+                url,
+                tombstone.status_code,
+            )
+            tombstones.append(tombstone.as_coverage())
+            continue
         except requests.RequestException as exc:
             LOG.warning("Skipping Learn URL %s due to error: %s", url, exc)
             failure = {
                 "source": LEARN_SOURCE_TYPE,
                 "stage": "page_fetch",
+                "state": "transient_page_failure",
+                "url": url,
+                "error": str(exc),
+            }
+            page_fetch_errors.append(failure)
+            fetch_errors.append(failure)
+            continue
+        except SourceContentError as exc:
+            LOG.warning("Skipping malformed Learn URL %s: %s", url, exc)
+            failure = {
+                "source": LEARN_SOURCE_TYPE,
+                "stage": "page_extract",
+                "state": "extractor_or_malformed_source",
                 "url": url,
                 "error": str(exc),
             }
@@ -1210,6 +1611,11 @@ def build_learn_files(
             continue
 
         mirrored_urls.append(url)
+        redirect_url = source_metadata.get("source_redirect_url")
+        if isinstance(redirect_url, str) and redirect_url:
+            redirects.append(
+                {"url": url, "redirect_url": redirect_url, "state": "redirected"}
+            )
         if fetch_mode == "markdown":
             markdown_urls.append(url)
         else:
@@ -1228,6 +1634,8 @@ def build_learn_files(
     coverage["markdown_urls"] = markdown_urls
     coverage["html_fallback_urls"] = html_fallback_urls
     coverage["page_fetch_errors"] = page_fetch_errors
+    coverage["tombstoned_urls"] = tombstones
+    coverage["redirected_urls"] = redirects
     counts = coverage.get("counts", {})
     if not isinstance(counts, dict):
         counts = {}
@@ -1238,17 +1646,23 @@ def build_learn_files(
             "markdown_pages": len(markdown_urls),
             "html_fallback_pages": len(html_fallback_urls),
             "page_fetch_errors": len(page_fetch_errors),
+            "tombstoned_urls": len(tombstones),
+            "redirected_urls": len(redirects),
         }
     )
     return managed, coverage, fetch_errors
 
 
-def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], List[Dict[str, str]]]:
+def build_github_files(
+    session: requests.Session,
+    source_ref: str = "main",
+    source_commit: str = "main",
+) -> Tuple[List[ManagedFile], List[Dict[str, str]]]:
     managed: List[ManagedFile] = []
     fetch_errors: List[Dict[str, str]] = []
 
-    for path in discover_github_paths(session):
-        raw_url = github_raw_url(path)
+    for path in discover_github_paths(session, source_commit):
+        raw_url = github_raw_url(path, source_commit)
         try:
             raw_text, source_metadata = fetch_text_with_source_metadata(session, raw_url)
         except requests.RequestException as exc:
@@ -1257,6 +1671,7 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
                 {
                     "source": "github",
                     "stage": "page_fetch",
+                    "state": "transient_page_failure",
                     "url": raw_url,
                     "error": str(exc),
                 }
@@ -1271,7 +1686,11 @@ def build_github_files(session: requests.Session) -> Tuple[List[ManagedFile], Li
                 source_type="github",
                 source_url=raw_url,
                 content=content,
-                source_metadata=source_metadata,
+                source_metadata={
+                    **source_metadata,
+                    "upstream_source_ref": source_ref,
+                    "upstream_source_commit": source_commit,
+                },
             )
         )
 
@@ -1313,6 +1732,7 @@ def build_platform_tool_guide_files(
                 {
                     "source": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
                     "stage": "page_fetch",
+                    "state": "transient_page_failure",
                     "url": fetch_url,
                     "error": str(exc),
                 }
@@ -1382,13 +1802,23 @@ FRONTMATTER_METADATA_ORDER = (
     "source_kind",
     "source_last_modified",
     "source_etag",
+    "source_redirect_url",
+    "upstream_source_ref",
+    "upstream_source_commit",
     "codex_cli_versions",
     "codex_cli_versions_raw",
+    "codex_cli_release_ref",
+    "codex_cli_source_commit",
     "report_date",
     "name",
     "description",
 )
-PRESERVED_FRONTMATTER_SOURCE_KEYS = ("source_last_modified", "source_etag")
+PRESERVED_FRONTMATTER_SOURCE_KEYS = (
+    "source_last_modified",
+    "source_etag",
+    "source_redirect_url",
+)
+PRESERVED_MANIFEST_SOURCE_KEYS = ("source_last_modified", "source_etag")
 
 
 def parse_frontmatter_block(block: str) -> Dict[str, object]:
@@ -1504,11 +1934,31 @@ def markdown_frontmatter_metadata(
         "source_type": item.source_type,
         "source_url": item.source_url,
     }
-    for key in ("source_area", "source_kind", "source_last_modified", "source_etag"):
+    for key in (
+        "source_area",
+        "source_kind",
+        "source_last_modified",
+        "source_etag",
+        "source_redirect_url",
+        "upstream_source_ref",
+        "upstream_source_commit",
+        "codex_cli_release_ref",
+        "codex_cli_source_commit",
+    ):
         if source_metadata.get(key):
             frontmatter[key] = source_metadata[key]
 
-    for key in ("source_area", "source_kind", "source_last_modified", "source_etag"):
+    for key in (
+        "source_area",
+        "source_kind",
+        "source_last_modified",
+        "source_etag",
+        "source_redirect_url",
+        "upstream_source_ref",
+        "upstream_source_commit",
+        "codex_cli_release_ref",
+        "codex_cli_source_commit",
+    ):
         if frontmatter.get(key):
             source_metadata[key] = frontmatter[key]
     return frontmatter, source_metadata
@@ -1585,12 +2035,22 @@ def capability_name_from_tool_guide_url(url: str) -> str:
 
 def capability_counts(capabilities: Sequence[Dict[str, object]]) -> Dict[str, object]:
     by_category: Dict[str, int] = {}
+    by_maturity: Dict[str, int] = {}
+    active = 0
     for item in capabilities:
         category = str(item.get("category", "unknown"))
         by_category[category] = by_category.get(category, 0) + 1
+        maturity = str(item.get("maturity", ""))
+        if maturity:
+            by_maturity[maturity] = by_maturity.get(maturity, 0) + 1
+        if item.get("active", True):
+            active += 1
     return {
         "total": len(capabilities),
+        "active": active,
+        "inactive": len(capabilities) - active,
         "by_category": {key: by_category[key] for key in sorted(by_category)},
+        "by_maturity": {key: by_maturity[key] for key in sorted(by_maturity)},
     }
 
 
@@ -1620,12 +2080,42 @@ def build_capability_inventory_file(
     platform_tool_guide_files: Sequence[ManagedFile],
     referenced_platform_tool_guides_by_url: Dict[str, List[str]],
     codex_cli_metadata: Dict[str, str],
+    documentation_files: Sequence[ManagedFile] = (),
 ) -> ManagedFile:
     capabilities: List[Dict[str, object]] = []
     codex_cli_version = codex_cli_metadata.get("codex_cli_version", "")
     codex_cli_version_raw = codex_cli_metadata.get("codex_cli_version_raw", "")
     previous_inventory = load_existing_capability_inventory()
     previous_capabilities = existing_capabilities_by_id(previous_inventory)
+
+    def cli_provenance(command: str) -> List[Dict[str, str]]:
+        provenance = [
+            {
+                "evidence_type": "installed_cli_observation",
+                "source": command,
+                "codex_cli_version": codex_cli_version,
+            }
+        ]
+        source_commit = codex_cli_metadata.get("codex_cli_source_commit", "")
+        source_ref = codex_cli_metadata.get("codex_cli_release_ref", "")
+        if source_commit and source_ref:
+            provenance.append(
+                {
+                    "evidence_type": "github_release_metadata",
+                    "source": source_ref,
+                    "source_commit": source_commit,
+                }
+            )
+        return provenance
+
+    def docs_provenance(item: ManagedFile) -> List[Dict[str, str]]:
+        return [
+            {
+                "evidence_type": "official_documentation",
+                "source_url": item.source_url,
+                "mirrored_path": item.rel_path,
+            }
+        ]
 
     def add_source_area(entry: Dict[str, object], item: ManagedFile) -> None:
         if item.source_metadata and item.source_metadata.get("source_area"):
@@ -1662,6 +2152,7 @@ def build_capability_inventory_file(
             "source_url": item.source_url,
             "mirrored_path": item.rel_path,
             "first_seen_path": item.rel_path,
+            "provenance": cli_provenance("codex debug prompt-input"),
         }
         add_source_area(entry, item)
         if metadata.get("description"):
@@ -1695,6 +2186,7 @@ def build_capability_inventory_file(
             "first_seen_path": item.rel_path,
             "message_count": message_count,
             "roles": roles,
+            "provenance": cli_provenance("codex debug prompt-input"),
         }
         add_source_area(entry, item)
         if codex_cli_version:
@@ -1717,6 +2209,7 @@ def build_capability_inventory_file(
             "mirrored_path": item.rel_path,
             "first_seen_path": referenced_from[0] if referenced_from else item.rel_path,
             "referenced_from": referenced_from,
+            "provenance": docs_provenance(item),
         }
         add_source_area(entry, item)
         for key in ("source_last_modified", "source_etag"):
@@ -1730,11 +2223,232 @@ def build_capability_inventory_file(
         add_version_history(entry)
         capabilities.append(entry)
 
+    for item in sorted(codex_cli_files, key=lambda entry: entry.rel_path):
+        if item.source_type != CLI_SURFACE_SOURCE_TYPE:
+            continue
+        try:
+            surface = json.loads(managed_file_text(item))
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(surface, dict):
+            continue
+
+        def add_cli_option(option: Dict[str, object], command: str) -> None:
+            primary_flag = str(option.get("primary_flag", ""))
+            if not primary_flag:
+                return
+            identifier_scope = command.replace(" ", ":")
+            option_entry: Dict[str, object] = {
+                "id": f"cli_option:{identifier_scope}:{primary_flag}",
+                "name": primary_flag,
+                "category": "cli_option",
+                "cli_command": command,
+                "cli_flags": option.get("flags", []),
+                "synopsis": str(option.get("synopsis", "")),
+                "description": str(option.get("description", "")),
+                "source_type": item.source_type,
+                "source_url": item.source_url,
+                "mirrored_path": item.rel_path,
+                "provenance": cli_provenance(f"{command} --help"),
+            }
+            config_keys = CLI_OPTION_CONFIG_KEYS.get(primary_flag, [])
+            if config_keys:
+                option_entry["config_keys"] = config_keys
+            add_version_history(option_entry)
+            capabilities.append(option_entry)
+
+        for option in surface.get("global_options", []):
+            if isinstance(option, dict):
+                add_cli_option(option, "codex")
+
+        for command in surface.get("commands", []):
+            if not isinstance(command, dict) or not command.get("name"):
+                continue
+            command_name = str(command["name"])
+            command_entry: Dict[str, object] = {
+                "id": f"cli_command:{command_name}",
+                "name": command_name,
+                "category": "cli_command",
+                "cli_command": f"codex {command_name}",
+                "description": str(command.get("description", "")),
+                "usage": command.get("usage", []),
+                "source_type": item.source_type,
+                "source_url": item.source_url,
+                "mirrored_path": item.rel_path,
+                "provenance": cli_provenance(f"codex {command_name} --help"),
+            }
+            add_version_history(command_entry)
+            capabilities.append(command_entry)
+            for option in command.get("options", []):
+                if isinstance(option, dict):
+                    add_cli_option(option, f"codex {command_name}")
+            for subcommand in command.get("subcommands", []):
+                if not isinstance(subcommand, dict) or not subcommand.get("name"):
+                    continue
+                subcommand_name = str(subcommand["name"])
+                subcommand_entry: Dict[str, object] = {
+                    "id": f"cli_command:{command_name}:{subcommand_name}",
+                    "name": subcommand_name,
+                    "category": "cli_command",
+                    "cli_command": f"codex {command_name} {subcommand_name}",
+                    "parent_cli_command": f"codex {command_name}",
+                    "description": str(subcommand.get("description", "")),
+                    "source_type": item.source_type,
+                    "source_url": item.source_url,
+                    "mirrored_path": item.rel_path,
+                    "provenance": cli_provenance(
+                        f"codex {command_name} --help"
+                    ),
+                }
+                add_version_history(subcommand_entry)
+                capabilities.append(subcommand_entry)
+
+    config_reference = next(
+        (
+            item
+            for item in documentation_files
+            if item.source_url
+            == "https://learn.chatgpt.com/docs/config-file/config-reference"
+        ),
+        None,
+    )
+    if config_reference:
+        config_keys = sorted(
+            set(
+                re.findall(
+                    r'^\s*key:\s*["\x27]([^"\x27]+)["\x27]\s*,?$',
+                    managed_file_text(config_reference),
+                    flags=re.MULTILINE,
+                )
+            )
+        )
+        for key in config_keys:
+            entry = {
+                "id": f"config_key:{key}",
+                "name": key,
+                "category": "config_key",
+                "config_key": key,
+                "source_type": config_reference.source_type,
+                "source_url": config_reference.source_url,
+                "mirrored_path": config_reference.rel_path,
+                "provenance": docs_provenance(config_reference),
+            }
+            feature_match = re.fullmatch(r"features\.([a-z0-9_]+)", key)
+            if feature_match:
+                entry["feature_flag"] = feature_match.group(1)
+            add_version_history(entry)
+            capabilities.append(entry)
+
+    if FEATURE_LIFECYCLE.exists():
+        try:
+            feature_snapshot = json.loads(FEATURE_LIFECYCLE.read_text())
+        except json.JSONDecodeError:
+            feature_snapshot = {}
+        if isinstance(feature_snapshot, dict):
+            feature_version = parse_codex_cli_version(
+                str(feature_snapshot.get("codex_cli_version", ""))
+            )
+            feature_source_urls = feature_snapshot.get("source_urls", {})
+            if not isinstance(feature_source_urls, dict):
+                feature_source_urls = {}
+            documented_keys = set(feature_snapshot.get("docs_feature_keys", []))
+            for feature in feature_snapshot.get("cli_features", []):
+                if not isinstance(feature, dict) or not feature.get("key"):
+                    continue
+                key = str(feature["key"])
+                stage = str(feature.get("stage", "unknown"))
+                provenance: List[Dict[str, str]] = [
+                    {
+                        "evidence_type": "installed_cli_observation",
+                        "source": "codex features list",
+                        "codex_cli_version": feature_version,
+                    }
+                ]
+                features_source_url = str(feature_source_urls.get("features_rs", ""))
+                if features_source_url:
+                    provenance.append(
+                        {
+                            "evidence_type": "upstream_repository_source",
+                            "source_url": features_source_url,
+                            "source_commit": str(
+                                feature_snapshot.get("source_commit", "")
+                            ),
+                        }
+                    )
+                entry = {
+                    "id": f"feature_flag:{key}",
+                    "name": key,
+                    "category": "feature_flag",
+                    "feature_flag": key,
+                    "maturity": stage,
+                    "enabled_by_default": bool(feature.get("enabled")),
+                    "config_keys": [f"features.{key}"],
+                    "documented_officially": key in documented_keys,
+                    "source_type": "feature_flag_snapshot",
+                    "source_url": "generated://feature-flags/lifecycle",
+                    "mirrored_path": "feature-flags/lifecycle.json",
+                    "source_ref": str(feature_snapshot.get("source_ref", "")),
+                    "source_commit": str(feature_snapshot.get("source_commit", "")),
+                    "provenance": provenance,
+                }
+                add_version_history(entry)
+                capabilities.append(entry)
+
+    capability_ids = [str(entry["id"]) for entry in capabilities]
+    duplicate_ids = sorted(
+        identifier
+        for identifier in set(capability_ids)
+        if capability_ids.count(identifier) > 1
+    )
+    if duplicate_ids:
+        raise RuntimeError(
+            "Capability inventory contains duplicate IDs: " + ", ".join(duplicate_ids)
+        )
+
+    current_ids = set(capability_ids)
+    for entry in capabilities:
+        previous_entry = previous_capabilities.get(str(entry["id"]), {})
+        previous_lifecycle = previous_entry.get("lifecycle", {})
+        if not isinstance(previous_lifecycle, dict):
+            previous_lifecycle = {}
+        versions = metadata_values(entry.get("codex_cli_versions"))
+        first_seen = str(previous_lifecycle.get("first_seen_version", ""))
+        if not first_seen and versions:
+            first_seen = versions[0]
+        entry["active"] = entry.get("maturity") != "removed"
+        entry["lifecycle"] = {
+            "status": str(entry.get("maturity", "active")),
+            "first_seen_version": first_seen or codex_cli_version,
+            "last_seen_version": codex_cli_version,
+        }
+
+    for identifier, previous_entry in sorted(previous_capabilities.items()):
+        if identifier in current_ids:
+            continue
+        historical = dict(previous_entry)
+        previous_lifecycle = historical.get("lifecycle", {})
+        if not isinstance(previous_lifecycle, dict):
+            previous_lifecycle = {}
+        historical["active"] = False
+        historical["lifecycle"] = {
+            **previous_lifecycle,
+            "status": "removed_from_inventory",
+            "removed_in_version": codex_cli_version,
+        }
+        capabilities.append(historical)
+
     capabilities = sorted(capabilities, key=lambda item: str(item["id"]))
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "source_kind": "generated_capability_inventory",
         "source_area": "capability_inventory",
+        "evidence_types": {
+            "official_documentation": "Published OpenAI documentation mirrored by this repository.",
+            "upstream_repository_source": "Immutable release-matched openai/codex source.",
+            "github_release_metadata": "Stable release metadata published by openai/codex.",
+            "installed_cli_observation": "Deterministic output observed from an isolated packaged CLI.",
+            "generated_relationship": "A deterministic relationship derived from other recorded evidence.",
+        },
         "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
         "codex_cli_version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
         "counts": capability_counts(capabilities),
@@ -1759,10 +2473,22 @@ def capability_inventory_counts_from_text(text: str) -> Dict[str, object]:
     try:
         payload = json.loads(text)
     except json.JSONDecodeError:
-        return {"total": 0, "by_category": {}}
+        return {
+            "total": 0,
+            "active": 0,
+            "inactive": 0,
+            "by_category": {},
+            "by_maturity": {},
+        }
     capabilities = payload.get("capabilities", []) if isinstance(payload, dict) else []
     if not isinstance(capabilities, list):
-        return {"total": 0, "by_category": {}}
+        return {
+            "total": 0,
+            "active": 0,
+            "inactive": 0,
+            "by_category": {},
+            "by_maturity": {},
+        }
     return capability_counts([item for item in capabilities if isinstance(item, dict)])
 
 
@@ -1774,7 +2500,140 @@ def capability_inventory_counts(
         return capability_inventory_counts_from_text(managed_file_text(inventory_files[0]))
     if CAPABILITY_INVENTORY_SOURCE_TYPE in preserve_missing_sources and CAPABILITIES_PATH.exists():
         return capability_inventory_counts_from_text(CAPABILITIES_PATH.read_text())
-    return {"total": 0, "by_category": {}}
+    return {
+        "total": 0,
+        "active": 0,
+        "inactive": 0,
+        "by_category": {},
+        "by_maturity": {},
+    }
+
+
+def help_section_lines(text: str, section: str) -> List[str]:
+    lines = text.splitlines()
+    header = f"{section}:"
+    try:
+        start = lines.index(header) + 1
+    except ValueError:
+        return []
+    end = len(lines)
+    for index in range(start, len(lines)):
+        if re.fullmatch(r"[A-Z][A-Za-z ]+:", lines[index]):
+            end = index
+            break
+    return lines[start:end]
+
+
+def parse_help_commands(text: str) -> List[Dict[str, str]]:
+    commands: List[Dict[str, str]] = []
+    current: Dict[str, str] | None = None
+    for line in help_section_lines(text, "Commands"):
+        match = re.match(r"^  ([a-z0-9][a-z0-9-]*)\s{2,}(.*\S)\s*$", line)
+        if match:
+            current = {"name": match.group(1), "description": match.group(2)}
+            commands.append(current)
+            continue
+        if current and line.strip():
+            current["description"] = f"{current['description']} {line.strip()}"
+    return commands
+
+
+def parse_help_options(text: str) -> List[Dict[str, object]]:
+    options: List[Dict[str, object]] = []
+    current: Dict[str, object] | None = None
+    for line in help_section_lines(text, "Options"):
+        flags = re.findall(r"(?<![\w-])-{1,2}[A-Za-z0-9][A-Za-z0-9-]*", line)
+        indentation = len(line) - len(line.lstrip(" "))
+        if (
+            flags
+            and 2 <= indentation <= 6
+            and re.match(r"^\s+(?:-[A-Za-z0-9]|--)", line)
+        ):
+            current = {
+                "flags": flags,
+                "primary_flag": next(
+                    (flag for flag in flags if flag.startswith("--")), flags[0]
+                ),
+                "synopsis": line.strip(),
+                "description": "",
+            }
+            options.append(current)
+            continue
+        if current and line.strip():
+            description = str(current["description"])
+            current["description"] = " ".join(
+                part for part in (description, line.strip()) if part
+            )
+    return options
+
+
+def parse_help_usage(text: str) -> List[str]:
+    usage: List[str] = []
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if not line.startswith("Usage:"):
+            continue
+        first = line.removeprefix("Usage:").strip()
+        if first:
+            usage.append(first)
+        for continuation in lines[index + 1 :]:
+            if not continuation.strip():
+                break
+            usage.append(continuation.strip())
+        break
+    return usage
+
+
+def build_cli_surface_snapshot(
+    codex_bin: str,
+    env: Dict[str, str],
+    workspace_path: Path,
+    codex_cli_metadata: Dict[str, str],
+) -> ManagedFile:
+    top_help = run_local_command(
+        [codex_bin, "--help"], cwd=workspace_path, env=env
+    )
+    top_commands = parse_help_commands(top_help)
+    command_surfaces: List[Dict[str, object]] = []
+    for command in top_commands:
+        name = command["name"]
+        command_help = top_help
+        if name != "help":
+            command_help = run_local_command(
+                [codex_bin, name, "--help"], cwd=workspace_path, env=env
+            )
+        command_surfaces.append(
+            {
+                "name": name,
+                "description": command["description"],
+                "usage": parse_help_usage(command_help),
+                "subcommands": parse_help_commands(command_help),
+                "options": parse_help_options(command_help),
+            }
+        )
+
+    payload = {
+        "schema_version": 1,
+        "source_kind": "installed_cli_help_observation",
+        "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
+        "codex_cli_version_raw": codex_cli_metadata.get(
+            "codex_cli_version_raw", ""
+        ),
+        "command": "codex --help; codex <command> --help",
+        "usage": parse_help_usage(top_help),
+        "global_options": parse_help_options(top_help),
+        "commands": command_surfaces,
+    }
+    return ManagedFile(
+        rel_path=CLI_SURFACE_REL_PATH,
+        source_type=CLI_SURFACE_SOURCE_TYPE,
+        source_url="codex-cli://help",
+        content=json.dumps(payload, indent=2, sort_keys=True) + "\n",
+        source_metadata={
+            **codex_cli_metadata,
+            "source_kind": "installed_cli_help_observation",
+        },
+    )
 
 
 def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Dict[str, str]]:
@@ -1803,7 +2662,7 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
         codex_home = home_path / ".codex"
         codex_home.mkdir(parents=True, exist_ok=True)
 
-        env = codex_subprocess_env()
+        env = isolated_codex_subprocess_env()
         env.update(
             {
                 "HOME": str(home_path),
@@ -1812,6 +2671,10 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
                 "SHELL": "/bin/bash",
                 "TZ": "UTC",
             }
+        )
+
+        managed.append(
+            build_cli_surface_snapshot(codex_bin, env, workspace_path, metadata)
         )
 
         prompt_raw = run_local_command([codex_bin, "debug", "prompt-input", ""], cwd=workspace_path, env=env)
@@ -1915,6 +2778,7 @@ def write_weekly_note(
     updated: List[str],
     removed: List[str],
     source_metadata: Dict[str, object] | None = None,
+    capability_changes: Dict[str, object] | None = None,
 ) -> None:
     if not (added or updated or removed):
         return
@@ -1948,6 +2812,11 @@ def write_weekly_note(
     lines.extend(render_category_summary("Added", added))
     lines.extend(render_category_summary("Updated", updated))
     lines.extend(render_category_summary("Removed", removed))
+
+    if capability_changes:
+        lines.append("## Semantic Capability Changes")
+        lines.append("")
+        lines.extend(render_capability_changes(capability_changes))
 
     if added:
         lines.append("## Added (Raw Paths)")
@@ -2067,6 +2936,94 @@ def render_category_summary(label: str, paths: List[str]) -> List[str]:
     return lines
 
 
+def capability_entries_from_text(text: str) -> Dict[str, Dict[str, object]]:
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return {}
+    entries = payload.get("capabilities", []) if isinstance(payload, dict) else []
+    if not isinstance(entries, list):
+        return {}
+    return {
+        str(entry["id"]): entry
+        for entry in entries
+        if isinstance(entry, dict) and entry.get("id")
+    }
+
+
+def semantic_capability_changes(
+    previous_text: str, current_text: str
+) -> Dict[str, object]:
+    previous = capability_entries_from_text(previous_text)
+    current = capability_entries_from_text(current_text)
+    previous_active = {
+        identifier: entry
+        for identifier, entry in previous.items()
+        if entry.get("active", True)
+    }
+    current_active = {
+        identifier: entry
+        for identifier, entry in current.items()
+        if entry.get("active", True)
+    }
+    added = sorted(set(current_active) - set(previous_active))
+    removed = sorted(set(previous_active) - set(current_active))
+    transitions: List[Dict[str, str]] = []
+    for identifier in sorted(set(previous_active) & set(current_active)):
+        before = str(previous_active[identifier].get("maturity", ""))
+        after = str(current_active[identifier].get("maturity", ""))
+        if before != after and (before or after):
+            transitions.append(
+                {"id": identifier, "from": before or "unspecified", "to": after or "unspecified"}
+            )
+
+    def group(identifiers: Sequence[str], entries: Dict[str, Dict[str, object]]):
+        grouped: Dict[str, List[str]] = {}
+        for identifier in identifiers:
+            category = str(entries.get(identifier, {}).get("category", "unknown"))
+            grouped.setdefault(category, []).append(identifier)
+        return {key: grouped[key] for key in sorted(grouped)}
+
+    return {
+        "added": added,
+        "removed": removed,
+        "lifecycle_transitions": transitions,
+        "added_by_category": group(added, current_active),
+        "removed_by_category": group(removed, previous_active),
+    }
+
+
+def render_capability_changes(changes: Dict[str, object]) -> List[str]:
+    lines: List[str] = []
+    for label, key in (("Added", "added_by_category"), ("Removed", "removed_by_category")):
+        grouped = changes.get(key, {})
+        if not isinstance(grouped, dict) or not grouped:
+            lines.append(f"- {label}: none")
+            continue
+        total = sum(len(values) for values in grouped.values() if isinstance(values, list))
+        lines.append(f"- {label}: {total}")
+        for category, values in sorted(grouped.items()):
+            if not isinstance(values, list):
+                continue
+            preview = ", ".join(f"`{value}`" for value in values[:10])
+            suffix = f" (and {len(values) - 10} more)" if len(values) > 10 else ""
+            lines.append(f"  - {category}: {preview}{suffix}")
+    transitions = changes.get("lifecycle_transitions", [])
+    if isinstance(transitions, list) and transitions:
+        lines.append(f"- Lifecycle transitions: {len(transitions)}")
+        for transition in transitions[:20]:
+            if isinstance(transition, dict):
+                lines.append(
+                    f"  - `{transition.get('id')}`: `{transition.get('from')}` -> `{transition.get('to')}`"
+                )
+        if len(transitions) > 20:
+            lines.append(f"  - and {len(transitions) - 20} more")
+    else:
+        lines.append("- Lifecycle transitions: none")
+    lines.append("")
+    return lines
+
+
 def apply_sync(
     managed_files: Iterable[ManagedFile],
     failures: List[Dict[str, str]] | None = None,
@@ -2074,6 +3031,7 @@ def apply_sync(
     source_metadata: Dict[str, object] | None = None,
 ) -> Tuple[List[str], List[str], List[str]]:
     previous = load_existing_manifest()
+    capability_changes: Dict[str, object] | None = None
 
     next_entries: Dict[str, Dict[str, object]] = {}
     rel_to_file: Dict[str, ManagedFile] = {}
@@ -2090,14 +3048,19 @@ def apply_sync(
             previous_same_hash = previous_meta.get("sha256") == next_entry["sha256"]
             preserved_metadata = {
                 key: previous_meta[key]
-                for key in SOURCE_METADATA_KEYS
-                if key != "source_kind" and previous_same_hash and previous_meta.get(key)
+                for key in PRESERVED_MANIFEST_SOURCE_KEYS
+                if previous_same_hash and previous_meta.get(key)
             }
             next_entry.update(item.source_metadata)
             next_entry.update(preserved_metadata)
             if item.source_metadata.get("source_kind"):
                 next_entry["source_kind"] = item.source_metadata["source_kind"]
         next_entries[item.rel_path] = next_entry
+        if item.rel_path == CAPABILITIES_REL_PATH:
+            previous_text = CAPABILITIES_PATH.read_text() if CAPABILITIES_PATH.exists() else "{}"
+            capability_changes = semantic_capability_changes(
+                previous_text, managed_file_text(item)
+            )
 
     previous_paths = set(previous)
     next_paths = set(next_entries)
@@ -2158,7 +3121,13 @@ def apply_sync(
             summary_schema_stale = True
     if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale or summary_had_failures:
         write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
-    write_weekly_note(added, updated, removed, source_metadata=source_metadata)
+    write_weekly_note(
+        added,
+        updated,
+        removed,
+        source_metadata=source_metadata,
+        capability_changes=capability_changes,
+    )
     ensure_weekly_frontmatter()
 
     return added, updated, removed
@@ -2191,7 +3160,10 @@ def main() -> int:
     platform_tool_guide_references_by_url: Dict[str, List[str]] = {}
     codex_cli_fetch_errors: List[Dict[str, str]] = []
     codex_cli_metadata: Dict[str, str] = {}
-    coverage: Dict[str, object] = {"generated_at": now_utc_iso()}
+    coverage: Dict[str, object] = {
+        "generated_at": now_utc_iso(),
+        "source_state_semantics": SOURCE_STATE_SEMANTICS,
+    }
 
     try:
         developers_files, coverage, developers_fetch_errors = build_developers_files(session)
@@ -2204,6 +3176,7 @@ def main() -> int:
         failure = {
             "source": "developers",
             "stage": "source_build",
+            "state": "source_unavailable",
             "url": "https://developers.openai.com",
             "error": str(exc),
         }
@@ -2233,6 +3206,7 @@ def main() -> int:
         failure = {
             "source": LEARN_SOURCE_TYPE,
             "stage": "source_build",
+            "state": "source_unavailable",
             "url": "https://learn.chatgpt.com/docs",
             "error": str(exc),
         }
@@ -2253,24 +3227,10 @@ def main() -> int:
         }
 
     try:
-        github_files, github_fetch_errors = build_github_files(session)
-        github_files = add_source_area_metadata(github_files)
-        failures.extend(github_fetch_errors)
-        if github_fetch_errors:
-            preserve_missing_sources.add("github")
-    except Exception as exc:
-        LOG.warning("GitHub source failed; continuing with remaining sources: %s", exc)
-        failure = {
-            "source": "github",
-            "stage": "source_build",
-            "url": "https://github.com/openai/codex",
-            "error": str(exc),
-        }
-        failures.append(failure)
-        preserve_missing_sources.add("github")
-
-    try:
         codex_cli_files, codex_cli_fetch_errors, codex_cli_metadata = build_codex_cli_files()
+        codex_cli_files, codex_cli_metadata = add_cli_release_provenance(
+            session, codex_cli_files, codex_cli_metadata
+        )
         codex_cli_files = add_source_area_metadata(codex_cli_files)
         failures.extend(codex_cli_fetch_errors)
         if codex_cli_fetch_errors:
@@ -2282,11 +3242,40 @@ def main() -> int:
         failure = {
             "source": "codex_cli",
             "stage": "source_build",
+            "state": "source_unavailable",
             "url": "codex-cli://installed",
             "error": str(exc),
         }
         failures.append(failure)
         preserve_missing_sources.update(CODEX_CLI_SOURCE_TYPES)
+
+    try:
+        source_ref = codex_cli_metadata.get("codex_cli_release_ref", "")
+        source_commit = codex_cli_metadata.get("codex_cli_source_commit", "")
+        if not source_ref or not source_commit:
+            raise RuntimeError(
+                "Release-matched GitHub source requires Codex CLI release provenance"
+            )
+        github_files, github_fetch_errors = build_github_files(
+            session,
+            source_ref=source_ref,
+            source_commit=source_commit,
+        )
+        github_files = add_source_area_metadata(github_files)
+        failures.extend(github_fetch_errors)
+        if github_fetch_errors:
+            preserve_missing_sources.add("github")
+    except Exception as exc:
+        LOG.warning("GitHub source failed; continuing with remaining sources: %s", exc)
+        failure = {
+            "source": "github",
+            "stage": "source_build",
+            "state": "source_unavailable",
+            "url": "https://github.com/openai/codex",
+            "error": str(exc),
+        }
+        failures.append(failure)
+        preserve_missing_sources.add("github")
 
     try:
         platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
@@ -2303,6 +3292,7 @@ def main() -> int:
         failure = {
             "source": PLATFORM_TOOL_GUIDE_SOURCE_TYPE,
             "stage": "source_build",
+            "state": "source_unavailable",
             "url": "https://platform.openai.com/docs/guides",
             "error": str(exc),
         }
@@ -2318,6 +3308,7 @@ def main() -> int:
                 platform_tool_guide_files,
                 platform_tool_guide_references_by_url,
                 codex_cli_metadata,
+                documentation_files=developers_files + learn_files + github_files,
             )
         ]
 
@@ -2341,6 +3332,8 @@ def main() -> int:
     github_mirrored_paths = coverage_paths_for_source(github_files, "github", preserve_missing_sources)
     coverage["github"] = {
         "repo": "openai/codex",
+        "source_ref": codex_cli_metadata.get("codex_cli_release_ref", ""),
+        "source_commit": codex_cli_metadata.get("codex_cli_source_commit", ""),
         "mirrored_paths_count": len(github_mirrored_paths),
         "mirrored_paths": github_mirrored_paths,
         "page_fetch_errors": github_fetch_errors,
@@ -2392,6 +3385,12 @@ def main() -> int:
     }
     system_skill_files = [item for item in codex_cli_files if item.source_type == "codex_cli_system_skill"]
     prompt_input_files = [item for item in codex_cli_files if item.source_type == "codex_cli_prompt_input"]
+    cli_surface_files = [
+        item for item in codex_cli_files if item.source_type == CLI_SURFACE_SOURCE_TYPE
+    ]
+    cli_surface_paths = coverage_paths_for_source(
+        cli_surface_files, CLI_SURFACE_SOURCE_TYPE, preserve_missing_sources
+    )
     codex_cli_source_errors = [item for item in failures if item["source"] == "codex_cli" and item["stage"] == "source_build"]
     coverage["codex_cli"] = {
         "source_kind": "installed_codex_cli",
@@ -2402,10 +3401,12 @@ def main() -> int:
         "prompt_snapshot_command": codex_cli_metadata.get("codex_prompt_snapshot_command", "codex debug prompt-input"),
         "system_skill_paths": sorted(item.rel_path for item in system_skill_files),
         "prompt_snapshot_paths": sorted(item.rel_path for item in prompt_input_files),
+        "cli_surface_paths": cli_surface_paths,
         "source_errors": codex_cli_source_errors,
         "counts": {
             "system_skill_paths": len(system_skill_files),
             "prompt_snapshot_paths": len(prompt_input_files),
+            "cli_surface_paths": len(cli_surface_paths),
             "source_errors": len(codex_cli_source_errors),
         },
     }
@@ -2434,6 +3435,7 @@ def main() -> int:
     coverage["sync"] = {
         "preserve_missing_sources": sorted(preserve_missing_sources),
         "failure_count": len(failures),
+        "status": "partial" if failures else "complete",
     }
     write_coverage(coverage)
 

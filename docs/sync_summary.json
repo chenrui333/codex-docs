@@ -2,21 +2,20 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-21T18:37:24+00:00",
+  "generated_at": "2026-08-30T01:44:54+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
-    "codex_cli_version": "0.149.0",
-    "codex_cli_version_raw": "codex-cli 0.149.0",
+    "codex_cli_release_ref": "rust-v0.151.0",
+    "codex_cli_source_commit": "78c290807ce710180111df227df3b7a4fe845452",
+    "codex_cli_version": "0.151.0",
+    "codex_cli_version_raw": "codex-cli 0.151.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli"
   },
-  "total_files": 239,
+  "total_files": 256,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/projects/index.md",
-    "learn.chatgpt.com/docs/prompting/index.md",
-    "learn.chatgpt.com/docs/quickstart/index.md",
-    "system_prompts/codex-cli/prompt-input.json"
+    "codex_capabilities.json",
+    "codex_cli_surface.json"
   ]
 }

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_build_skills'
 source_url: 'https://learn.chatgpt.com/docs/build-skills'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Build skills
@@ -33,13 +33,7 @@ ChatGPT on the web, desktop, and mobile.
 In the ChatGPT desktop app, open **Skills** in the sidebar to view and explore skills
 created across your projects.
 
-<CodexScreenshot
-  alt="Skills picker showing available skills in the ChatGPT desktop app"
-  lightSrc="/images/codex/app/skill-selector-light.webp"
-  darkSrc="/images/codex/app/skill-selector-dark.webp"
-  maxHeight="400px"
-  class="my-8"
-/>
+> Illustration: Skills picker showing available skills in the ChatGPT desktop app
 
 Skills use **progressive disclosure** to manage context efficiently. ChatGPT and
 Codex start with each skill's name and description, then load the full

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_security'
 source_url: 'https://learn.chatgpt.com/docs/security/plugin/changelog'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Codex Security plugin changelog
@@ -177,31 +177,48 @@ package and bundled plugin versions together.
 
 ## 0.1.15 (July 30, 2026)
 
-### Keep scans accurate as projects change
+### Preserve scan results when the repository changes
 
-- Persist scan lifecycle and model metadata so scan history and progress remain
-  consistent across reloads.
-- Preserve completed scans when project files change and avoid reusing SQLite
-  scan directories.
+- Keep completed findings and reports tied to the original revision or
+  working-tree snapshot, even if files or the repository revision change while a
+  scan runs.
+- Show a completion warning when the selected code changes or the target becomes
+  unavailable instead of discarding the scan results.
+- Archive an existing scan before reusing its output directory for another scan.
 
-### Give feedback and recover findings
+### Apply reviewed finding feedback
 
-- Submit false-positive feedback for findings from completed scans.
-- Recover malformed finding records during finalization instead of failing the
-  completed scan.
+- Record a reason when you close a finding as a false positive.
+- Carry reviewed false-positive decisions into later scans of the same target
+  without applying them to another checkout or unrelated target.
+- Suppress a recurring finding only when the earlier reason still applies to
+  the current code and security controls.
 
-### Handle more repository layouts and paths
+### Recover valid findings without overstating coverage
 
-- Preserve literal candidate paths and expand `~` in `CODEX_HOME` during
-  preflight.
-- Handle Git-related target validation errors without crashing and support nested
-  Git repositories in scan snapshots.
-- Keep Windows and sandbox path handling consistent during scan recovery.
+- Keep valid findings when another finding, report, or hardening artifact is
+  malformed, and show a warning for the skipped data.
+- Remove duplicate findings and keep the strongest finding by severity,
+  confidence, and supporting evidence.
+- Mark coverage as partial when Codex can't verify findings, review receipts, or
+  follow-up areas.
+- Include incomplete coverage and deferred-review warnings in SARIF exports.
 
-### Reduce unnecessary scan work
+### Keep scan settings and progress visible
 
-- Keep standard-scan discovery adaptive to the repository and candidate list.
-- Stop retrying policy failures and remove the legacy fan-out prompt.
+- Save the selected model and reasoning effort with standard and deep scans so
+  scan history and progress stay consistent across reloads.
+- Show the number of active and completed independent deep-scan reviews and
+  when result consolidation starts.
+- Adapt standard-scan discovery to the available worker capacity while keeping
+  one in-scope file list and one candidate review pass.
+
+### Support more repository and filesystem layouts
+
+- Include nested Git repositories when capturing a working-tree snapshot.
+- Preserve literal in-scope file paths and handle case-insensitive Windows
+  paths.
+- Expand a configured `CODEX_HOME` that starts with `~` during scan preflight.
 
 ## 0.1.14 (July 28, 2026)
 

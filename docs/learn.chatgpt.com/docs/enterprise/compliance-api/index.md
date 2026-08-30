@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/compliance-api'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Compliance API and audit events
@@ -17,7 +17,7 @@ Use the Compliance API for security, legal, governance, and investigation
 workflows that require auditable records. Use analytics, not compliance records,
 to measure adoption and trends.
 
-The authenticated [Admin API reference](https://chatgpt.com/admin/api-reference)
+The [Admin API reference](https://chatgpt.com/public/admin/api-reference)
 is the source of truth for current access requirements, event coverage, routes,
 schemas, filters, retention, and request behavior.
 
@@ -39,32 +39,58 @@ or the [Analytics API](https://learn.chatgpt.com/docs/enterprise/analytics-api) 
 
 ## Get started
 
-1. Open the [Admin API reference](https://chatgpt.com/admin/api-reference) and
+1. Open the [Admin API reference](https://chatgpt.com/public/admin/api-reference) and
    confirm that your administrator role can access the compliance resources
    you need.
 2. Use the append-only compliance log stream for ongoing collection. Check the
-   authenticated reference for the currently supported resources and retrieval
+   API reference for the currently supported resources and retrieval
    patterns.
-3. Test ingestion into a non-production security information and event
-   management (SIEM) system or data lake. The
-   [Compliance Platform guide](https://help.openai.com/en/articles/9261474-compliance-api-for-chatgpt-enterprise-edu-and-chatgpt-for-teachers)
-   links to the current API documentation and quickstart notebook.
+3. [Download log files](#download-logs) and test ingestion into a non-production
+   security information and event management (SIEM) system or data lake.
 4. Schedule continuous collection and apply your organization's access,
    retention, and legal-hold controls to exported records. Don't assume the
    source retention window replaces your organization's retention policy.
 
 For example, a security team can stream immutable compliance events into its
 SIEM for investigations, or route those events into an approved electronic
-discovery workflow. Use the authenticated reference for the current routes and
+discovery workflow. Use the API reference for the current routes and
 schemas rather than copying an endpoint contract from this guide.
+
+### Download logs
+
+Download the [Bash script](https://developers.openai.com/downloads/compliance-api/download_compliance_files.sh)
+or [PowerShell script](https://developers.openai.com/downloads/compliance-api/download_compliance_files.ps1).
+Both list and download every available log file after a given timestamp, follow
+pagination, and write JSONL to standard output. Errors go to standard error.
+
+Set `COMPLIANCE_API_KEY` to your Enterprise Compliance API key. Replace
+`<workspace_or_org_id>` with your ChatGPT workspace ID or API Platform
+organization ID, and `<after>` with an ISO 8601 timestamp that includes a time
+zone. This example retrieves `AUTH_LOG` files, 100 at a time.
+
+On macOS or Linux, install Bash, `curl`, and `jq`, then run:
+
+```bash
+bash ./download_compliance_files.sh "<workspace_or_org_id>" AUTH_LOG 100 "<after>" > output.jsonl
+```
+
+The Windows script supports PowerShell 5.1 or later. Review the downloaded file.
+If Windows blocks it and your organization's execution policy permits it, run
+`Unblock-File -Path .\download_compliance_files.ps1`. This example uses
+PowerShell 7 to save UTF-8 without a byte-order mark:
+
+```powershell
+.\download_compliance_files.ps1 "<workspace_or_org_id>" AUTH_LOG 100 "<after>" |
+  Set-Content -Encoding utf8NoBOM output.jsonl
+```
 
 ## Confirm the administration boundaries
 
 Compliance coverage follows the ChatGPT workspace and the products represented
-in the current authenticated reference. Platform API organization data follows
+in the current API reference. Platform API organization data follows
 its own API data and administration controls.
 
-The authenticated reference owns the current routes, event coverage, schemas,
+The API reference owns the current routes, event coverage, schemas,
 filters, retention behavior, permission requirements, and request mechanics.
 This page doesn't duplicate that contract.
 
