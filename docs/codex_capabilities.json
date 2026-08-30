@@ -21,8 +21,10 @@
       "name": "agents",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -38,7 +40,7 @@
       ]
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_command",
       "cli_command": "codex app",
       "codex_cli_versions": [
@@ -52,8 +54,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "app",
@@ -96,8 +102,10 @@
       "name": "app-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -134,8 +142,10 @@
       "parent_cli_command": "codex app-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -169,8 +179,10 @@
       "parent_cli_command": "codex app-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -204,8 +216,10 @@
       "parent_cli_command": "codex app-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -239,8 +253,10 @@
       "parent_cli_command": "codex app-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -274,8 +290,10 @@
       "parent_cli_command": "codex app-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -308,8 +326,10 @@
       "name": "apply",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex apply --help"
         },
         {
@@ -345,8 +365,10 @@
       "name": "archive",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -382,8 +404,10 @@
       "name": "cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -420,8 +444,10 @@
       "parent_cli_command": "codex cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -455,8 +481,10 @@
       "parent_cli_command": "codex cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -490,8 +518,10 @@
       "parent_cli_command": "codex cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -525,8 +555,10 @@
       "parent_cli_command": "codex cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -560,8 +592,10 @@
       "parent_cli_command": "codex cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -595,8 +629,10 @@
       "parent_cli_command": "codex cloud",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -629,8 +665,10 @@
       "name": "completion",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex completion --help"
         },
         {
@@ -666,8 +704,10 @@
       "name": "debug",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -704,8 +744,10 @@
       "parent_cli_command": "codex debug",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -739,8 +781,10 @@
       "parent_cli_command": "codex debug",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -774,8 +818,10 @@
       "parent_cli_command": "codex debug",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -809,8 +855,10 @@
       "parent_cli_command": "codex debug",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -843,8 +891,10 @@
       "name": "delete",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -880,8 +930,10 @@
       "name": "doctor",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -917,8 +969,10 @@
       "name": "exec",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -955,8 +1009,10 @@
       "name": "exec-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -993,8 +1049,10 @@
       "parent_cli_command": "codex exec-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -1028,8 +1086,10 @@
       "parent_cli_command": "codex exec-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -1063,8 +1123,10 @@
       "parent_cli_command": "codex exec",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -1098,8 +1160,10 @@
       "parent_cli_command": "codex exec",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -1133,8 +1197,10 @@
       "parent_cli_command": "codex exec",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -1168,8 +1234,10 @@
       "parent_cli_command": "codex exec",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -1202,8 +1270,10 @@
       "name": "features",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -1240,8 +1310,10 @@
       "parent_cli_command": "codex features",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -1275,8 +1347,10 @@
       "parent_cli_command": "codex features",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -1310,8 +1384,10 @@
       "parent_cli_command": "codex features",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -1345,8 +1421,10 @@
       "parent_cli_command": "codex features",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -1379,8 +1457,10 @@
       "name": "fork",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -1416,8 +1496,10 @@
       "name": "help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1455,8 +1537,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1469,7 +1553,7 @@
       "source_url": "codex-cli://help"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_command",
       "cli_command": "codex help app",
       "codex_cli_versions": [
@@ -1483,8 +1567,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "app",
@@ -1526,8 +1614,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1561,8 +1651,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1596,8 +1688,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1631,8 +1725,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1666,8 +1762,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1701,8 +1799,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1736,8 +1836,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1771,8 +1873,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1806,8 +1910,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1841,8 +1947,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1876,8 +1984,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1911,8 +2021,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1946,8 +2058,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -1981,8 +2095,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2016,8 +2132,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2051,8 +2169,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2086,8 +2206,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2121,8 +2243,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2156,8 +2280,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2191,8 +2317,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2226,8 +2354,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2261,8 +2391,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2296,8 +2428,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2331,8 +2465,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2366,8 +2502,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2401,8 +2539,10 @@
       "parent_cli_command": "codex help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -2435,8 +2575,10 @@
       "name": "login",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -2473,8 +2615,10 @@
       "parent_cli_command": "codex login",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -2508,8 +2652,10 @@
       "parent_cli_command": "codex login",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -2542,8 +2688,10 @@
       "name": "logout",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex logout --help"
         },
         {
@@ -2579,8 +2727,10 @@
       "name": "mcp",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp --help"
         },
         {
@@ -2616,8 +2766,10 @@
       "name": "mcp-server",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp-server --help"
         },
         {
@@ -2654,8 +2806,10 @@
       "parent_cli_command": "codex mcp",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp --help"
         },
         {
@@ -2688,8 +2842,10 @@
       "name": "migrate-rollouts",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -2725,8 +2881,10 @@
       "name": "plugin",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -2763,8 +2921,10 @@
       "parent_cli_command": "codex plugin",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -2798,8 +2958,10 @@
       "parent_cli_command": "codex plugin",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -2833,8 +2995,10 @@
       "parent_cli_command": "codex plugin",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -2868,8 +3032,10 @@
       "parent_cli_command": "codex plugin",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -2903,8 +3069,10 @@
       "parent_cli_command": "codex plugin",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -2937,8 +3105,10 @@
       "name": "queue",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -2974,8 +3144,10 @@
       "name": "remote-control",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -3012,8 +3184,10 @@
       "parent_cli_command": "codex remote-control",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -3047,8 +3221,10 @@
       "parent_cli_command": "codex remote-control",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -3082,8 +3258,10 @@
       "parent_cli_command": "codex remote-control",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -3117,8 +3295,10 @@
       "parent_cli_command": "codex remote-control",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -3151,8 +3331,10 @@
       "name": "resume",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -3188,8 +3370,10 @@
       "name": "review",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -3225,8 +3409,10 @@
       "name": "sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -3262,8 +3448,10 @@
       "name": "unarchive",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -3299,8 +3487,10 @@
       "name": "update",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex update --help"
         },
         {
@@ -3339,8 +3529,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3377,8 +3569,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3419,8 +3613,10 @@
       "name": "--ask-for-approval",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3458,8 +3654,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3497,8 +3695,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3535,8 +3735,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3573,8 +3775,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3611,8 +3815,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3649,8 +3855,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3688,8 +3896,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3727,8 +3937,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3768,8 +3980,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3810,8 +4024,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3848,8 +4064,10 @@
       "name": "--no-alt-screen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3889,8 +4107,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3928,8 +4148,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -3966,8 +4188,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -4004,8 +4228,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -4046,8 +4272,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -4084,8 +4312,10 @@
       "name": "--search",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -4122,8 +4352,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -4161,8 +4393,10 @@
       "name": "--version",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex --help"
         },
         {
@@ -4200,8 +4434,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4239,8 +4475,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4277,8 +4515,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4315,8 +4555,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4354,8 +4596,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4392,8 +4636,10 @@
       "name": "--no-alt-screen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4430,8 +4676,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4468,8 +4716,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex agents --help"
         },
         {
@@ -4506,8 +4756,10 @@
       "name": "--analytics-default-enabled",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4544,8 +4796,10 @@
       "name": "--code-mode-host",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4583,8 +4837,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4621,8 +4877,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4659,8 +4917,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4698,8 +4958,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4736,8 +4998,10 @@
       "name": "--listen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4774,8 +5038,10 @@
       "name": "--stdio",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4812,8 +5078,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4850,8 +5118,10 @@
       "name": "--ws-audience",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4888,8 +5158,10 @@
       "name": "--ws-auth",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4926,8 +5198,10 @@
       "name": "--ws-issuer",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -4964,8 +5238,10 @@
       "name": "--ws-max-clock-skew-seconds",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -5002,8 +5278,10 @@
       "name": "--ws-shared-secret-file",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -5040,8 +5318,10 @@
       "name": "--ws-token-file",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -5078,8 +5358,10 @@
       "name": "--ws-token-sha256",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex app-server --help"
         },
         {
@@ -5093,7 +5375,7 @@
       "synopsis": "--ws-token-sha256 <HEX>"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5111,8 +5393,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--config",
@@ -5133,7 +5419,7 @@
       "synopsis": "-c, --config <key=value>"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5150,8 +5436,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--disable",
@@ -5172,7 +5462,7 @@
       "synopsis": "--disable <FEATURE>"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5189,8 +5479,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--download-url",
@@ -5211,7 +5505,7 @@
       "synopsis": "--download-url <DOWNLOAD_URL_OVERRIDE>"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5228,8 +5522,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--enable",
@@ -5250,7 +5548,7 @@
       "synopsis": "--enable <FEATURE>"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex app",
       "cli_flags": [
@@ -5268,8 +5566,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--help",
@@ -5314,8 +5616,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex apply --help"
         },
         {
@@ -5352,8 +5656,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex apply --help"
         },
         {
@@ -5390,8 +5696,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex apply --help"
         },
         {
@@ -5429,8 +5737,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex apply --help"
         },
         {
@@ -5467,8 +5777,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5505,8 +5817,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5544,8 +5858,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5583,8 +5899,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5621,8 +5939,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5659,8 +5979,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5697,8 +6019,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5735,8 +6059,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5774,8 +6100,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5813,8 +6141,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5854,8 +6184,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5896,8 +6228,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5937,8 +6271,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -5976,8 +6312,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -6014,8 +6352,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -6052,8 +6392,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -6094,8 +6436,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -6132,8 +6476,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex archive --help"
         },
         {
@@ -6171,8 +6517,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -6209,8 +6557,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -6247,8 +6597,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -6286,8 +6638,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -6325,8 +6679,10 @@
       "name": "--version",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex cloud --help"
         },
         {
@@ -6364,8 +6720,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex completion --help"
         },
         {
@@ -6402,8 +6760,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex completion --help"
         },
         {
@@ -6440,8 +6800,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex completion --help"
         },
         {
@@ -6479,8 +6841,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex completion --help"
         },
         {
@@ -6518,8 +6882,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -6556,8 +6922,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -6594,8 +6962,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -6633,8 +7003,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug --help"
         },
         {
@@ -6671,8 +7043,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6709,8 +7083,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6748,8 +7124,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6787,8 +7165,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6825,8 +7205,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6863,8 +7245,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6901,8 +7285,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6939,8 +7325,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -6977,8 +7365,10 @@
       "name": "--force",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7016,8 +7406,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7055,8 +7447,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7096,8 +7490,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7138,8 +7534,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7179,8 +7577,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7218,8 +7618,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7256,8 +7658,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7294,8 +7698,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7336,8 +7742,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7374,8 +7782,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex delete --help"
         },
         {
@@ -7412,8 +7822,10 @@
       "name": "--all",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7450,8 +7862,10 @@
       "name": "--ascii",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7489,8 +7903,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7527,8 +7943,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7565,8 +7983,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7604,8 +8024,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7642,8 +8064,10 @@
       "name": "--json",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7680,8 +8104,10 @@
       "name": "--no-color",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7718,8 +8144,10 @@
       "name": "--summary",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex doctor --help"
         },
         {
@@ -7756,8 +8184,10 @@
       "name": "--concurrent-requests",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -7795,8 +8225,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -7833,8 +8265,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -7871,8 +8305,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -7909,8 +8345,10 @@
       "name": "--environment-id",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -7947,8 +8385,10 @@
       "name": "--exit-on-stdin-close",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -7986,8 +8426,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -8024,8 +8466,10 @@
       "name": "--listen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -8062,8 +8506,10 @@
       "name": "--name",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -8100,8 +8546,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -8138,8 +8586,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -8176,8 +8626,10 @@
       "name": "--use-agent-identity-auth",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec-server --help"
         },
         {
@@ -8214,8 +8666,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8252,8 +8706,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8291,8 +8747,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8329,8 +8787,10 @@
       "name": "--color",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8368,8 +8828,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8406,8 +8868,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8444,8 +8908,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8482,8 +8948,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8520,8 +8988,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8558,8 +9028,10 @@
       "name": "--ephemeral",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8597,8 +9069,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8635,8 +9109,10 @@
       "name": "--ignore-rules",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8673,8 +9149,10 @@
       "name": "--ignore-user-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8712,8 +9190,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8750,8 +9230,10 @@
       "name": "--json",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8791,8 +9273,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8833,8 +9317,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8874,8 +9360,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8913,8 +9401,10 @@
       "name": "--output-last-message",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8951,8 +9441,10 @@
       "name": "--output-schema",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -8990,8 +9482,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -9032,8 +9526,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -9070,8 +9566,10 @@
       "name": "--skip-git-repo-check",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -9108,8 +9606,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -9146,8 +9646,10 @@
       "name": "--thread-source",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -9185,8 +9687,10 @@
       "name": "--version",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex exec --help"
         },
         {
@@ -9224,8 +9728,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -9262,8 +9768,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -9300,8 +9808,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -9339,8 +9849,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex features --help"
         },
         {
@@ -9377,8 +9889,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9415,8 +9929,10 @@
       "name": "--all",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9453,8 +9969,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9495,8 +10013,10 @@
       "name": "--ask-for-approval",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9534,8 +10054,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9573,8 +10095,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9611,8 +10135,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9649,8 +10175,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9687,8 +10215,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9725,8 +10255,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9764,8 +10296,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9803,8 +10337,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9841,8 +10377,10 @@
       "name": "--last",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9882,8 +10420,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9924,8 +10464,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -9962,8 +10504,10 @@
       "name": "--no-alt-screen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10003,8 +10547,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10042,8 +10588,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10080,8 +10628,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10118,8 +10668,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10160,8 +10712,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10198,8 +10752,10 @@
       "name": "--search",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10236,8 +10792,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10275,8 +10833,10 @@
       "name": "--version",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex fork --help"
         },
         {
@@ -10313,8 +10873,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10351,8 +10913,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10393,8 +10957,10 @@
       "name": "--ask-for-approval",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10432,8 +10998,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10471,8 +11039,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10509,8 +11079,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10547,8 +11119,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10585,8 +11159,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10623,8 +11199,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10662,8 +11240,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10701,8 +11281,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10742,8 +11324,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10784,8 +11368,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10822,8 +11408,10 @@
       "name": "--no-alt-screen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10863,8 +11451,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10902,8 +11492,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10940,8 +11532,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -10978,8 +11572,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -11020,8 +11616,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -11058,8 +11656,10 @@
       "name": "--search",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -11096,8 +11696,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -11135,8 +11737,10 @@
       "name": "--version",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex help --help"
         },
         {
@@ -11174,8 +11778,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11212,8 +11818,10 @@
       "name": "--device-auth",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11250,8 +11858,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11288,8 +11898,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11327,8 +11939,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11365,8 +11979,10 @@
       "name": "--with-access-token",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11403,8 +12019,10 @@
       "name": "--with-api-key",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex login --help"
         },
         {
@@ -11442,8 +12060,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex logout --help"
         },
         {
@@ -11480,8 +12100,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex logout --help"
         },
         {
@@ -11518,8 +12140,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex logout --help"
         },
         {
@@ -11557,8 +12181,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex logout --help"
         },
         {
@@ -11596,8 +12222,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp-server --help"
         },
         {
@@ -11634,8 +12262,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp-server --help"
         },
         {
@@ -11672,8 +12302,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp-server --help"
         },
         {
@@ -11711,8 +12343,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp-server --help"
         },
         {
@@ -11749,8 +12383,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp-server --help"
         },
         {
@@ -11788,8 +12424,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp --help"
         },
         {
@@ -11826,8 +12464,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp --help"
         },
         {
@@ -11864,8 +12504,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp --help"
         },
         {
@@ -11903,8 +12545,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex mcp --help"
         },
         {
@@ -11941,8 +12585,10 @@
       "name": "--apply",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -11980,8 +12626,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12018,8 +12666,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12056,8 +12706,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12095,8 +12747,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12133,8 +12787,10 @@
       "name": "--json",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12171,8 +12827,10 @@
       "name": "--max-mib-per-second",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12209,8 +12867,10 @@
       "name": "--thread",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12247,8 +12907,10 @@
       "name": "--verbose",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex migrate-rollouts --help"
         },
         {
@@ -12286,8 +12948,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -12324,8 +12988,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -12362,8 +13028,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -12401,8 +13069,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex plugin --help"
         },
         {
@@ -12439,8 +13109,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12477,8 +13149,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12516,8 +13190,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12555,8 +13231,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12593,8 +13271,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12631,8 +13311,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12669,8 +13351,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12707,8 +13391,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12746,8 +13432,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12785,8 +13473,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12826,8 +13516,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12864,8 +13556,10 @@
       "name": "--message",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12906,8 +13600,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12947,8 +13643,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -12986,8 +13684,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -13024,8 +13724,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -13062,8 +13764,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -13104,8 +13808,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -13142,8 +13848,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -13180,8 +13888,10 @@
       "name": "--thread",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex queue --help"
         },
         {
@@ -13219,8 +13929,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -13257,8 +13969,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -13295,8 +14009,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -13334,8 +14050,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -13372,8 +14090,10 @@
       "name": "--json",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex remote-control --help"
         },
         {
@@ -13410,8 +14130,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13448,8 +14170,10 @@
       "name": "--all",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13486,8 +14210,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13528,8 +14254,10 @@
       "name": "--ask-for-approval",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13567,8 +14295,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13606,8 +14336,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13644,8 +14376,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13682,8 +14416,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13720,8 +14456,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13758,8 +14496,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13797,8 +14537,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13836,8 +14578,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13874,8 +14618,10 @@
       "name": "--include-non-interactive",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13912,8 +14658,10 @@
       "name": "--last",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13953,8 +14701,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -13995,8 +14745,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14033,8 +14785,10 @@
       "name": "--no-alt-screen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14074,8 +14828,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14113,8 +14869,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14151,8 +14909,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14189,8 +14949,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14231,8 +14993,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14269,8 +15033,10 @@
       "name": "--search",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14307,8 +15073,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14346,8 +15114,10 @@
       "name": "--version",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex resume --help"
         },
         {
@@ -14384,8 +15154,10 @@
       "name": "--base",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14422,8 +15194,10 @@
       "name": "--commit",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14461,8 +15235,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14499,8 +15275,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14537,8 +15315,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14576,8 +15356,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14614,8 +15396,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14652,8 +15436,10 @@
       "name": "--title",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14690,8 +15476,10 @@
       "name": "--uncommitted",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex review --help"
         },
         {
@@ -14705,7 +15493,7 @@
       "synopsis": "--uncommitted"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex sandbox",
       "cli_flags": [
@@ -14722,8 +15510,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--allow-unix-socket",
@@ -14768,8 +15560,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -14807,8 +15601,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -14845,8 +15641,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -14883,8 +15681,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -14922,8 +15722,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -14960,8 +15762,10 @@
       "name": "--include-managed-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -14975,7 +15779,7 @@
       "synopsis": "--include-managed-config"
     },
     {
-      "active": false,
+      "active": true,
       "category": "cli_option",
       "cli_command": "codex sandbox",
       "cli_flags": [
@@ -14992,8 +15796,12 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
-        "removed_in_version": "0.151.0",
-        "status": "removed_from_inventory"
+        "not_observed_in_version": "0.151.0",
+        "observation_environment": {
+          "arch": "x86_64",
+          "os": "linux"
+        },
+        "status": "not_observed_on_current_platform"
       },
       "mirrored_path": "codex_cli_surface.json",
       "name": "--log-denials",
@@ -15038,8 +15846,10 @@
       "name": "--permission-profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -15077,8 +15887,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -15115,8 +15927,10 @@
       "name": "--sandbox-state-disable-network",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -15153,8 +15967,10 @@
       "name": "--sandbox-state-json",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -15191,8 +16007,10 @@
       "name": "--sandbox-state-readable-root",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex sandbox --help"
         },
         {
@@ -15229,8 +16047,10 @@
       "name": "--add-dir",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15267,8 +16087,10 @@
       "name": "--approve-for-me",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15306,8 +16128,10 @@
       "name": "--cd",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15345,8 +16169,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15383,8 +16209,10 @@
       "name": "--dangerously-bypass-approvals-and-sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15421,8 +16249,10 @@
       "name": "--dangerously-bypass-hook-trust",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15459,8 +16289,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15497,8 +16329,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15536,8 +16370,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15575,8 +16411,10 @@
       "name": "--image",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15616,8 +16454,10 @@
       "name": "--local-provider",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15658,8 +16498,10 @@
       "name": "--model",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15699,8 +16541,10 @@
       "name": "--oss",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15738,8 +16582,10 @@
       "name": "--profile",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15776,8 +16622,10 @@
       "name": "--remote",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15814,8 +16662,10 @@
       "name": "--remote-auth-token-env",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15856,8 +16706,10 @@
       "name": "--sandbox",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15894,8 +16746,10 @@
       "name": "--strict-config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex unarchive --help"
         },
         {
@@ -15933,8 +16787,10 @@
       "name": "--config",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex update --help"
         },
         {
@@ -15971,8 +16827,10 @@
       "name": "--disable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex update --help"
         },
         {
@@ -16009,8 +16867,10 @@
       "name": "--enable",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex update --help"
         },
         {
@@ -16048,8 +16908,10 @@
       "name": "--help",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex update --help"
         },
         {
@@ -31970,8 +32832,10 @@
       "name": "prompt-input",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32079,8 +32943,10 @@
       "name": "imagegen",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32184,8 +33050,10 @@
       "name": "openai-docs",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32289,8 +33157,10 @@
       "name": "plugin-creator",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32338,8 +33208,10 @@
       "name": "review-agent",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32443,8 +33315,10 @@
       "name": "skill-creator",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32548,8 +33422,10 @@
       "name": "skill-installer",
       "provenance": [
         {
+          "arch": "x86_64",
           "codex_cli_version": "0.151.0",
           "evidence_type": "installed_cli_observation",
+          "os": "linux",
           "source": "codex debug prompt-input"
         },
         {
@@ -32610,6 +33486,10 @@
       "title": "Web search"
     }
   ],
+  "cli_observation": {
+    "arch": "x86_64",
+    "os": "linux"
+  },
   "codex_cli_version": "0.151.0",
   "codex_cli_version_raw": "codex-cli 0.151.0",
   "codex_cli_versions": [
@@ -32687,7 +33567,7 @@
     "codex-cli 0.151.0"
   ],
   "counts": {
-    "active": 890,
+    "active": 899,
     "by_category": {
       "cli_command": 93,
       "cli_option": 329,
@@ -32704,13 +33584,13 @@
       "stable": 41,
       "under development": 48
     },
-    "inactive": 44,
+    "inactive": 35,
     "total": 934
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",
     "github_release_metadata": "Stable release metadata published by openai/codex.",
-    "installed_cli_observation": "Deterministic output observed from an isolated packaged CLI.",
+    "installed_cli_observation": "Deterministic, platform-scoped output observed from an isolated packaged CLI.",
     "official_documentation": "Published OpenAI documentation mirrored by this repository.",
     "upstream_repository_source": "Immutable release-matched openai/codex source."
   },
