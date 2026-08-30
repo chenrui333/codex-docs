@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-30T00:48:21+00:00",
+  "generated_at": "2026-08-30T01:01:19+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -14,30 +14,5 @@
     "source_kind": "installed_codex_cli"
   },
   "total_files": 256,
-  "updated": [
-    "developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex/index.md",
-    "developers.openai.com/blog/building-frontend-uis-with-codex-and-figma/index.md",
-    "developers.openai.com/blog/codex-as-a-platform/index.md",
-    "developers.openai.com/blog/codex-at-devday/index.md",
-    "developers.openai.com/blog/codex-for-documentation-dagster/index.md",
-    "developers.openai.com/blog/custom-code-review-rules-for-codex/index.md",
-    "developers.openai.com/blog/mastering-codex-remote-for-engineering/index.md",
-    "developers.openai.com/blog/run-long-horizon-tasks-with-codex/index.md",
-    "developers.openai.com/blog/skyscanner-codex-jetbrains-mcp/index.md",
-    "developers.openai.com/cookbook/articles/codex_exec_plans/index.md",
-    "developers.openai.com/cookbook/examples/codex/autofix-github-actions/index.md",
-    "developers.openai.com/cookbook/examples/codex/build_code_review_with_codex_sdk/index.md",
-    "developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex/index.md",
-    "developers.openai.com/cookbook/examples/codex/code_modernization/index.md",
-    "developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk/index.md",
-    "developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex/index.md",
-    "developers.openai.com/cookbook/examples/codex/jira-github/index.md",
-    "developers.openai.com/cookbook/examples/codex/secure_quality_gitlab/index.md",
-    "developers.openai.com/cookbook/examples/codex/using_goals_in_codex/index.md",
-    "developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide/index.md",
-    "developers.openai.com/cookbook/topic/codex/index.md",
-    "developers.openai.com/resources/codex/index.md",
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/index.md"
-  ]
+  "updated": []
 }
