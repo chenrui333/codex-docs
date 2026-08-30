@@ -1132,4 +1132,3 @@ pipeline {
 # Wrap Up
 
 With the Codex SDK, you can build your own automated code review workflow in CI/CD environments that are not directly connected to Codex Cloud. However, the pattern of triggering Codex with a prompt, receiving a structured output, and then acting on that output with an API call extends far beyond Code Review. For example, we could use this pattern to trigger a root-cause analysis when an incident is created and post a structured report into a Slack channel. Or we could create a code quality report on each PR and post results into a dashboard.
-

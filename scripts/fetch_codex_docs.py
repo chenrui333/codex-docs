@@ -1088,7 +1088,7 @@ def html_to_markdown(url: str, html: str) -> str:
 
     heading = f"# {title or 'Codex Docs'}"
     source_line = f"Source: {url}"
-    return f"{heading}\n\n{source_line}\n\n{markdown_body}\n"
+    return f"{heading}\n\n{source_line}\n\n{markdown_body.rstrip()}\n"
 
 
 def keep_github_markdown_path(path: str) -> bool:

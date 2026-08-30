@@ -47,4 +47,3 @@ Nov 19, 2025](/cookbook/examples/codex/code_modernization)[Automating Code Quali
 CodexSecurity
 
 Aug 29, 2025](/cookbook/examples/codex/secure_quality_gitlab)
-

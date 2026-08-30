@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex'
-source_last_modified: '2026-05-11T17:56:55Z'
-source_etag: 'W/"62ab699ed4e09d43b7b22abe4f58e305"'
+source_last_modified: '2026-08-29T10:28:35Z'
+source_etag: 'W/"97530b73cc749d48118dea130ac6e228"'
 codex_cli_versions: ["0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
 codex_cli_versions_raw: ["codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
@@ -700,4 +700,3 @@ Iterative repair loops make agentic maintenance easier to review and operate bec
 Review finds candidate issues. Repair makes focused edits. Validation executes the artifact and produces the next delta. When those phases exchange structured outputs, the workflow becomes easier to inspect, repeat, and adapt.
 
 The main idea is simple: instead of relying on a single pass, give the workflow a way to learn from the artifact, make a bounded repair, and react to real validation feedback. That small change makes agentic maintenance much more practical.
-

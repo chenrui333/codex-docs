@@ -108,7 +108,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "1ca1653d4e229a67a417e70bee108d6e82056b02713024d04cd1eeddb487f21a",
+      "sha256": "e44da0fac6cb5f3fec937e39fe3a5624fc2bf1760ed9996ae360b42e407935c8",
       "source_area": "codex_blog",
       "source_etag": "W/\"041904705f27a9a09eafabdce22189eb\"",
       "source_last_modified": "2026-08-29T10:10:11Z",
@@ -122,7 +122,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "d9c7371baa3cb6e52602b4aa4463b69bb0fae196e4feacfafc50254fb1c316b5",
+      "sha256": "6acbc441311a39a4577f286cc5b109b333e63cfe6884ba939176367d5b46e3de",
       "source_area": "codex_blog",
       "source_etag": "W/\"5de608773af01f4438e2199a2bfd96d4\"",
       "source_last_modified": "2026-08-29T10:32:56Z",
@@ -136,7 +136,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "26ef5e10c3aae22698cf1d5f4121fd353fa5425fe0fff290d46c3095990c8ce8",
+      "sha256": "c11987f90e88eb152021cce5edf34cbf94977c616bb2c4c0f86b2e65652d4a59",
       "source_area": "codex_blog",
       "source_etag": "W/\"0fa1a7c2b7fa75ac2532f8fa3de574fa\"",
       "source_last_modified": "2026-08-29T10:09:48Z",
@@ -150,7 +150,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "bf14cb611af261a64caf3a8b2640f0f7fa4b43b04f601da8f6f21ea225d2c86c",
+      "sha256": "14de2409698347d5e386fe2d2819147af5135260721e2b50600fe7a1c7b5094e",
       "source_area": "codex_blog",
       "source_etag": "W/\"e585c82aded476163979aa9f1b0958c2\"",
       "source_last_modified": "2026-08-29T10:34:55Z",
@@ -164,7 +164,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "41814eafe12901fa8cab11d8b53c1b37f1218d197de8f6e28e63cc33e966a388",
+      "sha256": "dc5db0a2cd9050ae8d9b26dbba9c9769b6a411f40a716d7baebcb632b083afe7",
       "source_area": "codex_blog",
       "source_etag": "W/\"4806268ecf6b0f9e0e7705ffb5649fa9\"",
       "source_last_modified": "2026-08-29T10:34:54Z",
@@ -178,7 +178,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "52d02f1aed89ba4efe052257b988ab65304171986c3a576cd74d7234dc6a0ed3",
+      "sha256": "6f1056380488579eb9a17a90c0584009775ffd3c90d5280d397214ea2dc7d516",
       "source_area": "codex_blog",
       "source_etag": "W/\"ca961af1fc6501361ae23269c01601a6\"",
       "source_last_modified": "2026-08-29T10:18:17Z",
@@ -192,7 +192,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "0ecc7dbfaf9824a327d55a31be6d4d2abcb2395027f17f8fe763b6bab87ef114",
+      "sha256": "38e56267eb55413ce4eab72177fb063bbbc573527d3c70cd7c5fdb5918dcdcc1",
       "source_area": "codex_blog",
       "source_etag": "W/\"4280e418cdf737ceda4b4ce68de5b99d\"",
       "source_last_modified": "2026-08-29T10:20:00Z",
@@ -206,7 +206,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "3fbbb257cc48d2e3917121ec5d0d0770f2023179e4d841a22397b703c7a01731",
+      "sha256": "15940dc2e221f0113479b815738d08b70e76a03bbd0c6b4b82c174ae08e46aab",
       "source_area": "codex_blog",
       "source_etag": "W/\"4296fa0f831f0923a0b253e80117eda0\"",
       "source_last_modified": "2026-08-29T10:34:44Z",
@@ -220,7 +220,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "sha256": "20b3a45a01a84fb4d34b117769330519260663a6183b5f861a3d864263cf0e81",
+      "sha256": "ef6f21d7c9b6865243dd1d0582f68f8197ebbf2a3bbb1b378eaa32debaa91395",
       "source_area": "codex_blog",
       "source_etag": "W/\"458bc40cb6621f8f3287e96201228e88\"",
       "source_last_modified": "2026-08-29T10:34:49Z",
@@ -302,10 +302,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "d09009eb502be73bcf3cbef60b6fbf21c7554e3db17401965a5b65b3b63ec80e",
+      "sha256": "a35462e368d07e21393cd99cb8e1378ad9b3c3a3c4efad444c92f69d89eb31f8",
       "source_area": "cookbook",
-      "source_etag": "W/\"d60804650c2f49d95afd697bbc4c1f4c\"",
-      "source_last_modified": "2026-04-25T06:41:02Z",
+      "source_etag": "W/\"26a26ea9969e183006ecdf2e9b1ef90a\"",
+      "source_last_modified": "2026-08-29T10:55:47Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/articles/codex_exec_plans"
     },
@@ -384,7 +384,7 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "7f71e76fbbbe223d46860ed541d6df1d05da8ff610b09c84a88d506d14ea8b6a",
+      "sha256": "f8d7b17cf0f205db006630ff0fd45d35ae8984d936e33a3b8938bb8de1a789a9",
       "source_area": "cookbook",
       "source_etag": "W/\"863a4705d8d6668dc50eecec9c7b11b7\"",
       "source_last_modified": "2026-08-29T10:36:02Z",
@@ -466,7 +466,7 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "e1a9452509ca027ca7d54f14a8cca83bc76513465722a9ed1aa239c822367567",
+      "sha256": "09ec6328c0975a8af3c1678374da20ed657b630c5b81d7206dc1e005b67788ee",
       "source_area": "cookbook",
       "source_etag": "W/\"39380fe5839cbe74016a117e33a1e148\"",
       "source_last_modified": "2026-08-29T21:29:55Z",
@@ -542,10 +542,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "43f41d6ac50dabb5809184ce7098070443aa313c00fa4fa9cf9571f263786c3b",
+      "sha256": "27c53ff196ce6e82c18072655655516f5365c20a9b728a1a3726cb4e5ade7ab1",
       "source_area": "cookbook",
-      "source_etag": "W/\"62ab699ed4e09d43b7b22abe4f58e305\"",
-      "source_last_modified": "2026-05-11T17:56:55Z",
+      "source_etag": "W/\"97530b73cc749d48118dea130ac6e228\"",
+      "source_last_modified": "2026-08-29T10:28:35Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex"
     },
@@ -624,10 +624,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "e4dec46ebbe4b82e2be5cddd746f9193d534c4e0b38c4bf06197732c3637db08",
+      "sha256": "2b214758b0900072a9a52892baf52c7fe846a5a3d2dff2b18da2227683c56f09",
       "source_area": "cookbook",
-      "source_etag": "W/\"e1fa0454e42b0805f62e4d6011c0692f\"",
-      "source_last_modified": "2026-04-25T06:42:06Z",
+      "source_etag": "W/\"226f60619733dd417453e0fc9c770e4f\"",
+      "source_last_modified": "2026-08-29T11:11:50Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/code_modernization"
     },
@@ -706,7 +706,7 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "be18558889d2305d9eb92cc64131f2232b0f9a8a01e81d304fe97d7a932fb795",
+      "sha256": "439712f8d4040f47afd890f4d4a4b178bffa9d3c23b33a5cb546be5f8ca6b8c1",
       "source_area": "cookbook",
       "source_etag": "W/\"eddc2727b0c00e1f115a2e96bf35b810\"",
       "source_last_modified": "2026-08-29T11:07:37Z",
@@ -726,10 +726,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "77ce576b1b00070ce4fa78440e19e372cee46a40442549bc897fb232bee7b22c",
+      "sha256": "d9c5c96ed7592afa1233110b9ce0e984074835fcb8eeefd487273ce6d6d2d4b8",
       "source_area": "cookbook",
-      "source_etag": "W/\"2d440254c76253950980efc7ce236578\"",
-      "source_last_modified": "2026-08-18T17:23:54Z",
+      "source_etag": "W/\"7dbac0da7f917824b55576ab89420d02\"",
+      "source_last_modified": "2026-08-29T10:27:49Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex"
     },
@@ -808,10 +808,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "eab7fa3eeee2eff7c94277e1c89406c00306821d427b3d72978aa268f5b0fae8",
+      "sha256": "10a2003821ab367613d3524ac5f497e473cf8ea0f1dcd15365dce49f5d8c7b7c",
       "source_area": "cookbook",
-      "source_etag": "W/\"ba99c589ebd0dc3562dd82b75b6322b1\"",
-      "source_last_modified": "2026-08-04T01:54:05Z",
+      "source_etag": "W/\"ba41cdc55561db147bb16313182a14b1\"",
+      "source_last_modified": "2026-08-29T20:32:36Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/jira-github"
     },
@@ -890,10 +890,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "e9c22d572bc512b1d343622e1ccea2ee04ce6801b1bfa73934412c2b7cf9de36",
+      "sha256": "398e8c330a24de83e09a5106109712ea140d55b43ac6c0a5aa6f99e107334881",
       "source_area": "cookbook",
-      "source_etag": "W/\"8ca9ef2c65083088b0441ce942e75ab8\"",
-      "source_last_modified": "2026-04-25T06:43:54Z",
+      "source_etag": "W/\"b6ee0d459cae082aa200b2c88429eb31\"",
+      "source_last_modified": "2026-08-29T10:22:37Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab"
     },
@@ -966,10 +966,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "7be64a3a6b26c3cabadb30f48845e6ae9787950f15344786ce9fb4560233ccc6",
+      "sha256": "921a3b53460105bbb1c766fa3e463eab573d19f9505efed71bda9eb24fbf0789",
       "source_area": "cookbook",
-      "source_etag": "W/\"03da83b5c92e1ff35ed196459eea2bb5\"",
-      "source_last_modified": "2026-07-14T18:17:46Z",
+      "source_etag": "W/\"5c23cf423cb0db332b4b2048bc1eeea6\"",
+      "source_last_modified": "2026-08-29T10:27:43Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex"
     },
@@ -1048,10 +1048,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "3ab90e17248326662065ca2e12a0200257c22dc92dc632af44ac89bf71568189",
+      "sha256": "e54928d602242bf3961f66375b610125e9953a66f7a6564b43161e4481a48b7b",
       "source_area": "cookbook",
-      "source_etag": "W/\"4f9e1c42917ce0b6e966b3c0d5682663\"",
-      "source_last_modified": "2026-04-25T06:41:24Z",
+      "source_etag": "W/\"be9767e93af033a12f10054e7e728fad\"",
+      "source_last_modified": "2026-08-29T10:08:57Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide"
     },
@@ -1130,7 +1130,7 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "cafd17ec354060fb1f14cbbbcd98518f2a24c829e737bffa250b7f02722b17dd",
+      "sha256": "e8efaca67a5a707ad447199fe3a7af038aa4480cb96ddb8de08c36cba282fa42",
       "source_area": "cookbook",
       "source_etag": "W/\"207746a71078d11f7ef624aa3b17b12c\"",
       "source_last_modified": "2026-08-29T10:48:28Z",
@@ -1212,10 +1212,10 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "a9f4d5b28ddb7dfce8e58a175dd0c892afb480b33a268d48efb04ffb9b6b46cb",
+      "sha256": "f11a335d91d37a09643d25648e6ccf3d1671d20b10608960f61cfc2030603933",
       "source_area": "resource",
       "source_etag": "\"256d647990a8e3feeb4322b9a08d1e29\"",
-      "source_last_modified": "2026-04-25T12:19:54Z",
+      "source_last_modified": "2026-08-29T20:17:57Z",
       "source_type": "developers",
       "source_url": "https://developers.openai.com/resources/codex"
     },
@@ -5736,7 +5736,7 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "c32d19725e96a05b0fafd4677344f1601376a89edd3ccd136846f2e3535283d8",
+      "sha256": "ca1f7976e0efd72c925427eff5c6db96ba3ebed19d27f282bcae0b459bcf4b2a",
       "source_area": "learn_changelog",
       "source_etag": "W/\"8debd01c2731341af4713cfd1e0a35e0\"",
       "source_kind": "learn_html_fallback",
@@ -7174,7 +7174,7 @@
         "codex-cli 0.149.0",
         "codex-cli 0.151.0"
       ],
-      "sha256": "4510a617188f96b9ee4d1a1b0523dd2519b4de86a59974a01103adfac5b9f58c",
+      "sha256": "43226ce8242d8c49c3ccdc11bab156cd0dad4ac6ce72e832cb398280015fb73a",
       "source_area": "learn_docs",
       "source_etag": "W/\"9dcc43db3dbb142cad0077d3dfc2173f\"",
       "source_kind": "learn_html_fallback",

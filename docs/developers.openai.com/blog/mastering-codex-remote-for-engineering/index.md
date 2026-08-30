@@ -247,4 +247,3 @@ The best mobile software does not shrink a desktop interface. It identifies the 
 That is how I think about Remote now. It is where I can choose the right environment, set the objective, redirect a run, answer an approval, inspect the result, and keep the whole queue of engineering work coherent.
 
 The computer still does the work. The phone keeps me in control.
-

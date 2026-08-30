@@ -647,4 +647,3 @@ Now that you’ve seen Codex MCP and the Agents SDK in action, here’s how you 
 
 - Connect MCP-powered agents with Jira, GitHub, or CI/CD pipelines via webhooks for automated, repeatable development cycles.
 - Leverage Codex MCP in multi-agent service orchestration: not just codegen, but also documentation, QA, and deployment.
-

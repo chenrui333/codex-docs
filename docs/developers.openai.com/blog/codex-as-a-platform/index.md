@@ -110,4 +110,3 @@ The opportunity is not to replace those interfaces with a universal chat box, bu
 The Codex app, CLI, and IDE extension show what the harness can do. By making the harness open source, we give developers a way to inspect those capabilities, integrate them, and adapt them to their own products and workflows.
 
 If you want to build with the Codex harness, start with the [open-source Codex repository](https://github.com/openai/codex), then choose the integration that fits your product: [codex exec](/codex/non-interactive-mode) for noninteractive jobs, the [Codex SDK](/codex/codex-sdk) for programmatic agent workflows, or [Codex app-server](/codex/app-server) for applications that need persistent conversations, streamed events, and approval handling.
-

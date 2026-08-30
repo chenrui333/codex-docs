@@ -97,4 +97,3 @@ I’ve spent a large fraction of my career figuring out the magic words that mak
 For me, the appeal of Codex is that it can help with that repetitive operational work while keeping me involved in the decisions that matter.
 
 Hopefully, I’ll get some of those heartbeats back—and spend them playing with my dogs.
-

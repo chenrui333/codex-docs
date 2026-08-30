@@ -117,4 +117,3 @@ Start with an explanation reviewers keep repeating or a repository-specific mist
 Codex Code Review is still an additional reviewer; tests, branch protections, and required approvals continue to provide hard enforcement.
 
 If you find yourself spending more time reviewing changes than writing them, start with one check your team keeps repeating. Add it to `AGENTS.md` and try Codex Code Review on your next pull request.
-

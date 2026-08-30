@@ -117,4 +117,3 @@ Before Katia went on stage five minutes later, she was able to review the two op
 We could probably talk for hours about how Codex helped us shape DevDay, let alone how it helps every one of us on a day-to-day basis–but this is just a glimpse into how we’re using Codex across OpenAI.
 
 If you want to learn more about how we use Codex and some best practices, [check out our DevDay talk about Codex](https://www.youtube.com/watch?v=Gr41tYOzE20) or [check out our documentation](https://developers.openai.com/codex).
-

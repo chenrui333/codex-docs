@@ -101,4 +101,3 @@ Overall, it has turned Codex from a standalone tool into a more integrated part 
 For us at Skyscanner, the key insight has been simple: context is everything. Codex on its own is powerful, but Codex with IDE awareness is far more effective. This context gives Codex even more insight, enabling it to produce accurate fixes faster and further increasing my trust in its output.
 
 We hope our story inspires others to experiment with these integrations. It truly feels much less like using a tool and much more like collaborating with an AI pair programmer that can see what we see.
-

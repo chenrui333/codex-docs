@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex'
-source_last_modified: '2026-08-18T17:23:54Z'
-source_etag: 'W/"2d440254c76253950980efc7ce236578"'
+source_last_modified: '2026-08-29T10:27:49Z'
+source_etag: 'W/"7dbac0da7f917824b55576ab89420d02"'
 codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0"]
 codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
@@ -1318,4 +1318,3 @@ The postmortem cycle is complete only when:
 ## Conclusion
 
 An improved directory structure is omitted here because it is impossible to predict the outcome of each phase or project. The initial setup should capture only the context that materially affects decisions, verification, and future work. As you become more comfortable with the process, you can create longer-running tasks that benefit from previous development cycles and produce more consistent, reliable results within approved boundaries.
-

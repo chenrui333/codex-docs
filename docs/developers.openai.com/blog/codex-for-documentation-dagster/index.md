@@ -156,4 +156,3 @@ By prompting Codex to reference the documentation and produce the code for this 
 All in all, the Dagster team has found Codex to be immensely helpful for creating, reviewing, and translating education content. It has enabled us to scale beyond our original capacity, helped us ensure that we have adequate documentation coverage as the framework evolves, and more importantly, it has made it so that we can more easily support our community.
 
 Codex has underscored how important context and structure are. For us, that means refining our documentation architecture so both humans and AI can navigate it easily. This feedback loop, powered by AI, has improved both how we create content and how users generate framework code. As AI tools evolve, the line between documentation, code, and automation will blur. Teams that treat documentation as structured data will have a major advantage.
-

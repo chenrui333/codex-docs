@@ -400,6 +400,7 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertIn("Useful text", converted)
         self.assertNotIn("Noise", converted)
         self.assertNotIn("bad()", converted)
+        self.assertFalse(converted.endswith("\n\n"))
 
     def test_github_discovery_and_manifest_preservation(self):
         payload = {

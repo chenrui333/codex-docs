@@ -210,4 +210,3 @@ If you want to try this yourself, start with:
 - [Codex quickstart](https://developers.openai.com/codex/quickstart/)
 - [Codex models](https://developers.openai.com/codex/models/)
 - [Codex features](https://developers.openai.com/codex/features/)
-

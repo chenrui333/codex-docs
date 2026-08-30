@@ -89,4 +89,3 @@ August 17–21, 2026
 <PromptComponent prompt={Find the latest Messages conversation about tomorrow's launch, summarize the open questions, and draft a reply without sending it.}](/codex/whats-new#work-with-more-of-your-apps-and-content)  [### Work with GitLab projects in Codex cloud
 
 GitLab support is available in beta on all ChatGPT plans.](/codex/whats-new#work-with-gitlab-projects-in-codex-cloud)
-

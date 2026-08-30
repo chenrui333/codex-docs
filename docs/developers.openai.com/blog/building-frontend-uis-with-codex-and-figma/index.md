@@ -86,4 +86,3 @@ Once you’ve completed refining the UI, you can follow the same steps that we o
 When code and the canvas are connected, you can move fluidly between execution and exploration. This roundtrip process unlocks the true power of the Figma MCP server with Codex—the ability to start from anywhere to craft meaningful, high-quality application experiences without compromising on speed.
 
 To learn more about the Figma MCP server, review our [documentation](https://developers.figma.com/docs/figma-mcp-server/) or get started by installing the Figma MCP server directly in the Codex desktop application.
-

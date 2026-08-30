@@ -130,4 +130,3 @@ And after the Codex workflow completes execution, it should open a pull request 
 This automation seamlessly integrates OpenAI Codex CLI with GitHub Actions to automatically propose fixes for failing CI runs.
 
 By leveraging Codex, you can reduce manual intervention, accelerate code reviews, and keep your main branch healthy. The workflow ensures that test failures are addressed quickly and efficiently, letting developers focus on higher-value tasks. Explore more about codex-cli and its capabilities [here](https://github.com/openai/codex/).
-

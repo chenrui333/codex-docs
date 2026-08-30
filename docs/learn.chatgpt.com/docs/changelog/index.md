@@ -427,4 +427,3 @@ Full Changelog: [rust-v0.147.0...rust-v0.148.0](https://github.com/openai/codex/
 - [#38806](https://github.com/openai/codex/pull/38806) Add a health endpoint to the code-mode gRPC listener [@copyberry](https://github.com/copyberry)
 
 [Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.148.0)
-
