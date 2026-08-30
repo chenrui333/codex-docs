@@ -31,6 +31,10 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, and feature-snapshot invariant
 - `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
 
+Each daily digest represents the latest changed sync transaction on that UTC date. A later
+meaningful sync on the same date replaces the file rather than accumulating earlier transactions;
+git history retains the prior report, while cumulative/per-run daily history remains a follow-up.
+
 Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
 
 The capability inventory distinguishes official documentation, immutable upstream source, GitHub release metadata, isolated installed-CLI observations, and deterministic relationships. It records CLI/config surfaces and feature maturity without reading the user's real Codex home, credentials, history, or sessions.
@@ -61,7 +65,7 @@ Resiliency controls:
 - `CODEX_DOCS_MAX_RETRIES` max request attempts (default `3`)
 - `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
 - `CODEX_DOCS_STRICT_SYNC=1` fails if any source segment fails; scheduled automation always enables it
-- `CODEX_FRESHNESS_GRACE_HOURS` controls when a stable-release gap becomes a strict failure (default `12`)
+- `CODEX_FRESHNESS_GRACE_HOURS` controls when a stable-release gap becomes a strict failure (default `12`, allowing two scheduled 6-hour sync opportunities)
 - Non-strict local runs retain partial output for diagnosis but automation never commits that state
 - `just check-strict` runs the idempotence check with strict sync failure enforcement
 - ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not
