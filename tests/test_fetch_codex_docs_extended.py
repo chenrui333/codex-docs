@@ -881,9 +881,15 @@ Options:
                     "codex_cli_version": "1.2.3",
                     "codex_cli_version_raw": "codex-cli 1.2.3",
                 },
+                observation_environment={"os": "test-os", "arch": "test-arch"},
             )
 
         payload = json.loads(sync.managed_file_text(item))
+        self.assertEqual(payload["schema_version"], 2)
+        self.assertEqual(
+            payload["observation_environment"],
+            {"os": "test-os", "arch": "test-arch"},
+        )
         self.assertEqual([entry["name"] for entry in payload["commands"]], ["exec", "help"])
         self.assertEqual(run.call_count, 2)
         self.assertNotIn(
@@ -923,6 +929,10 @@ Options:
                     source_url="codex-cli://help",
                     content=json.dumps(
                         {
+                            "observation_environment": {
+                                "os": "test-os",
+                                "arch": "test-arch",
+                            },
                             "global_options": [
                                 {
                                     "flags": ["-m", "--model"],
@@ -968,6 +978,10 @@ Options:
                     by_id["cli_option:codex:--model"]["config_keys"], ["model"]
                 )
                 self.assertEqual(
+                    by_id["cli_option:codex:--model"]["provenance"][0]["os"],
+                    "test-os",
+                )
+                self.assertEqual(
                     by_id["config_key:features.apps"]["feature_flag"], "apps"
                 )
                 self.assertEqual(
@@ -975,6 +989,89 @@ Options:
                     "upstream_repository_source",
                 )
                 self.assertFalse(by_id["feature_flag:old_flag"]["active"])
+
+    def test_cli_capability_removal_requires_same_platform_and_new_version(self):
+        scenarios = (
+            ({}, "1.2.3", "not_observed_on_current_platform", True),
+            (
+                {"os": "darwin", "arch": "arm64"},
+                "1.2.4",
+                "not_observed_on_current_platform",
+                True,
+            ),
+            (
+                {"os": "linux", "arch": "x86_64"},
+                "1.2.4",
+                "removed_from_inventory",
+                False,
+            ),
+        )
+        for previous_observation, current_version, expected_status, expected_active in scenarios:
+            with self.subTest(
+                previous_observation=previous_observation,
+                current_version=current_version,
+            ), tempfile.TemporaryDirectory() as temporary_directory:
+                root = Path(temporary_directory)
+                with isolated_outputs(root):
+                    sync.CAPABILITIES_PATH.parent.mkdir(parents=True)
+                    sync.CAPABILITIES_PATH.write_text(
+                        json.dumps(
+                            {
+                                "codex_cli_version": "1.2.3",
+                                "cli_observation": previous_observation,
+                                "capabilities": [
+                                    {
+                                        "id": "cli_command:platform-only",
+                                        "category": "cli_command",
+                                        "source_type": sync.CLI_SURFACE_SOURCE_TYPE,
+                                        "active": False,
+                                        "lifecycle": {
+                                            "status": "removed_from_inventory",
+                                            "first_seen_version": "1.2.3",
+                                            "last_seen_version": "1.2.3",
+                                            "removed_in_version": "1.2.3",
+                                        },
+                                    }
+                                ],
+                            }
+                        )
+                    )
+                    surface = sync.ManagedFile(
+                        rel_path=sync.CLI_SURFACE_REL_PATH,
+                        source_type=sync.CLI_SURFACE_SOURCE_TYPE,
+                        source_url="codex-cli://help",
+                        content=json.dumps(
+                            {
+                                "observation_environment": {
+                                    "os": "linux",
+                                    "arch": "x86_64",
+                                },
+                                "global_options": [],
+                                "commands": [],
+                            }
+                        ),
+                    )
+                    inventory = sync.build_capability_inventory_file(
+                        [surface],
+                        [],
+                        {},
+                        {
+                            "codex_cli_version": current_version,
+                            "codex_cli_version_raw": f"codex-cli {current_version}",
+                        },
+                    )
+
+                payload = json.loads(sync.managed_file_text(inventory))
+                capability = payload["capabilities"][0]
+                self.assertEqual(payload["cli_observation"]["os"], "linux")
+                self.assertEqual(capability["active"], expected_active)
+                self.assertEqual(capability["lifecycle"]["status"], expected_status)
+                if expected_active:
+                    self.assertNotIn("removed_in_version", capability["lifecycle"])
+                else:
+                    self.assertEqual(
+                        capability["lifecycle"]["removed_in_version"], current_version
+                    )
 
     def test_semantic_capability_changes_are_deterministic(self):
         previous = json.dumps(
