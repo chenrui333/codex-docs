@@ -19,12 +19,14 @@ class FakeResponse:
         status_code=200,
         headers=None,
         error=None,
+        url="",
     ):
         self.text = text
         self.content = content or text.encode()
         self.status_code = status_code
         self.headers = headers or {}
         self.error = error
+        self.url = url
 
     def raise_for_status(self):
         if self.error:
@@ -71,6 +73,11 @@ class FetchHelpersTests(unittest.TestCase):
                 "https://developers.openai.com/cookbook/articles/codex_exec_plans"
             )
         )
+        self.assertTrue(
+            sync.keep_developers_url(
+                "https://developers.openai.com/blog/a-codex-post"
+            )
+        )
         self.assertFalse(sync.keep_developers_url("https://example.test/codex"))
         self.assertFalse(sync.keep_developers_url("https://developers.openai.com/"))
         self.assertTrue(
@@ -84,10 +91,10 @@ class FetchHelpersTests(unittest.TestCase):
             sync.developers_skipped_url_detail(url)["classification"]
             for url in (
                 "https://developers.openai.com/blog/topic/codex",
-                "https://developers.openai.com/blog/codex-release",
                 "https://developers.openai.com/community/codex",
                 "https://developers.openai.com/learn/codex",
                 "https://developers.openai.com/showcase/codex",
+                "https://developers.openai.com/training/codex",
             )
         ]
         self.assertEqual(
@@ -96,10 +103,10 @@ class FetchHelpersTests(unittest.TestCase):
             ),
             {
                 "blog_index": 1,
-                "blog_post": 1,
                 "community_page": 1,
                 "learn_index": 1,
                 "showcase_page": 1,
+                "training_page": 1,
             },
         )
         self.assertIsNone(
@@ -230,6 +237,10 @@ class FetchHelpersTests(unittest.TestCase):
         payload = {
             "message": "at /private/user <current_date>today</current_date>",
             "nested": ["<shell>fish</shell>", "<timezone>local</timezone>"],
+            "internal_chat_message_metadata_passthrough": {
+                "turn_id": "machine-specific",
+                "create_time": 123.456,
+            },
         }
         sanitized = sync.sanitize_prompt_payload(payload, [("/private/user", "$HOME")])
         self.assertEqual(
@@ -240,6 +251,21 @@ class FetchHelpersTests(unittest.TestCase):
             },
         )
         self.assertEqual(sync.sanitize_prompt_payload(4, []), 4)
+
+    def test_isolated_codex_environment_excludes_user_state_and_secrets(self):
+        environment = sync.isolated_codex_subprocess_env(
+            {
+                "PATH": "/bin",
+                "LANG": "C.UTF-8",
+                "HOME": "/private/user",
+                "CODEX_HOME": "/private/user/.codex",
+                "OPENAI_API_KEY": "secret",
+                "AWS_SECRET_ACCESS_KEY": "secret",
+                "GH_TOKEN": "secret",
+            }
+        )
+
+        self.assertEqual(environment, {"PATH": "/bin", "LANG": "C.UTF-8"})
 
     def test_discover_developers_urls_reports_coverage_and_fetch_errors(self):
         index = "<loc>https://example.test/one.xml</loc><loc>https://example.test/two.xml</loc>"
@@ -296,6 +322,41 @@ class FetchHelpersTests(unittest.TestCase):
         with mock.patch.object(sync, "fetch_text", return_value="<xml />"):
             with self.assertRaisesRegex(RuntimeError, "did not contain"):
                 sync.discover_learn_urls(mock.Mock())
+
+    def test_partial_sitemap_does_not_confirm_removals(self):
+        previous = {
+            "learn": {
+                "discovered_urls": [
+                    "https://learn.chatgpt.com/docs/present",
+                    "https://learn.chatgpt.com/docs/maybe-missing",
+                ]
+            }
+        }
+        responses = [
+            "<loc>https://learn.chatgpt.com/sitemap-1.xml</loc>"
+            "<loc>https://learn.chatgpt.com/sitemap-2.xml</loc>",
+            "<loc>https://learn.chatgpt.com/docs/present</loc>",
+            requests.ConnectionError("partial"),
+        ]
+
+        def fake_fetch(*_args, **_kwargs):
+            value = responses.pop(0)
+            if isinstance(value, Exception):
+                raise value
+            return value
+
+        with (
+            mock.patch.object(sync, "fetch_text", side_effect=fake_fetch),
+            mock.patch.object(sync, "load_existing_coverage", return_value=previous),
+        ):
+            _urls, coverage, errors = sync.discover_learn_urls(mock.Mock())
+
+        self.assertEqual(coverage["removed_from_sitemap_urls_since_last_run"], [])
+        self.assertEqual(
+            coverage["unconfirmed_removed_urls_due_to_partial_sitemap"],
+            ["https://learn.chatgpt.com/docs/maybe-missing"],
+        )
+        self.assertEqual(errors[0]["state"], "sitemap_unavailable")
 
     def test_path_and_tool_guide_helpers(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
@@ -379,8 +440,11 @@ class FetchHelpersTests(unittest.TestCase):
             mock.patch.object(sync, "discover_developers_urls", return_value=(developer_urls, developer_coverage)),
             mock.patch.object(
                 sync,
-                "fetch_text_with_source_metadata",
-                side_effect=[("<main><h1>A</h1></main>", {}), requests.ConnectionError("bad")],
+                "fetch_response",
+                side_effect=[
+                    FakeResponse(text="<main><h1>A</h1></main>"),
+                    requests.ConnectionError("bad"),
+                ],
             ),
         ):
             files, coverage, failures = sync.build_developers_files(mock.Mock())
@@ -422,6 +486,41 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertEqual(metadata["source_kind"], "learn_html_fallback")
         self.assertIn("HTML", content)
 
+    def test_learn_page_classifies_sitemap_advertised_404_as_tombstone(self):
+        session = FakeSession(
+            [
+                FakeResponse(status_code=404),
+                FakeResponse(status_code=404),
+            ]
+        )
+
+        with self.assertRaises(sync.SourceTombstone) as raised:
+            sync.fetch_learn_page(
+                session, "https://learn.chatgpt.com/docs/screenshot-review"
+            )
+
+        self.assertEqual(raised.exception.status_code, 404)
+        self.assertEqual(raised.exception.endpoint_statuses, (404, 404))
+
+    def test_screenshot_review_tombstone_is_recorded_without_strict_failure(self):
+        url = "https://learn.chatgpt.com/docs/screenshot-review"
+        coverage = {"counts": {}}
+        tombstone = sync.SourceTombstone(url=url, status_code=404, endpoint_statuses=(404, 404))
+        with (
+            mock.patch.object(
+                sync, "discover_learn_urls", return_value=([url], coverage, [])
+            ),
+            mock.patch.object(sync, "fetch_learn_page", side_effect=tombstone),
+        ):
+            files, result, failures = sync.build_learn_files(mock.Mock())
+
+        self.assertEqual(files, [])
+        self.assertEqual(failures, [])
+        self.assertEqual(result["counts"]["tombstoned_urls"], 1)
+        self.assertEqual(
+            result["tombstoned_urls"][0]["state"], "confirmed_tombstone"
+        )
+
     def test_annotation_and_capability_helpers(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
@@ -451,7 +550,218 @@ class FetchHelpersTests(unittest.TestCase):
             sync.capability_counts(
                 [{"category": "tool"}, {"category": "skill"}, {"category": "tool"}]
             ),
-            {"total": 3, "by_category": {"skill": 1, "tool": 2}},
+            {
+                "total": 3,
+                "active": 3,
+                "inactive": 0,
+                "by_category": {"skill": 1, "tool": 2},
+                "by_maturity": {},
+            },
+        )
+
+    def test_cli_help_parser_captures_commands_subcommands_and_options(self):
+        help_text = """Codex CLI
+
+Usage: codex [OPTIONS] <COMMAND>
+
+Commands:
+  exec      Run non-interactively
+  mcp       Manage MCP servers
+
+Options:
+  -c, --config <key=value>
+          Override configuration
+      --model <MODEL>
+          Select the model
+"""
+
+        self.assertEqual(
+            sync.parse_help_usage(help_text), ["codex [OPTIONS] <COMMAND>"]
+        )
+        self.assertEqual(
+            sync.parse_help_commands(help_text),
+            [
+                {"name": "exec", "description": "Run non-interactively"},
+                {"name": "mcp", "description": "Manage MCP servers"},
+            ],
+        )
+        self.assertEqual(
+            [option["primary_flag"] for option in sync.parse_help_options(help_text)],
+            ["--config", "--model"],
+        )
+
+    def test_cli_surface_does_not_invoke_synthetic_help_subcommand(self):
+        top_help = """Codex CLI
+
+Usage: codex <COMMAND>
+
+Commands:
+  exec  Run non-interactively
+  help  Print help
+"""
+        exec_help = """Run non-interactively
+
+Usage: codex exec [OPTIONS]
+
+Options:
+  -h, --help  Print help
+"""
+        with mock.patch.object(
+            sync, "run_local_command", side_effect=[top_help, exec_help]
+        ) as run:
+            item = sync.build_cli_surface_snapshot(
+                "/bin/codex",
+                {},
+                Path("/tmp/workspace"),
+                {
+                    "codex_cli_version": "1.2.3",
+                    "codex_cli_version_raw": "codex-cli 1.2.3",
+                },
+            )
+
+        payload = json.loads(sync.managed_file_text(item))
+        self.assertEqual([entry["name"] for entry in payload["commands"]], ["exec", "help"])
+        self.assertEqual(run.call_count, 2)
+        self.assertNotIn(
+            ["/bin/codex", "help", "--help"],
+            [call.args[0] for call in run.call_args_list],
+        )
+
+    def test_capability_inventory_combines_cli_config_and_feature_provenance(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            with isolated_outputs(root):
+                sync.FEATURE_LIFECYCLE.parent.mkdir(parents=True)
+                sync.FEATURE_LIFECYCLE.write_text(
+                    json.dumps(
+                        {
+                            "codex_cli_version": "codex-cli 1.2.3",
+                            "source_ref": "rust-v1.2.3",
+                            "source_commit": "a" * 40,
+                            "source_urls": {
+                                "features_rs": "https://example.test/features.rs"
+                            },
+                            "docs_feature_keys": ["apps"],
+                            "cli_features": [
+                                {"key": "apps", "stage": "stable", "enabled": True},
+                                {
+                                    "key": "old_flag",
+                                    "stage": "removed",
+                                    "enabled": False,
+                                },
+                            ],
+                        }
+                    )
+                )
+                surface = sync.ManagedFile(
+                    rel_path=sync.CLI_SURFACE_REL_PATH,
+                    source_type=sync.CLI_SURFACE_SOURCE_TYPE,
+                    source_url="codex-cli://help",
+                    content=json.dumps(
+                        {
+                            "global_options": [
+                                {
+                                    "flags": ["-m", "--model"],
+                                    "primary_flag": "--model",
+                                    "synopsis": "-m, --model <MODEL>",
+                                    "description": "Select model",
+                                }
+                            ],
+                            "commands": [
+                                {
+                                    "name": "exec",
+                                    "description": "Run non-interactively",
+                                    "usage": ["codex exec [OPTIONS]"],
+                                    "options": [],
+                                    "subcommands": [],
+                                }
+                            ],
+                        }
+                    ),
+                )
+                config = sync.ManagedFile(
+                    rel_path="learn.chatgpt.com/docs/config-file/config-reference/index.md",
+                    source_type=sync.LEARN_SOURCE_TYPE,
+                    source_url="https://learn.chatgpt.com/docs/config-file/config-reference",
+                    content='key: "model",\nkey: "features.apps",\n',
+                )
+                inventory = sync.build_capability_inventory_file(
+                    [surface],
+                    [],
+                    {},
+                    {
+                        "codex_cli_version": "1.2.3",
+                        "codex_cli_version_raw": "codex-cli 1.2.3",
+                    },
+                    documentation_files=[config],
+                )
+
+                payload = json.loads(sync.managed_file_text(inventory))
+                by_id = {item["id"]: item for item in payload["capabilities"]}
+
+                self.assertEqual(payload["schema_version"], 2)
+                self.assertEqual(
+                    by_id["cli_option:codex:--model"]["config_keys"], ["model"]
+                )
+                self.assertEqual(
+                    by_id["config_key:features.apps"]["feature_flag"], "apps"
+                )
+                self.assertEqual(
+                    by_id["feature_flag:apps"]["provenance"][1]["evidence_type"],
+                    "upstream_repository_source",
+                )
+                self.assertFalse(by_id["feature_flag:old_flag"]["active"])
+
+    def test_semantic_capability_changes_are_deterministic(self):
+        previous = json.dumps(
+            {
+                "capabilities": [
+                    {
+                        "id": "feature_flag:alpha",
+                        "category": "feature_flag",
+                        "maturity": "experimental",
+                        "active": True,
+                    },
+                    {
+                        "id": "cli_command:old",
+                        "category": "cli_command",
+                        "active": True,
+                    },
+                ]
+            }
+        )
+        current = json.dumps(
+            {
+                "capabilities": [
+                    {
+                        "id": "feature_flag:alpha",
+                        "category": "feature_flag",
+                        "maturity": "stable",
+                        "active": True,
+                    },
+                    {
+                        "id": "cli_command:new",
+                        "category": "cli_command",
+                        "active": True,
+                    },
+                ]
+            }
+        )
+
+        changes = sync.semantic_capability_changes(previous, current)
+
+        self.assertEqual(changes, sync.semantic_capability_changes(previous, current))
+        self.assertEqual(changes["added"], ["cli_command:new"])
+        self.assertEqual(changes["removed"], ["cli_command:old"])
+        self.assertEqual(
+            changes["lifecycle_transitions"],
+            [
+                {
+                    "id": "feature_flag:alpha",
+                    "from": "experimental",
+                    "to": "stable",
+                }
+            ],
         )
 
     def test_main_success_and_strict_partial_failure(self):
@@ -469,6 +779,18 @@ class FetchHelpersTests(unittest.TestCase):
                 mock.patch.object(sync, "build_learn_files", return_value=([learn], {"counts": {}}, [])),
                 mock.patch.object(sync, "build_github_files", return_value=([github], [])),
                 mock.patch.object(sync, "build_codex_cli_files", return_value=([cli], [], {"codex_cli_version": "1.2.3"})),
+                mock.patch.object(
+                    sync,
+                    "add_cli_release_provenance",
+                    return_value=(
+                        [cli],
+                        {
+                            "codex_cli_version": "1.2.3",
+                            "codex_cli_release_ref": "rust-v1.2.3",
+                            "codex_cli_source_commit": "a" * 40,
+                        },
+                    ),
+                ),
                 mock.patch.object(sync, "build_platform_tool_guide_files", return_value=([], [], {})),
                 mock.patch.object(sync, "build_capability_inventory_file", return_value=capability),
                 mock.patch.object(sync, "write_coverage") as write_coverage,
@@ -485,6 +807,17 @@ class FetchHelpersTests(unittest.TestCase):
                 mock.patch.object(sync, "build_learn_files", return_value=([], {"counts": {}}, [])),
                 mock.patch.object(sync, "build_github_files", return_value=([], [])),
                 mock.patch.object(sync, "build_codex_cli_files", return_value=([], [], {})),
+                mock.patch.object(
+                    sync,
+                    "add_cli_release_provenance",
+                    return_value=(
+                        [],
+                        {
+                            "codex_cli_release_ref": "rust-v1.2.3",
+                            "codex_cli_source_commit": "a" * 40,
+                        },
+                    ),
+                ),
                 mock.patch.object(sync, "build_platform_tool_guide_files", return_value=([], [], {})),
                 mock.patch.object(sync, "write_coverage"),
                 mock.patch.object(sync, "apply_sync", return_value=([], [], [])),
@@ -520,6 +853,8 @@ def isolated_outputs(root: Path):
         "SUMMARY_PATH": docs / "sync_summary.json",
         "COVERAGE_PATH": docs / "source_coverage.json",
         "CAPABILITIES_PATH": docs / "codex_capabilities.json",
+        "CLI_SURFACE_PATH": docs / "codex_cli_surface.json",
+        "FEATURE_LIFECYCLE": docs / "feature-flags" / "lifecycle.json",
         "DEVELOPERS_ROOT": docs / "developers.openai.com",
         "LEARN_ROOT": docs / "learn.chatgpt.com",
         "GITHUB_ROOT": docs / "github.openai.com" / "openai" / "codex",

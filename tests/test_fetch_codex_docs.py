@@ -108,6 +108,8 @@ class FetchCodexDocsTests(unittest.TestCase):
             "SUMMARY_PATH": docs / "sync_summary.json",
             "COVERAGE_PATH": docs / "source_coverage.json",
             "CAPABILITIES_PATH": docs / "codex_capabilities.json",
+            "CLI_SURFACE_PATH": docs / "codex_cli_surface.json",
+            "FEATURE_LIFECYCLE": docs / "feature-flags" / "lifecycle.json",
             "DEVELOPERS_ROOT": docs / "developers.openai.com",
             "LEARN_ROOT": docs / "learn.chatgpt.com",
             "GITHUB_ROOT": docs / "github.openai.com" / "openai" / "codex",
