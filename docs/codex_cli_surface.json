@@ -439,20 +439,12 @@
           "synopsis": "--enable <FEATURE>"
         },
         {
-          "description": "Read the access token from stdin (e.g. `printenv CODEX_ACCESS_TOKEN | codex login",
+          "description": "Read the access token from stdin (e.g. `printenv CODEX_ACCESS_TOKEN | codex login --with-access-token`)",
           "flags": [
             "--with-access-token"
           ],
           "primary_flag": "--with-access-token",
           "synopsis": "--with-access-token"
-        },
-        {
-          "description": "",
-          "flags": [
-            "--with-access-token"
-          ],
-          "primary_flag": "--with-access-token",
-          "synopsis": "--with-access-token`)"
         },
         {
           "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",

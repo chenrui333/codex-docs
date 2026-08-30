@@ -82,7 +82,7 @@
         "codex-cli 0.151.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "7aa107a31e5e5b0d6ef532b0c73c885c4402d3819f15b1017fdb5deec7da7bd0",
+      "sha256": "e87d1a0ab8f38dd728eea0956b469ff3a2dfbd2f639b226ceadef02f2e0b5115",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -95,7 +95,7 @@
       "codex_cli_version": "0.151.0",
       "codex_cli_version_raw": "codex-cli 0.151.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "c00b6b7bbb391b88ca018047a487a3b49a5969b550aa359b0ec5492bc829e0eb",
+      "sha256": "86ec83c59c06029ed8c515c6e66b15553bac3791635b2f0cfd41984c30b342ab",
       "source_area": "codex_cli_surface",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_surface",

@@ -11347,7 +11347,7 @@
       "codex_cli_versions_raw": [
         "codex-cli 0.151.0"
       ],
-      "description": "Read the access token from stdin (e.g. `printenv CODEX_ACCESS_TOKEN | codex login",
+      "description": "Read the access token from stdin (e.g. `printenv CODEX_ACCESS_TOKEN | codex login --with-access-token`)",
       "id": "cli_option:codex:login:--with-access-token",
       "lifecycle": {
         "first_seen_version": "0.151.0",
@@ -11371,44 +11371,6 @@
       "source_type": "codex_cli_surface",
       "source_url": "codex-cli://help",
       "synopsis": "--with-access-token"
-    },
-    {
-      "active": true,
-      "category": "cli_option",
-      "cli_command": "codex login",
-      "cli_flags": [
-        "--with-access-token"
-      ],
-      "codex_cli_versions": [
-        "0.151.0"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.151.0"
-      ],
-      "description": "",
-      "id": "cli_option:codex:login:--with-access-token",
-      "lifecycle": {
-        "first_seen_version": "0.151.0",
-        "last_seen_version": "0.151.0",
-        "status": "active"
-      },
-      "mirrored_path": "codex_cli_surface.json",
-      "name": "--with-access-token",
-      "provenance": [
-        {
-          "codex_cli_version": "0.151.0",
-          "evidence_type": "installed_cli_observation",
-          "source": "codex login --help"
-        },
-        {
-          "evidence_type": "github_release_metadata",
-          "source": "rust-v0.151.0",
-          "source_commit": "78c290807ce710180111df227df3b7a4fe845452"
-        }
-      ],
-      "source_type": "codex_cli_surface",
-      "source_url": "codex-cli://help",
-      "synopsis": "--with-access-token`)"
     },
     {
       "active": true,
@@ -32716,10 +32678,10 @@
     "codex-cli 0.151.0"
   ],
   "counts": {
-    "active": 900,
+    "active": 899,
     "by_category": {
       "cli_command": 93,
-      "cli_option": 330,
+      "cli_option": 329,
       "config_key": 375,
       "feature_flag": 129,
       "linked_tool_guide": 1,
@@ -32734,7 +32696,7 @@
       "under development": 48
     },
     "inactive": 35,
-    "total": 935
+    "total": 934
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",
