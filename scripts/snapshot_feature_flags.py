@@ -346,7 +346,7 @@ def group_missing_in_docs(
     return missing, actionable, ordered_grouped
 
 
-def parse_config_basic_feature_keys(path: Path) -> List[str]:
+def parse_config_basic_feature_metadata(path: Path) -> Dict[str, str]:
     if not path.exists():
         raise SnapshotError(f"Required mirrored config document is missing: {path}")
     text = path.read_text()
@@ -360,10 +360,40 @@ def parse_config_basic_feature_keys(path: Path) -> List[str]:
             f"Could not find the Common feature flags section in {path}"
         )
     section = section_match.group(1)
-    keys = sorted(set(re.findall(r"^\|\s*`([a-z0-9_]+)`\s*\|", section, re.MULTILINE)))
-    if not keys:
+    rows = re.findall(
+        r"^\|\s*`([a-z0-9_]+)`\s*\|[^|]*\|\s*([^|]+?)\s*\|",
+        section,
+        re.MULTILINE,
+    )
+    metadata = {key: maturity.strip().lower() for key, maturity in rows}
+    if not metadata:
         raise SnapshotError(f"Parsed zero feature keys from {path}")
-    return keys
+    return dict(sorted(metadata.items()))
+
+
+def parse_config_basic_feature_keys(path: Path) -> List[str]:
+    return list(parse_config_basic_feature_metadata(path))
+
+
+def find_documentation_stage_mismatches(
+    cli_features: Sequence[Dict[str, object]], documented_stages: Dict[str, str]
+) -> List[Dict[str, str]]:
+    mismatches: List[Dict[str, str]] = []
+    for item in cli_features:
+        key = str(item["key"])
+        documentation_stage = documented_stages.get(key)
+        if documentation_stage is None:
+            continue
+        cli_stage = str(item["stage"]).lower()
+        if cli_stage != documentation_stage:
+            mismatches.append(
+                {
+                    "key": key,
+                    "cli_stage": cli_stage,
+                    "documentation_stage": documentation_stage,
+                }
+            )
+    return sorted(mismatches, key=lambda item: item["key"])
 
 
 def parse_config_reference_feature_keys(path: Path) -> List[str]:
@@ -498,6 +528,7 @@ def render_markdown(
     ws_precedence: Dict[str, object],
     source_hashes: Dict[str, str],
     documentation_sources: Dict[str, Dict[str, object]] | None = None,
+    documentation_stage_mismatches: List[Dict[str, str]] | None = None,
 ) -> str:
     docs_key_set = set(docs_keys)
     lines: List[str] = []
@@ -558,6 +589,13 @@ def render_markdown(
     if stale_in_docs:
         for key in stale_in_docs:
             lines.append(f"  - `{key}`")
+    stage_mismatches = documentation_stage_mismatches or []
+    lines.append(f"- Documentation maturity mismatches: `{len(stage_mismatches)}`")
+    for mismatch in stage_mismatches:
+        lines.append(
+            f"  - `{mismatch['key']}`: CLI `{mismatch['cli_stage']}`, "
+            f"docs `{mismatch['documentation_stage']}`"
+        )
     lines.append("")
     lines.append("## Websocket Flag Semantics")
     lines.append("")
@@ -606,6 +644,7 @@ def render_markdown_document(
     ws_precedence: Dict[str, object],
     source_hashes: Dict[str, str],
     documentation_sources: Dict[str, Dict[str, object]] | None = None,
+    documentation_stage_mismatches: List[Dict[str, str]] | None = None,
 ) -> str:
     existing_metadata: Dict[str, object] = {}
     if OUTPUT_MD.exists():
@@ -625,6 +664,7 @@ def render_markdown_document(
         ws_precedence=ws_precedence,
         source_hashes=source_hashes,
         documentation_sources=documentation_sources,
+        documentation_stage_mismatches=documentation_stage_mismatches,
     )
     metadata: Dict[str, object] = {
         "source_type": FEATURE_LIFECYCLE_SOURCE_TYPE,
@@ -652,7 +692,8 @@ def main() -> int:
             features_raw = run_command(["codex", "features", "list"], env=isolated_env)
         cli_features = parse_features_list(features_raw)
 
-        basic_docs_keys = parse_config_basic_feature_keys(CONFIG_BASIC_DOC)
+        basic_docs_metadata = parse_config_basic_feature_metadata(CONFIG_BASIC_DOC)
+        basic_docs_keys = list(basic_docs_metadata)
         reference_docs_keys = parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC)
         docs_keys = sorted(set(basic_docs_keys) | set(reference_docs_keys))
         if not docs_keys:
@@ -672,6 +713,9 @@ def main() -> int:
             missing_in_docs_by_stage,
         ) = group_missing_in_docs(cli_features, docs_keys)
         stale_in_docs = sorted([key for key in docs_keys if key not in set(cli_keys)])
+        documentation_stage_mismatches = find_documentation_stage_mismatches(
+            cli_features, basic_docs_metadata
+        )
 
         features_rs_url = source_url(source_commit, OSS_FEATURES_RS_PATH)
         client_rs_url = source_url(source_commit, OSS_CLIENT_RS_PATH)
@@ -698,6 +742,7 @@ def main() -> int:
                 "missing_in_docs": missing_in_docs,
                 "missing_in_docs_by_stage": missing_in_docs_by_stage,
                 "stale_in_docs": stale_in_docs,
+                "documentation_stage_mismatches": documentation_stage_mismatches,
             },
             "source_defaults": source_defaults,
             "websocket_precedence": ws_precedence,
@@ -722,6 +767,7 @@ def main() -> int:
             ws_precedence=ws_precedence,
             source_hashes=source_hashes,
             documentation_sources=documentation_sources,
+            documentation_stage_mismatches=documentation_stage_mismatches,
         )
 
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -732,6 +778,10 @@ def main() -> int:
         print(f"Wrote {OUTPUT_MD.relative_to(ROOT)}")
         print(f"Missing in docs: {len(missing_in_docs)}")
         print(f"Actionable missing in docs: {len(actionable_missing_in_docs)}")
+        print(
+            "Documentation maturity mismatches: "
+            f"{len(documentation_stage_mismatches)}"
+        )
         return 0
     except SnapshotError as exc:
         print(f"error: {exc}", file=sys.stderr)
