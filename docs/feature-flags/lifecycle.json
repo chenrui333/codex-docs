@@ -672,6 +672,13 @@
       "stable",
       "experimental"
     ],
+    "documentation_stage_mismatches": [
+      {
+        "cli_stage": "stable",
+        "documentation_stage": "experimental",
+        "key": "memories"
+      }
+    ],
     "missing_in_docs": [
       "apply_patch_freeform",
       "apply_patch_preserve_line_endings",

@@ -181,6 +181,10 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
             snapshot.parse_config_basic_feature_keys(basic), ["apps", "memories"]
         )
         self.assertEqual(
+            snapshot.parse_config_basic_feature_metadata(basic),
+            {"apps": "stable", "memories": "experimental"},
+        )
+        self.assertEqual(
             snapshot.parse_config_reference_feature_keys(reference),
             ["apps", "memories"],
         )
@@ -199,10 +203,44 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
             with self.assertRaisesRegex(snapshot.SnapshotError, "Common feature flags"):
                 snapshot.parse_config_basic_feature_keys(basic)
 
+            basic.write_text(
+                "### Common feature flags\n\n"
+                "| Key | Default | Description |\n"
+                "| --- | --- | --- |\n"
+                "| `alpha` | true | Enable alpha |\n"
+            )
+            with self.assertRaisesRegex(snapshot.SnapshotError, "Key and Maturity"):
+                snapshot.parse_config_basic_feature_metadata(basic)
+
+            basic.write_text(
+                "### Common feature flags\n\n"
+                "| Key | Maturity | Default |\n"
+                "| --- | invalid | --- |\n"
+                "| `alpha` | Stable | true |\n"
+            )
+            with self.assertRaisesRegex(snapshot.SnapshotError, "invalid separator"):
+                snapshot.parse_config_basic_feature_metadata(basic)
+
             reference = root / "reference.md"
             reference.write_text('key: "features.alpha.enabled"\n')
             with self.assertRaisesRegex(snapshot.SnapshotError, "zero feature keys"):
                 snapshot.parse_config_reference_feature_keys(reference)
+
+    def test_config_basic_parser_locates_reordered_maturity_column(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            basic = Path(temporary_directory) / "basic.md"
+            basic.write_text(
+                "### Common feature flags\n\n"
+                "| Key | Maturity | Default | Description |\n"
+                "| --- | --- | --- | --- |\n"
+                "| `alpha` | Experimental | false | Enable alpha |\n"
+                "| `beta` | Stable | true | Enable beta |\n"
+            )
+
+            self.assertEqual(
+                snapshot.parse_config_basic_feature_metadata(basic),
+                {"alpha": "experimental", "beta": "stable"},
+            )
 
     def test_main_writes_snapshot_and_reports_errors(self):
         features_source = 'FeatureSpec { key: "alpha", stage: Stage::Stable, default_enabled: true, }'
@@ -223,7 +261,11 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
                 mock.patch.object(snapshot, "OUTPUT_MD", output_md),
                 mock.patch.object(snapshot, "run_command", side_effect=command_outputs),
                 mock.patch.object(snapshot, "resolve_feature_source", return_value=("rust-v1.2.3", "a" * 40)),
-                mock.patch.object(snapshot, "parse_config_basic_feature_keys", return_value=["alpha"]),
+                mock.patch.object(
+                    snapshot,
+                    "parse_config_basic_feature_metadata",
+                    return_value={"alpha": "stable"},
+                ),
                 mock.patch.object(snapshot, "parse_config_reference_feature_keys", return_value=[]),
                 mock.patch.object(snapshot, "fetch_text", side_effect=[features_source, client_source]),
             ):
@@ -233,6 +275,9 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
             self.assertEqual(payload["schema_version"], 3)
             self.assertEqual(payload["source_commit"], "a" * 40)
             self.assertEqual(payload["coverage"]["actionable_missing_in_docs"], ["beta"])
+            self.assertEqual(
+                payload["coverage"]["documentation_stage_mismatches"], []
+            )
             self.assertEqual(
                 payload["documentation_sources"]["config_basic"][
                     "parsed_feature_key_count"
@@ -270,6 +315,26 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
                 "removed": ["removed_missing"],
                 "stable": ["stable_missing"],
             },
+        )
+
+    def test_documentation_stage_mismatches_are_reported(self):
+        mismatches = snapshot.find_documentation_stage_mismatches(
+            [
+                {"key": "memories", "stage": "stable", "enabled": True},
+                {"key": "apps", "stage": "stable", "enabled": True},
+            ],
+            {"apps": "stable", "memories": "experimental"},
+        )
+
+        self.assertEqual(
+            mismatches,
+            [
+                {
+                    "key": "memories",
+                    "cli_stage": "stable",
+                    "documentation_stage": "experimental",
+                }
+            ],
         )
 
     def test_rendered_markdown_separates_actionable_and_informational_gaps(self):
