@@ -7,6 +7,7 @@ import hashlib
 import json
 import logging
 import os
+import platform as host_platform
 import re
 import shutil
 import subprocess
@@ -2087,6 +2088,22 @@ def build_capability_inventory_file(
     codex_cli_version_raw = codex_cli_metadata.get("codex_cli_version_raw", "")
     previous_inventory = load_existing_capability_inventory()
     previous_capabilities = existing_capabilities_by_id(previous_inventory)
+    current_cli_observation: Dict[str, str] = {}
+    for item in codex_cli_files:
+        if item.source_type != CLI_SURFACE_SOURCE_TYPE:
+            continue
+        try:
+            surface_payload = json.loads(managed_file_text(item))
+        except json.JSONDecodeError:
+            continue
+        observation_environment = surface_payload.get("observation_environment", {})
+        if isinstance(observation_environment, dict):
+            current_cli_observation = {
+                key: str(observation_environment[key])
+                for key in ("os", "arch")
+                if observation_environment.get(key)
+            }
+        break
 
     def cli_provenance(command: str) -> List[Dict[str, str]]:
         provenance = [
@@ -2094,6 +2111,7 @@ def build_capability_inventory_file(
                 "evidence_type": "installed_cli_observation",
                 "source": command,
                 "codex_cli_version": codex_cli_version,
+                **current_cli_observation,
             }
         ]
         source_commit = codex_cli_metadata.get("codex_cli_source_commit", "")
@@ -2429,6 +2447,30 @@ def build_capability_inventory_file(
         previous_lifecycle = historical.get("lifecycle", {})
         if not isinstance(previous_lifecycle, dict):
             previous_lifecycle = {}
+        previous_cli_observation = previous_inventory.get("cli_observation", {})
+        if not isinstance(previous_cli_observation, dict):
+            previous_cli_observation = {}
+        previous_version = str(previous_inventory.get("codex_cli_version", ""))
+        missing_cli_observation = (
+            historical.get("source_type") == CLI_SURFACE_SOURCE_TYPE
+            and (
+                previous_version == codex_cli_version
+                or not previous_cli_observation
+                or previous_cli_observation != current_cli_observation
+            )
+        )
+        if missing_cli_observation:
+            historical["active"] = historical.get("maturity") != "removed"
+            lifecycle = {
+                **previous_lifecycle,
+                "status": "not_observed_on_current_platform",
+                "not_observed_in_version": codex_cli_version,
+                "observation_environment": current_cli_observation,
+            }
+            lifecycle.pop("removed_in_version", None)
+            historical["lifecycle"] = lifecycle
+            capabilities.append(historical)
+            continue
         historical["active"] = False
         historical["lifecycle"] = {
             **previous_lifecycle,
@@ -2446,11 +2488,12 @@ def build_capability_inventory_file(
             "official_documentation": "Published OpenAI documentation mirrored by this repository.",
             "upstream_repository_source": "Immutable release-matched openai/codex source.",
             "github_release_metadata": "Stable release metadata published by openai/codex.",
-            "installed_cli_observation": "Deterministic output observed from an isolated packaged CLI.",
+            "installed_cli_observation": "Deterministic, platform-scoped output observed from an isolated packaged CLI.",
             "generated_relationship": "A deterministic relationship derived from other recorded evidence.",
         },
         "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
         "codex_cli_version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
+        "cli_observation": current_cli_observation,
         "counts": capability_counts(capabilities),
         "capabilities": capabilities,
     }
@@ -2589,7 +2632,12 @@ def build_cli_surface_snapshot(
     env: Dict[str, str],
     workspace_path: Path,
     codex_cli_metadata: Dict[str, str],
+    observation_environment: Dict[str, str] | None = None,
 ) -> ManagedFile:
+    observation_environment = observation_environment or {
+        "os": sys.platform,
+        "arch": host_platform.machine().lower(),
+    }
     top_help = run_local_command(
         [codex_bin, "--help"], cwd=workspace_path, env=env
     )
@@ -2613,13 +2661,14 @@ def build_cli_surface_snapshot(
         )
 
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "source_kind": "installed_cli_help_observation",
         "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
         "codex_cli_version_raw": codex_cli_metadata.get(
             "codex_cli_version_raw", ""
         ),
         "command": "codex --help; codex <command> --help",
+        "observation_environment": observation_environment,
         "usage": parse_help_usage(top_help),
         "global_options": parse_help_options(top_help),
         "commands": command_surfaces,
