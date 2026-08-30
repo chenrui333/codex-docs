@@ -190,6 +190,19 @@ def make_check(
     }
 
 
+def make_integrity_check(
+    name: str,
+    observed: str,
+    expected: str,
+) -> Dict[str, object]:
+    return {
+        "name": name,
+        "status": "pass" if observed == expected else "fail",
+        "observed": observed,
+        "expected": expected,
+    }
+
+
 def build_report(
     *,
     latest_release: Dict[str, object],
@@ -209,13 +222,28 @@ def build_report(
 
     source_metadata = summary.get("source_metadata", {})
     coverage_cli = coverage.get("codex_cli", {})
-    if not isinstance(source_metadata, dict) or not isinstance(coverage_cli, dict):
+    coverage_github = coverage.get("github", {})
+    if not all(
+        isinstance(value, dict)
+        for value in (source_metadata, coverage_cli, coverage_github)
+    ):
         raise FreshnessError("Sync reports do not contain Codex CLI source metadata")
     summary_version = parse_version(str(source_metadata.get("codex_cli_version", "")))
+    summary_ref = str(source_metadata.get("codex_cli_release_ref", ""))
+    summary_ref_version = parse_version(summary_ref)
+    summary_commit = validate_commit(
+        source_metadata.get("codex_cli_source_commit"), "Canonical mirror"
+    )
     coverage_version = parse_version(str(coverage_cli.get("version", "")))
+    coverage_ref = str(coverage_github.get("source_ref", ""))
+    coverage_ref_version = parse_version(coverage_ref)
+    coverage_commit = validate_commit(
+        coverage_github.get("source_commit"), "Source coverage"
+    )
     feature_raw = str(feature_snapshot.get("codex_cli_version", ""))
     feature_version = parse_version(feature_raw)
     feature_ref = str(feature_snapshot.get("source_ref", ""))
+    feature_ref_version = parse_version(feature_ref)
     feature_commit = validate_commit(
         feature_snapshot.get("source_commit"), "Feature snapshot"
     )
@@ -245,15 +273,47 @@ def build_report(
             release_version,
             grace_elapsed=grace_elapsed,
         ),
+        make_integrity_check(
+            "canonical_mirror_release_ref_matches_version",
+            summary_ref_version,
+            summary_version,
+        ),
+        make_integrity_check(
+            "source_coverage_release_ref_matches_version",
+            coverage_ref_version,
+            coverage_version,
+        ),
+        make_integrity_check(
+            "feature_snapshot_release_ref_matches_version",
+            feature_ref_version,
+            feature_version,
+        ),
     ]
-    expected_feature_commit = resolve_tag_commit_fn(feature_ref)
-    checks.append(
-        {
-            "name": "feature_snapshot_commit_matches_release_tag",
-            "status": "pass" if feature_commit == expected_feature_commit else "fail",
-            "observed": feature_commit,
-            "expected": expected_feature_commit,
-        }
+    resolved_commits = {
+        source_ref: resolve_tag_commit_fn(source_ref)
+        for source_ref in {summary_ref, coverage_ref, feature_ref}
+    }
+    expected_summary_commit = resolved_commits[summary_ref]
+    expected_coverage_commit = resolved_commits[coverage_ref]
+    expected_feature_commit = resolved_commits[feature_ref]
+    checks.extend(
+        [
+            make_integrity_check(
+                "canonical_mirror_commit_matches_release_tag",
+                summary_commit,
+                expected_summary_commit,
+            ),
+            make_integrity_check(
+                "source_coverage_commit_matches_release_tag",
+                coverage_commit,
+                expected_coverage_commit,
+            ),
+            make_integrity_check(
+                "feature_snapshot_commit_matches_release_tag",
+                feature_commit,
+                expected_feature_commit,
+            ),
+        ]
     )
 
     statuses = {str(check["status"]) for check in checks}
@@ -268,6 +328,10 @@ def build_report(
         "canonical_mirror": {
             "version": summary_version,
             "coverage_version": coverage_version,
+            "source_ref": summary_ref,
+            "source_commit": summary_commit,
+            "coverage_source_ref": coverage_ref,
+            "coverage_source_commit": coverage_commit,
             "last_successful_full_sync_at": str(summary.get("generated_at", "")),
             "provenance": "generated_sync_metadata",
         },
@@ -314,6 +378,15 @@ def main(argv: list[str] | None = None) -> int:
         )
         write_if_changed(args.output, report)
     except (FreshnessError, OSError, requests.RequestException) as exc:
+        write_if_changed(
+            args.output,
+            {
+                "schema_version": 1,
+                "status": "unhealthy",
+                "error": str(exc),
+                "checks": [],
+            },
+        )
         print(f"error: {exc}", file=sys.stderr)
         return 1
 
