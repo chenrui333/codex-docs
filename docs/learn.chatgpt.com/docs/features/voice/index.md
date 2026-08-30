@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_features'
 source_url: 'https://learn.chatgpt.com/docs/features/voice'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # ChatGPT Voice
@@ -25,9 +25,7 @@ by default. You can also use ChatGPT Voice through
 your phone with a desktop host. Availability also depends on rollout status and
 workspace settings. See [feature availability](https://learn.chatgpt.com/docs/pricing#feature-availability).
 
-<Illustration description="Interactive ChatGPT Voice conversation with microphone and speaker controls.">
-  <CodexVoiceAgentIllustration />
-</Illustration>
+> Illustration: Interactive ChatGPT Voice conversation with microphone and speaker controls.
 
 ## Start talking
 

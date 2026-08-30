@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_sandboxing'
 source_url: 'https://learn.chatgpt.com/docs/sandboxing'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Sandbox
@@ -187,10 +187,7 @@ Depending on your configuration, the menu can include **Ask for approval**,
 **Approve for me** for eligible approval requests, **Full access**, and named or
 custom permissions profiles.
 
-  <img src="https://developers.openai.com/images/codex/ide/approval_mode.png"
-    alt="Codex approval mode selector in the IDE extension"
-    class="block h-auto w-full mx-0!"
-  />
+> Illustration: Codex approval mode selector in the IDE extension
 
 </ContentModeSwitch>
 

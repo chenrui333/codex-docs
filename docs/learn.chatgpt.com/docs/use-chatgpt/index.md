@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_use_chatgpt'
 source_url: 'https://learn.chatgpt.com/docs/use-chatgpt'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Use ChatGPT
@@ -61,15 +61,7 @@ practices.
 ChatGPT Work can plan a task, gather context, use tools, and carry the work
 through to a result you can review.
 
-<Illustration description="ChatGPT Work comparing vendors and producing a spreadsheet you can review.">
-  <CodexScreenshot
-    alt="ChatGPT Work comparing vendors in a spreadsheet"
-    lightSrc="/codex/get-started-with-work/comparison-spreadsheet.webp"
-    darkSrc="/codex/get-started-with-work/comparison-spreadsheet.webp"
-    maxHeight={520}
-    class="my-6 p-4 md:p-8"
-  />
-</Illustration>
+> Illustration: ChatGPT Work comparing vendors and producing a spreadsheet you can review.
 
 Ask it to:
 
@@ -88,7 +80,7 @@ Ask it to:
   with [Sites](https://learn.chatgpt.com/docs/sites).
 - **Work across websites and apps.** Use the [browser](https://learn.chatgpt.com/docs/browser) to
   research and interact with websites. In the desktop app, use the
-  [Chrome extension](https://learn.chatgpt.com/docs/chrome-extension),
+  [browser extension](https://learn.chatgpt.com/docs/chrome-extension),
   [Computer Use](https://learn.chatgpt.com/docs/computer-use), and [appshots](https://learn.chatgpt.com/docs/appshots) when
   those features are available.
 - **Run code and review technical work.** Run code and shell commands, analyze
@@ -217,15 +209,7 @@ as Google Drive, SharePoint, Salesforce, or Gong. Use them when a task depends
 on information outside the chat, actions in another system, or a
 repeatable workflow.
 
-<Illustration description="ChatGPT plugin directory showing connected tools such as Google Drive, Slack, and SharePoint.">
-  <CodexScreenshot
-    alt="ChatGPT plugin directory showing connected work tools"
-    lightSrc="/codex/get-started-with-work/plugins.webp"
-    darkSrc="/codex/get-started-with-work/plugins.webp"
-    maxHeight={520}
-    class="my-6 p-4 md:p-8"
-  />
-</Illustration>
+> Illustration: ChatGPT plugin directory showing connected tools such as Google Drive, Slack, and SharePoint.
 
 Plugin availability depends on your plan, workspace settings, and the plugin
 itself. Learn more about [skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins).

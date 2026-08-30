@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_security'
 source_url: 'https://learn.chatgpt.com/docs/security/plugin'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Codex Security plugin quickstart
@@ -18,8 +18,8 @@ findings. For each reportable issue, it gives you the evidence and remediation
 guidance you need to review the result. Scan only code you own or have
 permission to assess.
 
-Follow this quickstart to install the plugin and run a read-only scan of a local
-repository in Codex.
+Follow this quickstart to install the plugin and run a standard, read-only scan
+of a local repository in Codex.
 
 This page covers the Codex Security plugin in the desktop app or Codex CLI. To
   scan a connected GitHub repository in Codex cloud, see [Codex Security cloud
@@ -146,7 +146,7 @@ with `xhigh` reasoning effort.
 
 <WorkflowSteps variant="headings">
 
-1. Ask for an ordinary scan
+1. Ask for a standard scan
 
    Send this prompt in the new chat:
 
@@ -194,8 +194,8 @@ below.
 - `hardening/`, when structural hardening guidance and supporting proposals or
   diagrams are available.
 - Structured scan data in `scan-manifest.json`, `findings.json`, and
-  `coverage.json` for automation and integrations. You normally don't need to
-  open these files yourself.
+  `coverage.json` for automation and integrations. You can review scan results
+  without opening these files.
 
 Keep the full scan directory together when sharing or archiving results so the
 links from `report.md` continue to work.

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_build_plugins'
 source_url: 'https://learn.chatgpt.com/docs/build-plugins'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Build plugins
@@ -29,6 +29,9 @@ once to make the same listing discoverable from supported surfaces in both
 products. During development, use a local marketplace to test the package
 before submitting it to the universal directory.
 
+For workspace distribution through GitHub, see
+[Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management).
+
 Start with a skill when you are still iterating on one personal workflow.
 Build a plugin when you want to share that workflow, package related skills,
 connect to an external service, or distribute a stable capability to a team.
@@ -38,11 +41,7 @@ connect to an external service, or distribute a stable capability to a team.
 For the fastest setup, use the built-in `@plugin-creator` skill in ChatGPT Work
 mode or `$plugin-creator` in Codex.
 
-<CodexScreenshot
-  alt="Plugin creator skill in ChatGPT"
-  lightSrc="/images/codex/plugins/plugin-creator.png"
-  darkSrc="/images/codex/plugins/plugin-creator-dark.png"
-/>
+> Illustration: Plugin creator skill in ChatGPT
 
 Describe the outcome, the skills or MCP server to include, and whether you want
 a local marketplace entry for testing. For example:
@@ -56,11 +55,7 @@ Add it to a personal marketplace so I can test it locally.
 The skill creates the required `.codex-plugin/plugin.json` manifest, organizes
 the plugin folder, and can add the plugin to a local marketplace.
 
-<CodexScreenshot
-  alt="Invoking the plugin creator skill"
-  lightSrc="/images/codex/plugins/plugin-creator-invoke.png"
-  darkSrc="/images/codex/plugins/plugin-creator-invoke-dark.png"
-/>
+> Illustration: Invoking the plugin creator skill
 
 After it finishes:
 

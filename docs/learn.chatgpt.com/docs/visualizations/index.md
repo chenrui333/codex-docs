@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_visualizations'
 source_url: 'https://learn.chatgpt.com/docs/visualizations'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Visualizations
@@ -94,9 +94,7 @@ These examples reproduce three visualizations from the GPT-5.6 launch page.
 Use their controls to see how a focused prompt can become an interactive
 explanation, lab, or teaching tool.
 
-<Illustration description="Three interactive ChatGPT visualization examples: a spirograph with adjustable geometry, a wave interference lab with a movable probe, and a tokenizer explainer with editable text and tokenization steps.">
-  <VisualizationExampleGallery client:visible />
-</Illustration>
+> Illustration: Three interactive ChatGPT visualization examples: a spirograph with adjustable geometry, a wave interference lab with a movable probe, and a tokenizer explainer with editable text and tokenization steps.
 
 ## Refine and continue
 

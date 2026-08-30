@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_environments'
 source_url: 'https://learn.chatgpt.com/docs/environments/git-worktrees'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Worktrees
@@ -82,13 +82,7 @@ From here you can commit your changes, push your branch to your remote repositor
 
 You can open your IDE to the worktree using the "Open" button in the header, use the integrated terminal, or anything else that you need to do from the worktree directory.
 
-<CodexScreenshot
-  alt="Worktree chat view with branch controls and worktree details"
-  lightSrc="/images/codex/app/worktree-light.webp"
-  darkSrc="/images/codex/app/worktree-dark.webp"
-  maxHeight="400px"
-  class="mb-4 lg:mb-0"
-/>
+> Illustration: Worktree chat view with branch controls and worktree details
 
 Remember, if you create a branch on a worktree, you can't check it out in any other worktree, including your local checkout.
 
@@ -106,13 +100,7 @@ Codex handles the Git steps required to move the chat safely between the worktre
 
 Each chat keeps the same associated worktree over time. If you hand the chat back to a worktree later, Codex returns it to that same background environment so you can pick up where you left off.
 
-<CodexScreenshot
-  alt="Handoff dialog moving a chat from a worktree to Local"
-  lightSrc="/images/codex/app/handoff-light.webp"
-  darkSrc="/images/codex/app/handoff-dark.webp"
-  maxHeight="400px"
-  class="mb-4 lg:mb-0"
-/>
+> Illustration: Handoff dialog moving a chat from a worktree to Local
 
 You can also go the other direction. If you're already working in Local and want to free up the foreground, use **Hand off** to move the chat to a worktree. This is useful when you want Codex to keep working in the background while you switch your attention back to something else locally.
 

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_artifacts_viewer'
 source_url: 'https://learn.chatgpt.com/docs/artifacts-viewer'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Work with files
@@ -17,10 +17,7 @@ When a task produces a file, give ChatGPT the source data, expected file type,
 structure, and review criteria that matter for the task. The preview and review
 tools depend on the surface you use.
 
-<YouTubeEmbed
-  title="Work with documents, spreadsheets, and presentations in ChatGPT"
-  videoId="E3dDr_QtBuo"
-/>
+[Watch: Work with documents, spreadsheets, and presentations in ChatGPT](https://www.youtube.com/watch?v=E3dDr_QtBuo)
 
 <ContentModeSwitch group="codex-surface" id="app">
 
@@ -63,14 +60,7 @@ PDF files in a compatible viewer.
 
 <ContentModeSwitch group="codex-surface" id="app">
 
-<CodexScreenshot
-  alt="ChatGPT desktop app showing a generated presentation preview"
-  lightSrc="/images/codex/app/artifact-viewer-light.webp"
-  darkSrc="/images/codex/app/artifact-viewer-dark.webp"
-  maxHeight="420px"
-  variant="no-wallpaper"
-  class="my-8"
-/>
+> Illustration: ChatGPT desktop app showing a generated presentation preview
 
 </ContentModeSwitch>
 

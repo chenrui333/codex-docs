@@ -926,12 +926,12 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "dd64039f5a1e7fbb3d5f0d0216a3083cabc58ca1b355795ea143a90553da4b02"
+      "sha256": "ee720d2030935164b0e8a1237c9f7e3585794f6ea90320d8769d54208a06dbd8"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "e0084346b1d2de4add2ffffc58081286bc1ee4d126161870fd4aae277e1b2131"
+      "sha256": "9cb96615a9357e77fd6bad51d410656c0058a9bfefa3dc06219906e7d7858bb9"
     }
   },
   "schema_version": 3,

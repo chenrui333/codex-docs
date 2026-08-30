@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_integrated_terminal'
 source_url: 'https://learn.chatgpt.com/docs/integrated-terminal'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Integrated terminal
@@ -17,13 +17,7 @@ Each chat in the ChatGPT desktop app includes a terminal scoped to its current p
 worktree. Open it from the terminal icon in the top-right corner of the app, or
 press <kbd>Ctrl</kbd>+<kbd>`</kbd>.
 
-<CodexScreenshot
-  alt="Integrated terminal drawer open beneath a ChatGPT chat"
-  lightSrc="/images/codex/app/integrated-terminal-light.webp"
-  darkSrc="/images/codex/app/integrated-terminal-dark.webp"
-  maxHeight="400px"
-  class="my-8"
-/>
+> Illustration: Integrated terminal drawer open beneath a ChatGPT chat
 
 ## Run and validate your project
 

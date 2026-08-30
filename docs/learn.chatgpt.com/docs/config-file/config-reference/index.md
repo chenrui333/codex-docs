@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_config_file'
 source_url: 'https://learn.chatgpt.com/docs/config-file/config-reference'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Configuration Reference
@@ -444,7 +444,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "hooks.<Event>[].hooks",
       type: "array<table>",
       description:
-        "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
+        "Hook handlers for a matcher group. Command and MCP tool hooks are supported while prompt and agent hook handlers are parsed but skipped.",
     },
     {
       key: "hooks.<Event>[].hooks[].async",
@@ -506,6 +506,24 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "oauth | chatgpt",
       description:
         "Authentication fallback for an MCP HTTP server after configured bearer tokens and authorization headers. `oauth` (default) uses stored MCP OAuth credentials when available. `chatgpt` uses the current ChatGPT session for the trusted first-party ChatGPT origin, then falls back to stored OAuth. Both modes can connect without authentication if no credential source resolves.",
+    },
+    {
+      key: "mcp_servers.<id>.oauth.client_id",
+      type: "string",
+      description:
+        "Pre-registered OAuth client ID used for authorization and token exchange with this MCP server.",
+    },
+    {
+      key: "mcp_servers.<id>.oauth.callback_url",
+      type: "string",
+      description:
+        "Server-specific OAuth callback. Pre-registered clients reuse it when issuer identification is supported or the URL already ends in the server-specific callback ID. Otherwise, Codex uses the global or default callback with that ID appended. Clients without a pre-registered ID use this callback during client registration.",
+    },
+    {
+      key: "mcp_servers.<id>.oauth.callback_port",
+      type: "integer",
+      description:
+        "Fixed OAuth callback listener port for this MCP server. Overrides `mcp_oauth_callback_port`. For a direct loopback callback with an explicit URL port, configure the same listener port.",
     },
     {
       key: "mcp_servers.<id>.bearer_token_env_var",
@@ -1418,13 +1436,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "mcp_oauth_callback_port",
       type: "integer",
       description:
-        "Optional fixed port for the local HTTP callback server used during MCP OAuth login. When unset, Codex binds to an ephemeral port chosen by the OS.",
+        "Optional global fixed port for the local HTTP callback server used during MCP OAuth login. A server-specific `oauth.callback_port` takes precedence. When neither is set, Codex binds to an ephemeral port chosen by the OS.",
     },
     {
       key: "mcp_oauth_callback_url",
       type: "string",
       description:
-        "Optional base callback URL override for MCP OAuth login (for example, a devbox ingress URL). Codex appends a server-specific callback ID before sending the final OAuth `redirect_uri`, so register the full derived URI with your provider. `mcp_oauth_callback_port` still controls the callback listener port.",
+        "Optional base callback URL for MCP OAuth login, such as a devbox ingress URL. Newly added pre-registered clients use this URL unchanged when the authorization server supports issuer identification; existing clients without a saved callback append a server-specific callback ID. Without issuer support, any pre-registered MCP server whose configured callback lacks the required ID falls back to this URL with the ID appended. Callback URL ports don't select the listener port.",
     },
     {
       key: "experimental_use_unified_exec_tool",
@@ -2079,7 +2097,7 @@ model fields; `service_tier` is independent.
       key: "hooks.<Event>[].hooks",
       type: "array<table>",
       description:
-        "Hook handlers for a matcher group. Command hooks are currently supported; prompt and agent hook handlers are parsed but skipped.",
+        "Hook handlers for a matcher group. Command and MCP tool hooks are supported while prompt and agent hook handlers are parsed but skipped.",
     },
     {
       key: "hooks.<Event>[].hooks[].async",

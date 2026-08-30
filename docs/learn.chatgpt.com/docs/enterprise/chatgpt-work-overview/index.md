@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # ChatGPT Work Overview
@@ -27,6 +27,14 @@ This overview explains the execution boundary, network and application controls,
 data handling, and how tasks are executed securely using ChatGPT Work on the
 web. Availability and administrative controls depend on your plan and workspace
 configuration.
+
+For a focused review of hosted execution, connected-account permissions,
+browser and network settings, retention, and audit visibility, see
+[ChatGPT Work cloud security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security).
+
+For device access, local browser sessions, managed policies, and local data
+handling, see
+[ChatGPT Work local security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security).
 
 ## Execution isolation, files, and device access
 
@@ -106,12 +114,11 @@ It operates remotely and uses a browser session separate from the user's local
 browser. It can't access local tabs, extensions, browsing history, saved
 passwords, or authenticated local sessions.
 
-The cloud browser supports public, signed-out websites. It can navigate pages,
-enter information into supported public forms, and combine relevant information
-from an approved app with a website task. It can't accept credentials, use a
-password manager or saved form entries, sign in to a website, or complete
-payments. If a task requires one of those unsupported steps, it stops. Browser
-availability depends on your plan, region, rollout, and workspace permissions.
+The cloud browser can navigate public websites, enter information into supported
+public forms, and combine relevant information from an approved app with a
+website task. Website sign-in through the cloud browser isn't available in
+Enterprise or Edu workspaces. Browser availability depends on your plan,
+region, rollout, and workspace permissions.
 For Enterprise workspaces, an administrator must enable cloud browser access in
 addition to Work access.
 
@@ -146,8 +153,10 @@ dashboard.
 For Enterprise and Edu workspaces, plugins and their underlying apps are off by
 default. For Business workspaces, plugins and apps are on by default. Making a
 plugin available doesn't automatically enable its required app or grant access
-to a user's account. The user must enable the plugin and authenticate before
-ChatGPT Work can access it.
+to an account. The required connection must be authorized for an individual,
+shared, or agent-owned account before ChatGPT Work can access it. A shared or
+agent-owned connection uses the connected account's source-system permissions,
+which can differ from the requesting user's permissions.
 
 Where supported, administrators can restrict an app to read-only actions or an
 approved set of actions. App permission settings can also determine whether
@@ -180,21 +189,21 @@ and the [ChatGPT Work Admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-
 
 ### Retention depends on the data type
 
-- **Work conversations**—Follow the applicable ChatGPT workspace conversation
+- **Work conversations:** Follow the applicable ChatGPT workspace conversation
   retention and deletion settings.
-- **Files saved to Library**—Follow the applicable file and workspace
+- **Files saved to Library:** Follow the applicable file and workspace
   retention rules. Deleting a conversation doesn't delete files stored in
   Library.
-- **Project files**—Remain with the project until its deletion, subject to the
+- **Project files:** Remain with the project until its deletion, subject to the
   applicable deletion rules and exceptions.
-- **Transient uploads outside Library**—For Enterprise, transient uploads can
+- **Transient uploads outside Library:** For Enterprise, transient uploads can
   expire after 48 hours unless a different retention setting applies.
-- **Saved memories, when enabled**—Follow separate memory controls.
-- **Cloud browser cookies**—Remain separate from local browser data. Users can
+- **Saved memories, when enabled:** Follow separate memory controls.
+- **Cloud browser cookies:** Remain separate from local browser data. Users can
   clear them from the Cloud browser settings.
-- **Compliance Logs Platform records**—Remain available in the platform for 30
+- **Compliance Logs Platform records:** Remain available in the platform for 30
   days. Exported copies follow the receiving system's retention policy.
-- **Connected application data**—Source records follow the connected
+- **Connected application data:** Source records follow the connected
   application's policies. Copies saved in a chat, file, or synced index also
   follow the applicable OpenAI storage and retention rules.
 

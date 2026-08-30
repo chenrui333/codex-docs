@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_get_started_with_work'
 source_url: 'https://learn.chatgpt.com/docs/get-started-with-work'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Get started with ChatGPT Work
@@ -64,13 +64,7 @@ Here are three common use cases you can get started with:
 Use ChatGPT Work to turn notes, docs, research, or meeting materials into a structured
 deck.
 
-<CodexScreenshot
-  alt="A presentation created in ChatGPT Work"
-  lightSrc="/codex/get-started-with-work/create-presentation.webp"
-  darkSrc="/codex/get-started-with-work/create-presentation.webp"
-  maxHeight={520}
-  class="my-6 p-4 md:p-8"
-/>
+> Illustration: A presentation created in ChatGPT Work
 
 **Example prompt:**
 
@@ -83,13 +77,7 @@ Review the attached source materials and create an eight-slide presentation for 
 Use ChatGPT Work to turn notes, files, or research into a spreadsheet that compares
 options and helps you make a decision.
 
-<CodexScreenshot
-  alt="A comparison spreadsheet created in ChatGPT Work"
-  lightSrc="/codex/get-started-with-work/comparison-spreadsheet.webp"
-  darkSrc="/codex/get-started-with-work/comparison-spreadsheet.webp"
-  maxHeight={520}
-  class="my-6 p-4 md:p-8"
-/>
+> Illustration: A comparison spreadsheet created in ChatGPT Work
 
 **Example prompt:**
 
@@ -102,13 +90,7 @@ Create a spreadsheet comparing the options for [decision]. Use the attached note
 Use scheduled tasks when you want ChatGPT Work to repeat, monitor, or refresh something
 over time.
 
-<CodexScreenshot
-  alt="A recurring update scheduled in ChatGPT Work"
-  lightSrc="/codex/get-started-with-work/recurring-update.webp"
-  darkSrc="/codex/get-started-with-work/recurring-update.webp"
-  maxHeight={520}
-  class="my-6 p-4 md:p-8"
-/>
+> Illustration: A recurring update scheduled in ChatGPT Work
 
 **Example prompt:**
 
@@ -147,13 +129,7 @@ Learn more about [prompting for ChatGPT Work](https://learn.chatgpt.com/docs/pro
 
 ## Add plugins for more context and better outputs
 
-<CodexScreenshot
-  alt="The plugins library in ChatGPT Work"
-  lightSrc="/codex/get-started-with-work/plugins.webp"
-  darkSrc="/codex/get-started-with-work/plugins.webp"
-  maxHeight={520}
-  class="my-6 p-4 md:p-8"
-/>
+> Illustration: The plugins library in ChatGPT Work
 
 Plugins connect ChatGPT Work to tools your team uses, like Slack, Google Drive,
 SharePoint, email, calendars, customer relationship management systems, and

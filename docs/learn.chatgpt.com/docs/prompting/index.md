@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_prompting'
 source_url: 'https://learn.chatgpt.com/docs/prompting'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Prompting
@@ -196,13 +196,7 @@ In the ChatGPT desktop app, press <kbd>Ctrl+Shift+D</kbd> while the composer is
 visible, then start talking. ChatGPT transcribes your speech into the composer
 so you can review and edit it before sending the prompt.
 
-<CodexScreenshot
-  alt="Voice dictation indicator in the composer with a transcribed prompt"
-  lightSrc="/images/codex/app/voice-dictation-light.webp"
-  darkSrc="/images/codex/app/voice-dictation-dark.webp"
-  maxHeight="400px"
-  class="my-8"
-/>
+> Illustration: Voice dictation indicator in the composer with a transcribed prompt
 
 <a id="threads"></a>
 <a id="chats"></a>

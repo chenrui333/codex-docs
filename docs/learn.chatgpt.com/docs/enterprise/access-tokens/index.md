@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/access-tokens'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Access tokens
@@ -64,13 +64,7 @@ profile. Configure those controls as needed.
 For the relationship between these controls, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
 
-<CodexScreenshot
-  alt="Access token access permission in ChatGPT workspace RBAC settings"
-  lightSrc="/images/codex/enterprise/rbac_access_token_access_permission.png"
-  darkSrc="/images/codex/enterprise/rbac_access_token_access_permission_dark.png"
-  maxWidth={847}
-  variant="no-wallpaper"
-/>
+> Illustration: Access token access permission in ChatGPT workspace RBAC settings
 
 1. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings).
 2. In the **Access tokens** section, turn on **Allow users to create access tokens** if all allowed members should be able to create access tokens.
@@ -82,13 +76,7 @@ Keep access token creation limited to people or service owners who understand wh
 
 Workspace owners and admins can set the longest expiration that members can choose when they create a Codex access token. Go to [Workspace Settings > Permissions & roles](https://chatgpt.com/admin/settings), then set **Access token expiration limit** in the **Codex Local** section.
 
-<CodexScreenshot
-  alt="Access token expiration limit in ChatGPT workspace permissions settings"
-  lightSrc="/images/codex/enterprise/access_token_expiration_limit.png"
-  darkSrc="/images/codex/enterprise/access_token_expiration_limit_dark.png"
-  maxWidth={847}
-  variant="no-wallpaper"
-/>
+> Illustration: Access token expiration limit in ChatGPT workspace permissions settings
 
 The limit applies to new access tokens. Existing tokens keep their current expiration.
 
@@ -99,23 +87,11 @@ Use the Access tokens page to name the token and choose when it expires.
 1. Go to [Access tokens](https://chatgpt.com/admin/access-tokens).
 2. Select **Create**.
 
-<CodexScreenshot
-  alt="Access tokens page with the Create button"
-  lightSrc="/images/codex/enterprise/access_token_create_header.png"
-  darkSrc="/images/codex/enterprise/access_token_create_header_dark.png"
-  maxWidth={942}
-  variant="no-wallpaper"
-/>
+> Illustration: Access tokens page with the Create button
 
 3. Enter a descriptive name, such as `release-ci` or `nightly-docs-check`.
 
-<CodexScreenshot
-  alt="Create access token modal with fields for name and expiration"
-  lightSrc="/images/codex/enterprise/access_token_creation_modal.png"
-  darkSrc="/images/codex/enterprise/access_token_creation_modal_dark.png"
-  maxWidth={544}
-  variant="no-wallpaper"
-/>
+> Illustration: Create access token modal with fields for name and expiration
 
 4. Choose an expiration. Prefer a finite expiration such as 7, 30, 60, or 90 days. If you choose **No expiration**, rotate the token on a regular schedule.
 5. Select **Create**.

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_mcp_server'
 source_url: 'https://learn.chatgpt.com/docs/mcp-server'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Use Codex with the Agents SDK
@@ -14,6 +14,12 @@ Source: https://learn.chatgpt.com/docs/mcp-server
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 # Running Codex as an MCP server
+
+`codex mcp-server` is deprecated. Use the [Codex app
+  server](https://learn.chatgpt.com/docs/app-server) instead. To call Codex from Claude Code, use the
+  [Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc),
+  which uses the app server. This page documents the deprecated command for
+  existing integrations.
 
 You can run Codex as an MCP server and connect it from other MCP clients (for example, an agent built with the [OpenAI Agents SDK MCP integration](https://developers.openai.com/api/docs/guides/agents/integrations-observability#mcp)).
 

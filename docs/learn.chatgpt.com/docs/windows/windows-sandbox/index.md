@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_windows'
 source_url: 'https://learn.chatgpt.com/docs/windows/windows-sandbox'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Windows sandbox
@@ -24,13 +24,7 @@ The app can run natively in PowerShell with a Windows sandbox instead of
 requiring WSL or a virtual machine. This keeps Codex in Windows-native
 workflows while enforcing bounded filesystem and network permissions.
 
-<CodexScreenshot
-  alt="ChatGPT desktop app Windows sandbox setup prompt above the message composer"
-  lightSrc="/images/codex/windows/windows-sandbox-setup.webp"
-  darkSrc="/images/codex/windows/windows-sandbox-setup.webp"
-  maxHeight="400px"
-  class="my-8"
-/>
+> Illustration: ChatGPT desktop app Windows sandbox setup prompt above the message composer
 
   <CodexCallout
     href="/codex/windows/windows-app"
@@ -139,7 +133,7 @@ sandbox mode, Windows version, and any policy error shown by Codex. Most native
 Windows support issues come from sandbox setup, logon rights, or filesystem
 permissions rather than from the editor itself.
 
-My native sandbox setup failed
+### My native sandbox setup failed
 
 If Codex cannot complete the `elevated` sandbox setup, the most common causes
 are:
@@ -160,7 +154,7 @@ What to try:
 3. If the default setup still fails, use the `unelevated` sandbox so you can
    continue working while the issue is investigated.
 
-Codex switched me to the unelevated sandbox
+### Codex switched me to the unelevated sandbox
 
 This means Codex could not finish the stronger `elevated` sandbox setup on your
 machine.
@@ -175,7 +169,7 @@ machine.
 If you are on a managed enterprise laptop, the best long-term fix is usually to
 get the `elevated` sandbox working with help from your IT team.
 
-I see Windows error 1385
+### I see Windows error 1385
 
 If sandboxed commands fail with error `1385`, Windows is denying the logon type
 the sandbox user needs in order to start the command.
@@ -195,7 +189,7 @@ What to do:
 4. Send `CODEX_HOME/.sandbox/sandbox.log` along with your Windows version and a
    short description of the failure.
 
-Codex warns that some folders are writable by Everyone
+### Codex warns that some folders are writable by Everyone
 
 Codex may warn that some folders are writable by `Everyone`.
 
@@ -212,7 +206,7 @@ What to do:
 
 If you are not sure how to change those permissions, ask your IT team for help.
 
-Sandboxed commands cannot reach the network
+### Sandboxed commands cannot reach the network
 
 Some Codex chats are intentionally run without outbound network access,
 depending on the permissions mode in use.
@@ -224,7 +218,7 @@ If a task fails because it cannot reach the network:
 3. If the issue keeps happening, collect the sandbox log so the team can check
    whether the machine is in a partial or broken sandbox state.
 
-Sandboxing worked before and then stopped
+### Sandboxing worked before and then stopped
 
 This can happen after:
 
@@ -241,7 +235,7 @@ What to try:
    fallback.
 4. Collect the sandbox log for review.
 
-I need to send diagnostics to OpenAI
+### I need to send diagnostics to OpenAI
 
 If you still have problems, send:
 
@@ -259,7 +253,7 @@ Do not send:
 
 - the contents of `CODEX_HOME/.sandbox-secrets/`
 
-The IDE extension is installed but unresponsive
+### The IDE extension is installed but unresponsive
 
 Your system may be missing C++ development tools, which some native dependencies require:
 

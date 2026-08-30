@@ -3,10 +3,10 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-08-20T18:36:24Z'
-source_etag: 'W/"61323290cb75448d7ada37ca55602468"'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+source_last_modified: '2026-08-29T10:06:13Z'
+source_etag: 'W/"9dcc43db3dbb142cad0077d3dfc2173f"'
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # ChatGPT | ChatGPT Learn
@@ -74,6 +74,14 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 [View all updates](/codex/whats-new)
 
+August 24–28, 2026
+
+[### Work with more websites
+
+Availability depends on rollout and workspace settings.](/codex/whats-new#work-with-more-websites)  [### Run scheduled tasks from app events
+
+Scheduled tasks can now start when a supported event occurs in Gmail, Slack, or GitHub.](/codex/whats-new#run-scheduled-tasks-from-app-events)
+
 August 17–21, 2026
 
 [### Work with more of your apps and content
@@ -81,12 +89,4 @@ August 17–21, 2026
 <PromptComponent prompt={Find the latest Messages conversation about tomorrow's launch, summarize the open questions, and draft a reply without sending it.}](/codex/whats-new#work-with-more-of-your-apps-and-content)  [### Work with GitLab projects in Codex cloud
 
 GitLab support is available in beta on all ChatGPT plans.](/codex/whats-new#work-with-gitlab-projects-in-codex-cloud)
-
-August 10–14, 2026
-
-[### Find earlier work with Computer History
-
-Computer History turns activity across your apps and websites into a searchable timeline and memories that ChatGPT and Codex can use.](/codex/whats-new#find-earlier-work-with-computer-history)  [### Use the ChatGPT desktop app on Linux
-
-The ChatGPT desktop app for Linux is now available in preview.](/codex/whats-new#use-the-chatgpt-desktop-app-on-linux)
 

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/workspace-analytics'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Workspace analytics
@@ -23,12 +23,12 @@ for the administration boundaries.
 
 ## Choose a reporting surface
 
-| Surface                     | Use it for                                                    | Contract owner                                                                                           |
-| --------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| ChatGPT workspace analytics | Interactive, workspace-wide adoption and engagement reporting | [Workspace analytics Help Center guidance](https://help.openai.com/en/articles/10875114)                 |
-| Codex analytics             | Interactive reporting focused on Codex adoption and activity  | The authenticated [Codex analytics dashboard](https://admin.openai.com/analytics/codex)                  |
-| Analytics API               | Programmatic, aggregated Codex reporting                      | The authenticated [Codex Analytics API reference](https://chatgpt.com/codex/cloud/settings/apireference) |
-| Compliance API              | Audit, security, legal, and investigation records             | The authenticated [Admin API reference](https://chatgpt.com/admin/api-reference)                         |
+| Surface                     | Use it for                                                    | Contract owner                                                                                                         |
+| --------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| ChatGPT workspace analytics | Interactive, workspace-wide adoption and engagement reporting | [Workspace analytics Help Center guidance](https://help.openai.com/en/articles/10875114)                               |
+| Codex analytics             | Interactive reporting focused on Codex adoption and activity  | The authenticated [Codex analytics dashboard](https://admin.openai.com/analytics/codex)                                |
+| Analytics API               | Programmatic, aggregated Codex reporting                      | The [Codex Analytics API reference](https://chatgpt.com/public/admin/api-reference#tag/Codex%20Enterprise%20Analytics) |
+| Compliance API              | Audit, security, legal, and investigation records             | The [Admin API reference](https://chatgpt.com/public/admin/api-reference)                                              |
 
 ## Review ChatGPT workspace analytics
 
@@ -51,7 +51,7 @@ schema contract. Dashboard categories, fields, filters, and export formats can
 change independently of this page.
 
 For automated reporting, use the [Analytics API](https://learn.chatgpt.com/docs/enterprise/analytics-api)
-and follow its authenticated reference. For auditable records, use the
+and follow its API reference. For auditable records, use the
 [Compliance API](https://learn.chatgpt.com/docs/enterprise/compliance-api).
 
 ## Interpret reporting data

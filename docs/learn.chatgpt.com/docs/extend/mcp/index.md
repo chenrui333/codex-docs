@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_extend'
 source_url: 'https://learn.chatgpt.com/docs/extend/mcp'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Model Context Protocol
@@ -197,9 +197,84 @@ OAuth login.
   `approve`. The `writes` mode prompts for tools that aren't marked read-only.
 - `tools.<tool>.approval_mode` (optional): Per-tool approval behavior override.
 
-If your OAuth provider requires a fixed callback port, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
+#### OAuth client registration and callbacks
 
-If your MCP OAuth flow must use a specific callback URL (for example, a remote Devbox ingress URL or a custom callback path), set `mcp_oauth_callback_url`. Codex uses this value as the base callback URL, then appends a server-specific callback ID to produce the OAuth `redirect_uri` it sends during login. Register the full derived `redirect_uri` with your OAuth provider, including the appended callback ID and any configured path, query, or port, rather than registering only the base host or path without that suffix. Local callback URLs (for example `localhost`) bind on the local interface; non-local callback URLs bind on `0.0.0.0` so the callback can reach the host.
+When your authorization server requires a pre-registered OAuth client, provide
+its client ID when adding the MCP server:
+
+```bash
+codex mcp add example --url https://mcp.example.com --oauth-client-id my-client
+```
+
+Codex displays the complete callback URL to register with your provider:
+
+```text
+OAuth callback URL: http://127.0.0.1/callback
+```
+
+Codex saves the callback alongside the client ID in `config.toml` for later
+logins:
+
+```toml
+[mcp_servers.example]
+url = "https://mcp.example.com"
+
+[mcp_servers.example.oauth]
+client_id = "my-client"
+callback_url = "http://127.0.0.1/callback"
+```
+
+Newly added pre-registered clients use a stable callback only when the
+authorization server advertises
+`authorization_response_iss_parameter_supported: true` and provides a metadata
+`issuer`. If issuer support isn't advertised, Codex appends a server-specific
+callback ID, such as `http://127.0.0.1/callback/XuuuHAzzHOni`. Existing clients
+without a saved callback continue using their callback-ID-specific redirect.
+
+During login, callback selection depends on the OAuth configuration and
+authorization server metadata:
+
+| OAuth configuration                                                | Issuer support           | Callback used                                                                                                                                      |
+| ------------------------------------------------------------------ | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `callback_url` without `client_id`                                 | Supported                | The configured callback is used for client registration.                                                                                           |
+| `callback_url` without `client_id`                                 | Unsupported              | The configured callback is used for client registration with the server-specific callback ID appended.                                             |
+| `client_id` and `callback_url`                                     | Supported                | The configured callback is reused; the authorization response must contain the matching `iss`.                                                     |
+| `client_id` and a `callback_url` ending in the correct callback ID | Unsupported              | The configured callback is reused unchanged.                                                                                                       |
+| `client_id` and a `callback_url` missing the correct callback ID   | Unsupported              | The configured callback is ignored. Codex uses `mcp_oauth_callback_url`, or `http://127.0.0.1/callback` when unset, with the callback ID appended. |
+| `client_id` without a configured `callback_url`                    | Supported or unsupported | Codex uses the global or default callback with the server-specific callback ID appended.                                                           |
+
+The fallback doesn't modify the stored callback URL. Codex derives the callback
+ID from the MCP server URL, including its path and query string. The same
+selection rules apply to automatic and explicit login.
+
+Set `mcp_oauth_callback_url` when you need a custom callback path or remote
+Devbox ingress URL. Newly added pre-registered clients use that URL unchanged
+when their provider supports issuer identification. Otherwise, they use the
+configured URL with the server-specific callback ID appended. Always register
+the exact callback displayed by `codex mcp add`.
+
+For portless `http://127.0.0.1` callbacks, Codex omits the listener port from
+the URL it displays and stores, then inserts the active listener port during
+authorization. This substitution doesn't apply to `localhost`, IPv6 hosts,
+HTTPS URLs, or callbacks that already include a port. Authorization servers
+must accept variable loopback ports under
+[RFC 8252, Section 7.3](https://www.rfc-editor.org/rfc/rfc8252#section-7.3).
+
+Set `mcp_oauth_callback_port` to choose a fixed global listener port, or set
+`mcp_servers.<server-name>.oauth.callback_port` to override it for one server.
+An explicit port in the callback URL doesn't configure the listener. For a
+direct loopback callback, use portless `http://127.0.0.1` or configure the same
+explicit port for both the callback URL and listener. A proxied callback can
+intentionally use an external URL port that differs from the local listener
+port. Local callback URLs bind to the local interface; non-local callback URLs
+bind to `0.0.0.0`.
+
+Codex validates any returned `iss` before exchanging the authorization code. A
+mismatched `iss` always rejects the response. When issuer support is advertised,
+a missing `iss` also rejects it. Neither failure exchanges the code or falls
+back to another callback. A malformed callback URL or issuer support advertised
+without a metadata issuer also remains a hard failure. See
+[Authenticate users](https://developers.openai.com/plugins/build/auth).
 
 If the MCP server advertises `scopes_supported`, Codex prefers those
 server-advertised scopes during OAuth login. Otherwise, Codex falls back to the
@@ -310,6 +385,48 @@ enabled_tools = ["read", "search"]
 [plugins."sample@test".mcp_servers.sample.tools.search]
 approval_mode = "approve"
 ```
+
+Plugin-provided HTTP MCP servers can also declare OAuth settings in `.mcp.json`.
+Plugin manifests use the camelCase field names `clientId`, `callbackUrl`, and
+`callbackPort`:
+
+```json
+{
+  "mcpServers": {
+    "sample": {
+      "type": "http",
+      "url": "https://mcp.example.com/mcp",
+      "oauth": {
+        "clientId": "my-pre-registered-client",
+        "callbackUrl": "http://127.0.0.1/callback/registered"
+      }
+    }
+  }
+}
+```
+
+Plugin-provided MCP servers follow the same callback-selection rules as other
+MCP servers. If a plugin provides a `clientId`, its provider doesn't support
+issuer-bound callbacks, and `callbackUrl` lacks the server-specific callback
+ID, Codex ignores that URL for the login and uses `mcp_oauth_callback_url`, or
+`http://127.0.0.1/callback` when unset, with the callback ID appended. The
+configured `callbackUrl` remains unchanged.
+
+A plugin's `oauth.callbackPort` overrides the global
+`mcp_oauth_callback_port`; if neither is set, Codex chooses an ephemeral port.
+The port embedded in `callbackUrl` doesn't select the listener port. For a
+direct loopback callback with a fixed port, configure both values to match:
+
+```json
+{
+  "callbackUrl": "http://127.0.0.1:4321/callback/registered",
+  "callbackPort": 4321
+}
+```
+
+For remote ingress or another proxy, the callback URL port and local listener
+port can intentionally differ when the proxy forwards to the configured
+listener.
 
 ## Examples of useful MCP servers
 

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_sites'
 source_url: 'https://learn.chatgpt.com/docs/sites'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Sites
@@ -157,9 +157,7 @@ the Site in ChatGPT on the web or in the desktop app to review its analytics.
 
 </ContentModeSwitch>
 
-<Illustration description="Interactive Sites analytics dashboard showing unique visitors and page views over seven days.">
-  <SitesAnalyticsIllustration />
-</Illustration>
+> Illustration: Interactive Sites analytics dashboard showing unique visitors and page views over seven days.
 
 Analytics is currently available for Sites that aren't owned by an Enterprise
   workspace.
@@ -442,6 +440,9 @@ Deleting a Site permanently removes it. You can't restore a deleted Site.
 Sites hosts web experiences that run in the supported Sites runtime. Some
 frameworks, private networks, databases, background services, and hosting
 patterns aren't supported.
+
+HTTP, HTTPS, and WebSockets are supported. Raw inbound and outbound TCP
+connections aren't.
 
 Each Site has these storage limits:
 

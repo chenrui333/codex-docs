@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_config_file'
 source_url: 'https://learn.chatgpt.com/docs/config-file/config-sample'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Sample Configuration
@@ -236,17 +236,35 @@ chatgpt_base_url = "https://chatgpt.com/backend-api/"
 
 mcp_oauth_credentials_store = "auto"
 
-# Optional fixed port for MCP OAuth callback: 1-65535. Default: unset.
+# Optional global fixed port for MCP OAuth callback: 1-65535. Default: unset.
+
+# A server-specific oauth.callback_port overrides this global listener port.
 
 # mcp_oauth_callback_port = 4321
 
-# Optional redirect URI override for MCP OAuth login (for example, remote devbox ingress).
+# Optional callback URL override for MCP OAuth login (for example, remote devbox ingress).
 
-# Codex appends a server-specific callback ID before OAuth login.
+# Newly added pre-registered clients use this URL unchanged when the authorization server
 
-# Register the full derived URI with your provider, not just the base host or unsuffixed path.
+# advertises issuer support and provides a metadata issuer. Without issuer support,
 
-# Custom callback paths are supported. `mcp_oauth_callback_port` still controls the listener port.
+# Codex appends a server-specific callback ID. Existing clients without a saved
+
+# callback keep that suffix.
+
+# Without issuer support, any pre-registered MCP server callback must already
+
+# end in the correct callback ID. Otherwise, Codex ignores that callback and uses
+
+# this global URL (or its default) with the server-specific callback ID appended.
+
+# Malformed callback URLs and mismatched authorization response issuers fail.
+
+# If issuer support is advertised, missing metadata or response issuers also fail.
+
+# Custom callback paths are supported. Callback URL ports don't select the
+
+# listener port; configure oauth.callback_port or mcp_oauth_callback_port.
 
 # mcp_oauth_callback_url = "https://devbox.example.internal/callback"
 
@@ -855,6 +873,16 @@ enabled = true
 # disabled_tools = ["delete_issue"] # optional deny-list
 
 # scopes = ["repo"] # optional OAuth scopes
+
+# [mcp_servers.github.oauth]
+
+# client_id = "my-pre-registered-client" # OAuth client registered with the provider
+
+# callback_url = "http://127.0.0.1/callback" # saved registered callback for this client
+
+# callback_port = 4321 # server-specific listener port; overrides the global setting
+
+# For http://127.0.0.1:4321/callback, set callback_port = 4321 as well.
 
 ################################################################################
 

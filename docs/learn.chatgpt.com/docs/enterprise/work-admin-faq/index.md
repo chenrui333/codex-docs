@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/work-admin-faq'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # ChatGPT Work admin FAQ
@@ -352,8 +352,16 @@ servers, hooks, command rules, and other supported runtime behavior.
 ### How does ChatGPT Work usage translate into spend over time?
 
 [ChatGPT Work and Codex share pricing, credits, and usage limits](https://learn.chatgpt.com/docs/pricing).
-Consumption varies with the model and capability, context size, task duration,
-tool use, and output size. Standard Chat usage is separate.
+For eligible credit-based agreements, review employees' combined Chat and Work
+usage against the shared workspace credit allocation. Consumption varies with
+the model, applicable reasoning or speed settings, processed input and output,
+and eligible tools or features.
+
+Using committed credits doesn't automatically increase your invoice. Actual
+charges depend on the remaining credit balance, contracted rates, account
+overage eligibility, and configured workspace overage limit. For planning
+examples, effective user limits, reporting boundaries, and billing details,
+see [ChatGPT Work: usage and cost](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost).
 
 The highest-variance patterns are often workflows that run frequently,
 retrieve or process large amounts of information, call multiple tools or apps,

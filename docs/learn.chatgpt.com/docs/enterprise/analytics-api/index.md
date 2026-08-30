@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/analytics-api'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Analytics API
@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/enterprise/analytics-api
 The Codex Analytics API provides aggregated Codex usage and activity metrics for
 a ChatGPT workspace.
 
-The authenticated [Codex Analytics API reference](https://chatgpt.com/codex/cloud/settings/apireference)
+The [Codex Analytics API reference](https://chatgpt.com/public/admin/api-reference#tag/Codex%20Enterprise%20Analytics)
 is the source of truth for current access requirements, routes, request and
 response schemas, metrics, time semantics, and pagination.
 
@@ -39,7 +39,7 @@ Analytics API results are scoped to a ChatGPT workspace, but requests
 authenticate with a Platform organization API key. The key's organization must
 match the organization associated with the workspace.
 
-The authenticated reference owns current key provisioning, scope requirements,
+The API reference owns current key provisioning, scope requirements,
 routes, schemas, fields, time semantics, and pagination behavior. This page
 doesn't duplicate that contract.
 

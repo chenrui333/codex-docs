@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_models'
 source_url: 'https://learn.chatgpt.com/docs/models'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Models
@@ -323,7 +323,7 @@ When you sign in with ChatGPT, Codex works best with the recommended models list
       slug="gpt-5.5"
       imageLabel="5.5"
       wallpaperUrl="/images/api/models/gpt-5.5.jpg"
-      description="Previous-generation frontier model for complex coding, computer use, knowledge work, and research workflows."
+      description="Previous-generation flagship model for complex coding, computer use, knowledge work, and research workflows."
       data={{
         features: [
           {
@@ -355,7 +355,7 @@ When you sign in with ChatGPT, Codex works best with the recommended models list
       slug="gpt-5.4"
       imageLabel="5.4"
       wallpaperUrl="/images/api/models/gpt-5.4.jpg"
-      description="Frontier model for professional work with strong coding, reasoning, tool use, and agentic workflow capabilities."
+      description="Flagship model for professional work with strong coding, reasoning, tool use, and agentic workflow capabilities."
       data={{
         features: [
           {

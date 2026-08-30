@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_environments'
 source_url: 'https://learn.chatgpt.com/docs/environments/local-environment'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Local environments
@@ -47,13 +47,7 @@ Use actions to define common tasks like starting your app's development server o
 
 Actions are helpful to keep you from typing common actions like triggering a build for your project or starting a development server. For one-off quick debugging you can use the integrated terminal directly.
 
-<CodexScreenshot
-  alt="Project actions list shown in ChatGPT desktop app settings"
-  lightSrc="/images/codex/app/actions-light.webp"
-  darkSrc="/images/codex/app/actions-dark.webp"
-  maxHeight="400px"
-  class="mb-4 lg:mb-0"
-/>
+> Illustration: Project actions list shown in ChatGPT desktop app settings
 
 </section>
 
@@ -79,6 +73,4 @@ Use the [integrated terminal](https://learn.chatgpt.com/docs/integrated-terminal
 operations that aren't exposed in the app. To isolate concurrent changes from
 your local checkout, start the task in a [worktree](https://learn.chatgpt.com/docs/environments/git-worktrees).
 
-<Illustration description="Codex environment summary panel">
-  <EnvironmentPanelIllustration ariaLabel="Codex environment summary panel" />
-</Illustration>
+> Illustration: Codex environment summary panel

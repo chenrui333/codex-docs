@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_agent_configuration'
 source_url: 'https://learn.chatgpt.com/docs/agent-configuration/subagents'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Subagents
@@ -253,17 +253,9 @@ subagent.
 - Ask Codex directly to steer a running subagent, stop it, or close completed
   subagent threads.
 
-<Illustration description="Codex desktop chat showing two subagents working in parallel.">
-  <SubagentWorkflowIllustration ariaLabel="Codex desktop chat showing two subagents working in parallel." />
-</Illustration>
+> Illustration: Codex desktop chat showing two subagents working in parallel.
 
-<Illustration description="Codex desktop Subagents panel with no active subagents and three completed audits.">
-  <SubagentWorkflowIllustration
-    ariaLabel="Codex desktop Subagents panel with no active subagents and three completed audits."
-    class="mt-4"
-    variant="results"
-  />
-</Illustration>
+> Illustration: Codex desktop Subagents panel with no active subagents and three completed audits.
 
 </ContentModeSwitch>
 

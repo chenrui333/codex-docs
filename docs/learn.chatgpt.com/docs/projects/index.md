@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_projects'
 source_url: 'https://learn.chatgpt.com/docs/projects'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Projects and chats
@@ -79,13 +79,7 @@ collection of source files or a codebase.
 Start a separate chat for each distinct outcome so its messages and results stay
 focused while the project keeps related work organized.
 
-<CodexScreenshot
-  alt="ChatGPT desktop app showing multiple projects in the sidebar and chats in the main pane"
-  lightSrc="/images/codex/app/multitask-light.webp"
-  darkSrc="/images/codex/app/multitask-dark.webp"
-  maxHeight="400px"
-  class="my-8"
-/>
+> Illustration: ChatGPT desktop app showing multiple projects in the sidebar and chats in the main pane
 
 </ContentModeSwitch>
 

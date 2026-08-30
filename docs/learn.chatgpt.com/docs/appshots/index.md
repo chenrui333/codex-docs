@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_appshots'
 source_url: 'https://learn.chatgpt.com/docs/appshots'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Appshots
@@ -53,9 +53,7 @@ Examples:
 3. Allow macOS permissions if ChatGPT asks.
 4. Ask ChatGPT to perform a task with the appshot.
 
-<Illustration description="ChatGPT chat composer with an Appshot attachment and follow-up prompt">
-  <AppshotsComposerIllustration ariaLabel="ChatGPT chat composer with an Appshot attachment and follow-up prompt" />
-</Illustration>
+> Illustration: ChatGPT chat composer with an Appshot attachment and follow-up prompt
 
 By default, ChatGPT starts a new chat for the appshot. If you interacted with a
 chat in the last 60 seconds, ChatGPT adds the appshot to that recent

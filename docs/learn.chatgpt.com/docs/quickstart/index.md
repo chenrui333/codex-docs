@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_quickstart'
 source_url: 'https://learn.chatgpt.com/docs/quickstart'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
 ---
 
 # Quickstart
@@ -19,9 +19,7 @@ Use ChatGPT across different surfaces, including the
 [ChatGPT desktop app](https://learn.chatgpt.com/docs/app) and [ChatGPT on the web](https://learn.chatgpt.com/docs/web). Choose
 the option that fits your work.
 
-<Illustration description="Cards compare the ChatGPT desktop app and ChatGPT on the web">
-  <QuickstartSetupSelector />
-</Illustration>
+> Illustration: Cards compare the ChatGPT desktop app and ChatGPT on the web
 
 If you're a developer and want to use Codex in your terminal or code editor,
   try [Codex CLI](https://learn.chatgpt.com/docs/codex/cli) or the [Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide).

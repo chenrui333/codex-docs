@@ -3,8 +3,10 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/references/model-selection.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0"]
+codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0"]
+codex_cli_release_ref: 'rust-v0.151.0'
+codex_cli_source_commit: '78c290807ce710180111df227df3b7a4fe845452'
 ---
 
 # Model selection
