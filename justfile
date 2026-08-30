@@ -30,6 +30,10 @@ test-node:
 
 sync:
     . .venv/bin/activate && python scripts/fetch_codex_docs.py
+    . .venv/bin/activate && python scripts/check_codex_freshness.py
+
+freshness:
+    . .venv/bin/activate && python scripts/check_codex_freshness.py
 
 check:
     ./scripts/validate_sync.sh

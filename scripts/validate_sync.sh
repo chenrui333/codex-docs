@@ -63,9 +63,15 @@ content_snapshot "$before"
 
 . .venv/bin/activate
 python scripts/fetch_codex_docs.py
+freshness_args=()
+if [[ "$strict_sync" == "1" ]]; then
+  freshness_args+=(--strict)
+fi
+python scripts/check_codex_freshness.py "${freshness_args[@]}"
 content_snapshot "$after_first"
 
 python scripts/fetch_codex_docs.py
+python scripts/check_codex_freshness.py "${freshness_args[@]}"
 content_snapshot "$after_second"
 
 if ! cmp -s "$after_first" "$after_second"; then

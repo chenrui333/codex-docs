@@ -1,0 +1,65 @@
+{
+  "canonical_mirror": {
+    "coverage_version": "0.151.0",
+    "last_successful_full_sync_at": "2026-08-30T00:44:11+00:00",
+    "provenance": "generated_sync_metadata",
+    "version": "0.151.0"
+  },
+  "checks": [
+    {
+      "expected": "0.151.0",
+      "name": "installed_cli_matches_latest_stable",
+      "observed": "0.151.0",
+      "status": "pass"
+    },
+    {
+      "expected": "0.151.0",
+      "name": "canonical_mirror_matches_latest_stable",
+      "observed": "0.151.0",
+      "status": "pass"
+    },
+    {
+      "expected": "0.151.0",
+      "name": "source_coverage_matches_latest_stable",
+      "observed": "0.151.0",
+      "status": "pass"
+    },
+    {
+      "expected": "0.151.0",
+      "name": "feature_snapshot_matches_latest_stable",
+      "observed": "0.151.0",
+      "status": "pass"
+    },
+    {
+      "expected": "78c290807ce710180111df227df3b7a4fe845452",
+      "name": "feature_snapshot_commit_matches_release_tag",
+      "observed": "78c290807ce710180111df227df3b7a4fe845452",
+      "status": "pass"
+    }
+  ],
+  "feature_flag_snapshot": {
+    "provenance": "release_matched_cli_and_source_snapshot",
+    "source_commit": "78c290807ce710180111df227df3b7a4fe845452",
+    "source_ref": "rust-v0.151.0",
+    "version": "0.151.0",
+    "version_raw": "codex-cli 0.151.0"
+  },
+  "installed_cli": {
+    "command": "codex --version",
+    "provenance": "installed_cli_observation",
+    "version": "0.151.0",
+    "version_raw": "codex-cli 0.151.0"
+  },
+  "latest_stable_release": {
+    "provenance": "github_release_metadata",
+    "published_at": "2026-08-29T09:55:39Z",
+    "source_commit": "78c290807ce710180111df227df3b7a4fe845452",
+    "tag": "rust-v0.151.0",
+    "url": "https://github.com/openai/codex/releases/tag/rust-v0.151.0",
+    "version": "0.151.0"
+  },
+  "release_grace_elapsed": true,
+  "release_grace_hours": 12.0,
+  "schema_version": 1,
+  "status": "fresh"
+}
