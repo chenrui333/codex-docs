@@ -31,6 +31,11 @@ class FakeResponse:
     def raise_for_status(self):
         if self.error:
             raise self.error
+        if self.status_code >= 400:
+            raise requests.HTTPError(
+                f"HTTP {self.status_code}",
+                response=self,
+            )
 
 
 class FakeSession:
@@ -41,7 +46,10 @@ class FakeSession:
 
     def get(self, url, **kwargs):
         self.calls.append((url, kwargs))
-        return self.responses.pop(0)
+        response = self.responses.pop(0)
+        if isinstance(response, Exception):
+            raise response
+        return response
 
 
 class FetchHelpersTests(unittest.TestCase):
@@ -64,7 +72,12 @@ class FetchHelpersTests(unittest.TestCase):
 
     def test_url_filters_and_classifications_cover_expected_groups(self):
         self.assertEqual(
-            sync.parse_loc_tags("<loc>https://example.test/a</loc><loc>b</loc>"),
+            sync.parse_sitemap_loc_tags(
+                "<urlset><url><loc>https://example.test/a</loc></url>"
+                "<url><loc>b</loc></url></urlset>",
+                source_url="https://example.test/sitemap.xml",
+                expected_root="urlset",
+            ),
             ["https://example.test/a", "b"],
         )
         self.assertTrue(sync.keep_developers_url("https://developers.openai.com/codex/cli"))
@@ -268,14 +281,17 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertEqual(environment, {"PATH": "/bin", "LANG": "C.UTF-8"})
 
     def test_discover_developers_urls_reports_coverage_and_fetch_errors(self):
-        index = "<loc>https://example.test/one.xml</loc><loc>https://example.test/two.xml</loc>"
-        sitemap = "".join(
-            [
-                "<loc>https://developers.openai.com/codex/cli/</loc>",
-                "<loc>https://developers.openai.com/blog/topic/codex</loc>",
-                "<loc>https://developers.openai.com/new-codex-page</loc>",
-            ]
+        index = (
+            "<sitemapindex><sitemap><loc>https://example.test/one.xml</loc></sitemap>"
+            "<sitemap><loc>https://example.test/two.xml</loc></sitemap></sitemapindex>"
         )
+        sitemap = "<urlset>" + "".join(
+            [
+                "<url><loc>https://developers.openai.com/codex/cli/</loc></url>",
+                "<url><loc>https://developers.openai.com/blog/topic/codex</loc></url>",
+                "<url><loc>https://developers.openai.com/new-codex-page</loc></url>",
+            ]
+        ) + "</urlset>"
         responses = [index, sitemap, requests.ConnectionError("broken sitemap")]
 
         def fake_fetch(_session, _url, headers=None):
@@ -301,13 +317,14 @@ class FetchHelpersTests(unittest.TestCase):
 
     def test_discover_learn_urls_filters_and_reports_new_pages(self):
         responses = [
-            "<loc>https://learn.chatgpt.com/sitemap-1.xml/</loc>",
-            "".join(
+            "<sitemapindex><sitemap><loc>https://learn.chatgpt.com/sitemap-1.xml/</loc>"
+            "</sitemap></sitemapindex>",
+            "<urlset>" + "".join(
                 [
-                    "<loc>https://learn.chatgpt.com/docs/config-file/</loc>",
-                    "<loc>https://learn.chatgpt.com/not-docs</loc>",
+                    "<url><loc>https://learn.chatgpt.com/docs/config-file/</loc></url>",
+                    "<url><loc>https://learn.chatgpt.com/not-docs</loc></url>",
                 ]
-            ),
+            ) + "</urlset>",
         ]
         with (
             mock.patch.object(sync, "fetch_text", side_effect=lambda *_args, **_kwargs: responses.pop(0)),
@@ -320,7 +337,7 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
         with mock.patch.object(sync, "fetch_text", return_value="<xml />"):
-            with self.assertRaisesRegex(RuntimeError, "did not contain"):
+            with self.assertRaisesRegex(sync.SourceContentError, "Unexpected sitemap root"):
                 sync.discover_learn_urls(mock.Mock())
 
     def test_partial_sitemap_does_not_confirm_removals(self):
@@ -333,9 +350,9 @@ class FetchHelpersTests(unittest.TestCase):
             }
         }
         responses = [
-            "<loc>https://learn.chatgpt.com/sitemap-1.xml</loc>"
-            "<loc>https://learn.chatgpt.com/sitemap-2.xml</loc>",
-            "<loc>https://learn.chatgpt.com/docs/present</loc>",
+            "<sitemapindex><sitemap><loc>https://learn.chatgpt.com/sitemap-1.xml</loc></sitemap>"
+            "<sitemap><loc>https://learn.chatgpt.com/sitemap-2.xml</loc></sitemap></sitemapindex>",
+            "<urlset><url><loc>https://learn.chatgpt.com/docs/present</loc></url></urlset>",
             requests.ConnectionError("partial"),
         ]
 
@@ -357,6 +374,38 @@ class FetchHelpersTests(unittest.TestCase):
             ["https://learn.chatgpt.com/docs/maybe-missing"],
         )
         self.assertEqual(errors[0]["state"], "sitemap_unavailable")
+
+    def test_malformed_sitemap_does_not_confirm_removals(self):
+        previous = {
+            "learn": {
+                "discovered_urls": [
+                    "https://learn.chatgpt.com/docs/present",
+                    "https://learn.chatgpt.com/docs/maybe-missing",
+                ]
+            }
+        }
+        responses = [
+            "<sitemapindex><sitemap><loc>https://learn.chatgpt.com/sitemap-1.xml</loc>"
+            "</sitemap></sitemapindex>",
+            "<urlset><url><loc>https://learn.chatgpt.com/docs/present</loc></url>",
+        ]
+        with (
+            mock.patch.object(
+                sync,
+                "fetch_text",
+                side_effect=lambda *_args, **_kwargs: responses.pop(0),
+            ),
+            mock.patch.object(sync, "load_existing_coverage", return_value=previous),
+        ):
+            urls, coverage, errors = sync.discover_learn_urls(mock.Mock())
+
+        self.assertEqual(urls, [])
+        self.assertEqual(coverage["removed_from_sitemap_urls_since_last_run"], [])
+        self.assertEqual(
+            coverage["unconfirmed_removed_urls_due_to_partial_sitemap"],
+            sorted(previous["learn"]["discovered_urls"]),
+        )
+        self.assertEqual(errors[0]["state"], "extractor_or_malformed_source")
 
     def test_path_and_tool_guide_helpers(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
@@ -443,7 +492,10 @@ class FetchHelpersTests(unittest.TestCase):
                 sync,
                 "fetch_response",
                 side_effect=[
-                    FakeResponse(text="<main><h1>A</h1></main>"),
+                    FakeResponse(
+                        text="<main><h1>A</h1></main>",
+                        headers={"Content-Type": "text/html"},
+                    ),
                     requests.ConnectionError("bad"),
                 ],
             ),
@@ -479,7 +531,10 @@ class FetchHelpersTests(unittest.TestCase):
         fallback = FakeSession(
             [
                 FakeResponse(status_code=404),
-                FakeResponse(text="<main><h1>Learn</h1><p>HTML</p></main>"),
+                FakeResponse(
+                    text="<main><h1>Learn</h1><p>HTML</p></main>",
+                    headers={"Content-Type": "text/html"},
+                ),
             ]
         )
         content, metadata, mode = sync.fetch_learn_page(fallback, "https://learn.chatgpt.com/docs/a")
@@ -503,6 +558,175 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertEqual(raised.exception.status_code, 404)
         self.assertEqual(raised.exception.endpoint_statuses, (404, 404))
 
+    def test_learn_page_requires_all_representations_to_be_permanently_missing(self):
+        for markdown_status in (404, 410):
+            for html_status in (404, 410):
+                with self.subTest(
+                    markdown_status=markdown_status,
+                    html_status=html_status,
+                ):
+                    session = FakeSession(
+                        [
+                            FakeResponse(status_code=markdown_status),
+                            FakeResponse(status_code=html_status),
+                        ]
+                    )
+                    with self.assertRaises(sync.SourceTombstone):
+                        sync.fetch_learn_page(
+                            session, "https://learn.chatgpt.com/docs/removed"
+                        )
+
+        session = FakeSession(
+            [
+                FakeResponse(
+                    text="available but unexpected",
+                    headers={"Content-Type": "application/octet-stream"},
+                ),
+                FakeResponse(status_code=404),
+            ]
+        )
+        with self.assertRaisesRegex(
+            sync.SourceContentError,
+            "remained available",
+        ):
+            sync.fetch_learn_page(
+                session, "https://learn.chatgpt.com/docs/not-a-tombstone"
+            )
+
+    def test_learn_transport_and_http_failures_never_become_tombstones(self):
+        url = "https://learn.chatgpt.com/docs/failing"
+        first_endpoint_failures = [
+            requests.Timeout("timeout"),
+            requests.ConnectionError("dns failure"),
+            requests.TooManyRedirects("redirect loop"),
+            FakeResponse(status_code=401),
+            FakeResponse(status_code=403),
+            FakeResponse(status_code=429),
+            FakeResponse(status_code=500),
+            FakeResponse(status_code=503),
+        ]
+        with (
+            mock.patch.object(sync, "REQUEST_MAX_RETRIES", 1),
+            mock.patch.object(sync, "REQUEST_BACKOFF_SECONDS", 0),
+        ):
+            for failure in first_endpoint_failures:
+                with self.subTest(failure=failure):
+                    with self.assertRaises(requests.RequestException):
+                        sync.fetch_learn_page(FakeSession([failure]), url)
+
+            for status in (401, 403, 429, 500, 503):
+                with self.subTest(html_status=status):
+                    with self.assertRaises(requests.RequestException):
+                        sync.fetch_learn_page(
+                            FakeSession(
+                                [
+                                    FakeResponse(status_code=404),
+                                    FakeResponse(status_code=status),
+                                ]
+                            ),
+                            url,
+                        )
+
+    def test_learn_malformed_or_unexpected_content_fails_closed(self):
+        url = "https://learn.chatgpt.com/docs/malformed"
+        cases = [
+            [
+                FakeResponse(status_code=404),
+                FakeResponse(
+                    text='{"error":"not html"}',
+                    headers={"Content-Type": "application/json"},
+                ),
+            ],
+            [
+                FakeResponse(status_code=404),
+                FakeResponse(text="", headers={"Content-Type": "text/html"}),
+            ],
+            [
+                FakeResponse(text="", headers={"Content-Type": "text/markdown"}),
+            ],
+        ]
+        for responses in cases:
+            with self.subTest(responses=responses):
+                with self.assertRaises(sync.SourceContentError):
+                    sync.fetch_learn_page(FakeSession(responses), url)
+
+        with mock.patch.object(sync, "html_to_markdown", side_effect=ValueError("parser changed")):
+            with self.assertRaisesRegex(ValueError, "parser changed"):
+                sync.fetch_learn_page(
+                    FakeSession(
+                        [
+                            FakeResponse(status_code=404),
+                            FakeResponse(
+                                text="<main>valid envelope</main>",
+                                headers={"Content-Type": "text/html"},
+                            ),
+                        ]
+                    ),
+                    url,
+                )
+
+    def test_learn_redirect_is_recorded_and_tombstone_does_not_block_success(self):
+        tombstone_url = "https://learn.chatgpt.com/docs/removed"
+        redirected_url = "https://learn.chatgpt.com/docs/moved"
+        coverage = {"counts": {}}
+        tombstone = sync.SourceTombstone(
+            url=tombstone_url,
+            status_code=404,
+            endpoint_statuses=(404, 404),
+        )
+        redirected_metadata = {
+            "source_redirect_url": "https://learn.chatgpt.com/docs/new-location",
+            "source_kind": "learn_markdown",
+        }
+        with (
+            mock.patch.object(
+                sync,
+                "discover_learn_urls",
+                return_value=([tombstone_url, redirected_url], coverage, []),
+            ),
+            mock.patch.object(
+                sync,
+                "fetch_learn_page",
+                side_effect=[tombstone, ("# Moved\n", redirected_metadata, "markdown")],
+            ),
+        ):
+            files, result, failures = sync.build_learn_files(mock.Mock())
+
+        self.assertEqual([item.source_url for item in files], [redirected_url])
+        self.assertEqual(failures, [])
+        self.assertEqual(result["counts"]["tombstoned_urls"], 1)
+        self.assertEqual(
+            result["redirected_urls"],
+            [
+                {
+                    "url": redirected_url,
+                    "redirect_url": "https://learn.chatgpt.com/docs/new-location",
+                    "state": "redirected",
+                }
+            ],
+        )
+
+    def test_malformed_learn_page_is_a_strict_failure_not_a_tombstone(self):
+        url = "https://learn.chatgpt.com/docs/malformed"
+        coverage = {"counts": {}}
+        with (
+            mock.patch.object(
+                sync,
+                "discover_learn_urls",
+                return_value=([url], coverage, []),
+            ),
+            mock.patch.object(
+                sync,
+                "fetch_learn_page",
+                side_effect=sync.SourceContentError("unexpected content"),
+            ),
+        ):
+            files, result, failures = sync.build_learn_files(mock.Mock())
+
+        self.assertEqual(files, [])
+        self.assertEqual(result["tombstoned_urls"], [])
+        self.assertEqual(failures[0]["state"], "extractor_or_malformed_source")
+
     def test_screenshot_review_tombstone_is_recorded_without_strict_failure(self):
         url = "https://learn.chatgpt.com/docs/screenshot-review"
         coverage = {"counts": {}}
@@ -520,6 +744,10 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertEqual(result["counts"]["tombstoned_urls"], 1)
         self.assertEqual(
             result["tombstoned_urls"][0]["state"], "confirmed_tombstone"
+        )
+        self.assertEqual(
+            result["tombstoned_urls"][0]["confirmation"],
+            "all_attempted_representations_http_404_or_410",
         )
 
     def test_annotation_and_capability_helpers(self):
@@ -574,6 +802,9 @@ Options:
           Override configuration
       --model <MODEL>
           Select the model
+      --with-access-token
+          Read a token from stdin (for example, `tool login
+          --with-access-token`)
 """
 
         self.assertEqual(
@@ -588,8 +819,40 @@ Options:
         )
         self.assertEqual(
             [option["primary_flag"] for option in sync.parse_help_options(help_text)],
-            ["--config", "--model"],
+            ["--config", "--model", "--with-access-token"],
         )
+        access_token = sync.parse_help_options(help_text)[-1]
+        self.assertIn("--with-access-token`)", access_token["description"])
+
+    def test_capability_inventory_rejects_duplicate_ids(self):
+        duplicated_option = {
+            "flags": ["--duplicate"],
+            "primary_flag": "--duplicate",
+            "synopsis": "--duplicate",
+            "description": "Duplicate",
+        }
+        surface = sync.ManagedFile(
+            rel_path=sync.CLI_SURFACE_REL_PATH,
+            source_type=sync.CLI_SURFACE_SOURCE_TYPE,
+            source_url="codex-cli://help",
+            content=json.dumps(
+                {
+                    "global_options": [duplicated_option, duplicated_option],
+                    "commands": [],
+                }
+            ),
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "duplicate IDs"):
+            sync.build_capability_inventory_file(
+                [surface],
+                [],
+                {},
+                {
+                    "codex_cli_version": "1.2.3",
+                    "codex_cli_version_raw": "codex-cli 1.2.3",
+                },
+            )
 
     def test_cli_surface_does_not_invoke_synthetic_help_subcommand(self):
         top_help = """Codex CLI

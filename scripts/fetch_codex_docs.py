@@ -13,6 +13,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -91,8 +92,9 @@ SOURCE_STATE_SEMANTICS = {
         "strict_failure": False,
         "preserve_last_known_good": False,
         "meaning": (
-            "A sitemap-discovered canonical page returned HTTP 404 or 410. It is recorded "
-            "as a stale/tombstoned sitemap entry and is no longer mirrored."
+            "Every attempted canonical representation of a sitemap-discovered page returned "
+            "HTTP 404 or 410. It is recorded as a stale/tombstoned sitemap entry and is no "
+            "longer mirrored."
         ),
     },
     "removed_from_sitemap": {
@@ -302,8 +304,12 @@ class SourceTombstone(Exception):
             "status_code": self.status_code,
             "endpoint_statuses": list(self.endpoint_statuses),
             "state": "confirmed_tombstone",
-            "confirmation": "sitemap_discovery_plus_canonical_permanent_missing_status",
+            "confirmation": "all_attempted_representations_http_404_or_410",
         }
+
+
+class SourceContentError(RuntimeError):
+    """A fetched source had an unexpected or malformed representation."""
 
 
 def now_utc_iso() -> str:
@@ -331,8 +337,31 @@ def canonicalize_url(url: str) -> str:
     return urlunparse(cleaned)
 
 
-def parse_loc_tags(xml_text: str) -> List[str]:
-    return re.findall(r"<loc>([^<]+)</loc>", xml_text)
+def parse_sitemap_loc_tags(
+    xml_text: str,
+    *,
+    source_url: str,
+    expected_root: str,
+) -> List[str]:
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError as exc:
+        raise SourceContentError(f"Malformed sitemap XML from {source_url}: {exc}") from exc
+
+    root_name = root.tag.rsplit("}", 1)[-1]
+    if root_name != expected_root:
+        raise SourceContentError(
+            f"Unexpected sitemap root from {source_url}: expected {expected_root}, got {root_name}"
+        )
+
+    locations = [
+        str(element.text).strip()
+        for element in root.iter()
+        if element.tag.rsplit("}", 1)[-1] == "loc" and element.text and element.text.strip()
+    ]
+    if not locations:
+        raise SourceContentError(f"Sitemap from {source_url} did not contain any loc entries")
+    return locations
 
 
 def keep_developers_url(url: str) -> bool:
@@ -502,6 +531,27 @@ def response_source_metadata(response: requests.Response) -> Dict[str, str]:
     if etag:
         metadata["source_etag"] = etag
     return metadata
+
+
+def response_content_type(response: requests.Response) -> str:
+    return response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+
+
+def validate_text_response(
+    response: requests.Response,
+    *,
+    source_url: str,
+    allowed_content_types: Collection[str],
+) -> str:
+    content_type = response_content_type(response)
+    if content_type not in allowed_content_types:
+        rendered_type = content_type or "missing"
+        raise SourceContentError(
+            f"Unexpected Content-Type {rendered_type!r} from {source_url}"
+        )
+    if not response.text.strip():
+        raise SourceContentError(f"Empty response body from {source_url}")
+    return content_type
 
 
 def response_redirect_metadata(
@@ -788,7 +838,11 @@ def load_existing_coverage() -> Dict[str, object]:
 def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict[str, object]]:
     LOG.info("Discovering Codex URLs from %s", SITEMAP_INDEX_URL)
     index_xml = fetch_text(session, SITEMAP_INDEX_URL)
-    sitemap_urls = parse_loc_tags(index_xml)
+    sitemap_urls = parse_sitemap_loc_tags(
+        index_xml,
+        source_url=SITEMAP_INDEX_URL,
+        expected_root="sitemapindex",
+    )
     mirrored_urls: set[str] = set()
     codex_related_urls: set[str] = set()
     sitemap_fetch_errors: List[Dict[str, str]] = []
@@ -796,20 +850,29 @@ def discover_developers_urls(session: requests.Session) -> Tuple[List[str], Dict
     for sitemap_url in sitemap_urls:
         try:
             sitemap_xml = fetch_text(session, sitemap_url)
-        except requests.RequestException as exc:
+            sitemap_page_urls = parse_sitemap_loc_tags(
+                sitemap_xml,
+                source_url=sitemap_url,
+                expected_root="urlset",
+            )
+        except (requests.RequestException, SourceContentError) as exc:
             LOG.warning("Skipping sitemap %s due to error: %s", sitemap_url, exc)
             sitemap_fetch_errors.append(
                 {
                     "source": "developers",
                     "stage": "sitemap_fetch",
-                    "state": "sitemap_unavailable",
+                    "state": (
+                        "sitemap_unavailable"
+                        if isinstance(exc, requests.RequestException)
+                        else "extractor_or_malformed_source"
+                    ),
                     "url": sitemap_url,
                     "error": str(exc),
                 }
             )
             continue
 
-        for raw_url in parse_loc_tags(sitemap_xml):
+        for raw_url in sitemap_page_urls:
             cleaned = canonicalize_url(raw_url)
             if is_codex_related_developers_url(cleaned):
                 codex_related_urls.add(cleaned)
@@ -926,29 +989,45 @@ def discover_learn_urls(
 ) -> Tuple[List[str], Dict[str, object], List[Dict[str, str]]]:
     LOG.info("Discovering documentation URLs from %s", LEARN_SITEMAP_INDEX_URL)
     index_xml = fetch_text(session, LEARN_SITEMAP_INDEX_URL)
-    sitemap_urls = sorted({canonicalize_url(url) for url in parse_loc_tags(index_xml)})
-    if not sitemap_urls:
-        raise RuntimeError("Learn sitemap index did not contain any sitemap URLs")
+    sitemap_urls = sorted(
+        {
+            canonicalize_url(url)
+            for url in parse_sitemap_loc_tags(
+                index_xml,
+                source_url=LEARN_SITEMAP_INDEX_URL,
+                expected_root="sitemapindex",
+            )
+        }
+    )
 
     discovered_urls: set[str] = set()
     sitemap_fetch_errors: List[Dict[str, str]] = []
     for sitemap_url in sitemap_urls:
         try:
             sitemap_xml = fetch_text(session, sitemap_url)
-        except requests.RequestException as exc:
+            sitemap_page_urls = parse_sitemap_loc_tags(
+                sitemap_xml,
+                source_url=sitemap_url,
+                expected_root="urlset",
+            )
+        except (requests.RequestException, SourceContentError) as exc:
             LOG.warning("Skipping Learn sitemap %s due to error: %s", sitemap_url, exc)
             sitemap_fetch_errors.append(
                 {
                     "source": LEARN_SOURCE_TYPE,
                     "stage": "sitemap_fetch",
-                    "state": "sitemap_unavailable",
+                    "state": (
+                        "sitemap_unavailable"
+                        if isinstance(exc, requests.RequestException)
+                        else "extractor_or_malformed_source"
+                    ),
                     "url": sitemap_url,
                     "error": str(exc),
                 }
             )
             continue
 
-        for raw_url in parse_loc_tags(sitemap_xml):
+        for raw_url in sitemap_page_urls:
             cleaned = canonicalize_url(raw_url)
             if is_learn_doc_url(cleaned):
                 discovered_urls.add(cleaned)
@@ -1373,6 +1452,11 @@ def build_developers_files(
                         "state": "redirected",
                     }
                 )
+            validate_text_response(
+                response,
+                source_url=url,
+                allowed_content_types={"text/html", "application/xhtml+xml"},
+            )
             content = html_to_markdown(url, response.text)
         except requests.RequestException as exc:
             LOG.warning("Skipping developers URL %s due to error: %s", url, exc)
@@ -1381,6 +1465,18 @@ def build_developers_files(
                     "source": "developers",
                     "stage": "page_fetch",
                     "state": "transient_page_failure",
+                    "url": url,
+                    "error": str(exc),
+                }
+            )
+            continue
+        except SourceContentError as exc:
+            LOG.warning("Skipping malformed developers URL %s: %s", url, exc)
+            fetch_errors.append(
+                {
+                    "source": "developers",
+                    "stage": "page_extract",
+                    "state": "extractor_or_malformed_source",
                     "url": url,
                     "error": str(exc),
                 }
@@ -1422,26 +1518,43 @@ def fetch_learn_page(
     markdown_response = fetch_response(
         session, markdown_url, allowed_statuses=PERMANENT_MISSING_HTTP_STATUSES
     )
-    content_type = markdown_response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
-    if markdown_response.status_code not in PERMANENT_MISSING_HTTP_STATUSES and content_type in {"text/markdown", "text/plain"}:
+    content_type = response_content_type(markdown_response)
+    markdown_missing = markdown_response.status_code in PERMANENT_MISSING_HTTP_STATUSES
+    if not markdown_missing and content_type in {"text/markdown", "text/plain"}:
+        validate_text_response(
+            markdown_response,
+            source_url=markdown_url,
+            allowed_content_types={"text/markdown", "text/plain"},
+        )
         metadata: Dict[str, object] = response_source_metadata(markdown_response)
         metadata.update(response_redirect_metadata(markdown_response, markdown_url))
         metadata["source_kind"] = "learn_markdown"
         content = markdown_with_source(url, markdown_response.text, default_title="ChatGPT Learn Docs")
         return content, metadata, "markdown"
 
-    if markdown_response.status_code not in PERMANENT_MISSING_HTTP_STATUSES:
+    if not markdown_missing:
         LOG.info("Learn Markdown endpoint returned %s for %s; using HTML fallback", content_type or "unknown", url)
 
     html_response = fetch_response(
         session, url, allowed_statuses=PERMANENT_MISSING_HTTP_STATUSES
     )
     if html_response.status_code in PERMANENT_MISSING_HTTP_STATUSES:
+        if not markdown_missing:
+            raise SourceContentError(
+                f"HTML representation returned HTTP {html_response.status_code} for {url}, "
+                f"but {markdown_url} remained available with unexpected Content-Type "
+                f"{(content_type or 'missing')!r}"
+            )
         raise SourceTombstone(
             url=url,
             status_code=html_response.status_code,
             endpoint_statuses=(markdown_response.status_code, html_response.status_code),
         )
+    validate_text_response(
+        html_response,
+        source_url=url,
+        allowed_content_types={"text/html", "application/xhtml+xml"},
+    )
     metadata = response_source_metadata(html_response)
     metadata.update(response_redirect_metadata(html_response, url))
     metadata["source_kind"] = "learn_html_fallback"
@@ -1478,6 +1591,18 @@ def build_learn_files(
                 "source": LEARN_SOURCE_TYPE,
                 "stage": "page_fetch",
                 "state": "transient_page_failure",
+                "url": url,
+                "error": str(exc),
+            }
+            page_fetch_errors.append(failure)
+            fetch_errors.append(failure)
+            continue
+        except SourceContentError as exc:
+            LOG.warning("Skipping malformed Learn URL %s: %s", url, exc)
+            failure = {
+                "source": LEARN_SOURCE_TYPE,
+                "stage": "page_extract",
+                "state": "extractor_or_malformed_source",
                 "url": url,
                 "error": str(exc),
             }
@@ -2269,7 +2394,18 @@ def build_capability_inventory_file(
                 add_version_history(entry)
                 capabilities.append(entry)
 
-    current_ids = {str(entry["id"]) for entry in capabilities}
+    capability_ids = [str(entry["id"]) for entry in capabilities]
+    duplicate_ids = sorted(
+        identifier
+        for identifier in set(capability_ids)
+        if capability_ids.count(identifier) > 1
+    )
+    if duplicate_ids:
+        raise RuntimeError(
+            "Capability inventory contains duplicate IDs: " + ", ".join(duplicate_ids)
+        )
+
+    current_ids = set(capability_ids)
     for entry in capabilities:
         previous_entry = previous_capabilities.get(str(entry["id"]), {})
         previous_lifecycle = previous_entry.get("lifecycle", {})
@@ -2407,7 +2543,12 @@ def parse_help_options(text: str) -> List[Dict[str, object]]:
     current: Dict[str, object] | None = None
     for line in help_section_lines(text, "Options"):
         flags = re.findall(r"(?<![\w-])-{1,2}[A-Za-z0-9][A-Za-z0-9-]*", line)
-        if flags and re.match(r"^\s{2,}(?:-[A-Za-z0-9]|--)", line):
+        indentation = len(line) - len(line.lstrip(" "))
+        if (
+            flags
+            and 2 <= indentation <= 6
+            and re.match(r"^\s+(?:-[A-Za-z0-9]|--)", line)
+        ):
             current = {
                 "flags": flags,
                 "primary_flag": next(
