@@ -277,7 +277,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-08-30T03:18:40+00:00",
+  "generated_at": "2026-08-31T12:57:56+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -329,7 +329,7 @@
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
-      "sitemap_urls": 1,
+      "sitemap_urls": 2,
       "source_errors": 0,
       "tombstoned_urls": 1
     },
@@ -928,7 +928,8 @@
     "sitemap_fetch_errors": [],
     "sitemap_index_url": "https://learn.chatgpt.com/sitemap-index.xml",
     "sitemap_urls": [
-      "https://learn.chatgpt.com/chatgpt-sitemap-0.xml"
+      "https://learn.chatgpt.com/chatgpt-sitemap-0.xml",
+      "https://learn.chatgpt.com/sitemap-codex-localized.xml"
     ],
     "source_errors": [],
     "tombstoned_urls": [

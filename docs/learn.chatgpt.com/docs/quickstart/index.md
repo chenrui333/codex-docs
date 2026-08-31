@@ -15,7 +15,7 @@ Source: https://learn.chatgpt.com/docs/quickstart
 
 ## Where to use ChatGPT
 
-Use ChatGPT across different surfaces, including the
+ChatGPT is available across different surfaces, including the
 [ChatGPT desktop app](https://learn.chatgpt.com/docs/app) and [ChatGPT on the web](https://learn.chatgpt.com/docs/web). Choose
 the option that fits your work.
 

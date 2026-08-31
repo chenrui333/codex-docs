@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-08-30T03:18:57+00:00",
+  "generated_at": "2026-08-31T12:58:26+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,7 +15,7 @@
   },
   "total_files": 256,
   "updated": [
-    "codex_capabilities.json",
-    "codex_cli_surface.json"
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/quickstart/index.md"
   ]
 }
