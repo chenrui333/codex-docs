@@ -89,6 +89,7 @@ steps, availability, and limits:
 
 ## Related docs
 
+- [User lifecycle management](https://learn.chatgpt.com/docs/enterprise/user-lifecycle)
 - [Authentication](https://learn.chatgpt.com/docs/auth)
 - [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions)
 - [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)

@@ -27,13 +27,17 @@ boundaries:
 Complete the steps in order for a new rollout, or use the linked pages to change
 one boundary.
 
-In workspace settings, **Codex Local** is a grouping label for certain local
-access and access-token controls, not a separate product or client. The current
-**Allow members to use Codex Local** control covers local use in the ChatGPT
-desktop app, Codex CLI, and IDE extension. Managed configuration is a separate
-policy layer that can constrain supported runtime behavior for covered
-capabilities in those clients. This guide names the individual surface when
-behavior or availability differs.
+In workspace settings, **Codex and Work Local** combines local Codex and Work
+access under **Allow members to use Codex and Work Locally**. Some workspaces
+instead provide independent **Codex Local** and **Work Local** sections. In
+that layout, **Allow members to use Codex locally** controls Codex, and **Use
+Work locally** controls Work. Enabling either one doesn't enable the other.
+These labels identify workspace permissions, not separate products or clients.
+Token permissions and credential lifetime limits appear in either an **Access
+tokens** section or the local-access section, depending on the workspace.
+Managed configuration is a separate policy layer that can constrain supported
+runtime behavior for covered capabilities in those clients. This guide names
+the individual surface when behavior or availability differs.
 
 Start with the canonical map in
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
@@ -83,6 +87,7 @@ procedures:
 - [Configure role-based access control](https://help.openai.com/en/articles/11750701-rbac)
 - [Manage workspace settings](https://help.openai.com/en/articles/8411955)
 - [Groups and provisioning](https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning)
+- [User lifecycle management](https://learn.chatgpt.com/docs/enterprise/user-lifecycle)
 - [Authentication](https://learn.chatgpt.com/docs/auth)
 
 Test sign-in and feature access with a representative member before expanding

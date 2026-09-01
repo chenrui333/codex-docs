@@ -1,7 +1,7 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 890,
+      "active": 899,
       "by_category": {
         "cli_command": 93,
         "cli_option": 329,
@@ -18,7 +18,7 @@
         "stable": 41,
         "under development": 48
       },
-      "inactive": 44,
+      "inactive": 35,
       "total": 934
     },
     "mirrored_paths": [
@@ -277,7 +277,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-01T04:02:03+00:00",
+  "generated_at": "2026-09-01T11:15:35+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -321,11 +321,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 145,
+      "discovered_urls": 146,
       "html_fallback_pages": 2,
-      "markdown_pages": 142,
-      "mirrored_paths_count": 144,
-      "mirrored_urls": 144,
+      "markdown_pages": 143,
+      "mirrored_paths_count": 145,
+      "mirrored_urls": 145,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -395,6 +395,7 @@
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
+      "https://learn.chatgpt.com/docs/enterprise/user-lifecycle",
       "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
       "https://learn.chatgpt.com/docs/enterprise/work-admin-faq",
       "https://learn.chatgpt.com/docs/enterprise/workload-identity",
@@ -544,6 +545,7 @@
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
+      "https://learn.chatgpt.com/docs/enterprise/user-lifecycle",
       "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
       "https://learn.chatgpt.com/docs/enterprise/work-admin-faq",
       "https://learn.chatgpt.com/docs/enterprise/workload-identity",
@@ -689,6 +691,7 @@
       "learn.chatgpt.com/docs/enterprise/service-accounts/index.md",
       "learn.chatgpt.com/docs/enterprise/skills/index.md",
       "learn.chatgpt.com/docs/enterprise/usage-limits/index.md",
+      "learn.chatgpt.com/docs/enterprise/user-lifecycle/index.md",
       "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
       "learn.chatgpt.com/docs/enterprise/work-admin-faq/index.md",
       "learn.chatgpt.com/docs/enterprise/workload-identity/index.md",
@@ -774,7 +777,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 144,
+    "mirrored_paths_count": 145,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -837,6 +840,7 @@
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/usage-limits",
+      "https://learn.chatgpt.com/docs/enterprise/user-lifecycle",
       "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
       "https://learn.chatgpt.com/docs/enterprise/work-admin-faq",
       "https://learn.chatgpt.com/docs/enterprise/workload-identity",
@@ -921,7 +925,9 @@
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
       "https://learn.chatgpt.com/docs/windows/wsl"
     ],
-    "new_discovered_urls_since_last_run": [],
+    "new_discovered_urls_since_last_run": [
+      "https://learn.chatgpt.com/docs/enterprise/user-lifecycle"
+    ],
     "page_fetch_errors": [],
     "redirected_urls": [],
     "removed_from_sitemap_urls_since_last_run": [],

@@ -84,7 +84,7 @@
         "codex-cli 0.152.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "bccca6c75d8ce020b6ec0962d0f4a83871edc1164f7358c5f91369a3ef090ee0",
+      "sha256": "553a784f84d182c1491da37bd77f1074f3eb88594bfc8947fe7467ddbf38022c",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -5512,7 +5512,7 @@
         "codex-cli 0.151.0",
         "codex-cli 0.152.0"
       ],
-      "sha256": "a837f61b389a5b6fc3dc191423325bc05f7ccc74275f36a4a359c27e3a963560",
+      "sha256": "50be8b0ec08241f8846ae3f93ca9362424b13edb74dbb594911a9f1a19c9c715",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6481,7 +6481,7 @@
         "codex-cli 0.151.0",
         "codex-cli 0.152.0"
       ],
-      "sha256": "c9f19cf3e5acf03d6c03ef72116c6437a38d92b6f5d99f2cb0359d8342780fde",
+      "sha256": "4333eb36273424acafcfb52501cd4594c8950e4b67649be27a8c5afff75a23e4",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6521,7 +6521,7 @@
         "codex-cli 0.151.0",
         "codex-cli 0.152.0"
       ],
-      "sha256": "58f6a165deab6b2e1d527fb27ba7645eafc4f2e341eefea0208bfa8bed2eb141",
+      "sha256": "e36762310efc577220ca9832da1199b34f7f887a33df40f571c37acc1b1fb968",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6733,7 +6733,7 @@
         "codex-cli 0.151.0",
         "codex-cli 0.152.0"
       ],
-      "sha256": "e8e97123c0b8442454dff03a9b33dd143eef674774889ead23bb26cda9c4066c",
+      "sha256": "60501a9cfe72404f54165294e0d963d46c15fecacc20f8e5a055a96db48ecf0e",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6844,7 +6844,7 @@
         "codex-cli 0.151.0",
         "codex-cli 0.152.0"
       ],
-      "sha256": "041f519e4af3747c1db3e2861e4422e5c65a22430e5eb851c4e181b56d968e8e",
+      "sha256": "19665e5dbd03bee11cf0d6bd95feac4d289cd87581d06a0ec12c02adfc55e4a2",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6920,6 +6920,19 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/usage-limits"
+    },
+    "learn.chatgpt.com/docs/enterprise/user-lifecycle/index.md": {
+      "codex_cli_versions": [
+        "0.152.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.152.0"
+      ],
+      "sha256": "55468e7018f9d281cf95d08976c02696a1d8135f36ff0ba5c22f40172b25f9db",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/user-lifecycle"
     },
     "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md": {
       "codex_cli_versions": [

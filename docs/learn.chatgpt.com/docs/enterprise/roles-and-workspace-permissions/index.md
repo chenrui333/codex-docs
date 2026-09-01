@@ -18,12 +18,16 @@ experience. Giving someone access in one area doesn't automatically give them
 access in another. Use this page to see how the six control boundaries work
 together, then follow the linked guidance for current setup steps.
 
-In workspace settings, **Codex Local** is a grouping label for certain local
-access and access-token controls, not a separate product or client. Individual
-controls in the group can have different scopes. The current **Allow members to
-use Codex Local** workspace permission covers local use in the ChatGPT desktop
-app, Codex CLI, and IDE extension. Managed configuration is a separate layer
-that constrains supported runtime behavior for covered capabilities in those clients. Features
+In workspace settings, **Codex and Work Local** combines local Codex and Work
+access under **Allow members to use Codex and Work Locally**. Other workspaces
+separate **Codex Local** and **Work Local** into independent sections. In that
+layout, **Allow members to use Codex locally** grants local Codex access, and
+**Use Work locally** grants local Work access. Enabling one doesn't grant
+access to the other. These labels identify workspace permissions, not separate
+products or clients. Token permissions and credential lifetime limits appear
+in either an **Access tokens** section or the local-access section, depending
+on the workspace. Managed configuration is a separate layer that constrains
+supported runtime behavior for covered capabilities in those clients. Features
 and effective requirements can differ by client and version.
 
 ## Understand the control boundaries
@@ -76,9 +80,9 @@ change local runtime requirements.
 
 Only workspace owners can configure role-based access control (RBAC) and create
 custom roles. Workspace settings establish the baseline for eligible
-permissions. Owners can assign custom roles through manually managed or
-SCIM-synced groups, or directly to individual members where supported. A member
-can receive more than one custom role.
+permissions. Workspace owners can assign custom roles through groups or
+directly to individual members where supported. Groups can be manually managed
+or SCIM-synced, and a member can receive more than one custom role.
 
 For eligible permissions, **Default** inherits the workspace setting, **On**
 grants access, and **Off** explicitly denies access. An explicit **Off** in any
@@ -93,12 +97,16 @@ eligible workspaces, and available controls can differ by plan, workspace
 configuration, and rollout. A role can't expand the access allowed by a
 member's seat.
 
-**Work Cloud** governs supported ChatGPT Work tasks in the cloud. **Work
-Local** without **Work Cloud** allows local work in the ChatGPT desktop app but
-doesn't allow members to start cloud tasks. Codex Local access instead uses the
-separate **Allow members to use Codex Local** permission. Changing a Work
-permission doesn't change Codex Local access or replace local runtime
-requirements.
+**Work Cloud** governs supported ChatGPT Work tasks in the cloud. When the
+controls are independent, **Work Local** without **Work Cloud** allows local
+work in the ChatGPT desktop app but doesn't allow members to start cloud tasks.
+Local Codex access uses **Allow members to use Codex locally** in **Codex
+Local**. Changing **Use Work locally** doesn't change local Codex access or
+replace local runtime requirements.
+
+Some workspaces instead show the combined **Codex and Work Local** section. In
+that layout, **Allow members to use Codex and Work Locally** controls both
+products.
 
 For current eligibility and settings, see
 [ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex).
@@ -114,9 +122,9 @@ procedure:
 ### Control Computer History access
 
 [Computer History](https://learn.chatgpt.com/docs/customization/computer-history) is off by default for
-Business and Enterprise workspaces. Members cannot turn it on until an
-administrator explicitly grants access. Enterprise administrators can grant
-access by role:
+Business and Enterprise workspaces. Members cannot turn it on until a workspace
+owner explicitly grants access. Enterprise workspace owners can grant access
+by role:
 
 1. Open [**Workspace Settings > Permissions & roles**](https://chatgpt.com/admin/settings).
 2. Find **Computer History** and choose the workspace role that should have
@@ -149,6 +157,7 @@ for requirements, delivery, and precedence.
 
 - [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup)
 - [Groups and provisioning](https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning)
+- [User lifecycle management](https://learn.chatgpt.com/docs/enterprise/user-lifecycle)
 - [Workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability)
 - [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens)
 - [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
