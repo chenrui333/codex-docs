@@ -1,7 +1,7 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 899,
+      "active": 890,
       "by_category": {
         "cli_command": 93,
         "cli_option": 329,
@@ -18,7 +18,7 @@
         "stable": 41,
         "under development": 48
       },
-      "inactive": 35,
+      "inactive": 44,
       "total": 934
     },
     "mirrored_paths": [
@@ -108,8 +108,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.151.0",
-    "version_raw": "codex-cli 0.151.0"
+    "version": "0.152.0",
+    "version_raw": "codex-cli 0.152.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -277,7 +277,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-08-31T12:57:56+00:00",
+  "generated_at": "2026-09-01T04:02:03+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -315,9 +315,9 @@
     "mirrored_paths_count": 26,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_commit": "78c290807ce710180111df227df3b7a4fe845452",
+    "source_commit": "316795b3cf2a45e90d121d9f46499d4658b2645c",
     "source_errors": [],
-    "source_ref": "rust-v0.151.0"
+    "source_ref": "rust-v0.152.0"
   },
   "learn": {
     "counts": {

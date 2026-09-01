@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/codex-for-documentation-dagster'
 source_last_modified: '2026-08-29T10:34:54Z'
 source_etag: 'W/"4806268ecf6b0f9e0e7705ffb5649fa9"'
-codex_cli_versions: ["0.151.0"]
-codex_cli_versions_raw: ["codex-cli 0.151.0"]
+codex_cli_versions: ["0.151.0", "0.152.0"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0"]
 ---
 
 # Using Codex for education at Dagster Labs | OpenAI Developers

@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/codex-at-devday'
 source_last_modified: '2026-08-29T10:34:55Z'
 source_etag: 'W/"e585c82aded476163979aa9f1b0958c2"'
-codex_cli_versions: ["0.151.0"]
-codex_cli_versions_raw: ["codex-cli 0.151.0"]
+codex_cli_versions: ["0.151.0", "0.152.0"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0"]
 ---
 
 # How Codex ran OpenAI DevDay 2025

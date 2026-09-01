@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp'
 source_last_modified: '2026-08-29T10:34:49Z'
 source_etag: 'W/"458bc40cb6621f8f3287e96201228e88"'
-codex_cli_versions: ["0.151.0"]
-codex_cli_versions_raw: ["codex-cli 0.151.0"]
+codex_cli_versions: ["0.151.0", "0.152.0"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0"]
 ---
 
 # Supercharging Codex with JetBrains MCP at Skyscanner | OpenAI Developers
