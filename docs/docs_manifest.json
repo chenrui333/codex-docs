@@ -84,7 +84,7 @@
         "codex-cli 0.152.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "553a784f84d182c1491da37bd77f1074f3eb88594bfc8947fe7467ddbf38022c",
+      "sha256": "768c666e3034a3c879d5842ad4fbd38682f0d6781f0cebf5d9f7795596157cca",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
