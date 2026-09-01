@@ -307,6 +307,11 @@
     },
     {
       "enabled": false,
+      "key": "local_thread_store_shared_compression",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "mcp_2026_07_28",
       "stage": "under development"
     },
@@ -346,6 +351,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "omit_app_server_notification_media",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "personality",
       "stage": "stable"
@@ -364,6 +374,11 @@
       "enabled": true,
       "key": "plugins",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "powershell_shell_version",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -507,6 +522,11 @@
     },
     {
       "enabled": true,
+      "key": "sleep_tool",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "sqlite",
       "stage": "removed"
     },
@@ -646,7 +666,7 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.151.0",
+  "codex_cli_version": "codex-cli 0.152.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -663,6 +683,7 @@
       "remote_compaction_v2",
       "secret_auth_storage",
       "skill_search",
+      "sleep_tool",
       "tool_call_mcp_elicitation",
       "tool_suggest",
       "unbounded_connection_retries",
@@ -729,12 +750,15 @@
       "js_repl",
       "js_repl_tools_only",
       "local_thread_store_compression",
+      "local_thread_store_shared_compression",
       "mcp_2026_07_28",
       "mentions_v2",
       "multi_agent_mode",
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
+      "omit_app_server_notification_media",
       "plugin_hooks",
+      "powershell_shell_version",
       "psp",
       "realtime_conversation",
       "recommended_plugins",
@@ -758,6 +782,7 @@
       "skill_env_var_dependency_prompt",
       "skill_search",
       "skip_host_skill_discovery",
+      "sleep_tool",
       "sqlite",
       "standalone_web_search",
       "steer",
@@ -839,6 +864,7 @@
         "remote_compaction_v2",
         "secret_auth_storage",
         "skill_search",
+        "sleep_tool",
         "tool_call_mcp_elicitation",
         "tool_suggest",
         "unbounded_connection_retries",
@@ -873,8 +899,11 @@
         "guardianv2",
         "image_resize_notice",
         "local_thread_store_compression",
+        "local_thread_store_shared_compression",
         "mcp_2026_07_28",
         "non_prefixed_mcp_tool_names",
+        "omit_app_server_notification_media",
+        "powershell_shell_version",
         "psp",
         "realtime_conversation",
         "request_permissions_tool",
@@ -933,16 +962,16 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "ee720d2030935164b0e8a1237c9f7e3585794f6ea90320d8769d54208a06dbd8"
+      "sha256": "96968f8e2567a0d2c7374682403fd359baae6885ddfb30eccb0ec029778a2532"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "9cb96615a9357e77fd6bad51d410656c0058a9bfefa3dc06219906e7d7858bb9"
+      "sha256": "eb4fd80a9f3345275d489748859887c852d95a636bd6518596bb81ead91c53d8"
     }
   },
   "schema_version": 3,
-  "source_commit": "78c290807ce710180111df227df3b7a4fe845452",
+  "source_commit": "316795b3cf2a45e90d121d9f46499d4658b2645c",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -1188,6 +1217,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "local_thread_store_shared_compression": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "mcp_2026_07_28": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
@@ -1220,6 +1253,10 @@
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
+    "omit_app_server_notification_media": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
     "personality": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
@@ -1235,6 +1272,10 @@
     "plugins": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "powershell_shell_version": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "prevent_idle_sleep": {
       "default_enabled_expr": "false",
@@ -1347,6 +1388,10 @@
     "skip_host_skill_discovery": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
+    },
+    "sleep_tool": {
+      "default_enabled_expr": "true",
+      "stage_from_source": "stable"
     },
     "sqlite": {
       "default_enabled_expr": "true",
@@ -1462,13 +1507,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "113bde60551abdbf96e3603b4f1754a072886e712ef0d0049f360a64dddec375",
-    "features_rs_sha256": "62ac7c6f6109a1e984a0257aa1096753094b5d9dca9d638d19d75dc07b0c7940"
+    "client_rs_sha256": "e77f1dfd562f2c21c1e30a95870bd171d56b1bb46361d07dd82f32992fca28f2",
+    "features_rs_sha256": "1ce1deabcd6e86d5233c04f013a2a48be31a6f8efea87bcd9c84802bf450bb59"
   },
-  "source_ref": "rust-v0.151.0",
+  "source_ref": "rust-v0.152.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/78c290807ce710180111df227df3b7a4fe845452/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/78c290807ce710180111df227df3b7a4fe845452/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/316795b3cf2a45e90d121d9f46499d4658b2645c/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/316795b3cf2a45e90d121d9f46499d4658b2645c/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
