@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/mastering-codex-remote-for-engineering'
 source_last_modified: '2026-08-29T10:20:00Z'
 source_etag: 'W/"4280e418cdf737ceda4b4ce68de5b99d"'
-codex_cli_versions: ["0.151.0", "0.152.0"]
-codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0"]
+codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
 ---
 
 # Mastering remote engineering work from your phone | OpenAI Developers

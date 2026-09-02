@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.152.0",
-  "codex_cli_version_raw": "codex-cli 0.152.0",
+  "codex_cli_version": "0.152.1",
+  "codex_cli_version_raw": "codex-cli 0.152.1",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {

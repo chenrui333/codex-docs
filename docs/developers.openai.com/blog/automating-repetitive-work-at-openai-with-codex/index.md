@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex'
 source_last_modified: '2026-08-29T10:10:11Z'
 source_etag: 'W/"041904705f27a9a09eafabdce22189eb"'
-codex_cli_versions: ["0.151.0", "0.152.0"]
-codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0"]
+codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
 ---
 
 # Automating repetitive work at OpenAI with Codex

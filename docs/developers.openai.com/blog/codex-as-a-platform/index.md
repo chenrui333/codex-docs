@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/codex-as-a-platform'
 source_last_modified: '2026-08-29T10:09:48Z'
 source_etag: 'W/"0fa1a7c2b7fa75ac2532f8fa3de574fa"'
-codex_cli_versions: ["0.151.0", "0.152.0"]
-codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0"]
+codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
 ---
 
 # Codex as a platform: build on the open agent harness | OpenAI Developers

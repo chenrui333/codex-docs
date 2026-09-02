@@ -3,10 +3,10 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/references/codex-self-knowledge.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0"]
-codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0"]
-codex_cli_release_ref: 'rust-v0.152.0'
-codex_cli_source_commit: '316795b3cf2a45e90d121d9f46499d4658b2645c'
+codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
+codex_cli_release_ref: 'rust-v0.152.1'
+codex_cli_source_commit: '5adb68a49933ae446bf11935662c83dba55a0804'
 ---
 
 # Codex self-knowledge
