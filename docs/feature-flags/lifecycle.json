@@ -666,7 +666,7 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.152.0",
+  "codex_cli_version": "codex-cli 0.152.1",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -962,16 +962,16 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "96968f8e2567a0d2c7374682403fd359baae6885ddfb30eccb0ec029778a2532"
+      "sha256": "141c239474c65089b5082e7b93f401b63dd47647fabdd13bec823ead39974bc0"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "eb4fd80a9f3345275d489748859887c852d95a636bd6518596bb81ead91c53d8"
+      "sha256": "a12769db9ddeecdf4925484a56c1bea27e0c8514fe2e50644a548c89c81b6972"
     }
   },
   "schema_version": 3,
-  "source_commit": "316795b3cf2a45e90d121d9f46499d4658b2645c",
+  "source_commit": "5adb68a49933ae446bf11935662c83dba55a0804",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -1510,10 +1510,10 @@
     "client_rs_sha256": "e77f1dfd562f2c21c1e30a95870bd171d56b1bb46361d07dd82f32992fca28f2",
     "features_rs_sha256": "1ce1deabcd6e86d5233c04f013a2a48be31a6f8efea87bcd9c84802bf450bb59"
   },
-  "source_ref": "rust-v0.152.0",
+  "source_ref": "rust-v0.152.1",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/316795b3cf2a45e90d121d9f46499d4658b2645c/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/316795b3cf2a45e90d121d9f46499d4658b2645c/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/5adb68a49933ae446bf11935662c83dba55a0804/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/5adb68a49933ae446bf11935662c83dba55a0804/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
