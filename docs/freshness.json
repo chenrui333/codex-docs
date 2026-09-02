@@ -3,7 +3,7 @@
     "coverage_source_commit": "5adb68a49933ae446bf11935662c83dba55a0804",
     "coverage_source_ref": "rust-v0.152.1",
     "coverage_version": "0.152.1",
-    "last_successful_full_sync_at": "2026-09-02T03:24:04+00:00",
+    "last_successful_full_sync_at": "2026-09-02T16:08:14+00:00",
     "provenance": "generated_sync_metadata",
     "source_commit": "5adb68a49933ae446bf11935662c83dba55a0804",
     "source_ref": "rust-v0.152.1",
@@ -31,8 +31,8 @@
     {
       "expected": "0.152.1",
       "name": "feature_snapshot_matches_latest_stable",
-      "observed": "0.152.0",
-      "status": "warning"
+      "observed": "0.152.1",
+      "status": "pass"
     },
     {
       "expected": "0.152.1",
@@ -47,9 +47,9 @@
       "status": "pass"
     },
     {
-      "expected": "0.152.0",
+      "expected": "0.152.1",
       "name": "feature_snapshot_release_ref_matches_version",
-      "observed": "0.152.0",
+      "observed": "0.152.1",
       "status": "pass"
     },
     {
@@ -65,18 +65,18 @@
       "status": "pass"
     },
     {
-      "expected": "316795b3cf2a45e90d121d9f46499d4658b2645c",
+      "expected": "5adb68a49933ae446bf11935662c83dba55a0804",
       "name": "feature_snapshot_commit_matches_release_tag",
-      "observed": "316795b3cf2a45e90d121d9f46499d4658b2645c",
+      "observed": "5adb68a49933ae446bf11935662c83dba55a0804",
       "status": "pass"
     }
   ],
   "feature_flag_snapshot": {
     "provenance": "release_matched_cli_and_source_snapshot",
-    "source_commit": "316795b3cf2a45e90d121d9f46499d4658b2645c",
-    "source_ref": "rust-v0.152.0",
-    "version": "0.152.0",
-    "version_raw": "codex-cli 0.152.0"
+    "source_commit": "5adb68a49933ae446bf11935662c83dba55a0804",
+    "source_ref": "rust-v0.152.1",
+    "version": "0.152.1",
+    "version_raw": "codex-cli 0.152.1"
   },
   "installed_cli": {
     "command": "codex --version",
@@ -92,8 +92,8 @@
     "url": "https://github.com/openai/codex/releases/tag/rust-v0.152.1",
     "version": "0.152.1"
   },
-  "release_grace_elapsed": false,
+  "release_grace_elapsed": true,
   "release_grace_hours": 12.0,
   "schema_version": 1,
-  "status": "warning"
+  "status": "fresh"
 }
