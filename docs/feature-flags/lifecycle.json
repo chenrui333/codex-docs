@@ -127,6 +127,11 @@
     },
     {
       "enabled": false,
+      "key": "context_management",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "current_time_reminder",
       "stage": "under development"
     },
@@ -308,11 +313,16 @@
     {
       "enabled": false,
       "key": "local_thread_store_shared_compression",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
       "key": "mcp_2026_07_28",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "mcp_oauth_refresh_coordination",
       "stage": "under development"
     },
     {
@@ -666,7 +676,7 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.152.1",
+  "codex_cli_version": "codex-cli 0.153.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -721,6 +731,7 @@
       "compaction_image_budget",
       "concurrent_reasoning_summaries",
       "content_item_kinds",
+      "context_management",
       "current_time_reminder",
       "cwd_relative_turn_diffs",
       "default_mode_request_user_input",
@@ -752,6 +763,7 @@
       "local_thread_store_compression",
       "local_thread_store_shared_compression",
       "mcp_2026_07_28",
+      "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_mode",
       "multi_agent_v2",
@@ -826,6 +838,7 @@
         "item_ids",
         "js_repl",
         "js_repl_tools_only",
+        "local_thread_store_shared_compression",
         "multi_agent_mode",
         "plugin_hooks",
         "remote_control",
@@ -882,6 +895,7 @@
         "code_mode_only",
         "code_mode_prewarm",
         "concurrent_reasoning_summaries",
+        "context_management",
         "current_time_reminder",
         "cwd_relative_turn_diffs",
         "default_mode_request_user_input",
@@ -899,8 +913,8 @@
         "guardianv2",
         "image_resize_notice",
         "local_thread_store_compression",
-        "local_thread_store_shared_compression",
         "mcp_2026_07_28",
+        "mcp_oauth_refresh_coordination",
         "non_prefixed_mcp_tool_names",
         "omit_app_server_notification_media",
         "powershell_shell_version",
@@ -962,16 +976,16 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "141c239474c65089b5082e7b93f401b63dd47647fabdd13bec823ead39974bc0"
+      "sha256": "d7d48d0cccb214413443971e5b9a6a33891d2ed24c5fd8dbd0f05e6b6f33e506"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "a12769db9ddeecdf4925484a56c1bea27e0c8514fe2e50644a548c89c81b6972"
+      "sha256": "b8a5926628bf71378e2b029a10d5d581fee8c851b398ac24be5bb1ef2c8bcb3e"
     }
   },
   "schema_version": 3,
-  "source_commit": "5adb68a49933ae446bf11935662c83dba55a0804",
+  "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
   "source_defaults": {
     "apply_patch_freeform": {
       "default_enabled_expr": "false",
@@ -1072,6 +1086,10 @@
     "content_item_kinds": {
       "default_enabled_expr": "true",
       "stage_from_source": "stable"
+    },
+    "context_management": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
     },
     "current_time_reminder": {
       "default_enabled_expr": "false",
@@ -1219,9 +1237,13 @@
     },
     "local_thread_store_shared_compression": {
       "default_enabled_expr": "false",
-      "stage_from_source": "under development"
+      "stage_from_source": "removed"
     },
     "mcp_2026_07_28": {
+      "default_enabled_expr": "false",
+      "stage_from_source": "under development"
+    },
+    "mcp_oauth_refresh_coordination": {
       "default_enabled_expr": "false",
       "stage_from_source": "under development"
     },
@@ -1508,12 +1530,12 @@
   },
   "source_fingerprints": {
     "client_rs_sha256": "e77f1dfd562f2c21c1e30a95870bd171d56b1bb46361d07dd82f32992fca28f2",
-    "features_rs_sha256": "1ce1deabcd6e86d5233c04f013a2a48be31a6f8efea87bcd9c84802bf450bb59"
+    "features_rs_sha256": "b7ef7bb1bb5517a82ae7c7294f2d7a072cb00f151a3d8f5025aa2e967b036937"
   },
-  "source_ref": "rust-v0.152.1",
+  "source_ref": "rust-v0.153.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/5adb68a49933ae446bf11935662c83dba55a0804/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/5adb68a49933ae446bf11935662c83dba55a0804/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
