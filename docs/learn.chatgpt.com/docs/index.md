@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-08-31T10:01:12Z'
-source_etag: 'W/"acdbd116bd58b7081515514b8fe894ee"'
+source_last_modified: '2026-09-03T20:16:33Z'
+source_etag: 'W/"77f4c02d1cce97978b868dc29ca70796"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
 ---
@@ -73,6 +73,12 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
  [View all updates](/codex/whats-new)
 
+August 31–September 4, 2026
+
+[### Take on demanding work with GPT-6 Astra
+
+GPT-6 Astra combines advanced reasoning, computer use, and stronger judgment for complex work across code, apps, and research in Codex and ChatGPT Work.](/codex/whats-new#take-on-demanding-work-with-gpt-6-astra)
+
 August 24–28, 2026
 
 [### Work with more websites
@@ -80,11 +86,3 @@ August 24–28, 2026
 Use your browser: Work in Edge, Brave, Opera, or Vivaldi as well as Chrome from the ChatGPT desktop app.](/codex/whats-new#work-with-more-websites)  [### Run scheduled tasks from app events
 
 Scheduled tasks can now start when a supported event occurs in Gmail, Slack, or GitHub.](/codex/whats-new#run-scheduled-tasks-from-app-events)
-
-August 17–21, 2026
-
-[### Work with more of your apps and content
-
-Apple Messages: Find chats, summarize messages, prepare replies, and send through Messages on your Mac.](/codex/whats-new#work-with-more-of-your-apps-and-content)  [### Work with GitLab projects in Codex cloud
-
-GitLab support is available in beta on all ChatGPT plans.](/codex/whats-new#work-with-gitlab-projects-in-codex-cloud)

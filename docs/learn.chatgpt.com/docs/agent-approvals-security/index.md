@@ -43,6 +43,29 @@ Codex asks for approval to edit files outside the workspace or to run commands t
 
 Codex can also elicit approval for app (connector) tool calls that advertise side effects, even when the action isn't a shell command or file change. Destructive app/MCP tool calls always require approval when the tool advertises a destructive annotation (unless the tool advertises a read annotation, which takes priority).
 
+## Safety monitoring and paused tasks
+
+GPT-6 Astra includes safety monitoring in Codex and ChatGPT Work. Monitoring
+runs asynchronously and can pause a task if it detects potentially unsafe model
+behavior. A pause can arrive after the activity that triggered it; monitoring
+doesn't replace sandboxing, permissions, or review of the result.
+
+If a task pauses, read the notice and review the findings when available. Resume
+only after checking that the task can safely continue. If the notice says the
+task has ended or doesn't offer an option to resume, you can't resume from that
+surface.
+
+| Surface and data controls                                                                               | Findings and resume                                       |
+| ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Codex and ChatGPT Work clients with the findings and resume flow, without the data controls listed here | Review the findings before resuming.                      |
+| Codex CLI and mobile                                                                                    | Full findings and resume aren't available. The task ends. |
+| Zero data retention, Modified Abuse Monitoring, or non-US data storage residency                        | Full findings and resume aren't available. The task ends. |
+
+Safety monitoring evaluates model behavior during a task.
+[Automatic approval review](https://learn.chatgpt.com/docs/sandboxing/auto-review) evaluates individual actions that
+already require approval before those actions run. An action approved by
+automatic approval review can still be part of a task that monitoring later pauses.
+
 ## Network access <ElevatedRiskBadge class="ml-2" />
 
 For Codex cloud, see [agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access) to enable full internet access or a domain allow list.
@@ -194,6 +217,11 @@ connector tool calls, MCP server connections, browser or Computer Use activity,
 Codex cloud tasks, or the client's model and authentication requests. These
 surfaces use separate service connections, feature settings, workspace
 policies, or environment controls.
+
+Browser tools separately check managed network denies and exclusive allowlists
+before accessing an origin. Browser origin policies can further restrict site
+access, uploads, downloads, and developer tools. See
+[managed browser controls](https://learn.chatgpt.com/docs/enterprise/managed-configuration#control-browser-and-computer-use).
 
 For managed users, combine command network policy with controls such as
 `allowed_web_search_modes`, approved `mcp_servers`, and feature requirements

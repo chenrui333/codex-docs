@@ -22,10 +22,13 @@ Source: https://learn.chatgpt.com/docs/agent-configuration/speed
 Codex offers the ability to increase the speed of the model for increased
 credit consumption.
 
-Fast mode increases supported model speed by 1.5x and consumes credits at a
-higher rate than Standard mode. It currently supports GPT-5.6, GPT-5.5, and
-GPT-5.4. GPT-5.6 and GPT-5.5 consume credits at 2.5x the Standard rate;
-GPT-5.4 consumes credits at 2x the Standard rate.
+For GPT-5.6, GPT-5.5, and GPT-5.4, Fast mode increases model speed by 1.5x.
+GPT-5.6 and GPT-5.5 consume credits at 2.5x the Standard rate; GPT-5.4 consumes
+credits at 2x the Standard rate.
+
+GPT-6 Astra Fast mode consumes credits at 2.5x the Standard rate where
+available. See [Models](https://learn.chatgpt.com/docs/models) for model availability and
+[Pricing](https://learn.chatgpt.com/docs/pricing#token-rates) for token rates.
 
 Use `/fast on`, `/fast off`, or `/fast status` in the CLI to change or inspect
 the current setting. You can also persist the default with `service_tier =

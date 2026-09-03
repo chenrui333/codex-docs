@@ -17,6 +17,25 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## August 31–September 4, 2026
+
+### Take on demanding work with GPT-6 Astra
+
+GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
+
+[GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) combines advanced reasoning, computer
+use, and stronger judgment for complex work across code, apps, and research in
+Codex and ChatGPT Work. Use it to carry out a workflow, check the result, and
+produce a document, spreadsheet, or presentation that fits your templates and
+task.
+
+Once Astra is available to your account, choose it from the model selector.
+Plus and standard Business
+include limited usage, and larger Pro and Business plans use their existing
+allowance. See [Astra usage and pricing](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage) before
+starting a large task. Enterprise access requires both rollout eligibility and
+an administrator to enable it.
+
 ## August 24–28, 2026
 
 ### Work with more websites

@@ -26,6 +26,15 @@ on a website, or review a page you're building.
 
 Browser is available in ChatGPT on the web and in the ChatGPT desktop app.
 
+[GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) improves visual judgment for tasks such
+as checking a page against a screenshot or completing a workflow across sites.
+Choose it when available in your model selector, and describe how to verify the
+finished result.
+
+For managed desktop environments, administrators can restrict browser origins,
+uploads, downloads, and developer access. See
+[managed browser controls](https://learn.chatgpt.com/docs/enterprise/managed-configuration#control-browser-and-computer-use).
+
 Treat page content as untrusted context. Review the site and proposed action
 before sharing sensitive information or allowing ChatGPT to act.
 

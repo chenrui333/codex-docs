@@ -182,6 +182,47 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Run the final sandboxed child process on a private desktop by default on native Windows. Set `false` only for compatibility with the older `Winsta0\\\\Default` behavior.",
     },
     {
+      key: "browser_use.allow_history_access",
+      type: "boolean",
+      description:
+        "Set to `false` to restrict browser-history access. Managed requirements can enforce this restriction.",
+    },
+    {
+      key: "browser_use.default_origin_policy",
+      type: "table",
+      description:
+        "Fallback browser-origin restrictions. Supports `access`, `uploads`, `downloads`, and `full_cdp_access`, each set to `allow` or `deny`.",
+    },
+    {
+      key: "browser_use.origins.<origin>",
+      type: "table",
+      description:
+        "Per-origin browser restrictions with the same fields as `browser_use.default_origin_policy`. Include an HTTP or HTTPS scheme and optional port; omit paths, queries, and fragments. Local values cannot relax managed denies.",
+    },
+    {
+      key: "computer_use.default_app_access",
+      type: "allow | deny",
+      description:
+        "Fallback native-app access policy for Computer Use. App-specific entries can supply a policy; local configuration cannot relax managed restrictions.",
+    },
+    {
+      key: "computer_use.macos.bundle_ids",
+      type: "map<string, allow | deny>",
+      description: "Native macOS app access keyed by bundle identifier.",
+    },
+    {
+      key: "computer_use.windows.aumids",
+      type: "map<string, allow | deny>",
+      description:
+        "Packaged Windows app access keyed by Application User Model ID (AUMID).",
+    },
+    {
+      key: "computer_use.windows.exes",
+      type: "array<table>",
+      description:
+        "Windows executable access rules. Each rule requires `publisher_name`, `product_name`, and `access` (`allow` or `deny`); `binary_name` is optional.",
+    },
+    {
       key: "computer_use.windows.always_allowed_app_ids",
       type: "array<string>",
       description:
@@ -403,6 +444,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "array<string>",
       description:
         "Tool namespaces code mode can use only through direct tool calls.",
+    },
+    {
+      key: "features.context_management.experimental_mode",
+      type: "boolean",
+      description:
+        "Enable experimental context management (off by default). Rather than repeatedly compressing context into a single summary, it uses notes and searchable history to preserve accumulated details. Requires ChatGPT sign-in on Plus, Pro, or Pro Lite.",
     },
     {
       key: "features.rollout_budget.enabled",
@@ -1717,6 +1764,17 @@ Explicit launch choices from dedicated CLI flags or `--config` overrides take
 precedence. An explicit model or reasoning-effort override skips both managed
 model fields; `service_tier` is independent.
 
+The browser requirements cover three separate surfaces. `in_app_browser`
+controls the browser pane that a person opens and uses directly. `browser_use`
+controls agent-driven work in a browser. `computer_use` controls agent-driven
+work in native desktop apps.
+
+The nested Browser Use and Computer Use policy values do not grant access by
+themselves. An origin- or app-specific `allow` can override the fallback for
+the same policy source, but normal feature, approval, and other policy checks
+still apply. Where managed requirements and `config.toml` both apply, a `deny`
+from either one wins.
+
 <ConfigTable
   options={[
     {
@@ -1905,6 +1963,12 @@ model fields; `service_tier` is independent.
         "Set to `false` to disable device remote control for managed users. If omitted, device remote control remains unconstrained by requirements and follows normal product availability.",
     },
     {
+      key: "allow_browser_and_computer_use",
+      type: "boolean",
+      description:
+        "Set to `false` to block both agent-driven Browser Use and native-app Computer Use. Setting it to `true` or omitting it does not enable either feature; the remaining feature, policy, and approval checks still apply.",
+    },
+    {
       key: "features.plugin_sharing",
       type: "boolean",
       description:
@@ -1938,19 +2002,19 @@ model fields; `service_tier` is independent.
       key: "features.in_app_browser",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable the built-in browser pane.",
+        "Set to `false` in `requirements.toml` to disable the built-in browser pane that users open and control directly.",
     },
     {
       key: "features.browser_use",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable Computer Use in browsers and Browser Agent availability.",
+        "Set to `false` in `requirements.toml` to disable agent-driven Browser Use.",
     },
     {
       key: "features.browser_use_external",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable Computer Use in external browsers.",
+        "Set to `false` in `requirements.toml` to prevent Codex from operating supported browsers through the ChatGPT browser extension, including existing tabs and signed-in sessions.",
     },
     {
       key: "features.browser_use_full_cdp_access",
@@ -2004,22 +2068,236 @@ model fields; `service_tier` is independent.
         "Pin bundled workspace-dependency runtime availability on or off for managed users.",
     },
     {
+      key: "in_app_browser",
+      type: "table",
+      description:
+        "Requirements for the built-in browser pane. These settings do not control agent-driven Browser Use.",
+    },
+    {
+      key: "in_app_browser.allow_external_browser_settings_import",
+      type: "boolean",
+      description:
+        "Set to `false` to prevent users from importing settings or browsing data from an external browser into the built-in browser. Setting it to `true` or omitting it leaves the import available when other product checks allow it. This is a managed-only setting with no `config.toml` override.",
+    },
+    {
+      key: "browser_use",
+      type: "table",
+      description: "Managed requirements for agent-driven Browser Use.",
+    },
+    {
+      key: "browser_use.allow_history_access",
+      type: "boolean",
+      description:
+        "Set to `false` to prevent Browser Use from reading browser history. Setting it to `true` or omitting it leaves normal history settings and availability checks in place.",
+    },
+    {
+      key: "browser_use.disable_auto_review",
+      type: "boolean",
+      description:
+        "Set to `true` to skip automatic review for Browser Use and ask the user for approval instead. Setting it to `false` or omitting it leaves automatic review available when other settings allow it.",
+    },
+    {
+      key: "browser_use.allow_global_persistent_approval",
+      type: "boolean",
+      description:
+        "Set to `false` to prevent Browser Use from creating or honoring `Always allow` approvals that cover every site, such as allowing downloads from any site. Existing saved approvals are ignored, not deleted. Setting it to `true` or omitting it does not create an approval.",
+    },
+    {
+      key: "browser_use.default_origin_policy",
+      type: "table",
+      description:
+        "Fallback for each Browser Use setting when no matching entry under `browser_use.origins` defines it. A matching origin rule replaces the fallback for that source. Codex then applies the stricter result from managed requirements and user configuration.",
+    },
+    {
+      key: "browser_use.default_origin_policy.access",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block Browser Use on origins that use the fallback. A denied origin also blocks uploads, downloads, full browser debugging access, and automatic review there. `allow` only lets normal approval and policy checks continue.",
+    },
+    {
+      key: "browser_use.default_origin_policy.downloads",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block Browser Use downloads on origins that use the fallback. `allow` only lets normal approval and policy checks continue.",
+    },
+    {
+      key: "browser_use.default_origin_policy.uploads",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block Browser Use uploads on origins that use the fallback. `allow` only lets normal approval and policy checks continue.",
+    },
+    {
+      key: "browser_use.default_origin_policy.full_cdp_access",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block full Chrome DevTools Protocol (CDP) access on origins that use the fallback. `allow` only lets normal opt-in and approval checks continue.",
+    },
+    {
+      key: "browser_use.default_origin_policy.auto_review",
+      type: "allow | deny",
+      description:
+        "Use `deny` to skip automatic review on origins that use the fallback and ask the user for approval instead. `allow` leaves automatic review available when other settings allow it.",
+    },
+    {
+      key: "browser_use.default_origin_policy.persistent_approval",
+      type: "boolean",
+      description:
+        "Set to `false` to prevent Browser Use from saving or honoring an `Always allow` approval on origins that use the fallback. Approvals for the current turn or thread can still apply. `true` makes `Always allow` available when otherwise permitted but does not create an approval.",
+    },
+    {
+      key: "browser_use.default_origin_policy.access_approval_lifetime",
+      type: "turn | thread",
+      description:
+        "Set how long a non-persistent site-access approval lasts: `turn` limits it to the current turn, and `thread` keeps it for the rest of the current thread. `persistent_approval` separately controls whether `Always allow` is available. The product default is `thread`.",
+    },
+    {
+      key: "browser_use.origins",
+      type: "map<string, table>",
+      description:
+        'Origin-specific Browser Use policies. Keys use `<scheme>://<host-pattern>[:<port>]` with `http` or `https`. Use an exact host, `*.example.com` for subdomains only, or `**.example.com` for the base domain and its subdomains. Other `*` wildcards can span dots, so `region*.example.com` also matches `region.api.example.com`; a host of `*` matches every host for that scheme. Schemes and nondefault ports are significant; explicit default ports are normalized away. Paths, queries, embedded usernames or passwords, and wildcard schemes or ports are invalid. Quote the pattern in TOML, for example `[browser_use.origins."https://**.example.com"]`.',
+    },
+    {
+      key: "browser_use.origins.<pattern>",
+      type: "table",
+      description:
+        "Policy for origins matching this pattern. If several patterns match, Codex uses the most restrictive value for each capability: `deny` over `allow`, `false` over `true`, and `turn` over `thread`.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.access",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block Browser Use on matching origins. Denial also blocks uploads, downloads, full browser debugging access, and automatic review there. `allow` only lets normal approval and policy checks continue.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.downloads",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block Browser Use downloads on matching origins. `allow` only lets normal approval and policy checks continue.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.uploads",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block Browser Use uploads on matching origins. `allow` only lets normal approval and policy checks continue.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.full_cdp_access",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block full Chrome DevTools Protocol (CDP) access on matching origins. `allow` only lets normal opt-in and approval checks continue.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.auto_review",
+      type: "allow | deny",
+      description:
+        "Use `deny` to skip automatic review on matching origins and ask the user for approval instead. `allow` leaves automatic review available when other settings allow it.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.persistent_approval",
+      type: "boolean",
+      description:
+        "Set to `false` to prevent Browser Use from saving or honoring an `Always allow` approval on matching origins. Approvals for the current turn or thread can still apply. `true` makes `Always allow` available when otherwise permitted but does not create an approval.",
+    },
+    {
+      key: "browser_use.origins.<pattern>.access_approval_lifetime",
+      type: "turn | thread",
+      description:
+        "Set how long a non-persistent site-access approval for matching origins lasts: `turn` limits it to the current turn, and `thread` keeps it for the rest of the current thread. `persistent_approval` separately controls whether `Always allow` is available.",
+    },
+    {
       key: "computer_use",
       type: "table",
       description:
-        "Computer Use requirements enforced from `requirements.toml`.",
+        "Managed requirements for agent-driven work in native desktop apps. Managed app rules and `config.toml` app rules are both enforced; an app must be allowed by each policy source.",
     },
     {
       key: "computer_use.allow_locked_computer_use",
       type: "boolean",
       description:
-        "Set to `false` to prevent Computer Use from operating after a managed macOS device locks. If omitted, locked use remains unconstrained by requirements.",
+        "Set to `false` to prevent users from enabling Locked Use on a managed macOS device. This requirement removes the enablement controls; it does not turn off Locked Use if it is already enabled. If omitted, normal product availability applies.",
+    },
+    {
+      key: "computer_use.allow_persistent_approval",
+      type: "boolean",
+      description:
+        "Set to `false` to remove the option to save app approvals across sessions. Approvals for the current session remain available. Setting it to `true` or omitting it does not approve an app.",
+    },
+    {
+      key: "computer_use.default_app_access",
+      type: "allow | deny",
+      description:
+        "Fallback access for native apps that do not match a platform-specific rule. `deny` blocks access. `allow` only lets normal approval and policy checks continue. The product default is `allow`.",
+    },
+    {
+      key: "computer_use.macos",
+      type: "table",
+      description: "Computer Use app rules for macOS.",
+    },
+    {
+      key: "computer_use.macos.bundle_ids",
+      type: "map<string, allow | deny>",
+      description:
+        "Map exact macOS bundle identifiers to `allow` or `deny`. A matching rule replaces `computer_use.default_app_access` within the same policy source. A deny from either managed requirements or user configuration still blocks access.",
+    },
+    {
+      key: "computer_use.macos.bundle_ids.<bundle-id>",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block the exact bundle identifier. `allow` overrides only this policy source's default and still requires any other policy source and the normal approval flow to allow the app.",
+    },
+    {
+      key: "computer_use.windows",
+      type: "table",
+      description:
+        "Computer Use app rules for packaged and unpackaged Windows apps.",
+    },
+    {
+      key: "computer_use.windows.aumids",
+      type: "map<string, allow | deny>",
+      description:
+        "Map exact, registered Application User Model IDs (AUMIDs) for signed packaged apps to `allow` or `deny`. A matching rule replaces `computer_use.default_app_access` within the same policy source.",
+    },
+    {
+      key: "computer_use.windows.aumids.<aumid>",
+      type: "allow | deny",
+      description:
+        "Use `deny` to block the exact packaged-app identity. `allow` overrides only this policy source's default and still requires any other policy source and the normal approval flow to allow the app.",
+    },
+    {
+      key: "computer_use.windows.exes",
+      type: "array<table>",
+      description:
+        "Rules for signed, unpackaged Windows executables. Rules match the executable's verified publisher and signed version information, not its path or current file name. A matching deny takes precedence over matching allows. Unsigned executables use `computer_use.default_app_access`; executables whose signed identity cannot be verified unambiguously are blocked.",
+    },
+    {
+      key: "computer_use.windows.exes[].publisher_name",
+      type: "string",
+      description:
+        "Required exact publisher name from the executable's trusted signing certificate, formatted as a Windows X.500 distinguished name.",
+    },
+    {
+      key: "computer_use.windows.exes[].product_name",
+      type: "string",
+      description:
+        "Required exact `ProductName` from the executable's signed version information.",
+    },
+    {
+      key: "computer_use.windows.exes[].binary_name",
+      type: "string",
+      description:
+        "Optional `OriginalFilename` from the executable's signed version information. Matching is case-insensitive. If a matching publisher and product rule requires this value but the executable does not provide it, Computer Use blocks the executable.",
+    },
+    {
+      key: "computer_use.windows.exes[].access",
+      type: "allow | deny",
+      description:
+        "Required access decision for matching executables. `deny` blocks access. `allow` overrides only this policy source's default and still requires any other policy source and the normal approval flow to allow the app.",
     },
     {
       key: "experimental_network",
       type: "table",
       description:
-        "Administrator-managed network requirements for sandboxed local commands, enforced from `requirements.toml`. When enabled, these requirements can start the command network proxy without `features.network_proxy`. They do not control web search, apps, MCP servers, browsers, or Codex cloud networking.",
+        "Administrator-managed network requirements for sandboxed local commands, enforced from `requirements.toml`. When enabled, these requirements can start the command network proxy without `features.network_proxy`. Browser tools separately check managed network denies and exclusive allowlists. These requirements do not route browser traffic through the proxy or control web search, apps, MCP servers, native-app traffic, or Codex cloud networking.",
     },
     {
       key: "experimental_network.enabled",

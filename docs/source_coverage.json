@@ -1,11 +1,11 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 908,
+      "active": 947,
       "by_category": {
         "cli_command": 93,
         "cli_option": 329,
-        "config_key": 379,
+        "config_key": 418,
         "feature_flag": 135,
         "linked_tool_guide": 1,
         "system_prompt_snapshot": 1,
@@ -19,7 +19,7 @@
         "under development": 52
       },
       "inactive": 36,
-      "total": 944
+      "total": 983
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -277,7 +277,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-03T15:57:51+00:00",
+  "generated_at": "2026-09-03T20:38:10+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,

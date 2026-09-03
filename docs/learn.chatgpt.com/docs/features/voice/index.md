@@ -29,15 +29,24 @@ workspace settings. See [feature availability](https://learn.chatgpt.com/docs/pr
 
 ## Start talking
 
-1. Open a new, empty chat or task in the ChatGPT desktop app.
-2. Select **Start new voice chat** before sending a message.
+1. Open the Codex task you want to discuss in the ChatGPT desktop app, or start
+   a new chat or task.
+2. Select **Start voice chat** in an existing task, or **Start new voice chat**
+   in a new chat or task.
 3. The first time you start a voice chat, allow microphone access, choose a
    voice, and review screen context on macOS.
-4. Start talking. Select **End** when you finish.
+4. Start talking. Select **Stop voice chat** when you finish.
 
-A chat or task must begin in voice mode to use ChatGPT Voice. Chats or tasks that
-start in another mode offer voice dictation instead. To resume an earlier voice
-chat, open it and select **Start voice chat**.
+Voice in existing Codex tasks is rolling out. When available, you can start
+talking in a task that began with typed messages. Voice uses that task's
+conversation and selected model to carry out your requests, so you can discuss
+its progress or change direction without starting another task.
+
+If **Start voice chat** isn't available in an existing task, update the desktop
+app and the Codex host running the task. Availability also depends on your
+account and workspace. You can still start a new voice chat where supported,
+or use [voice dictation](https://learn.chatgpt.com/docs/prompting#use-voice-dictation) to enter prompt
+text. To resume an earlier voice chat, open it and select **Start voice chat**.
 
 You can set a shortcut in **Settings > Voice > Voice chat hotkey**.
 
@@ -49,7 +58,7 @@ keep talking to check progress or steer the task.
 
 ## Delegate and coordinate work
 
-ChatGPT Voice can start separate threads for longer tasks, check existing threads,
+ChatGPT Voice can start separate tasks for longer work, check existing tasks,
 and send follow-up instructions. It brings progress, blockers, and results back
 to your voice conversation so you can keep talking while work continues.
 
@@ -58,6 +67,11 @@ For example:
 - “Review today's launch brief and summarize decisions that need approval.”
 - “Start a Codex task to run the tests and investigate anything that doesn't pass.”
 - “Check active tasks and summarize anything blocking progress.”
+
+You can also ask to speak to another Codex task, then ask to return to the
+previous one. For example, say, “Let me talk to the task reviewing the tests,”
+then, “Take me back to the previous task.” The destination task must support
+voice and be available on a connected host.
 
 ChatGPT Voice follows the same [permissions](https://learn.chatgpt.com/docs/permission-modes) as
 the tasks it directs in Chat, Work, and Codex in the ChatGPT desktop app.

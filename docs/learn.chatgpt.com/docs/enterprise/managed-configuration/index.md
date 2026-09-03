@@ -324,34 +324,41 @@ define network access requirements centrally. These requirements are separate
 from the user `features.network_proxy` toggle: they can configure sandbox
 networking without that feature flag, but they don't grant command network
 access when the active sandbox keeps networking off. Set
-`experimental_network.enabled = true` to activate the managed proxy; an
-allowlist alone does not make the proxy active.
+`experimental_network.enabled = true` to activate the managed proxy; domain
+rules alone do not make the proxy active.
 
 ```toml
-experimental_network.enabled = true
-experimental_network.allowed_domains = [
-  "api.openai.com",
-  "*.example.com",
-]
-experimental_network.denied_domains = [
-  "blocked.example.com",
-  "*.exfil.example.com",
-]
+[experimental_network]
+enabled = true
+managed_allowed_domains_only = true
+
+[experimental_network.domains]
+"api.openai.com" = "allow"
+"**.example.com" = "allow"
+"blocked.example.com" = "deny"
+"**.exfil.example.com" = "deny"
 ```
 
 Use `experimental_network.managed_allowed_domains_only = true` only when you
-also define administrator-owned `allowed_domains` and want that allowlist to be
-exclusive. If it's `true` without managed allow rules, user-added domain allow
-rules don't remain effective.
+also define administrator-owned `"allow"` entries in
+`[experimental_network.domains]` and want those rules to be exclusive. If it's
+`true` without managed allow rules, user-added domain allow rules don't remain
+effective. Do not combine the canonical `domains` map with the legacy
+`allowed_domains` or `denied_domains` lists.
+
+`*.example.com` matches subdomains only. `**.example.com` matches the apex
+domain and its subdomains. A matching deny rule wins over an allow rule.
 
 The domain syntax, local/private destination rules, deny-over-allow behavior,
 and DNS rebinding limitations are the same as the sandbox networking behavior
 described in [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security#network-isolation).
 
-These requirements apply only to local commands that run inside the sandbox.
-They do not route or filter web search, apps and connectors, MCP servers,
-browser or Computer Use activity, Codex service requests, or Codex cloud
-traffic. Use the controls for each surface:
+The proxy routes local commands that run inside the sandbox. Browser tools
+also check managed network denies and exclusive allowlists before accessing
+an origin; this is a separate policy check, not routing browser traffic through
+the command proxy. It doesn't filter web search, apps and connectors, MCP
+servers, native-app traffic, Codex service requests, or Codex cloud traffic.
+Use the controls for each surface:
 
 - Use `allowed_web_search_modes` to restrict web search.
 - Use `features.apps = false` to disable app and connector integrations, and
@@ -363,6 +370,72 @@ traffic. Use the controls for each surface:
 
 A command domain allowlist does not replace these capability-specific
 controls.
+
+### Control browser and Computer Use
+
+Use the `[browser_use]` and `[computer_use]` tables in `requirements.toml` to
+restrict supported desktop clients. Validate the policy on the client versions
+and operating systems in your deployment. A configured allow rule doesn't
+install a plugin, grant an operating-system permission, or approve an action
+that still requires review.
+
+For browser access, configure an origin policy. An origin includes the scheme,
+host, and optional port, such as `https://example.com` or
+`https://*.example.com:8443`. Don't include a path, query, or fragment. Unlike
+command-network domain rules, browser origin rules distinguish HTTP from HTTPS
+and match the port.
+
+This example restricts browser access to an approved site and prevents uploads
+and full Chrome DevTools Protocol (CDP) access there:
+
+```toml
+[browser_use]
+allow_history_access = false
+allow_global_persistent_approval = false
+
+[browser_use.default_origin_policy]
+access = "deny"
+
+[browser_use.origins."https://example.com"]
+access = "allow"
+uploads = "deny"
+downloads = "allow"
+full_cdp_access = "deny"
+persistent_approval = false
+access_approval_lifetime = "turn"
+```
+
+Matching origin rules are resolved per field. A matching deny wins; otherwise,
+the default origin policy supplies fields that matching rules don't specify.
+Local configuration can add restrictions but can't relax a managed deny.
+Network denies and exclusive managed network allowlists still apply.
+
+Set `browser_use.disable_auto_review = true` to disable automatic approval
+review for browser actions, or set `auto_review = "deny"` on an origin policy
+to restrict it for that origin. This controls approval handling; it doesn't
+disable model safety monitoring.
+
+For native apps, set a default access policy and identify permitted apps. For
+example, this macOS policy allows Calculator and prevents saved approvals:
+
+```toml
+[computer_use]
+default_app_access = "deny"
+allow_persistent_approval = false
+
+[computer_use.macos.bundle_ids]
+"com.apple.calculator" = "allow"
+```
+
+Windows policies can identify packaged apps with
+`computer_use.windows.aumids` or executables with
+`computer_use.windows.exes`. Executable rules require `publisher_name`,
+`product_name`, and `access`; `binary_name` is optional. Use the app's verified
+identity rather than its display name alone.
+
+See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference#requirementstoml)
+for the complete fields and [locked-use restrictions](#restrict-locked-computer-use)
+for managed macOS devices.
 
 ### Pin feature flags
 
@@ -408,16 +481,16 @@ platform, and rollout availability.
 
 ### Restrict locked computer use
 
-To prevent [Computer Use](https://learn.chatgpt.com/docs/computer-use#locked-use) from operating
-after a managed Mac locks, add this requirement:
+To prevent users from enabling [Locked Use](https://learn.chatgpt.com/docs/computer-use#locked-use)
+on a managed Mac, add this requirement:
 
 ```toml
 [computer_use]
 allow_locked_computer_use = false
 ```
 
-This requirement doesn't enable Computer Use. It only prevents locked use on
-macOS. If you omit it, requirements don't constrain locked use; normal product
+This requirement removes the controls for enabling Locked Use. It doesn't
+turn off Locked Use if it's already enabled. If you omit it, normal product
 availability and the user's local setting still apply.
 
 ### Configure automatic review policy

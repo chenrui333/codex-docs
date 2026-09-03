@@ -145,6 +145,12 @@ Learn more about [plugins](https://learn.chatgpt.com/docs/plugins).
 
 ## Use ChatGPT Work efficiently
 
+Choose [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) for demanding work that needs
+careful reasoning, visual judgment, or a polished final file. For simpler tasks,
+consider Sol, Terra, or Luna. Select from the models
+available in your model selector and check [plan usage](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage)
+before starting a large task.
+
 ChatGPT Work is best for substantial tasks that involve multiple steps, sources, or
 tools, or require a completed deliverable. Longer or more complex tasks may use
 more credits because ChatGPT is doing more on your behalf. Focus on the value of
@@ -158,6 +164,9 @@ Use Chat instead for quick questions, short rewrites, and decisions where you
 only need advice.
 
 Learn more about [working efficiently](https://learn.chatgpt.com/docs/prompting#prompting-for-work).
+
+If a task pauses for a safety review, follow the notice and review any available
+findings before continuing. See [safety monitoring and paused tasks](https://learn.chatgpt.com/docs/agent-approvals-security#safety-monitoring-and-paused-tasks).
 
 ## More use cases
 

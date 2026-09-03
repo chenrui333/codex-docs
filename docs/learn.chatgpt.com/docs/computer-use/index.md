@@ -55,6 +55,11 @@ On macOS, grant:
 
 ## When to use Computer Use
 
+For difficult tasks that depend on screenshots or visual judgment, choose
+[GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) when it is available in your model
+selector. The same plugin setup, operating-system permissions, and app access
+controls apply.
+
 Choose Computer Use when the task depends on a graphical user interface that's
 hard to verify through files or command output alone.
 
@@ -106,6 +111,10 @@ structured integration for data access and repeatable operations. Choose
 Computer Use when ChatGPT needs to inspect or operate the app visually.
 
 ## Permissions and approvals
+
+Workspace administrators can restrict which apps Computer Use can access and
+whether approvals can be saved. See
+[managed browser and Computer Use controls](https://learn.chatgpt.com/docs/enterprise/managed-configuration#control-browser-and-computer-use).
 
 System permissions for Computer Use are separate from app approvals in ChatGPT.
 On macOS, Screen Recording and Accessibility permissions let ChatGPT see and

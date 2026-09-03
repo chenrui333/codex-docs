@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-08-21T00:24:38Z'
-source_etag: 'W/"37ea72c57f38be8723e7768ddd1f248e"'
+source_last_modified: '2026-09-03T20:18:12Z'
+source_etag: 'W/"2e26ae0326c3faed015374dd36b5984a"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
 ---
@@ -40,7 +40,7 @@ Web search tool example
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   tools: [{ type: "web_search" }],
   input: "What was a positive news story from today?",
 });
@@ -54,7 +54,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     tools=[{"type": "web_search"}],
     input="What was a positive news story from today?",
 )
@@ -67,7 +67,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input("What was a positive news story from today?")
         .addTool(WebSearchTool.builder().type(WebSearchTool.Type.WEB_SEARCH).build())
         .build();
@@ -86,7 +86,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-5.6" };
+CreateResponseOptions options = new() { Model = "gpt-6-astra" };
 options.Tools.Add(ResponseTool.CreateWebSearchTool());
 options.InputItems.Add(
     ResponseItem.CreateUserMessageItem("What was a positive news story from today?")
@@ -103,7 +103,7 @@ require "openai"
 openai = OpenAI::Client.new
 
 response = openai.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   tools: [{type: "web_search"}],
   input: "What was a positive news story from today?"
 )
@@ -116,7 +116,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.6",
+        "model": "gpt-6-astra",
         "tools": [{"type": "web_search"}],
         "input": "what was a positive news story from today?"
 }'
@@ -124,7 +124,7 @@ curl "https://api.openai.com/v1/responses" \
 
 ```bash
 openai responses create \
-  --model gpt-5.6 \
+  --model gpt-6-astra \
   --raw-output \
   --transform 'output.#(type=="message").content.0.text' <<'YAML'
 tools:
@@ -204,7 +204,7 @@ Set search context size
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   tools: [
     {
       type: "web_search",
@@ -222,7 +222,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     tools=[
         {
             "type": "web_search",
@@ -240,7 +240,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input("What movie won best picture in 2025?")
         .addTool(
             WebSearchTool.builder()
@@ -263,7 +263,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-5.6" };
+CreateResponseOptions options = new() { Model = "gpt-6-astra" };
 options.Tools.Add(
     ResponseTool.CreateWebSearchTool(
         searchContextSize: WebSearchToolContextSize.Low
@@ -284,7 +284,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   input: "What movie won best picture in 2025?",
   tools: [{type: :web_search, search_context_size: :low}]
 )
@@ -297,7 +297,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.6",
+        "model": "gpt-6-astra",
         "tools": [{
             "type": "web_search",
             "search_context_size": "low"
@@ -325,7 +325,7 @@ Run longer web searches
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   reasoning: { effort: "xhigh" },
   tools: [
     {
@@ -354,7 +354,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     reasoning={"effort": "xhigh"},
     tools=[
         {
@@ -380,7 +380,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input(
             "Research the economic impact of semaglutide on global healthcare systems. Include current figures and citations.")
         .reasoning(Reasoning.builder().effort(ReasoningEffort.XHIGH).build())
@@ -403,7 +403,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   input: "Research the economic impact of semaglutide on global healthcare systems. Include current figures and citations.",
   reasoning: {effort: :xhigh},
   tools: [{type: :web_search, return_token_budget: :unlimited}]
@@ -417,7 +417,7 @@ curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6",
+    "model": "gpt-6-astra",
     "reasoning": { "effort": "xhigh" },
     "tools": [
       {
@@ -444,7 +444,7 @@ List sources
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   reasoning: { effort: "low" },
   tools: [
     {
@@ -476,7 +476,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     reasoning={"effort": "low"},
     tools=[
         {
@@ -510,7 +510,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input("Search for how semaglutide is used in the treatment of diabetes.")
         .reasoning(Reasoning.builder().effort(ReasoningEffort.LOW).build())
         .addInclude(ResponseIncludable.of("web_search_call.action.sources"))
@@ -553,7 +553,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   reasoning: {effort: :low},
   input: "Search for how semaglutide is used in the treatment of diabetes.",
   include: ["web_search_call.action.sources"],
@@ -592,7 +592,7 @@ curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6",
+    "model": "gpt-6-astra",
     "reasoning": { "effort": "low" },
     "tools": [
       {
@@ -638,7 +638,7 @@ Search for images
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   reasoning: { effort: "low" },
   tools: [
     {
@@ -664,7 +664,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     reasoning={"effort": "low"},
     tools=[
         {
@@ -688,7 +688,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input(
             "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.")
         .reasoning(Reasoning.builder().effort(ReasoningEffort.LOW).build())
@@ -716,7 +716,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   reasoning: {effort: :low},
   input: "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
   include: ["web_search_call.results"],
@@ -737,7 +737,7 @@ curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6",
+    "model": "gpt-6-astra",
     "reasoning": { "effort": "low" },
     "tools": [
       {
@@ -798,7 +798,7 @@ Customizing user location
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   tools: [
     {
       type: "web_search",
@@ -821,7 +821,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     tools=[
         {
             "type": "web_search",
@@ -844,7 +844,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input("What are the best restaurants near me?")
         .addTool(
             WebSearchTool.builder()
@@ -873,7 +873,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-5.6" };
+CreateResponseOptions options = new() { Model = "gpt-6-astra" };
 options.Tools.Add(
     ResponseTool.CreateWebSearchTool(
         userLocation: WebSearchToolLocation.CreateApproximateLocation(
@@ -898,7 +898,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   input: "What are the best restaurants near me?",
   tools: [
     {
@@ -921,7 +921,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-5.6",
+        "model": "gpt-6-astra",
         "tools": [{
             "type": "web_search",
             "user_location": {
@@ -950,7 +950,7 @@ curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6",
+    "model": "gpt-6-astra",
     "tools": [
       { "type": "web_search", "external_web_access": false }
     ],
@@ -963,7 +963,7 @@ curl "https://api.openai.com/v1/responses" \
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   tools: [{ type: "web_search", external_web_access: false }],
   tool_choice: "auto",
   input: "Find when the Eiffel Tower opened to the public and cite the source.",
@@ -978,7 +978,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-5.6",
+    model="gpt-6-astra",
     tools=[{"type": "web_search", "external_web_access": False}],
     tool_choice="auto",
     input="Find when the Eiffel Tower opened to the public and cite the source.",
@@ -991,7 +991,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6")
+        .model("gpt-6-astra")
         .input("Find when the Eiffel Tower opened to the public and cite the source.")
         .addTool(
             WebSearchTool.builder()
@@ -1013,7 +1013,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-5.6",
+  model: "gpt-6-astra",
   input: "Find when the Eiffel Tower opened to the public and cite the source.",
   tools: [{type: :web_search, external_web_access: false}]
 )

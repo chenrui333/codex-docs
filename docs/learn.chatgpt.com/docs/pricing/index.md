@@ -99,8 +99,7 @@ Source: https://learn.chatgpt.com/docs/pricing
         - Codex in the CLI, SDK, or IDE extension
         - No cloud-based features (GitHub code review, Slack, etc.)
         - Model availability follows the API models available to your key
-        - Pay only for the tokens Codex uses, based on [API
-          pricing](https://platform.openai.com/docs/pricing)
+        - Pay for Codex usage based on [API pricing](https://developers.openai.com/api/docs/pricing)
       </PricingCard>
 
       <PricingCard
@@ -154,11 +153,72 @@ Source: https://learn.chatgpt.com/docs/pricing
         - Codex in the CLI, SDK, or IDE extension
         - No cloud-based features (GitHub code review, Slack, etc.)
         - Model availability follows the API models available to your key
-        - Pay only for the tokens Codex uses, based on [API
-          pricing](https://platform.openai.com/docs/pricing)
+        - Pay for Codex usage based on [API pricing](https://developers.openai.com/api/docs/pricing)
       </PricingCard>
 
 </ContentSwitcher>
+
+## GPT-6 Astra usage
+
+GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
+
+Once Astra is available to your account, it uses your existing Work and Codex
+allowance or the billing arrangement for your workspace. The plan guidance
+below applies to ChatGPT Work and Codex, not Chat.
+
+<TableWrapper>
+  <thead>
+    <tr>
+      <th scope="col">Plan</th>
+      <th scope="col">How Astra usage is covered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Plus and standard Business</td>
+      <td>
+        Limited Astra usage is included in your subscription. You don't need to
+        purchase credits to start using it. Eligible users can purchase credits
+        for additional usage after reaching included limits.
+      </td>
+    </tr>
+    <tr>
+      <td>Pro ($100 and $200) and Business ($100)</td>
+      <td>
+        Astra draws from your existing allowance. You can use that allowance for
+        Astra; it doesn't have a separate balance.
+      </td>
+    </tr>
+    <tr>
+      <td>Enterprise with credit-based billing</td>
+      <td>
+        Eligible usage draws from workspace credits under your rate card and
+        agreement.
+      </td>
+    </tr>
+    <tr>
+      <td>Enterprise with usage-based USD billing</td>
+      <td>
+        Eligible usage is billed in USD under your rate card and agreement.
+      </td>
+    </tr>
+  </tbody>
+</TableWrapper>
+
+Astra's modeled usage relative to Sol depends on the billing arrangement:
+
+- **Consumer subscription limits:** 3.27 times Sol's usage per task, or roughly
+  one-third as many tasks for the same allowance.
+- **Business subscription limits:** 2.95 times Sol's usage per task.
+- **Enterprise and purchased credits:** 2.08 times Sol's usage per task.
+
+These comparisons are estimates, not fixed billing multipliers. Actual usage
+varies by task, context, and model settings; it is calculated from token rates
+and the applicable usage multiplier.
+
+See [token rates](#token-rates) for credit pricing.
+Signing in to Codex with ChatGPT uses your ChatGPT plan's rates and
+allowances; using your own API key follows [API pricing](https://developers.openai.com/api/docs/pricing).
 
 ## Invite friends and coworkers
 
@@ -209,9 +269,11 @@ Choose the GPT-5.6 model that best fits your work:
   classification, extraction, support, background automation, and focused coding
   tasks.
 
-The estimates below show local messages per five-hour window. Cloud chats on
+The estimates below show local messages per five-hour period. Cloud chats on
 ChatGPT plans use GPT-5.6 Sol and may use more of your allowance than local
-messages.
+messages. These estimates are not fixed message limits; check your
+[usage dashboard](#where-can-i-see-my-current-usage-limits) for current limits
+and reset times.
 
 <TableWrapper class="w-full min-w-[46rem]">
   <thead class="whitespace-nowrap">
@@ -227,7 +289,7 @@ messages.
         Pro 20x
       </th>
       <th scope="col" style="text-align:center">
-        Business
+        Standard Business
       </th>
       <th scope="col" style="text-align:center">
         API Key
@@ -235,6 +297,14 @@ messages.
     </tr>
   </thead>
   <tbody class="whitespace-nowrap">
+    <tr>
+      <td>GPT-6 Astra</td>
+      <td style="text-align:center">3-30</td>
+      <td style="text-align:center">15-150</td>
+      <td style="text-align:center">60-600</td>
+      <td style="text-align:center">3-30</td>
+      <td style="text-align:center">[Usage-based](https://developers.openai.com/api/docs/pricing)</td>
+    </tr>
     <tr>
       <td>GPT-5.6 Sol</td>
       <td style="text-align:center">10-100</td>
@@ -299,8 +369,8 @@ messages.
   <tfoot>
     <tr>
       <td colspan="6" style="text-align:center">
-        On ChatGPT plans, local messages and cloud chats share a **five-hour
-        window**. Additional weekly limits may apply.
+        Local messages and cloud chats share your plan's usage allowance. Weekly
+        limits may also apply.
       </td>
     </tr>
     <tr>
@@ -317,6 +387,8 @@ messages.
     </tr>
   </tfoot>
 </TableWrapper>
+
+Business ($100) uses the Pro 5x estimates.
 
 Usage limits are shared with other agentic features once pricing for those
 features is effective. This currently includes [ChatGPT for
@@ -337,8 +409,9 @@ ChatGPT Voice on desktop uses a separate, plan-dependent allowance measured in
 rolling five-hour windows. Tasks started through Voice use your existing Codex
 usage budget. ChatGPT notifies you when you reach either limit.
 
-ChatGPT Voice in Desktop uses a duplex model: GPT-Live manages the live
-conversation, while GPT-5.6 Terra starts and coordinates tasks in the app.
+GPT-Live manages the live conversation. When you use Voice in an existing
+Codex task, the task's selected model handles the work. See
+[ChatGPT Voice](https://learn.chatgpt.com/docs/features/voice#start-talking) for availability and setup.
 
 - **Plus:** Approximately 15–30 minutes
 - **Pro 5x ($100/month):** Approximately 1–2.5 hours
@@ -402,17 +475,19 @@ Tokens are small units of information that ChatGPT reads and writes. Your
 prompt, files, chat history, tool results, and ChatGPT's response all
 use tokens.
 
-Credits translate token usage into a simpler unit for tracking and managing
-consumption. The credit cost varies by model, context, reasoning, and tools.
+Credits are the unit used to pay for eligible usage on credit-based plans.
 After you reach your included limits, available credits let you continue
-working.
+working. Credit purchase prices and applicable discounts depend on your plan
+or agreement.
 
-Usage is calculated in credits per million input tokens, cached input tokens,
-and output tokens. [Learn more about
+#### Token rates
+
+The token rates below are quoted in credits per million input tokens, cached
+input tokens, and output tokens. [Learn more about
 tokens](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
-The rate card below shows the credit cost per million tokens for models and
-features.
+Astra usage within subscription limits applies a 1.10x multiplier to its token
+rates. Fast mode applies a separate 2.5x multiplier to Astra's Standard rate.
 
 A small subset of Enterprise customers should continue using the legacy rate
 card until we migrate you to the new token-based pricing. For more information,
@@ -435,6 +510,12 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>GPT-6 Astra</td>
+        <td style="text-align:center">250 credits</td>
+        <td style="text-align:center">25 credits</td>
+        <td style="text-align:center">1,250 credits</td>
+      </tr>
       <tr>
         <td>GPT-5.6 Sol</td>
         <td style="text-align:center">100 credits</td>
@@ -536,6 +617,8 @@ Pro.](https://help.openai.com/en/articles/12642688)
 
 [Learn more about credits in ChatGPT Business, Enterprise, and
 Edu.](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans)
+
+For Business and Enterprise/Edu credit billing, use the [credit-based rate card](https://help.openai.com/en/articles/11481834-chatgpt-rate-card-business-enterpriseedu-credit-based-pricing). If your Enterprise agreement specifies usage-based billing in USD, use the [Enterprise USD rate card](https://help.openai.com/en/articles/20001415-chatgpt-rate-card-enterprise-token-based-pricing) and your agreement instead. Workspace administrators can also review [ChatGPT Work usage and cost](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost#understand-tokens-and-credits).
 
 ### What counts as Code Review usage?
 

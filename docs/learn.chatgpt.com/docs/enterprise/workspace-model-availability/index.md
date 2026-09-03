@@ -55,6 +55,30 @@ enforced `features.fast_mode` setting in
 This setting can pin Fast mode on or off for managed local Codex clients; it
 isn't a starting default and can't override workspace or product availability.
 
+## GPT-6 Astra in Enterprise
+
+GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
+
+During the initial rollout, your organization must have Daybreak access before
+an administrator can enable Astra. Astra is off by default for ChatGPT
+Enterprise for the first two weeks after launch. Administrators in eligible
+workspaces can enable Astra for users or groups
+across Chat, Work, and Codex. Existing product eligibility still applies. Review your
+[workspace model settings](https://help.openai.com/en/articles/8411955) and
+confirm availability on each client used by your pilot group.
+
+Enabling access and choosing a starting model are separate decisions. Check the
+applicable seat, role, and billing arrangement before setting Astra as a default.
+See [Astra usage](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage) for allowance and billing
+guidance and [safety monitoring](https://learn.chatgpt.com/docs/agent-approvals-security#safety-monitoring-and-paused-tasks)
+for tasks that pause for review.
+
+For API-key sign-in, Astra access follows the API organization and project
+associated with the key. Enabling Astra in a ChatGPT workspace doesn't grant
+API access. Early access with an API key also requires client configuration;
+ask your OpenAI account team for setup instructions. Selecting a
+model or changing local configuration doesn't grant access by itself.
+
 ## Prepare for the GPT-5.4 retirement
 
 On August 31, 2026, GPT-5.4 and GPT-5.4 mini retire from Codex for users signed

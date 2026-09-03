@@ -278,6 +278,7 @@ Depending on your account and workspace settings, sharing options can include:
 
 - **Owner and workspace admins**
 - **Selected active users or groups**, where supported
+- **Invited external viewers**, when external invitations are available
 - **Anyone in the workspace**, where supported
 - **Anyone on the internet**, only when public publishing is enabled
 
@@ -296,6 +297,42 @@ For example:
 Change this Site's access to everyone in my workspace after showing me the
 current Site and confirming its URL.
 ```
+
+### Invite people outside your workspace
+
+External invitations let you give named people access to a Site without making
+it public. You can invite viewers outside your workspace, or share a private
+Site from a personal account. The feature is rolling out to Sites users on
+Plus, Pro, Business, and Enterprise plans.
+
+<WorkflowSteps>
+
+1. Open a Site you own and select **Share**.
+2. To keep the Site private, set **Who has access** to **Only those invited**.
+3. Enter the viewer's email address under **Search for people or groups**, or
+   **Enter an email address** for a personal Site, then select the recipient.
+4. Review the audience and the recipient's **Viewer** access, then select
+   **Invite**.
+5. Confirm that the viewer appears in the saved access list. Share the Site's
+   link and ask them to sign in with the account that received access.
+
+</WorkflowSteps>
+
+External viewers can open and use the Site. They don't become workspace
+members or Site editors, and can't edit or publish the Site. The invitation
+grants access to this Site; review its content and connected data before sharing.
+
+In Enterprise, admins manage **Allow members to invite external visitors to
+sites** under **Workspace settings > Permissions & roles**. This permission
+is separate from permission to publish Sites publicly.
+Business workspaces don't have a separate external-invitation permission
+toggle; Sites must be enabled, and the feature must be available to the account.
+If the invitation option is missing, check the selected account, Site
+ownership, workspace permissions, and rollout availability.
+
+To remove a viewer, open the Site's sharing controls and remove their access.
+Also check the remaining audience settings: removing one invitation doesn't
+remove access the person has through public, workspace, or group sharing.
 
 ### Collaborate on a Site
 
