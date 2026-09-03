@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_config_file'
 source_url: 'https://learn.chatgpt.com/docs/config-file/config-reference'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
 ---
 
 # Configuration Reference
@@ -265,6 +265,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Load the compaction prompt override from a file (experimental).",
     },
     {
+      key: "skills.max_context_tokens",
+      type: "integer (positive)",
+      description:
+        "Token budget for the available-skills catalog. Defaults to 2% of the model's context window. Explicit values are capped at `10000` tokens.",
+    },
+    {
       key: "skills.config",
       type: "array<object>",
       description: "Per-skill enablement overrides stored in config.toml.",
@@ -438,7 +444,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "hooks.<Event>",
       type: "array<table>",
       description:
-        "Matcher groups for hook events such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SessionEnd`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.",
+        "Matcher groups for hook events such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SessionEnd`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, `Stop`, or `Interrupt`.",
     },
     {
       key: "hooks.<Event>[].hooks",
@@ -469,6 +475,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Enable [Memories](https://learn.chatgpt.com/docs/customization/memories) (off by default).",
+    },
+    {
+      key: "mcp_optional_startup_grace_ms",
+      type: "integer (milliseconds)",
+      description:
+        "Shared wait for optional MCP servers when building the initial tool catalog. Defaults to `1000`. Set to `0` to wait for each server's `startup_timeout_sec` instead.",
     },
     {
       key: "mcp_servers.<id>.command",
@@ -537,6 +549,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Static HTTP headers included with each MCP HTTP request.",
     },
     {
+      key: "mcp_servers.<id>.http_headers_helper",
+      type: "string (command)",
+      description:
+        "Local command that prints a JSON object of HTTP header names and values. Supported only for locally connected HTTP MCP servers. Explicit bearer tokens and OAuth credentials take precedence over helper-provided Authorization headers.",
+    },
+    {
       key: "mcp_servers.<id>.env_http_headers",
       type: "map<string,string>",
       description:
@@ -592,6 +610,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "auto | prompt | writes | approve",
       description:
         "Per-tool approval behavior override for one MCP tool on this server.",
+    },
+    {
+      key: "mcp_servers.<id>.tools.<tool>.output_token_limit",
+      type: "integer (positive)",
+      description:
+        "Token budget for one MCP tool's output, before the standard 20% serialization allowance. Overrides the model's default output truncation budget for that tool.",
     },
     {
       key: "mcp_servers.<id>.scopes",

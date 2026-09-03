@@ -4,8 +4,8 @@ source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma'
 source_last_modified: '2026-08-29T10:32:56Z'
 source_etag: 'W/"5de608773af01f4438e2199a2bfd96d4"'
-codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1"]
-codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
+codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1", "0.153.0"]
+codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
 ---
 
 # Building frontend UIs with Codex and Figma | OpenAI Developers

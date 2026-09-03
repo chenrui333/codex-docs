@@ -4,8 +4,8 @@ source_area: 'cookbook'
 source_url: 'https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex'
 source_last_modified: '2026-08-29T10:27:49Z'
 source_etag: 'W/"7dbac0da7f917824b55576ab89420d02"'
-codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1"]
-codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
+codex_cli_versions: ["0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
+codex_cli_versions_raw: ["codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
 ---
 
 # Iterating Development Workflows with Codex

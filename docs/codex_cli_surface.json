@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.152.1",
-  "codex_cli_version_raw": "codex-cli 0.152.1",
+  "codex_cli_version": "0.153.0",
+  "codex_cli_version_raw": "codex-cli 0.153.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -620,11 +620,11 @@
       ],
       "subcommands": [
         {
-          "description": "Install a plugin from a configured marketplace snapshot",
+          "description": "Install a plugin from a configured or remote marketplace",
           "name": "add"
         },
         {
-          "description": "List plugins available from configured marketplace snapshots",
+          "description": "List plugins available from configured and remote marketplaces",
           "name": "list"
         },
         {
@@ -632,7 +632,7 @@
           "name": "marketplace"
         },
         {
-          "description": "Remove an installed plugin from local config and cache",
+          "description": "Uninstall a plugin and remove its local cache",
           "name": "remove"
         },
         {

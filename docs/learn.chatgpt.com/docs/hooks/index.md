@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_hooks'
 source_url: 'https://learn.chatgpt.com/docs/hooks'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
 ---
 
 # Hooks
@@ -34,6 +34,7 @@ Hooks run at different points in a conversation:
 | When                              | Hooks                                                                                                                     |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | During a turn                     | `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `UserPromptSubmit`, `SubagentStop`, `Stop` |
+| When you interrupt an active turn | `Interrupt` (doesn't run for subagents)                                                                                   |
 | When a session or subagent starts | `SessionStart`, `SubagentStart`                                                                                           |
 | When the main thread ends         | `SessionEnd` (doesn't run for subagents)                                                                                  |
 
@@ -191,7 +192,7 @@ Notes:
   doesn't change which hooks run.
 - `timeout` is in seconds.
 - If `timeout` is omitted, Codex uses `600` seconds for most hooks.
-  - `SessionEnd` uses `1` second by default and supports up to `3` seconds.
+  - `SessionEnd` and `Interrupt` use `1` second by default and support up to `3` seconds.
 - `statusMessage` is optional.
 - `additionalContextLimit` sets how much `additionalContext` a command hook can
   send to the model before Codex saves the full text to disk and sends a shorter
@@ -431,6 +432,7 @@ Only some current Codex events honor `matcher`:
 | `SubagentStop`      | subagent type          | Values depend on the subagent that stops                     |
 | `UserPromptSubmit`  | not supported          | Any configured `matcher` is ignored for this event           |
 | `Stop`              | not supported          | Any configured `matcher` is ignored for this event           |
+| `Interrupt`         | not supported          | Any configured `matcher` is ignored for this event           |
 
 \*For `apply_patch`, `matcher` values can also use `Edit` or `Write`.
 
@@ -484,7 +486,7 @@ Turn-scoped hooks list `turn_id` as a Codex-specific extension in their
 event-specific tables.
 
 `SessionStart`, `PreToolUse`, `PermissionRequest`, `PostToolUse`,
-`UserPromptSubmit`, `SubagentStart`, `SubagentStop`, and `Stop` also include
+`UserPromptSubmit`, `SubagentStart`, `SubagentStop`, `Stop`, and `Interrupt` also include
 `permission_mode`, which describes the current permission mode as `default`,
 `acceptEdits`, `plan`, `dontAsk`, or `bypassPermissions`.
 
@@ -613,7 +615,8 @@ timeout = 120
 Background hooks use the same input, matcher, trust review, timeout, and
 [large-output handling](#large-hook-output) as synchronous command hooks. As
 with other command hooks, `timeout` is measured in seconds and defaults to
-`600`.
+`600`. `Interrupt` hooks use a one-second default and a three-second maximum,
+including when they run in the background.
 
 ### How background hooks run
 
@@ -1096,6 +1099,25 @@ as a new user prompt, using your `reason` as that prompt text.
 
 If any matching `Stop` hook returns `continue: false`, that takes precedence
 over continuation decisions from other matching `Stop` hooks.
+
+### Interrupt
+
+`Interrupt` runs when you interrupt an active turn on the main thread. Use it
+to record the interruption or clean up work started by a hook. It doesn't run
+for idle threads or subagents, and any configured `matcher` is ignored.
+
+In addition to [Common input fields](#common-input-fields), the event includes
+`turn_id`, the interrupted turn's id, and `permission_mode`.
+
+Command hooks default to a one-second timeout. Configured timeouts are
+limited to one through three seconds. Hook output can't prevent the
+interruption or restart the turn. Exit `0` with no output, or return JSON with
+an optional `systemMessage` to surface a warning. Plain text output is invalid
+for this event.
+
+```json
+{ "systemMessage": "Saved the interrupted turn to the local audit log." }
+```
 
 ## Schemas
 
