@@ -35080,18 +35080,18 @@
       "name": "apply_patch_freeform",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35129,18 +35129,18 @@
       "name": "apply_patch_preserve_line_endings",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35178,18 +35178,18 @@
       "name": "apply_patch_streaming_events",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35227,18 +35227,18 @@
       "name": "apps",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35276,18 +35276,18 @@
       "name": "apps_mcp_path_override",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35325,18 +35325,18 @@
       "name": "artifact",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35374,18 +35374,18 @@
       "name": "auth_elicitation",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35423,18 +35423,18 @@
       "name": "background_paginated_rollout_migration",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35472,18 +35472,18 @@
       "name": "bedrock_setup_wizard",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35521,18 +35521,18 @@
       "name": "browser_use",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35570,18 +35570,18 @@
       "name": "browser_use_external",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35619,18 +35619,18 @@
       "name": "browser_use_full_cdp_access",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35668,18 +35668,18 @@
       "name": "chronicle",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35717,18 +35717,18 @@
       "name": "code_mode",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35766,18 +35766,18 @@
       "name": "code_mode_buffered_exec",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35815,18 +35815,18 @@
       "name": "code_mode_host",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35864,18 +35864,18 @@
       "name": "code_mode_interrupt",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35913,18 +35913,18 @@
       "name": "code_mode_only",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -35962,18 +35962,18 @@
       "name": "code_mode_prewarm",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36011,18 +36011,18 @@
       "name": "codex_git_commit",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36060,18 +36060,18 @@
       "name": "collaboration_modes",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36109,18 +36109,18 @@
       "name": "compaction_image_budget",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36158,18 +36158,18 @@
       "name": "computer_use",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36207,18 +36207,18 @@
       "name": "concurrent_reasoning_summaries",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36256,18 +36256,18 @@
       "name": "content_item_kinds",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36299,18 +36299,18 @@
       "name": "context_management",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36348,18 +36348,18 @@
       "name": "current_time_reminder",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36397,18 +36397,18 @@
       "name": "cwd_relative_turn_diffs",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36446,18 +36446,18 @@
       "name": "default_mode_request_user_input",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36495,18 +36495,18 @@
       "name": "deferred_executor",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36544,18 +36544,18 @@
       "name": "deferred_tool_world_state",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36593,18 +36593,18 @@
       "name": "elevated_windows_sandbox",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36642,18 +36642,18 @@
       "name": "enable_fanout",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36691,18 +36691,18 @@
       "name": "enable_mcp_apps",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36740,18 +36740,18 @@
       "name": "enable_request_compression",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36789,18 +36789,18 @@
       "name": "exec_permission_approvals",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36838,18 +36838,18 @@
       "name": "executed_tool_call_metadata",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36887,18 +36887,18 @@
       "name": "executor_capability_discovery",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36936,18 +36936,18 @@
       "name": "experimental_windows_sandbox",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -36985,18 +36985,18 @@
       "name": "external_agent_memory_import",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37034,18 +37034,18 @@
       "name": "external_migration",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37083,18 +37083,18 @@
       "name": "fast_mode",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37132,18 +37132,18 @@
       "name": "goals",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37181,18 +37181,18 @@
       "name": "guardian_approval",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37230,18 +37230,18 @@
       "name": "guardian_enhanced_node_repl_transcripts",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37279,18 +37279,18 @@
       "name": "guardian_ext",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37328,18 +37328,18 @@
       "name": "guardian_node_repl_transcript_images",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37377,18 +37377,18 @@
       "name": "guardian_reuse_parent_compaction",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37426,18 +37426,18 @@
       "name": "guardianv2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37475,18 +37475,18 @@
       "name": "hooks",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37524,18 +37524,18 @@
       "name": "image_detail_original",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37573,18 +37573,18 @@
       "name": "image_generation",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37622,18 +37622,18 @@
       "name": "image_resize_notice",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37671,18 +37671,18 @@
       "name": "in_app_browser",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37720,18 +37720,18 @@
       "name": "in_app_chat",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37769,18 +37769,18 @@
       "name": "in_app_dictation",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37818,18 +37818,18 @@
       "name": "in_app_local_automation",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37867,18 +37867,18 @@
       "name": "in_app_updates",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37916,18 +37916,18 @@
       "name": "item_ids",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -37965,18 +37965,18 @@
       "name": "js_repl",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38014,18 +38014,18 @@
       "name": "js_repl_tools_only",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38063,18 +38063,18 @@
       "name": "local_thread_store_compression",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38110,18 +38110,18 @@
       "name": "local_thread_store_shared_compression",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38159,18 +38159,18 @@
       "name": "mcp_2026_07_28",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38202,18 +38202,18 @@
       "name": "mcp_oauth_refresh_coordination",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38251,18 +38251,18 @@
       "name": "memories",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38300,18 +38300,18 @@
       "name": "mentions_v2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38349,18 +38349,18 @@
       "name": "multi_agent",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38398,18 +38398,18 @@
       "name": "multi_agent_mode",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38447,18 +38447,18 @@
       "name": "multi_agent_v2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38496,18 +38496,18 @@
       "name": "network_proxy",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38545,18 +38545,18 @@
       "name": "non_prefixed_mcp_tool_names",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38592,18 +38592,18 @@
       "name": "omit_app_server_notification_media",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38641,18 +38641,18 @@
       "name": "personality",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38690,18 +38690,18 @@
       "name": "plugin_hooks",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38739,18 +38739,18 @@
       "name": "plugin_sharing",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38788,18 +38788,18 @@
       "name": "plugins",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38835,18 +38835,18 @@
       "name": "powershell_shell_version",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38884,18 +38884,18 @@
       "name": "prevent_idle_sleep",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38933,18 +38933,18 @@
       "name": "psp",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -38982,18 +38982,18 @@
       "name": "realtime_conversation",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39031,18 +39031,18 @@
       "name": "recommended_plugins",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39080,18 +39080,18 @@
       "name": "remote_compaction_v2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39129,18 +39129,18 @@
       "name": "remote_control",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39178,18 +39178,18 @@
       "name": "remote_models",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39227,18 +39227,18 @@
       "name": "remote_plugin",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39276,18 +39276,18 @@
       "name": "request_permissions_tool",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39325,18 +39325,18 @@
       "name": "request_rule",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39374,18 +39374,18 @@
       "name": "resize_all_images",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39423,18 +39423,18 @@
       "name": "respect_system_proxy",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39472,18 +39472,18 @@
       "name": "responses_websockets",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39521,18 +39521,18 @@
       "name": "responses_websockets_v2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39570,18 +39570,18 @@
       "name": "retain_client_developer_messages",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39619,18 +39619,18 @@
       "name": "rollout_budget",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39668,18 +39668,18 @@
       "name": "runtime_metrics",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39717,18 +39717,18 @@
       "name": "search_tool",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39766,18 +39766,18 @@
       "name": "secret_auth_storage",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39815,18 +39815,18 @@
       "name": "send_async_message",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39864,18 +39864,18 @@
       "name": "shell_snapshot",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39913,18 +39913,18 @@
       "name": "shell_snapshot_v2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -39962,18 +39962,18 @@
       "name": "shell_tool",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40011,18 +40011,18 @@
       "name": "shell_zsh_fork",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40060,18 +40060,18 @@
       "name": "skill_env_var_dependency_prompt",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40109,18 +40109,18 @@
       "name": "skill_mcp_dependency_install",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40158,18 +40158,18 @@
       "name": "skill_search",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40207,18 +40207,18 @@
       "name": "skip_host_skill_discovery",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40254,18 +40254,18 @@
       "name": "sleep_tool",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40303,18 +40303,18 @@
       "name": "sqlite",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40352,18 +40352,18 @@
       "name": "standalone_web_search",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40401,18 +40401,18 @@
       "name": "steer",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40450,18 +40450,18 @@
       "name": "step_model_switching",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40499,18 +40499,18 @@
       "name": "terminal_resize_reflow",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40548,18 +40548,18 @@
       "name": "terminal_visualization_instructions",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40597,18 +40597,18 @@
       "name": "token_budget",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40646,18 +40646,18 @@
       "name": "tool_call_mcp_elicitation",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40695,18 +40695,18 @@
       "name": "tool_search",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40744,18 +40744,18 @@
       "name": "tool_search_always_defer_mcp_tools",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40793,18 +40793,18 @@
       "name": "tool_suggest",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40842,18 +40842,18 @@
       "name": "transcript_v2",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40891,18 +40891,18 @@
       "name": "tui_app_server",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40940,18 +40940,18 @@
       "name": "unavailable_dummy_tools",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -40989,18 +40989,18 @@
       "name": "unbounded_connection_retries",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41038,18 +41038,18 @@
       "name": "undo",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41087,18 +41087,18 @@
       "name": "unified_exec",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41136,18 +41136,18 @@
       "name": "unified_exec_zsh_fork",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41185,18 +41185,18 @@
       "name": "unified_image_budget",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41234,18 +41234,18 @@
       "name": "use_agent_identity",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41283,18 +41283,18 @@
       "name": "use_legacy_landlock",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41332,18 +41332,18 @@
       "name": "use_linux_sandbox_bwrap",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41381,18 +41381,18 @@
       "name": "view_image",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41430,18 +41430,18 @@
       "name": "web_search_cached",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41479,18 +41479,18 @@
       "name": "web_search_request",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41528,18 +41528,18 @@
       "name": "workspace_dependencies",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41577,18 +41577,18 @@
       "name": "workspace_owner_usage_nudge",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
@@ -41626,18 +41626,18 @@
       "name": "write_stdin_approval",
       "provenance": [
         {
-          "codex_cli_version": "0.153.0",
+          "codex_cli_version": "0.153.2",
           "evidence_type": "installed_cli_observation",
           "source": "codex features list"
         },
         {
           "evidence_type": "upstream_repository_source",
-          "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-          "source_url": "https://raw.githubusercontent.com/openai/codex/41e22fee981a63b3698df7ed36bad393cda24715/codex-rs/features/src/lib.rs"
+          "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/features/src/lib.rs"
         }
       ],
-      "source_commit": "41e22fee981a63b3698df7ed36bad393cda24715",
-      "source_ref": "rust-v0.153.0",
+      "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "source_ref": "rust-v0.153.2",
       "source_type": "feature_flag_snapshot",
       "source_url": "generated://feature-flags/lifecycle"
     },
