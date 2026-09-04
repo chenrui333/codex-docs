@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_get_started_with_work'
 source_url: 'https://learn.chatgpt.com/docs/get-started-with-work'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
 # Get started with ChatGPT Work
@@ -148,7 +148,7 @@ Learn more about [plugins](https://learn.chatgpt.com/docs/plugins).
 Choose [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) for demanding work that needs
 careful reasoning, visual judgment, or a polished final file. For simpler tasks,
 consider Sol, Terra, or Luna. Select from the models
-available in your model selector and check [plan usage](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage)
+available in your model selector and check [plan usage](https://learn.chatgpt.com/docs/pricing)
 before starting a large task.
 
 ChatGPT Work is best for substantial tasks that involve multiple steps, sources, or

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_enterprise'
 source_url: 'https://learn.chatgpt.com/docs/enterprise/workspace-model-availability'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
 # Workspace model availability
@@ -57,7 +57,7 @@ isn't a starting default and can't override workspace or product availability.
 
 ## GPT-6 Astra in Enterprise
 
-GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
+GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai.com/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
 
 During the initial rollout, your organization must have Daybreak access before
 an administrator can enable Astra. Astra is off by default for ChatGPT
@@ -69,7 +69,7 @@ confirm availability on each client used by your pilot group.
 
 Enabling access and choosing a starting model are separate decisions. Check the
 applicable seat, role, and billing arrangement before setting Astra as a default.
-See [Astra usage](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage) for allowance and billing
+See [pricing](https://learn.chatgpt.com/docs/pricing) for allowance and billing
 guidance and [safety monitoring](https://learn.chatgpt.com/docs/agent-approvals-security#safety-monitoring-and-paused-tasks)
 for tasks that pause for review.
 

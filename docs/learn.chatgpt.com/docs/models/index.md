@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_models'
 source_url: 'https://learn.chatgpt.com/docs/models'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
 # Models
@@ -13,7 +13,7 @@ Source: https://learn.chatgpt.com/docs/models
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
+GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai.com/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
 
 <ContentModeSwitch group="codex-surface" id="app">
 
@@ -286,7 +286,7 @@ making it useful for larger tasks that can be split across subagents.
 </ContentModeSwitch>
 
 Availability depends on the rollout, your sign-in method, and your client.
-See [pricing](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage) for plan access and usage, and
+See [pricing](https://learn.chatgpt.com/docs/pricing) for plan access and usage, and
 [workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability#gpt-6-astra-in-enterprise)
 for Enterprise access.
 

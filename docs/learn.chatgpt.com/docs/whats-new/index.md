@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_whats_new'
 source_url: 'https://learn.chatgpt.com/docs/whats-new'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
 # What's new
@@ -21,7 +21,7 @@ and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/
 
 ### Take on demanding work with GPT-6 Astra
 
-GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
+GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai.com/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
 
 [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) combines advanced reasoning, computer
 use, and stronger judgment for complex work across code, apps, and research in
@@ -30,11 +30,9 @@ produce a document, spreadsheet, or presentation that fits your templates and
 task.
 
 Once Astra is available to your account, choose it from the model selector.
-Plus and standard Business
-include limited usage, and larger Pro and Business plans use their existing
-allowance. See [Astra usage and pricing](https://learn.chatgpt.com/docs/pricing#gpt-6-astra-usage) before
-starting a large task. Enterprise access requires both rollout eligibility and
-an administrator to enable it.
+See [usage and pricing](https://learn.chatgpt.com/docs/pricing) before starting a large task.
+Enterprise access requires both rollout eligibility and an administrator to
+enable it.
 
 ## August 24–28, 2026
 

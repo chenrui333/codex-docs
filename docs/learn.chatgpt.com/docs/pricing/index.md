@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_pricing'
 source_url: 'https://learn.chatgpt.com/docs/pricing'
 source_kind: 'learn_markdown'
-codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0"]
-codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0"]
+codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
 # Pricing
@@ -158,68 +158,6 @@ Source: https://learn.chatgpt.com/docs/pricing
 
 </ContentSwitcher>
 
-## GPT-6 Astra usage
-
-GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai-dotcom-preview.vercel.app/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
-
-Once Astra is available to your account, it uses your existing Work and Codex
-allowance or the billing arrangement for your workspace. The plan guidance
-below applies to ChatGPT Work and Codex, not Chat.
-
-<TableWrapper>
-  <thead>
-    <tr>
-      <th scope="col">Plan</th>
-      <th scope="col">How Astra usage is covered</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Plus and standard Business</td>
-      <td>
-        Limited Astra usage is included in your subscription. You don't need to
-        purchase credits to start using it. Eligible users can purchase credits
-        for additional usage after reaching included limits.
-      </td>
-    </tr>
-    <tr>
-      <td>Pro ($100 and $200) and Business ($100)</td>
-      <td>
-        Astra draws from your existing allowance. You can use that allowance for
-        Astra; it doesn't have a separate balance.
-      </td>
-    </tr>
-    <tr>
-      <td>Enterprise with credit-based billing</td>
-      <td>
-        Eligible usage draws from workspace credits under your rate card and
-        agreement.
-      </td>
-    </tr>
-    <tr>
-      <td>Enterprise with usage-based USD billing</td>
-      <td>
-        Eligible usage is billed in USD under your rate card and agreement.
-      </td>
-    </tr>
-  </tbody>
-</TableWrapper>
-
-Astra's modeled usage relative to Sol depends on the billing arrangement:
-
-- **Consumer subscription limits:** 3.27 times Sol's usage per task, or roughly
-  one-third as many tasks for the same allowance.
-- **Business subscription limits:** 2.95 times Sol's usage per task.
-- **Enterprise and purchased credits:** 2.08 times Sol's usage per task.
-
-These comparisons are estimates, not fixed billing multipliers. Actual usage
-varies by task, context, and model settings; it is calculated from token rates
-and the applicable usage multiplier.
-
-See [token rates](#token-rates) for credit pricing.
-Signing in to Codex with ChatGPT uses your ChatGPT plan's rates and
-allowances; using your own API key follows [API pricing](https://developers.openai.com/api/docs/pricing).
-
 ## Invite friends and coworkers
 
 Eligible users can send Codex invitations from the profile menu in the
@@ -297,14 +235,6 @@ and reset times.
     </tr>
   </thead>
   <tbody class="whitespace-nowrap">
-    <tr>
-      <td>GPT-6 Astra</td>
-      <td style="text-align:center">3-30</td>
-      <td style="text-align:center">15-150</td>
-      <td style="text-align:center">60-600</td>
-      <td style="text-align:center">3-30</td>
-      <td style="text-align:center">[Usage-based](https://developers.openai.com/api/docs/pricing)</td>
-    </tr>
     <tr>
       <td>GPT-5.6 Sol</td>
       <td style="text-align:center">10-100</td>
@@ -486,8 +416,7 @@ The token rates below are quoted in credits per million input tokens, cached
 input tokens, and output tokens. [Learn more about
 tokens](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
-Astra usage within subscription limits applies a 1.10x multiplier to its token
-rates. Fast mode applies a separate 2.5x multiplier to Astra's Standard rate.
+Fast mode applies a 2.5x multiplier to Astra's Standard rate.
 
 A small subset of Enterprise customers should continue using the legacy rate
 card until we migrate you to the new token-based pricing. For more information,
