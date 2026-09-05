@@ -26,6 +26,11 @@ import requests
 from bs4 import BeautifulSoup
 from markdownify import markdownify as to_markdown
 
+if __package__:
+    from . import semantic_history
+else:
+    import semantic_history
+
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = ROOT / "docs"
 WEEKLY_DIR = ROOT / "weekly"
@@ -2895,24 +2900,16 @@ def write_coverage(coverage: Dict[str, object]) -> None:
     COVERAGE_PATH.write_text(json.dumps(coverage, indent=2, sort_keys=True) + "\n")
 
 
-def write_weekly_note(
-    added: List[str],
-    updated: List[str],
-    removed: List[str],
-    source_metadata: Dict[str, object] | None = None,
-    capability_changes: Dict[str, object] | None = None,
-) -> None:
-    if not (added or updated or removed):
-        return
-
-    WEEKLY_DIR.mkdir(parents=True, exist_ok=True)
-    date_tag = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    weekly_path = WEEKLY_DIR / f"{date_tag}.md"
-
+def render_sync_event(event: Dict[str, object]) -> str:
+    changes = event["changes"]
+    added, updated, removed = (changes[key] for key in ("added", "updated", "removed"))
+    source_metadata = changes.get("source_metadata", {})
+    capability_changes = changes.get("capability_changes", {})
+    event_id, observed_at = event["id"], event["observed_at"]
     lines = [
-        f"# Codex Docs Sync - {date_tag}",
+        f"### Transaction {event_id[:12]}",
         "",
-        f"Generated at: {now_utc_iso()}",
+        f"Observed at: {observed_at}",
         "",
         f"- Added: {len(added)}",
         f"- Updated: {len(updated)}",
@@ -2921,7 +2918,7 @@ def write_weekly_note(
     ]
 
     if source_metadata:
-        lines.append("## Source Snapshot")
+        lines.append("### Source Snapshot")
         lines.append("")
         for key in SOURCE_METADATA_KEYS:
             value = source_metadata.get(key)
@@ -2929,43 +2926,67 @@ def write_weekly_note(
                 lines.append(f"- `{key}`: `{value}`")
         lines.append("")
 
-    lines.append("## Category Summary")
+    lines.append("### Category Summary")
     lines.append("")
     lines.extend(render_category_summary("Added", added))
     lines.extend(render_category_summary("Updated", updated))
     lines.extend(render_category_summary("Removed", removed))
 
     if capability_changes:
-        lines.append("## Semantic Capability Changes")
+        lines.append("### Semantic Capability Changes")
         lines.append("")
         lines.extend(render_capability_changes(capability_changes))
 
     if added:
-        lines.append("## Added (Raw Paths)")
+        lines.append("### Added (Raw Paths)")
         lines.extend(f"- `{item}`" for item in added)
         lines.append("")
 
     if updated:
-        lines.append("## Updated (Raw Paths)")
+        lines.append("### Updated (Raw Paths)")
         lines.extend(f"- `{item}`" for item in updated)
         lines.append("")
 
     if removed:
-        lines.append("## Removed (Raw Paths)")
+        lines.append("### Removed (Raw Paths)")
         lines.extend(f"- `{item}`" for item in removed)
         lines.append("")
 
-    body = "\n".join(lines).rstrip() + "\n"
-    existing_metadata: Dict[str, object] = {}
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def write_weekly_note(
+    added: List[str], updated: List[str], removed: List[str],
+    source_metadata: Dict[str, object] | None = None,
+    capability_changes: Dict[str, object] | None = None,
+    file_changes: Dict[str, object] | None = None,
+) -> None:
+    if not (added or updated or removed):
+        return
+    date_tag = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    weekly_path = WEEKLY_DIR / f"{date_tag}.md"
+    existing_metadata, legacy_report = ({}, "")
     if weekly_path.exists():
-        existing_metadata, _ = split_markdown_frontmatter(weekly_path.read_text())
-    metadata = weekly_report_metadata(
-        date_tag,
-        body,
-        existing_metadata=existing_metadata,
-        source_metadata=source_metadata,
+        existing_metadata, legacy_report = split_markdown_frontmatter(weekly_path.read_text())
+    payload = {
+        "added": sorted(added), "updated": sorted(updated), "removed": sorted(removed),
+        "source_metadata": source_metadata or {},
+        "capability_changes": capability_changes or {},
+        "file_changes": file_changes or {},
+    }
+    ledger = semantic_history.record_event(
+        WEEKLY_DIR / "events" / f"{date_tag}.json", payload,
+        observed_at=now_utc_iso(), legacy_report=legacy_report,
     )
-    weekly_path.write_text(format_frontmatter(metadata, body))
+    sections = [f"# Codex Docs Sync - {date_tag}\n"]
+    if ledger.get("legacy_report"):
+        sections.extend(["## Earlier report (before event tracking)\n", ledger["legacy_report"]])
+    sections.extend(render_sync_event(event) for event in ledger["events"])
+    body = "\n".join(sections).rstrip() + "\n"
+    metadata = weekly_report_metadata(
+        date_tag, body, existing_metadata=existing_metadata, source_metadata=source_metadata,
+    )
+    write_file_if_changed(weekly_path, format_frontmatter(metadata, body))
 
 
 def weekly_source_snapshot_metadata(body: str) -> Dict[str, str]:
@@ -3249,6 +3270,10 @@ def apply_sync(
         removed,
         source_metadata=source_metadata,
         capability_changes=capability_changes,
+        file_changes={path: {
+            "before": previous.get(path, {}).get("sha256"),
+            "after": next_entries.get(path, {}).get("sha256"),
+        } for path in sorted(set(added + updated + removed))},
     )
     ensure_weekly_frontmatter()
 

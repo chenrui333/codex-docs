@@ -31,9 +31,10 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, and feature-snapshot invariant
 - `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
 
-Each daily digest represents the latest changed sync transaction on that UTC date. A later
-meaningful sync on the same date replaces the file rather than accumulating earlier transactions;
-git history retains the prior report, while cumulative/per-run daily history remains a follow-up.
+Daily digests roll up all meaningful transactions recorded in `weekly/events/YYYY-MM-DD.json`.
+Events retain structured changes, before/after content hashes, release provenance, and stable
+identities. Identical retries and unchanged syncs add no events. Earlier daily reports remain
+untouched; an existing report is preserved when that date first adopts event tracking.
 
 Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
 
