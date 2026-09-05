@@ -236,6 +236,16 @@ and reset times.
   </thead>
   <tbody class="whitespace-nowrap">
     <tr>
+      <td>GPT-6 Astra</td>
+      <td style="text-align:center">5-45</td>
+      <td style="text-align:center">25-225</td>
+      <td style="text-align:center">100-900</td>
+      <td style="text-align:center">5-45</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
       <td>GPT-5.6 Sol</td>
       <td style="text-align:center">10-100</td>
       <td style="text-align:center">50-500</td>

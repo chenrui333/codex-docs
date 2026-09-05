@@ -21,8 +21,6 @@ and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/
 
 ### Take on demanding work with GPT-6 Astra
 
-GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai.com/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
-
 [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) combines advanced reasoning, computer
 use, and stronger judgment for complex work across code, apps, and research in
 Codex and ChatGPT Work. Use it to carry out a workflow, check the result, and

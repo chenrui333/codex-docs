@@ -766,6 +766,61 @@
       "id": "ec5e11cfef2982aac98c5a95038f192a7887cc9d64a2511c375dbb6c31e6c666",
       "observed_at": "2026-09-05T02:22:20+00:00",
       "previous_id": "581b2e2b09f3903ca46434fc1ef06040b005ab19fba12b0b77fb18f44e7ddf4f"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md": {
+            "after": "40b11c70520dc63c8cd8c0ed399eda20060441e08162da0c1403db540adbbcee",
+            "before": "6fa79c38c4c31499c1d6d3afc1578b61b721321b962bd63f5e64bd17da17b211"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "312fb7d1d67016819e45ed853b60fb07e6a02e5f70d14a3852e13956a6f7dc09",
+            "before": "3a37785d378c8c9b3b6f01df9150824891a981058849d02a31538d08777d8301"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "fcdd3426a281bfbc9ca3e1520569ac68956c0300e82cd9b21995c3c20aa2c293",
+            "before": "c8919ca90b97483aaed40f3d73a10d7421e0e3df9d8198238cc71ff660ad867b"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "724ca4d526431525774b1e8ef24878bbfdee640089392d60d3102d7a24f24d50",
+            "before": "d99f34afa8f8e0d0847cbe7b05d6f285ef2a471a05878c728e54df436dbdc055"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.153.4",
+          "codex_cli_source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+          "codex_cli_version": "0.153.4",
+          "codex_cli_version_raw": "codex-cli 0.153.4",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md",
+          "learn.chatgpt.com/docs/models/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md"
+        ]
+      },
+      "id": "8da8b40daf635428c60a4575f53c6a0e35419b9ad3b47be23c8e7ef9dc3e2cc2",
+      "observed_at": "2026-09-05T02:23:32+00:00",
+      "previous_id": "ec5e11cfef2982aac98c5a95038f192a7887cc9d64a2511c375dbb6c31e6c666"
     }
   ],
   "legacy_report": "# Codex Docs Sync - 2026-09-05\n\nGenerated at: 2026-09-05T00:37:49+00:00\n\n- Added: 0\n- Updated: 1\n- Removed: 0\n\n## Source Snapshot\n\n- `source_kind`: `installed_codex_cli`\n- `codex_cli_release_ref`: `rust-v0.153.2`\n- `codex_cli_source_commit`: `657a993cbee87acf52d14b758ce49dbd46d1b8eb`\n- `codex_cli_version`: `0.153.2`\n- `codex_cli_version_raw`: `codex-cli 0.153.2`\n- `codex_cli_command`: `codex --version`\n- `codex_prompt_snapshot_command`: `codex debug prompt-input`\n\n## Category Summary\n\n### Added\n- None\n\n### Updated\n- Other: 1\n\n### Removed\n- None\n\n## Semantic Capability Changes\n\n- Added: none\n- Removed: none\n- Lifecycle transitions: none\n\n## Updated (Raw Paths)\n- `codex_capabilities.json`\n",

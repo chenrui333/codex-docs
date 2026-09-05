@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-05T02:22:20+00:00",
+  "generated_at": "2026-09-05T02:23:32+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -12,12 +12,13 @@
     "codex_cli_version_raw": "codex-cli 0.153.4",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "release"
+    "sync_scope": "full"
   },
   "total_files": 262,
   "updated": [
-    "cli-surface/linux-x86_64.json",
-    "codex_capabilities.json",
-    "codex_cli_surface.json"
+    "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md",
+    "learn.chatgpt.com/docs/models/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md"
   ]
 }

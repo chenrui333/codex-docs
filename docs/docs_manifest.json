@@ -8106,7 +8106,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "6fa79c38c4c31499c1d6d3afc1578b61b721321b962bd63f5e64bd17da17b211",
+      "sha256": "40b11c70520dc63c8cd8c0ed399eda20060441e08162da0c1403db540adbbcee",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8817,7 +8817,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "3a37785d378c8c9b3b6f01df9150824891a981058849d02a31538d08777d8301",
+      "sha256": "312fb7d1d67016819e45ed853b60fb07e6a02e5f70d14a3852e13956a6f7dc09",
       "source_area": "learn_models",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9096,7 +9096,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "c8919ca90b97483aaed40f3d73a10d7421e0e3df9d8198238cc71ff660ad867b",
+      "sha256": "fcdd3426a281bfbc9ca3e1520569ac68956c0300e82cd9b21995c3c20aa2c293",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10430,7 +10430,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "d99f34afa8f8e0d0847cbe7b05d6f285ef2a471a05878c728e54df436dbdc055",
+      "sha256": "724ca4d526431525774b1e8ef24878bbfdee640089392d60d3102d7a24f24d50",
       "source_area": "learn_whats_new",
       "source_kind": "learn_markdown",
       "source_type": "learn",

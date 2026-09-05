@@ -57,8 +57,6 @@ isn't a starting default and can't override workspace or product availability.
 
 ## GPT-6 Astra in Enterprise
 
-GPT‑6 Astra is rolling out today for enterprises in our [Trusted Access Program⁠](https://openai.com/form/enterprise-trusted-access-for-cyber/), with access through API and our Plus, Pro, Business and Enterprise plans coming in the coming days.
-
 During the initial rollout, your organization must have Daybreak access before
 an administrator can enable Astra. Astra is off by default for ChatGPT
 Enterprise for the first two weeks after launch. Administrators in eligible
