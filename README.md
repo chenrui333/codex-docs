@@ -88,6 +88,7 @@ Resiliency controls:
 - Strict failures leave canonical output unchanged; non-strict local runs may retain diagnostic partial output
 - Release-only sync validates cached web files against their manifest and retains their bytes, without fetching web sources
 - Coverage records the last meaningful transaction scope and web observation basis; no-op scope switches do not rewrite state. Release freshness does not assert current web-source health.
+- Recorded full-web success is retained across release-only transactions. Timestamps describe committed meaningful observations, not a heartbeat for every no-op run.
 - Feature snapshots are built in memory and validated against the same release before inventory generation
 - `just check-strict` runs the idempotence check with strict sync failure enforcement
 - ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not
@@ -131,5 +132,5 @@ Local setup defaults to Python 3.14 to match CI. Set `CODEX_DOCS_PYTHON` to an e
 ## Notes
 
 - This is a community mirror, not an official OpenAI repository.
-- Content attribution remains with the original sources.
+- The root [MIT license](LICENSE) covers repository-authored code and tooling. It does not relicense mirrored OpenAI documentation, prompts, skills, or other upstream assets; those retain their original ownership and applicable licenses or terms. Embedded upstream license and copyright notices are preserved.
 - If a source page structure changes, update `scripts/fetch_codex_docs.py` selectors and filters.
