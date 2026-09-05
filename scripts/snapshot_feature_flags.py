@@ -502,8 +502,34 @@ def iter_feature_spec_blocks(features_rs_text: str) -> Iterable[str]:
         idx = end
 
 
-def parse_feature_defaults_from_source(features_rs_text: str) -> Dict[str, Dict[str, str]]:
-    parsed: Dict[str, Dict[str, str]] = {}
+def feature_behavior(stage: str, default_expr: str, comment: str) -> Dict[str, object]:
+    removed = stage == "removed"
+    effective = "unknown"
+    if removed:
+        normalized = comment.lower()
+        if any("when " not in clause and re.search(
+            r"always[- ](?:on|enabled)|behavior is always|now always", clause
+        ) for clause in re.split(r"[.;]\s*", normalized)):
+            effective = "always_on"
+        elif "no-op" in normalized or "deleted" in normalized:
+            effective = "no_op"
+    elif stage != "unknown":
+        effective = "platform_dependent" if "cfg!" in default_expr or "platform-dependent" in stage else "feature_gated"
+    return {
+        "default_enabled": {"true": True, "false": False}.get(default_expr),
+        "configurable": None if stage == "unknown" or "platform-dependent" in stage else not removed,
+        "compatibility_flag": removed,
+        "effective_behavior": effective,
+        **({"behavior_evidence": comment} if removed and comment else {}),
+    }
+
+
+def parse_feature_defaults_from_source(features_rs_text: str) -> Dict[str, Dict[str, object]]:
+    parsed: Dict[str, Dict[str, object]] = {}
+    variant_comments = {
+        match.group(2): " ".join(re.findall(r"///\s*(.*)", match.group(1)))
+        for match in re.finditer(r"((?:[ \t]*///[^\n]*\n)+)[ \t]*(\w+)\s*,", features_rs_text)
+    }
     for block in iter_feature_spec_blocks(features_rs_text):
         key_match = re.search(r'key:\s*"([^"]+)"', block)
         if not key_match:
@@ -535,9 +561,13 @@ def parse_feature_defaults_from_source(features_rs_text: str) -> Dict[str, Dict[
             normalized_stage = (
                 f"{'/'.join(normalized_stage_values)} (platform-dependent)"
             )
+        default_expr = default_match.group(1).strip() if default_match else "unknown"
+        variant = re.search(r"id:\s*Feature::(\w+)", block)
+        comment = variant_comments.get(variant.group(1), "") if variant else ""
         parsed[key] = {
-            "default_enabled_expr": default_match.group(1).strip() if default_match else "unknown",
+            "default_enabled_expr": default_expr,
             "stage_from_source": normalized_stage,
+            **feature_behavior(normalized_stage, default_expr, comment),
         }
     return parsed
 
@@ -576,7 +606,7 @@ def render_markdown(
     source_commit: str,
     cli_features: List[Dict[str, object]],
     docs_keys: List[str],
-    source_defaults: Dict[str, Dict[str, str]],
+    source_defaults: Dict[str, Dict[str, object]],
     missing_in_docs: List[str],
     actionable_missing_in_docs: List[str],
     missing_in_docs_by_stage: Dict[str, List[str]],
@@ -596,7 +626,7 @@ def render_markdown(
     lines.append(f"- Source release: `{source_ref}` at `{source_commit}`")
     lines.append("- Inputs:")
     lines.append(
-        "  - `codex features list` from an isolated temporary `CODEX_HOME` (runtime behavior + lifecycle stage labels)"
+        "  - `codex features list` from an isolated temporary `CODEX_HOME` (observed default values + lifecycle stage labels)"
     )
     lines.append(
         "  - release-matched `openai/codex` source (`features/src/lib.rs`, `client.rs`) for semantic checks"
@@ -605,8 +635,8 @@ def render_markdown(
     lines.append("")
     lines.append("## Current CLI Feature Snapshot")
     lines.append("")
-    lines.append("| Key | CLI Stage | Enabled | In Docs | Source Stage | Source Default |")
-    lines.append("| --- | --- | --- | --- | --- | --- |")
+    lines.append("| Key | CLI Stage | CLI Default | In Docs | Source Stage | Source Default | Configurable | Effective Behavior |")
+    lines.append("| --- | --- | --- | --- | --- | --- | --- | --- |")
     for row in cli_features:
         key = str(row["key"])
         defaults = source_defaults.get(
@@ -616,8 +646,11 @@ def render_markdown(
         enabled = "true" if row["enabled"] else "false"
         lines.append(
             f"| `{key}` | `{row['stage']}` | `{enabled}` | `{in_docs}` | "
-            f"`{defaults['stage_from_source']}` | `{defaults['default_enabled_expr']}` |"
+            f"`{defaults['stage_from_source']}` | `{defaults['default_enabled_expr']}` | "
+            f"`{str(defaults.get('configurable', 'unknown')).lower()}` | `{defaults.get('effective_behavior', 'unknown')}` |"
         )
+    lines.append("")
+    lines.append("Removed keys are compatibility inputs, not configurable features. A true CLI default does not establish effective behavior. `always_on` requires an explicit source comment; otherwise removed-key behavior may remain `unknown`. Deprecated keys remain separately labeled by stage. Platform-dependent defaults retain their source expression.")
     lines.append("")
     lines.append("## Coverage Gaps")
     lines.append("")
@@ -692,7 +725,7 @@ def render_markdown_document(
     source_commit: str,
     cli_features: List[Dict[str, object]],
     docs_keys: List[str],
-    source_defaults: Dict[str, Dict[str, str]],
+    source_defaults: Dict[str, Dict[str, object]],
     missing_in_docs: List[str],
     actionable_missing_in_docs: List[str],
     missing_in_docs_by_stage: Dict[str, List[str]],

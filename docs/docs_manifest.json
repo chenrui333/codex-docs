@@ -3697,12 +3697,12 @@
       "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
     },
     "feature-flags/lifecycle.json": {
-      "sha256": "9a52e39efe26782685891eac30a7675c09fd0bc16b26bcc06e180ba73e93b691",
+      "sha256": "7e45b724f8f3d0681a4a61f42ef8bf2d295982d209aa9fd2c0119ff8cfe9f109",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
     "feature-flags/lifecycle.md": {
-      "sha256": "fb9cd2f507404a59da5ee162dc487959a4d2999dbca456c42f23ef50509f99b7",
+      "sha256": "40a19b93d65bc58d6897122c6b2b336f89741fe2c5e127c634146681e0a6baa7",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },

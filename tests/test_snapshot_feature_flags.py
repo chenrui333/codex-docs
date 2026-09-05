@@ -392,5 +392,44 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
         )
 
 
+    def test_compatibility_defaults_do_not_imply_effective_behavior(self):
+        source = """
+        enum Feature {
+            /// Steer feature flag - when enabled, Enter submits immediately instead of queuing.
+            /// Kept for config backward compatibility; behavior is always steer-enabled.
+            Steer,
+            /// Removed compatibility flag retained as a no-op so old configs can parse.
+            Undo,
+            /// Removed compatibility flag; replacement is selected by the model.
+            Legacy,
+        }
+        FeatureSpec { id: Feature::Steer, key: "steer", stage: Stage::Removed, default_enabled: true, }
+        FeatureSpec { id: Feature::Undo, key: "undo", stage: Stage::Removed, default_enabled: false, }
+        FeatureSpec { id: Feature::Legacy, key: "legacy", stage: Stage::Removed, default_enabled: true, }
+        FeatureSpec { key: "old", stage: Stage::Deprecated, default_enabled: false, }
+        FeatureSpec { key: "platform", stage: Stage::Stable, default_enabled: cfg!(target_os = "macos"), }
+        FeatureSpec { key: "public", stage: Stage::Experimental, default_enabled: false, }
+        """
+        parsed = snapshot.parse_feature_defaults_from_source(source)
+        self.assertEqual(parsed["steer"]["effective_behavior"], "always_on")
+        self.assertTrue(parsed["steer"]["default_enabled"])
+        self.assertFalse(parsed["steer"]["configurable"])
+        self.assertTrue(parsed["steer"]["compatibility_flag"])
+        self.assertIn("always steer-enabled", parsed["steer"]["behavior_evidence"])
+        self.assertEqual(parsed["undo"]["effective_behavior"], "no_op")
+        self.assertEqual(parsed["legacy"]["effective_behavior"], "unknown")
+        self.assertTrue(parsed["old"]["configurable"])
+        self.assertEqual(parsed["old"]["stage_from_source"], "deprecated")
+        self.assertEqual(parsed["platform"]["effective_behavior"], "platform_dependent")
+        self.assertIsNone(parsed["platform"]["default_enabled"])
+        self.assertEqual(parsed["public"]["effective_behavior"], "feature_gated")
+        self.assertTrue(parsed["public"]["configurable"])
+
+    def test_conditional_source_comments_do_not_establish_always_on(self):
+        behavior = snapshot.feature_behavior("removed", "true", "Always enabled when the server supports it.")
+        self.assertEqual(behavior["effective_behavior"], "unknown")
+        self.assertIsNone(snapshot.feature_behavior("unknown", "unknown", "")["configurable"])
+
+
 if __name__ == "__main__":
     unittest.main()

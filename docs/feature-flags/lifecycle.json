@@ -988,543 +988,1119 @@
   "source_commit": "b1a547b1f73ce86205d9222ac19cff334b3b7a2e",
   "source_defaults": {
     "apply_patch_freeform": {
+      "behavior_evidence": "Removed compatibility flag for the deleted apply_patch fallback feature.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "apply_patch_preserve_line_endings": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "apply_patch_streaming_events": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "apps": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "apps_mcp_path_override": {
+      "behavior_evidence": "Removed compatibility flag for the legacy Apps MCP path override.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "artifact": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "auth_elicitation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "background_paginated_rollout_migration": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "bedrock_setup_wizard": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "browser_use": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "browser_use_external": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "browser_use_full_cdp_access": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "chronicle": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "code_mode": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "code_mode_buffered_exec": {
+      "behavior_evidence": "Removed compatibility flag for the configurable code-mode exec yield timeout.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "code_mode_host": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "code_mode_interrupt": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "code_mode_only": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "code_mode_prewarm": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "codex_git_commit": {
+      "behavior_evidence": "Removed legacy git commit attribution guidance flag.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "collaboration_modes": {
+      "behavior_evidence": "Enable collaboration modes (Plan, Default). Kept for config backward compatibility; behavior is always collaboration-modes-enabled.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "compaction_image_budget": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "computer_use": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "concurrent_reasoning_summaries": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "content_item_kinds": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "context_management": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "current_time_reminder": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "cwd_relative_turn_diffs": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "default_mode_request_user_input": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "deferred_executor": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "deferred_tool_world_state": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "elevated_windows_sandbox": {
+      "behavior_evidence": "Use the elevated Windows sandbox pipeline (setup + runner).",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "enable_fanout": {
+      "behavior_evidence": "Removed compatibility flag for the deleted agent-job tools.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "enable_mcp_apps": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "enable_request_compression": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "exec_permission_approvals": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "executed_tool_call_metadata": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "executor_capability_discovery": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "experimental_windows_sandbox": {
+      "behavior_evidence": "Enable Windows sandbox (restricted token) on Windows.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "external_agent_memory_import": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "external_migration": {
+      "behavior_evidence": "Removed compatibility flag retained as a no-op.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "fast_mode": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "goals": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "guardian_approval": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "guardian_enhanced_node_repl_transcripts": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "guardian_ext": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "guardian_node_repl_transcript_images": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "guardian_reuse_parent_compaction": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "guardianv2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "hooks": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "image_detail_original": {
+      "behavior_evidence": "Removed compatibility flag retained as a no-op so old wrappers can still pass `--enable image_detail_original`.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "image_generation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "image_resize_notice": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "in_app_browser": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "in_app_chat": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "in_app_dictation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "in_app_local_automation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "in_app_updates": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "item_ids": {
+      "behavior_evidence": "Removed compatibility flag for always-on response item IDs.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "js_repl": {
+      "behavior_evidence": "Removed compatibility flag for the deleted JavaScript REPL feature.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "js_repl_tools_only": {
+      "behavior_evidence": "Removed compatibility flag for the deleted JavaScript REPL tool-only mode.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "local_thread_store_compression": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "local_thread_store_shared_compression": {
+      "behavior_evidence": "Removed compatibility flag; local_thread_store_compression controls all rollout files.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "mcp_2026_07_28": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "mcp_oauth_refresh_coordination": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "memories": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "mentions_v2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "multi_agent": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "multi_agent_mode": {
+      "behavior_evidence": "Removed compatibility flag retained as a no-op.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "multi_agent_v2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "network_proxy": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "experimental"
     },
     "non_prefixed_mcp_tool_names": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "omit_app_server_notification_media": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "personality": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "plugin_hooks": {
+      "behavior_evidence": "Removed compatibility flag for plugin-bundled lifecycle hooks.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "plugin_sharing": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "plugins": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "powershell_shell_version": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "prevent_idle_sleep": {
+      "compatibility_flag": false,
+      "configurable": null,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "platform_dependent",
       "stage_from_source": "experimental/under development (platform-dependent)"
     },
     "psp": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "realtime_conversation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "recommended_plugins": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "remote_compaction_v2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "remote_control": {
+      "behavior_evidence": "Removed compatibility flag for the deleted remote control feature.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "remote_models": {
+      "behavior_evidence": "Legacy remote models flag kept for backward compatibility.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "remote_plugin": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "request_permissions_tool": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "request_rule": {
+      "behavior_evidence": "Allow the model to request approval and propose exec rules.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "resize_all_images": {
+      "behavior_evidence": "Removed compatibility flag for always-on centralized image preparation.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "respect_system_proxy": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "responses_websockets": {
+      "behavior_evidence": "Legacy rollout flag for Responses API WebSocket transport experiments.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "responses_websockets_v2": {
+      "behavior_evidence": "Legacy rollout flag for Responses API WebSocket transport v2 experiments.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "retain_client_developer_messages": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "rollout_budget": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "runtime_metrics": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "search_tool": {
+      "behavior_evidence": "Legacy search-tool feature flag kept for backward compatibility.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "secret_auth_storage": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": null,
       "default_enabled_expr": "cfg!(windows)",
+      "effective_behavior": "platform_dependent",
       "stage_from_source": "stable"
     },
     "send_async_message": {
+      "behavior_evidence": "Removed compatibility flag for model-enabled async user messaging.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "shell_snapshot": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "shell_snapshot_v2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "shell_tool": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "shell_zsh_fork": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "skill_env_var_dependency_prompt": {
+      "behavior_evidence": "Removed compatibility flag for deleted skill env var dependency prompting.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "skill_mcp_dependency_install": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "skill_search": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "skip_host_skill_discovery": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "sleep_tool": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "sqlite": {
+      "behavior_evidence": "Persist rollout metadata to a local SQLite database.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "standalone_web_search": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "steer": {
+      "behavior_evidence": "Steer feature flag - when enabled, Enter submits immediately instead of queuing. Kept for config backward compatibility; behavior is always steer-enabled.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "step_model_switching": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "terminal_resize_reflow": {
+      "behavior_evidence": "Removed compatibility flag. Transcript scrollback reflow on terminal resize is always on.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "terminal_visualization_instructions": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "token_budget": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "tool_call_mcp_elicitation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "tool_search": {
+      "behavior_evidence": "Removed compatibility flag retained as a no-op now that tool_search is always enabled.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "tool_search_always_defer_mcp_tools": {
+      "behavior_evidence": "Removed compatibility flag. MCP tools are always deferred when tool_search is available.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "tool_suggest": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "transcript_v2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "tui_app_server": {
+      "behavior_evidence": "Removed compatibility flag. The TUI now always uses the app-server implementation.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "unavailable_dummy_tools": {
+      "behavior_evidence": "Removed compatibility flag for the deleted unavailable-tool placeholder backfill.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "unbounded_connection_retries": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "undo": {
+      "behavior_evidence": "Removed compatibility flag retained as a no-op so old configs can still parse `undo`.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "unified_exec": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "unified_exec_zsh_fork": {
+      "behavior_evidence": "Allow unified exec to compose with the zsh exec bridge. /// This flag is only a composition gate. Enabling it by itself must not turn on either `unified_exec` or `shell_zsh_fork` because those features have separate rollout and enterprise controls.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
     "unified_image_budget": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "use_agent_identity": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
     "use_legacy_landlock": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "deprecated"
     },
     "use_linux_sandbox_bwrap": {
+      "behavior_evidence": "Removed legacy Linux bubblewrap opt-in flag retained as a no-op so old wrappers and config can still parse it.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
     "view_image": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "web_search_cached": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "deprecated"
     },
     "web_search_request": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "deprecated"
     },
     "workspace_dependencies": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
     "workspace_owner_usage_nudge": {
+      "behavior_evidence": "Removed compatibility flag retained as a no-op now that workspace owner usage nudges are always enabled.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
     "write_stdin_approval": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
       "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     }
   },
