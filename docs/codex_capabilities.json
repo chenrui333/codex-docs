@@ -60,6 +60,7 @@
       "description": "Launch the Desktop app (opens the app installer if missing)",
       "id": "cli_command:app",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -1885,6 +1886,7 @@
       "description": "Launch the Desktop app (opens the app installer if missing)",
       "id": "cli_command:help:app",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -6487,6 +6489,7 @@
       "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
       "id": "cli_option:codex:app:--config",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -6530,6 +6533,7 @@
       "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
       "id": "cli_option:codex:app:--disable",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -6573,6 +6577,7 @@
       "description": "Override the app installer download URL (advanced)",
       "id": "cli_option:codex:app:--download-url",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -6616,6 +6621,7 @@
       "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
       "id": "cli_option:codex:app:--enable",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -6660,6 +6666,7 @@
       "description": "Print help (see a summary with '-h')",
       "id": "cli_option:codex:app:--help",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -18548,6 +18555,7 @@
       "description": "Allow the sandboxed command to bind/connect AF_UNIX sockets rooted at this path. Relative paths are resolved against the current directory. Repeat to allow multiple paths",
       "id": "cli_option:codex:sandbox:--allow-unix-socket",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -18882,6 +18890,7 @@
       "description": "While the command runs, capture macOS sandbox denials via `log stream` and print them after exit",
       "id": "cli_option:codex:sandbox:--log-denials",
       "lifecycle": {
+        "absence_reason": "different_or_unknown_platform",
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.151.0",
         "not_observed_in_version": "0.153.2",
@@ -42454,6 +42463,8 @@
     "arch": "x86_64",
     "os": "linux"
   },
+  "codex_cli_release_ref": "rust-v0.153.2",
+  "codex_cli_source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
   "codex_cli_version": "0.153.2",
   "codex_cli_version_raw": "codex-cli 0.153.2",
   "codex_cli_versions": [

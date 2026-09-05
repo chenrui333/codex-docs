@@ -2076,12 +2076,87 @@ def existing_capabilities_by_id(payload: Dict[str, object]) -> Dict[str, Dict[st
     }
 
 
+def cli_release_observation(entry: Dict[str, object]) -> Dict[str, str]:
+    """Read the last positive observation, never the inventory's latest environment."""
+    observation: Dict[str, str] = {}
+    for evidence in entry.get("provenance", []):
+        if not isinstance(evidence, dict):
+            continue
+        if evidence.get("evidence_type") == "installed_cli_observation":
+            for key in ("os", "arch", "codex_cli_version"):
+                observation[key] = str(evidence.get(key, ""))
+        elif evidence.get("evidence_type") == "github_release_metadata":
+            observation["source_commit"] = str(evidence.get("source_commit", ""))
+            observation["source_ref"] = str(evidence.get("source", ""))
+    return observation
+
+
+def resolve_cli_release_ancestry(
+    session: requests.Session, inventory: Dict[str, object], current_commit: str
+) -> Dict[str, str]:
+    """Resolve immutable commit pairs before transforming capabilities.
+
+    API failures only withhold removal evidence; they cannot imply removal.
+    Cache each pair within the transaction, including unknown results.
+    """
+    result: Dict[str, str] = {}
+    for entry in existing_capabilities_by_id(inventory).values():
+        if entry.get("source_type") != CLI_SURFACE_SOURCE_TYPE:
+            continue
+        previous_commit = cli_release_observation(entry).get("source_commit", "")
+        if previous_commit in result:
+            continue
+        result[previous_commit] = "unknown"
+        if not all(re.fullmatch(r"[0-9a-f]{40}", value) for value in (previous_commit, current_commit)):
+            continue
+        if previous_commit == current_commit:
+            result[previous_commit] = "ancestor"
+            continue
+        try:
+            comparison = fetch_json(
+                session,
+                f"{GITHUB_REPOSITORY_API_URL}/compare/{previous_commit}...{current_commit}",
+                headers=github_api_headers(),
+            )
+            status = comparison.get("status")
+            if status in {"ahead", "identical"}:
+                result[previous_commit] = "ancestor"
+            elif status in {"diverged", "behind"}:
+                result[previous_commit] = "not_ancestor"
+        except (requests.RequestException, ValueError, RuntimeError) as exc:
+            LOG.warning("Release ancestry unavailable for %s: %s", previous_commit, exc)
+    return result
+
+
+def cli_absence_reason(
+    entry: Dict[str, object], current_environment: Dict[str, str],
+    current_version: str, ancestry: Dict[str, str],
+) -> str:
+    previous = cli_release_observation(entry)
+    if any(not previous.get(key) or previous[key] != current_environment.get(key)
+           for key in ("os", "arch")):
+        return "different_or_unknown_platform"
+    previous_version = previous.get("codex_cli_version", "")
+    if not all(re.fullmatch(r"\d+\.\d+\.\d+", value)
+               for value in (previous_version, current_version)):
+        return "unknown_release_order"
+    if tuple(map(int, current_version.split("."))) <= tuple(map(int, previous_version.split("."))):
+        return "not_newer_release"
+    relationship = ancestry.get(previous.get("source_commit", ""), "unknown")
+    if relationship == "not_ancestor":
+        return "divergent_release_lineage"
+    if relationship != "ancestor":
+        return "unknown_release_lineage"
+    return ""
+
+
 def build_capability_inventory_file(
     codex_cli_files: Sequence[ManagedFile],
     platform_tool_guide_files: Sequence[ManagedFile],
     referenced_platform_tool_guides_by_url: Dict[str, List[str]],
     codex_cli_metadata: Dict[str, str],
     documentation_files: Sequence[ManagedFile] = (),
+    release_ancestry: Dict[str, str] | None = None,
 ) -> ManagedFile:
     capabilities: List[Dict[str, object]] = []
     codex_cli_version = codex_cli_metadata.get("codex_cli_version", "")
@@ -2447,30 +2522,26 @@ def build_capability_inventory_file(
         previous_lifecycle = historical.get("lifecycle", {})
         if not isinstance(previous_lifecycle, dict):
             previous_lifecycle = {}
-        previous_cli_observation = previous_inventory.get("cli_observation", {})
-        if not isinstance(previous_cli_observation, dict):
-            previous_cli_observation = {}
-        previous_version = str(previous_inventory.get("codex_cli_version", ""))
-        missing_cli_observation = (
-            historical.get("source_type") == CLI_SURFACE_SOURCE_TYPE
-            and (
-                previous_version == codex_cli_version
-                or not previous_cli_observation
-                or previous_cli_observation != current_cli_observation
+        if historical.get("source_type") == CLI_SURFACE_SOURCE_TYPE:
+            # A missing observation must not resurrect an already removed capability.
+            if historical.get("active") is False:
+                capabilities.append(historical)
+                continue
+            reason = cli_absence_reason(
+                historical, current_cli_observation, codex_cli_version, release_ancestry or {}
             )
-        )
-        if missing_cli_observation:
-            historical["active"] = historical.get("maturity") != "removed"
-            lifecycle = {
-                **previous_lifecycle,
-                "status": "not_observed_on_current_platform",
-                "not_observed_in_version": codex_cli_version,
-                "observation_environment": current_cli_observation,
-            }
-            lifecycle.pop("removed_in_version", None)
-            historical["lifecycle"] = lifecycle
-            capabilities.append(historical)
-            continue
+            if reason:
+                historical["active"] = True
+                historical["lifecycle"] = {
+                    **previous_lifecycle,
+                    "status": "not_observed_on_current_platform" if reason == "different_or_unknown_platform"
+                              else "not_observed_on_current_release",
+                    "absence_reason": reason,
+                    "not_observed_in_version": codex_cli_version,
+                    "observation_environment": current_cli_observation,
+                }
+                capabilities.append(historical)
+                continue
         historical["active"] = False
         historical["lifecycle"] = {
             **previous_lifecycle,
@@ -2493,6 +2564,8 @@ def build_capability_inventory_file(
         },
         "codex_cli_version": codex_cli_metadata.get("codex_cli_version", ""),
         "codex_cli_version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
+        "codex_cli_release_ref": codex_cli_metadata.get("codex_cli_release_ref", ""),
+        "codex_cli_source_commit": codex_cli_metadata.get("codex_cli_source_commit", ""),
         "cli_observation": current_cli_observation,
         "counts": capability_counts(capabilities),
         "capabilities": capabilities,
@@ -3358,6 +3431,10 @@ def main() -> int:
                 platform_tool_guide_references_by_url,
                 codex_cli_metadata,
                 documentation_files=developers_files + learn_files + github_files,
+                release_ancestry=resolve_cli_release_ancestry(
+                    session, load_existing_capability_inventory(),
+                    codex_cli_metadata.get("codex_cli_source_commit", ""),
+                ),
             )
         ]
 

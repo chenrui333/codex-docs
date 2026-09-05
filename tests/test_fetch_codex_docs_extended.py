@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from contextlib import ExitStack
+from dataclasses import replace
 from pathlib import Path
 from unittest import mock
 
@@ -990,88 +991,94 @@ Options:
                 )
                 self.assertFalse(by_id["feature_flag:old_flag"]["active"])
 
-    def test_cli_capability_removal_requires_same_platform_and_new_version(self):
+    def test_cli_removal_requires_positive_platform_version_and_lineage_evidence(self):
         scenarios = (
-            ({}, "1.2.3", "not_observed_on_current_platform", True),
-            (
-                {"os": "darwin", "arch": "arm64"},
-                "1.2.4",
-                "not_observed_on_current_platform",
-                True,
-            ),
-            (
-                {"os": "linux", "arch": "x86_64"},
-                "1.2.4",
-                "removed_from_inventory",
-                False,
-            ),
+            ("linux", "1.2.3", "ancestor", "not_newer_release", True),
+            ("linux", "1.2.2", "ancestor", "not_newer_release", True),
+            ("linux", "1.2.4", "ancestor", "", False),
+            ("linux", "1.2.4", "not_ancestor", "divergent_release_lineage", True),
+            ("linux", "1.2.4", "unknown", "unknown_release_lineage", True),
+            ("darwin", "1.2.4", "ancestor", "different_or_unknown_platform", True),
         )
-        for previous_observation, current_version, expected_status, expected_active in scenarios:
-            with self.subTest(
-                previous_observation=previous_observation,
-                current_version=current_version,
-            ), tempfile.TemporaryDirectory() as temporary_directory:
-                root = Path(temporary_directory)
-                with isolated_outputs(root):
+        for previous_os, version, ancestry, reason, active in scenarios:
+            with self.subTest(reason=reason, version=version), tempfile.TemporaryDirectory() as directory:
+                with isolated_outputs(Path(directory)):
+                    previous = {
+                        "codex_cli_version": "1.2.3",
+                        # Latest inventory environment is deliberately misleading.
+                        "cli_observation": {"os": "linux", "arch": "x86_64"},
+                        "capabilities": [{
+                            "id": "cli_command:platform-only", "category": "cli_command",
+                            "source_type": sync.CLI_SURFACE_SOURCE_TYPE, "active": True,
+                            "provenance": [
+                                {"evidence_type": "installed_cli_observation", "os": previous_os,
+                                 "arch": "x86_64", "codex_cli_version": "1.2.3"},
+                                {"evidence_type": "github_release_metadata", "source": "rust-v1.2.3",
+                                 "source_commit": "a" * 40},
+                            ],
+                            "lifecycle": {"status": "active", "first_seen_version": "1.2.3",
+                                          "last_seen_version": "1.2.3"},
+                        }],
+                    }
                     sync.CAPABILITIES_PATH.parent.mkdir(parents=True)
-                    sync.CAPABILITIES_PATH.write_text(
-                        json.dumps(
-                            {
-                                "codex_cli_version": "1.2.3",
-                                "cli_observation": previous_observation,
-                                "capabilities": [
-                                    {
-                                        "id": "cli_command:platform-only",
-                                        "category": "cli_command",
-                                        "source_type": sync.CLI_SURFACE_SOURCE_TYPE,
-                                        "active": False,
-                                        "lifecycle": {
-                                            "status": "removed_from_inventory",
-                                            "first_seen_version": "1.2.3",
-                                            "last_seen_version": "1.2.3",
-                                            "removed_in_version": "1.2.3",
-                                        },
-                                    }
-                                ],
-                            }
-                        )
-                    )
+                    sync.CAPABILITIES_PATH.write_text(json.dumps(previous))
                     surface = sync.ManagedFile(
-                        rel_path=sync.CLI_SURFACE_REL_PATH,
-                        source_type=sync.CLI_SURFACE_SOURCE_TYPE,
-                        source_url="codex-cli://help",
-                        content=json.dumps(
-                            {
-                                "observation_environment": {
-                                    "os": "linux",
-                                    "arch": "x86_64",
-                                },
-                                "global_options": [],
-                                "commands": [],
-                            }
-                        ),
+                        rel_path=sync.CLI_SURFACE_REL_PATH, source_type=sync.CLI_SURFACE_SOURCE_TYPE,
+                        source_url="codex-cli://help", content=json.dumps({
+                            "observation_environment": {"os": "linux", "arch": "x86_64"},
+                            "global_options": [], "commands": [],
+                        }),
                     )
-                    inventory = sync.build_capability_inventory_file(
-                        [surface],
-                        [],
-                        {},
-                        {
-                            "codex_cli_version": current_version,
-                            "codex_cli_version_raw": f"codex-cli {current_version}",
-                        },
-                    )
+                    def build():
+                        return sync.managed_file_text(sync.build_capability_inventory_file(
+                            [surface], [], {}, {"codex_cli_version": version},
+                            release_ancestry={"a" * 40: ancestry},
+                        ))
+                    output = build()
+                    entry = json.loads(output)["capabilities"][0]
+                    self.assertEqual(entry["active"], active)
+                    self.assertEqual(entry["lifecycle"].get("absence_reason", ""), reason)
+                    self.assertEqual(sync.semantic_capability_changes(json.dumps(previous), output)["removed"],
+                                     [] if active else ["cli_command:platform-only"])
+                    sync.CAPABILITIES_PATH.write_text(output)
+                    self.assertEqual(build(), output)
+                    if not active:
+                        # Positive observation reactivates; absence on a different host does not.
+                        surface = replace(surface, content=json.dumps({
+                            "observation_environment": {"os": "darwin", "arch": "arm64"},
+                            "global_options": [], "commands": [],
+                        }))
+                        self.assertFalse(json.loads(build())["capabilities"][0]["active"])
+                        surface = replace(surface, content=json.dumps({
+                            "observation_environment": {"os": "linux", "arch": "x86_64"},
+                            "global_options": [],
+                            "commands": [{"name": "platform-only", "description": "Returns", "options": []}],
+                        }))
+                        restored = json.loads(build())["capabilities"][0]
+                        self.assertTrue(restored["active"])
+                        self.assertNotIn("removed_in_version", restored["lifecycle"])
 
-                payload = json.loads(sync.managed_file_text(inventory))
-                capability = payload["capabilities"][0]
-                self.assertEqual(payload["cli_observation"]["os"], "linux")
-                self.assertEqual(capability["active"], expected_active)
-                self.assertEqual(capability["lifecycle"]["status"], expected_status)
-                if expected_active:
-                    self.assertNotIn("removed_in_version", capability["lifecycle"])
-                else:
-                    self.assertEqual(
-                        capability["lifecycle"]["removed_in_version"], current_version
-                    )
+    def test_release_ancestry_resolution_is_cached_and_conservative(self):
+        entry = {"source_type": sync.CLI_SURFACE_SOURCE_TYPE, "provenance": [
+            {"evidence_type": "github_release_metadata", "source_commit": "a" * 40},
+        ]}
+        inventory = {"capabilities": [{**entry, "id": "one"}, {**entry, "id": "two"}]}
+        for status, expected in (("ahead", "ancestor"), ("identical", "ancestor"),
+                                 ("diverged", "not_ancestor"), ("behind", "not_ancestor"),
+                                 ("unexpected", "unknown")):
+            with self.subTest(status=status), mock.patch.object(sync, "fetch_json", return_value={"status": status}) as fetch:
+                self.assertEqual(sync.resolve_cli_release_ancestry(mock.Mock(), inventory, "b" * 40),
+                                 {"a" * 40: expected})
+                fetch.assert_called_once()
+        with mock.patch.object(sync, "fetch_json", side_effect=requests.Timeout):
+            self.assertEqual(sync.resolve_cli_release_ancestry(mock.Mock(), inventory, "b" * 40),
+                             {"a" * 40: "unknown"})
+        with mock.patch.object(sync, "fetch_json") as fetch:
+            self.assertEqual(sync.resolve_cli_release_ancestry(mock.Mock(), inventory, "a" * 40),
+                             {"a" * 40: "ancestor"})
+            self.assertEqual(sync.resolve_cli_release_ancestry(mock.Mock(), inventory, "invalid"),
+                             {"a" * 40: "unknown"})
+            fetch.assert_not_called()
 
     def test_semantic_capability_changes_are_deterministic(self):
         previous = json.dumps(
