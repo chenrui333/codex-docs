@@ -26,6 +26,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         metadata = {"codex_cli_version": "1.2.4", "codex_cli_version_raw": "codex-cli 1.2.4",
                     "codex_cli_release_ref": "rust-v1.2.4", "codex_cli_source_commit": "b" * 40}
         surface = sync.ManagedFile(sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help", json.dumps({
+            "codex_cli_version": "1.2.4",
             "observation_environment": {"os": "linux", "arch": "x86_64"}, "commands": [], "global_options": [],
         }))
         model = sync.ManagedFile(sync.MODELS_REL_PATH, sync.MODEL_SOURCE_TYPE, "https://example.test/models", json.dumps({
@@ -75,3 +76,15 @@ class ReleaseTransactionTests(unittest.TestCase):
             sync.output_path_for_rel_path("learn/page.md").write_text("partial content")
             with self.assertRaisesRegex(ValueError, "does not match"):
                 sync.load_cached_source_files({"learn"})
+
+    def test_noop_scope_switch_does_not_rewrite_coverage(self):
+        with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
+            state = {"generated_at": "first", "sync": {"status": "complete", "failure_count": 0,
+                     "scope": "release", "web_observation": "last_known_good"}}
+            sync.write_coverage(state)
+            before = sync.COVERAGE_PATH.read_bytes()
+            sync.write_coverage({**state, "generated_at": "later", "sync": {
+                **state["sync"], "scope": "full", "web_observation": "current"}})
+            self.assertEqual(before, sync.COVERAGE_PATH.read_bytes())
+            sync.write_coverage({**state, "sync": {**state["sync"], "failure_count": 1, "status": "partial"}})
+            self.assertNotEqual(before, sync.COVERAGE_PATH.read_bytes())

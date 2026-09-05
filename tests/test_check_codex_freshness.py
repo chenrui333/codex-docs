@@ -7,6 +7,14 @@ from unittest import mock
 from scripts import check_codex_freshness as freshness
 
 
+def cli_fixture():
+    return {"codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3", "source_commit": "a" * 40,
+            "platform_observations": {"linux-x86_64": {
+                "os": "linux", "arch": "x86_64", "codex_cli_version": "1.2.3",
+                "source_ref": "rust-v1.2.3", "source_commit": "a" * 40,
+            }}}
+
+
 class CheckCodexFreshnessTests(unittest.TestCase):
     def test_parse_version_accepts_release_tag_prefix(self):
         self.assertEqual(freshness.parse_version("rust-v0.151.0"), "0.151.0")
@@ -68,6 +76,7 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                     "source_commit": "a" * 40,
                 },
             },
+            "cli_surface": cli_fixture(),
             "model_snapshot": {
                 "codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
                 "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json",
@@ -92,6 +101,16 @@ class CheckCodexFreshnessTests(unittest.TestCase):
             "2026-08-29T11:00:00+00:00",
         )
 
+        old_linux = arguments["cli_surface"]["platform_observations"]["linux-x86_64"]
+        old_linux.update(codex_cli_version="1.2.2", source_ref="rust-v1.2.2", source_commit="b" * 40)
+        arguments["resolve_tag_commit_fn"] = lambda tag: ("b" if tag == "rust-v1.2.2" else "a") * 40
+        report = freshness.build_report(**arguments)
+        self.assertEqual(report["status"], "fresh")
+        self.assertFalse(report["cli_surface"]["platform_observations"]["linux-x86_64"]["matches_latest_stable"])
+        old_linux["source_commit"] = "c" * 40
+        report = freshness.build_report(**arguments)
+        self.assertEqual(report["status"], "stale")
+
     def test_model_provenance_failure_is_not_subject_to_release_grace(self):
         release = {"version": "1.2.3", "published_at": "2026-08-29T10:00:00Z"}
         model = {"codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
@@ -108,7 +127,7 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                         "codex_cli_release_ref": "rust-v1.2.3", "codex_cli_source_commit": "a" * 40}},
                     coverage={"codex_cli": {"version": "1.2.3"}, "github": {
                         "source_ref": "rust-v1.2.3", "source_commit": "a" * 40}},
-                    feature_snapshot=model, model_snapshot={**model, key: value},
+                    feature_snapshot=model, model_snapshot={**model, key: value}, cli_surface=cli_fixture(),
                     now=datetime(2026, 8, 29, 11, tzinfo=timezone.utc), grace_hours=12,
                     resolve_tag_commit_fn=lambda _tag: "a" * 40,
                 )
@@ -139,6 +158,7 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                     "source_commit": "a" * 40,
                 },
             },
+            "cli_surface": cli_fixture(),
             "model_snapshot": {
                 "codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
                 "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json",
@@ -186,6 +206,7 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                     "source_commit": "a" * 40,
                 },
             },
+            "cli_surface": cli_fixture(),
             "model_snapshot": {
                 "codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
                 "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json",

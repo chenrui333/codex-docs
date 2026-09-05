@@ -1,5 +1,5 @@
 {
-  "codex_cli_version": "0.153.3",
+  "codex_cli_version": "0.153.4",
   "models": [
     {
       "apply_patch_tool_type": "freeform",
@@ -518,7 +518,7 @@
       "supports_search_tool": true,
       "tool_mode": "code_mode_only",
       "upgrade": null,
-      "visibility": "hide",
+      "visibility": "list",
       "web_search_tool_type": "text_and_image"
     },
     {
@@ -635,8 +635,8 @@
     }
   ],
   "schema_version": 1,
-  "source_commit": "b1a547b1f73ce86205d9222ac19cff334b3b7a2e",
+  "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
   "source_kind": "release_bundled_model_catalog",
   "source_path": "codex-rs/models-manager/models.json",
-  "source_ref": "rust-v0.153.3"
+  "source_ref": "rust-v0.153.4"
 }

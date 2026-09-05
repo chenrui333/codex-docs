@@ -881,6 +881,9 @@ Usage: codex <COMMAND>
 Commands:
   exec  Run non-interactively
   help  Print help
+
+Options:
+  -h, --help  Print help
 """
         exec_help = """Run non-interactively
 
@@ -1166,6 +1169,7 @@ Options:
                 isolated_outputs(root),
                 mock.patch.object(sync, "build_developers_files", return_value=([developer], {"developers": {"counts": {}}}, [])),
                 mock.patch.object(sync, "build_learn_files", return_value=([learn], {"counts": {}}, [])),
+                mock.patch.object(sync, "prepare_cli_observations", return_value=([cli], {})),
                 mock.patch.object(sync, "build_model_catalog_file", return_value=cli),
                 mock.patch.object(sync, "build_github_files", return_value=([github], [])),
                 mock.patch.object(sync, "build_codex_cli_files", return_value=([cli], [], {"codex_cli_version": "1.2.3"})),
@@ -1195,6 +1199,7 @@ Options:
                 isolated_outputs(root),
                 mock.patch.object(sync, "build_developers_files", return_value=([developer], {"developers": {"counts": {}}}, [failure])),
                 mock.patch.object(sync, "build_learn_files", return_value=([], {"counts": {}}, [])),
+                mock.patch.object(sync, "prepare_cli_observations", return_value=([cli], {})),
                 mock.patch.object(sync, "build_model_catalog_file", return_value=cli),
                 mock.patch.object(sync, "build_github_files", return_value=([], [])),
                 mock.patch.object(sync, "build_codex_cli_files", return_value=([], [], {})),

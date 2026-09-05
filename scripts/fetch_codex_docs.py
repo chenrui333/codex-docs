@@ -28,8 +28,9 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify as to_markdown
 
 if __package__:
-    from . import model_catalog, semantic_history, snapshot_feature_flags
+    from . import cli_observations, model_catalog, semantic_history, snapshot_feature_flags
 else:
+    import cli_observations
     import model_catalog
     import semantic_history
     import snapshot_feature_flags
@@ -57,7 +58,9 @@ SYSTEM_PROMPTS_ROOT = ROOT / "system_prompts" / "codex-cli"
 SYSTEM_SKILL_OUTPUT_PREFIX = "dot_codex/skills/dot_system/"
 SYSTEM_PROMPT_OUTPUT_PREFIX = "system_prompts/codex-cli/"
 ROOT_OUTPUT_PREFIXES = ("dot_codex/", "system_prompts/")
+CLI_PLATFORM_SOURCE_TYPE = "codex_cli_platform_observation"
 CODEX_CLI_SOURCE_TYPES = {
+    CLI_PLATFORM_SOURCE_TYPE,
     "codex_cli_system_skill",
     "codex_cli_prompt_input",
     "codex_cli_surface",
@@ -2192,6 +2195,122 @@ def build_model_catalog_file(session: requests.Session, metadata: Dict[str, str]
     )
 
 
+def historical_cli_observations() -> Dict[str, object]:
+    """One-time migration: recover each platform's most recent recorded help snapshot."""
+    surfaces = {}
+    if not (ROOT / ".git").exists():
+        return surfaces
+    commits = run_local_command([
+        "git", "log", "-20", "--format=%H", "--", "docs/codex_cli_surface.json",
+    ], cwd=ROOT).splitlines()
+    for commit in commits:
+        payload = json.loads(run_local_command(["git", "show", f"{commit}:docs/codex_cli_surface.json"], cwd=ROOT))
+        if not payload.get("observation_environment"):
+            continue
+        key = cli_observations.platform_key(payload)
+        if key in surfaces:
+            continue
+        manifest = json.loads(run_local_command(["git", "show", f"{commit}:docs/docs_manifest.json"], cwd=ROOT))
+        provenance = manifest.get("sources", {}).get(CLI_SURFACE_REL_PATH, {})
+        if not provenance.get("codex_cli_source_commit"):
+            continue
+        payload.update(source_ref=provenance.get("codex_cli_release_ref", ""), source_commit=provenance["codex_cli_source_commit"])
+        surfaces[key] = cli_observations.validate(payload)
+        if any(key.startswith("linux-") for key in surfaces) and any(key.startswith("macos-") for key in surfaces):
+            break
+    return surfaces
+
+
+def prepare_cli_observations(
+    files: Sequence[ManagedFile], metadata: Dict[str, str], observations_dir: Path | None = None,
+) -> Tuple[List[ManagedFile], Dict[str, Dict[str, str]]]:
+    surfaces = {}
+    directory = DOCS_DIR / "cli-surface"
+    if directory.exists():
+        for path in sorted(directory.glob("*.json")):
+            payload = cli_observations.validate(json.loads(path.read_text()))
+            key = cli_observations.platform_key(payload)
+            if path.stem != key:
+                raise ValueError("Stored CLI observation filename does not match its platform")
+            surfaces[key] = payload
+    if not surfaces:
+        surfaces.update(historical_cli_observations())
+    # Bootstrap repositories without accessible Git history from the current snapshot.
+    if not surfaces and CLI_SURFACE_PATH.exists():
+        previous = json.loads(CLI_SURFACE_PATH.read_text())
+        provenance = load_existing_manifest().get(CLI_SURFACE_REL_PATH, {})
+        if previous.get("observation_environment") and provenance.get("codex_cli_source_commit"):
+            previous.update(source_ref=provenance.get("codex_cli_release_ref", ""),
+                            source_commit=provenance["codex_cli_source_commit"])
+            cli_observations.validate(previous)
+            surfaces[cli_observations.platform_key(previous)] = previous
+    incoming = [json.loads(managed_file_text(item)) for item in files if item.source_type == CLI_SURFACE_SOURCE_TYPE]
+    for payload in incoming:
+        payload.update(source_ref=metadata["codex_cli_release_ref"], source_commit=metadata["codex_cli_source_commit"])
+    if observations_dir is not None:
+        for path in sorted(observations_dir.glob("*.json")):
+            payload = cli_observations.validate(json.loads(path.read_text()))
+            if payload["codex_cli_version"] != metadata["codex_cli_version"]:
+                LOG.warning("Ignoring CLI artifact from a different release: %s", path.name)
+                continue
+            if payload["source_commit"] != metadata["codex_cli_source_commit"]:
+                raise ValueError("CLI artifact does not match the resolved release commit")
+            incoming.append(payload)
+    for payload in incoming:
+        cli_observations.validate(payload)
+        key = cli_observations.platform_key(payload)
+        prior = surfaces.get(key)
+        if prior and tuple(map(int, prior["codex_cli_version"].split("."))) > tuple(map(int, payload["codex_cli_version"].split("."))):
+            raise ValueError("Refusing to replace a newer platform observation with an older CLI")
+        surfaces[key] = payload
+    combined = cli_observations.aggregate(surfaces, metadata)
+    result = [item for item in files if item.source_type != CLI_SURFACE_SOURCE_TYPE]
+    for key, payload in sorted(surfaces.items()):
+        result.append(ManagedFile(
+            f"cli-surface/{key}.json", CLI_PLATFORM_SOURCE_TYPE, "codex-cli://help",
+            json.dumps(payload, indent=2, sort_keys=True) + "\n",
+            {"codex_cli_version": payload["codex_cli_version"], "codex_cli_release_ref": payload["source_ref"],
+             "codex_cli_source_commit": payload["source_commit"], "source_kind": "installed_cli_observation"},
+        ))
+    result.append(ManagedFile(
+        CLI_SURFACE_REL_PATH, CLI_SURFACE_SOURCE_TYPE, "generated://cli-platform-union",
+        json.dumps(combined, indent=2, sort_keys=True) + "\n",
+        {**metadata, "source_kind": "aggregated_cli_observation"},
+    ))
+    return result, combined["platform_observations"]
+
+
+def previous_cli_platforms(entry: Dict[str, object]) -> Dict[str, object]:
+    if isinstance(entry.get("platforms"), dict):
+        return entry["platforms"]
+    observation = cli_release_observation(entry)
+    try:
+        key = cli_observations.platform_key(observation)
+    except ValueError:
+        key = "unknown"
+    if not entry:
+        return {}
+    return {key: {"status": "present" if entry.get("active", True) else "absent",
+                  "active": entry.get("active", True), "last_seen": observation}}
+
+
+def resolve_platform_ancestry(session: requests.Session, inventory: Dict[str, object], observations: dict) -> dict:
+    result = {}
+    for platform, current in observations.items():
+        entries = []
+        for identifier, entry in existing_capabilities_by_id(inventory).items():
+            if entry.get("source_type") != CLI_SURFACE_SOURCE_TYPE:
+                continue
+            previous = previous_cli_platforms(entry).get(platform, {}).get("last_seen", {})
+            if previous:
+                entries.append({"id": identifier, "source_type": CLI_SURFACE_SOURCE_TYPE, "provenance": [
+                    {"evidence_type": "github_release_metadata", "source_commit": previous.get("source_commit", "")},
+                ]})
+        resolved = resolve_cli_release_ancestry(session, {"capabilities": entries}, current["source_commit"])
+        result.update({f"{commit}...{current['source_commit']}": status for commit, status in resolved.items()})
+    return result
+
+
 def build_capability_inventory_file(
     codex_cli_files: Sequence[ManagedFile],
     platform_tool_guide_files: Sequence[ManagedFile],
@@ -2200,6 +2319,7 @@ def build_capability_inventory_file(
     documentation_files: Sequence[ManagedFile] = (),
     release_ancestry: Dict[str, str] | None = None,
     feature_snapshot_payload: Dict[str, object] | None = None,
+    platform_ancestry: Dict[str, str] | None = None,
 ) -> ManagedFile:
     capabilities: List[Dict[str, object]] = []
     codex_cli_version = codex_cli_metadata.get("codex_cli_version", "")
@@ -2207,6 +2327,8 @@ def build_capability_inventory_file(
     previous_inventory = load_existing_capability_inventory()
     previous_capabilities = existing_capabilities_by_id(previous_inventory)
     current_cli_observation: Dict[str, str] = {}
+    platform_observations: Dict[str, object] = {}
+    cli_present_on: Dict[str, object] = {}
     for item in codex_cli_files:
         if item.source_type != CLI_SURFACE_SOURCE_TYPE:
             continue
@@ -2214,6 +2336,7 @@ def build_capability_inventory_file(
             surface_payload = json.loads(managed_file_text(item))
         except json.JSONDecodeError:
             continue
+        platform_observations = surface_payload.get("platform_observations", {})
         observation_environment = surface_payload.get("observation_environment", {})
         if isinstance(observation_environment, dict):
             current_cli_observation = {
@@ -2387,6 +2510,7 @@ def build_capability_inventory_file(
                 "mirrored_path": item.rel_path,
                 "provenance": cli_provenance(f"{command} --help"),
             }
+            cli_present_on[option_entry["id"]] = option.get("observed_on", {})
             config_keys = CLI_OPTION_CONFIG_KEYS.get(primary_flag, [])
             if config_keys:
                 option_entry["config_keys"] = config_keys
@@ -2413,6 +2537,7 @@ def build_capability_inventory_file(
                 "mirrored_path": item.rel_path,
                 "provenance": cli_provenance(f"codex {command_name} --help"),
             }
+            cli_present_on[command_entry["id"]] = command.get("observed_on", {})
             add_version_history(command_entry)
             capabilities.append(command_entry)
             for option in command.get("options", []):
@@ -2436,6 +2561,7 @@ def build_capability_inventory_file(
                         f"codex {command_name} --help"
                     ),
                 }
+                cli_present_on[subcommand_entry["id"]] = subcommand.get("observed_on", {})
                 add_version_history(subcommand_entry)
                 capabilities.append(subcommand_entry)
 
@@ -2593,6 +2719,51 @@ def build_capability_inventory_file(
         }
         capabilities.append(historical)
 
+    if platform_observations:
+        for entry in capabilities:
+            if entry.get("source_type") != CLI_SURFACE_SOURCE_TYPE:
+                continue
+            identifier = str(entry["id"])
+            states = cli_observations.platform_states(
+                previous_cli_platforms(previous_capabilities.get(identifier, {})),
+                cli_present_on.get(identifier, {}), platform_observations, platform_ancestry or {},
+            )
+            entry["platforms"] = states
+            entry["active"] = any(state.get("active", True) for state in states.values())
+            history = codex_cli_version_history_metadata(previous_capabilities.get(identifier, {}), {})
+            for observation in cli_present_on.get(identifier, {}).values():
+                version = observation["codex_cli_version"]
+                history = codex_cli_version_history_metadata(history, {
+                    "codex_cli_version": version, "codex_cli_version_raw": f"codex-cli {version}",
+                })
+            entry.pop("codex_cli_versions", None)
+            entry.pop("codex_cli_versions_raw", None)
+            entry.update(history)
+            lifecycle = dict(entry.get("lifecycle", {}))
+            seen_versions = [state.get("last_seen", {}).get("codex_cli_version", "") for state in states.values()]
+            seen_versions = sorted((version for version in seen_versions if re.fullmatch(r"\d+\.\d+\.\d+", version)),
+                                   key=lambda version: tuple(map(int, version.split("."))))
+            if seen_versions:
+                lifecycle["last_seen_version"] = seen_versions[-1]
+                lifecycle["first_seen_version"] = previous_capabilities.get(identifier, {}).get("lifecycle", {}).get("first_seen_version", seen_versions[0])
+            lifecycle.pop("absence_reason", None)
+            lifecycle.pop("observation_environment", None)
+            lifecycle.pop("not_observed_in_version", None)
+            if entry["active"]:
+                lifecycle.pop("removed_in_version", None)
+                lifecycle["status"] = "active" if cli_present_on.get(identifier) else "not_observed_on_current_release"
+            else:
+                lifecycle["status"] = "removed_from_inventory"
+                lifecycle.setdefault("removed_in_version", codex_cli_version)
+            entry["lifecycle"] = lifecycle
+            provenance = []
+            for platform, state in sorted(states.items()):
+                observation = state.get("last_seen")
+                if observation:
+                    provenance.append({"evidence_type": "installed_cli_observation", "platform": platform,
+                                       "source": str(entry.get("cli_command", "codex")) + " --help", **observation})
+            entry["provenance"] = provenance
+
     capabilities = sorted(capabilities, key=lambda item: str(item["id"]))
     payload = {
         "schema_version": 2,
@@ -2610,6 +2781,7 @@ def build_capability_inventory_file(
         "codex_cli_release_ref": codex_cli_metadata.get("codex_cli_release_ref", ""),
         "codex_cli_source_commit": codex_cli_metadata.get("codex_cli_source_commit", ""),
         "cli_observation": current_cli_observation,
+        **({"cli_platform_observations": platform_observations} if platform_observations else {}),
         "counts": capability_counts(capabilities),
         "capabilities": capabilities,
     }
@@ -2758,6 +2930,8 @@ def build_cli_surface_snapshot(
         [codex_bin, "--help"], cwd=workspace_path, env=env
     )
     top_commands = parse_help_commands(top_help)
+    if not top_commands or not parse_help_options(top_help) or not parse_help_usage(top_help):
+        raise SourceContentError("CLI help lacks parseable commands, options, or usage")
     command_surfaces: List[Dict[str, object]] = []
     for command in top_commands:
         name = command["name"]
@@ -2766,6 +2940,8 @@ def build_cli_surface_snapshot(
             command_help = run_local_command(
                 [codex_bin, name, "--help"], cwd=workspace_path, env=env
             )
+        if not parse_help_usage(command_help) or not parse_help_options(command_help):
+            raise SourceContentError(f"CLI help for {name} lacks parseable options or usage")
         command_surfaces.append(
             {
                 "name": name,
@@ -2921,14 +3097,22 @@ def write_summary(
     SUMMARY_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
+def semantic_coverage(coverage: Dict[str, object]) -> Dict[str, object]:
+    state = {key: value for key, value in coverage.items() if key != "generated_at"}
+    if isinstance(state.get("sync"), dict):
+        state["sync"] = {key: value for key, value in state["sync"].items()
+                         if key not in {"scope", "web_observation"}}
+    return state
+
+
 def write_coverage(coverage: Dict[str, object]) -> None:
-    coverage_without_generated_at = {k: v for k, v in coverage.items() if k != "generated_at"}
+    coverage_without_generated_at = semantic_coverage(coverage)
     if COVERAGE_PATH.exists():
         try:
             previous = json.loads(COVERAGE_PATH.read_text())
             if isinstance(previous, dict):
                 previous_has_generated_at = "generated_at" in previous
-                previous_without_generated_at = {k: v for k, v in previous.items() if k != "generated_at"}
+                previous_without_generated_at = semantic_coverage(previous)
                 if previous_has_generated_at and previous_without_generated_at == coverage_without_generated_at:
                     return
         except json.JSONDecodeError:
@@ -3348,7 +3532,7 @@ def load_cached_source_files(source_types: set[str]) -> List[ManagedFile]:
     return files
 
 
-def main(*, release_only: bool = False) -> int:
+def main(*, release_only: bool = False, observations_dir: Path | None = None) -> int:
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
@@ -3377,6 +3561,7 @@ def main(*, release_only: bool = False) -> int:
     platform_tool_guide_references_by_url: Dict[str, List[str]] = {}
     codex_cli_fetch_errors: List[Dict[str, str]] = []
     codex_cli_metadata: Dict[str, str] = {}
+    collected_platforms: Dict[str, object] = {}
     coverage: Dict[str, object] = {
         "generated_at": now_utc_iso(),
         "source_state_semantics": SOURCE_STATE_SEMANTICS,
@@ -3456,6 +3641,7 @@ def main(*, release_only: bool = False) -> int:
         codex_cli_files, codex_cli_metadata = add_cli_release_provenance(
             session, codex_cli_files, codex_cli_metadata
         )
+        codex_cli_files, collected_platforms = prepare_cli_observations(codex_cli_files, codex_cli_metadata, observations_dir)
         codex_cli_files = add_source_area_metadata(codex_cli_files)
         failures.extend(codex_cli_fetch_errors)
         if codex_cli_fetch_errors:
@@ -3562,10 +3748,11 @@ def main(*, release_only: bool = False) -> int:
                 codex_cli_metadata,
                 documentation_files=developers_files + learn_files + github_files,
                 feature_snapshot_payload=feature_payload,
+                platform_ancestry=resolve_platform_ancestry(session, load_existing_capability_inventory(), collected_platforms),
                 release_ancestry=resolve_cli_release_ancestry(
                     session, load_existing_capability_inventory(),
                     codex_cli_metadata.get("codex_cli_source_commit", ""),
-                ),
+                ) if not collected_platforms else {},
             )
         ]
 
@@ -3653,6 +3840,7 @@ def main(*, release_only: bool = False) -> int:
         "source_kind": "installed_codex_cli",
         "version": codex_cli_metadata.get("codex_cli_version", ""),
         "version_raw": codex_cli_metadata.get("codex_cli_version_raw", ""),
+        "platform_observations": collected_platforms,
         "system_skill_output_prefix": SYSTEM_SKILL_OUTPUT_PREFIX,
         "prompt_output_prefix": SYSTEM_PROMPT_OUTPUT_PREFIX,
         "prompt_snapshot_command": codex_cli_metadata.get("codex_prompt_snapshot_command", "codex debug prompt-input"),
@@ -3753,4 +3941,6 @@ def main(*, release_only: bool = False) -> int:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--release-only", action="store_true", help="Advance release-derived state using the last complete web mirror")
-    sys.exit(main(release_only=parser.parse_args().release_only))
+    parser.add_argument("--cli-observations-dir", type=Path)
+    args = parser.parse_args()
+    sys.exit(main(release_only=args.release_only, observations_dir=args.cli_observations_dir))

@@ -1,0 +1,3324 @@
+{
+  "codex_cli_version": "0.153.4",
+  "codex_cli_version_raw": "codex-cli 0.153.4",
+  "command": "codex --help; codex <command> --help",
+  "commands": [
+    {
+      "description": "Browse all agent sessions on the shared local app-server daemon",
+      "name": "agents",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Use this directory for new tasks on a remote server",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Disable alternate screen mode",
+          "flags": [
+            "--no-alt-screen"
+          ],
+          "primary_flag": "--no-alt-screen",
+          "synopsis": "--no-alt-screen"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex agents [OPTIONS]"
+      ]
+    },
+    {
+      "description": "Run Codex non-interactively [aliases: e]",
+      "name": "exec",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Source classification for newly created or forked threads",
+          "flags": [
+            "--thread-source"
+          ],
+          "primary_flag": "--thread-source",
+          "synopsis": "--thread-source <SOURCE>"
+        },
+        {
+          "description": "Allow running Codex outside a Git repository",
+          "flags": [
+            "--skip-git-repo-check"
+          ],
+          "primary_flag": "--skip-git-repo-check",
+          "synopsis": "--skip-git-repo-check"
+        },
+        {
+          "description": "Run without persisting session files to disk",
+          "flags": [
+            "--ephemeral"
+          ],
+          "primary_flag": "--ephemeral",
+          "synopsis": "--ephemeral"
+        },
+        {
+          "description": "Do not load `$CODEX_HOME/config.toml`; auth still uses `CODEX_HOME`",
+          "flags": [
+            "--ignore-user-config"
+          ],
+          "primary_flag": "--ignore-user-config",
+          "synopsis": "--ignore-user-config"
+        },
+        {
+          "description": "Do not load user or project execpolicy `.rules` files",
+          "flags": [
+            "--ignore-rules"
+          ],
+          "primary_flag": "--ignore-rules",
+          "synopsis": "--ignore-rules"
+        },
+        {
+          "description": "Path to a JSON Schema file describing the model's final response shape",
+          "flags": [
+            "--output-schema"
+          ],
+          "primary_flag": "--output-schema",
+          "synopsis": "--output-schema <FILE>"
+        },
+        {
+          "description": "Specifies color settings for use in the output [default: auto] [possible values: always, never, auto]",
+          "flags": [
+            "--color"
+          ],
+          "primary_flag": "--color",
+          "synopsis": "--color <COLOR>"
+        },
+        {
+          "description": "Print events to stdout as JSONL",
+          "flags": [
+            "--json"
+          ],
+          "primary_flag": "--json",
+          "synopsis": "--json"
+        },
+        {
+          "description": "Specifies file where the last message from the agent should be written",
+          "flags": [
+            "-o",
+            "--output-last-message"
+          ],
+          "primary_flag": "--output-last-message",
+          "synopsis": "-o, --output-last-message <FILE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        },
+        {
+          "description": "Print version",
+          "flags": [
+            "-V",
+            "--version"
+          ],
+          "primary_flag": "--version",
+          "synopsis": "-V, --version"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Resume a previous session by id or pick the most recent with --last",
+          "name": "resume"
+        },
+        {
+          "description": "Fork a previous session by id into a new session",
+          "name": "fork"
+        },
+        {
+          "description": "Run a code review against the current repository",
+          "name": "review"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex exec [OPTIONS] [PROMPT]",
+        "codex exec [OPTIONS] <COMMAND> [ARGS]"
+      ]
+    },
+    {
+      "description": "Run a code review non-interactively",
+      "name": "review",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Review staged, unstaged, and untracked changes",
+          "flags": [
+            "--uncommitted"
+          ],
+          "primary_flag": "--uncommitted",
+          "synopsis": "--uncommitted"
+        },
+        {
+          "description": "Review changes against the given base branch",
+          "flags": [
+            "--base"
+          ],
+          "primary_flag": "--base",
+          "synopsis": "--base <BRANCH>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Review the changes introduced by a commit",
+          "flags": [
+            "--commit"
+          ],
+          "primary_flag": "--commit",
+          "synopsis": "--commit <SHA>"
+        },
+        {
+          "description": "Optional commit title to display in the review summary",
+          "flags": [
+            "--title"
+          ],
+          "primary_flag": "--title",
+          "synopsis": "--title <TITLE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex review [OPTIONS] [PROMPT]"
+      ]
+    },
+    {
+      "description": "Manage login",
+      "name": "login",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Read the API key from stdin (e.g. `printenv OPENAI_API_KEY | codex login --with-api-key`)",
+          "flags": [
+            "--with-api-key"
+          ],
+          "primary_flag": "--with-api-key",
+          "synopsis": "--with-api-key"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Read the access token from stdin (e.g. `printenv CODEX_ACCESS_TOKEN | codex login --with-access-token`)",
+          "flags": [
+            "--with-access-token"
+          ],
+          "primary_flag": "--with-access-token",
+          "synopsis": "--with-access-token"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "",
+          "flags": [
+            "--device-auth"
+          ],
+          "primary_flag": "--device-auth",
+          "synopsis": "--device-auth"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Show login status",
+          "name": "status"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex login [OPTIONS] [COMMAND]"
+      ]
+    },
+    {
+      "description": "Remove stored authentication credentials",
+      "name": "logout",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex logout [OPTIONS]"
+      ]
+    },
+    {
+      "description": "Manage external MCP servers for Codex",
+      "name": "mcp",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex mcp [OPTIONS] <COMMAND>"
+      ]
+    },
+    {
+      "description": "Manage Codex plugins",
+      "name": "plugin",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Install a plugin from a configured or remote marketplace",
+          "name": "add"
+        },
+        {
+          "description": "List plugins available from configured and remote marketplaces",
+          "name": "list"
+        },
+        {
+          "description": "Add, list, upgrade, or remove configured plugin marketplaces",
+          "name": "marketplace"
+        },
+        {
+          "description": "Uninstall a plugin and remove its local cache",
+          "name": "remove"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex plugin [OPTIONS] <COMMAND>"
+      ]
+    },
+    {
+      "description": "Start Codex as an MCP server (stdio)",
+      "name": "mcp-server",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex mcp-server [OPTIONS]"
+      ]
+    },
+    {
+      "description": "[experimental] Run the app server or related tooling",
+      "name": "app-server",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Connect to a remote code-mode host instead of starting a local host",
+          "flags": [
+            "--code-mode-host"
+          ],
+          "primary_flag": "--code-mode-host",
+          "synopsis": "--code-mode-host <URL>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Transport endpoint URL. Supported values: `stdio://` (default), `unix://`, `unix://PATH`, `ws://IP:PORT`, `off` [default: stdio://]",
+          "flags": [
+            "--listen"
+          ],
+          "primary_flag": "--listen",
+          "synopsis": "--listen <URL>"
+        },
+        {
+          "description": "Use stdio as the transport (equivalent to `--listen stdio://`)",
+          "flags": [
+            "--stdio"
+          ],
+          "primary_flag": "--stdio",
+          "synopsis": "--stdio"
+        },
+        {
+          "description": "Controls whether analytics are enabled by default. Analytics are disabled by default for app-server. Users have to explicitly opt in via the `analytics` section in the config.toml file. However, for first-party use cases like the VSCode IDE extension, we default analytics to be enabled by default by setting this flag. Users can still opt out by setting this in their config.toml: ```toml [analytics] enabled = false ``` See https://developers.openai.com/codex/config-advanced/#metrics for more details.",
+          "flags": [
+            "--analytics-default-enabled"
+          ],
+          "primary_flag": "--analytics-default-enabled",
+          "synopsis": "--analytics-default-enabled"
+        },
+        {
+          "description": "Websocket auth mode for non-loopback listeners [possible values: capability-token, signed-bearer-token]",
+          "flags": [
+            "--ws-auth"
+          ],
+          "primary_flag": "--ws-auth",
+          "synopsis": "--ws-auth <MODE>"
+        },
+        {
+          "description": "Absolute path to the capability-token file",
+          "flags": [
+            "--ws-token-file"
+          ],
+          "primary_flag": "--ws-token-file",
+          "synopsis": "--ws-token-file <PATH>"
+        },
+        {
+          "description": "Hex-encoded SHA-256 digest of the capability token",
+          "flags": [
+            "--ws-token-sha256"
+          ],
+          "primary_flag": "--ws-token-sha256",
+          "synopsis": "--ws-token-sha256 <HEX>"
+        },
+        {
+          "description": "Absolute path to the shared secret file for signed JWT bearer tokens",
+          "flags": [
+            "--ws-shared-secret-file"
+          ],
+          "primary_flag": "--ws-shared-secret-file",
+          "synopsis": "--ws-shared-secret-file <PATH>"
+        },
+        {
+          "description": "Expected issuer for signed JWT bearer tokens",
+          "flags": [
+            "--ws-issuer"
+          ],
+          "primary_flag": "--ws-issuer",
+          "synopsis": "--ws-issuer <ISSUER>"
+        },
+        {
+          "description": "Expected audience for signed JWT bearer tokens",
+          "flags": [
+            "--ws-audience"
+          ],
+          "primary_flag": "--ws-audience",
+          "synopsis": "--ws-audience <AUDIENCE>"
+        },
+        {
+          "description": "Maximum clock skew when validating signed JWT bearer tokens",
+          "flags": [
+            "--ws-max-clock-skew-seconds"
+          ],
+          "primary_flag": "--ws-max-clock-skew-seconds",
+          "synopsis": "--ws-max-clock-skew-seconds <SECONDS>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Manage the local app-server daemon",
+          "name": "daemon"
+        },
+        {
+          "description": "Proxy stdio bytes to the running app-server control socket",
+          "name": "proxy"
+        },
+        {
+          "description": "[experimental] Generate TypeScript bindings for the app server protocol",
+          "name": "generate-ts"
+        },
+        {
+          "description": "[experimental] Generate JSON Schema for the app server protocol",
+          "name": "generate-json-schema"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex app-server [OPTIONS] [COMMAND]"
+      ]
+    },
+    {
+      "description": "[experimental] Manage the app-server daemon with remote control enabled",
+      "name": "remote-control",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Emit machine-readable JSON",
+          "flags": [
+            "--json"
+          ],
+          "primary_flag": "--json",
+          "synopsis": "--json"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Start the app-server daemon with remote control enabled",
+          "name": "start"
+        },
+        {
+          "description": "Stop the app-server daemon",
+          "name": "stop"
+        },
+        {
+          "description": "Create and print a short-lived manual pairing code",
+          "name": "pair"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex remote-control [OPTIONS] [COMMAND]"
+      ]
+    },
+    {
+      "description": "Launch the Desktop app (opens the app installer if missing)",
+      "name": "app",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Override the app installer download URL (advanced)",
+          "flags": [
+            "--download-url"
+          ],
+          "primary_flag": "--download-url",
+          "synopsis": "--download-url <DOWNLOAD_URL_OVERRIDE>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex app [OPTIONS] [PATH]"
+      ]
+    },
+    {
+      "description": "Generate shell completion scripts",
+      "name": "completion",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex completion [OPTIONS] [SHELL]"
+      ]
+    },
+    {
+      "description": "Update Codex to the latest version",
+      "name": "update",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex update [OPTIONS]"
+      ]
+    },
+    {
+      "description": "Diagnose local Codex installation, config, auth, and runtime health",
+      "name": "doctor",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Emit a redacted machine-readable report",
+          "flags": [
+            "--json"
+          ],
+          "primary_flag": "--json",
+          "synopsis": "--json"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Only show grouped check rows and the final count summary",
+          "flags": [
+            "--summary"
+          ],
+          "primary_flag": "--summary",
+          "synopsis": "--summary"
+        },
+        {
+          "description": "Expand long lists in detailed human output",
+          "flags": [
+            "--all"
+          ],
+          "primary_flag": "--all",
+          "synopsis": "--all"
+        },
+        {
+          "description": "Disable ANSI color in human output",
+          "flags": [
+            "--no-color"
+          ],
+          "primary_flag": "--no-color",
+          "synopsis": "--no-color"
+        },
+        {
+          "description": "Use ASCII status labels and separators in human output",
+          "flags": [
+            "--ascii"
+          ],
+          "primary_flag": "--ascii",
+          "synopsis": "--ascii"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex doctor [OPTIONS]"
+      ]
+    },
+    {
+      "description": "Run commands within a Codex-provided sandbox",
+      "name": "sandbox",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "JSON value from `codex/sandbox-state-meta` to apply directly",
+          "flags": [
+            "--sandbox-state-json"
+          ],
+          "primary_flag": "--sandbox-state-json",
+          "synopsis": "--sandbox-state-json <JSON>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Add a readable root to the supplied sandbox state. Repeat for multiple roots",
+          "flags": [
+            "--sandbox-state-readable-root"
+          ],
+          "primary_flag": "--sandbox-state-readable-root",
+          "synopsis": "--sandbox-state-readable-root <SANDBOX_STATE_READABLE_ROOT>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Disable direct network access in the supplied sandbox state",
+          "flags": [
+            "--sandbox-state-disable-network"
+          ],
+          "primary_flag": "--sandbox-state-disable-network",
+          "synopsis": "--sandbox-state-disable-network"
+        },
+        {
+          "description": "Named permissions profile to apply from the active configuration stack",
+          "flags": [
+            "-P",
+            "--permission-profile"
+          ],
+          "primary_flag": "--permission-profile",
+          "synopsis": "-P, --permission-profile <NAME>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE>"
+        },
+        {
+          "description": "Working directory used for profile resolution and command execution",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Include managed requirements while resolving an explicit permissions profile",
+          "flags": [
+            "--include-managed-config"
+          ],
+          "primary_flag": "--include-managed-config",
+          "synopsis": "--include-managed-config"
+        },
+        {
+          "description": "Allow the sandboxed command to bind/connect AF_UNIX sockets rooted at this path. Relative paths are resolved against the current directory. Repeat to allow multiple paths",
+          "flags": [
+            "--allow-unix-socket"
+          ],
+          "primary_flag": "--allow-unix-socket",
+          "synopsis": "--allow-unix-socket <ALLOW_UNIX_SOCKETS>"
+        },
+        {
+          "description": "While the command runs, capture macOS sandbox denials via `log stream` and print them after exit",
+          "flags": [
+            "--log-denials"
+          ],
+          "primary_flag": "--log-denials",
+          "synopsis": "--log-denials"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex sandbox [OPTIONS] [COMMAND]..."
+      ]
+    },
+    {
+      "description": "Debugging tools",
+      "name": "debug",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Render the raw model catalog as JSON",
+          "name": "models"
+        },
+        {
+          "description": "Tooling: helps debug the app server",
+          "name": "app-server"
+        },
+        {
+          "description": "Render the model-visible prompt input list as JSON",
+          "name": "prompt-input"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex debug [OPTIONS] <COMMAND>"
+      ]
+    },
+    {
+      "description": "Apply the latest diff produced by Codex agent as a `git apply` to your local working tree [aliases: a]",
+      "name": "apply",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex apply [OPTIONS] <TASK_ID>"
+      ]
+    },
+    {
+      "description": "Resume a previous interactive session (picker by default; use --last to continue the most recent)",
+      "name": "resume",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Continue the most recent session without showing the picker",
+          "flags": [
+            "--last"
+          ],
+          "primary_flag": "--last",
+          "synopsis": "--last"
+        },
+        {
+          "description": "Show all sessions (disables cwd filtering and shows CWD column)",
+          "flags": [
+            "--all"
+          ],
+          "primary_flag": "--all",
+          "synopsis": "--all"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Include non-interactive sessions in the resume picker and --last selection",
+          "flags": [
+            "--include-non-interactive"
+          ],
+          "primary_flag": "--include-non-interactive",
+          "synopsis": "--include-non-interactive"
+        },
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Configure when the model requires human approval before executing a command Possible values: - on-request: The model decides when to ask the user for approval - never:      Never ask for user approval Execution failures are immediately returned to the model",
+          "flags": [
+            "-a",
+            "--ask-for-approval"
+          ],
+          "primary_flag": "--ask-for-approval",
+          "synopsis": "-a, --ask-for-approval <APPROVAL_POLICY>"
+        },
+        {
+          "description": "Enable live web search. When enabled, the native Responses `web_search` tool is available to the model (no per\u2011call approval)",
+          "flags": [
+            "--search"
+          ],
+          "primary_flag": "--search",
+          "synopsis": "--search"
+        },
+        {
+          "description": "Disable alternate screen mode Runs the TUI in inline mode, preserving terminal scrollback history.",
+          "flags": [
+            "--no-alt-screen"
+          ],
+          "primary_flag": "--no-alt-screen",
+          "synopsis": "--no-alt-screen"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        },
+        {
+          "description": "Print version",
+          "flags": [
+            "-V",
+            "--version"
+          ],
+          "primary_flag": "--version",
+          "synopsis": "-V, --version"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex resume [OPTIONS] [SESSION_ID] [PROMPT]"
+      ]
+    },
+    {
+      "description": "Queue a message for an existing session",
+      "name": "queue",
+      "options": [
+        {
+          "description": "Session UUID or exact session name",
+          "flags": [
+            "--thread"
+          ],
+          "primary_flag": "--thread",
+          "synopsis": "--thread <THREAD>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Message text to queue",
+          "flags": [
+            "--message"
+          ],
+          "primary_flag": "--message",
+          "synopsis": "--message <TEXT>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex queue [OPTIONS] --thread <THREAD> --message <TEXT>"
+      ]
+    },
+    {
+      "description": "Archive a saved session by id or session name",
+      "name": "archive",
+      "options": [
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex archive [OPTIONS] <SESSION>"
+      ]
+    },
+    {
+      "description": "Permanently delete a saved session by id or session name",
+      "name": "delete",
+      "options": [
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Delete without prompting. SESSION must be a UUID",
+          "flags": [
+            "--force"
+          ],
+          "primary_flag": "--force",
+          "synopsis": "--force"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex delete [OPTIONS] <SESSION>"
+      ]
+    },
+    {
+      "description": "Inspect or migrate legacy local sessions to paginated thread history",
+      "name": "migrate-rollouts",
+      "options": [
+        {
+          "description": "Publish the migration. Without this flag the command only reports eligible sessions",
+          "flags": [
+            "--apply"
+          ],
+          "primary_flag": "--apply",
+          "synopsis": "--apply"
+        },
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Restrict inspection or migration to one or more thread IDs",
+          "flags": [
+            "--thread"
+          ],
+          "primary_flag": "--thread",
+          "synopsis": "--thread <THREAD_ID>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Limit aggregate rollout read and write throughput, in MiB per second",
+          "flags": [
+            "--max-mib-per-second"
+          ],
+          "primary_flag": "--max-mib-per-second",
+          "synopsis": "--max-mib-per-second <MIB>"
+        },
+        {
+          "description": "Emit the complete per-thread report as JSON",
+          "flags": [
+            "--json"
+          ],
+          "primary_flag": "--json",
+          "synopsis": "--json"
+        },
+        {
+          "description": "Print one line for every inspected rollout",
+          "flags": [
+            "--verbose"
+          ],
+          "primary_flag": "--verbose",
+          "synopsis": "--verbose"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex migrate-rollouts [OPTIONS]"
+      ]
+    },
+    {
+      "description": "Unarchive a saved session by id or session name",
+      "name": "unarchive",
+      "options": [
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex unarchive [OPTIONS] <SESSION>"
+      ]
+    },
+    {
+      "description": "Fork a previous interactive session (picker by default; use --last to fork the most recent)",
+      "name": "fork",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Fork the most recent session without showing the picker",
+          "flags": [
+            "--last"
+          ],
+          "primary_flag": "--last",
+          "synopsis": "--last"
+        },
+        {
+          "description": "Show all sessions (disables cwd filtering and shows CWD column)",
+          "flags": [
+            "--all"
+          ],
+          "primary_flag": "--all",
+          "synopsis": "--all"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Configure when the model requires human approval before executing a command Possible values: - on-request: The model decides when to ask the user for approval - never:      Never ask for user approval Execution failures are immediately returned to the model",
+          "flags": [
+            "-a",
+            "--ask-for-approval"
+          ],
+          "primary_flag": "--ask-for-approval",
+          "synopsis": "-a, --ask-for-approval <APPROVAL_POLICY>"
+        },
+        {
+          "description": "Enable live web search. When enabled, the native Responses `web_search` tool is available to the model (no per\u2011call approval)",
+          "flags": [
+            "--search"
+          ],
+          "primary_flag": "--search",
+          "synopsis": "--search"
+        },
+        {
+          "description": "Disable alternate screen mode Runs the TUI in inline mode, preserving terminal scrollback history.",
+          "flags": [
+            "--no-alt-screen"
+          ],
+          "primary_flag": "--no-alt-screen",
+          "synopsis": "--no-alt-screen"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        },
+        {
+          "description": "Print version",
+          "flags": [
+            "-V",
+            "--version"
+          ],
+          "primary_flag": "--version",
+          "synopsis": "-V, --version"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex fork [OPTIONS] [SESSION_ID] [PROMPT]"
+      ]
+    },
+    {
+      "description": "[EXPERIMENTAL] Browse tasks from Codex Cloud and apply changes locally",
+      "name": "cloud",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        },
+        {
+          "description": "Print version",
+          "flags": [
+            "-V",
+            "--version"
+          ],
+          "primary_flag": "--version",
+          "synopsis": "-V, --version"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Submit a new Codex Cloud task without launching the TUI",
+          "name": "exec"
+        },
+        {
+          "description": "Show the status of a Codex Cloud task",
+          "name": "status"
+        },
+        {
+          "description": "List Codex Cloud tasks",
+          "name": "list"
+        },
+        {
+          "description": "Apply the diff for a Codex Cloud task locally",
+          "name": "apply"
+        },
+        {
+          "description": "Show the unified diff for a Codex Cloud task",
+          "name": "diff"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex cloud [OPTIONS] [COMMAND]"
+      ]
+    },
+    {
+      "description": "[EXPERIMENTAL] Run the standalone exec-server service",
+      "name": "exec-server",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Maximum number of requests to process concurrently on each connection [default: 1]",
+          "flags": [
+            "--concurrent-requests"
+          ],
+          "primary_flag": "--concurrent-requests",
+          "synopsis": "--concurrent-requests <COUNT>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Transport endpoint URL. Supported values: `ws://IP:PORT` (default), `stdio`, `stdio://`",
+          "flags": [
+            "--listen"
+          ],
+          "primary_flag": "--listen",
+          "synopsis": "--listen <URL>"
+        },
+        {
+          "description": "Register this exec-server as a remote environment using the given base URL",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <URL>"
+        },
+        {
+          "description": "Environment id to attach to when registering remotely",
+          "flags": [
+            "--environment-id"
+          ],
+          "primary_flag": "--environment-id",
+          "synopsis": "--environment-id <ID>"
+        },
+        {
+          "description": "Human-readable environment name",
+          "flags": [
+            "--name"
+          ],
+          "primary_flag": "--name",
+          "synopsis": "--name <NAME>"
+        },
+        {
+          "description": "Use Agent Identity auth from CODEX_ACCESS_TOKEN for remote registration",
+          "flags": [
+            "--use-agent-identity-auth"
+          ],
+          "primary_flag": "--use-agent-identity-auth",
+          "synopsis": "--use-agent-identity-auth"
+        },
+        {
+          "description": "Exit when the parent-owned standard-input pipe closes [env: CODEX_EXEC_SERVER_EXIT_ON_STDIN_CLOSE=]",
+          "flags": [
+            "--exit-on-stdin-close"
+          ],
+          "primary_flag": "--exit-on-stdin-close",
+          "synopsis": "--exit-on-stdin-close"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Register an existing WebSocket exec-server as a remote environment",
+          "name": "forward"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex exec-server [OPTIONS] [COMMAND]"
+      ]
+    },
+    {
+      "description": "Inspect feature flags",
+      "name": "features",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "List known features with their stage and effective state",
+          "name": "list"
+        },
+        {
+          "description": "Enable a feature in config.toml",
+          "name": "enable"
+        },
+        {
+          "description": "Disable a feature in config.toml",
+          "name": "disable"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex features [OPTIONS] <COMMAND>"
+      ]
+    },
+    {
+      "description": "Print this message or the help of the given subcommand(s)",
+      "name": "help",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
+        },
+        {
+          "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+          "flags": [
+            "--strict-config"
+          ],
+          "primary_flag": "--strict-config",
+          "synopsis": "--strict-config"
+        },
+        {
+          "description": "Optional image(s) to attach to the initial prompt",
+          "flags": [
+            "-i",
+            "--image"
+          ],
+          "primary_flag": "--image",
+          "synopsis": "-i, --image <FILE>..."
+        },
+        {
+          "description": "Model the agent should use",
+          "flags": [
+            "-m",
+            "--model"
+          ],
+          "primary_flag": "--model",
+          "synopsis": "-m, --model <MODEL>"
+        },
+        {
+          "description": "Use open-source provider",
+          "flags": [
+            "--oss"
+          ],
+          "primary_flag": "--oss",
+          "synopsis": "--oss"
+        },
+        {
+          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+          "flags": [
+            "--local-provider"
+          ],
+          "primary_flag": "--local-provider",
+          "synopsis": "--local-provider <OSS_PROVIDER>"
+        },
+        {
+          "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+          "flags": [
+            "-p",
+            "--profile"
+          ],
+          "primary_flag": "--profile",
+          "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+        },
+        {
+          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+          "flags": [
+            "-s",
+            "--sandbox"
+          ],
+          "primary_flag": "--sandbox",
+          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+        },
+        {
+          "description": "Route approval requests through automatic review using the workspace-write sandbox",
+          "flags": [
+            "--approve-for-me"
+          ],
+          "primary_flag": "--approve-for-me",
+          "synopsis": "--approve-for-me"
+        },
+        {
+          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+          "flags": [
+            "--dangerously-bypass-approvals-and-sandbox"
+          ],
+          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+        },
+        {
+          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+          "flags": [
+            "--dangerously-bypass-hook-trust"
+          ],
+          "primary_flag": "--dangerously-bypass-hook-trust",
+          "synopsis": "--dangerously-bypass-hook-trust"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
+        },
+        {
+          "description": "Additional directories that should be writable alongside the primary workspace",
+          "flags": [
+            "--add-dir"
+          ],
+          "primary_flag": "--add-dir",
+          "synopsis": "--add-dir <DIR>"
+        },
+        {
+          "description": "Configure when the model requires human approval before executing a command Possible values: - on-request: The model decides when to ask the user for approval - never:      Never ask for user approval Execution failures are immediately returned to the model",
+          "flags": [
+            "-a",
+            "--ask-for-approval"
+          ],
+          "primary_flag": "--ask-for-approval",
+          "synopsis": "-a, --ask-for-approval <APPROVAL_POLICY>"
+        },
+        {
+          "description": "Enable live web search. When enabled, the native Responses `web_search` tool is available to the model (no per\u2011call approval)",
+          "flags": [
+            "--search"
+          ],
+          "primary_flag": "--search",
+          "synopsis": "--search"
+        },
+        {
+          "description": "Disable alternate screen mode Runs the TUI in inline mode, preserving terminal scrollback history.",
+          "flags": [
+            "--no-alt-screen"
+          ],
+          "primary_flag": "--no-alt-screen",
+          "synopsis": "--no-alt-screen"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        },
+        {
+          "description": "Print version",
+          "flags": [
+            "-V",
+            "--version"
+          ],
+          "primary_flag": "--version",
+          "synopsis": "-V, --version"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Browse all agent sessions on the shared local app-server daemon",
+          "name": "agents"
+        },
+        {
+          "description": "Run Codex non-interactively [aliases: e]",
+          "name": "exec"
+        },
+        {
+          "description": "Run a code review non-interactively",
+          "name": "review"
+        },
+        {
+          "description": "Manage login",
+          "name": "login"
+        },
+        {
+          "description": "Remove stored authentication credentials",
+          "name": "logout"
+        },
+        {
+          "description": "Manage external MCP servers for Codex",
+          "name": "mcp"
+        },
+        {
+          "description": "Manage Codex plugins",
+          "name": "plugin"
+        },
+        {
+          "description": "Start Codex as an MCP server (stdio)",
+          "name": "mcp-server"
+        },
+        {
+          "description": "[experimental] Run the app server or related tooling",
+          "name": "app-server"
+        },
+        {
+          "description": "[experimental] Manage the app-server daemon with remote control enabled",
+          "name": "remote-control"
+        },
+        {
+          "description": "Launch the Desktop app (opens the app installer if missing)",
+          "name": "app"
+        },
+        {
+          "description": "Generate shell completion scripts",
+          "name": "completion"
+        },
+        {
+          "description": "Update Codex to the latest version",
+          "name": "update"
+        },
+        {
+          "description": "Diagnose local Codex installation, config, auth, and runtime health",
+          "name": "doctor"
+        },
+        {
+          "description": "Run commands within a Codex-provided sandbox",
+          "name": "sandbox"
+        },
+        {
+          "description": "Debugging tools",
+          "name": "debug"
+        },
+        {
+          "description": "Apply the latest diff produced by Codex agent as a `git apply` to your local working tree [aliases: a]",
+          "name": "apply"
+        },
+        {
+          "description": "Resume a previous interactive session (picker by default; use --last to continue the most recent)",
+          "name": "resume"
+        },
+        {
+          "description": "Queue a message for an existing session",
+          "name": "queue"
+        },
+        {
+          "description": "Archive a saved session by id or session name",
+          "name": "archive"
+        },
+        {
+          "description": "Permanently delete a saved session by id or session name",
+          "name": "delete"
+        },
+        {
+          "description": "Inspect or migrate legacy local sessions to paginated thread history",
+          "name": "migrate-rollouts"
+        },
+        {
+          "description": "Unarchive a saved session by id or session name",
+          "name": "unarchive"
+        },
+        {
+          "description": "Fork a previous interactive session (picker by default; use --last to fork the most recent)",
+          "name": "fork"
+        },
+        {
+          "description": "[EXPERIMENTAL] Browse tasks from Codex Cloud and apply changes locally",
+          "name": "cloud"
+        },
+        {
+          "description": "[EXPERIMENTAL] Run the standalone exec-server service",
+          "name": "exec-server"
+        },
+        {
+          "description": "Inspect feature flags",
+          "name": "features"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "codex [OPTIONS] [PROMPT]",
+        "codex [OPTIONS] <COMMAND> [ARGS]"
+      ]
+    }
+  ],
+  "global_options": [
+    {
+      "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+      "flags": [
+        "-c",
+        "--config"
+      ],
+      "primary_flag": "--config",
+      "synopsis": "-c, --config <key=value>"
+    },
+    {
+      "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+      "flags": [
+        "--enable"
+      ],
+      "primary_flag": "--enable",
+      "synopsis": "--enable <FEATURE>"
+    },
+    {
+      "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+      "flags": [
+        "--disable"
+      ],
+      "primary_flag": "--disable",
+      "synopsis": "--disable <FEATURE>"
+    },
+    {
+      "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
+      "flags": [
+        "--remote"
+      ],
+      "primary_flag": "--remote",
+      "synopsis": "--remote <ADDR>"
+    },
+    {
+      "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
+      "flags": [
+        "--remote-auth-token-env"
+      ],
+      "primary_flag": "--remote-auth-token-env",
+      "synopsis": "--remote-auth-token-env <ENV_VAR>"
+    },
+    {
+      "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
+      "flags": [
+        "--strict-config"
+      ],
+      "primary_flag": "--strict-config",
+      "synopsis": "--strict-config"
+    },
+    {
+      "description": "Optional image(s) to attach to the initial prompt",
+      "flags": [
+        "-i",
+        "--image"
+      ],
+      "primary_flag": "--image",
+      "synopsis": "-i, --image <FILE>..."
+    },
+    {
+      "description": "Model the agent should use",
+      "flags": [
+        "-m",
+        "--model"
+      ],
+      "primary_flag": "--model",
+      "synopsis": "-m, --model <MODEL>"
+    },
+    {
+      "description": "Use open-source provider",
+      "flags": [
+        "--oss"
+      ],
+      "primary_flag": "--oss",
+      "synopsis": "--oss"
+    },
+    {
+      "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
+      "flags": [
+        "--local-provider"
+      ],
+      "primary_flag": "--local-provider",
+      "synopsis": "--local-provider <OSS_PROVIDER>"
+    },
+    {
+      "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
+      "flags": [
+        "-p",
+        "--profile"
+      ],
+      "primary_flag": "--profile",
+      "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
+    },
+    {
+      "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
+      "flags": [
+        "-s",
+        "--sandbox"
+      ],
+      "primary_flag": "--sandbox",
+      "synopsis": "-s, --sandbox <SANDBOX_MODE>"
+    },
+    {
+      "description": "Route approval requests through automatic review using the workspace-write sandbox",
+      "flags": [
+        "--approve-for-me"
+      ],
+      "primary_flag": "--approve-for-me",
+      "synopsis": "--approve-for-me"
+    },
+    {
+      "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
+      "flags": [
+        "--dangerously-bypass-approvals-and-sandbox"
+      ],
+      "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
+      "synopsis": "--dangerously-bypass-approvals-and-sandbox"
+    },
+    {
+      "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
+      "flags": [
+        "--dangerously-bypass-hook-trust"
+      ],
+      "primary_flag": "--dangerously-bypass-hook-trust",
+      "synopsis": "--dangerously-bypass-hook-trust"
+    },
+    {
+      "description": "Tell the agent to use the specified directory as its working root",
+      "flags": [
+        "-C",
+        "--cd"
+      ],
+      "primary_flag": "--cd",
+      "synopsis": "-C, --cd <DIR>"
+    },
+    {
+      "description": "Additional directories that should be writable alongside the primary workspace",
+      "flags": [
+        "--add-dir"
+      ],
+      "primary_flag": "--add-dir",
+      "synopsis": "--add-dir <DIR>"
+    },
+    {
+      "description": "Configure when the model requires human approval before executing a command Possible values: - on-request: The model decides when to ask the user for approval - never:      Never ask for user approval Execution failures are immediately returned to the model",
+      "flags": [
+        "-a",
+        "--ask-for-approval"
+      ],
+      "primary_flag": "--ask-for-approval",
+      "synopsis": "-a, --ask-for-approval <APPROVAL_POLICY>"
+    },
+    {
+      "description": "Enable live web search. When enabled, the native Responses `web_search` tool is available to the model (no per\u2011call approval)",
+      "flags": [
+        "--search"
+      ],
+      "primary_flag": "--search",
+      "synopsis": "--search"
+    },
+    {
+      "description": "Disable alternate screen mode Runs the TUI in inline mode, preserving terminal scrollback history.",
+      "flags": [
+        "--no-alt-screen"
+      ],
+      "primary_flag": "--no-alt-screen",
+      "synopsis": "--no-alt-screen"
+    },
+    {
+      "description": "Print help (see a summary with '-h')",
+      "flags": [
+        "-h",
+        "--help"
+      ],
+      "primary_flag": "--help",
+      "synopsis": "-h, --help"
+    },
+    {
+      "description": "Print version",
+      "flags": [
+        "-V",
+        "--version"
+      ],
+      "primary_flag": "--version",
+      "synopsis": "-V, --version"
+    }
+  ],
+  "observation_environment": {
+    "arch": "arm64",
+    "os": "darwin"
+  },
+  "schema_version": 2,
+  "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+  "source_kind": "installed_cli_help_observation",
+  "source_ref": "rust-v0.153.4",
+  "usage": [
+    "codex [OPTIONS] [PROMPT]",
+    "codex [OPTIONS] <COMMAND> [ARGS]"
+  ]
+}

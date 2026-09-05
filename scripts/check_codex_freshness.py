@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = ROOT / "docs" / "freshness.json"
 SYNC_SUMMARY = ROOT / "docs" / "sync_summary.json"
 SOURCE_COVERAGE = ROOT / "docs" / "source_coverage.json"
+CLI_SURFACE = ROOT / "docs" / "codex_cli_surface.json"
 MODEL_CATALOG = ROOT / "docs" / "codex_models.json"
 FEATURE_LIFECYCLE = ROOT / "docs" / "feature-flags" / "lifecycle.json"
 REPOSITORY_API = "https://api.github.com/repos/openai/codex"
@@ -212,6 +213,7 @@ def build_report(
     coverage: Dict[str, object],
     feature_snapshot: Dict[str, object],
     model_snapshot: Dict[str, object],
+    cli_surface: Dict[str, object],
     now: datetime,
     grace_hours: float,
     resolve_tag_commit_fn: Callable[[str], str] = resolve_tag_commit,
@@ -332,6 +334,32 @@ def build_report(
         make_integrity_check("model_catalog_source_path", str(model_snapshot.get("source_path", "")),
                              "codex-rs/models-manager/models.json"),
     ])
+    cli_version = parse_version(str(cli_surface.get("codex_cli_version", "")))
+    cli_ref = str(cli_surface.get("source_ref", ""))
+    cli_commit = validate_commit(cli_surface.get("source_commit"), "CLI surface")
+    if cli_ref not in resolved_commits:
+        resolved_commits[cli_ref] = resolve_tag_commit_fn(cli_ref)
+    checks.extend([
+        make_check("cli_surface_matches_latest_stable", cli_version, release_version, grace_elapsed=grace_elapsed),
+        make_integrity_check("cli_surface_release_ref_matches_version", cli_ref, f"rust-v{cli_version}"),
+        make_integrity_check("cli_surface_commit_matches_release_tag", cli_commit, resolved_commits[cli_ref]),
+    ])
+    platform_observations = cli_surface.get("platform_observations", {})
+    if not isinstance(platform_observations, dict) or not platform_observations:
+        raise FreshnessError("CLI surface lacks platform observations")
+    platform_status = {}
+    for platform, observation in sorted(platform_observations.items()):
+        version = parse_version(str(observation.get("codex_cli_version", "")))
+        source_ref = str(observation.get("source_ref", ""))
+        commit = validate_commit(observation.get("source_commit"), f"CLI platform {platform}")
+        if source_ref not in resolved_commits:
+            resolved_commits[source_ref] = resolve_tag_commit_fn(source_ref)
+        checks.extend([
+            make_integrity_check(f"cli_platform_{platform}_release_ref_matches_version", source_ref, f"rust-v{version}"),
+            make_integrity_check(f"cli_platform_{platform}_commit_matches_release_tag", commit, resolved_commits[source_ref]),
+        ])
+        platform_status[platform] = {**observation, "matches_latest_stable": version == release_version}
+
     statuses = {str(check["status"]) for check in checks}
     overall = "stale" if "fail" in statuses else "warning" if "warning" in statuses else "fresh"
     return {
@@ -354,6 +382,10 @@ def build_report(
                 str(summary.get("generated_at", "")) if source_metadata.get("sync_scope", "full") == "full" else ""
             ),
             "provenance": "generated_sync_metadata",
+        },
+        "cli_surface": {
+            "version": cli_version, "source_ref": cli_ref, "source_commit": cli_commit,
+            "platform_observations": platform_status,
         },
         "model_catalog": {
             "version": model_version, "source_ref": model_ref, "source_commit": model_commit,
@@ -399,6 +431,7 @@ def main(argv: list[str] | None = None) -> int:
             coverage=load_json(SOURCE_COVERAGE),
             feature_snapshot=load_json(FEATURE_LIFECYCLE),
             model_snapshot=load_json(MODEL_CATALOG),
+            cli_surface=load_json(CLI_SURFACE),
             now=datetime.now(timezone.utc),
             grace_hours=max(args.grace_hours, 0.0),
         )

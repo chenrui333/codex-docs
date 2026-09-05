@@ -26,7 +26,8 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/docs_manifest.json` hash manifest for change tracking, including Codex CLI version-history metadata
 - `docs/codex_capabilities.json` generated capability inventory spanning system skills, prompt snapshots, and linked tool guides
 - `docs/codex_models.json` release-bundled model catalog with immutable source provenance and selected runtime fields
-- `docs/codex_cli_surface.json` isolated CLI help observation covering top-level commands, subcommands, and options
+- `docs/cli-surface/*.json` last-known-good isolated CLI help observations per OS/architecture
+- `docs/codex_cli_surface.json` deterministic union of commands/options with per-platform release provenance
 - `docs/sync_summary.json` latest sync summary with the source snapshot for changed outputs
 - `docs/source_coverage.json` sitemap coverage watchdog output
 - `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, model-catalog, and feature-snapshot invariant
@@ -38,6 +39,14 @@ identities. Identical retries and unchanged syncs add no events. Earlier daily r
 untouched; an existing report is preserved when that date first adopts event tracking.
 
 Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and CLI-version history only for release-derived files. Existing `codex_cli_versions` lists on web pages are frozen historical mirror observations, not evidence that their content belongs to those CLI releases. New web pages do not receive CLI-version lists; release observations are recorded once in sync events.
+
+CLI collection runs on Linux and macOS. Failed or missing platform collections preserve
+that platform's last-known-good observation. The aggregate identifies each observation's
+own release; an older platform snapshot does not claim to describe the latest release.
+Capabilities remain globally active if present or conservatively retained on any observed
+platform. Removal requires a newer descendant release on every previously observed platform.
+Initial migration recovers recent platform observations from existing repository history.
+Windows observation is not yet scheduled.
 
 The capability inventory distinguishes official documentation, immutable upstream source, GitHub release metadata, isolated installed-CLI observations, and deterministic relationships. It records CLI/config surfaces and feature maturity without reading the user's real Codex home, credentials, history, or sessions.
 
@@ -78,7 +87,7 @@ Resiliency controls:
 - `CODEX_FRESHNESS_GRACE_HOURS` controls when a stable-release gap becomes a strict failure (default `12`, allowing two scheduled 6-hour sync opportunities)
 - Strict failures leave canonical output unchanged; non-strict local runs may retain diagnostic partial output
 - Release-only sync validates cached web files against their manifest and retains their bytes, without fetching web sources
-- Coverage records `sync.scope` and `sync.web_observation`; release freshness does not assert current web-source health
+- Coverage records the last meaningful transaction scope and web observation basis; no-op scope switches do not rewrite state. Release freshness does not assert current web-source health.
 - Feature snapshots are built in memory and validated against the same release before inventory generation
 - `just check-strict` runs the idempotence check with strict sync failure enforcement
 - ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not

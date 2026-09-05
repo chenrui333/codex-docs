@@ -10,7 +10,48 @@ permissions:
   issues: write
 
 jobs:
+  collect-cli:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout collector
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.14'
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
+      - name: Install observation tools
+        run: |
+          pip install -r scripts/requirements.txt
+          npm install -g @openai/codex@latest
+      - name: Observe isolated CLI help
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/collect_cli_surface.py --output-dir observations
+      - name: Upload platform observation
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: cli-observation-${{ matrix.runner }}
+          path: observations/*.json
+          if-no-files-found: error
+
   release-state:
+    needs: collect-cli
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -44,12 +85,20 @@ jobs:
           pip install -r scripts/requirements.txt
           npm install -g @openai/codex@latest
 
+      - name: Download successful platform observations
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: cli-observation-*
+          path: observations
+          merge-multiple: true
+
       - name: Generate release transaction
         env:
           CODEX_DOCS_STRICT_SYNC: "1"
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          python scripts/fetch_codex_docs.py --release-only
+          python scripts/fetch_codex_docs.py --release-only --cli-observations-dir observations
           python scripts/check_codex_freshness.py --strict
 
       - name: Check writer base
