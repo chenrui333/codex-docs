@@ -13,6 +13,8 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - Linked platform tool guides referenced by mirrored Codex docs
 - System skills materialized by the installed Codex CLI
 - A sanitized `codex debug prompt-input` snapshot from the installed Codex CLI
+- Isolated Linux/macOS CLI help observations and their aggregated command/option surface
+- Release-matched model catalog and feature lifecycle snapshots
 - A generated `docs/codex_capabilities.json` inventory of mirrored capability surfaces
 
 ## Repository layout
@@ -29,9 +31,11 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `docs/cli-surface/*.json` last-known-good isolated CLI help observations per OS/architecture
 - `docs/codex_cli_surface.json` deterministic union of commands/options with per-platform release provenance
 - `docs/sync_summary.json` latest sync summary with the source snapshot for changed outputs
-- `docs/source_coverage.json` sitemap coverage watchdog output
+- `docs/source_coverage.json` source coverage, transaction scope, and retained web-observation state
 - `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, model-catalog, and feature-snapshot invariant
-- `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
+- `docs/feature-flags/lifecycle.json` and `lifecycle.md` release-matched feature stages, defaults, compatibility behavior, and documentation coverage
+- `weekly/events/YYYY-MM-DD.json` append-safe structured transaction ledger
+- `weekly/YYYY-MM-DD.md` daily rollup with semantic changes, category summary, and raw changed paths
 
 Daily digests roll up all meaningful transactions recorded in `weekly/events/YYYY-MM-DD.json`.
 Events retain structured changes, before/after content hashes, release provenance, and stable
@@ -62,6 +66,7 @@ release evidence, not an observation of an authenticated account's available mod
 GitHub Actions workflow: `.github/workflows/update-docs.yml`
 
 - Runs every 6 hours
+- Collects isolated CLI help on Linux and macOS; unavailable collectors retain previous observations
 - First commits a verified release transaction with `scripts/fetch_codex_docs.py --release-only`
 - Then runs full web discovery with `scripts/fetch_codex_docs.py`; a web outage cannot undo the release commit
 - Each transaction commits and pushes only after its own strict, failure-free validation
@@ -109,7 +114,8 @@ Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
 
 - Runs daily (and manual dispatch) to snapshot current feature flags into `docs/feature-flags/`
 - Resolves the CLI release tag to an immutable `openai/codex` commit before reading source semantics
-- Treats missing stable and experimental flags as actionable; other lifecycle stages remain informational
+- Distinguishes configurable flags from removed compatibility keys and records effective behavior only where upstream source supports it; ambiguous cases remain unknown
+- Treats missing stable and experimental flags as actionable; upstream has no reliable public/internal marker for narrowing that check
 - Commits updated snapshots on schedule/manual runs when drift is detected
 - Replays the stored CLI version and source commit when enforcing pull-request freshness
 
@@ -120,17 +126,18 @@ just setup
 just lint
 just test
 just sync
-just sync-release
-just check
 just check-strict
-just feature-flags
-just check-feature-flags
 ```
+
+`just sync-release` advances release-derived artifacts using a complete, manifest-verified web mirror without contacting web sources. It is useful during a web outage and fails if no valid cached mirror exists. `just check-strict` runs full sync twice and checks freshness, idempotence, and changed-file scope; keep other repository files unchanged while it runs. `just check` is the non-strict local variant.
+
+For feature-specific work, use `just feature-flags` and review the generated diff. `just check-feature-flags` regenerates and compares against the Git index, so stage the intended snapshot before checking. Replays need the recorded CLI version and observation platform; a platform change can legitimately change observed defaults.
 
 Local setup defaults to Python 3.14 to match CI. Set `CODEX_DOCS_PYTHON` to an equivalent Python 3.14 executable when needed. The actionlint recipe uses Go to run the same pinned actionlint release as CI.
 
 ## Notes
 
 - This is a community mirror, not an official OpenAI repository.
+- The [September 2026 release/runtime audit](audits/2026-09-04.md) records the evidence behind the provenance, platform, history, and transaction safeguards.
 - The root [MIT license](LICENSE) covers repository-authored code and tooling. It does not relicense mirrored OpenAI documentation, prompts, skills, or other upstream assets; those retain their original ownership and applicable licenses or terms. Embedded upstream license and copyright notices are preserved.
 - If a source page structure changes, update `scripts/fetch_codex_docs.py` selectors and filters.
