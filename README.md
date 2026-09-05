@@ -37,7 +37,7 @@ Events retain structured changes, before/after content hashes, release provenanc
 identities. Identical retries and unchanged syncs add no events. Earlier daily reports remain
 untouched; an existing report is preserved when that date first adopts event tracking.
 
-Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
+Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and CLI-version history only for release-derived files. Existing `codex_cli_versions` lists on web pages are frozen historical mirror observations, not evidence that their content belongs to those CLI releases. New web pages do not receive CLI-version lists; release observations are recorded once in sync events.
 
 The capability inventory distinguishes official documentation, immutable upstream source, GitHub release metadata, isolated installed-CLI observations, and deterministic relationships. It records CLI/config surfaces and feature maturity without reading the user's real Codex home, credentials, history, or sessions.
 

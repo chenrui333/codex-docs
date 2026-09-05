@@ -789,6 +789,24 @@ class FetchHelpersTests(unittest.TestCase):
             },
         )
 
+    def test_web_documents_do_not_acquire_cli_release_provenance(self):
+        with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
+            for source in ("developers", sync.LEARN_SOURCE_TYPE, sync.PLATFORM_TOOL_GUIDE_SOURCE_TYPE):
+                with self.subTest(source=source):
+                    item = sync.ManagedFile(f"{source}.md", source, "https://example.test/doc", "# Content\n")
+                    first = sync.annotate_markdown_file(item, {"codex_cli_version": "1.2.3"})
+                    self.assertNotIn("codex_cli_versions", sync.split_markdown_frontmatter(first.content)[0])
+                    path = sync.output_path_for_rel_path(item.rel_path)
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    # Freeze, rather than discard, previously recorded observations.
+                    legacy = sync.format_frontmatter({"source_type": source, "source_url": item.source_url,
+                        "codex_cli_versions": ["1.2.2"], "codex_cli_versions_raw": ["codex-cli 1.2.2"]}, "# Content\n")
+                    path.write_text(legacy)
+                    newer = sync.annotate_markdown_file(item, {"codex_cli_version": "1.2.4"})
+                    self.assertEqual(newer.content, legacy)
+                    changed = sync.annotate_markdown_file(replace(item, content="# Changed\n"), {"codex_cli_version": "1.2.5"})
+                    self.assertEqual(sync.split_markdown_frontmatter(changed.content)[0]["codex_cli_versions"], ["1.2.2"])
+
     def test_cli_help_parser_captures_commands_subcommands_and_options(self):
         help_text = """Codex CLI
 
