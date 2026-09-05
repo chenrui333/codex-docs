@@ -25,10 +25,11 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 - `system_prompts/codex-cli/prompt-input.json` sanitized prompt input snapshot from `codex debug prompt-input`
 - `docs/docs_manifest.json` hash manifest for change tracking, including Codex CLI version-history metadata
 - `docs/codex_capabilities.json` generated capability inventory spanning system skills, prompt snapshots, and linked tool guides
+- `docs/codex_models.json` release-bundled model catalog with immutable source provenance and selected runtime fields
 - `docs/codex_cli_surface.json` isolated CLI help observation covering top-level commands, subcommands, and options
 - `docs/sync_summary.json` latest sync summary with the source snapshot for changed outputs
 - `docs/source_coverage.json` sitemap coverage watchdog output
-- `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, and feature-snapshot invariant
+- `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, model-catalog, and feature-snapshot invariant
 - `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
 
 Daily digests roll up all meaningful transactions recorded in `weekly/events/YYYY-MM-DD.json`.
@@ -39,6 +40,13 @@ untouched; an existing report is preserved when that date first adopts event tra
 Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and `codex_cli_versions` history for the CLI versions where the file remained present.
 
 The capability inventory distinguishes official documentation, immutable upstream source, GitHub release metadata, isolated installed-CLI observations, and deterministic relationships. It records CLI/config surfaces and feature maturity without reading the user's real Codex home, credentials, history, or sessions.
+
+The model catalog tracks bundled model visibility, priority, reasoning, context limits,
+API support, tool families, and replacement relationships without copying internal prompt
+strings. Structured model changes appear in the daily event ledger and Markdown digest.
+The CLI sorts models by priority and selects a visible default after authentication filtering;
+remote catalogs and explicit configuration can override bundled behavior. The snapshot is
+release evidence, not an observation of an authenticated account's available models.
 
 ## Automation
 

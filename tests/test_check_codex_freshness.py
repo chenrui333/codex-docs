@@ -68,6 +68,10 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                     "source_commit": "a" * 40,
                 },
             },
+            "model_snapshot": {
+                "codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
+                "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json",
+            },
             "feature_snapshot": {
                 "codex_cli_version": "codex-cli 1.2.3",
                 "source_ref": "rust-v1.2.3",
@@ -87,6 +91,29 @@ class CheckCodexFreshnessTests(unittest.TestCase):
             first["canonical_mirror"]["last_successful_full_sync_at"],
             "2026-08-29T11:00:00+00:00",
         )
+
+    def test_model_provenance_failure_is_not_subject_to_release_grace(self):
+        release = {"version": "1.2.3", "published_at": "2026-08-29T10:00:00Z"}
+        model = {"codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
+                 "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json"}
+        for key, value, check in (
+            ("source_commit", "b" * 40, "model_catalog_commit_matches_release_tag"),
+            ("source_ref", "rust-v1.2.2", "model_catalog_release_ref_matches_version"),
+            ("source_path", "wrong.json", "model_catalog_source_path"),
+        ):
+            with self.subTest(key=key):
+                report = freshness.build_report(
+                    latest_release=release, installed_cli={"version": "1.2.3"},
+                    summary={"source_metadata": {"codex_cli_version": "1.2.3",
+                        "codex_cli_release_ref": "rust-v1.2.3", "codex_cli_source_commit": "a" * 40}},
+                    coverage={"codex_cli": {"version": "1.2.3"}, "github": {
+                        "source_ref": "rust-v1.2.3", "source_commit": "a" * 40}},
+                    feature_snapshot=model, model_snapshot={**model, key: value},
+                    now=datetime(2026, 8, 29, 11, tzinfo=timezone.utc), grace_hours=12,
+                    resolve_tag_commit_fn=lambda _tag: "a" * 40,
+                )
+                self.assertEqual(report["status"], "stale")
+                self.assertEqual(next(c for c in report["checks"] if c["name"] == check)["status"], "fail")
 
     def test_stable_release_gap_warns_then_fails_after_grace(self):
         base = {
@@ -111,6 +138,10 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                     "source_ref": "rust-v1.2.3",
                     "source_commit": "a" * 40,
                 },
+            },
+            "model_snapshot": {
+                "codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
+                "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json",
             },
             "feature_snapshot": {
                 "codex_cli_version": "codex-cli 1.2.3",
@@ -154,6 +185,10 @@ class CheckCodexFreshnessTests(unittest.TestCase):
                     "source_ref": "rust-v1.2.3",
                     "source_commit": "a" * 40,
                 },
+            },
+            "model_snapshot": {
+                "codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",
+                "source_commit": "a" * 40, "source_path": "codex-rs/models-manager/models.json",
             },
             "feature_snapshot": {
                 "codex_cli_version": "codex-cli 1.2.3",

@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = ROOT / "docs" / "freshness.json"
 SYNC_SUMMARY = ROOT / "docs" / "sync_summary.json"
 SOURCE_COVERAGE = ROOT / "docs" / "source_coverage.json"
+MODEL_CATALOG = ROOT / "docs" / "codex_models.json"
 FEATURE_LIFECYCLE = ROOT / "docs" / "feature-flags" / "lifecycle.json"
 REPOSITORY_API = "https://api.github.com/repos/openai/codex"
 DEFAULT_GRACE_HOURS = 12.0
@@ -210,6 +211,7 @@ def build_report(
     summary: Dict[str, object],
     coverage: Dict[str, object],
     feature_snapshot: Dict[str, object],
+    model_snapshot: Dict[str, object],
     now: datetime,
     grace_hours: float,
     resolve_tag_commit_fn: Callable[[str], str] = resolve_tag_commit,
@@ -316,6 +318,20 @@ def build_report(
         ]
     )
 
+    model_version = parse_version(str(model_snapshot.get("codex_cli_version", "")))
+    model_ref = str(model_snapshot.get("source_ref", ""))
+    model_commit = validate_commit(model_snapshot.get("source_commit"), "Model catalog")
+    expected_model_commit = resolved_commits.get(model_ref)
+    if expected_model_commit is None:
+        expected_model_commit = resolve_tag_commit_fn(model_ref)
+    checks.extend([
+        make_check("model_catalog_matches_latest_stable", model_version, release_version,
+                   grace_elapsed=grace_elapsed),
+        make_integrity_check("model_catalog_release_ref_matches_version", model_ref, f"rust-v{model_version}"),
+        make_integrity_check("model_catalog_commit_matches_release_tag", model_commit, expected_model_commit),
+        make_integrity_check("model_catalog_source_path", str(model_snapshot.get("source_path", "")),
+                             "codex-rs/models-manager/models.json"),
+    ])
     statuses = {str(check["status"]) for check in checks}
     overall = "stale" if "fail" in statuses else "warning" if "warning" in statuses else "fresh"
     return {
@@ -334,6 +350,11 @@ def build_report(
             "coverage_source_commit": coverage_commit,
             "last_successful_full_sync_at": str(summary.get("generated_at", "")),
             "provenance": "generated_sync_metadata",
+        },
+        "model_catalog": {
+            "version": model_version, "source_ref": model_ref, "source_commit": model_commit,
+            "source_path": model_snapshot["source_path"],
+            "provenance": "release_bundled_model_catalog",
         },
         "feature_flag_snapshot": {
             "version": feature_version,
@@ -373,6 +394,7 @@ def main(argv: list[str] | None = None) -> int:
             summary=load_json(SYNC_SUMMARY),
             coverage=load_json(SOURCE_COVERAGE),
             feature_snapshot=load_json(FEATURE_LIFECYCLE),
+            model_snapshot=load_json(MODEL_CATALOG),
             now=datetime.now(timezone.utc),
             grace_hours=max(args.grace_hours, 0.0),
         )

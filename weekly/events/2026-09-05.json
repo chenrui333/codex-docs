@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [
+          "codex_models.json"
+        ],
+        "capability_changes": {},
+        "file_changes": {
+          "codex_models.json": {
+            "after": "4a65306c563279d0281f66203d81df8049f3675c82448e48bbc885ac4d5ead3a",
+            "before": null
+          }
+        },
+        "model_changes": {
+          "added": [
+            "codex-auto-review",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.5",
+            "gpt-5.6-luna",
+            "gpt-5.6-sol",
+            "gpt-5.6-terra",
+            "gpt-6-astra",
+            "gpt-daybreak-blue-latest",
+            "gpt-daybreak-red-latest"
+          ],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.153.2",
+          "codex_cli_source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+          "codex_cli_version": "0.153.2",
+          "codex_cli_version_raw": "codex-cli 0.153.2",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli"
+        },
+        "updated": []
+      },
+      "id": "b1c113a93eb5786e67b690784786acd3a00e7ad72a96534efed33e0b4532a489",
+      "observed_at": "2026-09-05T00:50:01+00:00",
+      "previous_id": ""
+    }
+  ],
+  "legacy_report": "# Codex Docs Sync - 2026-09-05\n\nGenerated at: 2026-09-05T00:37:49+00:00\n\n- Added: 0\n- Updated: 1\n- Removed: 0\n\n## Source Snapshot\n\n- `source_kind`: `installed_codex_cli`\n- `codex_cli_release_ref`: `rust-v0.153.2`\n- `codex_cli_source_commit`: `657a993cbee87acf52d14b758ce49dbd46d1b8eb`\n- `codex_cli_version`: `0.153.2`\n- `codex_cli_version_raw`: `codex-cli 0.153.2`\n- `codex_cli_command`: `codex --version`\n- `codex_prompt_snapshot_command`: `codex debug prompt-input`\n\n## Category Summary\n\n### Added\n- None\n\n### Updated\n- Other: 1\n\n### Removed\n- None\n\n## Semantic Capability Changes\n\n- Added: none\n- Removed: none\n- Lifecycle transitions: none\n\n## Updated (Raw Paths)\n- `codex_capabilities.json`\n",
+  "schema_version": 1
+}

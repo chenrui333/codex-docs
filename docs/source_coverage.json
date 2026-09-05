@@ -950,6 +950,13 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
+  "model_catalog": {
+    "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+    "source_path": "codex-rs/models-manager/models.json",
+    "source_ref": "rust-v0.153.2",
+    "status": "complete",
+    "version": "0.153.2"
+  },
   "platform_tool_guides": {
     "candidate_urls": [
       "https://developers.openai.com/api/docs/guides/tools-apply-patch",

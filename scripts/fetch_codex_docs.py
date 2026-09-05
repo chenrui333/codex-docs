@@ -27,8 +27,9 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify as to_markdown
 
 if __package__:
-    from . import semantic_history
+    from . import model_catalog, semantic_history
 else:
+    import model_catalog
     import semantic_history
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,6 +42,8 @@ CAPABILITIES_PATH = DOCS_DIR / "codex_capabilities.json"
 CAPABILITIES_REL_PATH = str(CAPABILITIES_PATH.relative_to(DOCS_DIR))
 CLI_SURFACE_PATH = DOCS_DIR / "codex_cli_surface.json"
 CLI_SURFACE_REL_PATH = str(CLI_SURFACE_PATH.relative_to(DOCS_DIR))
+MODELS_REL_PATH = "codex_models.json"
+MODEL_SOURCE_TYPE = "codex_model_catalog"
 FEATURE_LIFECYCLE = DOCS_DIR / "feature-flags" / "lifecycle.json"
 DEVELOPERS_ROOT = DOCS_DIR / "developers.openai.com"
 LEARN_ROOT = DOCS_DIR / "learn.chatgpt.com"
@@ -2155,6 +2158,32 @@ def cli_absence_reason(
     return ""
 
 
+def model_catalog_coverage(metadata: Dict[str, str]) -> Dict[str, str]:
+    return {
+        "version": metadata.get("codex_cli_version", ""),
+        "source_ref": metadata.get("codex_cli_release_ref", ""),
+        "source_commit": metadata.get("codex_cli_source_commit", ""),
+        "source_path": model_catalog.SOURCE_PATH,
+        "status": "complete",
+    }
+
+
+def build_model_catalog_file(session: requests.Session, metadata: Dict[str, str]) -> ManagedFile:
+    commit = metadata.get("codex_cli_source_commit", "")
+    if not re.fullmatch(r"[0-9a-f]{40}", commit):
+        raise ValueError("Model catalog requires resolved release provenance")
+    url = github_raw_url(model_catalog.SOURCE_PATH, commit)
+    payload = model_catalog.snapshot(
+        fetch_json(session, url), version=metadata.get("codex_cli_version", ""),
+        source_ref=metadata.get("codex_cli_release_ref", ""), source_commit=commit,
+    )
+    return ManagedFile(
+        rel_path=MODELS_REL_PATH, source_type=MODEL_SOURCE_TYPE, source_url=url,
+        content=json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        source_metadata={**metadata, "source_kind": "release_bundled_model_catalog", "source_area": "models"},
+    )
+
+
 def build_capability_inventory_file(
     codex_cli_files: Sequence[ManagedFile],
     platform_tool_guide_files: Sequence[ManagedFile],
@@ -2937,6 +2966,10 @@ def render_sync_event(event: Dict[str, object]) -> str:
         lines.append("")
         lines.extend(render_capability_changes(capability_changes))
 
+    if changes.get("model_changes"):
+        lines.extend(["### Model Changes", ""])
+        lines.extend(model_catalog.render_changes(changes["model_changes"]))
+
     if added:
         lines.append("### Added (Raw Paths)")
         lines.extend(f"- `{item}`" for item in added)
@@ -2960,6 +2993,7 @@ def write_weekly_note(
     source_metadata: Dict[str, object] | None = None,
     capability_changes: Dict[str, object] | None = None,
     file_changes: Dict[str, object] | None = None,
+    model_changes: Dict[str, object] | None = None,
 ) -> None:
     if not (added or updated or removed):
         return
@@ -2973,6 +3007,7 @@ def write_weekly_note(
         "source_metadata": source_metadata or {},
         "capability_changes": capability_changes or {},
         "file_changes": file_changes or {},
+        "model_changes": model_changes or {},
     }
     ledger = semantic_history.record_event(
         WEEKLY_DIR / "events" / f"{date_tag}.json", payload,
@@ -3175,6 +3210,7 @@ def apply_sync(
 ) -> Tuple[List[str], List[str], List[str]]:
     previous = load_existing_manifest()
     capability_changes: Dict[str, object] | None = None
+    model_changes: Dict[str, object] = {}
 
     next_entries: Dict[str, Dict[str, object]] = {}
     rel_to_file: Dict[str, ManagedFile] = {}
@@ -3199,6 +3235,10 @@ def apply_sync(
             if item.source_metadata.get("source_kind"):
                 next_entry["source_kind"] = item.source_metadata["source_kind"]
         next_entries[item.rel_path] = next_entry
+        if item.rel_path == MODELS_REL_PATH:
+            model_path = output_path_for_rel_path(MODELS_REL_PATH)
+            previous_models = json.loads(model_path.read_text()) if model_path.exists() else {}
+            model_changes = model_catalog.changes(previous_models, json.loads(managed_file_text(item)))
         if item.rel_path == CAPABILITIES_REL_PATH:
             previous_text = CAPABILITIES_PATH.read_text() if CAPABILITIES_PATH.exists() else "{}"
             capability_changes = semantic_capability_changes(
@@ -3270,6 +3310,7 @@ def apply_sync(
         removed,
         source_metadata=source_metadata,
         capability_changes=capability_changes,
+        model_changes=model_changes,
         file_changes={path: {
             "before": previous.get(path, {}).get("sha256"),
             "after": next_entries.get(path, {}).get("sha256"),
@@ -3300,6 +3341,7 @@ def main() -> int:
     platform_tool_guide_files: List[ManagedFile] = []
     codex_cli_files: List[ManagedFile] = []
     capability_inventory_files: List[ManagedFile] = []
+    model_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
     learn_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
@@ -3423,6 +3465,15 @@ def main() -> int:
         }
         failures.append(failure)
         preserve_missing_sources.add("github")
+
+    try:
+        model_files = [build_model_catalog_file(session, codex_cli_metadata)]
+        coverage["model_catalog"] = model_catalog_coverage(codex_cli_metadata)
+    except Exception as exc:
+        failures.append({"source": MODEL_SOURCE_TYPE, "stage": "source_build",
+                         "state": "source_unavailable", "error": str(exc)})
+        preserve_missing_sources.add(MODEL_SOURCE_TYPE)
+        coverage["model_catalog"] = {"status": "degraded", "error": str(exc)}
 
     try:
         platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
@@ -3596,7 +3647,8 @@ def main() -> int:
         + github_files
         + platform_tool_guide_files
         + codex_cli_files
-        + capability_inventory_files,
+        + capability_inventory_files
+        + model_files,
         codex_cli_metadata,
     )
     if not managed_files:

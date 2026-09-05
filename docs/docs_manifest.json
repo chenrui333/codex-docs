@@ -109,6 +109,19 @@
       "source_type": "codex_cli_surface",
       "source_url": "codex-cli://help"
     },
+    "codex_models.json": {
+      "codex_cli_command": "codex --version",
+      "codex_cli_release_ref": "rust-v0.153.2",
+      "codex_cli_source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+      "codex_cli_version": "0.153.2",
+      "codex_cli_version_raw": "codex-cli 0.153.2",
+      "codex_prompt_snapshot_command": "codex debug prompt-input",
+      "sha256": "4a65306c563279d0281f66203d81df8049f3675c82448e48bbc885ac4d5ead3a",
+      "source_area": "models",
+      "source_kind": "release_bundled_model_catalog",
+      "source_type": "codex_model_catalog",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/657a993cbee87acf52d14b758ce49dbd46d1b8eb/codex-rs/models-manager/models.json"
+    },
     "developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex/index.md": {
       "codex_cli_versions": [
         "0.151.0",
