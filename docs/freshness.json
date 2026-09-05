@@ -190,7 +190,7 @@
     "source_ref": "rust-v0.153.4",
     "version": "0.153.4"
   },
-  "release_grace_elapsed": false,
+  "release_grace_elapsed": true,
   "release_grace_hours": 12.0,
   "schema_version": 1,
   "status": "fresh"
