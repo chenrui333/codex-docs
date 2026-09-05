@@ -53,12 +53,13 @@ release evidence, not an observation of an authenticated account's available mod
 GitHub Actions workflow: `.github/workflows/update-docs.yml`
 
 - Runs every 6 hours
-- Executes `scripts/fetch_codex_docs.py`
-- Commits and pushes only after a strict, failure-free sync
+- First commits a verified release transaction with `scripts/fetch_codex_docs.py --release-only`
+- Then runs full web discovery with `scripts/fetch_codex_docs.py`; a web outage cannot undo the release commit
+- Each transaction commits and pushes only after its own strict, failure-free validation
 - Uploads `docs/source_coverage.json` as a workflow artifact for visibility
 - Publishes a deterministic freshness report and fails after a stable release remains ahead for the configured grace period
 - Creates or updates one rolling failure issue, then comments and closes it after recovery
-- Serializes docs and feature-snapshot writers so their direct pushes cannot race
+- Serializes release, docs, and feature-snapshot writers and checks each actual checkout base before pushing
 
 Coverage watchdog behavior:
 
@@ -75,7 +76,10 @@ Resiliency controls:
 - `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
 - `CODEX_DOCS_STRICT_SYNC=1` fails if any source segment fails; scheduled automation always enables it
 - `CODEX_FRESHNESS_GRACE_HOURS` controls when a stable-release gap becomes a strict failure (default `12`, allowing two scheduled 6-hour sync opportunities)
-- Non-strict local runs retain partial output for diagnosis but automation never commits that state
+- Strict failures leave canonical output unchanged; non-strict local runs may retain diagnostic partial output
+- Release-only sync validates cached web files against their manifest and retains their bytes, without fetching web sources
+- Coverage records `sync.scope` and `sync.web_observation`; release freshness does not assert current web-source health
+- Feature snapshots are built in memory and validated against the same release before inventory generation
 - `just check-strict` runs the idempotence check with strict sync failure enforcement
 - ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not
 
@@ -106,6 +110,7 @@ just setup
 just lint
 just test
 just sync
+just sync-release
 just check
 just check-strict
 just feature-flags

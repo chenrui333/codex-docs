@@ -736,107 +736,112 @@ def write_json(path: Path, payload: Dict[str, object]) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
+def build_snapshot() -> tuple[Dict[str, object], str]:
+    codex_version = run_command(["codex", "--version"], env=codex_subprocess_env())
+    source_ref, source_commit = resolve_feature_source(
+        codex_version, os.environ.get(FEATURE_SOURCE_COMMIT_ENV)
+    )
+    with tempfile.TemporaryDirectory(prefix="codex-features-home-") as tmp_home:
+        isolated_env = codex_subprocess_env()
+        isolated_env["CODEX_HOME"] = tmp_home
+        features_raw = run_command(["codex", "features", "list"], env=isolated_env)
+    cli_features = parse_features_list(features_raw)
+
+    basic_docs_metadata = parse_config_basic_feature_metadata(CONFIG_BASIC_DOC)
+    basic_docs_keys = list(basic_docs_metadata)
+    reference_docs_keys = parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC)
+    docs_keys = sorted(set(basic_docs_keys) | set(reference_docs_keys))
+    if not docs_keys:
+        raise SnapshotError("Parsed zero documentation feature keys")
+    documentation_sources = {
+        "config_basic": documentation_source_metadata(
+            CONFIG_BASIC_DOC, basic_docs_keys
+        ),
+        "config_reference": documentation_source_metadata(
+            CONFIG_REFERENCE_DOC, reference_docs_keys
+        ),
+    }
+    cli_keys = [str(item["key"]) for item in cli_features]
+    (
+        missing_in_docs,
+        actionable_missing_in_docs,
+        missing_in_docs_by_stage,
+    ) = group_missing_in_docs(cli_features, docs_keys)
+    stale_in_docs = sorted([key for key in docs_keys if key not in set(cli_keys)])
+    documentation_stage_mismatches = find_documentation_stage_mismatches(
+        cli_features, basic_docs_metadata
+    )
+
+    features_rs_url = source_url(source_commit, OSS_FEATURES_RS_PATH)
+    client_rs_url = source_url(source_commit, OSS_CLIENT_RS_PATH)
+    features_rs = fetch_text(features_rs_url)
+    client_rs = fetch_text(client_rs_url)
+    source_defaults = parse_feature_defaults_from_source(features_rs)
+    ws_precedence = derive_websocket_precedence(client_rs)
+    source_hashes = {
+        "features_rs_sha256": sha256_text(features_rs),
+        "client_rs_sha256": sha256_text(client_rs),
+    }
+
+    payload: Dict[str, object] = {
+        "schema_version": 3,
+        "codex_cli_version": codex_version,
+        "source_ref": source_ref,
+        "source_commit": source_commit,
+        "cli_features": cli_features,
+        "docs_feature_keys": docs_keys,
+        "documentation_sources": documentation_sources,
+        "coverage": {
+            "actionable_stages": list(ACTIONABLE_STAGES),
+            "actionable_missing_in_docs": actionable_missing_in_docs,
+            "missing_in_docs": missing_in_docs,
+            "missing_in_docs_by_stage": missing_in_docs_by_stage,
+            "stale_in_docs": stale_in_docs,
+            "documentation_stage_mismatches": documentation_stage_mismatches,
+        },
+        "source_defaults": source_defaults,
+        "websocket_precedence": ws_precedence,
+        "source_fingerprints": source_hashes,
+        "source_urls": {
+            "features_rs": features_rs_url,
+            "client_rs": client_rs_url,
+        },
+    }
+
+    markdown = render_markdown_document(
+        codex_version=codex_version,
+        source_ref=source_ref,
+        source_commit=source_commit,
+        cli_features=cli_features,
+        docs_keys=docs_keys,
+        source_defaults=source_defaults,
+        missing_in_docs=missing_in_docs,
+        actionable_missing_in_docs=actionable_missing_in_docs,
+        missing_in_docs_by_stage=missing_in_docs_by_stage,
+        stale_in_docs=stale_in_docs,
+        ws_precedence=ws_precedence,
+        source_hashes=source_hashes,
+        documentation_sources=documentation_sources,
+        documentation_stage_mismatches=documentation_stage_mismatches,
+    )
+
+    return payload, markdown
+
+
 def main() -> int:
     try:
-        codex_version = run_command(["codex", "--version"], env=codex_subprocess_env())
-        source_ref, source_commit = resolve_feature_source(
-            codex_version, os.environ.get(FEATURE_SOURCE_COMMIT_ENV)
-        )
-        with tempfile.TemporaryDirectory(prefix="codex-features-home-") as tmp_home:
-            isolated_env = codex_subprocess_env()
-            isolated_env["CODEX_HOME"] = tmp_home
-            features_raw = run_command(["codex", "features", "list"], env=isolated_env)
-        cli_features = parse_features_list(features_raw)
-
-        basic_docs_metadata = parse_config_basic_feature_metadata(CONFIG_BASIC_DOC)
-        basic_docs_keys = list(basic_docs_metadata)
-        reference_docs_keys = parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC)
-        docs_keys = sorted(set(basic_docs_keys) | set(reference_docs_keys))
-        if not docs_keys:
-            raise SnapshotError("Parsed zero documentation feature keys")
-        documentation_sources = {
-            "config_basic": documentation_source_metadata(
-                CONFIG_BASIC_DOC, basic_docs_keys
-            ),
-            "config_reference": documentation_source_metadata(
-                CONFIG_REFERENCE_DOC, reference_docs_keys
-            ),
-        }
-        cli_keys = [str(item["key"]) for item in cli_features]
-        (
-            missing_in_docs,
-            actionable_missing_in_docs,
-            missing_in_docs_by_stage,
-        ) = group_missing_in_docs(cli_features, docs_keys)
-        stale_in_docs = sorted([key for key in docs_keys if key not in set(cli_keys)])
-        documentation_stage_mismatches = find_documentation_stage_mismatches(
-            cli_features, basic_docs_metadata
-        )
-
-        features_rs_url = source_url(source_commit, OSS_FEATURES_RS_PATH)
-        client_rs_url = source_url(source_commit, OSS_CLIENT_RS_PATH)
-        features_rs = fetch_text(features_rs_url)
-        client_rs = fetch_text(client_rs_url)
-        source_defaults = parse_feature_defaults_from_source(features_rs)
-        ws_precedence = derive_websocket_precedence(client_rs)
-        source_hashes = {
-            "features_rs_sha256": sha256_text(features_rs),
-            "client_rs_sha256": sha256_text(client_rs),
-        }
-
-        payload: Dict[str, object] = {
-            "schema_version": 3,
-            "codex_cli_version": codex_version,
-            "source_ref": source_ref,
-            "source_commit": source_commit,
-            "cli_features": cli_features,
-            "docs_feature_keys": docs_keys,
-            "documentation_sources": documentation_sources,
-            "coverage": {
-                "actionable_stages": list(ACTIONABLE_STAGES),
-                "actionable_missing_in_docs": actionable_missing_in_docs,
-                "missing_in_docs": missing_in_docs,
-                "missing_in_docs_by_stage": missing_in_docs_by_stage,
-                "stale_in_docs": stale_in_docs,
-                "documentation_stage_mismatches": documentation_stage_mismatches,
-            },
-            "source_defaults": source_defaults,
-            "websocket_precedence": ws_precedence,
-            "source_fingerprints": source_hashes,
-            "source_urls": {
-                "features_rs": features_rs_url,
-                "client_rs": client_rs_url,
-            },
-        }
-
-        markdown = render_markdown_document(
-            codex_version=codex_version,
-            source_ref=source_ref,
-            source_commit=source_commit,
-            cli_features=cli_features,
-            docs_keys=docs_keys,
-            source_defaults=source_defaults,
-            missing_in_docs=missing_in_docs,
-            actionable_missing_in_docs=actionable_missing_in_docs,
-            missing_in_docs_by_stage=missing_in_docs_by_stage,
-            stale_in_docs=stale_in_docs,
-            ws_precedence=ws_precedence,
-            source_hashes=source_hashes,
-            documentation_sources=documentation_sources,
-            documentation_stage_mismatches=documentation_stage_mismatches,
-        )
-
+        payload, markdown = build_snapshot()
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         write_json(OUTPUT_JSON, payload)
         OUTPUT_MD.write_text(markdown)
 
         print(f"Wrote {OUTPUT_JSON.relative_to(ROOT)}")
         print(f"Wrote {OUTPUT_MD.relative_to(ROOT)}")
-        print(f"Missing in docs: {len(missing_in_docs)}")
-        print(f"Actionable missing in docs: {len(actionable_missing_in_docs)}")
+        print(f"Missing in docs: {len(payload["coverage"]["missing_in_docs"])}")
+        print(f"Actionable missing in docs: {len(payload["coverage"]["actionable_missing_in_docs"])}")
         print(
             "Documentation maturity mismatches: "
-            f"{len(documentation_stage_mismatches)}"
+            f"{len(payload['coverage']['documentation_stage_mismatches'])}"
         )
         return 0
     except SnapshotError as exc:

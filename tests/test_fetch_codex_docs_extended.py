@@ -1150,7 +1150,10 @@ Options:
             ],
         )
 
-    def test_main_success_and_strict_partial_failure(self):
+    @mock.patch.object(sync.snapshot_feature_flags, "build_snapshot", return_value=({
+        "source_ref": "rust-v1.2.3", "source_commit": "a" * 40,
+    }, "# Features\n"))
+    def test_main_success_and_strict_partial_failure(self, _features):
         developer = sync.ManagedFile("developers/a.md", "developers", "https://example.test/a", "# A\n")
         learn = sync.ManagedFile("learn/a.md", sync.LEARN_SOURCE_TYPE, "https://example.test/l", "# L\n")
         github = sync.ManagedFile("github/a.md", "github", "https://example.test/g", "# G\n")
@@ -1213,7 +1216,8 @@ Options:
             ):
                 self.assertEqual(sync.main(), 1)
 
-    def test_main_isolates_source_build_failures(self):
+    @mock.patch.object(sync.snapshot_feature_flags, "build_snapshot", side_effect=RuntimeError("offline"))
+    def test_main_isolates_source_build_failures(self, _features):
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
             error = RuntimeError("offline")

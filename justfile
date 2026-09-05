@@ -32,6 +32,10 @@ sync:
     . .venv/bin/activate && python scripts/fetch_codex_docs.py
     . .venv/bin/activate && python scripts/check_codex_freshness.py
 
+sync-release:
+    . .venv/bin/activate && CODEX_DOCS_STRICT_SYNC=1 python scripts/fetch_codex_docs.py --release-only
+    . .venv/bin/activate && python scripts/check_codex_freshness.py --strict
+
 freshness:
     . .venv/bin/activate && python scripts/check_codex_freshness.py
 

@@ -348,7 +348,11 @@ def build_report(
             "source_commit": summary_commit,
             "coverage_source_ref": coverage_ref,
             "coverage_source_commit": coverage_commit,
-            "last_successful_full_sync_at": str(summary.get("generated_at", "")),
+            "sync_scope": str(source_metadata.get("sync_scope", "full")),
+            "last_successful_release_sync_at": str(summary.get("generated_at", "")),
+            "last_successful_full_sync_at": (
+                str(summary.get("generated_at", "")) if source_metadata.get("sync_scope", "full") == "full" else ""
+            ),
             "provenance": "generated_sync_metadata",
         },
         "model_catalog": {

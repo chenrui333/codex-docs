@@ -10,7 +10,70 @@ permissions:
   issues: write
 
 jobs:
+  release-state:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    concurrency:
+      group: docs-writer-main
+      cancel-in-progress: false
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Record generation base
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.14'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
+
+      - name: Install release tools
+        run: |
+          pip install -r scripts/requirements.txt
+          npm install -g @openai/codex@latest
+
+      - name: Generate release transaction
+        env:
+          CODEX_DOCS_STRICT_SYNC: "1"
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/fetch_codex_docs.py --release-only
+          python scripts/check_codex_freshness.py --strict
+
+      - name: Check writer base
+        id: writer_base
+        env:
+          WRITER_BASE: ${{ steps.base.outputs.sha }}
+        run: python scripts/check_writer_base.py --expected "$WRITER_BASE" >> "$GITHUB_OUTPUT"
+
+      - name: Commit release state
+        if: steps.writer_base.outputs.stale == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add docs/ dot_codex/ system_prompts/ weekly/
+          if git diff --cached --quiet; then exit 0; fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -s -m "chore: sync release state ($(date -u +'%Y-%m-%d'))"
+          gh auth setup-git
+          git push origin HEAD:main
+
   update-docs:
+    needs: release-state
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 20
     concurrency:
@@ -21,7 +84,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          ref: main
           persist-credentials: false
+
+      - name: Record generation base
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
@@ -156,7 +224,9 @@ jobs:
       - name: Check writer base
         if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true'
         id: writer_base
-        run: python3 scripts/check_writer_base.py >> "$GITHUB_OUTPUT"
+        env:
+          WRITER_BASE: ${{ steps.base.outputs.sha }}
+        run: python3 scripts/check_writer_base.py --expected "$WRITER_BASE" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push if changed
         if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true' && steps.writer_base.outputs.stale == 'false'

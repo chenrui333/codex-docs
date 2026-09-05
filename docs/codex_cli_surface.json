@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.153.2",
-  "codex_cli_version_raw": "codex-cli 0.153.2",
+  "codex_cli_version": "0.153.3",
+  "codex_cli_version_raw": "codex-cli 0.153.3",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -927,6 +927,58 @@
       ]
     },
     {
+      "description": "Launch the Desktop app (opens the app installer if missing)",
+      "name": "app",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Override the app installer download URL (advanced)",
+          "flags": [
+            "--download-url"
+          ],
+          "primary_flag": "--download-url",
+          "synopsis": "--download-url <DOWNLOAD_URL_OVERRIDE>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h')",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex app [OPTIONS] [PATH]"
+      ]
+    },
+    {
       "description": "Generate shell completion scripts",
       "name": "completion",
       "options": [
@@ -1185,6 +1237,22 @@
           ],
           "primary_flag": "--include-managed-config",
           "synopsis": "--include-managed-config"
+        },
+        {
+          "description": "Allow the sandboxed command to bind/connect AF_UNIX sockets rooted at this path. Relative paths are resolved against the current directory. Repeat to allow multiple paths",
+          "flags": [
+            "--allow-unix-socket"
+          ],
+          "primary_flag": "--allow-unix-socket",
+          "synopsis": "--allow-unix-socket <ALLOW_UNIX_SOCKETS>"
+        },
+        {
+          "description": "While the command runs, capture macOS sandbox denials via `log stream` and print them after exit",
+          "flags": [
+            "--log-denials"
+          ],
+          "primary_flag": "--log-denials",
+          "synopsis": "--log-denials"
         },
         {
           "description": "Print help (see a summary with '-h')",
@@ -2976,6 +3044,10 @@
           "name": "remote-control"
         },
         {
+          "description": "Launch the Desktop app (opens the app installer if missing)",
+          "name": "app"
+        },
+        {
           "description": "Generate shell completion scripts",
           "name": "completion"
         },
@@ -3238,8 +3310,8 @@
     }
   ],
   "observation_environment": {
-    "arch": "x86_64",
-    "os": "linux"
+    "arch": "arm64",
+    "os": "darwin"
   },
   "schema_version": 2,
   "source_kind": "installed_cli_help_observation",

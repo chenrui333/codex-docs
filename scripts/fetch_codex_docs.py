@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import logging
@@ -27,10 +28,11 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify as to_markdown
 
 if __package__:
-    from . import model_catalog, semantic_history
+    from . import model_catalog, semantic_history, snapshot_feature_flags
 else:
     import model_catalog
     import semantic_history
+    import snapshot_feature_flags
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = ROOT / "docs"
@@ -2197,6 +2199,7 @@ def build_capability_inventory_file(
     codex_cli_metadata: Dict[str, str],
     documentation_files: Sequence[ManagedFile] = (),
     release_ancestry: Dict[str, str] | None = None,
+    feature_snapshot_payload: Dict[str, object] | None = None,
 ) -> ManagedFile:
     capabilities: List[Dict[str, object]] = []
     codex_cli_version = codex_cli_metadata.get("codex_cli_version", "")
@@ -2472,9 +2475,9 @@ def build_capability_inventory_file(
             add_version_history(entry)
             capabilities.append(entry)
 
-    if FEATURE_LIFECYCLE.exists():
+    if feature_snapshot_payload is not None or FEATURE_LIFECYCLE.exists():
         try:
-            feature_snapshot = json.loads(FEATURE_LIFECYCLE.read_text())
+            feature_snapshot = feature_snapshot_payload if feature_snapshot_payload is not None else json.loads(FEATURE_LIFECYCLE.read_text())
         except json.JSONDecodeError:
             feature_snapshot = {}
         if isinstance(feature_snapshot, dict):
@@ -3327,7 +3330,25 @@ def apply_sync(
     return added, updated, removed
 
 
-def main() -> int:
+def load_cached_source_files(source_types: set[str]) -> List[ManagedFile]:
+    """Replay complete committed source families without claiming a fresh web fetch."""
+    files = []
+    for path, metadata in load_existing_manifest().items():
+        if metadata.get("source_type") not in source_types:
+            continue
+        content = output_path_for_rel_path(path).read_bytes()
+        if sha256_content(content) != metadata.get("sha256"):
+            raise ValueError(f"Cached source does not match the manifest: {path}")
+        files.append(ManagedFile(
+            path, metadata["source_type"], metadata["source_url"], content,
+            {key: value for key, value in metadata.items() if key not in {"sha256", "source_type", "source_url"}},
+        ))
+    if not files:
+        raise ValueError("Release-only sync requires a complete existing web mirror")
+    return files
+
+
+def main(*, release_only: bool = False) -> int:
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
@@ -3348,6 +3369,7 @@ def main() -> int:
     codex_cli_files: List[ManagedFile] = []
     capability_inventory_files: List[ManagedFile] = []
     model_files: List[ManagedFile] = []
+    feature_files: List[ManagedFile] = []
     developers_fetch_errors: List[Dict[str, str]] = []
     learn_fetch_errors: List[Dict[str, str]] = []
     github_fetch_errors: List[Dict[str, str]] = []
@@ -3361,7 +3383,11 @@ def main() -> int:
     }
 
     try:
-        developers_files, coverage, developers_fetch_errors = build_developers_files(session)
+        if release_only:
+            coverage = json.loads(COVERAGE_PATH.read_text())
+            developers_files = load_cached_source_files({"developers"})
+        else:
+            developers_files, coverage, developers_fetch_errors = build_developers_files(session)
         developers_files = add_source_area_metadata(developers_files)
         failures.extend(developers_fetch_errors)
         if developers_fetch_errors:
@@ -3390,7 +3416,11 @@ def main() -> int:
         }
 
     try:
-        learn_files, learn_coverage, learn_fetch_errors = build_learn_files(session)
+        if release_only:
+            learn_files = load_cached_source_files({LEARN_SOURCE_TYPE})
+            learn_coverage = coverage.get("learn", {})
+        else:
+            learn_files, learn_coverage, learn_fetch_errors = build_learn_files(session)
         learn_files = add_source_area_metadata(learn_files)
         coverage["learn"] = learn_coverage
         failures.extend(learn_fetch_errors)
@@ -3482,9 +3512,13 @@ def main() -> int:
         coverage["model_catalog"] = {"status": "degraded", "error": str(exc)}
 
     try:
-        platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
-            build_platform_tool_guide_files(session, developers_files + learn_files + github_files + codex_cli_files)
-        )
+        if release_only:
+            platform_tool_guide_files = load_cached_source_files({PLATFORM_TOOL_GUIDE_SOURCE_TYPE})
+            platform_tool_guide_references_by_url = coverage.get("platform_tool_guides", {}).get("references_by_url", {})
+        else:
+            platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
+                build_platform_tool_guide_files(session, developers_files + learn_files + github_files + codex_cli_files)
+            )
         platform_tool_guide_files = add_source_area_metadata(platform_tool_guide_files)
         failures.extend(platform_tool_guide_fetch_errors)
         if platform_tool_guide_fetch_errors:
@@ -3503,6 +3537,20 @@ def main() -> int:
         failures.append(failure)
         preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
 
+    try:
+        feature_payload, feature_markdown = snapshot_feature_flags.build_snapshot()
+        if (feature_payload.get("source_commit") != codex_cli_metadata.get("codex_cli_source_commit")
+                or feature_payload.get("source_ref") != codex_cli_metadata.get("codex_cli_release_ref")):
+            raise ValueError("Feature snapshot does not match the release transaction")
+        feature_files = [
+            ManagedFile("feature-flags/lifecycle.json", "feature_flags", "generated://feature-lifecycle",
+                        json.dumps(feature_payload, indent=2, sort_keys=True) + "\n"),
+            ManagedFile("feature-flags/lifecycle.md", "feature_flags", "generated://feature-lifecycle", feature_markdown),
+        ]
+    except Exception as exc:
+        failures.append({"source": "feature_flags", "stage": "source_build", "state": "source_unavailable", "error": str(exc)})
+        preserve_missing_sources.add("feature_flags")
+
     if preserve_missing_sources:
         preserve_missing_sources.add(CAPABILITY_INVENTORY_SOURCE_TYPE)
     else:
@@ -3513,6 +3561,7 @@ def main() -> int:
                 platform_tool_guide_references_by_url,
                 codex_cli_metadata,
                 documentation_files=developers_files + learn_files + github_files,
+                feature_snapshot_payload=feature_payload,
                 release_ancestry=resolve_cli_release_ancestry(
                     session, load_existing_capability_inventory(),
                     codex_cli_metadata.get("codex_cli_source_commit", ""),
@@ -3644,19 +3693,25 @@ def main() -> int:
         "preserve_missing_sources": sorted(preserve_missing_sources),
         "failure_count": len(failures),
         "status": "partial" if failures else "complete",
+        "scope": "release" if release_only else "full",
+        "web_observation": "last_known_good" if release_only else "current",
     }
+    if failures and STRICT_SYNC_MODE:
+        for failure in failures:
+            LOG.error("Source transaction failed: %s", json.dumps(failure, sort_keys=True))
+        LOG.error("Strict sync rejected the transaction; canonical outputs remain unchanged.")
+        return 1
     write_coverage(coverage)
 
+    web_files = developers_files + learn_files + platform_tool_guide_files
     managed_files = annotate_markdown_files(
-        developers_files
-        + learn_files
-        + github_files
-        + platform_tool_guide_files
-        + codex_cli_files
-        + capability_inventory_files
-        + model_files,
+        github_files + codex_cli_files + capability_inventory_files + model_files
+        + ([] if release_only else web_files),
         codex_cli_metadata,
     )
+    if release_only:
+        managed_files.extend(web_files)
+    managed_files.extend(feature_files)
     if not managed_files:
         LOG.error("No source files were fetched successfully.")
         write_summary([], [], [], 0, failures=failures)
@@ -3667,7 +3722,7 @@ def main() -> int:
             managed_files,
             failures=failures,
             preserve_missing_sources=sorted(preserve_missing_sources),
-            source_metadata=codex_cli_metadata,
+            source_metadata={**codex_cli_metadata, "sync_scope": "release" if release_only else "full"},
         )
     except Exception as exc:  # pragma: no cover - guardrail for sync bugs
         LOG.exception("Sync failed while writing output: %s", exc)
@@ -3696,4 +3751,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--release-only", action="store_true", help="Advance release-derived state using the last complete web mirror")
+    sys.exit(main(release_only=parser.parse_args().release_only))
