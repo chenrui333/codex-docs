@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.153.2",
-  "codex_cli_version_raw": "codex-cli 0.153.2",
+  "codex_cli_version": "0.153.4",
+  "codex_cli_version_raw": "codex-cli 0.153.4",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -3242,9 +3242,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
+  "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.153.2",
+  "source_ref": "rust-v0.153.4",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"

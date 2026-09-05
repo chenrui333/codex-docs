@@ -2,10 +2,10 @@
   "schema_version": 1,
   "sources": {
     "cli-surface/linux-x86_64.json": {
-      "codex_cli_release_ref": "rust-v0.153.2",
-      "codex_cli_source_commit": "657a993cbee87acf52d14b758ce49dbd46d1b8eb",
-      "codex_cli_version": "0.153.2",
-      "sha256": "311c64e692bc7e58f2686e895bdc658493069bfe1feb99165051b0cf1d1fcd68",
+      "codex_cli_release_ref": "rust-v0.153.4",
+      "codex_cli_source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+      "codex_cli_version": "0.153.4",
+      "sha256": "f76e7c060a4397be1a23bfa4756569c2ffdefc04502a4c0285512156877b7d14",
       "source_area": "codex_cli_platform_observation",
       "source_kind": "installed_cli_observation",
       "source_type": "codex_cli_platform_observation",
@@ -114,7 +114,7 @@
         "codex-cli 0.153.4"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "9f66d2d88e93030295719d47fa0799d58d48873a9ff2a29d129f21e54bb5396c",
+      "sha256": "e231b1f871758a0d0b426ecd600ab9269ddb6d864be9aeb1e377cd62c734f883",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -127,7 +127,7 @@
       "codex_cli_version": "0.153.4",
       "codex_cli_version_raw": "codex-cli 0.153.4",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "0c187a3d18a82a4d29db722be1bc682f601407a1d97875fa5e20f4567b074e6f",
+      "sha256": "a9e474af4c51e79022b4a009dbca64cf1f327c22e906cc2f9f9bbeb74d82c31f",
       "source_area": "codex_cli_surface",
       "source_kind": "aggregated_cli_observation",
       "source_type": "codex_cli_surface",
