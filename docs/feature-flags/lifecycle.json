@@ -985,8 +985,8 @@
     }
   },
   "observation_environment": {
-    "arch": "arm64",
-    "os": "darwin"
+    "arch": "x86_64",
+    "os": "linux"
   },
   "schema_version": 3,
   "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",

@@ -114,7 +114,7 @@
         "codex-cli 0.153.4"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "d927bb9207dca4d79e19051e243dbfc76c2c35bdcd88d2a0562fe34612701409",
+      "sha256": "efca3cd2edc251c745cf36c6c2eb48d6f6b551f31db26fabe22794f80d41fa84",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -3765,12 +3765,12 @@
       "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
     },
     "feature-flags/lifecycle.json": {
-      "sha256": "3ff7bc71faac4402f06afbe705ff4460b38e7794906826b2ad01afe13c576467",
+      "sha256": "456c3f9d500c441586206061351e881ac729beeda319666689414733735d2298",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
     "feature-flags/lifecycle.md": {
-      "sha256": "fc77bb350ee227de3d804ea264f60a3807d05474b4a382322108711b37795369",
+      "sha256": "46d4b36044cf4458e9f6716fa2529a5835fbf3eef86536036c65bd4bda7598ae",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
