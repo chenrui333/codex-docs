@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import platform as host_platform
 import re
 import subprocess
 import sys
@@ -615,6 +616,7 @@ def render_markdown(
     source_hashes: Dict[str, str],
     documentation_sources: Dict[str, Dict[str, object]] | None = None,
     documentation_stage_mismatches: List[Dict[str, str]] | None = None,
+    observation_environment: Dict[str, str] | None = None,
 ) -> str:
     docs_key_set = set(docs_keys)
     lines: List[str] = []
@@ -624,6 +626,8 @@ def render_markdown(
     lines.append("")
     lines.append(f"- Codex CLI version: `{codex_version}`")
     lines.append(f"- Source release: `{source_ref}` at `{source_commit}`")
+    if observation_environment:
+        lines.append(f"- Observed platform: `{observation_environment['os']}/{observation_environment['arch']}`")
     lines.append("- Inputs:")
     lines.append(
         "  - `codex features list` from an isolated temporary `CODEX_HOME` (observed default values + lifecycle stage labels)"
@@ -734,6 +738,7 @@ def render_markdown_document(
     source_hashes: Dict[str, str],
     documentation_sources: Dict[str, Dict[str, object]] | None = None,
     documentation_stage_mismatches: List[Dict[str, str]] | None = None,
+    observation_environment: Dict[str, str] | None = None,
 ) -> str:
     existing_metadata: Dict[str, object] = {}
     if OUTPUT_MD.exists():
@@ -754,6 +759,7 @@ def render_markdown_document(
         source_hashes=source_hashes,
         documentation_sources=documentation_sources,
         documentation_stage_mismatches=documentation_stage_mismatches,
+        observation_environment=observation_environment,
     )
     metadata: Dict[str, object] = {
         "source_type": FEATURE_LIFECYCLE_SOURCE_TYPE,
@@ -816,8 +822,10 @@ def build_snapshot() -> tuple[Dict[str, object], str]:
         "client_rs_sha256": sha256_text(client_rs),
     }
 
+    observation_environment = {"os": sys.platform, "arch": host_platform.machine().lower()}
     payload: Dict[str, object] = {
         "schema_version": 3,
+        "observation_environment": observation_environment,
         "codex_cli_version": codex_version,
         "source_ref": source_ref,
         "source_commit": source_commit,
@@ -856,6 +864,7 @@ def build_snapshot() -> tuple[Dict[str, object], str]:
         source_hashes=source_hashes,
         documentation_sources=documentation_sources,
         documentation_stage_mismatches=documentation_stage_mismatches,
+        observation_environment=observation_environment,
     )
 
     return payload, markdown

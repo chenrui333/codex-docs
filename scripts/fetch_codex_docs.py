@@ -2624,6 +2624,7 @@ def build_capability_inventory_file(
                         "evidence_type": "installed_cli_observation",
                         "source": "codex features list",
                         "codex_cli_version": feature_version,
+                        **feature_snapshot.get("observation_environment", {}),
                     }
                 ]
                 features_source_url = str(feature_source_urls.get("features_rs", ""))
@@ -3102,6 +3103,9 @@ def semantic_coverage(coverage: Dict[str, object]) -> Dict[str, object]:
     if isinstance(state.get("sync"), dict):
         state["sync"] = {key: value for key, value in state["sync"].items()
                          if key not in {"scope", "web_observation"}}
+    if isinstance(state.get("web_snapshot"), dict):
+        state["web_snapshot"] = {key: value for key, value in state["web_snapshot"].items()
+                                 if key != "last_successful_full_sync_at"}
     return state
 
 
@@ -3119,7 +3123,8 @@ def write_coverage(coverage: Dict[str, object]) -> None:
             pass
 
     ensure_parent(COVERAGE_PATH)
-    COVERAGE_PATH.write_text(json.dumps(coverage, indent=2, sort_keys=True) + "\n")
+    payload = {**coverage, "generated_at": now_utc_iso()}
+    COVERAGE_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
 def render_sync_event(event: Dict[str, object]) -> str:
@@ -3514,7 +3519,7 @@ def apply_sync(
     return added, updated, removed
 
 
-def load_cached_source_files(source_types: set[str]) -> List[ManagedFile]:
+def load_cached_source_files(source_types: set[str], *, allow_empty: bool = False) -> List[ManagedFile]:
     """Replay complete committed source families without claiming a fresh web fetch."""
     files = []
     for path, metadata in load_existing_manifest().items():
@@ -3527,12 +3532,13 @@ def load_cached_source_files(source_types: set[str]) -> List[ManagedFile]:
             path, metadata["source_type"], metadata["source_url"], content,
             {key: value for key, value in metadata.items() if key not in {"sha256", "source_type", "source_url"}},
         ))
-    if not files:
+    if not files and not allow_empty:
         raise ValueError("Release-only sync requires a complete existing web mirror")
     return files
 
 
 def main(*, release_only: bool = False, observations_dir: Path | None = None) -> int:
+    logging.Formatter.converter = time.gmtime
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
@@ -3570,6 +3576,14 @@ def main(*, release_only: bool = False, observations_dir: Path | None = None) ->
     try:
         if release_only:
             coverage = json.loads(COVERAGE_PATH.read_text())
+            previous_sync = coverage.get("sync", {})
+            if previous_sync.get("failure_count") or previous_sync.get("status", "complete") != "complete":
+                raise SourceContentError("Release-only sync cannot reuse a partial web mirror")
+            if "web_snapshot" not in coverage:
+                coverage["web_snapshot"] = (
+                    {"status": "complete", "last_successful_full_sync_at": coverage.get("generated_at", "")}
+                    if previous_sync.get("scope", "full") == "full" else {"status": "unknown"}
+                )
             developers_files = load_cached_source_files({"developers"})
         else:
             developers_files, coverage, developers_fetch_errors = build_developers_files(session)
@@ -3699,7 +3713,7 @@ def main(*, release_only: bool = False, observations_dir: Path | None = None) ->
 
     try:
         if release_only:
-            platform_tool_guide_files = load_cached_source_files({PLATFORM_TOOL_GUIDE_SOURCE_TYPE})
+            platform_tool_guide_files = load_cached_source_files({PLATFORM_TOOL_GUIDE_SOURCE_TYPE}, allow_empty=True)
             platform_tool_guide_references_by_url = coverage.get("platform_tool_guides", {}).get("references_by_url", {})
         else:
             platform_tool_guide_files, platform_tool_guide_fetch_errors, platform_tool_guide_references_by_url = (
@@ -3889,6 +3903,8 @@ def main(*, release_only: bool = False, observations_dir: Path | None = None) ->
             LOG.error("Source transaction failed: %s", json.dumps(failure, sort_keys=True))
         LOG.error("Strict sync rejected the transaction; canonical outputs remain unchanged.")
         return 1
+    if not release_only and not failures:
+        coverage["web_snapshot"] = {"status": "complete", "last_successful_full_sync_at": now_utc_iso()}
     write_coverage(coverage)
 
     web_files = developers_files + learn_files + platform_tool_guide_files

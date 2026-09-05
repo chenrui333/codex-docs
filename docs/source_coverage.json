@@ -293,7 +293,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-04T10:48:39+00:00",
+  "generated_at": "2026-09-05T02:40:11+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -1053,9 +1053,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1141,5 +1141,9 @@
     "output_prefix": "dot_codex/skills/dot_system/",
     "page_fetch_errors": [],
     "source_kind": "installed_codex_cli"
+  },
+  "web_snapshot": {
+    "last_successful_full_sync_at": "2026-09-05T02:40:11+00:00",
+    "status": "complete"
   }
 }

@@ -379,7 +379,8 @@ def build_report(
             "sync_scope": str(source_metadata.get("sync_scope", "full")),
             "last_successful_release_sync_at": str(summary.get("generated_at", "")),
             "last_successful_full_sync_at": (
-                str(summary.get("generated_at", "")) if source_metadata.get("sync_scope", "full") == "full" else ""
+                str(coverage.get("web_snapshot", {}).get("last_successful_full_sync_at", ""))
+                or (str(summary.get("generated_at", "")) if source_metadata.get("sync_scope", "full") == "full" else "")
             ),
             "provenance": "generated_sync_metadata",
         },

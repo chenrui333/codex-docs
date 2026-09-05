@@ -984,6 +984,10 @@
       "sha256": "dd09058121a2692f58d1860b31c228430b8a02f002f1c122c669437191fa9f18"
     }
   },
+  "observation_environment": {
+    "arch": "arm64",
+    "os": "darwin"
+  },
   "schema_version": 3,
   "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
   "source_defaults": {

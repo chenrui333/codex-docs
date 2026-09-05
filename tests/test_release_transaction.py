@@ -49,6 +49,7 @@ class ReleaseTransactionTests(unittest.TestCase):
     def test_release_advances_without_contacting_unavailable_web_sources(self):
         with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
             cached = self.seed()
+            prior_web_sync = json.loads(sync.COVERAGE_PATH.read_text())["generated_at"]
             with self.release_builders(), mock.patch.object(sync, "build_learn_files", side_effect=TimeoutError) as learn, \
                  mock.patch.object(sync, "build_developers_files", side_effect=TimeoutError) as developers, \
                  mock.patch.object(sync, "build_platform_tool_guide_files", side_effect=TimeoutError) as guides:
@@ -59,7 +60,9 @@ class ReleaseTransactionTests(unittest.TestCase):
                 for builder in (learn, developers, guides):
                     builder.assert_not_called()
             self.assertEqual(cached, {p: sync.output_path_for_rel_path(p).read_bytes() for p in cached})
-            self.assertEqual(json.loads(sync.COVERAGE_PATH.read_text())["sync"]["web_observation"], "last_known_good")
+            coverage = json.loads(sync.COVERAGE_PATH.read_text())
+            self.assertEqual(coverage["sync"]["web_observation"], "last_known_good")
+            self.assertEqual(coverage["web_snapshot"]["last_successful_full_sync_at"], prior_web_sync)
             self.assertEqual(json.loads(sync.output_path_for_rel_path(sync.MODELS_REL_PATH).read_text())["source_commit"], "b" * 40)
 
     def test_failed_release_transaction_does_not_write_partial_outputs(self):
@@ -87,4 +90,30 @@ class ReleaseTransactionTests(unittest.TestCase):
                 **state["sync"], "scope": "full", "web_observation": "current"}})
             self.assertEqual(before, sync.COVERAGE_PATH.read_bytes())
             sync.write_coverage({**state, "sync": {**state["sync"], "failure_count": 1, "status": "partial"}})
+            self.assertNotEqual(before, sync.COVERAGE_PATH.read_bytes())
+
+    def test_partial_diagnostic_state_is_not_accepted_as_last_known_good(self):
+        with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
+            self.seed()
+            coverage = json.loads(sync.COVERAGE_PATH.read_text())
+            coverage["sync"] = {"failure_count": 1, "status": "partial"}
+            sync.write_coverage(coverage)
+            before = {p: p.read_bytes() for p in Path(directory).rglob("*") if p.is_file()}
+            with self.release_builders():
+                self.assertEqual(sync.main(release_only=True), 1)
+            self.assertEqual(before, {p: p.read_bytes() for p in Path(directory).rglob("*") if p.is_file()})
+
+    def test_empty_optional_guide_family_is_valid(self):
+        with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
+            sync.write_manifest({})
+            self.assertEqual(sync.load_cached_source_files({sync.PLATFORM_TOOL_GUIDE_SOURCE_TYPE}, allow_empty=True), [])
+
+    def test_web_success_heartbeat_does_not_rewrite_semantic_coverage(self):
+        with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
+            state = {"web_snapshot": {"status": "complete", "last_successful_full_sync_at": "first"}}
+            sync.write_coverage(state)
+            before = sync.COVERAGE_PATH.read_bytes()
+            sync.write_coverage({"web_snapshot": {"status": "complete", "last_successful_full_sync_at": "later"}})
+            self.assertEqual(before, sync.COVERAGE_PATH.read_bytes())
+            sync.write_coverage({"web_snapshot": {"status": "unknown"}})
             self.assertNotEqual(before, sync.COVERAGE_PATH.read_bytes())

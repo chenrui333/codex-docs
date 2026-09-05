@@ -51840,8 +51840,10 @@
       "name": "apply_patch_freeform",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -51893,8 +51895,10 @@
       "name": "apply_patch_preserve_line_endings",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -51946,8 +51950,10 @@
       "name": "apply_patch_streaming_events",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -51999,8 +52005,10 @@
       "name": "apps",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52052,8 +52060,10 @@
       "name": "apps_mcp_path_override",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52105,8 +52115,10 @@
       "name": "artifact",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52158,8 +52170,10 @@
       "name": "auth_elicitation",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52211,8 +52225,10 @@
       "name": "background_paginated_rollout_migration",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52264,8 +52280,10 @@
       "name": "bedrock_setup_wizard",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52317,8 +52335,10 @@
       "name": "browser_use",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52370,8 +52390,10 @@
       "name": "browser_use_external",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52423,8 +52445,10 @@
       "name": "browser_use_full_cdp_access",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52476,8 +52500,10 @@
       "name": "chronicle",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52529,8 +52555,10 @@
       "name": "code_mode",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52582,8 +52610,10 @@
       "name": "code_mode_buffered_exec",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52635,8 +52665,10 @@
       "name": "code_mode_host",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52688,8 +52720,10 @@
       "name": "code_mode_interrupt",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52741,8 +52775,10 @@
       "name": "code_mode_only",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52794,8 +52830,10 @@
       "name": "code_mode_prewarm",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52847,8 +52885,10 @@
       "name": "codex_git_commit",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52900,8 +52940,10 @@
       "name": "collaboration_modes",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -52953,8 +52995,10 @@
       "name": "compaction_image_budget",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53006,8 +53050,10 @@
       "name": "computer_use",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53059,8 +53105,10 @@
       "name": "concurrent_reasoning_summaries",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53112,8 +53160,10 @@
       "name": "content_item_kinds",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53159,8 +53209,10 @@
       "name": "context_management",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53212,8 +53264,10 @@
       "name": "current_time_reminder",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53265,8 +53319,10 @@
       "name": "cwd_relative_turn_diffs",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53318,8 +53374,10 @@
       "name": "default_mode_request_user_input",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53371,8 +53429,10 @@
       "name": "deferred_executor",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53424,8 +53484,10 @@
       "name": "deferred_tool_world_state",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53477,8 +53539,10 @@
       "name": "elevated_windows_sandbox",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53530,8 +53594,10 @@
       "name": "enable_fanout",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53583,8 +53649,10 @@
       "name": "enable_mcp_apps",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53636,8 +53704,10 @@
       "name": "enable_request_compression",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53689,8 +53759,10 @@
       "name": "exec_permission_approvals",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53742,8 +53814,10 @@
       "name": "executed_tool_call_metadata",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53795,8 +53869,10 @@
       "name": "executor_capability_discovery",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53848,8 +53924,10 @@
       "name": "experimental_windows_sandbox",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53901,8 +53979,10 @@
       "name": "external_agent_memory_import",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -53954,8 +54034,10 @@
       "name": "external_migration",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54007,8 +54089,10 @@
       "name": "fast_mode",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54060,8 +54144,10 @@
       "name": "goals",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54113,8 +54199,10 @@
       "name": "guardian_approval",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54166,8 +54254,10 @@
       "name": "guardian_enhanced_node_repl_transcripts",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54219,8 +54309,10 @@
       "name": "guardian_ext",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54272,8 +54364,10 @@
       "name": "guardian_node_repl_transcript_images",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54325,8 +54419,10 @@
       "name": "guardian_reuse_parent_compaction",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54378,8 +54474,10 @@
       "name": "guardianv2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54431,8 +54529,10 @@
       "name": "hooks",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54484,8 +54584,10 @@
       "name": "image_detail_original",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54537,8 +54639,10 @@
       "name": "image_generation",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54590,8 +54694,10 @@
       "name": "image_resize_notice",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54643,8 +54749,10 @@
       "name": "in_app_browser",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54696,8 +54804,10 @@
       "name": "in_app_chat",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54749,8 +54859,10 @@
       "name": "in_app_dictation",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54802,8 +54914,10 @@
       "name": "in_app_local_automation",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54855,8 +54969,10 @@
       "name": "in_app_updates",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54908,8 +55024,10 @@
       "name": "item_ids",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -54961,8 +55079,10 @@
       "name": "js_repl",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55014,8 +55134,10 @@
       "name": "js_repl_tools_only",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55067,8 +55189,10 @@
       "name": "local_thread_store_compression",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55118,8 +55242,10 @@
       "name": "local_thread_store_shared_compression",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55171,8 +55297,10 @@
       "name": "mcp_2026_07_28",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55218,8 +55346,10 @@
       "name": "mcp_oauth_refresh_coordination",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55271,8 +55401,10 @@
       "name": "memories",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55324,8 +55456,10 @@
       "name": "mentions_v2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55377,8 +55511,10 @@
       "name": "multi_agent",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55430,8 +55566,10 @@
       "name": "multi_agent_mode",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55483,8 +55621,10 @@
       "name": "multi_agent_v2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55536,8 +55676,10 @@
       "name": "network_proxy",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55589,8 +55731,10 @@
       "name": "non_prefixed_mcp_tool_names",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55640,8 +55784,10 @@
       "name": "omit_app_server_notification_media",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55693,8 +55839,10 @@
       "name": "personality",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55746,8 +55894,10 @@
       "name": "plugin_hooks",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55799,8 +55949,10 @@
       "name": "plugin_sharing",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55852,8 +56004,10 @@
       "name": "plugins",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55903,8 +56057,10 @@
       "name": "powershell_shell_version",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -55956,8 +56112,10 @@
       "name": "prevent_idle_sleep",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56009,8 +56167,10 @@
       "name": "psp",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56062,8 +56222,10 @@
       "name": "realtime_conversation",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56115,8 +56277,10 @@
       "name": "recommended_plugins",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56168,8 +56332,10 @@
       "name": "remote_compaction_v2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56221,8 +56387,10 @@
       "name": "remote_control",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56274,8 +56442,10 @@
       "name": "remote_models",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56327,8 +56497,10 @@
       "name": "remote_plugin",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56380,8 +56552,10 @@
       "name": "request_permissions_tool",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56433,8 +56607,10 @@
       "name": "request_rule",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56486,8 +56662,10 @@
       "name": "resize_all_images",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56539,8 +56717,10 @@
       "name": "respect_system_proxy",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56592,8 +56772,10 @@
       "name": "responses_websockets",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56645,8 +56827,10 @@
       "name": "responses_websockets_v2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56698,8 +56882,10 @@
       "name": "retain_client_developer_messages",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56751,8 +56937,10 @@
       "name": "rollout_budget",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56804,8 +56992,10 @@
       "name": "runtime_metrics",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56857,8 +57047,10 @@
       "name": "search_tool",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56910,8 +57102,10 @@
       "name": "secret_auth_storage",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -56963,8 +57157,10 @@
       "name": "send_async_message",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57016,8 +57212,10 @@
       "name": "shell_snapshot",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57069,8 +57267,10 @@
       "name": "shell_snapshot_v2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57122,8 +57322,10 @@
       "name": "shell_tool",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57175,8 +57377,10 @@
       "name": "shell_zsh_fork",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57228,8 +57432,10 @@
       "name": "skill_env_var_dependency_prompt",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57281,8 +57487,10 @@
       "name": "skill_mcp_dependency_install",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57334,8 +57542,10 @@
       "name": "skill_search",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57387,8 +57597,10 @@
       "name": "skip_host_skill_discovery",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57438,8 +57650,10 @@
       "name": "sleep_tool",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57491,8 +57705,10 @@
       "name": "sqlite",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57544,8 +57760,10 @@
       "name": "standalone_web_search",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57597,8 +57815,10 @@
       "name": "steer",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57650,8 +57870,10 @@
       "name": "step_model_switching",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57703,8 +57925,10 @@
       "name": "terminal_resize_reflow",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57756,8 +57980,10 @@
       "name": "terminal_visualization_instructions",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57809,8 +58035,10 @@
       "name": "token_budget",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57862,8 +58090,10 @@
       "name": "tool_call_mcp_elicitation",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57915,8 +58145,10 @@
       "name": "tool_search",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -57968,8 +58200,10 @@
       "name": "tool_search_always_defer_mcp_tools",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58021,8 +58255,10 @@
       "name": "tool_suggest",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58074,8 +58310,10 @@
       "name": "transcript_v2",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58127,8 +58365,10 @@
       "name": "tui_app_server",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58180,8 +58420,10 @@
       "name": "unavailable_dummy_tools",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58233,8 +58475,10 @@
       "name": "unbounded_connection_retries",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58286,8 +58530,10 @@
       "name": "undo",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58339,8 +58585,10 @@
       "name": "unified_exec",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58392,8 +58640,10 @@
       "name": "unified_exec_zsh_fork",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58445,8 +58695,10 @@
       "name": "unified_image_budget",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58498,8 +58750,10 @@
       "name": "use_agent_identity",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58551,8 +58805,10 @@
       "name": "use_legacy_landlock",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58604,8 +58860,10 @@
       "name": "use_linux_sandbox_bwrap",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58657,8 +58915,10 @@
       "name": "view_image",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58710,8 +58970,10 @@
       "name": "web_search_cached",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58763,8 +59025,10 @@
       "name": "web_search_request",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58816,8 +59080,10 @@
       "name": "workspace_dependencies",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58869,8 +59135,10 @@
       "name": "workspace_owner_usage_nudge",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
@@ -58922,8 +59190,10 @@
       "name": "write_stdin_approval",
       "provenance": [
         {
+          "arch": "arm64",
           "codex_cli_version": "0.153.4",
           "evidence_type": "installed_cli_observation",
+          "os": "darwin",
           "source": "codex features list"
         },
         {
