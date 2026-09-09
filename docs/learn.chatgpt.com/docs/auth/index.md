@@ -259,16 +259,21 @@ For sign in with ChatGPT sessions, Codex refreshes tokens automatically during u
 Use `cli_auth_credentials_store` to control where the Codex CLI stores cached credentials:
 
 ```toml
-# file | keyring | auto
+# file | keyring | auto | ephemeral
 cli_auth_credentials_store = "keyring"
 ```
 
 - `file` stores credentials in `auth.json` under `CODEX_HOME` (defaults to `~/.codex`).
-- `keyring` stores credentials in your operating system credential store.
+- `keyring` stores credentials in your operating system credential store and fails if it is unavailable.
 - `auto` uses the OS credential store when available, otherwise falls back to `auth.json`.
+- `ephemeral` keeps credentials in memory only for the current process.
 
 See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the complete
 `config.toml` schema.
+
+Admins can enforce `cli_auth_credentials_store` and `chatgpt_base_url` through
+[local authentication requirements](https://learn.chatgpt.com/docs/enterprise/managed-configuration#manage-authentication-locally).
+Users can't override those requirements through `config.toml` or CLI overrides.
 
 If you use file-based storage, treat `~/.codex/auth.json` like a password: it
   contains access tokens. Don't commit it, paste it into tickets, or share it in
@@ -288,7 +293,9 @@ forced_chatgpt_workspace_id = "00000000-0000-0000-0000-000000000000"
 
 If the active credentials don't match the configured restrictions, Codex logs the user out and exits.
 
-These settings are commonly applied via managed configuration rather than per-user setup. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration).
+These settings can also be supplied through legacy managed configuration.
+For admin-enforced login restrictions, see
+[Manage authentication locally](https://learn.chatgpt.com/docs/enterprise/managed-configuration#manage-authentication-locally).
 
 </ContentModeSwitch>
 

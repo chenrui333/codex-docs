@@ -35950,6 +35950,62 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.153.4"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.153.4"
+      ],
+      "config_key": "allowed_chatgpt_workspaces",
+      "id": "config_key:allowed_chatgpt_workspaces",
+      "lifecycle": {
+        "first_seen_version": "0.153.4",
+        "last_seen_version": "0.153.4",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "allowed_chatgpt_workspaces",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.153.4"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.153.4"
+      ],
+      "config_key": "allowed_login_methods",
+      "id": "config_key:allowed_login_methods",
+      "lifecycle": {
+        "first_seen_version": "0.153.4",
+        "last_seen_version": "0.153.4",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "allowed_login_methods",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -60142,11 +60198,11 @@
     "codex-cli 0.153.4"
   ],
   "counts": {
-    "active": 947,
+    "active": 949,
     "by_category": {
       "cli_command": 93,
       "cli_option": 329,
-      "config_key": 418,
+      "config_key": 420,
       "feature_flag": 135,
       "linked_tool_guide": 1,
       "system_prompt_snapshot": 1,
@@ -60160,7 +60216,7 @@
       "under development": 52
     },
     "inactive": 36,
-    "total": 983
+    "total": 985
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",

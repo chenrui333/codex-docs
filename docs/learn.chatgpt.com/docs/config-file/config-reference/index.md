@@ -1494,9 +1494,8 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "cli_auth_credentials_store",
-      type: "file | keyring | auto",
-      description:
-        "Control where the CLI stores cached credentials (file-based auth.json vs OS keychain).",
+      type: "file | keyring | auto | ephemeral",
+      description: "Control where the CLI stores cached credentials.",
     },
     {
       key: "mcp_oauth_credentials_store",
@@ -1802,6 +1801,30 @@ from either one wins.
       key: "allow_login_shell",
       type: "boolean",
       description: "Enforce whether shell tools can start a login shell.",
+    },
+    {
+      key: "allowed_login_methods",
+      type: "array<string>",
+      description:
+        "Allow `chatgpt`, `api`, or both. If omitted, this setting doesn't restrict login methods. If set, the list must contain at least one method. `api` permits API authentication, including Amazon Bedrock. Set through the local system requirements file or macOS MDM. Cloud-managed values are ignored.",
+    },
+    {
+      key: "allowed_chatgpt_workspaces",
+      type: "array<string>",
+      description:
+        "Restrict ChatGPT login, including Codex access tokens, to the listed workspace IDs. An empty list disables ChatGPT login; API authentication remains available when permitted. Set through the local system requirements file or macOS MDM; cloud-managed values are ignored.",
+    },
+    {
+      key: "cli_auth_credentials_store",
+      type: "file | keyring | auto | ephemeral",
+      description:
+        "Enforce the CLI credential store before authentication loads. `file` uses `CODEX_HOME/auth.json`; `keyring` requires the OS credential store; `auto` falls back to a file if the credential store is unavailable; `ephemeral` keeps credentials in memory for the current process. Set through the local system requirements file or macOS MDM; cloud-managed values are ignored.",
+    },
+    {
+      key: "chatgpt_base_url",
+      type: "string",
+      description:
+        "Enforce the ChatGPT service base URL before authentication and cloud-policy retrieval. This doesn't configure every Codex network destination. Set through the local system requirements file or macOS MDM; cloud-managed values are ignored.",
     },
     {
       key: "feedback",

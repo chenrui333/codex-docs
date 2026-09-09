@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/plugins
 ## Overview
 
 Plugins bundle capabilities into reusable workflows in ChatGPT and Codex. They
-can include skills, connectors, or both. Both products use one universal plugin
+can include skills, MCP servers, and lifecycle hooks. Both products use one universal plugin
 directory, so the same public plugins are discoverable from their supported
 surfaces.
 
@@ -26,11 +26,15 @@ for Codex environments. The IDE extension doesn't support plugins.
 
 On mobile, you can use plugins available to your account in Chat or Work.
 
+Plugins marked **Desktop only** require the ChatGPT desktop app. You can discover these plugins on the web,
+but you must open the ChatGPT desktop app to install and use them. They aren't
+available on mobile.
+
 <ContentModeSwitch group="codex-surface" id="app">
 
 Open the **Plugins** tab to browse and install plugins. After installation, you
 can use plugins in Chat or Work in ChatGPT, or in Codex. Installed plugins can
-add skills, connectors, and MCP tools to new chats.
+add skills and MCP tools to new chats.
 
 </ContentModeSwitch>
 
@@ -75,19 +79,18 @@ A plugin can contain one or more of these parts:
 - **Skills:** reusable instructions for specific kinds of work. ChatGPT and
   Codex can load them when needed so they follow the right steps and use the
   right references or helper scripts for a task.
-- **Connectors:** connections to tools like GitHub, Slack, or Google Drive, so
-  ChatGPT and Codex can read information from those tools and take actions in
-  them. Connectors expose tools and can optionally include custom UI.
-- **MCP servers:** services that give ChatGPT and Codex access to more tools or
-  shared information, often from systems outside your local project. They're
-  also the services behind connectors. They define tools, enforce auth, return
-  structured data, and perform actions against external systems.
+- **MCP servers:** services that connect ChatGPT and Codex to tools and
+  information in systems such as GitHub, Slack, or Google Drive. They define
+  tools, enforce authentication, return structured data, and perform actions
+  against external systems. They can optionally include custom UI.
 - **Browser extensions:** browser capabilities that a plugin needs for its
   workflow.
-- **Hooks:** commands that run at configured lifecycle points. Review and trust
-  plugin hooks before you enable them.
-- **Scheduled task templates:** reusable starting points for recurring tasks
-  where scheduled tasks are available.
+- **Hooks:** commands that run at configured lifecycle points in the Codex
+  runtime, including ChatGPT Work and Codex. Hook scripts must be
+  available in the execution environment; installing a plugin on the web doesn't
+  deploy those scripts. Enterprise admins can deploy required scripts through
+  mobile device management (MDM). Review and trust plugin hooks before they run.
+  See [Hooks](https://learn.chatgpt.com/docs/hooks) for setup and managed-hook policies.
 
 You can share plugins by publishing them through a marketplace source, such as a
 repo marketplace for a project or team. See [Build plugins](https://developers.openai.com/plugins/build/plugins)
@@ -140,7 +143,7 @@ Once you open the Plugins Directory:
 
 1. Search or browse for a plugin, then open its details.
 2. Select the plus button to install the plugin.
-3. If the plugin needs a connector, connect it when prompted. Some plugins
+3. If the plugin needs an MCP server connection, connect it when prompted. Some plugins
    ask you to authenticate during install. Others wait until the first time you
    use them.
 4. After installation, start a new chat and ask ChatGPT or Codex to use the
@@ -281,7 +284,7 @@ on the [Platform Usage page](https://platform.openai.com/usage).
 <ContentModeSwitch group="codex-surface" id="web">
 
 In ChatGPT on the web, Chat and Work use the workspace permissions and tools
-available to that chat. Connectors still require their own sign-in and access.
+available to that chat. MCP servers still require their own sign-in and access.
 
 </ContentModeSwitch>
 
@@ -296,11 +299,9 @@ access controls.
 
 - Bundled skills become available when you start a new chat or CLI session
   after installation.
-- If a plugin includes connectors, the active product may prompt you to install
-  or sign in to those connectors during setup or the first time you use them.
 - If a plugin includes MCP servers, they may require extra setup or
   authentication before you can use them.
-- When ChatGPT sends data through a bundled connector, that service's terms and privacy
+- When ChatGPT sends data through an MCP server, that service's terms and privacy
   policy apply.
 
 ### Remove a plugin
@@ -311,8 +312,8 @@ default plugins may not offer that action; your workspace administrator controls
 them instead.
 
 Uninstalling a plugin removes the plugin bundle from that ChatGPT or Codex
-environment, but bundled connectors stay connected until you manage them in
-ChatGPT.
+environment. Separately connected MCP server integrations remain connected in
+ChatGPT until you disconnect them there.
 
 ## Build your own plugin
 

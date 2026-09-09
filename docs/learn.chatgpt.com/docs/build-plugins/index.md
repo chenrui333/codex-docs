@@ -52,8 +52,11 @@ Include a skill that turns meeting notes into decisions, owners, and next steps.
 Add it to a personal marketplace so I can test it locally.
 ```
 
-The skill creates the required `.codex-plugin/plugin.json` manifest, organizes
-the plugin folder, and can add the plugin to a local marketplace.
+The skill creates a supported `.codex-plugin/plugin.json` compatibility
+manifest, organizes the plugin folder, and can add the plugin to a local
+marketplace. This scaffold differs from the portable root `plugin.json` format
+used in the manual example. See the [scaffold layout](https://developers.openai.com/plugins/build/plugins#plugin-creator-output)
+for optional files and directories.
 
 > Illustration: Invoking the plugin creator skill
 
@@ -72,29 +75,30 @@ for tools, authentication, deployment, and testing.
 
 ## Create a skills-only plugin manually
 
-A minimal plugin contains a manifest and at least one skill:
+A minimal portable Agent Plugins package contains a root manifest and at least
+one skill:
 
 ```text
 meeting-follow-up/
-├── .codex-plugin/
-│   └── plugin.json
+├── plugin.json
 └── skills/
     └── meeting-follow-up/
         └── SKILL.md
 ```
 
-Create `.codex-plugin/plugin.json`:
+Create `plugin.json` at the plugin root:
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "meeting-follow-up",
   "version": "1.0.0",
-  "description": "Turn meeting notes into decisions and next steps",
-  "skills": "./skills/"
+  "description": "Turn meeting notes into decisions and next steps"
 }
 ```
 
-Then add `skills/meeting-follow-up/SKILL.md`:
+Portable packages discover skills in `skills/` automatically. Add
+`skills/meeting-follow-up/SKILL.md`:
 
 ```md
 ---

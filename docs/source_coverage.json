@@ -1,11 +1,11 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 947,
+      "active": 949,
       "by_category": {
         "cli_command": 93,
         "cli_option": 329,
-        "config_key": 418,
+        "config_key": 420,
         "feature_flag": 135,
         "linked_tool_guide": 1,
         "system_prompt_snapshot": 1,
@@ -19,7 +19,7 @@
         "under development": 52
       },
       "inactive": 36,
-      "total": 983
+      "total": 985
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -293,7 +293,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-05T02:40:11+00:00",
+  "generated_at": "2026-09-09T16:07:05+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 26,
@@ -1143,7 +1143,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-09-05T02:40:11+00:00",
+    "last_successful_full_sync_at": "2026-09-09T16:07:05+00:00",
     "status": "complete"
   }
 }

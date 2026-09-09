@@ -21,9 +21,10 @@ same prompt, template, requirements, or process into every chat.
 
 - A **skill** packages instructions and supporting resources for a specific
   task or workflow.
-- A **plugin** is an installable bundle that can include skills, connectors, or
-  both. Connectors are backed by Model Context Protocol (MCP) servers and can
-  optionally include custom ChatGPT UI.
+- A **plugin** is an installable bundle that can include skills and Model Context
+  Protocol (MCP) servers. MCP servers expose tools and can optionally include
+  custom ChatGPT UI. Plugins can also include [lifecycle hooks](https://learn.chatgpt.com/docs/hooks)
+  for the Codex runtime, including ChatGPT Work and Codex.
 
 ## Use skills for repeatable work
 
@@ -85,8 +86,8 @@ For more details on building skills, see our dedicated guide below.
 ## Use plugins for tools and shared workflows
 
 Plugins make reusable capabilities easier to install and share. A plugin can
-combine skills with connectors for services such as GitHub, Google Drive, or
-Slack, and can include MCP servers for additional tools and context.
+combine skills with MCP servers for tools and context from services such as
+GitHub, Google Drive, or Slack.
 
 ChatGPT and Codex share one universal plugin directory. Browse it when you want
 to add an existing workflow instead of building one yourself. After installing
