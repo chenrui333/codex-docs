@@ -218,11 +218,14 @@ At a high level, the common sandbox modes are:
 
 The common approval policies are:
 
-- `untrusted`: The agent asks before running commands that aren't in its trusted
-  set.
 - `on-request`: The agent works inside the sandbox by default and asks when it
   needs to go beyond that boundary.
 - `never`: The agent doesn't stop for approval prompts.
+
+Codex and ChatGPT Work no longer support `untrusted` as a selectable approval
+policy. If an existing configuration uses that value, see [Migrate from the
+retired `untrusted` approval
+policy](https://learn.chatgpt.com/docs/agent-approvals-security#migrate-from-the-retired-untrusted-approval-policy).
 
 When approvals are interactive, you can also choose who reviews them with
 `approvals_reviewer`:

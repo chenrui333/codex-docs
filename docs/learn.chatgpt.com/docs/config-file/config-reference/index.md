@@ -32,6 +32,12 @@ keys in user-level config instead. Config [profile files](https://learn.chatgpt.
 
 For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_workspace_write.*`), pair this reference with [Sandbox and approvals](https://learn.chatgpt.com/docs/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://learn.chatgpt.com/docs/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://learn.chatgpt.com/docs/agent-approvals-security#network-access). For beta permission profiles, see [Permissions](https://learn.chatgpt.com/docs/permissions).
 
+Codex and ChatGPT Work no longer support `approval_policy = "untrusted"`.
+Remove the setting or choose a supported policy. Project entries with
+`trust_level = "untrusted"` in user-level `~/.codex/config.toml` remain supported. See
+[Migrate from the retired `untrusted` approval policy](https://learn.chatgpt.com/docs/agent-approvals-security#migrate-from-the-retired-untrusted-approval-policy)
+for examples and approval tradeoffs.
+
 <ConfigTable
   options={[
     {
@@ -87,9 +93,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "approval_policy",
-      type: "untrusted | on-request | never | { granular = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool, request_permissions = bool, skill_approval = bool } }",
+      type: "on-request | never | { granular = { sandbox_approval = bool, rules = bool, mcp_elicitations = bool, request_permissions = bool, skill_approval = bool } }",
       description:
-        "Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { granular = { ... } }` to allow or auto-reject specific prompt categories while keeping other prompts interactive. `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.",
+        "Controls when Codex pauses for approval before executing commands. You can also use `approval_policy = { granular = { ... } }` to allow or auto-reject specific prompt categories while keeping other prompts interactive. `untrusted` is unsupported, and `on-failure` is deprecated; use `on-request` for interactive runs or `never` for non-interactive runs.",
     },
     {
       key: "approval_policy.granular.sandbox_approval",
@@ -1758,6 +1764,11 @@ Use `allowed_sandbox_modes` with `sandbox_mode`. For permission-profile
 deployments, use `allowed_permission_profiles` with managed
 `default_permissions`.
 
+An `untrusted` entry in `allowed_approval_policies` is still valid for the
+stricter approval behavior Codex derives when a project uses
+`trust_level = "untrusted"`. It does not permit explicitly setting
+`approval_policy = "untrusted"`.
+
 The `[models.new_thread]` table supplies managed defaults, not enforcement.
 Explicit launch choices from dedicated CLI flags or `--config` overrides take
 precedence. An explicit model or reasoning-effort override skips both managed
@@ -1841,7 +1852,7 @@ from either one wins.
       key: "allowed_approval_policies",
       type: "array<string>",
       description:
-        "Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`).",
+        "Allowed approval policies, such as `on-request`, `never`, and `granular`. Include `untrusted` to permit the stricter policy derived from an untrusted project; it cannot be selected directly with `approval_policy`.",
     },
     {
       key: "allowed_approvals_reviewers",

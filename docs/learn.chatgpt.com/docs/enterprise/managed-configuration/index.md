@@ -33,6 +33,24 @@ with `allowed_permission_profiles` and managed `default_permissions`. Use
 
 For the exact key list, see the [`requirements.toml` section in Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference#requirementstoml).
 
+### Migrate the retired `untrusted` approval policy
+
+Codex and ChatGPT Work no longer support `approval_policy = "untrusted"`.
+Remove it from managed defaults, legacy `managed_config.toml`, and any user,
+project, profile, or startup configuration that sets it.
+
+For interactive, read-only use, select `approval_policy = "on-request"` with a
+read-only sandbox or permission profile allowed by your managed requirements.
+Commands allowed by that sandbox can run without approval.
+
+To keep stricter command approvals, omit an explicit `approval_policy`, set
+`trust_level = "untrusted"` in the project's entry in user-level
+`~/.codex/config.toml`, and keep `untrusted` in `allowed_approval_policies`.
+This also disables project-local configuration. Setting `on-request` explicitly
+overrides that policy. See
+[Migrate from the retired `untrusted` approval policy](https://learn.chatgpt.com/docs/agent-approvals-security#migrate-from-the-retired-untrusted-approval-policy)
+for examples and security tradeoffs.
+
 ### Locations and precedence
 
 Each supported local client composes requirements from lower to higher precedence:
@@ -163,6 +181,10 @@ This example blocks `--ask-for-approval never` and `--sandbox danger-full-access
 allowed_approval_policies = ["untrusted", "on-request"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 ```
+
+Here, `untrusted` preserves the stricter approval behavior derived from
+`trust_level = "untrusted"`; it does not make `approval_policy = "untrusted"` a
+supported explicit setting.
 
 ### Disable Appshots
 

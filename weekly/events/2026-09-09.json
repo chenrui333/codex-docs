@@ -127,6 +127,86 @@
       "id": "5ed5437d151eaf3061c629be6df7128b865165eb8a7b8db009d7d6fb2e929116",
       "observed_at": "2026-09-09T20:36:59+00:00",
       "previous_id": "89cbb2b293984055f084782fbe98d9b2762da5ca9425dcf829000a43f75638ab"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md": {
+            "after": "b817774c711d760e19db05dece15fbb2b2d32dcc2131b5fe2a3f7aec91019511",
+            "before": "63abbcd4cdac0071ab75d17ed993159b8439e5879470c3d7d6cc8a670ce3ad64"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "1c5b15ff65f06418a90ce33efb3f3c2c00d5fe3a7d0b728276b1b5e04d74863b",
+            "before": "e898987c24602eee922849b450e3951e33c9a2c3aa79bcecdd90b2fdc079da61"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "763bdaf825ca5c5ce34ed6615df0d7d16bf8efee8dd0db1bc405cb4f633f95d7",
+            "before": "fba99dc0393ef574780f8fb4e088af0d95f3dc4c4c942e88fcc0ba11471e5b66"
+          },
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md": {
+            "after": "8bcf83fda62689fb07285bf1e6982e531f57dce9913db3f12116f57c667764cd",
+            "before": "b42cbb409f515f6e9a392e57bde83f9b1c91866b456725624a1f8a2c30971e8e"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "2ae87991950e53520c0bf815c0fe5c83d8269a5df7180cc1961a12ecf07005a4",
+            "before": "1b1f1553e38ff88154d93f5c9d3c8a53c74331f93300e47a128d7cdb6b8d1c68"
+          },
+          "learn.chatgpt.com/docs/config-file/config-sample/index.md": {
+            "after": "99706decb8b93bec715c9cbc6078b7b1a534f14004e7835c842dcc4b3f4bef8e",
+            "before": "986e48cb26f2dd4b88f6949b16d88f35e3676ac1fbf6d22fec48c46daaa71740"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "8bcd044d751698d9d9c7e11b517215595c7677b5e01a6ba2b9b01d2a88b4da4a",
+            "before": "8f91b2605f9efd3200bea5fe90a3f7978039dd8d61e6b5f5615a01949b3ed60c"
+          },
+          "learn.chatgpt.com/docs/mcp-server/index.md": {
+            "after": "acd317de567b53ca6b4c793dbb5eea6d86174706793ef09019fdf2eac2f054d4",
+            "before": "0de12d787da7c94e077506d34c852940a82f92b631613556e07357de7aeb039d"
+          },
+          "learn.chatgpt.com/docs/sandboxing/index.md": {
+            "after": "522a3d77e3de09ec1376d5e0f73127c5afcc773c30940a54487874fc063963c7",
+            "before": "16a4d25d9409edf3a1cee5ead4fdf5efb2e39c63e646d812aaea15310d03b39d"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.153.4",
+          "codex_cli_source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+          "codex_cli_version": "0.153.4",
+          "codex_cli_version_raw": "codex-cli 0.153.4",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/config-file/config-sample/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/mcp-server/index.md",
+          "learn.chatgpt.com/docs/sandboxing/index.md"
+        ]
+      },
+      "id": "e8f143fe09624865a7d6533867188fa2de524ddf1b13cfc85d34d5f7aeeae9a1",
+      "observed_at": "2026-09-09T20:38:24+00:00",
+      "previous_id": "5ed5437d151eaf3061c629be6df7128b865165eb8a7b8db009d7d6fb2e929116"
     }
   ],
   "schema_version": 1
