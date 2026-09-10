@@ -1,10 +1,8 @@
 {
-  "added": [
-    "developers.openai.com/api/docs/guides/tools-computer-use/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-10T10:52:14+00:00",
+  "generated_at": "2026-09-10T15:59:08+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -14,15 +12,11 @@
     "codex_cli_version_raw": "codex-cli 0.154.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 262,
   "updated": [
-    "codex_capabilities.json",
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/config-file/config-basic/index.md",
-    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/plugin-management/index.md"
+    "feature-flags/lifecycle.json",
+    "feature-flags/lifecycle.md"
   ]
 }
