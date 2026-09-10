@@ -116,7 +116,7 @@
         "codex-cli 0.154.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "0ae8f53557f95982a4e0d4a8ee95ae5d33b75b21cc690945ca78c1ac11285553",
+      "sha256": "e64baa23ec018eb3182f1f6e502f080895fc03167c628a8c0ac25a75e694e55e",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -147,6 +147,14 @@
       "source_kind": "release_bundled_model_catalog",
       "source_type": "codex_model_catalog",
       "source_url": "https://raw.githubusercontent.com/openai/codex/6b9826e3aa83b1a5947db50f4332cb9c65f1b340/codex-rs/models-manager/models.json"
+    },
+    "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+      "sha256": "8d12df103389f7c47a1072561f1563edce5b2e6de5f64833c76b9a8cedb7f2dc",
+      "source_area": "tool_guide_computer_use",
+      "source_etag": "W/\"449f1d2b41e3d54280ba7c18651e8bd1\"",
+      "source_last_modified": "2026-09-10T07:41:16Z",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use"
     },
     "developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex/index.md": {
       "codex_cli_versions": [
@@ -6654,11 +6662,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "1c5b15ff65f06418a90ce33efb3f3c2c00d5fe3a7d0b728276b1b5e04d74863b",
+      "sha256": "a802cbba211ec669020c272dfa09ec281436c164d3450107e5fd226e89339942",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"c92d1d82190a803a7d3d1737779f0e82\"",
+      "source_etag": "W/\"92a9d1edf3f7ca68666e9b06e1e128dc\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-09-09T20:04:36Z",
+      "source_last_modified": "2026-09-10T10:03:13Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -6997,7 +7005,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "8bcf83fda62689fb07285bf1e6982e531f57dce9913db3f12116f57c667764cd",
+      "sha256": "ad81fdfae0c6f421172d7a0856f58ea7a29302da042b77b2577d199433d42c09",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7028,7 +7036,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "2ae87991950e53520c0bf815c0fe5c83d8269a5df7180cc1961a12ecf07005a4",
+      "sha256": "403d0afb8e24cb487ce75203647ccf49456e4f993d81cae6a68533e7ecc2e225",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7747,7 +7755,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "8bcd044d751698d9d9c7e11b517215595c7677b5e01a6ba2b9b01d2a88b4da4a",
+      "sha256": "099099cdf945d26956fedcfe1601fe298e8930c991c6e57f57bb737153b6f68b",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7768,7 +7776,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "c9d5f187728ec0e23ed49c7d48796bd2fbd8e05feb7c15f35c382e27c991696e",
+      "sha256": "9ee7cb7c04207c855248f03d4b6864eedc53689bdd0499e51657606920ff24cc",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",

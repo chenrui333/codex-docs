@@ -35,10 +35,15 @@ Codex resolves values in this order (highest precedence first):
 2. Project config files: `.codex/config.toml`, ordered from the project root down to your current working directory (closest wins; trusted projects only)
 3. [Profile](https://learn.chatgpt.com/docs/config-file/config-advanced#profiles) files selected with `--profile profile-name` (`~/.codex/profile-name.config.toml`)
 4. User config: `~/.codex/config.toml`
-5. System config (if present): `/etc/codex/config.toml` on Unix
-6. Built-in defaults
+5. Cloud-managed `config.toml` defaults, when delivered for the signed-in workspace
+6. System config (if present): `/etc/codex/config.toml` on Unix
+7. Built-in defaults
 
 Use that precedence to set shared defaults in `config.toml` and keep [profile files](https://learn.chatgpt.com/docs/config-file/config-advanced#profiles) focused on the values that differ.
+
+Cloud-managed and system configuration can define plugin marketplaces and set
+whether plugins are enabled by default. These are separate from enforced `requirements.toml`
+policies. See [Configure plugin marketplaces and defaults](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-plugin-marketplaces-and-defaults).
 
 If you mark a project as untrusted, Codex skips project-scoped `.codex/` layers, including project-local config, hooks, and rules. User and system config still load, including user/global hooks and rules.
 

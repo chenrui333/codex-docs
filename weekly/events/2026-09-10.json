@@ -371,6 +371,95 @@
       "id": "167835a23b3703d27841a827dcbd23e3d14bcfa12724d5a97caa3e9622de32a8",
       "observed_at": "2026-09-10T03:34:01+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md"
+        ],
+        "capability_changes": {
+          "added": [
+            "config_key:marketplaces.<name>.ref",
+            "config_key:marketplaces.<name>.source",
+            "config_key:marketplaces.<name>.source_type",
+            "config_key:marketplaces.<name>.sparse_paths",
+            "config_key:plugins.<plugin>.enabled",
+            "tool_guide:computer_use"
+          ],
+          "added_by_category": {
+            "config_key": [
+              "config_key:marketplaces.<name>.ref",
+              "config_key:marketplaces.<name>.source",
+              "config_key:marketplaces.<name>.source_type",
+              "config_key:marketplaces.<name>.sparse_paths",
+              "config_key:plugins.<plugin>.enabled"
+            ],
+            "linked_tool_guide": [
+              "tool_guide:computer_use"
+            ]
+          },
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "e64baa23ec018eb3182f1f6e502f080895fc03167c628a8c0ac25a75e694e55e",
+            "before": "0ae8f53557f95982a4e0d4a8ee95ae5d33b75b21cc690945ca78c1ac11285553"
+          },
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+            "after": "8d12df103389f7c47a1072561f1563edce5b2e6de5f64833c76b9a8cedb7f2dc",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "a802cbba211ec669020c272dfa09ec281436c164d3450107e5fd226e89339942",
+            "before": "1c5b15ff65f06418a90ce33efb3f3c2c00d5fe3a7d0b728276b1b5e04d74863b"
+          },
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md": {
+            "after": "ad81fdfae0c6f421172d7a0856f58ea7a29302da042b77b2577d199433d42c09",
+            "before": "8bcf83fda62689fb07285bf1e6982e531f57dce9913db3f12116f57c667764cd"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "403d0afb8e24cb487ce75203647ccf49456e4f993d81cae6a68533e7ecc2e225",
+            "before": "2ae87991950e53520c0bf815c0fe5c83d8269a5df7180cc1961a12ecf07005a4"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "099099cdf945d26956fedcfe1601fe298e8930c991c6e57f57bb737153b6f68b",
+            "before": "8bcd044d751698d9d9c7e11b517215595c7677b5e01a6ba2b9b01d2a88b4da4a"
+          },
+          "learn.chatgpt.com/docs/enterprise/plugin-management/index.md": {
+            "after": "9ee7cb7c04207c855248f03d4b6864eedc53689bdd0499e51657606920ff24cc",
+            "before": "c9d5f187728ec0e23ed49c7d48796bd2fbd8e05feb7c15f35c382e27c991696e"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.154.0",
+          "codex_cli_source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+          "codex_cli_version": "0.154.0",
+          "codex_cli_version_raw": "codex-cli 0.154.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/plugin-management/index.md"
+        ]
+      },
+      "id": "17b54848d53b2e2ca27d42f49f12770365dbc188ff0e402d5899e310816274f9",
+      "observed_at": "2026-09-10T10:52:14+00:00",
+      "previous_id": "167835a23b3703d27841a827dcbd23e3d14bcfa12724d5a97caa3e9622de32a8"
     }
   ],
   "schema_version": 1

@@ -15,14 +15,27 @@ Source: https://learn.chatgpt.com/docs/enterprise/managed-configuration
 
 Managed configuration controls supported local runtime behavior for covered capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension. Supported requirements can differ by client and version. Managed configuration doesn't grant ChatGPT workspace access, assign seats, or replace workspace role-based access control (RBAC). Use [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions) for workspace feature access and this page for local runtime policy.
 
-Enterprise admins can control supported local client behavior in two ways:
+Enterprise admins can control supported local client behavior with:
 
 - **Requirements**: admin-enforced constraints that users can't override.
-- **Managed defaults**: starting values applied when a supported client launches. Users can still change settings during a run; the client reapplies managed defaults the next time it starts.
+- **Configuration defaults**: system or cloud-managed `config.toml` settings that users can override.
+- **Legacy managed defaults**: `managed_config.toml` starting values applied when a supported client launches. Users can still change settings during a run; the client reapplies these defaults the next time it starts.
+
+## Configure plugin marketplaces and defaults
+
+Define local or Git marketplaces and plugin defaults in system `config.toml`
+or the `config.toml` section of [Managed configuration](https://chatgpt.com/codex/settings/managed-configs).
+These settings are defaults, not enforced policy.
+
+See [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for configuration keys,
+[Configuration precedence](https://learn.chatgpt.com/docs/config-file/config-basic#configuration-precedence)
+for overrides, and [repo plugin settings](https://developers.openai.com/plugins/build/plugins#enable-or-disable-a-plugin-for-a-repo)
+for project-level configuration. [Workspace GitHub import and
+sync](https://learn.chatgpt.com/docs/enterprise/plugin-management) is separate.
 
 ## Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, permission profiles, web search mode, managed hooks, which MCP servers users can enable, and which user-configured plugin marketplace sources they can add, install from, or refresh). When resolving configuration (for example from `config.toml`, [profile files](https://learn.chatgpt.com/docs/config-file/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, the local client falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, the client enables an MCP server only when both its name and identity match an approved entry; otherwise, the client disables it.
+Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, permission profiles, web search mode, managed hooks, which MCP servers users can enable, and which plugin marketplace sources they can use). When resolving configuration (for example from `config.toml`, [profile files](https://learn.chatgpt.com/docs/config-file/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, the local client falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, the client enables an MCP server only when both its name and identity match an approved entry; otherwise, the client disables it.
 
 Requirements can also constrain [feature flags](https://learn.chatgpt.com/docs/config-file/config-basic#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren't always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
@@ -708,7 +721,7 @@ supported configuration.
 
 ### Restrict plugin marketplace sources
 
-To restrict operations on user-configured marketplace sources, set
+To restrict plugin marketplace sources, set
 `restrict_to_allowed_sources = true` and define one or more source rules:
 
 ```toml
@@ -736,10 +749,22 @@ normalized path. See the [`requirements.toml` reference](https://learn.chatgpt.c
 for the full schema and merge behavior.
 
 These requirements reject unmatched marketplace add, plugin install, and
-configured Git marketplace refresh operations for user-configured sources.
-Codex-managed OpenAI marketplaces remain available when their source and
-reserved name match. The requirements don't filter already configured user
-marketplaces or their plugins at runtime.
+configured Git marketplace refresh operations. They also filter configured
+marketplaces and their plugins at runtime.
+
+The OpenAI-curated Git marketplaces, including the API-key catalog, must also
+match the source allowlist. To allow them, include the following Git source
+without a `ref` constraint:
+
+```toml
+[marketplaces.allowed_sources.openai_curated]
+source = "git"
+url = "https://github.com/openai/plugins.git"
+```
+
+To exclude the curated catalogs, omit that source and ensure no broader host
+rule allows it. Bundled plugins and remotely installed workspace plugins are
+separate from this curated Git source policy.
 
 These source restrictions apply only where a local client supports plugin
 marketplace operations: ChatGPT and Codex in the desktop app, and Codex CLI.
@@ -773,7 +798,9 @@ overrides bottom):
 
 CLI `--config key=value` overrides apply to the base, but managed layers override them. This means each run starts from the managed defaults even if you provide local flags.
 
-Cloud-managed requirements affect the requirements layer (not managed defaults). See the Admin-enforced requirements section above for precedence.
+Cloud `config.toml` uses [normal configuration precedence](https://learn.chatgpt.com/docs/config-file/config-basic#configuration-precedence),
+not the legacy ordering above. Cloud `requirements.toml` uses
+[requirements precedence](#locations-and-precedence).
 
 ### Locations
 

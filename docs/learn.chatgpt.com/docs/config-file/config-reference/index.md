@@ -1437,6 +1437,35 @@ for examples and approval tradeoffs.
         "Unbind the action in that keymap context. Key names use normalized strings such as `ctrl-a`, `shift-enter`, `page-down`, or `minus`.",
     },
     {
+      key: "marketplaces.<name>.source_type",
+      type: "git | local",
+      description:
+        "Source kind for a configured plugin marketplace. Marketplaces can be defined in system, cloud-managed, user, or trusted-project config.toml.",
+    },
+    {
+      key: "marketplaces.<name>.source",
+      type: "string",
+      description:
+        "Git repository location or local marketplace root directory. Use an absolute path for a local source; the directory contains .agents/plugins/marketplace.json.",
+    },
+    {
+      key: "marketplaces.<name>.ref",
+      type: "string",
+      description: "Optional Git branch, tag, or commit for the marketplace.",
+    },
+    {
+      key: "marketplaces.<name>.sparse_paths",
+      type: "array<string>",
+      description:
+        "Optional sparse checkout paths for a Git marketplace. Include the marketplace catalog and any local plugin directories it references.",
+    },
+    {
+      key: "plugins.<plugin>.enabled",
+      type: "boolean",
+      description:
+        "Enable or disable a local-marketplace plugin using a `plugin-name@marketplace-name` key. Read from the effective merged config; trusted-project settings can override user, cloud-managed, and system defaults. Marketplace refresh can install or refresh configured plugins even when disabled. This does not override workspace-managed enabled states.",
+    },
+    {
       key: "plugins.<plugin>.mcp_servers.<server>.enabled",
       type: "boolean",
       description:
@@ -2611,7 +2640,7 @@ from either one wins.
       key: "marketplaces.restrict_to_allowed_sources",
       type: "boolean",
       description:
-        "When `true`, require user-configured marketplace sources to match `allowed_sources` for marketplace add, plugin install, and configured Git marketplace refresh operations. Codex-managed OpenAI marketplaces remain allowed when their reserved source and name match. This doesn't filter already configured user marketplaces at runtime.",
+        "When `true`, require configured marketplace sources to match `allowed_sources` for marketplace add, plugin install, refresh, and runtime loading. OpenAI-curated Git catalogs, including the API-key catalog, must also match the allowlist. Bundled and remotely installed workspace plugins are separate from this curated Git source policy.",
     },
     {
       key: "marketplaces.allowed_sources",

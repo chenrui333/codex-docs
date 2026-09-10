@@ -44848,6 +44848,118 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.154.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.154.0"
+      ],
+      "config_key": "marketplaces.<name>.ref",
+      "id": "config_key:marketplaces.<name>.ref",
+      "lifecycle": {
+        "first_seen_version": "0.154.0",
+        "last_seen_version": "0.154.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "marketplaces.<name>.ref",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.154.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.154.0"
+      ],
+      "config_key": "marketplaces.<name>.source",
+      "id": "config_key:marketplaces.<name>.source",
+      "lifecycle": {
+        "first_seen_version": "0.154.0",
+        "last_seen_version": "0.154.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "marketplaces.<name>.source",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.154.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.154.0"
+      ],
+      "config_key": "marketplaces.<name>.source_type",
+      "id": "config_key:marketplaces.<name>.source_type",
+      "lifecycle": {
+        "first_seen_version": "0.154.0",
+        "last_seen_version": "0.154.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "marketplaces.<name>.source_type",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.154.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.154.0"
+      ],
+      "config_key": "marketplaces.<name>.sparse_paths",
+      "id": "config_key:marketplaces.<name>.sparse_paths",
+      "lifecycle": {
+        "first_seen_version": "0.154.0",
+        "last_seen_version": "0.154.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "marketplaces.<name>.sparse_paths",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -51326,6 +51438,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "plugins",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.154.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.154.0"
+      ],
+      "config_key": "plugins.<plugin>.enabled",
+      "id": "config_key:plugins.<plugin>.enabled",
+      "lifecycle": {
+        "first_seen_version": "0.154.0",
+        "last_seen_version": "0.154.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "plugins.<plugin>.enabled",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -63325,6 +63465,43 @@
       "codex_cli_version": "0.154.0",
       "codex_cli_version_raw": "codex-cli 0.154.0",
       "codex_cli_versions": [
+        "0.154.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.154.0"
+      ],
+      "first_seen_path": "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md",
+      "id": "tool_guide:computer_use",
+      "lifecycle": {
+        "first_seen_version": "0.154.0",
+        "last_seen_version": "0.154.0",
+        "status": "active"
+      },
+      "mirrored_path": "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+      "name": "computer_use",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use"
+        }
+      ],
+      "referenced_from": [
+        "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md"
+      ],
+      "source_area": "tool_guide_computer_use",
+      "source_etag": "W/\"449f1d2b41e3d54280ba7c18651e8bd1\"",
+      "source_last_modified": "2026-09-10T07:41:16Z",
+      "source_type": "platform_tool_guide",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
+      "title": "Computer use"
+    },
+    {
+      "active": true,
+      "category": "linked_tool_guide",
+      "codex_cli_version": "0.154.0",
+      "codex_cli_version_raw": "codex-cli 0.154.0",
+      "codex_cli_versions": [
         "0.146.0",
         "0.146.1",
         "0.147.0",
@@ -63491,13 +63668,13 @@
     "codex-cli 0.154.0"
   ],
   "counts": {
-    "active": 967,
+    "active": 973,
     "by_category": {
       "cli_command": 93,
       "cli_option": 343,
-      "config_key": 420,
+      "config_key": 425,
       "feature_flag": 140,
-      "linked_tool_guide": 1,
+      "linked_tool_guide": 2,
       "system_prompt_snapshot": 1,
       "system_skill": 6
     },
@@ -63509,7 +63686,7 @@
       "under development": 54
     },
     "inactive": 37,
-    "total": 1004
+    "total": 1010
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",

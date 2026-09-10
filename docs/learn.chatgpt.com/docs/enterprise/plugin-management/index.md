@@ -17,6 +17,12 @@ Source: https://learn.chatgpt.com/docs/enterprise/plugin-management
 
 Workspace admins can import a plugin marketplace from GitHub and keep its plugins up to date from the repository. A marketplace is a JSON catalog that lists the plugins to import.
 
+This page covers workspace import and sync. To configure marketplaces directly
+on local clients through cloud-managed or system `config.toml`, see
+[Configure plugin marketplaces and defaults](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-plugin-marketplaces-and-defaults).
+To enable or disable plugins for a specific project, see [Enable or disable a plugin for a
+repo](https://developers.openai.com/plugins/build/plugins#enable-or-disable-a-plugin-for-a-repo).
+
 Use a GitHub account that can read the marketplace repository and any other repositories it references. Public and private GitHub repositories are supported. Complete any GitHub organization approval required for your repository access before importing.
 
 Review the repository content before importing. New plugins start with **Available** installation and authentication on install. New marketplaces have automatic daily sync enabled. Import processes all valid entries, and future syncs automatically add any new plugins in the repository.
