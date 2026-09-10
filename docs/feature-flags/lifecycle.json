@@ -246,6 +246,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "guardianv2.thread_context",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "hooks",
       "stage": "stable"
@@ -403,6 +408,11 @@
     {
       "enabled": false,
       "key": "realtime_conversation",
+      "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "reasoning_effort_override",
       "stage": "under development"
     },
     {
@@ -622,6 +632,11 @@
     },
     {
       "enabled": true,
+      "key": "unified_exec_tty",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "unified_exec_zsh_fork",
       "stage": "removed"
     },
@@ -661,6 +676,11 @@
       "stage": "deprecated"
     },
     {
+      "enabled": false,
+      "key": "windows_sandbox_service",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "workspace_dependencies",
       "stage": "stable"
@@ -672,11 +692,16 @@
     },
     {
       "enabled": false,
+      "key": "worktrees",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
       "key": "write_stdin_approval",
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.153.4",
+  "codex_cli_version": "codex-cli 0.154.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -697,7 +722,9 @@
       "tool_call_mcp_elicitation",
       "tool_suggest",
       "unbounded_connection_retries",
-      "view_image"
+      "unified_exec_tty",
+      "view_image",
+      "worktrees"
     ],
     "actionable_stages": [
       "stable",
@@ -751,6 +778,7 @@
       "guardian_node_repl_transcript_images",
       "guardian_reuse_parent_compaction",
       "guardianv2",
+      "guardianv2.thread_context",
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
@@ -773,6 +801,7 @@
       "powershell_shell_version",
       "psp",
       "realtime_conversation",
+      "reasoning_effort_override",
       "recommended_plugins",
       "remote_compaction_v2",
       "remote_control",
@@ -811,18 +840,24 @@
       "unavailable_dummy_tools",
       "unbounded_connection_retries",
       "undo",
+      "unified_exec_tty",
       "unified_exec_zsh_fork",
       "unified_image_budget",
       "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
       "view_image",
+      "windows_sandbox_service",
       "workspace_owner_usage_nudge",
+      "worktrees",
       "write_stdin_approval"
     ],
     "missing_in_docs_by_stage": {
       "deprecated": [
         "use_legacy_landlock"
+      ],
+      "experimental": [
+        "worktrees"
       ],
       "removed": [
         "apply_patch_freeform",
@@ -841,6 +876,7 @@
         "local_thread_store_shared_compression",
         "multi_agent_mode",
         "plugin_hooks",
+        "realtime_conversation",
         "remote_control",
         "remote_models",
         "request_rule",
@@ -881,6 +917,7 @@
         "tool_call_mcp_elicitation",
         "tool_suggest",
         "unbounded_connection_retries",
+        "unified_exec_tty",
         "view_image"
       ],
       "under development": [
@@ -911,6 +948,7 @@
         "guardian_node_repl_transcript_images",
         "guardian_reuse_parent_compaction",
         "guardianv2",
+        "guardianv2.thread_context",
         "image_resize_notice",
         "local_thread_store_compression",
         "mcp_2026_07_28",
@@ -919,7 +957,7 @@
         "omit_app_server_notification_media",
         "powershell_shell_version",
         "psp",
-        "realtime_conversation",
+        "reasoning_effort_override",
         "request_permissions_tool",
         "respect_system_proxy",
         "retain_client_developer_messages",
@@ -935,6 +973,7 @@
         "transcript_v2",
         "unified_image_budget",
         "use_agent_identity",
+        "windows_sandbox_service",
         "write_stdin_approval"
       ]
     },
@@ -976,12 +1015,12 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "b42cbb409f515f6e9a392e57bde83f9b1c91866b456725624a1f8a2c30971e8e"
+      "sha256": "8bcf83fda62689fb07285bf1e6982e531f57dce9913db3f12116f57c667764cd"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "1b1f1553e38ff88154d93f5c9d3c8a53c74331f93300e47a128d7cdb6b8d1c68"
+      "sha256": "2ae87991950e53520c0bf815c0fe5c83d8269a5df7180cc1961a12ecf07005a4"
     }
   },
   "observation_environment": {
@@ -989,7 +1028,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+  "source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
   "source_defaults": {
     "apply_patch_freeform": {
       "behavior_evidence": "Removed compatibility flag for the deleted apply_patch fallback feature.",
@@ -1392,6 +1431,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "guardianv2.thread_context": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "hooks": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1648,6 +1695,15 @@
       "stage_from_source": "under development"
     },
     "realtime_conversation": {
+      "behavior_evidence": "Removed compatibility flag. Realtime sessions no longer require a per-thread opt-in.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
+    },
+    "reasoning_effort_override": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2016,6 +2072,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "unified_exec_tty": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "unified_exec_zsh_fork": {
       "behavior_evidence": "Allow unified exec to compose with the zsh exec bridge. /// This flag is only a composition gate. Enabling it by itself must not turn on either `unified_exec` or `shell_zsh_fork` because those features have separate rollout and enterprise controls.",
       "compatibility_flag": true,
@@ -2082,6 +2146,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "deprecated"
     },
+    "windows_sandbox_service": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "workspace_dependencies": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2099,6 +2171,14 @@
       "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
+    "worktrees": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "experimental"
+    },
     "write_stdin_approval": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2109,13 +2189,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "e77f1dfd562f2c21c1e30a95870bd171d56b1bb46361d07dd82f32992fca28f2",
-    "features_rs_sha256": "b7ef7bb1bb5517a82ae7c7294f2d7a072cb00f151a3d8f5025aa2e967b036937"
+    "client_rs_sha256": "6979098f4ad7b5ec16f19ca90d5c927d3b1e33d0f6d926c70388d0237c52af35",
+    "features_rs_sha256": "451604ebcb3e805ce22e62a87fc425b95f774bcdadc9bcc60b422075cedd7c85"
   },
-  "source_ref": "rust-v0.153.4",
+  "source_ref": "rust-v0.154.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/3d2ee51ca2d5db578f328aa75e20aa22c0197c9a/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/3d2ee51ca2d5db578f328aa75e20aa22c0197c9a/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/6b9826e3aa83b1a5947db50f4332cb9c65f1b340/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/6b9826e3aa83b1a5947db50f4332cb9c65f1b340/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

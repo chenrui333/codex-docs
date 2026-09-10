@@ -1,25 +1,25 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 949,
+      "active": 967,
       "by_category": {
         "cli_command": 93,
-        "cli_option": 329,
+        "cli_option": 343,
         "config_key": 420,
-        "feature_flag": 135,
+        "feature_flag": 140,
         "linked_tool_guide": 1,
         "system_prompt_snapshot": 1,
         "system_skill": 6
       },
       "by_maturity": {
         "deprecated": 3,
-        "experimental": 2,
-        "removed": 36,
-        "stable": 42,
-        "under development": 52
+        "experimental": 3,
+        "removed": 37,
+        "stable": 43,
+        "under development": 54
       },
-      "inactive": 36,
-      "total": 985
+      "inactive": 37,
+      "total": 1004
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -41,17 +41,17 @@
     "platform_observations": {
       "linux-x86_64": {
         "arch": "x86_64",
-        "codex_cli_version": "0.153.4",
+        "codex_cli_version": "0.154.0",
         "os": "linux",
-        "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
-        "source_ref": "rust-v0.153.4"
+        "source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+        "source_ref": "rust-v0.154.0"
       },
       "macos-arm64": {
         "arch": "arm64",
-        "codex_cli_version": "0.153.4",
+        "codex_cli_version": "0.154.0",
         "os": "darwin",
-        "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
-        "source_ref": "rust-v0.153.4"
+        "source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+        "source_ref": "rust-v0.154.0"
       }
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
@@ -89,7 +89,7 @@
       "dot_codex/skills/dot_system/openai-docs/references/official-docs.md",
       "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
-      "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-5p6-sol.md",
+      "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md",
       "dot_codex/skills/dot_system/openai-docs/scripts/fetch-codex-manual.mjs",
       "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info",
       "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.cjs",
@@ -124,8 +124,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.153.4",
-    "version_raw": "codex-cli 0.153.4"
+    "version": "0.154.0",
+    "version_raw": "codex-cli 0.154.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -293,10 +293,10 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-09T16:07:05+00:00",
+  "generated_at": "2026-09-10T03:34:01+00:00",
   "github": {
     "counts": {
-      "mirrored_paths_count": 26,
+      "mirrored_paths_count": 25,
       "page_fetch_errors": 0,
       "source_errors": 0
     },
@@ -310,7 +310,6 @@
       "github.openai.com/openai/codex/codex-rs/README.md",
       "github.openai.com/openai/codex/codex-rs/config.md",
       "github.openai.com/openai/codex/codex-rs/docs/bazel.md",
-      "github.openai.com/openai/codex/codex-rs/docs/codex_mcp_interface.md",
       "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md",
       "github.openai.com/openai/codex/docs/CLA.md",
       "github.openai.com/openai/codex/docs/agents_md.md",
@@ -328,12 +327,12 @@
       "github.openai.com/openai/codex/docs/skills.md",
       "github.openai.com/openai/codex/docs/slash_commands.md"
     ],
-    "mirrored_paths_count": 26,
+    "mirrored_paths_count": 25,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+    "source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
     "source_errors": [],
-    "source_ref": "rust-v0.153.4"
+    "source_ref": "rust-v0.154.0"
   },
   "learn": {
     "counts": {
@@ -967,11 +966,11 @@
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
   "model_catalog": {
-    "source_commit": "3d2ee51ca2d5db578f328aa75e20aa22c0197c9a",
+    "source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
     "source_path": "codex-rs/models-manager/models.json",
-    "source_ref": "rust-v0.153.4",
+    "source_ref": "rust-v0.154.0",
     "status": "complete",
-    "version": "0.153.4"
+    "version": "0.154.0"
   },
   "platform_tool_guides": {
     "candidate_urls": [
@@ -1053,9 +1052,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "full",
+    "scope": "release",
     "status": "complete",
-    "web_observation": "current"
+    "web_observation": "last_known_good"
   },
   "system_prompts": {
     "counts": {
@@ -1102,7 +1101,7 @@
       "dot_codex/skills/dot_system/openai-docs/references/official-docs.md",
       "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
       "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
-      "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-5p6-sol.md",
+      "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md",
       "dot_codex/skills/dot_system/openai-docs/scripts/fetch-codex-manual.mjs",
       "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info",
       "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.cjs",
