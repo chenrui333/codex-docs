@@ -15,7 +15,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 
 Use this changelog to see what changed in the Codex Security plugin.
 
-**Latest plugin version:** `0.1.20`.
+**Latest plugin version:** `0.1.24`.
 
 Check the plugin version in your current Codex environment before you use a
 feature from a newer release.
@@ -23,6 +23,114 @@ feature from a newer release.
 Changelog entries follow the plugin version, not the package version. CLI and
 SDK users can run `npx @openai/codex-security info --json` to check the
 package and bundled plugin versions together.
+
+## 0.1.24 (September 9, 2026)
+
+### Check Daybreak access from the plugin
+
+- Check Daybreak access before a scan in desktop and CLI sessions signed in
+  with ChatGPT, without connecting the separate Codex Security Access app.
+- Show an enrollment link when access isn't granted, or a warning when access
+  can't be verified. Sessions that use only an API key can't verify account
+  access.
+- Continue the scan after the advisory, including when access is unavailable
+  or the check fails. The advisory doesn't grant access or control whether
+  the scan runs.
+
+### Verify security fixes when requested
+
+- Run `$codex-security:verify-fix` only when you explicitly request verification
+  of a security fix.
+- Keep ordinary fix implementation, code review, and test requests in their
+  existing workflows instead of automatically switching to the verification
+  result format.
+
+## 0.1.23 (September 8, 2026)
+
+### Assess the risk of a proposed patch
+
+- Use `$codex-security:assess-patch-risk` to review a proposed change against
+  exact revisions and source evidence.
+- Assess impact, likelihood, and the difficulty of recovery separately from
+  regression protection, and identify evidence gaps that affect the recommendation.
+- Receive an advisory recommendation to merge, revise, or make no change.
+  The assessment doesn't merge code or replace repository approval rules.
+
+### Recover retained results from failed scans
+
+- Recover valid saved findings from a selected failed scan when you request
+  it, without repeating the scan.
+- Browse saved scans and findings without automatically recovering every
+  failed scan. Recovery preserves the failed outcome and isn't available for
+  running, completed, or canceled scans.
+- Preserve distinct findings when workers reuse candidate identifiers, and
+  keep valid evidence and root-cause details during recovery.
+
+### Make scan setup and reports clearer
+
+- See individual readiness checks and their blocking or warning details in
+  standard and change scans.
+- Keep a scan available for continuation while you decide how to resolve a
+  setup issue. Persistent configuration changes in interactive sessions still
+  require your approval.
+- See the configured include and exclude paths in deep-scan reports.
+- Keep context updates scoped to the selected scan without replacing saved
+  workspace defaults.
+
+### Improve startup and GitHub triage
+
+- Allow up to two minutes for the plugin's tool server to start, and pass
+  OpenAI API-key authentication to deep-scan workers.
+- Honor an explicitly selected GitHub connector when importing findings for
+  triage, and ask before switching to another connection or account.
+
+## 0.1.22 (August 25, 2026)
+
+### Verify existing security fixes
+
+- Use `$codex-security:verify-fix` to check whether an existing patch resolves
+  a reported security finding without changing repository files or issue
+  trackers.
+- Receive a `fixed`, `still_vulnerable`, or `inconclusive` result for each
+  finding, with supporting evidence and validation limits.
+- Add an investigation before patching and a review after patching to the
+  finding-remediation workflow.
+
+### Preserve findings when scans stop
+
+- Save findings and pending candidates as deep-scan workers make progress.
+- Keep accepted worker findings represented when later result consolidation
+  omits them or fails.
+- Keep valid results from failed, canceled, or interrupted scans while
+  preserving their non-success outcome and incomplete coverage.
+- Carry the supplied scan prompt into deep-scan workers, and preserve supported
+  filesystem deny rules from the parent session.
+
+### Improve Windows and filesystem compatibility
+
+- Match equivalent Windows paths in scan history and load Windows system
+  configuration from the expected location.
+- Block scan artifact paths that Windows would interpret ambiguously.
+- Save scan results on filesystems that don't support hard links.
+- Read UTC scan timestamps consistently on Python 3.10.
+
+## 0.1.21 (August 21, 2026)
+
+### Install and start the plugin more reliably
+
+- Install the plugin without requiring the optional Codex Security Access app.
+  The hosted access check remains advisory.
+- Use Codex's bundled Node.js runtime when starting the plugin, including on
+  Windows installations where packaged executables can't run directly.
+- Read Git metadata as UTF-8 on Windows.
+
+### Preserve finding details and improve SARIF exports
+
+- Keep validation, attack-path evidence, and root-cause details consistent
+  across saved findings, reports, and the Security workbench.
+- Export readable rule names, remediation guidance, CWE tags, and security
+  severity for GitHub code scanning while preserving finding identities,
+  fingerprints, and source locations.
 
 ## 0.1.20 (August 17, 2026)
 

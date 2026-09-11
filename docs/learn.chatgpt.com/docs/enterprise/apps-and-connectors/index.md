@@ -20,6 +20,11 @@ Learn more about [plugins](https://learn.chatgpt.com/docs/plugins),
 [skills](https://learn.chatgpt.com/docs/skills-and-plugins), and
 [connected services](https://help.openai.com/en/articles/11487775).
 
+In this guide, **app** and **MCP server** refer to the same connected
+integration and are interchangeable terms. We use **MCP server** in the prose,
+but preserve **app** in UI labels such as **Workspace apps** and
+**App permissions**, and in CSV column names.
+
 A member can use an MCP server's capabilities only when the plugin and MCP server are
 available to their role and they have access to the connected service.
 

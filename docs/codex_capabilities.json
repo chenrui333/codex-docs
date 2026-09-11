@@ -63490,8 +63490,8 @@
         "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md"
       ],
       "source_area": "tool_guide_computer_use",
-      "source_etag": "W/\"449f1d2b41e3d54280ba7c18651e8bd1\"",
-      "source_last_modified": "2026-09-10T07:41:16Z",
+      "source_etag": "W/\"57d4ae0d69ebcfccadd0d7fd8d11d223\"",
+      "source_last_modified": "2026-09-11T03:25:04Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
       "title": "Computer use"
@@ -63551,8 +63551,8 @@
         "learn.chatgpt.com/docs/agent-approvals-security/index.md"
       ],
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"2e26ae0326c3faed015374dd36b5984a\"",
-      "source_last_modified": "2026-09-03T20:18:12Z",
+      "source_etag": "W/\"01d0cc5b00d87f2513fb94d35fb6f66d\"",
+      "source_last_modified": "2026-09-11T03:32:10Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
       "title": "Web search"

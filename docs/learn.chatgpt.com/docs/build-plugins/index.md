@@ -63,7 +63,8 @@ for optional files and directories.
 After it finishes:
 
 1. Review `.codex-plugin/plugin.json`.
-2. Check each bundled skill under `skills/`.
+2. Check each bundled skill under `skills/` against the
+   [instruction-following guidance](https://developers.openai.com/plugins/build/skills#review-instruction-following).
 3. Refresh ChatGPT or Codex and install the plugin from its local marketplace
    source.
 4. Test the plugin in a new conversation with representative requests.
