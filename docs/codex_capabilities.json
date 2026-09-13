@@ -63490,8 +63490,8 @@
         "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md"
       ],
       "source_area": "tool_guide_computer_use",
-      "source_etag": "W/\"57d4ae0d69ebcfccadd0d7fd8d11d223\"",
-      "source_last_modified": "2026-09-11T03:25:04Z",
+      "source_etag": "W/\"bfad13751f9ee210c3f03645ab819de8\"",
+      "source_last_modified": "2026-09-13T02:29:53Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
       "title": "Computer use"

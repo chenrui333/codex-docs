@@ -1,0 +1,120 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "58b4c322e6af296ac2135aeb4bf30a38c9224e6c8220932976691545c2c48518",
+            "before": "44d9d8c429ea17fd283cb679c47cab5b1c8f3aa2871638bd8f328a17df465761"
+          },
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+            "after": "8e8a6d895e1a09d3a02e9f84c6c01478b51d2fa48527e86f27d4315db1cda4bc",
+            "before": "aa23c422bed22c75eb56df2da7ba7b6cf6ff019b7e42204e2dcfa6065097b134"
+          },
+          "learn.chatgpt.com/docs/appshots/index.md": {
+            "after": "acff57c7ad46389aeadc1707e59d010159f58a1d289dcea0b867784d39fc9a9a",
+            "before": "39c65924b4b9362f0142eca113ef4e524ce011a04c193a55bafc987907eba039"
+          },
+          "learn.chatgpt.com/docs/codex-sdk/index.md": {
+            "after": "65ea703e20a69e45013d36897e237fb386b03fc497721b219561a09d06090fbc",
+            "before": "ce18079e63a36fe260507bfcfbb6a99fb10efce384e7182d69a42181f071b0dd"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "c1d31bbddb6002c6b9d7affee56a9dfae0b6c81d7c4762cc7e16765712ebd903",
+            "before": "403d0afb8e24cb487ce75203647ccf49456e4f993d81cae6a68533e7ecc2e225"
+          },
+          "learn.chatgpt.com/docs/developers/index.md": {
+            "after": "c97c7118280816a4764f041a34e99fd708f58617aa41291b93256e84ce929dc0",
+            "before": "d29d6dff70bc2e5f8a6e4116e6dc38db1178da33f9aa13b37c960b4b7b179870"
+          },
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md": {
+            "after": "944c148926aafb9a3a61e57cae0717883ca6a917da87b8256262cbf127572a3e",
+            "before": "214a229b7ceb76ccea0d26e19f7d1958fc005f4a564e802b0b4f8eebdc3c5a0d"
+          },
+          "learn.chatgpt.com/docs/enterprise/workload-identity/index.md": {
+            "after": "bd3d36e8c55d94ad35856bba075279b0cd17adc3bfd94a6d5672972e8b5a2eb0",
+            "before": "8aed6e1e8380220e2ae1dfd5294da01ae0282d5bb8bc241481f72ac6f3f31fa9"
+          },
+          "learn.chatgpt.com/docs/features/index.md": {
+            "after": "8d917bfd1fb2543d27f44d9b9ab663d7991965aacfa2ee8816c3546c5c6cb603",
+            "before": "09b1ccfabaf1ae94e23b6b3a727789c0ad9fca4974a7ce24d53d06083ce4a9fe"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "b02eb155f756ef999654a697bd143e140e71f323dcada27784bd92dfb7ad12db",
+            "before": "3c307f723400b0bfecf0e6fd57110c1eab7fcc34347fba662fb0409fe6396064"
+          },
+          "learn.chatgpt.com/docs/mcp-server/index.md": {
+            "after": "6c659ce38b497b94fbaffd52a304c082551a5c1fe87cb56464964cea2a41b0a2",
+            "before": "acd317de567b53ca6b4c793dbb5eea6d86174706793ef09019fdf2eac2f054d4"
+          },
+          "learn.chatgpt.com/docs/personalize/index.md": {
+            "after": "a4b599b28e342fc7d41c3e7eaab0c33e250088fb5110948979b9db7d112929e7",
+            "before": "64df4924df2d9f5fff053ed500dbc0ce0c327ebabcb19ba64eab1b009388ca8f"
+          },
+          "learn.chatgpt.com/docs/pets/index.md": {
+            "after": "c74539703fb65081f1f36a21b903fa7a0325c695fe3bae28b1522c8087b8095a",
+            "before": "4e4f2a3dd95d78bd0722014aacc4c0f8fed82fa7860ae44a89198002c438227d"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "31a9991b8f4e9704d112d627246f5c3ebdd57a85d7e0892a1b1706442fae02b0",
+            "before": "fcdd3426a281bfbc9ca3e1520569ac68956c0300e82cd9b21995c3c20aa2c293"
+          },
+          "learn.chatgpt.com/docs/web-search/index.md": {
+            "after": "7dc785d164bc84e04a3573a6d2b0ad3375b8028b8e61fb99f6e4efab2c4fcc45",
+            "before": "08698ef6bc8abd40923aa99d3a7e07852375a28c2f98e1360ec4f5fdf6406bbd"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "25b987b4a84df36bd0c6586d35b10358093797bee28743bd4c6221ba9881894a",
+            "before": "724ca4d526431525774b1e8ef24878bbfdee640089392d60d3102d7a24f24d50"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.154.0",
+          "codex_cli_source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+          "codex_cli_version": "0.154.0",
+          "codex_cli_version_raw": "codex-cli 0.154.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+          "learn.chatgpt.com/docs/appshots/index.md",
+          "learn.chatgpt.com/docs/codex-sdk/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/developers/index.md",
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md",
+          "learn.chatgpt.com/docs/enterprise/workload-identity/index.md",
+          "learn.chatgpt.com/docs/features/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/mcp-server/index.md",
+          "learn.chatgpt.com/docs/personalize/index.md",
+          "learn.chatgpt.com/docs/pets/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/web-search/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md"
+        ]
+      },
+      "id": "3c9f7659dd61d215e12d9c52108c4c953ada66d56170ea58e58ec16516c04729",
+      "observed_at": "2026-09-13T15:48:01+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

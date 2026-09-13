@@ -306,7 +306,6 @@ Configure workload identity on the machine that owns the Codex process.
 | `codex app-server`                              | Supported. Configure WIF on the app-server host, not on a remote client.                                |
 | `codex exec-server --remote`                    | Supported for authentication to the remote environment registry. Configure WIF on the exec-server host. |
 | Local exec-server process operations            | Do not use WIF authentication. They run through the local exec-server protocol.                         |
-| `codex mcp-server`                              | Not supported.                                                                                          |
 
 Remote app-server and exec-server clients never send the upstream identity
 token over their protocols.

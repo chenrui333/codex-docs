@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-11T03:32:46+00:00",
+  "generated_at": "2026-09-13T15:48:01+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -18,10 +18,19 @@
   "updated": [
     "codex_capabilities.json",
     "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
-    "learn.chatgpt.com/docs/build-plugins/index.md",
-    "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
-    "learn.chatgpt.com/docs/plugins/index.md",
-    "learn.chatgpt.com/docs/security/plugin/changelog/index.md",
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "learn.chatgpt.com/docs/appshots/index.md",
+    "learn.chatgpt.com/docs/codex-sdk/index.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/developers/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md",
+    "learn.chatgpt.com/docs/enterprise/workload-identity/index.md",
+    "learn.chatgpt.com/docs/features/index.md",
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/mcp-server/index.md",
+    "learn.chatgpt.com/docs/personalize/index.md",
+    "learn.chatgpt.com/docs/pets/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/web-search/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md"
   ]
 }

@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
-source_last_modified: '2026-09-11T03:25:04Z'
-source_etag: 'W/"57d4ae0d69ebcfccadd0d7fd8d11d223"'
+source_last_modified: '2026-09-13T02:29:53Z'
+source_etag: 'W/"bfad13751f9ee210c3f03645ab819de8"'
 ---
 
 # Computer use
@@ -66,7 +66,7 @@ Python
 async function runComputerUse(endpoint, prompt, model = "gpt-6-astra") {
   const client = new OpenAI();
   const sessionId = randomUUID();
-  /** @type {OpenAI.Responses.Tool[]} */
+
   const tools = [
     {
       type: "function",
@@ -86,7 +86,7 @@ text with console.log(). The context viewport is 1440x900.`,
       strict: true,
     },
   ];
-  /** @type {OpenAI.Responses.ResponseInput} */
+
   let nextInput = [{ role: "user", content: prompt }];
   let previousResponseId;
 
@@ -346,11 +346,11 @@ Send the updated screenshot
 const client = new OpenAI();
 
 async function sendComputerScreenshot(response, callId, screenshotBase64) {
-  const output = /** @type {const} */ ({
+  const output = {
     type: "computer_screenshot",
     image_url: `data:image/png;base64,${screenshotBase64}`,
     detail: "original",
-  });
+  };
 
   return await client.responses.create({
     model: "gpt-5.6-sol",

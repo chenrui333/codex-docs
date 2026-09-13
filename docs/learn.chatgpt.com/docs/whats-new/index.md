@@ -17,6 +17,38 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## September 7–11, 2026
+
+### Start a quick chat from your pet
+
+Type a request or start a voice conversation from the floating
+[Pets controls](https://learn.chatgpt.com/docs/pets?surface=app) in the ChatGPT desktop app on macOS
+and Windows. Keep working in another app while you follow progress, then open
+the full conversation when you need it.
+
+Choose a companion in **Settings > Pets**, or select **Mini** to use the
+controls without a pet. Press **Option+Space** on macOS or **Windows+Alt+P** on
+Windows to show the controls and focus Quick Chat. Use `@` to add context and
+`$` to choose a skill, then press **Enter** to send your request.
+
+### Share an app window on Windows
+
+[Appshots](https://learn.chatgpt.com/docs/appshots?surface=app) bring a screenshot and available text
+from the frontmost Windows app into ChatGPT. Press both **Alt** keys at the
+same time, then ask a question about the window or describe what you want to
+do. Windows Appshots open in the main ChatGPT app.
+
+On macOS, Appshots can also start a new chat in the floating Pets controls
+when they're visible and the main ChatGPT window is in the background. Set
+**Appshot destination** to **Automatic** and authorize Appshots permissions
+in the main app first.
+
+Update the desktop app to use these features. Availability depends on rollout
+and workspace settings.
+
+[Read the September 11 release notes](https://learn.chatgpt.com/docs/changelog#codex-2026-09-11-app)
+for the full update and smaller improvements.
+
 ## August 31–September 4, 2026
 
 ### Take on demanding work with GPT-6 Astra

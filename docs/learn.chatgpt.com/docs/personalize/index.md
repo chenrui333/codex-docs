@@ -15,7 +15,7 @@ Source: https://learn.chatgpt.com/docs/personalize
 
 Personalize ChatGPT so its responses and working style better match your
 preferences. You control which personalization features are enabled and can
-change them at any time in the ChatGPT desktop app settings.
+change them in settings. Available controls vary between web and desktop.
 
 ## Choose a personality
 
@@ -31,6 +31,22 @@ instructions are stored in your global `AGENTS.md` file. Projects and
 repositories can also provide their own instructions.
 
 [Learn how `AGENTS.md` instructions work](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
+
+## Match your writing style in Work
+
+In ChatGPT Work on the web, writing style uses your own writing from connected
+apps to help drafts sound like you.
+
+1. Open [Set up writing style](https://chatgpt.com/?surface=work&writing_style=setup).
+2. Connect the available email, messaging, or document apps you want ChatGPT
+   to use. Available apps depend on your account and workspace.
+3. Select **Use writing style** to enable it. Connecting an app alone doesn't
+   complete setup.
+4. Ask Work to draft an email, message, or document.
+
+To turn it off, open **Settings > Personalization > Writing** on the web and
+disable **Reference my writing style**. You can return to setup from the same
+section.
 
 ## Carry context forward with memories
 
