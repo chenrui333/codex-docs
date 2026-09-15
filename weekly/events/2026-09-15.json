@@ -1,0 +1,60 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/configuration/index.md": {
+            "after": "5d075f58c844f19bc0726987e23656dc310f50cf47e7d39c1d10e0d47ea1d7f8",
+            "before": "9ed7c305cd75044dd12393e81b289669de29c545dfe57e1c9e1ad6830c645953"
+          },
+          "learn.chatgpt.com/docs/features/voice/index.md": {
+            "after": "b1ea4ba522046f6e6c7efc3ae7e1447fc0cccd932d9702f73066376cd2947365",
+            "before": "efd199166fd6ac591ee9dc4322b5fbe14887c2e8d31f943654b0aedcada03d03"
+          },
+          "learn.chatgpt.com/docs/linux/linux-app/index.md": {
+            "after": "792ed27dc1320710dd32632257921e65a549a45c7bb6b49f1692c926fc6b1409",
+            "before": "a91ae466cda26e7331d1e22edc22c646167e52023467850f17688ad1526b7550"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "8bd9bc15930cc43857c8dfdb5a4be628ed9041b095acd05918a9cb98142abf43",
+            "before": "31a9991b8f4e9704d112d627246f5c3ebdd57a85d7e0892a1b1706442fae02b0"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.154.0",
+          "codex_cli_source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+          "codex_cli_version": "0.154.0",
+          "codex_cli_version_raw": "codex-cli 0.154.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/configuration/index.md",
+          "learn.chatgpt.com/docs/features/voice/index.md",
+          "learn.chatgpt.com/docs/linux/linux-app/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md"
+        ]
+      },
+      "id": "9d1eb5b8ca96a94e33f1584352adfc23e8cc4ca6a2f505a6ade2bc36f61f8862",
+      "observed_at": "2026-09-15T03:53:17+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

@@ -24,6 +24,7 @@ The preview supports the desktop versions of these Linux distributions:
 - Ubuntu 24.04 LTS and 26.04 LTS
 - Debian 13
 - Fedora 43 and 44
+- Arch Linux (current, fully updated rolling releases)
 
 Each supported distribution has packages for x64 and ARM64 processors. To check
 your processor architecture, run:
@@ -37,7 +38,8 @@ The output `x86_64` identifies an x64 processor. The output `aarch64` or
 
 ## Download the right package
 
-Choose `.deb` for Ubuntu or Debian, and `.rpm` for Fedora:
+Choose `.deb` for Ubuntu or Debian, `.rpm` for Fedora, or the installation script
+for Arch Linux:
 
 | Distribution     | Architecture | Download                                                                                                          |
 | ---------------- | ------------ | ----------------------------------------------------------------------------------------------------------------- |
@@ -45,6 +47,8 @@ Choose `.deb` for Ubuntu or Debian, and `.rpm` for Fedora:
 | Ubuntu or Debian | ARM64        | [Download `.deb` for ARM64](https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_arm64.deb)   |
 | Fedora           | x64          | [Download `.rpm` for x64](https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.x86_64.rpm)    |
 | Fedora           | ARM64        | [Download `.rpm` for ARM64](https://persistent.oaistatic.com/codex-app-prod/linux/rpm/latest/chatgpt.aarch64.rpm) |
+| Arch Linux       | x64          | [Install using the script](#install-on-arch-linux)                                                                |
+| Arch Linux       | ARM64        | [Install using the script](#install-on-arch-linux)                                                                |
 
 ## Install on Ubuntu or Debian
 
@@ -80,9 +84,26 @@ Open **ChatGPT** from your applications menu, or run `chatgpt` in a terminal.
 Sign in with your ChatGPT account and follow the
 [desktop app quickstart](https://learn.chatgpt.com/docs/quickstart?setup=app).
 
+## Install on Arch Linux
+
+On Arch Linux, open a terminal, download the installation script, and run it:
+
+```bash
+curl --proto '=https' --tlsv1.2 -fL -o install-arch.sh \
+  https://persistent.oaistatic.com/codex-app-prod/linux/install-arch.sh
+sudo bash install-arch.sh
+```
+
+The script detects your architecture, configures the signed OpenAI package
+repository, and installs ChatGPT. Installation performs a full system upgrade
+and prompts for confirmation.
+
+Open **ChatGPT** from your applications menu. Sign in with your ChatGPT account
+and follow the [desktop app quickstart](https://learn.chatgpt.com/docs/quickstart?setup=app).
+
 ## Update the app
 
-The package configures the signed OpenAI package repository during installation.
+Installation configures a signed OpenAI package repository.
 Use your distribution's package manager to install later updates.
 
 On Ubuntu or Debian, run:
@@ -96,6 +117,12 @@ On Fedora, run:
 
 ```bash
 sudo dnf upgrade --refresh chatgpt
+```
+
+On Arch Linux, update the app as part of a full system upgrade:
+
+```bash
+sudo pacman -Syu
 ```
 
 ## Compatibility and limitations

@@ -96,14 +96,4 @@ speech into prompt text before sending it.
 
 ## Limits and troubleshooting
 
-Only one voice chat can be active across the ChatGPT desktop app at a time.
-Voice conversations use a separate, plan-dependent allowance measured in rolling
-five-hour windows. Tasks started through Voice continue to use your Codex usage
-budget. ChatGPT notifies you when you reach either limit. See [Voice pricing and
-limits](https://learn.chatgpt.com/docs/pricing#chatgpt-voice-in-desktop).
-
-If you can't start a voice chat, confirm that ChatGPT Voice is available for your
-plan, rollout, and workspace. Then check microphone permissions and whether a
-voice chat is already active in another app window. If screen context isn't
-available, check **Settings > Voice**, Appshots permissions, and your
-organization's restrictions.
+Only one voice chat can be active across the ChatGPT desktop app at a time. If you can't start a voice chat, confirm that ChatGPT Voice is available for your plan, rollout, and workspace. Then check microphone permissions and whether a voice chat is already active in another app window. If screen context isn't available, check **Settings > Voice**, Appshots permissions, and your organization's restrictions.

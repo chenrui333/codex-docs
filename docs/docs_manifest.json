@@ -7129,7 +7129,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "9ed7c305cd75044dd12393e81b289669de29c545dfe57e1c9e1ad6830c645953",
+      "sha256": "5d075f58c844f19bc0726987e23656dc310f50cf47e7d39c1d10e0d47ea1d7f8",
       "source_area": "learn_configuration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8399,7 +8399,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "efd199166fd6ac591ee9dc4322b5fbe14887c2e8d31f943654b0aedcada03d03",
+      "sha256": "b1ea4ba522046f6e6c7efc3ae7e1447fc0cccd932d9702f73066376cd2947365",
       "source_area": "learn_features",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8707,7 +8707,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "a91ae466cda26e7331d1e22edc22c646167e52023467850f17688ad1526b7550",
+      "sha256": "792ed27dc1320710dd32632257921e65a549a45c7bb6b49f1692c926fc6b1409",
       "source_area": "learn_linux",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9079,7 +9079,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "31a9991b8f4e9704d112d627246f5c3ebdd57a85d7e0892a1b1706442fae02b0",
+      "sha256": "8bd9bc15930cc43857c8dfdb5a4be628ed9041b095acd05918a9cb98142abf43",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",

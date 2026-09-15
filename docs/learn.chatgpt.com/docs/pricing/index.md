@@ -82,8 +82,6 @@ Source: https://learn.chatgpt.com/docs/pricing
         - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
           for day-to-day coding tasks
         - 5x or 20x more Codex usage than Plus*
-        - Unlimited ChatGPT Voice on the $200/month tier; tasks still draw from
-          your Codex usage budget
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
       </PricingCard>
@@ -179,11 +177,6 @@ credit rewards; review the
 invitation.
 
 ## Frequently asked questions
-
-### How much does Sites cost?
-
-[Sites](https://learn.chatgpt.com/docs/sites) is included with eligible ChatGPT plans during public
-beta. Availability depends on your plan, region, and workspace settings.
 
 ### What are the usage limits for my plan?
 
@@ -343,28 +336,24 @@ for ChatGPT Pro users only, and isn't available in the API at launch. Because it
 runs on specialized low-latency hardware, usage is governed by a separate usage
 limit that may adjust based on demand.
 
-### ChatGPT Voice in Desktop
+### How much does Sites cost?
 
-ChatGPT Voice on desktop uses a separate, plan-dependent allowance measured in
-rolling five-hour windows. Tasks started through Voice use your existing Codex
-usage budget. ChatGPT notifies you when you reach either limit.
+[Sites](https://learn.chatgpt.com/docs/sites) is included with eligible ChatGPT plans during public
+beta. Availability depends on your plan, region, and workspace settings.
 
-GPT-Live manages the live conversation. When you use Voice in an existing
-Codex task, the task's selected model handles the work. See
-[ChatGPT Voice](https://learn.chatgpt.com/docs/features/voice#start-talking) for availability and setup.
+### How much does Voice cost?
 
-- **Plus:** Approximately 30 minutes–1 hour
-- **Pro 5x ($100/month):** Approximately 3–6 hours
-- **Pro 20x ($200/month):** Unlimited voice access
-- **Business:** Approximately 30 minutes–1 hour
-- **Enterprise / Edu (legacy):** Approximately 30 minutes–1 hour
+Voice in Desktop uses your existing Codex usage budget at $0.05 per
+minute.
 
-Unlimited voice access doesn't make Codex tasks unlimited. Tasks started through
-ChatGPT Voice continue to use your existing Codex usage budget.
+GPT-Live manages the live conversation. The model handling your task is billed
+separately at its standard token rates. Voice and tasks share your plan's usage
+limits.
 
-For Business, Edu, and Enterprise workspaces with credit-based or pay-as-you-go
-billing, Desktop voice costs approximately 6 credits per minute. ChatGPT Voice
-in Desktop is not available via API Key currently.
+For Business, Edu, and Enterprise workspaces with credit-based billing, desktop
+voice costs 1.25 credits per minute. This rate also applies when Plus and Pro
+users spend additional credits. ChatGPT Voice in Desktop isn't available via API
+key.
 
 ### What happens when you hit usage limits?
 
