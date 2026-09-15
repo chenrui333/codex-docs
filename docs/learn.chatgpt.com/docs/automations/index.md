@@ -18,6 +18,16 @@ eligible plans can also run tasks from supported app events. Review active,
 paused, and completed tasks and recent runs in **Scheduled**. You can combine
 scheduled tasks with [skills](https://learn.chatgpt.com/docs/build-skills) for more complex work.
 
+<ContentModeSwitch group="codex-surface" ids="app,web">
+
+GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on
+October 14, 2026. Review scheduled tasks that use GPT-5.5 and choose an
+available replacement before that date. For Codex with ChatGPT sign-in,
+replace `gpt-5.5` with `gpt-5.6-sol` (GPT-5.6 Sol). The OpenAI API isn't
+affected. See [GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement).
+
+</ContentModeSwitch>
+
 [Watch: Schedule tasks with ChatGPT](https://www.youtube.com/watch?v=CToxp125mhc)
 
 <ContentModeSwitch group="codex-surface" id="app">

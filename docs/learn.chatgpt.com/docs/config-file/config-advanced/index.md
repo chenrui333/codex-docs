@@ -29,7 +29,7 @@ profile file; don't nest them under `[profiles.profile-name]`.
 
 ```toml
 # ~/.codex/deep-review.config.toml
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_reasoning_effort = "xhigh"
 approval_policy = "on-request"
 model_catalog_json = "/Users/me/.codex/model-catalogs/deep-review.json"

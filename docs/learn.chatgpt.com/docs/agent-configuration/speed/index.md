@@ -19,6 +19,10 @@ Source: https://learn.chatgpt.com/docs/agent-configuration/speed
 
 ## Fast mode
 
+GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on
+October 14, 2026. The OpenAI API isn't affected. See
+[GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement) for migration guidance.
+
 Codex offers the ability to increase the speed of the model for increased
 credit consumption.
 

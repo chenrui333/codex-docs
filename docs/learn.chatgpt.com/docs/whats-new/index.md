@@ -17,6 +17,19 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## September 14–18, 2026
+
+### Prepare for GPT-5.5 retirement
+
+GPT-5.5 will retire from ChatGPT, ChatGPT Work, and Codex on October 14, 2026,
+across all plans. The OpenAI API isn't affected.
+
+For Codex with ChatGPT sign-in, switch to **GPT-5.6 Sol** (`gpt-5.6-sol`).
+Update saved model settings, workspace defaults, custom agents, scheduled
+tasks, and scripts that still select GPT-5.5 before the retirement date.
+[Read the retirement notice](https://learn.chatgpt.com/docs/changelog#codex-2026-09-14-gpt-55-retirement)
+for details.
+
 ## September 7–11, 2026
 
 ### Start a quick chat from your pet

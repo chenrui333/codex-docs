@@ -16,6 +16,10 @@ Source: https://learn.chatgpt.com/docs/pricing
 **ChatGPT Work and Codex share usage.** ChatGPT Work usage inside
   ChatGPT uses the same pricing, credits, and usage limits as Codex.
 
+GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on
+October 14, 2026. The OpenAI API isn't affected. See
+[GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement) for migration guidance.
+
 <h2 class="sr-only">Pricing options</h2>
 
 <ContentSwitcher
