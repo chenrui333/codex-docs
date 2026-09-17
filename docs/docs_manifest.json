@@ -6662,11 +6662,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "a802cbba211ec669020c272dfa09ec281436c164d3450107e5fd226e89339942",
+      "sha256": "ad2def8c6f98bec200d2fccaf238edeadef0a858e323de769be7125cb32a7936",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"92a9d1edf3f7ca68666e9b06e1e128dc\"",
+      "source_etag": "W/\"6113553ecd7c874f1c3089e2f0888405\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-09-10T10:03:13Z",
+      "source_last_modified": "2026-09-17T10:39:25Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },

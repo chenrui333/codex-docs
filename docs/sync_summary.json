@@ -1,10 +1,8 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/enterprise/usage-insights/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-17T03:54:55+00:00",
+  "generated_at": "2026-09-17T11:11:50+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -18,8 +16,6 @@
   },
   "total_files": 263,
   "updated": [
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost/index.md",
-    "learn.chatgpt.com/docs/enterprise/workspace-analytics/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md"
   ]
 }

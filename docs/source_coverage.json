@@ -293,7 +293,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-17T03:54:55+00:00",
+  "generated_at": "2026-09-17T11:11:50+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 25,
@@ -944,9 +944,7 @@
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
       "https://learn.chatgpt.com/docs/windows/wsl"
     ],
-    "new_discovered_urls_since_last_run": [
-      "https://learn.chatgpt.com/docs/enterprise/usage-insights"
-    ],
+    "new_discovered_urls_since_last_run": [],
     "page_fetch_errors": [],
     "redirected_urls": [],
     "removed_from_sitemap_urls_since_last_run": [],
@@ -1153,7 +1151,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-09-17T03:54:55+00:00",
+    "last_successful_full_sync_at": "2026-09-17T11:11:50+00:00",
     "status": "complete"
   }
 }
