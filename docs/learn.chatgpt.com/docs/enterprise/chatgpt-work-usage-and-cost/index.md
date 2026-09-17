@@ -214,6 +214,11 @@ Review these customer-measured outcomes alongside observed credit consumption
 and any actual billing impact. Usage alone doesn't establish savings, and
 projected time improvements aren't guaranteed financial returns.
 
+To explore the activity behind your usage, see
+[Usage Insights](https://learn.chatgpt.com/docs/enterprise/usage-insights).
+Learn how to interpret the Insights overview and category details, then use the
+findings in a conversation with your team.
+
 ## Start with a controlled rollout
 
 Before expanding access:

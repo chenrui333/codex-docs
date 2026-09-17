@@ -50,6 +50,11 @@ focuses on Codex reporting. Use it for interactive exploration, not as a stable
 schema contract. Dashboard categories, fields, filters, and export formats can
 change independently of this page.
 
+For a walkthrough of the Insights dashboard, see
+[Usage Insights](https://learn.chatgpt.com/docs/enterprise/usage-insights).
+Explore Use cases and Tasks, compare activity with consumption and reach, and
+open a category to understand its details.
+
 For automated reporting, use the [Analytics API](https://learn.chatgpt.com/docs/enterprise/analytics-api)
 and follow its API reference. For auditable records, use the
 [Compliance API](https://learn.chatgpt.com/docs/enterprise/compliance-api).

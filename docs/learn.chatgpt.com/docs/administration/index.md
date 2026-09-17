@@ -234,6 +234,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "dataControls",
         },
         {
+          title: "Usage Insights",
+          description:
+            "Explore usage across ChatGPT Work and Codex and assess workflow results with your team.",
+          href: "/codex/enterprise/usage-insights",
+          icon: "dataControls",
+        },
+        {
           title: "Analytics API",
           description:
             "Automate developer activity and code review reporting with the Codex Analytics API.",

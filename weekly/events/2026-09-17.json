@@ -1,0 +1,61 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/usage-insights/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "7a8a75dcd97e0c363e8d5205ce9871d390a0d689141b395fb0f39b4010a50950",
+            "before": "557ec3f184bf6dff5578c5c55573d4db09d967f60c5ca8aeb1b764e6387f60db"
+          },
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost/index.md": {
+            "after": "958f6d54a1e7194478fec34600061286ab22ed52bd461d5fa489c06991ef3176",
+            "before": "6d8de5f5d02bf444888783a5a80d48de4e283cea2de95d32667ef2c41327aa26"
+          },
+          "learn.chatgpt.com/docs/enterprise/usage-insights/index.md": {
+            "after": "0b7e48de9569d9bb3f49b7e17a4b87926d00140a4283def705d1f7672dbeb3b9",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/workspace-analytics/index.md": {
+            "after": "4cd28e1bdeff7ef97598b6fdd7ae960d293a233be944d97942e1985d788f169e",
+            "before": "49f8f02602d671fc6a78094c51ffd2326bebe00b4ce330b310cd3394bcb68872"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.154.0",
+          "codex_cli_source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+          "codex_cli_version": "0.154.0",
+          "codex_cli_version_raw": "codex-cli 0.154.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost/index.md",
+          "learn.chatgpt.com/docs/enterprise/workspace-analytics/index.md"
+        ]
+      },
+      "id": "b4be27f090b45ee711cf1985a1a97ed5145d68082b430b611dcb570647635f0f",
+      "observed_at": "2026-09-17T03:54:55+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}
