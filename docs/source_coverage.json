@@ -41,17 +41,17 @@
     "platform_observations": {
       "linux-x86_64": {
         "arch": "x86_64",
-        "codex_cli_version": "0.155.0",
+        "codex_cli_version": "0.155.1",
         "os": "linux",
-        "source_commit": "f0a1b8f0849d90960bc406b848f32e5a129b0457",
-        "source_ref": "rust-v0.155.0"
+        "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+        "source_ref": "rust-v0.155.1"
       },
       "macos-arm64": {
         "arch": "arm64",
-        "codex_cli_version": "0.155.0",
+        "codex_cli_version": "0.155.1",
         "os": "darwin",
-        "source_commit": "f0a1b8f0849d90960bc406b848f32e5a129b0457",
-        "source_ref": "rust-v0.155.0"
+        "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+        "source_ref": "rust-v0.155.1"
       }
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
@@ -124,8 +124,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.155.0",
-    "version_raw": "codex-cli 0.155.0"
+    "version": "0.155.1",
+    "version_raw": "codex-cli 0.155.1"
   },
   "developers": {
     "codex_related_urls": [
@@ -293,7 +293,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-18T03:41:20+00:00",
+  "generated_at": "2026-09-18T20:34:01+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 25,
@@ -330,9 +330,9 @@
     "mirrored_paths_count": 25,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_commit": "f0a1b8f0849d90960bc406b848f32e5a129b0457",
+    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
     "source_errors": [],
-    "source_ref": "rust-v0.155.0"
+    "source_ref": "rust-v0.155.1"
   },
   "learn": {
     "counts": {
@@ -970,11 +970,11 @@
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
   "model_catalog": {
-    "source_commit": "f0a1b8f0849d90960bc406b848f32e5a129b0457",
+    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
     "source_path": "codex-rs/models-manager/models.json",
-    "source_ref": "rust-v0.155.0",
+    "source_ref": "rust-v0.155.1",
     "status": "complete",
-    "version": "0.155.0"
+    "version": "0.155.1"
   },
   "platform_tool_guides": {
     "candidate_urls": [
