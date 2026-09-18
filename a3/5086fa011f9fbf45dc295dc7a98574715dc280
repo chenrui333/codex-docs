@@ -1,0 +1,19 @@
+tests/test_version_proposal.cjs
+  s_389fa2aa66d4b2::t_d90ef441283dd0 70,76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a35086fa011f9fbf45dc295dc7a98574715dc280",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
