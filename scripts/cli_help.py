@@ -77,5 +77,3 @@ def parse_help_usage(text: str) -> List[str]:
             usage.append(continuation.strip())
         break
     return usage
-
-
