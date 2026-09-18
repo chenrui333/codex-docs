@@ -1,0 +1,118 @@
+{
+  "codex_cli_version": "1.2.3",
+  "codex_cli_version_raw": "codex-cli 1.2.3",
+  "command": "codex --help; codex <command> --help",
+  "commands": [
+    {
+      "description": "Run a task with a wrapped description",
+      "name": "run",
+      "options": [
+        {
+          "description": "Emit structured output",
+          "flags": [
+            "--json"
+          ],
+          "primary_flag": "--json",
+          "synopsis": "--json"
+        },
+        {
+          "description": "Print help",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "example run [OPTIONS]"
+      ]
+    },
+    {
+      "description": "Show help",
+      "name": "help",
+      "options": [
+        {
+          "description": "Set a value across wrapped lines",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <KEY=VALUE>"
+        },
+        {
+          "description": "Enable verbose output",
+          "flags": [
+            "--verbose"
+          ],
+          "primary_flag": "--verbose",
+          "synopsis": "--verbose"
+        },
+        {
+          "description": "Print help",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [
+        {
+          "description": "Run a task with a wrapped description",
+          "name": "run"
+        },
+        {
+          "description": "Show help",
+          "name": "help"
+        }
+      ],
+      "usage": [
+        "example [OPTIONS] [PROMPT]",
+        "example <COMMAND> [ARGS]"
+      ]
+    }
+  ],
+  "global_options": [
+    {
+      "description": "Set a value across wrapped lines",
+      "flags": [
+        "-c",
+        "--config"
+      ],
+      "primary_flag": "--config",
+      "synopsis": "-c, --config <KEY=VALUE>"
+    },
+    {
+      "description": "Enable verbose output",
+      "flags": [
+        "--verbose"
+      ],
+      "primary_flag": "--verbose",
+      "synopsis": "--verbose"
+    },
+    {
+      "description": "Print help",
+      "flags": [
+        "-h",
+        "--help"
+      ],
+      "primary_flag": "--help",
+      "synopsis": "-h, --help"
+    }
+  ],
+  "observation_environment": {
+    "arch": "x86_64",
+    "os": "linux"
+  },
+  "schema_version": 2,
+  "source_kind": "installed_cli_help_observation",
+  "usage": [
+    "example [OPTIONS] [PROMPT]",
+    "example <COMMAND> [ARGS]"
+  ]
+}
