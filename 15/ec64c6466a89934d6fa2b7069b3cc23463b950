@@ -1,0 +1,29 @@
+scripts/cli_help.py
+  s_389fa2aa66d4b2::t_e084843d5ef28b 1-81
+scripts/fetch_codex_docs.py
+  s_389fa2aa66d4b2::t_6d6eed17a502e3 31-38,44-45
+tests/fixtures/cli-help/expected.json
+  s_389fa2aa66d4b2::t_45a6ab77587275 1-118
+tests/fixtures/cli-help/run.txt
+  s_389fa2aa66d4b2::t_90750eae6eb35a 1-9
+tests/fixtures/cli-help/top.txt
+  s_389fa2aa66d4b2::t_16679b760e5cfd 1-18
+tests/test_cli_help.py
+  s_389fa2aa66d4b2::t_58b2b741cce1a8 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "15ec64c6466a89934d6fa2b7069b3cc23463b950",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
