@@ -1,0 +1,23 @@
+.github/scripts/version-proposal.cjs
+  s_389fa2aa66d4b2::t_54e8315678e4fe 1-112
+.github/workflows/propose-version-bump.yml
+  s_389fa2aa66d4b2::t_57743f8be8e028 19,22,29-32,34,38-39,41,43-45,48-52
+tests/test_version_proposal.cjs
+  s_389fa2aa66d4b2::t_eb75a74cecb2e0 1-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ebbeeed24290d5d76eaa2603936257a311678caa",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
