@@ -1,0 +1,21 @@
+.github/scripts/sync-failure-issue.cjs
+  s_389fa2aa66d4b2::t_d182cedb2504e1 2,6,9,11-18,23-75,77-86,90,93-94,96-97,101-108,110,113-116,118,122-125,127-128
+tests/test_sync_failure_issue.cjs
+  s_389fa2aa66d4b2::t_72d067bce4c091 3-15,17-71,73-79,81-83,85-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c99708bc4aa116e2ebb6e87779573f700eedc69d",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
