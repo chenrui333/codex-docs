@@ -1,0 +1,41 @@
+.github/pull_request_template.md
+  s_389fa2aa66d4b2::t_a31c66911374bb 1-11
+.github/workflows/lint.yml
+  s_389fa2aa66d4b2::t_e7d7fa6309cfe7 14-19,28-33,89,111-116
+CONTRIBUTING.md
+  s_389fa2aa66d4b2::t_df144ac13f872a 1-47
+README.md
+  s_389fa2aa66d4b2::t_96c9ca4baa11f4 138-139
+justfile
+  s_389fa2aa66d4b2::t_b37786872fc9af 13,21-23
+pyproject.toml
+  s_389fa2aa66d4b2::t_41109ba845271d 6,13
+scripts/check_repository.py
+  s_389fa2aa66d4b2::t_9785d6190f5990 1-78
+scripts/fetch_codex_docs.py
+  s_389fa2aa66d4b2::t_c97b597308c115 31-36,2500
+tests/test_cli_observations.py
+  s_389fa2aa66d4b2::t_099d9c02ec38a8 7-8
+tests/test_fetch_codex_docs_extended.py
+  s_389fa2aa66d4b2::t_482570a2248c2c 1053,1058,1065,1072,1078
+tests/test_release_transaction.py
+  s_389fa2aa66d4b2::t_da5712c13d4fc5 10-11
+tests/test_repository_hygiene.py
+  s_389fa2aa66d4b2::t_38ceea879d3975 1-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dcfaf427034af8a0e3d29a4c2ce73b6ae499298c",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
