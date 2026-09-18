@@ -67,13 +67,13 @@ const { prepareBranch } = require('../.github/scripts/version-proposal.cjs');
 function repository() {
   const root = mkdtempSync(join(tmpdir(), 'version-proposal-'));
   const remote = join(root, 'remote.git'), work = join(root, 'work');
-  const exec = (cwd, ...args) => execFileSync('git', ['-c', 'commit.gpgsign=false', ...args], { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+  const exec = (cwd, ...args) => execFileSync('git', ['-c', 'commit.gpgsign=false', '-c', 'maintenance.auto=false', '-c', 'gc.auto=0', ...args], { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
   exec(root, 'init', '--bare', remote); exec(root, 'clone', remote, work);
   const git = (...args) => exec(work, ...args);
   git('switch', '--orphan', 'main'); git('config', 'user.name', 'github-actions[bot]');
   git('config', 'user.email', 'github-actions[bot]@users.noreply.github.com');
   writeFileSync(join(work, 'VERSION'), '0.1.0\n'); git('add', '.'); git('commit', '-s', '-m', 'initial'); git('push', 'origin', 'main');
-  return { root, work, git, dispose: () => rmSync(root, { recursive: true, force: true }) };
+  return { root, work, git, dispose: () => rmSync(root, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 }) };
 }
 const branch = 'chore/version-bump-v0.1.1';
 function prepare(repo, runGit = repo.git) {
