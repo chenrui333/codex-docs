@@ -1,0 +1,31 @@
+.github/workflows/update-docs.yml
+  s_389fa2aa66d4b2::t_5a32ba8774ece7 171,182-189
+README.md
+  s_389fa2aa66d4b2::t_c3f3d9c887ad54 81-82,96-97
+scripts/fetch_codex_docs.py
+  s_389fa2aa66d4b2::t_3e3b53744ae19f 1019,1043-1047,1050,1054-1071,1094-1095,3139-3146,3574-3599,3960-3963,4024,4026-4027
+tests/fixtures/learn/index.xml
+  s_389fa2aa66d4b2::t_e8818509c8a398 1-5
+tests/fixtures/learn/localized.xml
+  s_389fa2aa66d4b2::t_f8347630f5aa52 1-5
+tests/fixtures/learn/primary.xml
+  s_389fa2aa66d4b2::t_c26b27c26f6adb 1-5
+tests/test_learn_evidence.py
+  s_389fa2aa66d4b2::t_4dcbe17f99d439 1-128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "34183fb5bd21dcef88659cf54148ef7ab4299d03",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
