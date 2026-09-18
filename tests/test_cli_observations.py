@@ -4,10 +4,11 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from test_fetch_codex_docs_extended import isolated_outputs
+
 from scripts import cli_observations as cli
 from scripts import collect_cli_surface as collector
 from scripts import fetch_codex_docs as sync
-from test_fetch_codex_docs_extended import isolated_outputs
 
 
 def surface(os_name, commands=(), version="1.2.3", commit="a"):

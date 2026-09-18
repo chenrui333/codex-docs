@@ -5,8 +5,9 @@ from contextlib import ExitStack
 from pathlib import Path
 from unittest import mock
 
-from scripts import fetch_codex_docs as sync
 from test_fetch_codex_docs_extended import isolated_outputs
+
+from scripts import fetch_codex_docs as sync
 
 
 class ReleaseTransactionTests(unittest.TestCase):

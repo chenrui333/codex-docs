@@ -10,13 +10,16 @@ setup:
     {{python}} -m venv .venv
     . .venv/bin/activate && python -m pip install -r scripts/requirements.txt -r scripts/requirements-dev.txt
 
-lint: lint-actions lint-python
+lint: lint-actions lint-python lint-repository
 
 lint-actions:
     go run github.com/rhysd/actionlint/cmd/actionlint@{{actionlint_version}} .github/workflows/*.yml
 
 lint-python:
     . .venv/bin/activate && ruff check scripts tests
+
+lint-repository:
+    {{python}} scripts/check_repository.py
 
 test: test-python test-node
 

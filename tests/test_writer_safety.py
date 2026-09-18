@@ -6,7 +6,6 @@ from unittest import mock
 
 from scripts import check_writer_base as writer_base
 
-
 ROOT = Path(__file__).resolve().parent.parent
 
 

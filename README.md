@@ -135,6 +135,8 @@ For feature-specific work, use `just feature-flags` and review the generated dif
 
 Local setup defaults to Python 3.14 to match CI. Set `CODEX_DOCS_PYTHON` to an equivalent Python 3.14 executable when needed. The actionlint recipe uses Go to run the same pinned actionlint release as CI.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution and generated-diff expectations.
+
 ## Notes
 
 - This is a community mirror, not an official OpenAI repository.

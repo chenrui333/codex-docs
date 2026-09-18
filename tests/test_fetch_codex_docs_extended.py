@@ -1050,32 +1050,32 @@ Options:
                             "global_options": [], "commands": [],
                         }),
                     )
-                    def build():
+                    def build(surface, version, ancestry):
                         return sync.managed_file_text(sync.build_capability_inventory_file(
                             [surface], [], {}, {"codex_cli_version": version},
                             release_ancestry={"a" * 40: ancestry},
                         ))
-                    output = build()
+                    output = build(surface, version, ancestry)
                     entry = json.loads(output)["capabilities"][0]
                     self.assertEqual(entry["active"], active)
                     self.assertEqual(entry["lifecycle"].get("absence_reason", ""), reason)
                     self.assertEqual(sync.semantic_capability_changes(json.dumps(previous), output)["removed"],
                                      [] if active else ["cli_command:platform-only"])
                     sync.CAPABILITIES_PATH.write_text(output)
-                    self.assertEqual(build(), output)
+                    self.assertEqual(build(surface, version, ancestry), output)
                     if not active:
                         # Positive observation reactivates; absence on a different host does not.
                         surface = replace(surface, content=json.dumps({
                             "observation_environment": {"os": "darwin", "arch": "arm64"},
                             "global_options": [], "commands": [],
                         }))
-                        self.assertFalse(json.loads(build())["capabilities"][0]["active"])
+                        self.assertFalse(json.loads(build(surface, version, ancestry))["capabilities"][0]["active"])
                         surface = replace(surface, content=json.dumps({
                             "observation_environment": {"os": "linux", "arch": "x86_64"},
                             "global_options": [],
                             "commands": [{"name": "platform-only", "description": "Returns", "options": []}],
                         }))
-                        restored = json.loads(build())["capabilities"][0]
+                        restored = json.loads(build(surface, version, ancestry))["capabilities"][0]
                         self.assertTrue(restored["active"])
                         self.assertNotIn("removed_in_version", restored["lifecycle"])
 

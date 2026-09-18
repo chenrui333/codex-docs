@@ -28,7 +28,12 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify as to_markdown
 
 if __package__:
-    from . import cli_observations, model_catalog, semantic_history, snapshot_feature_flags
+    from . import (
+        cli_observations,
+        model_catalog,
+        semantic_history,
+        snapshot_feature_flags,
+    )
 else:
     import cli_observations
     import model_catalog
@@ -2492,7 +2497,7 @@ def build_capability_inventory_file(
         if not isinstance(surface, dict):
             continue
 
-        def add_cli_option(option: Dict[str, object], command: str) -> None:
+        def add_cli_option(option: Dict[str, object], command: str, item: ManagedFile = item) -> None:
             primary_flag = str(option.get("primary_flag", ""))
             if not primary_flag:
                 return
