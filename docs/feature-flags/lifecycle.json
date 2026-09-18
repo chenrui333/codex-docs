@@ -2,6 +2,11 @@
   "cli_features": [
     {
       "enabled": false,
+      "key": "api_key_model_discovery",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "apply_patch_freeform",
       "stage": "removed"
     },
@@ -93,6 +98,11 @@
     {
       "enabled": false,
       "key": "code_mode_prewarm",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "codex_apps_mcp_2026_07_28",
       "stage": "under development"
     },
     {
@@ -408,7 +418,7 @@
     {
       "enabled": false,
       "key": "realtime_conversation",
-      "stage": "removed"
+      "stage": "experimental"
     },
     {
       "enabled": false,
@@ -421,9 +431,9 @@
       "stage": "stable"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "remote_compaction_v2",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -701,7 +711,7 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.154.0",
+  "codex_cli_version": "codex-cli 0.155.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "auth_elicitation",
@@ -714,8 +724,8 @@
       "in_app_local_automation",
       "mentions_v2",
       "multi_agent_v2",
+      "realtime_conversation",
       "recommended_plugins",
-      "remote_compaction_v2",
       "secret_auth_storage",
       "skill_search",
       "sleep_tool",
@@ -738,6 +748,7 @@
       }
     ],
     "missing_in_docs": [
+      "api_key_model_discovery",
       "apply_patch_freeform",
       "apply_patch_preserve_line_endings",
       "apply_patch_streaming_events",
@@ -753,6 +764,7 @@
       "code_mode_interrupt",
       "code_mode_only",
       "code_mode_prewarm",
+      "codex_apps_mcp_2026_07_28",
       "codex_git_commit",
       "collaboration_modes",
       "compaction_image_budget",
@@ -857,6 +869,7 @@
         "use_legacy_landlock"
       ],
       "experimental": [
+        "realtime_conversation",
         "worktrees"
       ],
       "removed": [
@@ -876,7 +889,7 @@
         "local_thread_store_shared_compression",
         "multi_agent_mode",
         "plugin_hooks",
-        "realtime_conversation",
+        "remote_compaction_v2",
         "remote_control",
         "remote_models",
         "request_rule",
@@ -910,7 +923,6 @@
         "mentions_v2",
         "multi_agent_v2",
         "recommended_plugins",
-        "remote_compaction_v2",
         "secret_auth_storage",
         "skill_search",
         "sleep_tool",
@@ -921,6 +933,7 @@
         "view_image"
       ],
       "under development": [
+        "api_key_model_discovery",
         "apply_patch_preserve_line_endings",
         "apply_patch_streaming_events",
         "artifact",
@@ -931,6 +944,7 @@
         "code_mode_interrupt",
         "code_mode_only",
         "code_mode_prewarm",
+        "codex_apps_mcp_2026_07_28",
         "concurrent_reasoning_summaries",
         "context_management",
         "current_time_reminder",
@@ -1028,8 +1042,16 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "6b9826e3aa83b1a5947db50f4332cb9c65f1b340",
+  "source_commit": "f0a1b8f0849d90960bc406b848f32e5a129b0457",
   "source_defaults": {
+    "api_key_model_discovery": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "apply_patch_freeform": {
       "behavior_evidence": "Removed compatibility flag for the deleted apply_patch fallback feature.",
       "compatibility_flag": true,
@@ -1178,6 +1200,14 @@
       "stage_from_source": "under development"
     },
     "code_mode_prewarm": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "codex_apps_mcp_2026_07_28": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -1695,13 +1725,12 @@
       "stage_from_source": "under development"
     },
     "realtime_conversation": {
-      "behavior_evidence": "Removed compatibility flag. Realtime sessions no longer require a per-thread opt-in.",
-      "compatibility_flag": true,
-      "configurable": false,
+      "compatibility_flag": false,
+      "configurable": true,
       "default_enabled": false,
       "default_enabled_expr": "false",
-      "effective_behavior": "unknown",
-      "stage_from_source": "removed"
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "experimental"
     },
     "reasoning_effort_override": {
       "compatibility_flag": false,
@@ -1720,12 +1749,13 @@
       "stage_from_source": "stable"
     },
     "remote_compaction_v2": {
-      "compatibility_flag": false,
-      "configurable": true,
-      "default_enabled": true,
-      "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "behavior_evidence": "Removed compatibility key, still advertised to the Responses API.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "remote_control": {
       "behavior_evidence": "Removed compatibility flag for the deleted remote control feature.",
@@ -2189,13 +2219,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "6979098f4ad7b5ec16f19ca90d5c927d3b1e33d0f6d926c70388d0237c52af35",
-    "features_rs_sha256": "451604ebcb3e805ce22e62a87fc425b95f774bcdadc9bcc60b422075cedd7c85"
+    "client_rs_sha256": "26d1d704a578534fe840e4e6d3df502e44a7bdc4a89e69961740d47f2245da2a",
+    "features_rs_sha256": "f52a1c2ce33ffed3fb32610d4a3bf5f273207dd8f24e0733f62a20d2deab4981"
   },
-  "source_ref": "rust-v0.154.0",
+  "source_ref": "rust-v0.155.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/6b9826e3aa83b1a5947db50f4332cb9c65f1b340/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/6b9826e3aa83b1a5947db50f4332cb9c65f1b340/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/f0a1b8f0849d90960bc406b848f32e5a129b0457/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/f0a1b8f0849d90960bc406b848f32e5a129b0457/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
