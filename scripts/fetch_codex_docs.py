@@ -1016,6 +1016,7 @@ def discover_learn_urls(
 
     discovered_urls: set[str] = set()
     sitemap_fetch_errors: List[Dict[str, str]] = []
+    observations: Dict[str, Dict[str, object]] = {}
     for sitemap_url in sitemap_urls:
         try:
             sitemap_xml = fetch_text(session, sitemap_url)
@@ -1039,12 +1040,35 @@ def discover_learn_urls(
                     "error": str(exc),
                 }
             )
+            observations[sitemap_url] = {
+                "status": "unavailable" if isinstance(exc, requests.RequestException) else "malformed",
+                "severity": "blocking",
+                "discovered_urls": None,
+            }
             continue
 
+        child_urls: set[str] = set()
         for raw_url in sitemap_page_urls:
             cleaned = canonicalize_url(raw_url)
             if is_learn_doc_url(cleaned):
-                discovered_urls.add(cleaned)
+                child_urls.add(cleaned)
+        discovered_urls.update(child_urls)
+        observations[sitemap_url] = {
+            "status": "complete",
+            "discovered_urls": sorted(child_urls),
+            "discovered_urls_sha256": sha256_content(json.dumps(sorted(child_urls))),
+        }
+
+    # Uniqueness can only be established against a complete observation of every child.
+    for sitemap_url, observation in observations.items():
+        others = set().union(*(
+            set(other["discovered_urls"] or [])
+            for url, other in observations.items() if url != sitemap_url
+        ))
+        observation["unique_discovered_urls"] = (
+            sorted(set(observation["discovered_urls"] or []) - others)
+            if not sitemap_fetch_errors else None
+        )
 
     discovered_sorted = sorted(discovered_urls)
     previous_coverage = load_existing_coverage()
@@ -1067,6 +1091,8 @@ def discover_learn_urls(
 
     coverage = {
         "sitemap_index_url": LEARN_SITEMAP_INDEX_URL,
+        "discovery_status": "partial" if sitemap_fetch_errors else "complete",
+        "sitemap_observations": observations,
         "sitemap_urls": sitemap_urls,
         "discovered_urls": discovered_sorted,
         "new_discovered_urls_since_last_run": new_discovered,
@@ -3110,6 +3136,14 @@ def semantic_coverage(coverage: Dict[str, object]) -> Dict[str, object]:
 
 
 def write_coverage(coverage: Dict[str, object]) -> None:
+    # Discovery deltas describe an attempt, not the durable source snapshot. Keep
+    # them in logs/attempt diagnostics so an identical second sync is a no-op.
+    coverage = {
+        key: {name: [] if name.endswith("_since_last_run") else value
+              for name, value in section.items()}
+        if key in {"learn", "developers"} and isinstance(section, dict) else section
+        for key, section in coverage.items()
+    }
     coverage_without_generated_at = semantic_coverage(coverage)
     if COVERAGE_PATH.exists():
         try:
@@ -3537,7 +3571,32 @@ def load_cached_source_files(source_types: set[str], *, allow_empty: bool = Fals
     return files
 
 
-def main(*, release_only: bool = False, observations_dir: Path | None = None) -> int:
+def write_attempt_diagnostics(path: Path, coverage: dict, failures: list) -> None:
+    """Record this attempt separately; canonical reports still describe committed state."""
+    destination = path.resolve()
+    for protected in (DOCS_DIR, WEEKLY_DIR, ROOT / "dot_codex", ROOT / "system_prompts"):
+        if destination.is_relative_to(protected.resolve()):
+            raise ValueError("Attempt diagnostics must be outside canonical output directories")
+    previous = load_existing_coverage()
+    payload = {
+        "schema_version": 1,
+        "status": "blocked" if failures else "sources_collected",
+        "note": "Pre-write source observation, not proof of transaction commit or freshness.",
+        "failures": failures,
+        "current_observation": coverage,
+        "canonical_baseline": {
+            "coverage_sha256": sha256_content(COVERAGE_PATH.read_bytes()) if COVERAGE_PATH.exists() else None,
+            "manifest_sha256": sha256_content(MANIFEST_PATH.read_bytes()) if MANIFEST_PATH.exists() else None,
+            "web_snapshot": previous.get("web_snapshot", {"status": "unknown"}),
+        },
+    }
+    write_file_if_changed(path, json.dumps(payload, indent=2, sort_keys=True) + "\n")
+
+
+def main(
+    *, release_only: bool = False, observations_dir: Path | None = None,
+    diagnostics_path: Path | None = None,
+) -> int:
     logging.Formatter.converter = time.gmtime
     logging.basicConfig(
         level=logging.INFO,
@@ -3898,6 +3957,10 @@ def main(*, release_only: bool = False, observations_dir: Path | None = None) ->
         "scope": "release" if release_only else "full",
         "web_observation": "last_known_good" if release_only else "current",
     }
+    for failure in failures:
+        failure["severity"] = "blocking"
+    if diagnostics_path is not None:
+        write_attempt_diagnostics(diagnostics_path, coverage, failures)
     if failures and STRICT_SYNC_MODE:
         for failure in failures:
             LOG.error("Source transaction failed: %s", json.dumps(failure, sort_keys=True))
@@ -3958,5 +4021,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--release-only", action="store_true", help="Advance release-derived state using the last complete web mirror")
     parser.add_argument("--cli-observations-dir", type=Path)
+    parser.add_argument("--diagnostics-path", type=Path, help="Write attempt evidence outside canonical output directories")
     args = parser.parse_args()
-    sys.exit(main(release_only=args.release_only, observations_dir=args.cli_observations_dir))
+    sys.exit(main(release_only=args.release_only, observations_dir=args.cli_observations_dir,
+                  diagnostics_path=args.diagnostics_path))

@@ -78,6 +78,8 @@ GitHub Actions workflow: `.github/workflows/update-docs.yml`
 Coverage watchdog behavior:
 
 - Records every discovered and mirrored ChatGPT Learn documentation URL, including Markdown and HTML-fallback counts
+- Records each Learn child sitemap's observed canonical docs URLs and contribution digest; unique contributions are only asserted when every child succeeds
+- Keeps attempt-only discovery deltas in logs/diagnostics so unchanged repeat runs do not rewrite canonical coverage
 - Logs codex-related sitemap URL counts and deltas on each run
 - Highlights newly discovered codex-related URLs in workflow logs
 - Optional strict mode: set `CODEX_DOCS_STRICT_COVERAGE=1` to fail when new codex-related URLs are discovered but none are mirrored
@@ -91,6 +93,8 @@ Resiliency controls:
 - `CODEX_DOCS_STRICT_SYNC=1` fails if any source segment fails; scheduled automation always enables it
 - `CODEX_FRESHNESS_GRACE_HOURS` controls when a stable-release gap becomes a strict failure (default `12`, allowing two scheduled 6-hour sync opportunities)
 - Strict failures leave canonical output unchanged; non-strict local runs may retain diagnostic partial output
+- Child sitemap failures remain blocking: the historical union alone cannot prove a missing child's contribution or justify destructive removals
+- Scheduled runs upload `sync-attempt-diagnostics` separately from canonical reports. Its current observation, blocking failures, and canonical-baseline hashes describe the attempt, not a committed transaction. Local callers can use `--diagnostics-path /tmp/sync-attempt.json`
 - Release-only sync validates cached web files against their manifest and retains their bytes, without fetching web sources
 - Coverage records the last meaningful transaction scope and web observation basis; no-op scope switches do not rewrite state. Release freshness does not assert current web-source health.
 - Recorded full-web success is retained across release-only transactions. Timestamps describe committed meaningful observations, not a heartbeat for every no-op run.
