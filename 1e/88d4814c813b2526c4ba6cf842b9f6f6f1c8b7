@@ -1,0 +1,19 @@
+audits/2026-09-18.md
+  s_389fa2aa66d4b2::t_4b1cd6c73858d1 5-7,29-33,118-119,128,169-193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1e88d4814c813b2526c4ba6cf842b9f6f6f1c8b7",
+  "prompts": {},
+  "sessions": {
+    "s_389fa2aa66d4b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b5a6-9d31-7f23-bd0c-307a07feab3f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
