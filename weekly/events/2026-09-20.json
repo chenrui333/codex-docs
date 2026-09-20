@@ -1,0 +1,106 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "developers.openai.com/blog/building-frontend-uis-with-codex-and-figma/index.md": {
+            "after": "96948a16f95c1d158c9fc6568935ceddd14c0f60055e867fb379322c1838d4bf",
+            "before": "4efa4b57d95dcd0924b477c178351cbac50d7a0a5890b743986fa0dee1bfd6e9"
+          },
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "077a5908c4708fa33f71a740c42eeaece5577b3d23278f3580d8fff943559d4c",
+            "before": "7a8a75dcd97e0c363e8d5205ce9871d390a0d689141b395fb0f39b4010a50950"
+          },
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md": {
+            "after": "a073ffab6e3d43a0a9392882002c1cb282c8e1e67dfe1a0fb518ebbc597efd03",
+            "before": "9338e866bafd42a5cc323df308dc03c626e46e56eab84819cb53cfef283ed941"
+          },
+          "learn.chatgpt.com/docs/agent-configuration/subagents/index.md": {
+            "after": "092f1c47a93a08f7e72749f8380537b0cd03d819fc8d694eabfe86306ceb1683",
+            "before": "8ad3fa3dd6df8f5b070a00154371454e1c19730ec4b21a203043ec23f0924479"
+          },
+          "learn.chatgpt.com/docs/auth/index.md": {
+            "after": "23131b77defa6b0f69383d8453038fe6269afbd873107ee598618205d03d3185",
+            "before": "f1796b997337642c8b70ab838535468d44e175f7cbe63325b8be588f812c0d5c"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "8cdd8d31bdd154da7b646782434820e6ff959a56587ba2a75eace11103480f79",
+            "before": "ad2def8c6f98bec200d2fccaf238edeadef0a858e323de769be7125cb32a7936"
+          },
+          "learn.chatgpt.com/docs/config-file/environment-variables/index.md": {
+            "after": "bded1a4057ac598510ce7970c54273b6cb06ab7c024270444e1dd67212f13187",
+            "before": "2d960b0ecbb7ba757994579fe32424c9ecfa90d89d4229f65bf1abea15b4a5ec"
+          },
+          "learn.chatgpt.com/docs/enterprise/analytics-api/index.md": {
+            "after": "bf7ac5532ef82ee6ea2eabf654c47af301c8a4a6b3cc621904af8b60badc8b30",
+            "before": "debe652cb27eb4b133ff6d7f4fe90ebddc210030113ed95093919c3df02ef56a"
+          },
+          "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md": {
+            "after": "365cfc9db58604bdff018388b73806693b8337e87db5d54289a68399bf30430f",
+            "before": "b63f30cf7ab046362e7392bc84d815464a199ce97a1cd001b0fadf969d82d118"
+          },
+          "learn.chatgpt.com/docs/enterprise/workload-identity/index.md": {
+            "after": null,
+            "before": "bd3d36e8c55d94ad35856bba075279b0cd17adc3bfd94a6d5672972e8b5a2eb0"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "1ece6c24818261a37d32614eb5b4137be56e97bd26501f80d7b82fc9d74c00f9",
+            "before": "a0fb87cd98bce4e667b10012842ec847053743399bffed84a36a086cf2d33a5d"
+          },
+          "learn.chatgpt.com/docs/non-interactive-mode/index.md": {
+            "after": "c9ed8b9fe0afb6292cdf26ba3bd56f80adf335d800a6fa23d24550e2fe6b7d29",
+            "before": "c6fb56ef462ca29cd1a764c231e4165f524e2af0053070a2ed9474898ce64f5e"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "fd2b215b67ed4c9ad6a126e9e1826cb24d4d16fb16eda73ebec2376a5f102fed",
+            "before": "d24c70fbc4415fc05883d7dd9331112a2b47b766bd52b81ec7686c9e5498cefb"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [
+          "learn.chatgpt.com/docs/enterprise/workload-identity/index.md"
+        ],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.155.1",
+          "codex_cli_source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+          "codex_cli_version": "0.155.1",
+          "codex_cli_version_raw": "codex-cli 0.155.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "developers.openai.com/blog/building-frontend-uis-with-codex-and-figma/index.md",
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
+          "learn.chatgpt.com/docs/agent-configuration/subagents/index.md",
+          "learn.chatgpt.com/docs/auth/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/config-file/environment-variables/index.md",
+          "learn.chatgpt.com/docs/enterprise/analytics-api/index.md",
+          "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
+          "learn.chatgpt.com/docs/models/index.md",
+          "learn.chatgpt.com/docs/non-interactive-mode/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md"
+        ]
+      },
+      "id": "ea5a8e3953dc11540a4a2f8c2c4a5541e5d6878246f9eeeade60eea8550e2f1e",
+      "observed_at": "2026-09-20T10:50:54+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

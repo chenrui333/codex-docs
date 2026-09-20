@@ -423,7 +423,7 @@ max_concurrent_threads_per_session = 8
 ```toml
 name = "pr_explorer"
 description = "Read-only codebase explorer for gathering evidence before changes are proposed."
-model = "gpt-5.3-codex-spark"
+model = "gpt-5.6-luna"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
@@ -521,7 +521,7 @@ startup_timeout_sec = 20
 ```toml
 name = "ui_fixer"
 description = "Implementation-focused agent for small, targeted fixes after the issue is understood."
-model = "gpt-5.3-codex-spark"
+model = "gpt-5.6-luna"
 model_reasoning_effort = "medium"
 developer_instructions = """
 Own the fix once the issue is reproduced.

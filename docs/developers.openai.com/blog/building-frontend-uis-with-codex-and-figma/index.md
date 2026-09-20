@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma'
-source_last_modified: '2026-08-29T10:32:56Z'
-source_etag: 'W/"5de608773af01f4438e2199a2bfd96d4"'
+source_last_modified: '2026-09-20T10:21:06Z'
+source_etag: 'W/"5f1dcc8ce198d47b183b31b45ab5928d"'
 codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -22,9 +22,7 @@ One of the core use cases of the Figma MCP server is retrieving context from Fig
 
 To get started, open the Figma file that you plan to build your application from. Choose a frame by right clicking and selecting “Copy as” and “Copy link to selection.”
 
-[
-Your browser does not support the video tag.
-](/videos/blog/copy-link.mp4)
+[  Your browser does not support the video tag. ](/videos/blog/copy-link.mp4)
 
 These selection URLs are linked directly to a frame or node on the Figma canvas. They could be a single element or a collection of components, but essentially it’s the source data that an agent will use for code generation. Selections can come from Figma Design, Make, or FigJam files. Once you have the URL, open Codex and select either a new project or existing one. From here you can instruct Codex with a prompt like:
 
@@ -32,9 +30,7 @@ These selection URLs are linked directly to a frame or node on the Figma canvas.
 help me implement this Figma design in code, use my existing design system components as much as possible.
 ```
 
-[
-Your browser does not support the video tag.
-](/videos/blog/implement-design.mp4)
+[  Your browser does not support the video tag. ](/videos/blog/implement-design.mp4)
 
 Prompts like this will instruct the agent to call the `get_design_context` tool from the Figma MCP server. This tool helps extract critical design information from Figma files like layouts, styles, and component information and then provides that context to Codex for code generation.
 
@@ -46,9 +42,7 @@ After iterating in code, you’ll want to bring your design back into the canvas
 
 First you’ll need to render the UI of your application. This can be done either locally or via a publicly available web server. From there, ask Codex to help you generate a new Figma design file.
 
-[
-Your browser does not support the video tag.
-](/videos/blog/Codex2Canvas-design.mp4)
+[  Your browser does not support the video tag. ](/videos/blog/Codex2Canvas-design.mp4)
 
 Codex will then walk you through the following steps:
 
@@ -65,9 +59,7 @@ When the application reloads, you will see a new toolbar at the top of the page 
 
 **Open file:** Open the Figma file to inspect your new design layers
 
-[
-Your browser does not support the video tag.
-](/videos/blog/select-send.mp4)
+[  Your browser does not support the video tag. ](/videos/blog/select-send.mp4)
 
 After you’ve captured all the information that you want to transfer to Figma, you can choose to either open the file or return to Codex. Codex will have the Figma file URL waiting for you.
 

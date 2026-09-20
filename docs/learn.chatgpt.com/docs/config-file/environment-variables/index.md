@@ -73,8 +73,6 @@ name itself is not a fixed Codex environment variable.
 For automation secret handling, see
 [Use API key auth](https://learn.chatgpt.com/docs/non-interactive-mode#use-api-key-auth).
 For access token setup, see [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens).
-For workload identity setup, see
-[Workload identity federation](https://learn.chatgpt.com/docs/enterprise/workload-identity).
 
 ## Diagnostics
 

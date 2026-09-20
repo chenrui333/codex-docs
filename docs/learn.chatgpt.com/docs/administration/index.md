@@ -96,13 +96,6 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "key",
         },
         {
-          title: "Workload identity",
-          description:
-            "Let trusted workloads use Codex without long-lived credentials.",
-          href: "/codex/enterprise/workload-identity",
-          icon: "key",
-        },
-        {
           title: "Personal Access Tokens",
           description: "Create and manage tokens for programmatic access.",
           href: "/codex/enterprise/access-tokens",

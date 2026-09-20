@@ -13,10 +13,12 @@ Source: https://learn.chatgpt.com/docs/enterprise/analytics-api
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-The Codex Analytics API provides aggregated Codex usage and activity metrics for
-a ChatGPT workspace.
+The Analytics APIs provide aggregated usage and activity metrics for a ChatGPT
+workspace. The unified Daily Usage Analytics API reports daily ChatGPT, Codex,
+and Work usage. Confirm that the endpoint is enabled for your workspace before
+using it.
 
-The [Codex Analytics API reference](https://chatgpt.com/public/admin/api-reference#tag/Codex%20Enterprise%20Analytics)
+The [Admin API reference](https://chatgpt.com/public/admin/api-reference)
 is the source of truth for current access requirements, routes, request and
 response schemas, metrics, time semantics, and pagination.
 
@@ -24,8 +26,8 @@ response schemas, metrics, time semantics, and pagination.
 
 The Analytics API is appropriate when you need to:
 
-- Automate recurring Codex reporting.
-- Join aggregated Codex metrics with internal organizational data.
+- Automate recurring workspace usage reporting.
+- Join aggregated usage metrics with internal organizational data.
 - Build a controlled reporting layer for approved audiences.
 - Avoid coupling an integration to an interactive dashboard.
 
@@ -35,9 +37,10 @@ auditable activity records.
 
 ## Confirm the administration boundaries
 
-Analytics API results are scoped to a ChatGPT workspace, but requests
-authenticate with a Platform organization API key. The key's organization must
-match the organization associated with the workspace.
+Analytics API results are scoped to a ChatGPT workspace. For the unified Daily
+Usage Analytics API, use a workspace-scoped Admin key with
+`enterprise.analytics.usage.read`. The Codex scope
+`codex.enterprise.analytics.read` doesn't grant access to that endpoint.
 
 The API reference owns current key provisioning, scope requirements,
 routes, schemas, fields, time semantics, and pagination behavior. This page

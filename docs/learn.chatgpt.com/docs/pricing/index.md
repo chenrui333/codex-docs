@@ -83,8 +83,6 @@ October 14, 2026. The OpenAI API isn't affected. See
         footnoteLabel="*Learn more about limits on both tiers."
         footnoteHref="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans"
       >
-        - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
-          for day-to-day coding tasks
         - 5x or 20x more Codex usage than Plus*
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
@@ -335,10 +333,7 @@ Speed configurations increase credit consumption for all applicable models, so
 they also use included limits faster. Fast mode consumes credits at a higher
 rate for supported models. See [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for supported models and
 rates. Image generations also use included limits ~3-5x faster on average,
-depending on image quality and size. GPT-5.3-Codex-Spark is in research preview
-for ChatGPT Pro users only, and isn't available in the API at launch. Because it
-runs on specialized low-latency hardware, usage is governed by a separate usage
-limit that may adjust based on demand.
+depending on image quality and size.
 
 ### How much does Sites cost?
 
@@ -503,12 +498,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">113 credits</td>
       </tr>
       <tr>
-        <td>GPT-5.3-Codex-Spark</td>
-        <td colspan="3" style="text-align:center">
-          research preview
-        </td>
-      </tr>
-      <tr>
         <td>GPT-Image-2 (image)</td>
         <td style="text-align:center">200 credits</td>
         <td style="text-align:center">50 credits</td>
@@ -592,7 +581,6 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
 ## Feature availability
 
 <CodexPlanFeatureMatrix
-  client:load
   data={{
     plans: [
       { id: "plus", shortLabel: "Plus", label: "ChatGPT Plus" },
@@ -728,17 +716,6 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
               business: "available",
               enterprise: "available",
               api: "available",
-            },
-          },
-          {
-            name: "Codex-Spark research preview",
-            href: "/codex/models",
-            availability: {
-              plus: "unavailable",
-              pro: "available",
-              business: "unavailable",
-              enterprise: "unavailable",
-              api: "unavailable",
             },
           },
           {

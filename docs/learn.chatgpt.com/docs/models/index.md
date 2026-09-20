@@ -263,40 +263,6 @@ making it useful for larger tasks that can be split across subagents.
   }}
 />
 
-<ContentModeSwitch group="codex-surface" ids="app,cli,ide">
-  <ModelDetails
-    client:load
-    name="gpt-5.3-codex-spark"
-    slug="gpt-5.3-codex-spark"
-    imageLabel="5.3 Codex Spark"
-    wallpaperUrl="/images/codex/codex-wallpaper-2.webp"
-    description="Text-only research preview model optimized for near-instant, real-time coding iteration. Available to ChatGPT Pro users."
-    data={{
-      features: [
-        {
-          title: "Capability",
-          value: "",
-          icons: ["openai.SparklesFilled", "openai.SparklesFilled"],
-        },
-        {
-          title: "Speed",
-          value: "",
-          icons: [
-            "openai.Flash",
-          ],
-        },
-        { title: "ChatGPT desktop app", value: true },
-        { title: "ChatGPT web", value: false },
-        { title: "Codex CLI", value: true },
-        { title: "Codex IDE extension", value: true },
-        { title: "Codex cloud", value: false },
-        { title: "ChatGPT Credits", value: false },
-        { title: "API Access", value: false },
-      ],
-    }}
-  />
-</ContentModeSwitch>
-
 Availability depends on the rollout, your sign-in method, and your client.
 See [pricing](https://learn.chatgpt.com/docs/pricing) for plan access and usage, and
 [workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability#gpt-6-astra-in-enterprise)
@@ -370,8 +336,8 @@ for tasks that need more planning, analysis, or checking.
 - **High** and **Extra High** suit difficult work with multiple steps, sources,
   or tradeoffs.
 
-There is no exact mapping from GPT-5.5 reasoning efforts to GPT-5.6. Try a
-familiar task at a lower setting and adjust based on the result.
+GPT-5.5 reasoning efforts don't map exactly to GPT-5.6. Try a familiar task
+at a lower setting and adjust based on the result.
 
 ### Know when to use Max or Ultra
 

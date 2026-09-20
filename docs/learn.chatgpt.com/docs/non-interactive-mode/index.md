@@ -141,11 +141,6 @@ Example final output (stdout):
 
 `codex exec` reuses saved CLI authentication by default. In CI, it's common to provide credentials explicitly:
 
-If your trusted cloud or CI runtime already receives short-lived workload
-tokens, use
-[workload identity federation](https://learn.chatgpt.com/docs/enterprise/workload-identity)
-instead of storing an OpenAI credential.
-
 ### Use API key auth
 
 For GitHub Actions, use the [Codex GitHub Action](https://learn.chatgpt.com/docs/github-action) instead of installing and authenticating the CLI yourself. The action is designed to reduce API key exposure by installing Codex, starting a Responses API proxy, and running Codex with a configurable safety strategy.
