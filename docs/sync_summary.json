@@ -2,10 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-20T10:50:54+00:00",
-  "removed": [
-    "learn.chatgpt.com/docs/enterprise/workload-identity/index.md"
-  ],
+  "generated_at": "2026-09-22T16:30:28+00:00",
+  "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
     "codex_cli_release_ref": "rust-v0.155.1",
@@ -18,17 +16,6 @@
   },
   "total_files": 262,
   "updated": [
-    "developers.openai.com/blog/building-frontend-uis-with-codex-and-figma/index.md",
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
-    "learn.chatgpt.com/docs/agent-configuration/subagents/index.md",
-    "learn.chatgpt.com/docs/auth/index.md",
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/config-file/environment-variables/index.md",
-    "learn.chatgpt.com/docs/enterprise/analytics-api/index.md",
-    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
-    "learn.chatgpt.com/docs/models/index.md",
-    "learn.chatgpt.com/docs/non-interactive-mode/index.md",
-    "learn.chatgpt.com/docs/pricing/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md"
   ]
 }

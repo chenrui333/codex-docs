@@ -6854,11 +6854,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "8cdd8d31bdd154da7b646782434820e6ff959a56587ba2a75eace11103480f79",
+      "sha256": "90bc67ca849c0b73d53263b1d0f00d94e835da827667f4894121cc8592901990",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"da3ba1acb0f88c30e4e281ef752979e5\"",
+      "source_etag": "W/\"a62ea979ee6d76fbd1381e7a079daad1\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-09-20T10:06:52Z",
+      "source_last_modified": "2026-09-22T15:36:34Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },

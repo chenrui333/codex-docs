@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_changelog'
 source_url: 'https://learn.chatgpt.com/docs/changelog'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-09-20T10:06:52Z'
-source_etag: 'W/"da3ba1acb0f88c30e4e281ef752979e5"'
+source_last_modified: '2026-09-22T15:36:34Z'
+source_etag: 'W/"a62ea979ee6d76fbd1381e7a079daad1"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -13,288 +13,49 @@ codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.
 
 Source: https://learn.chatgpt.com/docs/changelog
 
-```
-$ npm install -g @openai/codex@0.154.0
-```
+### New features
 
-  View details
+- Added rate-limit reset banking for Plus and Pro users, including one free
+  reset at launch and
+  [referral invitations](/codex/pricing#invite-friends-and-coworkers) for
+  earning more during the current promotion. Eligible Business members can
+  invite coworkers to earn shared workspace credits through a separate
+  referral program.
+- Added [Developer mode](/codex/browser?surface=app#app-developer-mode) for Browser use in
+  Chrome and the Codex in-app browser. It gives Codex controlled Chrome
+  DevTools Protocol (CDP) access for performance profiling and deeper debugging
+  of network traffic, console output, runtime errors, and page state.
+- Added the `/init` command to the app composer for creating project
+  instructions with the same initialization workflow as the Codex CLI.
+- Added customizable macOS Dock icons with light and dark Codex variants.
+- Added Computer Use for Enterprise users outside the European Economic Area,
+  the United Kingdom, and Switzerland.
+- Added support for configuring per-app access controls for Computer Use on
+  Windows.
+- Added an **Unread chats** section to the command menu, with the most recently
+  updated unread chat selected by default.
 
-## New Features
+### Performance improvements and bug fixes
 
-- GPT-6-Astra is now available in the model picker and Amazon Bedrock catalogs. ([#42879](https://github.com/openai/codex/pull/42879), [#42619](https://github.com/openai/codex/pull/42619))
-- Experimental worktree support lets you create isolated checkouts for new or forked sessions using `--worktree` or `/worktree`, then browse and resume them. ([#42652](https://github.com/openai/codex/pull/42652), [#43069](https://github.com/openai/codex/pull/43069), [#43120](https://github.com/openai/codex/pull/43120), [#43286](https://github.com/openai/codex/pull/43286))
-- Answer questions inline while Codex continues working, using suggested choices or custom text without losing your main draft. ([#42891](https://github.com/openai/codex/pull/42891), [#42894](https://github.com/openai/codex/pull/42894), [#42897](https://github.com/openai/codex/pull/42897))
-- Windows sessions can now share a background Codex server, with daemon lifecycle commands and managed updates. ([#42405](https://github.com/openai/codex/pull/42405), [#42392](https://github.com/openai/codex/pull/42392))
-- Vim editing gains `R` replace mode with undo and dot-repeat, plus more reliable Escape handling in legacy terminals. ([#42194](https://github.com/openai/codex/pull/42194), [#42584](https://github.com/openai/codex/pull/42584))
-- Copying responses preserves formatting in rich-text apps, and `/copy` can copy status output or individual session fields. ([#42847](https://github.com/openai/codex/pull/42847), [#43055](https://github.com/openai/codex/pull/43055))
-
-## Bug Fixes
-
-- Existing sessions pick up newly installed plugin tools and refresh skills and hooks after external plugin upgrades or rollbacks. ([#42284](https://github.com/openai/codex/pull/42284), [#42593](https://github.com/openai/codex/pull/42593), [#42990](https://github.com/openai/codex/pull/42990))
-- MCP connections coordinate OAuth token refreshes and surface login challenges when refresh fails, without automatically replaying rejected tool calls. ([#42413](https://github.com/openai/codex/pull/42413), [#42552](https://github.com/openai/codex/pull/42552))
-- Startup avoids running workspace-controlled helpers before trust is established, and the macOS sandbox blocks terminal input injection. ([#42324](https://github.com/openai/codex/pull/42324), [#42590](https://github.com/openai/codex/pull/42590))
-- Remote resume and fork operations preserve saved permissions; fresh sessions and forks respect server model defaults unless explicitly overridden. ([#43330](https://github.com/openai/codex/pull/43330), [#43177](https://github.com/openai/codex/pull/43177), [#43355](https://github.com/openai/codex/pull/43355))
-- Resuming a conversation open in another app now shows a read-only transcript with a retry option while preserving your draft. ([#43253](https://github.com/openai/codex/pull/43253))
-- Automatic approval reviews better preserve authorization context through compaction and reject approvals invalidated by new user instructions or answers. ([#42844](https://github.com/openai/codex/pull/42844), [#42852](https://github.com/openai/codex/pull/42852), [#43442](https://github.com/openai/codex/pull/43442))
-
-## Documentation
-
-- Updated the bundled OpenAI Docs skill with GPT-6-Astra migration, compatibility, and prompting guidance. ([#42931](https://github.com/openai/codex/pull/42931))
-
-## Chores
-
-- The deprecated `codex mcp-server` entry point is no longer available. ([#42993](https://github.com/openai/codex/pull/42993))
-
-## Changelog
-
-Full Changelog: [rust-v0.153.0...rust-v0.154.0](https://github.com/openai/codex/compare/rust-v0.153.0...rust-v0.154.0)
-
-- [#42188](https://github.com/openai/codex/pull/42188) Fix punctuation in npm packaging documentation [@copyberry](https://github.com/copyberry)
-- [#42192](https://github.com/openai/codex/pull/42192) Use native spawning for bare macOS MCP commands [@copyberry](https://github.com/copyberry)
-- [#42194](https://github.com/openai/codex/pull/42194) Add Vim replace mode to the TUI composer [@copyberry](https://github.com/copyberry)
-- [#42196](https://github.com/openai/codex/pull/42196) Add managed worktree creation [@copyberry](https://github.com/copyberry)
-- [#42199](https://github.com/openai/codex/pull/42199) Refactor shared TUI input routing [@copyberry](https://github.com/copyberry)
-- [#42202](https://github.com/openai/codex/pull/42202) Separate TUI preferences from server configuration [@copyberry](https://github.com/copyberry)
-- [#42204](https://github.com/openai/codex/pull/42204) Add macOS voice runtime projection [@copyberry](https://github.com/copyberry)
-- [#42207](https://github.com/openai/codex/pull/42207) Retry TUI reconnects while threads are closing [@copyberry](https://github.com/copyberry)
-- [#42208](https://github.com/openai/codex/pull/42208) Add GNU Linux voice runtime preparation [@copyberry](https://github.com/copyberry)
-- [#42209](https://github.com/openai/codex/pull/42209) Add Windows voice runtime preparation [@copyberry](https://github.com/copyberry)
-- [#42247](https://github.com/openai/codex/pull/42247) Track history notes thread hint outcomes [@copyberry](https://github.com/copyberry)
-- [#42256](https://github.com/openai/codex/pull/42256) Skip Guardian scoring in User approval mode [@copyberry](https://github.com/copyberry)
-- [#42270](https://github.com/openai/codex/pull/42270) Report the exec-server release version in environment info [@copyberry](https://github.com/copyberry)
-- [#42284](https://github.com/openai/codex/pull/42284) Refresh plugin skills after out-of-process version changes [@copyberry](https://github.com/copyberry)
-- [#42288](https://github.com/openai/codex/pull/42288) Fetch rules\_rs zlib packages from Ubuntu snapshots [@copyberry](https://github.com/copyberry)
-- [#42290](https://github.com/openai/codex/pull/42290) Expand Guardian history coverage across resume and rollback [@copyberry](https://github.com/copyberry)
-- [#42293](https://github.com/openai/codex/pull/42293) Preserve verified answers across history compaction [@copyberry](https://github.com/copyberry)
-- [#42298](https://github.com/openai/codex/pull/42298) Preserve retained answers across steer rollbacks [@copyberry](https://github.com/copyberry)
-- [#42306](https://github.com/openai/codex/pull/42306) Stabilize the detached exec-server session resume test [@copyberry](https://github.com/copyberry)
-- [#42309](https://github.com/openai/codex/pull/42309) Separate Windows sandbox provisioning from ACL refresh [@copyberry](https://github.com/copyberry)
-- [#42314](https://github.com/openai/codex/pull/42314) Preserve target-native cwd in permission approval requests [@copyberry](https://github.com/copyberry)
-- [#42316](https://github.com/openai/codex/pull/42316) Refactor exec-server startup futures [@copyberry](https://github.com/copyberry)
-- [#42318](https://github.com/openai/codex/pull/42318) Support packaged managed Codex binary paths [@copyberry](https://github.com/copyberry)
-- [#42319](https://github.com/openai/codex/pull/42319) Show live context compaction status in the TUI [@copyberry](https://github.com/copyberry)
-- [#42320](https://github.com/openai/codex/pull/42320) Make the app-server thread unload delay configurable [@copyberry](https://github.com/copyberry)
-- [#42324](https://github.com/openai/codex/pull/42324) Avoid executing PATH helpers before workspace trust [@copyberry](https://github.com/copyberry)
-- [#42325](https://github.com/openai/codex/pull/42325) Render completed assistant messages directly during replay [@copyberry](https://github.com/copyberry)
-- [#42326](https://github.com/openai/codex/pull/42326) Harden Windows control socket rendezvous [@copyberry](https://github.com/copyberry)
-- [#42328](https://github.com/openai/codex/pull/42328) Support durable reasoning configuration updates [@copyberry](https://github.com/copyberry)
-- [#42330](https://github.com/openai/codex/pull/42330) Protect Windows sandbox binaries from inherited write access [@copyberry](https://github.com/copyberry)
-- [#42332](https://github.com/openai/codex/pull/42332) Package prepared runtimes with the voice host [@copyberry](https://github.com/copyberry)
-- [#42334](https://github.com/openai/codex/pull/42334) Add a Windows sandbox provisioning protocol [@copyberry](https://github.com/copyberry)
-- [#42337](https://github.com/openai/codex/pull/42337) Add an authenticated Windows sandbox provisioning client [@copyberry](https://github.com/copyberry)
-- [#42341](https://github.com/openai/codex/pull/42341) Add Windows sandbox service lifecycle scaffolding [@copyberry](https://github.com/copyberry)
-- [#42342](https://github.com/openai/codex/pull/42342) Harden Windows sandbox provisioning file handling [@copyberry](https://github.com/copyberry)
-- [#42344](https://github.com/openai/codex/pull/42344) Prepare managed policy validation for Windows sandbox provisioning [@copyberry](https://github.com/copyberry)
-- [#42348](https://github.com/openai/codex/pull/42348) Add Windows sandbox client authentication [@copyberry](https://github.com/copyberry)
-- [#42351](https://github.com/openai/codex/pull/42351) Enable authenticated Windows sandbox provisioning [@copyberry](https://github.com/copyberry)
-- [#42353](https://github.com/openai/codex/pull/42353) Add experimental Windows sandbox service provisioning [@copyberry](https://github.com/copyberry)
-- [#42354](https://github.com/openai/codex/pull/42354) Add free-form asynchronous user messages [@copyberry](https://github.com/copyberry)
-- [#42356](https://github.com/openai/codex/pull/42356) Initialize questions in buffered replay test messages [@copyberry](https://github.com/copyberry)
-- [#42358](https://github.com/openai/codex/pull/42358) Extend rate limit reads with usage capabilities [@copyberry](https://github.com/copyberry)
-- [#42364](https://github.com/openai/codex/pull/42364) Support graceful daemon shutdown on Windows [@copyberry](https://github.com/copyberry)
-- [#42366](https://github.com/openai/codex/pull/42366) List managed worktrees for a repository [@copyberry](https://github.com/copyberry)
-- [#42369](https://github.com/openai/codex/pull/42369) Keep SQLite history projection moving past invalid records [@copyberry](https://github.com/copyberry)
-- [#42370](https://github.com/openai/codex/pull/42370) Improve MCP server startup error logging [@copyberry](https://github.com/copyberry)
-- [#42372](https://github.com/openai/codex/pull/42372) Add Luna Reserve usage fallback to the TUI [@copyberry](https://github.com/copyberry)
-- [#42373](https://github.com/openai/codex/pull/42373) Add attributed exec process lifecycle telemetry [@copyberry](https://github.com/copyberry)
-- [#42374](https://github.com/openai/codex/pull/42374) Extract PID startup into a dedicated module [@copyberry](https://github.com/copyberry)
-- [#42375](https://github.com/openai/codex/pull/42375) Clean up Windows sandbox resources on app uninstall [@copyberry](https://github.com/copyberry)
-- [#42377](https://github.com/openai/codex/pull/42377) Make app-server realtime sessions always available [@copyberry](https://github.com/copyberry)
-- [#42378](https://github.com/openai/codex/pull/42378) Route rollout reads through the canonical JSON decoder [@copyberry](https://github.com/copyberry)
-- [#42380](https://github.com/openai/codex/pull/42380) Require confirmation for safety-buffered retries [@copyberry](https://github.com/copyberry)
-- [#42381](https://github.com/openai/codex/pull/42381) Support managed app-server lifecycle on Windows [@copyberry](https://github.com/copyberry)
-- [#42383](https://github.com/openai/codex/pull/42383) Update rmcp to 3.2.0 [@copyberry](https://github.com/copyberry)
-- [#42384](https://github.com/openai/codex/pull/42384) Add an RMCP OAuth credential store adapter [@copyberry](https://github.com/copyberry)
-- [#42385](https://github.com/openai/codex/pull/42385) Add experimental context management activation [@copyberry](https://github.com/copyberry)
-- [#42386](https://github.com/openai/codex/pull/42386) Expose loaded thread environments in app-server responses [@copyberry](https://github.com/copyberry)
-- [#42388](https://github.com/openai/codex/pull/42388) Recover deferred environments after provisioning failure [@copyberry](https://github.com/copyberry)
-- [#42391](https://github.com/openai/codex/pull/42391) Authorize `apply_patch` in the executor path context [@copyberry](https://github.com/copyberry)
-- [#42392](https://github.com/openai/codex/pull/42392) Support managed daemon updates on Windows [@copyberry](https://github.com/copyberry)
-- [#42395](https://github.com/openai/codex/pull/42395) Expose the Codex version to commands and turn metadata [@copyberry](https://github.com/copyberry)
-- [#42397](https://github.com/openai/codex/pull/42397) Extract focused TUI logic into submodules [@copyberry](https://github.com/copyberry)
-- [#42399](https://github.com/openai/codex/pull/42399) Preserve restored input after resolved misalignment errors [@copyberry](https://github.com/copyberry)
-- [#42401](https://github.com/openai/codex/pull/42401) Discover TUI collaboration modes from the app server [@copyberry](https://github.com/copyberry)
-- [#42403](https://github.com/openai/codex/pull/42403) Expose the last accepted environment ready report [@copyberry](https://github.com/copyberry)
-- [#42404](https://github.com/openai/codex/pull/42404) Read voice helper frames independently of pipe chunks [@copyberry](https://github.com/copyberry)
-- [#42405](https://github.com/openai/codex/pull/42405) Support the app-server daemon on Windows [@copyberry](https://github.com/copyberry)
-- [#42406](https://github.com/openai/codex/pull/42406) Honor explicit plugin mentions during MCP startup [@copyberry](https://github.com/copyberry)
-- [#42408](https://github.com/openai/codex/pull/42408) Harden embedded composer input handling [@copyberry](https://github.com/copyberry)
-- [#42410](https://github.com/openai/codex/pull/42410) Allow reviewing and continuing misalignment-paused chats [@copyberry](https://github.com/copyberry)
-- [#42413](https://github.com/openai/codex/pull/42413) Enable coordinated MCP OAuth refresh [@copyberry](https://github.com/copyberry)
-- [#42417](https://github.com/openai/codex/pull/42417) Expose managed application network requirements [@copyberry](https://github.com/copyberry)
-- [#42419](https://github.com/openai/codex/pull/42419) Add session resume to the agent command center [@copyberry](https://github.com/copyberry)
-- [#42422](https://github.com/openai/codex/pull/42422) Honor model requirements in Guardian computer-use scoring [@copyberry](https://github.com/copyberry)
-- [#42425](https://github.com/openai/codex/pull/42425) Discover TUI experimental features from the server [@copyberry](https://github.com/copyberry)
-- [#42428](https://github.com/openai/codex/pull/42428) Use the shared composer in the agent command center [@copyberry](https://github.com/copyberry)
-- [#42432](https://github.com/openai/codex/pull/42432) Box the TUI resume picker future [@copyberry](https://github.com/copyberry)
-- [#42445](https://github.com/openai/codex/pull/42445) Include originator in plugin measurement analytics [@copyberry](https://github.com/copyberry)
-- [#42451](https://github.com/openai/codex/pull/42451) Acknowledge pending TUI steers by submission ID [@copyberry](https://github.com/copyberry)
-- [#42453](https://github.com/openai/codex/pull/42453) Discover permission profiles from the app server [@copyberry](https://github.com/copyberry)
-- [#42455](https://github.com/openai/codex/pull/42455) Show live task details in the agent command center [@copyberry](https://github.com/copyberry)
-- [#42458](https://github.com/openai/codex/pull/42458) Expose thread originators through the app-server API [@copyberry](https://github.com/copyberry)
-- [#42529](https://github.com/openai/codex/pull/42529) Register the Guardian thread context feature flag [@copyberry](https://github.com/copyberry)
-- [#42552](https://github.com/openai/codex/pull/42552) Preserve MCP authentication challenges on tool calls [@copyberry](https://github.com/copyberry)
-- [#42577](https://github.com/openai/codex/pull/42577) Preserve target-native paths in command approvals [@copyberry](https://github.com/copyberry)
-- [#42579](https://github.com/openai/codex/pull/42579) Persist verified user answers in Guardian thread context [@copyberry](https://github.com/copyberry)
-- [#42584](https://github.com/openai/codex/pull/42584) Recover Vim escape input in legacy terminals [@copyberry](https://github.com/copyberry)
-- [#42588](https://github.com/openai/codex/pull/42588) Require Guardian review for incompatible compaction checkpoints [@copyberry](https://github.com/copyberry)
-- [#42590](https://github.com/openai/codex/pull/42590) Harden the macOS sandbox against terminal input injection [@copyberry](https://github.com/copyberry)
-- [#42593](https://github.com/openai/codex/pull/42593) Reload user config after local plugin installation [@copyberry](https://github.com/copyberry)
-- [#42596](https://github.com/openai/codex/pull/42596) Record Windows sandbox private desktop usage [@copyberry](https://github.com/copyberry)
-- [#42598](https://github.com/openai/codex/pull/42598) Report MCP tool discovery errors in server status [@copyberry](https://github.com/copyberry)
-- [#42602](https://github.com/openai/codex/pull/42602) Deprecate detached review delivery [@copyberry](https://github.com/copyberry)
-- [#42603](https://github.com/openai/codex/pull/42603) Expose global metrics installation in `codex-otel` [@copyberry](https://github.com/copyberry)
-- [#42606](https://github.com/openai/codex/pull/42606) Support trusted headers for remote exec WebSockets [@copyberry](https://github.com/copyberry)
-- [#42607](https://github.com/openai/codex/pull/42607) Add GPT-6-Astra to the bundled model catalog [@copyberry](https://github.com/copyberry)
-- [#42609](https://github.com/openai/codex/pull/42609) Condense TUI startup warnings [@copyberry](https://github.com/copyberry)
-- [#42619](https://github.com/openai/codex/pull/42619) Add GPT-6-Astra to Amazon Bedrock catalogs [@copyberry](https://github.com/copyberry)
-- [#42623](https://github.com/openai/codex/pull/42623) Bound Noise handshakes by the exec server initialization timeout [@copyberry](https://github.com/copyberry)
-- [#42624](https://github.com/openai/codex/pull/42624) Centralize prompt image detail modes [@copyberry](https://github.com/copyberry)
-- [#42631](https://github.com/openai/codex/pull/42631) Initialize the packaged GStreamer runtime in the voice host [@copyberry](https://github.com/copyberry)
-- [#42634](https://github.com/openai/codex/pull/42634) Add an injectable attachment store to ThreadManager [@copyberry](https://github.com/copyberry)
-- [#42638](https://github.com/openai/codex/pull/42638) Update GPT-6-Astra Fast tier speed description [@copyberry](https://github.com/copyberry)
-- [#42639](https://github.com/openai/codex/pull/42639) Warn when saved model defaults are overridden [@copyberry](https://github.com/copyberry)
-- [#42640](https://github.com/openai/codex/pull/42640) Harden TUI parsing of assistant markup [@copyberry](https://github.com/copyberry)
-- [#42641](https://github.com/openai/codex/pull/42641) Restore the inline TUI after full-screen overlays [@copyberry](https://github.com/copyberry)
-- [#42650](https://github.com/openai/codex/pull/42650) Render assistant file citations as local links [@copyberry](https://github.com/copyberry)
-- [#42652](https://github.com/openai/codex/pull/42652) Add managed worktrees to `codex exec` [@copyberry](https://github.com/copyberry)
-- [#42654](https://github.com/openai/codex/pull/42654) Update the stable exec-server test to Codex 0.153.1 [@copyberry](https://github.com/copyberry)
-- [#42657](https://github.com/openai/codex/pull/42657) Use a generic fallback model name in status tests [@copyberry](https://github.com/copyberry)
-- [#42667](https://github.com/openai/codex/pull/42667) Tailor TUI cyber refusal notices to Daybreak eligibility [@copyberry](https://github.com/copyberry)
-- [#42668](https://github.com/openai/codex/pull/42668) Cancel remote control enrollment on stdio shutdown [@copyberry](https://github.com/copyberry)
-- [#42671](https://github.com/openai/codex/pull/42671) Preserve TUI sessions while starting replacement threads [@copyberry](https://github.com/copyberry)
-- [#42674](https://github.com/openai/codex/pull/42674) Persist server-advertised experimental features from the TUI [@copyberry](https://github.com/copyberry)
-- [#42676](https://github.com/openai/codex/pull/42676) Add WebRTC negotiation to the voice host [@copyberry](https://github.com/copyberry)
-- [#42677](https://github.com/openai/codex/pull/42677) Narrow async user message guidance [@copyberry](https://github.com/copyberry)
-- [#42682](https://github.com/openai/codex/pull/42682) Fix the worktrees experimental feature test fixture [@copyberry](https://github.com/copyberry)
-- [#42716](https://github.com/openai/codex/pull/42716) Allow trusted symlinks beneath CODEX\_HOME on macOS [@copyberry](https://github.com/copyberry)
-- [#42718](https://github.com/openai/codex/pull/42718) Gate unified exec TTY support behind a feature flag [@copyberry](https://github.com/copyberry)
-- [#42741](https://github.com/openai/codex/pull/42741) Make the TUI symlink startup test Bazel-compatible [@copyberry](https://github.com/copyberry)
-- [#42744](https://github.com/openai/codex/pull/42744) Honor model-provided Guardian review policies [@copyberry](https://github.com/copyberry)
-- [#42746](https://github.com/openai/codex/pull/42746) Handle pending network reviews after process completion [@copyberry](https://github.com/copyberry)
-- [#42749](https://github.com/openai/codex/pull/42749) Improve automatic thread naming in the TUI [@copyberry](https://github.com/copyberry)
-- [#42752](https://github.com/openai/codex/pull/42752) Preserve response IDs for fast collaborator tool events [@copyberry](https://github.com/copyberry)
-- [#42755](https://github.com/openai/codex/pull/42755) Stabilize the interactive tmux startup safety test [@copyberry](https://github.com/copyberry)
-- [#42758](https://github.com/openai/codex/pull/42758) Propagate response tickets to Guardian reviews [@copyberry](https://github.com/copyberry)
-- [#42762](https://github.com/openai/codex/pull/42762) Retain user instructions in guardian thread context [@copyberry](https://github.com/copyberry)
-- [#42767](https://github.com/openai/codex/pull/42767) Avoid port races in streamable HTTP tests [@copyberry](https://github.com/copyberry)
-- [#42770](https://github.com/openai/codex/pull/42770) Preserve acceptance order in retained thread context [@copyberry](https://github.com/copyberry)
-- [#42773](https://github.com/openai/codex/pull/42773) Avoid holding metadata permit during cold resume config load [@copyberry](https://github.com/copyberry)
-- [#42781](https://github.com/openai/codex/pull/42781) Add direct SigV4 transport to exec-server [@copyberry](https://github.com/copyberry)
-- [#42791](https://github.com/openai/codex/pull/42791) Keep TUI prompt history tied to local settings [@copyberry](https://github.com/copyberry)
-- [#42792](https://github.com/openai/codex/pull/42792) Extract the note input view into its own module [@copyberry](https://github.com/copyberry)
-- [#42798](https://github.com/openai/codex/pull/42798) Add data-use disclosures to the user report dialog [@copyberry](https://github.com/copyberry)
-- [#42801](https://github.com/openai/codex/pull/42801) Keep the Windows sandbox command runner hidden [@copyberry](https://github.com/copyberry)
-- [#42807](https://github.com/openai/codex/pull/42807) Add request-scoped Guardian approval decisions [@copyberry](https://github.com/copyberry)
-- [#42811](https://github.com/openai/codex/pull/42811) Enable staging login issuer overrides in packaged builds [@copyberry](https://github.com/copyberry)
-- [#42814](https://github.com/openai/codex/pull/42814) Support custom report event titles [@copyberry](https://github.com/copyberry)
-- [#42819](https://github.com/openai/codex/pull/42819) Route Guardian approvals independently of async scoring [@copyberry](https://github.com/copyberry)
-- [#42821](https://github.com/openai/codex/pull/42821) Report managed filesystem policy in `codex doctor` [@copyberry](https://github.com/copyberry)
-- [#42823](https://github.com/openai/codex/pull/42823) Expose managed WebMCP policy through the app server [@copyberry](https://github.com/copyberry)
-- [#42824](https://github.com/openai/codex/pull/42824) Refine user input guidance for GPT-6 [@copyberry](https://github.com/copyberry)
-- [#42832](https://github.com/openai/codex/pull/42832) Preserve root authorization context in Guardian reviews [@copyberry](https://github.com/copyberry)
-- [#42833](https://github.com/openai/codex/pull/42833) Preserve SystemRoot for Windows sandbox wrapper setup [@copyberry](https://github.com/copyberry)
-- [#42835](https://github.com/openai/codex/pull/42835) Preserve Windows managed deny reads in the sandbox CLI [@copyberry](https://github.com/copyberry)
-- [#42836](https://github.com/openai/codex/pull/42836) Make GPT-6-Astra user input guidance conditional [@copyberry](https://github.com/copyberry)
-- [#42838](https://github.com/openai/codex/pull/42838) Preserve executor paths in Guardian approval reviews [@copyberry](https://github.com/copyberry)
-- [#42841](https://github.com/openai/codex/pull/42841) Add a native Windows MXC sandbox adapter [@copyberry](https://github.com/copyberry)
-- [#42842](https://github.com/openai/codex/pull/42842) Add Astra sparkle effects to the TUI composer [@copyberry](https://github.com/copyberry)
-- [#42844](https://github.com/openai/codex/pull/42844) Retain user instructions in Guardian context [@copyberry](https://github.com/copyberry)
-- [#42847](https://github.com/openai/codex/pull/42847) Preserve Markdown formatting when copying TUI responses [@copyberry](https://github.com/copyberry)
-- [#42850](https://github.com/openai/codex/pull/42850) Use jemalloc for Linux musl binaries [@copyberry](https://github.com/copyberry)
-- [#42852](https://github.com/openai/codex/pull/42852) Harden Guardian reviews after context compaction [@copyberry](https://github.com/copyberry)
-- [#42854](https://github.com/openai/codex/pull/42854) Persist Daybreak preferences in thread metadata [@copyberry](https://github.com/copyberry)
-- [#42863](https://github.com/openai/codex/pull/42863) Preserve precedence across feature requirement aliases [@copyberry](https://github.com/copyberry)
-- [#42870](https://github.com/openai/codex/pull/42870) Avoid redundant filesystem sandbox path resolution [@copyberry](https://github.com/copyberry)
-- [#42879](https://github.com/openai/codex/pull/42879) List GPT-6-Astra in the model picker [@copyberry](https://github.com/copyberry)
-- [#42883](https://github.com/openai/codex/pull/42883) Add client-side exec-server RPC attempt metrics [@copyberry](https://github.com/copyberry)
-- [#42889](https://github.com/openai/codex/pull/42889) Add TUI building blocks for inline async question editing [@copyberry](https://github.com/copyberry)
-- [#42891](https://github.com/openai/codex/pull/42891) Integrate asynchronous questions into the TUI [@copyberry](https://github.com/copyberry)
-- [#42894](https://github.com/openai/codex/pull/42894) Support selectable answers for asynchronous TUI questions [@copyberry](https://github.com/copyberry)
-- [#42897](https://github.com/openai/codex/pull/42897) Add inline Other answers to async question choices [@copyberry](https://github.com/copyberry)
-- [#42900](https://github.com/openai/codex/pull/42900) Establish root turn identity for independent tasks and memory requests [@copyberry](https://github.com/copyberry)
-- [#42903](https://github.com/openai/codex/pull/42903) Preserve TUI question state and integrate history and queue navigation [@copyberry](https://github.com/copyberry)
-- [#42904](https://github.com/openai/codex/pull/42904) Use static instructions for the Default collaboration mode [@copyberry](https://github.com/copyberry)
-- [#42931](https://github.com/openai/codex/pull/42931) Update OpenAI Docs skill guidance for GPT-6 Astra [@copyberry](https://github.com/copyberry)
-- [#42933](https://github.com/openai/codex/pull/42933) Wait for turn analytics before shutting down the Guardian v2 test [@copyberry](https://github.com/copyberry)
-- [#42990](https://github.com/openai/codex/pull/42990) Refresh session hooks after external plugin updates [@copyberry](https://github.com/copyberry)
-- [#42993](https://github.com/openai/codex/pull/42993) Remove the deprecated `codex mcp-server` command [@copyberry](https://github.com/copyberry)
-- [#43000](https://github.com/openai/codex/pull/43000) Preserve the resolved multi-agent version when reverting threads [@copyberry](https://github.com/copyberry)
-- [#43002](https://github.com/openai/codex/pull/43002) Replace Guardian tickets with parent response IDs [@copyberry](https://github.com/copyberry)
-- [#43005](https://github.com/openai/codex/pull/43005) Add Guardian V2 failure reasons and connection timing metrics [@copyberry](https://github.com/copyberry)
-- [#43031](https://github.com/openai/codex/pull/43031) Keep refreshed MCP tool catalogs with their clients [@copyberry](https://github.com/copyberry)
-- [#43039](https://github.com/openai/codex/pull/43039) Refresh live thread tools through `app/installed` [@copyberry](https://github.com/copyberry)
-- [#43043](https://github.com/openai/codex/pull/43043) Avoid filesystem scans when seeding the agents overview [@copyberry](https://github.com/copyberry)
-- [#43055](https://github.com/openai/codex/pull/43055) Allow `/copy` to copy status output and individual fields [@copyberry](https://github.com/copyberry)
-- [#43069](https://github.com/openai/codex/pull/43069) Support managed worktrees for interactive sessions and forks [@copyberry](https://github.com/copyberry)
-- [#43070](https://github.com/openai/codex/pull/43070) Clarify comments in CI setup and the Rust workflow [@copyberry](https://github.com/copyberry)
-- [#43074](https://github.com/openai/codex/pull/43074) Show a retryable error when the apps popup fails to load [@copyberry](https://github.com/copyberry)
-- [#43079](https://github.com/openai/codex/pull/43079) Add opt-in local audio devices to the voice helper [@copyberry](https://github.com/copyberry)
-- [#43083](https://github.com/openai/codex/pull/43083) Supply Bazel-managed CMake and Ninja for the bundled Opus build [@copyberry](https://github.com/copyberry)
-- [#43090](https://github.com/openai/codex/pull/43090) Send processed microphone audio over RTP in voice-host [@copyberry](https://github.com/copyberry)
-- [#43097](https://github.com/openai/codex/pull/43097) Add a helper-backed realtime WebRTC session API [@copyberry](https://github.com/copyberry)
-- [#43099](https://github.com/openai/codex/pull/43099) Add receipt-verified native voice SDK export [@copyberry](https://github.com/copyberry)
-- [#43100](https://github.com/openai/codex/pull/43100) Add bounded incoming Opus RTP handling to the voice host [@copyberry](https://github.com/copyberry)
-- [#43102](https://github.com/openai/codex/pull/43102) Include GIO in voice SDKs and native runtimes [@copyberry](https://github.com/copyberry)
-- [#43104](https://github.com/openai/codex/pull/43104) Move Guardian thread context into `guardianv2` configuration [@copyberry](https://github.com/copyberry)
-- [#43109](https://github.com/openai/codex/pull/43109) Add explicit toolchain inputs for native voice builds [@copyberry](https://github.com/copyberry)
-- [#43110](https://github.com/openai/codex/pull/43110) Record reasoning effort changes in conversation history behind a flag [@copyberry](https://github.com/copyberry)
-- [#43111](https://github.com/openai/codex/pull/43111) Add a Bazel target for native voice dependencies [@copyberry](https://github.com/copyberry)
-- [#43113](https://github.com/openai/codex/pull/43113) Save subagent and memory opt-ins through the app server [@copyberry](https://github.com/copyberry)
-- [#43114](https://github.com/openai/codex/pull/43114) Add Bazel preparation for native voice runtimes [@copyberry](https://github.com/copyberry)
-- [#43117](https://github.com/openai/codex/pull/43117) Link Unix Bazel bindings against the prepared voice runtime [@copyberry](https://github.com/copyberry)
-- [#43120](https://github.com/openai/codex/pull/43120) Add managed worktree creation to TUI session commands [@copyberry](https://github.com/copyberry)
-- [#43121](https://github.com/openai/codex/pull/43121) Require a prepared runtime when assembling voice helper packages [@copyberry](https://github.com/copyberry)
-- [#43125](https://github.com/openai/codex/pull/43125) Add explicit Windows tool selection for native voice builds [@copyberry](https://github.com/copyberry)
-- [#43126](https://github.com/openai/codex/pull/43126) Expose native Windows build tools through Bazel targets [@copyberry](https://github.com/copyberry)
-- [#43144](https://github.com/openai/codex/pull/43144) Add Windows MSVC Bazel targets for native voice libraries [@copyberry](https://github.com/copyberry)
-- [#43147](https://github.com/openai/codex/pull/43147) Gate experimental context by model capability at session startup [@copyberry](https://github.com/copyberry)
-- [#43177](https://github.com/openai/codex/pull/43177) Use server model defaults for fresh TUI startup [@copyberry](https://github.com/copyberry)
-- [#43178](https://github.com/openai/codex/pull/43178) Allow guarded legacy resume with background migration enabled [@copyberry](https://github.com/copyberry)
-- [#43244](https://github.com/openai/codex/pull/43244) Add bounded GStreamer playback components to the voice host [@copyberry](https://github.com/copyberry)
-- [#43248](https://github.com/openai/codex/pull/43248) Connect voice-host RTP audio to speaker playback [@copyberry](https://github.com/copyberry)
-- [#43253](https://github.com/openai/codex/pull/43253) Show read-only conversations when resume encounters an active writer [@copyberry](https://github.com/copyberry)
-- [#43261](https://github.com/openai/codex/pull/43261) Use server defaults when starting TUI background tasks [@copyberry](https://github.com/copyberry)
-- [#43265](https://github.com/openai/codex/pull/43265) Add experimental user verification API contracts [@copyberry](https://github.com/copyberry)
-- [#43279](https://github.com/openai/codex/pull/43279) Include linked worktrees in TUI session discovery [@copyberry](https://github.com/copyberry)
-- [#43281](https://github.com/openai/codex/pull/43281) Move npm package staging into a separate release workflow job [@copyberry](https://github.com/copyberry)
-- [#43282](https://github.com/openai/codex/pull/43282) Make Bazel binary stamping opt-in [@copyberry](https://github.com/copyberry)
-- [#43286](https://github.com/openai/codex/pull/43286) Add a managed worktree browser to the TUI [@copyberry](https://github.com/copyberry)
-- [#43289](https://github.com/openai/codex/pull/43289) Add capability-gated MCP user-verification handling [@copyberry](https://github.com/copyberry)
-- [#43298](https://github.com/openai/codex/pull/43298) Defer managed worktree transitions to fresh TUI loop iterations [@copyberry](https://github.com/copyberry)
-- [#43304](https://github.com/openai/codex/pull/43304) Isolate Bazel build commit metadata from Rust compilation inputs [@copyberry](https://github.com/copyberry)
-- [#43308](https://github.com/openai/codex/pull/43308) Replace Windows app-server shutdown files with socket requests [@copyberry](https://github.com/copyberry)
-- [#43315](https://github.com/openai/codex/pull/43315) Resolve session labels uniquely before acting on them [@copyberry](https://github.com/copyberry)
-- [#43325](https://github.com/openai/codex/pull/43325) Sort JSON schema object keys for consistent Cargo and Bazel output [@copyberry](https://github.com/copyberry)
-- [#43330](https://github.com/openai/codex/pull/43330) Preserve saved permissions when resuming or forking remote tasks [@copyberry](https://github.com/copyberry)
-- [#43340](https://github.com/openai/codex/pull/43340) Enable remote named permission profile selection in the TUI [@copyberry](https://github.com/copyberry)
-- [#43352](https://github.com/openai/codex/pull/43352) Add opt-in MCP user-verification transport [@copyberry](https://github.com/copyberry)
-- [#43355](https://github.com/openai/codex/pull/43355) Let the app server resolve implicit model settings for CLI forks [@copyberry](https://github.com/copyberry)
-- [#43359](https://github.com/openai/codex/pull/43359) Show the server's model provider ID in TUI status [@copyberry](https://github.com/copyberry)
-- [#43360](https://github.com/openai/codex/pull/43360) Use app-server metadata for TUI session restoration [@copyberry](https://github.com/copyberry)
-- [#43376](https://github.com/openai/codex/pull/43376) Defer resume picker and directory changes to a fresh TUI stack [@copyberry](https://github.com/copyberry)
-- [#43408](https://github.com/openai/codex/pull/43408) Avoid WebSocket connection waits in Guardian v2 classification [@copyberry](https://github.com/copyberry)
-- [#43419](https://github.com/openai/codex/pull/43419) Initialize `cwd` in TUI resume and fork test fixtures [@copyberry](https://github.com/copyberry)
-- [#43421](https://github.com/openai/codex/pull/43421) Remove the app-server README and its contributor guidance references [@copyberry](https://github.com/copyberry)
-- [#43423](https://github.com/openai/codex/pull/43423) Remove the app-server docs update requirement from `AGENTS.md` [@copyberry](https://github.com/copyberry)
-- [#43426](https://github.com/openai/codex/pull/43426) Handle Luna HTTP requests in guardian history tests [@copyberry](https://github.com/copyberry)
-- [#43428](https://github.com/openai/codex/pull/43428) Notify opted-in stdio MCP servers of auth changes [@copyberry](https://github.com/copyberry)
-- [#43432](https://github.com/openai/codex/pull/43432) Route approvals through the extension decision API [@copyberry](https://github.com/copyberry)
-- [#43442](https://github.com/openai/codex/pull/43442) Keep Guardian review evidence consistent and reject stale approvals [@copyberry](https://github.com/copyberry)
-- [#43444](https://github.com/openai/codex/pull/43444) Pin V8 release manifests and prevent published release replacement [@copyberry](https://github.com/copyberry)
-- [#43447](https://github.com/openai/codex/pull/43447) Route MCP elicitations through the shared approval decision path [@copyberry](https://github.com/copyberry)
-- [#43454](https://github.com/openai/codex/pull/43454) Add diagnostic labels to shell snapshot capture metrics [@copyberry](https://github.com/copyberry)
-- [#43456](https://github.com/openai/codex/pull/43456) Wait for thread idle before rollback in model-switching tests [@copyberry](https://github.com/copyberry)
-- [#43458](https://github.com/openai/codex/pull/43458) Centralize Guardian context mode and checkpoint policy [@copyberry](https://github.com/copyberry)
-- [#43462](https://github.com/openai/codex/pull/43462) Remove legacy Guardian approval review paths [@copyberry](https://github.com/copyberry)
-- [#43472](https://github.com/openai/codex/pull/43472) Recover missing Guardian root instructions in acceptance order [@copyberry](https://github.com/copyberry)
-- [#43478](https://github.com/openai/codex/pull/43478) Retain inherited Guardian instructions in standalone forks [@copyberry](https://github.com/copyberry)
-- [#43490](https://github.com/openai/codex/pull/43490) Expose shared Guardian reviewer helpers through `guardian_review` [@copyberry](https://github.com/copyberry)
-- [#43491](https://github.com/openai/codex/pull/43491) Include unloaded children in multi-agent v2 environment context [@copyberry](https://github.com/copyberry)
-- [#43494](https://github.com/openai/codex/pull/43494) Limit archive rollout reads to requested threads [@copyberry](https://github.com/copyberry)
-- [#43495](https://github.com/openai/codex/pull/43495) Allow internal sessions to fork from selected history [@copyberry](https://github.com/copyberry)
-- [#43504](https://github.com/openai/codex/pull/43504) Treat zombie processes as inactive in the Unix PID backend [@copyberry](https://github.com/copyberry)
-- [#43513](https://github.com/openai/codex/pull/43513) Expose a stable executor build identity in environment metadata [@copyberry](https://github.com/copyberry)
-- [#43519](https://github.com/openai/codex/pull/43519) Set `recursion_limit` to 256 for app-server, exec, and TUI [@copyberry](https://github.com/copyberry)
-
-[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.154.0)
+- Made Browser use up to 2x faster through CDP and DOM snapshot optimizations
+  that reduce browser round trips.
+- Made command, browser, integration, and source activity summaries easier to
+  understand, and improved how completed chats present files, automations, and
+  other durable output.
+- Improved plugin management by including workspace plugins, refreshing plugin
+  state more reliably after installation or removal, and letting you upload a
+  new version of an already-shared plugin without changing its access.
+- Improved usage-limit errors with inline plan and workspace guidance,
+  including reset timing when available.
+- Added `Cmd`+`Enter` and `Ctrl`+`Enter` as
+  shortcuts for submitting custom approval feedback.
+- Fixed Browser use download handling and improved Developer mode recovery and
+  diagnostics.
+- Fixed scheduled automations so they honor the selected approval mode, and
+  fixed manual project ordering, Browser tab dragging, MCP app sizing after
+  right-pane transitions, and clickable ChatGPT thread mentions.
+- Fixed issues affecting background agent tab restoration, commit and pull
+  request message generation, sidebar pull request status updates, Codex Mobile
+  QR pairing, remote-control MFA, remote SSH installation and connection,
+  updater prompts, and overlay positioning at non-default zoom levels.
+- Additional performance improvements and bug fixes.
