@@ -42,9 +42,9 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 
 ################################################################################
 
-# Primary model used by Codex. Recommended example for most users: "gpt-5.6".
+# Primary model used by Codex. Recommended example for most users: "gpt-6-sol".
 
-model = "gpt-5.6"
+model = "gpt-6-sol"
 
 # Communication style for supported models. Allowed values: none | friendly | pragmatic
 
@@ -52,7 +52,7 @@ model = "gpt-5.6"
 
 # Optional model override for /review. Default: unset (uses current session model).
 
-# review_model = "gpt-5.6"
+# review_model = "gpt-6-sol"
 
 # Provider id selected from [model_providers]. Default: "openai".
 
@@ -90,11 +90,11 @@ model_provider = "openai"
 
 ################################################################################
 
-# Reasoning effort: minimal | low | medium | high | xhigh
+# Reasoning effort advertised by the selected model; supported levels vary by model and client.
 
 # model_reasoning_effort = "medium"
 
-# Optional override used when Codex runs in plan mode: none | minimal | low | medium | high | xhigh
+# Optional reasoning effort override for Plan mode; use a level supported by the selected model.
 
 # plan_mode_reasoning_effort = "high"
 
@@ -370,11 +370,11 @@ web_search = "cached"
 
 # Default model for spawned agents. An explicit spawn model takes precedence.
 
-# default_subagent_model = "gpt-5.6-terra"
+# default_subagent_model = "gpt-6-sol"
 
 # Default reasoning effort for spawned agents. An explicit spawn effort takes precedence.
 
-# default_subagent_reasoning_effort = "high"
+# default_subagent_reasoning_effort = "medium"
 
 # Record a model-visible message when an agent turn is interrupted. Default: true
 
@@ -682,7 +682,7 @@ show_tooltips = true
 
 # [tui.model_availability_nux]
 
-# "gpt-5.6-terra" = 1
+# "gpt-6-sol" = 1
 
 # Enable or disable analytics for this machine. When unset, Codex uses its default behavior.
 
@@ -708,7 +708,7 @@ enabled = true
 
 # "hide_gpt-5.1-codex-max_migration_prompt" = true
 
-# model_migrations = { "gpt-5.4" = "gpt-5.6-terra" }
+# model_migrations = { "gpt-5.4" = "gpt-6-sol" }
 
 ################################################################################
 
@@ -1090,7 +1090,7 @@ enabled = true
 
 # For example, a CI profile could live at $CODEX_HOME/ci.config.toml:
 
-# model = "gpt-5.6-terra"
+# model = "gpt-6-sol"
 
 # approval_policy = "on-request"
 

@@ -29,8 +29,8 @@ profile file; don't nest them under `[profiles.profile-name]`.
 
 ```toml
 # ~/.codex/deep-review.config.toml
-model = "gpt-5.6-sol"
-model_reasoning_effort = "xhigh"
+model = "gpt-6-sol"
+model_reasoning_effort = "medium"
 approval_policy = "on-request"
 model_catalog_json = "/Users/me/.codex/model-catalogs/deep-review.json"
 ```
@@ -63,10 +63,10 @@ Examples:
 
 ```shell
 # Dedicated flag
-codex --model gpt-5.6-terra
+codex --model gpt-6-sol
 
 # Generic key/value override (value is TOML, not JSON)
-codex --config model='"gpt-5.6-terra"'
+codex --config model='"gpt-6-sol"'
 codex --config sandbox_workspace_write.network_access=true
 codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
 ```
@@ -175,7 +175,7 @@ A model provider defines how Codex connects to a model (base URL, wire API, auth
 Define additional providers and point `model_provider` at them:
 
 ```toml
-model = "gpt-5.6-terra"
+model = "gpt-6-sol"
 model_provider = "proxy"
 
 [model_providers.proxy]

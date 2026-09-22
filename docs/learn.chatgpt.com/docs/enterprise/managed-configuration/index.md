@@ -779,16 +779,14 @@ overrides. Users can still change those settings during the current run, and the
 defaults apply again the next time the client starts.
 
 If a managed default, macOS MDM profile, or saved configuration pins
-`gpt-5.5` for Codex users signed in with ChatGPT, replace it with
-`gpt-5.6-sol` before October 14, 2026. GPT-5.5 retires from ChatGPT,
+`gpt-5.5` for Codex users signed in with ChatGPT, replace it with an available
+model before October 14, 2026. Choose `gpt-6-sol` once an administrator has
+enabled it for the affected users. GPT-5.5 retires from ChatGPT,
 ChatGPT Work, and Codex on all plans on that date. The OpenAI API isn't
 affected. See [workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability#prepare-for-the-gpt-55-retirement).
 
-If a managed default, macOS MDM profile, or saved configuration pins `gpt-5.4`
-or `gpt-5.4-mini` for users signed in with ChatGPT, update it before August 31, 2026. Replace `gpt-5.4` with `gpt-5.6-terra` and `gpt-5.4-mini` with
-`gpt-5.6-luna`. The OpenAI API and Codex authenticated with your own API key
-aren't affected. See [workspace model
-availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability#prepare-for-the-gpt-54-retirement).
+For configurations that still pin `gpt-5.4` or `gpt-5.4-mini`, follow the
+[GPT-5.4 migration guidance](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability#prepare-for-the-gpt-54-retirement).
 
 Make sure your managed defaults meet your requirements; the local runtime
 rejects disallowed values.

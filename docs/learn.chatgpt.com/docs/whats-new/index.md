@@ -17,6 +17,19 @@ This weekly digest highlights ChatGPT and Codex features that can change how you
 work, with examples and links to learn more. For every versioned update, bug fix,
 and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog).
 
+## September 21–25, 2026
+
+### Choose GPT-6 Sol and Luna
+
+GPT-6 Sol and GPT-6 Luna are rolling out in Codex at lower token prices than
+their GPT-5.6 predecessors. Start with **Sol Medium** for everyday and complex
+coding, or **Luna High** for focused, repeatable tasks. Availability depends
+on your plan, client, and workspace settings.
+
+See [Models](https://learn.chatgpt.com/docs/models) for model selection, [Pricing](https://learn.chatgpt.com/docs/pricing) for
+usage and credit rates, and the [launch announcement](https://learn.chatgpt.com/docs/changelog#codex-2026-09-22-gpt-6-sol-luna)
+for availability details.
+
 ## September 14–18, 2026
 
 ### Prepare for GPT-5.5 retirement

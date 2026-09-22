@@ -163,14 +163,14 @@ choose another model and effort for a CSV campaign:
 npx @openai/codex-security bulk-scan repositories.csv \
   --output-dir /path/outside/repositories/security-scans \
   --workers 4 \
-  --model gpt-5.6-terra \
-  --effort high
+  --model gpt-6-sol \
+  --effort medium
 ```
 
 The same options work during interactive repository discovery:
 
 ```bash
-npx @openai/codex-security bulk-scan --model gpt-5.6-terra --effort high
+npx @openai/codex-security bulk-scan --model gpt-6-sol --effort medium
 ```
 
 Supported effort levels are `minimal`, `low`, `medium`, `high`, and `xhigh`.

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-09-15T20:34:50Z'
-source_etag: 'W/"44ef33429a26ee0219ab52deeee66a27"'
+source_last_modified: '2026-09-22T20:17:36Z'
+source_etag: 'W/"b6013f14caed97b581c83c6a74c91303"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -63,7 +63,7 @@ Do anything
 
 ![](/images/codex/icons/plus.svg)
 
-![](/images/codex/icons/app-lightning-bolt-outline.svg)5.6 Sol Extra High![](/images/codex/icons/app-mic.svg)![](/images/codex/icons/arrow-up.svg)
+![](/images/codex/icons/app-lightning-bolt-outline.svg)6 Sol Light![](/images/codex/icons/app-mic.svg)![](/images/codex/icons/arrow-up.svg)
 
 1/8
 
@@ -73,16 +73,14 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
  [View all updates](/codex/whats-new)
 
+September 21–25, 2026
+
+[### Choose GPT-6 Sol and Luna
+
+GPT-6 Sol and GPT-6 Luna are rolling out in Codex at lower token prices than their GPT-5.6 predecessors.](/codex/whats-new#choose-gpt-6-sol-and-luna)
+
 September 14–18, 2026
 
 [### Prepare for GPT-5.5 retirement
 
 GPT-5.5 will retire from ChatGPT, ChatGPT Work, and Codex on October 14, 2026, across all plans.](/codex/whats-new#prepare-for-gpt-55-retirement)
-
-September 7–11, 2026
-
-[### Start a quick chat from your pet
-
-Type a request or start a voice conversation from the floating Pets controls in the ChatGPT desktop app on macOS and Windows.](/codex/whats-new#start-a-quick-chat-from-your-pet)  [### Share an app window on Windows
-
-Appshots bring a screenshot and available text from the frontmost Windows app into ChatGPT.](/codex/whats-new#share-an-app-window-on-windows)

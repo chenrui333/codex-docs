@@ -147,7 +147,7 @@ Learn more about [plugins](https://learn.chatgpt.com/docs/plugins).
 
 Choose [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) for demanding work that needs
 careful reasoning, visual judgment, or a polished final file. For simpler tasks,
-consider Sol, Terra, or Luna. Select from the models
+consider Sol or Luna. Select from the models
 available in your model selector and check [plan usage](https://learn.chatgpt.com/docs/pricing)
 before starting a large task.
 

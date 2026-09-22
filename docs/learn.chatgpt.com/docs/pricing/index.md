@@ -44,7 +44,9 @@ October 14, 2026. The OpenAI API isn't affected. See
         interval="/month"
         ctaLabel="Get Free"
         ctaHref="https://chatgpt.com/plans/free/"
-      />
+      >
+        - GPT-6 Luna at Standard speed in the desktop app, subject to rollout
+      </PricingCard>
       <PricingCard
         name="Go"
         subtitle="Use Codex for lightweight coding tasks."
@@ -52,7 +54,9 @@ October 14, 2026. The OpenAI API isn't affected. See
         interval="/month"
         ctaLabel="Get Go"
         ctaHref="https://chatgpt.com/plans/go"
-      />
+      >
+        - GPT-6 Luna at Standard speed in the desktop app, subject to rollout
+      </PricingCard>
       <PricingCard
         name="Plus"
         subtitle="Power a few focused coding sessions each week."
@@ -64,9 +68,7 @@ October 14, 2026. The OpenAI API isn't affected. See
         - Codex on the web, in the CLI, in the IDE extension, and on iOS
         - Cloud-based integrations like automatic code review and Slack
           integration
-        - The GPT-5.6 model family, including Sol, Terra, and Luna
-        - GPT-5.6 Luna for higher usage limits on lighter-weight or high-volume
-          workloads
+        - GPT-6 Sol and GPT-6 Luna
         - Flexibly extend usage with [ChatGPT credits](#credits-overview)
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Plus plan
@@ -192,15 +194,7 @@ Tasks that look similar can consume different amounts of your allowance. Model
 choice, context, reasoning, tool use, retrieval, and caching all affect usage,
 so prompt length alone isn't a reliable estimate.
 
-Choose the GPT-5.6 model that best fits your work:
-
-- **Sol** is built for the hardest work—complex reasoning, ambiguous problems,
-  advanced coding, and high-stakes decisions.
-- **Terra** is the everyday workhorse for production tasks, reporting, document
-  analysis, coding, and work that requires sound judgment.
-- **Luna** is optimized for fast, high-volume work such as routing,
-  classification, extraction, support, background automation, and focused coding
-  tasks.
+For model recommendations, see [Models](https://learn.chatgpt.com/docs/models).
 
 The estimates below show local messages per five-hour period. Cloud chats on
 ChatGPT plans use GPT-5.6 Sol and may use more of your allowance than local
@@ -236,6 +230,26 @@ and reset times.
       <td style="text-align:center">25-225</td>
       <td style="text-align:center">100-900</td>
       <td style="text-align:center">5-45</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-6 Sol</td>
+      <td style="text-align:center">15-150</td>
+      <td style="text-align:center">70-700</td>
+      <td style="text-align:center">300-3,000</td>
+      <td style="text-align:center">15-150</td>
+      <td style="text-align:center">
+        [Usage-based](https://platform.openai.com/docs/pricing)
+      </td>
+    </tr>
+    <tr>
+      <td>GPT-6 Luna</td>
+      <td style="text-align:center">350-3,000</td>
+      <td style="text-align:center">1,750-14,000</td>
+      <td style="text-align:center">7,000-56,000</td>
+      <td style="text-align:center">350-3,000</td>
       <td style="text-align:center">
         [Usage-based](https://platform.openai.com/docs/pricing)
       </td>
@@ -367,9 +381,6 @@ Business, Edu, and Enterprise plans with [flexible
 pricing](https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-business-plans)
 can purchase additional workspace credits to continue working.
 
-If you are approaching usage limits, you can also switch to a smaller model to
-make your usage limits last longer.
-
 All users may also run extra local chats using an API key, with usage charged at
 [standard API rates](https://platform.openai.com/docs/pricing).
 
@@ -410,11 +421,16 @@ or agreement.
 
 #### Token rates
 
-The token rates below are quoted in credits per million input tokens, cached
-input tokens, and output tokens. [Learn more about
+The rates below are for Standard speed, quoted in credits per million input
+tokens, cached input tokens, and output tokens. [Learn more about
 tokens](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
-Fast mode applies a 2.5x multiplier to Astra's Standard rate.
+Codex credit billing has no separate cache-write charge. API-key usage follows
+[API pricing](https://developers.openai.com/api/docs/pricing).
+
+GPT-5.6 Sol, Terra, and Luna rates remain unchanged. Credit prices alone don't determine
+included subscription usage; check your
+[usage dashboard](#where-can-i-see-my-current-usage-limits) for current limits.
 
 A small subset of Enterprise customers should continue using the legacy rate
 card until we migrate you to the new token-based pricing. For more information,
@@ -442,6 +458,18 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">250 credits</td>
         <td style="text-align:center">25 credits</td>
         <td style="text-align:center">1,250 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-6 Sol</td>
+        <td style="text-align:center">50 credits</td>
+        <td style="text-align:center">5 credits</td>
+        <td style="text-align:center">250 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-6 Luna</td>
+        <td style="text-align:center">2.5 credits</td>
+        <td style="text-align:center">0.25 credits</td>
+        <td style="text-align:center">12.5 credits</td>
       </tr>
       <tr>
         <td>GPT-5.6 Sol</td>
@@ -518,8 +546,10 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
       </tr>
       <tr>
         <td colspan="4" style="text-align:center">
-          Fast mode consumes credits at a higher rate for supported models. See
-          [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for rates.
+          Fast mode uses 2.5x the Standard credit rate for GPT-6 Astra, Sol, and
+          Luna where available. See
+          [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for details and
+          other models.
         </td>
       </tr>
       <tr>
@@ -534,10 +564,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
   </table>
 
 _GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026._
-
-Speed configurations will increase credit consumption for all models that apply.
-Fast mode consumes credits at a higher rate for supported models. See
-[Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for supported models and rates.
 
 [Learn more about credits in ChatGPT Plus and
 Pro.](https://help.openai.com/en/articles/12642688)
@@ -571,9 +597,6 @@ tips to maximize your limits:
 - **Limit the number of MCP servers you use.** Every
   [MCP](https://learn.chatgpt.com/docs/extend/mcp) server adds more context to your messages and uses
   more of your limit. Disable MCP servers when you don’t need them.
-- **Switch to a smaller model for routine tasks.** Using GPT-5.6 Terra or
-  GPT-5.6 Luna can extend your local-message usage limits, depending on the
-  model you switch from.
 
 For guidance on choosing and scoping tasks, see [Use Work
 efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
@@ -697,7 +720,7 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
         title: "Models and multimodal",
         features: [
           {
-            name: "GPT-5.6",
+            name: "GPT-6 Sol and Luna",
             href: "/codex/models",
             availability: {
               plus: "available",

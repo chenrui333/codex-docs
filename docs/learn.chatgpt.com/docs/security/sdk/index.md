@@ -430,8 +430,8 @@ const security = new CodexSecurity({
   pluginPath: "/path/to/codex-security-plugin",
   pythonPath: "/path/to/python",
   codexOverrides: {
-    model: "gpt-5.6-terra",
-    model_reasoning_effort: "high",
+    model: "gpt-6-sol",
+    model_reasoning_effort: "medium",
   },
 });
 ```

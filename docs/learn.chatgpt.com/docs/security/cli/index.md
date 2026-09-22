@@ -177,8 +177,8 @@ different model and effort when the task requires them:
 
 ```bash
 npx @openai/codex-security scan "$REPOSITORY" \
-  --model gpt-5.6-terra \
-  --effort high
+  --model gpt-6-sol \
+  --effort medium
 ```
 
 Supported effort levels are `minimal`, `low`, `medium`, `high`, `xhigh`, and

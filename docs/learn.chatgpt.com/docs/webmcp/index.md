@@ -22,10 +22,10 @@ page and signed-in session.
 In the [built-in browser](https://learn.chatgpt.com/docs/browser) in the ChatGPT desktop app, ChatGPT
 Work and Codex can discover and use these tools when they are available.
 
-Use GPT-5.6 Sol or GPT-5.6 Terra for site tools. GPT-5.6 Luna currently has
-  WebMCP disabled. Update the ChatGPT desktop app to the latest version. Site
-  tools aren't available in Enterprise or Edu workspaces. Availability also
-  depends on rollout and the tools provided by the current page.
+Use GPT-5.6 Sol or GPT-6 Sol for site tools. GPT-5.6 Luna currently has WebMCP
+  disabled. Update the ChatGPT desktop app to the latest version. Site tools
+  aren't available in Enterprise or Edu workspaces. Availability also depends on
+  rollout and the tools provided by the current page.
 
 ## WebMCP vs. MCP
 

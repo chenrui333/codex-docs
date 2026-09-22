@@ -55,6 +55,14 @@ enforced `features.fast_mode` setting in
 This setting can pin Fast mode on or off for managed local Codex clients; it
 isn't a starting default and can't override workspace or product availability.
 
+## GPT-6 Sol and Luna in Enterprise
+
+GPT-6 Sol and GPT-6 Luna are off by default in Enterprise workspaces at
+launch. An administrator must enable each model before members can select
+it. Review your [workspace model settings](https://help.openai.com/en/articles/8411955)
+and confirm access on each client. Choosing a model in local configuration
+doesn't override workspace controls.
+
 ## GPT-6 Astra in Enterprise
 
 During the initial rollout, your organization must have Daybreak access before
@@ -84,8 +92,9 @@ on all plans, including consumer, Business, Enterprise, and Edu plans. This
 retirement does not apply to the OpenAI API.
 
 Before October 14, review workspace defaults for ChatGPT, ChatGPT Work, and
-Codex and choose an available replacement. For Codex with ChatGPT sign-in,
-replace `gpt-5.5` with `gpt-5.6-sol` (GPT-5.6 Sol) in workspace defaults,
+Codex and choose an available replacement for each surface. For Work and Codex
+with ChatGPT sign-in, choose `gpt-6-sol` (GPT-6 Sol) once an administrator has
+enabled it for the affected users. Replace `gpt-5.5` in workspace defaults,
 saved model settings, managed configurations, custom agents, and scheduled
 tasks. Check scripts and commands that explicitly select `gpt-5.5` too.
 
@@ -97,12 +106,14 @@ for migration guidance.
 
 ## Prepare for the GPT-5.4 retirement
 
-On August 31, 2026, GPT-5.4 and GPT-5.4 mini retire from Codex for users signed
-in with ChatGPT. Update affected workspace defaults, saved model settings,
-managed configurations, custom agents, and scheduled tasks before then:
+GPT-5.4 and GPT-5.4 mini retired from Codex for users signed in with ChatGPT
+on August 31, 2026. Update any remaining workspace defaults, saved model
+settings, managed configurations, custom agents, and scheduled tasks with
+models available to the affected users' plans and clients:
 
-- Replace `gpt-5.4` with `gpt-5.6-terra` (GPT-5.6 Terra).
-- Replace `gpt-5.4-mini` with `gpt-5.6-luna` (GPT-5.6 Luna).
+- Replace `gpt-5.4` with `gpt-6-sol` (GPT-6 Sol) when available.
+- Replace `gpt-5.4-mini` with `gpt-6-luna` (GPT-6 Luna) when available. In
+  Enterprise and Edu, an administrator must enable Luna first.
 
 The OpenAI API and Codex authenticated with your own API key aren't affected.
 See [Codex models](https://learn.chatgpt.com/docs/models#deprecated-codex-models) and

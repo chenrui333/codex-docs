@@ -119,7 +119,7 @@ increasing delay and jitter.
 Requests include `method`, `params`, and `id`:
 
 ```json
-{ "method": "thread/start", "id": 10, "params": { "model": "gpt-5.6-terra" } }
+{ "method": "thread/start", "id": 10, "params": { "model": "gpt-6-sol" } }
 ```
 
 Responses echo the `id` with either `result` or `error`:
@@ -197,7 +197,7 @@ send({
   },
 });
 send({ method: "initialized", params: {} });
-send({ method: "thread/start", id: 1, params: { model: "gpt-5.6-terra" } });
+send({ method: "thread/start", id: 1, params: { model: "gpt-6-sol" } });
 ```
 
 ## Core primitives
@@ -399,18 +399,22 @@ those plugins.
 
 Call `model/list` to discover available models and their capabilities before rendering model or personality selectors.
 
+The response below illustrates the structure. Available models, reasoning
+efforts, and defaults depend on the client and account; use the returned
+values rather than hard-coding this example.
+
 ```json
 { "method": "model/list", "id": 6, "params": { "limit": 20, "includeHidden": false } }
 { "id": 6, "result": {
   "data": [{
-    "id": "gpt-5.6-sol",
-    "model": "gpt-5.6-sol",
-    "displayName": "GPT-5.6-Sol",
+    "id": "gpt-6-sol",
+    "model": "gpt-6-sol",
+    "displayName": "GPT-6 Sol",
     "hidden": false,
-    "defaultReasoningEffort": "low",
+    "defaultReasoningEffort": "medium",
     "supportedReasoningEfforts": [{
-      "reasoningEffort": "low",
-      "description": "Fast responses with lighter reasoning"
+      "reasoningEffort": "medium",
+      "description": "Balances speed and reasoning depth for everyday tasks"
     }],
     "inputModalities": ["text", "image"],
     "supportsPersonality": true,
@@ -498,7 +502,7 @@ Start a fresh thread when you need a new Codex conversation.
 
 ```json
 { "method": "thread/start", "id": 10, "params": {
-  "model": "gpt-5.6-terra",
+  "model": "gpt-6-sol",
   "cwd": "/Users/me/project",
   "approvalPolicy": "never",
   "sandbox": "workspaceWrite",
@@ -983,7 +987,7 @@ Examples:
     "writableRoots": ["/Users/me/project"],
     "networkAccess": true
   },
-  "model": "gpt-5.6-terra",
+  "model": "gpt-6-sol",
   "effort": "medium",
   "summary": "concise",
   "personality": "friendly",

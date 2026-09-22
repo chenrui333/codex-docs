@@ -430,14 +430,14 @@ Codex configuration value.
 To select a different model and reasoning effort without writing TOML:
 
 ```bash
-npx @openai/codex-security scan . --model gpt-5.6-terra --effort high
+npx @openai/codex-security scan . --model gpt-6-sol --effort medium
 ```
 
 Quote string values passed through `--codex` so the TOML parser receives a
 string:
 
 ```bash
-npx @openai/codex-security scan . --codex 'model="gpt-5.6-terra"'
+npx @openai/codex-security scan . --codex 'model="gpt-6-sol"'
 ```
 
 ## `codex-security install-hook`
@@ -485,7 +485,7 @@ repositories interactively. This flow requires a GitHub CLI sign-in.
 To choose a model and reasoning effort during interactive discovery:
 
 ```bash
-npx @openai/codex-security bulk-scan --model gpt-5.6-terra --effort high
+npx @openai/codex-security bulk-scan --model gpt-6-sol --effort medium
 ```
 
 For a prepared repository list, provide a CSV and `--output-dir`:

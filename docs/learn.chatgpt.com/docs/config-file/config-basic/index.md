@@ -64,7 +64,7 @@ Here are a few options people change most often:
 Choose the model Codex uses by default in the CLI and IDE.
 
 ```toml
-model = "gpt-5.6"
+model = "gpt-6-sol"
 ```
 
 #### Approval prompts
@@ -125,7 +125,7 @@ web_search = "cached"  # default; serves results from the web search cache
 Tune how much reasoning effort the model applies when supported.
 
 ```toml
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 ```
 
 #### Communication style
