@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.155.1",
-  "codex_cli_version_raw": "codex-cli 0.155.1",
+  "codex_cli_version": "0.156.0",
+  "codex_cli_version_raw": "codex-cli 0.156.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -17,6 +17,14 @@
           "synopsis": "-c, --config <key=value>"
         },
         {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
           "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
           "flags": [
             "--remote"
@@ -25,12 +33,12 @@
           "synopsis": "--remote <ADDR>"
         },
         {
-          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
           "flags": [
-            "--enable"
+            "--disable"
           ],
-          "primary_flag": "--enable",
-          "synopsis": "--enable <FEATURE>"
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
         },
         {
           "description": "Name of the environment variable containing the bearer token to send to a remote app server websocket",
@@ -48,14 +56,6 @@
           ],
           "primary_flag": "--cd",
           "synopsis": "-C, --cd <DIR>"
-        },
-        {
-          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
-          "flags": [
-            "--disable"
-          ],
-          "primary_flag": "--disable",
-          "synopsis": "--disable <FEATURE>"
         },
         {
           "description": "Disable alternate screen mode",
@@ -1036,20 +1036,20 @@
           "synopsis": "-c, --config <key=value>"
         },
         {
-          "description": "Emit a redacted machine-readable report",
-          "flags": [
-            "--json"
-          ],
-          "primary_flag": "--json",
-          "synopsis": "--json"
-        },
-        {
           "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
           "flags": [
             "--enable"
           ],
           "primary_flag": "--enable",
           "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Emit a redacted machine-readable report",
+          "flags": [
+            "--json"
+          ],
+          "primary_flag": "--json",
+          "synopsis": "--json"
         },
         {
           "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
@@ -1532,6 +1532,14 @@
           ],
           "primary_flag": "--no-alt-screen",
           "synopsis": "--no-alt-screen"
+        },
+        {
+          "description": "Run without the shared background server, even if it is already running",
+          "flags": [
+            "--no-daemon"
+          ],
+          "primary_flag": "--no-daemon",
+          "synopsis": "--no-daemon"
         },
         {
           "description": "Print help (see a summary with '-h')",
@@ -2537,6 +2545,14 @@
           "synopsis": "--no-alt-screen"
         },
         {
+          "description": "Run without the shared background server, even if it is already running",
+          "flags": [
+            "--no-daemon"
+          ],
+          "primary_flag": "--no-daemon",
+          "synopsis": "--no-daemon"
+        },
+        {
           "description": "Print help (see a summary with '-h')",
           "flags": [
             "-h",
@@ -3036,6 +3052,14 @@
           "synopsis": "--no-alt-screen"
         },
         {
+          "description": "Run without the shared background server, even if it is already running",
+          "flags": [
+            "--no-daemon"
+          ],
+          "primary_flag": "--no-daemon",
+          "synopsis": "--no-daemon"
+        },
+        {
           "description": "Print help (see a summary with '-h')",
           "flags": [
             "-h",
@@ -3347,6 +3371,14 @@
       "synopsis": "--no-alt-screen"
     },
     {
+      "description": "Run without the shared background server, even if it is already running",
+      "flags": [
+        "--no-daemon"
+      ],
+      "primary_flag": "--no-daemon",
+      "synopsis": "--no-daemon"
+    },
+    {
       "description": "Print help (see a summary with '-h')",
       "flags": [
         "-h",
@@ -3370,9 +3402,9 @@
     "os": "darwin"
   },
   "schema_version": 2,
-  "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+  "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.155.1",
+  "source_ref": "rust-v0.156.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"

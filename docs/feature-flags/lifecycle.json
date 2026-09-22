@@ -2,6 +2,16 @@
   "cli_features": [
     {
       "enabled": false,
+      "key": "agent_message_board",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "analytics_plan_history",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
       "key": "api_key_model_discovery",
       "stage": "under development"
     },
@@ -152,6 +162,11 @@
     },
     {
       "enabled": false,
+      "key": "daemon_auto_start",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
       "key": "default_mode_request_user_input",
       "stage": "under development"
     },
@@ -238,7 +253,7 @@
     {
       "enabled": false,
       "key": "guardian_ext",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -246,9 +261,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "guardian_reuse_parent_compaction",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -377,13 +392,18 @@
     },
     {
       "enabled": false,
+      "key": "nonfatal_clock_read_errors",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "omit_app_server_notification_media",
       "stage": "under development"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "personality",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -416,9 +436,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "realtime_conversation",
-      "stage": "experimental"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -511,6 +531,11 @@
       "stage": "removed"
     },
     {
+      "enabled": false,
+      "key": "send_message_to_user_async",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "shell_snapshot",
       "stage": "stable"
@@ -577,6 +602,11 @@
     },
     {
       "enabled": true,
+      "key": "system_proxy_fallback",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "terminal_resize_reflow",
       "stage": "removed"
     },
@@ -613,7 +643,7 @@
     {
       "enabled": false,
       "key": "transcript_v2",
-      "stage": "under development"
+      "stage": "deprecated"
     },
     {
       "enabled": true,
@@ -671,6 +701,11 @@
       "stage": "removed"
     },
     {
+      "enabled": false,
+      "key": "use_xaa",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "view_image",
       "stage": "stable"
@@ -701,9 +736,9 @@
       "stage": "removed"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "worktrees",
-      "stage": "experimental"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -711,13 +746,16 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.155.1",
+  "codex_cli_version": "codex-cli 0.156.0",
   "coverage": {
     "actionable_missing_in_docs": [
+      "analytics_plan_history",
       "auth_elicitation",
       "code_mode_host",
       "compaction_image_budget",
       "content_item_kinds",
+      "daemon_auto_start",
+      "guardian_reuse_parent_compaction",
       "image_generation",
       "in_app_chat",
       "in_app_dictation",
@@ -729,6 +767,7 @@
       "secret_auth_storage",
       "skill_search",
       "sleep_tool",
+      "system_proxy_fallback",
       "tool_call_mcp_elicitation",
       "tool_suggest",
       "unbounded_connection_retries",
@@ -745,9 +784,16 @@
         "cli_stage": "stable",
         "documentation_stage": "experimental",
         "key": "memories"
+      },
+      {
+        "cli_stage": "removed",
+        "documentation_stage": "stable",
+        "key": "personality"
       }
     ],
     "missing_in_docs": [
+      "agent_message_board",
+      "analytics_plan_history",
       "api_key_model_discovery",
       "apply_patch_freeform",
       "apply_patch_preserve_line_endings",
@@ -773,6 +819,7 @@
       "context_management",
       "current_time_reminder",
       "cwd_relative_turn_diffs",
+      "daemon_auto_start",
       "default_mode_request_user_input",
       "deferred_executor",
       "deferred_tool_world_state",
@@ -808,6 +855,7 @@
       "multi_agent_mode",
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
+      "nonfatal_clock_read_errors",
       "omit_app_server_notification_media",
       "plugin_hooks",
       "powershell_shell_version",
@@ -830,6 +878,7 @@
       "search_tool",
       "secret_auth_storage",
       "send_async_message",
+      "send_message_to_user_async",
       "shell_snapshot_v2",
       "shell_zsh_fork",
       "skill_env_var_dependency_prompt",
@@ -840,6 +889,7 @@
       "standalone_web_search",
       "steer",
       "step_model_switching",
+      "system_proxy_fallback",
       "terminal_resize_reflow",
       "terminal_visualization_instructions",
       "token_budget",
@@ -858,6 +908,7 @@
       "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
+      "use_xaa",
       "view_image",
       "windows_sandbox_service",
       "workspace_owner_usage_nudge",
@@ -866,11 +917,12 @@
     ],
     "missing_in_docs_by_stage": {
       "deprecated": [
+        "transcript_v2",
         "use_legacy_landlock"
       ],
       "experimental": [
-        "realtime_conversation",
-        "worktrees"
+        "analytics_plan_history",
+        "daemon_auto_start"
       ],
       "removed": [
         "apply_patch_freeform",
@@ -882,6 +934,7 @@
         "enable_fanout",
         "experimental_windows_sandbox",
         "external_migration",
+        "guardian_ext",
         "image_detail_original",
         "item_ids",
         "js_repl",
@@ -916,23 +969,28 @@
         "code_mode_host",
         "compaction_image_budget",
         "content_item_kinds",
+        "guardian_reuse_parent_compaction",
         "image_generation",
         "in_app_chat",
         "in_app_dictation",
         "in_app_local_automation",
         "mentions_v2",
         "multi_agent_v2",
+        "realtime_conversation",
         "recommended_plugins",
         "secret_auth_storage",
         "skill_search",
         "sleep_tool",
+        "system_proxy_fallback",
         "tool_call_mcp_elicitation",
         "tool_suggest",
         "unbounded_connection_retries",
         "unified_exec_tty",
-        "view_image"
+        "view_image",
+        "worktrees"
       ],
       "under development": [
+        "agent_message_board",
         "api_key_model_discovery",
         "apply_patch_preserve_line_endings",
         "apply_patch_streaming_events",
@@ -958,9 +1016,7 @@
         "executor_capability_discovery",
         "external_agent_memory_import",
         "guardian_enhanced_node_repl_transcripts",
-        "guardian_ext",
         "guardian_node_repl_transcript_images",
-        "guardian_reuse_parent_compaction",
         "guardianv2",
         "guardianv2.thread_context",
         "image_resize_notice",
@@ -968,6 +1024,7 @@
         "mcp_2026_07_28",
         "mcp_oauth_refresh_coordination",
         "non_prefixed_mcp_tool_names",
+        "nonfatal_clock_read_errors",
         "omit_app_server_notification_media",
         "powershell_shell_version",
         "psp",
@@ -977,6 +1034,7 @@
         "retain_client_developer_messages",
         "rollout_budget",
         "runtime_metrics",
+        "send_message_to_user_async",
         "shell_snapshot_v2",
         "shell_zsh_fork",
         "skip_host_skill_discovery",
@@ -984,9 +1042,9 @@
         "step_model_switching",
         "terminal_visualization_instructions",
         "token_budget",
-        "transcript_v2",
         "unified_image_budget",
         "use_agent_identity",
+        "use_xaa",
         "windows_sandbox_service",
         "write_stdin_approval"
       ]
@@ -1042,8 +1100,24 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+  "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
   "source_defaults": {
+    "agent_message_board": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "analytics_plan_history": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "experimental"
+    },
     "api_key_model_discovery": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1289,6 +1363,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "daemon_auto_start": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "experimental"
+    },
     "default_mode_request_user_input": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1430,12 +1512,13 @@
       "stage_from_source": "under development"
     },
     "guardian_ext": {
-      "compatibility_flag": false,
-      "configurable": true,
+      "behavior_evidence": "Removed compatibility flag for the unused Guardian extension prototype.",
+      "compatibility_flag": true,
+      "configurable": false,
       "default_enabled": false,
       "default_enabled_expr": "false",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "guardian_node_repl_transcript_images": {
       "compatibility_flag": false,
@@ -1448,10 +1531,10 @@
     "guardian_reuse_parent_compaction": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "guardianv2": {
       "compatibility_flag": false,
@@ -1659,6 +1742,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "nonfatal_clock_read_errors": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "omit_app_server_notification_media": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1668,12 +1759,13 @@
       "stage_from_source": "under development"
     },
     "personality": {
-      "compatibility_flag": false,
-      "configurable": true,
-      "default_enabled": true,
-      "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "behavior_evidence": "Removed compatibility flag retained as a no-op.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "no_op",
+      "stage_from_source": "removed"
     },
     "plugin_hooks": {
       "behavior_evidence": "Removed compatibility flag for plugin-bundled lifecycle hooks.",
@@ -1727,10 +1819,10 @@
     "realtime_conversation": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "experimental"
+      "stage_from_source": "stable"
     },
     "reasoning_effort_override": {
       "compatibility_flag": false,
@@ -1885,6 +1977,14 @@
       "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
+    "send_message_to_user_async": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "shell_snapshot": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1992,6 +2092,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "system_proxy_fallback": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "terminal_resize_reflow": {
       "behavior_evidence": "Removed compatibility flag. Transcript scrollback reflow on terminal resize is always on.",
       "compatibility_flag": true,
@@ -2057,7 +2165,7 @@
       "default_enabled": false,
       "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "deprecated"
     },
     "tui_app_server": {
       "behavior_evidence": "Removed compatibility flag. The TUI now always uses the app-server implementation.",
@@ -2152,6 +2260,14 @@
       "effective_behavior": "no_op",
       "stage_from_source": "removed"
     },
+    "use_xaa": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "view_image": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2204,10 +2320,10 @@
     "worktrees": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "experimental"
+      "stage_from_source": "stable"
     },
     "write_stdin_approval": {
       "compatibility_flag": false,
@@ -2219,13 +2335,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "26d1d704a578534fe840e4e6d3df502e44a7bdc4a89e69961740d47f2245da2a",
-    "features_rs_sha256": "f52a1c2ce33ffed3fb32610d4a3bf5f273207dd8f24e0733f62a20d2deab4981"
+    "client_rs_sha256": "37d57264e6b9b2e56230af547104545af579819b95fcda40138fcf1cf3fae29a",
+    "features_rs_sha256": "d5f1bf1e16c3053df8a739d48e57d743ee76822e532219cee46cff5a9b1d8d78"
   },
-  "source_ref": "rust-v0.155.1",
+  "source_ref": "rust-v0.156.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/be2951ea34f0d295ed0becf97079f92fa5f6950e/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/be2951ea34f0d295ed0becf97079f92fa5f6950e/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/fe74a774532af67b5a4a3dec03ce9469e17f89af/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/fe74a774532af67b5a4a3dec03ce9469e17f89af/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

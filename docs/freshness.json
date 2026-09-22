@@ -1,93 +1,93 @@
 {
   "canonical_mirror": {
-    "coverage_source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-    "coverage_source_ref": "rust-v0.155.1",
-    "coverage_version": "0.155.1",
+    "coverage_source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+    "coverage_source_ref": "rust-v0.156.0",
+    "coverage_version": "0.156.0",
     "last_successful_full_sync_at": "2026-09-20T10:50:54+00:00",
-    "last_successful_release_sync_at": "2026-09-22T16:30:28+00:00",
+    "last_successful_release_sync_at": "2026-09-22T20:59:30+00:00",
     "provenance": "generated_sync_metadata",
-    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-    "source_ref": "rust-v0.155.1",
-    "sync_scope": "full",
-    "version": "0.155.1"
+    "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+    "source_ref": "rust-v0.156.0",
+    "sync_scope": "release",
+    "version": "0.156.0"
   },
   "checks": [
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "installed_cli_matches_latest_stable",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "canonical_mirror_matches_latest_stable",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "source_coverage_matches_latest_stable",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "feature_snapshot_matches_latest_stable",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "canonical_mirror_release_ref_matches_version",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "source_coverage_release_ref_matches_version",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "feature_snapshot_release_ref_matches_version",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "canonical_mirror_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "source_coverage_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "feature_snapshot_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "model_catalog_matches_latest_stable",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "rust-v0.155.1",
+      "expected": "rust-v0.156.0",
       "name": "model_catalog_release_ref_matches_version",
-      "observed": "rust-v0.155.1",
+      "observed": "rust-v0.156.0",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "model_catalog_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     },
     {
@@ -97,45 +97,45 @@
       "status": "pass"
     },
     {
-      "expected": "0.155.1",
+      "expected": "0.156.0",
       "name": "cli_surface_matches_latest_stable",
-      "observed": "0.155.1",
+      "observed": "0.156.0",
       "status": "pass"
     },
     {
-      "expected": "rust-v0.155.1",
+      "expected": "rust-v0.156.0",
       "name": "cli_surface_release_ref_matches_version",
-      "observed": "rust-v0.155.1",
+      "observed": "rust-v0.156.0",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "cli_surface_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     },
     {
-      "expected": "rust-v0.155.1",
+      "expected": "rust-v0.156.0",
       "name": "cli_platform_linux-x86_64_release_ref_matches_version",
-      "observed": "rust-v0.155.1",
+      "observed": "rust-v0.156.0",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "cli_platform_linux-x86_64_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     },
     {
-      "expected": "rust-v0.155.1",
+      "expected": "rust-v0.156.0",
       "name": "cli_platform_macos-arm64_release_ref_matches_version",
-      "observed": "rust-v0.155.1",
+      "observed": "rust-v0.156.0",
       "status": "pass"
     },
     {
-      "expected": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "expected": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "name": "cli_platform_macos-arm64_commit_matches_release_tag",
-      "observed": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+      "observed": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
       "status": "pass"
     }
   ],
@@ -143,54 +143,54 @@
     "platform_observations": {
       "linux-x86_64": {
         "arch": "x86_64",
-        "codex_cli_version": "0.155.1",
+        "codex_cli_version": "0.156.0",
         "matches_latest_stable": true,
         "os": "linux",
-        "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-        "source_ref": "rust-v0.155.1"
+        "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+        "source_ref": "rust-v0.156.0"
       },
       "macos-arm64": {
         "arch": "arm64",
-        "codex_cli_version": "0.155.1",
+        "codex_cli_version": "0.156.0",
         "matches_latest_stable": true,
         "os": "darwin",
-        "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-        "source_ref": "rust-v0.155.1"
+        "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+        "source_ref": "rust-v0.156.0"
       }
     },
-    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-    "source_ref": "rust-v0.155.1",
-    "version": "0.155.1"
+    "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+    "source_ref": "rust-v0.156.0",
+    "version": "0.156.0"
   },
   "feature_flag_snapshot": {
     "provenance": "release_matched_cli_and_source_snapshot",
-    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-    "source_ref": "rust-v0.155.1",
-    "version": "0.155.1",
-    "version_raw": "codex-cli 0.155.1"
+    "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+    "source_ref": "rust-v0.156.0",
+    "version": "0.156.0",
+    "version_raw": "codex-cli 0.156.0"
   },
   "installed_cli": {
     "command": "codex --version",
     "provenance": "installed_cli_observation",
-    "version": "0.155.1",
-    "version_raw": "codex-cli 0.155.1"
+    "version": "0.156.0",
+    "version_raw": "codex-cli 0.156.0"
   },
   "latest_stable_release": {
     "provenance": "github_release_metadata",
-    "published_at": "2026-09-18T20:03:04Z",
-    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
-    "tag": "rust-v0.155.1",
-    "url": "https://github.com/openai/codex/releases/tag/rust-v0.155.1",
-    "version": "0.155.1"
+    "published_at": "2026-09-22T19:51:01Z",
+    "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+    "tag": "rust-v0.156.0",
+    "url": "https://github.com/openai/codex/releases/tag/rust-v0.156.0",
+    "version": "0.156.0"
   },
   "model_catalog": {
     "provenance": "release_bundled_model_catalog",
-    "source_commit": "be2951ea34f0d295ed0becf97079f92fa5f6950e",
+    "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
     "source_path": "codex-rs/models-manager/models.json",
-    "source_ref": "rust-v0.155.1",
-    "version": "0.155.1"
+    "source_ref": "rust-v0.156.0",
+    "version": "0.156.0"
   },
-  "release_grace_elapsed": true,
+  "release_grace_elapsed": false,
   "release_grace_hours": 12.0,
   "schema_version": 1,
   "status": "fresh"
