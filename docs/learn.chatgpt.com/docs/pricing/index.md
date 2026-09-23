@@ -65,6 +65,7 @@ October 14, 2026. The OpenAI API isn't affected. See
         ctaLabel="Get Plus"
         ctaHref="https://chatgpt.com/explore/plus?utm_internal_source=openai_developers_codex"
       >
+
         - Codex on the web, in the CLI, in the IDE extension, and on iOS
         - Cloud-based integrations like automatic code review and Slack
           integration
@@ -72,6 +73,7 @@ October 14, 2026. The OpenAI API isn't affected. See
         - Flexibly extend usage with [ChatGPT credits](#credits-overview)
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Plus plan
+
       </PricingCard>
       <PricingCard
         name="Pro"
@@ -85,9 +87,11 @@ October 14, 2026. The OpenAI API isn't affected. See
         footnoteLabel="*Learn more about limits on both tiers."
         footnoteHref="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans"
       >
+
         - 5x or 20x more Codex usage than Plus*
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
+
       </PricingCard>
       <PricingCard
         name="API Key"
@@ -98,10 +102,12 @@ October 14, 2026. The OpenAI API isn't affected. See
         ctaHref="/codex/auth"
         highlight=""
       >
+
         - Codex in the CLI, SDK, or IDE extension
         - No cloud-based features (GitHub code review, Slack, etc.)
         - Model availability follows the API models available to your key
         - Pay for Codex usage based on [API pricing](https://developers.openai.com/api/docs/pricing)
+
       </PricingCard>
 
       <PricingCard
@@ -113,6 +119,7 @@ October 14, 2026. The OpenAI API isn't affected. See
         ctaHref="https://chatgpt.com/team-sign-up"
         footnoteLabel="*2+ users, billed annually. $25 per user per month when billed monthly."
       >
+
         - Access ChatGPT and Codex across desktop and mobile apps
         - Larger virtual machines to run cloud chats faster
         - Flexibly extend usage with [ChatGPT credits](#credits-overview)
@@ -122,6 +129,7 @@ October 14, 2026. The OpenAI API isn't affected. See
           more](https://openai.com/business-data/)
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Business plan
+
       </PricingCard>
       <PricingCard
         name="Enterprise & Edu"
@@ -131,6 +139,7 @@ October 14, 2026. The OpenAI API isn't affected. See
         ctaHref="https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_codex"
         highlight="Everything in Business and:"
       >
+
         - Priority request processing
         - Enterprise-level security and controls, including SCIM, EKM, user
           analytics, domain verification, and role-based access control
@@ -140,6 +149,7 @@ October 14, 2026. The OpenAI API isn't affected. See
         - Data retention and data residency controls
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Enterprise plan
+
       </PricingCard>
 
       <PricingCard
@@ -152,10 +162,12 @@ October 14, 2026. The OpenAI API isn't affected. See
         ctaHref="/codex/auth"
         highlight=""
       >
+
         - Codex in the CLI, SDK, or IDE extension
         - No cloud-based features (GitHub code review, Slack, etc.)
         - Model availability follows the API models available to your key
         - Pay for Codex usage based on [API pricing](https://developers.openai.com/api/docs/pricing)
+
       </PricingCard>
 
 </ContentSwitcher>

@@ -442,6 +442,61 @@
       "id": "ae95032a748d548b26a64a4a108156ca3be307cabb425d2330eb06bc6e906c1f",
       "observed_at": "2026-09-23T17:22:47+00:00",
       "previous_id": "8082cc18a86653660a9e45b538a7a49558c8750ee0898299f8fb343f9fd34790"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md": {
+            "after": "40da5ee39bdb3931432e17296c33afa62d29dd77359684a79bfb6ba2bb87c39d",
+            "before": "b817774c711d760e19db05dece15fbb2b2d32dcc2131b5fe2a3f7aec91019511"
+          },
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "0cc8ba90156a4a849434921e3a6dc4882a07f0c369513d5d5eab8702bf3be66a",
+            "before": "8df8b918f752223ca04aa438dc33c3f2bdba7848ba7b3bcae2f2e3ae9c0d2392"
+          },
+          "learn.chatgpt.com/docs/chrome-extension/index.md": {
+            "after": "5d4d97efa4b1c027eb6a74cc677774392c0e8f3fc68aa922723d63cfd235cf87",
+            "before": "f29d19cd415ba0a245a60c5c584275abc661005ab30395b700c352e038361f23"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "927f73d9bf7dc63e1c2e7a57fc6f8c9b46fe81de3ff4baf48440efe6b1a0e191",
+            "before": "bdde6aa457e3497ad70e267cb7a7220a9916527dea927dfe775dcdf3fad79b7e"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.156.1",
+          "codex_cli_source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+          "codex_cli_version": "0.156.1",
+          "codex_cli_version_raw": "codex-cli 0.156.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/chrome-extension/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md"
+        ]
+      },
+      "id": "2d842d5d2eafff48a81b9cf59cc15974b304addfcf6743a081d06f4612f33c36",
+      "observed_at": "2026-09-23T20:04:02+00:00",
+      "previous_id": "ae95032a748d548b26a64a4a108156ca3be307cabb425d2330eb06bc6e906c1f"
     }
   ],
   "schema_version": 1

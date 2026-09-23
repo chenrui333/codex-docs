@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-23T17:22:47+00:00",
+  "generated_at": "2026-09-23T20:04:02+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -16,6 +16,9 @@
   },
   "total_files": 263,
   "updated": [
-    "learn.chatgpt.com/docs/amazon-bedrock/index.md"
+    "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+    "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+    "learn.chatgpt.com/docs/chrome-extension/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md"
   ]
 }

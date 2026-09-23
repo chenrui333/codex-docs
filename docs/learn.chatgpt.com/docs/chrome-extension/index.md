@@ -143,13 +143,13 @@ Removing a domain from the allowlist means ChatGPT asks again before using it.
 Removing a domain from the blocklist means ChatGPT can ask again instead of
 treating the domain as blocked.
 
-#### Allow for all sites <ElevatedRiskBadge class="ml-2" />
+#### Allow for all sites<ElevatedRiskBadge class="ml-2"></ElevatedRiskBadge>
 
 If you select **Allow for all sites**, ChatGPT no longer asks for confirmation
 before using websites. Only choose this option if you trust ChatGPT to use any
 website open in the browser.
 
-#### Browser history <ElevatedRiskBadge class="ml-2" />
+#### Browser history<ElevatedRiskBadge class="ml-2"></ElevatedRiskBadge>
 
 Browser history can include sensitive telemetry, internal URLs, search terms,
 and activity from browser sessions on signed-in devices. If you allow ChatGPT to

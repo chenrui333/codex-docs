@@ -97,7 +97,7 @@ Safety monitoring evaluates model behavior during a task.
 already require approval before those actions run. An action approved by
 automatic approval review can still be part of a task that monitoring later pauses.
 
-## Network access <ElevatedRiskBadge class="ml-2" />
+## Network access<ElevatedRiskBadge class="ml-2"></ElevatedRiskBadge>
 
 For Codex cloud, see [agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access) to enable full internet access or a domain allow list.
 
@@ -474,7 +474,7 @@ To try it:
 
 1. Install Visual Studio Code and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 2. Copy the Codex example `.devcontainer` setup into your repository, or start from the Codex repository directly.
-3. In VS Code, run **Dev Containers: Open Folder in Container...** and select `.devcontainer/devcontainer.secure.json`.
+3. In VS Code, run `Dev Containers: Open Folder in Container...` and select `.devcontainer/devcontainer.secure.json`.
 4. After the container starts, open a terminal and run `codex`.
 
 You can also start the container from the CLI:
