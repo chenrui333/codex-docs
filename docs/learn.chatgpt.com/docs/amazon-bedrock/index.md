@@ -175,6 +175,8 @@ the supported source AWS Region from which you send requests. Both Global and Ge
 Supported models and inference profile IDs:
 
 - GPT-6 Astra: `global.openai.gpt-6-astra`
+- GPT-6 Sol: `global.openai.gpt-6-sol`
+- GPT-6 Luna: `global.openai.gpt-6-luna`
 - GPT-5.6 Sol: `global.openai.gpt-5.6-sol`
 - GPT-5.6 Terra: `global.openai.gpt-5.6-terra`
 - GPT-5.6 Luna: `global.openai.gpt-5.6-luna`
@@ -191,6 +193,8 @@ model = "global.openai.gpt-6-astra"
 Supported models and inference profile IDs:
 
 - GPT-6 Astra: `us.openai.gpt-6-astra`
+- GPT-6 Sol: `us.openai.gpt-6-sol`
+- GPT-6 Luna: `us.openai.gpt-6-luna`
 - GPT-5.6 Sol: `us.openai.gpt-5.6-sol`
 - GPT-5.6 Terra: `us.openai.gpt-5.6-terra`
 - GPT-5.6 Luna: `us.openai.gpt-5.6-luna`
@@ -211,12 +215,15 @@ Use `model_provider = "amazon-bedrock"` with an optional model ID. The provider 
 Supported models and model IDs:
 
 - GPT-6 Astra: `openai.gpt-6-astra`
+- GPT-6 Sol: `openai.gpt-6-sol`
+- GPT-6 Luna: `openai.gpt-6-luna`
 - GPT-5.6 Sol: `openai.gpt-5.6-sol`
 - GPT-5.6 Terra: `openai.gpt-5.6-terra`
 - GPT-5.6 Luna: `openai.gpt-5.6-luna`
 - GPT-5.5: `openai.gpt-5.5`
 - GPT-5.4: `openai.gpt-5.4`
 
+GPT-6 Sol and Luna are available through Mantle in `us-east-1` (N. Virginia).
 Model availability varies by AWS Region. See AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai) before selecting a provider and a model. For GPT-6 Astra, refer to the [Bedrock model page for GPT-6 Astra](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html).
 
 ## Feature availability

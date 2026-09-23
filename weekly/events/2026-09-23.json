@@ -402,6 +402,46 @@
       "id": "8082cc18a86653660a9e45b538a7a49558c8750ee0898299f8fb343f9fd34790",
       "observed_at": "2026-09-23T03:46:43+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "8df8b918f752223ca04aa438dc33c3f2bdba7848ba7b3bcae2f2e3ae9c0d2392",
+            "before": "432b751dc434aaee9836a1cd14b2d9679d45c7cd70ebfee4e19ae4cd7aee2fc1"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.156.1",
+          "codex_cli_source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+          "codex_cli_version": "0.156.1",
+          "codex_cli_version_raw": "codex-cli 0.156.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md"
+        ]
+      },
+      "id": "ae95032a748d548b26a64a4a108156ca3be307cabb425d2330eb06bc6e906c1f",
+      "observed_at": "2026-09-23T17:22:47+00:00",
+      "previous_id": "8082cc18a86653660a9e45b538a7a49558c8750ee0898299f8fb343f9fd34790"
     }
   ],
   "schema_version": 1
