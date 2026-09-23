@@ -746,7 +746,7 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.156.0",
+  "codex_cli_version": "codex-cli 0.156.1",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -1087,12 +1087,12 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "ad81fdfae0c6f421172d7a0856f58ea7a29302da042b77b2577d199433d42c09"
+      "sha256": "51f1b8a97b8243b553410b2e3e8e64737acac6bc945ac2f82760b53961db3b91"
     },
     "config_reference": {
       "parsed_feature_key_count": 28,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "769fee888330b90ee6389e79a8a734144261bb335cd8ff7d7184ae0bde1d6c6c"
+      "sha256": "6e40c75f87bef146567dca6d9dbca0c2eba9576b463c2de39f200ce3dbe782fd"
     }
   },
   "observation_environment": {
@@ -1100,7 +1100,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+  "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -2338,10 +2338,10 @@
     "client_rs_sha256": "37d57264e6b9b2e56230af547104545af579819b95fcda40138fcf1cf3fae29a",
     "features_rs_sha256": "d5f1bf1e16c3053df8a739d48e57d743ee76822e532219cee46cff5a9b1d8d78"
   },
-  "source_ref": "rust-v0.156.0",
+  "source_ref": "rust-v0.156.1",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/fe74a774532af67b5a4a3dec03ce9469e17f89af/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/fe74a774532af67b5a4a3dec03ce9469e17f89af/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

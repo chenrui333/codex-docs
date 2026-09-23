@@ -3,10 +3,10 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_openai_docs'
 source_url: 'codex-cli://skills/.system/openai-docs/references/upgrading-to-gpt-6-astra.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.154.0", "0.155.0", "0.155.1", "0.156.0"]
-codex_cli_versions_raw: ["codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0"]
-codex_cli_release_ref: 'rust-v0.156.0'
-codex_cli_source_commit: 'fe74a774532af67b5a4a3dec03ce9469e17f89af'
+codex_cli_versions: ["0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1"]
+codex_cli_versions_raw: ["codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1"]
+codex_cli_release_ref: 'rust-v0.156.1'
+codex_cli_source_commit: 'b412ff32c417f855c2b2d1581b77058eed87c84b'
 ---
 
 # Upgrading to GPT-6 Astra

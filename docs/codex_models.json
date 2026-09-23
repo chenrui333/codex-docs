@@ -1,5 +1,5 @@
 {
-  "codex_cli_version": "0.156.0",
+  "codex_cli_version": "0.156.1",
   "models": [
     {
       "apply_patch_tool_type": "freeform",
@@ -110,8 +110,8 @@
       "supports_search_tool": true,
       "tool_mode": null,
       "upgrade": {
-        "migration_markdown": "GPT-5.4 is no longer available\n\nCodex now uses GPT-5.6 Terra in place of GPT-5.4. Switch to GPT-5.6 Terra to continue.\n",
-        "model": "gpt-5.6-terra",
+        "migration_markdown": "GPT-5.4 is no longer available\n\nCodex now uses GPT-6 Sol in place of GPT-5.4. Switch to GPT-6 Sol to continue.\n",
+        "model": "gpt-6-sol",
         "retirement_at": "2026-08-31T19:00:00Z"
       },
       "visibility": "hide",
@@ -124,7 +124,7 @@
       "default_reasoning_level": "medium",
       "default_service_tier": null,
       "default_verbosity": "low",
-      "description": "Frontier model for complex coding, research, and real-world work.",
+      "description": "Legacy coding model.",
       "display_name": "GPT-5.5",
       "input_modalities": [
         "image",
@@ -167,7 +167,11 @@
       "supports_parallel_tool_calls": true,
       "supports_search_tool": true,
       "tool_mode": null,
-      "upgrade": null,
+      "upgrade": {
+        "migration_markdown": "Meet GPT-6 Sol\n\nOur latest Sol is more intelligent and more efficient so your usage limits go further. This model is a great daily driver for complex tasks, especially coding.\n",
+        "model": "gpt-6-sol",
+        "retirement_at": null
+      },
       "visibility": "list",
       "web_search_tool_type": "text_and_image"
     },
@@ -178,7 +182,7 @@
       "default_reasoning_level": "medium",
       "default_service_tier": null,
       "default_verbosity": "low",
-      "description": "Fast and affordable agentic coding model.",
+      "description": "Older fast and efficient model.",
       "display_name": "GPT-5.6-Luna",
       "input_modalities": [
         "image",
@@ -225,7 +229,11 @@
       "supports_parallel_tool_calls": true,
       "supports_search_tool": true,
       "tool_mode": "code_mode_only",
-      "upgrade": null,
+      "upgrade": {
+        "migration_markdown": "Meet GPT-6 Luna\n\nOur latest Luna is significantly more efficient, so your usage limits go even further. Reach for it for any job that doesn't require frontier intelligence.\n",
+        "model": "gpt-6-luna",
+        "retirement_at": null
+      },
       "visibility": "list",
       "web_search_tool_type": "text_and_image"
     },
@@ -236,7 +244,7 @@
       "default_reasoning_level": "low",
       "default_service_tier": null,
       "default_verbosity": "low",
-      "description": "Latest frontier agentic coding model.",
+      "description": "Older coding model for complex work.",
       "display_name": "GPT-5.6-Sol",
       "input_modalities": [
         "image",
@@ -292,7 +300,11 @@
       "supports_parallel_tool_calls": true,
       "supports_search_tool": true,
       "tool_mode": "code_mode_only",
-      "upgrade": null,
+      "upgrade": {
+        "migration_markdown": "Meet GPT-6 Sol\n\nOur latest Sol is more intelligent and more efficient so your usage limits go further. This model is a great daily driver for complex tasks, especially coding.\n",
+        "model": "gpt-6-sol",
+        "retirement_at": null
+      },
       "visibility": "list",
       "web_search_tool_type": "text_and_image"
     },
@@ -303,7 +315,7 @@
       "default_reasoning_level": "medium",
       "default_service_tier": null,
       "default_verbosity": "low",
-      "description": "Balanced agentic coding model for everyday work.",
+      "description": "Older balanced model for straightforward work.",
       "display_name": "GPT-5.6-Terra",
       "input_modalities": [
         "image",
@@ -354,7 +366,11 @@
       "supports_parallel_tool_calls": true,
       "supports_search_tool": true,
       "tool_mode": "code_mode_only",
-      "upgrade": null,
+      "upgrade": {
+        "migration_markdown": "Meet GPT-6 Sol\n\nOur latest Sol is more intelligent and more efficient so your usage limits go further. This model is a great daily driver for complex tasks, especially coding.\n",
+        "model": "gpt-6-sol",
+        "retirement_at": null
+      },
       "visibility": "list",
       "web_search_tool_type": "text_and_image"
     },
@@ -365,7 +381,7 @@
       "default_reasoning_level": "low",
       "default_service_tier": null,
       "default_verbosity": "low",
-      "description": "Our most capable model for complex, demanding work.",
+      "description": "Frontier intelligence for the most demanding work.",
       "display_name": "GPT-6-Astra",
       "input_modalities": [
         "image",
@@ -385,6 +401,128 @@
       ],
       "shell_type": "unified_exec",
       "slug": "gpt-6-astra",
+      "support_verbosity": true,
+      "supported_in_api": true,
+      "supported_reasoning_levels": [
+        {
+          "description": "Balances speed and reasoning depth for everyday tasks",
+          "effort": "medium"
+        },
+        {
+          "description": "Extra high reasoning depth for complex problems",
+          "effort": "xhigh"
+        },
+        {
+          "description": "Fast responses with lighter reasoning",
+          "effort": "low"
+        },
+        {
+          "description": "Greater reasoning depth for complex problems",
+          "effort": "high"
+        },
+        {
+          "description": "Maximum reasoning depth for the hardest problems",
+          "effort": "max"
+        },
+        {
+          "description": "Maximum reasoning with automatic task delegation",
+          "effort": "ultra"
+        }
+      ],
+      "supports_image_detail_original": true,
+      "supports_parallel_tool_calls": true,
+      "supports_search_tool": true,
+      "tool_mode": "code_mode_only",
+      "upgrade": null,
+      "visibility": "list",
+      "web_search_tool_type": "text_and_image"
+    },
+    {
+      "apply_patch_tool_type": "freeform",
+      "auto_compact_token_limit": null,
+      "context_window": 272000,
+      "default_reasoning_level": "medium",
+      "default_service_tier": "priority",
+      "default_verbosity": "low",
+      "description": "Fast and affordable model for easier tasks.",
+      "display_name": "GPT-6-Luna",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "max_context_window": 872000,
+      "minimal_client_version": "0.155.0",
+      "multi_agent_reasoning_effort": null,
+      "multi_agent_version": "v2",
+      "priority": 3,
+      "service_tiers": [
+        {
+          "description": "1.5x speed",
+          "id": "priority",
+          "name": "Fast"
+        }
+      ],
+      "shell_type": "shell_command",
+      "slug": "gpt-6-luna",
+      "support_verbosity": true,
+      "supported_in_api": true,
+      "supported_reasoning_levels": [
+        {
+          "description": "Balances speed and reasoning depth for everyday tasks",
+          "effort": "medium"
+        },
+        {
+          "description": "Extra high reasoning depth for complex problems",
+          "effort": "xhigh"
+        },
+        {
+          "description": "Fast responses with lighter reasoning",
+          "effort": "low"
+        },
+        {
+          "description": "Greater reasoning depth for complex problems",
+          "effort": "high"
+        },
+        {
+          "description": "Maximum reasoning depth for the hardest problems",
+          "effort": "max"
+        }
+      ],
+      "supports_image_detail_original": true,
+      "supports_parallel_tool_calls": true,
+      "supports_search_tool": true,
+      "tool_mode": "code_mode_only",
+      "upgrade": null,
+      "visibility": "list",
+      "web_search_tool_type": "text_and_image"
+    },
+    {
+      "apply_patch_tool_type": "freeform",
+      "auto_compact_token_limit": null,
+      "context_window": 272000,
+      "default_reasoning_level": "medium",
+      "default_service_tier": "priority",
+      "default_verbosity": "low",
+      "description": "Workhorse model for coding and everyday work.",
+      "display_name": "GPT-6-Sol",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "max_context_window": 872000,
+      "minimal_client_version": "0.155.0",
+      "multi_agent_reasoning_effort": null,
+      "multi_agent_version": "v2",
+      "priority": 2,
+      "service_tiers": [
+        {
+          "description": "1.5x speed",
+          "id": "priority",
+          "name": "Fast"
+        }
+      ],
+      "shell_type": "shell_command",
+      "slug": "gpt-6-sol",
       "support_verbosity": true,
       "supported_in_api": true,
       "supported_reasoning_levels": [
@@ -535,8 +673,8 @@
     }
   ],
   "schema_version": 1,
-  "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+  "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
   "source_kind": "release_bundled_model_catalog",
   "source_path": "codex-rs/models-manager/models.json",
-  "source_ref": "rust-v0.156.0"
+  "source_ref": "rust-v0.156.1"
 }

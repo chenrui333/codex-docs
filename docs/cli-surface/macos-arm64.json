@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.156.0",
-  "codex_cli_version_raw": "codex-cli 0.156.0",
+  "codex_cli_version": "0.156.1",
+  "codex_cli_version_raw": "codex-cli 0.156.1",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -3402,9 +3402,9 @@
     "os": "darwin"
   },
   "schema_version": 2,
-  "source_commit": "fe74a774532af67b5a4a3dec03ce9469e17f89af",
+  "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.156.0",
+  "source_ref": "rust-v0.156.1",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
