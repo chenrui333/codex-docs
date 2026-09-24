@@ -15,7 +15,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 
 Use this changelog to see what changed in the Codex Security plugin.
 
-**Latest plugin version:** `0.1.24`.
+**Newest release notes:** `0.1.30`.
 
 Check the plugin version in your current Codex environment before you use a
 feature from a newer release.
@@ -23,6 +23,34 @@ feature from a newer release.
 Changelog entries follow the plugin version, not the package version. CLI and
 SDK users can run `npx @openai/codex-security info --json` to check the
 package and bundled plugin versions together.
+
+## 0.1.30 (September 24, 2026)
+
+- This release updates the plugin version. It has the same behavior as `0.1.25`.
+
+## 0.1.25 (September 23, 2026)
+
+### Keep scan artifacts with saved results
+
+- Store retained scan evidence and supplemental documents with the scan, while
+  keeping disposable build and test output in temporary storage.
+- Save artifacts through the plugin during a running scan so they remain
+  available with its final results and recovery checkpoints.
+
+### Follow scan progress and results
+
+- See standard scan progress advance through threat modeling, discovery,
+  validation, attack-path analysis, and reporting as each phase begins.
+
+### Review more files with fewer interruptions
+
+- Include changed GitHub Actions workflow files in change scans and recognize
+  `.cjs`, `.cts`, `.mts`, and `.tf` files during repository review.
+- Continue a scan without an access warning when the Daybreak check is
+  unavailable or inconclusive. A fresh result that reports access isn't granted
+  still shows the enrollment warning.
+- Use `OPENAI_API_KEY` for deep scan workers without a Codex account when the
+  selected provider requires OpenAI authentication.
 
 ## 0.1.24 (September 9, 2026)
 
