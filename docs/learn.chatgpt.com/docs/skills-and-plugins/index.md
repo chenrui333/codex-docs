@@ -102,6 +102,9 @@ Use a skill when you need reusable instructions for a focused task. Use a
 plugin when you want an installable package that can combine instructions with
 connected services or other tools.
 
+To build a plugin through a conversation in ChatGPT, see
+[Build plugins](https://learn.chatgpt.com/docs/build-plugins).
+
 Moving an existing custom GPT workflow? See [Migrate custom GPTs to plugins](https://learn.chatgpt.com/docs/migrate-custom-gpts) for workspace preparation, migration, testing, and sharing.
 
 You can also demonstrate a workflow with

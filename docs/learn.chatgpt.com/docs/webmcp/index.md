@@ -40,8 +40,7 @@ discover them when it visits, so people don't need to install a separate MCP
 server or set up another connection to use those capabilities.
 
 This approach is useful when you and the agent need to see the same thing, such as
-when editing a canvas or exploring a dashboard. A
-[plugin with an MCP server](https://learn.chatgpt.com/docs/build-plugins) can provide an integration
+when editing a canvas or exploring a dashboard. A [plugin with an MCP server](https://developers.openai.com/plugins/build/mcp-server) can provide an integration
 that works independently of an open page. A website can support both.
 
 ## How it works in the browser

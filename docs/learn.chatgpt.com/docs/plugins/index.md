@@ -317,8 +317,13 @@ ChatGPT until you disconnect them there.
 
 ## Build your own plugin
 
+To create or edit a plugin through a conversation in ChatGPT, start with
+[Build plugins](https://learn.chatgpt.com/docs/build-plugins). The guide walks through
+describing a workflow, adding reference files, testing it, and making changes
+when Plugin Creator is available in your workspace.
+
 If you want to create, test, or distribute your own plugin, see
-[Build plugins](https://developers.openai.com/plugins/build/plugins). That page covers local scaffolding,
+[our developer guide on building plugins](https://developers.openai.com/plugins/build/plugins). That page covers local scaffolding,
 manual marketplace setup, workspace sharing, plugin manifests, and packaging
 guidance.
 

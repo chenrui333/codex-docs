@@ -512,6 +512,76 @@
       "id": "cafe0c17eab16768526432e2797740a9d6c8627e258d5e13fe7cfef40e8a8720",
       "observed_at": "2026-09-25T11:23:41+00:00",
       "previous_id": "34c3bffd181f90a89b263cafc5eabfeca8809e458b6ce9f11ea3ea719c11b4a8"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/build-plugins/index.md": {
+            "after": "cdd89e732b4333454fc9b7817eb630de47c81deb6144aa8b9246aed2e35aada3",
+            "before": "475a103182b03fe4400ea045189e1cf99683b60348eb8b78273b7f4867f31828"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "4fdaa72cbcfb9514de827371b7e12815d8b7b7e75204d5f1d7c74ef69392cb8b",
+            "before": "1fbb7b0448ab3f8822033ef9d9eb06d184651102243238f96f03b521bb0e2b22"
+          },
+          "learn.chatgpt.com/docs/features/index.md": {
+            "after": "9de58054b1f5196978ca6032530017e098ea6df376bf50555c0d8b7b82ad6c0c",
+            "before": "8d917bfd1fb2543d27f44d9b9ab663d7991965aacfa2ee8816c3546c5c6cb603"
+          },
+          "learn.chatgpt.com/docs/get-started-with-work/index.md": {
+            "after": "a719a06175c72509331928e165fc117f2aeb5ae2f4bfda48915d7d696ece4d92",
+            "before": "f13eb31578e568fd1be553241110ec6a26bf6246e7f7204f398749e663b0fc69"
+          },
+          "learn.chatgpt.com/docs/plugins/index.md": {
+            "after": "66b23137457ff0d353a42b53bdf738840c539aa9fe2b05d120d0504616a6642d",
+            "before": "87533c22ee5b2744ff434311e6d5ce81736d6620aa43d9a117425f777ce50640"
+          },
+          "learn.chatgpt.com/docs/skills-and-plugins/index.md": {
+            "after": "ea717e56486eb164a66e85edd2e65fc4e48a8c0c0fee2eb75ab63b7a4584f772",
+            "before": "de2a5f8d6ace7fdc969d8c25ef0a22a99c3baf383d7978be41994e8a9a3b4d7a"
+          },
+          "learn.chatgpt.com/docs/webmcp/index.md": {
+            "after": "d47a4758efcb2b0048eb06b11a2a17e3e8ccd3b40f5c465a8201fe5652aff4c6",
+            "before": "6d769d05935f97714c28d4d4fcb173b781610c13d196f9cca2ed358ff62fe77b"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.157.0",
+          "codex_cli_source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
+          "codex_cli_version": "0.157.0",
+          "codex_cli_version_raw": "codex-cli 0.157.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/build-plugins/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/features/index.md",
+          "learn.chatgpt.com/docs/get-started-with-work/index.md",
+          "learn.chatgpt.com/docs/plugins/index.md",
+          "learn.chatgpt.com/docs/skills-and-plugins/index.md",
+          "learn.chatgpt.com/docs/webmcp/index.md"
+        ]
+      },
+      "id": "b377254be9342c6e6797e1f6c06b2de82a0693e09103ad8eeaf3acd6ea104687",
+      "observed_at": "2026-09-25T16:47:47+00:00",
+      "previous_id": "cafe0c17eab16768526432e2797740a9d6c8627e258d5e13fe7cfef40e8a8720"
     }
   ],
   "schema_version": 1
