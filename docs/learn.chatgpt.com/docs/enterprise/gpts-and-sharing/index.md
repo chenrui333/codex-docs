@@ -13,6 +13,10 @@ Source: https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
+**Moving from custom GPTs to plugins?**
+
+See [Migrate custom GPTs to plugins](https://learn.chatgpt.com/docs/migrate-custom-gpts) to prepare your workspace, migrate GPTs, and review sharing and access for their replacements.
+
 ## Sharing
 
 Control who can create GPTs and whether they can be shared with specific people, groups, or the entire workspace.

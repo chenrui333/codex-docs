@@ -293,7 +293,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-25T04:08:12+00:00",
+  "generated_at": "2026-09-25T04:08:58+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 25,
@@ -336,11 +336,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 147,
+      "discovered_urls": 148,
       "html_fallback_pages": 2,
-      "markdown_pages": 144,
-      "mirrored_paths_count": 146,
-      "mirrored_urls": 146,
+      "markdown_pages": 145,
+      "mirrored_paths_count": 147,
+      "mirrored_urls": 147,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -437,6 +437,7 @@
       "https://learn.chatgpt.com/docs/linux/linux-app",
       "https://learn.chatgpt.com/docs/long-running-work",
       "https://learn.chatgpt.com/docs/mcp-server",
+      "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -589,6 +590,7 @@
       "https://learn.chatgpt.com/docs/linux/linux-app",
       "https://learn.chatgpt.com/docs/long-running-work",
       "https://learn.chatgpt.com/docs/mcp-server",
+      "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -737,6 +739,7 @@
       "learn.chatgpt.com/docs/linux/linux-app/index.md",
       "learn.chatgpt.com/docs/long-running-work/index.md",
       "learn.chatgpt.com/docs/mcp-server/index.md",
+      "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
       "learn.chatgpt.com/docs/model-selection/index.md",
       "learn.chatgpt.com/docs/models/index.md",
       "learn.chatgpt.com/docs/non-interactive-mode/index.md",
@@ -796,7 +799,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 146,
+    "mirrored_paths_count": 147,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -886,6 +889,7 @@
       "https://learn.chatgpt.com/docs/linux/linux-app",
       "https://learn.chatgpt.com/docs/long-running-work",
       "https://learn.chatgpt.com/docs/mcp-server",
+      "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1042,6 +1046,7 @@
           "https://learn.chatgpt.com/docs/linux/linux-app",
           "https://learn.chatgpt.com/docs/long-running-work",
           "https://learn.chatgpt.com/docs/mcp-server",
+          "https://learn.chatgpt.com/docs/migrate-custom-gpts",
           "https://learn.chatgpt.com/docs/model-selection",
           "https://learn.chatgpt.com/docs/models",
           "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1102,7 +1107,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "6891a83ee158408ff0a90a946150d8721ffb263335eadc858421d6fafdbba44e",
+        "discovered_urls_sha256": "cf7dfe2c3153a593314ba62cdf9393d9940e5c3fa36ca1dcc70463b309dd8f6f",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1193,6 +1198,7 @@
           "https://learn.chatgpt.com/docs/linux/linux-app",
           "https://learn.chatgpt.com/docs/long-running-work",
           "https://learn.chatgpt.com/docs/mcp-server",
+          "https://learn.chatgpt.com/docs/migrate-custom-gpts",
           "https://learn.chatgpt.com/docs/model-selection",
           "https://learn.chatgpt.com/docs/models",
           "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1365,9 +1371,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1455,7 +1461,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-09-22T21:00:35+00:00",
+    "last_successful_full_sync_at": "2026-09-25T04:08:58+00:00",
     "status": "complete"
   }
 }

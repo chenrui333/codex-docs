@@ -144,6 +144,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "userLock",
         },
         {
+          title: "Migrate custom GPTs to plugins",
+          description:
+            "Plan your workspace transition, migrate individual GPTs or eligible batches, and test and share replacement plugins.",
+          href: "/codex/migrate-custom-gpts",
+          icon: "tools",
+        },
+        {
           title: "Managed configuration",
           description:
             "Distribute managed settings where supported and enforce runtime requirements for covered capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension.",

@@ -406,6 +406,72 @@
       "id": "a86d9c1dffeddb43e1d4a0a1c0766ecd7563a8bb736bce94f3674b3cd6c1fe0a",
       "observed_at": "2026-09-25T04:08:12+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/migrate-custom-gpts/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "c52e1492d2325c2d02e6f945bda0df6f15372eba5c038aac7064651373ef7343",
+            "before": "077a5908c4708fa33f71a740c42eeaece5577b3d23278f3580d8fff943559d4c"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "aa0c8cdabab5b3165e38a8a2551080e20e421fd77e62a6a3b45919cb26eabbbe",
+            "before": "fb7766b0fd2e5ee546fbbf853e67824765d562df36e157b988d9bcd26257651f"
+          },
+          "learn.chatgpt.com/docs/enterprise/admin-plugin/index.md": {
+            "after": "03a9466598238ec584e07246da45010f8b30b07d2d363699a2595db77f315231",
+            "before": "134364e33f67a68574683284884a66379d820c2041a3f2db7f65c2652b6f9fd6"
+          },
+          "learn.chatgpt.com/docs/enterprise/gpts-and-sharing/index.md": {
+            "after": "8aa37644add45d8ca81c3f585b3d476cffd30916d6aecce7267cf4b667cf8e58",
+            "before": "da87303e9f5c4917ba8968ecad881791622e3069567d0e7cc63318e8100153ce"
+          },
+          "learn.chatgpt.com/docs/migrate-custom-gpts/index.md": {
+            "after": "59035562c7a356470c0d23b662f2b7e4a60bcfacd4cb5467bafd36580045f41b",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/skills-and-plugins/index.md": {
+            "after": "de2a5f8d6ace7fdc969d8c25ef0a22a99c3baf383d7978be41994e8a9a3b4d7a",
+            "before": "847a8d6f84fdb2d4738ac2dc4c621d8536bcdf22be8dc1182584b981714e69d0"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.157.0",
+          "codex_cli_source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
+          "codex_cli_version": "0.157.0",
+          "codex_cli_version_raw": "codex-cli 0.157.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/enterprise/admin-plugin/index.md",
+          "learn.chatgpt.com/docs/enterprise/gpts-and-sharing/index.md",
+          "learn.chatgpt.com/docs/skills-and-plugins/index.md"
+        ]
+      },
+      "id": "34c3bffd181f90a89b263cafc5eabfeca8809e458b6ce9f11ea3ea719c11b4a8",
+      "observed_at": "2026-09-25T04:08:58+00:00",
+      "previous_id": "a86d9c1dffeddb43e1d4a0a1c0766ecd7563a8bb736bce94f3674b3cd6c1fe0a"
     }
   ],
   "schema_version": 1
