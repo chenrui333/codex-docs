@@ -1,25 +1,25 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 984,
+      "active": 985,
       "by_category": {
         "cli_command": 93,
         "cli_option": 347,
         "config_key": 425,
-        "feature_flag": 149,
+        "feature_flag": 150,
         "linked_tool_guide": 2,
         "system_prompt_snapshot": 1,
         "system_skill": 6
       },
       "by_maturity": {
         "deprecated": 4,
-        "experimental": 4,
+        "experimental": 3,
         "removed": 39,
-        "stable": 45,
+        "stable": 47,
         "under development": 57
       },
       "inactive": 39,
-      "total": 1023
+      "total": 1024
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -41,17 +41,17 @@
     "platform_observations": {
       "linux-x86_64": {
         "arch": "x86_64",
-        "codex_cli_version": "0.156.1",
+        "codex_cli_version": "0.157.0",
         "os": "linux",
-        "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
-        "source_ref": "rust-v0.156.1"
+        "source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
+        "source_ref": "rust-v0.157.0"
       },
       "macos-arm64": {
         "arch": "arm64",
-        "codex_cli_version": "0.156.1",
+        "codex_cli_version": "0.157.0",
         "os": "darwin",
-        "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
-        "source_ref": "rust-v0.156.1"
+        "source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
+        "source_ref": "rust-v0.157.0"
       }
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
@@ -124,8 +124,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.156.1",
-    "version_raw": "codex-cli 0.156.1"
+    "version": "0.157.0",
+    "version_raw": "codex-cli 0.157.0"
   },
   "developers": {
     "codex_related_urls": [
@@ -293,7 +293,7 @@
     "unclassified_skipped_codex_related_urls": [],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-23T03:46:43+00:00",
+  "generated_at": "2026-09-25T04:08:12+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 25,
@@ -330,9 +330,9 @@
     "mirrored_paths_count": 25,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+    "source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
     "source_errors": [],
-    "source_ref": "rust-v0.156.1"
+    "source_ref": "rust-v0.157.0"
   },
   "learn": {
     "counts": {
@@ -1274,11 +1274,11 @@
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
   "model_catalog": {
-    "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+    "source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
     "source_path": "codex-rs/models-manager/models.json",
-    "source_ref": "rust-v0.156.1",
+    "source_ref": "rust-v0.157.0",
     "status": "complete",
-    "version": "0.156.1"
+    "version": "0.157.0"
   },
   "platform_tool_guides": {
     "candidate_urls": [

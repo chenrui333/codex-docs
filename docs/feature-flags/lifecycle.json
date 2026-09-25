@@ -161,9 +161,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "daemon_auto_start",
-      "stage": "experimental"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -271,9 +271,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "guardianv2.thread_context",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -423,6 +423,11 @@
     {
       "enabled": false,
       "key": "powershell_shell_version",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "prefer_mxc",
       "stage": "under development"
     },
     {
@@ -746,7 +751,7 @@
       "stage": "under development"
     }
   ],
-  "codex_cli_version": "codex-cli 0.156.1",
+  "codex_cli_version": "codex-cli 0.157.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -756,6 +761,7 @@
       "content_item_kinds",
       "daemon_auto_start",
       "guardian_reuse_parent_compaction",
+      "guardianv2.thread_context",
       "image_generation",
       "in_app_chat",
       "in_app_dictation",
@@ -859,6 +865,7 @@
       "omit_app_server_notification_media",
       "plugin_hooks",
       "powershell_shell_version",
+      "prefer_mxc",
       "psp",
       "realtime_conversation",
       "reasoning_effort_override",
@@ -921,8 +928,7 @@
         "use_legacy_landlock"
       ],
       "experimental": [
-        "analytics_plan_history",
-        "daemon_auto_start"
+        "analytics_plan_history"
       ],
       "removed": [
         "apply_patch_freeform",
@@ -969,7 +975,9 @@
         "code_mode_host",
         "compaction_image_budget",
         "content_item_kinds",
+        "daemon_auto_start",
         "guardian_reuse_parent_compaction",
+        "guardianv2.thread_context",
         "image_generation",
         "in_app_chat",
         "in_app_dictation",
@@ -1018,7 +1026,6 @@
         "guardian_enhanced_node_repl_transcripts",
         "guardian_node_repl_transcript_images",
         "guardianv2",
-        "guardianv2.thread_context",
         "image_resize_notice",
         "local_thread_store_compression",
         "mcp_2026_07_28",
@@ -1027,6 +1034,7 @@
         "nonfatal_clock_read_errors",
         "omit_app_server_notification_media",
         "powershell_shell_version",
+        "prefer_mxc",
         "psp",
         "reasoning_effort_override",
         "request_permissions_tool",
@@ -1100,7 +1108,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+  "source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1366,10 +1374,10 @@
     "daemon_auto_start": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "experimental"
+      "stage_from_source": "stable"
     },
     "default_mode_request_user_input": {
       "compatibility_flag": false,
@@ -1547,10 +1555,10 @@
     "guardianv2.thread_context": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "hooks": {
       "compatibility_flag": false,
@@ -1793,6 +1801,14 @@
       "stage_from_source": "stable"
     },
     "powershell_shell_version": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "prefer_mxc": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2335,13 +2351,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "37d57264e6b9b2e56230af547104545af579819b95fcda40138fcf1cf3fae29a",
-    "features_rs_sha256": "d5f1bf1e16c3053df8a739d48e57d743ee76822e532219cee46cff5a9b1d8d78"
+    "client_rs_sha256": "0d590b240bdbfeafacbe597a02e4bdce467f8850d597814f214184dfb89ee510",
+    "features_rs_sha256": "db6dad91fd2ea65d0c976c812be325c6109e97f6275410c6cfaae2d20a5cd3f9"
   },
-  "source_ref": "rust-v0.156.1",
+  "source_ref": "rust-v0.157.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/00c972ed5d6ff6499317fd41b7f23605b8e6850d/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/00c972ed5d6ff6499317fd41b7f23605b8e6850d/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

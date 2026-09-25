@@ -1,5 +1,5 @@
 {
-  "codex_cli_version": "0.156.1",
+  "codex_cli_version": "0.157.0",
   "models": [
     {
       "apply_patch_tool_type": "freeform",
@@ -16,6 +16,7 @@
       ],
       "max_context_window": 872000,
       "minimal_client_version": "0.98.0",
+      "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v1",
       "priority": 43,
       "service_tiers": [
@@ -25,7 +26,7 @@
           "name": "Fast"
         }
       ],
-      "shell_type": "unified_exec",
+      "shell_type": "shell_command",
       "slug": "codex-auto-review",
       "support_verbosity": true,
       "supported_in_api": true,
@@ -132,6 +133,7 @@
       ],
       "max_context_window": 272000,
       "minimal_client_version": "0.124.0",
+      "multi_agent_reasoning_effort": null,
       "multi_agent_version": null,
       "priority": 12,
       "service_tiers": [
@@ -141,7 +143,7 @@
           "name": "Fast"
         }
       ],
-      "shell_type": "unified_exec",
+      "shell_type": "shell_command",
       "slug": "gpt-5.5",
       "support_verbosity": true,
       "supported_in_api": true,
@@ -190,6 +192,7 @@
       ],
       "max_context_window": 872000,
       "minimal_client_version": "0.144.0",
+      "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v1",
       "priority": 8,
       "service_tiers": [
@@ -199,7 +202,7 @@
           "name": "Fast"
         }
       ],
-      "shell_type": "unified_exec",
+      "shell_type": "shell_command",
       "slug": "gpt-5.6-luna",
       "support_verbosity": true,
       "supported_in_api": true,
@@ -252,21 +255,17 @@
       ],
       "max_context_window": 872000,
       "minimal_client_version": "0.144.0",
+      "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v2",
-      "priority": 6,
+      "priority": 4,
       "service_tiers": [
         {
           "description": "1.5x speed, increased usage",
           "id": "priority",
           "name": "Fast"
-        },
-        {
-          "description": "The fastest available responses for latency-sensitive work.",
-          "id": "ultrafast",
-          "name": "Ultrafast"
         }
       ],
-      "shell_type": "unified_exec",
+      "shell_type": "shell_command",
       "slug": "gpt-5.6-sol",
       "support_verbosity": true,
       "supported_in_api": true,
@@ -323,6 +322,7 @@
       ],
       "max_context_window": 872000,
       "minimal_client_version": "0.144.0",
+      "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v2",
       "priority": 7,
       "service_tiers": [
@@ -332,7 +332,7 @@
           "name": "Fast"
         }
       ],
-      "shell_type": "unified_exec",
+      "shell_type": "shell_command",
       "slug": "gpt-5.6-terra",
       "support_verbosity": true,
       "supported_in_api": true,
@@ -399,7 +399,7 @@
           "name": "Fast"
         }
       ],
-      "shell_type": "unified_exec",
+      "shell_type": "shell_command",
       "slug": "gpt-6-astra",
       "support_verbosity": true,
       "supported_in_api": true,
@@ -673,8 +673,8 @@
     }
   ],
   "schema_version": 1,
-  "source_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+  "source_commit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
   "source_kind": "release_bundled_model_catalog",
   "source_path": "codex-rs/models-manager/models.json",
-  "source_ref": "rust-v0.156.1"
+  "source_ref": "rust-v0.157.0"
 }
