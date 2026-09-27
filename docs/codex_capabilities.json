@@ -69783,7 +69783,7 @@
       "config_keys": [
         "features.in_app_chat"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "in_app_chat",
       "id": "feature_flag:in_app_chat",
@@ -69852,7 +69852,7 @@
       "config_keys": [
         "features.in_app_dictation"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "in_app_dictation",
       "id": "feature_flag:in_app_dictation",
@@ -69921,7 +69921,7 @@
       "config_keys": [
         "features.in_app_local_automation"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "in_app_local_automation",
       "id": "feature_flag:in_app_local_automation",
@@ -71659,7 +71659,7 @@
       "config_keys": [
         "features.realtime_conversation"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "realtime_conversation",
       "id": "feature_flag:realtime_conversation",
