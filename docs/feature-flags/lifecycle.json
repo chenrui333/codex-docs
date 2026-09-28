@@ -172,6 +172,11 @@
     },
     {
       "enabled": false,
+      "key": "defer_mailbox_preemption",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "deferred_executor",
       "stage": "under development"
     },
@@ -271,9 +276,9 @@
       "stage": "under development"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "guardianv2.thread_context",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -746,12 +751,12 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "write_stdin_approval",
-      "stage": "under development"
+      "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.157.1",
+  "codex_cli_version": "codex-cli 0.158.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -761,7 +766,6 @@
       "content_item_kinds",
       "daemon_auto_start",
       "guardian_reuse_parent_compaction",
-      "guardianv2.thread_context",
       "image_generation",
       "mentions_v2",
       "multi_agent_v2",
@@ -775,7 +779,8 @@
       "unbounded_connection_retries",
       "unified_exec_tty",
       "view_image",
-      "worktrees"
+      "worktrees",
+      "write_stdin_approval"
     ],
     "actionable_stages": [
       "stable",
@@ -823,6 +828,7 @@
       "cwd_relative_turn_diffs",
       "daemon_auto_start",
       "default_mode_request_user_input",
+      "defer_mailbox_preemption",
       "deferred_executor",
       "deferred_tool_world_state",
       "elevated_windows_sandbox",
@@ -933,6 +939,7 @@
         "experimental_windows_sandbox",
         "external_migration",
         "guardian_ext",
+        "guardianv2.thread_context",
         "image_detail_original",
         "item_ids",
         "js_repl",
@@ -969,7 +976,6 @@
         "content_item_kinds",
         "daemon_auto_start",
         "guardian_reuse_parent_compaction",
-        "guardianv2.thread_context",
         "image_generation",
         "mentions_v2",
         "multi_agent_v2",
@@ -983,7 +989,8 @@
         "unbounded_connection_retries",
         "unified_exec_tty",
         "view_image",
-        "worktrees"
+        "worktrees",
+        "write_stdin_approval"
       ],
       "under development": [
         "agent_message_board",
@@ -1004,6 +1011,7 @@
         "current_time_reminder",
         "cwd_relative_turn_diffs",
         "default_mode_request_user_input",
+        "defer_mailbox_preemption",
         "deferred_executor",
         "deferred_tool_world_state",
         "enable_mcp_apps",
@@ -1041,8 +1049,7 @@
         "unified_image_budget",
         "use_agent_identity",
         "use_xaa",
-        "windows_sandbox_service",
-        "write_stdin_approval"
+        "windows_sandbox_service"
       ]
     },
     "stale_in_docs": [
@@ -1100,7 +1107,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "36650394c5b38c2990ccf2a3457165ca3e9d9726",
+  "source_commit": "064c6b8c737f5b41d171fdda80bd9ef10ad06eb3",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1379,6 +1386,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "defer_mailbox_preemption": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "deferred_executor": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1545,12 +1560,13 @@
       "stage_from_source": "under development"
     },
     "guardianv2.thread_context": {
-      "compatibility_flag": false,
-      "configurable": true,
-      "default_enabled": true,
-      "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "behavior_evidence": "Removed compatibility flag for always-on thread-owned Guardian context.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "always_on",
+      "stage_from_source": "removed"
     },
     "hooks": {
       "compatibility_flag": false,
@@ -2336,20 +2352,20 @@
     "write_stdin_approval": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "0d590b240bdbfeafacbe597a02e4bdce467f8850d597814f214184dfb89ee510",
-    "features_rs_sha256": "db6dad91fd2ea65d0c976c812be325c6109e97f6275410c6cfaae2d20a5cd3f9"
+    "client_rs_sha256": "360f2b1c4c8e9053ac6de965e4ba66d94eb2fd8aa89d4d69de9249821af76ef9",
+    "features_rs_sha256": "2c7ff67e2582bd30a4b6f20cdfbae234adfbc4cc7fb3e2f7cae08941bbd190de"
   },
-  "source_ref": "rust-v0.157.1",
+  "source_ref": "rust-v0.158.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/36650394c5b38c2990ccf2a3457165ca3e9d9726/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/36650394c5b38c2990ccf2a3457165ca3e9d9726/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/064c6b8c737f5b41d171fdda80bd9ef10ad06eb3/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/064c6b8c737f5b41d171fdda80bd9ef10ad06eb3/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

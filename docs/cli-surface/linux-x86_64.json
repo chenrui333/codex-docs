@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.157.1",
-  "codex_cli_version_raw": "codex-cli 0.157.1",
+  "codex_cli_version": "0.158.0",
+  "codex_cli_version_raw": "codex-cli 0.158.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -722,7 +722,7 @@
           "synopsis": "--analytics-default-enabled"
         },
         {
-          "description": "Websocket auth mode for non-loopback listeners [possible values: capability-token, signed-bearer-token]",
+          "description": "Authentication mode for incoming WebSocket connections [possible values: capability-token, signed-bearer-token]",
           "flags": [
             "--ws-auth"
           ],
@@ -2616,14 +2616,6 @@
           "synopsis": "--strict-config"
         },
         {
-          "description": "Maximum number of requests to process concurrently on each connection [default: 1]",
-          "flags": [
-            "--concurrent-requests"
-          ],
-          "primary_flag": "--concurrent-requests",
-          "synopsis": "--concurrent-requests <COUNT>"
-        },
-        {
           "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
           "flags": [
             "--disable"
@@ -2632,12 +2624,84 @@
           "synopsis": "--disable <FEATURE>"
         },
         {
+          "description": "Linux PID namespace: isolate (default) or inherit. Inherit allows signals to other same-UID processes; enable only when provisioning a dedicated environment [default: isolate]",
+          "flags": [
+            "--linux-sandbox-pid-namespace"
+          ],
+          "primary_flag": "--linux-sandbox-pid-namespace",
+          "synopsis": "--linux-sandbox-pid-namespace <MODE>"
+        },
+        {
+          "description": "Maximum number of requests to process concurrently on each connection [default: 1]",
+          "flags": [
+            "--concurrent-requests"
+          ],
+          "primary_flag": "--concurrent-requests",
+          "synopsis": "--concurrent-requests <COUNT>"
+        },
+        {
           "description": "Transport endpoint URL. Supported values: `ws://IP:PORT` (default), `stdio`, `stdio://`",
           "flags": [
             "--listen"
           ],
           "primary_flag": "--listen",
           "synopsis": "--listen <URL>"
+        },
+        {
+          "description": "Authentication mode for incoming WebSocket connections [possible values: capability-token, signed-bearer-token]",
+          "flags": [
+            "--ws-auth"
+          ],
+          "primary_flag": "--ws-auth",
+          "synopsis": "--ws-auth <MODE>"
+        },
+        {
+          "description": "Absolute path to the capability-token file",
+          "flags": [
+            "--ws-token-file"
+          ],
+          "primary_flag": "--ws-token-file",
+          "synopsis": "--ws-token-file <PATH>"
+        },
+        {
+          "description": "Hex-encoded SHA-256 digest of the capability token",
+          "flags": [
+            "--ws-token-sha256"
+          ],
+          "primary_flag": "--ws-token-sha256",
+          "synopsis": "--ws-token-sha256 <HEX>"
+        },
+        {
+          "description": "Absolute path to the shared secret file for signed JWT bearer tokens",
+          "flags": [
+            "--ws-shared-secret-file"
+          ],
+          "primary_flag": "--ws-shared-secret-file",
+          "synopsis": "--ws-shared-secret-file <PATH>"
+        },
+        {
+          "description": "Expected issuer for signed JWT bearer tokens",
+          "flags": [
+            "--ws-issuer"
+          ],
+          "primary_flag": "--ws-issuer",
+          "synopsis": "--ws-issuer <ISSUER>"
+        },
+        {
+          "description": "Expected audience for signed JWT bearer tokens",
+          "flags": [
+            "--ws-audience"
+          ],
+          "primary_flag": "--ws-audience",
+          "synopsis": "--ws-audience <AUDIENCE>"
+        },
+        {
+          "description": "Maximum clock skew when validating signed JWT bearer tokens",
+          "flags": [
+            "--ws-max-clock-skew-seconds"
+          ],
+          "primary_flag": "--ws-max-clock-skew-seconds",
+          "synopsis": "--ws-max-clock-skew-seconds <SECONDS>"
         },
         {
           "description": "Register this exec-server as a remote environment using the given base URL",
@@ -3330,9 +3394,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "36650394c5b38c2990ccf2a3457165ca3e9d9726",
+  "source_commit": "064c6b8c737f5b41d171fdda80bd9ef10ad06eb3",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.157.1",
+  "source_ref": "rust-v0.158.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
