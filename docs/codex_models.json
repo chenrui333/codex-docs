@@ -1,5 +1,5 @@
 {
-  "codex_cli_version": "0.159.0",
+  "codex_cli_version": "0.159.1",
   "models": [
     {
       "apply_patch_tool_type": "freeform",
@@ -77,7 +77,7 @@
       "minimal_client_version": "0.124.0",
       "multi_agent_reasoning_effort": null,
       "multi_agent_version": null,
-      "priority": 12,
+      "priority": 13,
       "service_tiers": [
         {
           "description": "1.5x speed, increased usage",
@@ -136,7 +136,7 @@
       "minimal_client_version": "0.144.0",
       "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v1",
-      "priority": 8,
+      "priority": 9,
       "service_tiers": [
         {
           "description": "1.5x speed, increased usage",
@@ -189,7 +189,7 @@
       "default_reasoning_level": "low",
       "default_service_tier": null,
       "default_verbosity": "low",
-      "description": "Older coding model for complex work.",
+      "description": "Older generation workhorse model.",
       "display_name": "GPT-5.6-Sol",
       "input_modalities": [
         "image",
@@ -199,7 +199,7 @@
       "minimal_client_version": "0.144.0",
       "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v2",
-      "priority": 4,
+      "priority": 5,
       "service_tiers": [
         {
           "description": "1.5x speed, increased usage",
@@ -266,7 +266,7 @@
       "minimal_client_version": "0.144.0",
       "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v2",
-      "priority": 7,
+      "priority": 8,
       "service_tiers": [
         {
           "description": "1.5x speed, increased usage",
@@ -333,7 +333,7 @@
       "minimal_client_version": "0.153.0",
       "multi_agent_reasoning_effort": "xhigh",
       "multi_agent_version": "v2",
-      "priority": 1,
+      "priority": 2,
       "service_tiers": [
         {
           "description": "2x speed, increased usage",
@@ -396,7 +396,7 @@
       "minimal_client_version": "0.155.0",
       "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v2",
-      "priority": 3,
+      "priority": 4,
       "service_tiers": [
         {
           "description": "1.5x speed",
@@ -445,7 +445,7 @@
       "default_reasoning_level": "medium",
       "default_service_tier": "priority",
       "default_verbosity": "low",
-      "description": "Workhorse model for coding and everyday work.",
+      "description": "Previous generation workhorse model.",
       "display_name": "GPT-6-Sol",
       "input_modalities": [
         "image",
@@ -455,7 +455,7 @@
       "minimal_client_version": "0.155.0",
       "multi_agent_reasoning_effort": null,
       "multi_agent_version": "v2",
-      "priority": 2,
+      "priority": 3,
       "service_tiers": [
         {
           "description": "1.5x speed",
@@ -508,6 +508,69 @@
       "default_reasoning_level": "low",
       "default_service_tier": null,
       "default_verbosity": "low",
+      "description": "Latest workhorse model for coding and everyday work.",
+      "display_name": "GPT-6.1-Sol",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "max_context_window": 872000,
+      "minimal_client_version": "0.153.0",
+      "multi_agent_reasoning_effort": "xhigh",
+      "multi_agent_version": "v2",
+      "priority": 1,
+      "service_tiers": [
+        {
+          "description": "2x speed, increased usage",
+          "id": "priority",
+          "name": "Fast"
+        }
+      ],
+      "shell_type": "shell_command",
+      "slug": "gpt-6.1-sol",
+      "support_verbosity": true,
+      "supported_in_api": true,
+      "supported_reasoning_levels": [
+        {
+          "description": "Balances speed and reasoning depth for everyday tasks",
+          "effort": "medium"
+        },
+        {
+          "description": "Extra high reasoning depth for complex problems",
+          "effort": "xhigh"
+        },
+        {
+          "description": "Fast responses with lighter reasoning",
+          "effort": "low"
+        },
+        {
+          "description": "Greater reasoning depth for complex problems",
+          "effort": "high"
+        },
+        {
+          "description": "Maximum reasoning depth for the hardest problems",
+          "effort": "max"
+        },
+        {
+          "description": "Maximum reasoning with automatic task delegation",
+          "effort": "ultra"
+        }
+      ],
+      "supports_image_detail_original": true,
+      "supports_parallel_tool_calls": true,
+      "supports_search_tool": true,
+      "tool_mode": "code_mode_only",
+      "upgrade": null,
+      "visibility": "list",
+      "web_search_tool_type": "text_and_image"
+    },
+    {
+      "apply_patch_tool_type": "freeform",
+      "auto_compact_token_limit": null,
+      "context_window": 272000,
+      "default_reasoning_level": "low",
+      "default_service_tier": null,
+      "default_verbosity": "low",
       "description": "Latest frontier agentic coding model for broad defensive cybersecurity work.",
       "display_name": "Daybreak Blue",
       "input_modalities": [
@@ -517,7 +580,7 @@
       "max_context_window": 872000,
       "minimal_client_version": "0.142.2",
       "multi_agent_version": "v2",
-      "priority": 10,
+      "priority": 11,
       "service_tiers": [],
       "shell_type": "shell_command",
       "slug": "gpt-daybreak-blue-latest",
@@ -573,7 +636,7 @@
       "max_context_window": 372000,
       "minimal_client_version": "0.142.2",
       "multi_agent_version": "v2",
-      "priority": 11,
+      "priority": 12,
       "service_tiers": [],
       "shell_type": "shell_command",
       "slug": "gpt-daybreak-red-latest",
@@ -615,8 +678,8 @@
     }
   ],
   "schema_version": 1,
-  "source_commit": "687a119f0fcaace47e1f1abcc77cec6c813fd6da",
+  "source_commit": "8e68a98ef03cdde76d2e6800791ebdf1b3b95b24",
   "source_kind": "release_bundled_model_catalog",
   "source_path": "codex-rs/models-manager/models.json",
-  "source_ref": "rust-v0.159.0"
+  "source_ref": "rust-v0.159.1"
 }

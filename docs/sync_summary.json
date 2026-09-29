@@ -2,26 +2,14 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-09-29T12:19:52+00:00",
-  "removed": [
-    "dot_codex/skills/dot_system/plugin-creator/SKILL.md",
-    "dot_codex/skills/dot_system/plugin-creator/agents/openai.yaml",
-    "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator-small.svg",
-    "dot_codex/skills/dot_system/plugin-creator/assets/plugin-creator.png",
-    "dot_codex/skills/dot_system/plugin-creator/references/installing-and-updating.md",
-    "dot_codex/skills/dot_system/plugin-creator/references/plugin-json-spec.md",
-    "dot_codex/skills/dot_system/plugin-creator/scripts/create_basic_plugin.py",
-    "dot_codex/skills/dot_system/plugin-creator/scripts/identifier_validation.py",
-    "dot_codex/skills/dot_system/plugin-creator/scripts/read_marketplace_name.py",
-    "dot_codex/skills/dot_system/plugin-creator/scripts/update_plugin_cachebuster.py",
-    "dot_codex/skills/dot_system/plugin-creator/scripts/validate_plugin.py"
-  ],
+  "generated_at": "2026-09-29T21:59:57+00:00",
+  "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
-    "codex_cli_release_ref": "rust-v0.159.0",
-    "codex_cli_source_commit": "687a119f0fcaace47e1f1abcc77cec6c813fd6da",
-    "codex_cli_version": "0.159.0",
-    "codex_cli_version_raw": "codex-cli 0.159.0",
+    "codex_cli_release_ref": "rust-v0.159.1",
+    "codex_cli_source_commit": "8e68a98ef03cdde76d2e6800791ebdf1b3b95b24",
+    "codex_cli_version": "0.159.1",
+    "codex_cli_version_raw": "codex-cli 0.159.1",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
     "sync_scope": "release"
@@ -33,7 +21,6 @@
     "codex_capabilities.json",
     "codex_cli_surface.json",
     "codex_models.json",
-    "dot_codex/skills/dot_system/dot_codex-system-skills.marker",
     "dot_codex/skills/dot_system/imagegen/SKILL.md",
     "dot_codex/skills/dot_system/imagegen/references/cli.md",
     "dot_codex/skills/dot_system/imagegen/references/codex-network.md",
@@ -79,7 +66,6 @@
     "github.openai.com/openai/codex/docs/open-source-fund.md",
     "github.openai.com/openai/codex/docs/sandbox.md",
     "github.openai.com/openai/codex/docs/skills.md",
-    "github.openai.com/openai/codex/docs/slash_commands.md",
-    "system_prompts/codex-cli/prompt-input.json"
+    "github.openai.com/openai/codex/docs/slash_commands.md"
   ]
 }
