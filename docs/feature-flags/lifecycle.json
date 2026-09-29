@@ -326,6 +326,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "instant_interrupt",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "item_ids",
       "stage": "removed"
@@ -756,7 +761,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.158.0",
+  "codex_cli_version": "codex-cli 0.159.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -849,6 +854,7 @@
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
+      "instant_interrupt",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
@@ -1023,6 +1029,7 @@
         "guardian_node_repl_transcript_images",
         "guardianv2",
         "image_resize_notice",
+        "instant_interrupt",
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "mcp_oauth_refresh_coordination",
@@ -1107,7 +1114,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "064c6b8c737f5b41d171fdda80bd9ef10ad06eb3",
+  "source_commit": "687a119f0fcaace47e1f1abcc77cec6c813fd6da",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1640,6 +1647,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
+    },
+    "instant_interrupt": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "item_ids": {
       "behavior_evidence": "Removed compatibility flag for always-on response item IDs.",
@@ -2359,13 +2374,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "360f2b1c4c8e9053ac6de965e4ba66d94eb2fd8aa89d4d69de9249821af76ef9",
-    "features_rs_sha256": "2c7ff67e2582bd30a4b6f20cdfbae234adfbc4cc7fb3e2f7cae08941bbd190de"
+    "client_rs_sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c",
+    "features_rs_sha256": "4c702a9479fdbf955b0640f8d52e327dff5cc273c0e9587f29f62e5cbbcd59aa"
   },
-  "source_ref": "rust-v0.158.0",
+  "source_ref": "rust-v0.159.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/064c6b8c737f5b41d171fdda80bd9ef10ad06eb3/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/064c6b8c737f5b41d171fdda80bd9ef10ad06eb3/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/687a119f0fcaace47e1f1abcc77cec6c813fd6da/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/687a119f0fcaace47e1f1abcc77cec6c813fd6da/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

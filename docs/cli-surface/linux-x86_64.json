@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.158.0",
-  "codex_cli_version_raw": "codex-cli 0.158.0",
+  "codex_cli_version": "0.159.0",
+  "codex_cli_version_raw": "codex-cli 0.159.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -2632,6 +2632,14 @@
           "synopsis": "--linux-sandbox-pid-namespace <MODE>"
         },
         {
+          "description": "Allow permitted private IP destinations to use the configured upstream proxy. If no valid upstream proxy applies to the request protocol, connect directly. Loopback stays local. This flag does not require upstream routing [env: CODEX_EXEC_SERVER_PROXY_PRIVATE_IPS_VIA_UPSTREAM=]",
+          "flags": [
+            "--proxy-private-ips-via-upstream"
+          ],
+          "primary_flag": "--proxy-private-ips-via-upstream",
+          "synopsis": "--proxy-private-ips-via-upstream"
+        },
+        {
           "description": "Maximum number of requests to process concurrently on each connection [default: 1]",
           "flags": [
             "--concurrent-requests"
@@ -3394,9 +3402,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "064c6b8c737f5b41d171fdda80bd9ef10ad06eb3",
+  "source_commit": "687a119f0fcaace47e1f1abcc77cec6c813fd6da",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.158.0",
+  "source_ref": "rust-v0.159.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
