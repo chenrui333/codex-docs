@@ -196,7 +196,7 @@ Bedrock model with `--model`:
 ```bash
 npx @openai/codex-security scan . \
   --provider amazon-bedrock \
-  --model openai.gpt-5.6-sol
+  --model openai.gpt-5.6-terra
 ```
 
 Set `AWS_REGION` and authenticate with `AWS_BEARER_TOKEN_BEDROCK`, standard AWS
@@ -427,17 +427,19 @@ Codex configuration value.
 | `--python PATH`                                           | Select the Python interpreter for the plugin runtime.                                                    |
 | `--codex KEY=VALUE`                                       | Override an isolated Codex configuration value. Values use TOML syntax. Repeat the flag for more values. |
 
-To select a different model and reasoning effort without writing TOML:
+To select a different model and reasoning effort without writing TOML, choose a
+model your credentials can access. If you use ChatGPT sign-in, check [GPT-6.1
+Sol availability](https://learn.chatgpt.com/docs/models#gpt-6.1-sol) before using these examples:
 
 ```bash
-npx @openai/codex-security scan . --model gpt-6-sol --effort medium
+npx @openai/codex-security scan . --model gpt-6.1-sol --effort medium
 ```
 
 Quote string values passed through `--codex` so the TOML parser receives a
 string:
 
 ```bash
-npx @openai/codex-security scan . --codex 'model="gpt-6-sol"'
+npx @openai/codex-security scan . --codex 'model="gpt-6.1-sol"'
 ```
 
 ## `codex-security install-hook`
@@ -482,10 +484,12 @@ usage: codex-security bulk-scan [input] [--output-dir DIR]
 Run `npx @openai/codex-security bulk-scan` without arguments to select
 repositories interactively. This flow requires a GitHub CLI sign-in.
 
-To choose a model and reasoning effort during interactive discovery:
+To choose a model and reasoning effort during interactive discovery, use a model
+your credentials can access. See [GPT-6.1 Sol availability with ChatGPT
+sign-in](https://learn.chatgpt.com/docs/models#gpt-6.1-sol):
 
 ```bash
-npx @openai/codex-security bulk-scan --model gpt-6-sol --effort medium
+npx @openai/codex-security bulk-scan --model gpt-6.1-sol --effort medium
 ```
 
 For a prepared repository list, provide a CSV and `--output-dir`:

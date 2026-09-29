@@ -138,21 +138,22 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
         "Opt-in macOS feature that builds memories and a timeline from interaction events across allowed apps and websites.",
     },
     {
-      key: "Cloud",
+      key: "Codex Cloud",
       href: "/codex/cloud",
       appliesTo: "Desktop app, IDE extension, Web",
       description:
-        "Mode where Codex works remotely in an OpenAI-managed environment.",
+        "Coding tasks that run in the cloud with their own workspaces, repositories, and tools.",
     },
     {
       key: "Cloud environment",
-      href: "/codex/environments/cloud-environment",
+      href: "/codex/environments/cloud-environments",
       appliesTo: "Cloud",
-      description: "Configured container setup used for Codex cloud chats.",
+      description:
+        "Reusable repositories, dependencies, tools, and access settings for tasks in Codex Cloud.",
     },
     {
       key: "Cloud chat",
-      href: "/codex/environments/cloud-environment#how-codex-cloud-tasks-run",
+      href: "/codex/environments/cloud-environments#how-codex-cloud-tasks-run",
       appliesTo: "Cloud",
       description: "A Codex chat that runs remotely in a cloud environment.",
     },
@@ -182,13 +183,6 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
       appliesTo: "Terminal",
       description:
         "Terminal client for running Codex interactively or in scripts.",
-    },
-    {
-      key: "Codex cloud",
-      href: "/codex/cloud",
-      appliesTo: "Web, Desktop app, IDE extension",
-      description:
-        "OpenAI-managed execution environment where Codex can work on repository tasks remotely.",
     },
     {
       key: "codex exec",
@@ -266,13 +260,6 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
         "The ongoing exchange of messages and shared context between a person and ChatGPT or Codex within a chat.",
     },
     {
-      key: "Container cache",
-      href: "/codex/environments/cloud-environment#container-caching",
-      appliesTo: "Cloud",
-      description:
-        "Saved cloud container state reused to speed up future cloud chats.",
-    },
-    {
       key: "Context",
       href: "/codex/prompting#context",
       appliesTo: "Desktop app, CLI, IDE extension, Cloud, SDK",
@@ -309,10 +296,10 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
     },
     {
       key: "Domain allowlist",
-      href: "/codex/cloud/internet-access#domain-allowlist",
+      href: "/codex/environments/cloud-environments#connect-to-services",
       appliesTo: "Cloud",
       description:
-        "Set of domains Codex cloud can reach when agent internet access is enabled.",
+        "Set of domains allowed by a Codex Cloud environment’s network policy.",
     },
     {
       key: "Environment (local)",
@@ -323,7 +310,7 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
     },
     {
       key: "Environment variable",
-      href: "/codex/environments/cloud-environment#environment-variables-and-secrets",
+      href: "/codex/environments/cloud-environments#environment-variables-and-secrets",
       appliesTo: "Cloud, CLI, IDE extension",
       description:
         "Runtime configuration value available during task execution.",
@@ -424,12 +411,6 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
       href: "/codex/environments/modes",
       appliesTo: "Desktop app, CLI, IDE extension",
       description: "A ChatGPT or Codex chat that runs on the user's machine.",
-    },
-    {
-      key: "Maintenance script",
-      href: "/codex/environments/cloud-environment#container-caching",
-      appliesTo: "Cloud",
-      description: "Optional script run when a cached cloud container resumes.",
     },
     {
       key: "Managed configuration",
@@ -657,11 +638,11 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
       description: "The timing rule for a scheduled task.",
     },
     {
-      key: "Secret",
-      href: "/codex/environments/cloud-environment#environment-variables-and-secrets",
-      appliesTo: "Cloud",
+      key: "Network secret",
+      href: "/codex/environments/cloud-environments#environment-variables-and-secrets",
+      appliesTo: "Codex Cloud",
       description:
-        "Encrypted value available to setup scripts but removed before the agent phase.",
+        "A credential for a specific HTTPS service. Programs receive a placeholder; the proxy substitutes the credential for allowed destinations during setup and tasks.",
     },
     {
       key: "Setup script",
@@ -764,13 +745,6 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
       appliesTo: "Desktop app, CLI, IDE extension, Cloud, SDK",
       description:
         "One exchange in a chat, usually a user prompt plus the agent's response and actions.",
-    },
-    {
-      key: "Universal image",
-      href: "/codex/environments/cloud-environment#default-universal-image",
-      appliesTo: "Cloud",
-      description:
-        "Default Codex cloud container image with common tools preinstalled.",
     },
     {
       key: "Web search cache",

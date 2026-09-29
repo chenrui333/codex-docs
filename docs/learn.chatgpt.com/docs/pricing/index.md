@@ -20,6 +20,11 @@ GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on
 October 14, 2026. The OpenAI API isn't affected. See
 [GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement) for migration guidance.
 
+See [token rates](#token-rates) for credit-based plans and
+[GPT-6.1 Sol model guidance](https://learn.chatgpt.com/docs/models#gpt-61-sol) for model details.
+API token prices are separate from subscription usage; don't use them to
+estimate included tasks.
+
 <h2 class="sr-only">Pricing options</h2>
 
 <ContentSwitcher
@@ -77,18 +82,20 @@ October 14, 2026. The OpenAI API isn't affected. See
       </PricingCard>
       <PricingCard
         name="Pro"
-        subtitle="Choose 5x or 20x higher rate limits than Plus."
+        subtitle="Choose the Pro plan that fits your usage."
         priceEyebrow="From"
         price="$100"
         interval="/month"
         ctaLabel="Get Pro"
         ctaHref="https://chatgpt.com/explore/pro?utm_internal_source=openai_developers_codex"
         highlight="Everything in Plus and:"
-        footnoteLabel="*Learn more about limits on both tiers."
+        footnoteLabel="Compare Pro plans and usage limits."
         footnoteHref="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans"
       >
 
-        - 5x or 20x more Codex usage than Plus*
+        - Plans at $100, $200, or $500 USD per month
+        - [Astra Ultrafast](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode)
+          access on Pro $500
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
 
@@ -184,11 +191,7 @@ limits, and when rewards expire for your plan or promotion. Personal and
 Business referral programs have separate rewards and eligibility rules.
 Referrals aren't currently available for ChatGPT Enterprise.
 
-From June 11 through June 24, 2026, eligible Plus and Pro users can invite up to
-three friends. When an eligible recipient sends their first Codex message, both
-people receive a banked rate-limit reset. Banked rate-limit resets are usable for
-30 days after they're granted. Business referrals use separate shared-workspace
-credit rewards; review the
+Business referrals use separate shared-workspace credit rewards; review the
 [current terms](https://help.openai.com/en/articles/20001271) before you send an
 invitation.
 
@@ -208,13 +211,14 @@ so prompt length alone isn't a reliable estimate.
 
 For model recommendations, see [Models](https://learn.chatgpt.com/docs/models).
 
-The estimates below show local messages per five-hour period. Cloud chats on
-ChatGPT plans use GPT-5.6 Sol and may use more of your allowance than local
-messages. These estimates are not fixed message limits; check your
+The estimates below show local messages per five-hour period for Plus and
+Standard Business. Pro plans currently have no five-hour limit. Cloud tasks
+may use more of your allowance than local messages. Usage depends on the model
+and task. These estimates are not fixed message limits; check your
 [usage dashboard](#where-can-i-see-my-current-usage-limits) for current limits
 and reset times.
 
-<TableWrapper class="w-full min-w-[46rem]">
+<TableWrapper class="w-full">
   <thead class="whitespace-nowrap">
     <tr>
       <th scope="col">Model</th>
@@ -222,16 +226,7 @@ and reset times.
         Plus
       </th>
       <th scope="col" style="text-align:center">
-        Pro 5x
-      </th>
-      <th scope="col" style="text-align:center">
-        Pro 20x
-      </th>
-      <th scope="col" style="text-align:center">
         Standard Business
-      </th>
-      <th scope="col" style="text-align:center">
-        API Key
       </th>
     </tr>
   </thead>
@@ -239,109 +234,35 @@ and reset times.
     <tr>
       <td>GPT-6 Astra</td>
       <td style="text-align:center">5-45</td>
-      <td style="text-align:center">25-225</td>
-      <td style="text-align:center">100-900</td>
-      <td style="text-align:center">5-45</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
+    </tr>
+    <tr>
+      <td>GPT-6.1 Sol</td>
+      <td style="text-align:center">15-160</td>
     </tr>
     <tr>
       <td>GPT-6 Sol</td>
       <td style="text-align:center">15-150</td>
-      <td style="text-align:center">70-700</td>
-      <td style="text-align:center">300-3,000</td>
-      <td style="text-align:center">15-150</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
     </tr>
     <tr>
       <td>GPT-6 Luna</td>
       <td style="text-align:center">350-3,000</td>
-      <td style="text-align:center">1,750-14,000</td>
-      <td style="text-align:center">7,000-56,000</td>
-      <td style="text-align:center">350-3,000</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
-    </tr>
-    <tr>
-      <td>GPT-5.6 Sol</td>
-      <td style="text-align:center">10-100</td>
-      <td style="text-align:center">50-500</td>
-      <td style="text-align:center">200-2,000</td>
-      <td style="text-align:center">10-100</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
-    </tr>
-    <tr>
-      <td>GPT-5.6 Terra</td>
-      <td style="text-align:center">25-200</td>
-      <td style="text-align:center">125-1,000</td>
-      <td style="text-align:center">500-4,000</td>
-      <td style="text-align:center">25-200</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
-    </tr>
-    <tr>
-      <td>GPT-5.6 Luna</td>
-      <td style="text-align:center">250-2,000</td>
-      <td style="text-align:center">1,250-10,000</td>
-      <td style="text-align:center">5,000-40,000</td>
-      <td style="text-align:center">250-2,000</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
-    </tr>
-    <tr>
-      <td>GPT-5.5</td>
-      <td style="text-align:center">15-80</td>
-      <td style="text-align:center">75-400</td>
-      <td style="text-align:center">300-1,600</td>
-      <td style="text-align:center">15-80</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
-    </tr>
-    <tr>
-      <td>GPT-5.4</td>
-      <td style="text-align:center">20-100</td>
-      <td style="text-align:center">100-500</td>
-      <td style="text-align:center">400-2,000</td>
-      <td style="text-align:center">20-100</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
-    </tr>
-    <tr>
-      <td>GPT-5.4 mini</td>
-      <td style="text-align:center">60-350</td>
-      <td style="text-align:center">300-1,750</td>
-      <td style="text-align:center">1,200-7,000</td>
-      <td style="text-align:center">60-350</td>
-      <td style="text-align:center">
-        [Usage-based](https://platform.openai.com/docs/pricing)
-      </td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="6" style="text-align:center">
+      <td colspan="3" style="text-align:center">
         Local messages and cloud chats share your plan's usage allowance. Weekly
         limits may also apply.
       </td>
     </tr>
     <tr>
-      <td colspan="6" style="text-align:center">
-        For Enterprise/Edu users with flexible pricing, there are no fixed rate
-        limits—usage scales with [credits](#credits-overview).
+      <td colspan="3" style="text-align:center">
+        Enterprise/Edu users with flexible pricing have no fixed rate limits.
+        Usage scales with [credits](#credits-overview).
       </td>
     </tr>
     <tr>
-      <td colspan="6" style="text-align:center">
+      <td colspan="3" style="text-align:center">
         Enterprise and Edu plans without flexible pricing have the same per-seat
         usage limits as Plus for most features.
       </td>
@@ -349,17 +270,29 @@ and reset times.
   </tfoot>
 </TableWrapper>
 
-Business ($100) uses the Pro 5x estimates.
-
 Usage limits are shared with other agentic features once pricing for those
 features is effective. This currently includes [ChatGPT for
 Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
 
-Speed configurations increase credit consumption for all applicable models, so
-they also use included limits faster. Fast mode consumes credits at a higher
-rate for supported models. See [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for supported models and
-rates. Image generations also use included limits ~3-5x faster on average,
-depending on image quality and size.
+Fast and Ultrafast modes use included subscription limits and paid credits
+at different rates, relative to Standard mode for the same model:
+
+| Speed mode            | Included subscription usage | Purchased credits and Enterprise pay-as-you-go usage |
+| --------------------- | --------------------------- | ---------------------------------------------------- |
+| Fast                  | 2.5x                        | 2x                                                   |
+| GPT-6 Astra Ultrafast | 8x                          | 6x                                                   |
+
+These billing multipliers don't describe speed increases. Credit rates
+alone don't determine how quickly you use included subscription limits;
+check your [usage dashboard](#where-can-i-see-my-current-usage-limits) for
+current limits and reset times. See [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)
+for supported models and how speed modes affect usage.
+
+Image generations use included limits ~3-5x faster on average, depending on
+image quality and size.
+
+For GPT-6 Astra Ultrafast eligibility, billing, and administrator controls,
+see [Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode).
 
 ### How much does Sites cost?
 
@@ -372,7 +305,7 @@ Voice in Desktop uses your existing Codex usage budget at $0.05 per
 minute.
 
 GPT-Live manages the live conversation. The model handling your task is billed
-separately at its standard token rates. Voice and tasks share your plan's usage
+separately at its applicable token rates. Voice and tasks share your plan's usage
 limits.
 
 For Business, Edu, and Enterprise workspaces with credit-based billing, desktop
@@ -472,6 +405,12 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">1,250 credits</td>
       </tr>
       <tr>
+        <td>GPT-6.1 Sol</td>
+        <td style="text-align:center">50 credits</td>
+        <td style="text-align:center">2.5 credits</td>
+        <td style="text-align:center">250 credits</td>
+      </tr>
+      <tr>
         <td>GPT-6 Sol</td>
         <td style="text-align:center">50 credits</td>
         <td style="text-align:center">5 credits</td>
@@ -526,18 +465,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">750 credits</td>
       </tr>
       <tr>
-        <td>GPT-5.4</td>
-        <td style="text-align:center">62.50 credits</td>
-        <td style="text-align:center">6.250 credits</td>
-        <td style="text-align:center">375 credits</td>
-      </tr>
-      <tr>
-        <td>GPT-5.4 mini</td>
-        <td style="text-align:center">18.75 credits</td>
-        <td style="text-align:center">1.875 credits</td>
-        <td style="text-align:center">113 credits</td>
-      </tr>
-      <tr>
         <td>GPT-Image-2 (image)</td>
         <td style="text-align:center">200 credits</td>
         <td style="text-align:center">50 credits</td>
@@ -553,15 +480,17 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
     <tfoot>
       <tr>
         <td colspan="4" style="text-align:center">
-          GPT-5.6 usage averages 5-30 credits per message.
+          A typical GPT-5.6 Sol task may use 5-30 credits.
         </td>
       </tr>
       <tr>
         <td colspan="4" style="text-align:center">
-          Fast mode uses 2.5x the Standard credit rate for GPT-6 Astra, Sol, and
-          Luna where available. See
-          [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for details and
-          other models.
+          These are Standard credit rates. For purchased credits and Enterprise
+          pay-as-you-go usage, Fast mode uses 2x the Standard rate where
+          available, and GPT-6 Astra Ultrafast uses 6x. Included subscription
+          usage has different multipliers. See
+          [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for availability
+          and billing details.
         </td>
       </tr>
       <tr>
@@ -587,15 +516,16 @@ For Business and Enterprise/Edu credit billing, use the [credit-based rate card]
 
 ### What counts as Code Review usage?
 
-Code Review usage applies only when Codex runs reviews through GitHub—for
+Code Review usage applies only when Codex runs reviews through GitHub, for
 example, when you tag `@Codex` for review in a pull request or enable automatic
 reviews on your repository. Reviews run locally or outside of GitHub count
 toward your general usage limits.
 
 ### What can I do to make my usage limits last longer?
 
-The usage limits and credits above are average rates. You can try the following
-tips to maximize your limits:
+The local-message counts above are estimates; the token table lists credit
+rates per million tokens. To make your usage allowance last longer, try these
+tips:
 
 - **Control the size of your prompts.** Be precise with the instructions you
   give the agent, but remove unnecessary context.
@@ -749,6 +679,17 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
               plus: "available",
               pro: "available",
               business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "Astra Ultrafast (Pro $500 and eligible Enterprise/Edu plans)",
+            href: "/codex/agent-configuration/speed#ultrafast-mode",
+            availability: {
+              plus: "unavailable",
+              pro: "available",
+              business: "unavailable",
               enterprise: "available",
               api: "available",
             },
@@ -1145,8 +1086,8 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
             name: "Sites",
             href: "/codex/sites",
             availability: {
-              plus: "unavailable",
-              pro: "unavailable",
+              plus: "available",
+              pro: "available",
               business: "available",
               enterprise: "available",
               api: "unavailable",

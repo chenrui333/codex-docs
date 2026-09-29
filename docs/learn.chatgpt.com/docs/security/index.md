@@ -20,12 +20,12 @@ repositories.
 
 <CtaPillLink
   href="https://chatgpt.com/plugins/share/676aca3811d54fa7bcdef5255236b3c4"
-  label="Install plugin in ChatGPT"
+  label="Install local Security plugin"
   icon="external"
   class="mb-8 mt-2"
 />
 
-For a prescriptive first local scan, start with the [Codex Security plugin
+For your first local scan, start with the [Codex Security plugin
 quickstart](https://learn.chatgpt.com/docs/security/plugin).
 
 ## Use Codex Security in the desktop app
@@ -55,9 +55,9 @@ complete desktop-app workflow.
 - [See what's new](https://learn.chatgpt.com/docs/security/plugin/changelog) in the Codex Security plugin.
 
 The desktop Security workbench and Codex CLI use the Codex Security plugin.
-  Codex Security cloud scans connected GitHub repositories through Codex cloud.
-  For Codex sandboxing, approvals, network controls, and admin settings, see
-  [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security).
+  The separate Codex Security Cloud plugin scans connected GitHub repositories
+  in Codex cloud. For Codex sandboxing, approvals, network controls, and admin
+  settings, see [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security).
 
 ## Codex Security CLI and SDK
 
@@ -92,33 +92,39 @@ into an application or developer tool.
 - [Integrate the TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) to select targets,
   inspect results, track progress, and cancel scans from code.
 
-## Codex Security cloud
+## Codex Security Cloud
 
-Codex Security cloud is currently in research preview. It scans connected
-GitHub repositories for likely security issues.
+Codex Security Cloud is a plugin for scanning connected GitHub repositories
+in Codex cloud. It's available in research preview on the web and in the
+desktop app.
 
-It helps teams:
+Open **Plugins** to find and install **Codex Security Cloud**. Follow
+[Cloud setup](https://learn.chatgpt.com/docs/security/setup) to connect GitHub and start your first scan.
 
-1. **Find likely vulnerabilities** by using a repo-specific threat model and real code context.
-2. **Reduce noise** by validating findings before you review them.
-3. **Move findings toward fixes** with ranked results, evidence, and suggested patch options.
+<CtaPillLink
+  href="https://chatgpt.com/plugins"
+  label="Find Codex Security Cloud"
+  icon="external"
+  class="my-8"
+/>
 
-## How Codex Security cloud works
+## How Codex Security Cloud works
 
-Codex Security scans connected repositories commit by commit.
-It builds scan context from your repo, checks likely vulnerabilities against that context, and validates high-signal issues in an isolated environment before surfacing them.
+Choose a **Repository** scan to review a repository once, or **Commit changes**
+to monitor new commits. Codex uses repository context to identify likely
+vulnerabilities and validates issues in an isolated environment when possible.
 
-You get a workflow focused on:
+Use **Scans** to follow progress, **Findings** to review issues, and
+**Repositories** to manage monitoring. Review proposed patches before
+creating a pull request.
 
-- repo-specific context instead of generic signatures
-- validation evidence that helps reduce false positives
-- suggested fixes you can review in GitHub
+## Codex Security Cloud access and prerequisites
 
-## Codex Security cloud access and prerequisites
+Use a workspace with Codex Security Cloud access, a connected GitHub
+repository, and a compatible Codex cloud environment. You can connect GitHub
+and create an environment during scan setup.
 
-Codex Security cloud works with connected GitHub repositories through Codex
-cloud. If a repository isn't visible, confirm the repository is available in your
-Codex cloud workspace or contact your OpenAI account team.
+If access is unavailable, check with your workspace administrator.
 
 ## Related docs
 
@@ -128,7 +134,7 @@ Codex cloud workspace or contact your OpenAI account team.
 - [Run bulk security scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans) explains GitHub discovery, CSV inventories, campaign results, and resume behavior.
 - [Codex Security CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq) answers common questions about scans, findings, coverage, and costs.
 - [Codex Security TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) explains how to run scans from an application or developer tool.
-- [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup) details setup, scanning, and findings review.
+- [Codex Security Cloud setup](https://learn.chatgpt.com/docs/security/setup) details setup, scanning, and findings review.
 - [Security Review](https://learn.chatgpt.com/docs/security/security-review) explains how to run in-depth security reviews on GitHub pull requests.
 - [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model) explains how to tune scope, entry points, and criticality assumptions.
-- [Codex Security cloud FAQ](https://learn.chatgpt.com/docs/security/faq) covers common cloud product questions.
+- [Codex Security Cloud FAQ](https://learn.chatgpt.com/docs/security/faq) covers common cloud product questions.

@@ -173,16 +173,18 @@ CI](https://learn.chatgpt.com/docs/security/cli/ci).
 ## Choose a model and reasoning effort
 
 Scans use `gpt-5.6-sol` with `xhigh` reasoning effort by default. Select a
-different model and effort when the task requires them:
+different model and effort when the task requires them. Choose a model your
+credentials can access. If you use ChatGPT sign-in, check [GPT-6.1 Sol
+availability](https://learn.chatgpt.com/docs/models#gpt-6.1-sol) before using this example:
 
 ```bash
 npx @openai/codex-security scan "$REPOSITORY" \
-  --model gpt-6-sol \
+  --model gpt-6.1-sol \
   --effort medium
 ```
 
-Supported effort levels are `minimal`, `low`, `medium`, `high`, `xhigh`, and
-`max`.
+Available effort levels depend on the selected model. The CLI supports `minimal`,
+`low`, `medium`, `high`, `xhigh`, and `max`; GPT-6.1 Sol requires at least `low`.
 
 ## Review the results
 

@@ -327,6 +327,11 @@ Your new plugin starts private. Test it, then share it with the people who need 
     **
       Follow the migration steps, then review and install your plugin.
     **
+
+      This video shows an earlier app interface. In the current app, select
+      **Customize**, then **Plugins**, in the left
+      navigation to find your plugins.
+
   </figcaption>
 </figure>
 

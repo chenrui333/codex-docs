@@ -19,6 +19,110 @@ resources, and connected systems; use approved tools; and create review-ready
 outputs. Access, context, actions, network behavior, and credit use vary by
 plan, workspace settings, source permissions, and surface.
 
+    {"For general usage and availability, see "}
+    [{"ChatGPT Work and Codex"}](https://help.openai.com/articles/20001275)
+    {" in the Help Center."}
+
+## Work across devices
+
+<a id="what-does-work-sync-enable"></a>
+
+<span
+  id="what-does-local-computer-access-enable"
+  data-localization-body-anchor
+/>
+
+### What does Local computer access with Work Cloud enable?
+
+Eligible members can continue a Work conversation across desktop, mobile, and web. Tasks using Local computer access with Work Cloud use cloud coordination. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. Individual steps can still execute in the cloud or use approved resources on a connected computer.
+
+For example, a person can start work with an approved local folder on a laptop, then give follow-up instructions from their phone. Steps that need the laptop still require it to be online and connected.
+
+### How do we enable it?
+
+To enable this feature for the intended users:
+
+1. Enable Work Cloud for the intended users. **Allow local computer access** is nested under Work Cloud. You do not need to enable **Use Codex locally on the ChatGPT desktop app**.
+
+1. Review the cloud policy baseline in **Agent Security**.
+
+1. As a workspace owner, open Workspace settings > Permissions & roles and enable **Allow local computer access**. Complete any policy review and consent steps shown for your workspace. Policy migration can happen before setup. Review policies before rollout; creating policies is not required in the access confirmation flow. See [Local computer access for Work Cloud and dots](https://learn.chatgpt.com/docs/enterprise/cloud-local-access) for separate setup and eligibility requirements.
+
+If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots.
+
+<span
+  id="can-we-enable-sync-if-our-policies-are-delivered-only-through-mdm"
+  data-localization-body-anchor
+/>
+
+### Can we use this feature if our policies are delivered only through MDM?
+
+Prepare Agent Security policy for supported enterprise requirements during local execution. With Local computer access with Work Cloud enabled, Work cloud containers do not enforce these requirements. MDM delivers requirements to devices.
+
+For local execution, MDM and legacy managed-device requirements rank above Agent Security. The device's system requirements file ranks below Agent Security. This local policy order does not extend enterprise requirement enforcement to Work cloud containers. Work cloud containers continue to use existing Work Cloud policies.
+
+### What if we already use cloud policies?
+
+Use Agent Security in the Admin Console to manage policies and configuration. It replaces Policies & Configuration. Agent Security will be available to everyone, independently of Local computer access with Work Cloud.
+
+Existing policies, assignments, and ordering are preserved. Review your existing policies in Agent Security. Local computer access with Work Cloud is a separate opt-in. See [Agent Security](https://learn.chatgpt.com/docs/enterprise/agent-security) for migration guidance.
+
+Use the policy API to manage Global settings. To manage Local or Codex Cloud settings, use the Agent Security UI. Existing Global API workflows remain available after migration. Test your scripts and Terraform integrations, and confirm that policy assignments and ordering are unchanged.
+
+<span
+  id="which-hooks-are-supported-in-synced-work"
+  data-localization-body-anchor
+/>
+
+### Which hooks are supported in Local computer access with Work Cloud?
+
+When managed policy and remote hooks are enabled, Work Cloud with local access and dots use admin-managed remote MCP hooks on the cloud orchestrator. Configure `mcp_tool` handlers in Global `requirements.toml`. Work Cloud without local access and personal accounts do not use these enterprise hooks. Command/shell, prompt, and agent handlers; hooks from local configuration, plugins, or local directories; environment-scoped hooks; and `SessionEnd` MCP hooks are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
+
+Before relying on these hooks, test callback connectivity, required events, and failure behavior. An explicit supported denial can block an action, but a `PreToolUse` callback error, timeout, or malformed response can fail the hook without blocking the tool. MCP hooks do not provide a complete Compliance API audit trail.
+
+### Which policy takes priority?
+
+Within a given policy, the order from highest to lowest is OS-specific environment override → all-OS environment override → Global. A higher-priority policy still wins over a lower-priority policy, even when the lower-priority policy is more specific. Some requirements have field-specific merge rules.
+
+For local execution, MDM and legacy managed-device requirements rank above Agent Security. The device's system requirements file ranks below Agent Security.
+
+For Local computer access with Work Cloud, the new enterprise `requirements.toml` configuration applies to local executors. It does not replace existing Work Cloud policies. Managed HTTP/SOCKS listener ports and non-loopback proxy listeners are unsupported by the cloud runtime; socket-rule support depends on the execution path.
+
+### Which Agent Security requirements apply to Work Cloud?
+
+For Work with local access and dots, supported Global policy applies through the shared cloud orchestrator when managed policy is enabled. Applicable local `requirements.toml` requirements govern execution on a connected computer. Work cloud containers and dots cloud computers use their own execution configuration and requirements, rather than the managed environment bundle used by other executor types. Local execution restrictions do not automatically apply to these cloud computers. Review cloud capability permissions and test local and cloud execution separately.
+
+Keep orchestrator controls, including approvals and web search, in Global. Use the dedicated Allowed approval policies and Allowed web search modes controls where available, and TOML for other supported fields. See the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the field list and execution scope.
+
+### What happens if the local computer is unavailable?
+
+Keep the computer online and connected for steps that need its local files or tools. If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn.
+
+<a id="what-happens-if-an-admin-turns-work-sync-off"></a>
+
+<span
+  id="what-happens-if-an-admin-turns-local-computer-access-off"
+  data-localization-body-anchor
+/>
+
+### What happens if an admin turns Local computer access with Work Cloud off?
+
+Turning off sync interrupts any currently running turn. Users can send a new message to start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files.
+
+Turning off sync does not change data-retention or deletion policies.
+
+### What happens to existing chats and tasks in projects when sync is turned on?
+
+Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
+
+### Does this change Codex?
+
+No. Local computer access with Work Cloud does not change Codex's existing configuration behavior, and conversations using this feature do not appear in Codex history.
+
+### Is sync suitable for a ZDR deployment?
+
+No. Local computer access with Work Cloud does not provide strict zero data retention. Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations. Enterprise Key Management (EKM) covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. Running a step on a connected computer does not make the workflow a ZDR deployment.
+
 ## Overview
 
 ChatGPT Work lets users delegate longer, multi-step tasks to ChatGPT. It can gather
@@ -34,9 +138,7 @@ network controls further restrict Work Cloud, and availability depends on role,
 plan, workspace, and region. See
 [ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex).
 
-This FAQ explains how admins manage ChatGPT Work: access and data controls,
-compliance and visibility, usage and spend, incident response, and rollout
-practices. For the hosted execution model and security boundaries, see
+For the hosted execution model and security boundaries, see
 [ChatGPT Work Overview](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview).
 
 ## Core administrative controls
@@ -174,27 +276,13 @@ permissions and security controls.
 
 ### How does ChatGPT Work support enterprise privacy and data commitments?
 
-ChatGPT Work uses the privacy, security, and data commitments applicable to the
-customer's ChatGPT workspace, subject to plan, configuration, surface, feature,
-and region. For ChatGPT Enterprise, this includes
-[no training on business data by default](https://help.openai.com/en/articles/8983130-what-if-i-want-to-keep-my-history-on-but-disable-model-training),
-encryption in transit and at rest, workspace-level access controls, and
-supported audit logging.
+ChatGPT Work uses the privacy, security, and data commitments applicable to the customer's ChatGPT workspace, subject to plan, configuration, surface, feature, and region. For ChatGPT Enterprise, this includes [no training on business data by default](https://help.openai.com/en/articles/8983130-what-if-i-want-to-keep-my-history-on-but-disable-model-training), encryption in transit and at rest, workspace-level access controls, and supported audit logging.
 
-Coverage for data residency, inference residency, HIPAA, or a Business Associate
-Agreement isn't universal. Confirm current
-[data and inference residency guidance](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt)
-and the customer's agreement for the features and regions in use.
+For Work with local access, residency applies only to eligible content and supported workloads, regions, and configurations; EKM covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. This experience does not provide strict zero data retention. Dots have separate beta exclusions and do not support data or inference residency. See [compatibility and data requirements](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#check-compatibility-and-data-requirements). HIPAA and Business Associate Agreement coverage depend on the features and agreement in use.
 
-Connected services have their own retention, logging, access, residency, and
-compliance requirements. When ChatGPT Work uses plugins, repositories, or third-party
-systems, evaluate both the ChatGPT workspace controls and the connected
-system's controls.
+Connected services have their own retention, logging, access, residency, and compliance requirements. When ChatGPT Work uses plugins, repositories, or third-party systems, evaluate both the ChatGPT workspace controls and the connected system's controls.
 
-For Codex activity, enterprise controls can extend to development environments,
-repositories, configured tools, and related activity. Review
-[Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup) and
-[Governance](https://learn.chatgpt.com/docs/enterprise/governance) alongside the workspace controls.
+For Codex activity, enterprise controls can extend to development environments, repositories, configured tools, and related activity. Review [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup) and [Governance](https://learn.chatgpt.com/docs/enterprise/governance) alongside the workspace controls.
 
 ### What data is stored, retained, or deleted?
 
@@ -247,6 +335,10 @@ continuously to an approved electronic discovery, data loss prevention, SIEM,
 or data-lake system when your organization requires longer retention. See the
 [OpenAI Compliance Platform guide](https://help.openai.com/en/articles/9261474-compliance-api-for-chatgpt-enterprise-edu-and-chatgpt-for-teachers).
 
+Enabling Local computer access with Work Cloud changes what your existing OpenTelemetry (OTel) collector receives. Your local executor can still export supported execution events. Cloud orchestration events do not reach your existing OpenTelemetry collector.
+
+Use the Compliance API for supported cloud records. Changing the collector endpoint does not restore cloud orchestration events. Compliance API records do not replace every event in the earlier OpenTelemetry stream. See [Review OpenTelemetry and audit coverage](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#review-opentelemetry-and-audit-coverage).
+
 ### Can unusual behavior, failures, or usage spikes be detected quickly?
 
 Workspace analytics, compliance logs, and connected monitoring tools help
@@ -279,19 +371,13 @@ Work on the web.
 
 Governance spans three related but separate layers:
 
-- **ChatGPT Work access controls** determine who can use ChatGPT Work on
-  each surface.
-- **Workspace Agent controls** determine who can build, publish, share,
-  schedule, or configure reusable agents and shared connections, where
-  Workspace Agents are available.
-- **Codex managed configuration** governs covered local Codex runtime behavior
-  and doesn't configure hosted ChatGPT Work.
+- **ChatGPT Work access controls** determine who can use Work and whether local-thread sync is available.
 
-Managed configuration constrains supported runtime behavior. It doesn't grant
-workspace access, replace RBAC, or revoke a user's workspace access. These
-layers aren't one uniform ChatGPT Work policy surface. Analytics and compliance logs
-provide additional visibility within their documented product and event
-scopes.
+- **Workspace Agent controls** determine who can build, publish, share, schedule, or configure reusable agents and shared connections, where available.
+
+- **Agent Security** holds the global cloud policy baseline for supported Work and Codex controls. For Work with local access and dots, supported Global policy applies to cloud orchestration when managed policy is enabled. Local execution requirements govern the connected computer; cloud computers use their own execution configuration and requirements. Codex retains its existing configuration behavior.
+
+[Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) constrains supported runtime behavior. It doesn't grant workspace access, replace RBAC, or revoke a user's workspace access. These layers aren't one uniform ChatGPT Work policy surface. Analytics and compliance logs provide more visibility within their documented product and event scopes.
 
 For supported local Codex clients, enterprise administrators can apply
 [managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) and
@@ -452,12 +538,8 @@ Revocation paths include:
 
 ## Recommended admin actions
 
-- **Confirm who should have access first.** Decide whether to restrict access to
-  ChatGPT Work, run a pilot, or roll it out broadly. Many organizations start
-  with power users, champions, or teams with clear use cases.
-- **Review roles and permissions.** In **Permissions & roles**, confirm which
-  users or groups can access ChatGPT Work. Match access to business need, readiness,
-  and governance expectations.
+- **Choose who needs ChatGPT Work.** Identify the users or groups and the tasks they need to complete, then grant access through the supported workspace and role settings.
+- **Set roles and permissions.** In **Permissions & roles**, grant ChatGPT Work access to the intended users or groups. Check all assigned roles to confirm their effective access.
 - **Review plugins and data sources.** ChatGPT Work is most useful with approved
   business context such as files, email, calendars, Slack, or CRM. Review
   enabled plugins, their audiences, and whether app policies still match how users
@@ -466,19 +548,14 @@ Revocation paths include:
   higher-value tasks such as research, synthesis, analysis, file creation,
   workflow updates, and reusable outputs. Use Chat for quick questions,
   light rewrites, or brainstorming.
-- **Review credit and usage controls.** Because ChatGPT Work can perform longer-running
-  tasks, it can use more credits than a standard Chat conversation. Review
-  defaults, group defaults, user overrides, and internal guidance about
-  matching effort to business value.
+- **Set credit and usage controls.** ChatGPT Work can use more credits than a standard Chat conversation because tasks can run longer. Configure workspace defaults, group defaults, and user overrides. Give users guidance on choosing the right model and effort for each task.
 - **Identify your first high-value workflows.** Start with clear, reviewable
   outcomes such as customer briefings, recurring reports, research synthesis,
   tracker updates, or polished documents and slides.
 - **Prepare champions and support teams.** Give champions, training leads,
   and support teams rollout resources first so they can answer questions,
   collect feedback, and model effective delegation.
-- **Communicate review and approval expectations.** Remind users that people
-  remain responsible for reviewing outputs, validating important claims, and
-  approving consequential actions before they are shared or used.
+- **Explain review and approval expectations.** Tell users to check outputs and important claims before using or sharing them, and to approve consequential actions before they run.
 - **Monitor adoption and adjust.** Review usage, feedback, credit consumption,
   and delegated work after rollout. Use the findings to adjust access,
   guidance, training, and expansion.

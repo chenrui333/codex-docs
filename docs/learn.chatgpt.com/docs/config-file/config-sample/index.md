@@ -13,6 +13,12 @@ Source: https://learn.chatgpt.com/docs/config-file/config-sample
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
+This sample describes Codex configuration. For Local computer access with Work Cloud, use the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) to check which settings apply.
+
+For Work with local access and dots, supported Global policy governs the shared cloud orchestrator when managed policy is enabled; applicable local execution requirements govern the connected computer. Work cloud containers use existing Work Cloud policies. For local execution, MDM and legacy managed-device requirements take precedence over Agent Security, which takes precedence over the device's system requirements file. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) for policy order, field-specific merge rules, and network limits.
+
+Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail. See [Hooks](https://learn.chatgpt.com/docs/hooks) for supported events and setup. The Codex examples below remain unchanged.
+
 Use this example configuration as a starting point. It includes most keys Codex reads from `config.toml`, along with default behaviors, recommended values where helpful, and short notes.
 
 For explanations and guidance, see:
@@ -24,6 +30,10 @@ For explanations and guidance, see:
 - [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
 
 Use the snippet below as a reference. Copy only the keys and sections you need into `~/.codex/config.toml` (or into a project-scoped `.codex/config.toml`), then adjust values for your setup.
+
+The sample selects [GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-6.1-sol), which requires
+access for your signed-in account or workspace. If it isn't available, replace
+it with a model you can use.
 
 ```toml
 # Codex example configuration (config.toml)
@@ -42,9 +52,9 @@ Use the snippet below as a reference. Copy only the keys and sections you need i
 
 ################################################################################
 
-# Primary model used by Codex. Recommended example for most users: "gpt-6-sol".
+# Primary model used by Codex. Example when available: "gpt-6.1-sol".
 
-model = "gpt-6-sol"
+model = "gpt-6.1-sol"
 
 # Communication style for supported models. Allowed values: none | friendly | pragmatic
 
@@ -52,7 +62,7 @@ model = "gpt-6-sol"
 
 # Optional model override for /review. Default: unset (uses current session model).
 
-# review_model = "gpt-6-sol"
+# review_model = "gpt-6.1-sol"
 
 # Provider id selected from [model_providers]. Default: "openai".
 
@@ -370,7 +380,7 @@ web_search = "cached"
 
 # Default model for spawned agents. An explicit spawn model takes precedence.
 
-# default_subagent_model = "gpt-6-sol"
+# default_subagent_model = "gpt-6.1-sol"
 
 # Default reasoning effort for spawned agents. An explicit spawn effort takes precedence.
 
@@ -682,7 +692,7 @@ show_tooltips = true
 
 # [tui.model_availability_nux]
 
-# "gpt-6-sol" = 1
+# "gpt-6.1-sol" = 1
 
 # Enable or disable analytics for this machine. When unset, Codex uses its default behavior.
 
@@ -708,7 +718,7 @@ enabled = true
 
 # "hide_gpt-5.1-codex-max_migration_prompt" = true
 
-# model_migrations = { "gpt-5.4" = "gpt-6-sol" }
+# model_migrations = { "gpt-5.4" = "gpt-6.1-sol" }
 
 ################################################################################
 
@@ -1090,7 +1100,7 @@ enabled = true
 
 # For example, a CI profile could live at $CODEX_HOME/ci.config.toml:
 
-# model = "gpt-6-sol"
+# model = "gpt-6.1-sol"
 
 # approval_policy = "on-request"
 

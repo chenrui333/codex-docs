@@ -100,9 +100,9 @@ Source: https://learn.chatgpt.com/docs/security-administration
           icon: "code",
         },
         {
-          title: "Codex Security cloud setup",
+          title: "Codex Security Cloud setup",
           description:
-            "Connect repositories and configure cloud security scans.",
+            "Install the Cloud plugin, connect GitHub, and start a security scan.",
           href: "/codex/security/setup",
           icon: "storage",
         },
@@ -119,7 +119,7 @@ Source: https://learn.chatgpt.com/docs/security-administration
           icon: "webSearch",
         },
         {
-          title: "Codex Security cloud FAQ",
+          title: "Codex Security Cloud FAQ",
           description:
             "Get answers about cloud scans, findings, privacy, and access.",
           href: "/codex/security/faq",

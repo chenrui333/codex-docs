@@ -58,6 +58,15 @@ include `untrusted` to permit it.
 
 ## Sandbox and approvals
 
+Local computer access with Work Cloud has separate local and cloud execution policies:
+
+- **Cloud execution:** Work cloud containers use existing Work Cloud policies.
+- **Local execution:** Local execution requirements govern the connected computer. MDM and legacy managed-device requirements take precedence over Agent Security, which takes precedence over the device's system requirements file.
+
+For Work with local access and dots, supported Global policy applies to the shared cloud orchestrator when managed policy is enabled. Work cloud containers and dots cloud computers use their own execution configuration and requirements. Test local and cloud controls separately. Keep orchestrator controls, including approvals and web search, in Global. Use the dedicated Allowed approval policies and Allowed web search modes controls where available, and TOML for other supported fields. Check the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the field list and execution scope before applying a Codex example to Local computer access with Work Cloud.
+
+Moving between desktop, web, and mobile does not grant access to another computer. Before enabling sync or expanding access, review the Agent Security baseline and test an allowed and a blocked action in each execution environment. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration).
+
 Codex security controls come from two layers that work together:
 
 - **Sandbox mode**: What Codex can do technically (for example, where it can write and whether it can reach the network) when it executes model-generated commands.
@@ -65,7 +74,8 @@ Codex security controls come from two layers that work together:
 
 Codex uses different sandbox modes depending on where you run it:
 
-- **Codex cloud**: Runs in isolated OpenAI-managed containers, preventing access to your host system or unrelated data. Uses a two-phase runtime model: setup runs before the agent phase and can access the network to install specified dependencies, then the agent phase runs offline by default unless you enable internet access for that environment. Secrets configured for cloud environments are available only during setup and are removed before the agent phase starts.
+- **[Codex Cloud (Legacy)](https://learn.chatgpt.com/docs/environments/cloud-environment)**: Runs in isolated OpenAI-managed containers, preventing access to your host system or unrelated data. Uses a two-phase runtime model: setup runs before the agent phase and can access the network to install specified dependencies, then the agent phase runs offline by default unless you enable internet access for that environment. Secrets configured for cloud environments are available only during setup and are removed before the agent phase starts.
+- **Current Codex Cloud**: See [environment variables and network secrets](https://learn.chatgpt.com/docs/environments/cloud-environments#environment-variables-and-secrets) for how credentials are handled during setup and tasks.
 - **Codex CLI / IDE extension**: OS-level mechanisms enforce sandbox policies. Defaults include no network access and write permissions limited to the active workspace. You can configure the sandbox, approval policy, and network settings based on your risk tolerance.
 
 In the `Auto` preset (for example, `--sandbox workspace-write --ask-for-approval on-request`), Codex can read files, make edits, and run commands in the working directory automatically.
@@ -99,7 +109,7 @@ automatic approval review can still be part of a task that monitoring later paus
 
 ## Network access<ElevatedRiskBadge class="ml-2"></ElevatedRiskBadge>
 
-For Codex cloud, see [agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access) to enable full internet access or a domain allow list.
+For current Codex Cloud network settings, see [Connect to services](https://learn.chatgpt.com/docs/environments/cloud-environments#connect-to-services). For Codex Cloud (Legacy), see [agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access) to enable full internet access or a domain allow list.
 
 For the ChatGPT desktop app, Codex CLI, or IDE extension, the default `workspace-write` sandbox mode keeps network access turned off unless you enable it in your configuration:
 
@@ -109,6 +119,10 @@ network_access = true
 ```
 
 ### Network isolation
+
+On supported managed Codex Cloud execution paths, Agent Security requirements constrain command networking. Codex Cloud environment internet settings apply separately. An allowed domain in Agent Security does not override a restriction in the Cloud environment's internet settings. These command-network controls do not, by themselves, disable hosted web search, apps, or MCP. ChatGPT Work Cloud has separate capability permissions and does not inherit these Agent Security requirements.
+
+A managed command allowlist applies to commands using the managed proxy. Where policy permits full sandbox escalation and it is approved, that execution can bypass the command proxy. A narrow network grant is different from full sandbox escalation. Configure enforced approval and sandbox requirements for the intended boundary, and test both ordinary and escalated commands. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-network-access-requirements).
 
 Network access is controlled through destination rules that apply to scripts,
 programs, and subprocesses spawned by commands. When command network access is
@@ -259,7 +273,7 @@ For managed users, combine command network policy with controls such as
 for apps, plugins, browsers, or Computer Use. See
 [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration).
 
-You can also control the [web search tool](https://platform.openai.com/docs/guides/tools-web-search) without granting full network access to spawned commands. Codex defaults to using a web search cache to access results. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](#common-sandbox-and-approval-combinations), web search defaults to live results. Use `--search` or set `web_search = "live"` to allow live browsing, or set it to `"disabled"` to turn the tool off:
+You can also control the [web search tool](https://platform.openai.com/docs/guides/tools-web-search) without granting full network access to spawned commands. Codex defaults to using a web search cache to access results. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content. Treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](#common-sandbox-and-approval-combinations), web search defaults to live results. Use `--search` or set `web_search = "live"` to allow live browsing, or set it to `"disabled"` to turn the tool off:
 
 ```toml
 web_search = "cached"  # default

@@ -36,7 +36,7 @@ and effective requirements can differ by client and version.
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatGPT workspace | Membership, seats, built-in administration roles, and role-based access to supported workspace features                                                                                               | Local agent permissions, Platform API organization access, or permissions in a connected service | [ChatGPT workspace access](https://help.openai.com/en/articles/8266401-managing-members-seat-types-roles-and-access-in-chatgpt-enterprise) and [RBAC](https://help.openai.com/en/articles/11750701-rbac) |
 | Local clients     | Runtime behavior for covered capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension, including approvals, filesystem and network access, permission profiles, and allowed integrations | A ChatGPT seat, feature or model entitlement, or access to external data                         | [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) and [Permissions](https://learn.chatgpt.com/docs/permissions)                                                                                                   |
-| Codex cloud       | Eligibility to use hosted Codex workflows and the cloud environments made available to the user                                                                                                       | Local runtime policy or the repository permissions granted by a source system                    | [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)                                                                                                                                              |
+| Codex cloud       | Eligibility to use hosted Codex workflows and the cloud environments made available to the user                                                                                                       | Local runtime policy or the repository permissions granted by a source system                    | [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments)                                                                                                                                             |
 | Platform API      | Organization and project membership, API keys, model access, usage, and billing for API-authenticated work                                                                                            | ChatGPT workspace membership, local-client access, or Codex cloud access                         | [OpenAI API Platform](https://platform.openai.com/docs/overview)                                                                                                                                         |
 | Plugins           | Plugin availability and installation, bundled skills, connector access, and supported connector actions                                                                                               | Authorization in the connected service or broader local and cloud runtime permissions            | [Plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors)                                                                                                                                                 |
 | Connected systems | Which repositories, files, messages, and actions the authenticated account can access in the source system                                                                                            | ChatGPT workspace, plugin, Codex cloud, or Platform API entitlement                              | The connected service's administration and access controls                                                                                                                                               |
@@ -85,11 +85,15 @@ directly to individual members where supported. Groups can be manually managed
 or SCIM-synced, and a member can receive more than one custom role.
 
 For eligible permissions, **Default** inherits the workspace setting, **On**
-grants access, and **Off** explicitly denies access. An explicit **Off** in any
-applicable role blocks access even when another role grants it. Available
-permission states can vary by feature.
+grants access through that role, and **Off** does not grant access through that
+role. Ordinary role permissions combine additively: another assigned role can
+still grant access. Review direct assignments and roles received through groups.
+Lockdown Mode and product eligibility apply separately. Available permission
+states can vary by feature.
 
 ### Review Work Local and Work Cloud permissions
+
+Configure **Cloud browser use** and **Cloud network access** under **Admin Console > Permissions & roles > Workspace capabilities > Cloud computer capabilities**. These shared capabilities are available to Work Cloud and dots and can be configured independently of Work Cloud access. A Work task still needs Work access and permission to use each capability it requires. Review browser access and code or shell network access separately. Disabling one does not automatically disable the other.
 
 When your workspace offers **Work Local** and **Work Cloud**, check both the
 workspace default and each applicable custom role. Work is available only to
@@ -118,6 +122,50 @@ procedure:
 - [Manage members, seat types, roles, and access](https://help.openai.com/en/articles/8266401-managing-members-seat-types-roles-and-access-in-chatgpt-enterprise)
 - [Configure role-based access control](https://help.openai.com/en/articles/11750701-rbac)
 - [Manage groups](https://help.openai.com/en/articles/9083985-group-permissions-in-gpts)
+
+### Review Codex Cloud access and environment administration
+
+Review these permissions separately:
+
+| Permission                        | What it controls                                            |
+| --------------------------------- | ----------------------------------------------------------- |
+| **Use Codex in the cloud**        | Access to run tasks in Codex Cloud                          |
+| **Manage workspace environments** | Creating and editing environments shared with the workspace |
+
+**Manage workspace environments** sits under **Use Codex in the cloud**,
+requires Cloud access, and is off by default. Review its grants before rollout.
+Members with Cloud access can create and edit their own personal environments
+without the management permission. Access to a shared environment doesn't by
+itself grant authority to change its configuration.
+
+Verify both workflows with representative identities: a member using an
+environment and the person responsible for managing it. Each still needs the
+appropriate access in connected repositories and services. See
+[Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments) for setup and sharing,
+and the [admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup#step-5-configure-codex-cloud)
+for cloud policy planning.
+
+### Local computer access with Work Cloud
+
+A workspace owner can enable **Allow local computer access** for eligible users. Enable Work Cloud for the intended users. **Allow local computer access** is nested under Work Cloud. You do not need to enable **Use Codex locally on the ChatGPT desktop app**. Members must sign in with ChatGPT to the intended workspace. If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots.
+
+Before enabling sync, review Agent Security requirements for local execution. If you currently deliver policies only through MDM, review the applicable local policy order before configuring Agent Security. For local execution, MDM and legacy managed-device requirements rank above Agent Security, while the system requirements file ranks below it. Supported Global policy governs cloud orchestration when managed policy is enabled; local execution requirements govern the connected computer. Work cloud containers retain existing Work Cloud policies.
+
+Use the policy API to manage Global settings. To manage Local or Codex Cloud settings, use the Agent Security UI. Existing Global API workflows remain available after migration. Test your scripts and Terraform integrations, and confirm that policy assignments and ordering are unchanged.
+
+Set and verify access:
+
+- Keep the workspace default appropriate for the wider organization.
+
+- Assign supported custom roles to the users or groups who need access.
+
+- Review every applicable role. Turning a permission off in one ordinary role does not remove access granted by another.
+
+- Test access with a member who has the intended permissions.
+
+Tasks using Local computer access with Work Cloud use cloud coordination and can still run local steps through a connected computer. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. The sync permission does not grant a seat, connected-app access, operating-system permissions, or unrestricted device access. Local Codex permissions and behavior remain separate. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) for policy scope and the [Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq) for compatibility requirements.
+
+Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files. Turning off sync does not by itself remove the member's workspace access.
 
 ### Control Computer History access
 

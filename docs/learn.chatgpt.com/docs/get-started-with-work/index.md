@@ -38,6 +38,10 @@ If you have used Codex for non-coding work, you can stay in Codex or use
 ChatGPT Work instead. ChatGPT Work gives you the same core capabilities with
 an experience designed for everyday work.
 
+    {"For general usage and availability, see "}
+    [{"ChatGPT Work and Codex"}](https://help.openai.com/articles/20001275)
+    {" in the Help Center."}
+
 ## What to try first
 
 <VideoPlayer src="https://cdn.openai.com/devhub/videos-learn/selectnoonboarding.mp4" />
@@ -46,16 +50,21 @@ First, switch to **Work**. Then choose your first task.
 Good tasks have a clear outcome, a few source materials, and an output you can
 review.
 
-### Choose local or cloud work
+### Continue Work across devices
 
-In the desktop app, open the composer control labeled **Work locally**. If
-**Cloud** appears as an option, choose it when you want ChatGPT Work to keep
-running after you close the app or turn off your computer, or when you want to
-continue the chat from the web or mobile app. Keep **Work locally** selected when
-the task needs files or apps on your computer.
+When your workspace enables sync, tasks using Local computer access with Work Cloud use cloud coordination. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. You can continue an eligible conversation across desktop, mobile, and web. Work can still use approved local resources through a connected computer.
 
-Cloud is also useful for scheduled tasks that research or check websites over
-time because their runs don't depend on your computer being awake.
+For example, start a task with an approved folder on your laptop, then review results or send follow-up instructions from your phone. Keep the laptop online for steps that need its files or tools.
+
+Start a new task after enabling sync. Existing tasks, including those in projects, stay local only or in the cloud without access to local files.
+
+If your computer is unavailable when a new turn starts, an existing eligible task using Local computer access with Work Cloud can continue in a cloud container. The container cannot access that computer's files or tools or enforce its enterprise execution requirements. Work can't switch from local to cloud execution during a turn.
+
+Without Local computer access with Work Cloud, use the desktop composer's local and cloud options. Choose local Work for resources on your computer, or cloud Work for tasks that don't depend on it. Cloud is useful for scheduled tasks that research or check websites because your computer doesn't need to be awake.
+
+Turning off Local computer access with Work Cloud interrupts running turns. Send a new message in an existing cloud conversation to continue in Work Cloud without access to local files.
+
+Workspace admins can review [policy requirements and setup steps](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#how-to-set-up-local-computer-access) before enabling sync.
 
 Here are three common use cases you can get started with:
 
@@ -106,7 +115,7 @@ Learn more about [scheduled tasks](https://learn.chatgpt.com/docs/automations?su
 ## Best practices for using ChatGPT Work
 
 Use ChatGPT Work when you want ChatGPT to complete a task, create a file, or manage work
-over time. It is a good fit for tasks that:
+over time. Use it for tasks that:
 
 - Use multiple sources, plugins, tools, or steps.
 - Would take meaningful time to complete manually.
@@ -135,7 +144,7 @@ Plugins connect ChatGPT Work to tools your team uses, like Slack, Google Drive,
 SharePoint, email, calendars, customer relationship management systems, and
 project trackers.
 
-- Select **Plugins** in the left sidebar to view the plugins library.
+- Select **Customize**, then **Plugins**, in the left navigation to view the plugins library.
 - Install the plugins most relevant to your work.
 - To point ChatGPT to a specific tool, type `@` and the plugin name in your prompt.
 
@@ -147,10 +156,11 @@ Learn more about [plugins](https://learn.chatgpt.com/docs/plugins). To make a wo
 ## Use ChatGPT Work efficiently
 
 Choose [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) for demanding work that needs
-careful reasoning, visual judgment, or a polished final file. For simpler tasks,
-consider Sol or Luna. Select from the models
-available in your model selector and check [plan usage](https://learn.chatgpt.com/docs/pricing)
-before starting a large task.
+careful reasoning, visual judgment, or a polished final file. Consider
+[GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-61-sol) for complex work at a lower cost than
+Astra, or Luna for simpler tasks. Select from the models available in your
+model selector and check [plan usage](https://learn.chatgpt.com/docs/pricing) before starting a large
+task.
 
 ChatGPT Work is best for substantial tasks that involve multiple steps, sources, or
 tools, or require a completed deliverable. Longer or more complex tasks may use

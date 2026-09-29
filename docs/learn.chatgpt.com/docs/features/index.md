@@ -24,7 +24,7 @@ Source: https://learn.chatgpt.com/docs/features
   hero={{
     illustration: "features-menu",
     backgroundImage: "/images/codex/codex-wallpaper-1.webp",
-    alt: "Codex sidebar and Add menu for chats, plugins, and content tools",
+    alt: "Codex navigation and Add menu for chats, plugins, and content tools",
   }}
   sections={[
     {
@@ -133,6 +133,13 @@ Source: https://learn.chatgpt.com/docs/features
           icon: "plugin",
         },
         {
+          title: "Sign in with ChatGPT",
+          description:
+            "Use your ChatGPT account in other apps and choose how they use your plan.",
+          href: "/codex/sign-in-with-chatgpt",
+          icon: "connect",
+        },
+        {
           title: "Web search",
           description:
             "Find current information and bring sources into a task.",
@@ -170,6 +177,86 @@ Source: https://learn.chatgpt.com/docs/features
             "Create, preview, and refine documents and other generated files.",
           href: "/codex/artifacts-viewer",
           icon: "stack",
+        },
+      ],
+    },
+    {
+      title: "ChatGPT dots",
+      description: "Set up your dot and manage its ongoing work.",
+      pages: [
+        {
+          title: "Overview",
+          description: "Understand your dot and its connections.",
+          href: "/codex/dots",
+          icon: "robot",
+        },
+        {
+          title: "Getting started",
+          description: "Create your dot and give it a responsibility.",
+          href: "/codex/dots/getting-started",
+          icon: "chat",
+        },
+        {
+          title: "Messaging",
+          description: "Contact your dot in ChatGPT and connected channels.",
+          href: "/codex/dots/channels",
+          icon: "connect",
+        },
+        {
+          title: "Tasks and memory",
+          description: "Understand scheduled work, context, and research.",
+          href: "/codex/dots/tasks-and-memory",
+          icon: "calendar",
+        },
+        {
+          title: "Computers and apps",
+          description: "Connect tools and inspect computer work.",
+          href: "/codex/dots/computers-and-apps",
+          icon: "computerUse",
+        },
+        {
+          title: "Controls",
+          description: "Review activity, manage rules, and stop work.",
+          href: "/codex/dots/controls",
+          icon: "settings",
+        },
+      ],
+    },
+    {
+      title: "ChatGPT Space",
+      description:
+        "Develop shared work in Pages with ChatGPT and collaborators.",
+      pages: [
+        {
+          title: "Space overview",
+          description:
+            "Find files and Pages, and develop your work with ChatGPT.",
+          href: "/codex/space",
+          icon: "workspace",
+        },
+        {
+          title: "Getting started",
+          description: "Draft your first Page.",
+          href: "/codex/space/getting-started",
+          icon: "folder",
+        },
+        {
+          title: "Pages",
+          description: "Write, organize, and revise your work.",
+          href: "/codex/space/pages",
+          icon: "stack",
+        },
+        {
+          title: "Work with the agent",
+          description: "Give ChatGPT context, boundaries, and a clear task.",
+          href: "/codex/space/agents",
+          icon: "chat",
+        },
+        {
+          title: "Collaboration",
+          description: "Choose who can view, comment on, or edit your work.",
+          href: "/codex/space/collaboration",
+          icon: "connect",
         },
       ],
     },

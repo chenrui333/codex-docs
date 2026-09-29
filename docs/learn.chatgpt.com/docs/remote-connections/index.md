@@ -14,13 +14,29 @@ Source: https://learn.chatgpt.com/docs/remote-connections
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 Remote connections let you access work running on another device or machine.
-In the ChatGPT mobile app, open **Remote** to work with ChatGPT or Codex chats on
-a connected Mac or Windows device. You can also continue work from another
-supported device running the ChatGPT desktop app or connect the app to projects
-on an SSH host.
+In the ChatGPT mobile app for iOS, open **Codex** to work with ChatGPT or Codex
+chats on a connected Mac or Windows device. If your mobile app still shows
+**Remote**, open it instead. You can also continue work from another supported
+device running the ChatGPT desktop app or connect the app to projects on an SSH
+host.
 
 Remote access uses the connected host's projects, chats, files, credentials,
 permissions, plugins, Computer Use, browser setup, and local tools.
+
+<span
+  id="local-computer-access-and-remote-connections"
+  data-localization-body-anchor
+/>
+
+## Local computer access with Work Cloud and Remote connections
+
+When your workspace enables Local computer access with Work Cloud, eligible ChatGPT Work conversations can continue across desktop, mobile, and web. OpenAI's cloud coordinates the task, and an online, connected computer can execute steps that need its local resources.
+
+Use the Local computer access with Work Cloud guidance for conversations using this feature. The Remote and SSH instructions below apply to the existing supported host-connection workflows. The setup required to view a conversation using this feature may differ from the setup for a Codex host connection.
+
+Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
+
+If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn. This feature does not change Codex Remote behavior.
 
 ## What you can do remotely
 
@@ -31,8 +47,8 @@ permissions, plugins, Computer Use, browser setup, and local tools.
 - Get notified when ChatGPT completes a task or needs your attention.
 - Switch between connected hosts and chats.
 
-The next sections cover opening **Remote** in the ChatGPT mobile app to access a
-desktop host. To connect Codex to a project on an SSH host, see
+The next sections cover using the ChatGPT mobile app to access a desktop host.
+To connect Codex to a project on an SSH host, see
 [connect to an SSH host](#connect-to-an-ssh-host).
 
 > Illustration: Remote setup screen in the ChatGPT mobile app
@@ -49,8 +65,9 @@ Remote supports hosts running the ChatGPT desktop app on macOS and Windows.
 Make sure you have:
 
 - Codex access in the ChatGPT account and workspace you want to use.
-- The latest ChatGPT mobile app on an iOS or Android device. If **Remote**
-  doesn't appear in the app, update ChatGPT first.
+- The latest ChatGPT mobile app on an iOS or Android device. If you don't see
+  **Codex** on iOS or **Remote** in an app that still uses that label, update
+  ChatGPT first.
 - The latest ChatGPT desktop app for macOS or Windows running on a host that's awake,
   online, and signed in to the same account and workspace. Mobile setup starts
   from the app; you can't set it up from the Codex CLI or IDE extension.
@@ -89,10 +106,10 @@ Existing connections used since June 8, 2026, remain paired. If you haven't
 
 3. Finish setup in ChatGPT.
 
-   ChatGPT opens the Remote setup flow. Confirm the same ChatGPT account
+   ChatGPT opens the connection setup flow. Confirm the same ChatGPT account
    and workspace, then complete any required multi-factor authentication, SSO,
-   or passkey steps. After setup succeeds, the host appears in Remote on your
-   phone.
+   or passkey steps. After setup succeeds, the host appears in **Codex** on iOS,
+   or **Remote** if your mobile app still shows that label.
 
 4. Review host settings.
 
@@ -206,7 +223,7 @@ unauthenticated public listeners.
 
 <WorkflowSteps variant="headings">
 
-1. Add the host to your SSH config so Codex can auto-discover it.
+1. Add the host to your SSH config so Codex can discover it automatically.
 
 ```text
    Host devbox
@@ -297,10 +314,11 @@ restart the ChatGPT desktop app on the host, then try again.
 
 ### The approval request doesn't appear
 
-In the ChatGPT mobile app, open **Remote**. Confirm that the phone and host use
-the same ChatGPT account and workspace, then scan the QR code again or restart
-setup from the host. If you use a ChatGPT workspace, ask your admin to confirm
-that they've enabled Remote Control access.
+In the ChatGPT mobile app for iOS, open **Codex**. If your mobile app still
+shows **Remote**, open it instead. Confirm that the phone and host use the same
+ChatGPT account and workspace, then scan the QR code again or restart setup from
+the host. If you use a ChatGPT workspace, ask your admin to confirm that they've
+enabled Remote Control access.
 
 ### The remote session disconnects
 

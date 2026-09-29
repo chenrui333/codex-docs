@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/administration
 <CodexDocsOverviewLanding
   title="Administration"
   description="Set access and policy boundaries for ChatGPT, Codex developer tools, APIs, plugins, and connected systems."
-  intro="Administration covers six related boundaries: ChatGPT workspace access; local runtime policy for covered capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension; Codex cloud eligibility; Platform API access; plugin availability and connector permissions; and permissions in connected systems. Start with workspace identity and access, then apply the runtime and source-system controls required for each deployment."
+  intro="Start with workspace identity and access. Then configure local runtime policy for supported capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension; Codex cloud eligibility; Platform API access; plugins and connectors; and permissions in connected systems."
   primaryCta={{
     label: "Explore authentication",
     href: "/codex/auth?surface=app",
@@ -30,7 +30,7 @@ Source: https://learn.chatgpt.com/docs/administration
     {
       title: "Getting started",
       description:
-        "Start with the rollout guide, then use the reference pages for each control boundary.",
+        "Plan your rollout and explore tools for routine administration.",
       pages: [
         {
           title: "Admin rollout guide",
@@ -39,54 +39,74 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/enterprise/admin-setup",
           icon: "users",
         },
+        {
+          title: "Admin plugin",
+          description:
+            "Use the Admin plugin for permissions, approvals, and supported administrative workflows.",
+          href: "/codex/enterprise/admin-plugin",
+          icon: "tools",
+        },
       ],
     },
     {
-      title: "ChatGPT Work",
+      title: "Feature setup",
       description:
-        "Review the ChatGPT Work overview and administration reference.",
+        "Choose a setup task, then review its access and security requirements.",
       pages: [
         {
-          title: "ChatGPT Work Overview",
+          title: "Configure dots permissions",
           description:
-            "Understand hosted execution, network controls, data boundaries, and audit visibility.",
-          href: "/codex/enterprise/chatgpt-work-overview",
+            "Manage dots access, communication, computers, and custom rules.",
+          href: "/codex/dots/controls#for-workspace-admins",
           icon: "shieldCheck",
         },
         {
-          title: "ChatGPT Work cloud security",
+          title: "Manage Space sharing and access",
           description:
-            "Review hosted execution, connected accounts, access controls, retention, and audit visibility.",
-          href: "/codex/enterprise/chatgpt-work-cloud-security",
-          icon: "shieldCheck",
-        },
-        {
-          title: "ChatGPT Work local security",
-          description:
-            "Review local execution, device and browser access, managed policies, data handling, and audit limitations.",
-          href: "/codex/enterprise/chatgpt-work-local-security",
-          icon: "shieldCheck",
-        },
-        {
-          title: "ChatGPT Work admin FAQ",
-          description:
-            "Review access, data, governance, usage, and incident controls for ChatGPT Work.",
-          href: "/codex/enterprise/work-admin-faq",
+            "Control Library sharing permissions and help members share pages.",
+          href: "/codex/space/collaboration#for-workspace-admins",
           icon: "userLock",
         },
         {
-          title: "ChatGPT Work: usage and cost",
+          title: "Set up teams and Team Tasks",
           description:
-            "Understand shared credits, billing impact, spending controls, and adoption planning.",
-          href: "/codex/enterprise/chatgpt-work-usage-and-cost",
-          icon: "dataControls",
+            "Set team permissions, connect shared accounts, and create recurring tasks.",
+          href: "/codex/enterprise/teams#for-workspace-admins",
+          icon: "users",
+        },
+        {
+          title: "Set up @ChatGPT in Slack or Teams",
+          description:
+            "Review administrator responsibilities and deployment prerequisites.",
+          href: "/codex/enterprise/chatgpt-slack-and-teams",
+          icon: "chat",
+        },
+        {
+          title: "Set up a workspace connection",
+          description:
+            "Prepare company-managed accounts and configure a workspace connection.",
+          href: "/codex/enterprise/shared-connections#set-up-a-connection",
+          icon: "connect",
+        },
+        {
+          title: "Local computer access for Work Cloud and dots",
+          description:
+            "Review shared policies and compatibility, then enable local computer access separately for Work and dots.",
+          href: "/codex/enterprise/cloud-local-access#how-to-set-up-local-computer-access",
+          icon: "settings",
+        },
+        {
+          title: "Set up Sites and connected plugins",
+          description:
+            "Enable tenant and plugin access so Sites can use visitors' connected accounts.",
+          href: "/codex/enterprise/sites#enable-plugin-use-in-sites",
+          icon: "connect",
         },
       ],
     },
     {
-      title: "Identity and authentication",
-      description:
-        "Choose how people sign in and issue credentials for programmatic workflows.",
+      title: "Identity and access",
+      description: "Manage sign-in, provisioning, roles, and credentials.",
       pages: [
         {
           title: "Authentication overview",
@@ -95,26 +115,6 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/auth",
           icon: "key",
         },
-        {
-          title: "Personal Access Tokens",
-          description: "Create and manage tokens for programmatic access.",
-          href: "/codex/enterprise/access-tokens",
-          icon: "lock",
-        },
-        {
-          title: "Service accounts",
-          description:
-            "Create and manage workspace identities for automated workflows.",
-          href: "/codex/enterprise/service-accounts",
-          icon: "robot",
-        },
-      ],
-    },
-    {
-      title: "Workspace access, policy, and models",
-      description:
-        "Assign ChatGPT workspace access and keep it separate from local runtime policy, Codex cloud access, and Platform API access.",
-      pages: [
         {
           title: "Groups and provisioning",
           description:
@@ -132,44 +132,56 @@ Source: https://learn.chatgpt.com/docs/administration
         {
           title: "Roles and workspace permissions",
           description:
-            "Use the canonical map of workspace, runtime, API, plugin, and source-system controls.",
+            "Find workspace, runtime, API, plugin, and source-system controls.",
           href: "/codex/enterprise/roles-and-workspace-permissions",
           icon: "userLock",
         },
         {
-          title: "GPTs and Sharing",
-          description:
-            "Manage GPT sharing, ownership, connected apps, and third-party actions across your workspace.",
-          href: "/codex/enterprise/gpts-and-sharing",
-          icon: "userLock",
+          title: "Personal access tokens",
+          description: "Create and manage tokens for programmatic access.",
+          href: "/codex/enterprise/access-tokens",
+          icon: "lock",
         },
         {
-          title: "Migrate custom GPTs to plugins",
+          title: "Service accounts",
           description:
-            "Plan your workspace transition, migrate individual GPTs or eligible batches, and test and share replacement plugins.",
-          href: "/codex/migrate-custom-gpts",
-          icon: "tools",
+            "Create and manage workspace identities for automated workflows.",
+          href: "/codex/enterprise/service-accounts",
+          icon: "robot",
+        },
+      ],
+    },
+    {
+      title: "Deployment and configuration",
+      description:
+        "Deploy apps and configure updates, runtime settings, remote connections, and model access.",
+      pages: [
+        {
+          title: "Windows app deployment",
+          description:
+            "Choose an installation and update path for managed Windows devices.",
+          href: "/codex/enterprise/windows-deployment",
+          icon: "settings",
+        },
+        {
+          title: "Manage app updates",
+          description:
+            "Control desktop app updates and deploy approved versions through your device management platform.",
+          href: "/codex/enterprise/manage-app-updates",
+          icon: "settings",
         },
         {
           title: "Managed configuration",
           description:
-            "Distribute managed settings where supported and enforce runtime requirements for covered capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension.",
+            "Review the global baseline in Agent Security, policy precedence for this feature, and supported runtime requirements.",
           href: "/codex/enterprise/managed-configuration",
           icon: "dataControls",
         },
         {
-          title: "Prisma AIRS",
-          description:
-            "Apply workspace-wide security policies to Codex prompts.",
-          href: "/codex/enterprise/prisma-airs",
-          icon: "shieldCheck",
-        },
-        {
-          title: "HIPAA configuration",
-          description:
-            "Configure local runtime safeguards for workflows that may handle protected health information.",
-          href: "/codex/hipaa-configuration",
-          icon: "shieldCheck",
+          title: "Remote connections",
+          description: "Start and control work on connected computers.",
+          href: "/codex/remote-connections",
+          icon: "connect",
         },
         {
           title: "Workspace model availability",
@@ -178,10 +190,72 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/enterprise/workspace-model-availability",
           icon: "settings",
         },
+        {
+          title: "Amazon Bedrock",
+          description:
+            "Configure supported local clients to use models available through Bedrock.",
+          href: "/codex/amazon-bedrock",
+          icon: "storage",
+        },
       ],
     },
     {
-      title: "Plugin and connector controls",
+      title: "ChatGPT Work",
+      description:
+        "Review the ChatGPT Work overview and administration reference.",
+      pages: [
+        {
+          title: "Overview",
+          description:
+            "Understand local and cloud execution, Local computer access with Work Cloud, network controls, and data boundaries.",
+          href: "/codex/enterprise/chatgpt-work-overview",
+          icon: "shieldCheck",
+        },
+        {
+          title: "Cloud security",
+          description:
+            "Review hosted execution, connected accounts, access controls, retention, and audit visibility.",
+          href: "/codex/enterprise/chatgpt-work-cloud-security",
+          icon: "shieldCheck",
+        },
+        {
+          title: "Local security",
+          description:
+            "Review local execution, device and browser access, managed policies, data handling, and audit limitations.",
+          href: "/codex/enterprise/chatgpt-work-local-security",
+          icon: "shieldCheck",
+        },
+        {
+          title: "Usage and cost",
+          description:
+            "Understand shared credits, billing impact, spending controls, and adoption planning.",
+          href: "/codex/enterprise/chatgpt-work-usage-and-cost",
+          icon: "dataControls",
+        },
+        {
+          title: "Admin FAQ",
+          description:
+            "Review access, data, governance, usage, and incident controls for ChatGPT Work.",
+          href: "/codex/enterprise/work-admin-faq",
+          icon: "userLock",
+        },
+      ],
+    },
+    {
+      title: "Collaboration and sharing",
+      description: "Manage GPT sharing and ownership.",
+      pages: [
+        {
+          title: "GPTs and sharing",
+          description:
+            "Manage GPT sharing, ownership, connected apps, and third-party actions across your workspace.",
+          href: "/codex/enterprise/gpts-and-sharing",
+          icon: "userLock",
+        },
+      ],
+    },
+    {
+      title: "Plugins and connections",
       description:
         "Control plugin installation, bundled skills, connector-backed capabilities, and connected-service access.",
       pages: [
@@ -205,27 +279,20 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/enterprise/skills",
           icon: "tools",
         },
+        {
+          title: "Migrate custom GPTs to plugins",
+          description:
+            "Plan your workspace transition, migrate individual GPTs or eligible batches, and test and share replacement plugins.",
+          href: "/codex/migrate-custom-gpts",
+          icon: "tools",
+        },
       ],
     },
     {
-      title: "Usage, governance, and compliance",
+      title: "Usage and analytics",
       description:
-        "Measure adoption and route reporting or audit data to the system that owns it.",
+        "Review workspace usage and adoption, and automate reporting.",
       pages: [
-        {
-          title: "Governance",
-          description:
-            "Choose the right analytics, spend, and audit surface for each question.",
-          href: "/codex/enterprise/governance",
-          icon: "shieldCheck",
-        },
-        {
-          title: "Admin plugin",
-          description:
-            "Use the Admin plugin for permissions, approvals, and supported administrative workflows.",
-          href: "/codex/enterprise/admin-plugin",
-          icon: "tools",
-        },
         {
           title: "Workspace analytics",
           description:
@@ -247,46 +314,47 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/enterprise/analytics-api",
           icon: "code",
         },
+      ],
+    },
+    {
+      title: "Security and compliance",
+      description:
+        "Review workspace security policies, governance, and audit controls.",
+      pages: [
+        {
+          title: "Governance",
+          description:
+            "Choose the right analytics, spend, and audit surface for each question.",
+          href: "/codex/enterprise/governance",
+          icon: "shieldCheck",
+        },
+        {
+          title: "Agent security",
+          description:
+            "Manage the Global policy baseline and supported Local and Codex Cloud environment settings.",
+          href: "/codex/enterprise/agent-security",
+          icon: "dataControls",
+        },
+        {
+          title: "Prisma AIRS",
+          description:
+            "Apply workspace-wide security policies to Codex prompts.",
+          href: "/codex/enterprise/prisma-airs",
+          icon: "shieldCheck",
+        },
+        {
+          title: "HIPAA configuration",
+          description:
+            "Configure local runtime safeguards for workflows that may handle protected health information.",
+          href: "/codex/hipaa-configuration",
+          icon: "shieldCheck",
+        },
         {
           title: "Compliance API and audit events",
           description:
             "Export activity records for audit and investigation workflows.",
           href: "/codex/enterprise/compliance-api",
           icon: "userLock",
-        },
-      ],
-    },
-    {
-      title: "Deployment and model providers",
-      description:
-        "Deploy and update desktop apps, connect managed hosts, or configure a supported external model provider.",
-      pages: [
-        {
-          title: "Manage app updates",
-          description:
-            "Control desktop app updates and deploy approved versions through your device management platform.",
-          href: "/codex/enterprise/manage-app-updates",
-          icon: "settings",
-        },
-        {
-          title: "Windows app deployment",
-          description:
-            "Choose an installation and update path for managed Windows devices.",
-          href: "/codex/enterprise/windows-deployment",
-          icon: "settings",
-        },
-        {
-          title: "Remote connections",
-          description: "Start and control work on connected computers.",
-          href: "/codex/remote-connections",
-          icon: "connect",
-        },
-        {
-          title: "Amazon Bedrock",
-          description:
-            "Configure supported local clients to use models available through Bedrock.",
-          href: "/codex/amazon-bedrock",
-          icon: "storage",
         },
       ],
     },

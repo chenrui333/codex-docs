@@ -39,7 +39,7 @@ Managed configuration is a separate policy layer that can constrain supported
 runtime behavior for covered capabilities in those clients. This guide names
 the individual surface when behavior or availability differs.
 
-Start with the canonical map in
+For an overview of access controls, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
 Use Help Center guidance for current ChatGPT workspace procedures and the
 linked developer documentation for local and hosted runtime behavior.
@@ -90,9 +90,30 @@ procedures:
 - [User lifecycle management](https://learn.chatgpt.com/docs/enterprise/user-lifecycle)
 - [Authentication](https://learn.chatgpt.com/docs/auth)
 
-Test sign-in and feature access with a representative member before expanding
-the rollout. Workspace access doesn't grant repository, file, or action access
+Test sign-in and feature access with a member who has the intended permissions. Workspace access doesn't grant repository, file, or action access
 in a connected service.
+
+<a id="set-up-work-sync"></a>
+
+## Set up Local computer access with Work Cloud
+
+If your rollout includes local computer access for Work or dots, review policies in Agent Security before rollout. Policy migration and feature access are separate changes; the confirmation flow does not require policy creation to enable access. Supported Global policy governs cloud orchestration when managed policy is enabled. Local execution requirements and device controls govern the connected computer. Work cloud containers and dots cloud computers use their own execution configuration and requirements. Follow [Local computer access for Work Cloud and dots](https://learn.chatgpt.com/docs/enterprise/cloud-local-access) for separate setup and eligibility requirements.
+
+Use the policy API to manage Global settings. To manage Local or Codex Cloud settings, use the Agent Security UI. Existing Global API workflows remain available after migration. Test your scripts and Terraform integrations, and confirm that policy assignments and ordering are unchanged.
+
+Check compatibility before enabling sync:
+
+Network policy. Where environment overrides are available, test the `experimental_network` exceptions documented in [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration). A global restriction can remain in force despite an environment allow.
+
+- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally.
+
+- **Unsupported hooks.** Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
+
+- **Auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+
+- Data requirements. Local computer access with Work Cloud does not provide strict zero data retention. Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations. Enterprise Key Management (EKM) covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots. If your organization requires ZDR, do not enable this feature.
+
+As a workspace owner, review Work permissions for the intended users or groups. Enable Work Cloud, then turn on **Allow local computer access**. Use supported role assignments to grant access. See [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
 
 ## Step 3: Configure local runtime requirements
 
@@ -149,26 +170,41 @@ grant workspace, model, Platform API, or connected-system access.
 
 ## Step 5: Configure Codex cloud
 
-Codex cloud uses hosted environments and connected source repositories. Plan
-each boundary:
+Codex cloud uses hosted environments and connected source repositories.
 
-1. Grant the intended audience Codex cloud access through supported workspace
-   controls.
+Codex Cloud is off by default for Enterprise workspaces. Existing **Use Codex
+in the cloud** settings carry forward from Codex Cloud (Legacy): workspaces that
+already enabled Cloud retain access, and those with Cloud disabled remain off
+until an admin enables it. Access remains subject to rollout and workspace
+restrictions.
+
+Plan each boundary:
+
+1. Grant the intended audience **Use Codex in the cloud**. Separately grant
+   **Manage workspace environments** to the people who create and edit
+   workspace-shared environments. See
+   [workspace role guidance](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions#review-codex-cloud-access-and-environment-administration).
 2. Install and configure the supported source-system integration.
 3. Limit repository access in the source system to the repositories each
    audience needs.
-4. Configure cloud environments, secrets, and internet access for those
-   repositories.
+4. Configure cloud environments, secrets, internet access, and supported
+   cloud-managed requirements for those repositories.
 5. Configure optional hosted workflows such as code review.
-6. Test with a representative user who has the intended workspace and
-   repository permissions.
+6. Test task access with a representative member and environment management with
+   the designated administrator. Verify each person's workspace, environment,
+   and repository permissions.
+
+Cloud environments don't inherit local device policy, MDM settings, or local
+network access. Review supported cloud-managed requirements separately from the
+requirements installed on a user's computer. See
+[Connect to services](https://learn.chatgpt.com/docs/environments/cloud-environments#connect-to-services)
+for destination access and [Agent Security](https://learn.chatgpt.com/docs/environments/cloud-environments#agent-security)
+for how workspace requirements constrain cloud environments.
 
 Codex cloud respects the repository permissions and protections exposed by the
 connected source system. Workspace access doesn't bypass those controls. See
-[Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment),
-[GitHub integration](https://learn.chatgpt.com/docs/third-party/github), and
-[Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security) for Codex cloud
-setup and runtime guidance.
+[Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments) for setup and
+runtime guidance.
 
 ## Step 6: Configure plugins and connected capabilities
 
@@ -212,8 +248,7 @@ Choose the reporting surface that matches the question:
   credits.
 
 Use the authenticated API references for current access requirements, schemas,
-fields, retention, and request behavior. Don't build an integration from a
-copied contract in this guide.
+fields, retention, and request behavior when building an integration.
 
 Protect the integration boundary:
 
@@ -226,6 +261,10 @@ Protect the integration boundary:
   workflows against the current contract.
 
 ## Step 8: Verify and maintain the rollout
+
+After enabling Local computer access with Work Cloud, create a new task and continue the conversation from another supported device. Existing tasks are not migrated and keep their original local-only or cloud-only behavior. Keep the computer online for steps that need its files or tools. Test an action the policy should allow and an action it should block, checking the applicable approvals, filesystem, and network restrictions separately for local and cloud execution. Also test starting a new turn while the local computer is unavailable. An eligible task can continue in a cloud container without access to that computer's local files or tools. A task cannot switch from local execution to the cloud during a turn.
+
+Record the effective settings and the result of each test. If a restriction does not work as expected, resolve the issue before users rely on it. Follow the documented behavior for disabling sync. Treat access removal, task interruption, and data retention as separate actions.
 
 Verify every applicable boundary with representative identities:
 
@@ -245,3 +284,14 @@ changing the administration model.
 After the initial rollout, review access, connected capabilities, credit use,
 support feedback, and the workflows teams actually use. Adjust the rollout
 scope and administrator guidance when those signals change.
+
+<a id="if-you-need-to-turn-work-sync-off"></a>
+
+<span
+  id="if-you-need-to-turn-local-computer-access-off"
+  data-localization-body-anchor
+/>
+
+### If you need to turn Local computer access with Work Cloud off
+
+Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files. Tell users to start a new turn after the interruption and explain that local files will no longer be available to the cloud thread.

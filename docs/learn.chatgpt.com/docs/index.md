@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-09-22T20:17:36Z'
-source_etag: 'W/"b6013f14caed97b581c83c6a74c91303"'
+source_last_modified: '2026-09-29T20:38:33Z'
+source_etag: 'W/"d8d8729065d0904c8ec85805c8cf36ee"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -21,17 +21,13 @@ Start with a goal, idea, or task. ChatGPT can gather context, take action, and p
 
  [Explore use cases](/codex/use-cases)
 
-![](/images/codex/icons/sidebar.svg)
+New chat
 
-Codex
+A
 
-- ![](/images/codex/icons/compose.svg)New chat⌘N![](/images/codex/icons/chat-reply-plus.svg)
-- ![](/images/codex/icons/app-search.svg)Search⌘K
+Codex![](/images/codex/icons/chevron.svg)![](/images/codex/icons/app-search.svg)![](/images/codex/icons/sidebar.svg)
 
-- ![](/images/codex/icons/clock.svg)Scheduled
-- ![](/images/codex/icons/apps.svg)Plugins
-- ![](/images/codex/icons/sites.svg)Sites
-- ![](/images/codex/icons/diff.svg)Pull requests
+- ![](/images/codex/icons/compose.svg)New chat
 
 ### Pinned
 
@@ -42,7 +38,7 @@ Codex
 - ![](/images/codex/icons/sidebar-folder.svg)developers-website
 - ![](/images/codex/icons/sidebar-folder.svg)codex
 
-### Chats
+### Recents
 
 - Polish onboarding flow1h
 - Review sidebar changes3h
@@ -73,14 +69,16 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
  [View all updates](/codex/whats-new)
 
+September 28–October 2, 2026
+
+[### Choose GPT-6.1 Sol for complex work
+
+Use GPT-6.1 Sol for coding and professional work at a lower cost than Astra.](/codex/whats-new/september-28-october-2-2026#choose-gpt-61-sol-for-complex-work)  [### Delegate ongoing work to your dot
+
+Dots continue work between conversations and bring back results for review.](/codex/whats-new/september-28-october-2-2026#delegate-ongoing-work-to-your-dot)
+
 September 21–25, 2026
 
 [### Choose GPT-6 Sol and Luna
 
 GPT-6 Sol and GPT-6 Luna are rolling out in Codex at lower token prices than their GPT-5.6 predecessors.](/codex/whats-new#choose-gpt-6-sol-and-luna)
-
-September 14–18, 2026
-
-[### Prepare for GPT-5.5 retirement
-
-GPT-5.5 will retire from ChatGPT, ChatGPT Work, and Codex on October 14, 2026, across all plans.](/codex/whats-new#prepare-for-gpt-55-retirement)

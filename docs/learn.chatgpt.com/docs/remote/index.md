@@ -39,7 +39,7 @@ Connect your computer, approve access, and start your first task.
 
 1. **Start setup on your computer.** Open the ChatGPT desktop app on your Mac or Windows PC. Go to **Settings** > **Connections** > **Control this Mac or PC** and select **Set up** or **Add**. Approve remote access and complete any requested verification.
 2. **Scan the QR code.** Scan the code with your phone, sign in to the same ChatGPT account and workspace, and approve the connection. Only connect devices you own and trust.
-3. **Start working from your phone.** Open **Remote** in the ChatGPT mobile app, choose your connected computer, and start a new task or continue an existing one. Keep your computer awake and online.
+3. **Start working from your phone.** In the ChatGPT mobile app for iOS, open **Codex** to choose your connected computer and start or continue a task. If your mobile app still shows Remote, open it instead. Keep your computer awake and online.
 
 ## Keep work moving from anywhere
 

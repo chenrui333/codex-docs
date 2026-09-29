@@ -22,7 +22,12 @@ the option that fits your work.
 > Illustration: Cards compare the ChatGPT desktop app and ChatGPT on the web
 
 If you're a developer and want to use Codex in your terminal or code editor,
-  try [Codex CLI](https://learn.chatgpt.com/docs/codex/cli) or the [Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide).
+  try [Codex CLI](https://learn.chatgpt.com/docs/codex/cli) or the [Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide). For remote
+  coding work, create a reusable [Codex Cloud
+  environment](https://learn.chatgpt.com/docs/environments/cloud-environments) on the web or in the
+  desktop app. In a new task, choose **Work in** > **Cloud**, open **Select
+  environment**, then select **Create environment**. Codex inspects your
+  repositories and helps prepare and test the setup before you publish it.
 
 ## Setup
 
@@ -107,7 +112,7 @@ ChatGPT is available on the web and includes Chat and ChatGPT Work.
 <WorkflowSteps variant="headings">
 1. <h3 id="setup-web-sign-in">Open ChatGPT and sign in</h3>
 
-Go to [chatgpt.com](https://chatgpt.com) and sign in with your ChatGPT account.
+Go to [ChatGPT](https://chatgpt.com) and sign in with your ChatGPT account.
 
 2.  <h3 id="setup-web-start-task">Start a chat</h3>
 

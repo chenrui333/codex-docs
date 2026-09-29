@@ -85,12 +85,19 @@ Use the Analytics API for programmatic, aggregated Codex reporting. It's
 appropriate for data warehouses, business intelligence systems, and internal
 reporting that shouldn't depend on an interactive dashboard.
 
-The API reference owns access requirements, routes, schemas,
+Use the API reference for access requirements, routes, schemas,
 fields, reporting windows, and pagination. See
-[Analytics API](https://learn.chatgpt.com/docs/enterprise/analytics-api) for the conceptual integration
-boundary and the canonical reference link.
+[Analytics API](https://learn.chatgpt.com/docs/enterprise/analytics-api) for integration guidance and a link to the reference.
 
 ## Compliance API
+
+Local computer access with Work Cloud has the same Compliance API support as Work Cloud, with records under `conversation_message` and `codex_log`. Local execution generates separate OpenTelemetry (OTel) events that you can collect by configuring an OTel collector endpoint. Use these records for supported audit and investigation workflows. Review adoption reporting separately.
+
+Policy automation. Use the policy API to manage Global settings. Manage Local and Codex Cloud settings in the Agent Security UI. Existing Global API workflows remain available after migration. Test scripts and Terraform integrations, and confirm that assignments and policy ordering are unchanged. Review policy automation separately from reporting integrations.
+
+Hook-based auditing. Where enabled for your workspace, use admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Before replacing an existing auditing workflow, test the callback connection, event coverage, and failure behavior. Check these records separately from Compliance API coverage.
+
+See [Compliance API and audit events](https://learn.chatgpt.com/docs/enterprise/compliance-api#audit-records-for-local-computer-access-with-work-cloud) for supported record types and the distinction between Compliance API records, local telemetry, and hook-based logging. Conversation visibility alone does not establish a complete record of local actions.
 
 <a id="what-it-measures-1"></a>
 <a id="what-you-can-export"></a>
@@ -102,10 +109,9 @@ boundary and the canonical reference link.
 Use the Compliance API for security, legal, and governance workflows that need
 auditable records. It's not an adoption or productivity dashboard.
 
-The API reference owns event coverage, schemas, permissions,
+Use the API reference for event coverage, schemas, permissions,
 filters, retention, and request behavior. See
-[Compliance API](https://learn.chatgpt.com/docs/enterprise/compliance-api) for the conceptual
-integration boundary and the canonical reference link.
+[Compliance API](https://learn.chatgpt.com/docs/enterprise/compliance-api) for integration guidance and a link to the reference.
 
 <a id="recommended-pattern"></a>
 

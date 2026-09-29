@@ -191,6 +191,16 @@ Restore archived chats from **Settings > Data Controls > Archived chats**.
 
 ## Use local projects for folders and codebases
 
+When sync is on, the cloud coordinates new tasks using Local computer access with Work Cloud, and you can continue them across supported desktop, mobile, and web experiences. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. Existing tasks, including those in projects, stay local only or in the cloud without access to local files. Start a new task to use this feature.
+
+If your computer is unavailable when a new turn starts, an existing eligible task using Local computer access with Work Cloud can continue in a cloud container. The container can't access the computer's files or tools or enforce its enterprise execution requirements. Work can't switch from local to cloud execution during a turn.
+
+Conversation sync and project-file access are separate:
+
+- Syncing a conversation doesn't upload the entire local folder or make it available to another computer.
+- When you continue a task, review the sources and tools it can access.
+- Work conversation history remains separate from Codex history.
+
 Add a local project when ChatGPT needs to read or change files on your computer.
 Projects don’t need a folder, but you can attach folders as needed.
 
@@ -231,9 +241,10 @@ enforces what local commands can read, change, or access over the network.
 
 ## Start a chat without a project
 
-Select **New chat** when the work is self-contained and doesn't need shared
-project files, instructions, or folder access. Create a project first when
-several chats will depend on the same context.
+In Codex, select **New chat** beside **Recents** to start without a project.
+Use this for self-contained work that doesn't need shared project files,
+instructions, or folder access. Create a project first when several chats will
+depend on the same context.
 
 </ContentModeSwitch>
 

@@ -84,6 +84,22 @@ PowerShell 7 to save UTF-8 without a byte-order mark:
   Set-Content -Encoding utf8NoBOM output.jsonl
 ```
 
+## Audit records for Local computer access with Work Cloud
+
+Local computer access with Work Cloud has the same Compliance API support as Work Cloud. Records appear under the `conversation_message` and `codex_log` event types. Local execution also generates OpenTelemetry (OTel) events, which you can collect by configuring an OTel collector endpoint. Collect these local events separately from Compliance API records. These sources do not establish a complete record of every local command, file operation, screenshot, approval, or external action.
+
+When setting up collection:
+
+1. Use `conversation_message` and `codex_log` for supported Work records. Use the API reference for their schemas, action identifiers, and timestamps.
+
+2. Confirm retention and deletion behavior for the workflow.
+
+3. Run a representative task and compare the exported records with the actions performed.
+
+Policy automation. Use the policy API to manage Global settings. Manage Local and Codex Cloud settings in the Agent Security UI. Existing Global API workflows remain available after migration. Test scripts and Terraform integrations, and confirm that assignments and policy ordering are unchanged. Review policy automation separately from audit-record retrieval. Policy API support does not change Compliance API event coverage.
+
+Hook-based auditing. Where enabled for your workspace, use admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Before replacing an existing auditing workflow, test the callback connection, event coverage, and failure behavior. Check these records separately from Compliance API coverage.
+
 ## Confirm the administration boundaries
 
 Compliance coverage follows the ChatGPT workspace and the products represented

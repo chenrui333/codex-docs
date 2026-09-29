@@ -19,14 +19,15 @@ ChatGPT Business or Enterprise agreement. The capabilities and controls
 available to each experience depend on whether a task runs locally or in the
 cloud, its available tools, and applicable workspace policies.
 
-ChatGPT Work can complete multi-step tasks using the information, files,
-applications, and tools available to an authorized workspace member. On the web,
-those tasks run in the cloud, not on the member's device.
+ChatGPT Work can complete multi-step tasks using the files, applications, and tools available to an authorized workspace member. With sync enabled, members can continue eligible conversations across desktop, mobile, and web. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. OpenAI's cloud coordinates the task, while individual steps can run in a cloud environment or on an approved, connected computer.
 
-This overview explains the execution boundary, network and application controls,
-data handling, and how tasks are executed securely using ChatGPT Work on the
-web. Availability and administrative controls depend on your plan and workspace
-configuration.
+> **Update the desktop app.** Users must update to the latest version of the ChatGPT desktop app for Local computer access with Work Cloud to take effect after it is enabled for their workspace.
+
+Availability and controls depend on your plan, workspace configuration, and rollout.
+
+    {"For general usage and availability, see "}
+    [{"ChatGPT Work and Codex"}](https://help.openai.com/articles/20001275)
+    {" in the Help Center."}
 
 For a focused review of hosted execution, connected-account permissions,
 browser and network settings, retention, and audit visibility, see
@@ -43,37 +44,46 @@ user permissions and admin configuration.
 
 ### Local Work
 
-Local Work runs tasks through the ChatGPT desktop app on the user's device.
-It can access local files, applications, and other resources made available to
-it, subject to the user's permissions, applicable workspace controls, and device
-security policies. Unlike Work on the Web, local Work can operate on resources
-that remain on your computer without requiring you to upload files to a cloud
-conversation.
+Local execution lets a Work task use approved resources on the computer, subject to user permissions, workspace controls, and supported device policy. When sync is enabled, cloud coordination calls on the connected computer for steps that need it. That computer must be online and connected.
+
+Local execution does not mean that the conversation or task context stays only on the device. See [Work local security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security) for data and device boundaries.
 
 ### Cloud Work
 
-Cloud Work is available on supported web, mobile, and desktop surfaces. It runs
-the Codex harness in an isolated environment on OpenAI-managed infrastructure.
-Cloud conversations can sync across these surfaces, and supported tasks can
-continue while the user is away from the conversation.
+Cloud execution runs supported steps on OpenAI-managed infrastructure. If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn.
 
-Work on the web can't directly access files, applications, or open browser tabs
-on the user's computer. A user can provide files by uploading them, adding them
-to a supported project, or using an authorized connected app. The desktop
-experience controls local file and application access through its own
-permissions.
+A cloud execution environment does not automatically inherit a computer's files, applications, browser sessions, or network access. A task using Local computer access with Work Cloud can separately use approved local tools through an online, connected computer. Uploads, project sources, and authorized connected apps remain distinct ways to supply information.
 
-When
-[Library](https://help.openai.com/en/articles/20001052-file-storage-and-library-in-chatgpt)
-is available, eligible uploaded or generated files can be saved there.
-Administrators can control whether ChatGPT automatically references saved
-Library files. Disabling automatic references does not prevent users from
-explicitly accessing or attaching files they are authorized to use.
+When [Library](https://help.openai.com/en/articles/20001052-file-storage-and-library-in-chatgpt) is available, eligible uploaded or generated files can be saved there. Review the controls available in your workspace. Users can explicitly access or attach files they are authorized to use.
 
-See [Code and shell sandboxing](https://learn.chatgpt.com/docs/sandboxing?surface=web),
-[Creating and editing documents, spreadsheets, and presentations](https://help.openai.com/en/articles/20001278-creating-and-editing-documents-spreadsheets-and-presentations-with-chatgpt-work),
-and
-[File storage and Library in ChatGPT](https://help.openai.com/en/articles/20001052-library-for-chatgpt).
+See [Code and shell sandboxing](https://learn.chatgpt.com/docs/sandboxing?surface=web), [Creating and editing documents, spreadsheets, and presentations](https://help.openai.com/en/articles/20001278-creating-and-editing-documents-spreadsheets-and-presentations-with-chatgpt-work), and [File storage and Library in ChatGPT](https://help.openai.com/en/articles/20001052-library-for-chatgpt).
+
+Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
+
+<span
+  id="enable-and-govern-local-computer-access"
+  data-localization-body-anchor
+/>
+
+## Enable and govern Local computer access with Work Cloud
+
+A workspace owner enables **Allow local computer access** after reviewing the required Work permissions and the cloud policy in **Agent Security**. Enable Work Cloud for the intended users. **Allow local computer access** is nested under Work Cloud. You do not need to enable **Use Codex locally on the ChatGPT desktop app**.
+
+Review these policy boundaries before enabling sync:
+
+- **Enterprise requirements.** For Work with local access and dots, supported Global policy applies through the shared cloud orchestrator when managed policy is enabled. Applicable local `requirements.toml` requirements govern execution on a connected computer. Work cloud containers and dots cloud computers use their own execution configuration and requirements, rather than the managed environment bundle used by other executor types. Local execution restrictions do not automatically apply to these cloud computers. Review cloud capability permissions and test local and cloud execution separately.
+
+- **Local execution.** MDM and legacy managed-device requirements rank above Agent Security. The device's system requirements file ranks below Agent Security.
+
+- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
+
+- **Logging and auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+
+Keep orchestrator controls, including approvals and web search, in Global. Use the dedicated Allowed approval policies and Allowed web search modes controls where available, and TOML for other supported fields. See the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the field list and execution scope.
+
+Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files.
+
+Local computer access with Work Cloud does not change Codex configuration behavior or combine Work history with Codex history. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) and the [Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq).
 
 ## Network access and external destinations
 
@@ -177,10 +187,7 @@ See
 
 ## Privacy and data handling
 
-ChatGPT Work follows the privacy, security, and data-handling policies
-applicable to your ChatGPT workspace. Conversations, uploaded files, generated
-files, connected applications, and browser data can have different retention and
-deletion rules.
+ChatGPT Work follows the privacy, security, and data-handling policies applicable to your ChatGPT workspace. Local computer access with Work Cloud does not provide strict zero data retention. Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations. Enterprise Key Management (EKM) covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. Conversations, uploaded files, generated files, connected applications, and browser data can have different retention and deletion rules. If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots.
 
 For details, see [Enterprise privacy](https://openai.com/enterprise-privacy/),
 [Chat and file retention policies](https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt),

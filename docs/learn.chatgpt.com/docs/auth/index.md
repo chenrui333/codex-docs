@@ -46,6 +46,14 @@ to plan those controls.
 
 ### Sign in with ChatGPT
 
+To use Local computer access with Work Cloud across desktop, mobile, and web:
+
+1. Sign in with ChatGPT to an eligible workspace.
+
+1. Ask a workspace owner to enable Work Cloud, then turn on **Allow local computer access** under Work Cloud. **Use Codex locally on the ChatGPT desktop app** is not a prerequisite.
+
+API keys and Codex access tokens do not enable Local computer access with Work Cloud. See [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions) and the [Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq) for prerequisites, or [Local computer access for Work Cloud and dots](https://learn.chatgpt.com/docs/enterprise/cloud-local-access) for setup.
+
 When you sign in with ChatGPT from the ChatGPT desktop app, Codex CLI, or IDE extension, the sign-in flow opens a browser window. After you sign in, the browser returns your credentials to Codex.
 
 </ContentModeSwitch>

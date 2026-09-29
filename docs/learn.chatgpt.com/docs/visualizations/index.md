@@ -114,6 +114,17 @@ original result in place. Review the new version before relying on it.
 
 ## Share or reuse a result
 
+### Add a visualization to a page in Space
+
+You can also create a visualization inside a page in ChatGPT Space. While
+editing the page, type `/visualize` followed by your request and choose the
+matching menu option. Use this to place an interactive explanation alongside
+your notes, research, or project plan. See
+[Add interactive visualizations to a page](https://learn.chatgpt.com/docs/space/pages#add-interactive-visualizations)
+for an example.
+
+### Share from a chat
+
 Use the chat's standard **Share** action when it's available. Review
 the entire shared chat first, including its source data and earlier
 messages. A visualization is generally a snapshot of the information available

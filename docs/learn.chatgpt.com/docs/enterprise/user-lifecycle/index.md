@@ -96,8 +96,7 @@ Choose one primary provisioning method for each audience:
 | Automatic Account Creation | An employee with an eligible email domain signs in                      | Workspace administration and the relevant identity flow |
 | Directory Sync with SCIM   | An identity administrator assigns the employee in the identity provider | The identity-provider application or provisioning group |
 
-Use manual invitations for a small pilot or a group that isn't managed through
-directory synchronization. Use SCIM when workspace membership should follow
+Use manual invitations for users who are not managed through directory synchronization. Use SCIM when workspace membership should follow
 the identity provider as employees join, change teams, or leave.
 
 Don't enable Automatic Account Creation and SCIM together. Users added through
@@ -113,7 +112,7 @@ or remove access across every workspace or Platform API organization.
 
 ## Connect a provisioning group to the correct workspace
 
-Configure the connection before adding the first pilot employee. A workspace
+Configure the connection before provisioning employees. A workspace
 owner and an identity administrator have separate responsibilities:
 
 1. Have the workspace owner select the intended ChatGPT workspace and inspect
@@ -127,8 +126,7 @@ owner and an identity administrator have separate responsibilities:
    Have the workspace owner approve the resulting members, inherited roles, and
    sharing. A matching existing group becomes SCIM-managed, and its membership
    switches to identity-provider control.
-4. Select a narrowly scoped pilot group and record the approved workspace,
-   expected employees, and group-role assignments.
+4. Select the groups to provision and record the target workspace, expected members, and group-role assignments.
 5. Have the workspace owner open **Workspace settings > Identity & access**
    and select **Enable Directory Sync**. If prompted, choose **Use SCIM only
    for this workspace** for workspace-level provisioning, or **Keep the option
@@ -146,7 +144,7 @@ owner and an identity administrator have separate responsibilities:
    Role configuration is available on the web and requires workspace owner
    access.
 9. Review the group's effective permissions and the default workspace seat
-   type before adding a representative pilot employee.
+   type before provisioning employees.
 
 The identity-provider administrator controls application and group membership;
 the workspace owner controls directory synchronization and workspace role
@@ -294,6 +292,18 @@ token permissions and rotation steps, see
 [Access tokens](https://learn.chatgpt.com/docs/enterprise/access-tokens#rotate-or-revoke-a-token).
 
 ### Review connected systems and retained data
+
+If the member used Local computer access with Work Cloud, include the **Allow local computer access** permission and connected computers in the offboarding review. Check workspace and role assignments as well as access in each connected system.
+
+Turning off Local computer access with Work Cloud interrupts running turns. Users who retain access can start another turn in an existing cloud conversation, which then uses Work Cloud without access to local files. This is distinct from removing workspace membership, revoking credentials, or deleting stored data.
+
+Review three separate outcomes after revocation:
+
+- Active tasks. Verify what happens to tasks already running and follow the confirmed Work incident and revocation procedures for any task that may still be active.
+
+- Connected devices. Verify whether previously connected devices can still access Work.
+
+- Stored data. Check conversation retention and deletion separately. Removing access does not by itself mean that stored data has been deleted.
 
 Workspace provisioning doesn't manage every authorization boundary. Ask the
 relevant service owner to review access to:

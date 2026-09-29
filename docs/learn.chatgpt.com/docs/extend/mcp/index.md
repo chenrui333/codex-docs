@@ -73,6 +73,18 @@ to view connected servers.
 
 ## Use MCP-backed tools in ChatGPT web
 
+Continuing a conversation using Local computer access with Work Cloud on another device doesn't install plugins or grant access to connected accounts.
+
+In Local computer access with Work Cloud, the enterprise `mcp_servers` TOML requirement in Agent Security applies to local executors. Cloud containers retain Work Cloud policies. Local MCP servers and transports may not be available in the cloud; check connectivity and authentication separately.
+
+For enterprise hooks in Local computer access with Work Cloud:
+
+- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally.
+- **Auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+- **Limitations:** Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. Consumers do not have hooks support in this feature. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
+
+See [Hooks](https://learn.chatgpt.com/docs/hooks) and the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for support scope.
+
 In a hosted ChatGPT Work chat, install a [plugin](https://learn.chatgpt.com/docs/plugins) to use its
 bundled connectors and remote MCP tools. After installation, Chat and Work can
 use those tools. Workspace administrators can control which plugins and tools
@@ -273,7 +285,7 @@ when their provider supports issuer identification. Otherwise, they use the
 configured URL with the server-specific callback ID appended. Always register
 the exact callback displayed by `codex mcp add`.
 
-For portless `http://127.0.0.1` callbacks, Codex omits the listener port from
+For `http://127.0.0.1` callbacks without an explicit port, Codex omits the listener port from
 the URL it displays and stores, then inserts the active listener port during
 authorization. This substitution doesn't apply to `localhost`, IPv6 hosts,
 HTTPS URLs, or callbacks that already include a port. Authorization servers
@@ -283,7 +295,7 @@ must accept variable loopback ports under
 Set `mcp_oauth_callback_port` to choose a fixed global listener port, or set
 `mcp_servers.<server-name>.oauth.callback_port` to override it for one server.
 An explicit port in the callback URL doesn't configure the listener. For a
-direct loopback callback, use portless `http://127.0.0.1` or configure the same
+direct loopback callback, use `http://127.0.0.1` without an explicit port or configure the same
 explicit port for both the callback URL and listener. A proxied callback can
 intentionally use an external URL port that differs from the local listener
 port. Local callback URLs bind to the local interface; non-local callback URLs
@@ -310,8 +322,8 @@ CIMD when the authorization server advertises
 loopback URL. Otherwise, Codex uses DCR when available. A configured OAuth client
 ID always takes precedence and skips client registration.
 
-For CIMD, Codex uses a ChatGPT-hosted metadata document specific to the MCP
-server:
+For CIMD without issuer-bound responses, Codex CLI uses a ChatGPT-hosted metadata
+document specific to the MCP server:
 
 ```text
 https://chatgpt.com/oauth/codex/<callback_id>/client.json
@@ -326,17 +338,17 @@ port selected at login while matching the host and path exactly, as required by
 callback hosts, paths, or query parameters require DCR or a configured OAuth
 client ID.
 
-Support for a stable, shared CIMD document is in development and coming soon:
+Codex CLI also supports a stable, shared CIMD document:
 
 ```text
 https://chatgpt.com/oauth/codex/client.json
 ```
 
-Codex will use the stable document with the shared `/callback` path when the
+Codex CLI uses the stable document with the shared `/callback` path when the
 authorization server advertises
 `authorization_response_iss_parameter_supported: true`, provides a valid
 `issuer` in its metadata, and includes a matching `iss` in authorization
-responses. Servers without issuer-bound responses will continue using the
+responses. Servers without issuer-bound responses use the
 callback-specific document.
 
 To choose a registration method for one CLI login, use

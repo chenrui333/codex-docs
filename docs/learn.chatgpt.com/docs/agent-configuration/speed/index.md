@@ -13,37 +13,83 @@ Source: https://learn.chatgpt.com/docs/agent-configuration/speed
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
+You can increase model speed in Codex in exchange for higher usage.
+
+## Fast mode
+
+Fast mode speeds up supported models, including GPT-6.1 Sol, GPT-6 Astra,
+GPT-6 Sol, and GPT-6 Luna, where available. For GPT-5.6 and GPT-5.5, the
+speed increase is 1.5x.
+
+Use `/fast` in the CLI to toggle Fast mode. Use `/statusline` to show it in the
+footer. You can also persist the default with `service_tier = "fast"` plus
+`[features].fast_mode = true` in `config.toml`. Fast mode is available in the
+ChatGPT desktop app, Codex CLI, and IDE extension when you sign in with ChatGPT.
+
+For supported models, Fast mode uses included subscription limits at 2.5x the
+Standard rate. Purchased credits and Enterprise pay-as-you-go usage are billed
+at 2x the Standard rate. These billing multipliers don't describe speed increases.
+
+<a id="astra-ultrafast"></a>
+
+## Ultrafast mode
+
+GPT-6 Astra Ultrafast generates tokens up to 8x faster than GPT-6 Astra in
+Standard mode in Codex. This comparison measures token generation speed,
+not billing rates or overall task completion time.
+
+Ultrafast is available in Codex and ChatGPT Work on Pro $500 and eligible
+Enterprise and Edu plans. On Pro $500, Ultrafast uses your included usage first,
+then your available credits after that allowance runs out.
+
+For GPT-6 Astra, Ultrafast uses included subscription limits at 8x the
+Standard rate. Purchased credits and Enterprise pay-as-you-go usage are billed
+at 6x the Standard rate. These billing multipliers don't describe speed increases.
+Enterprise billing remains subject to the workspace's agreement.
+
+For Enterprise workspaces, Ultrafast is off by default. Workspace owners can
+enable access for selected users or the workspace through
+[workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
+Existing [per-user spend controls](https://learn.chatgpt.com/docs/enterprise/usage-limits) apply to
+eligible Ultrafast usage.
+
+## Availability and billing details
+
 **ChatGPT Work and Codex share usage.** Both use the same
   pricing, credits, and usage limits. See [Codex pricing](https://learn.chatgpt.com/docs/pricing) for
   details.
 
-## Fast mode
+### Supported models
 
-GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on
-October 14, 2026. The OpenAI API isn't affected. See
-[GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement) for migration guidance.
-
-Codex offers the ability to increase the speed of the model for increased
-credit consumption.
-
-For GPT-5.6, GPT-5.5, and GPT-5.4, Fast mode increases model speed by 1.5x.
-GPT-5.6 and GPT-5.5 consume credits at 2.5x the Standard rate; GPT-5.4 consumes
-credits at 2x the Standard rate.
-
-For GPT-6 Astra, GPT-6 Sol, and GPT-6 Luna, Fast mode consumes credits at
-2.5x the Standard rate where available. See [Models](https://learn.chatgpt.com/docs/models) for model availability and
+GPT-6 Astra, GPT-6 Sol, and GPT-6 Luna support Fast mode where available.
+[GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-61-sol) supports Standard and Fast where
+available. Access depends on your plan, client, workspace settings, and rollout.
+See [Models](https://learn.chatgpt.com/docs/models) for model availability and
 [Pricing](https://learn.chatgpt.com/docs/pricing#token-rates) for token rates.
 
-Use `/fast on`, `/fast off`, or `/fast status` in the CLI to change or inspect
-the current setting. You can also persist the default with `service_tier =
-"fast"` plus `[features].fast_mode = true` in `config.toml`. Fast mode is
-available in the ChatGPT desktop app, Codex CLI, and IDE extension when you
-sign in with ChatGPT. Fast mode is a ChatGPT credit feature. With an API key,
-Codex uses API token pricing instead, and ChatGPT credit multipliers don't
-apply. API Priority processing has its own billing rate; for GPT-5.6, it costs
-2x the Standard API token rate.
+### Ultrafast plan and workspace requirements
 
-<VideoPlayer
-  src="/videos/codex/fast-mode-demo.mp4"
-  class="[&_video]:mx-auto [&_video]:max-h-[400px] [&_video]:max-w-full [&_video]:w-auto"
-/>
+- Eligible Enterprise workspaces use credit-based or USD usage-based
+  agreements. Usage is billed according to the workspace's agreement.
+- Eligible Edu plans use credits. Legacy Enterprise plans that rely on rate
+  limits instead of usage-based billing aren't supported.
+
+Other self-serve plans don't have access to Ultrafast at launch, even with
+purchased credits.
+
+Ultrafast isn't available to workspaces that require inference residency
+outside the United States. A workspace's location alone doesn't determine
+eligibility.
+
+### API billing
+
+With an API key, Codex uses API token pricing instead, and ChatGPT credit
+multipliers don't apply.
+
+For API availability, request configuration, and pricing, see
+[Ultrafast mode in the API](https://developers.openai.com/api/docs/guides/ultrafast-mode).
+
+## Retirement and migration
+
+[GPT-5.5 retires](https://learn.chatgpt.com/docs/models#gpt-55-retirement) from ChatGPT, ChatGPT Work,
+and Codex on all plans on October 14, 2026. The OpenAI API isn't affected.

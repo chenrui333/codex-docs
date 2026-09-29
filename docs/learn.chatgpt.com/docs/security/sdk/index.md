@@ -423,14 +423,16 @@ services.
 ## Configure the runtime and credentials
 
 Pass runtime configuration when you need a specific plugin, interpreter, or
-Codex setting:
+Codex setting. Choose a model your credentials can access. If you use ChatGPT
+sign-in, check [GPT-6.1 Sol availability](https://learn.chatgpt.com/docs/models#gpt-6.1-sol) before
+using this example:
 
-```ts
+```typescript
 const security = new CodexSecurity({
   pluginPath: "/path/to/codex-security-plugin",
   pythonPath: "/path/to/python",
   codexOverrides: {
-    model: "gpt-6-sol",
+    model: "gpt-6.1-sol",
     model_reasoning_effort: "medium",
   },
 });

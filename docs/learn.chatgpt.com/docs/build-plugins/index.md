@@ -82,7 +82,7 @@ A good creation prompt gives Plugin Creator a practical brief:
 - **Purpose:** Name the recurring task and when you’ll use the plugin.
 - **Inputs:** Describe the information you’ll provide and how it should use each attached file.
 - **Output:** Say who the result is for, and specify its format, length, and tone. Include an example if you have one.
-- **Rules:** Explain any required steps, what needs your review, and how to handle missing information—for example, ask a question or mark a field “not specified.”
+- **Rules:** Explain required steps, what needs your review, and how to handle missing information. For example, ask a question or mark a field “not specified.”
 
 Ask for instructions you can reuse with new inputs. Keep the details of an individual task, such as a particular document, labeled as an example for testing.
 
@@ -206,6 +206,6 @@ If a teammate can open the plugin but cannot use it, check plugin installation, 
 
 ## Continue with the builder documentation
 
-For custom integrations or development with plugin files, see [Package your plugin](https://developers.openai.com/plugins/build/plugins). The [developer documentation](https://developers.openai.com/plugins/) covers building skills and MCP servers, testing, and public submission.
+For custom integrations or development with plugin files, see [Package your plugin](https://developers.openai.com/plugins/build/plugins). The [developer documentation](https://developers.openai.com/plugins/) covers building skills and MCP servers, [extensions](https://developers.openai.com/plugins/build/extensions), testing, and public submission.
 
 For workspace distribution through GitHub, see [Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management).

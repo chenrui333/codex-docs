@@ -116,10 +116,14 @@ increasing delay and jitter.
 
 ## Message schema
 
-Requests include `method`, `params`, and `id`:
+Requests include `method`, `params`, and `id`.
+
+The examples use [GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-6.1-sol), which requires access
+for the signed-in account or workspace. Use [`model/list`](#list-models-modellist)
+to select an available model if needed.
 
 ```json
-{ "method": "thread/start", "id": 10, "params": { "model": "gpt-6-sol" } }
+{ "method": "thread/start", "id": 10, "params": { "model": "gpt-6.1-sol" } }
 ```
 
 Responses echo the `id` with either `result` or `error`:
@@ -155,23 +159,19 @@ codex app-server generate-json-schema --out ./schemas
 
 Example (Node.js / TypeScript):
 
-```ts
+```typescript
 
 const proc = spawn("codex", ["app-server"], {
   stdio: ["pipe", "pipe", "inherit"],
 });
 const rl = readline.createInterface({ input: proc.stdout });
-
 const send = (message: unknown) => {
   proc.stdin.write(`${JSON.stringify(message)}\n`);
 };
-
 let threadId: string | null = null;
-
 rl.on("line", (line) => {
   const msg = JSON.parse(line) as any;
   console.log("server:", msg);
-
   if (msg.id === 1 && msg.result?.thread?.id && !threadId) {
     threadId = msg.result.thread.id;
     send({
@@ -184,7 +184,6 @@ rl.on("line", (line) => {
     });
   }
 });
-
 send({
   method: "initialize",
   id: 0,
@@ -197,7 +196,7 @@ send({
   },
 });
 send({ method: "initialized", params: {} });
-send({ method: "thread/start", id: 1, params: { model: "gpt-6-sol" } });
+send({ method: "thread/start", id: 1, params: { model: "gpt-6.1-sol" } });
 ```
 
 ## Core primitives
@@ -407,9 +406,9 @@ values rather than hard-coding this example.
 { "method": "model/list", "id": 6, "params": { "limit": 20, "includeHidden": false } }
 { "id": 6, "result": {
   "data": [{
-    "id": "gpt-6-sol",
-    "model": "gpt-6-sol",
-    "displayName": "GPT-6 Sol",
+    "id": "gpt-6.1-sol",
+    "model": "gpt-6.1-sol",
+    "displayName": "GPT-6.1 Sol",
     "hidden": false,
     "defaultReasoningEffort": "medium",
     "supportedReasoningEfforts": [{
@@ -502,7 +501,7 @@ Start a fresh thread when you need a new Codex conversation.
 
 ```json
 { "method": "thread/start", "id": 10, "params": {
-  "model": "gpt-6-sol",
+  "model": "gpt-6.1-sol",
   "cwd": "/Users/me/project",
   "approvalPolicy": "never",
   "sandbox": "workspaceWrite",
@@ -987,7 +986,7 @@ Examples:
     "writableRoots": ["/Users/me/project"],
     "networkAccess": true
   },
-  "model": "gpt-6-sol",
+  "model": "gpt-6.1-sol",
   "effort": "medium",
   "summary": "concise",
   "personality": "friendly",
@@ -1917,6 +1916,8 @@ plugins from `claude-plugins-official` but the marketplace source is missing,
 Codex infers `anthropics/claude-plugins-official` as the source.
 
 ## Auth endpoints
+
+If you’ve built a local or open-source application using Codex app-server authentication, you can continue using it, though we recommend migrating to Sign in with ChatGPT so users have greater control over and visibility into their usage. See developer docs for Sign in with ChatGPT [here](https://developers.openai.com/siwc), and our implementation cookbook [here](https://developers.openai.com/cookbook/articles/sign-in-with-chatgpt). App-server authentication has never been permitted for commercial or hosted services. We launched Sign in with ChatGPT to support these use cases, and we’re excited to see what you build. Join our partner waitlist [here](https://openai.com/form/sign-in-with-chatgpt-interest/).
 
 The JSON-RPC auth/account surface exposes request/response methods plus server-initiated notifications (no `id`). Use these to determine auth state, start or cancel logins, logout, inspect ChatGPT rate limits, and notify workspace owners about depleted credits or usage limits.
 

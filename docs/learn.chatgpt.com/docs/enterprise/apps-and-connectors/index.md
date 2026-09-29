@@ -20,13 +20,19 @@ Learn more about [plugins](https://learn.chatgpt.com/docs/plugins),
 [skills](https://learn.chatgpt.com/docs/skills-and-plugins), and
 [connected services](https://help.openai.com/en/articles/11487775).
 
+    {"For workspace controls and data-handling guidance, see "}
+    [{"Admin controls, security, and compliance for plugins and apps"}](https://help.openai.com/articles/11509118)
+    {" in the Help Center."}
+
 In this guide, **app** and **MCP server** refer to the same connected
 integration and are interchangeable terms. We use **MCP server** in the prose,
 but preserve **app** in UI labels such as **Workspace apps** and
 **App permissions**, and in CSV column names.
 
-A member can use an MCP server's capabilities only when the plugin and MCP server are
-available to their role and they have access to the connected service.
+A member can use an MCP server's capabilities only when the plugin and MCP server
+are available to their role and the authenticated account has access to the
+connected service. For a shared credential, the member also needs permission
+to use that credential; the external account can differ from their personal account.
 
 Plugins work in Chat and Work across ChatGPT on the web, desktop, and mobile,
 in Codex in the ChatGPT desktop app, and through the Codex CLI plugin browser.
@@ -34,6 +40,16 @@ They aren't available in the IDE extension.
 
 To see how these controls fit with workspace roles and permissions, see
 [Roles and workspace permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions).
+
+To configure plugin authentication for supported workspace
+experiences, see [Workspace connections](https://learn.chatgpt.com/docs/enterprise/shared-connections).
+Installing a plugin for everyone doesn't, by itself, provide a shared account.
+
+Plugins in Sites let each visitor use their own connected accounts. Each
+  plugin has a separate Sites permission, with defaults that depend on the
+  workspace plan. See [Enable plugin use in
+  Sites](https://learn.chatgpt.com/docs/enterprise/sites#enable-plugin-use-in-sites) to review plugin
+  defaults, change access, and troubleshoot tenant restrictions.
 
 ## Understand the capability chain
 
@@ -88,12 +104,22 @@ workspaces.
 
 ## Step 2: Manage capabilities
 
+Conversation sync does not grant additional plugin, MCP server, or connected-service access. For Local computer access with Work Cloud, Agent Security's enterprise `apps` and `plugins` requirements apply to local executors. Work cloud containers retain existing Work Cloud policies. Configure these requirements through TOML and review them alongside workspace permissions and the connected account's permissions.
+
+Review hook support separately from plugin availability:
+
+- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally.
+- **Cloud orchestration:** Command hooks and hooks from local configuration or plugins do not run, even when tools execute locally and the plugin itself is allowed. Consumers do not have hooks support in this feature. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
+- **Auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+
+See [Hooks](https://learn.chatgpt.com/docs/hooks) and the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for supported requirements.
+
 <WarningTip>
   Making an MCP server or plugin available in ChatGPT doesn't grant access to
-  files, records, or actions in the connected service. Before troubleshooting or
-  expanding access, check the member's workspace role and approved action
-  settings. Then confirm the authenticated account or shared connection has the
-  expected permissions in the connected service.
+  files, records, or actions in the connected service. When troubleshooting
+  access, check the member's workspace role and approved action settings. Then
+  confirm the authenticated account or shared connection has the expected
+  permissions in the connected service.
 </WarningTip>
 
 Plugins in ChatGPT and Codex can include MCP server connections that search, retrieve, sync,
@@ -110,18 +136,24 @@ let admins:
   approved custom set, including how the workspace handles newly added actions.
 - Set **App permissions** that determine when ChatGPT asks before using a connection.
 - Keep access within the scopes and permissions granted by each connected
-  service and authenticated user.
+  service and authenticated account.
 
 For current availability and procedures, see
 [Admin controls, security, and compliance in apps](https://help.openai.com/en/articles/11509118).
+
+## Restrict company app accounts to authorized workspaces
+
+When activated, verified-domain restrictions prevent users from creating new connections to supported apps with company-domain accounts in personal ChatGPT workspaces or other unauthorized workspaces. Employees must use an authorized workspace to connect those company accounts.
+
+Verifying a domain does not activate this restriction. Existing app connections are not automatically disconnected.
+
+For supported apps, availability, and setup guidance, see [Admin controls, security, and compliance for plugins and apps](https://help.openai.com/en/articles/11509118).
 
 <a id="choose-a-starting-set-of-apps"></a>
 
 ## Choose a focused initial set
 
-Start with plugins that support a clear business need. Decide whether to make
-each plugin available to everyone, limit it to a role or pilot group, or require
-further review.
+Enable plugins that support an approved business need. Set each plugin’s audience to the users or roles that need it, and complete any required review before enabling it.
 
 For each connected service, record the business owner, permitted data, approved
 read or write actions, authentication method, and a support or removal contact.
@@ -144,7 +176,7 @@ path.
 
 When ChatGPT uses an MCP server included with a plugin, it sends a request
 to the connected service and returns data or action results allowed by the
-authenticated user's permissions in that service.
+authenticated account's permissions in that service.
 
 ChatGPT handles data from connected services in two ways:
 

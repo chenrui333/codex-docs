@@ -13,10 +13,9 @@ Source: https://learn.chatgpt.com/docs/security/security-review
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Codex Security Review is available in research preview.
-It is available to ChatGPT Enterprise, Business, Edu, and Pro customers; it is
-not available on Plus. During the introductory period, Codex Security Review does
-not consume ChatGPT credits. Usage limits may apply.
+Codex Security Review is available to ChatGPT Enterprise, Business, Edu, and
+Pro customers; it is not available on Plus. Security reviews consume included
+Codex allowance or ChatGPT credits.
 
 Codex Security Review is an additional review for customers that want to
 pay particular attention to security issues in pull requests.
@@ -31,7 +30,7 @@ part of its general review, so you may see occasional overlap between findings.
 
 To configure automatic Codex Security Review, you need:
 
-- Codex Security Review research preview access for your workspace
+- Codex Security Review access for your workspace
 - [Codex cloud](https://learn.chatgpt.com/docs/cloud) set up with a connected GitHub repository
 - GitHub push or admin permission for the repository settings
 
@@ -41,17 +40,17 @@ An existing Codex Security scan is optional.
 
 ## Configure Codex Security Review
 
-1. Go to [Codex settings](https://chatgpt.com/codex/settings/code-review).
-2. Under **Repository preferences**, choose which pull requests get Codex
-   Security Review:
-   - **Follow personal** lets each contributor opt in with their personal
+1. Go to [Codex settings](https://app.chatgpt.com/settings/code-review) and choose a repository.
+2. Under **Review security vulnerabilities**, turn on **Auto security review**.
+3. Use **Review** to choose which pull requests get Codex Security Review:
+   - **Follow personal preferences** lets each contributor opt in with their personal
      Codex Security Review settings.
-   - **Review all PRs** applies to every pull request in the repository.
-   - **Review team PRs**, when available, applies to pull requests opened by
+   - **All PRs** applies to every pull request in the repository.
+   - **Team PRs**, when available, applies to pull requests opened by
      members of your ChatGPT workspace, not members of a GitHub team.
-3. Choose when Codex Security Review runs:
+4. Use **Trigger** to choose when Codex Security Review runs:
    - **On PR open** runs independently when a pull request is opened.
-   - **Every push** runs independently after new commits are pushed.
+   - **On every push** runs independently after new commits are pushed.
    - **Whenever code review runs** requires Code Review and runs Codex Security
      Review alongside it.
 

@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
-source_last_modified: '2026-09-13T02:29:53Z'
-source_etag: 'W/"bfad13751f9ee210c3f03645ab819de8"'
+source_last_modified: '2026-09-29T20:39:16Z'
+source_etag: 'W/"8746b8b7a19e68bf5d29e4d4d73f35b2"'
 ---
 
 # Computer use
@@ -244,7 +244,7 @@ Send a computer request
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.6-sol",
+  model: "gpt-6.1-sol",
   tools: [{ type: "computer" }],
   input:
     "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
@@ -259,7 +259,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6-sol",
+    model="gpt-6.1-sol",
     tools=[{"type": "computer"}],
     input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
 )
@@ -272,7 +272,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6-sol")
+        .model("gpt-6.1-sol")
         .input(
             "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
         .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
@@ -286,7 +286,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-5.6-sol",
+  model: "gpt-6.1-sol",
   input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
   tools: [{ type: :computer }]
 )
@@ -353,7 +353,7 @@ async function sendComputerScreenshot(response, callId, screenshotBase64) {
   };
 
   return await client.responses.create({
-    model: "gpt-5.6-sol",
+    model: "gpt-6.1-sol",
     tools: [{ type: "computer" }],
     previous_response_id: response.id,
     input: [
@@ -374,7 +374,7 @@ client = OpenAI()
 
 def send_computer_screenshot(response, call_id, screenshot_base64):
     return client.responses.create(
-        model="gpt-5.6-sol",
+        model="gpt-6.1-sol",
         tools=[{"type": "computer"}],
         previous_response_id=response.id,
         input=[
@@ -402,7 +402,7 @@ String screenshotBase64 = "<base64 bytes here>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.6-sol")
+        .model("gpt-6.1-sol")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -427,7 +427,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-5.6-sol",
+  model: "gpt-6.1-sol",
   previous_response_id: "resp_abc123",
   input: [
     {

@@ -173,30 +173,31 @@ reasoning effort. To balance intelligence, speed, and price for each task,
 request a specific model or reasoning effort in your prompt,
 configure `[agents]` defaults in `config.toml`, or set `model` and
 `model_reasoning_effort` directly in the custom agent file.
-For example, use `gpt-6-luna` for fast scans or a higher-effort `gpt-6-sol` configuration for more demanding reasoning.
+For example, use `gpt-6-luna` for fast scans or a higher-effort `gpt-6.1-sol` configuration for more demanding reasoning.
 
 For most tasks in Codex, start with
-  `gpt-6-sol`. Use
-  `gpt-6-luna` when you want a faster, lower-cost option for lighter subagent
-  work.
+  `gpt-6.1-sol` when your
+  signed-in account or workspace has [access](https://learn.chatgpt.com/docs/models#gpt-6.1-sol).
+  Otherwise, choose a model available to you. Use `gpt-6-luna` when you want a
+  faster, lower-cost option for lighter subagent work.
 
 ### Model choice
 
-- **`gpt-6-sol`**: Start here for demanding agents. It's strongest for ambiguous, multi-step work that needs planning, tool use, validation, and follow-through across a larger context.
+- **`gpt-6.1-sol`**: Start here for demanding agents. Use it for ambiguous, multi-step work that needs planning, tool use, validation, and follow-through across a larger context.
 - **`gpt-6-luna`**: Use for fast, narrowly scoped agents handling clear, repeatable, or high-volume work.
 
 ### Reasoning effort (`model_reasoning_effort`)
 
-For explicit model settings, start with `medium` for GPT-6 Sol, `high` for
-GPT-6 Luna, or `low` for GPT-6 Astra. Adjust for the task using a level the
-selected model supports.
+For GPT-6.1 Sol, use a reasoning effort supported by your client and selected
+model. For explicit model settings, start with `high` for GPT-6 Luna or `low`
+for GPT-6 Astra. Adjust for the task using a level the selected model supports.
 
 - **`ultra`**: Use for the deepest reasoning when the selected model supports
   it.
 - **`max`** and **`xhigh`**: Use for especially demanding reasoning when the
   selected model supports these levels.
 - **`high`**: Use when an agent needs to trace complex logic, check assumptions, or work through edge cases (for example, reviewer or security-focused agents).
-- **`medium`**: Balances speed and depth; the starting point for GPT-6 Sol.
+- **`medium`**: Balances speed and depth.
 - **`low`**: Use when the task is straightforward and speed matters most.
 
 Higher reasoning effort increases response time and token usage, but it can improve quality for complex work. For details, see [Models](https://learn.chatgpt.com/docs/models), [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic), and [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference).
@@ -406,6 +407,10 @@ The best custom agents are narrow and opinionated. Give each one clear job, a
 tool surface that matches that job, and instructions that keep it from
 drifting into adjacent work.
 
+The examples use [GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-6.1-sol) where your signed-in
+account or workspace has access. If it isn't available, choose a model you can
+use.
+
 #### Example 1: PR review
 
 This pattern splits review across three focused custom agents:
@@ -441,7 +446,7 @@ Prefer fast search and targeted file reads over broad scans.
 ```toml
 name = "reviewer"
 description = "PR reviewer focused on correctness, security, and missing tests."
-model = "gpt-6-sol"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
@@ -505,7 +510,7 @@ Identify entry points, state transitions, and likely files before the worker sta
 ```toml
 name = "browser_debugger"
 description = "UI debugger that uses browser tooling to reproduce issues and capture evidence."
-model = "gpt-6-sol"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 developer_instructions = """
@@ -513,7 +518,6 @@ Reproduce the issue in the browser, capture exact steps, and report what the UI 
 Use browser tooling for screenshots, console output, and network evidence.
 Do not edit application code.
 """
-
 [mcp_servers.chrome_devtools]
 url = "http://localhost:3000/mcp"
 startup_timeout_sec = 20

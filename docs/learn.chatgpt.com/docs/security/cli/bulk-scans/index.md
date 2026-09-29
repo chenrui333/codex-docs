@@ -157,23 +157,27 @@ resolve from your current directory.
 ## Choose a model and reasoning effort
 
 Bulk scans use `gpt-5.6-sol` with `xhigh` reasoning effort by default. To
-choose another model and effort for a CSV campaign:
+choose another model and effort for a CSV campaign, use a model your credentials
+can access. If you use ChatGPT sign-in, check [GPT-6.1 Sol
+availability](https://learn.chatgpt.com/docs/models#gpt-6.1-sol) before using this example:
 
 ```bash
 npx @openai/codex-security bulk-scan repositories.csv \
   --output-dir /path/outside/repositories/security-scans \
   --workers 4 \
-  --model gpt-6-sol \
+  --model gpt-6.1-sol \
   --effort medium
 ```
 
 The same options work during interactive repository discovery:
 
 ```bash
-npx @openai/codex-security bulk-scan --model gpt-6-sol --effort medium
+npx @openai/codex-security bulk-scan --model gpt-6.1-sol --effort medium
 ```
 
-Supported effort levels are `minimal`, `low`, `medium`, `high`, and `xhigh`.
+Available effort levels depend on the selected model. Bulk scans support
+`minimal`, `low`, `medium`, `high`, `xhigh`, and `max`; GPT-6.1 Sol requires at
+least `low`.
 
 To use OpenRouter or Fireworks, set `OPENROUTER_API_KEY` or `FIREWORKS_API_KEY`,
 respectively, and specify `--provider` and `--model`. For credentials and

@@ -115,12 +115,10 @@ environment.
 
 ### Configure code review policies
 
-Configure code review policies in
-[Codex review settings](https://chatgpt.com/codex/cloud/settings/code-review?provider=gitlab).
-Choose the repository policy: `Review my MRs`, `Review team MRs`,
-`Review all MRs`, or `Follow personal`. Then choose when reviews run: **On MR open**,
-**On every push**, or **Smart Trigger (Experimental)**. Repository settings can
-override personal defaults.
+Configure code review policies in [Codex review settings](https://app.chatgpt.com/settings/code-review?provider=gitlab).
+Choose your repository, then turn on **Automatic review** under **Review code**.
+Use **Review** to choose whose merge requests receive reviews and **Trigger** to
+choose when reviews run. Repository settings can override personal defaults.
 
 ## Request a Codex review
 
@@ -204,14 +202,14 @@ another comment:
 @codex fix the P1 issue
 ```
 
-Codex starts a [cloud chat](https://learn.chatgpt.com/docs/cloud) with the merge request as context and
+Codex starts a [legacy cloud chat](https://learn.chatgpt.com/docs/environments/cloud-environment) with the merge request as context and
 can push a fix back to the branch when it has permission to do so.
 
 ## Give Codex other tasks
 
 Other coding tasks also require a **configured project environment**; group
 activity alone supports reviews. If you mention `@codex` in a comment with
-anything other than `review`, Codex starts a [cloud chat](https://learn.chatgpt.com/docs/cloud) using
+anything other than `review`, Codex starts a [legacy cloud chat](https://learn.chatgpt.com/docs/environments/cloud-environment) using
 your merge request as context.
 
 ```md
