@@ -289,6 +289,92 @@
       "id": "2d81ee4a0ea6e36b8efb03647d11be00f54ac1ded3b57c4ebe3a030c26f5896e",
       "observed_at": "2026-09-30T04:30:59+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md",
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
+          "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md",
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "968e44075b51b34a80bb9b5b84dd2b891b629b0c077f5994486d55515fb9cd23",
+            "before": "396db460be9f2e74c3521d2e041a3de986f22a479e4014dce175e8f07cf5c7ee"
+          },
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "9ef42a0beb4a0334bf3fc8337ac5f63beef7abd9f1ccd2b11ab839f2ae738321",
+            "before": "0cc8ba90156a4a849434921e3a6dc4882a07f0c369513d5d5eab8702bf3be66a"
+          },
+          "learn.chatgpt.com/docs/auth/index.md": {
+            "after": "0bca0d94055f7c8c73be1b553604156e456444f67eaa78fe652c7eaadd1ddd43",
+            "before": "079ce4d2189fb55ae9c956cf54cca5c7caefa46abda71fe655e45c33d0e33e5d"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "823ed8c21dbabd3bb119c3fdf657d0c1077cfd80ff6831ef202e0d69796f3730",
+            "before": "140729edcdc4485eb9c0fdda57312c4d54ce1059e2865b443de1e7b41a4f2b1c"
+          },
+          "learn.chatgpt.com/docs/enterprise/admin-setup/index.md": {
+            "after": "1ad698b8f0596630876fd45529fa1983afe0e079353f09cf2ccc56302acf9530",
+            "before": "342753c101b3feb2e3b87ba34c3f33b17f78a612cbe1ab13b3b900d89416200a"
+          },
+          "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md": {
+            "after": "0f5bb8b9c68b53c2e70d80e0a8bb34dc8b790ec215ab3974af05962da855ed83",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
+            "after": "d40bc30397c42bda0749bf287a202c0b7b4976f900cd8998bc372bde02c9bea9",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md": {
+            "after": "3dd1157b5aa1f7c225bfc796a53e835923223c94953863b25d551fba79d164a4",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+            "after": "0b97233eba184152476d7db0e7ddff1937bb7f825782d8852ba68ac1ddf9670e",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "96d0bcd1d551dc51f0e323fe9d2deab2c375e0411473a089de777416e3a4e41a",
+            "before": "a34c95896b76844b9eb4f1575fe923262a0cac89ca6b6be4eb35e4fad1b105a5"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.159.2",
+          "codex_cli_source_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
+          "codex_cli_version": "0.159.2",
+          "codex_cli_version_raw": "codex-cli 0.159.2",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/auth/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
+          "learn.chatgpt.com/docs/models/index.md"
+        ]
+      },
+      "id": "3d45becd65f9a54a0251fe437aa6166133d5a2ebb84770cdee4728f4cdfa1685",
+      "observed_at": "2026-09-30T21:59:07+00:00",
+      "previous_id": "2d81ee4a0ea6e36b8efb03647d11be00f54ac1ded3b57c4ebe3a030c26f5896e"
     }
   ],
   "schema_version": 1

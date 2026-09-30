@@ -399,10 +399,11 @@ When you sign in with ChatGPT, Codex works best with the recommended models list
 
 </ToggleSection>
 
-You can also point Codex at any model and provider that supports either the [Chat Completions](https://platform.openai.com/docs/api-reference/chat) or [Responses APIs](https://platform.openai.com/docs/api-reference/responses) to fit your specific use case.
-
-Support for the Chat Completions API is deprecated and will be removed in
-  future releases of Codex.
+For a custom model provider or gateway, use a compatible Responses API endpoint.
+See [Custom model providers](https://learn.chatgpt.com/docs/config-file/config-advanced#custom-model-providers)
+for configuration and [Gateway compatibility](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility)
+for streaming, tool, and conversation requirements. Current Codex releases don't
+support `wire_api = "chat"` or a Chat Completions-only endpoint.
 
 ## Deprecated Codex models
 

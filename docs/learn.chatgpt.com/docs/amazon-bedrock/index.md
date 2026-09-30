@@ -17,6 +17,12 @@ Configure local ChatGPT Work and Codex surfaces to use OpenAI models available
 through Amazon Bedrock. In this setup, the local client sends model requests to
 Bedrock using AWS-managed authentication and access controls.
 
+This page covers direct access to Bedrock. If your organization already
+  provides a model gateway, follow [Connect to a
+  gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). To configure a gateway
+  backed by Bedrock, see [Bedrock through
+  LiteLLM](https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm).
+
 ## How it works
 
 When you configure a local ChatGPT Work or Codex surface with Amazon Bedrock as
@@ -32,9 +38,13 @@ Authentication is AWS-native. Users authenticate with a Bedrock API key or AWS
 
 Make sure you have:
 
-- Credentials for the AWS account you want to use
+- Credentials for the AWS account you want to use.
 - Access to supported OpenAI models in Amazon Bedrock.
 - Access to an AWS Region where the selected model is available.
+- AWS permission to invoke the selected model or inference profile.
+
+Check the model-specific IAM requirements. For example, GPT-6 Sol through Runtime
+also requires `bedrock:InvokeModel` on the account's default project. See AWS's [GPT-6 Sol setup instructions](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-sol.html).
 
 ## Configure the provider
 
@@ -43,16 +53,24 @@ Codex allows you to configure the provider by setting `model_provider` in `~/.co
 Choose the provider for the Amazon Bedrock endpoint you want to use: Bedrock
 Runtime for cross-Region inference (CRIS), or Bedrock Mantle for in-Region inference.
 
-For the Bedrock Runtime endpoint:
+Use Bedrock Runtime for new configurations:
 
 ```toml
 model_provider = "amazon-bedrock-runtime"
+web_search = "disabled"
 ```
+
+Hosted web search isn't available on Bedrock Runtime. If you need it, use
+  [Bedrock Mantle](#use-mantle-for-hosted-web-search). The `amazon-bedrock`
+  provider selects Mantle; `amazon-bedrock-runtime` selects Runtime.
+
+### Use Mantle for hosted web search
 
 For the Bedrock Mantle endpoint:
 
 ```toml
 model_provider = "amazon-bedrock"
+web_search = "cached"
 ```
 
 ### Choose a model
@@ -63,9 +81,10 @@ model picker: models supported through the Bedrock Runtime endpoint for
 `amazon-bedrock`.
 
 You can optionally specify a [supported model](#supported-models) in the
-configuration file.
+configuration file. The built-in provider supplies its own model catalog.
+When switching endpoints, change the provider and any explicit model ID together.
 
-Model availability varies by AWS Region. Refer to AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai). Local ChatGPT Work and Codex surfaces don't support Bedrock Mantle endpoints in AWS GovCloud Regions.
+Model availability varies by AWS Region. Refer to AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai).
 
 ## Authentication options
 
@@ -83,6 +102,13 @@ specify a Region when using API-key authentication.
 ```shell
 export AWS_BEARER_TOKEN_BEDROCK=<your-bedrock-api-key>
 export AWS_REGION=us-east-2
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:AWS_BEARER_TOKEN_BEDROCK = "<your-bedrock-api-key>"
+$env:AWS_REGION = "us-east-2"
 ```
 
 ### Option 2: AWS SDK credentials
@@ -137,7 +163,7 @@ AWS profile's `credential_process` helper.
 
 Desktop apps and IDE extensions may not inherit environment variables from the
 shell. Put required values in `~/.codex/.env`, then restart the app or
-extension.
+extension. On Windows, the default path is `%USERPROFILE%\.codex\.env`.
 
 ```shell
 export AWS_BEARER_TOKEN_BEDROCK=<your-bedrock-api-key>
@@ -155,6 +181,17 @@ export AWS_REGION=us-east-2
 - Confirm the selected model is available in the configured AWS Region and that
   the AWS identity has permission to access it.
 
+Then send a short prompt in a new task:
+
+```text
+Reply with exactly: bedrock-ok
+```
+
+Expect `bedrock-ok`. Confirm the provider and model in the client; the reply alone
+doesn't identify the route. For rollout qualification, use a disposable folder
+with read-only permissions and verify a harmless local tool task and a follow-up
+turn.
+
 ## Supported models
 
 Use an inference profile ID for Bedrock Runtime provider or a model ID for Bedrock Mantle provider.
@@ -165,6 +202,7 @@ AWS identity.
 
 Global CRIS can route requests to supported
 commercial AWS Regions worldwide, whereas Geo CRIS routes requests within the profile's geography.
+Choose a routing scope that meets your AWS permissions and data-residency requirements.
 
 Use `model_provider = "amazon-bedrock-runtime"` with the optional `model` configuration set to an inference profile ID from the following lists. The provider uses
 `https://bedrock-runtime.{region}.amazonaws.com/openai/v1`, where `{region}` is
@@ -177,9 +215,6 @@ Supported models and inference profile IDs:
 - GPT-6 Astra: `global.openai.gpt-6-astra`
 - GPT-6 Sol: `global.openai.gpt-6-sol`
 - GPT-6 Luna: `global.openai.gpt-6-luna`
-- GPT-5.6 Sol: `global.openai.gpt-5.6-sol`
-- GPT-5.6 Terra: `global.openai.gpt-5.6-terra`
-- GPT-5.6 Luna: `global.openai.gpt-5.6-luna`
 
 For example, configure Astra with Global CRIS in `~/.codex/config.toml`:
 
@@ -195,13 +230,9 @@ Supported models and inference profile IDs:
 - GPT-6 Astra: `us.openai.gpt-6-astra`
 - GPT-6 Sol: `us.openai.gpt-6-sol`
 - GPT-6 Luna: `us.openai.gpt-6-luna`
-- GPT-5.6 Sol: `us.openai.gpt-5.6-sol`
-- GPT-5.6 Terra: `us.openai.gpt-5.6-terra`
-- GPT-5.6 Luna: `us.openai.gpt-5.6-luna`
 
 Codex's built-in Runtime model picker lists the United States Geo and Global
-variants. AWS also lists India geographic inference profile IDs `in.openai.gpt-5.6-terra` and
-`in.openai.gpt-5.6-luna` for `ap-south-1` (Mumbai) and `ap-south-2` (Hyderabad). Refer to Bedrock model cards for [GPT-5.6 Terra](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-terra.html) and [GPT-5.6 Luna](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-luna.html) for details.
+variants.
 
 Model and CRIS availability vary by source AWS Region. See AWS [Supported Regions and models for inference profiles](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html), which links to each model's exact inference profile IDs and regional
 availability, and AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai) before selecting a provider and a model.
@@ -216,11 +247,6 @@ Supported models and model IDs:
 - GPT-6 Astra: `openai.gpt-6-astra`
 - GPT-6 Sol: `openai.gpt-6-sol`
 - GPT-6 Luna: `openai.gpt-6-luna`
-- GPT-5.6 Sol: `openai.gpt-5.6-sol`
-- GPT-5.6 Terra: `openai.gpt-5.6-terra`
-- GPT-5.6 Luna: `openai.gpt-5.6-luna`
-- GPT-5.5: `openai.gpt-5.5`
-- GPT-5.4: `openai.gpt-5.4`
 
 GPT-6 Sol and Luna are available through Mantle in `us-east-1` (N. Virginia).
 Model availability varies by AWS Region. See AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai) before selecting a provider and a model. For GPT-6 Astra, refer to the [Bedrock model page for GPT-6 Astra](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html).
@@ -229,8 +255,13 @@ Model availability varies by AWS Region. See AWS [Regional availability by model
 
 This configuration supports local ChatGPT Work and Codex workflows. Hosted
 ChatGPT Work on the web, Codex cloud, and features that depend on OpenAI-hosted
-cloud services, hosted tools, or cloud-managed discovery aren't currently
-available.
+cloud services or cloud-managed discovery aren't currently
+available. Hosted web search is unavailable on Runtime; use
+[Mantle](#use-mantle-for-hosted-web-search) if you need it.
+
+Codex Security CLI uses its own provider configuration. Follow its
+[Amazon Bedrock setup](https://learn.chatgpt.com/docs/security/cli/reference) rather than the native
+client settings above.
 
 Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
   processing, and the initial Amazon Bedrock offering supports on-demand
@@ -337,7 +368,7 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
               },
             },
             {
-              name: "Web search",
+              name: "Hosted web search on Runtime",
               href: "/codex/web-search?surface=app",
               availability: {
                 bedrock: "unavailable",
@@ -691,7 +722,7 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
     className="not-prose mt-3 text-sm text-secondary"
   >
     <sup>*</sup> Feature is currently limited to only specific regions. Check
-    the individual feature documentation to learn more about geo restrictions.
+    the individual feature documentation to learn more about regional restrictions.
 
   <div
     id="codex-plan-plugin-limits"
@@ -716,6 +747,13 @@ If setup fails, check the following:
 - `AWS_BEARER_TOKEN_BEDROCK` isn't set to an expired or unintended key.
 - For desktop app or IDE extension usage, required environment variables are
   present in `~/.codex/.env`.
+
+For AWS SDK profile authentication, run `aws sts get-caller-identity --profile codex-bedrock`
+to confirm the identity for your selected profile. Replace `codex-bedrock` with
+your profile name, or omit `--profile` when using the default credential chain.
+This checks AWS identity, not permission to invoke a Bedrock model. Check
+`AWS_BEARER_TOKEN_BEDROCK` separately so an unintended API key doesn't select a
+different authentication path.
 
 ## Support boundaries
 

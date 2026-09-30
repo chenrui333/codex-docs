@@ -6671,7 +6671,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "396db460be9f2e74c3521d2e041a3de986f22a479e4014dce175e8f07cf5c7ee",
+      "sha256": "968e44075b51b34a80bb9b5b84dd2b891b629b0c077f5994486d55515fb9cd23",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -6857,7 +6857,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0cc8ba90156a4a849434921e3a6dc4882a07f0c369513d5d5eab8702bf3be66a",
+      "sha256": "9ef42a0beb4a0334bf3fc8337ac5f63beef7abd9f1ccd2b11ab839f2ae738321",
       "source_area": "learn_amazon_bedrock",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7019,7 +7019,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "079ce4d2189fb55ae9c956cf54cca5c7caefa46abda71fe655e45c33d0e33e5d",
+      "sha256": "0bca0d94055f7c8c73be1b553604156e456444f67eaa78fe652c7eaadd1ddd43",
       "source_area": "learn_auth",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7486,7 +7486,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "140729edcdc4485eb9c0fdda57312c4d54ce1059e2865b443de1e7b41a4f2b1c",
+      "sha256": "823ed8c21dbabd3bb119c3fdf657d0c1077cfd80ff6831ef202e0d69796f3730",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7975,7 +7975,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "342753c101b3feb2e3b87ba34c3f33b17f78a612cbe1ab13b3b900d89416200a",
+      "sha256": "1ad698b8f0596630876fd45529fa1983afe0e079353f09cf2ccc56302acf9530",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8049,6 +8049,13 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors"
+    },
+    "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md": {
+      "sha256": "0f5bb8b9c68b53c2e70d80e0a8bb34dc8b790ec215ab3974af05962da855ed83",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm"
     },
     "learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams/index.md": {
       "sha256": "a7376ecba1c364ed553e39e9fe4c5a5bddf7c52571eb74fbf8d2d956306fad1f",
@@ -8191,6 +8198,20 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/compliance-api"
+    },
+    "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
+      "sha256": "d40bc30397c42bda0749bf287a202c0b7b4976f900cd8998bc372bde02c9bea9",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway"
+    },
+    "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md": {
+      "sha256": "3dd1157b5aa1f7c225bfc796a53e835923223c94953863b25d551fba79d164a4",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility"
     },
     "learn.chatgpt.com/docs/enterprise/governance/index.md": {
       "codex_cli_versions": [
@@ -8421,6 +8442,13 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions"
+    },
+    "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+      "sha256": "0b97233eba184152476d7db0e7ddff1937bb7f825782d8852ba68ac1ddf9670e",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway"
     },
     "learn.chatgpt.com/docs/enterprise/service-accounts/index.md": {
       "codex_cli_versions": [
@@ -9408,7 +9436,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "a34c95896b76844b9eb4f1575fe923262a0cac89ca6b6be4eb35e4fad1b105a5",
+      "sha256": "96d0bcd1d551dc51f0e323fe9d2deab2c375e0411473a089de777416e3a4e41a",
       "source_area": "learn_models",
       "source_kind": "learn_markdown",
       "source_type": "learn",

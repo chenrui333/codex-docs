@@ -188,6 +188,11 @@ Set `project_root_markers = []` to skip searching parent directories and treat t
 
 ## Custom model providers
 
+If your organization provides a model gateway, follow
+[Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) for client setup
+and verification. For organization-wide deployment, see
+[Deploy Codex through a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway).
+
 A model provider defines how Codex connects to a model (base URL, wire API, authentication, and optional HTTP headers). Custom providers can't reuse the reserved built-in provider IDs: `openai`, `ollama`, and `lmstudio`.
 
 Define more providers and point `model_provider` at them:

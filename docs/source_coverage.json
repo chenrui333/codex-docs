@@ -289,7 +289,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-30T04:30:59+00:00",
+  "generated_at": "2026-09-30T21:59:07+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 25,
@@ -332,11 +332,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 171,
+      "discovered_urls": 175,
       "html_fallback_pages": 2,
-      "markdown_pages": 168,
-      "mirrored_paths_count": 170,
-      "mirrored_urls": 170,
+      "markdown_pages": 172,
+      "mirrored_paths_count": 174,
+      "mirrored_urls": 174,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -398,6 +398,7 @@
       "https://learn.chatgpt.com/docs/enterprise/agent-security",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+      "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -406,6 +407,8 @@
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+      "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+      "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
       "https://learn.chatgpt.com/docs/enterprise/governance",
       "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
@@ -414,6 +417,7 @@
       "https://learn.chatgpt.com/docs/enterprise/plugin-management",
       "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
+      "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
       "https://learn.chatgpt.com/docs/enterprise/sites",
@@ -574,6 +578,7 @@
       "https://learn.chatgpt.com/docs/enterprise/agent-security",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+      "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -582,6 +587,8 @@
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+      "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+      "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
       "https://learn.chatgpt.com/docs/enterprise/governance",
       "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
@@ -590,6 +597,7 @@
       "https://learn.chatgpt.com/docs/enterprise/plugin-management",
       "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
+      "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
       "https://learn.chatgpt.com/docs/enterprise/sites",
@@ -745,6 +753,7 @@
       "learn.chatgpt.com/docs/enterprise/agent-security/index.md",
       "learn.chatgpt.com/docs/enterprise/analytics-api/index.md",
       "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
+      "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
@@ -753,6 +762,8 @@
       "learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost/index.md",
       "learn.chatgpt.com/docs/enterprise/cloud-local-access/index.md",
       "learn.chatgpt.com/docs/enterprise/compliance-api/index.md",
+      "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
+      "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md",
       "learn.chatgpt.com/docs/enterprise/governance/index.md",
       "learn.chatgpt.com/docs/enterprise/gpts-and-sharing/index.md",
       "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md",
@@ -761,6 +772,7 @@
       "learn.chatgpt.com/docs/enterprise/plugin-management/index.md",
       "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md",
       "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
+      "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
       "learn.chatgpt.com/docs/enterprise/service-accounts/index.md",
       "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
       "learn.chatgpt.com/docs/enterprise/sites/index.md",
@@ -864,7 +876,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 170,
+    "mirrored_paths_count": 174,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -919,6 +931,7 @@
       "https://learn.chatgpt.com/docs/enterprise/agent-security",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+      "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -927,6 +940,8 @@
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+      "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+      "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
       "https://learn.chatgpt.com/docs/enterprise/governance",
       "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
       "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
@@ -935,6 +950,7 @@
       "https://learn.chatgpt.com/docs/enterprise/plugin-management",
       "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
       "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
+      "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
       "https://learn.chatgpt.com/docs/enterprise/sites",
@@ -1099,6 +1115,7 @@
           "https://learn.chatgpt.com/docs/enterprise/agent-security",
           "https://learn.chatgpt.com/docs/enterprise/analytics-api",
           "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+          "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -1107,6 +1124,8 @@
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
           "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
           "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+          "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+          "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
           "https://learn.chatgpt.com/docs/enterprise/governance",
           "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
           "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
@@ -1115,6 +1134,7 @@
           "https://learn.chatgpt.com/docs/enterprise/plugin-management",
           "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
           "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
+          "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/service-accounts",
           "https://learn.chatgpt.com/docs/enterprise/shared-connections",
           "https://learn.chatgpt.com/docs/enterprise/sites",
@@ -1218,7 +1238,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "df07f6d77c39b64fd4b54e2b3ed1957c8c78601e7bacacb8513fee364e1958b6",
+        "discovered_urls_sha256": "9960bd2df98d135ff3fef0dea3b10002bcdc39c02e353b79ab5827ad05ee03f5",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1274,6 +1294,7 @@
           "https://learn.chatgpt.com/docs/enterprise/agent-security",
           "https://learn.chatgpt.com/docs/enterprise/analytics-api",
           "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+          "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -1282,6 +1303,8 @@
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
           "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
           "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+          "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+          "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
           "https://learn.chatgpt.com/docs/enterprise/governance",
           "https://learn.chatgpt.com/docs/enterprise/gpts-and-sharing",
           "https://learn.chatgpt.com/docs/enterprise/groups-and-provisioning",
@@ -1290,6 +1313,7 @@
           "https://learn.chatgpt.com/docs/enterprise/plugin-management",
           "https://learn.chatgpt.com/docs/enterprise/prisma-airs",
           "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions",
+          "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/service-accounts",
           "https://learn.chatgpt.com/docs/enterprise/shared-connections",
           "https://learn.chatgpt.com/docs/enterprise/sites",
@@ -1505,9 +1529,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1584,7 +1608,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-09-29T22:00:40+00:00",
+    "last_successful_full_sync_at": "2026-09-30T21:59:07+00:00",
     "status": "complete"
   }
 }

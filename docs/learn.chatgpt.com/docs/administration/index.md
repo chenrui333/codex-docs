@@ -197,6 +197,34 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/amazon-bedrock",
           icon: "storage",
         },
+        {
+          title: "Connect to a gateway",
+          description:
+            "Configure one Codex client to use your organization's model gateway and verify the connection.",
+          href: "/codex/enterprise/connect-to-a-gateway",
+          icon: "connect",
+        },
+        {
+          title: "Deploy Codex through a gateway",
+          description:
+            "Configure model routes, issue credentials, and deploy Codex through your organization’s gateway.",
+          href: "/codex/enterprise/roll-out-a-gateway",
+          icon: "settings",
+        },
+        {
+          title: "Gateway compatibility",
+          description:
+            "Check the Responses API behavior required for model requests, streaming, and tool calls.",
+          href: "/codex/enterprise/gateway-compatibility",
+          icon: "code",
+        },
+        {
+          title: "Bedrock through LiteLLM",
+          description:
+            "Configure a LiteLLM gateway to route Codex model requests to Amazon Bedrock.",
+          href: "/codex/enterprise/bedrock-through-litellm",
+          icon: "storage",
+        },
       ],
     },
     {
