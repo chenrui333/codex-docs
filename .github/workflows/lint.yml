@@ -1,0 +1,97 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/scripts/**"
+      - ".github/workflows/**"
+      - "scripts/**"
+      - "tests/**"
+      - "justfile"
+      - "pyproject.toml"
+  pull_request:
+    paths:
+      - ".github/scripts/**"
+      - ".github/workflows/**"
+      - "scripts/**"
+      - "tests/**"
+      - "justfile"
+      - "pyproject.toml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version: stable
+          cache: false
+
+      - name: Run actionlint
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 .github/workflows/*.yml
+
+  ruff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.14"
+
+      - name: Install ruff
+        run: python -m pip install -r scripts/requirements-dev.txt
+
+      - name: Run ruff
+        run: ruff check scripts tests
+
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.14"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: "24"
+
+      - name: Install runtime dependencies
+        run: python -m pip install -r scripts/requirements.txt -r scripts/requirements-dev.txt
+
+      - name: Run Python tests
+        run: |
+          coverage run -m unittest discover -s tests -v
+          coverage report
+
+      - name: Run Node.js tests
+        run: node --test tests/*.cjs

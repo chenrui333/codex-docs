@@ -1,3 +1,14 @@
+---
+source_type: 'github'
+source_area: 'github_cli'
+source_url: 'https://raw.githubusercontent.com/openai/codex/01fc69f4026735edfdf6789820549727a4867b11/codex-cli/scripts/README.md'
+source_etag: 'W/"e4c029a4973114d6407dfc3be9200e30bd0a3a14e72738d9f09496acd094c8c6"'
+upstream_source_ref: 'rust-v0.159.3'
+upstream_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+---
+
 # npm releases
 
 Use the staging helper in the repo root to generate npm tarballs for a release. For
@@ -11,13 +22,13 @@ example, to stage the CLI, responses proxy, and SDK packages for version `0.6.0`
   --package codex-sdk
 ```
 
-This downloads the native artifacts once, hydrates `vendor/` for each package, and writes
-tarballs to `dist/npm/`.
+This downloads the required native package archive artifacts, hydrates `vendor/` for
+each package, and writes tarballs to `dist/npm/`.
 
 When `--package codex` is provided, the staging helper builds the lightweight
 `@openai/codex` meta package plus all platform-native `@openai/codex` variants
 that are later published under platform-specific dist-tags.
 
-If you need to invoke `build_npm_package.py` directly, run
-`codex-cli/scripts/install_native_deps.py` first and pass `--vendor-src` pointing to the
-directory that contains the populated `vendor/` tree.
+Direct `build_npm_package.py` invocations are still useful for package-specific
+debugging, but native packages expect `--vendor-src` to point at a prehydrated
+`vendor/` tree. Release packaging should use `scripts/stage_npm_packages.py`

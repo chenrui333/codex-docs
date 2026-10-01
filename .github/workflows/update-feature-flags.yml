@@ -6,9 +6,10 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - ".github/workflows/update-feature-flags.yml"
       - "scripts/snapshot_feature_flags.py"
-      - "docs/developers.openai.com/codex/config-basic/index.md"
-      - "docs/developers.openai.com/codex/config-reference/index.md"
+      - "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md"
+      - "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md"
       - "docs/feature-flags/**"
 
 permissions:
@@ -17,39 +18,60 @@ permissions:
 jobs:
   validate-feature-flags:
     if: github.event_name == 'pull_request'
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
-          python-version: "3.11"
+          python-version: "3.14"
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: "22"
+          node-version: "24"
 
-      - name: Install Codex CLI
-        run: npm install -g @openai/codex
+      - name: Read snapshot inputs
+        id: snapshot_cli
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import re
+          from pathlib import Path
+
+          snapshot = json.loads(Path("docs/feature-flags/lifecycle.json").read_text())
+          raw_version = snapshot["codex_cli_version"]
+          match = re.search(r"\b(\d+\.\d+\.\d+(?:[-+][^\s]+)?)\b", raw_version)
+          if not match:
+              raise SystemExit(f"Could not parse Codex CLI package version from {raw_version!r}")
+
+          print(f"npm_version={match.group(1)}")
+          print(f"source_commit={snapshot['source_commit']}")
+          PY
+
+      - name: Install snapshot CLI version
+        run: npm install -g "@openai/codex@${{ steps.snapshot_cli.outputs.npm_version }}"
 
       - name: Generate feature lifecycle snapshot
+        env:
+          CODEX_FEATURE_SOURCE_COMMIT: ${{ steps.snapshot_cli.outputs.source_commit }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python3 scripts/snapshot_feature_flags.py
 
       - name: Upload snapshot artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: feature-flags-snapshot-${{ matrix.os }}
+          name: feature-flags-snapshot-ubuntu-latest
           path: docs/feature-flags/
           if-no-files-found: error
 
@@ -74,26 +96,30 @@ jobs:
   update-feature-flags:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: docs-writer-main
+      cancel-in-progress: false
     permissions:
       contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
-          python-version: "3.11"
+          python-version: "3.14"
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: "22"
+          node-version: "24"
 
-      - name: Install Codex CLI
+      - name: Install latest CLI
         run: npm install -g @openai/codex
 
       - name: Generate feature lifecycle snapshot
@@ -101,7 +127,7 @@ jobs:
 
       - name: Upload snapshot artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: feature-flags-snapshot-ubuntu-latest
           path: docs/feature-flags/
@@ -116,11 +142,19 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit and push snapshot updates
+      - name: Check writer base
         if: steps.changed.outputs.changed == 'true'
+        id: writer_base
+        run: python3 scripts/check_writer_base.py >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push snapshot updates
+        if: steps.changed.outputs.changed == 'true' && steps.writer_base.outputs.stale == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/feature-flags/
-          git commit -m "chore: refresh feature-flag lifecycle snapshot ($(date -u +'%Y-%m-%d'))"
-          git push
+          git commit -s -m "chore: refresh feature-flag lifecycle snapshot ($(date -u +'%Y-%m-%d'))"
+          gh auth setup-git
+          git push origin HEAD:main

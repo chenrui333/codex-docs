@@ -1,0 +1,65 @@
+---
+source_type: 'codex_cli_system_skill'
+source_area: 'system_skill_skill_installer'
+source_url: 'codex-cli://skills/.system/skill-installer/SKILL.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+codex_cli_release_ref: 'rust-v0.159.3'
+codex_cli_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+name: 'skill-installer'
+description: 'Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).'
+short-description: 'Install curated skills from openai/skills or other repos'
+---
+
+# Skill Installer
+
+Helps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.
+
+Use the helper scripts based on the task:
+- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.
+- Install from the curated list when the user provides a skill name.
+- Install from another repo when the user provides a GitHub repo/path (including private repos).
+
+Install skills with the helper scripts.
+
+## Communication
+
+When listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:
+"""
+Skills from {repo}:
+1. skill-1
+2. skill-2 (already installed)
+3. ...
+Which ones would you like installed?
+"""
+
+After installing a skill, tell the user it will be available on their next turn.
+
+## Scripts
+
+All of these scripts use network, so when running in the sandbox, request escalation when running them.
+
+- `scripts/list-skills.py` (prints skills list with installed annotations)
+- `scripts/list-skills.py --format json`
+- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`
+- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`
+- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`
+- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`
+
+## Behavior and Options
+
+- Defaults to direct download for public GitHub repos.
+- If download fails with auth/permission errors, falls back to git sparse checkout.
+- Aborts if the destination skill directory already exists.
+- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).
+- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.
+- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.
+
+## Notes
+
+- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.
+- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.
+- Git fallback tries HTTPS first, then SSH.
+- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.
+- Installed annotations come from `$CODEX_HOME/skills`.

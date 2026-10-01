@@ -1,10 +1,21 @@
+---
+source_type: 'github'
+source_area: 'github_rust'
+source_url: 'https://raw.githubusercontent.com/openai/codex/01fc69f4026735edfdf6789820549727a4867b11/codex-rs/docs/bazel.md'
+source_etag: 'W/"6d78cbcbeb3f5510a37a5476ee886879fb092487ccfaa908312ec343e91de67c"'
+upstream_source_ref: 'rust-v0.159.3'
+upstream_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+---
+
 # Bazel in codex-rs
 
 This repository uses Bazel to build the Rust workspace under `codex-rs`.
 Cargo remains the source of truth for crates and features, while Bazel
 provides hermetic builds, toolchains, and cross-platform artifacts.
 
-As of 1/9/2026, this setup is still experimental as we stabilize it.
+As of 6/1/2026, this setup is still experimental as we stabilize it.
 
 ## High-level layout
 
@@ -19,6 +30,121 @@ As of 1/9/2026, this setup is still experimental as we stabilize it.
 - Each crate in `codex-rs/*/BUILD.bazel` typically uses `codex_rust_crate` and
   makes some adjustments if the crate needs additional compile-time or runtime data,
   or other customizations.
+
+## Running Bazel locally
+
+The repository root `justfile` exposes the common Bazel entry points:
+
+```bash
+just bazel-test
+just bazel-clippy
+```
+
+Ordinary local `bazel` and `just` invocations run locally. BuildBuddy cache,
+build event upload, downloads, and remote execution are opt-in configurations.
+
+## BuildBuddy
+
+Codex uses BuildBuddy for a shared Bazel cache and remoted builds and tests. To use it
+to speed up your builds and tests you'll need to provide an API key and select a
+configuration.
+
+### BuildBuddy API key
+
+If you're an OpenAI employee, log in to https://openai.buildbuddy.io and use Google sign-in.
+
+Create a BuildBuddy API key as described in BuildBuddy's [Authentication Guide][bb-auth-guide],
+then add it to `~/.bazelrc`:
+
+```bazelrc
+# Local machine only; this file contains a BuildBuddy credential.
+common --remote_header=x-buildbuddy-api-key=<your-buildbuddy-api-key>
+```
+
+Keeping the credential outside the workspace reduces the risk of accidentally
+committing it.
+
+If you need different API keys for different projects, put the API key in
+`%workspace%/user.bazelrc` instead. The checked-in `.bazelrc` optionally imports
+that file, and `.gitignore` excludes it. Do not commit or share a file containing
+the credential.
+
+[bb-auth-guide]: https://www.buildbuddy.io/docs/guide-auth/#managing-keys
+
+### Selecting a remote build configuration
+
+OpenAI employees should default to the OpenAI host with remote execution unless
+they have a reason to choose another configuration. Add the following configuration
+to `%workspace%/user.bazelrc`:
+
+```bazelrc
+common --config=buildbuddy-openai-rbe
+```
+
+OpenAI employees who don't want remote execution can use `buildbuddy-openai`. External users
+should use `buildbuddy-generic-rbe` or `buildbuddy-generic`. See below for details on these
+configurations.
+
+### All remote configurations
+
+GitHub Actions routes Bazel build and output-resolution commands through
+`.github/scripts/run_bazel_with_buildbuddy.py`. Higher-level helpers such as
+`.github/scripts/run-bazel-ci.sh` and `.github/scripts/rusty_v8_bazel.py`
+delegate remote configuration selection to that wrapper. The wrapper reads the
+GitHub Actions repository and event payload rather than relying on workflow
+files to duplicate tenant-selection logic. It also normalizes GitHub Actions
+startup options so all Bazel launches in a job reuse the same server and
+in-memory analysis cache. Target-discovery and lockfile helpers delegate to the
+same wrapper so their callers do not need to select CI-specific startup options.
+
+Loading-phase target-discovery `bazel query` commands run locally because they
+only enumerate labels and do not need remote caches or execution.
+
+The `Cache/BES` host is also used for remote downloads.
+
+| Invocation/config | Key Required | Cache/BES | Build exec | Test exec |
+| --- | --- | --- | --- | --- |
+| `bazel ...` | No | None | Local | Local |
+| `bazel ... --config=buildbuddy-generic` | Yes | `remote.buildbuddy.io` | Local | Local |
+| `bazel ... --config=buildbuddy-generic-rbe` | Yes | `remote.buildbuddy.io` | Remote | Remote |
+| `bazel ... --config=buildbuddy-openai` | Yes | `openai.buildbuddy.io` | Local | Local |
+| `bazel ... --config=buildbuddy-openai-rbe` | Yes | `openai.buildbuddy.io` | Remote | Remote |
+
+Without an API key, the wrapper removes remote CI configurations and runs
+locally. With a key, workflows choose the host as follows:
+
+| Run | Key | Uses OpenAI BuildBuddy Host |
+| --- | --- | --- |
+| Push to `main` in `openai/codex` | Yes | Yes |
+| `workflow_dispatch` in `openai/codex` | Yes | Yes |
+| Same-repository pull request in `openai/codex` | Yes | Yes |
+| Fork pull request into `openai/codex` | No | No; local |
+| Push or `workflow_dispatch` in a fork with a key | Yes | No; generic host |
+| Pull request run in a fork repository with a key | Yes | No; generic host |
+
+CI configurations determine whether builds and tests execute remotely:
+
+| CI config | Remote config | Build exec | Test exec |
+| --- | --- | --- | --- |
+| `ci-linux` | `*-rbe` | Remote host | Remote host |
+| `ci-v8` | `*-rbe` | Remote host | Remote host |
+| `ci-macos` | `*-rbe` | Remote host | Local |
+| `ci-windows-cross` | `*-rbe` | Remote host | Local |
+| `ci-windows` | non-RBE | Local | Local |
+| Keyless CI fallback | none | Local | Local |
+
+To exercise the generic remote configuration with your key:
+
+```bash
+BUILDBUDDY_API_KEY=... GITHUB_REPOSITORY=my-fork/codex \
+  ./.github/scripts/run_bazel_with_buildbuddy.py \
+  build --config=ci-linux //codex-rs/cli:codex
+```
+
+The wrapper selects the OpenAI host only inside GitHub Actions for a trusted
+run in `openai/codex`. A missing or malformed pull request event
+payload fails closed to the generic host. For local OpenAI host access, use
+the `user.bazelrc` configuration above.
 
 ## Evolving the setup
 

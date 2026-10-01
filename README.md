@@ -6,31 +6,80 @@ This repository mirrors Codex-focused content from official OpenAI sources and k
 
 ## What gets synced
 
-- `developers.openai.com` Codex pages (`/codex/...`)
+- All documentation pages discovered under `learn.chatgpt.com/docs`, including the Codex changelog
+- `developers.openai.com` Codex pages (`/codex/...`) and Codex-specific release/blog posts
 - Codex-related cookbook/resources pages (`/cookbook/...codex...`, `/resources/codex`)
-- Markdown docs from `openai/codex` (README, CHANGELOG, `docs/*.md`, selected CLI/Rust docs)
+- Release-matched Markdown docs from `openai/codex` (README, CHANGELOG, `docs/*.md`, selected CLI/Rust docs)
+- Linked platform tool guides referenced by mirrored Codex docs
+- System skills materialized by the installed Codex CLI
+- A sanitized `codex debug prompt-input` snapshot from the installed Codex CLI
+- Isolated Linux/macOS CLI help observations and their aggregated command/option surface
+- Release-matched model catalog and feature lifecycle snapshots
+- A generated `docs/codex_capabilities.json` inventory of mirrored capability surfaces
 
 ## Repository layout
 
 - `docs/developers.openai.com/...` mirrored pages from the OpenAI Developers site
+- `docs/learn.chatgpt.com/docs/...` mirrored documentation from ChatGPT Learn
 - `docs/github.openai.com/openai/codex/...` mirrored markdown from `openai/codex`
-- `docs/docs_manifest.json` hash manifest for change tracking
-- `docs/sync_summary.json` latest sync summary
-- `docs/source_coverage.json` sitemap coverage watchdog output
-- `weekly/YYYY-MM-DD.md` digest files with category summary + raw changed paths
+- `docs/platform.openai.com/...` mirrored linked platform tool guides
+- `dot_codex/skills/dot_system/...` mirrored Codex CLI system skills in installed-path shape
+- `system_prompts/codex-cli/prompt-input.json` sanitized prompt input snapshot from `codex debug prompt-input`
+- `docs/docs_manifest.json` hash manifest for change tracking, including Codex CLI version-history metadata
+- `docs/codex_capabilities.json` generated capability inventory spanning system skills, prompt snapshots, and linked tool guides
+- `docs/codex_models.json` release-bundled model catalog with immutable source provenance and selected runtime fields
+- `docs/cli-surface/*.json` last-known-good isolated CLI help observations per OS/architecture
+- `docs/codex_cli_surface.json` deterministic union of commands/options with per-platform release provenance
+- `docs/sync_summary.json` latest sync summary with the source snapshot for changed outputs
+- `docs/source_coverage.json` source coverage, transaction scope, and retained web-observation state
+- `docs/freshness.json` stable-release, installed-CLI, canonical-mirror, model-catalog, and feature-snapshot invariant
+- `docs/feature-flags/lifecycle.json` and `lifecycle.md` release-matched feature stages, defaults, compatibility behavior, and documentation coverage
+- `weekly/events/YYYY-MM-DD.json` append-safe structured transaction ledger
+- `weekly/YYYY-MM-DD.md` daily rollup with semantic changes, category summary, and raw changed paths
+
+Daily digests roll up all meaningful transactions recorded in `weekly/events/YYYY-MM-DD.json`.
+Events retain structured changes, before/after content hashes, release provenance, and stable
+identities. Identical retries and unchanged syncs add no events. Earlier daily reports remain
+untouched; an existing report is preserved when that date first adopts event tracking.
+
+Generated Markdown files include YAML frontmatter with stable source metadata such as `source_type`, `source_area`, `source_url`, upstream `source_last_modified` when available, and CLI-version history only for release-derived files. Existing `codex_cli_versions` lists on web pages are frozen historical mirror observations, not evidence that their content belongs to those CLI releases. New web pages do not receive CLI-version lists; release observations are recorded once in sync events.
+
+CLI collection runs on Linux and macOS. Failed or missing platform collections preserve
+that platform's last-known-good observation. The aggregate identifies each observation's
+own release; an older platform snapshot does not claim to describe the latest release.
+Capabilities remain globally active if present or conservatively retained on any observed
+platform. Removal requires a newer descendant release on every previously observed platform.
+Initial migration recovers recent platform observations from existing repository history.
+Windows observation is not yet scheduled.
+
+The capability inventory distinguishes official documentation, immutable upstream source, GitHub release metadata, isolated installed-CLI observations, and deterministic relationships. It records CLI/config surfaces and feature maturity without reading the user's real Codex home, credentials, history, or sessions.
+
+The model catalog tracks bundled model visibility, priority, reasoning, context limits,
+API support, tool families, and replacement relationships without copying internal prompt
+strings. Structured model changes appear in the daily event ledger and Markdown digest.
+The CLI sorts models by priority and selects a visible default after authentication filtering;
+remote catalogs and explicit configuration can override bundled behavior. The snapshot is
+release evidence, not an observation of an authenticated account's available models.
 
 ## Automation
 
 GitHub Actions workflow: `.github/workflows/update-docs.yml`
 
 - Runs every 6 hours
-- Executes `scripts/fetch_codex_docs.py`
-- Commits and pushes when content changes are detected
+- Collects isolated CLI help on Linux and macOS; unavailable collectors retain previous observations
+- First commits a verified release transaction with `scripts/fetch_codex_docs.py --release-only`
+- Then runs full web discovery with `scripts/fetch_codex_docs.py`; a web outage cannot undo the release commit
+- Each transaction commits and pushes only after its own strict, failure-free validation
 - Uploads `docs/source_coverage.json` as a workflow artifact for visibility
-- On sync failure, creates or updates a daily issue with sync summary + log tail
+- Publishes a deterministic freshness report and fails after a stable release remains ahead for the configured grace period
+- Creates or updates one rolling failure issue, then comments and closes it after recovery
+- Serializes release, docs, and feature-snapshot writers and checks each actual checkout base before pushing
 
 Coverage watchdog behavior:
 
+- Records every discovered and mirrored ChatGPT Learn documentation URL, including Markdown and HTML-fallback counts
+- Records each Learn child sitemap's observed canonical docs URLs and contribution digest; unique contributions are only asserted when every child succeeds
+- Keeps attempt-only discovery deltas in logs/diagnostics so unchanged repeat runs do not rewrite canonical coverage
 - Logs codex-related sitemap URL counts and deltas on each run
 - Highlights newly discovered codex-related URLs in workflow logs
 - Optional strict mode: set `CODEX_DOCS_STRICT_COVERAGE=1` to fail when new codex-related URLs are discovered but none are mirrored
@@ -38,9 +87,20 @@ Coverage watchdog behavior:
 Resiliency controls:
 
 - `CODEX_DOCS_TIMEOUT_SECONDS` request timeout per call (default `30`)
+- `CODEX_DOCS_COMMAND_TIMEOUT_SECONDS` CLI subprocess timeout (default `120`)
 - `CODEX_DOCS_MAX_RETRIES` max request attempts (default `3`)
 - `CODEX_DOCS_RETRY_BACKOFF_SECONDS` exponential backoff base (default `1.5`)
-- `CODEX_DOCS_STRICT_SYNC=1` fail the run if any source segment fails (otherwise partial-source runs are allowed and failures are recorded)
+- `CODEX_DOCS_STRICT_SYNC=1` fails if any source segment fails; scheduled automation always enables it
+- `CODEX_FRESHNESS_GRACE_HOURS` controls when a stable-release gap becomes a strict failure (default `12`, allowing two scheduled 6-hour sync opportunities)
+- Strict failures leave canonical output unchanged; non-strict local runs may retain diagnostic partial output
+- Child sitemap failures remain blocking: the historical union alone cannot prove a missing child's contribution or justify destructive removals
+- Scheduled runs upload `sync-attempt-diagnostics` separately from canonical reports. Its current observation, blocking failures, and canonical-baseline hashes describe the attempt, not a committed transaction. Local callers can use `--diagnostics-path /tmp/sync-attempt.json`
+- Release-only sync validates cached web files against their manifest and retains their bytes, without fetching web sources
+- Coverage records the last meaningful transaction scope and web observation basis; no-op scope switches do not rewrite state. Release freshness does not assert current web-source health.
+- Recorded full-web success is retained across release-only transactions. Timestamps describe committed meaningful observations, not a heartbeat for every no-op run.
+- Feature snapshots are built in memory and validated against the same release before inventory generation
+- `just check-strict` runs the idempotence check with strict sync failure enforcement
+- ChatGPT Learn pages use the official Markdown endpoint when available and fall back to the canonical HTML page when it is not
 
 Release workflow: `.github/workflows/release.yml`
 
@@ -50,28 +110,38 @@ Release workflow: `.github/workflows/release.yml`
 
 Optional helper workflow: `.github/workflows/propose-version-bump.yml`
 
-- Runs monthly (and manual dispatch) to propose a `VERSION` bump PR
-- Skips creating duplicates when an open bump PR with the same title already exists
+- Runs monthly (and manual dispatch) to prepare a `VERSION` bump branch
+- Skips duplicate work when an open bump PR with the same title already exists
+- Opens or updates a tracking issue when the default Actions token cannot create PRs
 
 Feature lifecycle workflow: `.github/workflows/update-feature-flags.yml`
 
 - Runs daily (and manual dispatch) to snapshot current feature flags into `docs/feature-flags/`
-- Uses both `codex features list` and `openai/codex` source files for lifecycle + semantics checks
+- Resolves the CLI release tag to an immutable `openai/codex` commit before reading source semantics
+- Distinguishes configurable flags from removed compatibility keys and records effective behavior only where upstream source supports it; ambiguous cases remain unknown
+- Treats missing stable and experimental flags as actionable; upstream has no reliable public/internal marker for narrowing that check
 - Commits updated snapshots on schedule/manual runs when drift is detected
-- Enforces freshness on pull requests touching feature-flag automation/docs inputs
+- Replays the stored CLI version and source commit when enforcing pull-request freshness
 
 ## Local usage
 
 ```bash
 just setup
+just lint
+just test
 just sync
-just check
-just feature-flags
-just check-feature-flags
+just check-strict
 ```
+
+`just sync-release` advances release-derived artifacts using a complete, manifest-verified web mirror without contacting web sources. It is useful during a web outage and fails if no valid cached mirror exists. `just check-strict` runs full sync twice and checks freshness, idempotence, and changed-file scope; keep other repository files unchanged while it runs. `just check` is the non-strict local variant.
+
+For feature-specific work, use `just feature-flags` and review the generated diff. `just check-feature-flags` regenerates and compares against the Git index, so stage the intended snapshot before checking. Replays need the recorded CLI version and observation platform; a platform change can legitimately change observed defaults.
+
+Local setup defaults to Python 3.14 to match CI. Set `CODEX_DOCS_PYTHON` to an equivalent Python 3.14 executable when needed. The actionlint recipe uses Go to run the same pinned actionlint release as CI.
 
 ## Notes
 
 - This is a community mirror, not an official OpenAI repository.
-- Content attribution remains with the original sources.
+- The [September 2026 release/runtime audit](audits/2026-09-04.md) records the evidence behind the provenance, platform, history, and transaction safeguards.
+- The root [MIT license](LICENSE) covers repository-authored code and tooling. It does not relicense mirrored OpenAI documentation, prompts, skills, or other upstream assets; those retain their original ownership and applicable licenses or terms. Embedded upstream license and copyright notices are preserved.
 - If a source page structure changes, update `scripts/fetch_codex_docs.py` selectors and filters.

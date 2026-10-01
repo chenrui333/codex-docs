@@ -1,6 +1,18 @@
+---
+source_type: 'developers'
+source_area: 'cookbook'
+source_url: 'https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab'
+source_last_modified: '2026-08-31T22:35:34Z'
+source_etag: 'W/"7dc4cb8815375ba0e74342d89074ade8"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
+---
+
 # Automating Code Quality and Security Fixes with Codex CLI on GitLab
 
 Source: https://developers.openai.com/cookbook/examples/codex/secure_quality_gitlab
+
+> **Update note — review the current guidance before using these examples.** The `--full-auto` flag used below is deprecated. Do not treat a failed Codex run or invalid output as an empty findings result. For general Codex automation, see [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode). For dedicated Codex Security scanning and remediation, use the maintained [GitLab CI/CD guide](https://learn.chatgpt.com/docs/security/cli/ci/gitlab). That workflow differs from this article’s code-quality analysis and interpretation of existing SAST results; the examples below have not been migrated to it.
 
 ## Introduction
 
@@ -627,4 +639,3 @@ Looking forward, this pattern can be extended to unify all major scan types thro
 By merging these into a single Codex-powered post-processing + remediation pipeline, teams can get a consistent stream of **actionable guidance, validated patches** across all security domains.
 
 **The broader takeaway:** with prompt engineering, schema validation, and integration into GitLab’s native MR workflow, LLMs evolve from “advisors” into **first-class CI/CD agents** — helping teams ship code that is not only functional, but also secure, maintainable, and automatically remediated where possible.
-

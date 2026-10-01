@@ -1,3 +1,14 @@
+---
+source_type: 'github'
+source_area: 'github_docs'
+source_url: 'https://raw.githubusercontent.com/openai/codex/01fc69f4026735edfdf6789820549727a4867b11/docs/config.md'
+source_etag: 'W/"49bad37e42f6d2d8c1720a46d1b18135c6d5407e1a770ff477b76585a843bb4a"'
+upstream_source_ref: 'rust-v0.159.3'
+upstream_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+---
+
 # Configuration
 
 For basic configuration instructions, see [this documentation](https://developers.openai.com/codex/config-basic).
@@ -6,47 +17,10 @@ For advanced configuration instructions, see [this documentation](https://develo
 
 For a full configuration reference, see [this documentation](https://developers.openai.com/codex/config-reference).
 
-## Connecting to MCP servers
+## Lifecycle hooks
 
-Codex can connect to MCP servers configured in `~/.codex/config.toml`. See the configuration reference for the latest MCP server options:
-
-- https://developers.openai.com/codex/config-reference
-
-## Apps (Connectors)
-
-Use `$` in the composer to insert a ChatGPT connector; the popover lists accessible
-apps. The `/apps` command lists available and installed apps. Connected apps appear first
-and are labeled as connected; others are marked as can be installed.
-
-## Notify
-
-Codex can run a notification hook when the agent finishes a turn. See the configuration reference for the latest notification settings:
-
-- https://developers.openai.com/codex/config-reference
-
-When Codex knows which client started the turn, the legacy notify JSON payload also includes a top-level `client` field. The TUI reports `codex-tui`, and the app server reports the `clientInfo.name` value from `initialize`.
-
-## JSON Schema
-
-The generated JSON Schema for `config.toml` lives at `codex-rs/core/config.schema.json`.
-
-## SQLite State DB
-
-Codex stores the SQLite-backed state DB under `sqlite_home` (config key) or the
-`CODEX_SQLITE_HOME` environment variable. When unset, WorkspaceWrite sandbox
-sessions default to a temp directory; other modes default to `CODEX_HOME`.
-
-## Notices
-
-Codex stores "do not show again" flags for some UI prompts under the `[notice]` table.
-
-## Plan mode defaults
-
-`plan_mode_reasoning_effort` lets you set a Plan-mode-specific default reasoning
-effort override. When unset, Plan mode uses the built-in Plan preset default
-(currently `medium`). When explicitly set (including `none`), it overrides the
-Plan preset. The string value `none` means "no reasoning" (an explicit Plan
-override), not "inherit the global default". There is currently no separate
-config value for "follow the global default in Plan mode".
-
-Ctrl+C/Ctrl+D quitting uses a ~1 second double-press hint (`ctrl + c again to quit`).
+Admins can set top-level `allow_managed_hooks_only = true` in
+`requirements.toml` to ignore user, project, and session hook configs while
+still allowing managed hooks from requirements and managed config layers. This
+setting is only supported in `requirements.toml`; putting it in `config.toml`
+does not enable managed-hooks-only mode.

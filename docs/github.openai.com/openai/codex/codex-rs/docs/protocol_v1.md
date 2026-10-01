@@ -1,3 +1,14 @@
+---
+source_type: 'github'
+source_area: 'github_rust'
+source_url: 'https://raw.githubusercontent.com/openai/codex/01fc69f4026735edfdf6789820549727a4867b11/codex-rs/docs/protocol_v1.md'
+source_etag: 'W/"68ecec6b064af5b64d18b33390adb11d15164f96e38dc84c62e22948db8cc0ee"'
+upstream_source_ref: 'rust-v0.159.3'
+upstream_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+---
+
 Overview of Protocol defined in [protocol.rs](../protocol/src/protocol.rs) and [agent.rs](../core/src/agent.rs).
 
 The goal of this document is to define terminology used in the system and explain the expected behavior of the system.
@@ -23,7 +34,7 @@ These are entities exit on the codex backend. The intent of this section is to e
 3. `Task`
    - A `Task` is `Codex` executing work in response to user input.
    - `Session` has at most one `Task` running at a time.
-   - Receiving `Op::UserTurn` starts a `Task` (`Op::UserInput` is legacy)
+   - Receiving user turn input starts a `Task`
    - Consists of a series of `Turn`s
    - The `Task` executes to until:
      - The `Model` completes the task and there is no output to feed into an additional `Turn`
@@ -54,6 +65,7 @@ Since only 1 `Task` can be run at a time, for parallel tasks it is recommended t
   - These are messages sent on the `SQ` (UI -> `Codex`)
   - Has an string ID provided by the UI, referred to as `sub_id`
   - `Op` refers to the enum of all possible `Submission` payloads
+  - In the current codebase these are primarily in-process Rust types rather than a stable serde wire contract
     - This enum is `non_exhaustive`; variants can be added at future dates
 - `Event`
   - These are messages sent on the `EQ` (`Codex` -> UI)
@@ -65,15 +77,10 @@ Since only 1 `Task` can be run at a time, for parallel tasks it is recommended t
 For complete documentation of the `Op` and `EventMsg` variants, refer to [protocol.rs](../protocol/src/protocol.rs). Some example payload types:
 
 - `Op`
-  - `Op::UserTurn` – Any input from the user to kick off a `Turn`
-  - `Op::UserInput` – Legacy form of user input
+  - `Op::UserTurn` – Any input from the user to kick off a `Turn`, including full per-turn context such as cwd, model, sandbox, approval policy, and optional `approvals_reviewer`
   - `Op::Interrupt` – Interrupts a running turn
   - `Op::ExecApproval` – Approve or deny code execution
   - `Op::UserInputAnswer` – Provide answers for a `request_user_input` tool call
-  - `Op::ListSkills` – Request skills for one or more cwd values (optionally `force_reload`)
-  - `Op::UserTurn` and `Op::OverrideTurnContext` accept an optional `personality` override that updates the model’s communication style
-
-Valid `personality` values are `friendly`, `pragmatic`, and `none`. When `none` is selected, the personality placeholder is replaced with an empty string.
 
 - `EventMsg`
   - `EventMsg::AgentMessage` – Messages from the `Model`
@@ -86,7 +93,6 @@ Valid `personality` values are `friendly`, `pragmatic`, and `none`. When `none` 
   - `EventMsg::Error` – A turn stopped with an error
   - `EventMsg::Warning` – A non-fatal warning that the client should surface to the user
   - `EventMsg::TurnComplete` – Contains a `response_id` bookmark for last `response_id` executed by the turn. This can be used to continue the turn at a later point in time, perhaps with additional user input.
-  - `EventMsg::ListSkillsResponse` – Response payload with per-cwd skill entries (`cwd`, `skills`, `errors`)
 
 ### UserInput items
 
@@ -105,7 +111,7 @@ The `response_id` returned from each turn matches the OpenAI `response_id` store
 
 Can operate over any transport that supports bi-directional streaming. - cross-thread channels - IPC channels - stdin/stdout - TCP - HTTP2 - gRPC
 
-Non-framed transports, such as stdin/stdout and TCP, should use newline-delimited JSON in sending messages.
+Events still serialize cleanly to newline-delimited JSON for non-framed transports, such as stdin/stdout and TCP. Submission payloads should be treated as implementation details unless a specific transport owns an explicit adapter.
 
 ## Example Flows
 

@@ -1,101 +1,14 @@
-# Codex CLI (Rust Implementation)
+---
+source_type: 'github'
+source_area: 'github_rust'
+source_url: 'https://raw.githubusercontent.com/openai/codex/01fc69f4026735edfdf6789820549727a4867b11/codex-rs/README.md'
+source_etag: 'W/"6a110f913cb9c97e006894d137018e0d6f71abd1b21e2d5063c37d4fc6aaf023"'
+upstream_source_ref: 'rust-v0.159.3'
+upstream_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+---
 
-We provide Codex CLI as a standalone, native executable to ensure a zero-dependency install.
+# Codex CLI
 
-## Installing Codex
-
-Today, the easiest way to install Codex is via `npm`:
-
-```shell
-npm i -g @openai/codex
-codex
-```
-
-You can also install via Homebrew (`brew install --cask codex`) or download a platform-specific release directly from our [GitHub Releases](https://github.com/openai/codex/releases).
-
-## Documentation quickstart
-
-- First run with Codex? Start with [`docs/getting-started.md`](../docs/getting-started.md) (links to the walkthrough for prompts, keyboard shortcuts, and session management).
-- Want deeper control? See [`docs/config.md`](../docs/config.md) and [`docs/install.md`](../docs/install.md).
-
-## What's new in the Rust CLI
-
-The Rust implementation is now the maintained Codex CLI and serves as the default experience. It includes a number of features that the legacy TypeScript CLI never supported.
-
-### Config
-
-Codex supports a rich set of configuration options. Note that the Rust CLI uses `config.toml` instead of `config.json`. See [`docs/config.md`](../docs/config.md) for details.
-
-### Model Context Protocol Support
-
-#### MCP client
-
-Codex CLI functions as an MCP client that allows the Codex CLI and IDE extension to connect to MCP servers on startup. See the [`configuration documentation`](../docs/config.md#connecting-to-mcp-servers) for details.
-
-#### MCP server (experimental)
-
-Codex can be launched as an MCP _server_ by running `codex mcp-server`. This allows _other_ MCP clients to use Codex as a tool for another agent.
-
-Use the [`@modelcontextprotocol/inspector`](https://github.com/modelcontextprotocol/inspector) to try it out:
-
-```shell
-npx @modelcontextprotocol/inspector codex mcp-server
-```
-
-Use `codex mcp` to add/list/get/remove MCP server launchers defined in `config.toml`, and `codex mcp-server` to run the MCP server directly.
-
-### Notifications
-
-You can enable notifications by configuring a script that is run whenever the agent finishes a turn. The [notify documentation](../docs/config.md#notify) includes a detailed example that explains how to get desktop notifications via [terminal-notifier](https://github.com/julienXX/terminal-notifier) on macOS. When Codex detects that it is running under WSL 2 inside Windows Terminal (`WT_SESSION` is set), the TUI automatically falls back to native Windows toast notifications so approval prompts and completed turns surface even though Windows Terminal does not implement OSC 9.
-
-### `codex exec` to run Codex programmatically/non-interactively
-
-To run Codex non-interactively, run `codex exec PROMPT` (you can also pass the prompt via `stdin`) and Codex will work on your task until it decides that it is done and exits. Output is printed to the terminal directly. You can set the `RUST_LOG` environment variable to see more about what's going on.
-Use `codex exec --ephemeral ...` to run without persisting session rollout files to disk.
-
-### Experimenting with the Codex Sandbox
-
-To test to see what happens when a command is run under the sandbox provided by Codex, we provide the following subcommands in Codex CLI:
-
-```
-# macOS
-codex sandbox macos [--full-auto] [--log-denials] [COMMAND]...
-
-# Linux
-codex sandbox linux [--full-auto] [COMMAND]...
-
-# Windows
-codex sandbox windows [--full-auto] [COMMAND]...
-
-# Legacy aliases
-codex debug seatbelt [--full-auto] [--log-denials] [COMMAND]...
-codex debug landlock [--full-auto] [COMMAND]...
-```
-
-### Selecting a sandbox policy via `--sandbox`
-
-The Rust CLI exposes a dedicated `--sandbox` (`-s`) flag that lets you pick the sandbox policy **without** having to reach for the generic `-c/--config` option:
-
-```shell
-# Run Codex with the default, read-only sandbox
-codex --sandbox read-only
-
-# Allow the agent to write within the current workspace while still blocking network access
-codex --sandbox workspace-write
-
-# Danger! Disable sandboxing entirely (only do this if you are already running in a container or other isolated env)
-codex --sandbox danger-full-access
-```
-
-The same setting can be persisted in `~/.codex/config.toml` via the top-level `sandbox_mode = "MODE"` key, e.g. `sandbox_mode = "workspace-write"`.
-
-## Code Organization
-
-This folder is the root of a Cargo workspace. It contains quite a bit of experimental code, but here are the key crates:
-
-- [`core/`](./core) contains the business logic for Codex. Ultimately, we hope this to be a library crate that is generally useful for building other Rust/native applications that use Codex.
-- [`exec/`](./exec) "headless" CLI for use in automation.
-- [`tui/`](./tui) CLI that launches a fullscreen TUI built with [Ratatui](https://ratatui.rs/).
-- [`cli/`](./cli) CLI multitool that provides the aforementioned CLIs via subcommands.
-
-If you want to contribute or inspect behavior in detail, start by reading the module-level `README.md` files under each crate and run the project workspace from the top-level `codex-rs` directory so shared config, features, and build scripts stay aligned.
+[**Codex CLI Documentation**](https://developers.openai.com/codex/cli)

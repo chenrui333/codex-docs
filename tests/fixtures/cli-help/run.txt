@@ -1,0 +1,9 @@
+Run a task
+
+Usage: example run [OPTIONS]
+
+Options:
+      --json
+          Emit structured output
+  -h, --help
+          Print help

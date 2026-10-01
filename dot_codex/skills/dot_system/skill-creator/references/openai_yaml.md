@@ -1,0 +1,60 @@
+---
+source_type: 'codex_cli_system_skill'
+source_area: 'system_skill_skill_creator'
+source_url: 'codex-cli://skills/.system/skill-creator/references/openai_yaml.md'
+source_kind: 'installed_codex_cli'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+codex_cli_release_ref: 'rust-v0.159.3'
+codex_cli_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+---
+
+# openai.yaml fields (full example + descriptions)
+
+`agents/openai.yaml` is an extended, product-specific config intended for the machine/harness to read, not the agent. Other product-specific config can also live in the `agents/` folder.
+
+## Full example
+
+```yaml
+interface:
+  display_name: "Optional user-facing name"
+  short_description: "Optional user-facing description"
+  icon_small: "./assets/small-400px.png"
+  icon_large: "./assets/large-logo.svg"
+  brand_color: "#3B82F6"
+  default_prompt: "Optional surrounding prompt to use the skill with"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "github"
+      description: "GitHub MCP server"
+      transport: "streamable_http"
+      url: "https://api.githubcopilot.com/mcp/"
+
+policy:
+  allow_implicit_invocation: true
+```
+
+## Field descriptions and constraints
+
+Top-level constraints:
+
+- Quote all string values.
+- Keep keys unquoted.
+- For `interface.default_prompt`: generate a helpful, short (typically 1 sentence) example starting prompt based on the skill. It must explicitly mention the skill as `$skill-name` (e.g., "Use $skill-name-here to draft a concise weekly status update.").
+
+- `interface.display_name`: Human-facing title shown in UI skill lists and chips.
+- `interface.short_description`: Human-facing short UI blurb (25–64 chars) for quick scanning.
+- `interface.icon_small`: Path to a small icon asset (relative to skill dir). Default to `./assets/` and place icons in the skill's `assets/` folder.
+- `interface.icon_large`: Path to a larger logo asset (relative to skill dir). Default to `./assets/` and place icons in the skill's `assets/` folder.
+- `interface.brand_color`: Hex color used for UI accents (e.g., badges).
+- `interface.default_prompt`: Default prompt snippet inserted when invoking the skill.
+- `dependencies.tools[].type`: Dependency category. Only `mcp` is supported for now.
+- `dependencies.tools[].value`: Identifier of the tool or dependency.
+- `dependencies.tools[].description`: Human-readable explanation of the dependency.
+- `dependencies.tools[].transport`: Connection type when `type` is `mcp`.
+- `dependencies.tools[].url`: MCP server URL when `type` is `mcp`.
+- `policy.allow_implicit_invocation`: When false, the skill is not injected into
+  the model context by default, but can still be invoked explicitly via `$skill`.
+  Defaults to true.

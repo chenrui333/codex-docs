@@ -1,3 +1,14 @@
+---
+source_type: 'github'
+source_area: 'github_docs'
+source_url: 'https://raw.githubusercontent.com/openai/codex/01fc69f4026735edfdf6789820549727a4867b11/docs/install.md'
+source_etag: 'W/"8999f341f8f5485217d6255c3c0f05c9b4b49bc00cad5d43c1b2fc6ed3714d2d"'
+upstream_source_ref: 'rust-v0.159.3'
+upstream_source_commit: '01fc69f4026735edfdf6789820549727a4867b11'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3"]
+---
+
 ## Installing & building
 
 ### System requirements
@@ -25,8 +36,10 @@ source "$HOME/.cargo/env"
 rustup component add rustfmt
 rustup component add clippy
 # Install helper tools used by the workspace justfile:
-cargo install just
-# Optional: install nextest for the `just test` helper
+cargo install --locked just
+# DotSlash fetches pinned development tools such as buildifier on first use.
+cargo install --locked dotslash
+# Install nextest for the `just test` helper.
 cargo install --locked cargo-nextest
 
 # Build Codex.
@@ -40,25 +53,24 @@ just fmt
 just fix -p <crate-you-touched>
 
 # Run the relevant tests (project-specific is fastest), for example:
-cargo test -p codex-tui
-# If you have cargo-nextest installed, `just test` runs the test suite via nextest:
+just test -p codex-tui
+# `just test` runs the test suite via nextest:
 just test
 # Avoid `--all-features` for routine local runs because it increases build
 # time and `target/` disk usage by compiling additional feature combinations.
-# If you specifically want full feature coverage, use:
-cargo test --all-features
 ```
 
 ## Tracing / verbose logging
 
 Codex is written in Rust, so it honors the `RUST_LOG` environment variable to configure its logging behavior.
 
-The TUI defaults to `RUST_LOG=codex_core=info,codex_tui=info,codex_rmcp_client=info` and log messages are written to `~/.codex/log/codex-tui.log` by default. For a single run, you can override the log directory with `-c log_dir=...` (for example, `-c log_dir=./.codex-log`).
+The TUI records diagnostics in bounded local stores by default. Set `log_dir` explicitly to enable a plaintext TUI log for a run:
 
 ```bash
-tail -F ~/.codex/log/codex-tui.log
+codex -c log_dir=./.codex-log
+tail -F ./.codex-log/codex-tui.log
 ```
 
-By comparison, the non-interactive mode (`codex exec`) defaults to `RUST_LOG=error`, but messages are printed inline, so there is no need to monitor a separate file.
+The non-interactive mode (`codex exec`) defaults to `RUST_LOG=error`, but messages are printed inline, so there is no need to monitor a separate file.
 
 See the Rust documentation on [`RUST_LOG`](https://docs.rs/env_logger/latest/env_logger/#enabling-logging) for more information on the configuration options.

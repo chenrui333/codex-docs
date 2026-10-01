@@ -10,136 +10,310 @@ permissions:
   issues: write
 
 jobs:
-  update-docs:
+  collect-cli:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout collector
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.14'
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
+      - name: Install observation tools
+        run: |
+          pip install -r scripts/requirements.txt
+          npm install -g @openai/codex@latest
+      - name: Observe isolated CLI help
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/collect_cli_surface.py --output-dir observations
+      - name: Upload platform observation
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: cli-observation-${{ matrix.runner }}
+          path: observations/*.json
+          if-no-files-found: error
+
+  release-state:
+    needs: collect-cli
+    if: always()
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    concurrency:
+      group: docs-writer-main
+      cancel-in-progress: false
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Record generation base
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.14'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
+
+      - name: Install release tools
+        run: |
+          pip install -r scripts/requirements.txt
+          npm install -g @openai/codex@latest
+
+      - name: Download successful platform observations
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: cli-observation-*
+          path: observations
+          merge-multiple: true
+
+      - name: Generate release transaction
+        env:
+          CODEX_DOCS_STRICT_SYNC: "1"
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/fetch_codex_docs.py --release-only --cli-observations-dir observations
+          python scripts/check_codex_freshness.py --strict
+
+      - name: Check writer base
+        id: writer_base
+        env:
+          WRITER_BASE: ${{ steps.base.outputs.sha }}
+        run: python scripts/check_writer_base.py --expected "$WRITER_BASE" >> "$GITHUB_OUTPUT"
+
+      - name: Commit release state
+        if: steps.writer_base.outputs.stale == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add docs/ dot_codex/ system_prompts/ weekly/
+          if git diff --cached --quiet; then exit 0; fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -s -m "chore: sync release state ($(date -u +'%Y-%m-%d'))"
+          gh auth setup-git
+          git push origin HEAD:main
+
+  update-docs:
+    needs: release-state
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: docs-writer-main
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
+          persist-credentials: false
+
+      - name: Record generation base
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
-          python-version: '3.11'
+          python-version: '3.14'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
 
+      - name: Install Codex CLI
+        run: |
+          npm install -g @openai/codex@latest
+          codex --version
+
       - name: Sync docs
         id: sync
         continue-on-error: true
+        env:
+          CODEX_DOCS_STRICT_SYNC: "1"
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -o pipefail
-          python scripts/fetch_codex_docs.py 2>&1 | tee sync.log
+          python scripts/fetch_codex_docs.py --diagnostics-path "$RUNNER_TEMP/sync-diagnostics.json" 2>&1 | tee sync.log
+          python scripts/check_codex_freshness.py --strict 2>&1 | tee -a sync.log
 
       - name: Upload sync log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: sync-log
           path: sync.log
           if-no-files-found: warn
 
+      - name: Upload current attempt diagnostics
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: sync-attempt-diagnostics
+          path: ${{ runner.temp }}/sync-diagnostics.json
+          if-no-files-found: warn
+
       - name: Upload source coverage report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: source-coverage
           path: docs/source_coverage.json
           if-no-files-found: warn
 
-      - name: Check for changes
+      - name: Upload freshness report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: codex-freshness
+          path: docs/freshness.json
+          if-no-files-found: warn
+
+      - name: Check recorded sync failures
         if: steps.sync.outcome == 'success'
+        id: recorded_failures
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import sys
+          from pathlib import Path
+
+
+          report_errors = []
+
+
+          def load_json(path: Path) -> dict:
+              if not path.exists():
+                  report_errors.append(f'missing report: {path}')
+                  return {}
+
+              try:
+                  payload = json.loads(path.read_text())
+              except json.JSONDecodeError as error:
+                  report_errors.append(f'invalid JSON in {path}: {error}')
+                  return {}
+
+              if not isinstance(payload, dict):
+                  report_errors.append(f'unexpected report shape: {path}')
+                  return {}
+
+              return payload
+
+
+          def failure_count(value: object) -> int:
+              try:
+                  return int(value or 0)
+              except (TypeError, ValueError):
+                  return 1 if value else 0
+
+
+          summary = load_json(Path('docs/sync_summary.json'))
+          coverage = load_json(Path('docs/source_coverage.json'))
+          coverage_sync = coverage.get('sync', {})
+          if not isinstance(coverage_sync, dict):
+              coverage_sync = {}
+
+          summary_failures = failure_count(summary.get('failure_count'))
+          coverage_failures = failure_count(coverage_sync.get('failure_count'))
+          has_failures = bool(report_errors or summary_failures or coverage_failures)
+
+          print(f'summary_failure_count={summary_failures}')
+          print(f'coverage_failure_count={coverage_failures}')
+          print(f'has_failures={str(has_failures).lower()}')
+
+          if has_failures:
+              details = ', '.join(report_errors) if report_errors else 'recorded source failures'
+              print(
+                  '::error::Docs sync recorded failures: '
+                  f'sync_summary failure_count={summary_failures}, '
+                  f'source_coverage sync.failure_count={coverage_failures}; '
+                  f'{details}.',
+                  file=sys.stderr,
+              )
+          PY
+
+      - name: Check for changes
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true'
         id: changed
         run: |
           if git diff --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            cli_version="$(codex --version | awk '{print $NF}')"
+            echo "cli_version=${cli_version}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Check writer base
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true'
+        id: writer_base
+        env:
+          WRITER_BASE: ${{ steps.base.outputs.sha }}
+        run: python3 scripts/check_writer_base.py --expected "$WRITER_BASE" >> "$GITHUB_OUTPUT"
+
       - name: Commit and push if changed
-        if: steps.sync.outcome == 'success' && steps.changed.outputs.changed == 'true'
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true' && steps.changed.outputs.changed == 'true' && steps.writer_base.outputs.stale == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add docs/ weekly/
-          git commit -m "chore: sync codex docs ($(date -u +'%Y-%m-%d'))"
-          git push
+          git add docs/ dot_codex/ system_prompts/ weekly/
+          cli_version="${{ steps.changed.outputs.cli_version }}"
+          git commit -s -m "chore: sync docs for cli ${cli_version} ($(date -u +'%Y-%m-%d'))"
+          gh auth setup-git
+          git push origin HEAD:main
 
-      - name: Build failure context
-        if: steps.sync.outcome == 'failure'
-        id: failure-context
-        run: |
-          {
-            echo 'sync_log_tail<<EOF'
-            tail -n 120 sync.log || true
-            echo EOF
-            echo 'sync_summary<<EOF'
-            cat docs/sync_summary.json || true
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
-
-      - name: Create or update failure issue
-        if: steps.sync.outcome == 'failure'
-        uses: actions/github-script@v7
-        env:
-          SYNC_LOG_TAIL: ${{ steps.failure-context.outputs.sync_log_tail }}
-          SYNC_SUMMARY: ${{ steps.failure-context.outputs.sync_summary }}
+      - name: Close recovered failure issue
+        if: steps.sync.outcome == 'success' && steps.recorded_failures.outputs.has_failures != 'true'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
-            const date = new Date().toISOString().split('T')[0];
-            const title = `Codex docs sync failed - ${date}`;
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const syncLogTail = (process.env.SYNC_LOG_TAIL || '').slice(-12000) || '(no log available)';
-            const syncSummary = (process.env.SYNC_SUMMARY || '').slice(-12000) || '(no sync summary available)';
+            const issueHandler = require('./.github/scripts/sync-failure-issue.cjs');
+            await issueHandler.closeRecoveredFailure({ github, context });
 
-            const body = [
-              `Automated docs sync failed on ${date}.`,
-              '',
-              `Workflow run: ${runUrl}`,
-              '',
-              '### Sync summary',
-              '```json',
-              syncSummary,
-              '```',
-              '',
-              '### Sync log tail',
-              '```text',
-              syncLogTail,
-              '```',
-            ].join('\n');
-
-            const { data: openIssues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              per_page: 100,
-            });
-
-            const existing = openIssues.find((issue) => issue.title === title);
-            if (existing) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: existing.number,
-                body,
-              });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ['bug', 'automation'],
-              });
-            }
+      - name: Create or update failure issue
+        if: steps.sync.outcome == 'failure' || steps.recorded_failures.outputs.has_failures == 'true'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        with:
+          script: |
+            const issueHandler = require('./.github/scripts/sync-failure-issue.cjs');
+            await issueHandler.recordFailure({ github, context });
 
       - name: Fail workflow when sync fails
-        if: steps.sync.outcome == 'failure'
+        if: steps.sync.outcome == 'failure' || steps.recorded_failures.outputs.has_failures == 'true'
         run: exit 1

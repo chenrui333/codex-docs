@@ -1,3 +1,13 @@
+---
+source_type: 'developers'
+source_area: 'cookbook'
+source_url: 'https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide'
+source_last_modified: '2026-08-29T10:08:57Z'
+source_etag: 'W/"be9767e93af033a12f10054e7e728fad"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
+---
+
 # Codex Prompting Guide
 
 Source: https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide
@@ -158,7 +168,7 @@ You are producing plain text that will later be styled by the CLI. Follow these 
 
 ## Mid-Rollout User Updates
 
-The Codex model family uses reasoning summaries to communicate user updates as it’s working. This can be in the form of one-liner headings (which updates the ephemeral text in Codex-CLI), or both heading and a short body. This is done by a separate model and therefore is **not promptable**, and we advise against adding any instructions to the prompt related to intermediate plans or messages to the user. We’ve improved these summaries for Codex-Max to be more communicative and provide more critical information about what’s happening and why; some of our users are updating their UX to promote these summaries more prominently in their UI, similar to how intermediate messages are displayed for GPT-5 series models.
+The Codex model family can surface mid-rollout user updates while it’s working. For codex versions prior to gpt-5.3-codex, these updates are system-generated rather than promptable, so we advise against adding instructions to the prompt about intermediate plans or messages to the user for those. For gpt-5.3-codex and after, these updates are more communicative and provide more critical information about what’s happening and why and work similarly to how intermediate messages work for other GPT-5 series models and can be prompted according to the Preambles & Personality section below.
 
 ## Using agents.md
 
@@ -674,4 +684,3 @@ When metaprompting inside a specific context, it is important to generate respon
 
 - For overthinking / slow starts: ask it to propose instruction changes that reduce time-to-first-tool-call or first concrete plan.
 - For overly loggy preambles: ask it to rewrite your user updates instructions to satisfy your particular preference constraints.
-

@@ -4,6 +4,7 @@ __pycache__/
 *.so
 .venv/
 venv/
+.coverage
 
 # Editors
 .vscode/

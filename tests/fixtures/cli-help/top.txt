@@ -1,0 +1,18 @@
+Example CLI
+
+Usage: example [OPTIONS] [PROMPT]
+       example <COMMAND> [ARGS]
+
+Commands:
+  run   Run a task
+        with a wrapped description
+  help  Show help
+
+Options:
+  -c, --config <KEY=VALUE>
+          Set a value
+          across wrapped lines
+      --verbose
+          Enable verbose output
+  -h, --help
+          Print help

@@ -1,3 +1,13 @@
+---
+source_type: 'developers'
+source_area: 'cookbook'
+source_url: 'https://developers.openai.com/cookbook/examples/codex/jira-github'
+source_last_modified: '2026-08-29T20:32:36Z'
+source_etag: 'W/"ba41cdc55561db147bb16313182a14b1"'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
+---
+
 # Automate Jira ↔ GitHub with Codex
 
 Source: https://developers.openai.com/cookbook/examples/codex/jira-github
@@ -112,11 +122,10 @@ jobs:
     # 5 – Let Codex implement & commit (no push yet)
     - name: Codex implement & commit
       env:
-        OPENAI_API_KEY:  ${{ secrets.OPENAI_API_KEY }}
-        CODEX_QUIET_MODE: "1"          # suppress chatty logs
+        CODEX_API_KEY:  ${{ secrets.OPENAI_API_KEY }}
       run: |
         set -e
-        codex --approval-mode full-auto --no-terminal --quiet \
+        codex exec --sandbox workspace-write \
               "Implement JIRA ticket $ISSUE_KEY: $TITLE. $DESC"
 
         git add -A
@@ -165,7 +174,7 @@ jobs:
 1. **Codex Implementation & Commit** (Step 5)
 
    - Uses OpenAI API to implement the JIRA ticket requirements
-   - Runs codex CLI in full-auto mode without terminal interaction
+   - Runs the Codex CLI non-interactively with workspace write access
    - Commits all changes with standardized commit message
 2. **Create Pull Request** (Step 6)
 
@@ -213,4 +222,3 @@ This automation streamlines your development workflow by creating a seamless int
 - **Reduced handoff friction** - The PR is ready for review as soon as the ticket is labeled
 
 The `codex-cli` tool is a powerful AI coding assistant that automates repetitive programming tasks. You can explore more about it [here](https://github.com/openai/codex/)
-

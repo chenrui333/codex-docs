@@ -16,103 +16,37 @@ on:
           - major
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: version-proposal-main
+  cancel-in-progress: false
 
 jobs:
   propose-bump:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout current main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
+          fetch-depth: 0
+          persist-credentials: false
 
-      - name: Compute next version
-        id: version
+      - name: Propose release version
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
-          BUMP_LEVEL: ${{ github.event.inputs.bump_level }}
-        run: |
-          CURRENT_VERSION="$(tr -d '[:space:]' < VERSION)"
-          if [[ ! "$CURRENT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Invalid VERSION format: $CURRENT_VERSION"
-            exit 1
-          fi
-
-          LEVEL="${BUMP_LEVEL:-patch}"
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
-
-          case "$LEVEL" in
-            patch)
-              PATCH=$((PATCH + 1))
-              ;;
-            minor)
-              MINOR=$((MINOR + 1))
-              PATCH=0
-              ;;
-            major)
-              MAJOR=$((MAJOR + 1))
-              MINOR=0
-              PATCH=0
-              ;;
-            *)
-              echo "Unsupported bump level: $LEVEL"
-              exit 1
-              ;;
-          esac
-
-          NEXT_VERSION="$MAJOR.$MINOR.$PATCH"
-          TITLE="chore: bump VERSION to v$NEXT_VERSION"
-          BRANCH="chore/version-bump-v$NEXT_VERSION"
-
-          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
-            BRANCH="$BRANCH-$(date -u +%Y%m%d%H%M%S)"
-          fi
-
-          echo "current=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "next=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
-          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
-
-      - name: Check for existing open bump PR
-        id: existing-pr
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TITLE="${{ steps.version.outputs.title }}"
-          PR_NUMBER="$(gh pr list --state open --base main --json number,title --jq '.[] | [.number, .title] | @tsv' | awk -F'\t' -v title=\"$TITLE\" '$2 == title {print $1; exit}' || true)"
-          if [[ -n "$PR_NUMBER" && "$PR_NUMBER" != "null" ]]; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Create bump commit
-        if: steps.existing-pr.outputs.exists != 'true'
-        run: |
-          git checkout -b "${{ steps.version.outputs.branch }}"
-          echo "${{ steps.version.outputs.next }}" > VERSION
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add VERSION
-          git commit -m "${{ steps.version.outputs.title }}"
-          git push -u origin "${{ steps.version.outputs.branch }}"
-
-      - name: Open pull request
-        if: steps.existing-pr.outputs.exists != 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create \
-            --title "${{ steps.version.outputs.title }}" \
-            --body "Automated VERSION bump proposal from v${{ steps.version.outputs.current }} to v${{ steps.version.outputs.next }}." \
-            --base main \
-            --head "${{ steps.version.outputs.branch }}"
-
-      - name: Existing PR already open
-        if: steps.existing-pr.outputs.exists == 'true'
-        run: |
-          echo "Version bump PR already open: #${{ steps.existing-pr.outputs.number }}"
+          GH_TOKEN: ${{ github.token }}
+          BUMP_LEVEL: ${{ inputs.bump_level || 'patch' }}
+        with:
+          script: |
+            const { execFileSync } = require('node:child_process');
+            execFileSync('gh', ['auth', 'setup-git']);
+            const { propose } = require('./.github/scripts/version-proposal.cjs');
+            const result = await propose({ github, context, level: process.env.BUMP_LEVEL });
+            core.info(JSON.stringify(result));
