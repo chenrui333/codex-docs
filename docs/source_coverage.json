@@ -41,17 +41,17 @@
     "platform_observations": {
       "linux-x86_64": {
         "arch": "x86_64",
-        "codex_cli_version": "0.159.2",
+        "codex_cli_version": "0.159.3",
         "os": "linux",
-        "source_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
-        "source_ref": "rust-v0.159.2"
+        "source_commit": "01fc69f4026735edfdf6789820549727a4867b11",
+        "source_ref": "rust-v0.159.3"
       },
       "macos-arm64": {
         "arch": "arm64",
-        "codex_cli_version": "0.159.2",
+        "codex_cli_version": "0.159.3",
         "os": "darwin",
-        "source_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
-        "source_ref": "rust-v0.159.2"
+        "source_commit": "01fc69f4026735edfdf6789820549727a4867b11",
+        "source_ref": "rust-v0.159.3"
       }
     },
     "prompt_output_prefix": "system_prompts/codex-cli/",
@@ -113,8 +113,8 @@
       "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py",
       "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py"
     ],
-    "version": "0.159.2",
-    "version_raw": "codex-cli 0.159.2"
+    "version": "0.159.3",
+    "version_raw": "codex-cli 0.159.3"
   },
   "developers": {
     "codex_related_urls": [
@@ -289,7 +289,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-09-30T21:59:07+00:00",
+  "generated_at": "2026-10-01T04:41:45+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 25,
@@ -326,9 +326,9 @@
     "mirrored_paths_count": 25,
     "page_fetch_errors": [],
     "repo": "openai/codex",
-    "source_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
+    "source_commit": "01fc69f4026735edfdf6789820549727a4867b11",
     "source_errors": [],
-    "source_ref": "rust-v0.159.2"
+    "source_ref": "rust-v0.159.3"
   },
   "learn": {
     "counts": {
@@ -1438,11 +1438,11 @@
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
   "model_catalog": {
-    "source_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
+    "source_commit": "01fc69f4026735edfdf6789820549727a4867b11",
     "source_path": "codex-rs/models-manager/models.json",
-    "source_ref": "rust-v0.159.2",
+    "source_ref": "rust-v0.159.3",
     "status": "complete",
-    "version": "0.159.2"
+    "version": "0.159.3"
   },
   "platform_tool_guides": {
     "candidate_urls": [
@@ -1529,9 +1529,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "full",
+    "scope": "release",
     "status": "complete",
-    "web_observation": "current"
+    "web_observation": "last_known_good"
   },
   "system_prompts": {
     "counts": {
