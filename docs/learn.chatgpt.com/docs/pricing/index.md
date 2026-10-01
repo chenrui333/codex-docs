@@ -74,7 +74,7 @@ estimate included tasks.
         - Codex on the web, in the CLI, in the IDE extension, and on iOS
         - Cloud-based integrations like automatic code review and Slack
           integration
-        - GPT-6 Sol and GPT-6 Luna
+        - GPT-6.1 Sol and GPT-6 Luna
         - Flexibly extend usage with [ChatGPT credits](#credits-overview)
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Plus plan
@@ -480,7 +480,7 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
     <tfoot>
       <tr>
         <td colspan="4" style="text-align:center">
-          A typical GPT-5.6 Sol task may use 5-30 credits.
+          A typical GPT-5.6 Sol task may use 2-15 credits.
         </td>
       </tr>
       <tr>
@@ -544,6 +544,11 @@ For guidance on choosing and scoping tasks, see [Use Work
 efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
 
 ## Feature availability
+
+In ChatGPT, GPT-6.1 Sol is available in Work and Codex, not Chat. For Enterprise
+and Edu, the model is off by default until an administrator enables it. Using
+it in ChatGPT Work or Codex also requires access to the respective surface.
+API-key access follows API model availability.
 
 <CodexPlanFeatureMatrix
   data={{
@@ -661,6 +666,17 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
       {
         title: "Models and multimodal",
         features: [
+          {
+            name: "GPT-6.1 Sol",
+            href: "/codex/models#gpt-61-sol",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
           {
             name: "GPT-6 Sol and Luna",
             href: "/codex/models",

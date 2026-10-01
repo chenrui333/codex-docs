@@ -587,6 +587,66 @@
       "id": "b3d590dfce3dc0217ba4437d0aad37b2704376257798f99a78519cacd3b96af3",
       "observed_at": "2026-10-01T22:26:35+00:00",
       "previous_id": "9476aad31fb17ea4984776341e285c00d50892d460319710e55f28920f756280"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/dots/controls/index.md": {
+            "after": "295c21672b0c01ee315eb4923e57b60efc7b7e69f81cbc1c771d84b17bb37618",
+            "before": "054fa4ba092183df5d1b683d8c2fc05d4680a62ab4c3bdb1ca030a547462b32f"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "2136ed205c1b70c8bc539269513907eda9f3d60b53a777d4aab8f853188986b6",
+            "before": "709611cae2a3b325071c9b72a675f707f44968665216f93efce032f3b7a889f1"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "883960d6158d3f16032473a464ba02ee3a2f48b0ab2ea6dc928a8adae0507ca3",
+            "before": "85ea0c3fa383f304f540ae726218d5cf903fb01dc72ec812c641ce90f18c0480"
+          },
+          "learn.chatgpt.com/docs/whats-new/devday-2026/index.md": {
+            "after": "e5a26bf8825f11939666fc2fbd01c725f53c46d061ce242c4af1551b474b060f",
+            "before": "c4257a0415fdff1534ac6d403a19bd5593016f2a839adcf32b4dd44b138a29ba"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "53f3f163af78dc3bfff3be1e61d7f05305d7f99bad584b510e900834d5ee7f82",
+            "before": "6b64fee12cd9107187ca18850251a8496e24445cd8e5ee4137dc02ed61585c59"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.160.0",
+          "codex_cli_source_commit": "a956835d020762cb2b570053af06f643a11c0ecc",
+          "codex_cli_version": "0.160.0",
+          "codex_cli_version_raw": "codex-cli 0.160.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/dots/controls/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/whats-new/devday-2026/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md"
+        ]
+      },
+      "id": "bd74635b1bbed1b1413031e4797483548534f790521c2f32a0b9462affd8b7ad",
+      "observed_at": "2026-10-01T22:27:20+00:00",
+      "previous_id": "b3d590dfce3dc0217ba4437d0aad37b2704376257798f99a78519cacd3b96af3"
     }
   ],
   "schema_version": 1

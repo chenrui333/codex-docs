@@ -230,7 +230,7 @@ Give your dot access to the relevant sources and tell it what to keep track of. 
 
 ## Access
 
-**For workspace admins:** See [Set up dots for work](https://learn.chatgpt.com/docs/enterprise/o-admin-guide) for workspace setup, permissions, and security and governance guidance.
+**For workspace admins:** See [Set up dots for work](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide) for workspace setup, permissions, and security and governance guidance.
 
 Dots are rolling out gradually. You may not see dots immediately, even if your plan is eligible.
 
