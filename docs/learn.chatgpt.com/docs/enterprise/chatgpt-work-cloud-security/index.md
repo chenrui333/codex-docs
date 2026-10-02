@@ -19,6 +19,8 @@ Enterprise, and Edu workspaces, existing protections include encryption in
 transit and at rest, and OpenAI doesn't use business data to train its models by
 default.
 
+For an overview of the security controls, see the [ChatGPT Work enterprise security whitepaper](https://cdn.openai.com/pdf/chatgpt-work-enterprise-security.pdf).
+
 Work Cloud also introduces hosted task execution and optional tools that can
 access connected systems or take authorized actions. Review the permissions,
 retention settings, and available audit records for the capabilities your

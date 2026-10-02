@@ -44,6 +44,96 @@
       "id": "67f1f4d32b67a0663e0e575a1c33a5fcca4ad3b82fd15c6d90f5bf064b9ab103",
       "observed_at": "2026-10-02T04:34:28+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "f1ccc605a9c6851f8578cc206671e73502e949154efd1266cd88a6b3825b9485",
+            "before": "b902b06c24a11030898bf2a2d6827ac54d32ab5bb26ab4a9e0ca49ffba65d305"
+          },
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+            "after": "0c2950612d0e6d0bc1baa2ea229692167363db5cf8d7d2d09c90da4aea98c206",
+            "before": "c1a7c90f34660a3338895ddbb629bb80f9884fc620bbe6cfa6ff533bffd775a4"
+          },
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "062e6ce3df736ae704115cbc7892c08f0c789f62d967265109a16a93d2f9ce0b",
+            "before": "968e44075b51b34a80bb9b5b84dd2b891b629b0c077f5994486d55515fb9cd23"
+          },
+          "learn.chatgpt.com/docs/cloud/index.md": {
+            "after": "a56b82a0521b47a525be26f68d0ca5defded8273a6c647e8cb1dfcd57661b687",
+            "before": "aa9754ffbd450596bd56a4c851cb145b3064c8a7c4d21c7cdad942dd8d0262f3"
+          },
+          "learn.chatgpt.com/docs/codex/cli/index.md": {
+            "after": "a9079a144515aa6d3a0d4525e22ca69476b6e0a291a6efdf716ce29929b1e930",
+            "before": "d831d9c483ea1fbb8b64f368cc7f8b8cd1b7ad8997f7a38c7b1681da2c7bc30c"
+          },
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md": {
+            "after": "cceed0415937f4a617b1f9e8ce30fa1c4943a456a921f6547b8476c821691f92",
+            "before": "eeb7a13c029c2fce3df33401fe8a619c05ad10d6140e9694cd2f03248b23ee11"
+          },
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md": {
+            "after": "e5c37fc8527b4b50e54eabefe0eb91856d85d541c480d6aa3aa3f755f6947455",
+            "before": "26886106bab2d28c63df4e3bb5dc895da6158ba821e085958fba7147beacd9ef"
+          },
+          "learn.chatgpt.com/docs/environments/cloud-environment/index.md": {
+            "after": "32ee408a76701ac4b16c690f591550a1cb357a12eabdc291cb8696dda45f224a",
+            "before": "1eb0ee66afdb516a1cdb40172ae0b77f34c86d0de659446aef1b7baa5d2ffa68"
+          },
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md": {
+            "after": "f8561b9a83c4ad1b6a82f15dcfe58edcf21115d287f781edc28fc57c80ce2a99",
+            "before": "ffeeaa1884edaa22d4c49bb2282fd988e355ed1c43fb1451744accd403aa8160"
+          },
+          "learn.chatgpt.com/docs/environments/modes/index.md": {
+            "after": "7dc6831cf6027fd3159eeb1439fbbb51d9c362c08975b4761275498352abd723",
+            "before": "531654c46ec3ea578ac29e918b32ae945cd3a8db2b2d4acf9593999ffac9563b"
+          },
+          "learn.chatgpt.com/docs/quickstart/index.md": {
+            "after": "1e75efa45565cd6708f8b8622056948d776b49e11407e167e3303b43f4d71d4d",
+            "before": "2dbf49606e5d71a55043fff3a1be8dc0816a4e23380754e315148ceaa1344198"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.160.0",
+          "codex_cli_source_commit": "a956835d020762cb2b570053af06f643a11c0ecc",
+          "codex_cli_version": "0.160.0",
+          "codex_cli_version_raw": "codex-cli 0.160.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/cloud/index.md",
+          "learn.chatgpt.com/docs/codex/cli/index.md",
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md",
+          "learn.chatgpt.com/docs/environments/cloud-environment/index.md",
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md",
+          "learn.chatgpt.com/docs/environments/modes/index.md",
+          "learn.chatgpt.com/docs/quickstart/index.md"
+        ]
+      },
+      "id": "2db5288fc1b5980447e7c3ec7a73938dffd60a11b06cd634c74eef6a3946c687",
+      "observed_at": "2026-10-02T21:56:50+00:00",
+      "previous_id": "67f1f4d32b67a0663e0e575a1c33a5fcca4ad3b82fd15c6d90f5bf064b9ab103"
     }
   ],
   "schema_version": 1

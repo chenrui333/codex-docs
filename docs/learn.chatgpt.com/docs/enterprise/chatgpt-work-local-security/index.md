@@ -15,6 +15,8 @@ Source: https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security
 
 ChatGPT Work can use approved files, applications, and browser sessions on a user's computer to complete local tasks. Access depends on workspace permissions, the user's existing account access, operating-system permissions, application approvals, and supported device policies.
 
+For an overview of the security controls, see the [ChatGPT Work enterprise security whitepaper](https://cdn.openai.com/pdf/chatgpt-work-enterprise-security.pdf).
+
 Local capabilities depend on the supported desktop app, operating system, workspace entitlement, role permissions, device policy, and product rollout.
 
 ## Security at a glance

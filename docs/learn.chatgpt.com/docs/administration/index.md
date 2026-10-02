@@ -198,6 +198,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "storage",
         },
         {
+          title: "Bedrock GovCloud configuration",
+          description:
+            "Configure local Codex workflows with Amazon Bedrock in AWS GovCloud.",
+          href: "/codex/enterprise/govcloud-configuration",
+          icon: "storage",
+        },
+        {
           title: "Connect to a gateway",
           description:
             "Configure one Codex client to use your organization's model gateway and verify the connection.",

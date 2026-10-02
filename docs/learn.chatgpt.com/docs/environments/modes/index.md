@@ -32,6 +32,9 @@ to a shared environment. Selecting an environment is separate from creating or
 publishing it. Shared access lets you use the environment; it doesn't grant
 permission to edit it.
 
+You can also start and continue cloud tasks on the web or on mobile. On mobile,
+open **Codex** and select a published environment.
+
 To create an environment, start a new task on the web or in the desktop app.
 Choose **Work in** > **Cloud**, open **Select environment**, then select
 **Create environment**. Codex inspects your selected repositories and helps

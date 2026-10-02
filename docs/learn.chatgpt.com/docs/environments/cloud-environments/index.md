@@ -30,15 +30,18 @@ For an introduction, see the [Codex Cloud overview](https://learn.chatgpt.com/do
 ## Start a task in Codex Cloud
 
 On the web or in the [desktop app](https://learn.chatgpt.com/docs/app), choose **Work in** > **Cloud**
-and select a published environment. Describe what you want Codex to do and send
-the request. If you need a new setup, [create an environment](#create-and-publish-an-environment).
+and select a published environment. On mobile, open **Codex** and select a
+published environment. Describe what you want Codex to do and send the request.
+If you need a new setup, [create an environment](#create-and-publish-an-environment)
+on the web or in the desktop app.
 
 Enterprise admins can [review workspace access](https://learn.chatgpt.com/docs/enterprise/admin-setup#step-5-configure-codex-cloud)
 before rolling out Codex Cloud.
 
 ## Create and publish an environment
 
-On the web or in the [desktop app](https://learn.chatgpt.com/docs/app), sign in with your ChatGPT account:
+Create new environments on the web or in the [desktop app](https://learn.chatgpt.com/docs/app).
+Sign in with your ChatGPT account:
 
 1. In a new task, choose **Work in** > **Cloud**, open **Select environment**,
    and select **Create environment**.
@@ -248,9 +251,15 @@ auth key, enable both **Reusable** and **Ephemeral**. A reusable key lets new
 cloud task VMs join your network. Tailscale automatically removes ephemeral
 devices after they go offline. Support for additional VPN providers is planned.
 
-Use IPv4 addresses or host names that already resolve to IPv4. Private IPv4
-subnet routes are supported; the connection doesn't add private DNS or support
-for native database protocols or SSH.
+Private IPv4 subnet routes are supported. Tasks can use Tailscale split
+DNS and MagicDNS to reach private services by hostname.
+
+If your service uses your organization's internal DNS, configure split DNS in
+the Tailscale admin console to send queries for your internal domain to your DNS
+server. Use the service's fully qualified hostname, such as
+`api.corp.example.com`, which must resolve to an IPv4 address. The destination
+must also be allowed by the environment's internet-access settings and your
+Tailscale access rules.
 
 Tasks in a shared environment use its configured VPN identity.
 
@@ -298,8 +307,8 @@ Review changes and test results before committing or opening a pull request.
 ### Continue on web or mobile
 
 On the web, choose **Work in** > **Cloud** and select an environment. On mobile,
-open **Codex** and choose an available environment. Create and publish the
-environment on the web or in the desktop app first.
+open **Codex** and choose an available environment. Create new environments
+on the web or in the desktop app.
 
 Reopen the same task to continue its work across devices. A new task starts
 separate work from the published setup. Tasks in Codex Cloud can keep working while
@@ -413,8 +422,11 @@ for setup instructions.
    When testing with `curl`, omit `--noproxy` so the request uses that proxy.
 2. Check the destination against both the environment's allowed domains and
    the VPN's access rules.
-3. Use an IPv4 address or a hostname that already resolves to IPv4. The VPN
-   connection doesn't configure private DNS.
+3. If the service is reachable by IP address but not by hostname, check your
+   Tailscale DNS settings. For an internal company domain, verify that split DNS
+   points to the correct DNS server and that the server is reachable through
+   your Tailscale network. Use the service's fully qualified hostname and confirm it
+   resolves to an IPv4 address.
 
 See [Private networking](#private-networking-vpn) for connection setup.
 

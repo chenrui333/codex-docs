@@ -37,11 +37,11 @@ Create a cloud environment with the repositories, tools, and access your project
 
 ### 1. Open ChatGPT
 
-Open ChatGPT on the web or in the [desktop app](https://learn.chatgpt.com/docs/app), then sign in with your ChatGPT account.
+Open ChatGPT on the web, mobile, or in the [desktop app](https://learn.chatgpt.com/docs/app), then sign in with your ChatGPT account.
 
 ### 2. Create or select an environment
 
-In a new task, choose Work in > Cloud and open Select environment. If this is your first time, select [Create environment](https://learn.chatgpt.com/docs/environments/cloud-environments#create-and-publish-an-environment) and continue below. If an environment is already available, select it and begin working.
+On the web or in the desktop app, choose Work in > Cloud and open Select environment. On mobile, open Codex. Select an existing environment to begin working. To create a new one, use the web or desktop app and select [Create environment](https://learn.chatgpt.com/docs/environments/cloud-environments#create-and-publish-an-environment) and continue below.
 
 ### 3. Let Codex prepare your project
 

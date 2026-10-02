@@ -28,6 +28,8 @@ If you're a developer and want to use Codex in your terminal or code editor,
   desktop app. In a new task, choose **Work in** > **Cloud**, open **Select
   environment**, then select **Create environment**. Codex inspects your
   repositories and helps prepare and test the setup before you publish it.
+  You can then start and continue cloud tasks on the web, on mobile, or in the
+  desktop app. On mobile, open **Codex** and select the published environment.
 
 ## Setup
 
