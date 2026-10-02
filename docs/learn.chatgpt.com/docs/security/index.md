@@ -108,9 +108,25 @@ Open **Plugins** to find and install **Codex Security Cloud**. Follow
   class="my-8"
 />
 
+<figure className="not-prose my-8">
+  <CodexScreenshot
+    alt="Codex Security Cloud overview with repository counts, finding statuses, and findings that need attention"
+    lightSrc={cloudOverview.src}
+    darkSrc={cloudOverview.src}
+    variant="no-wallpaper"
+    maxHeight="560px"
+    imageClass="border border-subtle"
+    panOnMobile
+  />
+  <figcaption className="mt-3 text-sm text-secondary">
+    Track open findings and fixes across repositories. This example uses
+    fictional repositories, findings, and counts.
+  </figcaption>
+</figure>
+
 ## How Codex Security Cloud works
 
-Choose a **Repository** scan to review a repository once, or **Commit changes**
+Choose **One-Time Scan** to review a repository once, or **Continuous Scanning**
 to monitor new commits. Codex uses repository context to identify likely
 vulnerabilities and validates issues in an isolated environment when possible.
 
