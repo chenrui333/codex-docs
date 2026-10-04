@@ -1,5 +1,5 @@
 [tool.ruff]
-required-version = "==0.16.9"
+required-version = "==0.16.10"
 target-version = "py314"
 
 [tool.ruff.lint]
