@@ -1,5 +1,5 @@
 {
-  "codex_cli_version": "0.160.0",
+  "codex_cli_version": "0.160.1",
   "models": [
     {
       "apply_patch_tool_type": "freeform",
@@ -678,8 +678,8 @@
     }
   ],
   "schema_version": 1,
-  "source_commit": "a956835d020762cb2b570053af06f643a11c0ecc",
+  "source_commit": "d27764b82f7118f674371e6d6e76271d9d606edb",
   "source_kind": "release_bundled_model_catalog",
   "source_path": "codex-rs/models-manager/models.json",
-  "source_ref": "rust-v0.160.0"
+  "source_ref": "rust-v0.160.1"
 }

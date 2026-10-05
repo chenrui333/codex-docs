@@ -771,7 +771,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.160.0",
+  "codex_cli_version": "codex-cli 0.160.1",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -1128,7 +1128,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "a956835d020762cb2b570053af06f643a11c0ecc",
+  "source_commit": "d27764b82f7118f674371e6d6e76271d9d606edb",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -2407,10 +2407,10 @@
     "client_rs_sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c",
     "features_rs_sha256": "124c76d1fbad7b05fd78a62b89a28282c7ecab1de7426ac18696987024ddeae0"
   },
-  "source_ref": "rust-v0.160.0",
+  "source_ref": "rust-v0.160.1",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/a956835d020762cb2b570053af06f643a11c0ecc/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/a956835d020762cb2b570053af06f643a11c0ecc/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/d27764b82f7118f674371e6d6e76271d9d606edb/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/d27764b82f7118f674371e6d6e76271d9d606edb/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
