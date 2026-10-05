@@ -18,10 +18,10 @@ vulnerabilities. Use its command-line interface (CLI) to scan
 repositories you own or have permission to assess, review findings over time,
 and check changes before they land.
 
-The `@openai/codex-security` package is public. Running scans requires Codex
-  Security access. For an interactive scan in Codex, start with the [Codex
-  Security plugin quickstart](https://learn.chatgpt.com/docs/security/plugin). For connected GitHub
-  repositories, see [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup).
+The `@openai/codex-security` package is public. Scans using OpenAI inference
+  require Codex Security access. For an interactive scan in Codex, start with
+  the [Codex Security plugin quickstart](https://learn.chatgpt.com/docs/security/plugin). For connected
+  GitHub repositories, see [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup).
 
 ## Check the prerequisites
 
@@ -57,7 +57,7 @@ See also [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference).
 
 ## Sign in
 
-For local use, sign in with your ChatGPT account:
+Sign in with your ChatGPT account:
 
 ```bash
 npx @openai/codex-security login
@@ -75,8 +75,13 @@ For CI and other automated workflows, set an OpenAI API key:
 export OPENAI_API_KEY="<your-api-key>"
 ```
 
-For AWS credentials, see [Amazon Bedrock
-setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock). For [OpenRouter or
+For Amazon Bedrock, follow the [Amazon Bedrock
+setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock) instead of signing in
+with ChatGPT or setting an OpenAI API key. Check [Bedrock release
+status](https://learn.chatgpt.com/docs/security/cli/reference#bedrock-release-status) to see what your
+installed version supports.
+
+For [OpenRouter or
 Fireworks](https://learn.chatgpt.com/docs/security/cli/reference#use-openrouter-or-fireworks), set the
 provider's API key and select a model with `--provider` and `--model`.
 

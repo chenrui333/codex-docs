@@ -17,9 +17,9 @@ Use this reference to check the supported `codex-security` commands, flags,
 output formats, and exit behavior. For a guided first scan, start with the
 [CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
-The `@openai/codex-security` package is public. Running scans requires Codex
-  Security access. Scans use your local permissions and don't pause for
-  approval. Before you start, review [Local scan
+The `@openai/codex-security` package is public. Scans using OpenAI inference
+  require Codex Security access. Scans use your local permissions and don't
+  pause for approval. Before you start, review [Local scan
   permissions](#local-scan-permissions).
 
 Run the CLI with `npx @openai/codex-security`.
@@ -190,20 +190,80 @@ Both providers also support `bulk-scan`.
 
 ### Use Amazon Bedrock
 
-Select Amazon Bedrock with `--provider amazon-bedrock` and specify an explicit
-Bedrock model with `--model`:
+Use `--provider amazon-bedrock` and a Bedrock model ID with `scan` or
+`bulk-scan`. After AWS provisions model access, scans use AWS credentials
+without `--auth`, an OpenAI login, or an OpenAI API key.
+
+#### Daybreak Blue and Daybreak Red
+
+Daybreak Blue and Daybreak Red require Trusted Access for Cyber approval.
+To request access, submit the [enterprise access application](https://openai.com/form/enterprise-trusted-access-for-cyber/) or contact your OpenAI account team.
+After approval, work with your AWS account team to provision model access
+on Amazon Bedrock.
+
+Daybreak Red approval does not include GPT-5.6-Cyber access. GPT-5.6-Cyber
+requires separate U.S. government (USG) approval. Ask your OpenAI account
+team to request this additional approval before provisioning GPT-5.6-Cyber
+on Amazon Bedrock. See the [Daybreak access requirements](https://help.openai.com/en/articles/20001258-openai-daybreak-trusted-access-for-cyber-overview).
+
+| Access        | Bedrock model ID                   | AWS region  |
+| ------------- | ---------------------------------- | ----------- |
+| Daybreak Blue | `openai.gpt-daybreak-blue-5.6-sol` | `us-east-2` |
+| Daybreak Red  | `openai.gpt-5.6-cyber`             | `us-east-2` |
+
+For availability, check the AWS model cards for [Daybreak Blue](https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/model-card-openai-gpt-daybreak-blue-56-sol.html) and [Daybreak Red](https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/model-card-openai-gpt-56-cyber.html).
+
+To scan with Daybreak Blue, replace `<aws-profile-name>` with an AWS profile
+that has access to the Daybreak Blue model:
 
 ```bash
+export AWS_PROFILE="<aws-profile-name>"
+export AWS_REGION="us-east-2"
 npx @openai/codex-security scan . \
   --provider amazon-bedrock \
-  --model openai.gpt-5.6-terra
+  --model openai.gpt-daybreak-blue-5.6-sol --effort high
 ```
 
-Set `AWS_REGION` and authenticate with `AWS_BEARER_TOKEN_BEDROCK`, standard AWS
-access keys, an AWS profile, web identity, container credentials, or the
-default AWS credential chain. Bedrock scans use AWS credentials instead of
-`--auth`, ChatGPT sign-in, or an OpenAI API key. Both `scan` and `bulk-scan`
-support `--provider`.
+To scan with Daybreak Red, choose an AWS profile with GPT-5.6-Cyber access.
+This may differ from the profile you use for Daybreak Blue:
+
+```bash
+export AWS_PROFILE="<aws-profile-name>"
+export AWS_REGION="us-east-2"
+npx @openai/codex-security scan . \
+  --provider amazon-bedrock \
+  --model openai.gpt-5.6-cyber --effort high
+```
+
+You can also authenticate with `AWS_BEARER_TOKEN_BEDROCK` or the standard
+AWS credential chain. Temporary access keys require `AWS_SESSION_TOKEN`.
+Set credentials and `AWS_REGION` in the same shell or CI job as the scan.
+
+#### Local results and access checks
+
+Saved local reports, `scans show`, and `export` work without cloud credentials.
+Uploading findings to Codex Security Cloud requires a separate ChatGPT
+sign-in and access to the destination.
+
+`info` and `scan --dry-run` don't test AWS credentials or model access. Run a
+scan to check access. For AWS authentication or access-denied errors, check
+your credentials, region, and model permissions.
+
+#### Bedrock release status
+
+`@openai/codex-security@0.1.31` supports Amazon Bedrock scans. This version
+doesn't provide cost estimates or support `--max-cost` for the Daybreak Blue
+and Daybreak Red model IDs above.
+
+Check your installed package and bundled Codex versions:
+
+```bash
+npx @openai/codex-security --version
+npx @openai/codex-security info --json
+```
+
+Use `npx @openai/codex-security scan --help` to check the options available
+in your installed version.
 
 ### Select the scan target
 
