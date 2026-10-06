@@ -243,7 +243,7 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
       href: "/codex/remote-connections#what-comes-from-the-connected-host",
       appliesTo: "Desktop app, Mobile",
       description:
-        "Computer or development environment that provides files, tools, and shell access for ChatGPT or Codex chats opened through Remote.",
+        "Computer or development environment that provides files, tools, and shell access for ChatGPT or Codex chats opened through remote connections.",
     },
     {
       key: "Connector",

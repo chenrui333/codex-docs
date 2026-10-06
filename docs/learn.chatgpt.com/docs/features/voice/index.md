@@ -21,7 +21,7 @@ ChatGPT Voice is available in the ChatGPT desktop app with ChatGPT Plus,
 Pro, Business, Edu, and Enterprise plans. Enterprise and Edu availability
 begins with a two-week early-access period before the feature becomes available
 by default. You can also use ChatGPT Voice through
-[Remote on iOS](https://learn.chatgpt.com/docs/remote-connections#set-up-mobile-access) after pairing
+[Codex on iOS](https://learn.chatgpt.com/docs/remote-connections#set-up-mobile-access) after pairing
 your phone with a desktop host. Availability also depends on rollout status and
 workspace settings. See [feature availability](https://learn.chatgpt.com/docs/pricing#feature-availability).
 

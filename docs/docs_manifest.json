@@ -7196,7 +7196,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "6afc426b13152a3ba323598092f291a16cf00cdeb0942a89c9c66cc2ae1fb18b",
+      "sha256": "6d0429836a58d4cfdcccf357d48aea2fb4bd83760e64a4211862ac42e06295d1",
       "source_area": "learn_app",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7969,7 +7969,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "564e3677226eae028a7fad1fba1047293721d97a3ff31a8b8b735a31169003b1",
+      "sha256": "51dbc6cda0332f460c17ffee15e16731409faf8a5340137bdc10ebd5d365efb8",
       "source_area": "learn_customization",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9043,7 +9043,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "6d3c238be397393a5276d33fb87ef2465fe9072199cff2182e2a7b4363a963a0",
+      "sha256": "61fef242419551c8941b27c4d628802f8145a7e29d6aa161b7dffbb9c6319cd2",
       "source_area": "learn_environments",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9260,7 +9260,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "b567164d895b12ff27dad3feeb5559008c59eec19c44c0fb9d2697ac883906a8",
+      "sha256": "398545793f6ce728e722d4f305387c1be43c071775322478176090717681b489",
       "source_area": "learn_features",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9291,7 +9291,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "b1ea4ba522046f6e6c7efc3ae7e1447fc0cccd932d9702f73066376cd2947365",
+      "sha256": "240dc5c2d369e9a4126ca359ca9bdc5bafa9b01ba1100cc89c82df77c6f972c6",
       "source_area": "learn_features",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9384,7 +9384,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "cb735b552a5c10caa31aada11fd9db9ac0764a41c18c45307bc9fb0b2ca984bd",
+      "sha256": "82ca482f4ae0df43c689e948fbf77b4b4b0daa72516aecd99808de04cdcb1be1",
       "source_area": "learn_glossary",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9673,6 +9673,13 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/migrate-custom-gpts"
+    },
+    "learn.chatgpt.com/docs/mobile/index.md": {
+      "sha256": "46025cf4bbafd8b9ad1016aacc023a1abe37953027af8c7a2893f0eb0409d9c4",
+      "source_area": "learn_mobile",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/mobile"
     },
     "learn.chatgpt.com/docs/model-selection/index.md": {
       "sha256": "90a334a0b43fec2ca5496a7f1d20da49b028f159ced77b3d3bb86c382ad60560",
@@ -10140,40 +10147,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "9cf679b8f185b8bbf78a20753004f717d8aa9596164efac609b8e63278cf8961",
+      "sha256": "d301f451d1f47c0c78355b1a3ab6ce23752d800f6a93607f2a431036c5bb8206",
       "source_area": "learn_remote_connections",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/remote-connections"
-    },
-    "learn.chatgpt.com/docs/remote/index.md": {
-      "codex_cli_versions": [
-        "0.146.1",
-        "0.147.0",
-        "0.148.0",
-        "0.149.0",
-        "0.151.0",
-        "0.152.0",
-        "0.152.1",
-        "0.153.0",
-        "0.153.2"
-      ],
-      "codex_cli_versions_raw": [
-        "codex-cli 0.146.1",
-        "codex-cli 0.147.0",
-        "codex-cli 0.148.0",
-        "codex-cli 0.149.0",
-        "codex-cli 0.151.0",
-        "codex-cli 0.152.0",
-        "codex-cli 0.152.1",
-        "codex-cli 0.153.0",
-        "codex-cli 0.153.2"
-      ],
-      "sha256": "d2bc8f49807a3a2750788a19a09ba76437f9dce61c1491ee3074cc5606332dc1",
-      "source_area": "learn_remote",
-      "source_kind": "learn_markdown",
-      "source_type": "learn",
-      "source_url": "https://learn.chatgpt.com/docs/remote"
     },
     "learn.chatgpt.com/docs/sandboxing/auto-review/index.md": {
       "codex_cli_versions": [

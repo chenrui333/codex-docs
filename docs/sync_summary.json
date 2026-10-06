@@ -1,9 +1,13 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/mobile/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-06T05:26:33+00:00",
-  "removed": [],
+  "generated_at": "2026-10-06T22:30:12+00:00",
+  "removed": [
+    "learn.chatgpt.com/docs/remote/index.md"
+  ],
   "source_metadata": {
     "codex_cli_command": "codex --version",
     "codex_cli_release_ref": "rust-v0.160.1",
@@ -16,6 +20,12 @@
   },
   "total_files": 280,
   "updated": [
-    "learn.chatgpt.com/docs/security/faq/index.md"
+    "learn.chatgpt.com/docs/app/index.md",
+    "learn.chatgpt.com/docs/customization/computer-history/index.md",
+    "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
+    "learn.chatgpt.com/docs/features/index.md",
+    "learn.chatgpt.com/docs/features/voice/index.md",
+    "learn.chatgpt.com/docs/glossary/index.md",
+    "learn.chatgpt.com/docs/remote-connections/index.md"
   ]
 }

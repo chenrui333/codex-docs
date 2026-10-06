@@ -39,6 +39,88 @@
       "id": "252573ce03f698f76e2070e98545d3c9b4ed76c62fb69ba81c6cc9224dfeafeb",
       "observed_at": "2026-10-06T05:26:33+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/mobile/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/app/index.md": {
+            "after": "6d0429836a58d4cfdcccf357d48aea2fb4bd83760e64a4211862ac42e06295d1",
+            "before": "6afc426b13152a3ba323598092f291a16cf00cdeb0942a89c9c66cc2ae1fb18b"
+          },
+          "learn.chatgpt.com/docs/customization/computer-history/index.md": {
+            "after": "51dbc6cda0332f460c17ffee15e16731409faf8a5340137bdc10ebd5d365efb8",
+            "before": "564e3677226eae028a7fad1fba1047293721d97a3ff31a8b8b735a31169003b1"
+          },
+          "learn.chatgpt.com/docs/environments/git-worktrees/index.md": {
+            "after": "61fef242419551c8941b27c4d628802f8145a7e29d6aa161b7dffbb9c6319cd2",
+            "before": "6d3c238be397393a5276d33fb87ef2465fe9072199cff2182e2a7b4363a963a0"
+          },
+          "learn.chatgpt.com/docs/features/index.md": {
+            "after": "398545793f6ce728e722d4f305387c1be43c071775322478176090717681b489",
+            "before": "b567164d895b12ff27dad3feeb5559008c59eec19c44c0fb9d2697ac883906a8"
+          },
+          "learn.chatgpt.com/docs/features/voice/index.md": {
+            "after": "240dc5c2d369e9a4126ca359ca9bdc5bafa9b01ba1100cc89c82df77c6f972c6",
+            "before": "b1ea4ba522046f6e6c7efc3ae7e1447fc0cccd932d9702f73066376cd2947365"
+          },
+          "learn.chatgpt.com/docs/glossary/index.md": {
+            "after": "82ca482f4ae0df43c689e948fbf77b4b4b0daa72516aecd99808de04cdcb1be1",
+            "before": "cb735b552a5c10caa31aada11fd9db9ac0764a41c18c45307bc9fb0b2ca984bd"
+          },
+          "learn.chatgpt.com/docs/mobile/index.md": {
+            "after": "46025cf4bbafd8b9ad1016aacc023a1abe37953027af8c7a2893f0eb0409d9c4",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/remote-connections/index.md": {
+            "after": "d301f451d1f47c0c78355b1a3ab6ce23752d800f6a93607f2a431036c5bb8206",
+            "before": "9cf679b8f185b8bbf78a20753004f717d8aa9596164efac609b8e63278cf8961"
+          },
+          "learn.chatgpt.com/docs/remote/index.md": {
+            "after": null,
+            "before": "d2bc8f49807a3a2750788a19a09ba76437f9dce61c1491ee3074cc5606332dc1"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [
+          "learn.chatgpt.com/docs/remote/index.md"
+        ],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.160.1",
+          "codex_cli_source_commit": "d27764b82f7118f674371e6d6e76271d9d606edb",
+          "codex_cli_version": "0.160.1",
+          "codex_cli_version_raw": "codex-cli 0.160.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/app/index.md",
+          "learn.chatgpt.com/docs/customization/computer-history/index.md",
+          "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
+          "learn.chatgpt.com/docs/features/index.md",
+          "learn.chatgpt.com/docs/features/voice/index.md",
+          "learn.chatgpt.com/docs/glossary/index.md",
+          "learn.chatgpt.com/docs/remote-connections/index.md"
+        ]
+      },
+      "id": "6378fcb23ad2fccad1852ffce273f2401a3c59206452315824572e87eba3c837",
+      "observed_at": "2026-10-06T22:30:12+00:00",
+      "previous_id": "252573ce03f698f76e2070e98545d3c9b4ed76c62fb69ba81c6cc9224dfeafeb"
     }
   ],
   "schema_version": 1

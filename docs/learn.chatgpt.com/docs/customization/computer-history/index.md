@@ -188,6 +188,9 @@ websites. Turn it off during communications with other people unless you have
 their prior express consent. Consider pausing it or excluding apps that contain
 sensitive health, financial, or personal information.
 
+When you pause Computer History, no new interaction events will be collected, but
+an in-flight summary of previous events may still continue until it's finished.
+
 ## Review and clear history
 
 Open **Settings > Computer history > History** to inspect what Computer History

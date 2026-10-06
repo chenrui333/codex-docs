@@ -38,10 +38,10 @@ Source: https://learn.chatgpt.com/docs/features
           icon: "folder",
         },
         {
-          title: "Codex Remote",
+          title: "Codex on mobile",
           description:
             "Start tasks, approve actions, and review work from your phone.",
-          href: "/codex/remote",
+          href: "/codex/mobile",
           icon: "connect",
         },
         {
