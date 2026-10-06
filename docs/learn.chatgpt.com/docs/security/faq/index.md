@@ -53,6 +53,65 @@ For findings with verification steps, it runs commands or tests in the sandbox a
 
 No. Codex Security complements SAST. It adds semantic, LLM-based reasoning and automated validation, while existing SAST tools still provide broad deterministic coverage.
 
+## Billing
+
+### How are Cloud scans billed?
+
+Repository scans and continuous scans set up after October 1, 2026, at
+12:53 PM Pacific are billed based on token usage at your plan's rates, in
+credits or USD depending on your billing plan. For
+[eligible accounts](#do-i-get-a-free-scanning-period-or-free-scanning-credits),
+free scanning credits apply before paid usage is billed.
+
+This usage is not covered by your plan's included usage allowance.
+
+Continuous scans set up before that cutoff are free for 14 days, until
+October 15, 2026. After that, they are billed at regular token rates under
+your account's billing plan if you enable paid usage. Otherwise, they pause.
+
+### Do I get a free scanning period or free scanning credits?
+
+What you receive depends on whether your account had continuous scanning set
+up before October 1, 2026, at 12:53 PM Pacific:
+
+- If it did, your covered continuous scans remain free until October 15, 2026.
+  This free period doesn't cover repository scans or continuous scanning set
+  up after October 1, 2026, at 12:53 PM Pacific.
+- If it didn't, eligible accounts receive $500 in free scanning credits
+  instead of the free continuous-scanning period.
+
+### How do free scanning credits work?
+
+Repository scans and continuous scanning use the same free balance. In a
+workspace, everyone shares that balance. These free scanning credits don't
+expire.
+
+When the free balance runs out, further scanning is billed under your
+account's or workspace's billing plan.
+
+### What happens when the free continuous-scanning period ends?
+
+Select **Keep scans running** and enable paid usage to continue these scans
+after the free period. They are then billed at regular token rates under
+your account's or workspace's billing plan.
+
+If you opt out or don't enable paid usage, those scans pause when the free
+period ends. Select **Re-enable scans** to enable paid usage afterward.
+In a workspace, ask a workspace owner to make this choice if you don't have
+permission.
+
+### Where can I see token usage and charges?
+
+Open a scan in **Scans** to review its token usage and cost. Hover over the
+token count to see input, cached input, and output tokens. Cached input is
+included in the input count, not added on top of it.
+
+Usage shows the cost before free scanning credits or billing exemptions,
+along with any amount covered by free scanning credits.
+
+Scans marked "Exempt from billing. No charges apply." incur no charges,
+even when they show token usage and cost.
+
 ## Features
 
 ### What is the analysis pipeline?

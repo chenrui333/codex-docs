@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/security/faq/index.md": {
+            "after": "688ff0b476946de19a867f3535c2f9f7b55dfd0bc26c2ee51a04e16d0b3a4544",
+            "before": "531b200669708bf3ad56ddab1032901ec93d078adbc66ef8c68f12ca91ab8689"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.160.1",
+          "codex_cli_source_commit": "d27764b82f7118f674371e6d6e76271d9d606edb",
+          "codex_cli_version": "0.160.1",
+          "codex_cli_version_raw": "codex-cli 0.160.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/security/faq/index.md"
+        ]
+      },
+      "id": "252573ce03f698f76e2070e98545d3c9b4ed76c62fb69ba81c6cc9224dfeafeb",
+      "observed_at": "2026-10-06T05:26:33+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}
