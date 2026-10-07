@@ -12,8 +12,13 @@
     },
     {
       "enabled": false,
+      "key": "api_key_cyber_access_programs",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "api_key_model_discovery",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -62,6 +67,11 @@
     },
     {
       "enabled": true,
+      "key": "browser_annotation_api",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
       "key": "browser_use",
       "stage": "stable"
     },
@@ -78,6 +88,11 @@
     {
       "enabled": false,
       "key": "chronicle",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "cli_daybreak",
       "stage": "under development"
     },
     {
@@ -336,6 +351,11 @@
       "stage": "stable"
     },
     {
+      "enabled": true,
+      "key": "in_app_voice",
+      "stage": "stable"
+    },
+    {
       "enabled": false,
       "key": "instant_interrupt",
       "stage": "under development"
@@ -367,6 +387,11 @@
     },
     {
       "enabled": false,
+      "key": "login_shell_package_path",
+      "stage": "experimental"
+    },
+    {
+      "enabled": false,
       "key": "mcp_2026_07_28",
       "stage": "under development"
     },
@@ -384,6 +409,11 @@
       "enabled": true,
       "key": "mentions_v2",
       "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "model_catalog_in_context",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -771,17 +801,22 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.160.1",
+  "codex_cli_version": "codex-cli 0.161.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
+      "api_key_cyber_access_programs",
+      "api_key_model_discovery",
       "auth_elicitation",
+      "browser_annotation_api",
       "code_mode_host",
       "compaction_image_budget",
       "content_item_kinds",
       "daemon_auto_start",
       "guardian_reuse_parent_compaction",
       "image_generation",
+      "in_app_voice",
+      "login_shell_package_path",
       "mentions_v2",
       "multi_agent_v2",
       "recommended_plugins",
@@ -816,6 +851,7 @@
     "missing_in_docs": [
       "agent_message_board",
       "analytics_plan_history",
+      "api_key_cyber_access_programs",
       "api_key_model_discovery",
       "apply_patch_freeform",
       "apply_patch_preserve_line_endings",
@@ -825,7 +861,9 @@
       "auth_elicitation",
       "background_paginated_rollout_migration",
       "bedrock_setup_wizard",
+      "browser_annotation_api",
       "chronicle",
+      "cli_daybreak",
       "code_mode",
       "code_mode_buffered_exec",
       "code_mode_host",
@@ -866,15 +904,18 @@
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
+      "in_app_voice",
       "instant_interrupt",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
       "local_thread_store_compression",
       "local_thread_store_shared_compression",
+      "login_shell_package_path",
       "mcp_2026_07_28",
       "mcp_oauth_refresh_coordination",
       "mentions_v2",
+      "model_catalog_in_context",
       "multi_agent_mode",
       "multi_agent_v2",
       "non_prefixed_mcp_tool_names",
@@ -944,7 +985,8 @@
         "use_legacy_landlock"
       ],
       "experimental": [
-        "analytics_plan_history"
+        "analytics_plan_history",
+        "login_shell_package_path"
       ],
       "removed": [
         "apply_patch_freeform",
@@ -988,13 +1030,17 @@
         "workspace_owner_usage_nudge"
       ],
       "stable": [
+        "api_key_cyber_access_programs",
+        "api_key_model_discovery",
         "auth_elicitation",
+        "browser_annotation_api",
         "code_mode_host",
         "compaction_image_budget",
         "content_item_kinds",
         "daemon_auto_start",
         "guardian_reuse_parent_compaction",
         "image_generation",
+        "in_app_voice",
         "mentions_v2",
         "multi_agent_v2",
         "recommended_plugins",
@@ -1012,13 +1058,13 @@
       ],
       "under development": [
         "agent_message_board",
-        "api_key_model_discovery",
         "apply_patch_preserve_line_endings",
         "apply_patch_streaming_events",
         "artifact",
         "background_paginated_rollout_migration",
         "bedrock_setup_wizard",
         "chronicle",
+        "cli_daybreak",
         "code_mode",
         "code_mode_interrupt",
         "code_mode_only",
@@ -1047,6 +1093,7 @@
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "mcp_oauth_refresh_coordination",
+        "model_catalog_in_context",
         "non_prefixed_mcp_tool_names",
         "nonfatal_clock_read_errors",
         "omit_app_server_notification_media",
@@ -1128,7 +1175,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "d27764b82f7118f674371e6d6e76271d9d606edb",
+  "source_commit": "979011409de0a60b52f179721948e65531d26144",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1146,13 +1193,21 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "experimental"
     },
-    "api_key_model_discovery": {
+    "api_key_cyber_access_programs": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
       "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
+    },
+    "api_key_model_discovery": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
     },
     "apply_patch_freeform": {
       "behavior_evidence": "Removed compatibility flag for the deleted apply_patch fallback feature.",
@@ -1228,6 +1283,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "browser_annotation_api": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "browser_use": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1253,6 +1316,14 @@
       "stage_from_source": "stable"
     },
     "chronicle": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "cli_daybreak": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -1678,6 +1749,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "in_app_voice": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "instant_interrupt": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1730,6 +1809,14 @@
       "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
+    "login_shell_package_path": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "experimental"
+    },
     "mcp_2026_07_28": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1761,6 +1848,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
+    },
+    "model_catalog_in_context": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "multi_agent": {
       "compatibility_flag": false,
@@ -2404,13 +2499,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c",
-    "features_rs_sha256": "124c76d1fbad7b05fd78a62b89a28282c7ecab1de7426ac18696987024ddeae0"
+    "client_rs_sha256": "6a725a3e1548e667e8fadbbe8e7b39288fd9393daf188276e6f9554cf008c2bb",
+    "features_rs_sha256": "caee3c3e0385cf457b53476d3b7135de8646f7bb362142574b6443a473b07062"
   },
-  "source_ref": "rust-v0.160.1",
+  "source_ref": "rust-v0.161.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/d27764b82f7118f674371e6d6e76271d9d606edb/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/d27764b82f7118f674371e6d6e76271d9d606edb/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/979011409de0a60b52f179721948e65531d26144/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/979011409de0a60b52f179721948e65531d26144/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

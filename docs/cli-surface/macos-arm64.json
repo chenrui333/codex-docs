@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.160.1",
-  "codex_cli_version_raw": "codex-cli 0.160.1",
+  "codex_cli_version": "0.161.0",
+  "codex_cli_version_raw": "codex-cli 0.161.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -225,6 +225,14 @@
           ],
           "primary_flag": "--thread-source",
           "synopsis": "--thread-source <SOURCE>"
+        },
+        {
+          "description": "Request an experimental Cyber access program for this turn (OpenAI provider only). Omit to use server defaults. Not supported with review; fork requires a prompt [possible values: standard, daybreak_blue, daybreak_red]",
+          "flags": [
+            "--cyber-access-program"
+          ],
+          "primary_flag": "--cyber-access-program",
+          "synopsis": "--cyber-access-program <PROGRAM>"
         },
         {
           "description": "Allow running Codex outside a Git repository",
@@ -3474,9 +3482,9 @@
     "os": "darwin"
   },
   "schema_version": 2,
-  "source_commit": "d27764b82f7118f674371e6d6e76271d9d606edb",
+  "source_commit": "979011409de0a60b52f179721948e65531d26144",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.160.1",
+  "source_ref": "rust-v0.161.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
