@@ -2492,6 +2492,35 @@ from either one wins.
         "Required access decision for matching executables. `deny` blocks access. `allow` overrides only this policy source's default and still requires any other policy source and the normal approval flow to allow the app.",
     },
     {
+      key: "application",
+      type: "table",
+      description: "Managed desktop application requirements.",
+    },
+    {
+      key: "application.network",
+      type: "table",
+      description:
+        "Destination restrictions for desktop app network requests, separate from command networking and browser origin rules. This doesn't impose destination restrictions on native modules or spawned processes.",
+    },
+    {
+      key: "application.network.enabled",
+      type: "boolean",
+      description:
+        "Defaults to true when the table is present. When true, external desktop app requests require an explicitly allowed domain. An empty domain map allows no external destinations. An absent application network policy or false value doesn't restrict destinations through this policy.",
+    },
+    {
+      key: "application.network.domains",
+      type: "table<allow | deny>",
+      description:
+        "Exact domain rules for desktop app requests. Enabled policies allow HTTPS and WSS requests only to explicitly allowed domains; subdomains aren't implicitly allowed.",
+    },
+    {
+      key: "application.network.domains.<domain>",
+      type: "allow | deny",
+      description:
+        "Allow or deny an exact domain. Use domain names without URL schemes, ports, or wildcards.",
+    },
+    {
       key: "experimental_network",
       type: "table",
       description:

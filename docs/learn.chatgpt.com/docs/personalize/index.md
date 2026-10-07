@@ -17,11 +17,11 @@ Personalize ChatGPT so its responses and working style better match your
 preferences. You control which personalization features are enabled and can
 change them in settings. Available controls vary between web and desktop.
 
-## Choose a personality
+## Choose a personality on the web
 
-Choose **Friendly**, **Pragmatic**, or **None** as the default personality in
-**Settings > Personalization**. A personality changes how ChatGPT communicates;
-it doesn't change what the model can do.
+On ChatGPT web, open **Settings > Personalization > Base style and tone** to
+choose how ChatGPT responds. A personality changes its style and tone; it
+doesn't change its capabilities.
 
 ## Add custom instructions
 
@@ -71,7 +71,7 @@ clear recent or all history at any time.
 
 ## Manage personalization
 
-Open [**Settings**](codex://settings) to update your personality, custom
-instructions, memories, and other available personalization controls. See
+Open [**Settings**](codex://settings) to update your personal instructions,
+memories, and other available personalization controls. See
 [ChatGPT desktop app settings](https://learn.chatgpt.com/docs/reference/settings) for an overview of
 everyday preferences.

@@ -11,13 +11,18 @@ Source: https://learn.chatgpt.com/docs/enterprise/gateway-compatibility
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Codex gateways must preserve the Responses API behavior described here:
+These requirements cover the API/provider credential path through a gateway.
+For gateways that forward ChatGPT workspace requests, see [Sign in with
+ChatGPT through a gateway](https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway).
+
+For this path, the gateway must preserve the Responses API behavior described here:
 endpoints, streaming, continuation, tool calls, authentication, routing, and
 useful errors.
 
-To roll out a gateway, see [Deploy Codex through a
+To roll out a gateway, see [Roll out a
   gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway). To configure a developer
-  machine, see [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
+  machine, see [Use API/provider
+  credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
 
 ## Requests and endpoints
 

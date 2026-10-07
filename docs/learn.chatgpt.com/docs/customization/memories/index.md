@@ -29,8 +29,15 @@ always apply.
 <ContentModeSwitch group="codex-surface" id="app">
 
 In the ChatGPT desktop app, use `/memories` to choose whether a chat can use
-local memories or contribute to future memories. Manage the feature from
-**Settings > Personalization** when you need to turn it on or off.
+local memories or contribute to future memories. In **Settings >
+Personalization**, use **Enable Codex memories** to turn the feature on or off
+for the selected machine. Use **Allow memories from tool-assisted chats** to
+choose whether chats that use MCP tools or web search can contribute to future
+memories.
+
+To reset the selected machine's memory store, select **Delete Codex memories**
+and confirm. On the local machine, this also clears Computer History when that
+feature is available.
 
 </ContentModeSwitch>
 
@@ -127,7 +134,7 @@ directory or generated memory artifacts.
 ## Configure local memories
 
 Local Codex memories are off by default. In the ChatGPT desktop app, open
-**Settings > Personalization** and turn on **Enable memories**.
+**Settings > Personalization** and turn on **Enable Codex memories**.
 
 For config-based setup, add the feature flag to `config.toml`:
 

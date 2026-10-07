@@ -102,8 +102,10 @@ Open **Plugins** to find and install **Codex Security Cloud**. Follow
 [Cloud setup](https://learn.chatgpt.com/docs/security/setup) to connect GitHub and start your first scan.
 
 <CtaPillLink
-  href="https://chatgpt.com/plugins"
+  href="https://chatgpt.com/plugins/plugin_connector_1p_6317a32dbf5c81919acd66de6722daf5"
   label="Find Codex Security Cloud"
+  target="_blank"
+  rel="noopener noreferrer"
   icon="external"
   class="my-8"
 />

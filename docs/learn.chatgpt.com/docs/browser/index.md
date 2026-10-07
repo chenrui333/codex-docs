@@ -112,8 +112,10 @@ Use the browser to open http://localhost:3000/settings, reproduce the layout
 bug, and fix only the overflowing controls.
 ```
 
-ChatGPT asks before it uses a website unless you have already allowed that
-site. Manage allowed and blocked sites in **Settings > Browser**. ChatGPT also
+In **Settings > Browser > Agent permissions**, choose default permissions for
+browsing, downloads, and uploads, and add exceptions for specific websites.
+Removing a site's custom permissions restores its defaults. Your organization
+can restrict these controls. ChatGPT also
 asks for confirmation before sensitive actions such as submitting information,
 making a purchase, changing permissions, or deleting data. ChatGPT can't
 automate file uploads in the built-in browser.

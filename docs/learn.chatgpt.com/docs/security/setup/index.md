@@ -28,8 +28,10 @@ Codex Security Cloud runs scans in [Codex cloud](https://learn.chatgpt.com/docs/
    installed plugins or sidebar.
 
 <CtaPillLink
-  href="https://chatgpt.com/plugins"
+  href="https://chatgpt.com/plugins/plugin_connector_1p_6317a32dbf5c81919acd66de6722daf5"
   label="Open plugin marketplace"
+  target="_blank"
+  rel="noopener noreferrer"
   icon="external"
   class="my-8"
 />

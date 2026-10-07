@@ -539,6 +539,19 @@ A managed command allowlist applies to commands using the managed proxy. Where p
 
 Empty environment requirements inherit Global. Manage Networking Off is not the Cloud environment Internet access Off switch. See [Configure networking in the UI](https://learn.chatgpt.com/docs/enterprise/agent-security#configure-networking-in-the-ui).
 
+### Control desktop app network destinations
+
+Use `[application.network]` in `requirements.toml` to restrict the desktop
+app's network destinations. With `enabled = true`, external requests must use
+HTTPS or WSS and match an exact domain with an `"allow"` value in
+`[application.network.domains]`. Subdomains aren't implicitly allowed. An empty
+domain map permits no external destinations. See the [Configuration
+Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the supported keys.
+
+This policy is separate from command networking and browser origin rules. It
+doesn't impose destination restrictions on native modules or spawned processes,
+and it doesn't govern Work Cloud execution.
+
 ### Control browser and Computer Use
 
 Use the `[browser_use]` and `[computer_use]` tables in `requirements.toml` to

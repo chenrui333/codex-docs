@@ -5,16 +5,19 @@ source_url: 'https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway'
 source_kind: 'learn_markdown'
 ---
 
-# Deploy Codex through a gateway
+# Roll out a gateway
 
 Source: https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Deploy Codex through your organization’s LLM gateway. Configure model routes, issue developer credentials, and distribute a verified Codex configuration.
+Roll out the API/provider credential path through your gateway. Configure model
+routes, issue developer credentials, and distribute a verified Codex
+configuration. For a gateway that forwards ChatGPT workspace requests, see
+[Sign in with ChatGPT through a gateway](https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway).
 
-To configure Codex on your own machine with values you were given, see
-  [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). Before
+To configure Codex on your own machine with values you were given, see [Use
+  API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). Before
   choosing or rolling out a gateway, review the [gateway compatibility
   requirements](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility).
 
@@ -117,7 +120,7 @@ MCP connections, plugin distribution, and their policies separately.
 
 ## Test Codex through the gateway
 
-Before distributing anything, follow [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure one isolated test user with the provider block and credential mechanism you plan to distribute.
+Before distributing anything, follow [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure one isolated test user with the provider block and credential mechanism you plan to distribute.
 
 Run the checks below from the same CLI or desktop surface developers will use:
 
@@ -129,7 +132,7 @@ Run the checks below from the same CLI or desktop surface developers will use:
 | Follow-up              | Ask a follow-up in the same thread.                                                                          | The answer uses the prior turn; the gateway accepts replayed input. If WebSocket or incremental transport is enabled, it also preserves `previous_response_id`. |
 | Errors and attribution | Repeat with an intentionally invalid test alias or expired test credential.                                  | The client receives a useful routing or authentication error, and valid requests remain attributed to the test user.                                            |
 
-After these checks succeed, direct developers to [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure and verify their own machine.
+After these checks succeed, direct developers to [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure and verify their own machine.
 
 ## Distribute the configuration
 
@@ -198,7 +201,7 @@ inherit native Windows configuration.
 
 ### Hand developers the configuration values
 
-If you do not have managed distribution, give each developer the gateway URL, provider ID, model alias, credential variable or resolver, and any catalog path. Send them to [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure and verify their own machine.
+If you do not have managed distribution, give each developer the gateway URL, provider ID, model alias, credential variable or resolver, and any catalog path. Send them to [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure and verify their own machine.
 
 Manual setup is not an enforcement channel. Project-local `.codex/config.toml` cannot override sensitive provider or authentication routing keys.
 
@@ -209,7 +212,7 @@ Manual setup is not an enforcement channel. Project-local `.codex/config.toml` c
 To confirm that the distributed settings reached a developer machine:
 
 1. Restart Codex and confirm the expected provider and model.
-2. Run the short test in [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#verify-the-connection).
+2. Run the short test in [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#verify-the-connection).
 3. Ask one follow-up to confirm continuation, then check the gateway logs for that
    developer's request.
 
@@ -248,13 +251,13 @@ To migrate safely, complete these steps in order:
 1. Inventory the current Claude path: gateway URL, credential source, required headers, model aliases, Bedrock profile mappings, and managed delivery channel.
 2. Add a parallel Codex-facing Responses route and Codex model aliases.
 3. Issue one scoped Codex credential. If Codex will use a static credential, expose that new credential through `env_key`; if Claude uses a credential helper, implement and test the Codex command-backed resolver contract.
-4. Configure that developer with the [provider block](#what-to-distribute). For a managed rollout, translate the payload into the Codex paths and precedence described in [Deploy Codex through a gateway](#distribute-the-configuration).
+4. Configure that developer with the [provider block](#what-to-distribute). For a managed rollout, translate the payload into the Codex paths and precedence described in [Roll out a gateway](#distribute-the-configuration).
 5. Run the short connection check on the developer's actual CLI or desktop surface, then run the full streaming, continuation, tool-call, error, logging, and alias-routing checks in [Test Codex through the gateway](#test-the-client-and-gateway).
 6. After the pilot passes, [distribute the configuration](#distribute-the-configuration) to the remaining developers.
 
 ## Related docs
 
-- [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway)
+- [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway)
 - [MCP](https://learn.chatgpt.com/docs/extend/mcp)
 - [Plugins](https://learn.chatgpt.com/docs/plugins)
 - [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)

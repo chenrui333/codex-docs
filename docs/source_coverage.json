@@ -1,11 +1,11 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 1015,
+      "active": 1020,
       "by_category": {
         "cli_command": 93,
         "cli_option": 357,
-        "config_key": 438,
+        "config_key": 443,
         "feature_flag": 160,
         "linked_tool_guide": 2,
         "system_prompt_snapshot": 1,
@@ -19,7 +19,7 @@
         "under development": 61
       },
       "inactive": 42,
-      "total": 1057
+      "total": 1062
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -129,6 +129,7 @@
       "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
       "https://developers.openai.com/blog/topic/codex",
       "https://developers.openai.com/community/codex-ambassadors",
+      "https://developers.openai.com/community/codex-ambassadors/directory",
       "https://developers.openai.com/community/codex-for-oss",
       "https://developers.openai.com/cookbook/articles/codex_exec_plans",
       "https://developers.openai.com/cookbook/examples/codex/autofix-github-actions",
@@ -155,14 +156,14 @@
       "https://developers.openai.com/training/hands-on/codex"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 11,
-      "codex_related_urls": 35,
+      "classified_skipped_codex_related_urls": 12,
+      "codex_related_urls": 36,
       "mirrored_urls": 22,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 13,
+      "skipped_codex_related_urls": 14,
       "tombstoned_urls": 0,
       "unclassified_skipped_codex_related_urls": 2
     },
@@ -205,7 +206,7 @@
     "skipped_codex_related_url_counts_by_classification": {
       "blog_index": 1,
       "chatgpt_plugin_page": 1,
-      "community_page": 2,
+      "community_page": 3,
       "learn_index": 1,
       "showcase_page": 4,
       "training_page": 2
@@ -220,6 +221,11 @@
         "classification": "community_page",
         "reason": "Community pages are intentionally excluded from the docs mirror.",
         "url": "https://developers.openai.com/community/codex-ambassadors"
+      },
+      {
+        "classification": "community_page",
+        "reason": "Community pages are intentionally excluded from the docs mirror.",
+        "url": "https://developers.openai.com/community/codex-ambassadors/directory"
       },
       {
         "classification": "community_page",
@@ -270,6 +276,7 @@
     "skipped_codex_related_urls": [
       "https://developers.openai.com/blog/topic/codex",
       "https://developers.openai.com/community/codex-ambassadors",
+      "https://developers.openai.com/community/codex-ambassadors/directory",
       "https://developers.openai.com/community/codex-for-oss",
       "https://developers.openai.com/learn/codex",
       "https://developers.openai.com/learn/developers-codex-plugin",
@@ -289,7 +296,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-07T22:51:31+00:00",
+  "generated_at": "2026-10-07T22:52:30+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -331,11 +338,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 175,
+      "discovered_urls": 176,
       "html_fallback_pages": 2,
-      "markdown_pages": 172,
-      "mirrored_paths_count": 174,
-      "mirrored_urls": 174,
+      "markdown_pages": 173,
+      "mirrored_paths_count": 175,
+      "mirrored_urls": 175,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -419,6 +426,7 @@
       "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
+      "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/sites",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -599,6 +607,7 @@
       "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
+      "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/sites",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -774,6 +783,7 @@
       "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
       "learn.chatgpt.com/docs/enterprise/service-accounts/index.md",
       "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
+      "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md",
       "learn.chatgpt.com/docs/enterprise/sites/index.md",
       "learn.chatgpt.com/docs/enterprise/skills/index.md",
       "learn.chatgpt.com/docs/enterprise/teams/index.md",
@@ -875,7 +885,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 174,
+    "mirrored_paths_count": 175,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -952,6 +962,7 @@
       "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
+      "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/sites",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -1136,6 +1147,7 @@
           "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/service-accounts",
           "https://learn.chatgpt.com/docs/enterprise/shared-connections",
+          "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/sites",
           "https://learn.chatgpt.com/docs/enterprise/skills",
           "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -1237,7 +1249,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "1bb6226a31ac6e2dc0ee672c6b886920ff34b16cc861350c09d75012c1e7e4c1",
+        "discovered_urls_sha256": "23a011a7e90c465f34ed5d59c7c7206cf8036b3e51400d2336b8e5598b2570d6",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1315,6 +1327,7 @@
           "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/service-accounts",
           "https://learn.chatgpt.com/docs/enterprise/shared-connections",
+          "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/sites",
           "https://learn.chatgpt.com/docs/enterprise/skills",
           "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -1528,9 +1541,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1607,7 +1620,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-06T22:30:12+00:00",
+    "last_successful_full_sync_at": "2026-10-07T22:52:30+00:00",
     "status": "complete"
   }
 }

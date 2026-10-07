@@ -28,7 +28,7 @@ Complete the steps in order for a new rollout, or use the linked pages to change
 one boundary.
 
 If you manage a model gateway for local Codex clients, use
-[Deploy Codex through a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway) for gateway
+[Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway) for gateway
 qualification, credential distribution, and the client handoff. Configure
 workspace access separately where your deployment uses workspace features.
 

@@ -5,7 +5,7 @@ source_url: 'https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway'
 source_kind: 'learn_markdown'
 ---
 
-# Connect to a gateway
+# Use API/provider credentials through a gateway
 
 Source: https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway
 
@@ -14,7 +14,10 @@ Source: https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway
 Connect Codex to an LLM gateway using the gateway URL, model alias, and credential
 or token resolver your organization provides.
 
-To roll out a gateway for your organization, see [Deploy Codex through a
+To keep the gateway while signing in with a ChatGPT workspace, use
+[Sign in with ChatGPT through a gateway](https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway).
+
+For an organization-wide rollout, see [Roll out a
   gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway). For the required API behavior,
   see [Gateway compatibility](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility). To
   connect directly to Bedrock without a gateway, see [Amazon
@@ -216,7 +219,7 @@ gateway team to configure and test a Codex connection:
    plan to use. Have your gateway team complete the
    [streaming, tool, and follow-up checks](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#test-the-client-and-gateway).
 6. After the pilot passes, follow
-   [Deploy Codex through a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway) to distribute the
+   [Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway) to distribute the
    configuration to other developers.
 
 For the administrator migration checklist and configuration mapping, see

@@ -29,6 +29,11 @@ When HTML previews are available, generated `.html` and `.htm` files can also
 open as interactive previews. Switch between the rendered preview and source
 view to inspect the output or its underlying HTML.
 
+Open a standalone `.tex` file to edit its LaTeX source alongside a PDF preview.
+When the built-in compiler is available, the app compiles the document and
+refreshes the preview after edits. If compilation fails, the last successful
+PDF remains visible and your source edits are preserved.
+
 Use annotations to point at a specific part of a supported preview and request
 a focused revision.
 

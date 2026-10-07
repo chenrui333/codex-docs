@@ -205,14 +205,21 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "storage",
         },
         {
-          title: "Connect to a gateway",
+          title: "Sign in with ChatGPT through a gateway",
+          description:
+            "Keep your gateway for model requests while using your ChatGPT workspace identity.",
+          href: "/codex/enterprise/sign-in-with-chatgpt-through-a-gateway",
+          icon: "connect",
+        },
+        {
+          title: "Use API/provider credentials",
           description:
             "Configure one Codex client to use your organization's model gateway and verify the connection.",
           href: "/codex/enterprise/connect-to-a-gateway",
           icon: "connect",
         },
         {
-          title: "Deploy Codex through a gateway",
+          title: "Roll out a gateway",
           description:
             "Configure model routes, issue credentials, and deploy Codex through your organization’s gateway.",
           href: "/codex/enterprise/roll-out-a-gateway",

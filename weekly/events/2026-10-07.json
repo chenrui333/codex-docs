@@ -316,6 +316,181 @@
       "id": "df9aa6b4efed3d4df79b3a572ab6f6bc382280b820f137dd709823e290453679",
       "observed_at": "2026-10-07T22:51:31+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md"
+        ],
+        "capability_changes": {
+          "added": [
+            "config_key:application",
+            "config_key:application.network",
+            "config_key:application.network.domains",
+            "config_key:application.network.domains.<domain>",
+            "config_key:application.network.enabled"
+          ],
+          "added_by_category": {
+            "config_key": [
+              "config_key:application",
+              "config_key:application.network",
+              "config_key:application.network.domains",
+              "config_key:application.network.domains.<domain>",
+              "config_key:application.network.enabled"
+            ]
+          },
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "32ca8030e11c23140972d3bc23a8fe0db663fbf27e1499142e0375cefa3bb7b9",
+            "before": "0b41b0d3e6a5560dd9deb4936fc2d469a30ef84f0972f006bb66b852ae09c781"
+          },
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "d93766029696121273f6d92161c88ba4dd31e6308d4e64c2efbe36b76f8fd978",
+            "before": "062e6ce3df736ae704115cbc7892c08f0c789f62d967265109a16a93d2f9ce0b"
+          },
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "0e5ac5a71f3a6b490b213ac14e59924e13cc3866eb8456bae03a4d1bb0c74581",
+            "before": "9ef42a0beb4a0334bf3fc8337ac5f63beef7abd9f1ccd2b11ab839f2ae738321"
+          },
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md": {
+            "after": "693f9d0f65bf2c91ee31f8c3d994a16165c6d52c5c4ab4fd828572f9f979faef",
+            "before": "edee790ec29aae3e44db901ba32538eeb8d1e75b6e97736fbf929fff57b7da3d"
+          },
+          "learn.chatgpt.com/docs/artifacts-viewer/index.md": {
+            "after": "133f53147a16e32746e787bc8e871b469eea78472810b71049705d3e32446a93",
+            "before": "44f12ecbda91949d9e994c95d720b50143e4a389aa8fd2c3e637544f480d6984"
+          },
+          "learn.chatgpt.com/docs/auth/index.md": {
+            "after": "c7a8d09ef6211719b4a589a307f78e300fb8fec20d444ae504fe2d25c622a6f6",
+            "before": "0bca0d94055f7c8c73be1b553604156e456444f67eaa78fe652c7eaadd1ddd43"
+          },
+          "learn.chatgpt.com/docs/browser/index.md": {
+            "after": "b3662ba2b4f3502bb5aa53ff327789f5e33dfe9b375bd0cfc33db3766171ebac",
+            "before": "8be64e64335259ac734d43449146a61dce5de77f13ca136c39a0a0c8e11b6442"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "53c63b2db95574f8fd519a46c7cba574deeb023c0b34c548b4d0aba305c0e2bb",
+            "before": "823ed8c21dbabd3bb119c3fdf657d0c1077cfd80ff6831ef202e0d69796f3730"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "ec16a8b3f2d281a4a83cc80f8bac4190bcae4821b1b2cc6ff3f6741fcbf6dd94",
+            "before": "85dc615ed46cf725bb7876d0cebd6cd487f6f25c356ec49ba19f83336a988386"
+          },
+          "learn.chatgpt.com/docs/customization/memories/index.md": {
+            "after": "d7d45dda57f3a67b6758a61bed1dfdccd948e522e62c6191dab3b87e574cfe98",
+            "before": "04fad26d09d4043732d11c3b9bd143035ed1a444c261f95d7a892045c7a37db7"
+          },
+          "learn.chatgpt.com/docs/enterprise/admin-setup/index.md": {
+            "after": "92f317b7682a7edff299bcf60b8e37e5b3aa12c1d9d9be6ecc88bb29e8bdcbea",
+            "before": "1ad698b8f0596630876fd45529fa1983afe0e079353f09cf2ccc56302acf9530"
+          },
+          "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md": {
+            "after": "ae39fc2a4802077aa0066c12a9cf332548e2858427f9101fd7d2f15a1703f063",
+            "before": "0f5bb8b9c68b53c2e70d80e0a8bb34dc8b790ec215ab3974af05962da855ed83"
+          },
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
+            "after": "023b3194015ac579434187ff8db7cb7bafa26aa0886319946152178a3e9d1add",
+            "before": "d40bc30397c42bda0749bf287a202c0b7b4976f900cd8998bc372bde02c9bea9"
+          },
+          "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md": {
+            "after": "20d9f3573bba7bc214fff28adc2f611a90a40871de27b308be0ddfe47aab4e47",
+            "before": "3dd1157b5aa1f7c225bfc796a53e835923223c94953863b25d551fba79d164a4"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "468dde1243de8e1ed16a187b9c594507f5c4eb0f5b2b73f7da9d9dcc1c86697f",
+            "before": "ffac945bfd8a6996b0ac30d236c9e1ce5534ed3b8e3b86004d38038c74c5b193"
+          },
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+            "after": "4a7ba705547a0f1add595dd0e33f429e1b3548f7a74a4df1e840576bce9b3439",
+            "before": "0b97233eba184152476d7db0e7ddff1937bb7f825782d8852ba68ac1ddf9670e"
+          },
+          "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md": {
+            "after": "e2f0dc8c1d676f60df932e81fc04b1fedaeec7b52b7559c93511607ea3787acb",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/permission-modes/index.md": {
+            "after": "9a1ac1bb75e3c331d3cf9598bfc4abe5f54bfbb2004617d4a9a297f662fcba0d",
+            "before": "1412ed73ea6b038c9018d596910caf0f559e9b657879319d432e9564f0f67a7b"
+          },
+          "learn.chatgpt.com/docs/personalize/index.md": {
+            "after": "b33ab56e6eced2f49023a3e34dc57764e65b4dee53f6bf138bfe9ee393dc4fcc",
+            "before": "a4b599b28e342fc7d41c3e7eaab0c33e250088fb5110948979b9db7d112929e7"
+          },
+          "learn.chatgpt.com/docs/prompting/index.md": {
+            "after": "1571939f8b5bb7b0fa6bc7a804835fbd3293dc24d1aa7fea18403dc4131b2946",
+            "before": "5c2cd79413a495358bb3792c8da616b8e2f1380ad06091a2900b7ec4a7e0ddaf"
+          },
+          "learn.chatgpt.com/docs/reference/troubleshooting/index.md": {
+            "after": "e80c91d3760a127427b1522d5e01e83b7fea5edef6d2de599ff322e55a549b80",
+            "before": "5c2b2bc4476b4c733da2721f096aed4a6a6b6e888d9c51cb2146bfe86ae6636f"
+          },
+          "learn.chatgpt.com/docs/sandboxing/auto-review/index.md": {
+            "after": "f6caba719512ada6738c2b69c3e00d7a0c26b8ccea2649e7704aa32bbe79cd13",
+            "before": "7cee1c27501d43a193769546ca079bc187b2f966a56db043876413edf67fb981"
+          },
+          "learn.chatgpt.com/docs/sandboxing/index.md": {
+            "after": "a4a9e94342e75aa5ddd09d17b0ef95173b56e2a2c7f35af705c07a702a280f0e",
+            "before": "64b0efeadca1bf97876392230272aa7183844d33126c3dab4f67f87cbcf33da4"
+          },
+          "learn.chatgpt.com/docs/security/index.md": {
+            "after": "5afbd367be9532d01f26c8674fd171f5811d47b9dc1f922307f1e390fdf6a81e",
+            "before": "888260d85d54358209320ca494ef01d2fe15fb674e9d7183c59ccb17d44579ee"
+          },
+          "learn.chatgpt.com/docs/security/setup/index.md": {
+            "after": "91acd093d259e71a49af6d95d7e57f0f6f362a7efd7955d96340dc087e46feda",
+            "before": "327226393171e62db4217f8b01f2e2b1b4873b3be1a1b9ee51c9b0092b29bdc6"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.161.0",
+          "codex_cli_source_commit": "979011409de0a60b52f179721948e65531d26144",
+          "codex_cli_version": "0.161.0",
+          "codex_cli_version_raw": "codex-cli 0.161.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md",
+          "learn.chatgpt.com/docs/artifacts-viewer/index.md",
+          "learn.chatgpt.com/docs/auth/index.md",
+          "learn.chatgpt.com/docs/browser/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/customization/memories/index.md",
+          "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
+          "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md",
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
+          "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
+          "learn.chatgpt.com/docs/permission-modes/index.md",
+          "learn.chatgpt.com/docs/personalize/index.md",
+          "learn.chatgpt.com/docs/prompting/index.md",
+          "learn.chatgpt.com/docs/reference/troubleshooting/index.md",
+          "learn.chatgpt.com/docs/sandboxing/auto-review/index.md",
+          "learn.chatgpt.com/docs/sandboxing/index.md",
+          "learn.chatgpt.com/docs/security/index.md",
+          "learn.chatgpt.com/docs/security/setup/index.md"
+        ]
+      },
+      "id": "02e4984f4cccb608c615749ddb7e26954cc48b760d03024b0c0dcc8596d20bb9",
+      "observed_at": "2026-10-07T22:52:30+00:00",
+      "previous_id": "df9aa6b4efed3d4df79b3a572ab6f6bc382280b820f137dd709823e290453679"
     }
   ],
   "schema_version": 1

@@ -187,7 +187,10 @@ Depending on your configuration, the menu can include **Ask for approval**,
 **Approve for me** for eligible approval requests, **Full access**, and named or
 custom permissions profiles.
 
-<PermissionModeSelectorDemo client:load />
+<PermissionModeSelectorDemo
+  client:load
+  instructions="Select a mode to explore this documentation example. This doesn't change your ChatGPT or Codex permissions."
+/>
 
 </ContentModeSwitch>
 

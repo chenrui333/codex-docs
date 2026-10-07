@@ -147,6 +147,30 @@ email address for a request to draft an email:
 </section>
 ```
 
+<div
+  id="try-annotation-metadata"
+  className="annotation-request-demo not-prose"
+  data-annotation-example="metadata"
+  hidden
+>
+  **Try it**
+
+    <section oai-annotation-container>
+      <div
+        className="annotation-contact-preview"
+        data-example-target
+        oai-annotatable="Alex Morgan"
+        oai-annotation-metadata='{"email":"alex@example.com"}'
+      >
+        **Alex Morgan**
+
+Project lead
+
+    </section>
+
+      Select the contact in Annotation mode to see the email address included as
+      context.
+
 Selecting either line selects the entire row. The metadata appears with the
 annotation and accompanies it in the conversation. Include only context you
 intend to share with both the user and the model. Sending an email would still
@@ -176,16 +200,19 @@ attributes. Virtual object IDs aren't supported.
 Site-initiated requests may require user permission; users can re-enable blocked
 annotation features under **Site tools > Annotation features**.
 
-Add this button beside the chart card from the selection example, then run the
-script after both elements exist:
+This example opens an annotation on a paragraph without selection attributes.
+Run the script after both elements exist:
 
 ```html
-<button id="discuss-chart" type="button" hidden>Explain more</button>
+<p id="delivery-summary">
+  Standard delivery takes three to five business days.
+</p>
+<button id="discuss-delivery" type="button" hidden>Explain more</button>
 ```
 
 ```javascript
-const card = document.getElementById("chart-card");
-const button = document.getElementById("discuss-chart");
+const summary = document.getElementById("delivery-summary");
+const button = document.getElementById("discuss-delivery");
 
 button.hidden = typeof document.oai?.annotation?.request !== "function";
 
@@ -193,16 +220,42 @@ button.addEventListener("click", () => {
   const annotation = document.oai?.annotation;
   if (typeof annotation?.request !== "function") return;
 
-  annotation.request(card, {
-    initialComment: "Explain the latest trend in this graph.",
+  annotation.request(summary, {
+    initialComment: "Explain this delivery estimate.",
   });
 });
 ```
 
-Selecting **Explain more** asks the browser to open an annotation with the card
-selected and an editable comment. The person can edit, save, and send it with
+Selecting **Explain more** asks the browser to open an annotation with the
+paragraph selected and an editable comment. The person can edit, save, and send it with
 their message. Opening an annotation doesn't send a message to ChatGPT; only
 the user can submit it.
+
+<div
+  id="try-annotation-request"
+  className="annotation-request-demo not-prose"
+  data-annotation-request-demo
+  hidden
+>
+  **Try it**
+
+      Standard delivery takes three to five business days.
+
+    <button
+      type="button"
+      className="annotation-prompt-button"
+      data-annotation-request-button
+      data-prompt="Explain this delivery estimate."
+    >
+      Explain more
+    </button>
+
+    <p
+      className="annotation-try-it-hint"
+      data-annotation-request-feedback
+      role="status"
+      aria-live="polite"
+    >
 
 Keep the call within the active user interaction. Awaiting a network request
 first can lose that interaction.
@@ -228,12 +281,16 @@ controlling the browser.
 ### Request an annotation for a text range
 
 Pass a DOM `Range` to request feedback on a passage without changing the browser's
-text selection. This example selects the paragraph's contents; it doesn't need
+text selection. This example selects only the highlighted phrase; it doesn't need
 an `oai-annotation-container-text` attribute:
 
 ```html
-<p id="draft-passage">Leave more space between separate groups.</p>
-<button id="discuss-passage" type="button" hidden>Discuss this passage</button>
+<p>
+  Your trial includes full access for <mark id="draft-passage">14 days</mark>.
+</p>
+<button id="discuss-passage" type="button" hidden>
+  Ask about highlighted text
+</button>
 ```
 
 Run this script after both elements exist:
@@ -251,10 +308,39 @@ button.addEventListener("click", () => {
   const range = document.createRange();
   range.selectNodeContents(passage);
   annotation.request(range, {
-    initialComment: "Suggest a clearer version of this guidance.",
+    initialComment: "Explain when this trial ends.",
   });
 });
 ```
+
+<div
+  id="try-annotation-text-range"
+  className="annotation-request-demo not-prose"
+  data-annotation-example="text-range"
+  hidden
+>
+  **Try it**
+
+      Your trial includes full access for
+      <mark data-example-target>14 days</mark>.
+
+      Open an annotation on just the highlighted words.
+
+    <button
+      type="button"
+      className="annotation-prompt-button"
+      data-example-request
+      data-prompt="Explain when this trial ends."
+    >
+      Ask about highlighted text
+    </button>
+
+    <p
+      className="annotation-try-it-hint"
+      data-example-feedback
+      role="status"
+      aria-live="polite"
+    >
 
 The range must contain nonempty visible text in the current document, with at
 least part of the selection in the visible page area. It can contain at most
@@ -295,7 +381,8 @@ or collect choices to include with a request, such as an email tone.
 
 ### Preview a shared spacing token
 
-Both cards in this example use the same CSS property:
+Both cards in this example use the same CSS property. Register the controls on
+the cards directly; selection attributes aren't required:
 
 ```html
 <style>
@@ -309,13 +396,9 @@ Both cards in this example use the same CSS property:
   }
 </style>
 
-<section id="component-preview" oai-annotation-container>
-  <article class="preview-card" oai-annotatable="Profile card">
-    Profile card
-  </article>
-  <article class="preview-card" oai-annotatable="Summary card">
-    Summary card
-  </article>
+<section id="component-preview">
+  <article class="preview-card">Profile card</article>
+  <article class="preview-card">Summary card</article>
 </section>
 ```
 
@@ -361,6 +444,30 @@ function disposeAnnotationControls() {
 }
 ```
 
+<div
+  id="try-annotation-spacing"
+  className="annotation-request-demo not-prose"
+  data-annotation-example="spacing"
+  hidden
+>
+  **Try it**
+
+    **Card padding (pixels)**
+    <div
+      className="annotation-spacing-preview"
+      data-example-preview
+      oai-annotation-container
+    >
+      <article data-example-target oai-annotatable="">
+        Profile card
+      </article>
+      <article data-example-target oai-annotatable="">
+        Summary card
+      </article>
+
+      Select either card in Annotation mode, then change Card padding (pixels).
+      Select Adjust if needed. Both cards update together.
+
 Annotate either card and change **Card padding (pixels)** from 16 to 24. On
 hosted sites in ChatGPT, the controls appear automatically; in Codex or on
 localhost, select **Adjust** if needed. Both cards update. The annotation records the label, reference,
@@ -369,12 +476,17 @@ Call `disposeAnnotationControls()` when removing the component.
 
 ### Collect a choice without a preview
 
-Use the contact row from the metadata example to offer an email tone:
+This example offers an email tone for a plain paragraph. It doesn't need
+selection attributes or metadata. Run the script after the paragraph exists:
+
+```html
+<p id="email-draft">Draft a follow-up email about the project timeline.</p>
+```
 
 ```javascript
-const contact = document.getElementById("contact-row");
+const draft = document.getElementById("email-draft");
 const registration = document.oai?.annotation?.registerControls?.({
-  targets: contact,
+  targets: draft,
   controlsHeading: "Email options",
   controlsMode: "replace",
   controls: [
@@ -396,7 +508,7 @@ const registration = document.oai?.annotation?.registerControls?.({
 This control doesn't need an event handler because it doesn't preview a page
 change. Omitting `currentValue` tells the browser to include the selected tone
 even if the user keeps the initial option. Call `registration?.dispose()` when
-removing the row.
+removing the paragraph.
 
 For select controls, preview callbacks receive `option.value`, such as
 `"professional"`. Annotation history and ChatGPT receive the visible
@@ -413,7 +525,48 @@ characters. Without a heading, the panel shows the element's HTML tag. The
 heading isn't included in the context sent to ChatGPT.
 
 A registration supports up to 12 controls. Each requires a `type`, visible
-`label`, and `callback` identifier:
+`label`, and `callback` identifier.
+
+**Name controls by what they change.** Use a stable property or design-role
+label, such as "Page background," "Primary brand color," or "Accent color,"
+rather than the current value, such as "Warm ivory" or "Deep forest." The label
+should remain meaningful when the value changes. Use `currentValue` for the
+existing value and `reference` for the underlying token or property.
+
+For example, this control definition keeps the label separate from the color:
+
+```javascript
+const pageBackgroundControl = {
+  type: "color",
+  label: "Page background",
+  callback: "setPageBackground",
+  reference: "--color-background",
+  currentValue: "#f6f3ec",
+};
+```
+
+<div
+  id="try-annotation-color"
+  className="annotation-request-demo not-prose"
+  data-annotation-example="color"
+  hidden
+>
+  **Try it**
+
+    **Page background**
+    <div
+      className="annotation-color-preview"
+      oai-annotatable=""
+      data-example-target
+      data-example-preview
+    >
+
+Page preview
+
+      Select the preview in Annotation mode, then change Page background. Select
+      Adjust if needed. The label stays the same as the color changes.
+
+The supported control types are:
 
 | Type     | Value                          | Additional fields                                 |
 | -------- | ------------------------------ | ------------------------------------------------- |
@@ -514,8 +667,10 @@ empty space.
 The host must be a connected HTML element outside shadow DOM in a secure,
 top-level document. Surface registration isn't supported inside an iframe.
 
-This example draws a revenue bar and makes it selectable. Put the script after
-the canvas:
+### Start with picking and identity
+
+This example draws a revenue bar and makes it selectable using only `hitTest`
+and a stable object ID. Put the script after the canvas:
 
 ```html
 <canvas id="revenue-canvas" width="480" height="240">
@@ -528,18 +683,8 @@ const canvas = document.getElementById("revenue-canvas");
 const context = canvas.getContext("2d");
 const bar = { x: 40, y: 60, width: 320, height: 100 };
 
-function drawRevenue(highlighted = false) {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#2563eb";
-  context.fillRect(bar.x, bar.y, bar.width, bar.height);
-  if (highlighted) {
-    context.strokeStyle = "#111827";
-    context.lineWidth = 3;
-    context.strokeRect(bar.x, bar.y, bar.width, bar.height);
-  }
-}
-
-drawRevenue();
+context.fillStyle = "#2563eb";
+context.fillRect(bar.x, bar.y, bar.width, bar.height);
 
 const surface = document.oai?.annotation?.registerSurface?.({
   element: canvas,
@@ -563,30 +708,43 @@ const surface = document.oai?.annotation?.registerSurface?.({
       return null;
     }
 
-    return {
-      id: "revenue-this-quarter",
-      name: "Revenue this quarter",
-      role: "chart-bar",
-      metadata: { Metric: "Revenue", Value: 120000 },
-      rect,
-    };
-  },
-  renderSelection({ hoveredId, selectedId }) {
-    drawRevenue(
-      hoveredId === "revenue-this-quarter" ||
-        selectedId === "revenue-this-quarter"
-    );
+    return { id: "revenue-this-quarter" };
   },
 });
 ```
 
-Hovering over the bar in Annotation mode highlights it. Selecting it opens an
-annotation with the object's name, metadata, and a screenshot of the selection.
+<div
+  id="try-annotation-canvas"
+  className="annotation-request-demo not-prose"
+  data-annotation-example="canvas"
+  hidden
+>
+  **Try it**
 
-Keep IDs stable within a surface. The optional `name` is visible to the user;
-`role` gives a short semantic description. The optional `rect` uses CSS pixels
-relative to the visible page area, matching `clientX` and `clientY`. Convert from scene coordinates,
-including scale, pan, and zoom.
+      <canvas
+        className="annotation-canvas-preview"
+        data-example-canvas
+        oai-annotatable=""
+        width="640"
+        height="360"
+      >
+
+Circle
+
+Triangle
+
+Square
+
+Star
+
+      </canvas>
+
+      Enter Annotation mode, then select a shape to see its name, ID, and fill
+      color in the annotation. The space between shapes is not selectable.
+
+In the code sample, selecting the bar in Annotation mode identifies it as
+`revenue-this-quarter`.
+Keep IDs stable within a surface. The example returns `null` for empty space.
 
 `hitTest` can return a promise and receives an `AbortSignal` as `signal` to
 cancel superseded work. The browser allows 250 milliseconds before falling
@@ -599,10 +757,59 @@ settles, even after cancellation or a timeout. If a worker handles picking,
 settle the pending promise when its work is aborted; dropping a canceled worker
 response can block subsequent canvas picking.
 
-Use the optional `renderSelection` callback for application-specific feedback.
-Clear feedback when both IDs are `null`. Call `surface?.invalidate()` after
-moving objects or changing zoom, and `surface?.dispose()` when removing the
-integration. Both return synchronously without a value.
+Call `surface?.invalidate()` after moving objects or changing zoom, and
+`surface?.dispose()` when removing the integration. Both return synchronously
+without a value.
+
+### Add optional object context
+
+The `id` is enough to identify the object. To include a display name, semantic
+role, hidden context, or selection bounds, replace the successful return in
+the preceding `hitTest` callback with:
+
+```javascript
+return {
+  id: "revenue-this-quarter",
+  name: "Revenue this quarter",
+  role: "chart-bar",
+  metadata: { metricId: "quarterly-revenue" },
+  rect,
+};
+```
+
+The optional `name` is visible to the user; `role` gives a short semantic
+description. Include metadata only when it adds context that isn't already
+visible. The optional `rect` uses CSS pixels relative to the visible page area,
+matching `clientX` and `clientY`. The picking example already computes this
+rectangle. Convert from scene coordinates, including scale, pan, and zoom.
+
+### Add optional selection feedback
+
+Use the optional `renderSelection` callback to draw your own hover and
+selection feedback. It doesn't require the optional context fields.
+
+For the canvas above, define this function and add
+`renderSelection: renderRevenueSelection` to the `registerSurface()` options:
+
+```javascript
+function renderRevenueSelection({ hoveredId, selectedId }) {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "#2563eb";
+  context.fillRect(bar.x, bar.y, bar.width, bar.height);
+
+  if (
+    hoveredId === "revenue-this-quarter" ||
+    selectedId === "revenue-this-quarter"
+  ) {
+    context.strokeStyle = "#111827";
+    context.lineWidth = 3;
+    context.strokeRect(bar.x, bar.y, bar.width, bar.height);
+  }
+}
+```
+
+This callback redraws the bar with an outline while it's hovered or selected.
+When both IDs are `null`, it redraws the bar without an outline.
 
 ### Add controls to canvas objects
 

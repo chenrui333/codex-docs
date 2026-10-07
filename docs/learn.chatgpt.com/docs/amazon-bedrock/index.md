@@ -18,8 +18,8 @@ through Amazon Bedrock. In this setup, the local client sends model requests to
 Bedrock using AWS-managed authentication and access controls.
 
 This page covers direct access to Bedrock. If your organization already
-  provides a model gateway, follow [Connect to a
-  gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). To configure a gateway
+  provides a model gateway, follow [Use API/provider
+  credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). To configure a gateway
   backed by Bedrock, see [Bedrock through
   LiteLLM](https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm).
 

@@ -13,9 +13,10 @@ Source: https://learn.chatgpt.com/docs/auth
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-For a local client using an organization-provided model gateway, follow
-[Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) for the gateway
-credential and provider configuration. Direct Bedrock access uses the
+For a local client using an organization-provided model gateway, choose
+[Sign in with ChatGPT through a gateway](https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway)
+or [API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
+Direct Bedrock access uses the
 [Amazon Bedrock authentication options](https://learn.chatgpt.com/docs/amazon-bedrock#authentication-options).
 
 ## OpenAI authentication
