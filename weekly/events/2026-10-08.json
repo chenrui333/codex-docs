@@ -1,0 +1,50 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "feature-flags/lifecycle.json": {
+            "after": "297b004f26f958f686ed9c687f2641602909f1b87133b8e88871eef6cfbbd9f1",
+            "before": "a5e02ea4d99eb29d6fd77a39b64d9e0d6f4a65e631bac6f46f731154e59e7209"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "8d6c80680a2be68cd2e4293dbdf473b96fca9e8c3d00aeead7c5c148ca6b8cc7",
+            "before": "84387b809c115ec6bdad47108f49e5f81dc03f769a0ea91296532a5be542f3b7"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.161.0",
+          "codex_cli_source_commit": "979011409de0a60b52f179721948e65531d26144",
+          "codex_cli_version": "0.161.0",
+          "codex_cli_version_raw": "codex-cli 0.161.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "release"
+        },
+        "updated": [
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md"
+        ]
+      },
+      "id": "c9ecc0994b41431607ce8a2152984edef9bc6a32e73c9c51888687cb336cf440",
+      "observed_at": "2026-10-08T05:00:33+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}
