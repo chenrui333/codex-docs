@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.161.0",
-  "codex_cli_version_raw": "codex-cli 0.161.0",
+  "codex_cli_version": "0.162.0",
+  "codex_cli_version_raw": "codex-cli 0.162.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -851,6 +851,14 @@
           "synopsis": "--enable <FEATURE>"
         },
         {
+          "description": "Run an embedded app-server in the foreground until Ctrl-C",
+          "flags": [
+            "--no-daemon"
+          ],
+          "primary_flag": "--no-daemon",
+          "synopsis": "--no-daemon"
+        },
+        {
           "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
           "flags": [
             "--disable"
@@ -1160,9 +1168,18 @@
           "synopsis": "-h, --help"
         }
       ],
-      "subcommands": [],
+      "subcommands": [
+        {
+          "description": "Remove the legacy Windows sandbox's machine-wide accounts and network rules",
+          "name": "uninstall"
+        },
+        {
+          "description": "Print this message or the help of the given subcommand(s)",
+          "name": "help"
+        }
+      ],
       "usage": [
-        "codex sandbox [OPTIONS] [COMMAND]..."
+        "codex sandbox [OPTIONS] [COMMAND]... [COMMAND]"
       ]
     },
     {
@@ -3410,9 +3427,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "979011409de0a60b52f179721948e65531d26144",
+  "source_commit": "c1382380de69521303b416720a52f42d51af6248",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.161.0",
+  "source_ref": "rust-v0.162.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
