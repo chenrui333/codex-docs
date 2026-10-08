@@ -254,9 +254,9 @@ Set `model` to one available to your signed-in account or workspace. See
     },
     {
       key: "windows.sandbox",
-      type: "unelevated | elevated | mxc",
+      type: "mxc | elevated | unelevated",
       description:
-        "Windows-only native sandbox mode when running Codex natively on Windows.",
+        "Native Windows sandbox implementation. Explicit `mxc` selection fails when MXC is unavailable or prohibited by managed requirements. Use `features.prefer_mxc` with a legacy selection for automatic MXC selection with fallback.",
     },
     {
       key: "browser_use.allow_history_access",
@@ -875,6 +875,12 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "memories.consolidation_model",
       type: "string",
       description: "Optional model override for global memory consolidation.",
+    },
+    {
+      key: "features.prefer_mxc",
+      type: "boolean",
+      description:
+        "Prefer MXC for local Windows execution when native capabilities and policy allow it; otherwise retain the configured legacy sandbox and setup. Disabled by default in the standalone CLI; the desktop app can enable it through rollout configuration. Command failures don't trigger fallback.",
     },
     {
       key: "features.unified_exec",
@@ -1854,7 +1860,7 @@ unconstrained.
 
 Some managed requirements enforce an exact configuration value instead of an
 allowlist. Users can't override an enforced path, update preference, login-shell
-policy, feedback setting, or Windows private-desktop setting.
+policy, or feedback setting.
 
 Managed permission-profile allowlists require Codex 0.138.0 or later. Codex
 0.137.0 and earlier ignore `allowed_permission_profiles` and managed
@@ -2093,6 +2099,12 @@ from either one wins.
       type: "array<string>",
       description:
         "Allowed legacy native Windows sandbox implementations (`elevated` and `unelevated`). The list must not be empty. When both are allowed and no mode is selected, Codex prefers `elevated`. This list does not restrict the `mxc` sandbox when it is available.",
+    },
+    {
+      key: "windows.allow_mxc",
+      type: "boolean",
+      description:
+        "Set to `false` to prohibit both explicit MXC selection and automatic selection through `features.prefer_mxc`. Omitting this requirement or setting it to `true` permits MXC but doesn't enable it or require it. Legacy implementation restrictions still apply to fallback.",
     },
     {
       key: "remote_sandbox_config",

@@ -15,6 +15,16 @@ Source: https://learn.chatgpt.com/docs/whats-new
 
 For every versioned update, bug fix, and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
 
+## [October 5–9, 2026](https://learn.chatgpt.com/docs/whats-new/october-5-9-2026)
+
+### Use GPT-6.1 Sol with Ultrafast mode
+
+[Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode) speeds up
+token generation with GPT-6.1 Sol in Codex and ChatGPT Work. Ultrafast is
+available on Pro $500 and eligible Enterprise and Edu plans.
+
+[Read the full update →](https://learn.chatgpt.com/docs/whats-new/october-5-9-2026)
+
 ## [DevDay 2026](https://learn.chatgpt.com/docs/whats-new/devday-2026)
 
 <a id="devday-roundup-title" />

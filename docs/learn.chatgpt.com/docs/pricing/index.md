@@ -94,7 +94,7 @@ estimate included tasks.
       >
 
         - Plans at $100, $200, or $500 USD per month
-        - [Astra Ultrafast](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode)
+        - [Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode)
           access on Pro $500
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
@@ -281,17 +281,16 @@ at different rates, relative to Standard mode for the same model:
 | --------------------- | --------------------------- | ---------------------------------------------------- |
 | Fast                  | 2.5x                        | 2x                                                   |
 | GPT-6 Astra Ultrafast | 8x                          | 6x                                                   |
+| GPT-6.1 Sol Ultrafast | 8x                          | 6x                                                   |
 
-These billing multipliers don't describe speed increases. Credit rates
-alone don't determine how quickly you use included subscription limits;
-check your [usage dashboard](#where-can-i-see-my-current-usage-limits) for
+Check your [usage dashboard](#where-can-i-see-my-current-usage-limits) for
 current limits and reset times. See [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)
 for supported models and how speed modes affect usage.
 
 Image generations use included limits ~3-5x faster on average, depending on
 image quality and size.
 
-For GPT-6 Astra Ultrafast eligibility, billing, and administrator controls,
+For Ultrafast mode eligibility and administrator controls,
 see [Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode).
 
 ### How much does Sites cost?
@@ -487,8 +486,8 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td colspan="4" style="text-align:center">
           These are Standard credit rates. For purchased credits and Enterprise
           pay-as-you-go usage, Fast mode uses 2x the Standard rate where
-          available, and GPT-6 Astra Ultrafast uses 6x. Included subscription
-          usage has different multipliers. See
+          available, and Ultrafast mode uses 6x. Included subscription usage has
+          different multipliers. See
           [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for availability
           and billing details.
         </td>
@@ -700,7 +699,7 @@ API-key access follows API model availability.
             },
           },
           {
-            name: "Astra Ultrafast (Pro $500 and eligible Enterprise/Edu plans)",
+            name: "Ultrafast (Pro $500 and eligible Enterprise/Edu plans)",
             href: "/codex/agent-configuration/speed#ultrafast-mode",
             availability: {
               plus: "unavailable",

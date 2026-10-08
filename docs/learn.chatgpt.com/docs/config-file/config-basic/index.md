@@ -105,13 +105,17 @@ matching `default_permissions` value. See [Permissions](https://learn.chatgpt.co
 
 #### Windows sandbox mode
 
-When running Codex natively on Windows, set the native sandbox mode to `elevated` in the `windows` table. Use `unelevated` only if you don't have administrator permissions or if elevated setup fails.
+On Windows, prefer MXC when the device and policy support it. Set a legacy implementation for fallback:
 
 ```toml
 [windows]
-sandbox = "elevated"   # Recommended
-# sandbox = "unelevated" # Fallback if admin permissions/setup are unavailable
+sandbox = "elevated" # Legacy fallback
+
+[features]
+prefer_mxc = true
 ```
+
+Use `unelevated` only when elevated setup is unavailable and your organization's policy permits it. See the [Windows sandbox guide](https://learn.chatgpt.com/docs/windows/windows-sandbox#prefer-mxc-with-legacy-fallback) for compatibility limits and rollout controls.
 
 #### Web search mode
 

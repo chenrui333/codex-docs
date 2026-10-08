@@ -62707,6 +62707,35 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.162.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.162.0"
+      ],
+      "config_key": "features.prefer_mxc",
+      "feature_flag": "prefer_mxc",
+      "id": "config_key:features.prefer_mxc",
+      "lifecycle": {
+        "first_seen_version": "0.162.0",
+        "last_seen_version": "0.162.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.prefer_mxc",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -82334,6 +82363,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.162.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.162.0"
+      ],
+      "config_key": "windows.allow_mxc",
+      "id": "config_key:windows.allow_mxc",
+      "lifecycle": {
+        "first_seen_version": "0.162.0",
+        "last_seen_version": "0.162.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "windows.allow_mxc",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -97425,11 +97482,11 @@
     "codex-cli 0.162.0"
   ],
   "counts": {
-    "active": 1029,
+    "active": 1031,
     "by_category": {
       "cli_command": 95,
       "cli_option": 358,
-      "config_key": 443,
+      "config_key": 445,
       "feature_flag": 167,
       "linked_tool_guide": 2,
       "system_prompt_snapshot": 1,
@@ -97443,7 +97500,7 @@
       "under development": 66
     },
     "inactive": 43,
-    "total": 1072
+    "total": 1074
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",

@@ -437,7 +437,7 @@ Codex enforces the sandbox differently depending on your OS:
 
 - **macOS** uses Seatbelt policies and runs commands using `sandbox-exec` with a profile (`-p`) that corresponds to the `--sandbox` mode you selected. When restricted read access enables platform defaults, Codex appends a curated macOS platform policy (instead of broadly allowing `/System`) to preserve common tool compatibility.
 - **Linux** uses `bwrap` plus `seccomp` by default.
-- **Windows** uses the Linux sandbox implementation when running in [Windows Subsystem for Linux 2 (WSL2)](https://learn.chatgpt.com/docs/windows/wsl). WSL1 was supported through Codex `0.114`; starting in `0.115`, the Linux sandbox moved to `bwrap`, so WSL1 is no longer supported. When running natively on Windows, Codex uses a [Windows sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox#windows-sandbox) implementation.
+- **Windows** supports [MXC](https://learn.chatgpt.com/docs/windows/windows-sandbox#windows-sandbox), with `elevated` and `unelevated` as legacy fallbacks. In [Windows Subsystem for Linux 2 (WSL2)](https://learn.chatgpt.com/docs/windows/wsl), Codex uses the Linux sandbox implementation. WSL1 was supported through Codex `0.114`; starting in `0.115`, the Linux sandbox moved to `bwrap`, so WSL1 is no longer supported.
 
 If you use the Codex IDE extension on Windows, it supports WSL2 directly. Set the following in your VS Code settings to keep the agent inside WSL2 whenever it's available:
 
@@ -449,15 +449,14 @@ If you use the Codex IDE extension on Windows, it supports WSL2 directly. Set th
 
 This ensures the IDE extension inherits Linux sandbox semantics for commands, approvals, and filesystem access even when the host OS is Windows. Learn more in the [WSL guide](https://learn.chatgpt.com/docs/windows/wsl).
 
-When running natively on Windows, configure the native sandbox mode in `config.toml`:
+When running on Windows, prefer MXC when the device and policy support it by setting this in `config.toml`:
 
 ```toml
-[windows]
-sandbox = "unelevated" # or "elevated"
-# sandbox_private_desktop = true  # default; set false only for compatibility
+[features]
+prefer_mxc = true
 ```
 
-See the [Windows setup guide](https://learn.chatgpt.com/docs/windows/windows-sandbox#windows-sandbox) for details.
+Keep a permitted legacy implementation in `windows.sandbox` for fallback. See the [Windows setup guide](https://learn.chatgpt.com/docs/windows/windows-sandbox#prefer-mxc-with-legacy-fallback) for configuration and compatibility limits.
 
 When you run Linux in a containerized environment such as Docker, the sandbox may not work if the host or container configuration blocks the namespace, setuid `bwrap`, or `seccomp` operations that Codex needs.
 
