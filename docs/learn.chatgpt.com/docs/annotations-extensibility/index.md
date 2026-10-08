@@ -15,8 +15,8 @@ The Browser Annotation API lets your website customize what people select,
 what context accompanies their feedback, and which controls they use to preview
 changes before sending an annotation to ChatGPT.
 
-The Browser Annotation API isn't currently available in ChatGPT Enterprise or
-  Edu workspaces.
+In ChatGPT Enterprise and Edu workspaces, an admin must allow **Site
+  annotation customizations** through workspace policy.
 
 [Browser annotations](https://learn.chatgpt.com/docs/browser?surface=app#app-comment-on-the-page) work on your site without any code changes.
 People can select part of a page, add a comment, and send it in Context to Codex or ChatGPT Work.
