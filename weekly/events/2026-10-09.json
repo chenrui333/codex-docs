@@ -89,6 +89,62 @@
       "id": "96bb980c71af1f6480ee5daf0eba759f065437c318df53789f89c278ab77735f",
       "observed_at": "2026-10-09T05:04:30+00:00",
       "previous_id": "1f67345b9c25524d05c5758abd78056c20fb74a03008a6c5f38301675d4ad075"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/dynamic-groups/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "25df04a4fb4b1325497f5d7f8ba75f4ce1b7492032eb6e295de2138ee2e0cc07",
+            "before": "d93766029696121273f6d92161c88ba4dd31e6308d4e64c2efbe36b76f8fd978"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "7b37ab0ff3cf9562f777d33d0f6a13b51ff50143d5f71ca28fd79da8e2a4bf76",
+            "before": "1f7992b4697dc4a8a6c6b26a9795b46b209e79f774f76e974a5d2706cf8977e3"
+          },
+          "learn.chatgpt.com/docs/enterprise/dynamic-groups/index.md": {
+            "after": "8912421819b1a35eaa64f97e52806fc2dae16b245af9a2276f07be8c7b98881c",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md": {
+            "after": "09bc080cc3b92664dfc3da0c26efb4491ba7bc1eee912a7a19d1b270144cc855",
+            "before": "5b31cf0f0324617c5326d4460f5dc21a3f632a6f17c564611e6af3a88d86ea5f"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.0",
+          "codex_cli_source_commit": "c1382380de69521303b416720a52f42d51af6248",
+          "codex_cli_version": "0.162.0",
+          "codex_cli_version_raw": "codex-cli 0.162.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md"
+        ]
+      },
+      "id": "a12d2993af588fc4071c7958a75c3eed04cb178eb04ccb3a229bcc45a8310fba",
+      "observed_at": "2026-10-09T12:46:17+00:00",
+      "previous_id": "96bb980c71af1f6480ee5daf0eba759f065437c318df53789f89c278ab77735f"
     }
   ],
   "schema_version": 1

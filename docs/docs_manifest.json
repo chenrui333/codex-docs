@@ -6994,7 +6994,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "d93766029696121273f6d92161c88ba4dd31e6308d4e64c2efbe36b76f8fd978",
+      "sha256": "25df04a4fb4b1325497f5d7f8ba75f4ce1b7492032eb6e295de2138ee2e0cc07",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7497,11 +7497,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "1f7992b4697dc4a8a6c6b26a9795b46b209e79f774f76e974a5d2706cf8977e3",
+      "sha256": "7b37ab0ff3cf9562f777d33d0f6a13b51ff50143d5f71ca28fd79da8e2a4bf76",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"8140e17111ccee19025e516f54e5c4c8\"",
+      "source_etag": "W/\"540d0cd3ab04ffbd4f83cf045ce22373\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-08T23:49:28Z",
+      "source_last_modified": "2026-10-09T10:12:40Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -8529,6 +8529,13 @@
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway"
     },
+    "learn.chatgpt.com/docs/enterprise/dynamic-groups/index.md": {
+      "sha256": "8912421819b1a35eaa64f97e52806fc2dae16b245af9a2276f07be8c7b98881c",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/dynamic-groups"
+    },
     "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md": {
       "sha256": "20d9f3573bba7bc214fff28adc2f611a90a40871de27b308be0ddfe47aab4e47",
       "source_area": "learn_enterprise",
@@ -8619,7 +8626,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "5b31cf0f0324617c5326d4460f5dc21a3f632a6f17c564611e6af3a88d86ea5f",
+      "sha256": "09bc080cc3b92664dfc3da0c26efb4491ba7bc1eee912a7a19d1b270144cc855",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
