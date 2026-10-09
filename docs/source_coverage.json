@@ -296,7 +296,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-09T22:23:29+00:00",
+  "generated_at": "2026-10-09T22:24:36+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -338,11 +338,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 178,
+      "discovered_urls": 179,
       "html_fallback_pages": 2,
-      "markdown_pages": 175,
-      "mirrored_paths_count": 177,
-      "mirrored_urls": 177,
+      "markdown_pages": 176,
+      "mirrored_paths_count": 178,
+      "mirrored_urls": 178,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -524,6 +524,7 @@
       "https://learn.chatgpt.com/docs/webmcp",
       "https://learn.chatgpt.com/docs/whats-new",
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
+      "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
       "https://learn.chatgpt.com/docs/windows/windows-app",
@@ -706,6 +707,7 @@
       "https://learn.chatgpt.com/docs/webmcp",
       "https://learn.chatgpt.com/docs/whats-new",
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
+      "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
       "https://learn.chatgpt.com/docs/windows/windows-app",
@@ -884,6 +886,7 @@
       "learn.chatgpt.com/docs/web/index.md",
       "learn.chatgpt.com/docs/webmcp/index.md",
       "learn.chatgpt.com/docs/whats-new/devday-2026/index.md",
+      "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/index.md",
       "learn.chatgpt.com/docs/whats-new/october-5-9-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/september-28-october-2-2026/index.md",
@@ -891,7 +894,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 177,
+    "mirrored_paths_count": 178,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1065,6 +1068,7 @@
       "https://learn.chatgpt.com/docs/webmcp",
       "https://learn.chatgpt.com/docs/whats-new",
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
+      "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
       "https://learn.chatgpt.com/docs/windows/windows-app",
@@ -1253,13 +1257,14 @@
           "https://learn.chatgpt.com/docs/webmcp",
           "https://learn.chatgpt.com/docs/whats-new",
           "https://learn.chatgpt.com/docs/whats-new/devday-2026",
+          "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
           "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
           "https://learn.chatgpt.com/docs/windows/windows-app",
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "054436975a62a31c12da9cc76135e617d18153232885af2518ba7c2d57e8bf75",
+        "discovered_urls_sha256": "6fea634dfa7ace7b4a7968301f06eb2ba901c065c32df356b7d74a32fba33b4d",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1435,6 +1440,7 @@
           "https://learn.chatgpt.com/docs/webmcp",
           "https://learn.chatgpt.com/docs/whats-new",
           "https://learn.chatgpt.com/docs/whats-new/devday-2026",
+          "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
           "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
           "https://learn.chatgpt.com/docs/windows/windows-app",
@@ -1553,9 +1559,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1632,7 +1638,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-09T12:46:17+00:00",
+    "last_successful_full_sync_at": "2026-10-09T22:24:36+00:00",
     "status": "complete"
   }
 }

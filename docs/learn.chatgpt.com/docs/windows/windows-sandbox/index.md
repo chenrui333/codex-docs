@@ -24,6 +24,8 @@ The app can run natively in PowerShell with a Windows sandbox instead of
 requiring WSL or a virtual machine. This keeps Codex in Windows-native
 workflows while enforcing bounded filesystem and network permissions.
 
+For enterprise installation, see the [Windows Deployment Guide](https://learn.chatgpt.com/docs/enterprise/windows-deployment).
+
 > Illustration: ChatGPT desktop app Windows sandbox setup prompt above the message composer
 
   <CodexCallout
@@ -35,52 +37,33 @@ workflows while enforcing bounded filesystem and network permissions.
 
 Codex supports three Windows sandbox implementations:
 
-- `mxc`: The recommended sandbox on compatible Windows devices where policy permits it. Uses process isolation without administrator-approved setup, additional Windows accounts, changes to host file permissions, or local firewall rules.
+- `mxc`: The recommended sandbox on compatible Windows devices. Uses native process isolation without administrator-approved setup, additional Windows accounts, or local firewall rules.
 - `elevated`: The preferred legacy fallback when MXC is unavailable or disabled. Requires administrator-approved setup. Commands in the sandbox run without administrator privileges.
 - `unelevated`: A legacy fallback when elevated setup is unavailable and organizational policy permits it. Has weaker network isolation than `elevated` and doesn't support denied read paths.
 
 ## Configure the Windows sandbox
 
-The Windows sandbox enforces the active filesystem and network permissions for
-commands and their child processes. The permission profile determines which
-paths are readable or writable and whether network access is allowed. Approval
-policy separately controls when Codex asks to run commands with more access.
-See [sandbox and approvals](https://learn.chatgpt.com/docs/agent-approvals-security).
+The Windows sandbox enforces the active filesystem and network permissions for commands and their child processes. The permission profile determines which paths are readable or writable and whether network access is allowed. Approval policy separately controls when Codex asks to run commands with more access. See [sandbox and approvals](https://learn.chatgpt.com/docs/agent-approvals-security).
 
-### Control MXC rollout
+### Enable MXC
 
-These settings are available in Codex CLI 0.162.0. In the standalone CLI,
-`features.prefer_mxc` is off by default. The desktop app can enable this
-preference through its rollout configuration.
+The desktop app automatically prefers MXC for consumer accounts when the device supports it. For enterprise deployments or standalone CLI use, you can enable the same behavior with the configuration below.
 
-#### Prefer MXC with legacy fallback
-
-To use MXC when the device and policy support it, add this to `config.toml`:
+In `config.toml`:
 
 ```toml
 [features]
 prefer_mxc = true
 ```
 
-Keep `windows.sandbox` set to your organization's permitted legacy implementation,
-`elevated` or `unelevated`, for fallback.
+With `prefer_mxc = true`, Codex uses MXC for Windows commands when the device and policy support it.
+Otherwise, it uses the existing legacy selection and setup flow.
 
-Codex uses MXC for local Windows commands when the device and policy support it,
-even when `windows.sandbox` selects a legacy implementation. Otherwise, it uses
-the existing legacy selection and setup flow. This includes devices without
-MXC support and policies that set `windows.allow_mxc = false` or forbid local
-binding. `windows.allowed_sandbox_implementations` still constrains fallback;
-permission profiles and other managed requirements continue to apply.
+For enterprises where device support or policy varies, keep `windows.sandbox` set to your organization's permitted legacy implementation, `elevated` or `unelevated`, [as a fallback](#configure-a-legacy-fallback).
 
-Fallback happens during sandbox selection. Commands that fail after MXC is
-selected aren't retried in a legacy sandbox.
+Administrators can distribute this configuration as a default or enforce `features.prefer_mxc = true` through `requirements.toml`. Both permit legacy fallback. See [managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) for how defaults and requirements differ.
 
-Administrators can distribute this configuration as a default or enforce
-`features.prefer_mxc = true` through `requirements.toml`. Both permit legacy
-fallback. See [managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
-for how defaults and requirements differ.
-
-#### Keep MXC disabled
+### Keep MXC disabled
 
 To prevent MXC use in your organization, add this to your managed
 `requirements.toml`:
@@ -90,50 +73,27 @@ To prevent MXC use in your organization, add this to your managed
 allow_mxc = false
 ```
 
-This blocks both automatic MXC selection and explicit `windows.sandbox = "mxc"`.
-Existing legacy sandbox settings and requirements still apply. Configure
-`windows.allow_mxc` in `requirements.toml`, not `config.toml`.
+This blocks both automatic MXC selection and explicit `windows.sandbox = "mxc"`. Existing legacy sandbox settings and requirements still apply.
 
 ### MXC compatibility
 
-Microsoft Execution Containers (MXC) uses native Windows process isolation
-without creating sandbox accounts, changing host file permissions, or running
-the classic elevated setup. Commands run under the user's Windows identity
-with a policy applied to each command. MXC doesn't require administrator
-elevation for sandbox setup or local Windows Firewall rules.
-MXC accepts readable, writable, and denied paths from the active permission
-profile. Its native network policy controls command network access without
-depending on the legacy sandbox's firewall provisioning.
+The host must already have the required Microsoft Execution Containers (MXC) capabilities, which Microsoft is rolling out to Windows 11 devices. Microsoft introduced MXC process isolation in **Windows 11 24H2 (build 26100.9278)** and **25H2 (build 26200.9278)**. Use the command below to verify MXC support on your device.
 
-Before selecting MXC, validate the required capabilities and your workloads on
-the Windows 11 device. A Windows version number alone doesn't establish
-compatibility.
-
-In Codex CLI 0.162.0, you can test MXC for one command without changing the saved
-sandbox selection. From your project directory, run:
+In Codex CLI 0.162.0 and later, you can test MXC for one command without changing the saved sandbox selection. From your project directory, run:
 
 ```powershell
 codex -c windows.sandbox=mxc sandbox --include-managed-config --permission-profile :workspace -- cmd.exe /d /c echo MXC_OK
 $LASTEXITCODE
 ```
 
-Expected output is `MXC_OK` and exit code `0`. This checks command startup with
-the workspace permission profile and managed requirements. Also test permitted
-file access, expected denials, PowerShell, and your network policy before using
-MXC for normal work.
+Expected output is `MXC_OK` and exit code `0`. This checks command startup with the workspace permission profile and managed requirements.
 
-Explicit `windows.sandbox = "mxc"` selection fails if the required native
-capabilities are unavailable; it doesn't fall back to a classic implementation.
-Policies with denied paths also require native deny-path support.
+Explicit `windows.sandbox = "mxc"` selection fails if the required native capabilities are unavailable or policy blocks MXC.
 
-Check these compatibility limits:
+Note these compatibility limits:
 
-- Managed networking requires effective `allow_local_binding = true`. MXC
-  permits connections to and from services on host loopback. Proxy domain rules
-  still apply to proxied traffic, but the proxy's additional private-network
-  destination checks are removed. This doesn't enable networking when it's disabled.
-- Remaining child processes stop when the foreground command exits. Test
-  workflows that rely on detached development servers.
+- Managed networking requires effective `allow_local_binding = true`. MXC permits connections to and from services on host loopback. Proxy domain rules still apply to proxied traffic, but the proxy's additional private-network destination checks are removed.
+- Remaining child processes stop when the foreground command exits. Test workflows that rely on detached development servers.
 
 ### Configure a legacy fallback
 
@@ -144,21 +104,13 @@ Select the fallback implementation in `config.toml`:
 sandbox = "elevated" # or "unelevated"
 ```
 
-`elevated` is the preferred legacy fallback. It uses dedicated
-lower-privilege sandbox users, filesystem permission boundaries, firewall
-rules, and local policy changes needed for commands that run in the sandbox.
+`elevated` is the preferred legacy fallback. It uses dedicated lower-privilege sandbox users, filesystem permission boundaries, firewall rules, and local policy changes needed for commands that run in the sandbox.
 
-`unelevated` is a legacy fallback. It runs commands with a
-restricted Windows token derived from your current user, applies ACL-based
-filesystem boundaries, and uses environment-level offline controls instead of
-the dedicated offline-user firewall rule. It provides weaker network isolation
-than `elevated` and doesn't support denied read paths, but is still useful when
-administrator-approved setup is blocked by local or enterprise policy.
+`unelevated` is a legacy fallback. It runs commands with a restricted Windows token derived from your current user, applies ACL-based filesystem boundaries, and uses environment-level offline controls instead of the dedicated offline-user firewall rule. It provides weaker network isolation than `elevated` and doesn't support denied read paths, but is still useful when administrator-approved setup is blocked by local or enterprise policy.
 
-Use MXC when the device and policy support it. Otherwise, prefer `elevated`.
-Use `unelevated` as a fallback only when your organization's policy permits it.
+Use MXC when the device and policy support it. Otherwise, prefer `elevated`, with `unelevated` as a secondary fallback.
 
-Enterprise administrators can constrain which classic sandbox implementations
+Enterprise administrators can constrain which legacy sandbox implementations
 Codex can use through [`requirements.toml`](https://learn.chatgpt.com/docs/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml):
 
 ```toml
@@ -166,32 +118,22 @@ Codex can use through [`requirements.toml`](https://learn.chatgpt.com/docs/enter
 allowed_sandbox_implementations = ["elevated"]
 ```
 
-This example permits `elevated` and prevents fallback to `unelevated`. It does
-not restrict `mxc` when MXC is available. Other managed permission and network
-requirements still apply. To permit either classic implementation, include
-both values; Codex prefers `elevated` when no mode is selected. See the
-[`requirements.toml` reference](https://learn.chatgpt.com/docs/config-file/config-reference#requirementstoml) for
-the supported values. To block MXC as well, use the separate
-[`windows.allow_mxc` requirement](#keep-mxc-disabled).
+This example permits `elevated` and prevents fallback to `unelevated`. It does not restrict `mxc` when MXC is available. Other managed permission and network requirements still apply. To permit either legacy implementation, include both values; Codex prefers `elevated` when no mode is selected.
 
-By default, both legacy sandbox modes also use a private desktop for stronger UI
-isolation.
+See the [`requirements.toml` reference](https://learn.chatgpt.com/docs/config-file/config-reference#requirementstoml) for the supported values. To block MXC as well, use the separate [`windows.allow_mxc` requirement](#keep-mxc-disabled).
 
-#### Provision the classic elevated sandbox
+By default, both legacy sandbox modes also use a private desktop for stronger UI isolation.
 
-For employees without local administrator rights, IT can install the CLI and
-provision the sandbox before the employee starts Codex. From an elevated
+### IT-led provisioning for the legacy elevated sandbox
+
+For employees without local administrator rights, IT can install the CLI and provision the elevated sandbox before the employee starts Codex. From an elevated
 deployment process, run:
 
 ```powershell
 codex sandbox setup --elevated --user 'DOMAIN\alice' --codex-home 'C:\Users\alice\.codex'
 ```
 
-Replace the identity and path with the employee's Windows identity and
-`CODEX_HOME`. The command reads that user's configuration, provisions the
-sandbox, and saves `windows.sandbox = "elevated"`. The employee then runs Codex
-from a normal terminal. Using a non-admin terminal doesn't select the
-`unelevated` implementation.
+Replace the identity and path with the employee's Windows identity and `CODEX_HOME`. The command reads that user's configuration, provisions the sandbox, and saves `windows.sandbox = "elevated"`. The employee then runs Codex from a normal terminal.
 
 ### Sandbox permissions
 
@@ -216,7 +158,7 @@ Additional environment assumptions:
 
 - `winget` should be available. If it's missing, update Windows or install
   the Windows Package Manager before setting up Codex.
-- The classic `elevated` sandbox depends on administrator-approved setup.
+- The legacy `elevated` sandbox depends on administrator-approved setup.
 - Some enterprise-managed devices block the required setup steps even when the
   OS version itself is acceptable.
 - MXC additionally requires the native capabilities described in
@@ -340,9 +282,9 @@ What to try:
 
 1. Restart Codex.
 2. For MXC, repeat the [compatibility probe](#mxc-compatibility) and check the
-   effective network policy. For the classic `elevated` implementation, try
+   effective network policy. For the legacy `elevated` implementation, try
    sandbox setup again.
-3. If a classic sandbox is needed and managed policy permits it, use
+3. If a legacy sandbox is needed and managed policy permits it, use
    `unelevated` as a temporary fallback.
 4. Collect the sandbox log for review.
 

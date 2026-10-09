@@ -430,6 +430,97 @@
       "id": "6fa4b156e2f5c6c4e08a8fb019dc21a4d21213585b4fd9d0aec46a4c3d71a1dd",
       "observed_at": "2026-10-09T22:23:29+00:00",
       "previous_id": "a12d2993af588fc4071c7958a75c3eed04cb178eb04ccb3a229bcc45a8310fba"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "developers.openai.com/cookbook/topic/codex/index.md": {
+            "after": "77f07552e276280ab5ca31ddabbc855e3eb5a90d2b31264ed2e32e51713381d9",
+            "before": "28f74ea4fdc5c10cd0ca03f644b4e229073b160ac1607eb21e23ac310db27f49"
+          },
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md": {
+            "after": "008d07870fc6b427e9e4474a595e1ca70a681c8663ac8867e08b42281d42e972",
+            "before": "bf7ef12089b41bd30bcdbf0cd78d57e508920c85190b4df978a273dcb0676b37"
+          },
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md": {
+            "after": "f0a3e336c48ba225c083eb25e92d12b8b0dfb6701b9f439a0aaae7b28edbd106",
+            "before": "1bc7d838664833cccc04c638661b513bb0b0f2a98e6ff6ce53e73776db07b44e"
+          },
+          "learn.chatgpt.com/docs/dots/channels/index.md": {
+            "after": "4b7d6f0e6bbad42043aac9c8eb5c7c13abec06e41520269333138da1cbb95c46",
+            "before": "c9af4ef348000cc7450cd1997a5b7bfc02c18014dffa77426503a577bfb1633f"
+          },
+          "learn.chatgpt.com/docs/dots/getting-started/index.md": {
+            "after": "687f69b35a421b06da00a422c05cdab250d960d03e726ae7bc2616129ca26f3f",
+            "before": "74c0475d493d1796bba69b923c9c67b4b7f1bca761f4d2bad859eaa097f2990b"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "2636413b7b7bfa12675e2edf911d4d2efb2147492faf986aae8b2094013794a1",
+            "before": "2136ed205c1b70c8bc539269513907eda9f3d60b53a777d4aab8f853188986b6"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "6f1dfa2a7bab44fa2ff248b94a0e605bd4752254d7cc26aa33d454faed77587c",
+            "before": "6691253dc0dbef89d2c866a6e275fbf94fa1996db20ab58136d4f1d64b06e6c4"
+          },
+          "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md": {
+            "after": "049d3a28bf513143fa8ac5e7cf5ae0ac97be934cf058bb89aafa07981c28318c",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "b185cfd7b4ace4503181acc4c422c0acc6bd5934ee30f5f70ce4262f1beb3797",
+            "before": "23467208e01da5a46899287b773a9096b44d8df47aaee4d4bb8dfd01060fb60a"
+          },
+          "learn.chatgpt.com/docs/whats-new/october-5-9-2026/index.md": {
+            "after": "f061325633d01d2c3e3580e9e0c0ac1bd65219673f668b0ce32ff9f2306f8002",
+            "before": "b24fe1010dca55c6775d9f55c5bbe1aa8de991aa210482e6682aabfb5216e045"
+          },
+          "learn.chatgpt.com/docs/windows/windows-sandbox/index.md": {
+            "after": "fd86cfe99566b9966255c125f9d23bfbf15da6d8204aa6ce5ddb4deb68f09473",
+            "before": "9688e522c2385c0adecb41b3ca158a000ae1a6884bd4cb518460adda8b20e0fd"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "developers.openai.com/cookbook/topic/codex/index.md",
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md",
+          "learn.chatgpt.com/docs/dots/channels/index.md",
+          "learn.chatgpt.com/docs/dots/getting-started/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md",
+          "learn.chatgpt.com/docs/whats-new/october-5-9-2026/index.md",
+          "learn.chatgpt.com/docs/windows/windows-sandbox/index.md"
+        ]
+      },
+      "id": "1d66c4a56a1fb63f247028d81f22d56801cf74131e0402d92d8e16827662d90c",
+      "observed_at": "2026-10-09T22:24:36+00:00",
+      "previous_id": "6fa4b156e2f5c6c4e08a8fb019dc21a4d21213585b4fd9d0aec46a4c3d71a1dd"
     }
   ],
   "schema_version": 1

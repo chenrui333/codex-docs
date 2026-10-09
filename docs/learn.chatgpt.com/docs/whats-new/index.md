@@ -13,9 +13,13 @@ Source: https://learn.chatgpt.com/docs/whats-new
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-For every versioned update, bug fix, and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
+For every versioned update, bug fix, and minor improvement, see the [ChatGPT and Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
 
 ## [October 5–9, 2026](https://learn.chatgpt.com/docs/whats-new/october-5-9-2026)
+
+### [Create your dot in the ChatGPT mobile app](https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026)
+
+Create your dot, give it a name, customize its appearance, and connect plugins from your phone. This week's Dots update also brings more context from ChatGPT and Codex, faster cloud browsing, and fixes to notifications, setup, and everyday use.
 
 ### Use GPT-6.1 Sol with Ultrafast mode
 

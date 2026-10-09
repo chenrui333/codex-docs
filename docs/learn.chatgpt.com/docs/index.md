@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-10-08T22:53:02Z'
-source_etag: 'W/"c254312634cee946b869457c57ad9662"'
+source_last_modified: '2026-10-09T22:16:00Z'
+source_etag: 'W/"1dd1cd473caa56235e04aee5c973dc9a"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -71,7 +71,9 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 October 5–9, 2026
 
-[### Use GPT-6.1 Sol with Ultrafast mode
+[### Create your dot in the ChatGPT mobile app
+
+Create your dot, give it a name, customize its appearance, and connect plugins from your phone.](/codex/whats-new/dots-october-9-2026)  [### Use GPT-6.1 Sol with Ultrafast mode
 
 Ultrafast mode speeds up token generation with GPT-6.1 Sol in Codex and ChatGPT Work.](/codex/whats-new/october-5-9-2026#use-gpt-61-sol-with-ultrafast-mode)
 
