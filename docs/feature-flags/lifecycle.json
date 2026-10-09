@@ -964,7 +964,6 @@
       "omit_app_server_notification_media",
       "plugin_hooks",
       "powershell_shell_version",
-      "prefer_mxc",
       "psp",
       "reasoning_effort_override",
       "recommended_plugins",
@@ -1147,7 +1146,6 @@
         "nonfatal_clock_read_errors",
         "omit_app_server_notification_media",
         "powershell_shell_version",
-        "prefer_mxc",
         "psp",
         "reasoning_effort_override",
         "request_permissions_tool",
@@ -1196,6 +1194,7 @@
     "personality",
     "plugin_sharing",
     "plugins",
+    "prefer_mxc",
     "prevent_idle_sleep",
     "realtime_conversation",
     "remote_plugin",
@@ -1212,12 +1211,12 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "de67ce6c0225ff3d1bb5340893e1341e6995d8c2568509e431c83b29d3b56720"
+      "sha256": "1bc7d838664833cccc04c638661b513bb0b0f2a98e6ff6ce53e73776db07b44e"
     },
     "config_reference": {
-      "parsed_feature_key_count": 32,
+      "parsed_feature_key_count": 33,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "ec16a8b3f2d281a4a83cc80f8bac4190bcae4821b1b2cc6ff3f6741fcbf6dd94"
+      "sha256": "4d79681f87c846c62163c720b736b4e874dc988be5cfde0b257befb473021c25"
     }
   },
   "observation_environment": {

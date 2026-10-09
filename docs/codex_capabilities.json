@@ -90640,7 +90640,7 @@
       "config_keys": [
         "features.prefer_mxc"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": false,
       "feature_flag": "prefer_mxc",
       "id": "feature_flag:prefer_mxc",

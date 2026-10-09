@@ -1,10 +1,8 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/whats-new/october-5-9-2026/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-08T23:03:41+00:00",
+  "generated_at": "2026-10-09T05:03:47+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -14,23 +12,12 @@
     "codex_cli_version_raw": "codex-cli 0.162.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 281,
   "updated": [
     "codex_capabilities.json",
-    "learn.chatgpt.com/docs/agent-approvals-security/index.md",
-    "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
-    "learn.chatgpt.com/docs/config-file/config-basic/index.md",
-    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
-    "learn.chatgpt.com/docs/config-file/config-sample/index.md",
-    "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md",
-    "learn.chatgpt.com/docs/index.md",
-    "learn.chatgpt.com/docs/models/index.md",
-    "learn.chatgpt.com/docs/permissions/index.md",
-    "learn.chatgpt.com/docs/pricing/index.md",
-    "learn.chatgpt.com/docs/whats-new/index.md",
-    "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
-    "learn.chatgpt.com/docs/windows/wsl/index.md"
+    "feature-flags/lifecycle.json",
+    "feature-flags/lifecycle.md"
   ]
 }
