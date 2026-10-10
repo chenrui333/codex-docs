@@ -1211,7 +1211,7 @@
     "config_basic": {
       "parsed_feature_key_count": 14,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "1bc7d838664833cccc04c638661b513bb0b0f2a98e6ff6ce53e73776db07b44e"
+      "sha256": "f0a3e336c48ba225c083eb25e92d12b8b0dfb6701b9f439a0aaae7b28edbd106"
     },
     "config_reference": {
       "parsed_feature_key_count": 33,

@@ -4072,12 +4072,12 @@
       "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
     },
     "feature-flags/lifecycle.json": {
-      "sha256": "7bc5584da90815f2d9fb27510f32e4a29b27c504fc74361947be9137c161b67e",
+      "sha256": "4c45e808aee1b09f04713ba3f37b7a73cac4fb9950cdda953e6adb2083879012",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
     "feature-flags/lifecycle.md": {
-      "sha256": "858f74177d77342f2a660eb1608fcc76fc9888254c2ae922609d4e542e3f1d76",
+      "sha256": "bb282170ce4f71157f82abc9ae768b8d7223727ddc93b69b0a3f676018cc31bd",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
