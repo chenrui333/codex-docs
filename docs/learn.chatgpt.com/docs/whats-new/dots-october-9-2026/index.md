@@ -20,7 +20,7 @@ customize its appearance, and connect plugins, all from your phone. You can
 also choose to open ChatGPT directly to your dot’s conversation, so it’s
 ready when you want to pick up where you left off.
 
-[Watch: Create and personalize your dot in the ChatGPT mobile app](https://www.youtube.com/watch?v=p5KxBTUncoE)
+[Create and personalize your dot in the ChatGPT mobile app.](https://cdn.openai.com/devhub/docs/dots/demos/dots-demo-mobile-onboarding-1080p-v1.webm)
 
 ## Bring your dot into your Codex work
 
@@ -32,6 +32,8 @@ helping keep related work together.
 
 Your dot can read and edit ChatGPT Work automations, too. Ask it to review
 what’s scheduled or update a recurring task as your needs change.
+
+[Ask your dot to start and manage Codex tasks from your phone.](https://cdn.openai.com/devhub/docs/dots/demos/dots-demo-codex-tasks-1080p-v1.webm)
 
 ## Other improvements
 

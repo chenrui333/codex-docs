@@ -7206,7 +7206,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0f135e367c00f19d3f7d834785e4d7344b53c9b522add62c080af5687fc39814",
+      "sha256": "00a2cd060e4a47ddeeef79821adf9291bb682a761799a184948a71ffcbf094d2",
       "source_area": "learn_agent_configuration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11477,7 +11477,7 @@
       "source_url": "https://learn.chatgpt.com/docs/whats-new/devday-2026"
     },
     "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md": {
-      "sha256": "049d3a28bf513143fa8ac5e7cf5ae0ac97be934cf058bb89aafa07981c28318c",
+      "sha256": "9ab3d7b18c646ca5065e30ac92ebf03ddaa06f54c88d1174e0414ebe656399d8",
       "source_area": "learn_whats_new",
       "source_kind": "learn_markdown",
       "source_type": "learn",

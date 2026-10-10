@@ -34,6 +34,16 @@ at 2x the Standard rate.
 
 ## Ultrafast mode
 
+<UltrafastAnimation
+  client:visible
+  title="Ultrafast"
+  label="Interactive Ultrafast starfield"
+  controls={{
+    pause: { label: "Pause animation" },
+    play: { label: "Play animation" },
+  }}
+/>
+
 Ultrafast supports GPT-6 Astra and GPT-6.1 Sol.
 
 GPT-6 Astra Ultrafast generates tokens up to 8x faster than GPT-6 Astra in

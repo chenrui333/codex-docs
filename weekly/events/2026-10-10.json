@@ -44,6 +44,51 @@
       "id": "a540dfae03638c86799e99c90aec89fbf2a69b388eb7a9289c247b8f963b95a2",
       "observed_at": "2026-10-10T04:49:39+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md": {
+            "after": "00a2cd060e4a47ddeeef79821adf9291bb682a761799a184948a71ffcbf094d2",
+            "before": "0f135e367c00f19d3f7d834785e4d7344b53c9b522add62c080af5687fc39814"
+          },
+          "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md": {
+            "after": "9ab3d7b18c646ca5065e30ac92ebf03ddaa06f54c88d1174e0414ebe656399d8",
+            "before": "049d3a28bf513143fa8ac5e7cf5ae0ac97be934cf058bb89aafa07981c28318c"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
+          "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md"
+        ]
+      },
+      "id": "41375d0280b56c7f94cf0a29972b3b518266fd2760a2bd3f7e5bc8c1052446b7",
+      "observed_at": "2026-10-10T04:50:36+00:00",
+      "previous_id": "a540dfae03638c86799e99c90aec89fbf2a69b388eb7a9289c247b8f963b95a2"
     }
   ],
   "schema_version": 1
