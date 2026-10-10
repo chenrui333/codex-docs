@@ -89,6 +89,46 @@
       "id": "41375d0280b56c7f94cf0a29972b3b518266fd2760a2bd3f7e5bc8c1052446b7",
       "observed_at": "2026-10-10T04:50:36+00:00",
       "previous_id": "a540dfae03638c86799e99c90aec89fbf2a69b388eb7a9289c247b8f963b95a2"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "developers.openai.com/blog/codex-as-a-platform/index.md": {
+            "after": "bad72bf77ca6ad3ca146fabefb245707e3ab109e1d8afbf855b0f2f5acf4c27c",
+            "before": "bac445a06b691cb57767874e62e648c1891b6b19b5b8ddbe122a37bbb5799070"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "developers.openai.com/blog/codex-as-a-platform/index.md"
+        ]
+      },
+      "id": "f0035326e0c432979e24e8fd1b536f6d315cf690c7ed083f621cb083ff34b2dd",
+      "observed_at": "2026-10-10T21:18:27+00:00",
+      "previous_id": "41375d0280b56c7f94cf0a29972b3b518266fd2760a2bd3f7e5bc8c1052446b7"
     }
   ],
   "schema_version": 1
