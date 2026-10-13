@@ -115,7 +115,7 @@ environment.
 
 ### Configure code review policies
 
-Configure code review policies in [Codex review settings](https://app.chatgpt.com/settings/code-review?provider=gitlab).
+Configure code review policies in [Codex review settings](https://chatgpt.com/settings/code-review?provider=gitlab).
 Choose your repository, then turn on **Automatic review** under **Review code**.
 Use **Review** to choose whose merge requests receive reviews and **Trigger** to
 choose when reviews run. Repository settings can override personal defaults.

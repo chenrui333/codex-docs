@@ -14,7 +14,9 @@ Source: https://learn.chatgpt.com/docs/space
 ChatGPT Space brings your pages, files, and shared work into one place. Write and
 edit alongside ChatGPT, then invite other people to work with you.
 
-> Illustration: Welcome to Space, with mock documents and animated collaborator cursors. Move your pointer over the illustration to see a cursor labeled You.
+> Illustration: ChatGPT Space with pages, collaborative slides, templates, and a shared launch plan. Move your pointer over the illustration to see a cursor labeled You.
+
+[Open Space in ChatGPT](https://chatgpt.com/space).
 
 ## Workspaces and spaces
 

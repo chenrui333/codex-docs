@@ -1,0 +1,65 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "416da9a676d41774feaa37c6e0c8be819c571cc7ec1fb01bbbbba6c5aff37f29",
+            "before": "7b37ab0ff3cf9562f777d33d0f6a13b51ff50143d5f71ca28fd79da8e2a4bf76"
+          },
+          "learn.chatgpt.com/docs/security/security-review/index.md": {
+            "after": "d57f388605a0148c2d6b6611aa803a0dd61bd46e18558dcabdcd629cbda347fb",
+            "before": "243bdd11674107e63775985e6959cc8e7de4fc6fccd54572d6072f63f3a39bfe"
+          },
+          "learn.chatgpt.com/docs/space/index.md": {
+            "after": "3af46a24b2ab2a98172f3facaf2c7363b9b17eef1406852349fe5d708060b318",
+            "before": "1f87f4f0ec636495a5bc9d930a82a6c2709046e0638664bfac7788cb10ce908d"
+          },
+          "learn.chatgpt.com/docs/third-party/github/index.md": {
+            "after": "96a69d6890748c4fa5e7f685a2d3817648112eb4d92ae98b096b4d5ca1cc2077",
+            "before": "26d31e655388079a54ba3b4166f80fa2f7b2c633d513c16cca21bda58e4abaff"
+          },
+          "learn.chatgpt.com/docs/third-party/gitlab/index.md": {
+            "after": "c3046b51730c8a540820660748d53402222aa0623854d65c75158fc130f07338",
+            "before": "44b030cf4d3bdc9a5e9004987ea6bcb301f42f17854c603a347e6cac7d9fdffb"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/security/security-review/index.md",
+          "learn.chatgpt.com/docs/space/index.md",
+          "learn.chatgpt.com/docs/third-party/github/index.md",
+          "learn.chatgpt.com/docs/third-party/gitlab/index.md"
+        ]
+      },
+      "id": "5a8b5275b698ac433c2f03e82b16b164266ee3f85b6018d8a693b18986a87c91",
+      "observed_at": "2026-10-13T00:17:11+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

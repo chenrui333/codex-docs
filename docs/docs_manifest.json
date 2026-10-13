@@ -7585,11 +7585,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "7b37ab0ff3cf9562f777d33d0f6a13b51ff50143d5f71ca28fd79da8e2a4bf76",
+      "sha256": "416da9a676d41774feaa37c6e0c8be819c571cc7ec1fb01bbbbba6c5aff37f29",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"540d0cd3ab04ffbd4f83cf045ce22373\"",
+      "source_etag": "W/\"25cf30abab0104a98889af0351605e12\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-09T10:12:40Z",
+      "source_last_modified": "2026-10-12T20:23:30Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -11034,7 +11034,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "243bdd11674107e63775985e6959cc8e7de4fc6fccd54572d6072f63f3a39bfe",
+      "sha256": "d57f388605a0148c2d6b6611aa803a0dd61bd46e18558dcabdcd629cbda347fb",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11193,7 +11193,7 @@
       "source_url": "https://learn.chatgpt.com/docs/space/getting-started"
     },
     "learn.chatgpt.com/docs/space/index.md": {
-      "sha256": "1f87f4f0ec636495a5bc9d930a82a6c2709046e0638664bfac7788cb10ce908d",
+      "sha256": "3af46a24b2ab2a98172f3facaf2c7363b9b17eef1406852349fe5d708060b318",
       "source_area": "learn_space",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11231,7 +11231,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "26d31e655388079a54ba3b4166f80fa2f7b2c633d513c16cca21bda58e4abaff",
+      "sha256": "96a69d6890748c4fa5e7f685a2d3817648112eb4d92ae98b096b4d5ca1cc2077",
       "source_area": "learn_third_party",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11256,7 +11256,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "44b030cf4d3bdc9a5e9004987ea6bcb301f42f17854c603a347e6cac7d9fdffb",
+      "sha256": "c3046b51730c8a540820660748d53402222aa0623854d65c75158fc130f07338",
       "source_area": "learn_third_party",
       "source_kind": "learn_markdown",
       "source_type": "learn",

@@ -40,7 +40,7 @@ An existing Codex Security scan is optional.
 
 ## Configure Codex Security Review
 
-1. Go to [Codex settings](https://app.chatgpt.com/settings/code-review) and choose a repository.
+1. Go to [Codex settings](https://chatgpt.com/settings/code-review) and choose a repository.
 2. Under **Review security vulnerabilities**, turn on **Auto security review**.
 3. Use **Review** to choose which pull requests get Codex Security Review:
    - **Follow personal preferences** lets each contributor opt in with their personal
