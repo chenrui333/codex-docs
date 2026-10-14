@@ -229,6 +229,96 @@
       "id": "fe1e6827e27d0b2bf6a1668382d5695633d642a816c479cf088ba536b09cc325",
       "observed_at": "2026-10-14T11:24:56+00:00",
       "previous_id": "f062083ea29ebd9b0ae212d7064c3a530c39143914f3a047a322c378e62113d6"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md": {
+            "after": "2b460054542a70d72a1ef9468fa16b5f9f714d4f625dd4ea3f2f9f1d94f800c2",
+            "before": "00a2cd060e4a47ddeeef79821adf9291bb682a761799a184948a71ffcbf094d2"
+          },
+          "learn.chatgpt.com/docs/automations/index.md": {
+            "after": "e13ce2562fdbe83cf8e9fed81b012c0c9d6ea67952fea0f3f99af6e55d0ba384",
+            "before": "33df68ec54cd08fc927f3996f29e52d3bd0cf635a19bb7a09d782d6f67cbc7ac"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "62ef5ee914169d3d9decdff456cbe010b89f3c39dc280c1330e226898c02ef07",
+            "before": "a17f44808f1df550098582d7ea43fb3dba3e59cb07aac23a409cbf44e4a85d07"
+          },
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
+            "after": "bb4240ba6fde9d14bd1f15ff95687beb86859d8e1d50ae046eb59a5ccd956fdb",
+            "before": "023b3194015ac579434187ff8db7cb7bafa26aa0886319946152178a3e9d1add"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "17e55eebdd372577a5a215ae247ec13f68e9afcca9a539ab762371224ad7a3ce",
+            "before": "18fcc8852bdf4e5e43bd8a9cf06384787165670f234a0105408eb3ac54b84b90"
+          },
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+            "after": "aadd6e3937a8fe4b5b9cfeb2e81f12497ff4d59b92c7b9860d2094a7da54dc00",
+            "before": "4a7ba705547a0f1add595dd0e33f429e1b3548f7a74a4df1e840576bce9b3439"
+          },
+          "learn.chatgpt.com/docs/enterprise/shared-connections/index.md": {
+            "after": "3c50459ad1696fff1850f429813af557954bbfd84f90bd6f0ed85d8b4a128f53",
+            "before": "016ae938accff01b00f7728e7c3ff137a40f0b769436c3e6ed670f21a28073c9"
+          },
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md": {
+            "after": "f9a0ebb6e84a03985cd87aa55057b5c7055b2a7940ac19cf246237eda57a639f",
+            "before": "028bf78af8645c7e854c52df48fafcbbba4a69100417b4b09645095caa4cc262"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "0cc61cebe8d897b62656fb0cdab0e03cc9fca68aa555ff27a484fc3b6143c445",
+            "before": "6d297658097df7498b9b1d83af8aafea7f0ea6b01dcb67579982935dc7a4a120"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "53f232a7b96b0d3b286c8bf89b4fb6d2a780a0116001a7af7dc07f39f7f6e073",
+            "before": "6d1d1d1564ee805d54bb8be309cd70857a8c2450265cdc4a7089961d6c14e9b9"
+          },
+          "learn.chatgpt.com/docs/security/setup/index.md": {
+            "after": "5941701b15b0df1bbe093bc1f8b50920b7d7d8eaef0929e855148ba35f26d93b",
+            "before": "91acd093d259e71a49af6d95d7e57f0f6f362a7efd7955d96340dc087e46feda"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
+          "learn.chatgpt.com/docs/automations/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
+          "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md",
+          "learn.chatgpt.com/docs/models/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/security/setup/index.md"
+        ]
+      },
+      "id": "3eb45ba95cc4000a21e69d0ead569c5bc03f36c01f1a0631c0dabd08991225af",
+      "observed_at": "2026-10-14T21:24:02+00:00",
+      "previous_id": "fe1e6827e27d0b2bf6a1668382d5695633d642a816c479cf088ba536b09cc325"
     }
   ],
   "schema_version": 1

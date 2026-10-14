@@ -41,8 +41,10 @@ If access is unavailable, check with your workspace administrator.
 ## 2. Connect GitHub
 
 Confirm that [Codex cloud](https://learn.chatgpt.com/docs/cloud) is set up for your workspace. In the
-plugin, select **Scan**. If prompted, select **Connect GitHub** and grant
-access to the repositories you want to scan.
+plugin, select **Scan**. If prompted, select **Connect GitHub** and sign in with
+your own GitHub account. Grant access to the repositories you want to scan.
+
+Codex Security Cloud doesn't support workspace connections.
 
 If a repository is missing, check its GitHub connection and permissions.
 

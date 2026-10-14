@@ -46,7 +46,7 @@ organization. To configure Codex yourself, get these values from your gateway te
 - The model name and provider ID to use.
 - Your scoped gateway credential and its environment variable, or an installed
   token resolver and its configuration.
-- Any required model catalog file and its absolute local path.
+- Any required model catalog URL, or a catalog file and its absolute local path.
 
 ## Configure the provider
 
@@ -75,7 +75,18 @@ wire_api = "responses"
 env_key = "CODEX_GATEWAY_API_KEY"
 ```
 
-If your administrator supplies a model catalog, save it locally and add
+If your administrator supplies a catalog URL, add it to the existing
+`[model_providers.enterprise-gateway]` table:
+
+```toml
+model_catalog_url = "https://gateway.example.com/codex/models.json"
+```
+
+Remove any effective `model_catalog_json` setting; it takes precedence over the
+URL. Administrators can find endpoint requirements in
+[remote catalog setup](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#serve-a-remote-catalog).
+
+If your administrator supplies a local model catalog file, save it and add
 `model_catalog_json` before the first TOML table, using the file's absolute path.
 Custom aliases need matching catalog metadata. For example:
 
@@ -110,6 +121,9 @@ Use the exact header name your administrator provides. Codex reads the value fro
 the named environment variable; keep the credential out of the configuration file.
 See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for
 `model_providers.<id>.env_http_headers`.
+
+If the custom header is your only authentication mechanism, use
+`model_catalog_json`; remote catalog discovery won't run.
 
 ### Use an organization credential helper
 

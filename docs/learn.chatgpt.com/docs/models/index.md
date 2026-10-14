@@ -15,15 +15,14 @@ Source: https://learn.chatgpt.com/docs/models
 
 ## GPT-5.5 retirement
 
-On October 14, 2026, GPT-5.5 will retire from ChatGPT, ChatGPT Work, and Codex
-on all plans, including consumer, Business, Enterprise, and Edu plans. This
-retirement does not apply to the OpenAI API.
+Effective October 14, 2026, at noon PDT (19:00 UTC), GPT-5.5 retires from
+Codex for users signed in with ChatGPT. The OpenAI API and Codex sessions
+authenticated with an API key aren't affected.
 
-If you use Codex with ChatGPT sign-in, choose an available replacement before
-October 14:
+For Codex with ChatGPT sign-in, choose an available replacement:
 
-- On Plus, Pro, Business, Enterprise, and Edu plans, choose **GPT-6 Sol**
-  (`gpt-6-sol`) when available.
+- On Plus, Pro, Business, Enterprise, and Edu plans, choose **GPT-6.1 Sol**
+  (`gpt-6.1-sol`) when available.
 - On Free and Go plans, choose **GPT-6 Luna** (`gpt-6-luna`) in the desktop app
   when available.
 
@@ -364,42 +363,9 @@ slider, go to **Settings** > **Configuration**, then turn on
 
 ## Other models
 
-When you sign in with ChatGPT, Codex works best with the recommended models listed above.
-
-<ToggleSection title="View other models">
-
-    <ModelDetails
-      client:load
-      name="gpt-5.5"
-      slug="gpt-5.5"
-      imageLabel="5.5"
-      wallpaperUrl="/images/api/models/gpt-5.5.jpg"
-      description="Previous-generation flagship model. Retires from ChatGPT, ChatGPT Work, and Codex on October 14, 2026; remains available on the OpenAI API."
-      data={{
-        features: [
-          {
-            title: "Capability",
-            value: "",
-            icons: [
-              "openai.SparklesFilled",
-            ],
-          },
-          {
-            title: "Speed",
-            value: "",
-            icons: ["openai.Flash", "openai.Flash", "openai.Flash"],
-          },
-          { title: "ChatGPT desktop app", value: true },
-          { title: "ChatGPT web", value: true },
-          { title: "Codex CLI", value: true },
-          { title: "Codex IDE extension", value: true },
-          { title: "ChatGPT Credits", value: true },
-          { title: "API Access", value: true },
-        ],
-      }}
-    />
-
-</ToggleSection>
+With API-key authentication, model availability follows your API organization
+and project. GPT-5.5 remains available through the OpenAI API and in Codex
+sessions authenticated with an API key. See the [API model catalog](https://developers.openai.com/api/docs/models).
 
 For a custom model provider or gateway, use a compatible Responses API endpoint.
 See [Custom model providers](https://learn.chatgpt.com/docs/config-file/config-advanced#custom-model-providers)
@@ -415,8 +381,9 @@ configurations, custom agents, and scripts that select `gpt-5.3-codex-spark`
 to use an [available model](https://learn.chatgpt.com/docs/models#recommended-models). See the
 [Spark retirement notice](https://learn.chatgpt.com/docs/changelog#codex-2026-09-14-codex-spark-deprecation).
 
-GPT-5.5 retires from Codex with ChatGPT sign-in on October 14, 2026. Replace
-`gpt-5.5` with a model available to your account and client. See
+GPT-5.5 retires from Codex with ChatGPT sign-in on October 14, 2026, at noon
+PDT (19:00 UTC). Replace `gpt-5.5` with a model available to your account and
+client. API-key sessions aren't affected. See
 [GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement) for plan-specific
 replacements and the migration checklist.
 

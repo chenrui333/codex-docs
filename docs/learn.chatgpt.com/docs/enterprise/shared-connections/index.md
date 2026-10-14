@@ -177,6 +177,8 @@ Use an organization-approved GitHub user account, preferably dedicated to this s
 
 If a repository is missing, check the designated account’s GitHub access and the app’s allowed actions in ChatGPT.
 
+Codex Security Cloud uses a personal GitHub connection. See [Cloud setup](https://learn.chatgpt.com/docs/security/setup#2-connect-github).
+
 ### Notion
 
 #### Prepare a dedicated Notion account

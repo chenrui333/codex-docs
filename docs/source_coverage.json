@@ -154,17 +154,18 @@
       "https://developers.openai.com/showcase/phantasy-codex-adventure",
       "https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server",
       "https://developers.openai.com/training/codex",
+      "https://developers.openai.com/training/codex-lab",
       "https://developers.openai.com/training/hands-on/codex"
     ],
     "counts": {
-      "classified_skipped_codex_related_urls": 12,
-      "codex_related_urls": 37,
+      "classified_skipped_codex_related_urls": 13,
+      "codex_related_urls": 38,
       "mirrored_urls": 22,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 15,
+      "skipped_codex_related_urls": 16,
       "tombstoned_urls": 0,
       "unclassified_skipped_codex_related_urls": 3
     },
@@ -210,7 +211,7 @@
       "community_page": 3,
       "learn_index": 1,
       "showcase_page": 4,
-      "training_page": 2
+      "training_page": 3
     },
     "skipped_codex_related_url_details": [
       {
@@ -271,6 +272,11 @@
       {
         "classification": "training_page",
         "reason": "Interactive course landing pages are excluded from the versioned docs mirror.",
+        "url": "https://developers.openai.com/training/codex-lab"
+      },
+      {
+        "classification": "training_page",
+        "reason": "Interactive course landing pages are excluded from the versioned docs mirror.",
         "url": "https://developers.openai.com/training/hands-on/codex"
       }
     ],
@@ -289,6 +295,7 @@
       "https://developers.openai.com/showcase/phantasy-codex-adventure",
       "https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server",
       "https://developers.openai.com/training/codex",
+      "https://developers.openai.com/training/codex-lab",
       "https://developers.openai.com/training/hands-on/codex"
     ],
     "tombstoned_urls": [],
@@ -299,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-14T03:58:10+00:00",
+  "generated_at": "2026-10-14T21:24:02+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -1641,7 +1648,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-14T03:58:10+00:00",
+    "last_successful_full_sync_at": "2026-10-14T21:24:02+00:00",
     "status": "complete"
   }
 }

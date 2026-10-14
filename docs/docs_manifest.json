@@ -7206,7 +7206,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "00a2cd060e4a47ddeeef79821adf9291bb682a761799a184948a71ffcbf094d2",
+      "sha256": "2b460054542a70d72a1ef9468fa16b5f9f714d4f625dd4ea3f2f9f1d94f800c2",
       "source_area": "learn_agent_configuration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7461,7 +7461,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "33df68ec54cd08fc927f3996f29e52d3bd0cf635a19bb7a09d782d6f67cbc7ac",
+      "sha256": "e13ce2562fdbe83cf8e9fed81b012c0c9d6ea67952fea0f3f99af6e55d0ba384",
       "source_area": "learn_automations",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7585,11 +7585,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "a17f44808f1df550098582d7ea43fb3dba3e59cb07aac23a409cbf44e4a85d07",
+      "sha256": "62ef5ee914169d3d9decdff456cbe010b89f3c39dc280c1330e226898c02ef07",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"e2bc61e6085dd5a714432fc4ba1f8929\"",
+      "source_etag": "W/\"c588df8b1c4d478dc8f1a808bec6e311\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-14T08:01:44Z",
+      "source_last_modified": "2026-10-14T21:20:05Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -8611,7 +8611,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/compliance-api"
     },
     "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
-      "sha256": "023b3194015ac579434187ff8db7cb7bafa26aa0886319946152178a3e9d1add",
+      "sha256": "bb4240ba6fde9d14bd1f15ff95687beb86859d8e1d50ae046eb59a5ccd956fdb",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8776,7 +8776,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "18fcc8852bdf4e5e43bd8a9cf06384787165670f234a0105408eb3ac54b84b90",
+      "sha256": "17e55eebdd372577a5a215ae247ec13f68e9afcca9a539ab762371224ad7a3ce",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8862,7 +8862,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions"
     },
     "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
-      "sha256": "4a7ba705547a0f1add595dd0e33f429e1b3548f7a74a4df1e840576bce9b3439",
+      "sha256": "aadd6e3937a8fe4b5b9cfeb2e81f12497ff4d59b92c7b9860d2094a7da54dc00",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8896,7 +8896,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/service-accounts"
     },
     "learn.chatgpt.com/docs/enterprise/shared-connections/index.md": {
-      "sha256": "016ae938accff01b00f7728e7c3ff137a40f0b769436c3e6ed670f21a28073c9",
+      "sha256": "3c50459ad1696fff1850f429813af557954bbfd84f90bd6f0ed85d8b4a128f53",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9129,7 +9129,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "028bf78af8645c7e854c52df48fafcbbba4a69100417b4b09645095caa4cc262",
+      "sha256": "f9a0ebb6e84a03985cd87aa55057b5c7055b2a7940ac19cf246237eda57a639f",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9868,7 +9868,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "6d297658097df7498b9b1d83af8aafea7f0ea6b01dcb67579982935dc7a4a120",
+      "sha256": "0cc61cebe8d897b62656fb0cdab0e03cc9fca68aa555ff27a484fc3b6143c445",
       "source_area": "learn_models",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10147,7 +10147,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "6d1d1d1564ee805d54bb8be309cd70857a8c2450265cdc4a7089961d6c14e9b9",
+      "sha256": "53f232a7b96b0d3b286c8bf89b4fb6d2a780a0116001a7af7dc07f39f7f6e073",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11065,7 +11065,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "91acd093d259e71a49af6d95d7e57f0f6f362a7efd7955d96340dc087e46feda",
+      "sha256": "5941701b15b0df1bbe093bc1f8b50920b7d7d8eaef0929e855148ba35f26d93b",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

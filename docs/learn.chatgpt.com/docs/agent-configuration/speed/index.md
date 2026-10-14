@@ -18,8 +18,8 @@ You can increase model speed in Codex in exchange for higher usage.
 ## Fast mode
 
 Fast mode speeds up supported models, including GPT-6.1 Sol, GPT-6 Astra,
-GPT-6 Sol, and GPT-6 Luna, where available. For GPT-5.6 and GPT-5.5, the
-speed increase is 1.5x.
+GPT-6 Sol, and GPT-6 Luna, where available. For GPT-5.6, the speed increase
+is 1.5x.
 
 Use `/fast` in the CLI to toggle Fast mode. Use `/statusline` to show it in the
 footer. You can also persist the default with `service_tier = "fast"` plus
@@ -96,5 +96,6 @@ For API availability, request configuration, and pricing, see
 
 ## Retirement and migration
 
-[GPT-5.5 retires](https://learn.chatgpt.com/docs/models#gpt-55-retirement) from ChatGPT, ChatGPT Work,
-and Codex on all plans on October 14, 2026. The OpenAI API isn't affected.
+[GPT-5.5 retires](https://learn.chatgpt.com/docs/models#gpt-55-retirement) from Codex with ChatGPT
+sign-in on October 14, 2026, at noon PDT (19:00 UTC). The OpenAI API and
+Codex sessions authenticated with an API key aren't affected.
