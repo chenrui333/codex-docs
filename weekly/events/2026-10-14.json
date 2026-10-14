@@ -139,6 +139,56 @@
       "id": "c812fd43dfcf1f7f4c5ddbfe14408074820f0448b8e1a3d1ee11f2450a22f1a1",
       "observed_at": "2026-10-14T03:58:10+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "45a34f93ee534e0aaed3429b2e851b4f62eff76689ecb47dbc70e7cec7a6adc3",
+            "before": "c2ed943f723c66bde9b40af8892181caa3de8308d758071149235f34495e06fa"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "2a9545becddaececfd43b541eef74bd8bf2fb60f5fad66c003c6786108d1ed10",
+            "before": "4c45e808aee1b09f04713ba3f37b7a73cac4fb9950cdda953e6adb2083879012"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "a0adf7850836e871ea1b0ee9e1117944b1c86e21e2119e0ad579e38059c0ea4e",
+            "before": "bb282170ce4f71157f82abc9ae768b8d7223727ddc93b69b0a3f676018cc31bd"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "release"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md"
+        ]
+      },
+      "id": "f062083ea29ebd9b0ae212d7064c3a530c39143914f3a047a322c378e62113d6",
+      "observed_at": "2026-10-14T11:23:51+00:00",
+      "previous_id": "c812fd43dfcf1f7f4c5ddbfe14408074820f0448b8e1a3d1ee11f2450a22f1a1"
     }
   ],
   "schema_version": 1

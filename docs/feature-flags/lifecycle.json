@@ -861,7 +861,6 @@
       "system_proxy_fallback",
       "tool_call_mcp_elicitation",
       "tool_suggest",
-      "ultrafast_mode",
       "unbounded_connection_retries",
       "unified_exec_tty",
       "view_image",
@@ -877,11 +876,6 @@
         "cli_stage": "stable",
         "documentation_stage": "experimental",
         "key": "memories"
-      },
-      {
-        "cli_stage": "removed",
-        "documentation_stage": "stable",
-        "key": "personality"
       }
     ],
     "missing_in_docs": [
@@ -1004,7 +998,6 @@
       "tool_suggest",
       "transcript_v2",
       "tui_app_server",
-      "ultrafast_mode",
       "unavailable_dummy_tools",
       "unbounded_connection_retries",
       "undo",
@@ -1093,7 +1086,6 @@
         "system_proxy_fallback",
         "tool_call_mcp_elicitation",
         "tool_suggest",
-        "ultrafast_mode",
         "unbounded_connection_retries",
         "unified_exec_tty",
         "view_image",
@@ -1201,6 +1193,7 @@
     "shell_snapshot",
     "shell_tool",
     "skill_mcp_dependency_install",
+    "ultrafast_mode",
     "unified_exec",
     "web_search",
     "web_search_cached",
@@ -1209,14 +1202,14 @@
   ],
   "documentation_sources": {
     "config_basic": {
-      "parsed_feature_key_count": 14,
+      "parsed_feature_key_count": 13,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "f0a3e336c48ba225c083eb25e92d12b8b0dfb6701b9f439a0aaae7b28edbd106"
+      "sha256": "bc9a09ad1bfd15d5a98846f2ab5e38174a3935d6f13a452885a2064080698f4c"
     },
     "config_reference": {
-      "parsed_feature_key_count": 33,
+      "parsed_feature_key_count": 34,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "4d79681f87c846c62163c720b736b4e874dc988be5cfde0b257befb473021c25"
+      "sha256": "a1926fa6d089b60ba77619f17557811ebeaf447b84ecb87302588965f1efec36"
     }
   },
   "observation_environment": {

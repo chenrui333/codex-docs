@@ -96886,7 +96886,7 @@
       "config_keys": [
         "features.ultrafast_mode"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "ultrafast_mode",
       "id": "feature_flag:ultrafast_mode",
