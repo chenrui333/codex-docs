@@ -7585,11 +7585,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "ca84a4d82ae5e6b9ce4b555278c8bd9e68b44285f20e6520f32fa8f1165bb691",
+      "sha256": "a17f44808f1df550098582d7ea43fb3dba3e59cb07aac23a409cbf44e4a85d07",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"478e6989467bab47fbe8ca962d704a33\"",
+      "source_etag": "W/\"e2bc61e6085dd5a714432fc4ba1f8929\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-14T01:10:17Z",
+      "source_last_modified": "2026-10-14T08:01:44Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
