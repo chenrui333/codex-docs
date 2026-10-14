@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-13T22:25:01+00:00",
+  "generated_at": "2026-10-14T03:58:10+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -16,6 +16,22 @@
   },
   "total_files": 283,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md"
+    "codex_capabilities.json",
+    "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+    "learn.chatgpt.com/docs/agent-configuration/subagents/index.md",
+    "learn.chatgpt.com/docs/app-server/index.md",
+    "learn.chatgpt.com/docs/build-skills/index.md",
+    "learn.chatgpt.com/docs/changelog/index.md",
+    "learn.chatgpt.com/docs/codex-sdk/index.md",
+    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+    "learn.chatgpt.com/docs/config-file/config-basic/index.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/config-file/config-sample/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/extend/mcp/index.md",
+    "learn.chatgpt.com/docs/hooks/index.md",
+    "learn.chatgpt.com/docs/non-interactive-mode/index.md",
+    "learn.chatgpt.com/docs/open-source/index.md",
+    "learn.chatgpt.com/docs/permissions/index.md"
   ]
 }

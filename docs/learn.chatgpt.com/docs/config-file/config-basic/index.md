@@ -94,7 +94,7 @@ Adjust how much filesystem and network access Codex has while executing commands
 sandbox_mode = "workspace-write"
 ```
 
-For mode-by-mode behavior (including protected `.git`/`.codex` paths and network defaults), see [Sandbox and approvals](https://learn.chatgpt.com/docs/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://learn.chatgpt.com/docs/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://learn.chatgpt.com/docs/agent-approvals-security#network-access).
+For mode-by-mode behavior (including protected `.git`, `.agents`, `.codex`, and `.aws` paths and network defaults), see [Sandbox and approvals](https://learn.chatgpt.com/docs/agent-approvals-security#sandbox-and-approvals), [Protected paths in writable roots](https://learn.chatgpt.com/docs/agent-approvals-security#protected-paths-in-writable-roots), and [Network access](https://learn.chatgpt.com/docs/agent-approvals-security#network-access).
 
 #### Permission profiles
 
@@ -143,13 +143,16 @@ model_reasoning_effort = "medium"
 
 #### Communication style
 
-Set a default communication style for supported models.
+To omit the built-in personality instructions, set:
 
 ```toml
-personality = "friendly" # or "pragmatic" or "none"
+personality = "none"
 ```
 
-You can override this later in an active session with `/personality` or per thread/turn when using the app-server APIs.
+This removes the `Personality` section from the model's built-in instructions.
+It doesn't change explicit custom base instructions. The older `friendly` and
+`pragmatic` values no longer select a style. Codex no longer provides the
+`/personality` command.
 
 #### TUI keymap
 
@@ -207,22 +210,21 @@ Use the `[features]` table in `config.toml` to toggle optional and experimental 
 
 ### Common feature flags
 
-| Key                  |        Default        | Maturity     | Description                                                                              |
-| -------------------- | :-------------------: | ------------ | ---------------------------------------------------------------------------------------- |
-| `apps`               |         true          | Stable       | Enable app (connector) integrations                                                      |
-| `goals`              |         true          | Stable       | Enable persisted goals and automatic continuation                                        |
-| `hooks`              |         true          | Stable       | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](https://learn.chatgpt.com/docs/hooks). |
-| `fast_mode`          |         true          | Stable       | Enable Fast mode selection and the `service_tier = "fast"` path                          |
-| `memories`           |         false         | Experimental | Enable [Memories](https://learn.chatgpt.com/docs/customization/memories)                                         |
-| `multi_agent`        |         true          | Stable       | Enable subagent collaboration tools                                                      |
-| `personality`        |         true          | Stable       | Enable personality selection controls                                                    |
-| `remote_plugin`      |         true          | Stable       | Enable the remote plugin catalog                                                         |
-| `shell_snapshot`     |         true          | Stable       | Snapshot your shell environment to speed up repeated commands                            |
-| `shell_tool`         |         true          | Stable       | Enable the default `shell` tool                                                          |
-| `unified_exec`       | `true` except Windows | Stable       | Use the unified PTY-backed exec tool                                                     |
-| `web_search`         |         true          | Deprecated   | Legacy toggle; prefer the top-level `web_search` setting                                 |
-| `web_search_cached`  |         false         | Deprecated   | Legacy toggle that maps to `web_search = "cached"` when unset                            |
-| `web_search_request` |         false         | Deprecated   | Legacy toggle that maps to `web_search = "live"` when unset                              |
+| Key                  | Default | Maturity     | Description                                                                              |
+| -------------------- | :-----: | ------------ | ---------------------------------------------------------------------------------------- |
+| `apps`               |  true   | Stable       | Enable app (connector) integrations                                                      |
+| `goals`              |  true   | Stable       | Enable persisted goals and automatic continuation                                        |
+| `hooks`              |  true   | Stable       | Enable lifecycle hooks from `hooks.json` or inline `[hooks]`. See [Hooks](https://learn.chatgpt.com/docs/hooks). |
+| `fast_mode`          |  true   | Stable       | Enable Fast mode selection and the `service_tier = "fast"` path                          |
+| `memories`           |  false  | Experimental | Enable [Memories](https://learn.chatgpt.com/docs/customization/memories)                                         |
+| `multi_agent`        |  true   | Stable       | Enable subagent collaboration tools                                                      |
+| `remote_plugin`      |  true   | Stable       | Enable the remote plugin catalog                                                         |
+| `shell_snapshot`     |  true   | Stable       | Snapshot your shell environment to speed up repeated commands                            |
+| `shell_tool`         |  true   | Stable       | Enable command execution tools                                                           |
+| `unified_exec`       |  true   | Stable       | Enable resumable command execution; only managed requirements can disable it             |
+| `web_search`         |  true   | Deprecated   | Legacy toggle; prefer the top-level `web_search` setting                                 |
+| `web_search_cached`  |  false  | Deprecated   | Legacy toggle that maps to `web_search = "cached"` when unset                            |
+| `web_search_request` |  false  | Deprecated   | Legacy toggle that maps to `web_search = "live"` when unset                              |
 
 This table lists common user-facing flags, not every internal or
   under-development feature. The Maturity column uses labels such as

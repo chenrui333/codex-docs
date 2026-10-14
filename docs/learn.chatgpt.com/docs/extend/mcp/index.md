@@ -238,6 +238,17 @@ its client ID when adding the MCP server:
 codex mcp add example --url https://mcp.example.com --oauth-client-id my-client
 ```
 
+For a confidential client, also pass `--oauth-client-secret`. Read the secret
+from an environment variable:
+
+```bash
+codex mcp add example --url https://mcp.example.com --oauth-client-id my-client --oauth-client-secret "$MCP_CLIENT_SECRET"
+```
+
+This option requires a nonempty client ID and secret. Codex saves the secret as
+`mcp_servers.example.oauth.client_secret` in `config.toml`. Keep that file
+private and out of version control.
+
 Codex displays the complete callback URL to register with your provider:
 
 ```text

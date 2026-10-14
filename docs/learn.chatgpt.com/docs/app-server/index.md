@@ -304,10 +304,10 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/start` - create a new thread; emits `thread/started` and automatically subscribes you to turn/item events for that thread.
 - `thread/resume` - reopen an existing thread by id so later `turn/start` calls append to it.
 - `thread/fork` - fork a thread into a new thread id by copying stored history. Pass `lastTurnId` to copy history through that turn and omit later turns, or `ephemeral: true` to create an in-memory fork. Emits `thread/started` for the new thread; returned threads include `forkedFromId` when available.
-- `thread/read` - read a stored thread by id without resuming it; set `includeTurns` to return full turn history. Returned `thread` objects include runtime `status`.
+- `thread/read` - read stored thread metadata by id without resuming it. Use `thread/turns/list` and `thread/items/list` to load history. Returned `thread` objects include runtime `status`.
 - `thread/list` - page through stored thread logs; supports cursor-based pagination plus `modelProviders`, `sourceKinds`, `archived`, `isPinned`, `cwd`, `useStateDbOnly`, `searchTerm`, and experimental `parentThreadId` or `ancestorThreadId` filters. Returned `thread` objects include runtime `status`.
-- `thread/turns/list` - experimental; page through a stored thread's turn history without resuming it. `itemsView` controls whether turn items are omitted, summarized, or fully loaded.
-- `thread/items/list` - experimental; page through persisted thread items, optionally restricted to one `turnId`. The active thread store must support item pagination.
+- `thread/turns/list` - page through a stored thread's turn history without resuming it. `itemsView` controls whether turn items are omitted, summarized, or fully loaded.
+- `thread/items/list` - page through persisted thread items, optionally restricted to one `turnId`. The active thread store must support item pagination.
 - `thread/loaded/list` - list the thread ids currently loaded in memory.
 - `thread/name/set` - set or update a thread's user-facing name for a loaded thread or a persisted rollout; emits `thread/name/updated`.
 - `thread/goal/set` - set the goal for a thread; emits `thread/goal/updated`.
@@ -324,7 +324,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `thread/backgroundTerminals/clean` - stop all running background terminals for a thread (experimental; requires `capabilities.experimentalApi`).
 - `thread/backgroundTerminals/list` - list running background terminals for a loaded thread (experimental; requires `capabilities.experimentalApi`).
 - `thread/backgroundTerminals/terminate` - terminate one running background terminal by app-server `processId` (experimental; requires `capabilities.experimentalApi`).
-- `thread/rollback` - deprecated; drop the last N turns from the in-memory context and persist a rollback marker; returns the updated `thread`.
+- `thread/revert` - remove a specified turn and every later turn from a persistent paginated thread's history; returns updated metadata and history cursors, then emits `thread/reverted`.
 - `turn/start` - add user input or standalone tool output to a thread and begin Codex generation; responds with the initial `turn` and streams events. For `collaborationMode`, `settings.developer_instructions: null` means "use built-in instructions for the selected mode."
 - `thread/inject_items` - append raw Responses API items to a loaded thread's model-visible history without starting a user turn.
 - `turn/steer` - append user input to the active in-flight turn for a thread; returns the accepted `turnId`.
@@ -368,7 +368,7 @@ If a client sends an experimental method or field without opting in, app-server 
 - `mcpServer/elicitation/request` (server request) - ask the client for structured form input or confirmation of a URL flow requested by an MCP server.
 - `item/permissions/requestApproval` (server request) - ask the client to grant a subset of network or filesystem permissions requested by the built-in `request_permissions` tool.
 - `config/mcpServer/reload` - reload MCP server configuration from disk and queue a refresh for loaded threads.
-- `mcpServerStatus/list` - list MCP servers, tools, resources, and auth status (cursor + limit pagination). Use `detail: "full"` for full data or `detail: "toolsAndAuthOnly"` to omit resources.
+- `mcpServerStatus/list` - list MCP servers, tools, resources, and auth status (cursor + limit pagination). Use `detail: "full"` for full data or `detail: "toolsAndAuthOnly"` to omit resources. Pass `serverName` to discover one server; with `threadId`, the request reuses that thread's MCP connection.
 - `mcpServer/resource/read` - read a single MCP resource through an initialized MCP server.
 - `mcpServer/tool/call` - call a tool on a thread's configured MCP server.
 - `mcpServer/startupStatus/updated` (notify) - emitted when a configured MCP server's startup status changes for a loaded thread.
@@ -416,7 +416,7 @@ values rather than hard-coding this example.
       "description": "Balances speed and reasoning depth for everyday tasks"
     }],
     "inputModalities": ["text", "image"],
-    "supportsPersonality": true,
+    "supportsPersonality": false,
     "isDefault": true
   }],
   "nextCursor": null
@@ -431,7 +431,7 @@ Each model entry can include:
 - `upgradeInfo` - optional upgrade metadata for migration prompts in clients.
 - `hidden` - whether the model is hidden from the default picker list.
 - `inputModalities` - supported input types for the model (for example `text`, `image`).
-- `supportsPersonality` - whether the model supports personality-specific instructions such as `/personality`.
+- `supportsPersonality` - deprecated compatibility field; always `false`. Models no longer support personality selection.
 - `isDefault` - whether the model is the recommended default.
 
 By default, `model/list` returns picker-visible models only. Set `includeHidden: true` if you need the full list and want to filter on the client side using `hidden`.
@@ -479,11 +479,11 @@ protocol failures return request errors.
 
 ## Threads
 
-- `thread/read` reads a stored thread without subscribing to it; set `includeTurns` to include turns.
-- `thread/turns/list` is experimental and pages through a stored thread's turn history without
+- `thread/read` reads stored thread metadata without subscribing to it.
+- `thread/turns/list` pages through a stored thread's turn history without
   resuming it. Use `itemsView` to choose whether turn items are omitted,
   summarized, or fully loaded.
-- `thread/items/list` is experimental and pages through persisted thread items, optionally restricted to one turn.
+- `thread/items/list` pages through persisted thread items, optionally restricted to one turn.
 - `thread/list` supports cursor pagination plus `modelProviders`, `sourceKinds`, `archived`, `isPinned`, `cwd`, `useStateDbOnly`, `searchTerm`, and experimental `parentThreadId` or `ancestorThreadId` filtering.
 - `thread/loaded/list` returns the thread IDs currently in memory.
 - `thread/archive` moves the thread's persisted JSONL log into the archived directory and attempts to archive spawned descendant thread logs that aren't already archived.
@@ -492,7 +492,7 @@ protocol failures return request errors.
 - `thread/unsubscribe` unsubscribes the current connection from a loaded thread and can trigger `thread/closed` after an inactivity grace period.
 - `thread/unarchive` restores an archived thread rollout back into the active sessions directory.
 - `thread/compact/start` triggers compaction and returns `{}` immediately.
-- `thread/rollback` is deprecated. It drops the last N turns from the in-memory context and records a rollback marker in the thread's persisted JSONL log.
+- `thread/revert` removes a specified turn and every later turn from a persistent paginated thread's history. It doesn't change local files.
 - `thread/inject_items` appends raw Responses API items to a loaded thread's model-visible history without starting a user turn.
 
 ### Start or resume a thread
@@ -505,7 +505,6 @@ Start a fresh thread when you need a new Codex conversation.
   "cwd": "/Users/me/project",
   "approvalPolicy": "never",
   "sandbox": "workspaceWrite",
-  "personality": "friendly",
   "serviceName": "my_app_server_client"
 } }
 { "id": 10, "result": {
@@ -528,11 +527,10 @@ Start a fresh thread when you need a new Codex conversation.
 its source environment's native absolute syntax, including for remote
 environments.
 
-Experimental clients can set `historyMode` on `thread/start` to `"legacy"`
-(the default) or `"paginated"`. Paginated thread creation isn't supported yet
-and returns JSON-RPC error `-32601`. App-server can list and read summaries for
-existing paginated records, but full-history reads, turn pagination, and resume
-fail closed until paginated history is supported.
+New persistent local threads use paginated history by default. Load history
+with `thread/turns/list` and `thread/items/list`. Explicitly setting
+`historyMode` to `"legacy"` or `"paginated"` on `thread/start` is
+experimental and requires `capabilities.experimentalApi = true`.
 
 Beta clients that opt into `capabilities.experimentalApi` can pass a named
 permission-profile id in `permissions` instead of the legacy `sandbox` field.
@@ -545,15 +543,22 @@ use their own thread id as the session id; forked threads keep the session id
 of the root they came from. Clients should read the session id from
 `thread.sessionId` instead of deriving it from the thread id.
 
-To continue a stored session, call `thread/resume` with the `thread.id` you recorded earlier. The response shape matches `thread/start`. You can also pass the same configuration overrides supported by `thread/start`, such as `personality`:
+To continue a stored session, call `thread/resume` with the `thread.id` you recorded earlier. Pass `excludeTurns: true` to return thread metadata and live session state, then load history with the pagination methods:
 
 ```json
 { "method": "thread/resume", "id": 11, "params": {
   "threadId": "thr_123",
-  "personality": "friendly"
+  "excludeTurns": true
 } }
 { "id": 11, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes", "ephemeral": false } } }
 ```
+
+For paginated threads, full-history responses from `thread/resume` and
+`thread/fork` are deprecated and emit `deprecationNotice`. Both methods accept
+`excludeTurns: true` without the experimental API opt-in. A `thread/resume` response
+can also return `turnsBackwardsCursor` and `itemsBackwardsCursor`. Pass each to
+its matching pagination method with `sortDirection: "desc"`; the first page
+includes the cursor's anchor.
 
 Resuming a thread doesn't update `thread.updatedAt` (or the rollout file's modified time) by itself. The timestamp updates when you start a turn.
 
@@ -606,7 +611,7 @@ To branch from a stored session, call `thread/fork` with the `thread.id`. This c
 turns:
 
 ```json
-{ "method": "thread/fork", "id": 12, "params": { "threadId": "thr_123", "lastTurnId": "turn_456" } }
+{ "method": "thread/fork", "id": 12, "params": { "threadId": "thr_123", "lastTurnId": "turn_456", "excludeTurns": true } }
 { "id": 12, "result": { "thread": { "id": "thr_456", "sessionId": "thr_123", "forkedFromId": "thr_123" } } }
 { "method": "thread/started", "params": { "thread": { "id": "thr_456" } } }
 ```
@@ -624,7 +629,8 @@ thread listings:
   "id": 13,
   "params": {
     "threadId": "thr_123",
-    "ephemeral": true
+    "ephemeral": true,
+    "excludeTurns": true
   }
 }
 {
@@ -640,20 +646,19 @@ thread listings:
 }
 ```
 
-Ephemeral forks of paginated threads also require `excludeTurns: true`. That
-field is experimental and requires `capabilities.experimentalApi = true`.
+Ephemeral forks of paginated threads require `excludeTurns: true`.
 
-When a user-facing thread title has been set, app-server hydrates `thread.name` on `thread/list`, `thread/read`, `thread/resume`, `thread/unarchive`, and `thread/rollback` responses. `thread/start` and `thread/fork` may omit `name` (or return `null`) until a title is set later.
+When a user-facing thread title has been set, app-server hydrates `thread.name` on `thread/list`, `thread/read`, `thread/resume`, and `thread/unarchive` responses. `thread/start` and `thread/fork` may omit `name` (or return `null`) until a title is set later.
 
 ### Read a stored thread (without resuming)
 
 Use `thread/read` when you want stored thread data but don't want to resume the thread or subscribe to its events.
 
-- `includeTurns` - when `true`, the response includes the thread's turns; when `false` or omitted, you get the thread summary only.
+- `includeTurns` - when `false` or omitted, returns the thread summary only. Setting it to `true` loads full history, which is deprecated for paginated threads and emits `deprecationNotice`. Use the pagination methods instead.
 - Returned `thread` objects include runtime `status` (`notLoaded`, `idle`, `systemError`, or `active` with `activeFlags`).
 
 ```json
-{ "method": "thread/read", "id": 19, "params": { "threadId": "thr_123", "includeTurns": true } }
+{ "method": "thread/read", "id": 19, "params": { "threadId": "thr_123" } }
 { "id": 19, "result": { "thread": { "id": "thr_123", "name": "Bug bash notes", "ephemeral": false, "status": { "type": "notLoaded" }, "turns": [] } } }
 ```
 
@@ -661,7 +666,7 @@ Unlike `thread/resume`, `thread/read` doesn't load the thread into memory or emi
 
 ### List thread turns
 
-`thread/turns/list` is experimental. Use it to page a stored thread's turn history without resuming it. Results default to newest-first so clients can fetch older turns with `nextCursor`. The response also includes `backwardsCursor`; pass it as `cursor` with `sortDirection: "asc"` to fetch turns newer than the first item from the earlier page.
+Use `thread/turns/list` to page a stored thread's turn history without resuming it. Results default to newest-first so clients can fetch older turns with `nextCursor`. The response also includes `backwardsCursor`; pass it as `cursor` with the opposite `sortDirection` to reverse direction. This includes the anchor turn again so you can catch updates to it.
 
 `itemsView` controls how much turn-item data the response includes:
 
@@ -683,10 +688,38 @@ Unlike `thread/resume`, `thread/read` doesn't load the thread into memory or emi
 } }
 ```
 
-`thread/items/list` is also experimental. It pages persisted items without
+### List thread items
+
+`thread/items/list` pages persisted items without
 resuming the thread. Pass `turnId` to restrict results to one turn, or omit it
-to page items across the thread. The active thread store must support item
-pagination; otherwise, the server returns an unsupported-method error.
+to page items across the thread. Results default to oldest-first
+(`sortDirection: "asc"`). The active thread store must support item pagination;
+otherwise, the server returns an unsupported-method error.
+
+Pass an opaque `nextCursor` from a previous response to continue paging. To
+start after a known item, pass an item anchor and a non-empty `turnId`:
+
+```json
+{ "method": "thread/items/list", "id": 21, "params": {
+  "threadId": "thr_123",
+  "turnId": "turn_456",
+  "cursor": { "type": "item", "itemId": "item_123" },
+  "sortDirection": "asc",
+  "limit": 50
+} }
+{ "id": 21, "result": {
+  "data": [],
+  "nextCursor": null,
+  "backwardsCursor": null
+} }
+```
+
+Item anchors exclude the anchor itself: ascending order returns newer items,
+and descending order returns older items. The item must belong to the
+requested turn's visible history. Missing `turnId`, an empty item ID, or an
+unknown or out-of-scope item returns invalid params (`-32602`). Continue with
+the returned string `nextCursor`. Each result entry contains `turnId`, `item`,
+and optional recorded start and completion timestamps.
 
 ### List threads (with pagination & filters)
 
@@ -911,17 +944,29 @@ background terminal. This method is experimental and requires
 { "id": 29, "result": { "terminated": true } }
 ```
 
-### Roll back recent turns
+### Revert thread history
 
-`thread/rollback` is deprecated and will be removed. It removes the last
-`numTurns` entries from the in-memory context and persists a rollback marker in
-the rollout log. The returned `thread` includes `turns` populated after the
-rollback.
+Use `thread/revert` to remove `beforeTurnId` and every later turn from a
+persistent paginated thread's conversation history. It doesn't revert local
+file changes. Resume the thread first if it isn't loaded. Ephemeral threads
+and threads with legacy history aren't supported.
 
 ```json
-{ "method": "thread/rollback", "id": 30, "params": { "threadId": "thr_b", "numTurns": 1 } }
-{ "id": 30, "result": { "thread": { "id": "thr_b", "name": "Bug bash notes", "ephemeral": false } } }
+{ "method": "thread/revert", "id": 30, "params": { "threadId": "thr_b", "beforeTurnId": "turn_456" } }
+{ "id": 30, "result": {
+  "thread": { "id": "thr_b", "ephemeral": false, "turns": [] },
+  "turnsBackwardsCursor": "retained-turn-cursor-or-null",
+  "itemsBackwardsCursor": "retained-item-cursor-or-null"
+} }
+{ "method": "thread/reverted", "params": { "threadId": "thr_b" } }
 ```
+
+The returned `thread.turns` is always empty. Use the returned cursors with
+`thread/turns/list` or `thread/items/list` and `sortDirection: "desc"` to load
+retained history, including the cursor's anchor.
+
+`thread/rollback` has been removed and returns an unknown-method error.
+Existing rollback markers in older saved threads remain readable.
 
 ## Turns
 
@@ -931,7 +976,7 @@ The `input` field accepts a list of items:
 - `{ "type": "image", "url": "https://.../design.png" }`
 - `{ "type": "localImage", "path": "/tmp/screenshot.png" }`
 
-You can override configuration settings per turn (model, effort, personality, `cwd`, sandbox policy, summary). When specified, these settings become the defaults for later turns on the same thread. `outputSchema` applies only to the current turn. For `sandboxPolicy.type = "externalSandbox"`, set `networkAccess` to `restricted` or `enabled`; for `workspaceWrite`, `networkAccess` remains a boolean.
+You can override configuration settings per turn (model, effort, `cwd`, sandbox policy, summary). When specified, these settings become the defaults for later turns on the same thread. `outputSchema` applies only to the current turn. For `sandboxPolicy.type = "externalSandbox"`, set `networkAccess` to `restricted` or `enabled`; for `workspaceWrite`, `networkAccess` remains a boolean.
 
 For `turn/start.collaborationMode`, `settings.developer_instructions: null` means "use built-in instructions for the selected mode" rather than clearing mode instructions.
 
@@ -1094,7 +1139,9 @@ On success, the turn finishes with `status: "interrupted"`.
 - `commit` (review a specific commit)
 - `custom` (free-form instructions)
 
-Use `delivery: "inline"` (default) to run the review on the existing thread, or `delivery: "detached"` to fork a new review thread.
+Use `delivery: "inline"` (default) to run the review on the existing thread.
+For a separate review thread, call `thread/start` and then run an inline
+review on the new thread.
 
 Example request/response:
 
@@ -1117,7 +1164,10 @@ Example request/response:
 } }
 ```
 
-For a detached review, use `"delivery": "detached"`. The response is the same shape, but `reviewThreadId` will be the id of the new review thread (different from the original `threadId`). The server also emits a `thread/started` notification for that new thread before streaming the review turn.
+`delivery: "detached"` is deprecated, emits `deprecationNotice`, and isn't
+supported for paginated parent threads. If a separate review needs the
+existing conversation history, use `thread/fork` followed by `turn/start`
+with your review instructions.
 
 Codex streams the usual `turn/started` notification followed by an `item/started` with an `enteredReviewMode` item:
 
@@ -1331,7 +1381,7 @@ The fuzzy file search session API emits per-query notifications:
 
 - `userMessage` - `{id, content}` where `content` is a list of user inputs (`text`, `image`, or `localImage`).
 - `functionCallOutput` - `{id, name, namespace, output}` for standalone tool output supplied through `turn/start.toolOutput`. `namespace` can be `null`.
-- `agentMessage` - `{id, text, phase?}` containing the accumulated agent reply. When present, `phase` uses Responses API wire values (`commentary`, `final_answer`).
+- `agentMessage` - `{id, text, phase?}` containing the accumulated agent reply. When present, `phase` uses Responses API wire values (`commentary`, `partial_answer`, `final_answer`). A `partial_answer` is stable answer text that may be followed by more output or tools.
 - `plan` - `{id, text}` containing proposed plan text in plan mode. Treat the final `plan` item from `item/completed` as authoritative.
 - `reasoning` - `{id, summary, content}` where `summary` holds streamed reasoning summaries and `content` holds raw reasoning blocks.
 - `commandExecution` - `{id, command, cwd, status, commandActions, aggregatedOutput?, exitCode?, durationMs?}`.

@@ -1,11 +1,11 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 1031,
+      "active": 1039,
       "by_category": {
         "cli_command": 95,
         "cli_option": 358,
-        "config_key": 445,
+        "config_key": 453,
         "feature_flag": 167,
         "linked_tool_guide": 2,
         "system_prompt_snapshot": 1,
@@ -19,7 +19,7 @@
         "under development": 66
       },
       "inactive": 43,
-      "total": 1074
+      "total": 1082
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -118,6 +118,7 @@
   },
   "developers": {
     "codex_related_urls": [
+      "https://developers.openai.com/api/docs/guides/promptfoo-codex",
       "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
       "https://developers.openai.com/blog/codex-as-a-platform",
@@ -157,15 +158,15 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 12,
-      "codex_related_urls": 36,
+      "codex_related_urls": 37,
       "mirrored_urls": 22,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
       "sitemap_urls": 1,
-      "skipped_codex_related_urls": 14,
+      "skipped_codex_related_urls": 15,
       "tombstoned_urls": 0,
-      "unclassified_skipped_codex_related_urls": 2
+      "unclassified_skipped_codex_related_urls": 3
     },
     "mirrored_urls": [
       "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
@@ -274,6 +275,7 @@
       }
     ],
     "skipped_codex_related_urls": [
+      "https://developers.openai.com/api/docs/guides/promptfoo-codex",
       "https://developers.openai.com/blog/topic/codex",
       "https://developers.openai.com/community/codex-ambassadors",
       "https://developers.openai.com/community/codex-ambassadors/directory",
@@ -291,12 +293,13 @@
     ],
     "tombstoned_urls": [],
     "unclassified_skipped_codex_related_urls": [
+      "https://developers.openai.com/api/docs/guides/promptfoo-codex",
       "https://developers.openai.com/modretro/codex-land",
       "https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server"
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-09T22:24:36+00:00",
+  "generated_at": "2026-10-14T03:58:10+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -1638,7 +1641,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-09T22:24:36+00:00",
+    "last_successful_full_sync_at": "2026-10-14T03:58:10+00:00",
     "status": "complete"
   }
 }

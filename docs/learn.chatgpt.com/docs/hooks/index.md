@@ -426,20 +426,20 @@ event.
 
 Only some current Codex events honor `matcher`:
 
-| Event               | What `matcher` filters | Notes                                                        |
-| ------------------- | ---------------------- | ------------------------------------------------------------ |
-| `PermissionRequest` | tool name              | Support includes `Bash`, `apply_patch`\*, and MCP tool names |
-| `PostToolUse`       | tool name              | See [Tool coverage](#tool-coverage)                          |
-| `PostCompact`       | compaction trigger     | Values are `manual` or `auto`                                |
-| `PreCompact`        | compaction trigger     | Values are `manual` or `auto`                                |
-| `PreToolUse`        | tool name              | See [Tool coverage](#tool-coverage)                          |
-| `SessionEnd`        | end reason             | Currently only `other`                                       |
-| `SessionStart`      | start source           | Values are `startup`, `resume`, `clear`, and `compact`       |
-| `SubagentStart`     | subagent type          | Values depend on the subagent that starts                    |
-| `SubagentStop`      | subagent type          | Values depend on the subagent that stops                     |
-| `UserPromptSubmit`  | not supported          | Any configured `matcher` is ignored for this event           |
-| `Stop`              | not supported          | Any configured `matcher` is ignored for this event           |
-| `Interrupt`         | not supported          | Any configured `matcher` is ignored for this event           |
+| Event               | What `matcher` filters | Notes                                                          |
+| ------------------- | ---------------------- | -------------------------------------------------------------- |
+| `PermissionRequest` | tool name              | Support includes `Bash`, `apply_patch`\*, and MCP tool names   |
+| `PostToolUse`       | tool name              | See [Tool coverage](#tool-coverage)                            |
+| `PostCompact`       | compaction trigger     | Values are `manual` or `auto`                                  |
+| `PreCompact`        | compaction trigger     | Values are `manual` or `auto`                                  |
+| `PreToolUse`        | tool name              | See [Tool coverage](#tool-coverage)                            |
+| `SessionEnd`        | end reason             | Currently only `other`                                         |
+| `SessionStart`      | start source           | Values are `startup`, `resume`, `clear`, `compact`, and `fork` |
+| `SubagentStart`     | subagent type          | Values depend on the subagent that starts                      |
+| `SubagentStop`      | subagent type          | Values depend on the subagent that stops                       |
+| `UserPromptSubmit`  | not supported          | Any configured `matcher` is ignored for this event             |
+| `Stop`              | not supported          | Any configured `matcher` is ignored for this event             |
+| `Interrupt`         | not supported          | Any configured `matcher` is ignored for this event             |
 
 \*For `apply_patch`, `matcher` values can also use `Edit` or `Write`.
 
@@ -450,7 +450,7 @@ Examples:
 - `Edit|Write`
 - `mcp__filesystem__read_file`
 - `mcp__filesystem__.*`
-- `startup|resume|clear|compact`
+- `startup|resume|clear|compact|fork`
 - `manual|auto`
 
 ### Tool coverage
@@ -662,9 +662,12 @@ Background hooks can't block, approve, rewrite, or otherwise control the
 
 Fields in addition to [Common input fields](#common-input-fields):
 
-| Field    | Type     | Meaning                                                             |
-| -------- | -------- | ------------------------------------------------------------------- |
-| `source` | `string` | How the session started: `startup`, `resume`, `clear`, or `compact` |
+| Field    | Type     | Meaning                                                                     |
+| -------- | -------- | --------------------------------------------------------------------------- |
+| `source` | `string` | How the session started: `startup`, `resume`, `clear`, `compact`, or `fork` |
+
+A forked thread uses `source: "fork"`. Resuming a thread with supplied history
+still uses `source: "resume"`.
 
 Plain text on `stdout` is added as extra developer context.
 

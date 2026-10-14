@@ -625,7 +625,7 @@ receiving a managed `requirements.toml`:
 
 ```toml
 [features]
-personality = true
+hooks = true
 unified_exec = false
 
 # Disable surface-specific features when needed.
@@ -641,6 +641,10 @@ Use the canonical feature keys from `config.toml`'s `[features]` table for
 runtime features. The local runtime normalizes recognized features to meet these
 pins and rejects conflicting writes to `config.toml` or profile file feature
 settings.
+
+A managed `unified_exec = false` keeps command execution available, but disables
+resumable processes and the `write_stdin` tool. User configuration can't disable
+this feature.
 
 <a id="disable-codex-feature-surfaces"></a>
 

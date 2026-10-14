@@ -149,9 +149,9 @@ writable while still setting a matching `.env` path to `deny`.
 Use `extends` when a profile is mostly the same as a built-in or another named
 profile. Prefer extending a built-in profile over starting from scratch so
 baseline protections carry forward. Extending `:workspace`, for example, keeps
-the workspace root's `.codex` directory read-only unless you explicitly
-override it. Set the parent once, then add or override only the rules that
-differ.
+the workspace root's `.git`, `.agents`, `.codex`, and `.aws` paths read-only
+unless you explicitly override those rules. Set the parent once, then add or
+override only the rules that differ.
 
 ```toml
 default_permissions = "project-edit"
@@ -523,11 +523,11 @@ allowlist is not a global network policy for every action Codex can perform.
   be enforced by the platform sandbox, Codex refuses to run the command instead
   of silently running it unsandboxed.
 - On Linux and WSL, Codex uses [bubblewrap](https://github.com/containers/bubblewrap)
-  and [seccomp](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html),
-  with Landlock available for compatibility fallback paths. The strongest
-  enforcement path depends on user namespaces and kernel support; restricted
-  container hosts can force compatibility paths, and unsupported split policies
-  are refused.
+  and [seccomp](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)
+  to enforce filesystem restrictions. The legacy Landlock option can't isolate
+  app-server Unix sockets and is rejected for filesystem-restricted policies.
+  Disable `features.use_legacy_landlock` when upgrading. Hosts that block the
+  required bubblewrap operations can't run these policies.
 - On Windows, MXC uses process isolation for filesystem and network permissions.
   Review [MXC compatibility](https://learn.chatgpt.com/docs/windows/windows-sandbox#mxc-compatibility)
   before enabling it. The legacy `elevated` fallback uses dedicated lower-privilege
@@ -574,8 +574,8 @@ default_permissions = "workspace-only"
 
 [permissions.workspace-only]
 # By extending the :workspace profile, you get Codex's safeguards to ensure
-# subfolders such as .codex/ and .git/ within a workspace root are read-only
-# while the rest of the folder is writable.
+# paths such as .git/, .agents/, .codex/, and .aws/ within a workspace root
+# are read-only while the rest of the folder is writable.
 extends = ":workspace"
 
 [permissions.workspace-only.filesystem]

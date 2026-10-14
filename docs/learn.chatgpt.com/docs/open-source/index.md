@@ -13,7 +13,7 @@ Source: https://learn.chatgpt.com/docs/open-source
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-OpenAI develops key parts of Codex in the open. That work lives on GitHub so you can follow progress, report issues, and contribute improvements.
+OpenAI develops key parts of Codex in the open. That work lives on GitHub so you can follow progress, report issues, and request improvements.
 
 If you maintain a widely used open-source project or want to nominate maintainers stewarding important projects, you can also [apply to the Codex for OSS program](https://developers.openai.com/community/codex-for-oss) for API credits, ChatGPT Pro with Codex, and selective access to Codex Security.
 
@@ -41,3 +41,7 @@ Use the appropriate GitHub repository for bug reports and feature requests:
 - Discussion forum: [openai/codex/discussions](https://github.com/openai/codex/discussions)
 
 When you file an issue, include which component you are using (CLI, SDK, IDE extension, Codex cloud, or Codex Security) and the version where possible.
+
+The `openai/codex` repository accepts community contributions through issues,
+including bug reports, reproduction steps, and root-cause analysis. It doesn't
+accept external code contributions or pull requests. Read its [contribution guidelines](https://github.com/openai/codex/blob/main/docs/contributing.md) for details.

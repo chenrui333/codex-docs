@@ -327,7 +327,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "analytics.enabled",
       type: "boolean",
       description:
-        "Enable or disable analytics for this machine/profile. When unset, the client default applies.",
+        "Enable or disable analytics for this machine/profile. In Codex CLI, `false` also disables custom OTLP metrics exporters. When unset, the client default applies.",
     },
     {
       key: "instructions",
@@ -368,7 +368,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "personality",
       type: "none | friendly | pragmatic",
       description:
-        "Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`.",
+        "Deprecated compatibility setting. `friendly` and `pragmatic` no longer select a style. `none` omits the built-in Personality section from model instructions; explicit instruction overrides are unchanged.",
     },
     {
       key: "service_tier",
@@ -650,6 +650,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Pre-registered OAuth client ID used for authorization and token exchange with this MCP server.",
     },
     {
+      key: "mcp_servers.<id>.oauth.client_secret",
+      type: "string",
+      description:
+        "OAuth client secret for token exchange with a pre-registered client. Requires a nonempty `oauth.client_id`; the secret must also be nonempty. Stored in configuration.",
+    },
+    {
       key: "mcp_servers.<id>.oauth.callback_url",
       type: "string",
       description:
@@ -886,7 +892,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.unified_exec",
       type: "boolean",
       description:
-        "Use the unified PTY-backed exec tool (stable; enabled by default except on Windows).",
+        "Use resumable command execution (stable; enabled on all platforms). User opt-outs are ignored. Managed requirements can disable resumable processes and `write_stdin`, leaving one-shot `exec_command` available.",
     },
     {
       key: "features.shell_snapshot",
@@ -915,7 +921,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.personality",
       type: "boolean",
       description:
-        "Enable personality selection controls (stable; on by default).",
+        "Removed feature flag. Accepted for compatibility and ignored.",
     },
     {
       key: "features.network_proxy",
@@ -1008,8 +1014,7 @@ Set `model` to one available to your signed-in account or workspace. See
     {
       key: "features.shell_tool",
       type: "boolean",
-      description:
-        "Enable the default `shell` tool for running commands (stable; on by default).",
+      description: "Enable command execution tools (stable; on by default).",
     },
     {
       key: "features.enable_request_compression",
@@ -1027,7 +1032,13 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.fast_mode",
       type: "boolean",
       description:
-        "Enable model-catalog service tier selection in the TUI, including Fast-tier commands when the active model advertises them (stable; on by default).",
+        "Enable Fast mode controls advertised by the active model (stable; on by default), independently of `features.ultrafast_mode`. Availability still depends on the model and account.",
+    },
+    {
+      key: "features.ultrafast_mode",
+      type: "boolean",
+      description:
+        "Enable Ultrafast mode controls (stable; on by default), independently of `features.fast_mode`. Availability still depends on the model and account.",
     },
     {
       key: "features.prevent_idle_sleep",
@@ -1056,6 +1067,24 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "model_providers.<id>.base_url",
       type: "string",
       description: "API base URL for the model provider.",
+    },
+    {
+      key: "model_providers.<id>.model_catalog_url",
+      type: "string",
+      description:
+        "Full URL for a Codex-native model catalog. Omit to keep the provider's default model discovery.",
+    },
+    {
+      key: "model_providers.<id>.capabilities.external_web_access",
+      type: "boolean",
+      description:
+        "Whether the provider's hosted web search can access the live web. Omit to keep provider defaults; model and turn settings may restrict access further.",
+    },
+    {
+      key: "model_providers.<id>.capabilities.remote_compaction",
+      type: "unsupported | v2",
+      description:
+        "Provider compaction protocol. `unsupported` uses local compaction; `v2` sends compaction triggers through Responses. Omit to keep provider defaults; model and turn settings may restrict support further.",
     },
     {
       key: "model_providers.<id>.env_key",
@@ -1314,7 +1343,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "otel.metrics_exporter",
       type: "none | statsig | otlp-http | otlp-grpc",
       description:
-        "Select the OpenTelemetry metrics exporter (defaults to `statsig`).",
+        "Select the OpenTelemetry metrics exporter (defaults to `statsig`). In Codex CLI, `analytics.enabled = false` disables this exporter, including custom OTLP exporters. Set to `none` to disable metrics export independently.",
     },
     {
       key: "otel.log_user_prompt",
@@ -1454,6 +1483,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Enable terminal animations (welcome screen, shimmer, spinner) (default: true).",
     },
     {
+      key: "tui.disable_paste_burst",
+      type: "boolean",
+      description:
+        "Disable burst-paste detection in the TUI (default: false). Takes precedence over the legacy top-level `disable_paste_burst` setting.",
+    },
+    {
       key: "tui.alternate_screen",
       type: "auto | always | never",
       description:
@@ -1482,6 +1517,18 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "boolean",
       description:
         "Show onboarding tooltips in the TUI welcome screen (default: true).",
+    },
+    {
+      key: "tui.auto_recap",
+      type: "boolean",
+      description:
+        "Generate automatic conversation recaps while the terminal is unfocused (default: true). Set to `false` to disable automatic recaps; `/recap` remains available.",
+    },
+    {
+      key: "tui.show_server_version_notice",
+      type: "boolean",
+      description:
+        "Show informational notices about connected app-server version differences (default: true). Does not hide compatibility errors or version status.",
     },
     {
       key: "tui.status_line",
@@ -1592,7 +1639,8 @@ Set `model` to one available to your signed-in account or workspace. See
     {
       key: "disable_paste_burst",
       type: "boolean",
-      description: "Disable burst-paste detection in the TUI.",
+      description:
+        "Legacy fallback for `tui.disable_paste_burst`. Prefer the setting under `[tui]`.",
     },
     {
       key: "windows_wsl_setup_acknowledged",

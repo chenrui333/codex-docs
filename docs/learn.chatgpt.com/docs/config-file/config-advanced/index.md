@@ -386,11 +386,11 @@ For the complete key list and requirements constraints, see
 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) and
 [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration).
 
-In workspace-write mode, some environments keep `.git/` and `.codex/`
-  read-only even when the rest of the workspace is writable. This is why
-  commands like `git commit` may still require approval to run outside the
-  sandbox. If you want Codex to skip specific commands (for example, block `git
-  commit` outside the sandbox), use
+In workspace-write mode, some environments keep `.git/`, `.agents/`,
+  `.codex/`, and `.aws/` read-only even when the rest of the workspace is
+  writable. This is why commands like `git commit` may still require approval to
+  run outside the sandbox. If you want Codex to skip specific commands (for
+  example, block `git commit` outside the sandbox), use
   [rules](https://learn.chatgpt.com/docs/agent-configuration/rules).
 
 Disable sandboxing entirely (use only if your environment already isolates processes):
@@ -510,12 +510,14 @@ For more security and privacy guidance around telemetry, see [Security](https://
 
 By default, Codex periodically sends a small amount of anonymous usage and health data back to OpenAI. This helps detect when Codex isn't working correctly and shows what features and configuration options are being used, so the Codex team can focus on what matters most. These metrics don't contain any personally identifiable information (PII). Metrics collection is independent of OTel log/trace export.
 
-If you want to disable metrics collection entirely across the ChatGPT desktop app, Codex CLI, and IDE extension on a machine, set the analytics flag in your config:
+To disable analytics and metrics collection in Codex CLI, set the analytics flag in your config:
 
 ```toml
 [analytics]
 enabled = false
 ```
+
+This also disables custom OTLP metrics exporters in Codex CLI.
 
 Each metric includes its own fields plus the default context fields below.
 

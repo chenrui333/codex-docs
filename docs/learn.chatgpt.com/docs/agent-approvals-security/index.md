@@ -305,6 +305,7 @@ In the default `workspace-write` sandbox policy, writable roots still include pr
 - If `<writable_root>/.git` is a pointer file (`gitdir: ...`), the resolved Git directory path is also protected as read-only.
 - `<writable_root>/.agents` is protected as read-only when it exists as a directory.
 - `<writable_root>/.codex` is protected as read-only when it exists as a directory.
+- `<writable_root>/.aws` is protected as read-only when it exists as a directory.
 - Protection is recursive, so everything under those paths is read-only.
 
 ### Run without approval prompts
@@ -376,7 +377,7 @@ can constrain it with `allowed_approvals_reviewers`.
 | Auto-review mode               | `--sandbox workspace-write --ask-for-approval on-request -c approvals_reviewer=auto_review` or `approvals_reviewer = "auto_review"` | Same sandbox boundary as standard on-request mode, but eligible approval requests are reviewed by Auto-review instead of surfacing to the user.  |
 | Dangerous full access          | `--dangerously-bypass-approvals-and-sandbox` (alias: `--yolo`)                                                                      | <ElevatedRiskBadge /> No sandbox; no approvals _(not recommended)_                                                                               |
 
-For non-interactive runs, use `codex exec --sandbox workspace-write`; Codex keeps older `codex exec --full-auto` invocations as a deprecated compatibility path and prints a warning.
+For non-interactive runs, use `codex exec --sandbox workspace-write`.
 
 #### Configuration in `config.toml`
 
@@ -466,43 +467,12 @@ In that case, configure your Docker container to provide the isolation you need,
 
 If your host cannot run the Linux sandbox directly, or if your organization already standardizes on containerized development, run Codex with Dev Containers and let Docker provide the outer isolation boundary. This works with Visual Studio Code Dev Containers and compatible tools.
 
-Use the [Codex secure devcontainer example](https://github.com/openai/codex/tree/main/.devcontainer) as a reference implementation. The example installs Codex, common development tools, `bubblewrap`, and firewall-based outbound controls.
-
 Devcontainers provide substantial protection, but they do not prevent every
   attack. If you run Codex with `--sandbox danger-full-access` or
   `--dangerously-bypass-approvals-and-sandbox` inside the container, a malicious
   project can exfiltrate anything available inside the devcontainer, including
   Codex credentials. Use this pattern only with trusted repositories, and
   monitor Codex activity as you would in any other elevated environment.
-
-The reference implementation includes:
-
-- an Ubuntu 24.04 base image with Codex and common development tools installed;
-- an allowlist-driven firewall profile for outbound access;
-- VS Code settings and extension recommendations for reopening the workspace in a container;
-- persistent mounts for command history and Codex configuration;
-- `bubblewrap`, so Codex can still use its Linux sandbox when the container grants the needed capabilities.
-
-To try it:
-
-1. Install Visual Studio Code and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-2. Copy the Codex example `.devcontainer` setup into your repository, or start from the Codex repository directly.
-3. In VS Code, run `Dev Containers: Open Folder in Container...` and select `.devcontainer/devcontainer.secure.json`.
-4. After the container starts, open a terminal and run `codex`.
-
-You can also start the container from the CLI:
-
-```bash
-devcontainer up --workspace-folder . --config .devcontainer/devcontainer.secure.json
-```
-
-The example has three main pieces:
-
-- `.devcontainer/devcontainer.secure.json` controls container settings, capabilities, mounts, environment variables, and VS Code extensions.
-- `.devcontainer/Dockerfile.secure` defines the Ubuntu-based image and installed tools.
-- `.devcontainer/init-firewall.sh` applies the outbound network policy.
-
-The reference firewall is intentionally a starting point. If you depend on domain allowlisting for isolation, implement DNS rebinding and DNS refresh protections that fit your environment, such as TTL-aware refreshes or a DNS-aware firewall.
 
 Inside the container, choose one of these modes:
 
