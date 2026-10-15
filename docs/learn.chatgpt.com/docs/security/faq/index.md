@@ -65,8 +65,8 @@ free scanning credits apply before paid usage is billed.
 
 This usage is not covered by your plan's included usage allowance.
 
-Continuous scans set up before that cutoff are free for 14 days, until
-October 15, 2026. After that, they are billed at regular token rates under
+Continuous scans set up before that cutoff are free until
+October 21, 2026. After that, they are billed at regular token rates under
 your account's billing plan if you enable paid usage. Otherwise, they pause.
 
 ### Do I get a free scanning period or free scanning credits?
@@ -74,7 +74,7 @@ your account's billing plan if you enable paid usage. Otherwise, they pause.
 What you receive depends on whether your account had continuous scanning set
 up before October 1, 2026, at 12:53 PM Pacific:
 
-- If it did, your covered continuous scans remain free until October 15, 2026.
+- If it did, your covered continuous scans remain free until October 21, 2026.
   This free period doesn't cover repository scans or continuous scanning set
   up after October 1, 2026, at 12:53 PM Pacific.
 - If it didn't, eligible accounts receive $500 in free scanning credits

@@ -9390,6 +9390,13 @@
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/features/codex-micro"
     },
+    "learn.chatgpt.com/docs/features/composer-predictions/index.md": {
+      "sha256": "307c8e53c6e666aeabd8c00144bd01bd7b60058f99696256da3252cb777a97dc",
+      "source_area": "learn_features",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/features/composer-predictions"
+    },
     "learn.chatgpt.com/docs/features/index.md": {
       "codex_cli_versions": [
         "0.146.0",
@@ -9415,7 +9422,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "398545793f6ce728e722d4f305387c1be43c071775322478176090717681b489",
+      "sha256": "2ce8095bb42f96a7a266a8a1a7f8d9eb0e9c31311741ab0672045b723d61de50",
       "source_area": "learn_features",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10602,7 +10609,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "688ff0b476946de19a867f3535c2f9f7b55dfd0bc26c2ee51a04e16d0b3a4544",
+      "sha256": "3c04c689918e85510df8114ab00250d89b1bfd3116b9f162d9850a70843b1204",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

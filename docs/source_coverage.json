@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-14T21:24:02+00:00",
+  "generated_at": "2026-10-15T03:39:45+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 179,
+      "discovered_urls": 180,
       "html_fallback_pages": 2,
-      "markdown_pages": 176,
-      "mirrored_paths_count": 178,
-      "mirrored_urls": 178,
+      "markdown_pages": 177,
+      "mirrored_paths_count": 179,
+      "mirrored_urls": 179,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -458,6 +458,7 @@
       "https://learn.chatgpt.com/docs/feature-maturity",
       "https://learn.chatgpt.com/docs/features",
       "https://learn.chatgpt.com/docs/features/codex-micro",
+      "https://learn.chatgpt.com/docs/features/composer-predictions",
       "https://learn.chatgpt.com/docs/features/voice",
       "https://learn.chatgpt.com/docs/get-started-with-work",
       "https://learn.chatgpt.com/docs/github-action",
@@ -642,6 +643,7 @@
       "https://learn.chatgpt.com/docs/feature-maturity",
       "https://learn.chatgpt.com/docs/features",
       "https://learn.chatgpt.com/docs/features/codex-micro",
+      "https://learn.chatgpt.com/docs/features/composer-predictions",
       "https://learn.chatgpt.com/docs/features/voice",
       "https://learn.chatgpt.com/docs/get-started-with-work",
       "https://learn.chatgpt.com/docs/github-action",
@@ -820,6 +822,7 @@
       "learn.chatgpt.com/docs/extend/record-and-replay/index.md",
       "learn.chatgpt.com/docs/feature-maturity/index.md",
       "learn.chatgpt.com/docs/features/codex-micro/index.md",
+      "learn.chatgpt.com/docs/features/composer-predictions/index.md",
       "learn.chatgpt.com/docs/features/index.md",
       "learn.chatgpt.com/docs/features/voice/index.md",
       "learn.chatgpt.com/docs/get-started-with-work/index.md",
@@ -904,7 +907,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 178,
+    "mirrored_paths_count": 179,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1003,6 +1006,7 @@
       "https://learn.chatgpt.com/docs/feature-maturity",
       "https://learn.chatgpt.com/docs/features",
       "https://learn.chatgpt.com/docs/features/codex-micro",
+      "https://learn.chatgpt.com/docs/features/composer-predictions",
       "https://learn.chatgpt.com/docs/features/voice",
       "https://learn.chatgpt.com/docs/get-started-with-work",
       "https://learn.chatgpt.com/docs/github-action",
@@ -1191,6 +1195,7 @@
           "https://learn.chatgpt.com/docs/feature-maturity",
           "https://learn.chatgpt.com/docs/features",
           "https://learn.chatgpt.com/docs/features/codex-micro",
+          "https://learn.chatgpt.com/docs/features/composer-predictions",
           "https://learn.chatgpt.com/docs/features/voice",
           "https://learn.chatgpt.com/docs/get-started-with-work",
           "https://learn.chatgpt.com/docs/github-action",
@@ -1274,7 +1279,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "6fea634dfa7ace7b4a7968301f06eb2ba901c065c32df356b7d74a32fba33b4d",
+        "discovered_urls_sha256": "70fac3d62ab4d8afa907a8974a142505284599e69883596692f833ae5ab3d6ea",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1374,6 +1379,7 @@
           "https://learn.chatgpt.com/docs/feature-maturity",
           "https://learn.chatgpt.com/docs/features",
           "https://learn.chatgpt.com/docs/features/codex-micro",
+          "https://learn.chatgpt.com/docs/features/composer-predictions",
           "https://learn.chatgpt.com/docs/features/voice",
           "https://learn.chatgpt.com/docs/get-started-with-work",
           "https://learn.chatgpt.com/docs/github-action",
@@ -1648,7 +1654,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-14T21:24:02+00:00",
+    "last_successful_full_sync_at": "2026-10-15T03:39:45+00:00",
     "status": "complete"
   }
 }
