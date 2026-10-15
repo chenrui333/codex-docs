@@ -148,7 +148,7 @@
         "codex-cli 0.162.1"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "45a34f93ee534e0aaed3429b2e851b4f62eff76689ecb47dbc70e7cec7a6adc3",
+      "sha256": "046d2c1e3bf619f8e0f0a452bd9b05f7ab0a68f357dfcc7770109f98dc7db2e7",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -7585,11 +7585,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "62ef5ee914169d3d9decdff456cbe010b89f3c39dc280c1330e226898c02ef07",
+      "sha256": "d45df88d6bd8bdd0734a6a73678097638767e9d6a330a88ce5ac98de6c003ec1",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"c588df8b1c4d478dc8f1a808bec6e311\"",
+      "source_etag": "W/\"af9b66a44ad9dcb91dc182991a576906\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-14T21:20:05Z",
+      "source_last_modified": "2026-10-15T09:54:11Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -7959,7 +7959,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "a1926fa6d089b60ba77619f17557811ebeaf447b84ecb87302588965f1efec36",
+      "sha256": "9415e32d0a5bc2e6d84b51e5164a5b55e02612ee0440d323cbaa9a90e39bd2a1",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8776,7 +8776,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "17e55eebdd372577a5a215ae247ec13f68e9afcca9a539ab762371224ad7a3ce",
+      "sha256": "9f5380d4c0375f69338c6ba14793cbdfa82961cd8cbcbc6931c54d4b9b34ca4f",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10154,7 +10154,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "53f232a7b96b0d3b286c8bf89b4fb6d2a780a0116001a7af7dc07f39f7f6e073",
+      "sha256": "b58b6716f5ef352dfad3264d75f6be17b8ad31fabd8822ff27825de775d39926",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",

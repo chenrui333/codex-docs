@@ -596,6 +596,12 @@ review for browser actions, or set `auto_review = "deny"` on an origin policy
 to restrict it for that origin. This controls approval handling; it doesn't
 disable model safety monitoring.
 
+To enable [Site tools](https://learn.chatgpt.com/docs/webmcp) for an eligible Enterprise workspace,
+set `browser_use.allow_webmcp = true`. This managed opt-in applies to the
+desktop app's built-in browser. Setting it to `false` or omitting it leaves
+normal feature availability checks in place; `false` does not enforce a block.
+User preferences and site permissions still apply.
+
 For native apps, set a default access policy and identify permitted apps. For
 example, this macOS policy allows Calculator and prevents saved approvals:
 

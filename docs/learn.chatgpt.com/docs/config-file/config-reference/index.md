@@ -2343,6 +2343,12 @@ from either one wins.
       description: "Managed requirements for agent-driven Browser Use.",
     },
     {
+      key: "browser_use.allow_webmcp",
+      type: "boolean",
+      description:
+        "Set to `true` to opt the desktop app's built-in browser into site tools (WebMCP). Setting it to `false` or omitting it leaves normal feature availability checks in place; `false` does not enforce a block. User preferences and site permissions still apply.",
+    },
+    {
       key: "browser_use.allow_history_access",
       type: "boolean",
       description:

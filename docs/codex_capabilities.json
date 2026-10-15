@@ -56464,6 +56464,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.162.1"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.162.1"
+      ],
+      "config_key": "browser_use.allow_webmcp",
+      "id": "config_key:browser_use.allow_webmcp",
+      "lifecycle": {
+        "first_seen_version": "0.162.1",
+        "last_seen_version": "0.162.1",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "browser_use.allow_webmcp",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.153.0",
         "0.153.2",
         "0.153.3",
@@ -99839,11 +99867,11 @@
     "codex-cli 0.162.1"
   ],
   "counts": {
-    "active": 1039,
+    "active": 1040,
     "by_category": {
       "cli_command": 95,
       "cli_option": 358,
-      "config_key": 453,
+      "config_key": 454,
       "feature_flag": 167,
       "linked_tool_guide": 2,
       "system_prompt_snapshot": 1,
@@ -99857,7 +99885,7 @@
       "under development": 66
     },
     "inactive": 43,
-    "total": 1082
+    "total": 1083
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",

@@ -754,6 +754,17 @@ API-key access follows API model availability.
         title: "Local features",
         features: [
           {
+            name: "Composer predictions (beta)",
+            href: "/codex/features/composer-predictions",
+            availability: {
+              plus: "unavailable",
+              pro: "limited",
+              business: "unavailable",
+              enterprise: "unavailable",
+              api: "unavailable",
+            },
+          },
+          {
             name: "Local code review with `/review`",
             shortName: "Local code review",
             href: "/codex/prompting#do-a-local-code-review",

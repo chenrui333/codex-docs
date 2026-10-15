@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_changelog'
 source_url: 'https://learn.chatgpt.com/docs/changelog'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-10-14T21:20:05Z'
-source_etag: 'W/"c588df8b1c4d478dc8f1a808bec6e311"'
+source_last_modified: '2026-10-15T09:54:11Z'
+source_etag: 'W/"af9b66a44ad9dcb91dc182991a576906"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -13,263 +13,49 @@ codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.
 
 Source: https://learn.chatgpt.com/docs/changelog
 
-```
-$ npm install -g @openai/codex@0.162.0
-```
+### New features
 
-  View details
+- Added rate-limit reset banking for Plus and Pro users, including one free
+  reset at launch and
+  [referral invitations](/codex/pricing#invite-friends-and-coworkers) for
+  earning more during the current promotion. Eligible Business members can
+  invite coworkers to earn shared workspace credits through a separate
+  referral program.
+- Added [Developer mode](/codex/browser?surface=app#app-developer-mode) for Browser use in
+  Chrome and the Codex in-app browser. It gives Codex controlled Chrome
+  DevTools Protocol (CDP) access for performance profiling and deeper debugging
+  of network traffic, console output, runtime errors, and page state.
+- Added the `/init` command to the app composer for creating project
+  instructions with the same initialization workflow as the Codex CLI.
+- Added customizable macOS Dock icons with light and dark Codex variants.
+- Added Computer Use for Enterprise users outside the European Economic Area,
+  the United Kingdom, and Switzerland.
+- Added support for configuring per-app access controls for Computer Use on
+  Windows.
+- Added an **Unread chats** section to the command menu, with the most recently
+  updated unread chat selected by default.
 
-## New Features
+### Performance improvements and bug fixes
 
-- Add tools for creating and listing managed Git worktrees from trusted local projects when the worktrees feature is enabled. ([#50148](https://github.com/openai/codex/pull/50148))
-- Pin tasks in the agent Command Center with `p` and keep them in a shared Pinned group when supported by the server. ([#51500](https://github.com/openai/codex/pull/51500))
-- Navigate and copy transcript blocks with `/copy`, use `Ctrl+Insert` to copy selections, and tune mouse-wheel scrolling with `tui.mouse_scroll_speed`. ([#50434](https://github.com/openai/codex/pull/50434), [#50215](https://github.com/openai/codex/pull/50215), [#50209](https://github.com/openai/codex/pull/50209))
-- Make URLs clickable in approval headers, questions, MCP prompts, warnings, banners, and verification prompts, including when links wrap across lines. ([#51439](https://github.com/openai/codex/pull/51439), [#51449](https://github.com/openai/codex/pull/51449), [#51450](https://github.com/openai/codex/pull/51450), [#51451](https://github.com/openai/codex/pull/51451), [#51452](https://github.com/openai/codex/pull/51452), [#51458](https://github.com/openai/codex/pull/51458))
-- Configure live web access and remote compaction capabilities for custom Responses-compatible model providers. ([#50459](https://github.com/openai/codex/pull/50459))
-- Add JavaScript helpers for streaming promise results as they settle, plus opt-in ranked tool search in Code Mode. ([#51126](https://github.com/openai/codex/pull/51126), [#51209](https://github.com/openai/codex/pull/51209))
-
-## Bug Fixes
-
-- Respect server model and reasoning-summary defaults for new TUI threads while retaining explicit launch overrides. ([#50013](https://github.com/openai/codex/pull/50013), [#50811](https://github.com/openai/codex/pull/50811), [#50913](https://github.com/openai/codex/pull/50913))
-- Preserve existing CRLF line endings in `apply_patch` updates without requiring an opt-in. ([#51203](https://github.com/openai/codex/pull/51203))
-- Fix Linux sandbox startup with multiple denied files, reject writable sandbox-construction executables, and keep ripgrep configuration from weakening deny-glob masks. ([#50059](https://github.com/openai/codex/pull/50059), [#51211](https://github.com/openai/codex/pull/51211), [#51407](https://github.com/openai/codex/pull/51407), [#51527](https://github.com/openai/codex/pull/51527))
-- Restore ordinary drive-letter file access on Windows 10 and match Windows sandbox temp permissions to the child process environment. ([#51511](https://github.com/openai/codex/pull/51511), [#51512](https://github.com/openai/codex/pull/51512))
-- Honor server `Retry-After` advice for retryable Responses and WebSocket failures. ([#50418](https://github.com/openai/codex/pull/50418), [#51440](https://github.com/openai/codex/pull/51440))
-- Fix archive checksum verification when installing through Windows PowerShell with PowerShell 7 module paths present. ([#51257](https://github.com/openai/codex/pull/51257))
-
-## Chores
-
-- Publish a signed PowerShell installer with Windows releases. ([#51158](https://github.com/openai/codex/pull/51158))
-- Keep older stable releases and prereleases from replacing newer stable download targets or installer aliases. ([#51186](https://github.com/openai/codex/pull/51186), [#51425](https://github.com/openai/codex/pull/51425))
-
-## Changelog
-
-Full Changelog: [rust-v0.161.0...rust-v0.162.0](https://github.com/openai/codex/compare/rust-v0.161.0...rust-v0.162.0)
-
-- [#50013](https://github.com/openai/codex/pull/50013) Honor server model defaults when starting fresh TUI threads [@etraut-openai](https://github.com/etraut-openai)
-- [#50018](https://github.com/openai/codex/pull/50018) Use descriptor-safe helpers for executable test fixtures [@jif-oai](https://github.com/jif-oai)
-- [#50019](https://github.com/openai/codex/pull/50019) Protect the guardian decisions API key from environment forwarding [@swastik-oai](https://github.com/swastik-oai)
-- [#50026](https://github.com/openai/codex/pull/50026) Preserve user restrictions in Guardian handoff context [@jif-oai](https://github.com/jif-oai)
-- [#50035](https://github.com/openai/codex/pull/50035) Follow MCP tool pagination in legacy protocol mode [@jif-oai](https://github.com/jif-oai)
-- [#50039](https://github.com/openai/codex/pull/50039) Keep transcript Find results readable after closing the query [@fcoury-oai](https://github.com/fcoury-oai)
-- [#50045](https://github.com/openai/codex/pull/50045) Keep transcript Find expansion scoped to the current match [@fcoury-oai](https://github.com/fcoury-oai)
-- [#50046](https://github.com/openai/codex/pull/50046) Stabilize Windows voice build cache keys across tool reinstalls [@anp-oai](https://github.com/anp-oai)
-- [#50050](https://github.com/openai/codex/pull/50050) Keep plugin and skill snapshots scoped to each step [@sayan-oai](https://github.com/sayan-oai)
-- [#50052](https://github.com/openai/codex/pull/50052) Preserve question context in recovered TUI answer drafts [@imac-oai](https://github.com/imac-oai)
-- [#50054](https://github.com/openai/codex/pull/50054) Check token estimate filtering directly on the tracing subscriber [@tamird](https://github.com/tamird)
-- [#50058](https://github.com/openai/codex/pull/50058) Upgrade Windows bindings to `windows-sys` 0.61.2 [@tamird](https://github.com/tamird)
-- [#50059](https://github.com/openai/codex/pull/50059) Fix Linux sandbox startup with multiple denied files [@yuzhu-oai](https://github.com/yuzhu-oai)
-- [#50066](https://github.com/openai/codex/pull/50066) Add a bounded Decisions transport for Guardian comparison classification [@swastik-oai](https://github.com/swastik-oai)
-- [#50082](https://github.com/openai/codex/pull/50082) Enable dynamic tool inheritance for fresh V2 subagents [@ke-oai](https://github.com/ke-oai)
-- [#50083](https://github.com/openai/codex/pull/50083) Add paginated reverse lookup for thread attachments [@joeytrasatti-openai](https://github.com/joeytrasatti-openai)
-- [#50087](https://github.com/openai/codex/pull/50087) Preserve queued agent mail across session eviction [@jif-oai](https://github.com/jif-oai)
-- [#50093](https://github.com/openai/codex/pull/50093) Prevent shared instruction providers from delegating to themselves [@bryanashley](https://github.com/bryanashley)
-- [#50094](https://github.com/openai/codex/pull/50094) Add attachment owner lookup to the app-server [@joeytrasatti-openai](https://github.com/joeytrasatti-openai)
-- [#50099](https://github.com/openai/codex/pull/50099) Add opt-in Decisions comparison for Guardian V2 [@swastik-oai](https://github.com/swastik-oai)
-- [#50105](https://github.com/openai/codex/pull/50105) Consolidate chat composer footer logic in `footer_state` [@imac-oai](https://github.com/imac-oai)
-- [#50109](https://github.com/openai/codex/pull/50109) Keep fullscreen prompts bounded and scrollable [@imac-oai](https://github.com/imac-oai)
-- [#50112](https://github.com/openai/codex/pull/50112) Centralize TUI loading glyphs and frame scheduling [@imac-oai](https://github.com/imac-oai)
-- [#50113](https://github.com/openai/codex/pull/50113) Add a native gRPC client for cloud thread resume and attach [@bc-openai](https://github.com/bc-openai)
-- [#50128](https://github.com/openai/codex/pull/50128) Expose the model selected for a running turn's next step [@sayan-oai](https://github.com/sayan-oai)
-- [#50129](https://github.com/openai/codex/pull/50129) Preserve Windows environment variables for remote MCP servers [@aidanv-oai](https://github.com/aidanv-oai)
-- [#50131](https://github.com/openai/codex/pull/50131) Add opt-in JSON diagnostics for TCP tunnels [@richardopenai](https://github.com/richardopenai)
-- [#50140](https://github.com/openai/codex/pull/50140) Use the server permission catalog for TUI permission shortcuts [@etraut-openai](https://github.com/etraut-openai)
-- [#50148](https://github.com/openai/codex/pull/50148) Add managed worktree tools to the TUI [@bc-openai](https://github.com/bc-openai)
-- [#50162](https://github.com/openai/codex/pull/50162) Bound in-flight file opens in exec-server [@anp-oai](https://github.com/anp-oai)
-- [#50166](https://github.com/openai/codex/pull/50166) Upgrade `age` to 0.12.1 and remove the obsolete advisory exception [@michaelm-openai](https://github.com/michaelm-openai)
-- [#50177](https://github.com/openai/codex/pull/50177) Enable writable file streaming in exec-server [@anp-oai](https://github.com/anp-oai)
-- [#50183](https://github.com/openai/codex/pull/50183) Add `dots` to issue labeler guidance [@etraut-openai](https://github.com/etraut-openai)
-- [#50189](https://github.com/openai/codex/pull/50189) Replace the Figma OAuth exception with Mercado Pago [@mzeng-openai](https://github.com/mzeng-openai)
-- [#50199](https://github.com/openai/codex/pull/50199) Restore the account email in `/status` after account updates [@etraut-openai](https://github.com/etraut-openai)
-- [#50200](https://github.com/openai/codex/pull/50200) Report the configured TUI mode in `codex doctor` [@etraut-openai](https://github.com/etraut-openai)
-- [#50207](https://github.com/openai/codex/pull/50207) Release stable Markdown tables into scrollback during streaming [@etraut-openai](https://github.com/etraut-openai)
-- [#50209](https://github.com/openai/codex/pull/50209) Make transcript mouse scroll speed configurable [@etraut-openai](https://github.com/etraut-openai)
-- [#50215](https://github.com/openai/codex/pull/50215) Support Ctrl+Insert for copying TUI selections [@etraut-openai](https://github.com/etraut-openai)
-- [#50216](https://github.com/openai/codex/pull/50216) Use the shared text editor for command-center task renaming [@bc-openai](https://github.com/bc-openai)
-- [#50219](https://github.com/openai/codex/pull/50219) Bound tmux option probes to one second [@etraut-openai](https://github.com/etraut-openai)
-- [#50273](https://github.com/openai/codex/pull/50273) Record Guardian V2 Decisions agreement and latency metrics [@swastik-oai](https://github.com/swastik-oai)
-- [#50339](https://github.com/openai/codex/pull/50339) Add end-to-end coverage for MCP sandbox state enforcement [@bolinfest](https://github.com/bolinfest)
-- [#50345](https://github.com/openai/codex/pull/50345) Keep the subagent picker consistent with thread archive state [@etraut-openai](https://github.com/etraut-openai)
-- [#50348](https://github.com/openai/codex/pull/50348) Back off automatic remote control reconnects with jitter [@cooper-oai](https://github.com/cooper-oai)
-- [#50354](https://github.com/openai/codex/pull/50354) Skip unrelated subtrees during config alias normalization [@btraut-openai](https://github.com/btraut-openai)
-- [#50359](https://github.com/openai/codex/pull/50359) Render ANSI styles in TUI hook system messages [@etraut-openai](https://github.com/etraut-openai)
-- [#50360](https://github.com/openai/codex/pull/50360) Remove initial messages from session configuration events [@owenlin0](https://github.com/owenlin0)
-- [#50375](https://github.com/openai/codex/pull/50375) Use printable ASCII terminal titles under GNU Screen [@imac-oai](https://github.com/imac-oai)
-- [#50380](https://github.com/openai/codex/pull/50380) Fix thread unloading after disconnect during MCP startup [@yuzhu-oai](https://github.com/yuzhu-oai)
-- [#50384](https://github.com/openai/codex/pull/50384) Allow opting into 16 KiB ARM64 code pages for macOS signing [@chess-oai](https://github.com/chess-oai)
-- [#50389](https://github.com/openai/codex/pull/50389) Honor configured keybindings before transcript navigation [@etraut-openai](https://github.com/etraut-openai)
-- [#50396](https://github.com/openai/codex/pull/50396) Honor pager bindings for transcript page keys [@bc-openai](https://github.com/bc-openai)
-- [#50402](https://github.com/openai/codex/pull/50402) Consolidate command execution output into `aggregated_output` [@owenlin0](https://github.com/owenlin0)
-- [#50416](https://github.com/openai/codex/pull/50416) Clarify Git worktree choices for new and forked conversations [@bc-openai](https://github.com/bc-openai)
-- [#50418](https://github.com/openai/codex/pull/50418) Honor Retry-After headers in failed Responses events [@anp-oai](https://github.com/anp-oai)
-- [#50427](https://github.com/openai/codex/pull/50427) Cap persisted command output in paginated history at 64 KiB [@owenlin0](https://github.com/owenlin0)
-- [#50431](https://github.com/openai/codex/pull/50431) Preserve terminal hyperlinks in agents overview previews [@bc-openai](https://github.com/bc-openai)
-- [#50433](https://github.com/openai/codex/pull/50433) Allow API-key accounts to use Daybreak in the TUI [@etraut-openai](https://github.com/etraut-openai)
-- [#50434](https://github.com/openai/codex/pull/50434) Add keyboard copy selection to the owned transcript [@bc-openai](https://github.com/bc-openai)
-- [#50435](https://github.com/openai/codex/pull/50435) Persist additional tool definitions in rollout history [@pakrym-oai](https://github.com/pakrym-oai)
-- [#50437](https://github.com/openai/codex/pull/50437) Add a CLI command to uninstall the legacy Windows sandbox [@chess-oai](https://github.com/chess-oai)
-- [#50441](https://github.com/openai/codex/pull/50441) Support ordered response items in world-state context updates [@pakrym-oai](https://github.com/pakrym-oai)
-- [#50442](https://github.com/openai/codex/pull/50442) Preserve native USD amounts in thread usage responses [@asohrabi-oai](https://github.com/asohrabi-oai)
-- [#50443](https://github.com/openai/codex/pull/50443) Stabilize paused-time code-mode service tests [@seanh-oai](https://github.com/seanh-oai)
-- [#50445](https://github.com/openai/codex/pull/50445) Assert that only direct tool calls emit timing events [@seanh-oai](https://github.com/seanh-oai)
-- [#50446](https://github.com/openai/codex/pull/50446) Bundle rollout attachments into a gzip tar archive [@dkovalenko-oai](https://github.com/dkovalenko-oai)
-- [#50447](https://github.com/openai/codex/pull/50447) Remove the provider capability gate for tool namespaces [@pakrym-oai](https://github.com/pakrym-oai)
-- [#50454](https://github.com/openai/codex/pull/50454) Measure rollout persistence size reductions [@owenlin0](https://github.com/owenlin0)
-- [#50458](https://github.com/openai/codex/pull/50458) Truncate oversized MCP results in paginated thread history [@owenlin0](https://github.com/owenlin0)
-- [#50459](https://github.com/openai/codex/pull/50459) Add capability overrides for custom model providers [@celia-oai](https://github.com/celia-oai)
-- [#50462](https://github.com/openai/codex/pull/50462) Populate thread previews from delegated task inputs [@bc-openai](https://github.com/bc-openai)
-- [#50464](https://github.com/openai/codex/pull/50464) Add the `incremental_tools` feature flag [@pakrym-oai](https://github.com/pakrym-oai)
-- [#50465](https://github.com/openai/codex/pull/50465) Retry registry authentication outages and jitter executor reconnects [@apanasenko-oai](https://github.com/apanasenko-oai)
-- [#50467](https://github.com/openai/codex/pull/50467) Copy transcript selections as literal text while preserving rich HTML [@fcoury-oai](https://github.com/fcoury-oai)
-- [#50470](https://github.com/openai/codex/pull/50470) Account for JSON overhead when truncating MCP tool results [@owenlin0](https://github.com/owenlin0)
-- [#50472](https://github.com/openai/codex/pull/50472) Enable Ultrafast service tiers for Amazon Bedrock Astra models [@celia-oai](https://github.com/celia-oai)
-- [#50477](https://github.com/openai/codex/pull/50477) Use the app-server default output cap for TUI workspace commands [@etraut-openai](https://github.com/etraut-openai)
-- [#50480](https://github.com/openai/codex/pull/50480) Skip managed config loading for registered Windows sandbox refreshes [@zm-oai](https://github.com/zm-oai)
-- [#50499](https://github.com/openai/codex/pull/50499) Include installer stderr in daemon update failures [@etraut-openai](https://github.com/etraut-openai)
-- [#50503](https://github.com/openai/codex/pull/50503) Use Enter to accept transcript Find results and Escape to cancel [@fcoury-oai](https://github.com/fcoury-oai)
-- [#50504](https://github.com/openai/codex/pull/50504) Center TUI confirmations over their retained backdrop [@bc-openai](https://github.com/bc-openai)
-- [#50505](https://github.com/openai/codex/pull/50505) Keep Command Center selection adjacent after task removal [@bc-openai](https://github.com/bc-openai)
-- [#50507](https://github.com/openai/codex/pull/50507) Record Windows sandbox service stop diagnostics [@zm-oai](https://github.com/zm-oai)
-- [#50510](https://github.com/openai/codex/pull/50510) Require GovCloud guidance acknowledgment after Bedrock setup [@jackz100](https://github.com/jackz100)
-- [#50516](https://github.com/openai/codex/pull/50516) Add scenario coverage for remote `/compact` context preservation [@pakrym-oai](https://github.com/pakrym-oai)
-- [#50525](https://github.com/openai/codex/pull/50525) Reject unknown TUI keys in strict config validation [@etraut-openai](https://github.com/etraut-openai)
-- [#50531](https://github.com/openai/codex/pull/50531) Persist realtime transcript tails before closure without inference [@guinness-oai](https://github.com/guinness-oai)
-- [#50536](https://github.com/openai/codex/pull/50536) Keep shared MCP types stable in Code Mode exec descriptions [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#50540](https://github.com/openai/codex/pull/50540) Send incremental tool catalog updates in Responses Lite [@pakrym-oai](https://github.com/pakrym-oai)
-- [#50546](https://github.com/openai/codex/pull/50546) Keep MCP resource helpers available in code mode [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#50555](https://github.com/openai/codex/pull/50555) Skip daemon auto-start for Windows-mounted WSL homes [@etraut-openai](https://github.com/etraut-openai)
-- [#50558](https://github.com/openai/codex/pull/50558) Avoid reading the current directory when resolving absolute paths [@etraut-openai](https://github.com/etraut-openai)
-- [#50559](https://github.com/openai/codex/pull/50559) Distinguish daemon release identity from executable contents [@etraut-openai](https://github.com/etraut-openai)
-- [#50562](https://github.com/openai/codex/pull/50562) Keep Code Mode tool discovery guidance stable across catalog changes [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#50564](https://github.com/openai/codex/pull/50564) Allow transcript selection and copying while bottom modals are open [@etraut-openai](https://github.com/etraut-openai)
-- [#50687](https://github.com/openai/codex/pull/50687) Keep third-party tools deferred in strict Code Mode Only [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#50695](https://github.com/openai/codex/pull/50695) Preserve local Markdown link labels in the TUI [@bc-openai](https://github.com/bc-openai)
-- [#50700](https://github.com/openai/codex/pull/50700) Let the transport create the Windows remote-control socket directory [@etraut-openai](https://github.com/etraut-openai)
-- [#50720](https://github.com/openai/codex/pull/50720) Decode Windows Terminal's mapped Shift+Enter sequence [@bc-openai](https://github.com/bc-openai)
-- [#50727](https://github.com/openai/codex/pull/50727) Show model and reasoning effort near the top of task details [@etraut-openai](https://github.com/etraut-openai)
-- [#50741](https://github.com/openai/codex/pull/50741) Keep environment-backed tools exposed across readiness changes [@won-openai](https://github.com/won-openai)
-- [#50756](https://github.com/openai/codex/pull/50756) Show unavailable slash commands when searched in side conversations [@bc-openai](https://github.com/bc-openai)
-- [#50764](https://github.com/openai/codex/pull/50764) Allow `/archive` while a turn is running [@bc-openai](https://github.com/bc-openai)
-- [#50781](https://github.com/openai/codex/pull/50781) Restrict TUI MCP startup notifications to owned threads [@etraut-openai](https://github.com/etraut-openai)
-- [#50782](https://github.com/openai/codex/pull/50782) Retry Windows daemon release publication on transient file locks [@etraut-openai](https://github.com/etraut-openai)
-- [#50786](https://github.com/openai/codex/pull/50786) Remember Command Center grouping across launches [@bc-openai](https://github.com/bc-openai)
-- [#50788](https://github.com/openai/codex/pull/50788) Open slash commands from empty drafts in Vim Normal mode [@bc-openai](https://github.com/bc-openai)
-- [#50802](https://github.com/openai/codex/pull/50802) Fall back to mklink when Windows daemon junction updates are denied [@etraut-openai](https://github.com/etraut-openai)
-- [#50803](https://github.com/openai/codex/pull/50803) Use the managed daemon for eligible remote-control launches [@etraut-openai](https://github.com/etraut-openai)
-- [#50804](https://github.com/openai/codex/pull/50804) Preserve review lifecycle ordering on failure [@etraut-openai](https://github.com/etraut-openai)
-- [#50808](https://github.com/openai/codex/pull/50808) Prune TUI snapshots and consolidate behavior tests [@etraut-openai](https://github.com/etraut-openai)
-- [#50811](https://github.com/openai/codex/pull/50811) Honor server reasoning summary defaults in new TUI threads [@etraut-openai](https://github.com/etraut-openai)
-- [#50913](https://github.com/openai/codex/pull/50913) Use server model defaults for connected TUI fresh starts [@etraut-openai](https://github.com/etraut-openai)
-- [#50940](https://github.com/openai/codex/pull/50940) Recover malformed Windows deny-read ACL state safely [@zm-oai](https://github.com/zm-oai)
-- [#50962](https://github.com/openai/codex/pull/50962) Gate stable environment tool exposure behind a feature flag [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#50964](https://github.com/openai/codex/pull/50964) Track inference tool changes in turn analytics [@aibrahim-oai](https://github.com/aibrahim-oai)
-- [#50977](https://github.com/openai/codex/pull/50977) Isolate tracing in the strict third-party tool deferral test [@alishobeiri-oai](https://github.com/alishobeiri-oai)
-- [#51061](https://github.com/openai/codex/pull/51061) Gate Guardian continuation tests on classifier request capture [@jif-oai](https://github.com/jif-oai)
-- [#51063](https://github.com/openai/codex/pull/51063) Honor prior cancellation before starting Codex delegates [@jif-oai](https://github.com/jif-oai)
-- [#51064](https://github.com/openai/codex/pull/51064) Ignore stale refresh responses in agents overview tests [@jif-oai](https://github.com/jif-oai)
-- [#51065](https://github.com/openai/codex/pull/51065) Scope Guardian V2 response timing to snapshot sampling [@swastik-oai](https://github.com/swastik-oai)
-- [#51067](https://github.com/openai/codex/pull/51067) Use issuing-step context for Guardian MCP elicitation reviews [@jif-oai](https://github.com/jif-oai)
-- [#51070](https://github.com/openai/codex/pull/51070) Preserve trusted-tool context in Guardian Decisions requests [@swastik-oai](https://github.com/swastik-oai)
-- [#51117](https://github.com/openai/codex/pull/51117) Install full context in compaction replacement history [@pakrym-oai](https://github.com/pakrym-oai)
-- [#51119](https://github.com/openai/codex/pull/51119) Clarify incremental tool namespace updates in Responses Lite [@akira-oai](https://github.com/akira-oai)
-- [#51126](https://github.com/openai/codex/pull/51126) Add promise settlement streaming helpers to code mode [@cconger](https://github.com/cconger)
-- [#51133](https://github.com/openai/codex/pull/51133) Allow Guardian Decisions to fall back to `OPENAI_API_KEY` [@swastik-oai](https://github.com/swastik-oai)
-- [#51137](https://github.com/openai/codex/pull/51137) Recover Guardian reviews from parent checkpoints [@felixxia-oai](https://github.com/felixxia-oai)
-- [#51139](https://github.com/openai/codex/pull/51139) Force fresh Guardian sessions for parent-checkpoint recovery [@felixxia-oai](https://github.com/felixxia-oai)
-- [#51140](https://github.com/openai/codex/pull/51140) Isolate Guardian checkpoint recovery flags per review attempt [@felixxia-oai](https://github.com/felixxia-oai)
-- [#51156](https://github.com/openai/codex/pull/51156) Send base instructions as Responses input messages [@pakrym-oai](https://github.com/pakrym-oai)
-- [#51157](https://github.com/openai/codex/pull/51157) Enforce required environment skills before model inference [@anp-oai](https://github.com/anp-oai)
-- [#51158](https://github.com/openai/codex/pull/51158) Sign the PowerShell installer in Windows releases [@chess-oai](https://github.com/chess-oai)
-- [#51184](https://github.com/openai/codex/pull/51184) Remove obsolete Guardian thread-context enables from tests [@felixxia-oai](https://github.com/felixxia-oai)
-- [#51185](https://github.com/openai/codex/pull/51185) Retry transient gRPC code-mode session admission failures [@cassirer-openai](https://github.com/cassirer-openai)
-- [#51186](https://github.com/openai/codex/pull/51186) Prevent stable release pointers from moving backward [@andrewgu-oai](https://github.com/andrewgu-oai)
-- [#51188](https://github.com/openai/codex/pull/51188) Record base instructions in incremental tool history [@pakrym-oai](https://github.com/pakrym-oai)
-- [#51191](https://github.com/openai/codex/pull/51191) Clean up Unix app-server control-socket startup lock files [@etraut-openai](https://github.com/etraut-openai)
-- [#51192](https://github.com/openai/codex/pull/51192) Wait for SIGCONT when resuming the TUI [@etraut-openai](https://github.com/etraut-openai)
-- [#51193](https://github.com/openai/codex/pull/51193) Test thread archiving before the first turn [@btraut-openai](https://github.com/btraut-openai)
-- [#51194](https://github.com/openai/codex/pull/51194) Add browser extension request headers to config requirements [@jn-openai](https://github.com/jn-openai)
-- [#51198](https://github.com/openai/codex/pull/51198) Allow concurrent release builds while serializing publication [@andrewgu-oai](https://github.com/andrewgu-oai)
-- [#51200](https://github.com/openai/codex/pull/51200) Upgrade Bazel to 9.2.0 and refresh the module lockfile [@anp-oai](https://github.com/anp-oai)
-- [#51202](https://github.com/openai/codex/pull/51202) Distinguish namespace removals in incremental tool updates [@akira-oai](https://github.com/akira-oai)
-- [#51203](https://github.com/openai/codex/pull/51203) Make apply\_patch preserve line endings unconditionally [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51206](https://github.com/openai/codex/pull/51206) Record initialization analytics for resumed subagents [@peilin-openai](https://github.com/peilin-openai)
-- [#51207](https://github.com/openai/codex/pull/51207) Gate CLI Daybreak controls and selection behind an opt-in feature [@julee-oai](https://github.com/julee-oai)
-- [#51209](https://github.com/openai/codex/pull/51209) Add ranked tool discovery to JavaScript code mode [@zamoshchin-openai](https://github.com/zamoshchin-openai)
-- [#51211](https://github.com/openai/codex/pull/51211) Reject sandbox-writable bubblewrap executables from PATH [@viyatb-oai](https://github.com/viyatb-oai)
-- [#51215](https://github.com/openai/codex/pull/51215) Measure raw MCP tool catalog sizes in telemetry [@owenlin0](https://github.com/owenlin0)
-- [#51217](https://github.com/openai/codex/pull/51217) Preserve review targets and scope misalignment continuation metadata [@yunhan-wei](https://github.com/yunhan-wei)
-- [#51220](https://github.com/openai/codex/pull/51220) Honor the OTLP metrics temporality preference [@daniel-oai](https://github.com/daniel-oai)
-- [#51221](https://github.com/openai/codex/pull/51221) Separate environment requests from runtime selections [@anp-oai](https://github.com/anp-oai)
-- [#51223](https://github.com/openai/codex/pull/51223) Remove legacy personality template metadata [@rhan-oai](https://github.com/rhan-oai)
-- [#51230](https://github.com/openai/codex/pull/51230) Make session lookup pagination stable and report listing failures [@etraut-openai](https://github.com/etraut-openai)
-- [#51235](https://github.com/openai/codex/pull/51235) Remove default model labels from TUI model pickers [@etraut-openai](https://github.com/etraut-openai)
-- [#51241](https://github.com/openai/codex/pull/51241) Add a partial answer message phase [@rb-oai](https://github.com/rb-oai)
-- [#51249](https://github.com/openai/codex/pull/51249) Handle partial answers consistently across agent workflows [@rb-oai](https://github.com/rb-oai)
-- [#51253](https://github.com/openai/codex/pull/51253) Enforce Fast and Ultra Fast policies independently [@dpatel-oai](https://github.com/dpatel-oai)
-- [#51256](https://github.com/openai/codex/pull/51256) Start the Windows sandbox service during registered Core setup [@zm-oai](https://github.com/zm-oai)
-- [#51257](https://github.com/openai/codex/pull/51257) Fix installer checksum verification under Windows PowerShell [@zm-oai](https://github.com/zm-oai)
-- [#51260](https://github.com/openai/codex/pull/51260) Handle partial answers in realtime routing and thread search [@rb-oai](https://github.com/rb-oai)
-- [#51329](https://github.com/openai/codex/pull/51329) Remove partial-history subagent forks [@jif-oai](https://github.com/jif-oai)
-- [#51330](https://github.com/openai/codex/pull/51330) Measure total Guardian approval decision duration [@jif-oai](https://github.com/jif-oai)
-- [#51331](https://github.com/openai/codex/pull/51331) Track sub-agent result delivery outcomes [@jif-oai](https://github.com/jif-oai)
-- [#51332](https://github.com/openai/codex/pull/51332) Record multi-agent wait duration by outcome [@jif-oai](https://github.com/jif-oai)
-- [#51333](https://github.com/openai/codex/pull/51333) Record the multi-agent version in turn analytics [@jif-oai](https://github.com/jif-oai)
-- [#51334](https://github.com/openai/codex/pull/51334) Count Guardian denial-limit interruptions in telemetry [@jif-oai](https://github.com/jif-oai)
-- [#51335](https://github.com/openai/codex/pull/51335) Update collaboration snapshots for full-history fork instructions [@jif-oai](https://github.com/jif-oai)
-- [#51347](https://github.com/openai/codex/pull/51347) Measure shell snapshot use and wait time per command [@jif-oai](https://github.com/jif-oai)
-- [#51350](https://github.com/openai/codex/pull/51350) Allow larger shell snapshots when replaying from a file [@jif-oai](https://github.com/jif-oai)
-- [#51355](https://github.com/openai/codex/pull/51355) Add bounded diagnostics for agent spawn failures [@jif-oai](https://github.com/jif-oai)
-- [#51378](https://github.com/openai/codex/pull/51378) Keep Guardian v2 WebSocket pools warm with concurrent replenishment [@jif-oai](https://github.com/jif-oai)
-- [#51391](https://github.com/openai/codex/pull/51391) Make URLs in asynchronous question titles clickable [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51396](https://github.com/openai/codex/pull/51396) Let late low-risk scores complete pending Guardian reviews [@jif-oai](https://github.com/jif-oai)
-- [#51400](https://github.com/openai/codex/pull/51400) Prevent later Guardian scores from releasing earlier pending reviews [@jif-oai](https://github.com/jif-oai)
-- [#51402](https://github.com/openai/codex/pull/51402) Preserve turn attribution across recovery and compaction [@eddie-openai](https://github.com/eddie-openai)
-- [#51407](https://github.com/openai/codex/pull/51407) Protect ripgrep lookup during Linux sandbox construction [@viyatb-oai](https://github.com/viyatb-oai)
-- [#51411](https://github.com/openai/codex/pull/51411) Suppress repeated image paste presses in legacy terminals [@etraut-openai](https://github.com/etraut-openai)
-- [#51415](https://github.com/openai/codex/pull/51415) Expose and persist turn lineage across the app server [@eddie-openai](https://github.com/eddie-openai)
-- [#51419](https://github.com/openai/codex/pull/51419) Preserve turn attribution when queued mail wakes durable sleep [@eddie-openai](https://github.com/eddie-openai)
-- [#51420](https://github.com/openai/codex/pull/51420) Finish idle thread unloads after slow shutdown [@jif-oai](https://github.com/jif-oai)
-- [#51421](https://github.com/openai/codex/pull/51421) Include root turn IDs in host-owned Apps tool calls [@eddie-openai](https://github.com/eddie-openai)
-- [#51422](https://github.com/openai/codex/pull/51422) Accept environment requests at thread and turn settings boundaries [@anp-oai](https://github.com/anp-oai)
-- [#51425](https://github.com/openai/codex/pull/51425) Skip stable installer alias publishing for prereleases [@zsol-openai](https://github.com/zsol-openai)
-- [#51426](https://github.com/openai/codex/pull/51426) Remove the Bazel JVM override for Windows ARM64 voice builds [@anp-oai](https://github.com/anp-oai)
-- [#51427](https://github.com/openai/codex/pull/51427) Prevent invalidated wakeups from starting a turn [@jif-oai](https://github.com/jif-oai)
-- [#51433](https://github.com/openai/codex/pull/51433) Show hook status messages as titles in the hooks browser [@abhinav-oai](https://github.com/abhinav-oai)
-- [#51439](https://github.com/openai/codex/pull/51439) Preserve clickable URLs in TUI approval headers [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51440](https://github.com/openai/codex/pull/51440) Honor Retry-After in WebSocket error events [@anp-oai](https://github.com/anp-oai)
-- [#51441](https://github.com/openai/codex/pull/51441) Fix core integration tests for updated turn APIs [@anp-oai](https://github.com/anp-oai)
-- [#51449](https://github.com/openai/codex/pull/51449) Make URLs clickable in TUI user input questions [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51450](https://github.com/openai/codex/pull/51450) Make URLs clickable in MCP elicitation prompts [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51451](https://github.com/openai/codex/pull/51451) Make URLs in the TUI warnings viewer clickable [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51452](https://github.com/openai/codex/pull/51452) Make banner URLs clickable across wrapped lines [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51457](https://github.com/openai/codex/pull/51457) Preserve status usage hyperlinks when the URL wraps [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51458](https://github.com/openai/codex/pull/51458) Make URLs clickable in user verification prompts [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51459](https://github.com/openai/codex/pull/51459) Preserve wrapped help links in Windows sandbox prompts [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51460](https://github.com/openai/codex/pull/51460) Retry realtime sideband attachment while an existing call activates [@bullman-oai](https://github.com/bullman-oai)
-- [#51463](https://github.com/openai/codex/pull/51463) Record resolved model and reasoning effort in sub-agent activity [@sdcoffey](https://github.com/sdcoffey)
-- [#51465](https://github.com/openai/codex/pull/51465) Add an optional JSON transcript format for Guardian [@felixxia-oai](https://github.com/felixxia-oai)
-- [#51466](https://github.com/openai/codex/pull/51466) Keep Guardian transcript records structured through budget recovery [@felixxia-oai](https://github.com/felixxia-oai)
-- [#51467](https://github.com/openai/codex/pull/51467) Keep submission logs useful without exposing payloads [@chess-oai](https://github.com/chess-oai)
-- [#51470](https://github.com/openai/codex/pull/51470) Raise the managed app-server file descriptor limit on Unix [@etraut-openai](https://github.com/etraut-openai)
-- [#51471](https://github.com/openai/codex/pull/51471) Preserve clickable URLs in pending input previews [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51472](https://github.com/openai/codex/pull/51472) Preserve clickable URLs in TUI selection rows [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51473](https://github.com/openai/codex/pull/51473) Preserve URL destinations in wrapped hook details [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51480](https://github.com/openai/codex/pull/51480) Preserve tool declaration mode across resumed context windows [@pakrym-oai](https://github.com/pakrym-oai)
-- [#51482](https://github.com/openai/codex/pull/51482) Use PathUri for skill identity and path matching [@anp-oai](https://github.com/anp-oai)
-- [#51483](https://github.com/openai/codex/pull/51483) Add correlated, credential-free rendezvous connection diagnostics [@alexi-openai](https://github.com/alexi-openai)
-- [#51491](https://github.com/openai/codex/pull/51491) Classify executor capability root ownership independently of parsing [@stevenlee-oai](https://github.com/stevenlee-oai)
-- [#51492](https://github.com/openai/codex/pull/51492) Remove obsolete fields from persisted turn context [@pakrym-oai](https://github.com/pakrym-oai)
-- [#51493](https://github.com/openai/codex/pull/51493) Bind capability roots to environment selections [@anp-oai](https://github.com/anp-oai)
-- [#51499](https://github.com/openai/codex/pull/51499) Load rollout history on a single blocking worker [@charliemarsh-oai](https://github.com/charliemarsh-oai)
-- [#51500](https://github.com/openai/codex/pull/51500) Add shared task pinning to the agent command center [@etraut-openai](https://github.com/etraut-openai)
-- [#51502](https://github.com/openai/codex/pull/51502) Bound relay connection attempts and handle pongs during blocked writes [@alexi-openai](https://github.com/alexi-openai)
-- [#51503](https://github.com/openai/codex/pull/51503) Expose selected environments to MCP contributors [@mtsui-oai](https://github.com/mtsui-oai)
-- [#51510](https://github.com/openai/codex/pull/51510) Preserve live TUI settings when configuration reloads fail [@imac-oai](https://github.com/imac-oai)
-- [#51511](https://github.com/openai/codex/pull/51511) Fix Windows 10 drive-letter opens for no-follow filesystem operations [@zm-oai](https://github.com/zm-oai)
-- [#51512](https://github.com/openai/codex/pull/51512) Align Windows sandbox temp permissions with the child environment [@zm-oai](https://github.com/zm-oai)
-- [#51515](https://github.com/openai/codex/pull/51515) Expose detailed agent tree shutdown failure reports [@keitht-openai](https://github.com/keitht-openai)
-- [#51517](https://github.com/openai/codex/pull/51517) Pass thread persistence intent to attachment uploads [@kchainani-oai](https://github.com/kchainani-oai)
-- [#51525](https://github.com/openai/codex/pull/51525) Preserve the CLI MXC preference in executor config reads [@zm-oai](https://github.com/zm-oai)
-- [#51527](https://github.com/openai/codex/pull/51527) Ignore ripgrep configuration when expanding sandbox deny globs [@viyatb-oai](https://github.com/viyatb-oai)
-
-[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.162.0)
+- Made Browser use up to 2x faster through CDP and DOM snapshot optimizations
+  that reduce browser round trips.
+- Made command, browser, integration, and source activity summaries easier to
+  understand, and improved how completed chats present files, automations, and
+  other durable output.
+- Improved plugin management by including workspace plugins, refreshing plugin
+  state more reliably after installation or removal, and letting you upload a
+  new version of an already-shared plugin without changing its access.
+- Improved usage-limit errors with inline plan and workspace guidance,
+  including reset timing when available.
+- Added `Cmd`+`Enter` and `Ctrl`+`Enter` as
+  shortcuts for submitting custom approval feedback.
+- Fixed Browser use download handling and improved Developer mode recovery and
+  diagnostics.
+- Fixed scheduled automations so they honor the selected approval mode, and
+  fixed manual project ordering, Browser tab dragging, MCP app sizing after
+  right-pane transitions, and clickable ChatGPT thread mentions.
+- Fixed issues affecting background agent tab restoration, commit and pull
+  request message generation, sidebar pull request status updates, Codex Mobile
+  QR pairing, remote-control MFA, remote SSH installation and connection,
+  updater prompts, and overlay positioning at non-default zoom levels.
+- Additional performance improvements and bug fixes.
