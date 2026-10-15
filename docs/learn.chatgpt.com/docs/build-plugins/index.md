@@ -140,6 +140,10 @@ Include [app name] in Document Summary, if it’s available to me. Read the docu
 
 Including an app does not grant new access. Your workspace’s app and action settings, connection permissions, and access in the source service still apply. Teammates who use the plugin also need the required app access and connection setup.
 
+### Connect a custom MCP server
+
+If an existing app doesn’t cover your workflow, [connect your tools with a custom MCP server](https://learn.chatgpt.com/docs/extend/mcp#build-an-mcp-plugin). Use Plugin Creator and Sites to build a plugin that connects to your system.
+
 ## Test your plugin
 
 Install the plugin if prompted, then start a new conversation. Select it with an **@ mention** and give it a familiar task. For Document Summary, provide a document you know well and ask for a summary.

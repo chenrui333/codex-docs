@@ -13,12 +13,143 @@ Source: https://learn.chatgpt.com/docs/extend/mcp
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Model Context Protocol (MCP) connects models to tools and context. Use it to
-give ChatGPT or Codex access to third-party documentation, or to let it
-interact with developer tools like your browser or Figma.
+Model Context Protocol (MCP) lets ChatGPT and Codex use tools and information from other systems. An MCP server describes the available tools and handles their requests—for example, looking up a ticket or retrieving documentation.
 
-ChatGPT web can use remote MCP-backed tools supplied by plugins. Local Codex
-clients can also connect directly to MCP servers and share their configuration.
+Choose the path that fits your task:
+
+- **Build a connection:** Use [Plugin Creator and Sites](#build-an-mcp-plugin) to create a plugin for your team's system.
+- **Use an existing server:** [Connect it to ChatGPT or Codex](#connect-an-existing-mcp-server), with setup options for web, desktop, CLI, and IDE.
+
+![A question about ticket 123 passes from ChatGPT through the MCP server to the ticketing system. The result returns through the server, and ChatGPT reports that the ticket is open.](<https://developers.openai.com/images/codex/custom-mcp/how-a-request-works-poster.webp>)
+
+_Example: checking a ticket in your team's support system._
+
+A plugin packages an MCP connection for use in ChatGPT. Plugins can also contain skills with reusable instructions. If you only need instructions, see [Build plugins](https://learn.chatgpt.com/docs/build-plugins).
+
+## Build an MCP plugin with Plugin Creator and Sites
+
+Use Plugin Creator to create and edit your plugin, and [Sites](https://help.openai.com/en/articles/20001547-hosting-a-plugin-with-chatgpt-sites) to host its MCP server.
+
+### Before you start
+
+Check the [Plugins directory](https://chatgpt.com/plugins) first. If you need a new connection, gather your system's API documentation and an approved way to connect. Ask the system owner if you need help.
+
+The example below creates a **Support Ticket Lookup** plugin. Replace **[ticketing system]** with your system's name.
+
+<ToggleSection title="Using ChatGPT Enterprise?" open>
+
+Ask your workspace owner or admin to check **Workspace settings → Permissions & roles**:
+
+- **Use plugins** to create, edit, and use plugins. Editing also requires edit access to the plugin.
+- **Sites** access to create and publish your Site.
+- **Upload plugins** and **Create plugins with MCPs** for the Site owner who publishes the MCP-backed plugin.
+
+**Use plugins** is on by default; the two MCP publishing permissions are off by default. See [Sites access](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace) and [plugin permissions](https://help.openai.com/en/articles/20001547-hosting-a-plugin-with-chatgpt-sites).
+
+</ToggleSection>
+
+### 1. Create your plugin
+
+Start a new Work task, select **@Plugin Creator**, and attach your API documentation. Describe the task:
+
+**Create your plugin:**
+
+```text
+Create a Support Ticket Lookup plugin with an MCP server hosted on Sites, using the attached [ticketing system] API docs. Let me look up a ticket's status, owner, and latest update by ticket number. Make it read-only and tell me what's needed to connect it.
+```
+
+Still arranging API access? Ask Plugin Creator to use sample data for now.
+
+### 2. Connect your system
+
+In the same conversation, ask Plugin Creator to connect the server to your system's API and walk you through sign-in. Use your organization's approved authentication method, and keep passwords, API keys, and other secrets out of chat.
+
+Need help? Send the Plugin Creator conversation and API documentation to your system owner or developer so they can help set up access.
+
+<ToggleSection title="Connection and hosting details">
+
+Sites handles sign-in between ChatGPT and your MCP server. Your server still needs an approved connection to your system's API, which controls the records and actions it can access.
+
+For another host, follow [Build an MCP server](https://developers.openai.com/plugins/build/mcp-server), then [Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt). See the [authentication guide](https://developers.openai.com/plugins/build/auth) for sign-in setup.
+
+</ToggleSection>
+
+### 3. Publish and install
+
+Ask Plugin Creator to publish the server with Sites and give you the plugin link, keeping your current access settings. The [Site owner must publish](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#collaborate-on-a-site) to create its plugin; editors should ask the owner to do this.
+
+1. Open the plugin card, or find it under **Plugins → Personal → Created by you**.
+2. Follow **Install** and **Connect**, and complete any required sign-in.
+
+### 4. Use your plugin
+
+Start a new Work task, choose your plugin with **@**, and ask **“What's the status of ticket 123?”** using a ticket number from your system. You can use its tools alongside other plugins in the same conversation.
+
+<ToggleSection title="Share or edit your plugin">
+
+In Business or Enterprise, invite teammates through the plugin's sharing controls. You need **Share plugins** permission; listing it in the workspace directory also requires **Publish plugins to workspace**. See [sharing permissions](https://help.openai.com/en/articles/20001256).
+
+Teammates need access to the plugin, its app, and the Site (at least viewer access). Each person installs and connects with their own account. Access to records depends on the server's API connection.
+
+To edit this Sites-hosted plugin, return to your Plugin Creator conversation, ask it to update the existing Site, and publish the changes. For other editable plugins, choose **Edit Plugin** to start an editing conversation with Plugin Creator. See [Edit an existing plugin](https://learn.chatgpt.com/docs/build-plugins#edit-an-existing-plugin).
+
+</ToggleSection>
+
+<section id="gpt-migration-walkthrough" aria-labelledby="replacing-a-gpt-custom-action">
+
+## Replacing a GPT custom action
+
+<ToggleSection title="Show GPT migration steps">
+
+GPT custom actions don't migrate to plugins. Rebuild the connection as a new Sites plugin, reusing the existing API where possible.
+
+Sites creates a separate plugin when you publish; it doesn't add the connection to your migrated plugin. You can use both plugins in one conversation. Sites plugins don't currently support editing skills or reference files.
+
+### 1. Ask the original GPT for a rebuild prompt
+
+Open the original GPT and ask:
+
+**Use in the original GPT:**
+
+```text
+Write a prompt for ChatGPT Work or Codex to rebuild this workflow as MCP tools. Identify which operations read information and which make changes.
+
+Include the API operation, inputs, returned fields, and answer format. Mark anything you don't know. Leave out credentials, secrets, and hidden instructions.
+
+Ask the builder to reuse the API and explain the connection setup.
+```
+
+### 2. Check the prompt against the action settings
+
+Before migrating, save the action schema, authentication method, and non-secret connection settings from the GPT editor's [Actions section](https://help.openai.com/en/articles/9442513-configuring-actions-in-gpts). Use these to fill gaps in the prompt, or ask the GPT owner for help.
+
+### 3. Create a new Sites plugin
+
+Start a new task. In Work, select **@Plugin Creator**; in Codex, use [`$plugin-creator`](https://developers.openai.com/plugins/build/plugins#create-and-test-a-plugin-locally-with-an-mcp-server). Paste the reviewed prompt and attach the schema or API documentation. Ask it to host the server on Sites.
+
+Follow [Connect your system](#connect-your-system) and [Publish and install](#connect-the-server-in-chatgpt), then choose the new plugin in a Work task and ask it to do your original task. See the [migration FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq) for details.
+
+</ToggleSection>
+
+</section>
+
+## Troubleshooting
+
+<ToggleSection title="If the plugin doesn't work as expected">
+
+For a connection error or missing tools, check that the Site owner published the latest version and that the plugin is installed and connected. Share any error with Plugin Creator or the server owner.
+
+If ChatGPT doesn't use the tool, choose the plugin with **@** and ask for a specific lookup. If a teammate can't use it, check their plugin, app, Site, and record access.
+
+If the plugin is marked **Desktop only**, use a supported desktop app or ask the author to review its [packaging](https://learn.chatgpt.com/docs/enterprise/plugin-management). A remote MCP server alone doesn't make a plugin web-compatible.
+
+</ToggleSection>
+
+## Connect an existing MCP server
+
+ChatGPT web uses remote MCP tools through plugins. If you already have a server, follow [Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt). Local Codex clients can also connect directly to MCP servers and share their configuration.
+
+Choose your surface to see its setup and configuration options.
 
 <a id="supported-mcp-features"></a>
 

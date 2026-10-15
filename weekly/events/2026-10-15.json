@@ -161,6 +161,107 @@
       "id": "495566b25961aaea2c122d6534ba49e1be33682f88f47612ca5b8098989c3880",
       "observed_at": "2026-10-15T16:30:15+00:00",
       "previous_id": "4cc5b164d595b609e4286140a5b4261963b423116151f53157ff7deb49c4fd0b"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/sites/creating-a-site/index.md",
+          "learn.chatgpt.com/docs/sites/data-and-connections/index.md",
+          "learn.chatgpt.com/docs/sites/managing-a-site/index.md",
+          "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "2a536c05beb8bc2b7732aea3d03d90725d2d9f494c3a3ee3102daf5983a8b873",
+            "before": "25df04a4fb4b1325497f5d7f8ba75f4ce1b7492032eb6e295de2138ee2e0cc07"
+          },
+          "learn.chatgpt.com/docs/build-plugins/index.md": {
+            "after": "0b295f91c92a80807dde2438b9c36402feb2ad969d9ca9dd04472f3f0f1052e4",
+            "before": "5b3af376fcb01dc937586c1ad8944bbf4983cf4645d16f94b4bd21bc344c7657"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "2164fa168c3e7bda9793e9c899f0e46f59fad9d0aef30e48294941b72a3691a9",
+            "before": "d45df88d6bd8bdd0734a6a73678097638767e9d6a330a88ce5ac98de6c003ec1"
+          },
+          "learn.chatgpt.com/docs/enterprise/sites/index.md": {
+            "after": "09c843ee32b7ee5ec79e07257b8d4295557b3663d55589c5606ab29779ad1953",
+            "before": "54586127cde16508f6d6e3f7bfe57e0d3671dde691894939466c10ddeec64d77"
+          },
+          "learn.chatgpt.com/docs/extend/mcp/index.md": {
+            "after": "de583970b535e15a758b3799d87982b3fab3e690d4476381d895570fb8a31413",
+            "before": "523f9513dcf050143a9e88dfc72298927c7e66a6000cfbef46f3d94fd5108198"
+          },
+          "learn.chatgpt.com/docs/features/index.md": {
+            "after": "197d0a60d218512d1dab7d5da71b9b6ee74203a188a56d4a74dc408a335961ea",
+            "before": "2ce8095bb42f96a7a266a8a1a7f8d9eb0e9c31311741ab0672045b723d61de50"
+          },
+          "learn.chatgpt.com/docs/migrate-custom-gpts/index.md": {
+            "after": "65178c57d5f224d0f513408089b8a760185913acc3b42b3f5bc44841f668ee2f",
+            "before": "2a08967efe947501d12724d71231f6062d021333187ae7bc995b124b3c8d3158"
+          },
+          "learn.chatgpt.com/docs/plugins/index.md": {
+            "after": "cbacf97fefe6460e159a1bfc0dd6b454bfa49c4d23dc7b096f54c7f03eb5767e",
+            "before": "69405b41bbbefb0d500366ee3c9c590f1b6486eb213385e184be6ac730db98d0"
+          },
+          "learn.chatgpt.com/docs/sites/creating-a-site/index.md": {
+            "after": "71af7dc1388c14bdd25fd2611b0e2c05e387e10095a3f36be09bd06a12f98bb8",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/sites/data-and-connections/index.md": {
+            "after": "7fd40477b61037fc29b48470685c3a61627b0b21c12d545ce2ad9b18aa9a1fe2",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/sites/index.md": {
+            "after": "93dbdb80b1760fa1a61f22d5a51995f94a111adf8dba6e56adafe52676641701",
+            "before": "3ea0f34b066f30046a4470cd9a69ddd9111b4f5c96b6d0161537541f6f2afea6"
+          },
+          "learn.chatgpt.com/docs/sites/managing-a-site/index.md": {
+            "after": "5a6d6aafdc443c07ddab27c27964c5386a942ab3abf1bcb4f7db19ae75789604",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md": {
+            "after": "4f77b44bd380ae672469bc6bf92759a737d6435a4059657f8d0ec4a161216c02",
+            "before": null
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.162.1",
+          "codex_cli_source_commit": "092d3acd6bec3e3a14bdc7e7a2810ab628ab759d",
+          "codex_cli_version": "0.162.1",
+          "codex_cli_version_raw": "codex-cli 0.162.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/build-plugins/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/enterprise/sites/index.md",
+          "learn.chatgpt.com/docs/extend/mcp/index.md",
+          "learn.chatgpt.com/docs/features/index.md",
+          "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
+          "learn.chatgpt.com/docs/plugins/index.md",
+          "learn.chatgpt.com/docs/sites/index.md"
+        ]
+      },
+      "id": "a77345a8aa96d6e96627eb6eaa30ec2c88e01aa7dc70e417b1634eb8d2e56f83",
+      "observed_at": "2026-10-15T21:03:30+00:00",
+      "previous_id": "495566b25961aaea2c122d6534ba49e1be33682f88f47612ca5b8098989c3880"
     }
   ],
   "schema_version": 1

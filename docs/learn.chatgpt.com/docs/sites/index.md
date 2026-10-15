@@ -13,592 +13,205 @@ Source: https://learn.chatgpt.com/docs/sites
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Sites is in public beta and is available with ChatGPT Plus, Pro, Business,
-  Enterprise and Edu plans. Plan-specific usage limits apply across all Sites
-  during the beta. ChatGPT shows the current limits and notifies you as you
-  approach one. Reaching a limit can prevent you from creating a Site, adding
-  storage, or keeping a high-usage Site public, but you can still edit and
-  manage existing Sites.
+Sites lets you build, host, and share a website by describing it in ChatGPT or Codex. You can get started without writing any code. You can also host web apps, games, or a compatible project you've already built, without a separate deployment setup.
 
-Sites lets ChatGPT create, host, refine, and share websites, web apps, and games.
-Use Sites when you want to turn a prompt or compatible existing project into a
-hosted experience without setting up a separate deployment workflow.
+If you're part of an organization, Sites can give your team a place to find answers, explore results from a spreadsheet, or walk through a project kickoff. Start with the documents and data you already have, and ask for changes as you go.
 
-<ContentModeSwitch group="codex-surface" id="app">
+<figure class="not-prose my-6" id="sites-intro-video">
 
-Open **Sites** in the ChatGPT desktop app. You can start a site from a prompt or
-from a compatible local project, then return to the Sites view to manage it.
+[Watch: Build and publish web apps directly in ChatGPT](https://www.youtube.com/watch?v=8zH_O74hZBw)
 
-</ContentModeSwitch>
+</figure>
 
-<ContentModeSwitch group="codex-surface" id="web">
+    {
+      "For current availability, pricing, plan information, and usage limits, visit our "
+    }
+    [{"Help Center"}](https://help.openai.com/en/articles/20001339)
+    {"."}
 
-Use Sites in ChatGPT on the web to create and manage hosted sites. Select
-**More** > **Sites**, or go directly to
-[Sites in ChatGPT](https://chatgpt.com/sites), to find Sites you've created.
+<a id="explore-site-types"></a>
 
-</ContentModeSwitch>
+## Explore ways to use sites
 
-<ContentModeSwitch group="codex-surface" id="cli">
+The examples below are just inspiration for what you can build with Sites. Explore a few common patterns, combine their features, or try an idea of your own.
 
-Sites doesn't have a standalone Codex CLI management view. Use ChatGPT web or
-the desktop app to create, save, deploy, and manage a Sites project. You can
-still use Codex CLI to edit and test a local project before publishing it.
+### Resource hub
 
-</ContentModeSwitch>
+A resource hub could group documents and links by topic, with search and short descriptions to help people find what they need. Each result might open the original document or page.
 
-<ContentModeSwitch group="codex-surface" id="ide">
+#### Example use cases
 
-Sites doesn't have a standalone IDE extension management view. Use ChatGPT web
-or the desktop app for Sites operations, and use the IDE extension to edit and
-test the local source project.
+- New employee onboarding portal
+- Team policy and procedure library
+- Product launch resource center
+- Customer training and support hub
 
-</ContentModeSwitch>
+![Illustrative employee resource hub with search, topic groups, document cards, and a welcome guide.](<https://developers.openai.com/images/codex/sites/hub.webp>)
 
-Every Sites deployment URL is a production deployment. If you want to review a
-  build before it becomes live, ask ChatGPT to save a version without deploying
-  it.
+#### How you might build it
 
-## Get started with Sites
+1. **What to share** Provide documents or links with titles, short descriptions, and categories. Say who will use the hub and which resources to feature.
 
-In ChatGPT, include the word "website" in your prompt or mention `@Sites` to
-start the Sites workflow explicitly.
+2. **What to ask for** Ask for resource cards, search across titles and descriptions, and category filters. Specify what each card shows, whether it opens a source link or a page in the hub, and how the list should be updated. Define what visitors see when a search has no matches.
 
-<WorkflowSteps variant="headings">
+3. **What to check** Search for a known item, combine a search with a filter, and try a search with no matches. Check that an intended visitor can open the linked resources and browse on a phone.
 
-1. Describe the Site
+### Dashboard
 
-   Describe the audience, purpose, required behavior, and information the Site
-   should use.
+A dashboard could combine summary numbers, charts, and tables in one view. Filters might let people explore a date range, team, or category and compare the results.
 
-2. Review the Site
+#### Example use cases
 
-   Review the generated content and behavior. Check that the Site uses the
-   intended information and handles data as expected.
+- Marketing campaign performance
+- Sales pipeline and forecast
+- Customer support volume and response times
+- Product adoption and engagement
 
-3. Refine the Site
+![Illustrative marketing dashboard with period filters, performance summaries, channel comparisons, and a campaign table.](<https://developers.openai.com/images/codex/sites/dashboard.webp>)
 
-   Describe the changes you want. Add relevant files or visual context when
-   they will help ChatGPT make the change.
+#### How you might build it
 
-4. Manage and share the Site
+1. **What to share** Share a spreadsheet or sample of your data. Explain what each row and column means, and define the metrics and units.
 
-   Return to **Sites** to reopen or refine the Site. When it's ready, choose who
-   can visit it and share the resulting link.
+2. **What to ask for** Ask for summary numbers, charts, and a detail table with date or category filters. Specify which views should update together and how new data should be added or refreshed. Define what to show when a filter has no results. Keep missing values distinct from zero, and show a rate as unavailable if it would require dividing by zero.
 
-</WorkflowSteps>
+3. **What to check** Compare totals and calculations with the source data before and after filtering. Try a filter with no results, a missing value, and a rate that would require dividing by zero. Confirm each follows the rules you specified.
 
-<ContentModeSwitch group="codex-surface" id="web">
+### Tracker
 
-In the preview, select **Edit**. Under **Describe website edits**, describe the
-changes you want. Use **Screenshot** or **Add files and more** when additional
-context would help.
+A tracker could keep tasks or items in a table, with owners, dates, and status labels. People might filter what they see and update the items they have permission to change.
 
-</ContentModeSwitch>
+#### Example use cases
 
-    {"For help creating and managing Sites, see "}
-    [{"Creating and managing ChatGPT Sites"}](https://help.openai.com/articles/20001339)
-    {" in the Help Center."}
+- Product launch tasks
+- Project milestones and dependencies
+- Editorial calendar and content reviews
+- Customer onboarding progress
 
-## Prompt Sites for common tasks
+![Illustrative launch tracker with a task table, owners, due dates, status, and blockers.](<https://developers.openai.com/images/codex/sites/tracker.webp>)
 
-For a new website, dashboard, or internal tool, include the audience, core
-experience, and required information:
+#### How you might build it
 
-**Prompt:**
+1. **What to share** Share sample items with fields such as name, owner, date, and status. Explain your status labels and any dependencies between items.
 
-```text
-Build a project request dashboard for my operations team. Let team members submit requests, see who owns each one, update the status, and filter the list. Require people to sign in with their workspace account, and keep the request data saved between visits.
-```
+2. **What to ask for** Ask for a table or board, filters by owner and status, and a way to add or edit items. Define when an item should be marked overdue or blocked. Say where updates should be saved and who should be able to view or change them.
 
-<ContentModeSwitch group="codex-surface" ids="app,cli,ide">
+3. **What to check** Add or edit an item, then reload to confirm the change was saved. Try each status and an overdue date. If access differs by person, use separate accounts to check who can view and edit items.
 
-For an existing project, ask Sites to prepare and publish the current app:
+### Request form
 
-**Prompt:**
+A request form could collect details through fields, choices, and attachments. You might ask it to check required answers, save submissions for reviewers, and show a confirmation explaining what happens next.
 
-```text
-Deploy this project with Sites. Check whether it is compatible, make any required changes, and give me the deployment URL.
-```
+#### Example use cases
 
-</ContentModeSwitch>
+- Creative briefs and design requests
+- Event and workshop support requests
+- IT and software access requests
+- Customer feedback submissions
 
-When a site needs durable application data or uploaded files, say so in the
-request:
+![Illustrative creative request form with project name, brief, deliverables, due date, attachments, and a submit action.](<https://developers.openai.com/images/codex/sites/intake.webp>)
 
-**Prompt:**
+#### How you might build it
 
-```text
-Add player scores and avatar uploads to this game. Keep the scores and uploaded avatars between visits.
-```
+1. **What to share** Share a form template or list the details to collect. Mark required fields and list allowed choices and attachments.
 
-Browse the [Sites showcase](https://developers.openai.com/showcase) for deployed internal apps and the full
-  prompts used to create them.
+2. **What to ask for** Ask for checks on required fields and accepted formats, with messages explaining what to fix. Specify which answers trigger follow-up questions. Say where submissions and attachments should be saved, who can review them, and what the confirmation should tell the person who submitted the form.
 
-## Review Site analytics
+3. **What to check** Submit a complete form and confirm the saved request is available to the intended reviewers. Leave a required field blank and try an invalid entry to check that the form explains what to fix. If you included uploads, confirm reviewers can open the saved attachment.
 
-Sites records traffic automatically, so you can see how people use a deployed
-Site without adding an analytics SDK. The analytics view shows total unique
-visitors and page views, plus both metrics over time. Change the date range or
-granularity to inspect a different period.
+### Calculator
 
-<ContentModeSwitch group="codex-surface" id="app">
+A calculator could turn editable inputs into an estimate using formulas you provide. People might change the numbers, compare scenarios, and see the units and assumptions beside each result.
 
-Open **Sites**, find the Site, then select **More actions** > **Analytics**.
+#### Example use cases
 
-</ContentModeSwitch>
+- Event budget scenarios
+- Team staffing and workload estimates
+- Workshop duration and group sizes
+- Project timeline estimates
 
-<ContentModeSwitch group="codex-surface" id="web">
+![Illustrative capacity planner with team size and workload inputs, capacity estimates, assumptions, and scenario comparisons.](<https://developers.openai.com/images/codex/sites/calculator.webp>)
 
-Go to [Sites in ChatGPT](https://chatgpt.com/sites), find the Site, then select
-**More actions** > **Analytics**.
+#### How you might build it
 
-</ContentModeSwitch>
+1. **What to share** Share the formula, units, assumptions, and a worked example with its expected result. Explain which inputs people can change and which values should stay fixed.
 
-<ContentModeSwitch group="codex-surface" ids="cli,ide">
+2. **What to ask for** Ask for labeled input fields or sliders, starting values, and allowed ranges. Show results with their units and assumptions. Define what happens for zero, blank, and out-of-range inputs, including when to show an error or an unavailable result. If people should compare scenarios, specify which results to show side by side.
 
-Sites doesn't have a standalone analytics view in the CLI or IDE extension. Open
-the Site in ChatGPT on the web or in the desktop app to review its analytics.
+3. **What to check** Enter your worked example and compare the result. Change one input to check that the output updates correctly. Try zero, blank, and out-of-range values, and confirm each shows the response you specified.
 
-</ContentModeSwitch>
+### Guided process
 
-> Illustration: Interactive Sites analytics dashboard showing unique visitors and page views over seven days.
+A guided process could break a task into steps, with questions that change based on earlier answers. People might go back, save progress if needed, and finish with a brief, checklist, or other output you define.
 
-Analytics is currently available for Sites that aren't owned by an Enterprise
-  workspace.
+#### Example use cases
 
-## Add Sign in with ChatGPT
+- Employee onboarding checklist
+- Project kickoff planning
+- Campaign brief development
+- Vendor review and approval steps
 
-Public Sites can remain open to everyone while offering optional Sign in with
-ChatGPT for identity-aware features, such as saved progress, personalized views,
-or records that belong to a specific person. Workspace-restricted Sites already
-use ChatGPT identity to enforce their sharing settings.
+![Illustrative project kickoff guide with numbered steps, focused planning questions, a progress indicator, and a next-step action.](<https://developers.openai.com/images/codex/sites/process.webp>)
 
-Ask Sites to add the sign-in experience:
+#### How you might build it
 
-**Prompt:**
+1. **What to share** Share a checklist or outline of the process. Put the steps in order, mark required answers, and explain where a choice should lead to different questions. Include an example of the finished output.
 
-```text
-Add Sign in with ChatGPT to this public Site. Keep the Site available to signed-out visitors. Show a Sign in with ChatGPT action when someone is signed out. After they sign in, greet them with their full name when available, or their email address otherwise. Add a Sign out action, and keep authorization decisions in server-side code.
-```
+2. **What to ask for** Ask for one step at a time, a progress indicator, and a way to go back without losing answers. Define the final output, what happens when a required answer is blank, and whether answers that no longer apply should be removed or flagged. If progress should be saved, say where and who can return to it.
 
-<ToggleSection title="How it works">
+3. **What to check** Try the main path and each branch. Leave a required answer blank, then change an earlier choice. Check that questions and the output update, and answers that no longer apply are removed or flagged. If you requested saved progress, reload to confirm it resumes.
 
-Sites handles the sign-in and sign-out flows through platform-provided paths,
-then returns the visitor to your Site:
+Illustrated examples with fictional content.
 
-```html
-<a href="/signin-with-chatgpt">Sign in with ChatGPT</a>
-<a href="/signout-with-chatgpt">Sign out</a>
-```
+## Sites use cases
 
-After a visitor signs in, Sites forwards their identity to the server through
-these request headers:
+Here are some example use cases you can try with Sites.
 
-- `oai-authenticated-user-email` contains the authenticated email address.
-- `oai-authenticated-user-full-name` may contain a non-empty profile name. Treat
-  it as optional and fall back to the email address.
-
-Keep authorization decisions in server-side code, and don't depend on
-name-split headers.
-
-</ToggleSection>
-
-<a id="load-visitor-data-via-plugins"></a>
-
-## Bring user data to your Site with plugins
-
-Use plugins in Sites to build a Site that loads
-data from each Site viewer's own connected apps. For example, an issue dashboard
-can show your assigned issues to you and your teammate's assigned issues to
-them. Each visitor signs in with ChatGPT and chooses which connected accounts
-and access to allow.
-
-Using plugins in Sites requires a workspace where the feature is enabled and a
-  Site that is private to that workspace. Connected features require membership
-  in the Site's workspace and remain subject to each visitor's existing app
-  permissions. Admins can follow [Enable plugin use in
-  Sites](https://learn.chatgpt.com/docs/enterprise/sites#enable-plugin-use-in-sites) to review
-  individual plugin permissions and check tenant restrictions.
-
-### Build a Site with connected data
-
-<WorkflowSteps>
-
-1. Ask ChatGPT Work or Codex to build a Site. Name the plugin connector and what it should do, or ask which plugins are available.
-2. Try the preview with real data. The agent uses your available connections
-   while building and previewing the Site.
-3. Ask the agent to publish the Site for your workspace and
-   share its link with teammates.
-
-</WorkflowSteps>
-
-For example:
-
-**Prompt:**
-
-```text
-Build a Site using my connected issue tracker that shows issues assigned to me, grouped by priority. Add project filters, links to the original issues, and a Refresh button.
-```
-
-GPT-6 Astra · Medium
-
-You can also build a document finder that links to original documents or a
-project overview that combines tickets and messages.
-
-### Data loading
-
-On page load, Sites reads connected data using the visitor's connection and permissions. Sites manages caching and reloading; ask ChatGPT Work or Codex to add a manual refresh action if needed.
-
-By default, Sites uses a **Load more** action to fetch another page when the connector returns a cursor.
-
-Sites uses `getContext()` to find a plugin's actions. It returns cached tool names, descriptions, and schemas; it doesn't refresh discovery.
-
-### Write to an app
-
-If your Site needs to write to an app, ask for write access. Write actions must be enabled and configured, and require visitor consent and an explicit user action.
-
-### Let visitors choose their connections
-
-To use connected features, a visitor signs in with ChatGPT, reviews the app
-access the Site requests, chooses the connected account and access to allow,
-and returns to the Site. Sharing the Site doesn't grant access to your
-connected accounts. The Site receives data from the apps each visitor allows.
-
-Visitors can continue without granting app access, but features that need it
-won't work. If an app is unavailable, check that it's connected in the right
-workspace and allowed by workspace settings.
-
-## Understand projects, versions, and deployments
-
-A Site is a persistent hosted output that you can reopen, refine, configure,
-and share from **Sites** in ChatGPT.
-
-<ContentModeSwitch group="codex-surface" ids="app,cli,ide">
-
-A Sites project links a local source project to hosting managed through Sites.
-Sites stores that linkage and optional storage binding names in
-`.openai/hosting.json`. A newly created local starter can begin without a
-`project_id`; Sites adds one after it provisions the hosted project.
-
-For example, a provisioned site that uses a relational database binding and no
-file storage can contain:
-
-```json
-{
-  "project_id": "<project-id>",
-  "d1": "DB",
-  "r2": null
-}
-```
-
-</ContentModeSwitch>
-
-<ContentModeSwitch group="codex-surface" id="web">
-
-A Site appears in your Sites list even after the ChatGPT Work chat that created it ends.
-You don't need a local project or manifest to start a Site on the web. A Site is
-separate from a ChatGPT Project.
-
-</ContentModeSwitch>
-
-<ContentModeSwitch group="codex-surface" ids="app,cli,ide">
-
-Sites publishing has two separate stages:
-
-1. **Save a version.** ChatGPT builds a deployable version. For a local source
-   project, ChatGPT associates the version with the Git commit used for the
-   build. Use this stage when you want a reviewable deployment candidate.
-2. **Deploy a version.** ChatGPT publishes a saved version and reports the
-   production URL when deployment succeeds. Use this only when you intend for
-   the selected audience to access the site.
-
-Ask ChatGPT to list or inspect saved versions when you need to identify a
-previous deployment candidate.
-
-</ContentModeSwitch>
-
-## Choose a supported site shape
-
-For new projects, the Sites workflow can start with its recommended Site
-starter. For an existing project, ask ChatGPT to confirm that the project can
-produce compatible deployment artifacts before you request a deployment.
-
-Tell ChatGPT about the product behavior you need so it can select the appropriate
-site shape:
-
-| Site need                                                      | What to ask Sites for                                                         |
-| -------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Content-led website or landing page                            | A Site with no persistent application state unless the experience requires it |
-| Saved records, user progress, or game scores                   | D1, a relational database for durable structured data                         |
-| Images, documents, audio, video, or other uploads              | R2, object storage for files                                                  |
-| Uploaded files with searchable metadata                        | D1 for metadata and R2 for file contents                                      |
-| Internal site that needs the current workspace user's identity | Workspace-authenticated user identity                                         |
-| Public sign-in or an external identity provider                | An authentication-enabled Site                                                |
-
-Don't request durable storage for temporary presentation state, such as a
-theme choice or a dismissed banner. Do request it for product data that people
-expect the hosted site to remember.
-
-## Control access and secrets
-
-A new Site is limited to its owner and workspace admins until you change its
-access. Keep access limited while you review the content, data handling, and
-expected audience.
-
-Depending on your account and workspace settings, sharing options can include:
-
-- **Owner and workspace admins**
-- **Selected active users or groups**, where supported
-- **Invited external viewers**, when external invitations are available
-- **Anyone in the workspace**, where supported
-- **Anyone on the internet**, only when public publishing is enabled
-
-Visitor access lets people open the Site; it doesn't give them editing access.
-In Enterprise workspaces, public publishing is off by default and must be
-enabled by an admin.
-
-For limited sharing, invited visitors must sign in with the account that
-received access. A public Site is available without ChatGPT workspace access. A
-Site's audience setting and any sign-in feature built into the Site are separate
-controls.
-
-For example:
-
-**Prompt:**
-
-```text
-Change this Site's access to everyone in my workspace after showing me the current Site and confirming its URL.
-```
-
-### Invite people outside your workspace
-
-External invitations let you give named people access to a Site without making
-it public. You can invite viewers outside your workspace, or share a private
-Site from a personal account. The feature is rolling out to Sites users on
-Plus, Pro, Business, and Enterprise plans.
-
-<WorkflowSteps>
-
-1. Open a Site you own and select **Share**.
-2. To keep the Site private, set **Who has access** to **Only those invited**.
-3. Enter the viewer's email address under **Search for people or groups**, or
-   **Enter an email address** for a personal Site, then select the recipient.
-4. Review the audience and the recipient's **Viewer** access, then select
-   **Invite**.
-5. Confirm that the viewer appears in the saved access list. Share the Site's
-   link and ask them to sign in with the account that received access.
-
-</WorkflowSteps>
-
-External viewers can open and use the Site. They don't become workspace
-members or Site editors, and can't edit or publish the Site. The invitation
-grants access to this Site; review its content and connected data before sharing.
-
-In Enterprise, admins manage **Allow members to invite external visitors to
-sites** under **Workspace settings > Permissions & roles**. This permission
-is separate from permission to publish Sites publicly.
-Business workspaces don't have a separate external-invitation permission
-toggle; Sites must be enabled, and the feature must be available to the account.
-If the invitation option is missing, check the selected account, Site
-ownership, workspace permissions, and rollout availability.
-
-To remove a viewer, open the Site's sharing controls and remove their access.
-Also check the remaining audience settings: removing one invitation doesn't
-remove access the person has through public, workspace, or group sharing.
-
-### Collaborate on a Site
-
-Site collaboration requires a workspace. When the feature is available, a Site
-owner can invite active members of the same workspace as editors.
-
-Editors can read the Site's live database data. Invite only people you trust
-with the Site's code and data.
-
-<WorkflowSteps>
-
-1. Open the Site and select **Share**.
-2. Under **Add people or groups**, find and select a workspace member. They
-   are added as a visitor.
-3. Open **Can view** next to that person and choose **Can edit**. Access saves
-   automatically. The Site appears under **Shared with you** in the member's
-   Sites view.
-4. The editor can open the Site, make changes, save versions, and publish
-   updates after the owner has published the Site for the first time.
-
-</WorkflowSteps>
-
-The Site owner manages editor access and can promote an existing visitor to
-editor, change an editor to **Can view**, or remove their access. Co-editing
-doesn't add a separate workspace permission toggle.
-
-Editors can't change the Site's audience, invite or remove other people, manage
-settings or analytics, restore an earlier version, or transfer ownership. An
-editor also can't perform the Site's first publish; the owner must publish the
-Site before editors can publish later updates.
-
-Editor access is separate from visitor access. The steps above first add the
-person as a visitor, then grant editing access. Promoting a visitor to editor
-doesn't change the Site's audience setting.
-
-### Configure runtime environment values
-
-Open **Sites**, then open the Site's settings to add, update, or remove hosted
-environment variables and secrets. Keep secret values out of prompts, attached
-files, and Site content.
-
-<ContentModeSwitch group="codex-surface" id="web">
-
-Go to [Sites in ChatGPT](https://chatgpt.com/sites), find the Site, then select
-**More actions** > **Settings**.
-
-</ContentModeSwitch>
-
-<ContentModeSwitch group="codex-surface" ids="app,cli,ide">
-
-Don't store these values in `.openai/hosting.json`. Keep local `.env` and
-`.env.example` files aligned with the keys needed for local development, and
-don't commit secret values.
-
-When you add, update, or remove hosted environment values, ask ChatGPT to
-redeploy the approved saved version so the next deployment uses the updated
-configuration.
-
-</ContentModeSwitch>
-
-## Change a Site URL
-
-Where URL editing is available, Site owners can change the ChatGPT-hosted URL
-for an existing Site without creating another deployment.
-
-1. Open **Sites**, find the Site, and open its settings.
-2. Find the Site URL and select **Change URL**.
-3. Enter an available name. It must contain at least five characters, start
-   with a lowercase letter, and use only lowercase letters, numbers, and single
-   hyphens. It can't end with a hyphen or contain consecutive hyphens.
-4. Confirm the change and wait while Sites updates the address.
-
-The URL change doesn't create another deployment. The previous address
-redirects to the new one, including routes and query parameters.
-
-Changing the ChatGPT-hosted URL doesn't add, remove, or change a custom domain.
-Custom domains are a separate, existing feature; use the custom-domain
-settings when that feature is available.
-
-## Connect a custom domain
-
-Where custom domains are available, you can connect an apex domain or subdomain
-that you already own. Sites doesn't register domains for you, so you must be
-able to change the domain's DNS records. Custom domains aren't available in
-Enterprise workspaces at launch.
-
-To connect a domain:
-
-1. Open the Site's settings and select **Add domain**.
-2. Enter the apex domain or subdomain you want to use.
-3. Copy the DNS records and values Sites provides, then add them through your
-   domain provider.
-4. Wait a few minutes, then return to the Site's settings and refresh the domain
-   status.
-
-You can also ask ChatGPT to help point the domain at your Site. If browsing or
-computer use is enabled, ChatGPT can help you navigate your domain provider
-after you sign in.
-
-## Review before you share
-
-Before you share a Site:
-
-- Review its content, generated text and images, links, uploaded files, forms,
-  and interactive behavior.
-- Confirm that it doesn't expose confidential or sensitive information, secret
-  values, or third-party content you don't have the right to share.
-- Test the Site from the intended visitor experience, including its access and
-  sign-in behavior.
-- Review features that collect personal information or other visitor content.
-  Decide whether the Site should collect, share, or publish that information.
-- If the Site uses Sign in with ChatGPT, explain what visitor information it
-  receives and how it uses that information.
-- If the Site collects or processes personal data, comply with
-  [applicable privacy and data-protection laws](https://help.openai.com/en/articles/20001340).
-- Choose the narrowest sharing option that fits the intended audience.
-- Open the shared Site and confirm that the intended audience can visit it.
-
-<ContentModeSwitch group="codex-surface" id="app">
-
-For a Site built from a local project, also review the source changes and any
-database migrations in the Codex [review pane](https://learn.chatgpt.com/docs/code-review?surface=app).
-
-</ContentModeSwitch>
-
-## Take down or delete a Site
-
-To remove access without deleting a Site, open its sharing settings and restrict
-access to yourself or selected people. Confirm that the previous audience can no
-longer open it.
-
-To permanently delete a Site:
-
-1. Open **Sites** and locate the Site.
-2. Select **Delete site** and follow the instructions in the prompt.
-3. Enter the Site slug, then select **Permanently delete**.
-
-Deleting a Site permanently removes it. You can't restore a deleted Site.
+- [Manage creative requests from brief to delivery](https://learn.chatgpt.com/use-cases/collect-and-schedule-team-requests): Turn your creative brief template into a request app where colleagues submit work, designers...
+- [Build an onboarding portal](https://learn.chatgpt.com/use-cases/build-personal-onboarding-plan): Turn your team's first-week plan into daily activities, resource links, and a practice task...
+- [See which campaigns bring in leads](https://learn.chatgpt.com/use-cases/compare-campaign-performance): Turn weekly campaign exports into a dashboard where your team can compare lead volume and...
+- [Build a hackathon site](https://learn.chatgpt.com/use-cases/build-workshop-practice-site): Turn your event brief and agenda into a site that guides participants through registration...
 
 ## Understand limits and unsupported uses
 
-Sites hosts web experiences that run in the supported Sites runtime. Some
-frameworks, private networks, databases, background services, and hosting
-patterns aren't supported.
+Sites hosts web experiences in its supported runtime. Some frameworks, private networks, databases, background services, and hosting patterns aren't supported.
 
-HTTP, HTTPS, and WebSockets are supported. Raw inbound and outbound TCP
-connections aren't.
+HTTP, HTTPS, and WebSockets are supported. Raw inbound and outbound TCP connections aren't supported.
 
-Each Site has these storage limits:
+| Resource          | Storage limit per site |
+| ----------------- | ---------------------- |
+| D1 database       | 10 GB                  |
+| R2 object storage | No fixed storage limit |
 
-| Resource            | Limit                  |
-| ------------------- | ---------------------- |
-| D1 database storage | 10 GB                  |
-| R2 object storage   | No fixed storage limit |
+For current residency coverage and workspace requirements, see [Managing ChatGPT Sites for your workspace](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace) in the Help Center.
 
-Sites doesn't support data residency or inference residency at launch. This
-includes deployed Sites, Site code, D1 and R2 data and file storage, generated
-artifacts, and logs.
+You can sell goods or services and collect payments through a third-party payment processor. Payment-card data must be collected and processed solely by that provider, not by your site or OpenAI. Other financial transactions remain prohibited. You're responsible for the integration, fulfillment, refunds, customer support, and applicable taxes. See the [Sites Terms](https://openai.com/policies/chatgpt-sites-terms/) for requirements.
 
-Don't use Sites to process Protected Health Information or payment-card data;
-target children under 13 or the applicable age of digital consent; enable
-financial transactions; distribute malware; enable phishing; impersonate people
-or organizations; or otherwise violate OpenAI policies. See
-[Creating and managing ChatGPT Sites](https://help.openai.com/en/articles/20001339)
-for the current limits and policy links.
+Don't use sites to process Protected Health Information; target children under 13 or the applicable age of digital consent; distribute malware; enable phishing; impersonate people or organizations; or otherwise violate OpenAI policies.
 
-## Related documentation
+See [Creating and managing ChatGPT sites](https://help.openai.com/en/articles/20001339) for current limits and policy links.
 
-<ContentModeSwitch group="codex-surface" id="app">
+## Next up
 
-- [ChatGPT desktop app](https://learn.chatgpt.com/docs/app) introduces app navigation, projects, and chats.
-- [Review and ship changes](https://learn.chatgpt.com/docs/code-review?surface=app) explains how to inspect source
-  changes before publishing them.
+  [Create a site
 
-</ContentModeSwitch>
+        <TextPrompt />
 
-<ContentModeSwitch group="codex-surface" ids="cli,ide">
+      Describe, build, and refine a website in ChatGPT or Codex.](https://learn.chatgpt.com/docs/sites/creating-a-site)
+  [Data and connections
 
-- [Projects and chats](https://learn.chatgpt.com/docs/projects) explains how folder and workspace
-  context carries across chats.
-- [Review and ship changes](https://learn.chatgpt.com/docs/code-review) explains the review workflow for
-  each Codex client.
-- [Sandboxing](https://learn.chatgpt.com/docs/sandboxing) explains the local execution boundary.
+        <Mcp />
 
-</ContentModeSwitch>
+      Choose storage, add sign-in, and connect apps to your site.](https://learn.chatgpt.com/docs/sites/data-and-connections)
+  [Publish and share
 
-<ContentModeSwitch group="codex-surface" id="web">
+        <Globe />
 
-- [Open Sites in ChatGPT](https://chatgpt.com/sites) to return to Sites you've
-  created.
-- [Projects and chats](https://learn.chatgpt.com/docs/projects?surface=web) explains how to keep
-  related chats and source files together.
-- [Work with files](https://learn.chatgpt.com/docs/artifacts-viewer?surface=web) explains how to review
-  generated files in ChatGPT web.
+      Review your site, choose its audience, and collaborate with editors.](https://learn.chatgpt.com/docs/sites/publishing-and-sharing)
+  [Manage a site
 
-</ContentModeSwitch>
+        <Folder />
+
+      Review analytics, change domains and settings, and manage site versions.](https://learn.chatgpt.com/docs/sites/managing-a-site)
+
+<SitesReferenceNavigation />

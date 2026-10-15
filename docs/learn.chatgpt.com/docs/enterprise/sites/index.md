@@ -11,208 +11,244 @@ Source: https://learn.chatgpt.com/docs/enterprise/sites
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Workspace admins can enable Sites, choose which plugins they can use, and manage
-published Sites. To build or use a Site, see [Sites](https://learn.chatgpt.com/docs/sites).
+For current workspace setup, permissions, and availability, see
+  [Managing ChatGPT Sites for your workspace](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace)
+  in the Help Center.
 
-    {"For help with workspace access, publishing, and sharing, see "}
-    [{"Managing ChatGPT Sites for your workspace"}](https://help.openai.com/articles/20001338)
-    {" in the Help Center."}
+<span
+  id="what-costs-and-limits-should-we-plan-for"
+  data-localization-body-anchor
+/>
+
+Use this guide to decide who can create, change, and use sites in your workspace, and how your organization reviews and maintains them. To build or use a site, see [Sites](https://learn.chatgpt.com/docs/sites).
 
 ## Before you begin
 
-Sign in as a workspace owner or admin and select the workspace you want to
-manage. If tenant policy blocks access to connected apps, a tenant admin must
-enable that access. A tenant is the organization-level admin scope that can
-govern multiple workspaces.
+Sign in to the workspace you administer. Decide who should create and publish sites, which audiences are appropriate, and who will handle review, support, and removal requests.
 
-Sites is in public beta. Available controls depend on your plan, admin role,
-  and feature availability. Review the [Sites
-  limits](https://learn.chatgpt.com/docs/sites#understand-limits-and-unsupported-uses), including data
-  residency limitations, before choosing what data to use.
+Start with a specific use case. For example, an onboarding site that displays approved reference material needs a different review from a request tracker that collects employee information or a dashboard that uses connected apps. Agree on:
 
-These controls apply at different levels:
+- The intended audience and whether external or public access is appropriate.
+- The information the site displays, collects, stores, or sends to another service.
+- The people responsible for the site's content, application behavior, and ongoing support.
+- The review required before first publication and after material changes.
 
-| Control                     | What it governs                                         | Where to manage it                                                                |
-| --------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Sites access                | Who can create and publish Sites                        | Workspace settings, including **Permissions & roles** where available             |
-| Site sharing                | Who can visit an individual Site                        | The Site's sharing controls or **Sites** in workspace administration              |
-| Plugin permission for Sites | Which plugins can be used in Sites across the workspace | **Admin** > **Plugins** > the plugin > **Allow site visitors to use this plugin** |
-| Tenant connector access     | Whether Sites can request access to connected apps      | Tenant administration: **External access** > **ChatGPT Sites** > **Connectors**   |
-| Network access              | Which external destinations Sites can contact           | Workspace administration: **Sites** > **Network access**, where available         |
+## How sites work
 
-## Enable Sites and choose sharing permissions
+A site can contain pages, application code, and visitor information. Review what it publishes and collects before sharing it. For the building and publishing workflow, see [Creating and managing ChatGPT Sites](https://help.openai.com/en/articles/20001339).
 
-<WorkflowSteps>
+### What you can build
 
-1. Open your workspace settings and review the Sites permissions. Where
-   **Permissions & roles** is available, enable Sites for the roles that need
-   to create and publish them.
-2. Review public publishing separately. In Enterprise workspaces, public
-   publishing is off by default and requires an admin to enable it. You can use
-   Sites internally without enabling public publishing.
-3. Review external invitations separately from public publishing. Enterprise
-   admins manage **Allow members to invite external visitors to sites** under
-   **Workspace settings** > **Permissions & roles**. Business workspaces don't
-   have a separate external-invitation permission toggle.
-4. Ask a member of the intended group to create a Site, keep its audience
-   limited, and verify that they can publish it and share it with the intended
-   visitors.
+Sites can support reference pages, forms, trackers, and interactive dashboards. The review should follow what the application does. A reference page needs a content and audience review. A form also needs a decision about which submissions to collect and who can read them. A connected dashboard needs a review of the accounts, permissions, and information used by its connections.
 
-</WorkflowSteps>
+### Information stored or exposed by a site
 
-A new Site is limited to its owner and workspace admins until its access
-changes. Visitor access and editor access are separate. See
-[Control access and secrets](https://learn.chatgpt.com/docs/sites#control-access-and-secrets) for
-sharing options and [Collaborate on a Site](https://learn.chatgpt.com/docs/sites#collaborate-on-a-site)
-for editor permissions.
+Information from prompts, conversation context, and uploaded or referenced files can become part of a site. Check the resulting pages, sample records, downloads, and generated content for information that should not reach the intended audience.
 
-<a id="enable-bring-your-own-plugin"></a>
+Distinguish information copied into a site from information retrieved through a connection. For example, an uploaded spreadsheet can become a shared snapshot. A visitor using their own connected account may have different access from the person who built the site. Test the resulting behavior; the creator's preview alone does not establish what another visitor can see.
 
-## Enable plugin use in Sites
+For the builder workflow, see [Data and connections](https://learn.chatgpt.com/docs/sites/data-and-connections).
 
-Plugins in Sites let a Site use each visitor's own connected
-accounts and permissions. Sharing a Site doesn't share the builder's
-connections. Visitors sign in with ChatGPT, review the requested access, and
-choose which connections to allow. Connected features require membership in
-the workspace that owns the Site.
+For hosting and processing providers, see OpenAI's [sub-processor list](https://openai.com/policies/sub-processor-list/).
 
-Each plugin has a separate **Allow site visitors to use this plugin** setting. When an admin
-hasn't saved a choice for that plugin, the default depends on the workspace
-plan:
+## Enable sites and permissions
 
-- **Business and Education:** Available plugins are allowed in Sites by default.
-- **Enterprise:** Plugins are off for Sites by default. An admin must allow
-  each plugin the workspace needs.
+<span
+  id="enable-sites-and-choose-sharing-permissions"
+  data-localization-body-anchor
+/>
 
-A saved admin choice overrides the default. Allowing a plugin in Sites
-doesn't override ordinary plugin permissions or tenant restrictions.
+Review three levels of control: workspace permissions, the site's sharing and editing permissions, and permissions implemented by the application.
 
-### Allow individual plugins in Sites
+![Three levels of control: workspace permissions govern creation and publishing, site permissions govern viewing and editing, and application code governs access to records and actions.](<https://developers.openai.com/images/codex/sites/controls.webp>)
 
-1. Open **Admin** > **Plugins** in the intended workspace.
-2. Open the plugin you want to allow, such as Notion.
-3. In its **Sites** section, review **Allow site visitors to use this plugin**. If it's off and you
-   want to allow the plugin, turn it on and select **Save**. If it's already on,
-   no change is needed.
-4. Review each plugin that the Site needs. Confirm that the plugin, its
-   connected app, and the required actions are also available to the intended
-   members through your [plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors).
+### Workspace admin controls
 
-If **Allow site visitors to use this plugin** is disabled because tenant
-  connector access is off, follow the **External access** link on the plugin
-  page when available. A tenant admin can enable **Connectors** for **ChatGPT
-  Sites**. If you don't have tenant admin access, contact an admin of the tenant
-  named in the notice.
+Workspace permissions govern who can create and publish sites. Review public publishing and external invitations separately: allowing a named external viewer and making a site available to anyone on the internet are different decisions.
 
-**Allow site visitors to use this plugin** is one setting per plugin for the whole workspace. It
-doesn't assign access by role, connect accounts for members, or replace
-visitor consent and the connected service's permissions. It also doesn't
-provide separate Sites-specific read and write switches. Review the approved
-actions and permissions before enabling a plugin.
+For configuration steps and current role permissions, follow the [workspace administration guidance](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace).
 
-<a id="enable-tenant-access-to-connected-apps"></a>
+### Site owner and collaborator controls
 
-### Check tenant access if plugins are blocked
+Use the site's sharing controls to decide who can view it and who can help maintain it.
 
-Use these steps when the plugin page says tenant connector access is off.
-If access is already on, no tenant change is needed. Turning it on doesn't
-enable individual plugins that a workspace admin has disabled.
+#### Audience and sharing
 
-1. Follow the plugin page's **External access** link, or open [Admin Console](https://admin.openai.com)
-   and select the tenant that governs the workspace.
-2. Open **External access**, find **ChatGPT Sites**, and enable **Connectors**
-   if it's off.
-3. Return to the workspace's plugin settings and review **Allow site visitors to use this plugin**
-   for each plugin your team needs.
+A site's audience controls who can open it. Choose an audience that matches the information and activities the site provides. Review the full set of access grants when narrowing access. Removing an individual invitation may still leave access through a group, workspace-wide sharing, or public publishing.
 
-**External access** belongs to the tenant view. The workspace view has its own
-**Sites** settings. If you can't find **External access**, check the selected
-admin scope and whether you have tenant admin access. Workspaces without a
-tenant don't have this tenant-level control. If the plugin page says connector
-access isn't available for the tenant yet, changing the plugin's setting
-won't enable it.
+Check the site from the intended visitor experience after changing access. For the sharing workflow, see [Publishing and sharing](https://learn.chatgpt.com/docs/sites/publishing-and-sharing).
+
+#### Editors and collaboration
+
+Owners can invite eligible workspace members as editors. Owners publish first; editors can publish later updates. Owners manage access and owner-only settings.
+
+Agree on how editors request and record review before publishing changes. An editor can publish later versions without a separate owner-approval step, so an organization's review process must account for who has edit access.
+
+### Application permissions
+
+Site access and access to individual records are separate. For private application data, enforce record access in server-side code and test with ordinary visitor accounts.
+
+For example, a request tracker might let every workspace member open the site while allowing each person to see only their own requests. The application needs to check that rule when returning a record or accepting an action. Hiding a page element does not enforce the rule. Test with separate accounts that should and should not have access to the same record.
+
+## Configure connections
+
+<span
+  id="enable-tenant-access-to-connected-apps"
+  data-localization-body-anchor
+/>
+
+<span
+  id="check-tenant-access-if-plugins-are-blocked"
+  data-localization-body-anchor
+/>
+
+<span
+  id="allow-an-additional-destination-for-one-site"
+  data-localization-body-anchor
+/>
+<span
+  id="credentials-and-connected-service-access"
+  data-localization-body-anchor
+/>
+
+Creating or sharing a site does not itself authorize connected-app access. Review organization approval, plugin settings, and each visitor's connected account and permissions in the [Help Center connected-app guidance](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace).
+
+Include connections in the site's review. Identify which services it uses, what information it requests, and who should authorize that access. Keep the site's audience decision separate from the connected service's permissions.
+
+Keep credentials out of prompts, attachments, and visible site content. For questions about network access, contact your workspace admin.
 
 ### Verify the visitor experience
 
-Ask a builder to create a Site using an approved plugin and share it within
-the workspace. Have another member sign in, review access, and connect their
-own account. Confirm that the Site shows data that member is allowed to
-access. Also test continuing without granting plugin access: features that
-require a connection won't work.
+Keep connected sites private to their workspace. Before sharing a connected site more widely within that workspace, test with another eligible workspace member who uses their own connected account. Confirm that the site shows information appropriate to that person's existing permissions.
 
-For the builder workflow, see
-[Bring user data to your Site with plugins](https://learn.chatgpt.com/docs/sites#bring-user-data-to-your-site-with-plugins).
+Also check the experience when a visitor does not grant the requested connection access. Explain which features need the connection and make sure the site does not present missing data as a successful result. Follow the current Help Center guidance for supported connections and access requirements.
 
-## Configure network access
+## Review and manage sites
 
-Where **Network access** is available, use it to control the external
-destinations a Site can contact. This setting is separate from plugin
-authorization: allowing a hostname doesn't grant access to a connected app.
+<span
+  id="workspace-visibility-and-audit-records"
+  data-localization-body-anchor
+/>
+<span
+  id="publishing-approval-and-network-controls"
+  data-localization-body-anchor
+/>
 
-### Set the workspace policy
+### Saved versions and publishing
 
-1. Open **Sites** in workspace administration.
-2. Find **Network access** and open its editor.
-3. Choose **Allow all destinations** or **Allow only listed destinations**.
-4. For a restricted policy, enter one hostname per line under **Allowed
-   destinations**. Use an exact hostname such as `api.example.com`, or
-   `*.example.com` to allow its subdomains. The wildcard doesn't include the
-   bare `example.com` hostname; add that separately if needed.
-5. Select **Save**, reopen the editor, and confirm the saved destinations.
-   Test the Site's required network requests.
+Editing and saving a version are separate from publishing it. Review the updated preview, then publish when it's ready for visitors. Sending editing instructions does not immediately change the published site.
 
-Don't enter URLs, paths, IP addresses, or ports. The editor supports up to
-1,024 destination rules. A `*` rule allows all HTTP destinations. Restricted
-policies block raw TCP connections, including when the list contains `*`.
+![Recommended workflow: edit and save, review and test, explicitly publish the version, then check the live site as a visitor. Review is an organizational step, not a product approval gate.](<https://developers.openai.com/images/codex/sites/publishing.webp>)
 
-### Allow an additional destination for one Site
+Use this workflow for the first publication and later updates:
 
-To allow a destination for one Site without broadening workspace-wide access:
+<WorkflowSteps>
 
-1. Find the Site in workspace administration and open **More actions** >
-   **Network access**.
-2. Review the inherited policy.
-3. Enter the approved hostnames under **Additional allowed destinations** and
-   select **Save**.
-4. Reopen the dialog to confirm the saved list, then test the Site.
+1. Describe the change and review the saved version.
+2. Check the content, audience, application permissions, and connections affected by the change.
+3. Complete your organization's review, then have the owner or an eligible editor publish the version. The owner must complete the first publication.
+4. Open the published site as an intended visitor and confirm that the expected content and behavior are available.
 
-These exceptions add to the inherited policy; they don't replace it or
-restrict destinations it already allows. With an unrestricted inherited
-policy, exceptions don't further change access. If the combined destination
-limit is exceeded, the saved exceptions aren't applied; shorten the list and
-save again.
+</WorkflowSteps>
 
-## Manage workspace Sites
+The review step is a recommended organizational process. It does not add a product approval gate.
 
-Open **Sites** in workspace administration to find Sites by URL and review
-their owners. Use the controls available to your role to:
+### Shared responsibilities
 
-- **Manage access:** Review or change the Site's audience.
-- **Copy source clone command:** Get the command to inspect a Site's source
-  code, where available.
-- **Transfer ownership:** Assign a new owner when responsibility changes.
-- **Suspend:** Stop access to a Site while you investigate an issue. Use
-  **Reinstate** when you're ready to make it available again.
-- **Delete Site:** Permanently remove a Site when it's no longer needed.
+Successful generation or publication does not establish that a site meets your organization's requirements. Assign responsibility for reviewing the content, access rules, generated application code, and connected services. Use reviewers with the appropriate expertise for the site's data and use case.
 
-To stop use of a particular plugin in Sites, turn off its **Allow site visitors
-to use this plugin** setting and verify the affected Site's behavior. If another allowed
-plugin includes the same connector, turning off one plugin doesn't block that
-shared connector through the other plugin. Review all relevant plugins when
-removing connector access.
+### Review before publishing
 
-## Troubleshoot access
+Review the intended audience, generated code, visitor submissions, and connections before publishing. Test the experience for intended and unintended visitors. Repeat the review after material changes.
 
-| Symptom                                                      | What to check                                                                                                                                                                                                   |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A member can't create or publish a Site                      | Confirm the selected workspace, Sites availability, and the member's workspace permissions.                                                                                                                     |
-| A plugin works in ChatGPT but is unavailable to a Site       | Check **Allow site visitors to use this plugin**, including any saved admin choice, ordinary plugin permissions, and the member's connected account. If tenant policy blocks access, check **External access**. |
-| The plugin's Sites toggle is disabled                        | Review the notice beside the toggle. If tenant connector access is off, follow **External access** or contact an admin of the tenant named in the notice.                                                       |
-| A visitor can open the Site but can't use connected features | Confirm membership in the Site's workspace, the selected account, visitor consent, and permissions in the connected service. An external invitation doesn't grant workspace membership.                         |
-| The Site can't reach an external service                     | Check the hostname against the inherited network policy and any Site-specific exceptions.                                                                                                                       |
-| A network policy save conflicts or can't be confirmed        | Select **Refresh and review**, inspect the latest saved policy, then make the intended change. Refresh replaces the unsaved draft.                                                                              |
-| An admin setting is missing or read-only                     | Check the selected tenant or workspace, your admin role, and feature availability. The tenant and workspace views expose different controls.                                                                    |
+For example, a team dashboard can look correct for its creator while exposing an uploaded customer list to a broader audience than intended. A request form can collect the right fields while allowing one visitor to read another visitor's submission. Review both what appears on the page and how the application handles data and actions.
 
-When asking an admin for help, include the Site URL, workspace, plugin or
-destination needed, and the exact error. Contact the admin directly to request
-access.
+Before publishing, check:
+
+- **Content:** Review generated text, images, links, uploaded files, and example data for accuracy and appropriate sharing.
+- **Audience:** Confirm who should be able to open the site, including external viewers and public visitors where applicable.
+- **Records and actions:** Verify that visitors can read and change only the information they have permission to access.
+- **Forms and submissions:** Decide what to collect, where it goes, who can see it, and how visitors can ask questions about it.
+- **Connections and credentials:** Review the services used, requested access, and any information exposed in pages, downloads, or error messages.
+- **Visitor experience:** Use separate visitor accounts to check the expected paths and denied-access cases.
+
+### Ongoing maintenance
+
+Give each production site an owner and a reporting route for access, data, or service issues. Plan ownership handoffs and retirement with your workspace admin.
+
+Revisit the review when the site gains a new audience, editor, data source, connection, form, or application feature. Periodically check whether the audience and editor list still match the site's purpose, whether its content is current, and whether its connections still work for intended visitors.
+
+### Troubleshoot access
+
+Start with the affected person's account, role, and attempted action. A creator's successful preview does not confirm that another person can view, edit, publish, or use a connection.
+
+| Symptom                                                       | What to check                                                                                                                                                                                                                |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A member cannot create or publish a site                      | Confirm the active workspace, feature availability, and permissions for that member's role.                                                                                                                                  |
+| A visitor cannot open a site                                  | Check the site's audience and whether the visitor is signed in with the account that received access.                                                                                                                        |
+| An editor cannot publish                                      | Check edit access, workspace permissions, and whether the owner has completed the first publication.                                                                                                                         |
+| A connection works for the creator but not another visitor    | Confirm that the site is private to its workspace and the visitor belongs to that workspace. Check the visitor's connected account, service permissions, authorization, and the applicable organization and plugin settings. |
+| A person can still view a site after an invitation is removed | Review remaining group, workspace-wide, or public access.                                                                                                                                                                    |
+| A published site does not show an expected edit               | Confirm that the intended version was published, then open the live site to check the result.                                                                                                                                |
+
+To review available workspace controls or troubleshoot access, follow the [Help Center guidance](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace).
+
+## Security and privacy
+
+<span
+  id="certifications-encryption-and-customer-managed-keys"
+  data-localization-body-anchor
+/>
+
+<span
+  id="applicable-terms-and-data-processing-agreements"
+  data-localization-body-anchor
+/>
+
+Check current [hosting, residency, and data requirements](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace) against your organization's policies before choosing what information to store in a site.
+
+### Visitor privacy and personal information
+
+Before adding a form, sign-in feature, or other way to collect visitor information, decide why the site needs that information and how the site will use it. Review who can access submissions and whether the site will send information to another service or display it to other visitors.
+
+Plan the appropriate privacy notice and a contact route for visitor questions. Use the resources below with your organization's privacy reviewers to determine what the notice and handling process should cover.
+
+For responsibilities and privacy guidance, review these resources:
+
+- Review [ChatGPT Sites Terms](https://openai.com/policies/chatgpt-sites-terms/).
+- Review [Operator responsibilities](https://help.openai.com/en/articles/20001337-understanding-responsibilities-for-your-chatgpt-sites).
+- Review [Data-protection responsibilities](https://help.openai.com/en/articles/20001340).
+- Review [Privacy-policy guidance](https://help.openai.com/en/articles/20001341).
+
+<span
+  id="what-happens-when-a-site-is-deleted-or-an-owner-leaves"
+  data-localization-body-anchor
+/>
+
+<ToggleSection title="How should I plan an ownership handoff or site retirement?">
+
+Before an owner changes roles or leaves, identify who will maintain the site and use the current administration guidance for available handoff options. For retirement, plan how to restrict access and handle information collected by the site. Confirm deletion and retention requirements before promising a recovery or removal timeline.
+
+</ToggleSection>
+
+<span
+  id="how-long-is-site-data-retained-including-backups"
+  data-localization-body-anchor
+/>
+
+<ToggleSection title="Where can I confirm retention and deletion requirements?">
+
+For retention or deletion questions, [contact OpenAI Support](https://help.openai.com/en/articles/6614161-how-can-i-contact-support).
+
+</ToggleSection>
+
+<span
+  id="how-do-i-report-an-access-issue-or-incident"
+  data-localization-body-anchor
+/>
+
+<ToggleSection title="How do I report an access issue?">
+
+For access questions, [contact OpenAI Support](https://help.openai.com/en/articles/6614161-how-can-i-contact-support). Include the site URL, workspace, affected role, attempted action, time, and error details. Omit secrets and access tokens.
+
+</ToggleSection>
