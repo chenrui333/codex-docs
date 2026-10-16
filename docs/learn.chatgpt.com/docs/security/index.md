@@ -13,102 +13,31 @@ Source: https://learn.chatgpt.com/docs/security
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Codex Security is an application security agent that helps security and
-engineering teams find, confirm, and fix vulnerabilities. Use it in
-Codex, from your terminal, through the TypeScript SDK, or with connected GitHub
-repositories.
+Codex Security reviews code for vulnerabilities and reports evidence you can
+use to investigate and fix them. Choose how to run it based on where your code
+lives and how you want to review the results.
 
-<CtaPillLink
-  href="https://chatgpt.com/plugins/share/676aca3811d54fa7bcdef5255236b3c4"
-  label="Install local Security plugin"
-  icon="external"
-  class="mb-8 mt-2"
-/>
+## Choose where to start
 
-For your first local scan, start with the [Codex Security plugin
-quickstart](https://learn.chatgpt.com/docs/security/plugin).
+| Use                   | When you want to                                                          | Start here                                          |
+| --------------------- | ------------------------------------------------------------------------- | --------------------------------------------------- |
+| Codex Security Cloud  | Scan connected GitHub repositories in Codex cloud or monitor new commits. | [Cloud setup](https://learn.chatgpt.com/docs/security/setup)                |
+| Codex Security plugin | Scan a local repository in Codex and work through findings interactively. | [Run your first local scan](https://learn.chatgpt.com/docs/security/plugin) |
+| Codex Security CLI    | Run repeatable terminal scans or add checks to CI.                        | [CLI quickstart](https://learn.chatgpt.com/docs/security/cli)               |
+| Codex Security SDK    | Run scans and handle results in an application or developer tool.         | [SDK guide](https://learn.chatgpt.com/docs/security/sdk)                    |
 
-## Use Codex Security in the desktop app
+For your first local scan, use the plugin. In the ChatGPT desktop app, select
+**Codex**, install **Codex Security**, and open **Security** in the sidebar.
+The [Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) keeps saved scans
+and findings available for review. You can also use the plugin in Codex CLI.
 
-In the ChatGPT desktop app, open the ChatGPT dropdown and select **Codex**.
-Install and enable the Codex Security plugin to open **Security** in the
-sidebar. The Security workbench keeps your scans, findings, and repositories in
-one place while Codex runs each scan in a task.
+The Codex Security CLI and SDK are distributed in the public [@openai/codex-security package](https://github.com/openai/codex-security). Scans using OpenAI inference require Codex Security access. See each quickstart for its
+runtime and authentication requirements.
 
-- Use **Scans** to start scans, follow their progress, and review saved results.
-- Use **Findings** to inspect issues and evidence across completed scans.
-- Use **Repositories** to review repository history and open findings.
-
-See [Use the Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) for the
-complete desktop-app workflow.
-
-### Explore plugin use cases
-
-- [Run a security scan](https://learn.chatgpt.com/docs/security/plugin/scans) for a repository or one scoped folder.
-- [Run a deep security scan](https://learn.chatgpt.com/docs/security/plugin/deep-scans) when you need broader review and can wait longer for it to finish.
-- [Review code changes](https://learn.chatgpt.com/docs/security/plugin/code-changes) before you merge a pull request or branch.
-- [Triage a backlog](https://learn.chatgpt.com/docs/security/plugin/triage-backlog) when you have existing security findings to review.
-- [Fix and verify findings](https://learn.chatgpt.com/docs/security/plugin/fix-findings) with bounded patches for approved findings.
-- [Export or track findings](https://learn.chatgpt.com/docs/security/plugin/export-findings) as portable artifacts or approval-gated tracking destinations.
-- [Write vulnerability reports](https://learn.chatgpt.com/docs/security/plugin/vulnerability-reports) from supplied findings, disclosure notes, source, and PoCs.
-- [Propose security hardening](https://learn.chatgpt.com/docs/security/plugin/security-hardening) from scan results or other security evidence.
-- [See what's new](https://learn.chatgpt.com/docs/security/plugin/changelog) in the Codex Security plugin.
-
-The desktop Security workbench and Codex CLI use the Codex Security plugin.
-  The separate Codex Security Cloud plugin scans connected GitHub repositories
-  in Codex cloud. For Codex sandboxing, approvals, network controls, and admin
-  settings, see [Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security).
-
-## Codex Security CLI and SDK
-
-The CLI and TypeScript SDK are available as the public
-[`@openai/codex-security`](https://github.com/openai/codex-security) package.
-Run the CLI with `npx`:
-
-```bash
-npx @openai/codex-security --help
-```
-
-Running scans requires Codex Security access. For best results, use an account
-verified for [Trusted Access for Cyber](https://chatgpt.com/cyber).
-
-Use the same scanner as the plugin across repositories and over time. The CLI
-discovers GitHub repositories, resumes bulk scans, tracks findings across
-scans, and records false-positive feedback. Add your architecture and security
-policies, set an estimated cost limit, or run checks in CI and before commits.
-Use the TypeScript SDK to build scanning, progress reporting, and cost controls
-into an application or developer tool.
-
-- [Start with the CLI quickstart](https://learn.chatgpt.com/docs/security/cli) to set up the CLI,
-  preflight a repository, and run a local scan.
-- [Run bulk security scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans) to discover GitHub
-  repositories or run a resumable campaign from a CSV inventory.
-- [Run scans in CI](https://learn.chatgpt.com/docs/security/cli/ci) to review pull-request changes,
-  preserve artifacts, upload SARIF, and set a severity policy.
-- [Read the CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq) for answers about scan history,
-  false-positive feedback, coverage, and fix verification.
-- [Use the CLI reference](https://learn.chatgpt.com/docs/security/cli/reference) to check supported
-  commands, flags, output formats, artifacts, and exit codes.
-- [Integrate the TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) to select targets,
-  inspect results, track progress, and cancel scans from code.
-
-## Codex Security Cloud
-
-Codex Security Cloud is a plugin for scanning connected GitHub repositories
-in Codex cloud. It's available in research preview on the web and in the
-desktop app.
-
-Open **Plugins** to find and install **Codex Security Cloud**. Follow
-[Cloud setup](https://learn.chatgpt.com/docs/security/setup) to connect GitHub and start your first scan.
-
-<CtaPillLink
-  href="https://chatgpt.com/plugins/plugin_connector_1p_6317a32dbf5c81919acd66de6722daf5"
-  label="Find Codex Security Cloud"
-  target="_blank"
-  rel="noopener noreferrer"
-  icon="external"
-  class="my-8"
-/>
+Codex Security Cloud is a separate plugin, available in research preview on
+the web and in the desktop app. It requires workspace access, a GitHub
+connection, and a compatible Codex cloud environment. You can connect the
+repository and create an environment during setup.
 
 <figure className="not-prose my-8">
   <CodexScreenshot
@@ -126,33 +55,27 @@ Open **Plugins** to find and install **Codex Security Cloud**. Follow
   </figcaption>
 </figure>
 
-## How Codex Security Cloud works
+For security reviews posted to GitHub pull requests, see
+[Security Review](https://learn.chatgpt.com/docs/security/security-review).
 
-Choose **One-Time Scan** to review a repository once, or **Continuous Scanning**
-to monitor new commits. Codex uses repository context to identify likely
-vulnerabilities and validates issues in an isolated environment when possible.
+## Choose the next task
 
-Use **Scans** to follow progress, **Findings** to review issues, and
-**Repositories** to manage monitoring. Review proposed patches before
-creating a pull request.
+After a local scan, review its scope and findings before deciding what to do next.
 
-## Codex Security Cloud access and prerequisites
+| Task                                                  | Guide                                                               |
+| ----------------------------------------------------- | ------------------------------------------------------------------- |
+| Focus a scan on a service or add security context     | [Run a security scan](https://learn.chatgpt.com/docs/security/plugin/scans)                 |
+| Run repeated reviews of the same repository or folder | [Run a deep scan](https://learn.chatgpt.com/docs/security/plugin/deep-scans)                |
+| Check a pull request, commit, or local diff           | [Review code changes](https://learn.chatgpt.com/docs/security/plugin/code-changes)          |
+| Assess findings from another scanner or issue tracker | [Triage a backlog](https://learn.chatgpt.com/docs/security/plugin/triage-backlog)           |
+| Generate a patch and check whether it fixes the issue | [Fix and verify findings](https://learn.chatgpt.com/docs/security/plugin/fix-findings)      |
+| Share results or assign remediation work              | [Export and track findings](https://learn.chatgpt.com/docs/security/plugin/export-findings) |
 
-Use a workspace with Codex Security Cloud access, a connected GitHub
-repository, and a compatible Codex cloud environment. You can connect GitHub
-and create an environment during scan setup.
+For automation, use the CLI guides to [scan repositories in
+bulk](https://learn.chatgpt.com/docs/security/cli/bulk-scans) or [run scans in
+CI](https://learn.chatgpt.com/docs/security/cli/ci). Look up commands and defaults in the
+[CLI reference](https://learn.chatgpt.com/docs/security/cli/reference).
 
-If access is unavailable, check with your workspace administrator.
-
-## Related docs
-
-- [Codex Security plugin quickstart](https://learn.chatgpt.com/docs/security/plugin) walks through installation and a first local scan.
-- [Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) explains saved scans, findings, repositories, and scan activity in the desktop app.
-- [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli) walks through setup, preflight, and a first terminal scan.
-- [Run bulk security scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans) explains GitHub discovery, CSV inventories, campaign results, and resume behavior.
-- [Codex Security CLI FAQ](https://learn.chatgpt.com/docs/security/cli/faq) answers common questions about scans, findings, coverage, and costs.
-- [Codex Security TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) explains how to run scans from an application or developer tool.
-- [Codex Security Cloud setup](https://learn.chatgpt.com/docs/security/setup) details setup, scanning, and findings review.
-- [Security Review](https://learn.chatgpt.com/docs/security/security-review) explains how to run in-depth security reviews on GitHub pull requests.
-- [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model) explains how to tune scope, entry points, and criticality assumptions.
-- [Codex Security Cloud FAQ](https://learn.chatgpt.com/docs/security/faq) covers common cloud product questions.
+Codex Security scans application code. For permissions and sandbox controls
+that govern Codex itself, see [Agent approvals and
+security](https://learn.chatgpt.com/docs/agent-approvals-security).

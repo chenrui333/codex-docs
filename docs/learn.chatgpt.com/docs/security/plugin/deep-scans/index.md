@@ -13,22 +13,83 @@ Source: https://learn.chatgpt.com/docs/security/plugin/deep-scans
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Run a deep scan when you need a more thorough review and can allow for a longer
-runtime. Deep scans search a repository more extensively and can reduce
-variability between runs.
+A deep scan runs multiple independent standard scans over the same repository
+or folder and combines their findings. Use it when you want repeated review
+and can allow for the additional runtime and token use.
 
-Start with a [standard scan](https://learn.chatgpt.com/docs/security/plugin/scans) to check your scope
-and results. Then use a deep scan when you need a more thorough assessment.
+Start with a [standard scan](https://learn.chatgpt.com/docs/security/plugin/scans) to check that the
+scope and security context match your goal. Repeated review can find issues
+missed by an earlier pass, but doesn't guarantee complete detection or identical
+results between runs.
 
 ## Choose between standard and deep scans
 
-|                         | Standard scan                                      | Deep scan                                             |
-| ----------------------- | -------------------------------------------------- | ----------------------------------------------------- |
-| Best for                | First runs and routine repository or folder review | More thorough reviews after a standard scan           |
-| Variability             | Standard                                           | Reduced                                               |
-| Scope                   | Repository or explicit folder                      | Repository or explicit folder                         |
-| Runtime and resources   | Lower                                              | Higher                                                |
-| Pull requests and diffs | Use the change-review workflow                     | Not supported; use the change-review workflow instead |
+|            | Standard scan                               | Deep scan                                      |
+| ---------- | ------------------------------------------- | ---------------------------------------------- |
+| Review     | One standard scan                           | Multiple standard scans with combined findings |
+| Use it for | A first scan or a review of a defined scope | Additional independent reviews of that scope   |
+| Scope      | Repository or folder                        | Repository or folder                           |
+| Changes    | Use the change-review workflow              | Not supported                                  |
+
+## Start the deep scan
+
+For the best scan quality, use `gpt-5.6-sol`
+with `xhigh` reasoning effort.
+
+<WorkflowSteps>
+
+1. Open **Security** > **Scans** and select **+ Scan**.
+2. Choose a repository or folder, select **Codebase**, and turn on **Deep scan**.
+   The scan reviews the entire selected repository or folder.
+3. Choose the model and reasoning effort. Add threat-model or deployment
+   context under **Additional context**.
+4. Select **Start scan**.
+
+</WorkflowSteps>
+
+You can also start it from a Codex conversation:
+
+```text
+Use $codex-security:deep-security-scan to run a deep security scan of this repository.
+```
+
+For one component, replace "this repository" with the path to its folder.
+
+Deep scan workers inherit your selected model and reasoning settings. Each
+worker runs a complete standard scan, and Codex Security aggregates the
+completed results. Follow the saved scan from **Scans**, or select **View
+activity** to inspect its Codex task. Set [runtime limits](#configure-deep-scan-runtime) before starting if you need
+to limit concurrency or duration.
+
+<figure className="not-prose my-8">
+  <CodexScreenshot
+    alt="Native Codex Security workbench showing a deep scan and its active review phase"
+    lightSrc={deepScanProgress.src}
+    darkSrc={deepScanProgressDark.src}
+    maxHeight="520px"
+  />
+  <figcaption className="mt-3 text-sm text-secondary">
+    Track the active deep-scan phase and inspect its Codex activity before
+    reviewing the completed result.
+  </figcaption>
+</figure>
+
+## Review the result
+
+Deep scans use the same saved scan details and complete scan directory as
+standard scans. Open the completed scan in **Scans** or review its findings in
+**Findings**. The generated `report.md` links to detailed vulnerability reports
+or structural hardening guidance when you request those outputs.
+Keep any linked `findings/` and `hardening/` directories with the report when
+sharing or archiving the result.
+
+Review the coverage summary before the findings. Even a deep scan has limits,
+so check deferred surfaces and remaining proof gaps before drawing a
+conclusion. For a finding you accept, continue with [Fix and verify a
+finding](https://learn.chatgpt.com/docs/security/plugin/fix-findings).
+
+To review a pull request, commit, branch range, or local patch, use [Review code
+changes](https://learn.chatgpt.com/docs/security/plugin/code-changes). Deep scans don't accept diff targets.
 
 ## Configure deep-scan runtime
 
@@ -66,79 +127,3 @@ coverage.
 
 The `max_time_hours` setting requires plugin version `0.1.19` or later. See the
 [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) for release details.
-
-## Start the deep scan
-
-In the desktop app, open **Security**, select **Scans**, and select **+ Scan**.
-Choose a repository or another folder, select **Codebase**, and turn on
-**Deep scan**. The scan covers the entire selected repository or folder.
-
-You can also start a repository-wide deep scan from a Codex conversation:
-
-```text
-Use $codex-security:deep-security-scan to run a deep security scan of this repository.
-```
-
-For one component in a monorepo, identify the folder explicitly:
-
-```text
-Use $codex-security:deep-security-scan to run a deep security scan of /absolute/path/to/repository/services/payments.
-```
-
-For a scoped deep scan in the desktop app, select the folder as the codebase.
-The scan covers the entire selected folder.
-
-## Confirm setup and preflight
-
-For the best scan quality, use `gpt-5.6-sol`
-with `xhigh` reasoning effort.
-
-<WorkflowSteps>
-
-1. Select **Codebase** and turn on **Deep scan**.
-2. Confirm that the repository or selected folder is the code you intended to
-   scan.
-3. Choose a model and reasoning effort.
-4. Open **Additional context** for concrete attack vectors, sensitive
-   application areas, or repository context that the code can't reveal.
-5. Select **Start scan**.
-
-</WorkflowSteps>
-
-Deep scan workers inherit your selected model and reasoning settings. Each
-worker runs a complete standard scan, and Codex Security aggregates the
-completed results. Follow the saved scan from **Scans**, or select **View
-activity** to inspect its Codex task. Check the [plugin
-changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you update the plugin or
-start a long-running scan.
-
-<figure className="not-prose my-8">
-  <CodexScreenshot
-    alt="Native Codex Security workbench showing a deep scan and its active review phase"
-    lightSrc={deepScanProgress.src}
-    darkSrc={deepScanProgressDark.src}
-    maxHeight="520px"
-  />
-  <figcaption className="mt-3 text-sm text-secondary">
-    Track the active deep-scan phase and inspect its Codex activity before
-    reviewing the completed result.
-  </figcaption>
-</figure>
-
-## Review the result
-
-Deep scans use the same saved scan details and complete scan directory as
-standard scans. Open the completed scan in **Scans** or review its findings in
-**Findings**. The generated `report.md` links to detailed vulnerability reports
-or structural hardening guidance when you request those outputs.
-Keep any linked `findings/` and `hardening/` directories with the report when
-sharing or archiving the result.
-
-Review the coverage summary before the findings. Even a deep scan has limits,
-so check deferred surfaces and remaining proof gaps before drawing a
-conclusion. For a finding you accept, continue with [Fix and verify a
-finding](https://learn.chatgpt.com/docs/security/plugin/fix-findings).
-
-To review a pull request, commit, branch range, or local patch, use [Review code
-changes](https://learn.chatgpt.com/docs/security/plugin/code-changes). A deep scan never substitutes
-for the diff-focused workflow.

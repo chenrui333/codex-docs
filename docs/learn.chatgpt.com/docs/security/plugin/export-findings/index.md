@@ -86,7 +86,7 @@ service.
 ## Track selected findings
 
 Run `$codex-security:track-findings` with one validated finding or an
-explicitly selected batch of up to 25 findings from the same sealed scan. Each
+selected batch of up to 25 findings from the same sealed scan. Each
 run uses one provider and one destination. A private draft GitHub Security
 Advisory accepts only one finding.
 
@@ -135,8 +135,8 @@ create anything until I approve that payload.
 
 Draft advisories require one finding from a sealed `git_revision` scan, the
   verified public canonical source repository, and administrator access. The
-  workflow doesn't batch, update, publish, or close advisories. Use an approved
-  private issue destination when the source doesn't meet those requirements.
+  workflow doesn't batch, update, publish, or close advisories. Use a private
+  issue destination when the source doesn't meet those requirements.
 
 ## Review the proposed write
 

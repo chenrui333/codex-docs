@@ -302,6 +302,19 @@ profile-defined workspace root. Use it when you want to preserve normal
 workspace writes while keeping environment files, generated secrets, or similar
 credential-bearing files unreadable.
 
+On Linux, WSL, and native Windows with MXC or `elevated`, deny-read glob matches
+are enumerated when each sandboxed process starts. Matching files created afterward are not
+added to that process's deny list and remain readable if its other permissions
+allow access. For example, a long-running shell, script, watcher, or development
+server can read a matching `.env` file created after it started.
+
+This snapshot lasts for the sandboxed process's lifetime, not the whole Codex
+session. Starting a new sandboxed process through Codex enumerates the matches
+again; continuing to use an already-running process does not refresh its deny
+list. Don't rely on a glob to block newly created files in that running process.
+See [Windows MXC compatibility](https://learn.chatgpt.com/docs/windows/windows-sandbox#mxc-compatibility)
+for Windows-specific limits.
+
 `deny` glob patterns are supported as deny-read rules. `read` or `write` globs
 are less portable on Linux, WSL, and native Windows sandboxing, so prefer exact
 paths or subtree rules such as `"docs/**" = "read"` when possible.

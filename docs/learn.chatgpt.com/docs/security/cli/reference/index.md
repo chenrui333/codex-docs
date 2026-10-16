@@ -345,8 +345,9 @@ npx @openai/codex-security scan . \
 ```
 
 When the time limit expires, the scan stops unfinished workers, keeps completed
-scan results, and aggregates them into the final report. If no worker finishes
-source review, the scan records partial coverage and returns exit code `2`.
+scan results, and aggregates them into the final report. Check the report for
+reviewed areas and deferred work. The deadline alone doesn't determine the exit
+code; execution status and the severity policy do.
 
 Set persistent defaults in `~/.codex/codex-security/config.toml`, or in
 `$CODEX_HOME/codex-security/config.toml` when you set `CODEX_HOME`:
@@ -386,7 +387,7 @@ outside the saved scan results.
 To add scan instructions, provide a text or Markdown file with
 `--scan-prompt-file`. Use `--post-scan-prompt-file` to run follow-up
 instructions in the same authenticated session after successful scans and
-scans with incomplete coverage or errors:
+scan errors:
 
 ```bash
 npx @openai/codex-security scan . \
@@ -423,9 +424,10 @@ machine-readable result.
 
 The cost limit is an estimate, not a hard spending cap. Requests already in
 progress can finish slightly above the limit. If a deep scan reaches the limit
-after Codex Security aggregates completed worker results, the CLI seals the
-available results, marks coverage as `partial`, and returns exit code `2`.
-Otherwise, it returns `2` and leaves any available partial output on disk.
+after Codex Security aggregates completed worker results, the CLI can seal a
+completed result and report the budget warning. It returns `0`, or `1` if
+findings meet the configured severity threshold. If it can't produce a valid
+completed result, it returns `2` and leaves any available output on disk.
 
 When you omit `--output-dir`, results persist under
 `$CODEX_HOME/state/plugins/codex-security/scans/<repository>`. `CODEX_HOME`
@@ -522,7 +524,7 @@ npx @openai/codex-security install-hook . --fail-on-severity medium
 ## `codex-security bulk-scan`
 
 Discover and scan GitHub repositories, or run a resumable scan from a
-repository CSV:
+repository CSV.
 
 For a complete guide to GitHub discovery, CSV inventories, campaign results,
 and containerized scans, see [Run bulk security
@@ -573,17 +575,17 @@ Use `--knowledge-base PATH` to share security documents across every
 repository. Use `--scan-prompt-file FILE` to add shared scan instructions; the
 CSV `prompt` column adds repository-specific instructions after that shared
 prompt. `--post-scan-prompt-file FILE` runs follow-up instructions after each
-scan, including scans with incomplete coverage or errors. It doesn't run after
+scan, including scan errors. It doesn't run after
 cancellation or when a scan reaches its cost limit.
 
 `--workers` limits simultaneous repository scans and defaults to `4`. `--mode`
 defaults to `standard`, and `--max-attempts` defaults to `1`. Set
-`--max-attempts` to retry repository or scan errors. Completed scans with
-incomplete coverage aren't retried. Their results remain available, and the
-command returns exit code `2`.
+`--max-attempts` to retry repository or scan errors. Completed scans aren't
+retried because of coverage gaps or severity-policy violations. Their results
+remain available.
 
 Run the same command again to resume from an existing output directory. The CLI
-skips completed scans, including scans with incomplete coverage.
+skips completed scans, including scans with coverage gaps.
 
 For containerized campaigns, see [Run bulk scans in
 Docker](https://learn.chatgpt.com/docs/security/cli/bulk-scans#run-bulk-scans-in-docker).
@@ -640,12 +642,12 @@ before sharing:
 npx @openai/codex-security scans logs SCAN_ID
 ```
 
-Add `--json` for a machine-formatted result containing full information.
+Add `--json` for structured output.
 
 ### Match and compare findings
 
-Compare two scans to find new, persisting, reopened, resolved, and unknown
-findings:
+Compare two scans to find new, persisting, reopened, not observed, resolved, and
+unknown findings:
 
 ```bash
 npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
@@ -658,9 +660,10 @@ and reuses saved matches. To save matches explicitly, use `scans match`:
 npx @openai/codex-security scans match PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
-A finding is unknown when the later scan has incomplete coverage or doesn't
-cover the finding's original location. Add `--force` to `match` when you need to
-recompute an existing match.
+A finding is unknown when its path is excluded or its match is uncertain. If
+the later scan doesn't find it in the code it scanned, it is not observed.
+Only a finding explicitly closed as already fixed is resolved. Add `--force`
+to `match` when you need to recompute an existing match.
 
 To match all completed scans for the current repository, including scans from
 other checkouts:
@@ -691,8 +694,8 @@ npx @openai/codex-security findings list /path/to/repository
 Add `--json` for structured output. The list identifies findings seen in the
 latest scan and earlier findings that weren't confirmed in that scan.
 
-Note that earlier findings remain open until resolved or dismissed (absence
-from the latest scan is not interpreted as proof that it's fixed).
+Earlier findings remain open until resolved or dismissed. Their absence from
+the latest scan doesn't establish that they are fixed.
 
 To record a reviewed finding as a false positive:
 
@@ -813,8 +816,8 @@ run validates the sealed artifacts without this persistence check.
 | `--json`                             | Write structured publication results to stdout. Progress remains on stderr.                                                                                      |
 
 Linear issue descriptions and dry-run output can include source code snippets
-  and vulnerability details. Publish only to an authorized Linear team or
-  project, and treat saved output as sensitive.
+  and vulnerability details. Check who can view the destination team or project
+  before publishing.
 
 Each non-dry-run invocation attempts to create a new issue for every finding.
 Publishing the same scan again doesn't match, update, or reuse existing issues.
@@ -1033,14 +1036,13 @@ flag. `LOG_LEVEL=debug` also enables diagnostics when
 ### Completion summary
 
 A completed scan writes its open repository finding count, severity breakdown,
-coverage, elapsed time, report path, and result directory to stderr. It
-includes token usage and estimated cost when available:
+elapsed time, report path, and result directory to stderr. It
+includes token usage and estimated cost when available. For example:
 
 ```text
   REPORT    /path/to/scan/report.md
 
   FINDINGS  4 (3 confirmed this scan; 1 previously found; 1 critical, 2 high, 1 informational)
-  COVERAGE  complete
   ELAPSED   1s
   TOKENS    1,250 input, 200 cached, 30 output
   RESULTS   /path/to/scan
@@ -1079,7 +1081,7 @@ results and any created pull request.
 
 Progress, completion summaries, archive notices, and errors remain on stderr.
 A completed scan still prints the full JSON result when a severity policy
-returns exit `1` or incomplete coverage returns exit `2`.
+returns exit `1`.
 
 `codex-security scan --json` emits one JSON document. `codex exec --json`
   emits a JSON Lines event stream. Use the output format that matches the
@@ -1087,7 +1089,9 @@ returns exit `1` or incomplete coverage returns exit `2`.
 
 ## Scan artifacts
 
-A completed scan keeps the readable report and structured artifacts together:
+A completed scan keeps the readable report and structured artifacts together.
+The sealed manifest records artifact hashes so later readers can check that
+those files haven't changed:
 
 ```text
 <scan-directory>/
@@ -1106,34 +1110,31 @@ The structured files serve different jobs:
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `scan-manifest.json`    | Scan identity, status, target, scope, producer, and sealed artifact records.                                                    |
 | `findings.json`         | Finding identifiers, severity, confidence, taxonomy, locations, evidence, validation, data flow, reachability, and remediation. |
-| `coverage.json`         | Reviewed surfaces, exclusions, deferred work, open questions, and coverage completeness.                                        |
+| `coverage.json`         | Reviewed surfaces, exclusions, deferred work, and open questions.                                                               |
 | `report.md`             | Readable scan report.                                                                                                           |
 | `artifacts/`            | Supporting scan artifacts.                                                                                                      |
 | `exports/results.sarif` | SARIF generated during the scan, when present.                                                                                  |
 
-Coverage completeness has three values:
-
-- `complete`: The scan records complete coverage for its selected scope.
-- `partial`: The scan records deferred work or other coverage limits.
-- `unknown`: The scan reports coverage completeness as unknown.
-
-Review deferred surfaces, explicit exclusions, and open questions before using
-coverage as evidence for a security decision.
+Read `scan.status` in `scan-manifest.json` for execution status: `completed`,
+`failed`, `canceled`, or `interrupted`. New results don't include
+`coverage.completeness`. Review deferred surfaces, explicit exclusions, and
+open questions in `coverage.json` to understand what the scan reviewed.
 
 ## Exit codes and signals
 
 The CLI uses these exit codes:
 
-| Exit  | Condition                                                                                                                                                                     |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `0`   | A scan completed with complete coverage and passed its severity policy, a bulk scan or publication completed without failures, or another command succeeded.                  |
-| `1`   | A completed scan reports a finding at or above the configured severity.                                                                                                       |
-| `2`   | The CLI found an input, runtime, or export error, a scan has incomplete coverage, a bulk scan has repositories with errors, or a publication has one or more failed findings. |
-| `130` | Ctrl-C interrupted a scan or publication.                                                                                                                                     |
-| `143` | SIGTERM terminated a scan or publication.                                                                                                                                     |
+| Exit  | Condition                                                                                                                                 |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `0`   | A scan or bulk campaign completed and passed its severity policy, a publication completed without failures, or another command succeeded. |
+| `1`   | A completed scan or bulk campaign reports a finding at or above the configured severity.                                                  |
+| `2`   | An input, execution, result-integrity, required-output, or export failure occurred, or a publication has one or more failed findings.     |
+| `130` | Ctrl-C interrupted a scan or publication.                                                                                                 |
+| `143` | SIGTERM terminated a scan or publication.                                                                                                 |
 
-Any scan with `partial` or `unknown` coverage returns `2`, even without a
-severity policy. When you request structured output, completed scans and
+Coverage gaps don't change a completed scan's exit code or bypass its severity
+policy. Exit `0` doesn't mean every file was reviewed. When you request
+structured output, completed scans and
 partial publications still write the available results to stdout. The CLI
 prints the location of any partial output after an interruption or runtime
 error.
@@ -1151,8 +1152,8 @@ Settings supplied through CLI `--codex` or SDK `codexOverrides`, including
 or restrict these scan controls. Host and network restrictions still apply.
 
 Scan and workbench processes can inherit your environment, including unrelated
-API tokens and cloud credentials. Scan only repositories you trust and have
-permission to assess, and provide only the credentials the scan requires.
+API tokens and cloud credentials. Remove unrelated credentials before
+starting a scan.
 
 ## Authentication and prerequisites
 

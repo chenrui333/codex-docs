@@ -29,17 +29,13 @@ You need:
 
 - A GitLab project with a trusted runner that supports the Codex sandbox's
   user namespace.
-- The Maintainer or Owner role in the GitLab project so you can configure
-  [project CI/CD variables](https://docs.gitlab.com/ci/variables/) and protected
-  resources.
+- The Maintainer or Owner role in the GitLab project so you can configure [project CI/CD variables](https://docs.gitlab.com/ci/variables/)
+  and protected resources.
 - An OpenAI API key with Codex Security access. Organizations using Platform
-  API keys can [request Trusted Access for
-  Cyber](https://openai.com/form/enterprise-trusted-access-for-cyber/).
-  Individuals using ChatGPT authentication can use the [personal Trusted Access
-  flow](https://chatgpt.com/cyber). Some accounts or repositories require this
+  API keys can [request Trusted Access for Cyber](https://openai.com/form/enterprise-trusted-access-for-cyber/).
+  Individuals using ChatGPT authentication can use the [personal Trusted Access flow](https://chatgpt.com/cyber). Some accounts or repositories require this
   access for full-repository scans.
-- GitLab Ultimate 19.2 or later for [SARIF 2.1.0
-  ingestion](https://docs.gitlab.com/user/application_security/detect/sarif/).
+- GitLab Ultimate 19.2 or later for [SARIF 2.1.0 ingestion](https://docs.gitlab.com/user/application_security/detect/sarif/).
 - Full Git history so merge request jobs can calculate the merge base.
 
 The pipeline image installs Node.js 26, Python 3, Git, `rg`, and the pinned
@@ -51,10 +47,9 @@ without protected credentials.
 
 Create a masked, hidden, protected GitLab CI/CD variable named
 `CODEX_SECURITY_API_KEY`. Use an OpenAI Platform API key with Codex Security
-access, and set its environment scope to `codex-security/openai`. See
-[environment-scoped CI/CD variables](https://docs.gitlab.com/ci/environments/#limit-the-environment-scope-of-a-cicd-variable).
+access, and set its environment scope to `codex-security/openai`. See [environment-scoped CI/CD variables](https://docs.gitlab.com/ci/environments/#limit-the-environment-scope-of-a-cicd-variable).
 
-Add this minimal pipeline to a test project first. It scans committed changes
+Add this pipeline to a test project first. It scans committed changes
 in eligible protected merge requests, publishes SARIF from a successful report
 job, and restores the scanner result in a separate gate:
 
@@ -77,6 +72,8 @@ codex-security:
   variables:
     GIT_DEPTH: "0"
   before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq --no-install-recommends ca-certificates git python3 ripgrep
     - npm install --prefix /tmp/codex-security-cli --ignore-scripts --no-audit --no-fund @openai/codex-security@0.1.20
   script:
     - |
@@ -140,7 +137,7 @@ codex-security-gate:
 > Illustration: GitLab pipeline scans a committed diff, publishes a SARIF report, and restores the scan result in a policy gate
 
 Review every change to `.gitlab-ci.yml` before running a secret-bearing job.
-The minimal example intentionally omits full scans and remediation.
+This example omits full scans and remediation.
 
 ## Adopt the production pipeline
 
@@ -165,8 +162,7 @@ budgets to enable scheduled deep scans on the protected default branch.
 A merge request pipeline can access protected variables and runners only when:
 
 - You protect the source and target branches in the same project.
-- The project [permits merge request pipelines to access protected variables and
-  runners](https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/#control-access-to-protected-variables-and-runners).
+- The project [permits merge request pipelines to access protected variables and runners](https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/#control-access-to-protected-variables-and-runners).
 - The user who starts the pipeline can push or merge into the target branch.
 
 Fork pipelines and unprotected merge requests don't receive the scan
@@ -259,17 +255,12 @@ pipelines. The Codex remediation process and repository-controlled verification
 commands do not receive the GitLab project access token or runner-injected
 credentials.
 
-The security contract has three parts: repository-controlled commands never
-receive OpenAI or GitLab credentials, only the publishing job receives
-repository-write access, and every generated change stays a draft until a
-human reviews and merges it.
-
 The workflow:
 
 1. Requires complete scan coverage and a `high`- or `critical`-severity
    finding.
 2. Confirms that the configured regression test fails before patching.
-3. Generates a focused patch and rejects changes to CI, credential, binary, or
+3. Generates a patch and rejects changes to CI, credential, binary, or
    other protected files.
 4. Runs the regression test without OpenAI, GitLab, registry, deployment, or
    job-token credentials.
@@ -295,7 +286,7 @@ source changes.
 The `validate`, `patch`, and `verify-fix` commands receive a process-scoped
 `CODEX_API_KEY`. Repository-controlled setup and test commands run as a
 separate unprivileged user in a writable copy of the tracked source files.
-The copy intentionally excludes Git metadata, submodule contents, and
+The copy excludes Git metadata, submodule contents, and
 downloaded artifacts. Setup and test commands that require `.git` or
 submodules must run in a separately designed credential-free job.
 
@@ -310,8 +301,7 @@ job before enabling remediation.
 
 ## Publish a draft merge request
 
-Create a [GitLab project access
-token](https://docs.gitlab.com/user/project/settings/project_access_tokens/#create-a-project-access-token)
+Create a [GitLab project access token](https://docs.gitlab.com/user/project/settings/project_access_tokens/#create-a-project-access-token)
 with the Developer role and the `api` and `write_repository` scopes. Store it as
 a protected, masked, hidden `GITLAB_REMEDIATION_TOKEN` scoped only to the
 `codex-security/publish` environment.
@@ -365,7 +355,7 @@ identity from the normalized base and head revisions.
 
 ## Tune enforcement and cost
 
-Use focused diff scans for merge request feedback, standard repository scans
+Use diff scans for merge request feedback, standard repository scans
 for the default branch, and scheduled deep scans for broader coverage. Both
 full-repository profiles are off by default. A scheduled deep scan also requires
 `CODEX_SECURITY_DEEP_MAX_TIME_HOURS` and `CODEX_SECURITY_DEEP_MAX_COST`; keep the

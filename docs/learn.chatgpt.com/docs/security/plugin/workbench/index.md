@@ -13,9 +13,9 @@ Source: https://learn.chatgpt.com/docs/security/plugin/workbench
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-The Security workbench brings your scans, findings, and repositories together
-in the Codex desktop app. Codex performs scan analysis in a regular task, while
-the workbench keeps the scan and its results available when you return.
+Use the Security workbench to start scans, review saved findings, and inspect
+a repository's scan history. Each scan runs in a Codex task you can open to
+inspect its activity.
 
 In the ChatGPT desktop app, open the ChatGPT dropdown and select **Codex**.
 Install and enable the [Codex Security plugin](https://learn.chatgpt.com/docs/security/plugin), then
@@ -36,14 +36,13 @@ with `xhigh` reasoning effort.
 2. Select an existing repository or choose another folder.
 3. Choose **Codebase** to scan a repository or **Changes** to review a
    Git-backed change.
-4. For a standard codebase scan, select the entire repository or a folder.
-5. For a deep scan, first select the repository or folder as the codebase, then
-   turn on **Deep scan**. Deep scans review the entire selected codebase.
-6. For a changes scan, select uncommitted changes, a commit, or a revision
-   range. **Deep scan** isn't available for changes scans.
-7. Choose a model and reasoning effort. Open **Additional context** to describe
-   relevant attack vectors, focus areas, or other security context.
-8. Select **Start scan**.
+4. Set the scope. For **Codebase**, choose the entire repository or a folder.
+   Turn on **Deep scan** for repeated review of the selected codebase. For
+   **Changes**, choose uncommitted changes, a commit, or a revision range.
+   Deep scans aren't available for changes.
+5. Choose a model and reasoning effort. Use **Additional context** for
+   threat-model or deployment details.
+6. Select **Start scan**.
 
 </WorkflowSteps>
 
@@ -66,13 +65,11 @@ type.
 
 ## Follow scan progress
 
-The scan page shows the current phase and any scan progress the plugin reports.
-For a standard scan, phases include threat modeling, discovery, validation,
-impact and path analysis, reporting, and finalization.
+The scan page shows the current phase and any progress the plugin reports.
 
 Select **View activity** to open the Codex task that runs the scan. You can
 leave the workbench and return to **Scans** without losing a saved scan. To stop
-work intentionally, open the scan and select **Stop scan**.
+work, open the scan and select **Stop scan**.
 
 When the scan completes, open its results to review the target, revision,
 findings, coverage, and available report artifacts.
@@ -97,7 +94,7 @@ Search or filter the list, then select a finding to review its summary, source
 evidence, validation, and impact.
 
 Use **Summary** for the finding details and **Patch** when you want to generate,
-review, apply, or verify a focused fix. See [Fix and verify security
+review, apply, or verify a fix. See [Fix and verify security
 findings](https://learn.chatgpt.com/docs/security/plugin/fix-findings) for the remediation workflow.
 
 The **Findings** tab shows findings from saved Codex Security scans. Imported

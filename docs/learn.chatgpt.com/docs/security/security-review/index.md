@@ -14,17 +14,15 @@ Source: https://learn.chatgpt.com/docs/security/security-review
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 Codex Security Review is available to ChatGPT Enterprise, Business, Edu, and
-Pro customers; it is not available on Plus. Security reviews consume included
+Pro customers. It isn't available on Plus. Security reviews consume included
 Codex allowance or ChatGPT credits.
 
-Codex Security Review is an additional review for customers that want to
-pay particular attention to security issues in pull requests.
+Use Security Review to check a GitHub pull request for security issues in its
+diff and supporting code. It uses threat-model context or security guidance
+when configured and posts findings that meet your reporting threshold.
 
-Codex Security Review goes deeper than [Code
-Review](https://learn.chatgpt.com/docs/third-party/github) on security-specific risks by analyzing the
-pull request diff, supporting repository context, and configured threat models
-or security guidance. Code Review can also identify security-related issues as
-part of its general review, so you may see occasional overlap between findings.
+[Code Review](https://learn.chatgpt.com/docs/third-party/github) can also report security issues during
+its general review, so the two reviews may report the same finding.
 
 ## Before you start
 
@@ -84,9 +82,8 @@ automatic and manual reviews, and add path-based overrides.
 Findings posted to a pull request inherit that pull request's GitHub
 visibility. Anyone who can view the pull request can view those findings,
 including on public repositories or pull requests from contributors outside
-your workspace. Choose reporting thresholds carefully for repositories where
-pull request comments may be broadly visible. The reporting threshold controls
-what Codex posts to GitHub; the full Codex Security Review report remains in
+your workspace. The reporting threshold controls
+what Codex posts to GitHub. The full Codex Security Review report remains in
 Codex.
 
 <a id="request-a-security-review"></a>
@@ -102,7 +99,9 @@ manual reporting threshold directly on the pull request. Open the associated
 Codex task and select the **Security Report** tab to view the full report,
 including severity, attack path, supporting evidence, validation, and
 remediation guidance. If no issues meet the reporting threshold, Codex does not
-post findings to the pull request.
+post findings to the pull request. Check the task status and full report
+before interpreting an empty comment result as a completed review with no
+findings.
 
 ## Related docs
 

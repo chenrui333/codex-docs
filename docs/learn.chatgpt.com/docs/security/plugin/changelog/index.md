@@ -504,7 +504,7 @@ package and bundled plugin versions together.
 
 - Run standard scans against Git repositories, individual folders, or
   codebases without Git history. Deep scans can also target a specific folder.
-- Cancel an active scan explicitly, resume an interrupted scan without another
+- Cancel an active scan, resume an interrupted scan without another
   setup prompt, and receive a warning before starting concurrent deep scans.
 - Follow clearer setup and progress states, with more compact progress
   summaries and errors that remain visible until you address them.
@@ -535,7 +535,7 @@ package and bundled plugin versions together.
 
 ### Run evidence-backed security reviews
 
-- Scan an authorized repository or selected folder for security
+- Scan a repository or selected folder for security
   vulnerabilities.
 - Run repeated discovery across an entire repository when you need more
   thorough coverage.
@@ -543,5 +543,5 @@ package and bundled plugin versions together.
   security regressions.
 - Move each candidate through threat modeling, finding discovery, validation,
   and impact analysis before generating scan reports.
-- Fix one accepted finding with a focused patch, regression coverage, and
+- Fix one accepted finding with a patch, regression coverage, and
   verification of the original issue.

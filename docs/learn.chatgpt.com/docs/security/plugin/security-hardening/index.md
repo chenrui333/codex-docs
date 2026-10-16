@@ -19,25 +19,24 @@ workflow can analyze a completed Codex Security scan or start from supplied
 findings, disclosure reports, incident reviews, assessment documents, and
 source code.
 
-The result is a design portfolio, not a patch, and doesn't prove that it fixes a
-vulnerability. Codex changes the repository only after you select an option and
-explicitly ask it to make that change.
+The result compares design options and their engineering tradeoffs. Codex
+changes the repository only after you select an option and ask it
+to implement it.
 
 ## Prepare the evidence
 
 Provide the workflow with:
 
-- A scan directory or an explicit collection of findings and reports.
-- The target source tree and relevant revision or snapshot when available.
+- A scan directory or a collection of findings and reports.
+- The target source tree and revision or snapshot when available.
 - PoCs, traces, incident evidence, or assessment material that supports the
   findings.
 - Constraints for performance, memory, compatibility, reliability, operations,
   delivery time, or change scope.
 
-The workflow uses the evidence to identify repeated broken invariants, dispersed
-controls, privileged choke points, weak isolation boundaries, and recurring
-remediation patterns. It can also conclude that local fixes are more
-proportionate than an architectural change.
+For example, repeated authorization bugs may suggest that a shared control
+would be easier to enforce than checks in each handler. The evidence may also
+support keeping a local fix instead of changing the architecture.
 
 ## Run the workflow
 
@@ -47,20 +46,20 @@ Send a prompt like:
 Use $codex-security:propose-security-hardening to analyze [scan directory or finding paths] against [source tree and revision]. Develop evidence-backed structural hardening options with engineering tradeoffs, before-and-after diagrams, a migration plan, and an implementation handoff. Do not modify the repository.
 ```
 
-## Review the portfolio
+## Choose an option
 
-A useful portfolio should:
+Before choosing an option, check that the proposal:
 
-- Connect each proposed change to concrete findings, source, and threat-model
+- Connects each proposed change to findings, source, and threat-model
   evidence.
-- Describe the current design and the security invariants the new design should
+- Describes the current design and the security invariants the new design should
   preserve.
-- Compare distinct options, including residual risk, performance,
+- Compares distinct options, including residual risk, performance,
   reliability, operations, compatibility, and migration cost.
-- Recommend an option only when the evidence supports it, with explicit
-  assumptions and open questions.
-- Include rollout, validation, rollback, and implementation guidance.
-- Separate observed facts, inferences, and proposed design properties.
+- Supports its recommendation with evidence and states assumptions and open
+  questions.
+- Includes rollout, validation, rollback, and implementation guidance.
+- Separates observed facts, inferences, and proposed design properties.
 
 Review the evidence and tradeoffs before choosing an option. An architecture
 diagram or design recommendation doesn't replace validation of the original

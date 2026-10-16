@@ -22,11 +22,9 @@ The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22
 (22.13.0 or later), 24, or 26. Scanning also requires Python 3.10 or later.
 Python 3.10 also requires the `tomli` package.
 
-The Codex Security SDK is [publicly available on
-  GitHub](https://github.com/openai/codex-security). Running scans requires
-  Codex Security access. For general coding agents, see the [Codex SDK
-  guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI workflows, see the [Codex
-  Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
+Running scans requires Codex Security access. For general coding agents, see
+  the [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI workflows, see
+  the [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ## Set up the SDK
 
@@ -42,25 +40,24 @@ provider](#configure-the-runtime-and-credentials). Amazon Bedrock uses AWS
 credentials; OpenRouter and Fireworks use provider-specific API keys and
 configuration.
 
-For best results, use an account verified for [Trusted Access for
-Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
+For best results, use an account verified for [Trusted Access for Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
 grant Trusted Access.
 
 ## Run a scan
 
-Scan only repositories you trust and have permission to assess. The SDK runs
-with your local operating-system permissions and never pauses for approval.
+The SDK runs with your local operating-system permissions and doesn't pause
+for approval.
 Scan processes can inherit your environment, so remove unrelated credentials
 before you start. See [Local scan
 permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions).
 
-Create one `CodexSecurity` client, run a standard repository scan, and close
-the client when the work completes. Pass `outputDir` to choose a private
+Save this example as `scan.mjs`. Replace the paths, run a standard repository
+scan, and close the client when the work completes. Pass `outputDir` to choose a private
 results directory outside the enclosing Git worktree.
 
 If you omit `outputDir`, Codex Security saves results in its own persistent
 state directory. Results can include source excerpts and vulnerability
-details, so choose appropriate permissions and retention policies.
+details. Set who can read them and how long to keep them.
 
 ```ts
 
@@ -72,16 +69,32 @@ try {
   });
 
   console.log(result.reportPath);
-  console.log(result.coverage.completeness);
+  console.log(result.manifest.scan.status);
   console.log(result.findings.findings.length);
 } finally {
   await security.close();
 }
 ```
 
-`run` starts the scan, waits for completion, validates the sealed artifacts,
-and returns a `ScanResult`. `close` releases the isolated runtime and supports
-repeated calls.
+Run it with Node.js:
+
+```bash
+node scan.mjs
+```
+
+The example prints the report path, scan status, and finding count.
+Open the report to review the evidence. The count varies with the repository
+and scan, so don't use an expected count to check whether the integration works.
+
+`run` validates the saved artifacts and returns a `ScanResult` when
+`result.manifest.scan.status` is `"completed"`. Check `result.coverage` for
+reviewed surfaces, exclusions, and deferred work. A completed scan can still
+have coverage gaps. Runtime, input, or result-integrity failures can throw an
+[error](#handle-scan-errors).
+
+In later examples, reuse the open `security` client and keep `close()` in
+`finally` to release the runtime. Add any additional imports at the top of
+`scan.mjs`.
 
 ## Check inputs with preflight
 
@@ -101,9 +114,9 @@ console.log(plan.mode);
 console.log(plan.outputDir);
 ```
 
-Preflight leaves the Codex runtime and credentials untouched. It also leaves
-plugin and Python discovery for the scan itself. This makes preflight useful
-for checking user input before a long-running or credentialed operation.
+Preflight checks local inputs without starting Codex, loading credentials, or
+checking Python and plugin availability. A successful preflight doesn't prove
+that the scan can authenticate or start.
 
 To preview archival for an existing result directory, set
 `archiveExisting: true`:
@@ -208,8 +221,7 @@ require `mode: "deep"`.
 `maxTimeHours` defaults to `96` and accepts a positive number up to `96`,
 including fractional hours. At the deadline, Codex Security stops unfinished
 workers, keeps completed scan results, and aggregates them into the final
-report. Review `result.coverage.completeness` before treating a time-limited
-scan as evidence of full coverage.
+report. Review `result.coverage` for deferred work and open questions.
 
 ### Add a security knowledge base
 
@@ -263,11 +275,11 @@ console.log(result.cost?.estimatedUsd);
 
 The limit estimates spending but isn't a hard cap, so requests already in
 progress can finish slightly above it. If a deep scan reaches the limit after
-Codex Security aggregates completed worker results, `run` returns a result
-with `coverage.completeness` set to `"partial"` and reports the budget warning
-through `onWarning`.
+Codex Security aggregates completed worker results, `run` can return a result
+with `manifest.scan.status` set to `"completed"` and report the budget warning
+through `onWarning`. Check `result.coverage` for the work left unfinished.
 
-If the scan can't produce a completed partial result, `run` throws
+If the scan can't produce a valid completed result, `run` throws
 `ScanCostLimitExceededError` and preserves any available output.
 
 ## Work with scan results
@@ -280,7 +292,7 @@ paths:
 | `manifest`           | The sealed scan manifest, including target, scope, producer, and artifact records. |
 | `findings`           | Findings from the current scan. Read finding objects from `findings.findings`.     |
 | `repositoryFindings` | Open findings across repository scans, when scan history is available.             |
-| `coverage`           | Reviewed surfaces, exclusions, deferred work, open questions, and completeness.    |
+| `coverage`           | Reviewed surfaces, exclusions, deferred work, and open questions.                  |
 | `scanDir`            | The scan directory.                                                                |
 | `threadId`           | The Codex thread identifier for the scan.                                          |
 | `turnResult`         | Turn status, response, and available usage metadata.                               |
@@ -328,9 +340,9 @@ for (const finding of result.repositoryFindings ?? []) {
 }
 ```
 
-Coverage completeness is `complete`, `partial`, or `unknown`. Review deferred
-surfaces, exclusions, and open questions before using a scan as evidence for a
-security decision.
+New results don't include `coverage.completeness`. Use `manifest.scan.status`
+for execution status, and review deferred surfaces, exclusions, and open
+questions in `coverage` to understand what the scan reviewed.
 
 `result.toJSON()` returns the manifest, repository and current-scan findings,
 coverage, scan and thread identifiers, `reportPath`, `artifactsDir`,
@@ -367,21 +379,17 @@ const result = await security.run("/path/to/repository", {
 console.log(result.reportPath);
 ```
 
-Pass an `AbortSignal` when cancellation comes from a request, job controller,
-or timeout:
+Pass an `AbortSignal` from your request or job controller to cancel a scan.
+If the scan is still running after 30 minutes, this example interrupts it and
+prints the directory containing any saved output:
 
 ```ts
 
-const controller = new AbortController();
-
 try {
-  const scan = security.run("/path/to/repository", {
+  await security.run("/path/to/repository", {
     outputDir: "/path/outside/repository/results",
-    signal: controller.signal,
+    signal: AbortSignal.timeout(30 * 60 * 1000),
   });
-
-  controller.abort();
-  await scan;
 } catch (error) {
   if (error instanceof ScanInterruptedError) {
     console.error(error.scanDir);
@@ -488,8 +496,8 @@ The client also exposes supported authentication methods:
 
 A login handle provides `waitForInstructions`, `authUrl`, `verificationUrl`,
 `userCode`, `wait`, and `cancel` so an application can present and complete the
-selected sign-in flow. The SDK can reuse a file-backed Codex sign-in. API keys
-are a useful fit for CI and server-side automation.
+selected sign-in flow. The SDK can reuse a file-backed Codex sign-in. Use API keys
+for CI and server-side automation.
 
 When both an API key and a stored sign-in are available, the SDK uses the API
 key by default. To use your ChatGPT sign-in instead, select it for the scan:

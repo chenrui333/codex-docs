@@ -123,8 +123,8 @@ the campaign. The `--max-time-hours` flag works with `scan`, not `bulk-scan`.
 
 The CLI checks out each pinned revision, scans the selected target, records the
 result, and removes the temporary repository checkout. A repository counts as
-complete only when its scan has complete coverage and all required result
-artifacts exist.
+complete when its scan has a `completed` manifest status and valid required
+result artifacts. Coverage gaps don't make the scan fail.
 
 ## Share security context and instructions
 
@@ -150,7 +150,7 @@ npx @openai/codex-security bulk-scan repositories.csv \
 
 The CLI appends each repository's CSV `prompt` after the shared scan
 instructions. Follow-up instructions run in the same authenticated session
-after successful scans and scans with incomplete coverage or errors, but not
+after successful scans and scan errors, but not
 after cancellation or a scan that reaches its cost limit. Prompt file paths
 resolve from your current directory.
 
@@ -187,8 +187,8 @@ Bedrock setup](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-
 
 ## Review campaign results
 
-The output directory contains the pinned campaign, an append-only results
-ledger, and separate artifacts for each repository and attempt:
+The output directory keeps the campaign configuration, a record of each attempt,
+and separate results for each repository:
 
 ```text
 security-scans/
@@ -228,8 +228,8 @@ npx @openai/codex-security export \
 ```
 
 Results can contain source excerpts and vulnerability details. Keep the
-output directory private, outside scanned repositories, and subject to an
-appropriate retention policy.
+output directory private and outside scanned repositories. Set how long to
+keep the results.
 
 ## Resume a campaign
 
@@ -241,9 +241,9 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --workers 4
 ```
 
-The CLI resumes unfinished repository scans and skips completed ones. Scans
-with incomplete coverage aren't retried. Their results remain available, and
-the command exits with code `2`.
+The CLI resumes the campaign, starting new attempts for eligible unfinished
+repositories and skipping completed scans, including scans with coverage gaps.
+Their results remain available.
 
 Don't change the repository inventory or scan and follow-up instructions for
 an existing output directory. The CLI checks the pinned manifest and rejects a
@@ -262,24 +262,24 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --max-attempts 3
 ```
 
-The default is one attempt per repository. Every attempt receives its own
-receipt and artifact directory. Retries cover checkout errors, scan failures,
-and missing required artifacts. Completed scans with incomplete coverage
-aren't retried.
+The default is one attempt per repository. Each attempt has its own result
+record and artifact directory. Retries cover checkout errors, scan failures,
+and missing or invalid required artifacts. Completed scans aren't retried
+because of coverage gaps or severity-policy violations.
 
 Bulk scans use these exit codes:
 
-| Exit code | Meaning                                                                                                               |
-| --------- | --------------------------------------------------------------------------------------------------------------------- |
-| `0`       | Every repository completed successfully.                                                                              |
-| `2`       | A repository couldn't complete, a scan had incomplete coverage, or the command encountered an input or runtime error. |
-| `130`     | Ctrl-C interrupted the campaign.                                                                                      |
-| `143`     | SIGTERM terminated the campaign.                                                                                      |
+| Exit code | Meaning                                                                                         |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| `0`       | Every repository completed, and any configured severity policy passed.                          |
+| `1`       | Scans completed, but findings met a configured severity threshold.                              |
+| `2`       | A repository failed because of an input, execution, result-integrity, or required-output error. |
+| `130`     | Ctrl-C interrupted the campaign.                                                                |
+| `143`     | SIGTERM terminated the campaign.                                                                |
 
 ## Run bulk scans in Docker
 
-The [Codex Security
-repository](https://github.com/openai/codex-security) includes a hardened
+The [Codex Security repository](https://github.com/openai/codex-security) includes a hardened
 Compose configuration for automated CSV campaigns on a Linux Docker host. The
 host must support unprivileged user namespace creation.
 

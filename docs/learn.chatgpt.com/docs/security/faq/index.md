@@ -13,45 +13,9 @@ Source: https://learn.chatgpt.com/docs/security/faq
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-This FAQ covers the Codex Security Cloud plugin. For local scans and workflows that run in
-a Codex task, see the [Codex Security plugin quickstart](https://learn.chatgpt.com/docs/security/plugin).
-
-{/* vale Microsoft.Auto = NO */}
-{/* vale Vale.Spelling = NO */}
-
-## Getting started
-
-### What is Codex Security Cloud?
-
-Codex Security Cloud scans connected GitHub repositories, validates likely
-vulnerabilities, and presents findings with evidence and remediation guidance.
-Use its plugin on the web or in the desktop app to run repository scans and
-monitor new commits.
-
-### How do I open Codex Security Cloud?
-
-Open **Plugins** to find and install **Codex Security Cloud**, then open it.
-See [Cloud setup](https://learn.chatgpt.com/docs/security/setup) for the full workflow.
-
-### Is this the same plugin as local Codex Security?
-
-No. The Codex Security Cloud plugin scans connected GitHub repositories in
-Codex cloud. The [Codex Security plugin](https://learn.chatgpt.com/docs/security/plugin) runs local
-scans in a Codex task.
-
-### What if access is unavailable?
-
-Check with your workspace administrator.
-
-### How does Codex Security work?
-
-Codex Security runs analysis in an ephemeral, isolated container and temporarily clones the target repository. It performs code-level analysis and returns structured findings with a description, file and location, criticality, root cause, and a suggested remediation.
-
-For findings with verification steps, it runs commands or tests in the sandbox and attaches the results as evidence.
-
-### Does it replace SAST?
-
-No. Codex Security complements SAST. It adds semantic, LLM-based reasoning and automated validation, while existing SAST tools still provide broad deterministic coverage.
+These answers apply to Codex Security Cloud. For installation and a first scan,
+use [Cloud setup](https://learn.chatgpt.com/docs/security/setup). Local scans have separate
+[plugin](https://learn.chatgpt.com/docs/security/plugin) and [CLI](https://learn.chatgpt.com/docs/security/cli) guides.
 
 ## Billing
 
@@ -112,88 +76,83 @@ along with any amount covered by free scanning credits.
 Scans marked "Exempt from billing. No charges apply." incur no charges,
 even when they show token usage and cost.
 
-## Features
-
-### What is the analysis pipeline?
-
-1. **Analysis** builds a threat model for the repository.
-2. **Scanning** reviews the repository once or monitors commit changes for likely issues.
-3. **Validation** tries to reproduce likely vulnerabilities in a sandbox to reduce false positives.
-4. **Remediation** provides guidance and, where available, proposed patches to review before opening a PR.
-
-### What languages are supported?
-
-Codex Security is language-agnostic. In practice, performance depends on the model's reasoning ability for the language and framework used by the repository.
-
-### What outputs do I get after the scan completes?
-
-You get ranked findings with criticality, validation evidence, remediation guidance, and a proposed patch when one is available.
-
-### How is customer code isolated?
-
-Each analysis and validation job runs in an ephemeral Codex container with session-scoped tools. Artifacts are extracted for review, and the container is torn down after the job completes.
-
-### Does Codex Security auto-apply patches?
-
-No. When a finding has a proposed patch, review it before selecting **Create draft pull request**.
+## Scanning
 
 ### Does the project need to be built for scanning?
 
-No. Codex Security can produce findings from repository and commit context without a compile step. During auto-validation, it may try to build the project inside the container if that helps reproduce the issue. For environment setup details, see [Codex cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment).
+Codex Security can analyze source without a successful build. Validation may
+need dependencies or a working build to reproduce an issue. Configure those
+requirements in the [Codex cloud
+environment](https://learn.chatgpt.com/docs/environments/cloud-environment).
 
-### How does Codex Security reduce false positives and avoid broken patches?
+If validation can't run, inspect what the finding establishes from source and
+what still depends on runtime or deployment behavior.
 
-Codex Security uses two stages. First, the model ranks likely issues. Then auto-validation tries to reproduce each issue in a clean container. Findings that successfully reproduce are marked as validated, which helps reduce false positives before human review.
+### What languages are supported?
+
+Codex Security analyzes source across languages. Results depend on the model's
+ability to reason about the language and framework, and on the available
+repository context. A successful scan doesn't imply equal coverage across
+languages or components. Check the report for the scope actually reviewed.
 
 ### How do repository scans and commit monitoring differ?
 
-A **Repository** scan runs once across the repository. **Commit changes**
-monitors new commits and can review existing commit history. See
-[Monitor new commits](https://learn.chatgpt.com/docs/security/setup#5-monitor-new-commits).
-
-### How long do scans take?
-
-Scan time varies with repository size and validation work. Check **Scans** for
-progress and status.
+A **One-Time Scan** reviews the repository once. **Continuous Scanning** monitors
+new commits and can review selected commit history. Enable it after the first
+scan using [Monitor new commits](https://learn.chatgpt.com/docs/security/setup#5-monitor-new-commits).
 
 ### Can I pause commit monitoring?
 
-Yes. Open **Repositories**, select the repository, and open **Monitoring
-settings**. Set monitoring to **Paused** and select **Save**.
-
-### What is a threat model?
-
-A threat model is the scan-time security context for a repository. It combines a concise project overview with attack-surface details such as entry points, trust boundaries, auth assumptions, and risky components. For more detail, see [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model).
-
-### How is a threat model generated?
-
-Codex Security analyzes the repository's code to summarize its architecture and security entry points.
-
-### Does it replace manual security review?
-
-No. Codex Security accelerates review and helps rank findings, but it does not replace code-level validation, exploitability checks, or human threat assessment.
+Open **Repositories**, select the repository, and open **Monitoring settings**.
+Set monitoring to **Paused** and select **Save**. You can enable it again from
+the same settings.
 
 ### Can I edit the threat model?
 
-For a monitored repository, Codex Security creates the initial threat model. Open the repository's **Monitoring settings** to update it as the architecture, risks, and business context change. For the editing workflow, see [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model).
+Yes. Update it in the monitored repository's **Monitoring settings** when the
+architecture, deployment, or security assumptions change. The [threat-model
+guide](https://learn.chatgpt.com/docs/security/threat-model) explains what to include. Changes apply to
+future scans.
 
-### What does the proposed patch contain?
+## Findings and validation
 
-The proposed patch contains a minimal actionable diff with filename and line context when a remediation can be generated for the finding.
+### What does validation establish?
 
-### Does the patch directly modify my PR branch?
+Read the evidence attached to the particular finding. Source analysis can
+establish a vulnerable code path. Execution evidence can show that a specific
+reproducer or test demonstrated the issue.
 
-No. The workflow generates a diff, patch file, or suggested change for maintainers and reviewers to inspect before applying.
-
-## Validation
-
-### What is auto-validation?
-
-Auto-validation is the phase that tries to reproduce a suspected issue in an isolated container. It records whether reproduction succeeded or failed and captures logs, commands, and related artifacts as evidence.
+A finding's recorded status and severity help organize review. Use the
+underlying evidence and prerequisites to decide whether it applies to your
+system and what to fix.
 
 ### What happens if validation fails?
 
-The finding remains unvalidated. Logs and reports still capture what was attempted so engineers can retry, investigate further, or adjust the reproduction steps.
+Inspect the attempted validation and any available logs. A failed reproducer
+can mean the issue doesn't apply, but it can also mean the environment or test
+was unsuitable. Resolve the stated gap before dismissing the finding or
+claiming that it was reproduced.
 
-{/* vale Microsoft.Auto = YES */}
-{/* vale Vale.Spelling = YES */}
+### What if the scan reports no findings?
+
+Confirm that the scan completed and reviewed the intended repository and
+revision. Read any recorded limits or unfinished work. A scan that reports no
+findings can still miss vulnerabilities.
+
+## Fixes
+
+### Does Codex Security apply patches automatically?
+
+The action depends on the finding. **Fix with Codex** on a repository finding
+starts a conversation that asks Codex to verify the issue, implement a fix,
+and run relevant tests. Review the changes in that conversation.
+
+For a finding with a suggested patch, review the diff before selecting
+**Create draft pull request**. Creating the draft doesn't merge the fix.
+
+### How do I know whether a patch fixed the issue?
+
+Review the patch's validation evidence, including whether the original issue
+still reproduces and whether legitimate behavior still works. If validation
+wasn't completed, keep that uncertainty with the finding. A proposed patch,
+draft pull request, or status change alone doesn't verify a fix.

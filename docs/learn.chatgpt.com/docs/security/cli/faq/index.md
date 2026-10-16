@@ -19,13 +19,6 @@ with the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ## Repository scans
 
-### Who can use the CLI
-
-The `@openai/codex-security` package is public.
-
-Running scans requires Codex Security access. For best results, use an account
-verified for [Trusted Access for Cyber](https://chatgpt.com/cyber).
-
 ### Why does a scan use an API key after sign-in
 
 When your environment includes `OPENAI_API_KEY` or `CODEX_API_KEY`, scans
@@ -50,31 +43,6 @@ To make your stored credentials the automatic default, run
 `unset OPENAI_API_KEY CODEX_API_KEY`. For all supported authentication modes,
 see the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#select-scan-authentication).
 
-### How does bulk repository scanning work
-
-Sign in with GitHub CLI:
-
-```bash
-gh auth login
-```
-
-Discover and select repositories from a GitHub account or organization:
-
-```bash
-npx @openai/codex-security bulk-scan
-```
-
-For a prepared list, provide a repository CSV and an output directory:
-
-```bash
-npx @openai/codex-security bulk-scan repositories.csv \
-  --output-dir /path/outside/repositories/security-scans \
-  --workers 4
-```
-
-See [Run bulk security scans](https://learn.chatgpt.com/docs/security/cli/bulk-scans) for GitHub
-discovery, the CSV format, campaign results, and available options.
-
 ### Can an interrupted bulk scan resume
 
 Yes. Run the same bulk-scan command with the original CSV and output directory.
@@ -89,24 +57,8 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --max-attempts 3
 ```
 
-A completed scan with `partial` or `unknown` coverage keeps its results and
-causes the campaign to exit with code `2`. It isn't retried, even with
-`--max-attempts`.
-
-### How can a scan use architecture and security policies
-
-Pass architecture documents, threat models, or security policies with
-`--knowledge-base`:
-
-```bash
-npx @openai/codex-security scan . \
-  --knowledge-base /path/to/architecture.md \
-  --knowledge-base /path/to/security-policies
-```
-
-Codex Security uses these documents as context for the current scan. For
-supported file types and directory behavior, see [Add security
-context](https://learn.chatgpt.com/docs/security/cli/reference#add-security-context).
+Completed scans keep their results and aren't retried, even when coverage gaps
+remain. Coverage gaps don't cause the campaign to exit with code `2`.
 
 ## Findings and coverage
 
@@ -159,9 +111,11 @@ npx @openai/codex-security scans compare PREVIOUS_SCAN_ID CURRENT_SCAN_ID
 ```
 
 The comparison automatically matches findings by root cause, reuses saved
-matches, and identifies new, persisting, reopened, resolved, and unknown
-findings. A finding counts as resolved only when the later scan covers its
-original target and affected path without coverage gaps.
+matches, and identifies new, persisting, reopened, not observed, resolved, and
+unknown findings. When a later scan doesn't find an earlier finding in the code
+it scanned, the finding is not observed. It counts as resolved only after it is
+explicitly closed as already fixed. Excluded paths and uncertain matches remain
+unknown.
 
 ### How does false-positive feedback work
 
@@ -210,39 +164,30 @@ important finding that disappears.
 
 ### How can a team confirm that a fix worked
 
-After applying a fix, rerun the original scan:
-
-```bash
-npx @openai/codex-security scans rerun BEFORE_SCAN_ID
-```
-
-Compare the original findings with the new scan:
-
-```bash
-npx @openai/codex-security scans compare BEFORE_SCAN_ID AFTER_SCAN_ID
-```
-
-Confirm that the new scan covers the original target and affected path without
-coverage gaps. Then directly recheck the original finding against the current
-checkout:
+Recheck the original finding against the changed checkout. From that checkout,
+pass its report and the issue you want to validate:
 
 ```bash
 npx @openai/codex-security validate /path/to/original/findings.json \
   "Recheck the SQL injection in src/orders.ts:42 against the current code"
 ```
 
-A missing finding or scan comparison alone doesn't prove that a fix worked.
+Review the evidence that the vulnerable path is closed and legitimate behavior
+still works. Run the original reproducer or regression test when available.
+If the check can't run, note the remaining uncertainty in the result.
+
+A [scan comparison](https://learn.chatgpt.com/docs/security/cli/reference#match-and-compare-findings)
+can show how findings changed, but a missing finding alone doesn't verify a fix.
 
 ### What does incomplete coverage mean
 
-Coverage can be `complete`, `partial`, or `unknown`. Review `coverage.json`
-for excluded paths, deferred surfaces, and open questions before treating a
-scan as evidence of review.
+Review `coverage.json` for excluded paths, deferred surfaces, and open questions.
+New results don't include a coverage-completeness field. Check `scan.status` in
+`scan-manifest.json` for execution status.
 
-Scans with partial or unknown coverage return exit code `2`, even without a
-severity policy. They still keep any available findings and coverage. A later
-scan can't establish that an earlier finding no longer exists when it doesn't
-cover that finding's original path.
+Coverage gaps don't change a completed scan's exit code. Exit `0` doesn't mean
+every file was reviewed. A later scan can't establish that an earlier finding
+no longer exists when it doesn't cover that finding's original path.
 
 ## Automation and cost
 
@@ -256,9 +201,9 @@ npx @openai/codex-security scan . --mode deep --max-time-hours 1.5
 
 The default is `96` hours. Use any positive value up to `96`, including
 fractions. At the deadline, Codex Security stops unfinished workers, keeps
-completed standard-scan results, and aggregates them into the final report. If
-no worker finishes source review, the report records partial coverage and the
-CLI returns exit code `2`.
+completed standard-scan results, and aggregates them into the final report.
+Check the report for reviewed areas and deferred work. The deadline alone
+doesn't determine the exit code; execution status and the severity policy do.
 
 For persistent settings or bulk campaigns, set `max_time_hours` under
 `[deep_scan]` in the [deep-scan
@@ -274,33 +219,11 @@ npx @openai/codex-security scan . --max-cost 5
 
 The limit is an estimate, not a hard spending cap. Requests already in
 progress can finish above it. If a deep scan reaches the limit after Codex
-Security aggregates completed worker results, the CLI saves the completed
-report with partial coverage and exits with code `2`. Otherwise, it preserves
-any available partial output.
+Security aggregates completed worker results, the CLI can save a completed
+report with a budget warning. It returns `0`, or `1` if findings meet the
+configured severity threshold. If it can't produce a valid completed result,
+it returns `2` and preserves any available output.
 
-### Can scans check commits and pull requests
-
-Install a pre-commit security check for staged and unstaged changes:
-
-```bash
-npx @openai/codex-security install-hook
-```
-
-For pull-request checks, scan the committed changes and set a severity
-threshold:
-
-```bash
-npx @openai/codex-security scan . \
-  --diff origin/main \
-  --fail-on-severity high
-```
-
-A complete scan returns exit code `1` when it finds an issue at or above the
-selected severity. See [Run scans in CI](https://learn.chatgpt.com/docs/security/cli/ci) for the
-complete GitHub Actions workflow, artifact handling, and SARIF export.
-
-### Can another application run scans directly
-
-Yes. Use the [TypeScript SDK](https://learn.chatgpt.com/docs/security/sdk) to start scans, select
-targets, inspect findings and coverage, track progress, and apply cost controls
-from an application or developer tool.
+For pull-request checks, see [Run scans in CI](https://learn.chatgpt.com/docs/security/cli/ci).
+For a check before each commit, use
+[`install-hook`](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-install-hook).
