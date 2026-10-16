@@ -336,6 +336,56 @@
       "id": "674455aa505445365446afae6ae0188be5defa57e3eac2ac5688f2967f6bab92",
       "observed_at": "2026-10-16T03:35:09+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "b5818a29e668a429d3c1e5c98256dd1428903bec3098a55fad3a5c6e87d31b3f",
+            "before": "2164fa168c3e7bda9793e9c899f0e46f59fad9d0aef30e48294941b72a3691a9"
+          },
+          "learn.chatgpt.com/docs/security/security-review/index.md": {
+            "after": "d1d83696bfc7ade392a3e984c8c1ce6cd7bc9aedbde1189bc262f4400a20aec2",
+            "before": "d57f388605a0148c2d6b6611aa803a0dd61bd46e18558dcabdcd629cbda347fb"
+          },
+          "learn.chatgpt.com/docs/security/setup/index.md": {
+            "after": "f6ff52d5ab5c7c53d241cde3c596e4af22e39b7d54c47cb30e3d8f857124ec73",
+            "before": "5941701b15b0df1bbe093bc1f8b50920b7d7d8eaef0929e855148ba35f26d93b"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.163.0",
+          "codex_cli_source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+          "codex_cli_version": "0.163.0",
+          "codex_cli_version_raw": "codex-cli 0.163.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/security/security-review/index.md",
+          "learn.chatgpt.com/docs/security/setup/index.md"
+        ]
+      },
+      "id": "0f80e4cc25f15cb017da11344601638b503ce522fabc0b7492fb7359cd35fb73",
+      "observed_at": "2026-10-16T03:36:02+00:00",
+      "previous_id": "674455aa505445365446afae6ae0188be5defa57e3eac2ac5688f2967f6bab92"
     }
   ],
   "schema_version": 1

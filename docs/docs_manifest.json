@@ -7673,11 +7673,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "2164fa168c3e7bda9793e9c899f0e46f59fad9d0aef30e48294941b72a3691a9",
+      "sha256": "b5818a29e668a429d3c1e5c98256dd1428903bec3098a55fad3a5c6e87d31b3f",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"1df1764cb03cdf0890bc4441f5b72eaa\"",
+      "source_etag": "W/\"d3583f42d98423dd6280866c39cb0dee\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-15T20:55:35Z",
+      "source_last_modified": "2026-10-16T01:32:52Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -11129,7 +11129,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "d57f388605a0148c2d6b6611aa803a0dd61bd46e18558dcabdcd629cbda347fb",
+      "sha256": "d1d83696bfc7ade392a3e984c8c1ce6cd7bc9aedbde1189bc262f4400a20aec2",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11160,7 +11160,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "5941701b15b0df1bbe093bc1f8b50920b7d7d8eaef0929e855148ba35f26d93b",
+      "sha256": "f6ff52d5ab5c7c53d241cde3c596e4af22e39b7d54c47cb30e3d8f857124ec73",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

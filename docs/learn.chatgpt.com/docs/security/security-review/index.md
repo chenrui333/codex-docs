@@ -40,6 +40,11 @@ An existing Codex Security scan is optional.
 
 ## Configure Codex Security Review
 
+Repository settings are shared. Changing them affects the pull requests selected
+by the repository's **Review** policy, not just your own pull requests. Personal
+preferences apply to your pull requests when the repository follows personal
+preferences.
+
 1. Go to [Codex settings](https://chatgpt.com/settings/code-review) and choose a repository.
 2. Under **Review security vulnerabilities**, turn on **Auto security review**.
 3. Use **Review** to choose which pull requests get Codex Security Review:
@@ -53,6 +58,12 @@ An existing Codex Security scan is optional.
    - **On every push** runs independently after new commits are pushed.
    - **Whenever code review runs** requires Code Review and runs Codex Security
      Review alongside it.
+
+Connecting GitHub or enabling personal reviews for another contributor doesn't
+request an extra review of your pull requests. Repository and personal settings
+determine whether an automatic review runs; they don't create one review per
+connected user. Later pushes can trigger another review according to **Trigger**,
+and you can request additional reviews manually.
 
 ## Add threat-model context
 

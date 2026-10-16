@@ -41,12 +41,15 @@ If access is unavailable, check with your workspace administrator.
 ## 2. Connect GitHub
 
 Confirm that [Codex cloud](https://learn.chatgpt.com/docs/cloud) is set up for your workspace. In the
-plugin, select **Scan**. If prompted, select **Connect GitHub** and sign in with
-your own GitHub account. Grant access to the repositories you want to scan.
+plugin, select **Scan**. If prompted, select **Connect GitHub** and sign in
+with your own GitHub account. Each person who starts scans needs their own
+connection and access to the repository.
 
 Codex Security Cloud doesn't support workspace connections.
 
-If a repository is missing, check its GitHub connection and permissions.
+If a repository is missing, use **Configure access** in the repository picker to
+check the GitHub app's organization and repository access. If you can't grant
+access yourself, ask your GitHub administrator to add the repository.
 
 ## 3. Start a repository scan
 
@@ -120,6 +123,12 @@ To adjust monitoring, open **Repositories**, select the repository, and open
 **Monitoring settings**. You can change the Cloud environment, choose how
 many days of history to review, and pause or enable monitoring.
 Select **Save** to apply changes.
+
+The scan owner, people granted edit access, and Codex Security administrators
+can change monitoring settings. Changes, including pausing monitoring, apply to
+that repository's shared configuration in the workspace, not just to the person
+making the change. If you can't edit it, ask the scan owner or a Codex Security
+administrator.
 
 Review and edit the generated threat model under **Project context**, then
 select **Save**. See [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model)
