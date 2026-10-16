@@ -1,8 +1,10 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-16T10:56:49+00:00",
+  "generated_at": "2026-10-16T20:39:15+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -14,33 +16,16 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 288,
+  "total_files": 289,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/permissions/index.md",
-    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/index.md",
-    "learn.chatgpt.com/docs/security/cli/faq/index.md",
-    "learn.chatgpt.com/docs/security/cli/index.md",
-    "learn.chatgpt.com/docs/security/cli/reference/index.md",
-    "learn.chatgpt.com/docs/security/faq/index.md",
-    "learn.chatgpt.com/docs/security/index.md",
-    "learn.chatgpt.com/docs/security/plugin/changelog/index.md",
-    "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
-    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
-    "learn.chatgpt.com/docs/security/plugin/export-findings/index.md",
-    "learn.chatgpt.com/docs/security/plugin/fix-findings/index.md",
-    "learn.chatgpt.com/docs/security/plugin/index.md",
-    "learn.chatgpt.com/docs/security/plugin/scans/index.md",
-    "learn.chatgpt.com/docs/security/plugin/security-hardening/index.md",
-    "learn.chatgpt.com/docs/security/plugin/triage-backlog/index.md",
-    "learn.chatgpt.com/docs/security/plugin/vulnerability-reports/index.md",
-    "learn.chatgpt.com/docs/security/plugin/workbench/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md",
-    "learn.chatgpt.com/docs/security/security-review/index.md",
-    "learn.chatgpt.com/docs/security/setup/index.md",
-    "learn.chatgpt.com/docs/security/threat-model/index.md",
-    "learn.chatgpt.com/docs/windows/windows-sandbox/index.md"
+    "codex_capabilities.json",
+    "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md",
+    "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md",
+    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
+    "learn.chatgpt.com/docs/space/collaboration/index.md",
+    "learn.chatgpt.com/docs/space/getting-started/index.md",
+    "learn.chatgpt.com/docs/space/index.md"
   ]
 }

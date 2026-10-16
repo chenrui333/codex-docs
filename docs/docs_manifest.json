@@ -150,7 +150,7 @@
         "codex-cli 0.163.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "82a51b71cc3f274cf5fce807d2ba161c1003f9cc1861527d6d31d55048cbd398",
+      "sha256": "f7685626535f4e3355fd3de60ed7d870517f616cc492eca264ebbd568406ad71",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -183,10 +183,10 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/83086188ae0614bd882818ff1aa23f3194962012/codex-rs/models-manager/models.json"
     },
     "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
-      "sha256": "0c2950612d0e6d0bc1baa2ea229692167363db5cf8d7d2d09c90da4aea98c206",
+      "sha256": "8eaf893d1ea057d979deede5f8190abaf5607f4241b942da789d8be9401a4e28",
       "source_area": "tool_guide_computer_use",
-      "source_etag": "W/\"b861143fced3aa28af1458d9acf81981\"",
-      "source_last_modified": "2026-10-02T21:56:47Z",
+      "source_etag": "W/\"3f11e79e9d549d4ea3dd85d9ae99f88c\"",
+      "source_last_modified": "2026-10-16T20:12:37Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use"
     },
@@ -7170,7 +7170,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "2a536c05beb8bc2b7732aea3d03d90725d2d9f494c3a3ee3102daf5983a8b873",
+      "sha256": "60b2b7aa26c75be48cb5537487f5da176d066e4696062e6aa98c95f25a9843d4",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8564,7 +8564,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams"
     },
     "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md": {
-      "sha256": "cf8d4daee08a8efe985f57d8bd1fd222b890b90444d3dd229a854ad2fffdcca2",
+      "sha256": "cd4c664393e9fb1d4fdfa1aa91993da9ec48a8520a77bb0e67230f0e12712ea9",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8912,7 +8912,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "e05679f454c02cf7e5e454bd5458396e7ab35f97e6b60acbc60622d09d3605c1",
+      "sha256": "d9f3a4b0fd592a49cec0b1c6f6e0b6fb9e267e80a0f173a7d2d7aa0cb0e59f87",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8955,6 +8955,13 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway"
+    },
+    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
+      "sha256": "adadeb04738ff2561542ca664e46d6940a2aebe60f2b8936831b87f260cabbbf",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/security-cookbook"
     },
     "learn.chatgpt.com/docs/enterprise/service-accounts/index.md": {
       "codex_cli_versions": [
@@ -9124,7 +9131,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "365cfc9db58604bdff018388b73806693b8337e87db5d54289a68399bf30430f",
+      "sha256": "424610ee21c1ce81355b1580dd4f5119df358531958152648a60818879792c74",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11302,21 +11309,21 @@
       "source_url": "https://learn.chatgpt.com/docs/space/agents"
     },
     "learn.chatgpt.com/docs/space/collaboration/index.md": {
-      "sha256": "c915eadddcd107e74f869473888484e4f9ab9a0bb45f6390317f205bf73bff6d",
+      "sha256": "2757250640dd2b5728cab586a1d14ede93fcd9086f9159da9217327fc8355b53",
       "source_area": "learn_space",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/space/collaboration"
     },
     "learn.chatgpt.com/docs/space/getting-started/index.md": {
-      "sha256": "91420346e4b021dc914a0f42f35f11c82c547be9bff2ece652854ab1e2188600",
+      "sha256": "bb9ad1e483c34693a5d266783748551d2e887a06eceaa6151e710927c2141ef7",
       "source_area": "learn_space",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/space/getting-started"
     },
     "learn.chatgpt.com/docs/space/index.md": {
-      "sha256": "3af46a24b2ab2a98172f3facaf2c7363b9b17eef1406852349fe5d708060b318",
+      "sha256": "e24c6bd646f2ca442584a298dd2e389d535aaa9560ad25d9529065b349d524cb",
       "source_area": "learn_space",
       "source_kind": "learn_markdown",
       "source_type": "learn",

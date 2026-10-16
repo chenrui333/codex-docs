@@ -12,7 +12,8 @@ Source: https://learn.chatgpt.com/docs/space/collaboration
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 Share a page on its own or, where available, share a Space to give people access
-to a group of related pages.
+to a group of related pages. You can also share a slide deck to work on a
+presentation together.
 
 ## Choose an access level
 
@@ -68,6 +69,21 @@ decisions your team has already made.
 
 Check access to linked source material separately. A collaborator who can read
 your page may still lack permission to open a source linked from it.
+
+## Collaborate on slides
+
+Open a deck in Space and use its sharing controls to invite collaborators.
+Choose view access for people who need to read the deck or edit access for
+people who will revise it with you. Slides currently supports view and edit
+access; a separate comment-only role isn't available.
+
+With edit access, you and your teammates can change the same deck at the same
+time. Use shared comments to discuss feedback, mention a teammate, or mention
+ChatGPT or your dot to request an update. For a change to a specific element,
+select it and choose **Request edits**.
+
+To start a deck, refine its content, or export the result, see
+[Create and refine slides](https://learn.chatgpt.com/docs/space/getting-started#create-and-refine-slides).
 
 ## Resolve an access problem
 
