@@ -18,8 +18,8 @@ code changes from your application or developer tool. The SDK returns typed
 findings, coverage details, and paths to scan artifacts. For longer scans, it
 supports preflight checks, cost limits, progress callbacks, and cancellation.
 
-The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 22
-(22.13.0 or later), 24, or 26. Scanning also requires Python 3.10 or later.
+The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 24 or 26,
+or Node.js 22 starting with 22.13.0. Scanning also requires Python 3.10 or later.
 Python 3.10 also requires the `tomli` package.
 
 Running scans requires Codex Security access. For general coding agents, see

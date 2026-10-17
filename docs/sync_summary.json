@@ -2,7 +2,7 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-17T03:26:29+00:00",
+  "generated_at": "2026-10-17T10:18:37+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -16,9 +16,9 @@
   },
   "total_files": 289,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md",
-    "learn.chatgpt.com/docs/dots/channels/index.md",
-    "learn.chatgpt.com/docs/index.md",
-    "learn.chatgpt.com/docs/whats-new/index.md"
+    "learn.chatgpt.com/docs/security/cli/ci/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

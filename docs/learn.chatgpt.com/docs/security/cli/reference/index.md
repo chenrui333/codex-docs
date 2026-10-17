@@ -1168,8 +1168,9 @@ authentication](#select-scan-authentication).
 
 For CI, keep the API key scoped to the scan step and use a trusted workflow.
 
-The CLI requires Node.js 22 (22.13.0 or later), 24, or 26. Scans, bulk scans,
-exports, scan history, and saved findings also require Python 3.10 or later.
+The CLI requires Node.js 24 or 26, or Node.js 22 starting with 22.13.0.
+Scans, bulk scans, exports, scan history, and saved findings also require
+Python 3.10 or later.
 Python 3.10 also requires `tomli`. Use `--python` with `scan`, `bulk-scan`, or
 `export`, or set `PYTHON` for any Python-backed command.
 

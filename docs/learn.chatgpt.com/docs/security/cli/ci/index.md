@@ -41,7 +41,7 @@ credentials out of it.
 
 The runner needs:
 
-- Node.js 22 (22.13.0 or later), 24, or 26.
+- Node.js 24 or 26, or Node.js 22 starting with 22.13.0.
 - Python 3.10 or later.
 - The published `@openai/codex-security` package, installed outside the
   repository checkout.

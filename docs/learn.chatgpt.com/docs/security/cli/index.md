@@ -20,7 +20,8 @@ plugin](https://learn.chatgpt.com/docs/security/plugin).
 
 ## Check the prerequisites
 
-You need Node.js 22 (22.13.0 or later), 24, or 26, plus Python 3.10 or later.
+Use Node.js 24 or 26, or Node.js 22 starting with 22.13.0.
+You also need Python 3.10 or later.
 Python 3.10 also needs `tomli`. Scans using OpenAI inference require Codex Security access.
 Depending on your account and repository, full-repository scans may also
 require [Trusted Access for Cyber](https://chatgpt.com/cyber).
