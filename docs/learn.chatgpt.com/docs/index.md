@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-10-09T22:16:00Z'
-source_etag: 'W/"1dd1cd473caa56235e04aee5c973dc9a"'
+source_last_modified: '2026-10-17T01:30:24Z'
+source_etag: 'W/"14a8cc68e31795bc9b002a2e14cc38b7"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -69,6 +69,12 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
  [View all updates](/codex/whats-new)
 
+October 12–16, 2026
+
+[### Open your dot from iOS widgets and Shortcuts
+
+Add the Your dot Home Screen widget to open your conversation, with optional message and call buttons.](/codex/whats-new#open-your-dot-from-ios-widgets-and-shortcuts)
+
 October 5–9, 2026
 
 [### Create your dot in the ChatGPT mobile app
@@ -76,11 +82,3 @@ October 5–9, 2026
 Create your dot, give it a name, customize its appearance, and connect plugins from your phone.](/codex/whats-new/dots-october-9-2026)  [### Use GPT-6.1 Sol with Ultrafast mode
 
 Ultrafast mode speeds up token generation with GPT-6.1 Sol in Codex and ChatGPT Work.](/codex/whats-new/october-5-9-2026#use-gpt-61-sol-with-ultrafast-mode)
-
-September 28–October 2, 2026
-
-[### Choose GPT-6.1 Sol for complex work
-
-Use GPT-6.1 Sol for coding and professional work at a lower cost than Astra.](/codex/whats-new/september-28-october-2-2026#choose-gpt-61-sol-for-complex-work)  [### Delegate ongoing work to your dot
-
-Dots continue work between conversations and bring back results for review.](/codex/whats-new/september-28-october-2-2026#delegate-ongoing-work-to-your-dot)

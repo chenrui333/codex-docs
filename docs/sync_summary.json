@@ -1,10 +1,8 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-16T20:39:15+00:00",
+  "generated_at": "2026-10-17T03:26:29+00:00",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -18,14 +16,9 @@
   },
   "total_files": 289,
   "updated": [
-    "codex_capabilities.json",
-    "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md",
-    "learn.chatgpt.com/docs/enterprise/prisma-airs/index.md",
-    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
-    "learn.chatgpt.com/docs/space/collaboration/index.md",
-    "learn.chatgpt.com/docs/space/getting-started/index.md",
-    "learn.chatgpt.com/docs/space/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md",
+    "learn.chatgpt.com/docs/dots/channels/index.md",
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md"
   ]
 }

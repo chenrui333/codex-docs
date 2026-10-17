@@ -1,0 +1,60 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "cf802d94afddc0bd1020c608aa8801cbf3629f9d518d8288dd152d48b8abae25",
+            "before": "2872903445d927691d53b9d932ad186faffe19fce632047b7f728d604b3344a0"
+          },
+          "learn.chatgpt.com/docs/dots/channels/index.md": {
+            "after": "322912e03a14bc38de1a69f4ec72f2a94fbc3017926dd0de90218827564f38ab",
+            "before": "4b7d6f0e6bbad42043aac9c8eb5c7c13abec06e41520269333138da1cbb95c46"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "86a1ac38fa7c5707499540a6c1f4a79f90b313eee3955285714f081c62c523b3",
+            "before": "6f1dfa2a7bab44fa2ff248b94a0e605bd4752254d7cc26aa33d454faed77587c"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "bf5cce7381629b5587b50e5f0614c006825520af67a4cfb3c91b9d4989ede450",
+            "before": "b185cfd7b4ace4503181acc4c422c0acc6bd5934ee30f5f70ce4262f1beb3797"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.163.0",
+          "codex_cli_source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+          "codex_cli_version": "0.163.0",
+          "codex_cli_version_raw": "codex-cli 0.163.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/dots/channels/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md"
+        ]
+      },
+      "id": "3cb579f2c13777b6b6b3315bd0ad6e84e9b3da1f46d67fedb7540c066ff6572b",
+      "observed_at": "2026-10-17T03:26:29+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

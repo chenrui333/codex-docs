@@ -7673,11 +7673,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "2872903445d927691d53b9d932ad186faffe19fce632047b7f728d604b3344a0",
+      "sha256": "cf802d94afddc0bd1020c608aa8801cbf3629f9d518d8288dd152d48b8abae25",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"850846a8f0ebdb743635a798fd649670\"",
+      "source_etag": "W/\"0c12415a6a05e66380f2ddbc28bfd7a9\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-16T10:32:49Z",
+      "source_last_modified": "2026-10-17T01:30:40Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -8356,7 +8356,7 @@
       "source_url": "https://learn.chatgpt.com/docs/developers"
     },
     "learn.chatgpt.com/docs/dots/channels/index.md": {
-      "sha256": "4b7d6f0e6bbad42043aac9c8eb5c7c13abec06e41520269333138da1cbb95c46",
+      "sha256": "322912e03a14bc38de1a69f4ec72f2a94fbc3017926dd0de90218827564f38ab",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9796,11 +9796,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "6f1dfa2a7bab44fa2ff248b94a0e605bd4752254d7cc26aa33d454faed77587c",
+      "sha256": "86a1ac38fa7c5707499540a6c1f4a79f90b313eee3955285714f081c62c523b3",
       "source_area": "learn_docs",
-      "source_etag": "W/\"1dd1cd473caa56235e04aee5c973dc9a\"",
+      "source_etag": "W/\"14a8cc68e31795bc9b002a2e14cc38b7\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-09T22:16:00Z",
+      "source_last_modified": "2026-10-17T01:30:24Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs"
     },
@@ -11638,7 +11638,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "b185cfd7b4ace4503181acc4c422c0acc6bd5934ee30f5f70ce4262f1beb3797",
+      "sha256": "bf5cce7381629b5587b50e5f0614c006825520af67a4cfb3c91b9d4989ede450",
       "source_area": "learn_whats_new",
       "source_kind": "learn_markdown",
       "source_type": "learn",
