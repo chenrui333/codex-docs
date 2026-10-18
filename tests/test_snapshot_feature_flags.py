@@ -1,4 +1,5 @@
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -50,12 +51,48 @@ class SnapshotFeatureFlagsTests(unittest.TestCase):
         with self.assertRaisesRegex(snapshot.SnapshotError, "Unexpected"):
             snapshot.parse_features_list("flag stable true extra")
 
-    def test_codex_subprocess_env_removes_github_tokens(self):
-        environment = snapshot.codex_subprocess_env(
-            {"GH_TOKEN": "secret", "GITHUB_TOKEN": "secret", "PATH": "/bin"}
-        )
+    def test_cli_runs_without_user_secrets_home_or_checkout(self):
+        secret = "do-not-inherit"
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            bin_dir, user_home, log = root / "bin", root / "user-home", root / "codex.log"
+            bin_dir.mkdir()
+            user_home.mkdir()
+            fake_codex = bin_dir / "codex"
+            fake_codex.write_text(
+                "#!/bin/sh\n"
+                f'{{ echo "ARGS=$*"; echo "PWD=$(pwd)"; env; echo "--"; }} >> "{log}"\n'
+                'if [ "$1" = "--version" ]; then echo "codex-cli 1.2.3"; '
+                'else echo "alpha  stable  true"; fi\n'
+            )
+            fake_codex.chmod(0o755)
+            environment = {
+                "PATH": f"{bin_dir}{os.pathsep}{os.environ.get('PATH', '')}",
+                "HOME": str(user_home),
+                "CODEX_HOME": str(user_home / ".codex"),
+                "OPENAI_API_KEY": secret,
+                "AWS_SECRET_ACCESS_KEY": secret,
+                "GITHUB_TOKEN": secret,
+            }
+            with (
+                mock.patch.dict(snapshot.os.environ, environment),
+                mock.patch.object(snapshot, "resolve_feature_source", return_value=("rust-v1.2.3", "a" * 40)),
+                mock.patch.object(snapshot, "parse_config_basic_feature_metadata", return_value={"alpha": "stable"}),
+                mock.patch.object(snapshot, "parse_config_reference_feature_keys", return_value=[]),
+                mock.patch.object(snapshot, "fetch_text", return_value=""),
+            ):
+                payload, _ = snapshot.build_snapshot()
 
-        self.assertEqual(environment, {"PATH": "/bin"})
+            self.assertEqual([feature["key"] for feature in payload["cli_features"]], ["alpha"])
+            invocations = log.read_text().split("--\n")[:-1]
+            self.assertEqual(len(invocations), 2)
+            for invocation in invocations:
+                values = dict(line.split("=", 1) for line in invocation.splitlines() if "=" in line)
+                # Never print the captured environment: on failure it may hold real credentials.
+                self.assertFalse(secret in invocation, "CLI subprocess inherited a credential")
+                self.assertFalse(str(user_home) in invocation, "CLI subprocess saw the user's home")
+                self.assertTrue(values["CODEX_HOME"].startswith(values["HOME"]))
+                self.assertNotEqual(Path(values["PWD"]).resolve(), Path.cwd().resolve())
 
     def test_command_timeout_is_reported(self):
         with mock.patch.object(

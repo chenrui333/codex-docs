@@ -8,6 +8,7 @@ from unittest import mock
 
 import requests
 
+from scripts import codex_env
 from scripts import fetch_codex_docs as sync
 
 
@@ -267,7 +268,7 @@ class FetchHelpersTests(unittest.TestCase):
         self.assertEqual(sync.sanitize_prompt_payload(4, []), 4)
 
     def test_isolated_codex_environment_excludes_user_state_and_secrets(self):
-        environment = sync.isolated_codex_subprocess_env(
+        environment = codex_env.isolated_codex_subprocess_env(
             {
                 "PATH": "/bin",
                 "LANG": "C.UTF-8",

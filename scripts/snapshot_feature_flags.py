@@ -10,10 +10,14 @@ import platform as host_platform
 import re
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Sequence
 from urllib.request import Request, urlopen
+
+if __package__:
+    from . import codex_env
+else:
+    import codex_env
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_ROOT = ROOT / "docs"
@@ -65,13 +69,16 @@ class SnapshotError(RuntimeError):
     """Raised when feature snapshot generation cannot continue."""
 
 
-def run_command(argv: List[str], env: Dict[str, str] | None = None) -> str:
+def run_command(
+    argv: List[str], env: Dict[str, str] | None = None, cwd: Path | None = None
+) -> str:
     try:
         proc = subprocess.run(
             argv,
             check=False,
             text=True,
             capture_output=True,
+            cwd=cwd,
             env=env,
             timeout=command_timeout_seconds(),
         )
@@ -98,13 +105,6 @@ def command_timeout_seconds() -> float:
         raise SnapshotError(
             "CODEX_DOCS_COMMAND_TIMEOUT_SECONDS must be a number."
         ) from exc
-
-
-def codex_subprocess_env(base: Dict[str, str] | None = None) -> Dict[str, str]:
-    env = dict(os.environ if base is None else base)
-    for name in ("GH_TOKEN", "GITHUB_TOKEN"):
-        env.pop(name, None)
-    return env
 
 
 def fetch_text(url: str) -> str:
@@ -776,14 +776,12 @@ def write_json(path: Path, payload: Dict[str, object]) -> None:
 
 
 def build_snapshot() -> tuple[Dict[str, object], str]:
-    codex_version = run_command(["codex", "--version"], env=codex_subprocess_env())
+    with codex_env.isolated_codex_runtime("codex-features-") as runtime:
+        codex_version = run_command(["codex", "--version"], env=runtime.env, cwd=runtime.workspace)
+        features_raw = run_command(["codex", "features", "list"], env=runtime.env, cwd=runtime.workspace)
     source_ref, source_commit = resolve_feature_source(
         codex_version, os.environ.get(FEATURE_SOURCE_COMMIT_ENV)
     )
-    with tempfile.TemporaryDirectory(prefix="codex-features-home-") as tmp_home:
-        isolated_env = codex_subprocess_env()
-        isolated_env["CODEX_HOME"] = tmp_home
-        features_raw = run_command(["codex", "features", "list"], env=isolated_env)
     cli_features = parse_features_list(features_raw)
 
     basic_docs_metadata = parse_config_basic_feature_metadata(CONFIG_BASIC_DOC)
