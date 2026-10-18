@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest import mock
 
 from scripts import fetch_codex_docs as sync
+from test_cli_observations import METADATA as CLI_METADATA, surface
 from test_fetch_codex_docs_extended import isolated_outputs
 
 
@@ -468,6 +469,55 @@ class SyncRecoveryTests(unittest.TestCase):
         self.assertEqual(json.loads(sync.SUMMARY_PATH.read_text())["source_metadata"]["codex_cli_version"], "1.2.5")
         self.assertEqual(json.loads(sync.COVERAGE_PATH.read_text())["web_snapshot"]["status"], "complete")
         self.assert_manifest_matches_disk()
+
+    def seed_platform(self, observation):
+        key = sync.cli_observations.platform_key(observation)
+        item = sync.ManagedFile(
+            f"cli-surface/{key}.json", sync.CLI_PLATFORM_SOURCE_TYPE, "codex-cli://help",
+            json.dumps(observation, indent=2, sort_keys=True) + "\n",
+            {"codex_cli_version": observation["codex_cli_version"],
+             "codex_cli_release_ref": observation["source_ref"],
+             "codex_cli_source_commit": observation["source_commit"]},
+        )
+        sync.apply_sync([item])
+        path = sync.output_path_for_rel_path(item.rel_path)
+        path.write_text('{"truncated":')
+        return path
+
+    def test_corrupt_platform_cache_is_repaired_from_fresh_native_evidence(self):
+        current = surface("linux", ["common"], "1.2.4", "b")
+        path = self.seed_platform(current)
+        native = sync.ManagedFile(
+            sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help", json.dumps(current))
+        files, observations = sync.prepare_cli_observations([native], CLI_METADATA)
+        self.assertEqual(observations["linux-x86_64"]["source_commit"], "b" * 40)
+        sync.apply_sync(files, source_metadata=CLI_METADATA)
+        self.assertEqual(json.loads(path.read_text()), current)
+        self.assert_manifest_matches_disk()
+        before = self.tree()
+        files, _ = sync.prepare_cli_observations([native], CLI_METADATA)
+        sync.apply_sync(files, source_metadata=CLI_METADATA)
+        self.assertEqual(before, self.tree())
+
+    def test_corrupt_platform_cache_without_matching_fresh_evidence_fails_closed(self):
+        self.seed_platform(surface("darwin", ["mac-only"]))
+        native = sync.ManagedFile(
+            sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help",
+            json.dumps(surface("linux", ["common"], "1.2.4", "b")))
+        before = self.tree()
+        with self.assertRaises(ValueError):
+            sync.prepare_cli_observations([native], CLI_METADATA)
+        self.assertEqual(before, self.tree())
+
+    def test_corrupt_platform_repair_cannot_downgrade_committed_release_evidence(self):
+        self.seed_platform(surface("linux", ["new-command"], "1.2.5", "c"))
+        native = sync.ManagedFile(
+            sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help",
+            json.dumps(surface("linux", ["common"], "1.2.4", "b")))
+        before = self.tree()
+        with self.assertRaises(ValueError):
+            sync.prepare_cli_observations([native], CLI_METADATA)
+        self.assertEqual(before, self.tree())
 
     def test_repeated_successful_sync_is_byte_identical(self):
         for version in ("1.2.4", "1.2.5"):

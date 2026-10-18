@@ -2296,11 +2296,47 @@ def historical_cli_observations() -> Dict[str, object]:
 def prepare_cli_observations(
     files: Sequence[ManagedFile], metadata: Dict[str, str], observations_dir: Path | None = None,
 ) -> Tuple[List[ManagedFile], Dict[str, Dict[str, str]]]:
+    incoming = [json.loads(managed_file_text(item)) for item in files if item.source_type == CLI_SURFACE_SOURCE_TYPE]
+    for payload in incoming:
+        payload.update(source_ref=metadata["codex_cli_release_ref"], source_commit=metadata["codex_cli_source_commit"])
+    if observations_dir is not None:
+        for path in sorted(observations_dir.glob("*.json")):
+            payload = cli_observations.validate(json.loads(path.read_text()))
+            if payload["codex_cli_version"] != metadata["codex_cli_version"]:
+                LOG.warning("Ignoring CLI artifact from a different release: %s", path.name)
+                continue
+            if payload["source_commit"] != metadata["codex_cli_source_commit"]:
+                raise ValueError("CLI artifact does not match the resolved release commit")
+            incoming.append(payload)
+    replacements = {
+        cli_observations.platform_key(cli_observations.validate(payload)): payload for payload in incoming
+    }
     surfaces = {}
     directory = DOCS_DIR / "cli-surface"
     if directory.exists():
         for path in sorted(directory.glob("*.json")):
-            payload = cli_observations.validate(json.loads(path.read_text()))
+            try:
+                payload = cli_observations.validate(json.loads(path.read_text()))
+            except (OSError, ValueError, TypeError, AttributeError) as exc:
+                replacement = replacements.get(path.stem)
+                if replacement is None:
+                    raise ValueError(
+                        f"Cached CLI observation {path.name} is corrupt and has no fresh platform replacement; "
+                        "restore it from Git or provide a verified collector artifact."
+                    ) from exc
+                recorded = load_existing_manifest().get(f"cli-surface/{path.name}", {})
+                recorded_version = recorded.get("codex_cli_version", "")
+                if recorded_version and (
+                    tuple(map(int, str(recorded_version).split(".")))
+                    > tuple(map(int, replacement["codex_cli_version"].split(".")))
+                ):
+                    raise ValueError("Refusing to replace a newer platform observation with an older CLI") from exc
+                if (recorded_version == replacement["codex_cli_version"]
+                        and recorded.get("codex_cli_source_commit") not in (None, "", replacement["source_commit"])):
+                    raise ValueError("Fresh CLI observation disagrees with the committed release provenance") from exc
+                LOG.warning("Rebuilding corrupt CLI observation %s from fresh platform evidence", path.name)
+                surfaces[path.stem] = replacement
+                continue
             key = cli_observations.platform_key(payload)
             if path.stem != key:
                 raise ValueError("Stored CLI observation filename does not match its platform")
@@ -2316,18 +2352,6 @@ def prepare_cli_observations(
                             source_commit=provenance["codex_cli_source_commit"])
             cli_observations.validate(previous)
             surfaces[cli_observations.platform_key(previous)] = previous
-    incoming = [json.loads(managed_file_text(item)) for item in files if item.source_type == CLI_SURFACE_SOURCE_TYPE]
-    for payload in incoming:
-        payload.update(source_ref=metadata["codex_cli_release_ref"], source_commit=metadata["codex_cli_source_commit"])
-    if observations_dir is not None:
-        for path in sorted(observations_dir.glob("*.json")):
-            payload = cli_observations.validate(json.loads(path.read_text()))
-            if payload["codex_cli_version"] != metadata["codex_cli_version"]:
-                LOG.warning("Ignoring CLI artifact from a different release: %s", path.name)
-                continue
-            if payload["source_commit"] != metadata["codex_cli_source_commit"]:
-                raise ValueError("CLI artifact does not match the resolved release commit")
-            incoming.append(payload)
     for payload in incoming:
         cli_observations.validate(payload)
         key = cli_observations.platform_key(payload)
