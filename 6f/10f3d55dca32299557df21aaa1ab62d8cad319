@@ -1,0 +1,16 @@
+scripts/validate_sync.sh
+  h_9df9c32c3f321d 14-18
+tests/test_validate_sync.py
+  h_9df9c32c3f321d 1-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6f10f3d55dca32299557df21aaa1ab62d8cad319",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
