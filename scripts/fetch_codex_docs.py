@@ -1226,12 +1226,15 @@ def discover_github_paths(
     session: requests.Session, source_commit: str = "main"
 ) -> List[str]:
     LOG.info("Discovering markdown files from openai/codex GitHub tree")
-    payload = fetch_json(
-        session,
-        GITHUB_TREE_URL_TEMPLATE.format(ref=source_commit),
-        headers=github_api_headers(),
-    )
-    tree = payload.get("tree", [])
+    url = GITHUB_TREE_URL_TEMPLATE.format(ref=source_commit)
+    payload = fetch_json(session, url, headers=github_api_headers())
+    tree = payload.get("tree")
+    # The listing decides which mirrored files are removed, so anything short of a
+    # complete, well-formed tree must block the family instead of reading as empty.
+    if payload.get("truncated") is True:
+        raise SourceContentError(f"GitHub tree listing is truncated: {url}")
+    if not isinstance(tree, list) or not all(isinstance(entry, dict) for entry in tree):
+        raise SourceContentError(f"GitHub tree listing is malformed: {url}")
 
     paths = [
         entry["path"]
