@@ -6,16 +6,16 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
-import tempfile
 from pathlib import Path
 
 import requests
 
 if __package__:
-    from . import cli_observations
+    from . import cli_observations, codex_env
     from . import fetch_codex_docs as sync
 else:
     import cli_observations
+    import codex_env
     import fetch_codex_docs as sync
 
 
@@ -23,13 +23,8 @@ def collect() -> dict:
     binary = shutil.which("codex")
     if not binary:
         raise RuntimeError("CLI is not installed")
-    with tempfile.TemporaryDirectory(prefix="cli-observation-") as directory:
-        root = Path(directory)
-        home, workspace = root / "home", root / "workspace"
-        (home / ".codex").mkdir(parents=True)
-        workspace.mkdir()
-        environment = sync.isolated_codex_subprocess_env()
-        environment.update(HOME=str(home), CODEX_HOME=str(home / ".codex"), NO_COLOR="1", TZ="UTC")
+    with codex_env.isolated_codex_runtime("cli-observation-") as runtime:
+        environment, workspace = runtime.env, runtime.workspace
         raw = sync.run_local_command([binary, "--version"], env=environment, cwd=workspace).strip()
         metadata = {"codex_cli_version": sync.parse_codex_cli_version(raw), "codex_cli_version_raw": raw}
         item = sync.build_cli_surface_snapshot(binary, environment, workspace, metadata)

@@ -13,7 +13,6 @@ import re
 import shutil
 import subprocess
 import sys
-import tempfile
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -30,6 +29,7 @@ from markdownify import markdownify as to_markdown
 if __package__:
     from . import (
         cli_observations,
+        codex_env,
         model_catalog,
         semantic_history,
         snapshot_feature_flags,
@@ -38,6 +38,7 @@ if __package__:
     from .cli_help import parse_help_commands, parse_help_options, parse_help_usage
 else:
     import cli_observations
+    import codex_env
     import model_catalog
     import semantic_history
     import snapshot_feature_flags
@@ -155,17 +156,6 @@ SOURCE_STATE_SEMANTICS = {
     },
 }
 PROMPT_VOLATILE_KEYS = {"internal_chat_message_metadata_passthrough"}
-SAFE_CODEX_ENV_KEYS = {
-    "COMSPEC",
-    "LANG",
-    "LC_ALL",
-    "PATH",
-    "PATHEXT",
-    "SSL_CERT_DIR",
-    "SSL_CERT_FILE",
-    "SYSTEMROOT",
-    "TMPDIR",
-}
 CLI_OPTION_CONFIG_KEYS = {
     "--ask-for-approval": ["approval_policy"],
     "--local-provider": ["oss_provider"],
@@ -703,20 +693,6 @@ def run_local_command(
         stderr = result.stderr.strip()
         raise RuntimeError(f"{' '.join(args)} failed with exit code {result.returncode}: {stderr}")
     return result.stdout
-
-
-def codex_subprocess_env(base: Dict[str, str] | None = None) -> Dict[str, str]:
-    env = dict(os.environ if base is None else base)
-    for name in ("GH_TOKEN", "GITHUB_TOKEN"):
-        env.pop(name, None)
-    return env
-
-
-def isolated_codex_subprocess_env(
-    base: Dict[str, str] | None = None,
-) -> Dict[str, str]:
-    source = os.environ if base is None else base
-    return {key: value for key, value in source.items() if key in SAFE_CODEX_ENV_KEYS}
 
 
 def parse_codex_cli_version(version_raw: str) -> str:
@@ -2943,37 +2919,20 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
     if not codex_bin:
         raise RuntimeError("codex CLI is not installed or not on PATH")
 
-    version_raw = run_local_command([codex_bin, "--version"], env=codex_subprocess_env()).strip()
-    version = parse_codex_cli_version(version_raw)
-    metadata = {
-        "source_kind": "installed_codex_cli",
-        "codex_cli_version": version,
-        "codex_cli_version_raw": version_raw,
-        "codex_cli_command": "codex --version",
-        "codex_prompt_snapshot_command": "codex debug prompt-input",
-    }
-
     managed: List[ManagedFile] = []
     fetch_errors: List[Dict[str, str]] = []
 
-    with tempfile.TemporaryDirectory(prefix="codex-docs-home-") as home_dir, tempfile.TemporaryDirectory(
-        prefix="codex-docs-workspace-"
-    ) as workspace_dir:
-        home_path = Path(home_dir)
-        workspace_path = Path(workspace_dir)
-        codex_home = home_path / ".codex"
-        codex_home.mkdir(parents=True, exist_ok=True)
-
-        env = isolated_codex_subprocess_env()
-        env.update(
-            {
-                "HOME": str(home_path),
-                "CODEX_HOME": str(codex_home),
-                "NO_COLOR": "1",
-                "SHELL": "/bin/bash",
-                "TZ": "UTC",
-            }
-        )
+    with codex_env.isolated_codex_runtime("codex-docs-cli-", SHELL="/bin/bash") as runtime:
+        env, home_path, codex_home, workspace_path = runtime
+        version_raw = run_local_command([codex_bin, "--version"], cwd=workspace_path, env=env).strip()
+        version = parse_codex_cli_version(version_raw)
+        metadata = {
+            "source_kind": "installed_codex_cli",
+            "codex_cli_version": version,
+            "codex_cli_version_raw": version_raw,
+            "codex_cli_command": "codex --version",
+            "codex_prompt_snapshot_command": "codex debug prompt-input",
+        }
 
         managed.append(
             build_cli_surface_snapshot(codex_bin, env, workspace_path, metadata)
