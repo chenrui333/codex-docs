@@ -27,11 +27,11 @@ def record_event(
             ledger["legacy_report"] = legacy_report
     events = ledger["events"]
 
-    def identity(changes: dict) -> dict:
+    def retry_key(changes: dict) -> dict:
         return {key: value for key, value in changes.items() if key not in derived_keys}
 
     # Retrying an identical transaction adds neither a timestamp nor an event.
-    if events and identity(events[-1]["changes"]) == identity(payload):
+    if events and retry_key(events[-1]["changes"]) == retry_key(payload):
         return ledger
     previous_id = events[-1]["id"] if events else ""
     identity = json.dumps({"previous_id": previous_id, "changes": payload}, sort_keys=True)
