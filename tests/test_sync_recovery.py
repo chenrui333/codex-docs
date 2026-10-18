@@ -499,6 +499,27 @@ class SyncRecoveryTests(unittest.TestCase):
         sync.apply_sync(files, source_metadata=CLI_METADATA)
         self.assertEqual(before, self.tree())
 
+    def test_same_version_platform_repair_requires_matching_committed_source(self):
+        current = surface("linux", ["common"], "1.2.4", "b")
+        native = sync.ManagedFile(
+            sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help", json.dumps(current))
+        self.seed_platform(surface("linux", ["common"], "1.2.4", "c"))
+        # Includes the corrupt observation, manifest, summary, and weekly history.
+        before = self.tree()
+        with self.assertRaisesRegex(ValueError, "committed release provenance"):
+            sync.prepare_cli_observations([native], CLI_METADATA)
+        self.assertEqual(before, self.tree())
+
+        # Keep the version and replacement identical; matching committed provenance permits recovery.
+        path = self.seed_platform(current)
+        files, observations = sync.prepare_cli_observations([native], CLI_METADATA)
+        self.assertEqual(observations["linux-x86_64"]["source_commit"], "b" * 40)
+        sync.apply_sync(files, source_metadata=CLI_METADATA)
+        self.assertEqual(json.loads(path.read_text()), current)
+        self.assert_manifest_matches_disk()
+        summary = json.loads(sync.SUMMARY_PATH.read_text())
+        self.assertEqual(summary["manifest_sha256"], sync.sha256_content(sync.MANIFEST_PATH.read_bytes()))
+
     def test_unverified_or_missing_platform_evidence_is_not_promoted(self):
         native = sync.ManagedFile(
             sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help",
