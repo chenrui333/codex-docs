@@ -3527,7 +3527,11 @@ def apply_sync(
     # interrupted transaction whose plan has since changed, so remove it before the
     # manifest commits a state that no longer describes the tree.
     managed_paths = {output_path_for_rel_path(rel_path) for rel_path in next_entries}
-    generated_roots = (DEVELOPERS_ROOT, LEARN_ROOT, GITHUB_ROOT, PLATFORM_ROOT, ROOT / "dot_codex", ROOT / "system_prompts")
+    generated_roots = (
+        DEVELOPERS_ROOT, LEARN_ROOT, GITHUB_ROOT, PLATFORM_ROOT,
+        SYSTEM_SKILLS_ROOT, SYSTEM_PROMPTS_ROOT,
+        DOCS_DIR / "cli-surface", FEATURE_LIFECYCLE.parent,
+    )
     for root in generated_roots:
         for path in sorted(root.rglob("*")) if root.is_dir() else ():
             if (path.is_file() or path.is_symlink()) and path not in managed_paths:

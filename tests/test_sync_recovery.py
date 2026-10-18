@@ -144,6 +144,42 @@ class SyncRecoveryTests(unittest.TestCase):
         on_disk = sorted(str(path.relative_to(sync.DOCS_DIR)) for path in sync.GITHUB_ROOT.rglob("*") if path.is_file())
         self.assertEqual(on_disk, [kept.rel_path])
 
+    def test_cleanup_preserves_files_outside_documented_generated_subtrees(self):
+        kept = managed(sync.github_path_to_rel_path("README.md"), "# Readme\n")
+        sync.apply_sync([kept])
+        maintained = (
+            sync.ROOT / "dot_codex" / "config.toml",
+            sync.ROOT / "dot_codex" / "skills" / "manual" / "SKILL.md",
+            sync.ROOT / "system_prompts" / "maintained.txt",
+        )
+        for path in maintained:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("maintained source, not generated\n")
+
+        self.assertEqual(sync.apply_sync([kept]), ([], [], []))
+        for path in maintained:
+            self.assertTrue(path.exists(), str(path.relative_to(sync.ROOT)))
+            self.assertEqual(path.read_text(), "maintained source, not generated\n")
+
+    def test_orphaned_cli_and_feature_outputs_are_removed_on_changed_retry(self):
+        kept = managed(sync.github_path_to_rel_path("README.md"), "# Readme\n")
+        sync.apply_sync([kept])
+        sync.write_coverage({"sync": {"status": "complete", "failure_count": 0}})
+        additions = (
+            managed("cli-surface/orphan.json", '{"commands": []}\n', "codex_cli_platform_observation"),
+            managed("feature-flags/orphan.json", '{"features": []}\n', "feature_flags"),
+        )
+        with mock.patch.object(sync, "write_manifest", side_effect=OSError("synthetic")):
+            with self.assertRaises(OSError):
+                sync.apply_sync([kept, *additions])
+        for item in additions:
+            self.assertTrue(sync.output_path_for_rel_path(item.rel_path).exists())
+
+        self.assertEqual(sync.apply_sync([kept]), ([], [], []))
+        for item in additions:
+            self.assertFalse(sync.output_path_for_rel_path(item.rel_path).exists(), item.rel_path)
+        self.assert_manifest_matches_disk()
+
 
     def test_main_refuses_unusable_manifest_before_fetching_or_writing(self):
         self.commit_v1()
