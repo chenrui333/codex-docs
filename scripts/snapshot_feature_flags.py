@@ -11,7 +11,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Callable, Dict, Iterable, List, Sequence
+from typing import Callable, Dict, Iterable, List, Mapping, Sequence
 from urllib.request import Request, urlopen
 
 if __package__:
@@ -347,10 +347,25 @@ def group_missing_in_docs(
     return missing, actionable, ordered_grouped
 
 
-def parse_config_basic_feature_metadata(path: Path) -> Dict[str, str]:
+def read_config_document(
+    path: Path, documents: Mapping[Path, str | None] | None = None
+) -> str:
+    """Return config document text exactly as ``Path.read_text`` would see it."""
+    if documents is not None and path in documents:
+        text = documents[path]
+        if text is None:
+            raise SnapshotError(f"Required mirrored config document is missing: {path}")
+        # Match read_text's universal-newline decoding so in-memory and
+        # on-disk documents hash identically.
+        return text.replace("\r\n", "\n").replace("\r", "\n")
     if not path.exists():
         raise SnapshotError(f"Required mirrored config document is missing: {path}")
-    text = path.read_text()
+    return path.read_text()
+
+
+def parse_config_basic_feature_metadata(path: Path, text: str | None = None) -> Dict[str, str]:
+    if text is None:
+        text = read_config_document(path)
     section_match = re.search(
         r"### Common feature flags\s+(.*?)(?:\n### |\Z)",
         text,
@@ -453,10 +468,9 @@ def find_documentation_stage_mismatches(
     return sorted(mismatches, key=lambda item: item["key"])
 
 
-def parse_config_reference_feature_keys(path: Path) -> List[str]:
-    if not path.exists():
-        raise SnapshotError(f"Required mirrored config document is missing: {path}")
-    text = path.read_text()
+def parse_config_reference_feature_keys(path: Path, text: str | None = None) -> List[str]:
+    if text is None:
+        text = read_config_document(path)
     keys = sorted(
         set(re.findall(r'^\s*key:\s*["\']features\.([a-z0-9_]+)["\']\s*,?$', text, re.MULTILINE))
     )
@@ -466,7 +480,7 @@ def parse_config_reference_feature_keys(path: Path) -> List[str]:
 
 
 def documentation_source_metadata(
-    path: Path, feature_keys: Sequence[str]
+    path: Path, feature_keys: Sequence[str], text: str | None = None
 ) -> Dict[str, object]:
     try:
         rel_path = path.relative_to(ROOT).as_posix()
@@ -474,7 +488,7 @@ def documentation_source_metadata(
         rel_path = path.as_posix()
     return {
         "path": rel_path,
-        "sha256": sha256_text(path.read_text()),
+        "sha256": sha256_text(read_config_document(path) if text is None else text),
         "parsed_feature_key_count": len(feature_keys),
     }
 
@@ -775,7 +789,16 @@ def write_json(path: Path, payload: Dict[str, object]) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
-def build_snapshot() -> tuple[Dict[str, object], str]:
+def build_snapshot(
+    documents: Mapping[Path, str | None] | None = None,
+) -> tuple[Dict[str, object], str]:
+    """Build the lifecycle snapshot.
+
+    ``documents`` lets a sync transaction supply the config documents it is
+    about to write, so the snapshot never describes the previous mirror. A
+    ``None`` value means the transaction removes that document. Paths absent
+    from the mapping are read from the committed mirror.
+    """
     with codex_env.isolated_codex_runtime("codex-features-") as runtime:
         codex_version = run_command(["codex", "--version"], env=runtime.env, cwd=runtime.workspace)
         features_raw = run_command(["codex", "features", "list"], env=runtime.env, cwd=runtime.workspace)
@@ -784,18 +807,20 @@ def build_snapshot() -> tuple[Dict[str, object], str]:
     )
     cli_features = parse_features_list(features_raw)
 
-    basic_docs_metadata = parse_config_basic_feature_metadata(CONFIG_BASIC_DOC)
+    basic_text = read_config_document(CONFIG_BASIC_DOC, documents)
+    reference_text = read_config_document(CONFIG_REFERENCE_DOC, documents)
+    basic_docs_metadata = parse_config_basic_feature_metadata(CONFIG_BASIC_DOC, basic_text)
     basic_docs_keys = list(basic_docs_metadata)
-    reference_docs_keys = parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC)
+    reference_docs_keys = parse_config_reference_feature_keys(CONFIG_REFERENCE_DOC, reference_text)
     docs_keys = sorted(set(basic_docs_keys) | set(reference_docs_keys))
     if not docs_keys:
         raise SnapshotError("Parsed zero documentation feature keys")
     documentation_sources = {
         "config_basic": documentation_source_metadata(
-            CONFIG_BASIC_DOC, basic_docs_keys
+            CONFIG_BASIC_DOC, basic_docs_keys, basic_text
         ),
         "config_reference": documentation_source_metadata(
-            CONFIG_REFERENCE_DOC, reference_docs_keys
+            CONFIG_REFERENCE_DOC, reference_docs_keys, reference_text
         ),
     }
     cli_keys = [str(item["key"]) for item in cli_features]
