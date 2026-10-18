@@ -77,7 +77,7 @@ class FeatureSnapshotTransactionTests(unittest.TestCase):
         stack.enter_context(mock.patch.object(sync, "build_codex_cli_files", return_value=([surface], [], dict(METADATA))))
         stack.enter_context(mock.patch.object(sync, "add_cli_release_provenance", side_effect=lambda _s, files, meta: (files, meta)))
         stack.enter_context(mock.patch.object(sync, "build_github_files", return_value=([
-            sync.ManagedFile("github/release.md", "github", "https://example.test/release", "# Release\n")], [])))
+            sync.ManagedFile("github.openai.com/openai/codex/release.md", "github", "https://example.test/release", "# Release\n")], [])))
         stack.enter_context(mock.patch.object(sync, "build_model_catalog_file", return_value=model))
         stack.enter_context(mock.patch.object(sync, "build_platform_tool_guide_files", return_value=([], [], {})))
         developers = sync.ManagedFile("developers.openai.com/codex/index.md", "developers",

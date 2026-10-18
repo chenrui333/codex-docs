@@ -1360,6 +1360,26 @@ def prune_developers_noise(root) -> None:
             image.decompose()
 
 
+def managed_output_scope() -> Tuple[Tuple[Path, ...], Tuple[Path, ...]]:
+    """Generated-only directories and individual files; maintained siblings are excluded."""
+    return (
+        (DEVELOPERS_ROOT, LEARN_ROOT, GITHUB_ROOT, PLATFORM_ROOT,
+         SYSTEM_SKILLS_ROOT, SYSTEM_PROMPTS_ROOT, DOCS_DIR / "cli-surface"),
+        (CAPABILITIES_PATH, CLI_SURFACE_PATH, DOCS_DIR / MODELS_REL_PATH,
+         FEATURE_LIFECYCLE, FEATURE_LIFECYCLE.with_suffix(".md")),
+    )
+
+
+def managed_file_path(rel_path: str) -> Path:
+    """Resolve only a file owned by a generator, never maintained repository content."""
+    path = output_path_for_rel_path(rel_path)
+    roots, files = managed_output_scope()
+    if (not Path(rel_path).parts or path.is_dir()
+            or not (path in files or any(path != root and path.is_relative_to(root) for root in roots))):
+        raise ManifestError(f"Path is outside generated file ownership: {rel_path!r}")
+    return path
+
+
 def valid_manifest_entry(meta: object) -> bool:
     """An entry must identify its content hash and source; partial entries would be skipped or pruned."""
     return (
@@ -1402,7 +1422,7 @@ def load_existing_manifest() -> Dict[str, Dict[str, object]]:
     invalid: List[str] = []
     for rel_path, meta in sources.items():
         try:
-            safe_file_path = bool(Path(rel_path).parts) and not output_path_for_rel_path(rel_path).is_dir()
+            safe_file_path = bool(managed_file_path(rel_path))
         except (OSError, ValueError):
             safe_file_path = False
         if not safe_file_path or not valid_manifest_entry(meta):
@@ -3504,8 +3524,8 @@ def apply_sync(
         if previous[path].get("sha256") != next_entries[path].get("sha256")
     )
 
-    write_targets = {rel_path: output_path_for_rel_path(rel_path) for rel_path in sorted(rel_to_file)}
-    removal_targets = [output_path_for_rel_path(rel_path) for rel_path in removed]
+    write_targets = {rel_path: managed_file_path(rel_path) for rel_path in sorted(rel_to_file)}
+    removal_targets = [managed_file_path(rel_path) for rel_path in removed]
 
     write_weekly_note(
         added,
@@ -3533,14 +3553,8 @@ def apply_sync(
     # Only generated paths are disposable; their maintained siblings (including
     # docs/feature-flags/README.md) must survive recovery cleanup.
     managed_paths = {output_path_for_rel_path(rel_path) for rel_path in next_entries}
-    generated_roots = (
-        DEVELOPERS_ROOT, LEARN_ROOT, GITHUB_ROOT, PLATFORM_ROOT,
-        SYSTEM_SKILLS_ROOT, SYSTEM_PROMPTS_ROOT, DOCS_DIR / "cli-surface",
-    )
-    cleanup_paths = [
-        CAPABILITIES_PATH, CLI_SURFACE_PATH, DOCS_DIR / MODELS_REL_PATH,
-        FEATURE_LIFECYCLE, FEATURE_LIFECYCLE.with_suffix(".md"),
-    ]
+    generated_roots, generated_files = managed_output_scope()
+    cleanup_paths = list(generated_files)
     for root in generated_roots:
         cleanup_paths.extend(root.rglob("*"))
     for path in sorted(cleanup_paths):

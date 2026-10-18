@@ -35,7 +35,7 @@ class LearnEvidenceTests(unittest.TestCase):
         stack = ExitStack()
         stack.enter_context(release_tests.ReleaseTransactionTests().release_builders())
         stack.enter_context(mock.patch.object(sync, "build_developers_files", return_value=(
-            [sync.ManagedFile("developers/page.md", "developers", "https://developers.openai.com/codex", "# Developer\n")],
+            [sync.ManagedFile("developers.openai.com/codex/page.md", "developers", "https://developers.openai.com/codex", "# Developer\n")],
             {"developers": {"counts": {}}}, [],
         )))
         stack.enter_context(mock.patch.object(sync, "fetch_text", side_effect=fetch))

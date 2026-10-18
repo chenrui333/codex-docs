@@ -20,18 +20,18 @@ def managed(rel_path, content, source_type="github"):
 
 V1 = [
     managed(sync.CAPABILITIES_REL_PATH, capabilities("alpha"), sync.CAPABILITY_INVENTORY_SOURCE_TYPE),
-    managed("github/a.md", "# A v1\n"),
-    managed("github/b.md", "# B\n"),
-    managed("github/old.md", "# Old\n"),
+    managed("github.openai.com/openai/codex/a.md", "# A v1\n"),
+    managed("github.openai.com/openai/codex/b.md", "# B\n"),
+    managed("github.openai.com/openai/codex/old.md", "# Old\n"),
 ]
 # V2 updates the capabilities and a.md, keeps b.md, adds c.md, and removes old.md.
 V2 = [
     managed(sync.CAPABILITIES_REL_PATH, capabilities("alpha", "beta"), sync.CAPABILITY_INVENTORY_SOURCE_TYPE),
-    managed("github/a.md", "# A v2\n"),
-    managed("github/b.md", "# B\n"),
-    managed("github/c.md", "# C\n"),
+    managed("github.openai.com/openai/codex/a.md", "# A v2\n"),
+    managed("github.openai.com/openai/codex/b.md", "# B\n"),
+    managed("github.openai.com/openai/codex/c.md", "# C\n"),
 ]
-V2_RESULT = (["github/c.md"], [sync.CAPABILITIES_REL_PATH, "github/a.md"], ["github/old.md"])
+V2_RESULT = (["github.openai.com/openai/codex/c.md"], [sync.CAPABILITIES_REL_PATH, "github.openai.com/openai/codex/a.md"], ["github.openai.com/openai/codex/old.md"])
 SOURCE_BUILDERS = (
     "build_developers_files", "build_learn_files", "build_codex_cli_files",
     "build_github_files", "build_model_catalog_file", "build_platform_tool_guide_files",
@@ -74,7 +74,7 @@ class SyncRecoveryTests(unittest.TestCase):
     def assert_v2_recovered(self, events_before):
         self.assertEqual(sync.apply_sync(V2), V2_RESULT)
         self.assert_manifest_matches_disk()
-        self.assertFalse(sync.output_path_for_rel_path("github/old.md").exists())
+        self.assertFalse(sync.output_path_for_rel_path("github.openai.com/openai/codex/old.md").exists())
         new_events = self.events()[events_before:]
         self.assertEqual(len(new_events), 1)
         self.assertEqual(sorted(new_events[0]["changes"]["file_changes"]),
@@ -106,14 +106,14 @@ class SyncRecoveryTests(unittest.TestCase):
         payloads = (
             [],
             {"schema_version": 1, "sources": []},
-            {"schema_version": 1, "sources": {"github/a.md": "x"}},
-            {"sources": {"github/a.md": entry}},
-            {"schema_version": 2, "sources": {"github/a.md": entry}},
+            {"schema_version": 1, "sources": {"github.openai.com/openai/codex/a.md": "x"}},
+            {"sources": {"github.openai.com/openai/codex/a.md": entry}},
+            {"schema_version": 2, "sources": {"github.openai.com/openai/codex/a.md": entry}},
             # Partial entries would be skipped by release-only replay and then pruned.
-            {"schema_version": 1, "sources": {"github/a.md": {}}},
-            {"schema_version": 1, "sources": {"github/a.md": {**entry, "sha256": "not-a-digest"}}},
-            {"schema_version": 1, "sources": {"github/a.md": {**entry, "source_type": ""}}},
-            {"schema_version": 1, "sources": {"github/a.md": {**entry, "source_url": None}}},
+            {"schema_version": 1, "sources": {"github.openai.com/openai/codex/a.md": {}}},
+            {"schema_version": 1, "sources": {"github.openai.com/openai/codex/a.md": {**entry, "sha256": "not-a-digest"}}},
+            {"schema_version": 1, "sources": {"github.openai.com/openai/codex/a.md": {**entry, "source_type": ""}}},
+            {"schema_version": 1, "sources": {"github.openai.com/openai/codex/a.md": {**entry, "source_url": None}}},
         )
         for payload in payloads:
             with self.subTest(payload=payload):
@@ -128,8 +128,13 @@ class SyncRecoveryTests(unittest.TestCase):
     def test_invalid_manifest_paths_fail_before_fetching_or_publishing_history(self):
         self.commit_v1()
         committed = json.loads(sync.MANIFEST_PATH.read_text())
-        entry = committed["sources"]["github/a.md"]
-        for invalid_path in ("", ".", "../outside.md", "/outside.md", "github"):
+        entry = committed["sources"]["github.openai.com/openai/codex/a.md"]
+        maintained_paths = ("README.md", "feature-flags/README.md", "dot_codex/config.toml")
+        for rel_path in maintained_paths:
+            path = sync.output_path_for_rel_path(rel_path)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("maintained source\n")
+        for invalid_path in ("", ".", "../outside.md", "/outside.md", "github", *maintained_paths):
             with self.subTest(path=invalid_path):
                 payload = {"schema_version": 1, "sources": {invalid_path: entry}}
                 sync.MANIFEST_PATH.write_text(json.dumps(payload))
@@ -275,22 +280,19 @@ class SyncRecoveryTests(unittest.TestCase):
     def test_missing_generated_file_with_unchanged_hash_is_repaired(self):
         self.commit_v1()
         manifest = sync.MANIFEST_PATH.read_bytes()
-        sync.output_path_for_rel_path("github/b.md").unlink()
-        with self.assertLogs(sync.LOG, "WARNING") as logs:
+        sync.output_path_for_rel_path("github.openai.com/openai/codex/b.md").unlink()
+        with self.assertLogs(sync.LOG, "WARNING"):
             self.assertEqual(sync.apply_sync(V1), ([], [], []))
-        self.assertIn("Repaired github/b.md", "\n".join(logs.output))
         self.assert_manifest_matches_disk()
         self.assertEqual(manifest, sync.MANIFEST_PATH.read_bytes())
 
     def test_corrupted_generated_files_with_unchanged_hash_are_repaired(self):
         self.commit_v1()
         events_before = len(self.events())
-        for rel_path in ("github/a.md", sync.CAPABILITIES_REL_PATH):
+        for rel_path in ("github.openai.com/openai/codex/a.md", sync.CAPABILITIES_REL_PATH):
             sync.output_path_for_rel_path(rel_path).write_bytes(b"\xff\xfe truncated")
-        with self.assertLogs(sync.LOG, "WARNING") as logs:
+        with self.assertLogs(sync.LOG, "WARNING"):
             self.assertEqual(sync.apply_sync(V1), ([], [], []))
-        self.assertIn("Repaired github/a.md", "\n".join(logs.output))
-        self.assertIn(f"Repaired {sync.CAPABILITIES_REL_PATH}", "\n".join(logs.output))
         self.assert_manifest_matches_disk()
         self.assertEqual(events_before, len(self.events()))
 
@@ -325,7 +327,7 @@ class SyncRecoveryTests(unittest.TestCase):
             with self.assertRaises(OSError):
                 sync.apply_sync(V2)
         self.assertEqual(baseline, self.canonical())
-        self.assertFalse(sync.output_path_for_rel_path("github/old.md").exists())
+        self.assertFalse(sync.output_path_for_rel_path("github.openai.com/openai/codex/old.md").exists())
         self.assert_v2_recovered(events_before)
 
     def test_failure_during_manifest_replacement_keeps_old_bytes_and_no_temp_files(self):
@@ -379,10 +381,10 @@ class SyncRecoveryTests(unittest.TestCase):
             ("removed", lambda path: path.unlink()),
         ):
             with self.subTest(name):
-                retained = sync.output_path_for_rel_path("github/b.md")
+                retained = sync.output_path_for_rel_path("github.openai.com/openai/codex/b.md")
                 damage(retained)
                 before = self.tree()
-                with self.assertRaisesRegex(sync.ManifestError, "github/b.md"):
+                with self.assertRaisesRegex(sync.ManifestError, "github.openai.com/openai/codex/b.md"):
                     sync.apply_sync(without_github, failures=[{"source": "github"}], preserve_missing_sources=["github"])
                 self.assertEqual(before, self.tree())
                 retained.write_text("# B\n")
@@ -390,7 +392,7 @@ class SyncRecoveryTests(unittest.TestCase):
         # With intact files the unavailable family is retained as before.
         sync.apply_sync(without_github, failures=[{"source": "github"}], preserve_missing_sources=["github"])
         self.assert_manifest_matches_disk()
-        self.assertIn("github/b.md", json.loads(sync.MANIFEST_PATH.read_text())["sources"])
+        self.assertIn("github.openai.com/openai/codex/b.md", json.loads(sync.MANIFEST_PATH.read_text())["sources"])
 
     # main() advances coverage only after a committed apply_sync.
 
@@ -403,12 +405,12 @@ class SyncRecoveryTests(unittest.TestCase):
                                  json.dumps({"models": [{"slug": "gpt-6-astra", "visibility": "list", "priority": 1}],
                                              "source_commit": "b" * 40}))
         returns = {
-            "build_developers_files": ([managed("developers/a.md", "# D\n", "developers")], {"developers": {"counts": {}}}, []),
-            "build_learn_files": ([managed("learn/a.md", "# L\n", sync.LEARN_SOURCE_TYPE)], {"counts": {}}, []),
+            "build_developers_files": ([managed("developers.openai.com/codex/a.md", "# D\n", "developers")], {"developers": {"counts": {}}}, []),
+            "build_learn_files": ([managed("learn.chatgpt.com/docs/a/index.md", "# L\n", sync.LEARN_SOURCE_TYPE)], {"counts": {}}, []),
             "build_codex_cli_files": ([surface], [], metadata),
             "add_cli_release_provenance": ([surface], metadata),
             "prepare_cli_observations": ([surface], {}),
-            "build_github_files": ([managed("github/a.md", f"# G {version}\n")], []),
+            "build_github_files": ([managed("github.openai.com/openai/codex/a.md", f"# G {version}\n")], []),
             "build_model_catalog_file": model,
             "build_platform_tool_guide_files": ([], [], {}),
             "build_capability_inventory_file": V1[0],

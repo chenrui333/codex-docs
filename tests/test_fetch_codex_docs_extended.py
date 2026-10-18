@@ -474,16 +474,16 @@ class FetchHelpersTests(unittest.TestCase):
                         {
                             "schema_version": 1,
                             "sources": {
-                                "a.md": {"source_type": "github", "source_url": "u", "sha256": "a" * 64},
-                                "b.md": {"source_type": "developers", "source_url": "u", "sha256": "b" * 64},
+                                "github.openai.com/openai/codex/a.md": {"source_type": "github", "source_url": "u", "sha256": "a" * 64},
+                                "developers.openai.com/codex/b.md": {"source_type": "developers", "source_url": "u", "sha256": "b" * 64},
                             },
                         }
                     )
                 )
-                current = sync.ManagedFile("c.md", "github", "u", "c")
+                current = sync.ManagedFile("github.openai.com/openai/codex/c.md", "github", "u", "c")
                 self.assertEqual(
                     sync.coverage_paths_for_source([current], "github", {"github"}),
-                    ["a.md", "c.md"],
+                    ["github.openai.com/openai/codex/a.md", "github.openai.com/openai/codex/c.md"],
                 )
 
     def test_source_builders_keep_successes_and_record_failures(self):
