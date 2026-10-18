@@ -73,6 +73,10 @@ class CliObservationsTests(unittest.TestCase):
             path = sync.DOCS_DIR / "cli-surface" / "macos-arm64.json"
             path.parent.mkdir(parents=True)
             path.write_text(json.dumps(mac, indent=2, sort_keys=True) + "\n")
+            sync.write_manifest({"cli-surface/macos-arm64.json": {
+                "sha256": sync.sha256_content(path.read_bytes()),
+                "source_type": sync.CLI_PLATFORM_SOURCE_TYPE, "source_url": "codex-cli://help",
+            }})
             linux = surface("linux", ["linux-only"], "1.2.4", "b")
             native = sync.ManagedFile(sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help", json.dumps(linux))
             files, observations = sync.prepare_cli_observations([native], METADATA, Path(directory) / "missing-runner-artifacts")
