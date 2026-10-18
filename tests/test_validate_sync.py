@@ -35,8 +35,9 @@ class ValidateSyncScopeTests(unittest.TestCase):
         (scripts / "fetch_codex_docs.py").write_text(textwrap.dedent(sync_body))
         (scripts / "check_codex_freshness.py").write_text("import sync_helper\n")
 
-        env = {key: value for key, value in os.environ.items() if key != "PYTHONDONTWRITEBYTECODE"}
-        env.pop("VALIDATE_STRICT_SYNC", None)
+        # Only what the script needs; inherited credentials never reach the stub generators.
+        env = {key: os.environ[key] for key in ("PATH", "TMPDIR", "LANG") if key in os.environ}
+        env["HOME"] = str(tmp)
         return subprocess.run(
             ["bash", "scripts/validate_sync.sh"],
             cwd=repo,
