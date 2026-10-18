@@ -1,0 +1,18 @@
+README.md
+  h_9df9c32c3f321d 140
+justfile
+  h_9df9c32c3f321d 4
+pyproject.toml
+  h_9df9c32c3f321d 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3ccb650ebdb1565adb86d916a35c78195dde99fe",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
