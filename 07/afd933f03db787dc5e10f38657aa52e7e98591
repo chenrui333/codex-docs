@@ -1,0 +1,14 @@
+audits/2026-10-18.md
+  h_9df9c32c3f321d 16,48,112,356,358-359
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "07afd933f03db787dc5e10f38657aa52e7e98591",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
