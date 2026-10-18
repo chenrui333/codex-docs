@@ -1223,24 +1223,6 @@ Options:
             ):
                 self.assertEqual(sync.main(), 1)
 
-    @mock.patch.object(sync.snapshot_feature_flags, "build_snapshot", side_effect=RuntimeError("offline"))
-    def test_main_isolates_source_build_failures(self, _features):
-        with tempfile.TemporaryDirectory() as temporary_directory:
-            root = Path(temporary_directory)
-            error = RuntimeError("offline")
-            with (
-                isolated_outputs(root),
-                mock.patch.object(sync, "build_developers_files", side_effect=error),
-                mock.patch.object(sync, "build_learn_files", side_effect=error),
-                mock.patch.object(sync, "build_github_files", side_effect=error),
-                mock.patch.object(sync, "build_codex_cli_files", side_effect=error),
-                mock.patch.object(sync, "build_platform_tool_guide_files", side_effect=error),
-                mock.patch.object(sync, "write_coverage"),
-                mock.patch.object(sync, "write_summary") as write_summary,
-            ):
-                self.assertEqual(sync.main(), 1)
-                self.assertTrue(write_summary.called)
-
 
 def isolated_outputs(root: Path):
     docs = root / "docs"

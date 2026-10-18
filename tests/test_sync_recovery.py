@@ -425,6 +425,18 @@ class SyncRecoveryTests(unittest.TestCase):
             {"source_ref": f"rust-v{version}", "source_commit": "b" * 40, "cli_features": []}, "# Features\n")))
         return stack
 
+    def test_no_sources_built_preserves_committed_summary_and_coverage(self):
+        self.commit_v1()
+        before = self.tree()
+        with ExitStack() as stack:
+            stack.enter_context(mock.patch.object(sync, "STRICT_SYNC_MODE", False))
+            for name in SOURCE_BUILDERS:
+                stack.enter_context(mock.patch.object(sync, name, side_effect=RuntimeError("synthetic offline")))
+            stack.enter_context(mock.patch.object(
+                sync.snapshot_feature_flags, "build_snapshot", side_effect=RuntimeError("synthetic offline")))
+            self.assertEqual(sync.main(), 1)
+        self.assertEqual(before, self.tree())
+
     def test_failed_main_write_does_not_advance_coverage_or_summary(self):
         with self.full_sync_sources("1.2.4"):
             self.assertEqual(sync.main(), 0)

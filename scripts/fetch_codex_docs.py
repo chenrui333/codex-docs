@@ -4044,8 +4044,7 @@ def main(
         managed_files.extend(feature_files)
         if not managed_files:
             LOG.error("No source files were fetched successfully.")
-            # Record the failures, but publish no coverage: nothing was committed.
-            write_summary([], [], [], 0, failures=failures)
+            # No transaction was committed; failures belong to logs/attempt diagnostics.
             return 1
 
         added, updated, removed = apply_sync(
