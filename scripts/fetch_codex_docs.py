@@ -13,6 +13,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -323,6 +324,10 @@ class SourceTombstone(Exception):
 
 class SourceContentError(RuntimeError):
     """A fetched source had an unexpected or malformed representation."""
+
+
+class ManifestError(ValueError):
+    """The committed manifest is unusable; syncing would orphan or misreport managed files."""
 
 
 def now_utc_iso() -> str:
@@ -1247,24 +1252,9 @@ def github_path_to_rel_path(path: str) -> str:
 
 
 def manifest_paths_for_source_type(source_type: str) -> List[str]:
-    if not MANIFEST_PATH.exists():
-        return []
-
-    try:
-        payload = json.loads(MANIFEST_PATH.read_text())
-    except (OSError, json.JSONDecodeError) as exc:
-        LOG.warning("Could not read existing manifest for preserved %s coverage: %s", source_type, exc)
-        return []
-
-    sources = payload.get("sources", {})
-    if not isinstance(sources, dict):
-        return []
-
-    paths: List[str] = []
-    for rel_path, entry in sources.items():
-        if isinstance(rel_path, str) and isinstance(entry, dict) and entry.get("source_type") == source_type:
-            paths.append(rel_path)
-    return sorted(paths)
+    return sorted(
+        rel_path for rel_path, entry in load_existing_manifest().items() if entry.get("source_type") == source_type
+    )
 
 
 def coverage_paths_for_source(
@@ -1371,32 +1361,48 @@ def prune_developers_noise(root) -> None:
 
 
 def load_existing_manifest() -> Dict[str, Dict[str, object]]:
+    """Return the committed manifest entries, failing closed on anything but a valid manifest.
+
+    A missing manifest is a first-time bootstrap (empty result) only while no
+    canonical success metadata exists, i.e. `source_coverage.json` is absent too.
+    A missing manifest next to existing coverage, unreadable or invalid JSON, a
+    non-object payload, a non-object `sources`, or a non-object entry raises
+    `ManifestError`: treating such a manifest as empty would orphan managed files
+    and drop the entries of families that failed this run.
+    """
+    restore = "Restore the committed manifest (`git checkout -- docs/docs_manifest.json`) and rerun"
     if not MANIFEST_PATH.exists():
+        if COVERAGE_PATH.exists():
+            raise ManifestError(
+                f"{MANIFEST_PATH} is missing but {COVERAGE_PATH.name} records a previous sync. "
+                f"{restore}; delete {COVERAGE_PATH.name} only to bootstrap a new mirror."
+            )
         return {}
 
     try:
         payload = json.loads(MANIFEST_PATH.read_text())
-    except json.JSONDecodeError:
-        LOG.warning("Existing manifest is invalid JSON and will be recreated")
-        return {}
+    except (OSError, ValueError) as exc:
+        raise ManifestError(f"{MANIFEST_PATH} is unreadable or invalid JSON ({exc}). {restore}.") from exc
 
-    sources = payload.get("sources", {})
+    sources = payload.get("sources") if isinstance(payload, dict) else None
     if not isinstance(sources, dict):
-        return {}
+        raise ManifestError(f"{MANIFEST_PATH} must be an object with a `sources` object. {restore}.")
+    invalid = sorted(rel_path for rel_path, meta in sources.items() if not isinstance(meta, dict))
+    if invalid:
+        raise ManifestError(f"{MANIFEST_PATH} has non-object entries: {', '.join(invalid[:5])}. {restore}.")
 
     parsed: Dict[str, Dict[str, object]] = {}
     for rel_path, meta in sources.items():
-        if isinstance(meta, dict):
-            parsed_meta: Dict[str, object] = {}
-            for key, value in meta.items():
-                if isinstance(value, list):
-                    parsed_meta[str(key)] = [str(item) for item in value]
-                elif isinstance(value, (str, int, float, bool)):
-                    parsed_meta[str(key)] = str(value)
-            parsed_meta["sha256"] = str(meta.get("sha256", ""))
-            parsed_meta["source_url"] = str(meta.get("source_url", ""))
-            parsed_meta["source_type"] = str(meta.get("source_type", ""))
-            parsed[rel_path] = parsed_meta
+        parsed_meta: Dict[str, object] = {}
+        for key, value in meta.items():
+            if isinstance(value, list):
+                parsed_meta[str(key)] = [str(item) for item in value]
+            elif isinstance(value, (str, int, float, bool)):
+                parsed_meta[str(key)] = str(value)
+        parsed_meta["sha256"] = str(meta.get("sha256", ""))
+        parsed_meta["source_url"] = str(meta.get("source_url", ""))
+        parsed_meta["source_type"] = str(meta.get("source_type", ""))
+        parsed[rel_path] = parsed_meta
     return parsed
 
 
@@ -1405,20 +1411,33 @@ def ensure_parent(path: Path) -> None:
 
 
 def write_file_if_changed(path: Path, content: str | bytes) -> bool:
-    if isinstance(content, bytes):
-        if path.exists() and path.read_bytes() == content:
-            return False
-
-        ensure_parent(path)
-        path.write_bytes(content)
-        return True
-
-    if path.exists() and path.read_text() == content:
+    # Compare and write UTF-8 bytes so on-disk content always hashes like the manifest
+    # entry, and undecodable (corrupted) files are replaced instead of crashing.
+    data = content.encode("utf-8") if isinstance(content, str) else content
+    if path.exists() and path.read_bytes() == data:
         return False
 
     ensure_parent(path)
-    path.write_text(content)
+    path.write_bytes(data)
     return True
+
+
+def replace_file_atomically(path: Path, text: str) -> None:
+    """Replace a canonical metadata file via a same-directory temp file and `os.replace`.
+
+    Readers see either the old or the new bytes; on failure the temp file is removed.
+    """
+    ensure_parent(path)
+    mode = path.stat().st_mode & 0o777 if path.exists() else 0o644
+    fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as handle:
+            os.fchmod(handle.fileno(), mode)
+            handle.write(text.encode("utf-8"))
+        os.replace(temp_name, path)
+    except BaseException:
+        Path(temp_name).unlink(missing_ok=True)
+        raise
 
 
 def output_path_for_rel_path(rel_path: str) -> Path:
@@ -2989,8 +3008,7 @@ def write_manifest(entries: Dict[str, Dict[str, object]]) -> None:
         "schema_version": 1,
         "sources": {key: entries[key] for key in sorted(entries)},
     }
-    ensure_parent(MANIFEST_PATH)
-    MANIFEST_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    replace_file_atomically(MANIFEST_PATH, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
 def write_summary(
@@ -3013,8 +3031,7 @@ def write_summary(
     }
     if source_metadata:
         payload["source_metadata"] = source_metadata
-    ensure_parent(SUMMARY_PATH)
-    SUMMARY_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    replace_file_atomically(SUMMARY_PATH, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
 def semantic_coverage(coverage: Dict[str, object]) -> Dict[str, object]:
@@ -3049,9 +3066,8 @@ def write_coverage(coverage: Dict[str, object]) -> None:
         except json.JSONDecodeError:
             pass
 
-    ensure_parent(COVERAGE_PATH)
     payload = {**coverage, "generated_at": now_utc_iso()}
-    COVERAGE_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    replace_file_atomically(COVERAGE_PATH, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
 def render_sync_event(event: Dict[str, object]) -> str:
@@ -3134,9 +3150,12 @@ def write_weekly_note(
         "file_changes": file_changes or {},
         "model_changes": model_changes or {},
     }
+    # Capability and model diffs are derived from the files identified by
+    # `file_changes`; a retry after an interrupted write must not duplicate the event.
     ledger = semantic_history.record_event(
         WEEKLY_DIR / "events" / f"{date_tag}.json", payload,
         observed_at=now_utc_iso(), legacy_report=legacy_report,
+        derived_keys=("capability_changes", "model_changes"),
     )
     sections = [f"# Codex Docs Sync - {date_tag}\n"]
     if ledger.get("legacy_report"):
@@ -3327,12 +3346,71 @@ def render_capability_changes(changes: Dict[str, object]) -> List[str]:
     return lines
 
 
+def committed_text(rel_path: str, previous: Dict[str, Dict[str, object]]) -> str | None:
+    """Return the committed content of `rel_path` for semantic diffs.
+
+    New paths diff against an empty baseline (`""`). `None` means the on-disk bytes no
+    longer match the committed manifest hash (an interrupted or corrupted write), so
+    the previous state is unknown.
+    """
+    if rel_path not in previous:
+        return ""
+    path = output_path_for_rel_path(rel_path)
+    data = path.read_bytes() if path.exists() else None
+    if data is None or sha256_content(data) != previous[rel_path].get("sha256"):
+        LOG.warning("Skipping semantic diff for %s: on-disk bytes do not match the manifest", rel_path)
+        return None
+    return data.decode("utf-8")
+
+
+def summary_is_current(total_files: int, source_metadata: Dict[str, object] | None) -> bool:
+    """Whether the existing summary is a clean report of the committed manifest state."""
+    try:
+        payload = json.loads(SUMMARY_PATH.read_text())
+    except (OSError, ValueError):
+        return False
+    if not isinstance(payload, dict) or "failure_count" not in payload or "failures" not in payload:
+        return False
+    try:
+        had_failures = int(payload.get("failure_count", 0)) > 0
+    except (TypeError, ValueError):
+        had_failures = bool(payload.get("failure_count"))
+    if had_failures or payload.get("failures"):
+        return False
+
+    # A sync interrupted after the manifest replacement leaves the previous summary;
+    # its total or release metadata then disagrees with the committed manifest.
+    def release_state(metadata: object) -> object:
+        if not isinstance(metadata, dict):
+            return metadata
+        return {key: value for key, value in metadata.items() if key != "sync_scope"}
+
+    return payload.get("total_files") == total_files and (
+        release_state(payload.get("source_metadata", {})) == release_state(source_metadata or {})
+    )
+
+
 def apply_sync(
     managed_files: Iterable[ManagedFile],
     failures: List[Dict[str, str]] | None = None,
     preserve_missing_sources: Sequence[str] = (),
     source_metadata: Dict[str, object] | None = None,
 ) -> Tuple[List[str], List[str], List[str]]:
+    """Commit managed files against the manifest; detectable and safely retryable, not atomic.
+
+    Order: plan from the committed manifest and resolve every write/removal target
+    (unsafe paths fail before any write); record the weekly event and note; write
+    every planned file, repairing bytes that drifted from an unchanged manifest hash;
+    delete removed paths and empty directories; atomically replace the manifest; then
+    rewrite the summary. The manifest is the commit point: a failure before it keeps
+    the previous manifest, summary, and (in `main`) coverage, and rerunning with the
+    same inputs reconciles every file to the new manifest. The event is recorded
+    before any generated file changes, so its semantic diffs read committed bytes; a
+    retry is deduplicated by `semantic_history`. A failure after the manifest leaves
+    an older summary, which the next run rewrites once its total or release metadata
+    disagrees with the manifest. A crash mid-write can leave mixed files on disk;
+    the next run repairs them.
+    """
     previous = load_existing_manifest()
     capability_changes: Dict[str, object] | None = None
     model_changes: Dict[str, object] = {}
@@ -3360,15 +3438,14 @@ def apply_sync(
             if item.source_metadata.get("source_kind"):
                 next_entry["source_kind"] = item.source_metadata["source_kind"]
         next_entries[item.rel_path] = next_entry
-        if item.rel_path == MODELS_REL_PATH:
-            model_path = output_path_for_rel_path(MODELS_REL_PATH)
-            previous_models = json.loads(model_path.read_text()) if model_path.exists() else {}
-            model_changes = model_catalog.changes(previous_models, json.loads(managed_file_text(item)))
-        if item.rel_path == CAPABILITIES_REL_PATH:
-            previous_text = CAPABILITIES_PATH.read_text() if CAPABILITIES_PATH.exists() else "{}"
-            capability_changes = semantic_capability_changes(
-                previous_text, managed_file_text(item)
-            )
+        if item.rel_path in (MODELS_REL_PATH, CAPABILITIES_REL_PATH):
+            previous_text = committed_text(item.rel_path, previous)
+            if previous_text is not None and item.rel_path == MODELS_REL_PATH:
+                model_changes = model_catalog.changes(
+                    json.loads(previous_text or "{}"), json.loads(managed_file_text(item))
+                )
+            elif previous_text is not None:
+                capability_changes = semantic_capability_changes(previous_text or "{}", managed_file_text(item))
 
     previous_paths = set(previous)
     next_paths = set(next_entries)
@@ -3390,45 +3467,9 @@ def apply_sync(
         if previous[path].get("sha256") != next_entries[path].get("sha256")
     )
 
-    touched = set(added) | set(updated)
-    for rel_path in sorted(touched):
-        abs_path = output_path_for_rel_path(rel_path)
-        write_file_if_changed(abs_path, rel_to_file[rel_path].content)
+    write_targets = {rel_path: output_path_for_rel_path(rel_path) for rel_path in sorted(rel_to_file)}
+    removal_targets = [output_path_for_rel_path(rel_path) for rel_path in removed]
 
-    for rel_path in removed:
-        abs_path = output_path_for_rel_path(rel_path)
-        if abs_path.exists():
-            abs_path.unlink()
-
-    remove_empty_directories(DEVELOPERS_ROOT)
-    remove_empty_directories(LEARN_ROOT)
-    remove_empty_directories(GITHUB_ROOT)
-    remove_empty_directories(PLATFORM_ROOT)
-    remove_empty_directories(ROOT / "dot_codex")
-    remove_empty_directories(ROOT / "system_prompts")
-
-    write_manifest(next_entries)
-    has_changes = bool(added or updated or removed)
-    summary_schema_stale = False
-    summary_had_failures = False
-    if SUMMARY_PATH.exists():
-        try:
-            summary_payload = json.loads(SUMMARY_PATH.read_text())
-            summary_schema_stale = not (
-                isinstance(summary_payload, dict)
-                and "failure_count" in summary_payload
-                and "failures" in summary_payload
-            )
-            if isinstance(summary_payload, dict):
-                try:
-                    summary_had_failures = int(summary_payload.get("failure_count", 0)) > 0
-                except (TypeError, ValueError):
-                    summary_had_failures = bool(summary_payload.get("failure_count"))
-                summary_had_failures = summary_had_failures or bool(summary_payload.get("failures"))
-        except json.JSONDecodeError:
-            summary_schema_stale = True
-    if has_changes or not SUMMARY_PATH.exists() or bool(failures) or summary_schema_stale or summary_had_failures:
-        write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
     write_weekly_note(
         added,
         updated,
@@ -3442,6 +3483,26 @@ def apply_sync(
         } for path in sorted(set(added + updated + removed))},
     )
     ensure_weekly_frontmatter()
+
+    changed = set(added) | set(updated)
+    for rel_path, abs_path in write_targets.items():
+        if write_file_if_changed(abs_path, rel_to_file[rel_path].content) and rel_path not in changed:
+            LOG.warning("Repaired %s: on-disk bytes did not match its unchanged manifest entry", rel_path)
+
+    for abs_path in removal_targets:
+        if abs_path.exists():
+            abs_path.unlink()
+
+    remove_empty_directories(DEVELOPERS_ROOT)
+    remove_empty_directories(LEARN_ROOT)
+    remove_empty_directories(GITHUB_ROOT)
+    remove_empty_directories(PLATFORM_ROOT)
+    remove_empty_directories(ROOT / "dot_codex")
+    remove_empty_directories(ROOT / "system_prompts")
+
+    write_manifest(next_entries)
+    if added or updated or removed or failures or not summary_is_current(len(next_entries), source_metadata):
+        write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
 
     return added, updated, removed
 
@@ -3498,6 +3559,12 @@ def main(
     )
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        # Validate before any network fetch or write; every later reader shares this parser.
+        load_existing_manifest()
+    except ManifestError as exc:
+        LOG.error("Refusing to sync: %s", exc)
+        return 1
 
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
@@ -3861,30 +3928,33 @@ def main(
         return 1
     if not release_only and not failures:
         coverage["web_snapshot"] = {"status": "complete", "last_successful_full_sync_at": now_utc_iso()}
-    write_coverage(coverage)
 
     web_files = developers_files + learn_files + platform_tool_guide_files
-    managed_files = annotate_markdown_files(
-        github_files + codex_cli_files + capability_inventory_files + model_files
-        + ([] if release_only else web_files),
-        codex_cli_metadata,
-    )
-    if release_only:
-        managed_files.extend(web_files)
-    managed_files.extend(feature_files)
-    if not managed_files:
-        LOG.error("No source files were fetched successfully.")
-        write_summary([], [], [], 0, failures=failures)
-        return 1
-
     try:
+        managed_files = annotate_markdown_files(
+            github_files + codex_cli_files + capability_inventory_files + model_files
+            + ([] if release_only else web_files),
+            codex_cli_metadata,
+        )
+        if release_only:
+            managed_files.extend(web_files)
+        managed_files.extend(feature_files)
+        if not managed_files:
+            LOG.error("No source files were fetched successfully.")
+            write_coverage(coverage)
+            write_summary([], [], [], 0, failures=failures)
+            return 1
+
         added, updated, removed = apply_sync(
             managed_files,
             failures=failures,
             preserve_missing_sources=sorted(preserve_missing_sources),
             source_metadata={**codex_cli_metadata, "sync_scope": "release" if release_only else "full"},
         )
-    except Exception as exc:  # pragma: no cover - guardrail for sync bugs
+        # Coverage feeds freshness and CI artifacts, so it advances only after the
+        # manifest commit; a later rerun rewrites it if this write is interrupted.
+        write_coverage(coverage)
+    except Exception as exc:
         LOG.exception("Sync failed while writing output: %s", exc)
         return 1
 

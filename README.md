@@ -96,6 +96,8 @@ Resiliency controls:
 - Child sitemap failures remain blocking: the historical union alone cannot prove a missing child's contribution or justify destructive removals
 - Scheduled runs upload `sync-attempt-diagnostics` separately from canonical reports. Its current observation, blocking failures, and canonical-baseline hashes describe the attempt, not a committed transaction. Local callers can use `--diagnostics-path /tmp/sync-attempt.json`
 - Release-only sync validates cached web files against their manifest and retains their bytes, without fetching web sources
+- An invalid manifest, or a missing manifest beside existing `docs/source_coverage.json`, stops sync before any fetch or write; restore it with `git checkout -- docs/docs_manifest.json`. A missing manifest bootstraps a new mirror only when coverage is absent too
+- The manifest is the commit point: it is replaced atomically after every planned file is written, and summary and coverage advance only after it. Multi-file writes are not atomic, but every run rewrites any managed file whose bytes differ from the plan, so rerunning an interrupted sync reconciles the mirror without duplicating its weekly event
 - Coverage records the last meaningful transaction scope and web observation basis; no-op scope switches do not rewrite state. Release freshness does not assert current web-source health.
 - Recorded full-web success is retained across release-only transactions. Timestamps describe committed meaningful observations, not a heartbeat for every no-op run.
 - Feature snapshots are built in memory and validated against the same release before inventory generation
