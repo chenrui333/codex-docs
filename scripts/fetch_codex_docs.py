@@ -3523,20 +3523,23 @@ def apply_sync(
         if abs_path.exists():
             abs_path.unlink()
 
-    # Mirror roots hold only manifest-managed files. Anything else was written by an
-    # interrupted transaction whose plan has since changed, so remove it before the
-    # manifest commits a state that no longer describes the tree.
+    # Only generated paths are disposable; their maintained siblings (including
+    # docs/feature-flags/README.md) must survive recovery cleanup.
     managed_paths = {output_path_for_rel_path(rel_path) for rel_path in next_entries}
     generated_roots = (
         DEVELOPERS_ROOT, LEARN_ROOT, GITHUB_ROOT, PLATFORM_ROOT,
-        SYSTEM_SKILLS_ROOT, SYSTEM_PROMPTS_ROOT,
-        DOCS_DIR / "cli-surface", FEATURE_LIFECYCLE.parent,
+        SYSTEM_SKILLS_ROOT, SYSTEM_PROMPTS_ROOT, DOCS_DIR / "cli-surface",
     )
+    cleanup_paths = [
+        CAPABILITIES_PATH, CLI_SURFACE_PATH, DOCS_DIR / MODELS_REL_PATH,
+        FEATURE_LIFECYCLE, FEATURE_LIFECYCLE.with_suffix(".md"),
+    ]
     for root in generated_roots:
-        for path in sorted(root.rglob("*")) if root.is_dir() else ():
-            if (path.is_file() or path.is_symlink()) and path not in managed_paths:
-                LOG.warning("Removed unmanaged generated file %s", path.relative_to(ROOT))
-                path.unlink()
+        cleanup_paths.extend(root.rglob("*"))
+    for path in sorted(cleanup_paths):
+        if (path.is_file() or path.is_symlink()) and path not in managed_paths:
+            LOG.warning("Removed unmanaged generated file %s", path.relative_to(ROOT))
+            path.unlink()
 
     for root in generated_roots:
         remove_empty_directories(root)

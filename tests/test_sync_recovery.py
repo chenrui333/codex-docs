@@ -151,6 +151,7 @@ class SyncRecoveryTests(unittest.TestCase):
             sync.ROOT / "dot_codex" / "config.toml",
             sync.ROOT / "dot_codex" / "skills" / "manual" / "SKILL.md",
             sync.ROOT / "system_prompts" / "maintained.txt",
+            sync.DOCS_DIR / "feature-flags" / "README.md",
         )
         for path in maintained:
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -167,7 +168,7 @@ class SyncRecoveryTests(unittest.TestCase):
         sync.write_coverage({"sync": {"status": "complete", "failure_count": 0}})
         additions = (
             managed("cli-surface/orphan.json", '{"commands": []}\n', "codex_cli_platform_observation"),
-            managed("feature-flags/orphan.json", '{"features": []}\n', "feature_flags"),
+            managed("feature-flags/lifecycle.json", '{"features": []}\n', "feature_flags"),
         )
         with mock.patch.object(sync, "write_manifest", side_effect=OSError("synthetic")):
             with self.assertRaises(OSError):
@@ -178,6 +179,22 @@ class SyncRecoveryTests(unittest.TestCase):
         self.assertEqual(sync.apply_sync([kept]), ([], [], []))
         for item in additions:
             self.assertFalse(sync.output_path_for_rel_path(item.rel_path).exists(), item.rel_path)
+        self.assert_manifest_matches_disk()
+
+    def test_orphaned_top_level_generated_files_are_removed(self):
+        kept = managed(sync.github_path_to_rel_path("README.md"), "# Readme\n")
+        sync.apply_sync([kept])
+        orphan_paths = (
+            sync.CAPABILITIES_PATH,
+            sync.CLI_SURFACE_PATH,
+            sync.DOCS_DIR / sync.MODELS_REL_PATH,
+        )
+        for path in orphan_paths:
+            path.write_text("{}\n")
+
+        self.assertEqual(sync.apply_sync([kept]), ([], [], []))
+        for path in orphan_paths:
+            self.assertFalse(path.exists(), path.name)
         self.assert_manifest_matches_disk()
 
 
