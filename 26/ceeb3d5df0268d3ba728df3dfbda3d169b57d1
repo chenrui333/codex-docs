@@ -1,0 +1,18 @@
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 3489-3516,3721-3728
+scripts/snapshot_feature_flags.py
+  h_9df9c32c3f321d 14,350-360,363-368,471-473,483,491,792-801,810-812,814,820,823
+tests/test_feature_snapshot_transaction.py
+  h_9df9c32c3f321d 1-181
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "26ceeb3d5df0268d3ba728df3dfbda3d169b57d1",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
