@@ -1,0 +1,16 @@
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 1229-1237
+tests/test_github_tree_listing.py
+  h_9df9c32c3f321d 1-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6d1a7d1f41239f0d2cfe7acf8bbe7e777ac0af68",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
