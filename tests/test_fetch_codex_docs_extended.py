@@ -455,6 +455,7 @@ class FetchHelpersTests(unittest.TestCase):
 
     def test_github_discovery_and_manifest_preservation(self):
         payload = {
+            "truncated": False,
             "tree": [
                 {"type": "blob", "path": "README.md"},
                 {"type": "blob", "path": "docs/guide.md"},
