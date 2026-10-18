@@ -12,7 +12,9 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Sequence
-from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlparse
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 if __package__:
     from . import codex_env
@@ -107,10 +109,31 @@ def command_timeout_seconds() -> float:
         ) from exc
 
 
+class _CredentialScopedRedirectHandler(HTTPRedirectHandler):
+    """Drop Authorization when a redirect leaves the original scheme and host."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected is not None:
+            origin, target = urlparse(req.full_url), urlparse(newurl)
+            if (origin.scheme, origin.netloc) != (target.scheme, target.netloc):
+                redirected.remove_header("Authorization")
+        return redirected
+
+
+def _open(request: Request) -> bytes:
+    try:
+        with build_opener(_CredentialScopedRedirectHandler).open(request, timeout=30) as resp:
+            return resp.read()
+    except HTTPError as exc:
+        exc.close()
+        raise SnapshotError(f"Request failed for {request.full_url}: HTTP {exc.code} {exc.reason}") from None
+    except (URLError, TimeoutError) as exc:
+        raise SnapshotError(f"Request failed for {request.full_url}: {exc}") from None
+
+
 def fetch_text(url: str) -> str:
-    req = Request(url, headers={"User-Agent": HTTP_USER_AGENT})
-    with urlopen(req, timeout=30) as resp:  # noqa: S310 (trusted static URLs)
-        return resp.read().decode("utf-8")
+    return _open(Request(url, headers={"User-Agent": HTTP_USER_AGENT})).decode("utf-8")
 
 
 def fetch_json(url: str) -> Dict[str, object]:
@@ -122,9 +145,10 @@ def fetch_json(url: str) -> Dict[str, object]:
     token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    req = Request(url, headers=headers)
-    with urlopen(req, timeout=30) as resp:  # noqa: S310 (trusted GitHub API URL)
-        payload = json.loads(resp.read().decode("utf-8"))
+    try:
+        payload = json.loads(_open(Request(url, headers=headers)).decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise SnapshotError(f"Invalid JSON from {url}: {exc}") from None
     if not isinstance(payload, dict):
         raise SnapshotError(f"Unexpected JSON object from {url}")
     return payload
