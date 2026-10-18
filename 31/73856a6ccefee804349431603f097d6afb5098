@@ -1,0 +1,16 @@
+tests/test_check_codex_freshness.py
+  h_9df9c32c3f321d 114-142
+tests/test_sync_recovery.py
+  h_9df9c32c3f321d 502-522
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3173856a6ccefee804349431603f097d6afb5098",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
