@@ -102,7 +102,20 @@ class SyncRecoveryTests(unittest.TestCase):
 
     def test_invalid_manifest_structures_fail_closed(self):
         self.commit_v1()
-        for payload in ([], {"schema_version": 1, "sources": []}, {"schema_version": 1, "sources": {"github/a.md": "x"}}):
+        entry = {"source_type": "github", "source_url": "https://example.test/a", "sha256": "a" * 64}
+        payloads = (
+            [],
+            {"schema_version": 1, "sources": []},
+            {"schema_version": 1, "sources": {"github/a.md": "x"}},
+            {"sources": {"github/a.md": entry}},
+            {"schema_version": 2, "sources": {"github/a.md": entry}},
+            # Partial entries would be skipped by release-only replay and then pruned.
+            {"schema_version": 1, "sources": {"github/a.md": {}}},
+            {"schema_version": 1, "sources": {"github/a.md": {**entry, "sha256": "not-a-digest"}}},
+            {"schema_version": 1, "sources": {"github/a.md": {**entry, "source_type": ""}}},
+            {"schema_version": 1, "sources": {"github/a.md": {**entry, "source_url": None}}},
+        )
+        for payload in payloads:
             with self.subTest(payload=payload):
                 sync.MANIFEST_PATH.write_text(json.dumps(payload))
                 before = self.tree()

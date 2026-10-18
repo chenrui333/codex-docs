@@ -1360,6 +1360,16 @@ def prune_developers_noise(root) -> None:
             image.decompose()
 
 
+def valid_manifest_entry(meta: object) -> bool:
+    """An entry must identify its content hash and source; partial entries would be skipped or pruned."""
+    return (
+        isinstance(meta, dict)
+        and isinstance(meta.get("sha256"), str)
+        and re.fullmatch(r"[0-9a-f]{64}", meta["sha256"]) is not None
+        and all(isinstance(meta.get(key), str) and meta[key] for key in ("source_type", "source_url"))
+    )
+
+
 def load_existing_manifest() -> Dict[str, Dict[str, object]]:
     """Return the committed manifest entries, failing closed on anything but a valid manifest.
 
@@ -1385,11 +1395,16 @@ def load_existing_manifest() -> Dict[str, Dict[str, object]]:
         raise ManifestError(f"{MANIFEST_PATH} is unreadable or invalid JSON ({exc}). {restore}.") from exc
 
     sources = payload.get("sources") if isinstance(payload, dict) else None
-    if not isinstance(sources, dict):
-        raise ManifestError(f"{MANIFEST_PATH} must be an object with a `sources` object. {restore}.")
-    invalid = sorted(rel_path for rel_path, meta in sources.items() if not isinstance(meta, dict))
+    if not isinstance(sources, dict) or payload.get("schema_version") != 1:
+        raise ManifestError(
+            f"{MANIFEST_PATH} must be a schema_version 1 object with a `sources` object. {restore}."
+        )
+    invalid = sorted(rel_path for rel_path, meta in sources.items() if not valid_manifest_entry(meta))
     if invalid:
-        raise ManifestError(f"{MANIFEST_PATH} has non-object entries: {', '.join(invalid[:5])}. {restore}.")
+        raise ManifestError(
+            f"{MANIFEST_PATH} has entries without an object, sha256, source_type, and source_url: "
+            f"{', '.join(invalid[:5])}. {restore}."
+        )
 
     parsed: Dict[str, Dict[str, object]] = {}
     for rel_path, meta in sources.items():

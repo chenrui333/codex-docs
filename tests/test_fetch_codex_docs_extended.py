@@ -472,10 +472,11 @@ class FetchHelpersTests(unittest.TestCase):
                 sync.MANIFEST_PATH.write_text(
                     json.dumps(
                         {
+                            "schema_version": 1,
                             "sources": {
-                                "a.md": {"source_type": "github"},
-                                "b.md": {"source_type": "developers"},
-                            }
+                                "a.md": {"source_type": "github", "source_url": "u", "sha256": "a" * 64},
+                                "b.md": {"source_type": "developers", "source_url": "u", "sha256": "b" * 64},
+                            },
                         }
                     )
                 )
