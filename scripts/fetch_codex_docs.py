@@ -1374,7 +1374,7 @@ def managed_file_path(rel_path: str) -> Path:
     """Resolve only a file owned by a generator, never maintained repository content."""
     path = output_path_for_rel_path(rel_path)
     roots, files = managed_output_scope()
-    if (not Path(rel_path).parts or path.is_dir()
+    if (not Path(rel_path).parts or rel_path != Path(rel_path).as_posix() or path.is_dir()
             or not (path in files or any(path != root and path.is_relative_to(root) for root in roots))):
         raise ManifestError(f"Path is outside generated file ownership: {rel_path!r}")
     return path

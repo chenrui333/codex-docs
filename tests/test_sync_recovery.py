@@ -152,6 +152,18 @@ class SyncRecoveryTests(unittest.TestCase):
                     fetch.assert_not_called()
                 self.assertEqual(before, self.tree())
 
+    def test_manifest_alias_cannot_delete_the_canonical_planned_file(self):
+        self.commit_v1()
+        canonical = "github.openai.com/openai/codex/a.md"
+        manifest = json.loads(sync.MANIFEST_PATH.read_text())
+        entry = manifest["sources"].pop(canonical)
+        manifest["sources"]["github.openai.com/openai/codex/./a.md"] = entry
+        sync.MANIFEST_PATH.write_text(json.dumps(manifest))
+        before = self.tree()
+        with self.assertRaises(sync.ManifestError):
+            sync.apply_sync(V1)
+        self.assertEqual(before, self.tree())
+
     def test_addition_orphaned_by_interrupted_transaction_is_removed(self):
         kept = managed(sync.github_path_to_rel_path("README.md"), "# Readme\n")
         added = managed(sync.github_path_to_rel_path("docs/new.md"), "# New\n")
