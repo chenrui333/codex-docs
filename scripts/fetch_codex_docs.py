@@ -3003,12 +3003,15 @@ def build_codex_cli_files() -> Tuple[List[ManagedFile], List[Dict[str, str]], Di
     return managed, fetch_errors, metadata
 
 
-def write_manifest(entries: Dict[str, Dict[str, object]]) -> None:
+def write_manifest(entries: Dict[str, Dict[str, object]]) -> str:
+    """Atomically replace the manifest and return the SHA-256 of the committed bytes."""
     payload = {
         "schema_version": 1,
         "sources": {key: entries[key] for key in sorted(entries)},
     }
-    replace_file_atomically(MANIFEST_PATH, json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+    replace_file_atomically(MANIFEST_PATH, text)
+    return sha256_content(text)
 
 
 def write_summary(
@@ -3018,6 +3021,7 @@ def write_summary(
     total: int,
     failures: List[Dict[str, str]] | None = None,
     source_metadata: Dict[str, object] | None = None,
+    manifest_sha256: str | None = None,
 ) -> None:
     failure_items = failures or []
     payload = {
@@ -3031,6 +3035,8 @@ def write_summary(
     }
     if source_metadata:
         payload["source_metadata"] = source_metadata
+    if manifest_sha256:
+        payload["manifest_sha256"] = manifest_sha256
     replace_file_atomically(SUMMARY_PATH, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
@@ -3363,8 +3369,13 @@ def committed_text(rel_path: str, previous: Dict[str, Dict[str, object]]) -> str
     return data.decode("utf-8")
 
 
-def summary_is_current(total_files: int, source_metadata: Dict[str, object] | None) -> bool:
-    """Whether the existing summary is a clean report of the committed manifest state."""
+def summary_is_current(manifest_sha256: str) -> bool:
+    """Whether the existing summary is a clean report of the committed manifest.
+
+    The summary records the digest of the manifest it describes, so a summary left
+    behind by a sync interrupted after the manifest replacement is never mistaken
+    for the current one.
+    """
     try:
         payload = json.loads(SUMMARY_PATH.read_text())
     except (OSError, ValueError):
@@ -3377,17 +3388,7 @@ def summary_is_current(total_files: int, source_metadata: Dict[str, object] | No
         had_failures = bool(payload.get("failure_count"))
     if had_failures or payload.get("failures"):
         return False
-
-    # A sync interrupted after the manifest replacement leaves the previous summary;
-    # its total or release metadata then disagrees with the committed manifest.
-    def release_state(metadata: object) -> object:
-        if not isinstance(metadata, dict):
-            return metadata
-        return {key: value for key, value in metadata.items() if key != "sync_scope"}
-
-    return payload.get("total_files") == total_files and (
-        release_state(payload.get("source_metadata", {})) == release_state(source_metadata or {})
-    )
+    return payload.get("manifest_sha256") == manifest_sha256
 
 
 def apply_sync(
@@ -3406,10 +3407,11 @@ def apply_sync(
     the previous manifest, summary, and (in `main`) coverage, and rerunning with the
     same inputs reconciles every file to the new manifest. The event is recorded
     before any generated file changes, so its semantic diffs read committed bytes; a
-    retry is deduplicated by `semantic_history`. A failure after the manifest leaves
-    an older summary, which the next run rewrites once its total or release metadata
-    disagrees with the manifest. A crash mid-write can leave mixed files on disk;
-    the next run repairs them.
+    retry is deduplicated by `semantic_history`. Entries retained for an unavailable
+    source must still match their files, or the transaction fails before writing. A
+    failure after the manifest leaves an older summary; the summary records the
+    digest of the manifest it describes, so the next run detects and rewrites it. A
+    crash mid-write can leave mixed files on disk; the next run repairs them.
     """
     previous = load_existing_manifest()
     capability_changes: Dict[str, object] | None = None
@@ -3454,12 +3456,24 @@ def apply_sync(
     preserve_sources = set(preserve_missing_sources)
     removed_candidates = sorted(previous_paths - next_paths)
     removed: List[str] = []
+    drifted: List[str] = []
     for path in removed_candidates:
         previous_source_type = previous.get(path, {}).get("source_type", "")
         if previous_source_type in preserve_sources:
+            # A retained entry is only true if the file still holds its committed bytes;
+            # an earlier interrupted run may have rewritten or removed it.
+            retained = output_path_for_rel_path(path)
+            if not retained.is_file() or sha256_content(retained.read_bytes()) != previous[path].get("sha256"):
+                drifted.append(path)
             next_entries[path] = previous[path]
             continue
         removed.append(path)
+    if drifted:
+        raise ManifestError(
+            "Retained files no longer match the manifest and their source is unavailable: "
+            f"{', '.join(drifted[:5])}. Rerun once the source is reachable, or restore them "
+            "with `git checkout -- docs dot_codex system_prompts`."
+        )
 
     updated = sorted(
         path
@@ -3500,9 +3514,12 @@ def apply_sync(
     remove_empty_directories(ROOT / "dot_codex")
     remove_empty_directories(ROOT / "system_prompts")
 
-    write_manifest(next_entries)
-    if added or updated or removed or failures or not summary_is_current(len(next_entries), source_metadata):
-        write_summary(added, updated, removed, len(next_entries), failures=failures, source_metadata=source_metadata)
+    manifest_sha256 = write_manifest(next_entries)
+    if added or updated or removed or failures or not summary_is_current(manifest_sha256):
+        write_summary(
+            added, updated, removed, len(next_entries), failures=failures,
+            source_metadata=source_metadata, manifest_sha256=manifest_sha256,
+        )
 
     return added, updated, removed
 

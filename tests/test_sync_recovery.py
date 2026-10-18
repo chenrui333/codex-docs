@@ -248,6 +248,42 @@ class SyncRecoveryTests(unittest.TestCase):
         sync.apply_sync(V2, source_metadata={**current, "sync_scope": "release"})
         self.assertEqual(before, sync.SUMMARY_PATH.read_bytes())
 
+    def test_summary_interrupted_after_content_only_change_is_rewritten(self):
+        # Same file count and release metadata: only the manifest digest tells the summaries apart.
+        self.commit_v1(source_metadata={"codex_cli_version": "1.0.0", "sync_scope": "full"})
+        content_only = [managed(item.rel_path, item.content.replace("v1", "v1.1"), item.source_type) for item in V1]
+        with mock.patch.object(sync, "write_summary", side_effect=OSError("synthetic")):
+            with self.assertRaises(OSError):
+                sync.apply_sync(content_only, source_metadata={"codex_cli_version": "1.0.0", "sync_scope": "full"})
+        stale = json.loads(sync.SUMMARY_PATH.read_text())
+
+        self.assertEqual(sync.apply_sync(content_only, source_metadata={"codex_cli_version": "1.0.0", "sync_scope": "full"}),
+                         ([], [], []))
+        summary = json.loads(sync.SUMMARY_PATH.read_text())
+        self.assertNotEqual(stale["manifest_sha256"], summary["manifest_sha256"])
+        self.assertEqual(summary["manifest_sha256"], sync.sha256_content(sync.MANIFEST_PATH.read_bytes()))
+
+    def test_retained_family_must_still_match_its_files(self):
+        self.commit_v1()
+        without_github = [item for item in V1 if item.source_type != "github"]
+        for name, damage in (
+            ("rewritten", lambda path: path.write_text("# half-written by an interrupted run\n")),
+            ("removed", lambda path: path.unlink()),
+        ):
+            with self.subTest(name):
+                retained = sync.output_path_for_rel_path("github/b.md")
+                damage(retained)
+                before = self.tree()
+                with self.assertRaisesRegex(sync.ManifestError, "github/b.md"):
+                    sync.apply_sync(without_github, failures=[{"source": "github"}], preserve_missing_sources=["github"])
+                self.assertEqual(before, self.tree())
+                retained.write_text("# B\n")
+
+        # With intact files the unavailable family is retained as before.
+        sync.apply_sync(without_github, failures=[{"source": "github"}], preserve_missing_sources=["github"])
+        self.assert_manifest_matches_disk()
+        self.assertIn("github/b.md", json.loads(sync.MANIFEST_PATH.read_text())["sources"])
+
     # main() advances coverage only after a committed apply_sync.
 
     def full_sync_sources(self, version):
