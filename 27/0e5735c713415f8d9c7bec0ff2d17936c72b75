@@ -1,0 +1,24 @@
+scripts/codex_env.py
+  h_9df9c32c3f321d 1-53
+scripts/collect_cli_surface.py
+  h_9df9c32c3f321d 14,18,26-27
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 32,41,2925-2935
+scripts/snapshot_feature_flags.py
+  h_9df9c32c3f321d 17-21,72-74,81,779-781
+tests/test_fetch_codex_docs_extended.py
+  h_9df9c32c3f321d 11,271
+tests/test_snapshot_feature_flags.py
+  h_9df9c32c3f321d 2,54-84,86-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "270e5735c713415f8d9c7bec0ff2d17936c72b75",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
