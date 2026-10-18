@@ -1,0 +1,16 @@
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 4047
+tests/test_sync_recovery.py
+  h_9df9c32c3f321d 428-439
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5c15c0acda0a50523e7d7b1910506cc1c24e42e7",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
