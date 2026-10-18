@@ -27,6 +27,7 @@
 ## Validation expectations
 - After changing sync logic, run sync twice and confirm second run is idempotent (no new diffs).
 - Verify `docs/docs_manifest.json` and `docs/sync_summary.json` are updated consistently, including Codex CLI version metadata for CLI-backed changes.
+- The manifest fails closed when invalid (or missing while coverage exists) and is the transaction's commit point: write it last and atomically, and advance summary and coverage only after it. A rerun must reconcile every managed file to the plan.
 - Verify `docs/source_coverage.json` updates consistently and includes expected counts, including complete ChatGPT Learn discovery and mirror coverage.
 - Preserve existing events in `weekly/events/YYYY-MM-DD.json`; daily Markdown is their deterministic rollup. Repeated identical syncs must add neither events nor timestamp-only changes. Do not rewrite older daily reports during migration.
 - Keep web content provenance independent of CLI releases. Existing web-page CLI-version lists are frozen historical observations; new web pages must not acquire them.

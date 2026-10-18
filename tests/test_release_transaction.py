@@ -12,8 +12,12 @@ from test_fetch_codex_docs_extended import isolated_outputs
 class ReleaseTransactionTests(unittest.TestCase):
     def seed(self):
         entries = {}
-        for source in ("developers", "learn", sync.PLATFORM_TOOL_GUIDE_SOURCE_TYPE):
-            path = f"{source}/page.md"
+        paths = {
+            "developers": "developers.openai.com/codex/page.md",
+            "learn": "learn.chatgpt.com/docs/page/index.md",
+            sync.PLATFORM_TOOL_GUIDE_SOURCE_TYPE: "platform.openai.com/docs/guides/page.md",
+        }
+        for source, path in paths.items():
             item = sync.annotate_markdown_file(sync.ManagedFile(path, source, "https://example.test/page", "# Cached\n"), {})
             sync.write_file_if_changed(sync.output_path_for_rel_path(path), item.content)
             entries[path] = {"source_type": source, "source_url": item.source_url, "sha256": sync.sha256_content(item.content)}
@@ -38,7 +42,7 @@ class ReleaseTransactionTests(unittest.TestCase):
         stack.enter_context(mock.patch.object(sync, "build_codex_cli_files", return_value=([surface], [], metadata)))
         stack.enter_context(mock.patch.object(sync, "add_cli_release_provenance", return_value=([surface], metadata)))
         stack.enter_context(mock.patch.object(sync, "build_github_files", return_value=([
-            sync.ManagedFile("github/release.md", "github", "https://example.test/release", "# Release\n")], [])))
+            sync.ManagedFile("github.openai.com/openai/codex/release.md", "github", "https://example.test/release", "# Release\n")], [])))
         stack.enter_context(mock.patch.object(sync, "build_model_catalog_file", return_value=model,
                                              side_effect=RuntimeError("catalog timeout") if broken else None))
         stack.enter_context(mock.patch.object(sync.snapshot_feature_flags, "build_snapshot", return_value=({
@@ -76,7 +80,7 @@ class ReleaseTransactionTests(unittest.TestCase):
     def test_cached_family_must_match_its_manifest(self):
         with tempfile.TemporaryDirectory() as directory, isolated_outputs(Path(directory)):
             self.seed()
-            sync.output_path_for_rel_path("learn/page.md").write_text("partial content")
+            sync.output_path_for_rel_path("learn.chatgpt.com/docs/page/index.md").write_text("partial content")
             with self.assertRaisesRegex(ValueError, "does not match"):
                 sync.load_cached_source_files({"learn"})
 
