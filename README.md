@@ -137,7 +137,7 @@ just check-strict
 
 For feature-specific work, use `just feature-flags` and review the generated diff. `just check-feature-flags` regenerates and compares against the Git index, so stage the intended snapshot before checking. Replays need the recorded CLI version and observation platform; a platform change can legitimately change observed defaults.
 
-Local setup defaults to Python 3.14 to match CI. Set `CODEX_DOCS_PYTHON` to an equivalent Python 3.14 executable when needed. The actionlint recipe uses Go to run the same pinned actionlint release as CI.
+Local setup defaults to Python 3.15 to match CI. Set `CODEX_DOCS_PYTHON` to an equivalent Python 3.15 executable when needed. The actionlint recipe uses Go to run the same pinned actionlint release as CI.
 
 ## Notes
 
