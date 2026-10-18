@@ -3426,7 +3426,8 @@ def apply_sync(
     source must still match their files, or the transaction fails before writing. A
     failure after the manifest leaves an older summary; the summary records the
     digest of the manifest it describes, so the next run detects and rewrites it. A
-    crash mid-write can leave mixed files on disk; the next run repairs them.
+    crash mid-write can leave mixed files on disk; the next run repairs them and
+    removes files in the mirror roots that the committed plan no longer manages.
     """
     previous = load_existing_manifest()
     capability_changes: Dict[str, object] | None = None
@@ -3522,12 +3523,19 @@ def apply_sync(
         if abs_path.exists():
             abs_path.unlink()
 
-    remove_empty_directories(DEVELOPERS_ROOT)
-    remove_empty_directories(LEARN_ROOT)
-    remove_empty_directories(GITHUB_ROOT)
-    remove_empty_directories(PLATFORM_ROOT)
-    remove_empty_directories(ROOT / "dot_codex")
-    remove_empty_directories(ROOT / "system_prompts")
+    # Mirror roots hold only manifest-managed files. Anything else was written by an
+    # interrupted transaction whose plan has since changed, so remove it before the
+    # manifest commits a state that no longer describes the tree.
+    managed_paths = {output_path_for_rel_path(rel_path) for rel_path in next_entries}
+    generated_roots = (DEVELOPERS_ROOT, LEARN_ROOT, GITHUB_ROOT, PLATFORM_ROOT, ROOT / "dot_codex", ROOT / "system_prompts")
+    for root in generated_roots:
+        for path in sorted(root.rglob("*")) if root.is_dir() else ():
+            if (path.is_file() or path.is_symlink()) and path not in managed_paths:
+                LOG.warning("Removed unmanaged generated file %s", path.relative_to(ROOT))
+                path.unlink()
+
+    for root in generated_roots:
+        remove_empty_directories(root)
 
     manifest_sha256 = write_manifest(next_entries)
     if added or updated or removed or failures or not summary_is_current(manifest_sha256):

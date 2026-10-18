@@ -125,6 +125,26 @@ class SyncRecoveryTests(unittest.TestCase):
                     sync.apply_sync(V2)
                 self.assertEqual(before, self.tree())
 
+    def test_addition_orphaned_by_interrupted_transaction_is_removed(self):
+        kept = managed(sync.github_path_to_rel_path("README.md"), "# Readme\n")
+        added = managed(sync.github_path_to_rel_path("docs/new.md"), "# New\n")
+        sync.apply_sync([kept])
+        sync.write_coverage({"sync": {"status": "complete", "failure_count": 0}})
+        with mock.patch.object(sync, "write_manifest", side_effect=OSError("synthetic")):
+            with self.assertRaises(OSError):
+                sync.apply_sync([kept, added])
+        orphan = sync.output_path_for_rel_path(added.rel_path)
+        self.assertTrue(orphan.exists())
+
+        # Upstream dropped the page before the retry, so the plan no longer mentions it.
+        self.assertEqual(sync.apply_sync([kept]), ([], [], []))
+        self.assertFalse(orphan.exists())
+        self.assertFalse(orphan.parent.exists())
+        self.assert_manifest_matches_disk()
+        on_disk = sorted(str(path.relative_to(sync.DOCS_DIR)) for path in sync.GITHUB_ROOT.rglob("*") if path.is_file())
+        self.assertEqual(on_disk, [kept.rel_path])
+
+
     def test_main_refuses_unusable_manifest_before_fetching_or_writing(self):
         self.commit_v1()
         valid_manifest = sync.MANIFEST_PATH.read_bytes()
