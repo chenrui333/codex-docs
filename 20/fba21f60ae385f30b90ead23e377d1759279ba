@@ -1,0 +1,22 @@
+AGENTS.md
+  h_9df9c32c3f321d 30
+README.md
+  h_9df9c32c3f321d 99-100
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 16,329-332,1255-1257,1364-1373,1375-1379,1384-1385,1387,1389-1392,1396-1405,1414-1417,1421,1425-1442,3011,3034,3070,3153-3154,3158,3349-3392,3399-3413,3441-3448,3470-3471,3487-3506,3562-3567,3934-3947,3954-3957
+scripts/semantic_history.py
+  h_9df9c32c3f321d 10-19,29-32,34
+tests/test_sync_recovery.py
+  h_9df9c32c3f321d 1-331
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "20fba21f60ae385f30b90ead23e377d1759279ba",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
