@@ -11,6 +11,11 @@ if [[ ! -d .venv ]]; then
   exit 1
 fi
 
+# The scope check snapshots the whole working tree, so interpreter byte-code
+# caches would otherwise appear as out-of-scope changes on fresh checkouts or
+# after any script edit.
+export PYTHONDONTWRITEBYTECODE=1
+
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
 
