@@ -94,6 +94,16 @@ class PlatformObservationTests(unittest.TestCase):
         path = sync.DOCS_DIR / "cli-surface" / f"{name}.json"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+        entries = sync.load_existing_manifest()
+        entries[f"cli-surface/{name}.json"] = {
+            "sha256": sync.sha256_content(path.read_bytes()),
+            "source_type": sync.CLI_PLATFORM_SOURCE_TYPE,
+            "source_url": "codex-cli://help",
+            "codex_cli_version": payload["codex_cli_version"],
+            "codex_cli_release_ref": payload["source_ref"],
+            "codex_cli_source_commit": payload["source_commit"],
+        }
+        sync.write_manifest(entries)
         return path
 
     def native(self, payload):
