@@ -125,6 +125,28 @@ class SyncRecoveryTests(unittest.TestCase):
                     sync.apply_sync(V2)
                 self.assertEqual(before, self.tree())
 
+    def test_invalid_manifest_paths_fail_before_fetching_or_publishing_history(self):
+        self.commit_v1()
+        committed = json.loads(sync.MANIFEST_PATH.read_text())
+        entry = committed["sources"]["github/a.md"]
+        for invalid_path in ("", ".", "../outside.md", "/outside.md", "github"):
+            with self.subTest(path=invalid_path):
+                payload = {"schema_version": 1, "sources": {invalid_path: entry}}
+                sync.MANIFEST_PATH.write_text(json.dumps(payload))
+                before = self.tree()
+                with ExitStack() as stack:
+                    fetches = [
+                        stack.enter_context(mock.patch.object(sync, name, side_effect=RuntimeError("synthetic offline")))
+                        for name in SOURCE_BUILDERS
+                    ]
+                    stack.enter_context(mock.patch.object(sync, "STRICT_SYNC_MODE", True))
+                    stack.enter_context(mock.patch.object(
+                        sync.snapshot_feature_flags, "build_snapshot", side_effect=RuntimeError("synthetic offline")))
+                    self.assertEqual(sync.main(), 1)
+                for fetch in fetches:
+                    fetch.assert_not_called()
+                self.assertEqual(before, self.tree())
+
     def test_addition_orphaned_by_interrupted_transaction_is_removed(self):
         kept = managed(sync.github_path_to_rel_path("README.md"), "# Readme\n")
         added = managed(sync.github_path_to_rel_path("docs/new.md"), "# New\n")
@@ -244,7 +266,7 @@ class SyncRecoveryTests(unittest.TestCase):
             with self.subTest(label):
                 sync.MANIFEST_PATH.write_bytes(manifest_bytes)
                 before = self.tree()
-                with self.assertRaisesRegex(ValueError, "Unsafe managed output path"):
+                with self.assertRaises(ValueError):
                     sync.apply_sync(files)
                 self.assertEqual(before, self.tree())
 

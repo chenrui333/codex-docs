@@ -1399,11 +1399,18 @@ def load_existing_manifest() -> Dict[str, Dict[str, object]]:
         raise ManifestError(
             f"{MANIFEST_PATH} must be a schema_version 1 object with a `sources` object. {restore}."
         )
-    invalid = sorted(rel_path for rel_path, meta in sources.items() if not valid_manifest_entry(meta))
+    invalid: List[str] = []
+    for rel_path, meta in sources.items():
+        try:
+            safe_file_path = bool(Path(rel_path).parts) and not output_path_for_rel_path(rel_path).is_dir()
+        except (OSError, ValueError):
+            safe_file_path = False
+        if not safe_file_path or not valid_manifest_entry(meta):
+            invalid.append(rel_path)
     if invalid:
         raise ManifestError(
-            f"{MANIFEST_PATH} has entries without an object, sha256, source_type, and source_url: "
-            f"{', '.join(invalid[:5])}. {restore}."
+            f"{MANIFEST_PATH} requires safe relative file paths and entries with "
+            f"sha256, source_type, and source_url: {', '.join(repr(path) for path in sorted(invalid)[:5])}. {restore}."
         )
 
     parsed: Dict[str, Dict[str, object]] = {}
