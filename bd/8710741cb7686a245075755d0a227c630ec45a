@@ -1,0 +1,14 @@
+tests/test_safety_regressions.py
+  h_9df9c32c3f321d 97-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bd8710741cb7686a245075755d0a227c630ec45a",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
