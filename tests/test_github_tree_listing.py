@@ -22,10 +22,14 @@ class GitHubTreeListingTests(unittest.TestCase):
     def test_incomplete_or_malformed_listing_blocks_the_family(self):
         payloads = {
             "truncated": {**COMPLETE, "truncated": True},
+            "completeness flag missing": {"tree": COMPLETE["tree"]},
+            "completeness flag null": {**COMPLETE, "truncated": None},
             # fetch_json turns a non-object response into {}.
             "non-object response": {},
             "tree not a list": {"truncated": False, "tree": {"README.md": "blob"}},
             "entry not an object": {"truncated": False, "tree": ["README.md"]},
+            "empty tree": {"truncated": False, "tree": []},
+            "no mirrored markdown": {"truncated": False, "tree": [{"type": "blob", "path": "src/main.rs"}]},
         }
         for name, payload in payloads.items():
             with self.subTest(name), mock.patch.object(sync, "fetch_json", return_value=payload):

@@ -1231,17 +1231,21 @@ def discover_github_paths(
     tree = payload.get("tree")
     # The listing decides which mirrored files are removed, so anything short of a
     # complete, well-formed tree must block the family instead of reading as empty.
-    if payload.get("truncated") is True:
-        raise SourceContentError(f"GitHub tree listing is truncated: {url}")
+    if payload.get("truncated") is not False:
+        raise SourceContentError(f"GitHub tree listing is not marked complete: {url}")
     if not isinstance(tree, list) or not all(isinstance(entry, dict) for entry in tree):
         raise SourceContentError(f"GitHub tree listing is malformed: {url}")
 
-    paths = [
+    paths = sorted({
         entry["path"]
         for entry in tree
         if entry.get("type") == "blob" and keep_github_markdown_path(entry.get("path", ""))
-    ]
-    return sorted(set(paths))
+    })
+    if not paths:
+        # openai/codex always carries mirrored Markdown (README.md at minimum); an empty
+        # selection is an incomplete listing, not a request to delete the whole family.
+        raise SourceContentError(f"GitHub tree listing contains no mirrored Markdown: {url}")
+    return paths
 
 
 def github_path_to_rel_path(path: str) -> str:
