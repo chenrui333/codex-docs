@@ -1,0 +1,16 @@
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 3944
+scripts/semantic_history.py
+  h_9df9c32c3f321d 30,34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "02deb74af42bb9dd120af5dfcda04276f0b9ca89",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
