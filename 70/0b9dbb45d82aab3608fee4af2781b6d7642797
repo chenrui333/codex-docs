@@ -1,0 +1,26 @@
+README.md
+  h_9df9c32c3f321d 99
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 1363-1382,1425,3527-3528,3556-3557
+tests/test_feature_snapshot_transaction.py
+  h_9df9c32c3f321d 80
+tests/test_fetch_codex_docs_extended.py
+  h_9df9c32c3f321d 477-478,483,486
+tests/test_learn_evidence.py
+  h_9df9c32c3f321d 38
+tests/test_release_transaction.py
+  h_9df9c32c3f321d 15-20,45,83
+tests/test_sync_recovery.py
+  h_9df9c32c3f321d 23-25,30-32,34,77,109-111,113-116,131-137,283-284,292,294,330,384,387,395,408-409,413
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "700b9dbb45d82aab3608fee4af2781b6d7642797",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
