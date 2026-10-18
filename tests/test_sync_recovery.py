@@ -499,6 +499,23 @@ class SyncRecoveryTests(unittest.TestCase):
         sync.apply_sync(files, source_metadata=CLI_METADATA)
         self.assertEqual(before, self.tree())
 
+    def test_unverified_or_missing_platform_evidence_is_not_promoted(self):
+        native = sync.ManagedFile(
+            sync.CLI_SURFACE_REL_PATH, sync.CLI_SURFACE_SOURCE_TYPE, "codex-cli://help",
+            json.dumps(surface("linux", ["common"], "1.2.4", "b")))
+        for state in ("modified-valid-json", "untracked-valid-json", "missing"):
+            with self.subTest(state=state):
+                path = self.seed_platform(surface("darwin", ["mac-only"]))
+                path.write_text(json.dumps(surface("darwin", [])))
+                if state == "untracked-valid-json":
+                    sync.write_manifest({})
+                elif state == "missing":
+                    path.unlink()
+                before = self.tree()
+                with self.assertRaises(ValueError):
+                    sync.prepare_cli_observations([native], CLI_METADATA)
+                self.assertEqual(before, self.tree())
+
     def test_corrupt_platform_cache_without_matching_fresh_evidence_fails_closed(self):
         self.seed_platform(surface("darwin", ["mac-only"]))
         native = sync.ManagedFile(

@@ -2313,34 +2313,42 @@ def prepare_cli_observations(
     }
     surfaces = {}
     directory = DOCS_DIR / "cli-surface"
-    if directory.exists():
-        for path in sorted(directory.glob("*.json")):
-            try:
-                payload = cli_observations.validate(json.loads(path.read_text()))
-            except (OSError, ValueError, TypeError, AttributeError) as exc:
-                replacement = replacements.get(path.stem)
-                if replacement is None:
-                    raise ValueError(
-                        f"Cached CLI observation {path.name} is corrupt and has no fresh platform replacement; "
-                        "restore it from Git or provide a verified collector artifact."
-                    ) from exc
-                recorded = load_existing_manifest().get(f"cli-surface/{path.name}", {})
-                recorded_version = recorded.get("codex_cli_version", "")
-                if recorded_version and (
-                    tuple(map(int, str(recorded_version).split(".")))
-                    > tuple(map(int, replacement["codex_cli_version"].split(".")))
-                ):
-                    raise ValueError("Refusing to replace a newer platform observation with an older CLI") from exc
-                if (recorded_version == replacement["codex_cli_version"]
-                        and recorded.get("codex_cli_source_commit") not in (None, "", replacement["source_commit"])):
-                    raise ValueError("Fresh CLI observation disagrees with the committed release provenance") from exc
-                LOG.warning("Rebuilding corrupt CLI observation %s from fresh platform evidence", path.name)
-                surfaces[path.stem] = replacement
-                continue
-            key = cli_observations.platform_key(payload)
-            if path.stem != key:
-                raise ValueError("Stored CLI observation filename does not match its platform")
-            surfaces[key] = payload
+    committed = load_existing_manifest()
+    cache_paths = set(directory.glob("*.json"))
+    cache_paths.update(
+        managed_file_path(rel_path) for rel_path, entry in committed.items()
+        if entry.get("source_type") == CLI_PLATFORM_SOURCE_TYPE
+    )
+    for path in sorted(cache_paths):
+        recorded = committed.get(f"cli-surface/{path.name}", {})
+        try:
+            content = path.read_bytes()
+            if sha256_content(content) != recorded.get("sha256"):
+                raise ValueError("CLI cache bytes are not verified by the committed manifest")
+            payload = cli_observations.validate(json.loads(content.decode("utf-8")))
+        except (OSError, ValueError, TypeError, AttributeError) as exc:
+            replacement = replacements.get(path.stem)
+            if replacement is None:
+                raise ValueError(
+                    f"Cached CLI observation {path.name} is missing or unverified and has no fresh platform replacement; "
+                    "restore it from Git or provide a verified collector artifact."
+                ) from exc
+            recorded_version = recorded.get("codex_cli_version", "")
+            if recorded_version and (
+                tuple(map(int, str(recorded_version).split(".")))
+                > tuple(map(int, replacement["codex_cli_version"].split(".")))
+            ):
+                raise ValueError("Refusing to replace a newer platform observation with an older CLI") from exc
+            if (recorded_version == replacement["codex_cli_version"]
+                    and recorded.get("codex_cli_source_commit") not in (None, "", replacement["source_commit"])):
+                raise ValueError("Fresh CLI observation disagrees with the committed release provenance") from exc
+            LOG.warning("Rebuilding unverified CLI observation %s from fresh platform evidence", path.name)
+            surfaces[path.stem] = replacement
+            continue
+        key = cli_observations.platform_key(payload)
+        if path.stem != key:
+            raise ValueError("Stored CLI observation filename does not match its platform")
+        surfaces[key] = payload
     if not surfaces:
         surfaces.update(historical_cli_observations())
     # Bootstrap repositories without accessible Git history from the current snapshot.
