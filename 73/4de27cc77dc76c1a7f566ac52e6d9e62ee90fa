@@ -1,0 +1,32 @@
+docs/docs_manifest.json
+  h_9df9c32c3f321d 7676,7678,7680
+docs/freshness.json
+  h_9df9c32c3f321d 7
+docs/learn.chatgpt.com/docs/changelog/index.md
+  h_9df9c32c3f321d 6-7,16-61
+docs/sync_summary.json
+  h_9df9c32c3f321d 5,19
+renovate.json
+  h_9df9c32c3f321d 11-18
+scripts/fetch_codex_docs.py
+  h_9df9c32c3f321d 3489-3516,3721-3728
+scripts/snapshot_feature_flags.py
+  h_9df9c32c3f321d 14,374-384,387-392,495-497,507,515,816-825,834-836,838,844,847
+tests/test_feature_snapshot_transaction.py
+  h_9df9c32c3f321d 1-181
+weekly/2026-10-18.md
+  h_9df9c32c3f321d 1-51
+weekly/events/2026-10-18.json
+  h_9df9c32c3f321d 1-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "734de27cc77dc76c1a7f566ac52e6d9e62ee90fa",
+  "prompts": {},
+  "humans": {
+    "h_9df9c32c3f321d": {
+      "author": "Rui Chen <rui@chenrui.dev>"
+    }
+  }
+}
