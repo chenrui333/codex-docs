@@ -3587,6 +3587,34 @@ def write_attempt_diagnostics(path: Path, coverage: dict, failures: list) -> Non
     write_file_if_changed(path, json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
+def transaction_feature_documents(
+    learn_files: Sequence[ManagedFile],
+    codex_cli_metadata: Dict[str, str],
+    *,
+    annotate: bool,
+    learn_retained: bool,
+) -> Dict[Path, str | None]:
+    """Return the feature-flag config documents exactly as this transaction writes them.
+
+    Full syncs annotate web markdown before writing, release-only syncs replay
+    committed bytes. A config document missing from a complete Learn family is
+    being removed (``None``); when Learn is retained after a failure, the
+    committed copy remains authoritative and is read from disk instead.
+    """
+    by_path = {snapshot_feature_flags.DOCS_ROOT / item.rel_path: item for item in learn_files}
+    documents: Dict[Path, str | None] = {}
+    for path in (snapshot_feature_flags.CONFIG_BASIC_DOC, snapshot_feature_flags.CONFIG_REFERENCE_DOC):
+        item = by_path.get(path)
+        if item is None:
+            if not learn_retained:
+                documents[path] = None
+            continue
+        if annotate:
+            item = annotate_markdown_file(item, codex_cli_metadata)
+        documents[path] = managed_file_text(item)
+    return documents
+
+
 def main(
     *, release_only: bool = False, observations_dir: Path | None = None,
     diagnostics_path: Path | None = None,
@@ -3797,7 +3825,14 @@ def main(
         preserve_missing_sources.add(PLATFORM_TOOL_GUIDE_SOURCE_TYPE)
 
     try:
-        feature_payload, feature_markdown = snapshot_feature_flags.build_snapshot()
+        feature_payload, feature_markdown = snapshot_feature_flags.build_snapshot(
+            documents=transaction_feature_documents(
+                learn_files,
+                codex_cli_metadata,
+                annotate=not release_only,
+                learn_retained=LEARN_SOURCE_TYPE in preserve_missing_sources,
+            )
+        )
         if (feature_payload.get("source_commit") != codex_cli_metadata.get("codex_cli_source_commit")
                 or feature_payload.get("source_ref") != codex_cli_metadata.get("codex_cli_release_ref")):
             raise ValueError("Feature snapshot does not match the release transaction")
