@@ -7673,11 +7673,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "997eeed6a5320f3969581b41ec70f48223b685207f6b04fb70142b8bc1f7b707",
+      "sha256": "c3cd35cdb501f1e16e596cce4d9e24fce2d8d3014dd1bda44facbf0ba5a7ee85",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"f7f1132ffeab874160661cd633ed65af\"",
+      "source_etag": "W/\"1dc91b5191ebd3b6ee25807045d6afac\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-19T20:38:07Z",
+      "source_last_modified": "2026-10-20T06:30:12Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },

@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_changelog'
 source_url: 'https://learn.chatgpt.com/docs/changelog'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-10-19T20:38:07Z'
-source_etag: 'W/"f7f1132ffeab874160661cd633ed65af"'
+source_last_modified: '2026-10-20T06:30:12Z'
+source_etag: 'W/"1dc91b5191ebd3b6ee25807045d6afac"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -13,49 +13,270 @@ codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.
 
 Source: https://learn.chatgpt.com/docs/changelog
 
-### New features
+```
+$ npm install -g @openai/codex@0.163.0
+```
 
-- Added rate-limit reset banking for Plus and Pro users, including one free
-  reset at launch and
-  [referral invitations](/codex/pricing#invite-friends-and-coworkers) for
-  earning more during the current promotion. Eligible Business members can
-  invite coworkers to earn shared workspace credits through a separate
-  referral program.
-- Added [Developer mode](/codex/browser?surface=app#app-developer-mode) for Browser use in
-  Chrome and the Codex in-app browser. It gives Codex controlled Chrome
-  DevTools Protocol (CDP) access for performance profiling and deeper debugging
-  of network traffic, console output, runtime errors, and page state.
-- Added the `/init` command to the app composer for creating project
-  instructions with the same initialization workflow as the Codex CLI.
-- Added customizable macOS Dock icons with light and dark Codex variants.
-- Added Computer Use for Enterprise users outside the European Economic Area,
-  the United Kingdom, and Switzerland.
-- Added support for configuring per-app access controls for Computer Use on
-  Windows.
-- Added an **Unread chats** section to the command menu, with the most recently
-  updated unread chat selected by default.
+  View details
 
-### Performance improvements and bug fixes
+## New Features
 
-- Made Browser use up to 2x faster through CDP and DOM snapshot optimizations
-  that reduce browser round trips.
-- Made command, browser, integration, and source activity summaries easier to
-  understand, and improved how completed chats present files, automations, and
-  other durable output.
-- Improved plugin management by including workspace plugins, refreshing plugin
-  state more reliably after installation or removal, and letting you upload a
-  new version of an already-shared plugin without changing its access.
-- Improved usage-limit errors with inline plan and workspace guidance,
-  including reset timing when available.
-- Added `Cmd`+`Enter` and `Ctrl`+`Enter` as
-  shortcuts for submitting custom approval feedback.
-- Fixed Browser use download handling and improved Developer mode recovery and
-  diagnostics.
-- Fixed scheduled automations so they honor the selected approval mode, and
-  fixed manual project ordering, Browser tab dragging, MCP app sizing after
-  right-pane transitions, and clickable ChatGPT thread mentions.
-- Fixed issues affecting background agent tab restoration, commit and pull
-  request message generation, sidebar pull request status updates, Codex Mobile
-  QR pairing, remote-control MFA, remote SSH installation and connection,
-  updater prompts, and overlay positioning at non-default zoom levels.
-- Additional performance improvements and bug fixes.
+- Open `/config` to search preferences across categories, change supported settings immediately, and see which changes require a restart. ([#52990](https://github.com/openai/codex/pull/52990), [#53429](https://github.com/openai/codex/pull/53429))
+- Send a follow-up while Codex is responding to steer it immediately. Interrupting a turn also stops active Code Mode cells and their nested tool calls. ([#51812](https://github.com/openai/codex/pull/51812), [#51835](https://github.com/openai/codex/pull/51835))
+- Configure a leader key in `/keymap`. The default is `Ctrl+X`, shortcut hints stay open until you choose or cancel, and voice mute moves to `F9`. ([#52273](https://github.com/openai/codex/pull/52273))
+- Restart a managed background server from `/daemon`. Codex warns about work the restart could interrupt, then reconnects automatically. ([#53173](https://github.com/openai/codex/pull/53173))
+- Codex can run independent read-only tools in parallel, including skill, memory, and conversation-history lookups. ([#52245](https://github.com/openai/codex/pull/52245))
+- Daybreak is enabled by default for eligible accounts. `codex exec` can also select it with an OpenAI API key when the server offers access. ([#53701](https://github.com/openai/codex/pull/53701), [#53717](https://github.com/openai/codex/pull/53717))
+
+## Bug Fixes
+
+- Resuming a saved thread restores its permissions and network approvals, while respecting explicit overrides and current managed policy. ([#53150](https://github.com/openai/codex/pull/53150), [#53419](https://github.com/openai/codex/pull/53419), [#53424](https://github.com/openai/codex/pull/53424))
+- The network proxy now checks permission before a DNS lookup, rejects duplicate `Host` headers, and prevents credential aliases from bypassing inspection hooks. ([#51650](https://github.com/openai/codex/pull/51650), [#52661](https://github.com/openai/codex/pull/52661), [#53506](https://github.com/openai/codex/pull/53506))
+- Return to an existing side conversation with `/side` after switching threads. Answers to pending prompts also go back to the thread that asked. ([#52184](https://github.com/openai/codex/pull/52184), [#53436](https://github.com/openai/codex/pull/53436))
+- On Windows, `Ctrl+V` and `Shift+Insert` paste text as well as images. On WSL, repeated pastes reuse the clipboard reader, and copy attempts time out instead of hanging. ([#53224](https://github.com/openai/codex/pull/53224), [#52967](https://github.com/openai/codex/pull/52967), [#53453](https://github.com/openai/codex/pull/53453))
+- Local commands finish promptly when a child keeps an output pipe open. Remote commands preserve late-arriving output so the final poll can still collect it. ([#52652](https://github.com/openai/codex/pull/52652), [#53331](https://github.com/openai/codex/pull/53331), [#53622](https://github.com/openai/codex/pull/53622))
+- `codex exec` no longer prints the same file diff again after an unrelated command. ([#53444](https://github.com/openai/codex/pull/53444))
+
+## Documentation
+
+- Updated the bundled OpenAI Docs guidance for migrations to the GPT-6 family, including model-specific reasoning, tool use, and data residency considerations. ([#51768](https://github.com/openai/codex/pull/51768))
+- Clarified how the Linux sandbox uses bubblewrap for filesystem isolation and seccomp for syscall filtering. ([#52610](https://github.com/openai/codex/pull/52610))
+
+## Chores
+
+- Codex now uses its standard shell executor and no longer bundles a patched `zsh`. Configurations using the retired shell flags receive a migration notice. ([#52160](https://github.com/openai/codex/pull/52160), [#52213](https://github.com/openai/codex/pull/52213))
+- Reduced Linux and macOS release package size by stripping symbols from packaged binaries while preserving them in the original build outputs. ([#52178](https://github.com/openai/codex/pull/52178))
+
+## Changelog
+
+Full Changelog: [rust-v0.162.0...rust-v0.163.0](https://github.com/openai/codex/compare/rust-v0.162.0...rust-v0.163.0)
+
+- [#51539](https://github.com/openai/codex/pull/51539) Add completion-aware realtime attachment and session-scoped detach [@zahan-oai](https://github.com/zahan-oai)
+- [#51547](https://github.com/openai/codex/pull/51547) Add a Windows MXC sandbox opt-out [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51556](https://github.com/openai/codex/pull/51556) Complete dynamic tool lifecycles on cancellation [@mikelam-oai](https://github.com/mikelam-oai)
+- [#51575](https://github.com/openai/codex/pull/51575) Expose package assembly helpers and support gzip DotSlash artifacts [@bolinfest](https://github.com/bolinfest)
+- [#51595](https://github.com/openai/codex/pull/51595) Add thread ID exclusions to `thread/list` [@btraut-openai](https://github.com/btraut-openai)
+- [#51602](https://github.com/openai/codex/pull/51602) Distinguish thread listing failures from exhausted history [@btraut-openai](https://github.com/btraut-openai)
+- [#51611](https://github.com/openai/codex/pull/51611) Signal abandonment of unanswered MCP elicitations [@nicksteele-oai](https://github.com/nicksteele-oai)
+- [#51627](https://github.com/openai/codex/pull/51627) Stabilize Guardian snapshot prefixes by separating assistant context [@jif-oai](https://github.com/jif-oai)
+- [#51642](https://github.com/openai/codex/pull/51642) Fix retained context handling for typed section content [@jif-oai](https://github.com/jif-oai)
+- [#51650](https://github.com/openai/codex/pull/51650) Require hostname authorization before proxy DNS lookups [@jif-oai](https://github.com/jif-oai)
+- [#51651](https://github.com/openai/codex/pull/51651) Persist Guardian review failures for reports across restarts [@jif-oai](https://github.com/jif-oai)
+- [#51652](https://github.com/openai/codex/pull/51652) Record telemetry for AGENTS.md changes made by apply\_patch [@jif-oai](https://github.com/jif-oai)
+- [#51678](https://github.com/openai/codex/pull/51678) Move Windows sandbox tests into a dedicated integration binary [@jif-oai](https://github.com/jif-oai)
+- [#51683](https://github.com/openai/codex/pull/51683) Roll back stale Guardian reviews before reusing reviewer history [@olliem-oai](https://github.com/olliem-oai)
+- [#51689](https://github.com/openai/codex/pull/51689) Wait for helper completion in HTTP header cancellation tests [@jif-oai](https://github.com/jif-oai)
+- [#51690](https://github.com/openai/codex/pull/51690) Add a feature flag for Code Mode tool description ordering [@swastik-oai](https://github.com/swastik-oai)
+- [#51704](https://github.com/openai/codex/pull/51704) Honor tool-description-first ordering in Code Mode [@swastik-oai](https://github.com/swastik-oai)
+- [#51710](https://github.com/openai/codex/pull/51710) Fix a discovery race in the external auth refresh test [@jgershen-oai](https://github.com/jgershen-oai)
+- [#51734](https://github.com/openai/codex/pull/51734) Load persisted sender context for Guardian reviews [@jif-oai](https://github.com/jif-oai)
+- [#51755](https://github.com/openai/codex/pull/51755) Reuse MCP handler metadata for cache comparisons [@owenlin0](https://github.com/owenlin0)
+- [#51761](https://github.com/openai/codex/pull/51761) Reduce tool metadata cloning in the code-mode runtime [@akira-oai](https://github.com/akira-oai)
+- [#51768](https://github.com/openai/codex/pull/51768) Expand OpenAI Docs migration guidance to the GPT-6 model family [@kkahadze-oai](https://github.com/kkahadze-oai)
+- [#51775](https://github.com/openai/codex/pull/51775) Prevent recursive Tokio tracing in telemetry and SQLite logs [@zbarsky-openai](https://github.com/zbarsky-openai)
+- [#51786](https://github.com/openai/codex/pull/51786) Preserve sandbox overrides across execution requests [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51794](https://github.com/openai/codex/pull/51794) Advertise Ultrafast for GPT-6.1 Sol on Amazon Bedrock [@celia-oai](https://github.com/celia-oai)
+- [#51800](https://github.com/openai/codex/pull/51800) Remove duplicate field initializers in extension registry tests [@anp-oai](https://github.com/anp-oai)
+- [#51808](https://github.com/openai/codex/pull/51808) Preserve diagnostic reasons for MCP user verification failures [@berkdeniz-oai](https://github.com/berkdeniz-oai)
+- [#51812](https://github.com/openai/codex/pull/51812) Enable instant interrupts by default [@pakrym-oai](https://github.com/pakrym-oai)
+- [#51819](https://github.com/openai/codex/pull/51819) Migrate the MXC sandbox to the 1.0.0 SDK [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51822](https://github.com/openai/codex/pull/51822) Avoid sharing violations when repairing Windows runtime ACLs [@johnl-oai](https://github.com/johnl-oai)
+- [#51823](https://github.com/openai/codex/pull/51823) Share MCP binding tool metadata with prepared calls [@owenlin0](https://github.com/owenlin0)
+- [#51828](https://github.com/openai/codex/pull/51828) Add policy-based file contents integrity checks [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51831](https://github.com/openai/codex/pull/51831) Add MXC sandbox integrity dependency and policy preparation [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51835](https://github.com/openai/codex/pull/51835) Enable code mode interruption by default [@won-openai](https://github.com/won-openai)
+- [#51840](https://github.com/openai/codex/pull/51840) Add a bubblewrap backend for sandbox integrity checks [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51841](https://github.com/openai/codex/pull/51841) Add a macOS Seatbelt backend for sandbox integrity [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51842](https://github.com/openai/codex/pull/51842) Add a sandbox integrity runner with outcome and timing metrics [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51843](https://github.com/openai/codex/pull/51843) Run sandbox integrity checks before commands and filesystem operations [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51847](https://github.com/openai/codex/pull/51847) Preserve Cargo package names in Bazel Rust builds [@dkovalenko-oai](https://github.com/dkovalenko-oai)
+- [#51848](https://github.com/openai/codex/pull/51848) Align Bazel release builds with Cargo and fix platform compatibility [@dkovalenko-oai](https://github.com/dkovalenko-oai)
+- [#51849](https://github.com/openai/codex/pull/51849) Fix package smoke tests for Cargo and Bazel debug symbols [@dkovalenko-oai](https://github.com/dkovalenko-oai)
+- [#51850](https://github.com/openai/codex/pull/51850) Add Bazel release staging archives [@dkovalenko-oai](https://github.com/dkovalenko-oai)
+- [#51855](https://github.com/openai/codex/pull/51855) Add Bazel support to the Codex package build action [@dkovalenko-oai](https://github.com/dkovalenko-oai)
+- [#51856](https://github.com/openai/codex/pull/51856) Build Bazel release artifacts alongside Cargo artifacts [@dkovalenko-oai](https://github.com/dkovalenko-oai)
+- [#51857](https://github.com/openai/codex/pull/51857) Add an app-server prompt prefix compatibility test [@jif-oai](https://github.com/jif-oai)
+- [#51865](https://github.com/openai/codex/pull/51865) Use readable plugin mentions without suppressing same-name skills [@canvrno-oai](https://github.com/canvrno-oai)
+- [#51866](https://github.com/openai/codex/pull/51866) Preserve line breaks and links in multiline async questions [@pash-openai](https://github.com/pash-openai)
+- [#51868](https://github.com/openai/codex/pull/51868) Record tool registration metrics for each sampling request [@akira-oai](https://github.com/akira-oai)
+- [#51872](https://github.com/openai/codex/pull/51872) Keep global app-server config independent of the launch directory [@etraut-openai](https://github.com/etraut-openai)
+- [#51884](https://github.com/openai/codex/pull/51884) Add experimental prediction forks that inherit parent context [@liame-oai](https://github.com/liame-oai)
+- [#51890](https://github.com/openai/codex/pull/51890) Add the missing `mxc-sdk` UTF-8 resource patch for Bazel [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#51892](https://github.com/openai/codex/pull/51892) Preserve tool call completeness when recorded arguments are truncated [@ningyi-oai](https://github.com/ningyi-oai)
+- [#51893](https://github.com/openai/codex/pull/51893) Record metrics for incremental tool updates [@akira-oai](https://github.com/akira-oai)
+- [#51895](https://github.com/openai/codex/pull/51895) Report specific reasons for WebSocket continuation failures [@pakrym-oai](https://github.com/pakrym-oai)
+- [#51896](https://github.com/openai/codex/pull/51896) Preserve native errors in Windows sandbox ACL diagnostics [@alishobeiri-oai](https://github.com/alishobeiri-oai)
+- [#51897](https://github.com/openai/codex/pull/51897) Use a dedicated matcher for network domain policies [@rafael-oai](https://github.com/rafael-oai)
+- [#51908](https://github.com/openai/codex/pull/51908) Honor the user input setting for asynchronous questions [@mandal-OAI](https://github.com/mandal-OAI)
+- [#51930](https://github.com/openai/codex/pull/51930) Support model-specific function description prefixes [@tz-openai](https://github.com/tz-openai)
+- [#51963](https://github.com/openai/codex/pull/51963) Attribute compaction analytics to the correct voice session [@reia-oai](https://github.com/reia-oai)
+- [#51974](https://github.com/openai/codex/pull/51974) Log Windows sandbox availability and backend selection [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#52034](https://github.com/openai/codex/pull/52034) Preserve agent state when unloading idle multi-agent v2 children [@jif-oai](https://github.com/jif-oai)
+- [#52040](https://github.com/openai/codex/pull/52040) Add regression coverage for cancelled agent reloads [@jif-oai](https://github.com/jif-oai)
+- [#52048](https://github.com/openai/codex/pull/52048) Cover instant interruption in steered-input persistence tests [@jif-oai](https://github.com/jif-oai)
+- [#52061](https://github.com/openai/codex/pull/52061) Run Guardian conversation classifiers concurrently and preserve action order [@felixxia-oai](https://github.com/felixxia-oai)
+- [#52062](https://github.com/openai/codex/pull/52062) Add scenario coverage for worker context across idle eviction [@jif-oai](https://github.com/jif-oai)
+- [#52065](https://github.com/openai/codex/pull/52065) Require assessment text in the Guardian parser [@ioanbudea-OAI](https://github.com/ioanbudea-OAI)
+- [#52081](https://github.com/openai/codex/pull/52081) Fix idle cleanup for disconnected multi-agent v2 children [@jif-oai](https://github.com/jif-oai)
+- [#52119](https://github.com/openai/codex/pull/52119) Expose originating tool call metadata in command environments [@leo-oai](https://github.com/leo-oai)
+- [#52160](https://github.com/openai/codex/pull/52160) Remove the patched zsh shell execution backend [@jif-oai](https://github.com/jif-oai)
+- [#52164](https://github.com/openai/codex/pull/52164) Make environment context date and timezone configurable [@surajs-oai](https://github.com/surajs-oai)
+- [#52176](https://github.com/openai/codex/pull/52176) Show AWS GovCloud guidance at startup and remember acknowledgment [@jackz100](https://github.com/jackz100)
+- [#52177](https://github.com/openai/codex/pull/52177) Set a User-Agent for package archive downloads [@bolinfest](https://github.com/bolinfest)
+- [#52178](https://github.com/openai/codex/pull/52178) Strip symbols from source-built release package binaries [@bolinfest](https://github.com/bolinfest)
+- [#52182](https://github.com/openai/codex/pull/52182) Expose a verified sandbox launcher to local MCP servers [@bolinfest](https://github.com/bolinfest)
+- [#52183](https://github.com/openai/codex/pull/52183) Add optional descriptions to agent message board channels [@jif-oai](https://github.com/jif-oai)
+- [#52184](https://github.com/openai/codex/pull/52184) Preserve side conversations across thread navigation [@etraut-openai](https://github.com/etraut-openai)
+- [#52193](https://github.com/openai/codex/pull/52193) Enforce managed MXC requirements on Windows [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#52195](https://github.com/openai/codex/pull/52195) Track source attribution for individual context parts [@tz-openai](https://github.com/tz-openai)
+- [#52200](https://github.com/openai/codex/pull/52200) Allow plugin toggles while searching and preserve filters on refresh [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52203](https://github.com/openai/codex/pull/52203) Expose Codex lifecycle status in iTerm2 sessions [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52213](https://github.com/openai/codex/pull/52213) Stop bundling patched zsh in Codex packages [@jif-oai](https://github.com/jif-oai)
+- [#52215](https://github.com/openai/codex/pull/52215) Enforce application network policy in standalone MCP commands [@lsingh-oai](https://github.com/lsingh-oai)
+- [#52220](https://github.com/openai/codex/pull/52220) Add configurable default plugin activation policy [@stevenlee-oai](https://github.com/stevenlee-oai)
+- [#52223](https://github.com/openai/codex/pull/52223) Enforce application network policy for daemon updates [@jackz100](https://github.com/jackz100)
+- [#52225](https://github.com/openai/codex/pull/52225) Fix config rebuild call in the Windows MXC preference test [@virajrai-oai](https://github.com/virajrai-oai)
+- [#52226](https://github.com/openai/codex/pull/52226) Include foreground activity in iTerm2 session status [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52228](https://github.com/openai/codex/pull/52228) Honor API-key feature gates in TUI Daybreak selection [@julee-oai](https://github.com/julee-oai)
+- [#52234](https://github.com/openai/codex/pull/52234) Support request IDs in exec-server WebSocket handshakes [@mattj-openai](https://github.com/mattj-openai)
+- [#52235](https://github.com/openai/codex/pull/52235) Recover gRPC code-mode sessions after missing-session errors [@surajs-oai](https://github.com/surajs-oai)
+- [#52241](https://github.com/openai/codex/pull/52241) Preserve subagent capabilities independently of forked history [@anp-oai](https://github.com/anp-oai)
+- [#52245](https://github.com/openai/codex/pull/52245) Enable parallel execution for read-only tools [@zamoshchin-openai](https://github.com/zamoshchin-openai)
+- [#52250](https://github.com/openai/codex/pull/52250) Add opt-in Guardian trust for orchestrator connector identities [@ankushg](https://github.com/ankushg)
+- [#52256](https://github.com/openai/codex/pull/52256) Normalize formatting in docs, web assets, and sample scripts [@anp-oai](https://github.com/anp-oai)
+- [#52268](https://github.com/openai/codex/pull/52268) Preserve large arguments in executed tool call metadata [@ningyi-oai](https://github.com/ningyi-oai)
+- [#52270](https://github.com/openai/codex/pull/52270) Enable text selection in the fullscreen TUI footer [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52273](https://github.com/openai/codex/pull/52273) Add configurable persistent leader shortcuts to the TUI [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52274](https://github.com/openai/codex/pull/52274) Add structured tracing for Guardian reviews and background scoring [@ioanbudea-OAI](https://github.com/ioanbudea-OAI)
+- [#52277](https://github.com/openai/codex/pull/52277) Preserve UTF-8 byte semantics in network domain matching [@rafael-oai](https://github.com/rafael-oai)
+- [#52278](https://github.com/openai/codex/pull/52278) Honor custom OTLP metrics exporters when analytics is disabled [@jackz100](https://github.com/jackz100)
+- [#52288](https://github.com/openai/codex/pull/52288) Remove duplicate field initializers from extension registry tests [@anp-oai](https://github.com/anp-oai)
+- [#52295](https://github.com/openai/codex/pull/52295) Emit one developer notice per incremental namespace update batch [@akira-oai](https://github.com/akira-oai)
+- [#52299](https://github.com/openai/codex/pull/52299) Make Bazel release jobs advisory [@anp-oai](https://github.com/anp-oai)
+- [#52302](https://github.com/openai/codex/pull/52302) Add opt-in credential masking for proxied sandboxed sessions [@winston-openai](https://github.com/winston-openai)
+- [#52304](https://github.com/openai/codex/pull/52304) Persist remote-control RPC preferences in managed daemon settings [@etraut-openai](https://github.com/etraut-openai)
+- [#52325](https://github.com/openai/codex/pull/52325) Track history initialization in Responses turn metadata [@anp-oai](https://github.com/anp-oai)
+- [#52329](https://github.com/openai/codex/pull/52329) Remove per-content source attribution metadata [@anp-oai](https://github.com/anp-oai)
+- [#52330](https://github.com/openai/codex/pull/52330) Clamp wrapped source ranges before remapping terminal hyperlinks [@bc-openai](https://github.com/bc-openai)
+- [#52337](https://github.com/openai/codex/pull/52337) Add durable thread read state with revision-checked updates [@btraut-openai](https://github.com/btraut-openai)
+- [#52350](https://github.com/openai/codex/pull/52350) Expose experimental durable thread read state in the app server [@btraut-openai](https://github.com/btraut-openai)
+- [#52363](https://github.com/openai/codex/pull/52363) Expand realtime v3 voice support [@jacksonmoody-oai](https://github.com/jacksonmoody-oai)
+- [#52381](https://github.com/openai/codex/pull/52381) Preserve per-session routing for gRPC code mode [@cassirer-openai](https://github.com/cassirer-openai)
+- [#52384](https://github.com/openai/codex/pull/52384) Notify subscribers when thread read state changes [@btraut-openai](https://github.com/btraut-openai)
+- [#52395](https://github.com/openai/codex/pull/52395) Add experimental app-server thread read-state updates [@btraut-openai](https://github.com/btraut-openai)
+- [#52418](https://github.com/openai/codex/pull/52418) Avoid an extra blank quote line when pasting text with a trailing newline [@bc-openai](https://github.com/bc-openai)
+- [#52535](https://github.com/openai/codex/pull/52535) Add opt-in history prefix preservation for full agent forks [@jif-oai](https://github.com/jif-oai)
+- [#52557](https://github.com/openai/codex/pull/52557) Forward clipboard copies to the terminal in Herdr sessions [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52568](https://github.com/openai/codex/pull/52568) Expose message board permissions and structured denials [@jif-oai](https://github.com/jif-oai)
+- [#52591](https://github.com/openai/codex/pull/52591) Fix races in remote environment and session replacement tests [@jif-oai](https://github.com/jif-oai)
+- [#52608](https://github.com/openai/codex/pull/52608) Upgrade `hyper` to 1.11.1 and test connection closure [@jif-oai](https://github.com/jif-oai)
+- [#52610](https://github.com/openai/codex/pull/52610) Align Linux sandbox names and docs with bubblewrap and seccomp [@bolinfest](https://github.com/bolinfest)
+- [#52621](https://github.com/openai/codex/pull/52621) Add template setup for local agent message boards [@jif-oai](https://github.com/jif-oai)
+- [#52629](https://github.com/openai/codex/pull/52629) Consolidate local message board storage helpers [@jif-oai](https://github.com/jif-oai)
+- [#52635](https://github.com/openai/codex/pull/52635) Skip background workspace routing reads without ChatGPT auth [@joesavona](https://github.com/joesavona)
+- [#52637](https://github.com/openai/codex/pull/52637) Add experimental thread item lookup by ID [@btraut-openai](https://github.com/btraut-openai)
+- [#52640](https://github.com/openai/codex/pull/52640) Count interrupted goal continuations toward the no-activity limit [@etraut-openai](https://github.com/etraut-openai)
+- [#52648](https://github.com/openai/codex/pull/52648) Limit daemon feature compatibility checks to explicit CLI overrides [@etraut-openai](https://github.com/etraut-openai)
+- [#52652](https://github.com/openai/codex/pull/52652) Bound local exec-server output draining after process exit [@jif-oai](https://github.com/jif-oai)
+- [#52659](https://github.com/openai/codex/pull/52659) Add an opt-in feature for subagent model context defaults [@hlevy-openai](https://github.com/hlevy-openai)
+- [#52660](https://github.com/openai/codex/pull/52660) Handle completion events in either order in shell snapshot tests [@jif-oai](https://github.com/jif-oai)
+- [#52661](https://github.com/openai/codex/pull/52661) Prevent brokered credential aliases from bypassing MITM hooks [@viyatb-oai](https://github.com/viyatb-oai)
+- [#52671](https://github.com/openai/codex/pull/52671) Add retention annotations to submitted tool outputs [@won-openai](https://github.com/won-openai)
+- [#52674](https://github.com/openai/codex/pull/52674) Move the exec-server test fixture into shared test support [@anp-oai](https://github.com/anp-oai)
+- [#52676](https://github.com/openai/codex/pull/52676) Refresh persisted capability roots from owner-provided configuration [@teddywyly-oai](https://github.com/teddywyly-oai)
+- [#52679](https://github.com/openai/codex/pull/52679) Add timeout-aware exec-server configuration reads [@hlevy-openai](https://github.com/hlevy-openai)
+- [#52681](https://github.com/openai/codex/pull/52681) Reject reserved Serde JSON keys in code mode [@cassirer-openai](https://github.com/cassirer-openai)
+- [#52682](https://github.com/openai/codex/pull/52682) Validate Windows sandbox accounts before password repair [@zm-oai](https://github.com/zm-oai)
+- [#52685](https://github.com/openai/codex/pull/52685) Preserve code mode cancellation during output serialization [@cassirer-openai](https://github.com/cassirer-openai)
+- [#52686](https://github.com/openai/codex/pull/52686) Add opt-in retention for turn tool outputs [@won-openai](https://github.com/won-openai)
+- [#52689](https://github.com/openai/codex/pull/52689) Forward per-turn Cyber access programs to Guardian [@daneschneider-oai](https://github.com/daneschneider-oai)
+- [#52696](https://github.com/openai/codex/pull/52696) Fix marketplace path matching for Windows junctions [@zm-oai](https://github.com/zm-oai)
+- [#52700](https://github.com/openai/codex/pull/52700) Update the exec-server stable compatibility baseline to Codex 0.162.1 [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#52702](https://github.com/openai/codex/pull/52702) Retry bootstrap GETs through the system proxy after request failures [@abhinav-oai](https://github.com/abhinav-oai)
+- [#52707](https://github.com/openai/codex/pull/52707) Migrate the Windows MXC sandbox to split MXC crates [@iceweasel-oai](https://github.com/iceweasel-oai)
+- [#52721](https://github.com/openai/codex/pull/52721) Explain session creation failures during server shutdown [@etraut-openai](https://github.com/etraut-openai)
+- [#52723](https://github.com/openai/codex/pull/52723) Add opt-in gRPC over stdio for the code-mode host [@cconger](https://github.com/cconger)
+- [#52724](https://github.com/openai/codex/pull/52724) Add observers for initial exec-server connection attempts [@aaronl-openai](https://github.com/aaronl-openai)
+- [#52725](https://github.com/openai/codex/pull/52725) Report terminal program status with OSC 7501 [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52736](https://github.com/openai/codex/pull/52736) Allow model catalogs to override incremental tool notices [@akira-oai](https://github.com/akira-oai)
+- [#52742](https://github.com/openai/codex/pull/52742) Add opt-in output token replay for OpenAI requests [@pakrym-oai](https://github.com/pakrym-oai)
+- [#52748](https://github.com/openai/codex/pull/52748) Make code-mode `exit()` stop the entire cell [@cconger](https://github.com/cconger)
+- [#52756](https://github.com/openai/codex/pull/52756) Classify voice session failures and record terminal outcomes [@bc-openai](https://github.com/bc-openai)
+- [#52778](https://github.com/openai/codex/pull/52778) Make pinned transcript prompts clickable [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52825](https://github.com/openai/codex/pull/52825) Report exec runtime resets before accepting further requests [@JenZhao](https://github.com/JenZhao)
+- [#52923](https://github.com/openai/codex/pull/52923) Stabilize the realtime steering timeline test [@anp-oai](https://github.com/anp-oai)
+- [#52937](https://github.com/openai/codex/pull/52937) Retain client-marked tool outputs across compaction [@won-openai](https://github.com/won-openai)
+- [#52946](https://github.com/openai/codex/pull/52946) Keep agent command center rows stable across progress updates [@fcoury-oai](https://github.com/fcoury-oai)
+- [#52952](https://github.com/openai/codex/pull/52952) Verify reset notification during code-mode host recovery [@etraut-openai](https://github.com/etraut-openai)
+- [#52959](https://github.com/openai/codex/pull/52959) Reduce stack usage in async TUI tests [@jif-oai](https://github.com/jif-oai)
+- [#52964](https://github.com/openai/codex/pull/52964) Defer owned transcript redraws during raw paste bursts [@etraut-openai](https://github.com/etraut-openai)
+- [#52967](https://github.com/openai/codex/pull/52967) Reuse and prewarm the WSL clipboard text reader [@etraut-openai](https://github.com/etraut-openai)
+- [#52968](https://github.com/openai/codex/pull/52968) Keep startup modals protected when terminal input draining times out [@etraut-openai](https://github.com/etraut-openai)
+- [#52972](https://github.com/openai/codex/pull/52972) Upgrade `rmcp` to `3.5.1` and harden lifecycle tests [@alishobeiri-oai](https://github.com/alishobeiri-oai)
+- [#52990](https://github.com/openai/codex/pull/52990) Add a searchable `/config` preferences panel to the TUI [@fcoury-oai](https://github.com/fcoury-oai)
+- [#53049](https://github.com/openai/codex/pull/53049) Add connection-bound reply handles for app-server requests [@bc-openai](https://github.com/bc-openai)
+- [#53109](https://github.com/openai/codex/pull/53109) Handle broken pipes gracefully in plugin list output [@fcoury-oai](https://github.com/fcoury-oai)
+- [#53148](https://github.com/openai/codex/pull/53148) Fix startup draft recovery for pending Vim Replace keys [@etraut-openai](https://github.com/etraut-openai)
+- [#53150](https://github.com/openai/codex/pull/53150) Restore thread-owned permissions on cold resume [@etraut-openai](https://github.com/etraut-openai)
+- [#53152](https://github.com/openai/codex/pull/53152) Allow selecting and copying TUI turn tips [@etraut-openai](https://github.com/etraut-openai)
+- [#53153](https://github.com/openai/codex/pull/53153) Show subagent navigation shortcuts in TUI help [@etraut-openai](https://github.com/etraut-openai)
+- [#53155](https://github.com/openai/codex/pull/53155) Keep remote app-server events deliverable during shutdown [@etraut-openai](https://github.com/etraut-openai)
+- [#53156](https://github.com/openai/codex/pull/53156) Simplify the custom terminal drawing API [@bc-openai](https://github.com/bc-openai)
+- [#53173](https://github.com/openai/codex/pull/53173) Allow restarting managed background servers from the TUI [@etraut-openai](https://github.com/etraut-openai)
+- [#53201](https://github.com/openai/codex/pull/53201) Keep agents navigation available after a thread is archived [@etraut-openai](https://github.com/etraut-openai)
+- [#53224](https://github.com/openai/codex/pull/53224) Support Windows clipboard text paste shortcuts in the TUI [@etraut-openai](https://github.com/etraut-openai)
+- [#53331](https://github.com/openai/codex/pull/53331) Finish remote exec cleanup when output streams remain open [@jif-oai](https://github.com/jif-oai)
+- [#53339](https://github.com/openai/codex/pull/53339) Test final polling of remote processes with open output streams [@jif-oai](https://github.com/jif-oai)
+- [#53358](https://github.com/openai/codex/pull/53358) Remove selected protocol, apply-patch, MCP, and TUI tests [@vb-openai](https://github.com/vb-openai)
+- [#53369](https://github.com/openai/codex/pull/53369) Allow turns when the agent message board is unavailable [@jif-oai](https://github.com/jif-oai)
+- [#53382](https://github.com/openai/codex/pull/53382) Ignore the unsafe-libyaml advisory in dependency audits [@swastik-oai](https://github.com/swastik-oai)
+- [#53389](https://github.com/openai/codex/pull/53389) Use cached login credentials for Guardian decisions [@swastik-oai](https://github.com/swastik-oai)
+- [#53393](https://github.com/openai/codex/pull/53393) Distinguish Guardian parent-compaction failure reasons [@ioanbudea-OAI](https://github.com/ioanbudea-OAI)
+- [#53400](https://github.com/openai/codex/pull/53400) Add explicit local board connections with fixed runtime access [@jif-oai](https://github.com/jif-oai)
+- [#53412](https://github.com/openai/codex/pull/53412) Isolate arg0 helper directories by operating system [@jif-oai](https://github.com/jif-oai)
+- [#53419](https://github.com/openai/codex/pull/53419) Restore saved thread permissions during configuration loading [@jif-oai](https://github.com/jif-oai)
+- [#53424](https://github.com/openai/codex/pull/53424) Add regression coverage for network grants on cold thread resume [@jif-oai](https://github.com/jif-oai)
+- [#53426](https://github.com/openai/codex/pull/53426) Preserve Windows runtime registration failure diagnostics [@zm-oai](https://github.com/zm-oai)
+- [#53429](https://github.com/openai/codex/pull/53429) Apply configuration toggles live and improve settings navigation [@fcoury-oai](https://github.com/fcoury-oai)
+- [#53436](https://github.com/openai/codex/pull/53436) Route TUI request replies to their originating connection and thread [@bc-openai](https://github.com/bc-openai)
+- [#53438](https://github.com/openai/codex/pull/53438) Stop identifying Apple Terminal from `TERM_SESSION_ID` [@etraut-openai](https://github.com/etraut-openai)
+- [#53440](https://github.com/openai/codex/pull/53440) Preserve status line accents on 16-color terminals [@etraut-openai](https://github.com/etraut-openai)
+- [#53443](https://github.com/openai/codex/pull/53443) Use local MSVC toolchains for native Windows Bazel tests [@etraut-openai](https://github.com/etraut-openai)
+- [#53444](https://github.com/openai/codex/pull/53444) Suppress repeated turn diffs in `codex exec` human output [@fcoury-oai](https://github.com/fcoury-oai)
+- [#53451](https://github.com/openai/codex/pull/53451) Treat incomplete responses as terminal errors [@jif-oai](https://github.com/jif-oai)
+- [#53452](https://github.com/openai/codex/pull/53452) Close input admission while a turn finishes recording [@etraut-openai](https://github.com/etraut-openai)
+- [#53453](https://github.com/openai/codex/pull/53453) Prefer the Windows clipboard and bound copy attempts on WSL [@etraut-openai](https://github.com/etraut-openai)
+- [#53485](https://github.com/openai/codex/pull/53485) Update `quinn-proto` to 0.11.18 [@smurching-oai](https://github.com/smurching-oai)
+- [#53496](https://github.com/openai/codex/pull/53496) Preserve pending Effects toggles across save refreshes [@fcoury-oai](https://github.com/fcoury-oai)
+- [#53506](https://github.com/openai/codex/pull/53506) Reject duplicate Host headers in the network proxy [@jfoo-oai](https://github.com/jfoo-oai)
+- [#53556](https://github.com/openai/codex/pull/53556) Deduplicate TUI modifier handling and terminal color caching [@bc-openai](https://github.com/bc-openai)
+- [#53595](https://github.com/openai/codex/pull/53595) Add async compaction feature configuration [@rka-oai](https://github.com/rka-oai)
+- [#53606](https://github.com/openai/codex/pull/53606) Prepare compaction helpers for background requests [@rka-oai](https://github.com/rka-oai)
+- [#53614](https://github.com/openai/codex/pull/53614) Add infrastructure for speculative remote V2 compaction [@rka-oai](https://github.com/rka-oai)
+- [#53617](https://github.com/openai/codex/pull/53617) Allow hiding native tools while retaining the multi-agent V2 runtime [@jif-oai](https://github.com/jif-oai)
+- [#53620](https://github.com/openai/codex/pull/53620) Reuse background results for remote V2 compaction [@rka-oai](https://github.com/rka-oai)
+- [#53622](https://github.com/openai/codex/pull/53622) Preserve remote exec output until it is collected [@jif-oai](https://github.com/jif-oai)
+- [#53628](https://github.com/openai/codex/pull/53628) Record truncation metrics for accepted Guardian review inputs [@ioanbudea-OAI](https://github.com/ioanbudea-OAI)
+- [#53631](https://github.com/openai/codex/pull/53631) Materialize the thread before testing a discovered daemon restart [@jif-oai](https://github.com/jif-oai)
+- [#53632](https://github.com/openai/codex/pull/53632) Stabilize write ordering in the shared message board scenario [@jif-oai](https://github.com/jif-oai)
+- [#53633](https://github.com/openai/codex/pull/53633) Add an environment API key fallback for Guardian Decisions [@swastik-oai](https://github.com/swastik-oai)
+- [#53654](https://github.com/openai/codex/pull/53654) Keep spawned children provisional until the spawn result returns [@jif-oai](https://github.com/jif-oai)
+- [#53657](https://github.com/openai/codex/pull/53657) Share hook configuration across cloned hook views [@jif-oai](https://github.com/jif-oai)
+- [#53660](https://github.com/openai/codex/pull/53660) Extract shared multi-agent v2 thread spawning [@jif-oai](https://github.com/jif-oai)
+- [#53668](https://github.com/openai/codex/pull/53668) Improve remote exec-server test startup diagnostics [@jif-oai](https://github.com/jif-oai)
+- [#53670](https://github.com/openai/codex/pull/53670) Account for token usage from incomplete responses [@jif-oai](https://github.com/jif-oai)
+- [#53672](https://github.com/openai/codex/pull/53672) Keep discovered Apps tools available during startup recovery [@jif-oai](https://github.com/jif-oai)
+- [#53673](https://github.com/openai/codex/pull/53673) Publish Rust releases with the GitHub CLI [@jif-oai](https://github.com/jif-oai)
+- [#53678](https://github.com/openai/codex/pull/53678) Preserve inherited context in prediction forks [@keyz](https://github.com/keyz)
+- [#53689](https://github.com/openai/codex/pull/53689) Constrain API-key model access programs to server support [@julee-oai](https://github.com/julee-oai)
+- [#53691](https://github.com/openai/codex/pull/53691) Account for replay caches in encrypted compaction budgets [@ioanbudea-OAI](https://github.com/ioanbudea-OAI)
+- [#53693](https://github.com/openai/codex/pull/53693) Add keyboard selection support to the transcript view [@fcoury-oai](https://github.com/fcoury-oai)
+- [#53698](https://github.com/openai/codex/pull/53698) Interrupt and drain canceled classifier responses before socket reuse [@felixxia-oai](https://github.com/felixxia-oai)
+- [#53699](https://github.com/openai/codex/pull/53699) Cancel Guardian V2 classifications that exceed the tool-call lag window [@felixxia-oai](https://github.com/felixxia-oai)
+- [#53701](https://github.com/openai/codex/pull/53701) Enable CLI Daybreak by default and enforce background-turn eligibility [@julee-oai](https://github.com/julee-oai)
+- [#53706](https://github.com/openai/codex/pull/53706) Preserve URLs and email addresses during external agent migration [@jif-oai](https://github.com/jif-oai)
+- [#53709](https://github.com/openai/codex/pull/53709) Separate MCP sandbox policy from launcher metadata [@bolinfest](https://github.com/bolinfest)
+- [#53717](https://github.com/openai/codex/pull/53717) Enable Cyber access programs for API-key sessions by default [@julee-oai](https://github.com/julee-oai)
+- [#53723](https://github.com/openai/codex/pull/53723) Wire V2 capability discovery through exec-server RPC [@TAFOYA-OAI](https://github.com/TAFOYA-OAI)
+
+[Full release on Github](https://github.com/openai/codex/releases/tag/rust-v0.163.0)

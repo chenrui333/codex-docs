@@ -1,11 +1,9 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/security/cli/ci/github/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-20T03:54:22+00:00",
-  "manifest_sha256": "3fd7241c9d0e4602da539f5a7b0e9c31ee807ec06658473be15be7aa721fd7ef",
+  "generated_at": "2026-10-20T11:05:27+00:00",
+  "manifest_sha256": "0e2031070e4521d41f7b80b808874f007f062529c9b42f31be138c53d41e7285",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -19,12 +17,6 @@
   },
   "total_files": 290,
   "updated": [
-    "learn.chatgpt.com/docs/dots/controls/index.md",
-    "learn.chatgpt.com/docs/dots/tasks-and-memory/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/index.md",
-    "learn.chatgpt.com/docs/security/cli/faq/index.md",
-    "learn.chatgpt.com/docs/security/cli/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md"
   ]
 }
