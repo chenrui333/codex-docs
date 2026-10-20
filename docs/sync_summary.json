@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-20T11:05:27+00:00",
-  "manifest_sha256": "0e2031070e4521d41f7b80b808874f007f062529c9b42f31be138c53d41e7285",
+  "generated_at": "2026-10-20T16:31:26+00:00",
+  "manifest_sha256": "193cbb8bc173ef2245327482ad30ffa4a215ae81c357442b4cfd907923af0749",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
