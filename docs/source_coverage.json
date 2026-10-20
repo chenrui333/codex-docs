@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-16T20:39:15+00:00",
+  "generated_at": "2026-10-20T03:54:22+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 185,
+      "discovered_urls": 186,
       "html_fallback_pages": 2,
-      "markdown_pages": 182,
-      "mirrored_paths_count": 184,
-      "mirrored_urls": 184,
+      "markdown_pages": 183,
+      "mirrored_paths_count": 185,
+      "mirrored_urls": 185,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -498,6 +498,7 @@
       "https://learn.chatgpt.com/docs/security/cli",
       "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
       "https://learn.chatgpt.com/docs/security/cli/ci",
+      "https://learn.chatgpt.com/docs/security/cli/ci/github",
       "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
       "https://learn.chatgpt.com/docs/security/cli/faq",
       "https://learn.chatgpt.com/docs/security/cli/reference",
@@ -687,6 +688,7 @@
       "https://learn.chatgpt.com/docs/security/cli",
       "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
       "https://learn.chatgpt.com/docs/security/cli/ci",
+      "https://learn.chatgpt.com/docs/security/cli/ci/github",
       "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
       "https://learn.chatgpt.com/docs/security/cli/faq",
       "https://learn.chatgpt.com/docs/security/cli/reference",
@@ -870,6 +872,7 @@
       "learn.chatgpt.com/docs/sandboxing/index.md",
       "learn.chatgpt.com/docs/security-administration/index.md",
       "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+      "learn.chatgpt.com/docs/security/cli/ci/github/index.md",
       "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md",
       "learn.chatgpt.com/docs/security/cli/ci/index.md",
       "learn.chatgpt.com/docs/security/cli/faq/index.md",
@@ -922,7 +925,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 184,
+    "mirrored_paths_count": 185,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1060,6 +1063,7 @@
       "https://learn.chatgpt.com/docs/security/cli",
       "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
       "https://learn.chatgpt.com/docs/security/cli/ci",
+      "https://learn.chatgpt.com/docs/security/cli/ci/github",
       "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
       "https://learn.chatgpt.com/docs/security/cli/faq",
       "https://learn.chatgpt.com/docs/security/cli/reference",
@@ -1255,6 +1259,7 @@
           "https://learn.chatgpt.com/docs/security/cli",
           "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
           "https://learn.chatgpt.com/docs/security/cli/ci",
+          "https://learn.chatgpt.com/docs/security/cli/ci/github",
           "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
           "https://learn.chatgpt.com/docs/security/cli/faq",
           "https://learn.chatgpt.com/docs/security/cli/reference",
@@ -1304,7 +1309,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "fe73366e693abc7da4b08f4bf2c6bd26018bc1e919507ecd5d4ae7ed1e97c51f",
+        "discovered_urls_sha256": "de122726f0ed1bcd6c4cf126598483475a1dde805254a277755032f09c3759c9",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1444,6 +1449,7 @@
           "https://learn.chatgpt.com/docs/security/cli",
           "https://learn.chatgpt.com/docs/security/cli/bulk-scans",
           "https://learn.chatgpt.com/docs/security/cli/ci",
+          "https://learn.chatgpt.com/docs/security/cli/ci/github",
           "https://learn.chatgpt.com/docs/security/cli/ci/gitlab",
           "https://learn.chatgpt.com/docs/security/cli/faq",
           "https://learn.chatgpt.com/docs/security/cli/reference",
@@ -1684,7 +1690,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-16T20:39:15+00:00",
+    "last_successful_full_sync_at": "2026-10-20T03:54:22+00:00",
     "status": "complete"
   }
 }

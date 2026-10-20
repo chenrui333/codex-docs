@@ -364,9 +364,10 @@ before setting a budget. Treat `--max-cost` as an estimated cost guardrail, not
 a hard billing cap.
 
 Start with report-only scans. Add `--fail-on-severity` after your team has
-reviewed representative findings, coverage, cost, and runtime. See [Run Codex
-Security in CI](https://learn.chatgpt.com/docs/security/cli/ci) for severity policies and exit-code
-details.
+reviewed representative findings, coverage, cost, and runtime. See the
+[CI/CD overview](https://learn.chatgpt.com/docs/security/cli/ci#choose-a-severity-policy) for severity
+policies and the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#exit-codes-and-signals)
+for exit-code details.
 
 When a job fails:
 

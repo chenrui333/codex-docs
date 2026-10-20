@@ -70,6 +70,10 @@ For example:
 Ask your dot to confirm what it saved. Use **Scheduled** to review recurring
 work, or ask your dot to list, change, or cancel its scheduled tasks.
 
+Your dot can also read and edit your existing ChatGPT Work automations. Ask it
+to review what's scheduled or change a recurring task's instructions or timing.
+Identify the automation you want to change and ask it to confirm the update.
+
 Stopping active work and canceling a schedule are separate actions. See
 [Controls](https://learn.chatgpt.com/docs/dots/controls#stop-work).
 
@@ -94,6 +98,12 @@ Context is the information available to your dot while it responds or works:
 messages, instructions, relevant source material, and results from its tools
 or delegated work. It can use this information to connect a new request to work
 already underway.
+
+Your dot can search your past ChatGPT conversations for relevant context. For
+example, ask it to find an earlier discussion and use the decisions from it
+in your current task. Retrieved conversation content is context for the work;
+it isn't the same as persistent memory or a complete history included in every
+task.
 
 The context available for an interaction is a selection of this information.
 Calls use selected conversation context, which can differ from the information

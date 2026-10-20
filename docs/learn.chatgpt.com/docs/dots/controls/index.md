@@ -51,8 +51,11 @@ Custom rules are optional controls for specific ongoing boundaries. Start with
 clear instructions in your conversation; you don’t need to create a rule for
 every approval.
 
-After setting up your dot, open **Settings** > **Personalization** and select
-**Custom rules** under **Permissions**.
+After setting up your dot, open custom rules for your app:
+
+- **Desktop and web:** Open **Settings** > **Personalization** and select
+  **Custom rules** under **Permissions**.
+- **iOS and Android:** Open the sidebar, then select **Customize** > **Custom rules**.
 
 Select **Add**, describe the action, choose how your dot should handle it,
 and select **Add rule**. The choices are:

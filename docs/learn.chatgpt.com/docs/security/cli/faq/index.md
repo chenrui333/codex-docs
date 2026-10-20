@@ -224,6 +224,15 @@ report with a budget warning. It returns `0`, or `1` if findings meet the
 configured severity threshold. If it can't produce a valid completed result,
 it returns `2` and preserves any available output.
 
-For pull-request checks, see [Run scans in CI](https://learn.chatgpt.com/docs/security/cli/ci).
+For GitHub pull-request checks and scheduled repository scans, use the
+[Codex Security GitHub Action](https://learn.chatgpt.com/docs/security/cli/ci/github). With
+`action-v0.3.0`, a completed scan means the configured analysis produced a
+valid result. Scope exclusions and deferred investigations do not bypass the
+severity policy. Review `coverage.json` to assess the scan's scope and
+limitations. To also reject empty diffs and dry runs, require the Action's
+`scan-status` output to be `completed`; see [Choose a severity
+policy](https://learn.chatgpt.com/docs/security/cli/ci/github#choose-a-severity-policy).
+
+For other providers, see the [CI/CD overview](https://learn.chatgpt.com/docs/security/cli/ci).
 For a check before each commit, use
 [`install-hook`](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-install-hook).

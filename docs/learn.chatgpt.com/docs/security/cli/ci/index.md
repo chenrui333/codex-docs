@@ -7,260 +7,84 @@ codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.1
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
-# Run Codex Security in CI
+# Codex Security CI/CD overview
 
 Source: https://learn.chatgpt.com/docs/security/cli/ci
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Run the Codex Security CLI in CI to review the exact changes in a pull request
-or merge request, keep findings and coverage, and optionally fail the check at
-a chosen severity. Start with advisory results, review scan quality and
-runtime, then add a severity policy that fits your repository.
-
-Install the public `@openai/codex-security` package. Running scans still
-  requires Codex Security access.
-
-This page provides a GitHub Actions workflow. For GitLab, use the
-[GitLab CI/CD guide](https://learn.chatgpt.com/docs/security/cli/ci/gitlab). The same scan and export
-commands work in other CI systems.
+Run Codex Security in CI to review pull-request or merge-request changes, scan
+your default branch, and preserve findings and coverage. See your CI
+provider's guide for the workflow, report handling, and enforcement options.
 
 ## Prepare the workflow
 
-Store an OpenAI API key in your CI provider's secret store as
-`CODEX_SECURITY_API_KEY`.
+Running scans requires Codex Security access. Store an OpenAI API key in your
+CI provider's secret store as `CODEX_SECURITY_API_KEY`, then map it to the scan
+process's `OPENAI_API_KEY` environment variable.
 
-Map this secret directly to the scan step's `OPENAI_API_KEY` environment
-variable. Keep the credential scoped to the scan process and use
-`--auth api-key` to select it explicitly.
+Run scans only for repositories and changes you trust. Scans use the runner's
+local permissions and don't pause for approval. Keep unrelated credentials and
+deployment steps in separate jobs.
 
-Run the workflow only for repositories and pull requests you trust. Scans use
-the runner's local permissions and don't pause for approval. Scan processes
-can inherit the job environment, so keep unrelated tokens and cloud
-credentials out of it.
+### Use an approved Daybreak model
 
-The runner needs:
+For Daybreak Blue access through [Trusted Access for
+Cyber](https://learn.chatgpt.com/docs/cyber-safety#trusted-access-for-cyber), set the GitHub Action's
+`model` input to `gpt-6-sol` and `cyber-access-program` to
+`daybreak_blue`. For direct CLI scans, use `--model gpt-6-sol`
+and `--cyber-access-program daybreak_blue`.
 
-- Node.js 24 or 26, or Node.js 22 starting with 22.13.0.
-- Python 3.10 or later.
-- The published `@openai/codex-security` package, installed outside the
-  repository checkout.
-- The pull-request or merge-request head and base history so Git can calculate
-  the merge base.
+Use an API key from a project that has Daybreak Blue enabled and access to the
+selected model. Setting the model or program does not grant access. See
+[Configure optional Daybreak access](https://learn.chatgpt.com/docs/security/cli/ci/github#configure-optional-daybreak-access)
+for the Action settings.
 
-## Add the GitHub Actions workflow
+## Choose an integration
 
-For private or internal repositories, enable [GitHub Code Security](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github)
-before you upload SARIF.
+### Add the GitHub Actions workflow
 
-Create `.github/workflows/codex-security.yml`. Before checking out the pull
-request, install `@openai/codex-security` under
-`$RUNNER_TEMP/codex-security` so the trusted executable is available at
-`$RUNNER_TEMP/codex-security/node_modules/.bin/codex-security`:
+Use the [GitHub Actions guide](https://learn.chatgpt.com/docs/security/cli/ci/github) for pull-request
+checks and scheduled repository scans. The Codex Security Action installs the CLI,
+saves reports, and adds a job summary and source annotations. The guide includes
+runner setup, optional Daybreak access, SARIF upload, and severity enforcement.
 
-```yaml
-name: Codex Security scan
+### Add the GitLab CI/CD pipeline
 
-on:
-  pull_request:
+Use the [GitLab CI/CD guide](https://learn.chatgpt.com/docs/security/cli/ci/gitlab) for merge-request,
+default-branch, and scheduled scans. Start with a scan-only pipeline, then
+adopt report handling, policy enforcement, and optional verified remediation.
 
-jobs:
-  codex-security:
-    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-    steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
-        with:
-          node-version: "26"
+### Use another CI system
 
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
-        with:
-          python-version: "3.14"
+Install the public `@openai/codex-security` package and run the CLI directly.
+Use `--auth api-key`, choose a repository or diff scan, and save the output in a
+private directory outside the Git worktree. Your runner must provide the
+dependencies described in the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli#check-the-prerequisites).
 
-      - name: Install Codex Security
-        run: |
-          set -euo pipefail
-          npm install \
-            --prefix "$RUNNER_TEMP/codex-security" \
-            --ignore-scripts \
-            --no-audit \
-            --no-fund \
-            @openai/codex-security
-
-      - name: Verify Codex Security
-        env:
-          CODEX_SECURITY_BIN: ${{ runner.temp }}/codex-security/node_modules/.bin/codex-security
-        run: |
-          set -euo pipefail
-          test -x "$CODEX_SECURITY_BIN"
-          "$CODEX_SECURITY_BIN" --version
-
-      - name: Check out the pull request
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Scan the pull request
-        env:
-          OPENAI_API_KEY: ${{ secrets.CODEX_SECURITY_API_KEY }}
-          CODEX_SECURITY_BIN: ${{ runner.temp }}/codex-security/node_modules/.bin/codex-security
-          CODEX_SECURITY_STATE_DIR: ${{ runner.temp }}/codex-security-state
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          SCAN_DIR: ${{ runner.temp }}/codex-security-results
-        run: |
-          set -euo pipefail
-          BASE_REVISION="$(git merge-base "$BASE_SHA" "$HEAD_SHA")"
-          "$CODEX_SECURITY_BIN" scan . \
-            --diff "$BASE_REVISION" \
-            --head "$HEAD_SHA" \
-            --auth api-key \
-            --output-dir "$SCAN_DIR" \
-            --json > "$RUNNER_TEMP/codex-security.json"
-
-      - name: Export SARIF
-        id: export-sarif
-        if: always()
-        env:
-          CODEX_SECURITY_BIN: ${{ runner.temp }}/codex-security/node_modules/.bin/codex-security
-          SCAN_DIR: ${{ runner.temp }}/codex-security-results
-          SARIF_FILE: ${{ runner.temp }}/codex-security.sarif
-        run: |
-          set -euo pipefail
-          if test -f "$SCAN_DIR/scan-manifest.json"; then
-            "$CODEX_SECURITY_BIN" export "$SCAN_DIR" \
-              --export-format sarif \
-              --source-root "$GITHUB_WORKSPACE" \
-              --output "$SARIF_FILE"
-            echo "available=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Upload SARIF
-        if: always() && steps.export-sarif.outputs.available == 'true'
-        uses: github/codeql-action/upload-sarif@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81 # v4
-        with:
-          sarif_file: ${{ runner.temp }}/codex-security.sarif
-          ref: refs/pull/${{ github.event.pull_request.number }}/head
-          sha: ${{ github.event.pull_request.head.sha }}
-          category: codex-security
-
-      - name: Preserve scan results
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: codex-security-results
-          path: |
-            ${{ runner.temp }}/codex-security-results
-            ${{ runner.temp }}/codex-security.json
-          if-no-files-found: warn
-          retention-days: 7
-```
-
-The workflow checks out the pull-request head, calculates its merge base, and
-scans the committed changes between those revisions. Full history keeps the
-target exact. `persist-credentials: false` keeps the repository token out of
-the checked-out Git configuration. Installing the CLI before checkout and
-running its absolute path keeps repository-controlled executables away from
-the scan credential. `--auth api-key` explicitly selects the scoped API key.
-The scan saves its history in a writable state directory outside the
-repository.
-
-`--json` writes one complete JSON document to stdout, so the workflow can save
-it directly. Progress, completion summaries, and errors remain on stderr. This
-differs from `codex exec --json`, which emits a JSON Lines event stream.
-
-The export step reads a completed, sealed scan and writes SARIF. It leaves the
-Codex runtime and credentials untouched. Scan artifacts can contain vulnerable
-source snippets, evidence, and remediation details. Set who can read them and
-how long to keep them.
-
-## Add the GitLab CI/CD pipeline
-
-For a production workflow with protected default-branch scans, opt-in scheduled
-deep scans, separate SARIF policy gating, and optional verified draft merge
-requests, use [Run Codex Security in GitLab
-CI/CD](https://learn.chatgpt.com/docs/security/cli/ci/gitlab).
-
-The GitLab guide includes a scan-only starting point and the complete pipeline.
-It covers protected variables, artifact access, and a separate policy gate so
-GitLab can ingest findings even when the scanner returns a nonzero exit code.
+See the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference) for scan options, diff
+revisions, report formats, state and output directories, and retry behavior.
 
 ## Choose a severity policy
 
-The GitHub example is report-only because it omits `--fail-on-severity`. Once you
-are ready to make findings affect the check, add a threshold to the scan
-command:
+Start with advisory results. Review representative findings, scan coverage,
+cost, and runtime before deciding which outcomes should block a merge.
 
-```bash
-"$CODEX_SECURITY_BIN" scan . \
-  --diff origin/main \
-  --output-dir /path/outside/repository/results \
-  --fail-on-severity high
-```
+Evaluate both findings and scan completeness. The severity policy evaluates
+findings from the current scan at or above the configured threshold. Earlier
+open findings in the repository summary don't affect that policy. An
+incomplete scan can leave areas without a review even when it reports no
+findings.
 
-The supported thresholds are `critical`, `high`, `medium`, and `low`. A
-threshold includes findings from the current scan at that severity and above.
-Earlier open findings shown in the repository summary don't affect the policy.
+In the Action release `action-v0.3.0`, a completed scan means the configured analysis
+produced a valid result. Scope exclusions, deferred investigations, and other
+coverage notes do not bypass the severity policy. Scanner and required
+reporting errors fail the job. CLI `0.3.0` returns exit code `2` for input,
+execution, result-integrity, or required-output failures. Review `coverage.json` when assessing the result; completion does
+not certify that every vulnerability was found.
 
-The scan step uses these exit codes:
-
-| Exit  | Meaning                                                                     |
-| ----- | --------------------------------------------------------------------------- |
-| `0`   | The scan completed, and any configured severity policy passed.              |
-| `1`   | The completed scan contains a finding at or above the threshold.            |
-| `2`   | An input, execution, result-integrity, or required-output failure occurred. |
-| `130` | Ctrl-C interrupted the scan.                                                |
-| `143` | SIGTERM terminated the scan.                                                |
-
-Coverage gaps don't change a completed scan's exit code or bypass its severity
-policy. Exit `0` doesn't mean every file was reviewed. Review excluded paths,
-deferred work, and open questions in `coverage.json` when assessing the result.
-
-## Retry with an existing result directory
-
-Use a fresh runner directory for each CI job. For a persistent or self-hosted
-runner, preserve an earlier result with `--archive-existing`:
-
-```bash
-"$CODEX_SECURITY_BIN" scan . \
-  --diff origin/main \
-  --output-dir /path/outside/repository/results \
-  --archive-existing
-```
-
-The command archives the earlier results and starts with an empty scan directory.
-
-## Troubleshoot a CI scan
-
-- **Unknown Git ref or unexpected diff:** Fetch the base and head history,
-  calculate the merge base, and pass both revisions explicitly.
-- **Protected or non-empty output directory:** Choose a private directory
-  outside the enclosing Git worktree. Use `--archive-existing` when the
-  directory already contains results.
-- **Missing credentials:** Confirm that `CODEX_SECURITY_API_KEY` is available to
-  the trusted workflow or pipeline and mapped directly to the scan process's
-  `OPENAI_API_KEY` environment variable.
-- **Scan history error:** Set `CODEX_SECURITY_STATE_DIR` to a writable
-  directory outside the repository.
-- **Python setup error:** Confirm that the runner uses Python 3.10 or later.
-- **Incomplete coverage:** Review `coverage.json`, including deferred surfaces
-  and open questions. Resolve the reported gaps before rerunning the scan.
-- **SARIF export error:** Confirm that the scan completed and the full scan
-  directory is available. Export validates the sealed artifacts before writing
-  SARIF.
-- **SARIF upload error:** For GitHub Actions, confirm that your organization
-  turned on GitHub Code Security for the repository and the workflow grants
-  `actions: read`, `contents: read`, and `security-events: write`. For GitLab
-  CI/CD, confirm that the project uses GitLab Ultimate 19.2 or later and that
-  the job uploads a SARIF 2.1.0 file through `artifacts:reports:sarif`.
-
-For every command, flag, artifact, and output field, see the [CLI
-reference](https://learn.chatgpt.com/docs/security/cli/reference). To invoke the plugin through `codex exec`, see [Review code changes for security](https://learn.chatgpt.com/docs/security/plugin/code-changes#automate-reviews-in-cicd).
+Configure enforcement in the [GitHub Actions
+guide](https://learn.chatgpt.com/docs/security/cli/ci/github#choose-a-severity-policy) or the [GitLab
+CI/CD guide](https://learn.chatgpt.com/docs/security/cli/ci/gitlab#separate-reporting-from-policy-enforcement).
+For direct CLI integrations, see [severity enforcement and exit
+codes](https://learn.chatgpt.com/docs/security/cli/reference#exit-codes-and-signals).
