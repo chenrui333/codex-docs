@@ -150,13 +150,19 @@ removes the interactive website-access review. Neither grants new app
 permissions or approves every action on a website. Consequential actions can
 still require separate confirmation.
 
-Configure **Cloud browser use** and **Cloud network access** under **Admin Console > Permissions & roles > Workspace capabilities > Cloud computer capabilities**. These shared capabilities are available to Work Cloud and dots and can be configured independently of Work Cloud access. A Work task still needs Work access and permission to use each capability it requires. Review browser access and code or shell network access separately. Disabling one does not automatically disable the other.
+Configure **Use a browser** and **Allow network access** under **Admin Console** > **Permissions** > **Workspace default** > **Workspace capabilities** > **Let agents use cloud computers**. These permissions are independent of Work Cloud access. Review browser access and code or shell network access separately. Disabling one does not automatically disable the other.
+
+When you enable Work Cloud, you may be prompted to enable the relevant cloud computer capabilities if they are not already enabled. These permissions are shared across dots, Work Cloud, and team automations; available functionality varies by product. Enable the capabilities your organization’s policies allow.
+
+To review them later, go to **Admin Console** > **Permissions** > **Workspace default** > **Workspace capabilities** > **Let agents use cloud computers**. Local computer access is a separate opt-in.
+
+![Do more with Work in the cloud permission prompt with Use a browser, Allow network access, and Allow computer use enabled.](<https://developers.openai.com/images/codex/work-cloud/cloud-computer-permissions.webp>)
 
 For a Work task to use the cloud browser in an Enterprise workspace,
-administrators must enable both Work access and cloud browser access. See
+the user needs both Work access and cloud browser access. See
 [Using cloud browser in ChatGPT](https://help.openai.com/en/articles/20001280-using-cloud-browser-in-chatgpt).
 
-Also review **Cloud computer use** under **Workspace capabilities > Cloud computer capabilities**. This control also applies to ChatGPT Work. **Use password manager** is a separate permission directly under **Workspace capabilities**, outside the **Cloud computer capabilities** group. It governs password-manager access in the local in-app browser and cloud browser.
+Also review **Allow computer use** under **Admin Console** > **Permissions** > **Workspace default** > **Workspace capabilities** > **Let agents use cloud computers**. This control also applies to ChatGPT Work. **Use password manager** is a separate permission directly under **Workspace capabilities**, outside the **Let agents use cloud computers** group. It governs password-manager access in the local in-app browser and cloud browser.
 
 ### Code and shell networking
 
@@ -208,7 +214,7 @@ OpenAI API [Zero Data Retention](https://developers.openai.com/api/docs/guides/y
 
 Enable **Allow local computer access** under Work Cloud. **Use Codex locally on the ChatGPT desktop app** is not a prerequisite. If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots. Before enabling it, review or create the global cloud baseline in **Agent Security**.
 
-Use the policy API to manage Global settings. To manage Local or Codex Cloud settings, use the Agent Security UI. Existing Global API workflows remain available after migration. Test your scripts and Terraform integrations, and confirm that policy assignments and ordering are unchanged.
+For policy API, migration, and Terraform guidance, see [What carries over](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#what-carries-over).
 
 Review each control in the context where it applies:
 
@@ -224,7 +230,7 @@ Turning off Local computer access with Work Cloud interrupts currently running t
 
 Review the controls that apply to each part of a cloud task:
 
-- **Work Cloud and Work Local:** Where independent controls are available, manage cloud and local Work as distinct controls in **Workspace settings** > **Permissions & roles**. In other workspaces, local Work can share a control with Codex Local.
+- **Work Cloud and Work Local:** Where independent controls are available, manage cloud and local Work as distinct controls in **Admin Console** > **Permissions**. In other workspaces, local Work can share a control with Codex Local.
 
 - **Apps and plugins:** Choose which integrations are available and which people or roles can use them.
 

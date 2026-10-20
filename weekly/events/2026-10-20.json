@@ -155,6 +155,62 @@
       "id": "146010efb755967b9de035a5fa6f12b4247740f1454a6923c95e989a49e64e3f",
       "observed_at": "2026-10-20T16:31:25+00:00",
       "previous_id": "95d87f32bda5cd003320fec61526ed01702d859469320f80eacafced8750a937"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "bfa154d601c43ba4b54e571fadc855b1bbe9c52cb9b8e44f1e5534d7318f5f9d",
+            "before": "60b2b7aa26c75be48cb5537487f5da176d066e4696062e6aa98c95f25a9843d4"
+          },
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md": {
+            "after": "7cb45883a867c95356558dd7062bd43031e88920e383eedf68e3b957ff535ae5",
+            "before": "cceed0415937f4a617b1f9e8ce30fa1c4943a456a921f6547b8476c821691f92"
+          },
+          "learn.chatgpt.com/docs/enterprise/cloud-local-access/index.md": {
+            "after": "95d6e60a14acb99be63d7516711bca844e17d5d0a627de0514d083f8de97291a",
+            "before": "26d06536f69d3046965005df02e57e379cada7b9ee32249ccb25499176f34466"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md": {
+            "after": "d8f16210b20c9c387ea976606903caaef34bf928e5b3c6aa872ba7eb53ec468e",
+            "before": null
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.163.0",
+          "codex_cli_source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+          "codex_cli_version": "0.163.0",
+          "codex_cli_version_raw": "codex-cli 0.163.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
+          "learn.chatgpt.com/docs/enterprise/cloud-local-access/index.md"
+        ]
+      },
+      "id": "73bf3d051ef9e8e8c0addd2aac1bdace97fea145c0a27461688581445efa54de",
+      "observed_at": "2026-10-20T21:22:48+00:00",
+      "previous_id": "146010efb755967b9de035a5fa6f12b4247740f1454a6923c95e989a49e64e3f"
     }
   ],
   "schema_version": 1

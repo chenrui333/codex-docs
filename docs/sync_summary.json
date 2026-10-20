@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-20T16:31:26+00:00",
-  "manifest_sha256": "193cbb8bc173ef2245327482ad30ffa4a215ae81c357442b4cfd907923af0749",
+  "generated_at": "2026-10-20T21:22:48+00:00",
+  "manifest_sha256": "6b98f34f7ccf73c0805e66b997cfb5f6c8dbedefa21e25bb69d3c1c1637f42aa",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,8 +17,10 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 290,
+  "total_files": 291,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md"
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
+    "learn.chatgpt.com/docs/enterprise/cloud-local-access/index.md"
   ]
 }
