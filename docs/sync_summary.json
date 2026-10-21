@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-21T03:44:18+00:00",
-  "manifest_sha256": "1e55935ca282ec80bdaced85386e887ea823182e7f8e722bc35239353862779c",
+  "generated_at": "2026-10-21T17:03:01+00:00",
+  "manifest_sha256": "1a0c5a025148a3ce25499687822cf195e3a5e60bfac76117b4a7ef1490cfd7ea",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,6 +17,6 @@
   },
   "total_files": 291,
   "updated": [
-    "learn.chatgpt.com/docs/environments/cloud-environments/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md"
   ]
 }
