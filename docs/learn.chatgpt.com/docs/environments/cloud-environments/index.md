@@ -293,7 +293,47 @@ republish to use them in new tasks. Editing a shared identity connection can
 affect other environments that use it.
 
 OIDC is available by request for Enterprise workspaces. Contact your OpenAI
-account team to enable it.
+account team to enable it. If you don't have an account team, [contact sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_codex).
+
+<a id="oidc-compatibility"></a>
+
+### OIDC compatibility by provider
+
+Compatibility depends on the service, operation, and client you use. Support
+applies to the operations and clients listed here.
+
+### AWS
+
+| Service or workflow           | Status            | Scope and limitations                                                                                |
+| ----------------------------- | ----------------- | ---------------------------------------------------------------------------------------------------- |
+| AWS CLI and boto3             | Supported         | Authentication and credential renewal.                                                               |
+| Amazon S3                     | Supported         | Object reads and uploads, Terraform state, and presigned requests from within the Codex environment. |
+| Amazon ECR                    | Supported         | Image pulls and pushes for private registries.                                                       |
+| AWS CodeArtifact              | Supported         | npm and Python package installation and publishing.                                                  |
+| Amazon EKS                    | Supported         | `kubectl`, Helm, logs, exec, and port forwarding.                                                    |
+| Amazon ECS                    | Supported         | Fargate exec and port forwarding.                                                                    |
+| Amazon Bedrock                | Supported         | Nova Micro text inference and streaming. Other models are not covered.                               |
+| Amazon RDS IAM database login | Not yet supported | PostgreSQL and MySQL IAM database authentication.                                                    |
+
+### Google Cloud
+
+| Service or workflow                | Status            | Scope and limitations                                                                                                       |
+| ---------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `gcloud` and Cloud Storage         | Supported         | `gcloud`, Terraform state, object reads, and uploads, including resumable uploads.                                          |
+| Artifact Registry containers       | Supported         | Docker image pulls and pushes, tested with layers up to 1 GiB.                                                              |
+| Artifact Registry packages         | Supported         | npm, Python, and Maven package installation and publishing. Uploads are limited to 10 MiB. Maven uses `gcloud` credentials. |
+| Google Kubernetes Engine (GKE)     | Supported         | `kubectl`, deployments, logs, exec, and port forwarding.                                                                    |
+| IAM, Secret Manager, and Cloud KMS | Supported         | Service account management, secret operations, and KMS encryption and signing. Service account key export is excluded.      |
+| Cloud SQL IAM database login       | Not yet supported | IAM database authentication.                                                                                                |
+
+### Azure
+
+| Service or workflow                      | Status            | Scope and limitations                                    |
+| ---------------------------------------- | ----------------- | -------------------------------------------------------- |
+| Azure CLI and identity profiles          | Supported         | Authentication and profile selection.                    |
+| Resource Manager, Blob Storage, and ADLS | Not yet supported | OIDC workflows for these services are not yet supported. |
+| Container Registry image pulls           | Not yet supported | Image pulls are not yet supported.                       |
+| Container Registry image pushes          | Not yet supported | Image pushes are unavailable.                            |
 
 <a id="how-codex-cloud-tasks-run"></a>
 <a id="how-codex-cloud-chats-run"></a>
