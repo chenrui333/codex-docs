@@ -78,6 +78,34 @@ packaging and distribution.
 To import workspace plugins from GitHub and keep them up to date, see
 [Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management).
 
+### Troubleshoot "Disabled by admin"
+
+If you're a workspace owner, check these settings when a plugin shows
+"Disabled by admin" on the web or desktop:
+
+1. Open [Admin console](https://admin.openai.com), select the workspace, and open **Plugins** (**Apps** in
+   FedRAMP workspaces). Review the plugin's workspace availability and any
+   supported role settings. ChatGPT Business uses workspace-wide availability.
+2. If your workspace supports RBAC, review the workspace default and all direct
+   and group role assignments in **Permissions & roles**. Confirm the member's
+   general plugin permission is enabled: **Allow members to use plugins** or
+   **Use plugins**, depending on the label shown. FedRAMP workspaces may show
+   **Use apps**.
+3. Confirm the member can access each app required by the plugin and that the
+   task's required actions are enabled.
+4. Where Lockdown Mode roles are available, check all direct and group role
+   assignments for restrictions on the capability the member needs. Lockdown Mode
+   doesn't automatically disable every app in managed workspaces, but its
+   restrictions can apply even when an ordinary role grants access.
+
+For self-serve ChatGPT Business accounts, ask the member to review [Lockdown Mode](https://help.openai.com/en/articles/20001061-lockdown-mode) in
+**Settings > Security**, where available. Lockdown Mode doesn't affect Codex
+network access.
+
+Correct unintended settings or role assignments according to your organization's
+security policy. Allow up to five minutes for role changes to apply, then ask the
+member to try again. See [Role-based access control (RBAC)](https://help.openai.com/en/articles/11750701-rbac) for details.
+
 ### Export the public catalog for review
 
 Eligible ChatGPT Enterprise workspace owners and admins can download a CSV of

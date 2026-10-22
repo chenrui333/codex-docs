@@ -1,0 +1,52 @@
+---
+source_type: 'learn'
+source_area: 'learn_enterprise'
+source_url: 'https://learn.chatgpt.com/docs/enterprise/education-plans'
+source_kind: 'learn_markdown'
+---
+
+# Understand ChatGPT education plans
+
+Source: https://learn.chatgpt.com/docs/enterprise/education-plans
+
+> For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+Understand what your plan includes, how members get access, and how to use multiple workspaces. Your OpenAI account team can help confirm the plan and terms for each institutional workspace.
+
+## Compare plans
+
+| Plan                                      | Availability                                                               | End-user access                                                                                                                       | What’s included                                                                                                                                                                                                                                  | Guidance                                                                                                                                                                                                                                                                                                |
+| ----------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ChatGPT Edu**<br />Credit-based pricing | Contact your OpenAI account team                                           | Access provided through a designated Edu workspace                                                                                    | Eligible metered usage draws on workspace credits.                                                                                                                                                                                               | Review your agreement and [Pricing and usage](https://learn.chatgpt.com/docs/pricing) for included usage and credit rules.                                                                                                                                                                                                      |
+| **Edu Plus**                              | Contact your OpenAI account team                                           | Access provided through a designated Edu Plus workspace                                                                               | Included usage aligns with [ChatGPT Plus](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus) rate limits.<br />Additional credits can be purchased as needed.                | See [ChatGPT Plus](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus) for current usage guidance.                                                                                                                                   |
+| **Edu Pro**                               | Contact your OpenAI account team                                           | Access provided through a designated Edu Pro workspace                                                                                | Included usage aligns with [ChatGPT Pro](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers) rate limits.<br />Additional credits can be purchased as needed.              | See [ChatGPT Pro](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers) for current usage guidance.                                                                                                                                 |
+| **ChatGPT for Teachers**                  | Self-serve with verification                                               | Eligible U.S. K–12 educators verify eligibility, then create or join a school or district workspace.                                  | Tools for writing, file analysis, and research, with collaboration features and school or district admin controls.                                                                                                                               | See the [Teachers guide](https://help.openai.com/en/articles/12844995-chatgpt-for-teachers) for eligibility, included features, and setup.                                                                                                         |
+| **ChatGPT for Academic Researchers**      | Self-serve with verification<br />**Currently closed to new applications** | Approved participants verify eligibility, then follow their workspace setup instructions. New signups join an informational waitlist. | Dedicated researcher workspace with Pro-level rate limits and [business data protections](https://openai.com/enterprise-privacy/). See the Researchers guide for current offers and limits. | No institutional contract required. Existing Edu or Enterprise members use an institution-managed process. See the [Researchers guide](https://help.openai.com/en/articles/20001406-chatgpt-for-academic-researchers) for current terms and setup. |
+
+ChatGPT Edu includes file uploads, data analysis, web browsing, custom GPTs, and admin controls. See the [Edu overview](https://help.openai.com/en/articles/9377311-chatgpt-edu-at-openai).
+
+Plus and Pro links describe usage levels. Institution-managed pricing, promotions, and features can differ. Before changing plans, confirm how content, credits, and usage will be handled with your OpenAI account team.
+
+## Use multiple workspaces
+
+Each workspace has one plan type and its own members, settings, and content. Different plan types require separate workspaces.
+
+**Choose a primary workspace for each team’s shared work.** Give workspaces clear names and tell members when to use each one.
+
+1. In ChatGPT on the web, open your profile menu and select a workspace. On mobile, use the sidebar.
+
+2. Confirm the intended workspace is active before opening or creating work.
+
+## Common scenarios
+
+| When this happens                                                       | What to do or tell users                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Team members use different workspaces and need to collaborate           | Check the feature’s [sharing options](https://learn.chatgpt.com/docs/space/collaboration) and confirm that all collaborators can access the shared work.                                                                                                                                                                                                     |
+| A user cannot find a chat, file, or shared resource                     | Ask them to switch to the workspace where the work was created. [Switching workspaces](https://help.openai.com/en/articles/8265430-what-is-a-chatgpt-enterprise-workspace-how-can-i-switch-workspaces) does not transfer content.                                               |
+| A user cannot see a workspace                                           | Verify they signed in with the correct account, then confirm their [invitation or provisioning status](https://help.openai.com/en/articles/9047883-getting-started-with-openai-identity-and-access-for-managed-workspaces).                                                     |
+| A model or feature is available in one workspace but missing in another | Check the active workspace’s [plan and permissions](https://help.openai.com/en/articles/8266401-managing-members-workspace-roles-and-seats-in-chatgpt-enterprise-and-edu). Tell users which workspace to use. Extra credits do not automatically enable every model or feature. |
+| A user reaches a usage limit                                            | Review that workspace’s [allowance and spending controls](https://help.openai.com/en/articles/20001001-manage-usage-limits-and-overages-in-chatgpt-enterprise-and-edu). Explain the available options under the institution’s plan.                                             |
+| A researcher wants to join another Academic Researchers workspace       | Explain that a verified email can belong to [only one researcher workspace at a time](https://help.openai.com/en/articles/20001406-chatgpt-for-academic-researchers). Confirm the appropriate setup path before changing access.                                                |
+| A district wants to claim its domain                                    | Review existing [Teachers workspaces](https://help.openai.com/en/articles/12844995-chatgpt-for-teachers) and coordinate with the workspace owners before claiming the domain because the claim can affect access.                                                               |
+
+Related guidance: [Switch workspaces](https://help.openai.com/en/articles/8265430-what-is-a-chatgpt-enterprise-workspace-how-can-i-switch-workspaces) · [User lifecycle management](https://learn.chatgpt.com/docs/enterprise/user-lifecycle) · [Pricing and usage](https://learn.chatgpt.com/docs/pricing)

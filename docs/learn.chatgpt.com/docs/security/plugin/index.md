@@ -41,6 +41,10 @@ This page covers the Codex Security plugin in the desktop app or Codex CLI. To
 
 3. Confirm the plugin is enabled, then open **Security** in the sidebar.
 
+If plugin installation shows "Disabled by admin" in a managed workspace,
+ask your workspace owner to [check plugin access](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors#troubleshoot-disabled-by-admin).
+For a personal account, see [plugin and app troubleshooting](https://help.openai.com/en/articles/20001497-troubleshooting-plugins-apps-in-chatgpt).
+
 </ContentModeSwitch>
 
 <ContentModeSwitch group="codex-surface" id="cli">

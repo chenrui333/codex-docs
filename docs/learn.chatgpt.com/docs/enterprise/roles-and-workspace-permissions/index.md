@@ -78,18 +78,22 @@ change local runtime requirements.
 
 ### Set the workspace default, then create targeted custom roles
 
-Only workspace owners can configure role-based access control (RBAC) and create
-custom roles. Workspace settings establish the baseline for eligible
-permissions. Workspace owners can assign custom roles through groups or
-directly to individual members where supported. Groups can be manually managed
-or SCIM-synced, and a member can receive more than one custom role.
+Workspace owners can create custom roles for role-based access control (RBAC)
+and assign them through groups or directly to members where supported.
+Workspace settings establish the baseline for eligible permissions. Groups can
+be manually managed or SCIM-synced, and a member can receive more than one custom role.
 
 For eligible permissions, **Default** inherits the workspace setting, **On**
 grants access through that role, and **Off** does not grant access through that
-role. Ordinary role permissions combine additively: another assigned role can
-still grant access. Review direct assignments and roles received through groups.
-Lockdown Mode and product eligibility apply separately. Available permission
-states can vary by feature.
+role. Available permission states can vary by feature.
+
+Ordinary role permissions combine additively. For example, **On** in one role
+allows a feature even if another role sets it to **Off**. Review direct and group
+role assignments.
+
+Lockdown Mode restrictions and product eligibility still apply when an ordinary
+role grants access. For plugins,
+see [plugin access troubleshooting](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors#troubleshoot-disabled-by-admin).
 
 ### Review Work Local and Work Cloud permissions
 

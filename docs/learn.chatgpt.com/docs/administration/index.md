@@ -256,6 +256,27 @@ Source: https://learn.chatgpt.com/docs/administration
       ],
     },
     {
+      title: "ChatGPT EDU",
+      description:
+        "Compare education plans and configure access for your institution.",
+      pages: [
+        {
+          title: "Education plans",
+          description:
+            "Compare plans, help members get access, and manage multiple workspaces.",
+          href: "/codex/enterprise/education-plans",
+          icon: "users",
+        },
+        {
+          title: "Higher education setup",
+          description:
+            "Choose campus roles, compare recommended permissions, and verify access.",
+          href: "/codex/enterprise/higher-education-roles-and-permissions",
+          icon: "userLock",
+        },
+      ],
+    },
+    {
       title: "ChatGPT Work",
       description:
         "Review the ChatGPT Work overview and administration reference.",

@@ -57,9 +57,10 @@ Group membership by itself doesn't grant a workspace feature permission.
 ### Connect a group to the right permissions
 
 Workspace owners can assign custom roles to groups or, where available, directly
-to members. Check every applicable role: an explicit **Off** in any role
-denies that permission, even when another role grants it. A member's seat type
-and product eligibility still apply.
+to members. Members receive permissions granted by any of their ordinary
+roles. Lockdown Mode restrictions, seat type, and product eligibility still
+apply. See
+[how role permissions combine](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions#set-the-workspace-default-then-create-targeted-custom-roles).
 
 SCIM provisions workspace membership and group assignments. It doesn't grant
 permissions in GitHub, Google Drive, Slack, or another connected system. It also

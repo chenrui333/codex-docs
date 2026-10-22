@@ -49,6 +49,87 @@
       "id": "c4a725572d4a83dc0e9d2e30dbe922f40e507aab283cd1921cbb033d78444ef9",
       "observed_at": "2026-10-22T03:44:01+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/education-plans/index.md",
+          "learn.chatgpt.com/docs/enterprise/higher-education-roles-and-permissions/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "baab70fc1280d3b16599f8d9e2c94cab3205be09b40b3b7db4803620f6913e08",
+            "before": "bfa154d601c43ba4b54e571fadc855b1bbe9c52cb9b8e44f1e5534d7318f5f9d"
+          },
+          "learn.chatgpt.com/docs/changelog/index.md": {
+            "after": "fd24e3a4421526e8412dc256a46f82ff0cd56b0ce8691c1cf7191ff71d1929e4",
+            "before": "d6f24a8b524ced6107b01155f6c6e6fac03f470d8dacdbdde953cbd5cd85d4aa"
+          },
+          "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md": {
+            "after": "525e8c2c3bf7dcdcbe27f3d25aecd6f9592aca848808c1340792a7a0cad77b0c",
+            "before": "698046f770a3ee6c59450f1ad4ee927e03bf5b784f8edc84ed073314be74259a"
+          },
+          "learn.chatgpt.com/docs/enterprise/education-plans/index.md": {
+            "after": "491cbee9481d2272d3a091ab9b59452d9d3da76fd9710a2f4d30c338470a1303",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md": {
+            "after": "7a213894b7cc9decc85c48c4eafd41002298a3bbc585fd0e78d9fb934d308683",
+            "before": "09bc080cc3b92664dfc3da0c26efb4491ba7bc1eee912a7a19d1b270144cc855"
+          },
+          "learn.chatgpt.com/docs/enterprise/higher-education-roles-and-permissions/index.md": {
+            "after": "270a4f8dbc879ac0afe935393198e51d7439d3e071f4116a96761af7ffadca16",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md": {
+            "after": "0f327052dde7f69a9882d141eedbd3b55b6b78dce86e6a5fe9533adb2d0664de",
+            "before": "bbecf1e293d786393e531e5c59421f919ec9d25217ea15d51a0d4db34f28564b"
+          },
+          "learn.chatgpt.com/docs/enterprise/user-lifecycle/index.md": {
+            "after": "e8fa49eb29153e53566721d38e0b41a399e3d695644f3bb4ba04c3a585bd00fe",
+            "before": "ab358da81d117c7d9de2d28aa9ad7a0c31952c764ad048a880bd55e7bd2ad67f"
+          },
+          "learn.chatgpt.com/docs/security/plugin/index.md": {
+            "after": "9409a1f01d2173286406cbc71e7546e7b2ad456280a84aa3d81482e8a65e52ae",
+            "before": "5de78e7f15165bbd52818f581fdae3606ae0f0972ef7d920b51ec89f10ead9d5"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.163.0",
+          "codex_cli_source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+          "codex_cli_version": "0.163.0",
+          "codex_cli_version_raw": "codex-cli 0.163.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/changelog/index.md",
+          "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
+          "learn.chatgpt.com/docs/enterprise/groups-and-provisioning/index.md",
+          "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
+          "learn.chatgpt.com/docs/enterprise/user-lifecycle/index.md",
+          "learn.chatgpt.com/docs/security/plugin/index.md"
+        ]
+      },
+      "id": "590004e4bd03f4696589df0621cc811def5b4d5e0b0b1dddb216c4cfbe7e33a1",
+      "observed_at": "2026-10-22T16:54:17+00:00",
+      "previous_id": "c4a725572d4a83dc0e9d2e30dbe922f40e507aab283cd1921cbb033d78444ef9"
     }
   ],
   "schema_version": 1
