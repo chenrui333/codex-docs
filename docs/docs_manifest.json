@@ -7673,11 +7673,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "fc967a12464be6f8a41f5c19710634b4585ee8fe0f355109dde45bdbe804de7f",
+      "sha256": "d6f24a8b524ced6107b01155f6c6e6fac03f470d8dacdbdde953cbd5cd85d4aa",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"5608106b78f56de1f193aa5b5be5ac4d\"",
+      "source_etag": "W/\"3a8dd1c2039322a016d90726f7ce712e\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-21T21:24:31Z",
+      "source_last_modified": "2026-10-22T03:07:22Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
@@ -9005,7 +9005,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/shared-connections"
     },
     "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md": {
-      "sha256": "df5d44c4742a12848d960b11a9f3c304818c46700735c1f1e3229d22f1627dde",
+      "sha256": "d6bcb89f5757ee5957d6df1a0f61768bc7d9cfcb15955fb41d89f903ef5674ad",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9269,7 +9269,7 @@
       "source_url": "https://learn.chatgpt.com/docs/environments/cloud-environment"
     },
     "learn.chatgpt.com/docs/environments/cloud-environments/index.md": {
-      "sha256": "b91664b1c5cc36ddc5e6dfc59c02eabd8762196c9bede162e48b34a5f6a2b035",
+      "sha256": "029d16964d074dd9fa1a76c08170f2227d67f394e4e0068d0bec7c9c98266b67",
       "source_area": "learn_environments",
       "source_kind": "learn_markdown",
       "source_type": "learn",

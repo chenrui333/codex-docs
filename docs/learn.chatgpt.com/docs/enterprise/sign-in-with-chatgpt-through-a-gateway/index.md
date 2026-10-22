@@ -60,23 +60,12 @@ requires_openai_auth = true # Use the ChatGPT credential for OpenAI.
 env_http_headers = { "X-Gateway-Key" = "GATEWAY_KEY" } # Send the same gateway key separately.
 ```
 
-Use a launch helper such as this shell function for the CLI. Replace the command and arguments with those from your existing `auth` block:
-
-```sh
-codex_with_gateway() (
-  set -eu
-  GATEWAY_KEY=$(/usr/local/bin/fetch-gateway-token)
-  test -n "$GATEWAY_KEY"
-  export GATEWAY_KEY
-  exec codex "$@"
-)
-
-codex_with_gateway
-```
+Use a launch helper function to run the command from your existing `auth` block, verify that it returned a non-empty key, export the key as `GATEWAY_KEY`, and then start Codex.
 
 Configure your gateway to accept `X-Gateway-Key`, validate the key, and remove that header before forwarding the request to the backend. The request from the client now carries:
 
 ```http
+POST /backend-api/codex/responses
 Authorization: Bearer <ChatGPT token>
 ChatGPT-Account-ID: <workspace ID, when available>
 X-Gateway-Key: <same gateway key returned by your command>
@@ -84,15 +73,28 @@ X-Gateway-Key: <same gateway key returned by your command>
 
 The helper runs once per launch. Codex does not rerun it or refresh this header; when the key expires, obtain a new key and relaunch. For desktop, your launch integration must supply `GATEWAY_KEY` to the app process. Choose Option B if you want Codex to manage gateway sign-in and token renewal.
 
-The diagrams abbreviate the request headers and launch helper. Use `Authorization: Bearer <ChatGPT token>` and keep the helper's empty-key check from the examples above. If `GATEWAY_KEY` is empty, Codex omits `X-Gateway-Key`.
-
 ![Option A: Reuse the credential command through a launch helper. The same gateway key moves from Authorization to X-Gateway-Key while ChatGPT sign-in supplies Authorization.](<https://developers.openai.com/images/codex/gateways/chatgpt-gateway-before-after-header-light.webp>)
 
 ![Option A runtime: The gateway validates and removes X-Gateway-Key, then forwards ChatGPT Authorization and any account ID unchanged to the Codex backend.](<https://developers.openai.com/images/codex/gateways/chatgpt-gateway-runtime-header-light.webp>)
 
 ### Option B: Use native gateway OAuth
 
-Use this option to replace the command and launch helper with Codex-managed gateway sign-in. Your gateway must have an OAuth authorization server. Register a public client that supports authorization code with PKCE, then replace the example URLs and client ID. Remove the existing provider's `auth` block and use the following managed configuration.
+Use this option to replace API-key or command-backed gateway authentication with Codex-managed gateway sign-in. Your gateway must have an OAuth authorization server. Register a public client that supports authorization code with PKCE, then replace the example URLs and client ID.
+
+For comparison, an existing API-key provider that reads its key from an environment variable might contain:
+
+```toml
+# config.toml — existing API-key path
+model_provider = "enterprise_gateway"
+
+[model_providers.enterprise_gateway]
+name = "Enterprise gateway"
+base_url = "https://gateway.example.com/v1"
+requires_openai_auth = false
+env_key = "CODEX_GATEWAY_API_KEY"
+```
+
+For ChatGPT sign-in, replace the existing provider with the following managed configuration:
 
 ```toml
 # requirements.toml
@@ -112,6 +114,15 @@ delivery = { kind = "cookie", name = "auth-openid" } # Add gateway auth as a coo
 ```
 
 Codex uses a free loopback port by default. If your identity provider requires a fixed redirect URI, set `redirect_port` and register `http://127.0.0.1:43127/callback` for this example.
+
+The request from the client now carries:
+
+```http
+POST /backend-api/codex/responses
+Authorization: Bearer <ChatGPT token>
+ChatGPT-Account-ID: <workspace ID, when available>
+Cookie: auth-openid=<gateway token>
+```
 
 ![Option B: Replace API-key gateway auth with native gateway OAuth alongside ChatGPT sign-in.](<https://developers.openai.com/images/codex/gateways/chatgpt-gateway-before-after-light.webp>)
 

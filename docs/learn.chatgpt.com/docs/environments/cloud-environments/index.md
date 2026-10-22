@@ -292,9 +292,6 @@ Save attachment or alias changes to apply them during setup; publish or
 republish to use them in new tasks. Editing a shared identity connection can
 affect other environments that use it.
 
-OIDC is available by request for Enterprise workspaces. Contact your OpenAI
-account team to enable it. If you don't have an account team, [contact sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_codex).
-
 <a id="oidc-compatibility"></a>
 
 ### OIDC compatibility by provider

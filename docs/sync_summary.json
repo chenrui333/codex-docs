@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-21T21:25:57+00:00",
-  "manifest_sha256": "dd86bcb10e17b004dcb7f2be9ea1443af580c116284f5ba5d073b74a347557d0",
+  "generated_at": "2026-10-22T03:44:01+00:00",
+  "manifest_sha256": "2bc5edcec8cdf2e3b2e5b17a606a2b11637d032d00ba456ec32ef112677ab419",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,6 +17,8 @@
   },
   "total_files": 291,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md",
+    "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md",
+    "learn.chatgpt.com/docs/environments/cloud-environments/index.md"
   ]
 }
