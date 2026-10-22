@@ -130,6 +130,46 @@
       "id": "590004e4bd03f4696589df0621cc811def5b4d5e0b0b1dddb216c4cfbe7e33a1",
       "observed_at": "2026-10-22T16:54:17+00:00",
       "previous_id": "c4a725572d4a83dc0e9d2e30dbe922f40e507aab283cd1921cbb033d78444ef9"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/extend/mcp/index.md": {
+            "after": "3227e226ab8c404551d3c8aa76623cf6dc5858eebbe997cb5cfd640c2ce13399",
+            "before": "de583970b535e15a758b3799d87982b3fab3e690d4476381d895570fb8a31413"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.163.0",
+          "codex_cli_source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+          "codex_cli_version": "0.163.0",
+          "codex_cli_version_raw": "codex-cli 0.163.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/extend/mcp/index.md"
+        ]
+      },
+      "id": "722dfc6ba7cce0af9f85dc1f40e3cf861fb7f7ae93061100fd68f41f70512280",
+      "observed_at": "2026-10-22T21:19:52+00:00",
+      "previous_id": "590004e4bd03f4696589df0621cc811def5b4d5e0b0b1dddb216c4cfbe7e33a1"
     }
   ],
   "schema_version": 1

@@ -450,9 +450,13 @@ back to another callback. A malformed callback URL or issuer support advertised
 without a metadata issuer also remains a hard failure. See
 [Authenticate users](https://developers.openai.com/plugins/build/auth).
 
-If the MCP server advertises `scopes_supported`, Codex prefers those
-server-advertised scopes during OAuth login. Otherwise, Codex falls back to the
-scopes configured in `config.toml`.
+Set `mcp_servers.<server-name>.scopes` in `config.toml` to choose OAuth scopes
+for a server. To override them for one login, run
+`codex mcp login <name> --scopes read,write`.
+If neither is set, Codex uses advertised OAuth scopes when available.
+
+An empty list (`scopes = []`) still lets the OAuth library choose scopes.
+The library can also add `offline_access` when the authorization server supports it.
 
 #### OAuth client registration
 
