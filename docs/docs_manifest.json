@@ -7761,11 +7761,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "a798d859ea4f65f5096d7f79472814b0782352786238ec95bebada063974cef9",
+      "sha256": "48bb1ea545ff7990bf201c0e36154a020a08ae7e16556218f9ee1e1e6a5b60a8",
       "source_area": "learn_changelog",
-      "source_etag": "W/\"3165e876f479beddea54737e98d70c57\"",
+      "source_etag": "W/\"3b662b9a22146feb84cf8204af6a7e11\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-22T21:26:34Z",
+      "source_last_modified": "2026-10-23T07:42:29Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/changelog"
     },
