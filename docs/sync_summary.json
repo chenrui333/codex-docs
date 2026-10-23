@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-22T21:19:52+00:00",
-  "manifest_sha256": "13abb304c26c834ac1dcbfb505b492c5fe352f9a087b9b24d61c4cb4f27c744a",
+  "generated_at": "2026-10-23T03:48:51+00:00",
+  "manifest_sha256": "d8d46c7a6404a9869f760db0f3cc7fd0a713d3db1c269f18eb1086c1c15f2bef",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,6 +17,6 @@
   },
   "total_files": 293,
   "updated": [
-    "learn.chatgpt.com/docs/extend/mcp/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md"
   ]
 }
