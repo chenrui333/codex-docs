@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.163.0",
-  "codex_cli_version_raw": "codex-cli 0.163.0",
+  "codex_cli_version": "0.164.0",
+  "codex_cli_version_raw": "codex-cli 0.164.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -674,6 +674,14 @@
           "synopsis": "-c, --config <key=value>"
         },
         {
+          "description": "Sign out using the managed auth path before loading fresh startup requirements",
+          "flags": [
+            "--startup-sign-out"
+          ],
+          "primary_flag": "--startup-sign-out",
+          "synopsis": "--startup-sign-out"
+        },
+        {
           "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
           "flags": [
             "--enable"
@@ -682,12 +690,36 @@
           "synopsis": "--enable <FEATURE>"
         },
         {
+          "description": "Validate configuration and print requirements as JSON without starting the app server",
+          "flags": [
+            "--print-startup-config"
+          ],
+          "primary_flag": "--print-startup-config",
+          "synopsis": "--print-startup-config"
+        },
+        {
           "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
           "flags": [
             "--disable"
           ],
           "primary_flag": "--disable",
           "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "ClientInfo JSON used for configuration/auth request identity",
+          "flags": [
+            "--startup-client-info"
+          ],
+          "primary_flag": "--startup-client-info",
+          "synopsis": "--startup-client-info <STARTUP_CLIENT_INFO>"
+        },
+        {
+          "description": "Load frozen cloud skills from a JSON snapshot instead of a live skill service",
+          "flags": [
+            "--cloud-skills-snapshot"
+          ],
+          "primary_flag": "--cloud-skills-snapshot",
+          "synopsis": "--cloud-skills-snapshot <PATH>"
         },
         {
           "description": "Connect to a remote code-mode host instead of starting a local host",
@@ -2138,6 +2170,58 @@
       ]
     },
     {
+      "description": "[experimental] Migrate configured SQLite databases to DELETE mode in place",
+      "name": "migrate-nfs-db",
+      "options": [
+        {
+          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "flags": [
+            "-c",
+            "--config"
+          ],
+          "primary_flag": "--config",
+          "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Use a local directory with space for the database and WAL files. The default is the system temporary directory [default: /tmp]",
+          "flags": [
+            "--staging-dir"
+          ],
+          "primary_flag": "--staging-dir",
+          "synopsis": "--staging-dir <STAGING_DIR>"
+        },
+        {
+          "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
+          "flags": [
+            "--enable"
+          ],
+          "primary_flag": "--enable",
+          "synopsis": "--enable <FEATURE>"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Print help (see a summary with '-h') Stop SQLite clients on every host and keep them stopped through cutover. The NFS mount must support cross-client POSIX locks (no nolock/local_lock=all). This command replaces configured databases in place and retains their WAL backups.",
+          "flags": [
+            "-h",
+            "--help"
+          ],
+          "primary_flag": "--help",
+          "synopsis": "-h, --help"
+        }
+      ],
+      "subcommands": [],
+      "usage": [
+        "codex migrate-nfs-db [OPTIONS]"
+      ]
+    },
+    {
       "description": "Unarchive a saved session by id or session name",
       "name": "unarchive",
       "options": [
@@ -2777,6 +2861,14 @@
           "synopsis": "--use-agent-identity-auth"
         },
         {
+          "description": "Read rotating executor credentials from stdin; exit when the pipe closes",
+          "flags": [
+            "--executor-credential-stdin"
+          ],
+          "primary_flag": "--executor-credential-stdin",
+          "synopsis": "--executor-credential-stdin"
+        },
+        {
           "description": "Sign Direct registration and WebSocket handshake requests with AWS SigV4",
           "flags": [
             "--aws-sigv4"
@@ -3189,6 +3281,10 @@
           "name": "migrate-rollouts"
         },
         {
+          "description": "[experimental] Migrate configured SQLite databases to DELETE mode in place",
+          "name": "migrate-nfs-db"
+        },
+        {
           "description": "Unarchive a saved session by id or session name",
           "name": "unarchive"
         },
@@ -3427,9 +3523,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+  "source_commit": "6aaac694803004a63c6f393d153c96d22521a6b9",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.163.0",
+  "source_ref": "rust-v0.164.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"

@@ -22,6 +22,11 @@
     },
     {
       "enabled": false,
+      "key": "app_server_websocket_compression",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "apply_patch_freeform",
       "stage": "removed"
     },
@@ -66,9 +71,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "bedrock_setup_wizard",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -267,6 +272,11 @@
     },
     {
       "enabled": false,
+      "key": "executor_capability_discovery_v2",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "experimental_windows_sandbox",
       "stage": "removed"
     },
@@ -396,9 +406,9 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "incremental_tools",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -441,8 +451,13 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "mcp_oauth_refresh_coordination",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "mcp_tool_list_changed",
       "stage": "under development"
     },
     {
@@ -478,6 +493,11 @@
     {
       "enabled": false,
       "key": "multi_agent_v2_dynamic_tools",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "multi_env_copy_file",
       "stage": "under development"
     },
     {
@@ -548,7 +568,7 @@
     {
       "enabled": true,
       "key": "realtime_conversation",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -623,6 +643,11 @@
     {
       "enabled": false,
       "key": "rollout_budget",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "runtime_agent_instances",
       "stage": "under development"
     },
     {
@@ -703,7 +728,7 @@
     {
       "enabled": false,
       "key": "stable_environment_tools",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -723,6 +748,11 @@
     {
       "enabled": false,
       "key": "subagent_default_context_limits",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "subagent_thread_environments",
       "stage": "under development"
     },
     {
@@ -768,7 +798,7 @@
     {
       "enabled": false,
       "key": "transcript_v2",
-      "stage": "deprecated"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -842,6 +872,11 @@
     },
     {
       "enabled": false,
+      "key": "wake_on_agent_messages",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "web_search_cached",
       "stage": "deprecated"
     },
@@ -868,7 +903,7 @@
     {
       "enabled": true,
       "key": "worktrees",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -876,13 +911,14 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.163.0",
+  "codex_cli_version": "codex-cli 0.164.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
       "api_key_cyber_access_programs",
       "api_key_model_discovery",
       "auth_elicitation",
+      "bedrock_setup_wizard",
       "browser_annotation_api",
       "cli_daybreak",
       "code_mode_host",
@@ -893,7 +929,9 @@
       "guardian_reuse_parent_compaction",
       "image_generation",
       "in_app_voice",
+      "incremental_tools",
       "login_shell_package_path",
+      "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_v2",
       "recommended_plugins",
@@ -906,7 +944,6 @@
       "unbounded_connection_retries",
       "unified_exec_tty",
       "view_image",
-      "worktrees",
       "write_stdin_approval"
     ],
     "actionable_stages": [
@@ -925,6 +962,7 @@
       "analytics_plan_history",
       "api_key_cyber_access_programs",
       "api_key_model_discovery",
+      "app_server_websocket_compression",
       "apply_patch_freeform",
       "apply_patch_preserve_line_endings",
       "apply_patch_streaming_events",
@@ -968,6 +1006,7 @@
       "exec_permission_approvals",
       "executed_tool_call_metadata",
       "executor_capability_discovery",
+      "executor_capability_discovery_v2",
       "experimental_windows_sandbox",
       "external_agent_memory_import",
       "external_migration",
@@ -995,11 +1034,13 @@
       "login_shell_package_path",
       "mcp_2026_07_28",
       "mcp_oauth_refresh_coordination",
+      "mcp_tool_list_changed",
       "mentions_v2",
       "model_catalog_in_context",
       "multi_agent_mode",
       "multi_agent_v2",
       "multi_agent_v2_dynamic_tools",
+      "multi_env_copy_file",
       "non_prefixed_mcp_tool_names",
       "nonfatal_clock_read_errors",
       "omit_app_server_notification_media",
@@ -1021,6 +1062,7 @@
       "retain_client_developer_messages",
       "retain_client_tool_outputs",
       "rollout_budget",
+      "runtime_agent_instances",
       "runtime_metrics",
       "search_tool",
       "secret_auth_storage",
@@ -1038,6 +1080,7 @@
       "steer",
       "step_model_switching",
       "subagent_default_context_limits",
+      "subagent_thread_environments",
       "system_proxy_fallback",
       "terminal_resize_reflow",
       "terminal_visualization_instructions",
@@ -1059,6 +1102,7 @@
       "use_linux_sandbox_bwrap",
       "use_xaa",
       "view_image",
+      "wake_on_agent_messages",
       "windows_sandbox_service",
       "workspace_owner_usage_nudge",
       "worktrees",
@@ -1066,7 +1110,6 @@
     ],
     "missing_in_docs_by_stage": {
       "deprecated": [
-        "transcript_v2",
         "use_legacy_landlock"
       ],
       "experimental": [
@@ -1105,21 +1148,25 @@
         "shell_zsh_fork",
         "skill_env_var_dependency_prompt",
         "sqlite",
+        "stable_environment_tools",
         "steer",
         "terminal_resize_reflow",
         "tool_search",
         "tool_search_always_defer_mcp_tools",
+        "transcript_v2",
         "tui_app_server",
         "unavailable_dummy_tools",
         "undo",
         "unified_exec_zsh_fork",
         "use_linux_sandbox_bwrap",
-        "workspace_owner_usage_nudge"
+        "workspace_owner_usage_nudge",
+        "worktrees"
       ],
       "stable": [
         "api_key_cyber_access_programs",
         "api_key_model_discovery",
         "auth_elicitation",
+        "bedrock_setup_wizard",
         "browser_annotation_api",
         "cli_daybreak",
         "code_mode_host",
@@ -1130,6 +1177,8 @@
         "guardian_reuse_parent_compaction",
         "image_generation",
         "in_app_voice",
+        "incremental_tools",
+        "mcp_oauth_refresh_coordination",
         "mentions_v2",
         "multi_agent_v2",
         "recommended_plugins",
@@ -1142,16 +1191,15 @@
         "unbounded_connection_retries",
         "unified_exec_tty",
         "view_image",
-        "worktrees",
         "write_stdin_approval"
       ],
       "under development": [
         "agent_message_board",
+        "app_server_websocket_compression",
         "apply_patch_streaming_events",
         "artifact",
         "async_compaction",
         "background_paginated_rollout_migration",
-        "bedrock_setup_wizard",
         "chronicle",
         "code_mode",
         "code_mode_host_grpc",
@@ -1174,6 +1222,7 @@
         "exec_permission_approvals",
         "executed_tool_call_metadata",
         "executor_capability_discovery",
+        "executor_capability_discovery_v2",
         "external_agent_memory_import",
         "guardian_conversation_history_tools",
         "guardian_enhanced_node_repl_transcripts",
@@ -1183,13 +1232,13 @@
         "guardianv2",
         "guardianv2_decisions_comparison",
         "image_resize_notice",
-        "incremental_tools",
         "instant_interrupt",
         "local_thread_store_compression",
         "mcp_2026_07_28",
-        "mcp_oauth_refresh_coordination",
+        "mcp_tool_list_changed",
         "model_catalog_in_context",
         "multi_agent_v2_dynamic_tools",
+        "multi_env_copy_file",
         "non_prefixed_mcp_tool_names",
         "nonfatal_clock_read_errors",
         "omit_app_server_notification_media",
@@ -1202,19 +1251,21 @@
         "retain_client_developer_messages",
         "retain_client_tool_outputs",
         "rollout_budget",
+        "runtime_agent_instances",
         "runtime_metrics",
         "send_message_to_user_async",
         "shell_snapshot_v2",
         "skip_host_skill_discovery",
-        "stable_environment_tools",
         "standalone_web_search",
         "step_model_switching",
         "subagent_default_context_limits",
+        "subagent_thread_environments",
         "terminal_visualization_instructions",
         "token_budget",
         "unified_image_budget",
         "use_agent_identity",
         "use_xaa",
+        "wake_on_agent_messages",
         "windows_sandbox_service"
       ]
     },
@@ -1275,7 +1326,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "83086188ae0614bd882818ff1aa23f3194962012",
+  "source_commit": "6aaac694803004a63c6f393d153c96d22521a6b9",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1308,6 +1359,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
+    },
+    "app_server_websocket_compression": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "apply_patch_freeform": {
       "behavior_evidence": "Removed compatibility flag for the deleted apply_patch fallback feature.",
@@ -1387,10 +1446,10 @@
     "bedrock_setup_wizard": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "browser_annotation_api": {
       "compatibility_flag": false,
@@ -1709,6 +1768,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "executor_capability_discovery_v2": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "experimental_windows_sandbox": {
       "behavior_evidence": "Enable Windows sandbox (restricted token) on Windows.",
       "compatibility_flag": true,
@@ -1925,10 +1992,10 @@
     "incremental_tools": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "instant_interrupt": {
       "compatibility_flag": false,
@@ -2001,6 +2068,14 @@
     "mcp_oauth_refresh_coordination": {
       "compatibility_flag": false,
       "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
+    "mcp_tool_list_changed": {
+      "compatibility_flag": false,
+      "configurable": true,
       "default_enabled": false,
       "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
@@ -2056,6 +2131,14 @@
       "stage_from_source": "stable"
     },
     "multi_agent_v2_dynamic_tools": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "multi_env_copy_file": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2170,12 +2253,13 @@
       "stage_from_source": "under development"
     },
     "realtime_conversation": {
-      "compatibility_flag": false,
-      "configurable": true,
+      "behavior_evidence": "Removed compatibility flag. TUI voice availability follows platform support.",
+      "compatibility_flag": true,
+      "configurable": false,
       "default_enabled": true,
       "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "reasoning_effort_override": {
       "compatibility_flag": false,
@@ -2297,6 +2381,14 @@
       "stage_from_source": "under development"
     },
     "rollout_budget": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "runtime_agent_instances": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2430,12 +2522,13 @@
       "stage_from_source": "removed"
     },
     "stable_environment_tools": {
-      "compatibility_flag": false,
-      "configurable": true,
+      "behavior_evidence": "Advertise enabled environment-backed tools and their shell parameters before the executor is ready. Actual execution still requires a usable environment and its policy.",
+      "compatibility_flag": true,
+      "configurable": false,
       "default_enabled": false,
       "default_enabled_expr": "false",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "standalone_web_search": {
       "compatibility_flag": false,
@@ -2463,6 +2556,14 @@
       "stage_from_source": "under development"
     },
     "subagent_default_context_limits": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "subagent_thread_environments": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2538,12 +2639,13 @@
       "stage_from_source": "stable"
     },
     "transcript_v2": {
-      "compatibility_flag": false,
-      "configurable": true,
+      "behavior_evidence": "Removed no-op; use `tui.fullscreen_transcript` instead.",
+      "compatibility_flag": true,
+      "configurable": false,
       "default_enabled": false,
       "default_enabled_expr": "false",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "deprecated"
+      "effective_behavior": "no_op",
+      "stage_from_source": "removed"
     },
     "tui_app_server": {
       "behavior_evidence": "Removed compatibility flag. The TUI now always uses the app-server implementation.",
@@ -2662,6 +2764,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "wake_on_agent_messages": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "web_search_cached": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2704,12 +2814,13 @@
       "stage_from_source": "removed"
     },
     "worktrees": {
-      "compatibility_flag": false,
-      "configurable": true,
+      "behavior_evidence": "Removed compatibility flag. Managed worktrees and repository-aware sessions are always available.",
+      "compatibility_flag": true,
+      "configurable": false,
       "default_enabled": true,
       "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "write_stdin_approval": {
       "compatibility_flag": false,
@@ -2721,13 +2832,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "934ac0856c95f11d554e692e7ccf975822de1c916c037c9beddfe26832854e13",
-    "features_rs_sha256": "5317e79cb2f5a72044b15ef9c506e9906c295f5a4e43cc1f1f05b87455824542"
+    "client_rs_sha256": "f019ea748a1692e51b8467a808af2610db493b7e29b1809b16336e7fb976d68a",
+    "features_rs_sha256": "53c99aa1176c0f4f8763cbf960f11eb574f63fb33214f2bcd3bf699ebb361337"
   },
-  "source_ref": "rust-v0.163.0",
+  "source_ref": "rust-v0.164.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/83086188ae0614bd882818ff1aa23f3194962012/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/83086188ae0614bd882818ff1aa23f3194962012/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/6aaac694803004a63c6f393d153c96d22521a6b9/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/6aaac694803004a63c6f393d153c96d22521a6b9/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
