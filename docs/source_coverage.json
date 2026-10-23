@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-23T11:11:36+00:00",
+  "generated_at": "2026-10-23T21:09:10+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 189,
+      "discovered_urls": 190,
       "html_fallback_pages": 2,
-      "markdown_pages": 186,
-      "mirrored_paths_count": 188,
-      "mirrored_urls": 188,
+      "markdown_pages": 187,
+      "mirrored_paths_count": 189,
+      "mirrored_urls": 189,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -477,6 +477,7 @@
       "https://learn.chatgpt.com/docs/mcp-server",
       "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/mobile",
+      "https://learn.chatgpt.com/docs/model-catalogs",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -671,6 +672,7 @@
       "https://learn.chatgpt.com/docs/mcp-server",
       "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/mobile",
+      "https://learn.chatgpt.com/docs/model-catalogs",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -861,6 +863,7 @@
       "learn.chatgpt.com/docs/mcp-server/index.md",
       "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
       "learn.chatgpt.com/docs/mobile/index.md",
+      "learn.chatgpt.com/docs/model-catalogs/index.md",
       "learn.chatgpt.com/docs/model-selection/index.md",
       "learn.chatgpt.com/docs/models/index.md",
       "learn.chatgpt.com/docs/non-interactive-mode/index.md",
@@ -934,7 +937,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 188,
+    "mirrored_paths_count": 189,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1052,6 +1055,7 @@
       "https://learn.chatgpt.com/docs/mcp-server",
       "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/mobile",
+      "https://learn.chatgpt.com/docs/model-catalogs",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1250,6 +1254,7 @@
           "https://learn.chatgpt.com/docs/mcp-server",
           "https://learn.chatgpt.com/docs/migrate-custom-gpts",
           "https://learn.chatgpt.com/docs/mobile",
+          "https://learn.chatgpt.com/docs/model-catalogs",
           "https://learn.chatgpt.com/docs/model-selection",
           "https://learn.chatgpt.com/docs/models",
           "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1324,7 +1329,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "d068a7e3789450c777dc41e6eab7288cba4592a596c3a0f64b399a13d509aa23",
+        "discovered_urls_sha256": "fe20d6916554c7cb5c9b62041baa4f1efc1290b9ad8acb31132a4c5734c02a05",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1443,6 +1448,7 @@
           "https://learn.chatgpt.com/docs/mcp-server",
           "https://learn.chatgpt.com/docs/migrate-custom-gpts",
           "https://learn.chatgpt.com/docs/mobile",
+          "https://learn.chatgpt.com/docs/model-catalogs",
           "https://learn.chatgpt.com/docs/model-selection",
           "https://learn.chatgpt.com/docs/models",
           "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1629,9 +1635,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1708,7 +1714,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-22T16:54:17+00:00",
+    "last_successful_full_sync_at": "2026-10-23T21:09:09+00:00",
     "status": "complete"
   }
 }

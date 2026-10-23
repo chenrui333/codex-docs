@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
-source_last_modified: '2026-10-16T20:12:37Z'
-source_etag: 'W/"3f11e79e9d549d4ea3dd85d9ae99f88c"'
+source_last_modified: '2026-10-23T21:09:06Z'
+source_etag: 'W/"5f91e33a223493e9349e4cf1d3fa5c77"'
 ---
 
 # Computer use
@@ -11,6 +11,507 @@ source_etag: 'W/"3f11e79e9d549d4ea3dd85d9ae99f88c"'
 Source: https://developers.openai.com/api/docs/guides/tools-computer-use
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+## Get started with computer use
+
+### Run code execution
+
+Connect the API loop to your browser or desktop runtime.
+
+```javascript
+
+async function runComputerUse(endpoint, prompt, model = "gpt-6-astra") {
+  const client = new OpenAI();
+  const sessionId = randomUUID();
+
+  const tools = [
+    {
+      type: "function",
+      name: "exec_js",
+      description: `Run JavaScript in a persistent browser. Available: Playwright's
+browser, context, and page objects; console.log(value); and display(base64Image).
+Save reusable variables on globalThis. Inspect a screenshot before acting and
+check the screen after a short group of actions. Keep screenshots in memory.
+Use top-level await for async operations. Return images with display() and concise
+text with console.log(). The context viewport is 1440x900.`,
+      parameters: {
+        type: "object",
+        properties: { code: { type: "string" } },
+        required: ["code"],
+        additionalProperties: false,
+      },
+      strict: true,
+    },
+  ];
+
+  let nextInput = [{ role: "user", content: prompt }];
+  let previousResponseId;
+
+  for (let turn = 0; turn < 20; turn++) {
+    const response = await client.responses.create({
+      model,
+      tools,
+      input: nextInput,
+      previous_response_id: previousResponseId,
+      reasoning: { effort: "low" },
+    });
+    if (response.status !== "completed") {
+      throw new Error(`Response stopped with status: ${response.status}`);
+    }
+    const calls = response.output.filter(
+      (item) => item.type === "function_call"
+    );
+    if (
+      calls.length === 0 &&
+      response.output.some(
+        (item) => item.type === "message" && item.phase !== "commentary"
+      )
+    ) {
+      console.log(response.output_text);
+      return;
+    }
+    if (turn === 19) {
+      throw new Error(
+        "The task reached the 20-response limit. Inspect the last result."
+      );
+    }
+
+    nextInput = [];
+    for (const call of calls) {
+      if (call.name !== "exec_js")
+        throw new Error(`Unexpected tool: ${call.name}`);
+      const { code } = JSON.parse(call.arguments);
+      const output = await executeInSandbox(code, sessionId, endpoint);
+      nextInput.push({
+        type: "function_call_output",
+        call_id: call.call_id,
+        output,
+      });
+    }
+    previousResponseId = response.id;
+  }
+}
+```
+
+```python
+
+ResponseInputItem userInput =
+    ResponseInputItem.ofEasyInputMessage(
+        EasyInputMessage.builder()
+            .role(EasyInputMessage.Role.USER)
+            .content(
+                "Go to Hacker News, click on the most interesting link (be prepared to "
+                    + "justify your choice), take a screenshot, and give me a critique of the visual layout.")
+            .build());
+
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6-astra")
+        .inputOfResponse(List.of(userInput))
+        .addTool(
+            FunctionTool.builder()
+                .name("exec_py")
+                .description(
+                    "Execute provided interactive async Python in a persistent, isolated browser runtime.")
+                .parameters(
+                    FunctionTool.Parameters.builder()
+                        .putAdditionalProperty("type", JsonValue.from("object"))
+                        .putAdditionalProperty(
+                            "properties",
+                            JsonValue.from(
+                                Map.of(
+                                    "code",
+                                    Map.of(
+                                        "type",
+                                        "string",
+                                        "description",
+                                        "Python code to execute. Write small snippets. State "
+                                            + "persists across tool calls via globals(). The "
+                                            + "isolated runtime supports await and provides "
+                                            + "only these helpers and Playwright objects: log(x) "
+                                            + "for concise text output, display(base64_png_string) "
+                                            + "for image output, browser, context, and page. "
+                                            + "Keep screenshots and image data in memory and "
+                                            + "pass them directly to display(). Do not assume "
+                                            + "other globals or packages are available."))))
+                        .putAdditionalProperty("required", JsonValue.from(List.of("code")))
+                        .putAdditionalProperty("additionalProperties", JsonValue.from(false))
+                        .build())
+                .strict(true)
+                .build())
+        .addTool(
+            FunctionTool.builder()
+                .name("ask_user")
+                .description(
+                    "Ask the user a clarification question and wait for their response.")
+                .parameters(
+                    FunctionTool.Parameters.builder()
+                        .putAdditionalProperty("type", JsonValue.from("object"))
+                        .putAdditionalProperty(
+                            "properties",
+                            JsonValue.from(
+                                Map.of(
+                                    "question",
+                                    Map.of(
+                                        "type",
+                                        "string",
+                                        "description",
+                                        "The exact question to show the user. Use this instead "
+                                            + "of asking a freeform clarifying question in a "
+                                            + "final answer."))))
+                        .putAdditionalProperty("required", JsonValue.from(List.of("question")))
+                        .putAdditionalProperty("additionalProperties", JsonValue.from(false))
+                        .build())
+                .strict(true)
+                .build())
+        .build();
+
+List<ResponseInputItem> conversation = new ArrayList<>(List.of(userInput));
+ObjectMapper json = new ObjectMapper();
+Scanner terminal = new Scanner(System.in);
+String sessionId = UUID.randomUUID().toString();
+
+for (int step = 0; step < 20; step++) {
+  var response =
+      client.responses().create(params.toBuilder().inputOfResponse(conversation).build());
+  response.output().stream()
+      .map(item -> JsonValue.from(item).convert(ResponseInputItem.class))
+      .forEach(conversation::add);
+  boolean calledTool = false;
+  for (var item : response.output()) {
+    if (item.functionCall().isPresent()) {
+      var call = item.functionCall().orElseThrow();
+      JsonNode arguments = json.readTree(call.arguments());
+      var output = ResponseInputItem.FunctionCallOutput.builder().callId(call.callId());
+
+      if (call.name().equals("exec_py")) {
+        String code = arguments.path("code").asText();
+        System.out.println(code);
+        System.out.print("Send this generated Python to the isolated runtime? Type yes: ");
+        String approval = terminal.hasNextLine() ? terminal.nextLine() : "";
+        List<ResponseFunctionCallOutputItem> execution;
+        if (approval.trim().equalsIgnoreCase("yes")) {
+          try {
+            execution = executeInSandbox(code, sessionId, json);
+          } catch (IOException exception) {
+            execution =
+                List.of(
+                    ResponseFunctionCallOutputItem.ofInputText(
+                        ResponseInputTextContent.builder()
+                            .text("Sandbox execution failed: " + exception.getMessage())
+                            .build()));
+          }
+        } else {
+          execution =
+              List.of(
+                  ResponseFunctionCallOutputItem.ofInputText(
+                      ResponseInputTextContent.builder()
+                          .text("The user declined this code execution.")
+                          .build()));
+        }
+        output.outputOfResponseFunctionCallOutputItemList(execution);
+        execution.forEach(System.out::println);
+      } else if (call.name().equals("ask_user")) {
+        String question = arguments.path("question").asText();
+        System.out.println("MODEL QUESTION: " + question);
+        output.output(terminal.hasNextLine() ? terminal.nextLine() : "");
+      } else {
+        throw new IllegalArgumentException("Unsupported function: " + call.name());
+      }
+
+      conversation.add(ResponseInputItem.ofFunctionCallOutput(output.build()));
+      calledTool = true;
+    } else if (item.message().isPresent()) {
+      var message = item.message().orElseThrow();
+      message.content().stream()
+          .flatMap(content -> content.outputText().stream())
+          .forEach(text -> System.out.println(text.text()));
+    }
+  }
+  if (!calledTool) break;
+}
+
+private static List<ResponseFunctionCallOutputItem> executeInSandbox(
+    String code, String sessionId, ObjectMapper json) throws IOException, InterruptedException {
+  URI endpoint = URI.create(System.getenv("OPENAI_EXAMPLE_CODE_EXECUTION_URL"));
+  if (!endpoint.getScheme().equals("https")
+      && !List.of("localhost", "127.0.0.1", "::1").contains(endpoint.getHost())) {
+    throw new IllegalArgumentException("The isolated sandbox endpoint must use HTTPS");
+  }
+
+  var request =
+      HttpRequest.newBuilder(endpoint)
+          .timeout(Duration.ofSeconds(30))
+          .header("Content-Type", "application/json")
+          .POST(
+              HttpRequest.BodyPublishers.ofString(
+                  json.writeValueAsString(
+                      Map.of("session_id", sessionId, "language", "python", "code", code))));
+  String token = System.getenv("OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN");
+  if (token != null && !token.isBlank()) request.header("Authorization", "Bearer " + token);
+
+  HttpResponse<String> response =
+      HttpClient.newBuilder()
+          .connectTimeout(Duration.ofSeconds(10))
+          .build()
+          .send(request.build(), HttpResponse.BodyHandlers.ofString());
+  if (response.statusCode() < 200 || response.statusCode() >= 300) {
+    throw new IOException("Isolated sandbox rejected execution: HTTP " + response.statusCode());
+  }
+
+  JsonNode outputs = json.readTree(response.body()).path("output");
+  if (!outputs.isArray()) throw new IOException("Sandbox returned an invalid output payload");
+  List<ResponseFunctionCallOutputItem> result = new ArrayList<>();
+  for (JsonNode item : outputs) {
+    String type = item.path("type").asText();
+    if (type.equals("input_text") && item.path("text").isTextual()) {
+      result.add(
+          ResponseFunctionCallOutputItem.ofInputText(
+              ResponseInputTextContent.builder().text(item.path("text").asText()).build()));
+    } else if (type.equals("input_image")
+        && item.path("image_url").isTextual()
+        && item.path("detail").asText().equals("original")) {
+      result.add(
+          ResponseFunctionCallOutputItem.ofInputImage(
+              ResponseInputImageContent.builder()
+                  .detail(ResponseInputImageContent.Detail.ORIGINAL)
+                  .imageUrl(item.path("image_url").asText())
+                  .build()));
+    } else {
+      throw new IOException("Sandbox returned an unsupported output item: " + type);
+    }
+  }
+  return result;
+}
+```
+
+```ruby
+require "json"
+require "openai"
+require "securerandom"
+
+def run_computer_use(endpoint, prompt)
+  client = OpenAI::Client.new
+  session_id = SecureRandom.uuid
+  tools = [
+    {
+      type: :function,
+      name: "exec_py",
+      description: "Run Python in a persistent desktop. Variables persist across calls. PyAutoGUI operations are synchronous. Available: pyautogui, time, log(value), and display(PIL_image). Inspect the screen with display(pyautogui.screenshot()) before acting. Use screenshot coordinates and check the screen after a short group of actions. Keep screenshots in memory and PyAutoGUI's fail-safe enabled.",
+      parameters: {
+        type: :object,
+        properties: { code: { type: :string } },
+        required: ["code"],
+        additionalProperties: false
+      },
+      strict: true
+    }
+  ]
+  next_input = []
+  next_input << {
+    role: :user,
+    content: prompt
+  }
+  history = {}
+  20.times do |turn|
+    response = client.responses.create(
+      model: "gpt-6-astra", tools: tools, input: next_input, previous_response_id: history[:id]
+    )
+    raise "Response stopped with status: #{response.status}" unless response.status == OpenAI::Responses::ResponseStatus::COMPLETED
+
+    calls = response.output.grep(OpenAI::Responses::ResponseFunctionToolCall)
+    if calls.empty? && response.output.any? { |item| item.is_a?(OpenAI::Responses::ResponseOutputMessage) && item.phase != :commentary }
+      puts(response.output_text)
+      return response
+    end
+    raise "The task reached the 20-response limit" if turn == 19
+
+    next_input.clear
+    calls.each do |call|
+      raise "Unexpected tool: #{call.name}" unless call.name == "exec_py"
+
+      code = JSON.parse(call.arguments).fetch("code")
+      raise "Expected Python source text" unless code.is_a?(String)
+
+      output = execute_in_sandbox(code, session_id, endpoint)
+      next_input << {
+        type: :function_call_output,
+        call_id: call.call_id,
+        output: output
+      }
+    end
+    history[:id] = response.id
+  end
+end
+```
+
+### Send a computer request
+
+Use the computer tool for structured mouse and keyboard actions.
+
+```javascript
+
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-6.1-sol",
+  tools: [{ type: "computer" }],
+  input:
+    "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
+});
+
+console.log(JSON.stringify(response.output, null, 2));
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-6.1-sol",
+    tools=[{"type": "computer"}],
+    input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
+)
+
+print(response.output)
+```
+
+```go
+package main
+
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6.1-sol")
+        .input(
+            "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
+        .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
+        .build();
+
+client.responses().create(params).output().forEach(System.out::println);
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-6.1-sol",
+  input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
+  tools: [{ type: :computer }]
+)
+
+puts(response.output)
+```
+
+### Return a screenshot
+
+Continue the conversation with the updated screen.
+
+```javascript
+
+const client = new OpenAI();
+
+async function sendComputerScreenshot(response, callId, screenshotBase64) {
+  const output = {
+    type: "computer_screenshot",
+    image_url: `data:image/png;base64,${screenshotBase64}`,
+    detail: "original",
+  };
+
+  return await client.responses.create({
+    model: "gpt-6.1-sol",
+    tools: [{ type: "computer" }],
+    previous_response_id: response.id,
+    input: [
+      {
+        type: "computer_call_output",
+        call_id: callId,
+        output,
+      },
+    ],
+  });
+}
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+def send_computer_screenshot(response, call_id, screenshot_base64):
+    return client.responses.create(
+        model="gpt-6.1-sol",
+        tools=[{"type": "computer"}],
+        previous_response_id=response.id,
+        input=[
+            {
+                "type": "computer_call_output",
+                "call_id": call_id,
+                "output": {
+                    "type": "computer_screenshot",
+                    "image_url": f"data:image/png;base64,{screenshot_base64}",
+                    "detail": "original",
+                },
+            }
+        ],
+    )
+```
+
+```go
+package main
+
+String responseId = "resp_abc123";
+
+String computerCallId = "call_abc123";
+
+String screenshotBase64 = "<base64 bytes here>";
+
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6.1-sol")
+        .input(
+            ResponseCreateParams.Input.ofResponse(
+                List.of(
+                    ResponseInputItem.ofComputerCallOutput(
+                        ResponseInputItem.ComputerCallOutput.builder()
+                            .callId(computerCallId)
+                            .output(
+                                ResponseComputerToolCallOutputScreenshot.builder()
+                                    .imageUrl("data:image/png;base64," + screenshotBase64)
+                                    .putAdditionalProperty("detail", JsonValue.from("original"))
+                                    .build())
+                            .build()))))
+        .previousResponseId(responseId)
+        .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
+        .build();
+
+client.responses().create(params).output().forEach(System.out::println);
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-6.1-sol",
+  previous_response_id: "resp_abc123",
+  input: [
+    {
+      type: :computer_call_output,
+      call_id: "call_abc123",
+      output: {
+        type: :computer_screenshot,
+        image_url: "data:image/png;base64,<base64 bytes here>",
+        detail: :original
+      }
+    }
+  ],
+  tools: [{ type: :computer }]
+)
+
+puts(response.output)
+```
 
 Computer use lets a model operate a browser or desktop interface. Use it to fill out forms, test user flows, or complete tasks in an application.
 

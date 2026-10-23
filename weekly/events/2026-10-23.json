@@ -458,6 +458,67 @@
       "id": "b47b06be222bf4f52d75685d949cd3848d08fc780a4613aa8b70d8d31ed3b07e",
       "observed_at": "2026-10-23T11:12:33+00:00",
       "previous_id": "fda99e5bf4f3ea5c96127aca02f9ce3d3693f1cd1f281f33dd80722a6c05b901"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/model-catalogs/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "a16101b24169e7e563a45bc89863a92ca74b2882619babf5c811ac8e2bb89840",
+            "before": "48c36fa047391c8e0f3e27d9c8183bbf3bc4661ed7533703c939d42c7b76dce2"
+          },
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+            "after": "0b5010a0699e14f0eeaa9119a4769e151712d5b3cf3da3ef1691f245f10ad308",
+            "before": "8eaf893d1ea057d979deede5f8190abaf5607f4241b942da789d8be9401a4e28"
+          },
+          "learn.chatgpt.com/docs/developers/index.md": {
+            "after": "063405b2b399ee62133896d32ac5c3cc95ab6cd545df6f3d85d0ba86ed8a1d98",
+            "before": "c0a86ae0063884cae28508b46cbd3839460a1e4d1230926c57d74fc0beedef73"
+          },
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+            "after": "62b040ce9c0c0cf496d2fc7da82e6d554b37e31322f00a091b88c37f08fa907c",
+            "before": "aadd6e3937a8fe4b5b9cfeb2e81f12497ff4d59b92c7b9860d2094a7da54dc00"
+          },
+          "learn.chatgpt.com/docs/model-catalogs/index.md": {
+            "after": "045d404bd1b54c2bbbc1ef36c3011f390be070f0a47985c31570c7a8a73894ff",
+            "before": null
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.164.0",
+          "codex_cli_source_commit": "6aaac694803004a63c6f393d153c96d22521a6b9",
+          "codex_cli_version": "0.164.0",
+          "codex_cli_version_raw": "codex-cli 0.164.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+          "learn.chatgpt.com/docs/developers/index.md",
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md"
+        ]
+      },
+      "id": "351fd19ed1b5d08c78263f544fec367a5b5ffda82794d1441263806b8017c21b",
+      "observed_at": "2026-10-23T21:09:10+00:00",
+      "previous_id": "b47b06be222bf4f52d75685d949cd3848d08fc780a4613aa8b70d8d31ed3b07e"
     }
   ],
   "schema_version": 1
