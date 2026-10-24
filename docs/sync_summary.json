@@ -1,11 +1,9 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/model-catalogs/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-23T21:09:10+00:00",
-  "manifest_sha256": "dcd38b3a1bf44e28c4b465d040100870ebdd07fb2d8dc1d1a6a21c4a10ee953d",
+  "generated_at": "2026-10-24T03:43:25+00:00",
+  "manifest_sha256": "f39beba9f824d6f57d574f742d3ae8ac3d2743d8272ed80bf28e111c3e916c48",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -19,9 +17,6 @@
   },
   "total_files": 294,
   "updated": [
-    "codex_capabilities.json",
-    "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
-    "learn.chatgpt.com/docs/developers/index.md",
-    "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md"
+    "learn.chatgpt.com/docs/changelog/index.md"
   ]
 }
