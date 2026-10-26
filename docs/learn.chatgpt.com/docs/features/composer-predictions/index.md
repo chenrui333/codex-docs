@@ -32,7 +32,7 @@ Predictions use the conversation in your current thread. If context from past wo
 
 ## Availability and controls
 
-Composer predictions is currently in beta for users aged 18 and older on personal ChatGPT Pro plans in supported regions. It’s available in local and SSH threads in the Codex desktop app with GPT-6 Astra and GPT-6.1 Sol. Predictions are enabled by default for eligible users. You can turn them on or off using the **Show predictions** toggle in **Settings → General → Composer**.
+Composer predictions is currently in beta for users aged 18 and older on personal ChatGPT Pro plans in supported regions. It’s available in local and SSH threads in the Codex desktop app with GPT-6 Astra, GPT-6.1 Sol, and GPT-6.1 Terra. Predictions are enabled by default for eligible users. You can turn them on or off using the **Show predictions** toggle in **Settings → General → Composer**.
 
 Generating predictions doesn’t count toward your Codex usage limits or consume credits. When you send a message, including an accepted prediction, normal Codex usage limits and billing apply.
 

@@ -25,6 +25,17 @@ Choose your work and task and get a recommendation.
 
 <ModelRecommender client:load />
 
+### When to consider GPT-6.1 Terra
+
+Try [GPT-6.1 Terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra) for concise writing based on
+supplied material, computer-use tasks with a defined outcome, and scoped code
+fixes. Provide clear inputs, requirements, and a way to verify the result, such as
+checking saved records or running regression tests.
+
+Compare it with GPT-6.1 Sol on the same inputs and reasoning effort. For writing,
+judge audience fit, voice, and useful detail as well as accuracy and length. For
+computer use, check the saved result and the accuracy of the completion report.
+
 ### When to consider GPT-6.1 Sol
 
 Consider GPT-6.1 Sol for complex projects where cost matters, such as
@@ -90,3 +101,17 @@ Start by considering:
 
 If you can, experiment using the same inputs to compare results and keep the
 lightest setting that meets your quality bar.
+
+Choose acceptance criteria before comparing models:
+
+- **Writing:** check required facts, qualifications, audience, and voice. Review
+  both outputs before deciding whether the shorter one is more useful.
+- **Computer use:** reopen the affected record or page to verify saved changes,
+  confirm that the workflow preserved unrelated data, and compare the completion
+  report with the actual result.
+- **Code and interfaces:** run regression tests. For an interactive application,
+  also inspect the rendered result on desktop and mobile.
+
+Repeat the comparison across representative tasks. Measure completion time
+alongside quality, including time spent reviewing or repairing the result. Then
+vary reasoning effort while keeping the model and inputs fixed.

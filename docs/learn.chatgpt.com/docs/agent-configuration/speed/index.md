@@ -17,8 +17,8 @@ You can increase model speed in Codex in exchange for higher usage.
 
 ## Fast mode
 
-Fast mode speeds up supported models, including GPT-6.1 Sol, GPT-6 Astra,
-GPT-6 Sol, and GPT-6 Luna, where available. For GPT-5.6, the speed increase
+Fast mode speeds up supported models, including GPT-6.1 Sol, GPT-6.1 Terra,
+GPT-6 Astra, GPT-6 Sol, and GPT-6 Luna, where available. For GPT-5.6, the speed increase
 is 1.5x.
 
 Use `/fast` in the CLI to toggle Fast mode. Use `/statusline` to show it in the

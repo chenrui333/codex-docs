@@ -207,7 +207,7 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
     },
     {
       key: "Codex-managed worktree",
-      href: "/codex/environments/git-worktrees#codex-managed-and-permanent-worktrees",
+      href: "/codex/environments/git-worktrees#codex-managed-worktrees",
       appliesTo: "Desktop app",
       description: "A temporary worktree Codex creates and manages for a chat.",
     },
@@ -490,12 +490,6 @@ Use this glossary as a quick reference for Codex terms across the app, CLI, IDE 
       appliesTo: "CLI",
       description:
         "JSON Schema passed to `codex exec` to constrain the final response.",
-    },
-    {
-      key: "Permanent worktree",
-      href: "/codex/environments/git-worktrees#codex-managed-and-permanent-worktrees",
-      appliesTo: "Desktop app",
-      description: "A long-lived worktree kept as its own project.",
     },
     {
       key: "Permission profile",

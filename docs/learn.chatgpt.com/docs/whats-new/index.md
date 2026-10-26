@@ -15,6 +15,18 @@ Source: https://learn.chatgpt.com/docs/whats-new
 
 For every versioned update, bug fix, and minor improvement, see the [ChatGPT and Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
 
+## [October 26–30, 2026](https://learn.chatgpt.com/docs/whats-new/october-26-30-2026)
+
+### Use GPT-6.1 Terra for visual reasoning and computer use
+
+[GPT-6.1 Terra](https://learn.chatgpt.com/docs/models?surface=app#app-gpt-61-terra) is now available in ChatGPT Work
+and Codex on Plus, Pro, Business, Enterprise, and Edu plans. This fast, efficient model for professional work combines
+strong image understanding with precise computer use. Match product photos to
+catalog entries, review design assets, and act on what you find across your
+browser, desktop, and apps.
+
+[Read the full update →](https://learn.chatgpt.com/docs/whats-new/october-26-30-2026)
+
 ## October 12–16, 2026
 
 ### Open your dot from iOS widgets and Shortcuts

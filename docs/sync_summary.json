@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-24T03:43:25+00:00",
-  "manifest_sha256": "f39beba9f824d6f57d574f742d3ae8ac3d2743d8272ed80bf28e111c3e916c48",
+  "generated_at": "2026-10-26T22:25:39+00:00",
+  "manifest_sha256": "779e6e9ee180eb73174d5cf50cb720f85c8f674b4c44eabda271aef64e01f76d",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,8 +17,18 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 294,
+  "total_files": 295,
   "updated": [
-    "learn.chatgpt.com/docs/changelog/index.md"
+    "codex_capabilities.json",
+    "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
+    "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
+    "learn.chatgpt.com/docs/features/composer-predictions/index.md",
+    "learn.chatgpt.com/docs/glossary/index.md",
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/model-selection/index.md",
+    "learn.chatgpt.com/docs/models/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md",
+    "platform.openai.com/docs/guides/tools-web-search/index.md"
   ]
 }

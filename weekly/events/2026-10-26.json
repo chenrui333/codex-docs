@@ -1,0 +1,101 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "4e3ef6644e289b89131eee0fecf68ab7d1a3c3079dd7d37f99e0df61896d0087",
+            "before": "a16101b24169e7e563a45bc89863a92ca74b2882619babf5c811ac8e2bb89840"
+          },
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md": {
+            "after": "4ee9f8d427370893959ce12cab066f4214095ec21e25e3249c13d2755fb6afce",
+            "before": "2b460054542a70d72a1ef9468fa16b5f9f714d4f625dd4ea3f2f9f1d94f800c2"
+          },
+          "learn.chatgpt.com/docs/environments/git-worktrees/index.md": {
+            "after": "e4df3e9c176bfd5ec4fae0649676ce42cd94221de5a1dd56a8fcf1a80d42aa3c",
+            "before": "61fef242419551c8941b27c4d628802f8145a7e29d6aa161b7dffbb9c6319cd2"
+          },
+          "learn.chatgpt.com/docs/features/composer-predictions/index.md": {
+            "after": "64f441bb4879ab77e778ae1cdb05446747d61688d3b1f24c8c8e54063b248a0f",
+            "before": "307c8e53c6e666aeabd8c00144bd01bd7b60058f99696256da3252cb777a97dc"
+          },
+          "learn.chatgpt.com/docs/glossary/index.md": {
+            "after": "4c5e3769951334bcaf13d8ab09d94f2762634b3e7d88b21685d99b92d3723f8c",
+            "before": "82ca482f4ae0df43c689e948fbf77b4b4b0daa72516aecd99808de04cdcb1be1"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "cb7f69e92c88d8cd5cdab0c3ea3d7d0aca57c7885a3324df012f45531a6f378b",
+            "before": "86a1ac38fa7c5707499540a6c1f4a79f90b313eee3955285714f081c62c523b3"
+          },
+          "learn.chatgpt.com/docs/model-selection/index.md": {
+            "after": "2387fd2dc394f8a805b9dd744028f9cc05c5ca381fc6260ad0473c1ef64c56c1",
+            "before": "90a334a0b43fec2ca5496a7f1d20da49b028f159ced77b3d3bb86c382ad60560"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "1f03b8975ed2f4ce43b69b41dfb5bddfd52686a30af16c480f3974e85c917097",
+            "before": "0cc61cebe8d897b62656fb0cdab0e03cc9fca68aa555ff27a484fc3b6143c445"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "4c1eb513a222b47831f477c43456f8b462bf3ca7d26a40c175e026fb6bd52cb8",
+            "before": "b58b6716f5ef352dfad3264d75f6be17b8ad31fabd8822ff27825de775d39926"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "d2c4bccc6659f8ddda50520d8476fe334420b34926386465fa5840218883c8ef",
+            "before": "bf5cce7381629b5587b50e5f0614c006825520af67a4cfb3c91b9d4989ede450"
+          },
+          "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md": {
+            "after": "c4aa0de1251b4209d4603b71f284b93a126f3c8ab89ea8062500be99c6ea279d",
+            "before": null
+          },
+          "platform.openai.com/docs/guides/tools-web-search/index.md": {
+            "after": "5ee30e4c804bb2e092dd72a98605ece4a9ff6c401603020e72045a9400d5232e",
+            "before": "9cc4c309b8d3b97d3f58ba55cb59302b68ad38989640c8e2d113662f6f8ee46e"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.164.0",
+          "codex_cli_source_commit": "6aaac694803004a63c6f393d153c96d22521a6b9",
+          "codex_cli_version": "0.164.0",
+          "codex_cli_version_raw": "codex-cli 0.164.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
+          "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
+          "learn.chatgpt.com/docs/features/composer-predictions/index.md",
+          "learn.chatgpt.com/docs/glossary/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/model-selection/index.md",
+          "learn.chatgpt.com/docs/models/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md",
+          "platform.openai.com/docs/guides/tools-web-search/index.md"
+        ]
+      },
+      "id": "958cb78b1bb8e62e52f8becb7395a6f71fe98565bb8022c5c4c266a8474c33d9",
+      "observed_at": "2026-10-26T22:25:39+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

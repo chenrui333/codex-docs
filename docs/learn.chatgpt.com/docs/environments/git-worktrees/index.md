@@ -55,7 +55,7 @@ Worktrees require a Git repository. Make sure the project you selected lives in 
 
 3.  Submit your prompt
 
-    Submit your prompt, and Codex creates a Git worktree based on the branch you selected. By default, Codex works in a ["detached HEAD"](https://git-scm.com/docs/git-checkout#_detached_head).
+    Submit your prompt, and Codex creates a Git worktree based on the branch you selected. By default, Codex works in a [detached HEAD](https://git-scm.com/docs/git-checkout#_detached_head) state.
 
 4.  Choose where to keep working
 
@@ -108,11 +108,11 @@ Since Handoff uses Git operations, any files that are part of your `.gitignore` 
 
 ## Advanced details
 
-### Codex-managed and permanent worktrees
+<a id="codex-managed-and-permanent-worktrees"></a>
+
+### Codex-managed worktrees
 
 By default, chats use a Codex-managed worktree. These are meant to feel lightweight and disposable. A Codex-managed worktree is typically dedicated to one chat, and Codex returns that chat to the same worktree if you hand it back there later.
-
-If you want a long-lived environment, create a permanent worktree from the three-dot menu on a project in the sidebar. This creates a new permanent worktree as its own project. Permanent worktrees aren't automatically deleted, and you can start multiple chats from the same worktree.
 
 ### How Codex manages worktrees for you
 
@@ -150,9 +150,9 @@ If you plan on checking out the branch locally, use Handoff to move the chat int
 <ToggleSection title="Why this limitation exists">
 Git prevents the same branch from being checked out in more than one worktree at a time because a branch represents a single mutable reference (`refs/heads/<name>`) whose meaning is “the current checked-out state” of a working tree.
 
-When a branch is checked out, Git treats its HEAD as owned by that worktree and expects operations like commits, resets, rebases, and merges to advance that reference in a well-defined, serialized way. Allowing multiple worktrees to simultaneously check out the same branch would create ambiguity and race conditions around which worktree’s operations update the branch reference, potentially leading to lost commits, inconsistent indexes, or unclear conflict resolution.
+When a branch is checked out, Git treats its HEAD as owned by that worktree and expects operations like `git commit`, `git reset`, `git rebase`, and `git merge` to advance that reference in a well-defined, serialized way. Allowing multiple worktrees to simultaneously check out the same branch would create ambiguity and race conditions around which worktree’s operations update the branch reference, potentially leading to lost commits, inconsistent indexes, or unclear conflict resolution.
 
-By enforcing a one-branch-per-worktree rule, Git guarantees that each branch has a single authoritative working copy, while still allowing other worktrees to safely reference the same commits via detached HEADs or separate branches.
+By enforcing a one-branch-per-worktree rule, Git guarantees that each branch has a single authoritative working copy, while still allowing other worktrees to safely reference the same commits in a detached HEAD state or on separate branches.
 
 </ToggleSection>
 
@@ -166,7 +166,8 @@ Codex tries to avoid deleting worktrees that are still important. Codex-managed 
 
 - A pinned chat is tied to it
 - The chat is still in progress
-- The worktree is a permanent worktree
+
+Permanent worktrees created in earlier versions remain available and protected from automatic cleanup. You can no longer create permanent worktrees from the project menu.
 
 Codex-managed worktrees are deleted automatically when:
 
@@ -198,6 +199,4 @@ Before deleting a Codex-managed worktree, Codex saves a snapshot of the work on 
   Chats can remain in your history even if the underlying worktree directory is
   deleted. For Codex-managed worktrees, Codex saves a snapshot before deleting
   the worktree and offers to restore it if you reopen the associated chat.
-  Permanent worktrees are not automatically deleted when you archive their
-  chats.
 </ToggleSection>
