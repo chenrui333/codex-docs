@@ -109,7 +109,7 @@ source control.
 
 Codex identifies missing configuration and asks for values it can't infer.
 In the environment configuration, select **Manage** beside **Environment variables**
-or **Network secrets**. Choose how to supply each value:
+or **HTTP secrets**. Choose how to supply each value:
 
 | Configuration        | Use it for                                    | Delivery                                                                                       |
 | -------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -179,8 +179,8 @@ controls creating and editing environments shared with the workspace. See
 ## Agent Security
 
 The environment's [internet-access settings](#connect-to-services) define which
-domains its VM can reach. VPN settings connect that VM to services on a private
-network.
+public internet destinations its VM can reach. VPN settings independently connect
+that VM to services on a private network.
 
 In Enterprise workspaces, admins use
 [Agent Security](https://learn.chatgpt.com/docs/enterprise/agent-security) to configure workspace
@@ -196,12 +196,20 @@ Cloud overrides.
 Configure access to the package registries, APIs, and other services your
 workflow needs:
 
-1. In the environment configuration, turn on **Allow Codex to access internet**.
-2. Under **Allow domains**, choose **Package managers** or **Custom domains only**,
-   then add required hosts under **Additional allowed domains**. Use
-   **All (unrestricted)** when the workflow needs broader access.
+1. In the environment configuration, choose how much public internet access your
+   workflow needs. Turn on **Enable all public internet access** for full public access.
+   This includes the destinations covered by the package-manager and
+   additional-domain controls, so those narrower controls are disabled.
+2. To restrict public internet access, turn off **Enable all public internet access**, then allow
+   package managers or add specific hosts under **Additional allowed domains**.
+   Turning off full public access still permits these allowed destinations.
 3. Save and test the services during setup. Publish or republish, then verify
    access in a new task.
+
+Public internet access and [VPN access](#private-networking-vpn) are independent.
+You can use either or both. Public internet settings apply to connections outside
+Tailscale, even when a Tailscale subnet route uses public IP addresses. Restricting
+public internet access doesn't disable the configured VPN.
 
 For workspace requirements, see [Agent Security](#agent-security). Allowing a
 destination doesn't supply credentials or grant permissions in that service.
@@ -237,13 +245,15 @@ the service's authentication and authorization controls in place.
 
 ## Private networking (VPN)
 
-Give cloud tasks access to internal APIs, package registries, and other HTTP or
-HTTPS services on your private network through a VPN connection.
+Give cloud tasks access to services on your private network through a VPN
+connection. Tailscale uses your configured private DNS, subnet routes, and access
+rules. You don't need a separate Codex IP or domain allowlist for destinations
+reached through Tailscale, including HTTP, HTTPS, and other TCP services.
 
-1. Open the environment's **Advanced** > **VPN** settings and select **Add**.
+1. In the environment configuration, select the pencil icon beside **Tailscale**.
 2. Enter the connection credentials from your VPN provider.
-3. Allow the required destinations in both your VPN's access rules and the
-   environment's [internet-access settings](#connect-to-services).
+3. Configure the required routes, DNS, and access rules in Tailscale so the
+   environment's VPN identity can reach the intended services.
 4. Save, then publish or republish. Start a new task and test the service.
 
 Tailscale is currently the supported VPN provider. When creating a Tailscale
@@ -258,10 +268,31 @@ If your service uses your organization's internal DNS, configure split DNS in
 the Tailscale admin console to send queries for your internal domain to your DNS
 server. Use the service's fully qualified hostname, such as
 `api.corp.example.com`, which must resolve to an IPv4 address. The destination
-must also be allowed by the environment's internet-access settings and your
-Tailscale access rules.
+must be reachable through your configured Tailscale routes and permitted by
+your Tailscale access rules.
 
 Tasks in a shared environment use its configured VPN identity.
+
+### Connect to TCP services
+
+Use the VPN to connect to TCP services such as databases or SSH. TCP destinations
+must use IPv4 addresses routed through Tailscale. For hostnames, every resolved
+IPv4 address must use those routes. Platform-protected addresses remain blocked.
+
+TCP clients must connect through the environment's HTTP CONNECT proxy at
+`proxy:8088`, either directly or through a local forwarding tool. For hostname
+destinations, preserve the hostname for proxy-side DNS resolution. TCP tunnels
+don't intercept TLS or inject network secrets: the client must supply the service's
+credentials and verify its TLS certificate when applicable. Requests that need
+[network-secret substitution](#configure-environment-variables-and-network-secrets)
+must use the configured HTTPS proxy and meet the secret's allowed-domain rules;
+substitution works on port 443.
+
+After changing VPN configuration, save the changes, then publish or republish the
+environment. Replace existing running environments to use the updated VPN
+configuration. Start a new task and test access. Detaching the VPN from a draft
+doesn't revoke existing connections; replace or terminate the affected environment
+to revoke access.
 
 <a id="connect-a-cloud-identity"></a>
 <a id="configure-an-aws-role-connection"></a>
@@ -441,7 +472,7 @@ Check that you added the value to the right place in the environment configurati
 
 - **Environment variables:** use these for values that programs need to read
   directly, such as `APP_MODE=development`.
-- **Network secrets:** use these for credentials sent to an allowed HTTPS
+- **HTTP secrets:** use these for credentials sent to an allowed HTTPS
   service, such as a private registry token. Programs receive a placeholder;
   the proxy substitutes the credential in matching requests. If the program
   needs to read the raw value, add it under **Environment variables**.
@@ -457,8 +488,8 @@ for setup instructions.
 
 1. Confirm the client uses the environment's configured HTTP/HTTPS proxy.
    When testing with `curl`, omit `--noproxy` so the request uses that proxy.
-2. Check the destination against both the environment's allowed domains and
-   the VPN's access rules.
+2. For Tailscale destinations, check the VPN's routes and access rules. For
+   public internet destinations, check the environment's allowed domains.
 3. If the service is reachable by IP address but not by hostname, check your
    Tailscale DNS settings. For an internal company domain, verify that split DNS
    points to the correct DNS server and that the server is reachable through

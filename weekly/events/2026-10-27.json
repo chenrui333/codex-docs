@@ -385,6 +385,51 @@
       "id": "7bdc47ec6a48ae5a293efe804e16b4e0037b19f0329b327cdc14ebb8653eb4b6",
       "observed_at": "2026-10-27T21:56:38+00:00",
       "previous_id": "58cb2b80bedfeb3e5a7eb120c9253707899c5198413be1ae58feda14016f8ae2"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
+            "after": "c120437a69d905d8c2933bcdfc5958cb1777319d78b2d6649b88010ed5dbcf66",
+            "before": "adadeb04738ff2561542ca664e46d6940a2aebe60f2b8936831b87f260cabbbf"
+          },
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md": {
+            "after": "dbadb63ce2405848e8ebd66c6c2edaf13c77e782fa1f1ce79739f6ddb34cf4cb",
+            "before": "029d16964d074dd9fa1a76c08170f2227d67f394e4e0068d0bec7c9c98266b67"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.165.0",
+          "codex_cli_source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
+          "codex_cli_version": "0.165.0",
+          "codex_cli_version_raw": "codex-cli 0.165.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md",
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md"
+        ]
+      },
+      "id": "54e2086eac8144580e775dfe5225de669415e081bd30ec7c47bd3451282d3db9",
+      "observed_at": "2026-10-27T21:57:55+00:00",
+      "previous_id": "7bdc47ec6a48ae5a293efe804e16b4e0037b19f0329b327cdc14ebb8653eb4b6"
     }
   ],
   "schema_version": 1

@@ -391,9 +391,9 @@ Use this recipe when Codex should have no internet access or should reach only a
 
 1. Create separate environments for different trust levels, such as no-internet-review, approved-dependencies-build, and cyber-lab.
 
-2. In the environment configuration, leave **Allow Codex to access internet** off unless the workflow needs internet access.
+2. In the environment configuration, turn off **Enable all public internet access** and **Enable package manager domains**.
 
-3. When access is required, turn on **Allow Codex to access internet**. Under **Allow domains**, choose **Custom domains only**, then add exact required hosts under **Additional allowed domains**.
+3. When public internet access is required, add exact approved hosts under **Additional allowed domains**. Remove **HTTP secrets** that allow unapproved public destinations. To block public internet access outside the VPN, leave that list empty and remove **HTTP secrets** that allow public destinations.
 
 4. Save and test the services during setup. Publish or republish the environment, then test access to approved and unapproved destinations in a new task. Review setup scripts separately: pin dependencies, prefer approved mirrors, and avoid executable downloads that have not been reviewed.
 
@@ -542,7 +542,7 @@ Use this recipe when Codex needs access to approved source directories while sec
 ```
 
 5. Choose the credential flow for your Cloud environment:
-   - In current Codex Cloud, use **Network secrets** for credentials sent to an allowed HTTPS service. Programs receive a placeholder, and the proxy substitutes the real value for approved destinations on port 443 during setup and tasks. The raw credential is not placed in a local process or file. Direct environment variables are available to programs. See [Environment variables and network secrets](https://learn.chatgpt.com/docs/environments/cloud-environments#configure-environment-variables-and-network-secrets).
+   - In current Codex Cloud, use **HTTP secrets** for credentials sent to an allowed HTTPS service. Programs receive a placeholder, and the proxy substitutes the real value for approved destinations on port 443 during setup and tasks. The raw credential is not placed in a local process or file. Direct environment variables are available to programs. See [Environment variables and network secrets](https://learn.chatgpt.com/docs/environments/cloud-environments#configure-environment-variables-and-network-secrets).
    - In Codex Cloud (Legacy), secrets support setup-time authentication and are removed before the agent phase; environment variables remain for the full chat. See [Legacy Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment).
 
 6. If the agent needs authentication, use an independent broker to provide short-lived credentials scoped to the exact target and action. See [Recommended configuration](https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration).
@@ -913,7 +913,7 @@ This network control for local commands does not by itself cover web search, app
 
 #### Configure cloud environment networking separately
 
-In the current Codex Cloud interface, open the environment configuration. Leave **Allow Codex to access internet** off. If you need internet access, turn it on and choose **Custom domains only**, add the exact required hosts under **Additional allowed domains**, then save the configuration, publish or republish the environment, and test a new task.
+In the current Codex Cloud interface, open the environment configuration. Turn off **Enable all public internet access** and **Enable package manager domains**. If public internet access is required, add exact approved hosts under **Additional allowed domains**. Remove **HTTP secrets** that allow unapproved public destinations. To block public internet access outside the VPN, leave that list empty and remove **HTTP secrets** that allow public destinations. Save the configuration, publish or republish the environment, and test a new task.
 
 Review service authentication and capabilities independently.
 

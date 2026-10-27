@@ -9154,7 +9154,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway"
     },
     "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
-      "sha256": "adadeb04738ff2561542ca664e46d6940a2aebe60f2b8936831b87f260cabbbf",
+      "sha256": "c120437a69d905d8c2933bcdfc5958cb1777319d78b2d6649b88010ed5dbcf66",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9452,7 +9452,7 @@
       "source_url": "https://learn.chatgpt.com/docs/environments/cloud-environment"
     },
     "learn.chatgpt.com/docs/environments/cloud-environments/index.md": {
-      "sha256": "029d16964d074dd9fa1a76c08170f2227d67f394e4e0068d0bec7c9c98266b67",
+      "sha256": "dbadb63ce2405848e8ebd66c6c2edaf13c77e782fa1f1ce79739f6ddb34cf4cb",
       "source_area": "learn_environments",
       "source_kind": "learn_markdown",
       "source_type": "learn",
