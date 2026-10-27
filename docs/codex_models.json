@@ -1,5 +1,5 @@
 {
-  "codex_cli_version": "0.164.0",
+  "codex_cli_version": "0.165.0",
   "models": [
     {
       "apply_patch_tool_type": "freeform",
@@ -567,6 +567,69 @@
     {
       "apply_patch_tool_type": "freeform",
       "auto_compact_token_limit": null,
+      "context_window": 500000,
+      "default_reasoning_level": "low",
+      "default_service_tier": null,
+      "default_verbosity": "low",
+      "description": "GPT-6.1 Terra Codex model.",
+      "display_name": "GPT-6.1 Terra",
+      "input_modalities": [
+        "image",
+        "text"
+      ],
+      "max_context_window": 872000,
+      "minimal_client_version": "0.153.0",
+      "multi_agent_reasoning_effort": "xhigh",
+      "multi_agent_version": "v2",
+      "priority": 7,
+      "service_tiers": [
+        {
+          "description": "1.5x speed",
+          "id": "priority",
+          "name": "Fast"
+        }
+      ],
+      "shell_type": "shell_command",
+      "slug": "gpt-6.1-terra",
+      "support_verbosity": true,
+      "supported_in_api": true,
+      "supported_reasoning_levels": [
+        {
+          "description": "Balances speed and reasoning depth for everyday tasks",
+          "effort": "medium"
+        },
+        {
+          "description": "Extra high reasoning depth for complex problems",
+          "effort": "xhigh"
+        },
+        {
+          "description": "Fast responses with lighter reasoning",
+          "effort": "low"
+        },
+        {
+          "description": "Greater reasoning depth for complex problems",
+          "effort": "high"
+        },
+        {
+          "description": "Maximum reasoning depth for the hardest problems",
+          "effort": "max"
+        },
+        {
+          "description": "Maximum reasoning with automatic task delegation",
+          "effort": "ultra"
+        }
+      ],
+      "supports_image_detail_original": true,
+      "supports_parallel_tool_calls": true,
+      "supports_search_tool": true,
+      "tool_mode": "code_mode_only",
+      "upgrade": null,
+      "visibility": "list",
+      "web_search_tool_type": "text_and_image"
+    },
+    {
+      "apply_patch_tool_type": "freeform",
+      "auto_compact_token_limit": null,
       "context_window": 272000,
       "default_reasoning_level": "low",
       "default_service_tier": null,
@@ -678,8 +741,8 @@
     }
   ],
   "schema_version": 1,
-  "source_commit": "6aaac694803004a63c6f393d153c96d22521a6b9",
+  "source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
   "source_kind": "release_bundled_model_catalog",
   "source_path": "codex-rs/models-manager/models.json",
-  "source_ref": "rust-v0.164.0"
+  "source_ref": "rust-v0.165.0"
 }

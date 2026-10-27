@@ -326,6 +326,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "guardian_recorded_items",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "guardian_reuse_parent_compaction",
       "stage": "stable"
@@ -353,6 +358,11 @@
     {
       "enabled": false,
       "key": "guardianv2_decisions_comparison",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "guardianv3",
       "stage": "under development"
     },
     {
@@ -551,6 +561,11 @@
       "stage": "under development"
     },
     {
+      "enabled": true,
+      "key": "prediction_preserve_parent_tools",
+      "stage": "stable"
+    },
+    {
       "enabled": false,
       "key": "prefer_mxc",
       "stage": "under development"
@@ -571,9 +586,9 @@
       "stage": "removed"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "reasoning_effort_override",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -806,6 +821,11 @@
       "stage": "removed"
     },
     {
+      "enabled": false,
+      "key": "tui_multi_backend",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "ultrafast_mode",
       "stage": "stable"
@@ -911,7 +931,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.164.0",
+  "codex_cli_version": "codex-cli 0.165.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -934,6 +954,8 @@
       "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_v2",
+      "prediction_preserve_parent_tools",
+      "reasoning_effort_override",
       "recommended_plugins",
       "secret_auth_storage",
       "skill_search",
@@ -1014,12 +1036,14 @@
       "guardian_enhanced_node_repl_transcripts",
       "guardian_ext",
       "guardian_node_repl_transcript_images",
+      "guardian_recorded_items",
       "guardian_reuse_parent_compaction",
       "guardian_root_handoff_context",
       "guardian_trust_orchestrator_connectors",
       "guardianv2",
       "guardianv2.thread_context",
       "guardianv2_decisions_comparison",
+      "guardianv3",
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
@@ -1047,6 +1071,7 @@
       "output_token_replay",
       "plugin_hooks",
       "powershell_shell_version",
+      "prediction_preserve_parent_tools",
       "psp",
       "reasoning_effort_override",
       "recommended_plugins",
@@ -1091,6 +1116,7 @@
       "tool_suggest",
       "transcript_v2",
       "tui_app_server",
+      "tui_multi_backend",
       "unavailable_dummy_tools",
       "unbounded_connection_retries",
       "undo",
@@ -1181,6 +1207,8 @@
         "mcp_oauth_refresh_coordination",
         "mentions_v2",
         "multi_agent_v2",
+        "prediction_preserve_parent_tools",
+        "reasoning_effort_override",
         "recommended_plugins",
         "secret_auth_storage",
         "skill_search",
@@ -1227,10 +1255,12 @@
         "guardian_conversation_history_tools",
         "guardian_enhanced_node_repl_transcripts",
         "guardian_node_repl_transcript_images",
+        "guardian_recorded_items",
         "guardian_root_handoff_context",
         "guardian_trust_orchestrator_connectors",
         "guardianv2",
         "guardianv2_decisions_comparison",
+        "guardianv3",
         "image_resize_notice",
         "instant_interrupt",
         "local_thread_store_compression",
@@ -1245,7 +1275,6 @@
         "output_token_replay",
         "powershell_shell_version",
         "psp",
-        "reasoning_effort_override",
         "request_permissions_tool",
         "respect_system_proxy",
         "retain_client_developer_messages",
@@ -1262,6 +1291,7 @@
         "subagent_thread_environments",
         "terminal_visualization_instructions",
         "token_budget",
+        "tui_multi_backend",
         "unified_image_budget",
         "use_agent_identity",
         "use_xaa",
@@ -1326,7 +1356,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "6aaac694803004a63c6f393d153c96d22521a6b9",
+  "source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1859,6 +1889,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "guardian_recorded_items": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "guardian_reuse_parent_compaction": {
       "compatibility_flag": false,
       "configurable": true,
@@ -1901,6 +1939,14 @@
       "stage_from_source": "removed"
     },
     "guardianv2_decisions_comparison": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "guardianv3": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2228,6 +2274,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "prediction_preserve_parent_tools": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "prefer_mxc": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2264,10 +2318,10 @@
     "reasoning_effort_override": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "recommended_plugins": {
       "compatibility_flag": false,
@@ -2656,6 +2710,14 @@
       "effective_behavior": "always_on",
       "stage_from_source": "removed"
     },
+    "tui_multi_backend": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "ultrafast_mode": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2832,13 +2894,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "f019ea748a1692e51b8467a808af2610db493b7e29b1809b16336e7fb976d68a",
-    "features_rs_sha256": "53c99aa1176c0f4f8763cbf960f11eb574f63fb33214f2bcd3bf699ebb361337"
+    "client_rs_sha256": "a8f9374064bd24cc421c3266f39f105aa8d287e350c72541f9dcde544665fae2",
+    "features_rs_sha256": "da0ce349bfd99953e6f3e262d7883b579728beb553b1e01f95478a6b18ec250a"
   },
-  "source_ref": "rust-v0.164.0",
+  "source_ref": "rust-v0.165.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/6aaac694803004a63c6f393d153c96d22521a6b9/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/6aaac694803004a63c6f393d153c96d22521a6b9/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/360319d8dee62d87e2d59fc0c21805d79519cfed/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/360319d8dee62d87e2d59fc0c21805d79519cfed/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

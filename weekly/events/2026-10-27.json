@@ -80,6 +80,311 @@
       "id": "58cb2b80bedfeb3e5a7eb120c9253707899c5198413be1ae58feda14016f8ae2",
       "observed_at": "2026-10-27T17:40:19+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [
+            "feature_flag:guardian_recorded_items",
+            "feature_flag:guardianv3",
+            "feature_flag:prediction_preserve_parent_tools",
+            "feature_flag:tui_multi_backend"
+          ],
+          "added_by_category": {
+            "feature_flag": [
+              "feature_flag:guardian_recorded_items",
+              "feature_flag:guardianv3",
+              "feature_flag:prediction_preserve_parent_tools",
+              "feature_flag:tui_multi_backend"
+            ]
+          },
+          "lifecycle_transitions": [
+            {
+              "from": "under development",
+              "id": "feature_flag:reasoning_effort_override",
+              "to": "stable"
+            }
+          ],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "cli-surface/linux-x86_64.json": {
+            "after": "95e714f13612c18081016c8db59c82edc37b6af18e8c7b07528a385cc4378e80",
+            "before": "179bd42ba058d70723c5f5558350e66bc7b60693390403884785d9f7a8af397b"
+          },
+          "cli-surface/macos-arm64.json": {
+            "after": "b645260c4976c4063a401f4a337928ce6d6b6c2e42b777e947fb98a36f3ad167",
+            "before": "f5295d8647eb8c8239ab79d7d41c76071b2fab5ba2b525c93028b9eccfe632ea"
+          },
+          "codex_capabilities.json": {
+            "after": "780d354591012d9a505035100eda7765f7810e3c36b65a482b4c55ee76a855d7",
+            "before": "4e3ef6644e289b89131eee0fecf68ab7d1a3c3079dd7d37f99e0df61896d0087"
+          },
+          "codex_cli_surface.json": {
+            "after": "67a240c232b757f88fda381e4291dd1f6c867dd6e228d609b745f292b02287fc",
+            "before": "39861ee4aab14e9542870ea5619d410f26128d85070ffd76ce8bc71aa71a151a"
+          },
+          "codex_models.json": {
+            "after": "40175a1b9d3971f7bccb4aeb9a285b54395733a7be28d06d8e269115dd7f36fd",
+            "before": "869cc2631adf8b85c0c0f4698384d35b3f1f81c9897af790a85fcac3ebca7cb0"
+          },
+          "dot_codex/skills/dot_system/imagegen/SKILL.md": {
+            "after": "f1f254c490e581d4a7aa94298017efa47975de990dc15e48cb5f7d80cf8e0153",
+            "before": "213c394cac163f1fc44c3fef7229ee40e094598a6873a1cbb77a7fe46a2c8f49"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/cli.md": {
+            "after": "682fda13f5674a052a665d0e858b2437057af4ba5e199225819362896b6c3def",
+            "before": "bb8f0c2f14160f5361ed83ae9d34d60e5042a13abe22471455636da49c15eeb2"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/codex-network.md": {
+            "after": "1e4285de19a60483a3f6ce07d824fa230ed958de5561dcd76ce3bb5d552e6185",
+            "before": "5b1e70931410a7c3391f4354f5e219660aaee48276f24aefb55c88d7b542e6fe"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/image-api.md": {
+            "after": "68e64c2db158d4a7da7d212d2ff04d43fd770fd44926711ae3da953a2712afe8",
+            "before": "38e32ffdccd308c135953c650b87a2af800acc61973c0f3334ea5da8d5457178"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/prompting.md": {
+            "after": "b5b8b6cd5f9f746dcc4a33e3a333095eec15b64a86cfb36905ea9d53c42b6178",
+            "before": "ce9f2614dd9a2c1c233e26379f836590b2d8105dd964415cb4e0955748801887"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md": {
+            "after": "52748b5330e1a4066c9fef52d5d4d218f419c6d7b81abe84da7a8aefd8a055e8",
+            "before": "308b30fcb21faeda0c7ad56aca2e6c5b84fac56c3812171322d78f5f095d8630"
+          },
+          "dot_codex/skills/dot_system/openai-docs/SKILL.md": {
+            "after": "911beab7da97181102a42913c96b61aaf793900073e61a57b07582999190dc5c",
+            "before": "f77f966ff8335320a3343440ada7fe5cc282878d1bddb91b279775f656388b63"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md": {
+            "after": "d2aa36f589a0dc206d4d5be36124abfe73ccb1bb3ffbbf8203c644ebd4fb7f19",
+            "before": "37e66cde1640fd6d890d2c1797c4f25b4b97b9eaf1760307de567cc07a8ed9c0"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/latest-model.md": {
+            "after": "231882a4224b62a9ed86d80803c2f16e31bcc86d64531e8d1839b0918b0fd80d",
+            "before": "6065d82edd8c8f22626350f3a8639faa71942eda08b309331d5f6b5dcbb4c98e"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md": {
+            "after": "0806635496c9d66281b862e3b658b3a6fafcee4d7075ae669207810aa319c4fd",
+            "before": "d84bfd24b07947c56515feebc01ce7c0089ea229891da18da91ea1cc37285a22"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/model-migration.md": {
+            "after": "fb528b9e656c0cfc268d91e64c1ef25780db1ee5fda61d6fe256eb2c621da0a1",
+            "before": "ea30e11f076f9b8c41ffb7dd677fd00bb25e1dc9ca33b3468b9babb0630da284"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/model-selection.md": {
+            "after": "3e69abdef117585be3adcda8038f435a46de60d83b176545be5c56b6013e38c1",
+            "before": "6b7599bda1980e9fad85334d745439a571c576ff03a216a8947f636930de06a5"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/official-docs.md": {
+            "after": "4fff1ad142ba2ab77f804b804cce585af57fe296340b24aa3418319d370837bb",
+            "before": "46bc56e7d98f3a387105d6de739ec2ad8b755b53e7964a024ea9e119e09980f6"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md": {
+            "after": "314985877c802ad010546b820046467a9ac26de1c8d3a348c40359ce50279164",
+            "before": "a22aeaf1d2ba8cd8ed28e5a1fc32ff90524e422051e39e289efe7f8a9a7d34a0"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md": {
+            "after": "7d4c0ee88183bbedc66f0c42e084bb62d7adfce342625272ce2f1bd3f2d675d9",
+            "before": "0c9313ea555968d0a420ae166715841fb61ba18f4873d38dbc3dc9229199d234"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md": {
+            "after": "8ecce6e03da5d988a975947c7daff7c8f5f1406fc3b68b58b59818100f162023",
+            "before": "8d9debfcf5fbfdd6e5a22e29e1fe5f8951f899ba7761dc0a6ec8370756564341"
+          },
+          "dot_codex/skills/dot_system/review-agent/SKILL.md": {
+            "after": "7bebbfc2a942a6b85d79623790042bf4cc88fba67f0dbdaa970c37ff588f6f7f",
+            "before": "d6916b962d4a17ace951673a54af2f8bd1bf629410a99913f28837c74ee322cf"
+          },
+          "dot_codex/skills/dot_system/skill-creator/SKILL.md": {
+            "after": "406dcad7968d2ee009a6332f679eb76791195c4b497a0e4dce1dd8214c219d21",
+            "before": "435d1aa4e01b9ce251089eccd42b369df9af833fc848f4ac5bfec8739bc11235"
+          },
+          "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md": {
+            "after": "c79ffc98f9c0a228b459dba9438f8e7e7448c7389a60c709d9453462439499ef",
+            "before": "5f0925baf0d4d8df08a21d21ddb3d1bd8b015e4b17b73779627fd04712706869"
+          },
+          "dot_codex/skills/dot_system/skill-installer/SKILL.md": {
+            "after": "15b435f2636d50d8e383e5988a1be3176e19c094e90f578caa8bf26997024f61",
+            "before": "2a4caab1d147f90c3c2995e9d373b8ec9c8981cbd63140d2264ad9ac5f725c0d"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "fc194fb093539233d68921422d7d6237db49132f0404579a61d9e90bfdee2645",
+            "before": "3ee3f133d7b6445770624e78d3495297855901a921174bf783f5d2b60a0c756d"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "553251905760d8cba6521845940b8e9fb0014e4ce395dbe3eef2077770ff123b",
+            "before": "5f1ead7bbfbe2db6330836de712cf911f5615dbee9c5633832ca0155d050ca0d"
+          },
+          "github.openai.com/openai/codex/CHANGELOG.md": {
+            "after": "f236b9125fa260b2d645f3936d6a9639786e2c70c4f3a2e0f2b6039eebefaa2d",
+            "before": "edacacca958e7f4b3b74f42e5fc1fee187110474c9849fdda2b1675a5df5cbb7"
+          },
+          "github.openai.com/openai/codex/README.md": {
+            "after": "4ae6ca729c5634b0342ae3b88543aa07e5722d99a0e473df467fa9a9c607b441",
+            "before": "8338842af6232b78ce13da3752abede5c2bff61af306ceb9c19e29b953a75f5b"
+          },
+          "github.openai.com/openai/codex/SECURITY.md": {
+            "after": "33611a16fbb5311d43c978d75e4bcbfd120bcb8c3c24468ec4de6048eea104e5",
+            "before": "e81cbaeefb85de28b93af00599d522736d66be829f6d3a96ba2435c7cfaaec0e"
+          },
+          "github.openai.com/openai/codex/codex-cli/scripts/README.md": {
+            "after": "9c925f8b369eab937c62168cfaaee4c6cd049ec5d25a7a5879b7cc680dc4a3ca",
+            "before": "2992f4e76dbd24a26e646c9d763e640fb06d613f5c9318d549222827ce61a80d"
+          },
+          "github.openai.com/openai/codex/codex-rs/README.md": {
+            "after": "bb4471c487031ea0e846f43a04daf7abeb12cc3e93439163edb56e053b93a8c4",
+            "before": "59f0efe2d37a1186ed70a26f8f4e0556176bdcd91b1f0cdc9924a88a4447fdf0"
+          },
+          "github.openai.com/openai/codex/codex-rs/config.md": {
+            "after": "0ea3fcd777c9b41565b04d335d06bf61d06190eafdaabc7229353e0fdc8fae68",
+            "before": "9be91b681cb18125681a884b1f25b4e8b3c39d3c7b4ac41823fdae185d22b726"
+          },
+          "github.openai.com/openai/codex/codex-rs/docs/bazel.md": {
+            "after": "928647dfaf6ccb399c518d548c21445e9550473e43460b9f7895d67ecaa13db8",
+            "before": "929b9b00af85559fd83ccef1c21d76d852bc6ab30bd352749dd9af11fd86e522"
+          },
+          "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md": {
+            "after": "480a11daf30371b64fb77558a07fb7fe06278e50a7e74824c70677d93d3b1844",
+            "before": "7011dd15d9ab3ba544c0948a54d253d11730f9ab7b694c014e5fabbb53707256"
+          },
+          "github.openai.com/openai/codex/docs/CLA.md": {
+            "after": "eefbd178572691925daf108ed94d9c6dbe142d180d904bb76353ded11a0d146e",
+            "before": "16af7a3198274ffde13aa229c1fb23fa9fad629d6b0ac2bd31b656689e7ea071"
+          },
+          "github.openai.com/openai/codex/docs/agents_md.md": {
+            "after": "4e41901aa83192282de652cee5961b4393dbe49af45abf59287c35c2616e8a77",
+            "before": "88e1d44b5253e37fbf1ff65c6eb51e158f76caa8a161c1d21d37b86bfd69acc8"
+          },
+          "github.openai.com/openai/codex/docs/authentication.md": {
+            "after": "d80dd5ca4ad08baa375d8b3129e32f50721355168ef6440ae4f54f6bf647fdc4",
+            "before": "6d31cbc0d3bb7f8e130a8a75cd9b1558ac998e9585f03e8166cbae9a93837242"
+          },
+          "github.openai.com/openai/codex/docs/config.md": {
+            "after": "792fb31ad5b968d1377c2aa0997a36b675a61468adfb27488f536350d7dab5e5",
+            "before": "9c8cc847ec5852e2c823cd50ad5d874c43286d8461941fc751d86fa65f9c41be"
+          },
+          "github.openai.com/openai/codex/docs/contributing.md": {
+            "after": "567ef89b48935c2222054d0e9518b6731fddda042edc84d80ff1c448f9b3a17d",
+            "before": "8bc26f8d167e58f4c84b30e866ba95a0b055a34fcda63fa693744daeea6a24f9"
+          },
+          "github.openai.com/openai/codex/docs/example-config.md": {
+            "after": "3aa80ab1718053eb06be26769d3254efb6fadbcd423608826446d2c70f30b1bb",
+            "before": "fb613d9d2b6861a361bd3ab9a1397d78a9efff72ccec01ea4388e03019b7c7a9"
+          },
+          "github.openai.com/openai/codex/docs/exec.md": {
+            "after": "52e49bf80cd6781fddce3cc13bd7050fc02e0384fa49e39c9cc0f430c1debccf",
+            "before": "4a6e85f3f0763d74ae386f5fa84bd701d277c63765162dff9e9f7dd0420b16cb"
+          },
+          "github.openai.com/openai/codex/docs/execpolicy.md": {
+            "after": "83f636b8fa77fa4851efda76a12c725a433c62ef9014dad98e07d3bb63050059",
+            "before": "88284f1f721aa49362dc0252f53ed55588c7d11e40ae18bbd237e6deafbcb5e9"
+          },
+          "github.openai.com/openai/codex/docs/getting-started.md": {
+            "after": "ca50607816e6b28a85616c12854d7f9835c82f13fec81b5bd1a80eae1840fa47",
+            "before": "4300efb377e80d9c54b394b120f51d2a704d9193a3464857af1c1e5105c14d82"
+          },
+          "github.openai.com/openai/codex/docs/install.md": {
+            "after": "03b6159e22b1f677d427cb6076cf3210cbd1e8c8609a4e79d1f32420a27692fa",
+            "before": "de2b2ee852df217f33e64451e8e2a2b2e99748be61e9038a3db9a6f560cacce8"
+          },
+          "github.openai.com/openai/codex/docs/license.md": {
+            "after": "49c27e7842b6d520fb57ec83895f5cebd9df7fbb85cc4c9d05fd6bb2db4580a5",
+            "before": "ceca05191b51bfa99c00db20dae63deba0660d19382c0d174021105fc6bd0614"
+          },
+          "github.openai.com/openai/codex/docs/open-source-fund.md": {
+            "after": "2b8f8cae74931e446addf7e497c023b50aab2500ab0d968f67e4490eae112525",
+            "before": "f1155cce337ecbd6afdcd0e316596b1d9d0be45913d901a54175e2b14bcf7a0f"
+          },
+          "github.openai.com/openai/codex/docs/sandbox.md": {
+            "after": "75b11585f68b9e6bf4ee37c27bc97f9b2c2fa413cda97a9e94119698e78839e7",
+            "before": "b40dae01512a82ce56c691f6d389e068608b004a70ec32abe7aeea8c4225ff70"
+          },
+          "github.openai.com/openai/codex/docs/skills.md": {
+            "after": "b66be9ce0c8873a7bf3c81813af8e89c9b7b40b053ab4d80df0b72fa940d1074",
+            "before": "8bd025f560fd8550c9e562ccb7c83e272bc060ea5161c4a65f12aba75fef0e5a"
+          },
+          "github.openai.com/openai/codex/docs/slash_commands.md": {
+            "after": "ef72828feccf014e772d8a19d9c2e4b1ba4b5e16a41f2aafba2de59198246464",
+            "before": "8e5367455681e4e7fba2769a0cf6ab9e053fedc1047630df09ff0d6bb4a9edff"
+          }
+        },
+        "model_changes": {
+          "added": [
+            "gpt-6.1-terra"
+          ],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.165.0",
+          "codex_cli_source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
+          "codex_cli_version": "0.165.0",
+          "codex_cli_version_raw": "codex-cli 0.165.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "release"
+        },
+        "updated": [
+          "cli-surface/linux-x86_64.json",
+          "cli-surface/macos-arm64.json",
+          "codex_capabilities.json",
+          "codex_cli_surface.json",
+          "codex_models.json",
+          "dot_codex/skills/dot_system/imagegen/SKILL.md",
+          "dot_codex/skills/dot_system/imagegen/references/cli.md",
+          "dot_codex/skills/dot_system/imagegen/references/codex-network.md",
+          "dot_codex/skills/dot_system/imagegen/references/image-api.md",
+          "dot_codex/skills/dot_system/imagegen/references/prompting.md",
+          "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md",
+          "dot_codex/skills/dot_system/openai-docs/SKILL.md",
+          "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md",
+          "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
+          "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md",
+          "dot_codex/skills/dot_system/openai-docs/references/model-migration.md",
+          "dot_codex/skills/dot_system/openai-docs/references/model-selection.md",
+          "dot_codex/skills/dot_system/openai-docs/references/official-docs.md",
+          "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
+          "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
+          "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md",
+          "dot_codex/skills/dot_system/review-agent/SKILL.md",
+          "dot_codex/skills/dot_system/skill-creator/SKILL.md",
+          "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md",
+          "dot_codex/skills/dot_system/skill-installer/SKILL.md",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "github.openai.com/openai/codex/CHANGELOG.md",
+          "github.openai.com/openai/codex/README.md",
+          "github.openai.com/openai/codex/SECURITY.md",
+          "github.openai.com/openai/codex/codex-cli/scripts/README.md",
+          "github.openai.com/openai/codex/codex-rs/README.md",
+          "github.openai.com/openai/codex/codex-rs/config.md",
+          "github.openai.com/openai/codex/codex-rs/docs/bazel.md",
+          "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md",
+          "github.openai.com/openai/codex/docs/CLA.md",
+          "github.openai.com/openai/codex/docs/agents_md.md",
+          "github.openai.com/openai/codex/docs/authentication.md",
+          "github.openai.com/openai/codex/docs/config.md",
+          "github.openai.com/openai/codex/docs/contributing.md",
+          "github.openai.com/openai/codex/docs/example-config.md",
+          "github.openai.com/openai/codex/docs/exec.md",
+          "github.openai.com/openai/codex/docs/execpolicy.md",
+          "github.openai.com/openai/codex/docs/getting-started.md",
+          "github.openai.com/openai/codex/docs/install.md",
+          "github.openai.com/openai/codex/docs/license.md",
+          "github.openai.com/openai/codex/docs/open-source-fund.md",
+          "github.openai.com/openai/codex/docs/sandbox.md",
+          "github.openai.com/openai/codex/docs/skills.md",
+          "github.openai.com/openai/codex/docs/slash_commands.md"
+        ]
+      },
+      "id": "7bdc47ec6a48ae5a293efe804e16b4e0037b19f0329b327cdc14ebb8653eb4b6",
+      "observed_at": "2026-10-27T21:56:38+00:00",
+      "previous_id": "58cb2b80bedfeb3e5a7eb120c9253707899c5198413be1ae58feda14016f8ae2"
     }
   ],
   "schema_version": 1
