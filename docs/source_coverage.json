@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-26T22:25:39+00:00",
+  "generated_at": "2026-10-27T17:40:19+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 191,
+      "discovered_urls": 190,
       "html_fallback_pages": 2,
-      "markdown_pages": 188,
-      "mirrored_paths_count": 190,
-      "mirrored_urls": 190,
+      "markdown_pages": 187,
+      "mirrored_paths_count": 189,
+      "mirrored_urls": 189,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -441,7 +441,6 @@
       "https://learn.chatgpt.com/docs/enterprise/security-cookbook",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
-      "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/sites",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -637,7 +636,6 @@
       "https://learn.chatgpt.com/docs/enterprise/security-cookbook",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
-      "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/sites",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -828,7 +826,6 @@
       "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md",
       "learn.chatgpt.com/docs/enterprise/service-accounts/index.md",
       "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
-      "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md",
       "learn.chatgpt.com/docs/enterprise/sites/index.md",
       "learn.chatgpt.com/docs/enterprise/skills/index.md",
       "learn.chatgpt.com/docs/enterprise/teams/index.md",
@@ -940,7 +937,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 190,
+    "mirrored_paths_count": 189,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1022,7 +1019,6 @@
       "https://learn.chatgpt.com/docs/enterprise/security-cookbook",
       "https://learn.chatgpt.com/docs/enterprise/service-accounts",
       "https://learn.chatgpt.com/docs/enterprise/shared-connections",
-      "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/sites",
       "https://learn.chatgpt.com/docs/enterprise/skills",
       "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -1222,7 +1218,6 @@
           "https://learn.chatgpt.com/docs/enterprise/security-cookbook",
           "https://learn.chatgpt.com/docs/enterprise/service-accounts",
           "https://learn.chatgpt.com/docs/enterprise/shared-connections",
-          "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/sites",
           "https://learn.chatgpt.com/docs/enterprise/skills",
           "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -1334,7 +1329,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "2e881cfc5c9ab8ff847dfbfe41d9f9a9020058ce98e47f0ea0d8eddcef113409",
+        "discovered_urls_sha256": "ce1c26ad3373edda0857176551c7fdbc57fc196167c161b4c525bdbe62de8f77",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1417,7 +1412,6 @@
           "https://learn.chatgpt.com/docs/enterprise/security-cookbook",
           "https://learn.chatgpt.com/docs/enterprise/service-accounts",
           "https://learn.chatgpt.com/docs/enterprise/shared-connections",
-          "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/sites",
           "https://learn.chatgpt.com/docs/enterprise/skills",
           "https://learn.chatgpt.com/docs/enterprise/teams",
@@ -1720,7 +1714,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-26T22:25:39+00:00",
+    "last_successful_full_sync_at": "2026-10-27T17:40:18+00:00",
     "status": "complete"
   }
 }

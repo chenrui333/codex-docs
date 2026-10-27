@@ -21,7 +21,7 @@ To use an existing gateway, start with [Connect to an existing
   see [Amazon Bedrock](https://learn.chatgpt.com/docs/amazon-bedrock).
 
 Other gateway products follow the same [gateway requirements](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility)
-and [API/provider connection flow](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
+and [gateway connection flow](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
 
 ## Connect to an existing gateway
 
@@ -30,7 +30,8 @@ Get these values from your gateway administrator:
 - The HTTPS base URL, such as `https://gateway.example.com/v1`.
 - The model alias that LiteLLM routes to an approved Bedrock model.
 - The provider ID to use in Codex configuration.
-- A scoped gateway credential or an authentication helper that returns it.
+- Native gateway OAuth settings, a scoped gateway API key, or an authentication
+  helper that returns the key.
 - Any model catalog distributed with your organization's configuration.
 
 Then complete the connection in this order:
@@ -38,7 +39,7 @@ Then complete the connection in this order:
 1. Ask your gateway team to confirm that the gateway serves `POST /v1/responses`,
    streams responses, preserves follow-up turns and tool calls, and routes the
    approved alias. See [Gateway compatibility](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility).
-2. Follow [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider)
+2. Follow [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider)
    to configure the provider, model, and credential.
 3. Verify the active provider and alias, send the short `gateway-ok` prompt from
    the connection guide, and confirm that the LiteLLM record shows the expected
@@ -46,6 +47,12 @@ Then complete the connection in this order:
 4. For organization-wide distribution, continue with [Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway).
 
 Your gateway credential authenticates you to LiteLLM. The gateway manages its own Bedrock credentials; you don't need to copy those credentials to your workstation.
+
+If your gateway accepts OAuth access tokens, use [native gateway
+OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#use-native-gateway-oauth) for browser
+sign-in without ChatGPT sign-in or a credential helper. Confirm that your deployed
+gateway validates the token in the configured cookie or custom header. A LiteLLM
+API key alone doesn't enable this flow.
 
 ## Prepare a gateway
 
@@ -166,7 +173,7 @@ Distribute the key through your secret-management process or an authentication h
 Complete these checks before expanding access:
 
 1. Confirm that the HTTPS certificate matches the gateway host name and the service is healthy.
-2. Connect one user through [Use API/provider credentials](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
+2. Connect one user through [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
 3. Run a short prompt, a follow-up turn, and a read-only tool task.
 4. Confirm that gateway records show the expected identity, alias, and upstream route without exposing credentials or sensitive prompt content.
 5. Test credential expiration or revocation and confirm that unauthorized model aliases are rejected.

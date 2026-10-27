@@ -7258,7 +7258,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "baab70fc1280d3b16599f8d9e2c94cab3205be09b40b3b7db4803620f6913e08",
+      "sha256": "af829cb006a20980190d17798cec85424218f93836084a85706663e218176d93",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7444,7 +7444,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0e5ac5a71f3a6b490b213ac14e59924e13cc3866eb8456bae03a4d1bb0c74581",
+      "sha256": "1320e45393118fd0d9d3307c387c95e9088b6a55ae666fddfd6d30430f682cde",
       "source_area": "learn_amazon_bedrock",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -7606,7 +7606,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "c7a8d09ef6211719b4a589a307f78e300fb8fec20d444ae504fe2d25c622a6f6",
+      "sha256": "7cab02283e1b439ecd18d14913201b807d8e90ac1721fc98918854c741649952",
       "source_area": "learn_auth",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8073,7 +8073,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "8ca7e827cda8cd88282726a0078f94e12a427b8e021af7344a0758a7d4df598c",
+      "sha256": "ff32cc07d5550115e9f3a449050c70e56410aa3d3e5180ea1bcc0cd45727b6f4",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8638,7 +8638,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors"
     },
     "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md": {
-      "sha256": "ae39fc2a4802077aa0066c12a9cf332548e2858427f9101fd7d2f15a1703f063",
+      "sha256": "c4504ce0e4ff97266f3826d55dffcbdc06da3b5fffa6073fc1d7b31dc16c4277",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8787,7 +8787,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/compliance-api"
     },
     "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
-      "sha256": "bb4240ba6fde9d14bd1f15ff95687beb86859d8e1d50ae046eb59a5ccd956fdb",
+      "sha256": "28f342da54bf4288c85cffa1898f072e4dd5dfd8af21e2d2debc24f9e300aaff",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8815,7 +8815,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/education-plans"
     },
     "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md": {
-      "sha256": "20d9f3573bba7bc214fff28adc2f611a90a40871de27b308be0ddfe47aab4e47",
+      "sha256": "c4d83c0d0e656b2dfbe3cbb9e8aa3ade6c7bf6f4eac420656812bf2058e82503",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9059,7 +9059,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions"
     },
     "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
-      "sha256": "62b040ce9c0c0cf496d2fc7da82e6d554b37e31322f00a091b88c37f08fa907c",
+      "sha256": "5ad8b99f9f6fb40d27dcb1b195bdc6a4162475ff2567894792d9b42c12301862",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9105,13 +9105,6 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/shared-connections"
-    },
-    "learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway/index.md": {
-      "sha256": "d6bcb89f5757ee5957d6df1a0f61768bc7d9cfcb15955fb41d89f903ef5674ad",
-      "source_area": "learn_enterprise",
-      "source_kind": "learn_markdown",
-      "source_type": "learn",
-      "source_url": "https://learn.chatgpt.com/docs/enterprise/sign-in-with-chatgpt-through-a-gateway"
     },
     "learn.chatgpt.com/docs/enterprise/sites/index.md": {
       "sha256": "09c843ee32b7ee5ec79e07257b8d4295557b3663d55589c5606ab29779ad1953",
