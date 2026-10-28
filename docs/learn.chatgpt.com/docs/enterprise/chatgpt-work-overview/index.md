@@ -60,11 +60,6 @@ See [Code and shell sandboxing](https://learn.chatgpt.com/docs/sandboxing?surfac
 
 Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
 
-<span
-  id="enable-and-govern-local-computer-access"
-  data-localization-body-anchor
-/>
-
 ## Enable and govern Local computer access with Work Cloud
 
 A workspace owner enables **Allow local computer access** after reviewing the required Work permissions and the cloud policy in **Agent Security**. Enable Work Cloud for the intended users. **Allow local computer access** is nested under Work Cloud. You do not need to enable **Use Codex locally on the ChatGPT desktop app**.

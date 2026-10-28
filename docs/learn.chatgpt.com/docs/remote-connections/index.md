@@ -23,11 +23,6 @@ host.
 Remote access uses the connected host's projects, chats, files, credentials,
 permissions, plugins, Computer Use, browser setup, and local tools.
 
-<span
-  id="local-computer-access-and-remote-connections"
-  data-localization-body-anchor
-/>
-
 ## Local computer access with Work Cloud and Remote connections
 
 When your workspace enables Local computer access with Work Cloud, eligible ChatGPT Work conversations can continue across desktop, mobile, and web. OpenAI's cloud coordinates the task, and an online, connected computer can execute steps that need its local resources.

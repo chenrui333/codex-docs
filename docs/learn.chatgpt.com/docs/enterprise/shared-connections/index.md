@@ -55,31 +55,11 @@ Provider requirements differ: Gmail may need a separate user account, Drive acce
 
 5. Grant access to approved users, teams, or service accounts. Review use and management permissions separately, then hand off to the team or workflow owner for selection and testing.
 
-<span
-  id="notion--connect-the-intended-workspace-and-content"
-  data-localization-body-anchor
-/>
-
-<span
-  id="notion-connect-the-intended-workspace-and-content"
-  data-localization-body-anchor
-/>
-
 ### Set up each app
 
 Use the method offered for your app, then configure access and test it in the intended workflow.
 
 ### Google Drive
-
-<span
-  id="google-drive--authorize-a-google-account"
-  data-localization-body-anchor
-/>
-
-<span
-  id="google-drive-authorize-a-google-account"
-  data-localization-body-anchor
-/>
 
 #### Authorize an account
 
@@ -88,16 +68,6 @@ Use an approved Google account with access to the required files or shared drive
 1. Choose Google sign-in, select the account you want to connect, and review the requested access before approving.
 
 2. Confirm the Google account, then name the connection in ChatGPT. If the workflow creates files, test the destination and recipients’ access.
-
-<span
-  id="google-drive--use-a-google-service-account"
-  data-localization-body-anchor
-/>
-
-<span
-  id="google-drive-use-a-google-service-account"
-  data-localization-body-anchor
-/>
 
 #### Use a service account
 
@@ -127,16 +97,6 @@ If OAuth is offered, authorize the designated Gmail mailbox. Ask IT for a separa
 
 Google Groups are not mailboxes. A connected mailbox subscribed to a group can receive its messages but may also expose other mail. Review its contents and allowed actions before sharing.
 
-<span
-  id="google-workspace--domain-wide-delegation"
-  data-localization-body-anchor
-/>
-
-<span
-  id="google-workspace-domain-wide-delegation"
-  data-localization-body-anchor
-/>
-
 #### Set up domain-wide delegation
 
 Delegation requires a verified requesting employee and uses their delegated Google permissions. Before unattended work, confirm the experience can establish that requester. [Direct Drive service-account access](https://learn.chatgpt.com/docs/enterprise/shared-connections#google-drive-use-a-google-service-account) works differently.
@@ -152,16 +112,6 @@ Use delegation only where offered. It requires Google Workspace super-admin appr
 For denied requests, check the requester, approved scopes, and resource access. Do not broaden scopes just to clear an error.
 
 ### GitHub
-
-<span
-  id="github--select-an-app-installation-and-repositories"
-  data-localization-body-anchor
-/>
-
-<span
-  id="github-select-an-app-installation-and-repositories"
-  data-localization-body-anchor
-/>
 
 #### Authorize a user account
 
@@ -227,21 +177,6 @@ The connection uses that account’s Linear access. From the task or surface tha
 
 ### Slack
 
-<span
-  id="slack--configure-the-chatgpt-in-slack-connection"
-  data-localization-body-anchor
-/>
-
-<span
-  id="slack-configure-the-chatgpt-in-slack-connection"
-  data-localization-body-anchor
-/>
-
-<span
-  id="test-an-existing-workspace-connection"
-  data-localization-body-anchor
-/>
-
 #### Configure the workspace connection
 
 Confirm the required Slack workspace, channels, app installation, and admin approval. Use the surface’s [shared ChatGPT in Slack connection](https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams#configure-company-access). Personal Slack connections and the [dots Add to Slack connection](https://learn.chatgpt.com/docs/dots/channels#slack) are separate.
@@ -257,11 +192,6 @@ Team and workflow owners
 **Workspace administrator:** Configure role access and availability; review use and management permissions separately. Give the workflow owner the connection nickname, account, approved resources/actions, and owner’s contact details.
 
 **Team or workflow owner:** Select and save the available connection where permitted, then test it in the intended workflow. If missing, have the workspace admin check access and availability.
-
-<span
-  id="configure-access-and-select-the-credential"
-  data-localization-body-anchor
-/>
 
 ### What each setting controls
 
@@ -285,11 +215,6 @@ Check each plugin’s connection nickname, account, and resource access with the
 For **@ChatGPT**, open the [surface's plugin settings](https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams#configure-company-access) and select the connection. Save, then reopen settings to check the selection.
 
 For a [Team Task](https://learn.chatgpt.com/docs/enterprise/teams#create-a-team-task), confirm the selected connection for each app. The team service account runs the task; each app’s authentication method determines its external account. Confirm that method supports the task’s run type, especially if it requires a verified employee.
-
-<span
-  id="test-access-through-the-intended-experience"
-  data-localization-body-anchor
-/>
 
 ### Test the connection in your workflow
 
@@ -328,16 +253,6 @@ If authorization or provider permissions change, have the connection owner resto
 Before disabling a connection, identify affected workflows with their owners. After removal, verify those users and workflows can no longer use it.
 
 Revoke provider authorization separately; disabling the ChatGPT connection does not replace this step.
-
-<span
-  id="troubleshoot-by-checking-the-failed-layer"
-  data-localization-body-anchor
-/>
-
-<span
-  id="find-the-right-person-to-resolve-access"
-  data-localization-body-anchor
-/>
 
 ### Troubleshoot access
 

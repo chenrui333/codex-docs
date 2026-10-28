@@ -41,11 +41,6 @@ Assign the following responsibilities before setup:
 
 ## Set up Slack
 
-<span
-  id="1-confirm-the-slack-workspace-and-permissions"
-  data-localization-body-anchor
-/>
-
 ### 1. Plan your surface configuration
 
 A surface defines where @ChatGPT is available and which tools it can use.
@@ -59,16 +54,6 @@ In the [OpenAI admin console](https://admin.openai.com/), select the intended wo
 Have the Slack owner or authorized app manager complete any required approval, then confirm the connection in ChatGPT.
 
 If your organization already uses ChatGPT in Slack, a Slack admin must approve the additional app permissions to use the new @ChatGPT experience. See the [guidance for existing Slack installations](https://help.openai.com/articles/20001536). Existing installations won’t stop working immediately at launch.
-
-<span
-  id="3-create-the-deployment-and-choose-its-scope"
-  data-localization-body-anchor
-/>
-
-<span
-  id="set-destination-controls-and-instructions"
-  data-localization-body-anchor
-/>
 
 ### 3. Create the surface and choose its scope
 
@@ -91,11 +76,6 @@ For step-by-step setup instructions, see the [Help Center setup guide](https://h
 ## Check your surface scope
 
 Confirm the surface matches its Slack workspace or Teams tenant. Enterprise Grid needs one surface per connected workspace.
-
-<span
-  id="enable-the-credential-for-the-deployment"
-  data-localization-body-anchor
-/>
 
 ## Configure company access
 
@@ -131,11 +111,6 @@ Codex Cloud delegation from Slack requires separate setup where available.
 
 The service account finds environments; the coding task runs as the requesting user. The service account does not need GitHub access.
 
-<span
-  id="verify-a-pilot-before-expanding-access"
-  data-localization-body-anchor
-/>
-
 ## Validate setup
 
 Before expanding access, use approved test data to check successful requests and access boundaries for each supported conversation type.
@@ -155,26 +130,6 @@ Assign an owner to maintain platform connections, app assignment, and approved p
 After a permission or connection change, repeat the relevant [validation checks](#h.ts4i3qduozr) before expanding access. Use the [Workspace connections guide](https://learn.chatgpt.com/docs/enterprise/shared-connections) to review company-account access and troubleshoot authorization.
 
 Before offboarding or removing access, identify affected surfaces and connections and coordinate with their administrators.
-
-<span
-  id="why-cant-a-teammate-open-a-generated-file"
-  data-localization-body-anchor
-/>
-
-<span
-  id="why-did-a-working-connection-stop-working"
-  data-localization-body-anchor
-/>
-
-<span
-  id="what-should-i-include-in-a-support-request"
-  data-localization-body-anchor
-/>
-
-<span
-  id="what-else-should-we-confirm-before-enabling-chatgpt"
-  data-localization-body-anchor
-/>
 
 ## Setup FAQ
 

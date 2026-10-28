@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-27T21:57:55+00:00",
-  "manifest_sha256": "9825c7cfe6155aefa9598199b2954ded7998f18dc72d34c3734ff20e322b6556",
+  "generated_at": "2026-10-28T12:21:33+00:00",
+  "manifest_sha256": "49bcecc2a316922618010ce901c50343dfef6a77c38739be8692759ad41e6c2d",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,7 +17,16 @@
   },
   "total_files": 294,
   "updated": [
-    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md",
-    "learn.chatgpt.com/docs/environments/cloud-environments/index.md"
+    "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md",
+    "learn.chatgpt.com/docs/enterprise/chatgpt-work-overview/index.md",
+    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
+    "learn.chatgpt.com/docs/enterprise/sites/index.md",
+    "learn.chatgpt.com/docs/enterprise/teams/index.md",
+    "learn.chatgpt.com/docs/enterprise/work-admin-faq/index.md",
+    "learn.chatgpt.com/docs/remote-connections/index.md"
   ]
 }

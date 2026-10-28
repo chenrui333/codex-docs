@@ -1102,11 +1102,6 @@ For Work with local access and dots, supported Global policy governs the shared 
 
 <a id="agent-security-and-work-sync"></a>
 
-<span
-  id="agent-security-and-local-computer-access"
-  data-localization-body-anchor
-/>
-
 ### Agent Security and Local computer access with Work Cloud
 
 Use Agent Security in the Admin Console to manage policies and configuration. It replaces Policies & Configuration. Agent Security is available in the Admin Console, independently of Local computer access with Work Cloud. Existing policies, assignments, and ordering are preserved. Review your existing policies in Agent Security. Local computer access with Work Cloud is a separate opt-in. See [Agent Security](https://learn.chatgpt.com/docs/enterprise/agent-security) for migration guidance.
