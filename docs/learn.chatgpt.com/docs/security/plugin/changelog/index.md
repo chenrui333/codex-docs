@@ -13,9 +13,7 @@ Source: https://learn.chatgpt.com/docs/security/plugin/changelog
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use this changelog to see what changed in the Codex Security plugin.
-
-**Newest release notes:** `0.1.30`.
+**Newest release notes:** `0.1.32`.
 
 Check the plugin version in your current Codex environment before you use a
 feature from a newer release.
@@ -23,6 +21,22 @@ feature from a newer release.
 Changelog entries follow the plugin version, not the package version. CLI and
 SDK users can run `npx @openai/codex-security info --json` to check the
 package and bundled plugin versions together.
+
+For CLI and SDK changes, see the [Codex Security package releases](https://github.com/openai/codex-security/releases).
+
+## 0.1.32
+
+### Complete deep scans more reliably
+
+- The plugin keeps the scan identity and completion instructions with
+  aggregated results so Codex can finish the scan and generate `report.md`.
+- The plugin reads large sets of worker results in smaller pages to avoid
+  response-size errors during aggregation.
+- The plugin retries recoverable worker errors, including parsing errors,
+  before stopping the scan.
+
+See [Run a deep security scan](https://learn.chatgpt.com/docs/security/plugin/deep-scans) for setup,
+results, and recovery guidance.
 
 ## 0.1.30 (September 24, 2026)
 

@@ -63,7 +63,7 @@ Tell your dot where to send different kinds of updates. For example, ask it to k
 <a id="choose-where-o-can-reach-you"></a>
 <a id="where-to-use-o"></a>
 
-Open your dot's profile and select **Add** to connect an available contact method. See [Message your dot](https://learn.chatgpt.com/docs/dots/channels) for channel details.
+Open your dot's profile and select **Add** to connect an available contact method. Texting is rolling out in beta to ChatGPT Pro users in the U.S. See how to [set up texting](https://learn.chatgpt.com/docs/dots/channels#texting) with iMessage or RCS on Android. See [Message your dot](https://learn.chatgpt.com/docs/dots/channels) for other ways to reach it.
 
 In Slack, you can DM your dot or mention it in a channel you’ve added it to. By default, it responds to you; you can instruct it to engage with others. Existing permissions and safeguards still apply to what it shares and does. Tell it which channels and events to watch for. Adding it to a channel alone doesn’t start monitoring. You can also message your dot in Microsoft Teams. See [Slack and Teams](https://learn.chatgpt.com/docs/dots/channels#slack-and-teams).
 
@@ -274,7 +274,7 @@ You can create your dot in the ChatGPT mobile app, desktop app, or a desktop bro
 | Guide                                                | Covers                                                           |
 | ---------------------------------------------------- | ---------------------------------------------------------------- |
 | [Getting started](https://learn.chatgpt.com/docs/dots/getting-started)       | Setup, your first conversation, and assigning work.              |
-| [Messaging](https://learn.chatgpt.com/docs/dots/channels)                    | ChatGPT, calls, Slack, and Teams.                                |
+| [Messaging](https://learn.chatgpt.com/docs/dots/channels)                    | ChatGPT, calls, texting, Slack, and Teams.                       |
 | [Tasks and memory](https://learn.chatgpt.com/docs/dots/tasks-and-memory)     | Assigned work, recurring tasks, context, and proactive research. |
 | [Computers and apps](https://learn.chatgpt.com/docs/dots/computers-and-apps) | Cloud work, local access, plugins, and website sign-in.          |
 | [Controls](https://learn.chatgpt.com/docs/dots/controls)                     | Review activity, manage permissions, and stop work.              |

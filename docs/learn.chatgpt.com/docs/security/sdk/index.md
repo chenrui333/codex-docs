@@ -22,9 +22,13 @@ The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 24 or 26
 or Node.js 22 starting with 22.13.0. Scanning also requires Python 3.10 or later.
 Python 3.10 also requires the `tomli` package.
 
-Running scans requires Codex Security access. For general coding agents, see
-  the [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI workflows, see
-  the [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
+To read or resume compressed Codex sessions (`.jsonl.zst`), use Node.js
+22.15.0 or later within 22.x, or Node.js 24 or 26. Plain `.jsonl` sessions work
+on all supported Node.js versions.
+
+Scans using OpenAI inference require Codex Security access. For general coding
+  agents, see the [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI
+  workflows, see the [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ## Set up the SDK
 
@@ -33,6 +37,8 @@ Install the SDK:
 ```bash
 npm install @openai/codex-security
 ```
+
+This guide covers the released 0.3.0 SDK. Read the [0.3.0 release notes](https://github.com/openai/codex-security/releases/tag/npm-v0.3.0) for changes to scan results, validation, and resume behavior.
 
 Before starting a scan, set `OPENAI_API_KEY` or `CODEX_API_KEY`, use an
 existing file-backed Codex sign-in, or [configure another
@@ -83,8 +89,7 @@ node scan.mjs
 ```
 
 The example prints the report path, scan status, and finding count.
-Open the report to review the evidence. The count varies with the repository
-and scan, so don't use an expected count to check whether the integration works.
+Open the report to review the evidence.
 
 `run` validates the saved artifacts and returns a `ScanResult` when
 `result.manifest.scan.status` is `"completed"`. Check `result.coverage` for
@@ -238,9 +243,14 @@ const result = await security.run("/path/to/repository", {
 ```
 
 The SDK accepts files or directories and searches directories recursively.
-Supported document formats are `.md`, `.markdown`, `.txt`, `.pdf`, and `.docx`.
-The SDK rejects linked input paths, skips linked directory entries, and keeps
-extracted document content outside the saved scan results.
+Supported formats include UTF-8 text (including JSON and SARIF), PDF, and DOCX.
+The SDK rejects linked input paths and skips linked directory entries.
+
+The SDK saves extracted document text in the private `.scan-knowledge.json`
+file beside scan artifacts. Keep it with the scan directory.
+When resuming an interrupted Deep Scan,
+`codex-security scans resume` uses this saved text even if the original documents
+change or are deleted. Canonical reports don't embed the document text.
 
 ### Add scan and follow-up instructions
 
@@ -255,26 +265,30 @@ const result = await security.run("/path/to/repository", {
 
 If the follow-up fails, the SDK keeps the completed scan and reports the
 error through `onWarning`. It restores any completed scan artifacts that the
-follow-up changed.
+follow-up changed. The follow-up runs after scan cost tracking stops and
+is outside `maxCostUsd`.
 
 ### Set a scan budget
 
 Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
-Use `onCost` to track cost as the scan runs:
+Use `onCost` to track cost as the scan runs and report `estimatedUsdRange`:
 
 ```ts
 const result = await security.run("/path/to/repository", {
   maxCostUsd: 5,
   onCost(cost) {
-    console.log(cost.estimatedUsd);
+    console.log(cost.estimatedUsdRange);
   },
 });
 
-console.log(result.cost?.estimatedUsd);
+console.log(result.cost?.estimatedUsdRange);
 ```
 
-The limit estimates spending but isn't a hard cap, so requests already in
-progress can finish slightly above it. If a deep scan reaches the limit after
+The limit uses `estimatedUsd`, the short-context baseline. Requests already
+in progress can put this estimate above the limit. Long-context pricing can
+raise `estimatedUsdRange` above it. This limit is not a billing cap.
+
+If a deep scan reaches the limit after
 Codex Security aggregates completed worker results, `run` can return a result
 with `manifest.scan.status` set to `"completed"` and report the budget warning
 through `onWarning`. Check `result.coverage` for the work left unfinished.
@@ -298,6 +312,8 @@ paths:
 | `turnResult`         | Turn status, response, and available usage metadata.                               |
 | `cost`               | Estimated model and token cost, or `null` when unavailable.                        |
 | `reportPath`         | The path to `report.md`.                                                           |
+| `threatModel`        | The saved threat model, or `null` when unavailable.                                |
+| `threatModelPath`    | The saved threat-model document path, or `null` when unavailable.                  |
 | `manifestPath`       | The path to `scan-manifest.json`.                                                  |
 | `findingsPath`       | The path to `findings.json`.                                                       |
 | `coveragePath`       | The path to `coverage.json`.                                                       |
@@ -345,8 +361,47 @@ for execution status, and review deferred surfaces, exclusions, and open
 questions in `coverage` to understand what the scan reviewed.
 
 `result.toJSON()` returns the manifest, repository and current-scan findings,
-coverage, scan and thread identifiers, `reportPath`, `artifactsDir`,
-`sarifPath`, cost, and turn metadata in one JSON-ready object.
+coverage, scan and thread identifiers, `reportPath`, `threatModel`,
+`threatModelPath`, `artifactsDir`, `sarifPath`, cost, and turn metadata in one
+JSON-ready object.
+
+### Read saved threat models
+
+Check `threatModel` and `threatModelPath` for `null` before using them. You can
+still export a saved model if Codex Security couldn't write its Markdown file.
+Use the path returned by the export instead of assuming a filename.
+
+Starting in 0.2.0, saved models can contain Markdown (`format: "markdown"`
+and `content`) or the earlier structured format. Integrations that read
+`threatModel` must handle both. Existing models remain readable and exportable
+without migration. Policy generation now writes `threatmodel.md` instead of
+`THREAT_MODEL.md`; `SecurityPolicyDraft.threatModelPath` can also be `null`.
+
+### Export saved artifacts
+
+Export saved results without starting Codex, loading credentials, or making a
+model call. This example exports a saved threat model to stdout. Replace
+`/path/to/scan` with a saved result directory:
+
+```ts
+
+await exportArtifact({
+  source: { directory: "/path/to/scan" },
+  artifact: "threat-model",
+  output: "-",
+});
+```
+
+To select a saved scan by ID, use `source: { scanId: "SCAN_ID" }` instead. Set
+`output` to a destination path to save the artifact to a file.
+
+Use `artifact: "threat-model"` to export Markdown; the export returns an error
+if no threat model was saved. For findings, use `artifact: "findings"` and choose
+`format: "csv"`, `"json"`, or `"sarif"` (the default).
+
+The result includes the output `path` and, for a threat-model file export,
+`provenance` from the same saved results. Both fields are `null` when
+`output: "-"` writes to stdout. Export requires Python 3.10 or later.
 
 ## Track or cancel a scan
 
@@ -454,9 +509,10 @@ a different model or reasoning effort. To use [Amazon
 Bedrock](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock), set
 `model_provider` and `model` in `codexOverrides`.
 
-`codexOverrides` can't restrict the scan's filesystem access or change its
-approval policy. See [Local scan
-permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions).
+Set `codexOverrides.approval_policy` to `"never"` to deny permission requests.
+Scans otherwise use automatic approval review. See [Local scan
+permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions) for filesystem
+access and inherited credentials.
 
 For OpenRouter or Fireworks, also provide the matching API key and a complete
 provider configuration in `codexOverrides`. For example, set

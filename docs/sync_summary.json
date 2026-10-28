@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/whats-new/dots-october-28-2026/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-28T12:21:33+00:00",
-  "manifest_sha256": "49bcecc2a316922618010ce901c50343dfef6a77c38739be8692759ad41e6c2d",
+  "generated_at": "2026-10-28T22:20:42+00:00",
+  "manifest_sha256": "20f7e21d978731f87e4463810a1f1e3d3a05957e8764cc6b3228e232b35ce50d",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,18 +17,21 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 294,
+  "total_files": 295,
   "updated": [
-    "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-work-overview/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
-    "learn.chatgpt.com/docs/enterprise/sites/index.md",
-    "learn.chatgpt.com/docs/enterprise/teams/index.md",
-    "learn.chatgpt.com/docs/enterprise/work-admin-faq/index.md",
-    "learn.chatgpt.com/docs/remote-connections/index.md"
+    "learn.chatgpt.com/docs/dots/channels/index.md",
+    "learn.chatgpt.com/docs/dots/index.md",
+    "learn.chatgpt.com/docs/index.md",
+    "learn.chatgpt.com/docs/models/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/plugin/changelog/index.md",
+    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
+    "learn.chatgpt.com/docs/security/plugin/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md",
+    "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md"
   ]
 }

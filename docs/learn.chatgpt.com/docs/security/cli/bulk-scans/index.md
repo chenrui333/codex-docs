@@ -18,9 +18,10 @@ campaign. Discover repositories from your personal GitHub account or an
 organization, or provide a CSV that pins every repository to an exact Git
 revision.
 
-The `@openai/codex-security` package is public. Running scans requires Codex
-  Security access. Follow the [CLI quickstart](https://learn.chatgpt.com/docs/security/cli) to install
-  the CLI and sign in.
+The `@openai/codex-security` package is public. Scans using OpenAI inference
+  require Codex Security access. Follow the [CLI
+  quickstart](https://learn.chatgpt.com/docs/security/cli) to install the CLI, then [select credentials
+  for your provider](https://learn.chatgpt.com/docs/security/cli/reference#select-scan-authentication).
 
 ## Choose a repository source
 
@@ -175,9 +176,7 @@ The same options work during interactive repository discovery:
 npx @openai/codex-security bulk-scan --model gpt-6.1-sol --effort medium
 ```
 
-Available effort levels depend on the selected model. Bulk scans support
-`minimal`, `low`, `medium`, `high`, `xhigh`, and `max`; GPT-6.1 Sol requires at
-least `low`.
+Use an `--effort` value supported by your model, provider, and Codex version.
 
 To use OpenRouter or Fireworks, set `OPENROUTER_API_KEY` or `FIREWORKS_API_KEY`,
 respectively, and specify `--provider` and `--model`. For credentials and

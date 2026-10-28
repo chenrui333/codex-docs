@@ -279,6 +279,9 @@ Usage limits are shared with other agentic features once pricing for those
 features is effective. This currently includes [ChatGPT for
 Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
 
+GPT-6.1 Sol usage drawn from your subscription has no long-context surcharge
+in Codex or ChatGPT Work.
+
 Fast and Ultrafast modes use included subscription limits and paid credits
 at different rates, relative to Standard mode for the same model:
 

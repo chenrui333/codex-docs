@@ -89,6 +89,117 @@
       "id": "83cbc9f5c77f48db0546a6fbf095726b6338a449c8cb5d6717a67944f492e3be",
       "observed_at": "2026-10-28T12:21:33+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/whats-new/dots-october-28-2026/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/dots/channels/index.md": {
+            "after": "476bf48d2df7de37b8abac9ee8a242acc038fa999906fef381ce747fb647e19b",
+            "before": "322912e03a14bc38de1a69f4ec72f2a94fbc3017926dd0de90218827564f38ab"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "98b1b3fc7d3157f5558adc4160307991bb464220bff81e2a83ee1a8c726a6362",
+            "before": "2636413b7b7bfa12675e2edf911d4d2efb2147492faf986aae8b2094013794a1"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "d1f475cba5efb0f83c8903453d14b6adaba0d301dd6008a60aaa9b23cce19b7d",
+            "before": "cb7f69e92c88d8cd5cdab0c3ea3d7d0aca57c7885a3324df012f45531a6f378b"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "1cd19916bf5df23cf26ce9cb7b65d65821932faf8be28e85cefab08414da838e",
+            "before": "1f03b8975ed2f4ce43b69b41dfb5bddfd52686a30af16c480f3974e85c917097"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "bea57f573c9bf5c19b4f7e1ad2b2ef09e1480a6adb080b73b873ce9e39d9d00f",
+            "before": "4c1eb513a222b47831f477c43456f8b462bf3ca7d26a40c175e026fb6bd52cb8"
+          },
+          "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md": {
+            "after": "7c6d942533912835753b66964178e6d79d32c8feddc42858cac9c113870d9bb9",
+            "before": "0541cbc27667fe012b28e510bb8821d0b3a9d435a96eba748675cb9bed9eff1f"
+          },
+          "learn.chatgpt.com/docs/security/cli/index.md": {
+            "after": "372a3a4c85d132a92dae82a1965ca3bee454e096ae6cc7bcbe191ffad52e066a",
+            "before": "51de91c60b570f7d7b671988c97749084f1a5872316c78bb40091d01b0405bc2"
+          },
+          "learn.chatgpt.com/docs/security/cli/reference/index.md": {
+            "after": "cb1067b57da7db4ec30e1bca11a3d7ecca5eee8a3f153b48bb86ec3af1d9641d",
+            "before": "5b1d5c1341a0399ffae89799012662113ea23355a9c6036c198db08cc36a3f14"
+          },
+          "learn.chatgpt.com/docs/security/plugin/changelog/index.md": {
+            "after": "ffcbb8654e9c7d576408c85046b5783e487f386318f2d240dc55f6862c6d2f94",
+            "before": "3a1dae8142be2b3826f15d0372c4753bf8cccc82b17049853eb808e26eaa6ef6"
+          },
+          "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md": {
+            "after": "00658c8eff71ad7a2cd880745725183bf43a4d8a88ed9a3605110961e7be8ded",
+            "before": "52e498c5ea0130e1d9a41f70aa87c7bc147d02d405e146fb8e710d41ca318ca2"
+          },
+          "learn.chatgpt.com/docs/security/plugin/index.md": {
+            "after": "8d652f4c52d1a7090386c909bf3c7fd59afa6c42a0a5605a3f4224188a61baad",
+            "before": "9409a1f01d2173286406cbc71e7546e7b2ad456280a84aa3d81482e8a65e52ae"
+          },
+          "learn.chatgpt.com/docs/security/sdk/index.md": {
+            "after": "803c10de9759da430679d7746a5f26884e1ae63ff54007dacf488c7b247e3b63",
+            "before": "0ec3e13e4d36a3ed7e1f5425fd71013bdf7412d3ac3046f7d6ed2c64d63b7c09"
+          },
+          "learn.chatgpt.com/docs/whats-new/dots-october-28-2026/index.md": {
+            "after": "ece4e26ef8ca02867d3c3e7079e40f5d62bf4b0d19e447d302112da0be4cc326",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "4ebd0e353e191c49a7da52124ab33fd2617240f755b905081ddea562f0775a63",
+            "before": "d2c4bccc6659f8ddda50520d8476fe334420b34926386465fa5840218883c8ef"
+          },
+          "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md": {
+            "after": "25efefc781a367bea52b55ce1d6bf3e928b57a3565b69fb0d17cce016e8b3306",
+            "before": "c4aa0de1251b4209d4603b71f284b93a126f3c8ab89ea8062500be99c6ea279d"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.165.0",
+          "codex_cli_source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
+          "codex_cli_version": "0.165.0",
+          "codex_cli_version_raw": "codex-cli 0.165.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/dots/channels/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/models/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+          "learn.chatgpt.com/docs/security/cli/index.md",
+          "learn.chatgpt.com/docs/security/cli/reference/index.md",
+          "learn.chatgpt.com/docs/security/plugin/changelog/index.md",
+          "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
+          "learn.chatgpt.com/docs/security/plugin/index.md",
+          "learn.chatgpt.com/docs/security/sdk/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md",
+          "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md"
+        ]
+      },
+      "id": "5ddbc935dde8f7eec898a7a937e9b20dc2a25e979d635306e624a027feee0826",
+      "observed_at": "2026-10-28T22:20:41+00:00",
+      "previous_id": "83cbc9f5c77f48db0546a6fbf095726b6338a449c8cb5d6717a67944f492e3be"
     }
   ],
   "schema_version": 1

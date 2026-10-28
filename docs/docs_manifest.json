@@ -8532,7 +8532,7 @@
       "source_url": "https://learn.chatgpt.com/docs/developers"
     },
     "learn.chatgpt.com/docs/dots/channels/index.md": {
-      "sha256": "322912e03a14bc38de1a69f4ec72f2a94fbc3017926dd0de90218827564f38ab",
+      "sha256": "476bf48d2df7de37b8abac9ee8a242acc038fa999906fef381ce747fb647e19b",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8560,7 +8560,7 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/getting-started"
     },
     "learn.chatgpt.com/docs/dots/index.md": {
-      "sha256": "2636413b7b7bfa12675e2edf911d4d2efb2147492faf986aae8b2094013794a1",
+      "sha256": "98b1b3fc7d3157f5558adc4160307991bb464220bff81e2a83ee1a8c726a6362",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9986,11 +9986,11 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "cb7f69e92c88d8cd5cdab0c3ea3d7d0aca57c7885a3324df012f45531a6f378b",
+      "sha256": "d1f475cba5efb0f83c8903453d14b6adaba0d301dd6008a60aaa9b23cce19b7d",
       "source_area": "learn_docs",
-      "source_etag": "W/\"8a507dfab2361bb4d798e9b3723594e6\"",
+      "source_etag": "W/\"eacd6ca6597bcd509bfa14b2e7dbac42\"",
       "source_kind": "learn_html_fallback",
-      "source_last_modified": "2026-10-26T21:43:35Z",
+      "source_last_modified": "2026-10-28T22:16:56Z",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs"
     },
@@ -10167,7 +10167,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "1f03b8975ed2f4ce43b69b41dfb5bddfd52686a30af16c480f3974e85c917097",
+      "sha256": "1cd19916bf5df23cf26ce9cb7b65d65821932faf8be28e85cefab08414da838e",
       "source_area": "learn_models",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10446,7 +10446,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "4c1eb513a222b47831f477c43456f8b462bf3ca7d26a40c175e026fb6bd52cb8",
+      "sha256": "bea57f573c9bf5c19b4f7e1ad2b2ef09e1480a6adb080b73b873ce9e39d9d00f",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10725,7 +10725,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0541cbc27667fe012b28e510bb8821d0b3a9d435a96eba748675cb9bed9eff1f",
+      "sha256": "7c6d942533912835753b66964178e6d79d32c8feddc42858cac9c113870d9bb9",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10846,7 +10846,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "51de91c60b570f7d7b671988c97749084f1a5872316c78bb40091d01b0405bc2",
+      "sha256": "372a3a4c85d132a92dae82a1965ca3bee454e096ae6cc7bcbe191ffad52e066a",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10877,7 +10877,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "5b1d5c1341a0399ffae89799012662113ea23355a9c6036c198db08cc36a3f14",
+      "sha256": "cb1067b57da7db4ec30e1bca11a3d7ecca5eee8a3f153b48bb86ec3af1d9641d",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10970,7 +10970,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "3a1dae8142be2b3826f15d0372c4753bf8cccc82b17049853eb808e26eaa6ef6",
+      "sha256": "ffcbb8654e9c7d576408c85046b5783e487f386318f2d240dc55f6862c6d2f94",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11032,7 +11032,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "52e498c5ea0130e1d9a41f70aa87c7bc147d02d405e146fb8e710d41ca318ca2",
+      "sha256": "00658c8eff71ad7a2cd880745725183bf43a4d8a88ed9a3605110961e7be8ded",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11125,7 +11125,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "9409a1f01d2173286406cbc71e7546e7b2ad456280a84aa3d81482e8a65e52ae",
+      "sha256": "8d652f4c52d1a7090386c909bf3c7fd59afa6c42a0a5605a3f4224188a61baad",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11311,7 +11311,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0ec3e13e4d36a3ed7e1f5425fd71013bdf7412d3ac3046f7d6ed2c64d63b7c09",
+      "sha256": "803c10de9759da430679d7746a5f26884e1ae63ff54007dacf488c7b247e3b63",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11810,6 +11810,13 @@
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/whats-new/devday-2026"
     },
+    "learn.chatgpt.com/docs/whats-new/dots-october-28-2026/index.md": {
+      "sha256": "ece4e26ef8ca02867d3c3e7079e40f5d62bf4b0d19e447d302112da0be4cc326",
+      "source_area": "learn_whats_new",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026"
+    },
     "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md": {
       "sha256": "9ab3d7b18c646ca5065e30ac92ebf03ddaa06f54c88d1174e0414ebe656399d8",
       "source_area": "learn_whats_new",
@@ -11842,14 +11849,14 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "d2c4bccc6659f8ddda50520d8476fe334420b34926386465fa5840218883c8ef",
+      "sha256": "4ebd0e353e191c49a7da52124ab33fd2617240f755b905081ddea562f0775a63",
       "source_area": "learn_whats_new",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/whats-new"
     },
     "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md": {
-      "sha256": "c4aa0de1251b4209d4603b71f284b93a126f3c8ab89ea8062500be99c6ea279d",
+      "sha256": "25efefc781a367bea52b55ce1d6bf3e928b57a3565b69fb0d17cce016e8b3306",
       "source_area": "learn_whats_new",
       "source_kind": "learn_markdown",
       "source_type": "learn",

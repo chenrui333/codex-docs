@@ -80,4 +80,22 @@ The action opens ChatGPT and requires authentication. If you switch accounts and
 
 ## Texting
 
-Texting is coming soon.
+Reach your dot through iMessage or RCS on Android. Texting supports one-to-one conversations. It’s rolling out in beta to ChatGPT Pro users in the U.S.
+
+Your dot can use relevant context from your conversations in ChatGPT and other connected channels, along with the plugins you’ve connected.
+
+### Set up texting
+
+1. Open your dot’s profile in the ChatGPT mobile app, desktop app, or a desktop web browser and select **Texting**.
+2. Enter your phone number and follow the steps to verify it.
+3. Save your dot’s contact card when you receive it. Send your dot a message to start chatting.
+
+For iMessage, make sure you’re sending from the phone number you verified. On Android, enable RCS in your messaging app.
+
+You can send text, photos, and voice messages. If your dot needs approval, it sends you a link to review the request in ChatGPT.
+
+Your dot uses context from your conversations to choose where to reach you. You can also ask it to use a particular channel, such as texting you when something needs your attention and keeping routine updates in ChatGPT.
+
+Your dot can only text you, and you’re the only one who can text your dot. Setting up texting doesn’t give your dot or OpenAI access to your other text conversations.
+
+Group chats, phone calls, and FaceTime aren’t currently supported through texting. You can call your dot in ChatGPT.

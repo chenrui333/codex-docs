@@ -65,6 +65,34 @@ If **Security** doesn't appear in the desktop-app sidebar, confirm that
   **Codex** is selected and the plugin is enabled. Update the app and plugin if
   needed, and check whether your workspace administrator allows the plugin.
 
+### Check versions and updates
+
+Check the [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before a long
+scan. Manage your installation in **Plugins** in the desktop app or `/plugins`
+in Codex CLI. See the [plugin guide](https://learn.chatgpt.com/docs/plugins) for details. After updating
+the plugin, start a new chat to load its skills and tools. In Codex CLI, enter
+`/new`.
+
+Codex and the Codex Security plugin have separate versions. In Codex CLI, check
+the host version and installed plugin versions with:
+
+```bash
+codex --version
+codex plugin list --json
+```
+
+Find Codex Security in the `installed` list. Record both versions when you
+start a scan so you can include them when reporting a failure.
+
+The standalone `@openai/codex-security` package has its own bundled plugin.
+Updating that package doesn't update the marketplace plugin used in Codex.
+For package installation and version checks, see the [CLI
+quickstart](https://learn.chatgpt.com/docs/security/cli).
+
+For Amazon Bedrock, configure the Codex host using the [Codex Bedrock
+guide](https://learn.chatgpt.com/docs/amazon-bedrock). The standalone package uses the separate
+[Security CLI provider settings](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock).
+
 ## Run your first scan
 
 For the best scan quality, use `gpt-5.6-sol`

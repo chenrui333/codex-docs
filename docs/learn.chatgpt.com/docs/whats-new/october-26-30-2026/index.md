@@ -13,6 +13,12 @@ Source: https://learn.chatgpt.com/docs/whats-new/october-26-30-2026
 
 [Back to What's new](https://learn.chatgpt.com/docs/whats-new#october-2630-2026)
 
+## [Text your dot](https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026)
+
+Reach your dot through iMessage or RCS on Android for one-to-one conversations
+with text, photos, and voice messages. Texting is rolling out in beta to ChatGPT
+Pro users in the U.S.
+
 ## Use GPT-6.1 Terra for visual reasoning and computer use
 
 [GPT-6.1 Terra](https://learn.chatgpt.com/docs/models?surface=app#app-gpt-61-terra) is now available in ChatGPT Work

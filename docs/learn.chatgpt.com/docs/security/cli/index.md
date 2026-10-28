@@ -52,8 +52,10 @@ Sign in with your ChatGPT account:
 npx @openai/codex-security login
 ```
 
-On a machine without a browser, add `--device-auth` and follow the displayed
-sign-in instructions. Use `--auth chatgpt` in the scan commands below to select
+On a machine without a browser, add `--device-auth` if your workspace allows
+it, and follow the displayed sign-in instructions. If device authentication
+is disabled, use the [SSH login instructions](https://github.com/openai/codex-security/blob/npm-v0.3.0/sdk/typescript/docs/cli.md#remote-login-with-ssh-forwarding).
+Use `--auth chatgpt` in the scan commands below to select
 that sign-in even when your environment also contains an API key.
 
 For API keys and other providers, see [Select scan
@@ -140,6 +142,20 @@ Keep the scan directory together when sharing or archiving it. It contains
 `scan-manifest.json`, `findings.json`, and `coverage.json` alongside the report
 and supporting artifacts. See [Scan
 artifacts](https://learn.chatgpt.com/docs/security/cli/reference#scan-artifacts) for the full layout.
+
+### Export the saved threat model
+
+Standard, Deep, and Diff scans save their threat model with the results.
+Export it as Markdown without signing in or making another model call:
+
+```bash
+npx @openai/codex-security export "$SCAN_DIR" \
+  --artifact threat-model --output "$SCAN_DIR/exports/threatmodel.md"
+```
+
+If no threat model was saved, `export` returns an error. See the [export
+reference](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-export) to select saved
+scans and other output formats.
 
 ## Revisit a saved scan
 

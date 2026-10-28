@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-10-26T21:43:35Z'
-source_etag: 'W/"8a507dfab2361bb4d798e9b3723594e6"'
+source_last_modified: '2026-10-28T22:16:56Z'
+source_etag: 'W/"eacd6ca6597bcd509bfa14b2e7dbac42"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -71,7 +71,9 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
 October 26–30, 2026
 
-[### Use GPT-6.1 Terra for visual reasoning and computer use
+[### Text your dot
+
+Reach your dot through iMessage or RCS on Android for one-to-one conversations with text, photos, and voice messages.](/codex/whats-new/dots-october-28-2026)  [### Use GPT-6.1 Terra for visual reasoning and computer use
 
 GPT-6.1 Terra is now available in ChatGPT Work and Codex on Plus, Pro, Business, Enterprise, and Edu plans.](/codex/whats-new/october-26-30-2026#use-gpt-61-terra-for-visual-reasoning-and-computer-use)
 
