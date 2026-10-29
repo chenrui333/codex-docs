@@ -156,6 +156,12 @@ To offer installation through Company Portal, deploy the offline package as a **
 
 3. Save this script as `Uninstall-ChatGPT.ps1` beside the MSIX, license, and installation script. Configure Intune to run this script in System context when uninstalling the app. The script removes the provisioned package and app registrations for all users on the device:
 
+   <WarningTip>
+     If you choose to [remove local data on
+     uninstall](#uninstall-and-local-data), back up any data you want to keep
+     before running this script.
+   </WarningTip>
+
 ```powershell
    #Requires -RunAsAdministrator
    $ErrorActionPreference = 'Stop'
@@ -538,6 +544,22 @@ Follow [Manage app updates](https://learn.chatgpt.com/docs/enterprise/manage-app
 ### Codex CLI
 
 For each CLI update, choose a new approved release, update the explicit `-Release` value or npm package version in your deployment package, and update its detection rule. Deploy through your package process, then verify the installed version, account context, and detection behavior. Do not switch the managed package back to an installer command without an explicit release. See [CLI releases](https://github.com/openai/codex/releases), [CLI installation and updates](https://learn.chatgpt.com/docs/codex/cli), and [npm version selection](https://docs.npmjs.com/cli/v11/using-npm/package-spec).
+
+## Uninstall and local data
+
+Uninstall the desktop app through Windows Settings or your management tool, such
+as Intune or SCCM. Cleanup runs automatically during uninstall.
+
+By default, local coding chats and settings are kept in the user's
+[`CODEX_HOME`](https://learn.chatgpt.com/docs/config-file/config-advanced#config-and-state-locations).
+
+To also remove `CODEX_HOME` during uninstall, add this to `config.toml` in that
+folder before uninstalling:
+
+```toml
+[desktop]
+uninstall_codex_home = true
+```
 
 ## Troubleshooting
 

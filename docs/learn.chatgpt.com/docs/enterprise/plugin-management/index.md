@@ -7,36 +7,44 @@ codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
-# Plugin management
+# Import and sync plugins from GitHub
 
 Source: https://learn.chatgpt.com/docs/enterprise/plugin-management
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
+You can import plugins from GitHub into your workspace and keep them up to date
+as the repository changes. A marketplace is a JSON file that lists the plugins
+to import.
+
 ## Before you begin
 
-Workspace admins can import a plugin marketplace from GitHub and keep its plugins up to date from the repository. A marketplace is a JSON catalog that lists the plugins to import.
+You need to be a workspace admin. Use a GitHub account that can read the
+marketplace repository and every repository it references. Public and private
+GitHub repositories are supported. Complete any access approval required by your
+GitHub organization before importing.
 
-This page covers workspace import and sync. To configure marketplaces directly
-on local clients through cloud-managed or system `config.toml`, see
-[Configure plugin marketplaces and defaults](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-plugin-marketplaces-and-defaults).
-To enable or disable plugins for a specific project, see [Enable or disable a plugin for a
-repo](https://developers.openai.com/plugins/build/plugins#enable-or-disable-a-plugin-for-a-repo).
+Review the repository before you import it. These defaults affect what members
+can use:
 
-Use a GitHub account that can read the marketplace repository and any other repositories it references. Public and private GitHub repositories are supported. Complete any GitHub organization approval required for your repository access before importing.
+- New plugins are **Available** for installation. If authentication is required,
+  members complete it when they install the plugin.
+- The import processes all valid entries. New marketplaces sync automatically
+  each day, adding any new plugins from the repository.
 
-Review the repository content before importing. New plugins start with **Available** installation and authentication on install. New marketplaces have automatic daily sync enabled. Import processes all valid entries, and future syncs automatically add any new plugins in the repository.
+This guide covers importing plugins into a workspace. For local clients, see
+[Configure plugin marketplaces and defaults](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-plugin-marketplaces-and-defaults)
+for cloud-managed or system `config.toml` settings. For a specific project, see
+[Enable or disable a plugin for a repo](https://developers.openai.com/plugins/build/plugins#enable-or-disable-a-plugin-for-a-repo).
 
 ## Configure a marketplace sync
 
 1. Open **Admin** > **Plugins** and select **Add** > **Import marketplace**.
 2. In **Source**, enter the repository URL, such as `https://github.com/example/team-plugins`. Use the repository URL only, without a branch or folder URL.
 3. If the marketplace is in a subdirectory, enter that directory in **Path**. For example, use `team-tools` for `team-tools/.agents/plugins/marketplace.json`. Leave **Path** empty for the repository root. Do not enter the manifest filename.
-4. Optionally enter a **Branch, tag, or commit**. Leave this empty to use the repository's default branch. Use a branch to receive future commits; a fixed commit stays at that revision.
-5. Select **Import marketplace** and authorize GitHub access when prompted. The initial import can take up to an hour for very large marketplaces. Subsequent daily syncs typically take a few minutes.
+4. Optionally enter a **Branch, tag, or commit**. Leave this empty to use the repository's default branch. A branch lets you receive later updates. A fixed commit keeps the version you selected.
+5. Select **Import marketplace** and authorize GitHub access when prompted. The initial import can take up to an hour for especially large marketplaces. Subsequent daily syncs typically take a few minutes.
 6. Review **Import results**, then open each imported plugin to configure its installation policy and any required apps.
-
-To request an update without waiting for the daily sync, open the marketplace under **Admin** > **Plugins** > **Marketplaces** and select **Sync now**.
 
 ## Supported formats
 
@@ -104,9 +112,17 @@ Git sources can select a `ref` or a full 40-character commit `sha`. The authoriz
 
 ## Configure workspace access
 
-GitHub import and sync do not apply repository installation or authentication policies, including `AVAILABLE`, `INSTALLED_BY_DEFAULT`, `NOT_AVAILABLE`, `ON_INSTALL`, and `ON_USE`. Workspace admins configure these settings for each plugin. Syncing an update or moving an existing plugin to GitHub management preserves its workspace policies.
+Set each plugin's installation and authentication settings in your workspace.
+Import and sync don't apply these settings from the repository. These settings include
+`AVAILABLE`, `INSTALLED_BY_DEFAULT`, `NOT_AVAILABLE`, `ON_INSTALL`, and `ON_USE`.
+Existing workspace settings stay in place when you sync an update or move a
+plugin to GitHub management.
 
-Use **Installation policy** to choose **Available** or **Installed** for each eligible role. Required apps must also be enabled, and members must have access to the connected service. Importing a plugin does not grant app access or connect members' accounts. See [Plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors) for role, app, and action controls.
+Use **Installation policy** to choose **Available** or **Installed** for each
+eligible role. Also enable the apps the plugin needs and check that members have
+access to the connected service. Importing a plugin doesn't give members app
+access or connect their accounts. See [Plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors)
+for help choosing access and action settings.
 
 ## Move an existing plugin to GitHub management
 
@@ -123,13 +139,19 @@ Add `pluginId` to the existing plugin's marketplace entry:
 }
 ```
 
-Open the plugin from **Admin** > **Plugins** and copy the ID after `/admin/plugins/` in its URL. Put `pluginId` beside `name` and `source` in the marketplace entry. The existing plugin must be in the same workspace.
+Open the plugin from **Admin** > **Plugins** and copy the ID after `/plugins/` in its URL. Put `pluginId` beside `name` and `source` in the marketplace entry. The existing plugin must be in the same workspace, and the entry's `name` must match the existing plugin's name.
 
-This moves an uploaded or otherwise unmanaged workspace plugin to GitHub management. The plugin keeps its ID, sharing, and workspace policies. Future updates come from GitHub; archive uploads can no longer replace the managed plugin. A plugin already managed by another GitHub source cannot be taken over this way.
+Use this to move a workspace plugin to GitHub if it isn't already managed there.
+The plugin keeps its ID, sharing, and workspace settings. Future updates come
+from GitHub, so you can no longer replace it by uploading an archive. You can't
+use this method for a plugin already managed by a different GitHub source.
 
 ## Desktop-only plugins
 
-Any imported plugin that declares MCP servers in `mcp.json` or `.mcp.json` is marked **Desktop only** and works only in the ChatGPT desktop app. This includes servers that use a remote HTTPS URL. The same restriction applies to other supported MCP configuration forms, such as inline server declarations.
+Plugins marked **Desktop only** cannot run in ChatGPT on the web. Imported
+plugins can receive this label when they declare MCP servers, including servers
+with remote HTTPS URLs. Adding an `.app.json` reference does not by itself remove
+the label.
 
 ## Reference an existing app with `.app.json`
 
@@ -182,22 +204,40 @@ team-plugins/
     └── .app.json
 ```
 
-The reference does not create an app or grant permissions. Admins must make the app available to the intended roles, and members must complete any required authentication. Existing app permissions, action controls, and service access still apply.
+This file points to an existing app. It doesn't create an app or give anyone
+access. Make the app available to the roles that need it, and ask members to
+complete any required authentication. The app's permissions, allowed actions,
+and connected-service access still apply.
 
 ## Keep plugins up to date
 
 New marketplaces check for updates daily. Open **Admin** > **Plugins** > **Marketplaces**, select the marketplace, and choose **Sync now** to request an update without waiting for automatic sync.
 
-Sync can add new marketplace entries and update existing plugins. Review changes to the repository before merging them, because automatic sync will import any new plugins.
+Sync can add new plugins from the marketplace and update existing ones. Review
+repository changes before merging them because automatic sync imports new
+plugins too.
 
-After a sync, review the status and saved report. **Completed — N errors** means the pass finished but some plugins could not be processed. If an update to an existing plugin is invalid, its last working version is retained. Fix the reported problem in GitHub, then select **Sync now** to retry.
+After each sync, read the status and saved report. A completed sync can still
+include errors for individual plugins. If an update is invalid, the existing
+plugin keeps its last working version. Fix the problem in GitHub, then select
+**Sync now** to try again.
 
-Removing an entry from the repository does not delete its imported workspace copy. It is marked **No longer in source**. Deleting the marketplace in ChatGPT deletes all plugins imported from it.
+Removing a plugin's entry from the marketplace leaves its workspace copy in
+place, marked **No longer in source**. Deleting the marketplace in ChatGPT has a different
+effect: it deletes all plugins imported from that marketplace.
 
 ## Reconnect or change GitHub access
 
-To **reconnect GitHub access**, first confirm that the GitHub account used for the import still has access to the repository and any referenced repositories. The admin who originally imported the marketplace should then open the GitHub plugin in ChatGPT and reconnect their account, since marketplace sync uses that admin’s GitHub connection.
+Marketplace sync uses the GitHub connection of the admin who imported it.
 
-To **transfer to a new owner**, the new workspace admin should open **Admin** > **Plugins** > **Add** > **Import marketplace** and import the same marketplace using the same **Source**, **Path**, and **Branch, tag, or commit** values. Future syncs will use their GitHub connection.
+To reconnect, first check that the importing admin's GitHub account can still
+read the marketplace repository and every repository it references. That admin
+should then open the GitHub plugin in ChatGPT and reconnect their account.
 
-Do not delete the marketplace just to reconnect it or change ownership: deletion also removes its imported plugins.
+To change owners, the new workspace admin imports the marketplace again from
+**Admin** > **Plugins** > **Add** > **Import marketplace**. Use the same **Source**,
+**Path**, and **Branch, tag, or commit** values. Future syncs will use the new
+admin's GitHub connection.
+
+Keep the marketplace in place when reconnecting or changing owners. Deleting it
+also deletes its imported plugins.

@@ -782,6 +782,66 @@ If `mcp_servers` is present but empty, the local client disables all MCP servers
 
 Command networking and desktop-app networking use different controls. Start with **Network use controls** for supported command traffic, review the environment and runtime limits, then use the separate desktop-app requirements if needed. Browser site rules remain in [Control browser and Computer Use](#control-browser-and-computer-use).
 
+### Use the system proxy for native client requests
+
+{/* Preserve the standard technical term "proxy auto-configuration". */}
+{/* vale Microsoft.Auto = NO */}
+
+The experimental `features.respect_system_proxy` setting lets the native Codex
+runtime used by ChatGPT desktop and Codex use operating-system proxy settings
+for its own network requests. Enable it on devices that need a system proxy or
+proxy auto-configuration (PAC). The setting defaults to `false`.
+
+{/* vale Microsoft.Auto = YES */}
+
+Add the following to a supported `config.toml` defaults source or to
+[`managed_config.toml`](#locations):
+
+```toml
+[features]
+respect_system_proxy = true
+```
+
+Project-local configuration can't enable this setting. For macOS MDM, include
+the same TOML in [`config_toml_base64`](#macos-managed-preferences-mdm).
+Restart the client after changing local configuration. To turn off the opt-in,
+set it to `false` in the configuration source that enabled it.
+
+#### Sign-in and cloud defaults
+
+The separate `system_proxy_fallback` feature is enabled by default. After a
+connection failure, it can retry supported sign-in and cloud-configuration
+requests through the system proxy, even when `respect_system_proxy` is `false`.
+This fallback can let supported clients sign in and fetch cloud defaults without
+a local opt-in. Disabling `respect_system_proxy` alone doesn't disable the
+fallback.
+
+If direct access doesn't work and the fallback is unavailable, disabled, or
+unsuccessful, deploy `respect_system_proxy` locally before sign-in.
+
+#### Scope and limitations
+
+Validate sign-in and an authenticated request with the client versions and on
+the networks you plan to use. Keep these boundaries in mind:
+
+- **Request scope:** The setting applies to network clients owned by the Codex
+  runtime. It doesn't configure every ChatGPT desktop request, browser request,
+  plugin process, or shell command. It doesn't enforce a destination allowlist
+  or guarantee that direct connections are blocked. For supported traffic, see
+  the [command network requirements](#configure-network-access-requirements)
+  and [desktop app network requirements](#control-desktop-app-network-destinations).
+- **Platform support:** macOS and Windows support native system proxy discovery.
+  When system resolution is unavailable, the runtime uses explicit proxy
+  environment settings if available. Otherwise, it connects directly. Other
+  platforms use the same environment-or-direct fallback instead of native
+  system discovery.
+- **PAC routing:** The runtime selects one route from a PAC result. If that
+  connection fails, it doesn't retry later proxy or `DIRECT` entries in the result.
+- **Windows authentication:** Supported builds can respond to an HTTP `407`
+  proxy challenge during tunnel setup using the signed-in Windows user's
+  credentials with Negotiate or NTLM. HTTPS proxies that require authentication
+  tokens bound to the proxy's TLS connection aren't supported.
+
 ### Configure network access requirements
 
 <WarningTip>

@@ -316,6 +316,86 @@
       "id": "c1594020e571ca930530f522914809027e63800c092106e282f9844ef0c667a2",
       "observed_at": "2026-10-29T22:32:11+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "ec151f4a3322c27f21aa22a0937c784a28b6e697aa26fab8ae8179619872042a",
+            "before": "af829cb006a20980190d17798cec85424218f93836084a85706663e218176d93"
+          },
+          "learn.chatgpt.com/docs/build-plugins/index.md": {
+            "after": "a4dec24f409796ecf9c0545c2e320755fae859c8cd97351d94d69fd8ad0fffc8",
+            "before": "0b295f91c92a80807dde2438b9c36402feb2ad969d9ca9dd04472f3f0f1052e4"
+          },
+          "learn.chatgpt.com/docs/chrome-extension/index.md": {
+            "after": "187f7a1868b474641ff2a82e45ceed4c47735cc7fe59d5da0c17c63aafeb8bcc",
+            "before": "5d4d97efa4b1c027eb6a74cc677774392c0e8f3fc68aa922723d63cfd235cf87"
+          },
+          "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md": {
+            "after": "4c3a688e8537b78621f444b0eef52932dcea30ab9628211c58381cca0f921c19",
+            "before": "525e8c2c3bf7dcdcbe27f3d25aecd6f9592aca848808c1340792a7a0cad77b0c"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "b345f26c175305a7042449c7083064fd31781af551ccabea3c3c8ebb958c47c7",
+            "before": "aff51d8fa3fbb6cddecc73abdd1286cd08469949e0974433afa5134fadd97ada"
+          },
+          "learn.chatgpt.com/docs/enterprise/plugin-management/index.md": {
+            "after": "d43a573db2b27e3fb023107561ccced395bcbec7c64acd3165b6d2af16efa8e6",
+            "before": "9ee7cb7c04207c855248f03d4b6864eedc53689bdd0499e51657606920ff24cc"
+          },
+          "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md": {
+            "after": "96a0dbff19af5276d81081749d9b425fab4fe4d9380d96090c591b1761d34431",
+            "before": "424610ee21c1ce81355b1580dd4f5119df358531958152648a60818879792c74"
+          },
+          "learn.chatgpt.com/docs/plugins/index.md": {
+            "after": "18bf4785314095e715f0c81520169d685479ff927fc1c9a88ef2bcabf7d13453",
+            "before": "cbacf97fefe6460e159a1bfc0dd6b454bfa49c4d23dc7b096f54c7f03eb5767e"
+          },
+          "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md": {
+            "after": "7fd095e678f983d06c8ecd00736481be376a8b23ee47312e067a9ec3dd1f98cb",
+            "before": "2cc23a9830b4038313a86c949f8ce0fee108c8a974ee0cfd9bf2aa56d5c7aa57"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.166.0",
+          "codex_cli_source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+          "codex_cli_version": "0.166.0",
+          "codex_cli_version_raw": "codex-cli 0.166.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/build-plugins/index.md",
+          "learn.chatgpt.com/docs/chrome-extension/index.md",
+          "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/plugin-management/index.md",
+          "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
+          "learn.chatgpt.com/docs/plugins/index.md",
+          "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md"
+        ]
+      },
+      "id": "1209842aeb22a807bb4ea0febc89c06e18e37d8f63a77726dfa4e8bf5b5e4b22",
+      "observed_at": "2026-10-29T22:33:18+00:00",
+      "previous_id": "c1594020e571ca930530f522914809027e63800c092106e282f9844ef0c667a2"
     }
   ],
   "schema_version": 1

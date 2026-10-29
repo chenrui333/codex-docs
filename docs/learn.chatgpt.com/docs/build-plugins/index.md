@@ -212,4 +212,4 @@ If a teammate can open the plugin but cannot use it, check plugin installation, 
 
 For custom integrations or development with plugin files, see [Package your plugin](https://developers.openai.com/plugins/build/plugins). The [developer documentation](https://developers.openai.com/plugins/) covers building skills and MCP servers, [extensions](https://developers.openai.com/plugins/build/extensions), testing, and public submission.
 
-For workspace distribution through GitHub, see [Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management).
+For workspace distribution through GitHub, see [Import and sync plugins from GitHub](https://learn.chatgpt.com/docs/enterprise/plugin-management).

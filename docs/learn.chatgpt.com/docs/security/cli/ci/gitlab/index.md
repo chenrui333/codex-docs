@@ -74,7 +74,7 @@ codex-security:
   before_script:
     - apt-get update -qq
     - apt-get install -y -qq --no-install-recommends ca-certificates git python3 ripgrep
-    - npm install --prefix /tmp/codex-security-cli --ignore-scripts --no-audit --no-fund @openai/codex-security@0.1.20
+    - npm install --prefix /tmp/codex-security-cli --ignore-scripts --no-audit --no-fund @openai/codex-security@0.8.1
   script:
     - |
       set -eu
@@ -96,13 +96,14 @@ codex-security:
           --head "$CI_COMMIT_SHA" \
           --auth api-key \
           --output-dir "$RESULTS_DIR" \
+          --fail-on-severity high \
           --json
       scan_exit="$?"
       set -e
       unset codex_security_api_key
 
       case "$scan_exit" in
-        0|1|2) ;;
+        0|1) ;;
         *) exit "$scan_exit" ;;
       esac
 
@@ -178,9 +179,9 @@ full-repository scan.
 
 Open the `codex-security` job and confirm that its artifacts include:
 
-- `scan-manifest.json`
-- `findings.json`
-- `coverage.json`
+- `results/scan-manifest.json`
+- `results/findings.json`
+- `results/report.md`
 - `results.sarif`
 - `scan-exit-code.txt`
 
@@ -219,7 +220,7 @@ environment instead of inheriting every GitLab variable. For diff scans, the
 workflow calculates the merge base and binds the scan to the reviewed base and
 head revisions.
 
-The example pins `@openai/codex-security` to `0.1.20`. Retest authentication,
+The example pins `@openai/codex-security` to `0.8.1`. Retest authentication,
 artifacts, SARIF ingestion, and policy gating before changing the pin.
 
 ## Separate reporting from policy enforcement
@@ -228,21 +229,25 @@ GitLab ingests SARIF from a successful report job. The pipeline publishes the
 report first and restores the scanner's exit status in a separate
 `codex-security-gate` job.
 
-The report job accepts findings from exit codes `0` and `1`. It accepts exit
-code `2` only when the scan manifest proves the scan completed, coverage is
-explicitly `partial`, and a non-empty SARIF report exists. Other runtime,
-configuration, or export failures remain blocking.
+The report job exports findings only after exit codes `0` and `1`. Any other
+exit code skips SARIF export and blocks the pipeline. An export failure also
+blocks the pipeline.
 
-The final gate preserves these scanner exit codes:
+The report job propagates execution errors and interruptions. When it succeeds,
+the final gate restores the scanner's policy result:
 
-| Exit | Meaning                                                                     |
-| ---- | --------------------------------------------------------------------------- |
-| `0`  | The scan completed with complete coverage and passed its policy.            |
-| `1`  | The scan completed and found an issue at or above the configured threshold. |
-| `2`  | The scan had incomplete coverage or an input or runtime error.              |
+| Exit          | Meaning                                                                     |
+| ------------- | --------------------------------------------------------------------------- |
+| `0`           | The scan completed and passed its policy.                                   |
+| `1`           | The scan completed and found an issue at or above the configured threshold. |
+| `2`           | The scan had an input, runtime, target-integrity, or required-output error. |
+| `130` / `143` | The scan was interrupted or terminated.                                     |
 
-The example temporarily allows exit `2` while you calibrate partial coverage.
-Remove that allowance when incomplete coverage must block the pipeline.
+The example passes `--fail-on-severity high`, so high and critical findings fail
+the gate. Without a severity threshold, completed scans exit `0` by default.
+In `results/scan-manifest.json`, read `scan.scope` for the configured scope and
+`scan.review.excludedPaths` for paths excluded from finding comparisons. Read
+`results/report.md` for follow-up work.
 
 Remediation and publishing run before the final policy gate. An eligible
 finding can produce a verified draft merge request even when the gate later
@@ -257,8 +262,8 @@ credentials.
 
 The workflow:
 
-1. Requires complete scan coverage and a `high`- or `critical`-severity
-   finding.
+1. Requires a completed scan manifest for the current revision and a `high`- or
+   `critical`-severity finding.
 2. Confirms that the configured regression test fails before patching.
 3. Generates a patch and rejects changes to CI, credential, binary, or
    other protected files.
@@ -284,8 +289,8 @@ source changes.
   <summary>Advanced: repository command isolation</summary>
 
 The `validate`, `patch`, and `verify-fix` commands receive a process-scoped
-`CODEX_API_KEY`. Repository-controlled setup and test commands run as a
-separate unprivileged user in a writable copy of the tracked source files.
+`OPENAI_API_KEY` and use `--auth api-key`. Repository-controlled setup and test
+commands run as a separate unprivileged user in a writable copy of the tracked source files.
 The copy excludes Git metadata, submodule contents, and
 downloaded artifacts. Setup and test commands that require `.git` or
 submodules must run in a separately designed credential-free job.
@@ -331,10 +336,10 @@ Configure only the variables needed for the features you enable:
 | Variable                                  | When needed                       | Default or purpose                                          |
 | ----------------------------------------- | --------------------------------- | ----------------------------------------------------------- |
 | `CODEX_SECURITY_API_KEY`                  | Every scan                        | Protected, masked, hidden; scope to `codex-security/openai` |
-| `CODEX_SECURITY_VERSION`                  | CLI upgrade                       | Pinned to `0.1.20`; retest before changing                  |
+| `CODEX_SECURITY_VERSION`                  | CLI upgrade                       | Pinned to `0.8.1`; retest before changing                   |
 | `CODEX_SECURITY_FULL_SCAN_DEFAULT_BRANCH` | Default-branch full scans         | Explicit opt-in; off by default                             |
 | `CODEX_SECURITY_SCHEDULED_DEEP_SCAN`      | Scheduled deep scans              | Explicit opt-in; off by default                             |
-| `CODEX_SECURITY_DEEP_MAX_TIME_HOURS`      | Scheduled deep scans              | Required time budget greater than `0` and less than `8`     |
+| `CODEX_SECURITY_DEEP_MAX_TIME_MINUTES`    | Scheduled deep scans              | Required minute budget greater than `0` and less than `480` |
 | `CODEX_SECURITY_DEEP_MAX_COST`            | Scheduled deep scans              | Required estimated USD cost guardrail greater than `0`      |
 | `CODEX_SECURITY_ENABLE_REMEDIATION`       | Patch generation                  | Protected opt-in; off by default                            |
 | `CODEX_SECURITY_VERIFICATION_COMMAND`     | Patch generation                  | Protected regression test                                   |
@@ -358,13 +363,15 @@ identity from the normalized base and head revisions.
 Use diff scans for merge request feedback, standard repository scans
 for the default branch, and scheduled deep scans for broader coverage. Both
 full-repository profiles are off by default. A scheduled deep scan also requires
-`CODEX_SECURITY_DEEP_MAX_TIME_HOURS` and `CODEX_SECURITY_DEEP_MAX_COST`; keep the
-CLI time budget below the job's eight-hour timeout. Measure representative runs
+`CODEX_SECURITY_DEEP_MAX_TIME_MINUTES` and `CODEX_SECURITY_DEEP_MAX_COST`; keep the
+CLI time budget below the job's eight-hour timeout. When adopting the new YAML,
+convert existing hour-based settings to minutes. Measure representative runs
 before setting a budget. Treat `--max-cost` as an estimated cost guardrail, not
 a hard billing cap.
 
-Start with report-only scans. Add `--fail-on-severity` after your team has
-reviewed representative findings, coverage, cost, and runtime. See the
+This example gates on high and critical findings. For report-only scans, remove
+`--fail-on-severity high`; choose a threshold after reviewing representative
+findings, coverage, cost, and runtime. See the
 [CI/CD overview](https://learn.chatgpt.com/docs/security/cli/ci#choose-a-severity-policy) for severity
 policies and the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#exit-codes-and-signals)
 for exit-code details.
@@ -372,11 +379,12 @@ for exit-code details.
 When a job fails:
 
 - Missing scan artifacts point to a configuration or runner problem.
-- Existing artifacts with partial coverage require reviewing `coverage.json`.
+- For unexpected exclusions, check the scope and review details in
+  `results/scan-manifest.json`.
 - Missing GitLab findings require checking whether the SARIF report job
   succeeded and whether GitLab accepted the report.
-- Skipped remediation requires checking the protected branch, complete
-  coverage, finding severity, verification command, and opt-in variables.
+- Skipped remediation requires checking the protected branch, scan manifest,
+  finding severity, verification command, and opt-in variables.
 - Publishing errors require checking the project token's role, scopes, and
   environment restriction.
 
