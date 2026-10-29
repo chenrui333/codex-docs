@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.165.0",
-  "codex_cli_version_raw": "codex-cli 0.165.0",
+  "codex_cli_version": "0.166.0",
+  "codex_cli_version_raw": "codex-cli 0.166.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -1056,6 +1056,14 @@
           "synopsis": "--disable <FEATURE>"
         },
         {
+          "description": "Run config, network environment, provider HTTP, and Responses WebSocket checks",
+          "flags": [
+            "--network-only"
+          ],
+          "primary_flag": "--network-only",
+          "synopsis": "--network-only"
+        },
+        {
           "description": "Only show grouped check rows and the final count summary",
           "flags": [
             "--summary"
@@ -1591,6 +1599,14 @@
           "synopsis": "--disable <FEATURE>"
         },
         {
+          "description": "After queueing, try to resume the thread on the local daemon or selected --remote server. A failed resume produces a warning and the command still succeeds",
+          "flags": [
+            "--resume"
+          ],
+          "primary_flag": "--resume",
+          "synopsis": "--resume"
+        },
+        {
           "description": "Connect the TUI to a remote app server endpoint. Accepted forms: `ws://host:port`, `wss://host:port`, `unix://`, or `unix://PATH`.",
           "flags": [
             "--remote"
@@ -1607,40 +1623,6 @@
           "synopsis": "--remote-auth-token-env <ENV_VAR>"
         },
         {
-          "description": "Optional image(s) to attach to the initial prompt",
-          "flags": [
-            "-i",
-            "--image"
-          ],
-          "primary_flag": "--image",
-          "synopsis": "-i, --image <FILE>..."
-        },
-        {
-          "description": "Model the agent should use",
-          "flags": [
-            "-m",
-            "--model"
-          ],
-          "primary_flag": "--model",
-          "synopsis": "-m, --model <MODEL>"
-        },
-        {
-          "description": "Use open-source provider",
-          "flags": [
-            "--oss"
-          ],
-          "primary_flag": "--oss",
-          "synopsis": "--oss"
-        },
-        {
-          "description": "Specify which local provider to use (lmstudio or ollama). If not specified with --oss, will use config default or show selection",
-          "flags": [
-            "--local-provider"
-          ],
-          "primary_flag": "--local-provider",
-          "synopsis": "--local-provider <OSS_PROVIDER>"
-        },
-        {
           "description": "Layer $CODEX_HOME/<name>.config.toml on top of the base user config",
           "flags": [
             "-p",
@@ -1648,64 +1630,6 @@
           ],
           "primary_flag": "--profile",
           "synopsis": "-p, --profile <CONFIG_PROFILE_V2>"
-        },
-        {
-          "description": "Select the sandbox policy to use when executing model-generated shell commands [possible values: read-only, workspace-write, danger-full-access]",
-          "flags": [
-            "-s",
-            "--sandbox"
-          ],
-          "primary_flag": "--sandbox",
-          "synopsis": "-s, --sandbox <SANDBOX_MODE>"
-        },
-        {
-          "description": "Route approval requests through automatic review using the workspace-write sandbox",
-          "flags": [
-            "--approve-for-me"
-          ],
-          "primary_flag": "--approve-for-me",
-          "synopsis": "--approve-for-me"
-        },
-        {
-          "description": "Skip all confirmation prompts and execute commands without sandboxing. EXTREMELY DANGEROUS. Intended solely for running in environments that are externally sandboxed",
-          "flags": [
-            "--dangerously-bypass-approvals-and-sandbox"
-          ],
-          "primary_flag": "--dangerously-bypass-approvals-and-sandbox",
-          "synopsis": "--dangerously-bypass-approvals-and-sandbox"
-        },
-        {
-          "description": "Run enabled hooks without requiring persisted hook trust for this invocation. DANGEROUS. Intended only for automation that already vets hook sources",
-          "flags": [
-            "--dangerously-bypass-hook-trust"
-          ],
-          "primary_flag": "--dangerously-bypass-hook-trust",
-          "synopsis": "--dangerously-bypass-hook-trust"
-        },
-        {
-          "description": "Tell the agent to use the specified directory as its working root",
-          "flags": [
-            "-C",
-            "--cd"
-          ],
-          "primary_flag": "--cd",
-          "synopsis": "-C, --cd <DIR>"
-        },
-        {
-          "description": "Run the session in a new managed Git worktree",
-          "flags": [
-            "--worktree"
-          ],
-          "primary_flag": "--worktree",
-          "synopsis": "--worktree"
-        },
-        {
-          "description": "Additional directories that should be writable alongside the primary workspace",
-          "flags": [
-            "--add-dir"
-          ],
-          "primary_flag": "--add-dir",
-          "synopsis": "--add-dir <DIR>"
         },
         {
           "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
@@ -1716,7 +1640,7 @@
           "synopsis": "--strict-config"
         },
         {
-          "description": "Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c shell_environment_policy.inherit=all`",
+          "description": "Override a startup configuration value (key=value). Queued messages use the thread's model.",
           "flags": [
             "-c",
             "--config"
@@ -1725,13 +1649,22 @@
           "synopsis": "-c, --config <key=value>"
         },
         {
-          "description": "Print help (see a summary with '-h')",
+          "description": "Print help (see a summary with '-h') Local server options (without --remote):",
           "flags": [
             "-h",
             "--help"
           ],
           "primary_flag": "--help",
           "synopsis": "-h, --help"
+        },
+        {
+          "description": "Tell the agent to use the specified directory as its working root",
+          "flags": [
+            "-C",
+            "--cd"
+          ],
+          "primary_flag": "--cd",
+          "synopsis": "-C, --cd <DIR>"
         }
       ],
       "subcommands": [],
@@ -3523,9 +3456,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
+  "source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.165.0",
+  "source_ref": "rust-v0.166.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"

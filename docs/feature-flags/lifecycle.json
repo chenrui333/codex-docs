@@ -148,7 +148,7 @@
     {
       "enabled": false,
       "key": "code_mode_tool_description_first",
-      "stage": "under development"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -198,6 +198,11 @@
     {
       "enabled": false,
       "key": "credential_masking",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "critical_path_timing",
       "stage": "under development"
     },
     {
@@ -319,6 +324,11 @@
       "enabled": false,
       "key": "guardian_ext",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "guardian_native_multi_agent_history",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -461,6 +471,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "mcp_connection_sharing",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "mcp_oauth_refresh_coordination",
       "stage": "stable"
@@ -532,6 +547,11 @@
     },
     {
       "enabled": false,
+      "key": "omit_skill_descriptions",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "output_token_replay",
       "stage": "under development"
     },
@@ -539,6 +559,11 @@
       "enabled": false,
       "key": "personality",
       "stage": "removed"
+    },
+    {
+      "enabled": true,
+      "key": "plugin_discovery_prefetch",
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -712,6 +737,16 @@
     },
     {
       "enabled": false,
+      "key": "simplified_selection_hints",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "skill_catalog_deltas",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "skill_env_var_dependency_prompt",
       "stage": "removed"
     },
@@ -867,6 +902,11 @@
     },
     {
       "enabled": false,
+      "key": "untrusted_as_tool_output",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "use_agent_identity",
       "stage": "under development"
     },
@@ -931,7 +971,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.165.0",
+  "codex_cli_version": "codex-cli 0.166.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -954,6 +994,7 @@
       "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_v2",
+      "plugin_discovery_prefetch",
       "prediction_preserve_parent_tools",
       "reasoning_effort_override",
       "recommended_plugins",
@@ -1015,6 +1056,7 @@
       "content_item_kinds",
       "context_management",
       "credential_masking",
+      "critical_path_timing",
       "current_time_reminder",
       "cwd_relative_turn_diffs",
       "daemon_auto_start",
@@ -1035,6 +1077,7 @@
       "guardian_conversation_history_tools",
       "guardian_enhanced_node_repl_transcripts",
       "guardian_ext",
+      "guardian_native_multi_agent_history",
       "guardian_node_repl_transcript_images",
       "guardian_recorded_items",
       "guardian_reuse_parent_compaction",
@@ -1057,6 +1100,7 @@
       "local_thread_store_shared_compression",
       "login_shell_package_path",
       "mcp_2026_07_28",
+      "mcp_connection_sharing",
       "mcp_oauth_refresh_coordination",
       "mcp_tool_list_changed",
       "mentions_v2",
@@ -1068,7 +1112,9 @@
       "non_prefixed_mcp_tool_names",
       "nonfatal_clock_read_errors",
       "omit_app_server_notification_media",
+      "omit_skill_descriptions",
       "output_token_replay",
+      "plugin_discovery_prefetch",
       "plugin_hooks",
       "powershell_shell_version",
       "prediction_preserve_parent_tools",
@@ -1095,6 +1141,8 @@
       "send_message_to_user_async",
       "shell_snapshot_v2",
       "shell_zsh_fork",
+      "simplified_selection_hints",
+      "skill_catalog_deltas",
       "skill_env_var_dependency_prompt",
       "skill_search",
       "skip_host_skill_discovery",
@@ -1123,6 +1171,7 @@
       "unified_exec_tty",
       "unified_exec_zsh_fork",
       "unified_image_budget",
+      "untrusted_as_tool_output",
       "use_agent_identity",
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
@@ -1147,6 +1196,7 @@
         "apply_patch_preserve_line_endings",
         "apps_mcp_path_override",
         "code_mode_buffered_exec",
+        "code_mode_tool_description_first",
         "codex_git_commit",
         "collaboration_modes",
         "elevated_windows_sandbox",
@@ -1207,6 +1257,7 @@
         "mcp_oauth_refresh_coordination",
         "mentions_v2",
         "multi_agent_v2",
+        "plugin_discovery_prefetch",
         "prediction_preserve_parent_tools",
         "reasoning_effort_override",
         "recommended_plugins",
@@ -1234,12 +1285,12 @@
         "code_mode_only",
         "code_mode_only_strict_3p_tools",
         "code_mode_prewarm",
-        "code_mode_tool_description_first",
         "code_mode_tool_search",
         "codex_apps_mcp_2026_07_28",
         "concurrent_reasoning_summaries",
         "context_management",
         "credential_masking",
+        "critical_path_timing",
         "current_time_reminder",
         "cwd_relative_turn_diffs",
         "default_mode_request_user_input",
@@ -1254,6 +1305,7 @@
         "external_agent_memory_import",
         "guardian_conversation_history_tools",
         "guardian_enhanced_node_repl_transcripts",
+        "guardian_native_multi_agent_history",
         "guardian_node_repl_transcript_images",
         "guardian_recorded_items",
         "guardian_root_handoff_context",
@@ -1265,6 +1317,7 @@
         "instant_interrupt",
         "local_thread_store_compression",
         "mcp_2026_07_28",
+        "mcp_connection_sharing",
         "mcp_tool_list_changed",
         "model_catalog_in_context",
         "multi_agent_v2_dynamic_tools",
@@ -1272,6 +1325,7 @@
         "non_prefixed_mcp_tool_names",
         "nonfatal_clock_read_errors",
         "omit_app_server_notification_media",
+        "omit_skill_descriptions",
         "output_token_replay",
         "powershell_shell_version",
         "psp",
@@ -1284,6 +1338,8 @@
         "runtime_metrics",
         "send_message_to_user_async",
         "shell_snapshot_v2",
+        "simplified_selection_hints",
+        "skill_catalog_deltas",
         "skip_host_skill_discovery",
         "standalone_web_search",
         "step_model_switching",
@@ -1293,6 +1349,7 @@
         "token_budget",
         "tui_multi_backend",
         "unified_image_budget",
+        "untrusted_as_tool_output",
         "use_agent_identity",
         "use_xaa",
         "wake_on_agent_messages",
@@ -1356,7 +1413,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "360319d8dee62d87e2d59fc0c21805d79519cfed",
+  "source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1595,12 +1652,13 @@
       "stage_from_source": "under development"
     },
     "code_mode_tool_description_first": {
-      "compatibility_flag": false,
-      "configurable": true,
+      "behavior_evidence": "Removed compatibility flag for Code Mode tool description ordering.",
+      "compatibility_flag": true,
+      "configurable": false,
       "default_enabled": false,
       "default_enabled_expr": "false",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "code_mode_tool_search": {
       "compatibility_flag": false,
@@ -1677,6 +1735,14 @@
       "stage_from_source": "under development"
     },
     "credential_masking": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "critical_path_timing": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -1880,6 +1946,14 @@
       "default_enabled_expr": "false",
       "effective_behavior": "unknown",
       "stage_from_source": "removed"
+    },
+    "guardian_native_multi_agent_history": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "guardian_node_repl_transcript_images": {
       "compatibility_flag": false,
@@ -2111,6 +2185,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "mcp_connection_sharing": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "mcp_oauth_refresh_coordination": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2224,6 +2306,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "omit_skill_descriptions": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "output_token_replay": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2240,6 +2330,14 @@
       "default_enabled_expr": "false",
       "effective_behavior": "no_op",
       "stage_from_source": "removed"
+    },
+    "plugin_discovery_prefetch": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
     },
     "plugin_hooks": {
       "behavior_evidence": "Removed compatibility flag for plugin-bundled lifecycle hooks.",
@@ -2525,6 +2623,22 @@
       "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
+    "simplified_selection_hints": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "skill_catalog_deltas": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "skill_env_var_dependency_prompt": {
       "behavior_evidence": "Removed compatibility flag for deleted skill env var dependency prompting.",
       "compatibility_flag": true,
@@ -2785,6 +2899,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "untrusted_as_tool_output": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "use_agent_identity": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2894,13 +3016,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "a8f9374064bd24cc421c3266f39f105aa8d287e350c72541f9dcde544665fae2",
-    "features_rs_sha256": "da0ce349bfd99953e6f3e262d7883b579728beb553b1e01f95478a6b18ec250a"
+    "client_rs_sha256": "6a2e95e2b7014c480f5c543b95f112d79c23551c281050cffaad85d32a9847db",
+    "features_rs_sha256": "092fa6e9bd6b53d4a63aec2130fdfb90b74b28f222135ff34c499b58a53dc963"
   },
-  "source_ref": "rust-v0.165.0",
+  "source_ref": "rust-v0.166.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/360319d8dee62d87e2d59fc0c21805d79519cfed/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/360319d8dee62d87e2d59fc0c21805d79519cfed/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/6ff1e1ca3b30fc8b914720681fcf5fe62e95f856/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/6ff1e1ca3b30fc8b914720681fcf5fe62e95f856/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
