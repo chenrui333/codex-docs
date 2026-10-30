@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-29T22:33:18+00:00",
-  "manifest_sha256": "8004e6e885f71e4b056dfc715694ea4061dd9545145aa405c3bb05a4116493bd",
+  "generated_at": "2026-10-30T04:50:30+00:00",
+  "manifest_sha256": "dfaf005d28c7fd93398250f314e924c7fa2fabed50e4afbd4a63438ea8c18901",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,14 +17,6 @@
   },
   "total_files": 295,
   "updated": [
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/build-plugins/index.md",
-    "learn.chatgpt.com/docs/chrome-extension/index.md",
-    "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/plugin-management/index.md",
-    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
-    "learn.chatgpt.com/docs/plugins/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/gitlab/index.md"
+    "learn.chatgpt.com/docs/sites/index.md"
   ]
 }

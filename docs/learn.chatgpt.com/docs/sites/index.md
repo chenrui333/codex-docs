@@ -191,6 +191,59 @@ Don't use sites to process Protected Health Information; target children under 1
 
 See [Creating and managing ChatGPT sites](https://help.openai.com/en/articles/20001339) for current limits and policy links.
 
+## Pricing
+
+**Your plan includes a monthly allowance that covers your initial hosting usage.** You can create as many Sites as you want. Hosting keeps your Site available to visitors. Its usage depends on traffic and storage.
+
+### What will my plan cover?
+
+Your plan includes a monthly allowance for hosting, traffic, and storage across your Sites. The amount depends on your plan. Enterprise usage draws from your organization’s existing credit pool, according to your agreement. Upgrading from Plus to Pro gives you an expanded hosting allowance. Building and editing a Site count toward your plan’s [Codex usage](https://learn.chatgpt.com/docs/pricing).
+
+Credits measure hosting usage. Your plan’s allowance covers that usage before overages apply. Traffic and storage contribute separately:
+
+- **Traffic** is measured by the requests your Site handles, such as loading a page, image, or other resource. A page visit can generate multiple requests, typically 30–50, though the number varies by Site.
+- **Database storage** holds saved records, such as form responses. A Site with a database has a monthly base fee, even when the database is empty, plus usage for the data it stores.
+- **File storage** holds uploaded files, such as images or PDFs. Usage depends on how much you store and for how long.
+
+Hosting is free through December 31, 2026. Starting **January 1, 2027**, we’ll
+  turn on metering and you’ll pay overages only for usage above your plan’s
+  included monthly hosting allowance. Enterprise billing follows your
+  organization’s agreement.
+
+Starting **December 1, 2026**, you’ll be able to view traffic and storage usage for each Site. Workspace admins will be able to compare usage across their workspace.
+
+### Hosting usage rates
+
+The following rates are proposed to take effect on January 1, 2027. All credit amounts are approximate.
+
+| What you use                                                       | Billing unit             | Approx. credits |
+| ------------------------------------------------------------------ | ------------------------ | --------------- |
+| Site without storage                                               | 1 Site per month         | 0               |
+| Site with storage, including an empty database                     | 1 Site per month         | 25              |
+| Traffic                                                            | 100,000 requests         | 16              |
+| Database storage (saved records, such as form responses)           | 1 GiB stored for a month | 150             |
+| File storage (uploaded files, such as images or PDFs)              | 1 GiB stored for a month | 3.75            |
+| Custom domain (domain registration costs extra)                    | 1 domain per month       | 25              |
+| Private connection (Enterprise only; a tunnel to a private system) | 1 tunnel per month       | 125             |
+
+For example, a Site with an empty database uses approximately 25 credits per month before traffic. With 1 GiB of saved records for a full month, its base fee and database storage use approximately 175 credits, excluding traffic and files. One GiB is about 1.07 GB.
+
+### Estimate your monthly cost
+
+Choose whether your Site has a database, then adjust monthly requests, saved records, and uploaded files to estimate your hosting usage.
+
+<SitesCostEstimator
+  client:load
+  rates={{
+    traffic: { credits: 16, requests: 100000 },
+    monthlyStorageBase: 25,
+    databasePerGiB: 150,
+    filesPerGiB: 3.75,
+  }}
+/>
+
+Estimates assume a full month of storage. Select **This Site has a database** to include its base fee even when saved records are zero. Custom domains and private connections cost extra, as listed in [Hosting usage rates](#hosting-usage-rates).
+
 ## Next up
 
   [Create a site
