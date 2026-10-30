@@ -22,9 +22,8 @@ plugin](https://learn.chatgpt.com/docs/security/plugin).
 
 Use Node.js 24 or 26, or Node.js 22 starting with 22.13.0.
 You also need Python 3.10 or later.
-Python 3.10 also needs `tomli`. Scans using OpenAI inference require Codex Security access.
-Depending on your account and repository, full-repository scans may also
-require [Trusted Access for Cyber](https://chatgpt.com/cyber).
+If you use Python 3.10, install `tomli`. Some cybersecurity requests and
+protected findings require [Trusted Access for Cyber](https://chatgpt.com/cyber).
 
 The CLI runs with your operating-system permissions and doesn't pause for
 approval.
@@ -34,15 +33,27 @@ permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-pe
 
 ## Set up and verify the CLI
 
-Run the public package with `npx`:
+Install the public package globally, then check its version:
+
+```bash
+npm install -g @openai/codex-security
+codex-security --version
+```
+
+The package provides the `codex-security` command and its `cs` alias. Ensure
+npm's global executable directory is on your `PATH`.
+
+To run without a global installation, use `npx`:
 
 ```bash
 npx @openai/codex-security --version
 ```
 
+The examples below use `npx @openai/codex-security`. After a global
+installation, you can use `codex-security` instead.
+
 The command prints the installed package version. Use `info --json` to check
-the bundled plugin version, or `--help` to list commands. Package changes are
-listed in the [CLI and SDK releases](https://github.com/openai/codex-security/releases).
+the bundled plugin version, or `--help` to list commands.
 
 ## Sign in
 
@@ -54,7 +65,7 @@ npx @openai/codex-security login
 
 On a machine without a browser, add `--device-auth` if your workspace allows
 it, and follow the displayed sign-in instructions. If device authentication
-is disabled, use the [SSH login instructions](https://github.com/openai/codex-security/blob/npm-v0.3.0/sdk/typescript/docs/cli.md#remote-login-with-ssh-forwarding).
+is disabled, use the [SSH login instructions](https://github.com/openai/codex-security/blob/main/sdk/typescript/docs/cli.md#remote-login-with-ssh-forwarding).
 Use `--auth chatgpt` in the scan commands below to select
 that sign-in even when your environment also contains an API key.
 
@@ -109,6 +120,7 @@ elapsed time. For example:
   REPORT    /path/outside/repository/codex-security-results/report.md
 
   FINDINGS  2 (2 confirmed this scan; 0 previously found; 1 high, 1 medium)
+  SCOPE     repository: .
   ELAPSED   42s
   RESULTS   /path/outside/repository/codex-security-results
 ```
@@ -119,17 +131,13 @@ machine-readable stdout, add `--json`. To make findings fail a CI check, set a
 
 ## Review the results
 
-Open `report.md` from the reported directory. Confirm the target and revision,
-then read the coverage before reviewing individual findings.
-
-Check `scan.status` in `scan-manifest.json` to confirm that the scan completed.
-Review `coverage.json` for reviewed surfaces, excluded paths, deferred work,
-and open questions.
+Open `report.md` from the results directory. Confirm the target and revision,
+then review the findings. For the recorded status and scope, look at
+`scan.status` and `scan.scope` in `scan-manifest.json`.
 
 A completed scan exits with `0` unless findings meet a configured severity
-threshold, which returns `1`. Coverage gaps don't change the exit code, so
-exit `0` doesn't mean every file was reviewed. Input, execution, result-integrity,
-or required-output failures return `2`. The
+threshold, which returns `1`. Exit `0` doesn't establish that every file was
+reviewed. Input, execution, result-integrity, or required-output failures return `2`. The
 [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#exit-codes-and-signals) explains
 the exit codes.
 
@@ -139,7 +147,7 @@ include a successful runtime reproduction. Select a finding for remediation
 only after its evidence supports the claimed issue.
 
 Keep the scan directory together when sharing or archiving it. It contains
-`scan-manifest.json`, `findings.json`, and `coverage.json` alongside the report
+`scan-manifest.json` and `findings.json` alongside the report
 and supporting artifacts. See [Scan
 artifacts](https://learn.chatgpt.com/docs/security/cli/reference#scan-artifacts) for the full layout.
 
@@ -181,6 +189,8 @@ commands](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-v
 | Goal                                             | Guide                                                                                    |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | Scan selected paths or a diff                    | [Select the scan target](https://learn.chatgpt.com/docs/security/cli/reference#select-the-scan-target)           |
+| Scan components of one repository in parallel    | [Component scans](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-scan-components)          |
+| Use a test script to validate candidate findings | [Custom validation](https://learn.chatgpt.com/docs/security/cli/reference#validate-findings-in-your-environment) |
 | Use deep scans or limit their runtime            | [Configure deep scans](https://learn.chatgpt.com/docs/security/cli/reference#configure-deep-scans)               |
 | Supply architecture or security policies         | [Add security context](https://learn.chatgpt.com/docs/security/cli/reference#add-security-context)               |
 | Change the model or reasoning effort             | [Configure the runtime](https://learn.chatgpt.com/docs/security/cli/reference#configure-the-runtime)             |

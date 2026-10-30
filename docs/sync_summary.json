@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/enterprise/configuration-server/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-30T04:50:30+00:00",
-  "manifest_sha256": "dfaf005d28c7fd93398250f314e924c7fa2fabed50e4afbd4a63438ea8c18901",
+  "generated_at": "2026-10-30T22:02:26+00:00",
+  "manifest_sha256": "11f074c2e1d36f267ea7c4b8daaa81b3b970cb28a32c9f14b40c90ac5d2b29e0",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,8 +17,18 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 295,
+  "total_files": 296,
   "updated": [
-    "learn.chatgpt.com/docs/sites/index.md"
+    "codex_capabilities.json",
+    "feature-flags/lifecycle.json",
+    "feature-flags/lifecycle.md",
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
+    "learn.chatgpt.com/docs/security/cli/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/plugin/export-findings/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

@@ -1,11 +1,11 @@
 {
   "capability_inventory": {
     "counts": {
-      "active": 1075,
+      "active": 1084,
       "by_category": {
         "cli_command": 97,
         "cli_option": 370,
-        "config_key": 454,
+        "config_key": 463,
         "feature_flag": 194,
         "linked_tool_guide": 2,
         "system_prompt_snapshot": 1,
@@ -19,7 +19,7 @@
         "under development": 82
       },
       "inactive": 49,
-      "total": 1124
+      "total": 1133
     },
     "mirrored_paths": [
       "codex_capabilities.json"
@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-10-29T22:32:11+00:00",
+  "generated_at": "2026-10-30T22:02:26+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 191,
+      "discovered_urls": 192,
       "html_fallback_pages": 2,
-      "markdown_pages": 188,
-      "mirrored_paths_count": 190,
-      "mirrored_urls": 190,
+      "markdown_pages": 189,
+      "mirrored_paths_count": 191,
+      "mirrored_urls": 191,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -423,6 +423,7 @@
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+      "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
       "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
@@ -619,6 +620,7 @@
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+      "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
       "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
@@ -810,6 +812,7 @@
       "learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost/index.md",
       "learn.chatgpt.com/docs/enterprise/cloud-local-access/index.md",
       "learn.chatgpt.com/docs/enterprise/compliance-api/index.md",
+      "learn.chatgpt.com/docs/enterprise/configuration-server/index.md",
       "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
       "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
       "learn.chatgpt.com/docs/enterprise/dynamic-groups/index.md",
@@ -940,7 +943,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 190,
+    "mirrored_paths_count": 191,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1004,6 +1007,7 @@
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
       "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+      "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
       "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
@@ -1204,6 +1208,7 @@
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
           "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
           "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+          "https://learn.chatgpt.com/docs/enterprise/configuration-server",
           "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
           "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
@@ -1334,7 +1339,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "37964a3c4f4fe3971efced932fdeb1c909cddcd0d6203ec13bbf05eb0c80d324",
+        "discovered_urls_sha256": "00dc1b75ff461e61d1e5627f29e61a8c8115f1fe96bb5700e5a99cd15a32ae4e",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1399,6 +1404,7 @@
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-usage-and-cost",
           "https://learn.chatgpt.com/docs/enterprise/cloud-local-access",
           "https://learn.chatgpt.com/docs/enterprise/compliance-api",
+          "https://learn.chatgpt.com/docs/enterprise/configuration-server",
           "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
           "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
@@ -1641,9 +1647,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1720,7 +1726,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-10-28T22:20:41+00:00",
+    "last_successful_full_sync_at": "2026-10-30T22:02:26+00:00",
     "status": "complete"
   }
 }

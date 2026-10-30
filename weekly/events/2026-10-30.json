@@ -39,6 +39,124 @@
       "id": "b697a52026f10fb20094675c484a601fdef0810f938e9ac0c40fd9da48be0d44",
       "observed_at": "2026-10-30T04:50:30+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/configuration-server/index.md"
+        ],
+        "capability_changes": {
+          "added": [
+            "config_key:config_server",
+            "config_key:config_server.base_url",
+            "config_key:config_server.oauth",
+            "config_key:config_server.oauth.authorization_url",
+            "config_key:config_server.oauth.client_id",
+            "config_key:config_server.oauth.redirect_port",
+            "config_key:config_server.oauth.resource",
+            "config_key:config_server.oauth.scopes",
+            "config_key:config_server.oauth.token_url"
+          ],
+          "added_by_category": {
+            "config_key": [
+              "config_key:config_server",
+              "config_key:config_server.base_url",
+              "config_key:config_server.oauth",
+              "config_key:config_server.oauth.authorization_url",
+              "config_key:config_server.oauth.client_id",
+              "config_key:config_server.oauth.redirect_port",
+              "config_key:config_server.oauth.resource",
+              "config_key:config_server.oauth.scopes",
+              "config_key:config_server.oauth.token_url"
+            ]
+          },
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "2017f8034c0e15788f42040a85ba5868fe6421d00baf6f799a73e8496f0637da",
+            "before": "59df13f3b64cbc2282d1a986a8ec16a2f6a7b8f41b9feb4bda2f8da28e739aa0"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "3dc0ff5e05aba334868148442835f453bc7eb7271127baab0962941eab0569d5",
+            "before": "9b8bab5b88f8340d471ed2540f5b9d9b6982e71739ec00dbe643388cc58c0db9"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "41719a61f50c4f26dd2ec846be67da2389618bbc22de3495d72eeeb372ae75e1",
+            "before": "78ead7073c5bdf9200aba3657629b917f65386fa0b3bce5a2f08bd445941105d"
+          },
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "bc796c715c8deb3ed9e84560ca933308d383bad87de95f4941c19c22db557fe7",
+            "before": "ec151f4a3322c27f21aa22a0937c784a28b6e697aa26fab8ae8179619872042a"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "91d71c400f6ae9da8542e6c632552eac8ce245c019428c81bcdc16be22613d16",
+            "before": "9415e32d0a5bc2e6d84b51e5164a5b55e02612ee0440d323cbaa9a90e39bd2a1"
+          },
+          "learn.chatgpt.com/docs/enterprise/configuration-server/index.md": {
+            "after": "48ea5a8a6bd71b06faf1c876135a28e7d57deff7816613a629099098e6c9b12c",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "3b542c6f180738267f0903b902e56c1237e14b6bf0cda73ce5726da126da42e9",
+            "before": "b345f26c175305a7042449c7083064fd31781af551ccabea3c3c8ebb958c47c7"
+          },
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+            "after": "23d0b6f3f6470cacc9f06ccf03abffbafc7f6a489b58dbe770e1bbc22806f4b7",
+            "before": "5ad8b99f9f6fb40d27dcb1b195bdc6a4162475ff2567894792d9b42c12301862"
+          },
+          "learn.chatgpt.com/docs/security/cli/index.md": {
+            "after": "60d99eb48d47cdabc9ba0cbff0b084d518209e410f8964afcb62c23368b31beb",
+            "before": "372a3a4c85d132a92dae82a1965ca3bee454e096ae6cc7bcbe191ffad52e066a"
+          },
+          "learn.chatgpt.com/docs/security/cli/reference/index.md": {
+            "after": "d129710a55761fd8ced29372277b37058c332a99baa2d489ae6c5d39de126733",
+            "before": "cb1067b57da7db4ec30e1bca11a3d7ecca5eee8a3f153b48bb86ec3af1d9641d"
+          },
+          "learn.chatgpt.com/docs/security/plugin/export-findings/index.md": {
+            "after": "68cfcf6bf48acacc37aa98951e147d5f05aa6d3d982a8391684b2e020152d439",
+            "before": "770c69d1d503dd4059cff5eefb7c9fb92681c56b0329dbfdd80fffcbc22f8fcb"
+          },
+          "learn.chatgpt.com/docs/security/sdk/index.md": {
+            "after": "d42c375a1549ce4ca2a79a2c37c017826a5cd4d80ae59591b6943c27726284ee",
+            "before": "803c10de9759da430679d7746a5f26884e1ae63ff54007dacf488c7b247e3b63"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.166.0",
+          "codex_cli_source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+          "codex_cli_version": "0.166.0",
+          "codex_cli_version_raw": "codex-cli 0.166.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
+          "learn.chatgpt.com/docs/security/cli/index.md",
+          "learn.chatgpt.com/docs/security/cli/reference/index.md",
+          "learn.chatgpt.com/docs/security/plugin/export-findings/index.md",
+          "learn.chatgpt.com/docs/security/sdk/index.md"
+        ]
+      },
+      "id": "4c104489abeda4939b5192e84a24b3625bb543c801a10e1101e1f3d7924624d4",
+      "observed_at": "2026-10-30T22:02:26+00:00",
+      "previous_id": "b697a52026f10fb20094675c484a601fdef0810f938e9ac0c40fd9da48be0d44"
     }
   ],
   "schema_version": 1

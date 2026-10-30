@@ -1899,7 +1899,7 @@ Note: Rename `experimental_instructions_file` to `model_instructions_file`. Code
 `requirements.toml` is an admin-enforced configuration file that constrains security-sensitive settings users can't override. For details, locations, and examples, see [Admin-enforced requirements](https://learn.chatgpt.com/docs/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 For ChatGPT Business and Enterprise users, Codex can also apply cloud-fetched
-requirements. See the security page for precedence details.
+requirements. See the security page for precedence details. To serve CLI policy from your own HTTPS endpoint, see [Self-host Codex configuration for your team](https://learn.chatgpt.com/docs/enterprise/configuration-server).
 
 Use `[features]` in `requirements.toml` to pin runtime feature flags by the same
 canonical keys that `config.toml` uses. Requirements can also include documented
@@ -1941,6 +1941,60 @@ from either one wins.
 
 <ConfigTable
   options={[
+    {
+      key: "config_server",
+      type: "table",
+      description:
+        "Enroll Codex with a configuration server. Set this in local administrator-controlled requirements.",
+    },
+    {
+      key: "config_server.base_url",
+      type: "string (HTTPS URL)",
+      description:
+        "Base URL of the configuration server enrolled by the administrator. Codex appends /codex/config/bundle to this URL.",
+    },
+    {
+      key: "config_server.oauth",
+      type: "table",
+      description:
+        "Optional company sign-in settings. Omit this table to fetch the bundle without credentials.",
+    },
+    {
+      key: "config_server.oauth.authorization_url",
+      type: "string (HTTPS URL)",
+      description:
+        "Authorization endpoint for company browser sign-in. Required when OAuth is configured.",
+    },
+    {
+      key: "config_server.oauth.token_url",
+      type: "string (HTTPS URL)",
+      description:
+        "Token endpoint for company sign-in and refresh. Required when OAuth is configured.",
+    },
+    {
+      key: "config_server.oauth.client_id",
+      type: "string",
+      description:
+        "Public OAuth client ID registered for Codex. Required when OAuth is configured.",
+    },
+    {
+      key: "config_server.oauth.scopes",
+      type: "array<string>",
+      description:
+        "Optional OAuth permissions to request from the identity provider.",
+    },
+    {
+      key: "config_server.oauth.resource",
+      type: "string",
+      description:
+        "Optional OAuth resource identifier required by the identity provider.",
+    },
+    {
+      key: "config_server.oauth.redirect_port",
+      type: "number",
+      description:
+        "Optional port for the browser callback on 127.0.0.1. By default, Codex chooses an available port.",
+    },
     {
       key: "sqlite_home",
       type: "string (path)",

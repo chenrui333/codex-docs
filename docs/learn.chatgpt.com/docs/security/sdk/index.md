@@ -15,8 +15,7 @@ Source: https://learn.chatgpt.com/docs/security/sdk
 
 Use the Codex Security TypeScript SDK to run security scans on repositories and
 code changes from your application or developer tool. The SDK returns typed
-findings, coverage details, and paths to scan artifacts. For longer scans, it
-supports preflight checks, cost limits, progress callbacks, and cancellation.
+findings, the scan manifest, and paths to saved reports.
 
 The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 24 or 26,
 or Node.js 22 starting with 22.13.0. Scanning also requires Python 3.10 or later.
@@ -26,9 +25,9 @@ To read or resume compressed Codex sessions (`.jsonl.zst`), use Node.js
 22.15.0 or later within 22.x, or Node.js 24 or 26. Plain `.jsonl` sessions work
 on all supported Node.js versions.
 
-Scans using OpenAI inference require Codex Security access. For general coding
-  agents, see the [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For terminal and CI
-  workflows, see the [Codex Security CLI quickstart](https://learn.chatgpt.com/docs/security/cli).
+For general coding agents, see the [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For
+  terminal and CI workflows, see the [Codex Security CLI
+  quickstart](https://learn.chatgpt.com/docs/security/cli).
 
 ## Set up the SDK
 
@@ -38,16 +37,13 @@ Install the SDK:
 npm install @openai/codex-security
 ```
 
-This guide covers the released 0.3.0 SDK. Read the [0.3.0 release notes](https://github.com/openai/codex-security/releases/tag/npm-v0.3.0) for changes to scan results, validation, and resume behavior.
-
 Before starting a scan, set `OPENAI_API_KEY` or `CODEX_API_KEY`, use an
 existing file-backed Codex sign-in, or [configure another
 provider](#configure-the-runtime-and-credentials). Amazon Bedrock uses AWS
 credentials; OpenRouter and Fireworks use provider-specific API keys and
 configuration.
 
-For best results, use an account verified for [Trusted Access for Cyber](https://chatgpt.com/cyber). Signing in or providing an API key does not
-grant Trusted Access.
+Some cybersecurity requests and protected findings require [Trusted Access for Cyber](https://chatgpt.com/cyber) for your ChatGPT account or API organization.
 
 ## Run a scan
 
@@ -92,10 +88,10 @@ The example prints the report path, scan status, and finding count.
 Open the report to review the evidence.
 
 `run` validates the saved artifacts and returns a `ScanResult` when
-`result.manifest.scan.status` is `"completed"`. Check `result.coverage` for
-reviewed surfaces, exclusions, and deferred work. A completed scan can still
-have coverage gaps. Runtime, input, or result-integrity failures can throw an
-[error](#handle-scan-errors).
+`result.manifest.scan.status` is `"completed"`. Check `result.manifest.scan.scope`
+for the requested target and `result.manifest.scan.warnings` for any warnings.
+Completion alone doesn't tell you which files were reviewed. Runtime, input, or
+result-integrity failures can throw an [error](#handle-scan-errors).
 
 In later examples, reuse the open `security` client and keep `close()` in
 `finally` to release the runtime. Add any additional imports at the top of
@@ -185,8 +181,8 @@ const target = DiffTarget.refs({
 const result = await security.run("/path/to/repository", { target });
 ```
 
-The head defaults to `HEAD`. Diff targets require the repository argument to
-be the Git worktree root.
+The head defaults to `HEAD`. Pass the Git worktree root as the repository and
+check out the requested head before scanning.
 
 ### Scan the working tree
 
@@ -213,20 +209,21 @@ const result = await security.run("/path/to/repository", {
   subagents: 0,
   stopAfterNoNew: 3,
   maxDiscoveryRuns: 10,
-  maxTimeHours: 1.5,
+  maxTimeMinutes: 90,
 });
 ```
 
 Deep mode supports repository and path targets. Use standard mode for diff and
-working-tree scans. The optional settings control concurrent independent
-standard-scan workers, subagents per worker, consecutive completed worker scans
-without new findings, and the total number and duration of worker runs. They
-require `mode: "deep"`.
+working-tree scans. In deep mode, `workers` limits concurrent scan workers and
+`subagents` sets the number of subagents per worker. `stopAfterNoNew` stops
+discovery after that many consecutive worker runs without new findings.
+`maxDiscoveryRuns` limits the total number of worker runs.
 
-`maxTimeHours` defaults to `96` and accepts a positive number up to `96`,
-including fractional hours. At the deadline, Codex Security stops unfinished
-workers, keeps completed scan results, and aggregates them into the final
-report. Review `result.coverage` for deferred work and open questions.
+Set `maxTimeMinutes` to limit deep discovery. The default and maximum are
+5,760 minutes (96 hours). At the deadline, discovery stops and the SDK combines
+the results from completed workers. Standard scans treat `maxTimeMinutes` as an
+advisory allowance for investigation. Reporting can finish later. Custom
+validation and post-scan instructions run outside that allowance.
 
 ### Add a security knowledge base
 
@@ -268,6 +265,24 @@ error through `onWarning`. It restores any completed scan artifacts that the
 follow-up changed. The follow-up runs after scan cost tracking stops and
 is outside `maxCostUsd`.
 
+### Validate findings in your environment
+
+Pass `validationPrompt` to check candidate findings with your own test
+procedure. For example, point the prompt at a script you control outside the
+checkout and run it against your local test server:
+
+```ts
+const result = await security.run("/path/to/repository", {
+  validationPrompt:
+    "Run /path/to/security-tests/validate.sh against http://localhost:3000 and report which findings reproduce.",
+});
+```
+
+Use `validationPrompt` with standard repository, path, committed-diff, or
+working-tree scans. To use the same procedure for each standard component
+scan, pass `scanOptions.validationPrompt` to `runComponentScans`. Deep scans
+reject custom validation.
+
 ### Set a scan budget
 
 Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
@@ -291,10 +306,54 @@ raise `estimatedUsdRange` above it. This limit is not a billing cap.
 If a deep scan reaches the limit after
 Codex Security aggregates completed worker results, `run` can return a result
 with `manifest.scan.status` set to `"completed"` and report the budget warning
-through `onWarning`. Check `result.coverage` for the work left unfinished.
+through `onWarning`.
 
 If the scan can't produce a valid completed result, `run` throws
 `ScanCostLimitExceededError` and preserves any available output.
+
+## Scan project components
+
+Use `runComponentScans` to scan services or packages in parallel and combine
+their findings. Give each component a name and one or more repository-relative
+paths. Choose a new or empty output directory outside the enclosing Git worktree.
+
+```ts
+
+const result = await runComponentScans({
+  repository: "/path/to/project",
+  outputDir: "/path/outside/project/component-results",
+  components: [
+    { name: "API", paths: ["apps/api", "packages/auth"] },
+    { name: "Web", paths: ["apps/web"] },
+  ],
+  workers: 2,
+  onProgress: ({ name, status }) => console.log(name, status),
+});
+
+console.log(result.reportPath);
+```
+
+Set `workers` to control how many components run at once. The default is four.
+
+To let Codex propose components, pass `auto: true` instead of `components`.
+Add `planOnly: true` to save the plan in `components.json` without running any
+scans:
+
+```ts
+const plan = await runComponentScans({
+  repository: "/path/to/project",
+  outputDir: "/path/outside/project/component-plan",
+  auto: true,
+  planOnly: true,
+});
+
+console.log(plan.planPath);
+```
+
+If the run returns with failed components, read the JSON file at
+`result.retryPlanPath`. Pass its `components` array to `runComponentScans`
+with a new `outputDir`. The retry report covers only those components. Review
+the reports from both runs.
 
 ## Work with scan results
 
@@ -306,7 +365,7 @@ paths:
 | `manifest`           | The sealed scan manifest, including target, scope, producer, and artifact records. |
 | `findings`           | Findings from the current scan. Read finding objects from `findings.findings`.     |
 | `repositoryFindings` | Open findings across repository scans, when scan history is available.             |
-| `coverage`           | Reviewed surfaces, exclusions, deferred work, and open questions.                  |
+| `review`             | Path patterns excluded from review (`review.excludedPaths`).                       |
 | `scanDir`            | The scan directory.                                                                |
 | `threadId`           | The Codex thread identifier for the scan.                                          |
 | `turnResult`         | Turn status, response, and available usage metadata.                               |
@@ -316,7 +375,6 @@ paths:
 | `threatModelPath`    | The saved threat-model document path, or `null` when unavailable.                  |
 | `manifestPath`       | The path to `scan-manifest.json`.                                                  |
 | `findingsPath`       | The path to `findings.json`.                                                       |
-| `coveragePath`       | The path to `coverage.json`.                                                       |
 | `artifactsDir`       | The supporting-artifacts directory.                                                |
 | `sarifPath`          | The generated SARIF path, or `null` when SARIF is absent.                          |
 | `pluginVersion`      | The version recorded by the scan producer.                                         |
@@ -325,7 +383,7 @@ To require the same plugin for a later scan, pass
 `expectedPluginVersion: result.pluginVersion`. The SDK rejects the scan if
 the installed plugin version differs.
 
-Use the structured findings and coverage directly:
+Read the severity and first source location for each finding:
 
 ```ts
 for (const finding of result.findings.findings) {
@@ -337,10 +395,6 @@ for (const finding of result.findings.findings) {
     `${location.path}:${location.startLine}`,
     finding.title
   );
-}
-
-for (const deferred of result.coverage.deferred) {
-  console.log(deferred.id, deferred.reason);
 }
 ```
 
@@ -356,26 +410,14 @@ for (const finding of result.repositoryFindings ?? []) {
 }
 ```
 
-New results don't include `coverage.completeness`. Use `manifest.scan.status`
-for execution status, and review deferred surfaces, exclusions, and open
-questions in `coverage` to understand what the scan reviewed.
-
-`result.toJSON()` returns the manifest, repository and current-scan findings,
-coverage, scan and thread identifiers, `reportPath`, `threatModel`,
-`threatModelPath`, `artifactsDir`, `sarifPath`, cost, and turn metadata in one
-JSON-ready object.
+Use `result.toJSON()` to serialize the manifest, findings, recorded review exclusions,
+artifact paths, and turn metadata.
 
 ### Read saved threat models
 
 Check `threatModel` and `threatModelPath` for `null` before using them. You can
 still export a saved model if Codex Security couldn't write its Markdown file.
 Use the path returned by the export instead of assuming a filename.
-
-Starting in 0.2.0, saved models can contain Markdown (`format: "markdown"`
-and `content`) or the earlier structured format. Integrations that read
-`threatModel` must handle both. Existing models remain readable and exportable
-without migration. Policy generation now writes `threatmodel.md` instead of
-`THREAT_MODEL.md`; `SecurityPolicyDraft.threatModelPath` can also be `null`.
 
 ### Export saved artifacts
 
@@ -402,6 +444,32 @@ if no threat model was saved. For findings, use `artifact: "findings"` and choos
 The result includes the output `path` and, for a threat-model file export,
 `provenance` from the same saved results. Both fields are `null` when
 `output: "-"` writes to stdout. Export requires Python 3.10 or later.
+
+## Validate an existing finding
+
+Use `validate` to check a finding from another tool or workflow against the
+source. It doesn't start a new scan, run the application, or execute its tests.
+Run a separate reproduction if you need runtime evidence.
+
+```ts
+const validation = await security.validate({
+  repositoryPath: "/path/to/repository",
+  finding: {
+    title: "Possible SQL injection",
+    location: "src/query.ts:42",
+  },
+});
+
+console.log(validation.disposition);
+console.log(validation.report);
+```
+
+Pass the finding as nonempty text or a JSON object. If it's in a file, read
+the file and pass its contents.
+
+The `disposition` tells you whether the finding is `reportable`, `suppressed`,
+`not_applicable`, or `deferred`. The Markdown in `validation.report` explains the evidence and remaining gaps.
+Save that string if you need a report file.
 
 ## Track or cancel a scan
 
@@ -470,7 +538,7 @@ lifecycle callbacks:
 | `onReconnect(attempt, maxAttempts)` | The SDK retries a disconnected scan stream.          |
 | `onActivity(activity)`              | A command, tool, reasoning step, or message updates. |
 | `onProgress(progress)`              | The scan phase or reviewed file count changes.       |
-| `onWorkerStatus(status)`            | Worker preflight or dispatch status changes.         |
+| `onWorkerStatus(status)`            | Best-effort counts of workers planned and started.   |
 | `onSessionEvent(session)`           | A scan or worker session emits an event.             |
 | `onCost(cost)`                      | An updated estimated scan cost is available.         |
 | `onWarning(warning)`                | The scan reports a warning.                          |
@@ -486,9 +554,7 @@ services.
 ## Configure the runtime and credentials
 
 Pass runtime configuration when you need a specific plugin, interpreter, or
-Codex setting. Choose a model your credentials can access. If you use ChatGPT
-sign-in, check [GPT-6.1 Sol availability](https://learn.chatgpt.com/docs/models#gpt-6.1-sol) before
-using this example:
+Codex setting. Choose a [model](https://learn.chatgpt.com/docs/models) available to your account:
 
 ```typescript
 const security = new CodexSecurity({
@@ -503,9 +569,7 @@ const security = new CodexSecurity({
 
 `pluginPath` accepts a plugin directory or ZIP. `pythonPath` selects the
 plugin interpreter. `codexOverrides` merges supported values into the isolated
-Codex configuration. Scans use `gpt-5.6-sol` with extra-high reasoning effort
-by default. Set `model` and `model_reasoning_effort` in `codexOverrides` to use
-a different model or reasoning effort. To use [Amazon
+Codex configuration. To use [Amazon
 Bedrock](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock), set
 `model_provider` and `model` in `codexOverrides`.
 
@@ -515,24 +579,26 @@ permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-pe
 access and inherited credentials.
 
 For OpenRouter or Fireworks, also provide the matching API key and a complete
-provider configuration in `codexOverrides`. For example, set
-`OPENROUTER_API_KEY` and configure OpenRouter:
+provider configuration in `codexOverrides`. Set `OPENROUTER_API_KEY`
+and pass an available OpenRouter model ID to this TypeScript function:
 
 ```ts
-const security = new CodexSecurity({
-  codexOverrides: {
-    model: "anthropic/claude-sonnet-4.5",
-    model_provider: "openrouter",
-    model_providers: {
-      openrouter: {
-        name: "OpenRouter",
-        base_url: "https://openrouter.ai/api/v1",
-        env_key: "OPENROUTER_API_KEY",
-        wire_api: "responses",
+function createOpenRouterClient(model: string) {
+  return new CodexSecurity({
+    codexOverrides: {
+      model,
+      model_provider: "openrouter",
+      model_providers: {
+        openrouter: {
+          name: "OpenRouter",
+          base_url: "https://openrouter.ai/api/v1",
+          env_key: "OPENROUTER_API_KEY",
+          wire_api: "responses",
+        },
       },
     },
-  },
-});
+  });
+}
 ```
 
 For Fireworks, change both `openrouter` keys to `fireworks`, set `name` to

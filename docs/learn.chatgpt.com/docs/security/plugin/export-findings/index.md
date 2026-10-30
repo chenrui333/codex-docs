@@ -13,40 +13,30 @@ Source: https://learn.chatgpt.com/docs/security/plugin/export-findings
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use a completed Codex Security scan for either of these handoffs:
-
-- **Export** creates a portable JSON, CSV, or SARIF file.
-- **Track findings** prepares selected findings as Linear, GitHub, or Jira
-  issues, or as one private draft GitHub Security Advisory. Codex checks for
-  duplicates and waits for your approval before writing.
-
-Neither workflow changes the sealed scan bundle.
-
-Available artifact links and export formats depend on your Codex surface and
-  installed plugin version. Check the [plugin
-  changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you use a format in
-  automation.
+Export findings from a completed scan to use them in another tool. To track
+remediation or coordinate disclosure, ask Codex to prepare an issue or a
+private draft GitHub Security Advisory.
 
 ## Export a portable artifact
 
-In the desktop app, open a completed scan from **Security** > **Scans**. Use its
-available artifact links to inspect `report.md`, `findings.json`,
-`scan-manifest.json`, `coverage.json`, or a SARIF report when present.
+In the desktop app, open a completed scan from **Security** > **Scans**. Under
+**Artifacts**, select **Findings JSON** to open the structured findings or
+**SARIF report** if the scan produced one. Available artifacts depend on the
+app and plugin version.
 
-To create another supported format, ask Codex to export findings from the
-completed scan without modifying its sealed bundle:
-
-```text
-Export the findings from [completed scan directory] as [JSON, CSV, or SARIF]. Do not modify the sealed scan bundle or upload its contents.
-```
-
-Choose the format that fits your destination:
+When Codex offers to export the scan's findings, ask for JSON, CSV, or SARIF.
+To export from a terminal, use the saved scan directory with the
+[CLI export command](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-export).
 
 | Format | Use it for                                                        |
 | ------ | ----------------------------------------------------------------- |
 | JSON   | Preserve the sealed structured findings for tools and scripts.    |
-| CSV    | Review findings and current local triage state in a spreadsheet.  |
+| CSV    | Review findings in a spreadsheet.                                 |
 | SARIF  | Send findings to tools that support the SARIF interchange format. |
+
+To include your latest triage status, close reasons, or notes, export a CSV
+from the plugin after making those changes. Open `exports/findings.csv` in
+the scan directory. The CLI exports the saved scan without local triage updates.
 
 <figure className="not-prose my-8">
   <CodexScreenshot
@@ -61,9 +51,7 @@ Choose the format that fits your destination:
   </figcaption>
 </figure>
 
-Select **Markdown report** to open `report.md` in your configured external
-editor. The editor depends on your system settings; the example below shows the
-generated report contents.
+Select **Markdown report** to open `report.md` in your configured editor.
 
 <figure className="not-prose my-8">
   <CodexScreenshot
@@ -78,99 +66,67 @@ generated report contents.
   </figcaption>
 </figure>
 
-Use the returned artifact path. If another tool needs the complete scan
-context, keep the original `scan-manifest.json`, `findings.json`, and
-`coverage.json` together. Exporting doesn't upload findings to a code-scanning
-service.
+Keep the whole scan directory when you archive the report. Tracking requires
+the original `scan-manifest.json` and `findings.json`. If you need to edit
+the findings, make your own copy of `findings.json` first.
 
 ## Track selected findings
 
-Run `$codex-security:track-findings` with one validated finding or an
-selected batch of up to 25 findings from the same sealed scan. Each
-run uses one provider and one destination. A private draft GitHub Security
-Advisory accepts only one finding.
+Use `$codex-security:track-findings` with one or more validated findings from
+the same completed scan. Choose one destination for each run.
 
-To prepare a Linear issue, send:
-
-```text
-Use $codex-security:track-findings to prepare finding [finding ID] from
-[completed scan directory] for the Linear team [team] and project [project, if
-any]. Check for duplicates and show me the exact issue title, body, metadata,
-and destination. Do not create or update anything until I approve that payload.
-```
-
-To prepare a GitHub issue, send:
+| Destination                            | What to specify                                            |
+| -------------------------------------- | ---------------------------------------------------------- |
+| Linear issue                           | Team and optional project                                  |
+| GitHub issue                           | Owner and repository                                       |
+| Jira issue                             | Site, project, and issue type in the Atlassian app         |
+| Private draft GitHub Security Advisory | One finding and its public source repository on GitHub.com |
 
 ```text
-Use $codex-security:track-findings to prepare finding [finding ID] from
-[completed scan directory] for GitHub repository [owner/repository]. Check open
-and closed issues for duplicates and show me the exact issue title, body,
-metadata, repository visibility, and authenticated transport. Do not create or
-update anything until I approve that payload.
+Use $codex-security:track-findings to draft a Linear issue for team [team]
+about finding [finding ID] in [completed scan directory].
 ```
 
-To prepare a Jira issue, send:
+For a batch, list the finding IDs in your request. To track findings in Jira,
+connect the Atlassian app in Codex. Confirm who can read issues in the
+project. Creating an issue requires browse and create permissions. You need
+read access to reuse an existing issue and both read and edit access to update it.
 
-```text
-Use $codex-security:track-findings to prepare finding [finding ID] from
-[completed scan directory] for Jira project [project key] as [issue type].
-Check for duplicates and show me the exact issue summary, description,
-metadata, and destination. Do not create or update anything until I approve
-that payload.
-```
+For a draft advisory, sign in to GitHub.com with GitHub CLI (`gh`) using an
+  account with administrator access to the public, non-fork source repository.
+  Select one finding from a scan whose target is a Git revision
+  (`git_revision`). Commit-diff scans don't qualify. Have the package name,
+  ecosystem, and affected versions ready.
 
-Jira tracking requires the Atlassian Rovo plugin in Codex. Reusing an issue
-requires read access; creating or updating one requires read and write access.
+<a id="review-the-proposed-write"></a>
 
-To prepare a private draft GitHub Security Advisory, send:
-
-```text
-Use $codex-security:track-findings to prepare finding [finding ID] from
-[completed scan directory] as a private draft GitHub Security Advisory in
-[owner/repository]. Verify the sealed source revision, repository, affected
-paths, package metadata, and duplicate state. Show me the exact advisory
-payload, authenticated GitHub CLI identity, and disclosure warnings. Do not
-create anything until I approve that payload.
-```
-
-Draft advisories require one finding from a sealed `git_revision` scan, the
-  verified public canonical source repository, and administrator access. The
-  workflow doesn't batch, update, publish, or close advisories. Use a private
-  issue destination when the source doesn't meet those requirements.
-
-## Review the proposed write
+## Review the issue or advisory
 
 <WorkflowSteps>
 
-1. Confirm the finding ID and fingerprint came from the intended sealed scan.
-2. Confirm the provider, exact Linear team, GitHub repository, Jira project, or
-   advisory repository, and the live destination visibility.
-3. Review the duplicate outcome: `create`, `reuse`, `update`, or `blocked`.
-4. Read the complete proposed title, body, source locations, and provider
-   metadata. Remove exploit detail or internal evidence that the destination
-   shouldn't expose.
-5. Approve only that exact payload. A changed destination, visibility, finding
-   set, or body requires a new preview.
+1. Check the source scan, selected findings, and signed-in account. Confirm
+   the destination and who can read it. Use a private destination for sensitive
+   findings. An internal or public GitHub issue requires explicit disclosure
+   approval.
+2. Check whether Codex proposes to create, reuse, or update an issue.
+   For advisories, it can create a private draft or reuse a matching draft or
+   published advisory.
+3. Read the title, body, and source locations. A draft advisory may become public.
+   Remove credentials, private evidence, and unnecessary exploit details.
+4. Approve the preview in the Codex conversation before Codex creates or
+   updates an item. If the preview changes, review and approve it again.
 
 </WorkflowSteps>
 
-Sensitive findings should go to a private destination. Creating an issue in an
-internal or public GitHub repository requires an explicit visibility warning
-and approval of the complete content. Treat a draft advisory description as
-eventually public and remove credentials, private evidence, and unnecessary
-exploit details before approval.
+<a id="verify-the-tracked-item"></a>
 
-Review and approve external actions in the Codex conversation. Approval
-doesn't create a separate issue or advisory screen in the Security workbench.
+Save the issue ID or link the tracker returns, even if Codex can't reopen the
+issue. For a new advisory, Codex checks that the draft matches what you
+approved.
 
-## Verify the tracked item
+If Codex can't tell whether it created or updated an item, it stops the batch.
+Before retrying, check the tracker for the issue or advisory and ask Codex
+which findings it hasn't tried yet.
 
-After you approve the proposed write, Codex rechecks the sealed source,
-destination, access, and duplicate state. For a batch, it processes findings
-one at a time and stops at the first uncertain result. Creation, update, or
-reuse is complete only after Codex reads the exact issue back and verifies its
-binding identifiers and content.
-
-Keep the returned canonical issue or advisory URL with your triage record.
 Continue with [Fix and verify a finding](https://learn.chatgpt.com/docs/security/plugin/fix-findings)
 when the owner accepts the item for remediation.

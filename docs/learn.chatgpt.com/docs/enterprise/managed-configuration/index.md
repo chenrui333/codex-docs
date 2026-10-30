@@ -32,6 +32,8 @@ Enterprise admins can control supported local client behavior with:
 
 See [Agent Security](https://learn.chatgpt.com/docs/enterprise/agent-security) for the Global baseline, environment overrides, and orchestrator and executor field lists.
 
+If your users don't sign in to Codex with ChatGPT, you can distribute defaults and requirements to Codex CLI and the desktop app from an HTTPS endpoint you operate. See [Self-host Codex configuration for your team](https://learn.chatgpt.com/docs/enterprise/configuration-server).
+
 ## Configure a policy in Agent security
 
 Where Agent security is enabled, workspace owners, workspace admins, and members
