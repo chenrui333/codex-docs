@@ -99,7 +99,7 @@ Add sidebar apps, conversation panels, file viewers and editors, and forms to Ch
 
 ### MCP Events
 
-Let users ask ChatGPT to monitor updates from your MCP server and act when matching events arrive. ChatGPT requires MCP 2.0 and supports webhook delivery from the draft MCP Events specification.
+Let users ask ChatGPT to monitor updates from your MCP server and act when matching events arrive. ChatGPT supports webhook delivery from the draft MCP Events specification.
 
 [Build event subscriptions](https://developers.openai.com/plugins/build/mcp-events)
 

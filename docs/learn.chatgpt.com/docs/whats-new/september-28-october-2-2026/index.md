@@ -117,7 +117,7 @@ Composer mentions are available only in the desktop app. Free and Go web extensi
 updates from your server and act when matching events arrive. For example,
 a user can ask ChatGPT to summarize new messages or respond to document feedback.
 
-This integration requires MCP 2.0. ChatGPT supports webhook delivery from
+ChatGPT supports webhook delivery from
 the draft MCP Events specification; polling and streaming aren't supported.
 
 ## Customize website annotations

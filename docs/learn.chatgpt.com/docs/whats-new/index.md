@@ -127,7 +127,7 @@ Add sidebar apps, panels, editors, and forms to ChatGPT. Composer mentions requi
 
 ### MCP Events
 
-Let users ask ChatGPT to act on updates from your MCP server. Requires MCP 2.0 and webhook delivery.
+Let users ask ChatGPT to act on updates from your MCP server. ChatGPT supports webhook delivery.
 
 [Build event subscriptions](https://developers.openai.com/plugins/build/mcp-events)
 
@@ -224,7 +224,7 @@ Add [ChatGPT sign-in and eligible plan usage](https://developers.openai.com/siwc
 
 ### Respond to MCP events
 
-Build [webhook subscriptions](https://developers.openai.com/plugins/build/mcp-events) so users can ask ChatGPT to act on updates from your MCP server. Requires MCP 2.0.
+Build [webhook subscriptions](https://developers.openai.com/plugins/build/mcp-events) so users can ask ChatGPT to act on updates from your MCP server.
 
 ### Customize website annotations
 

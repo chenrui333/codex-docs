@@ -1,11 +1,9 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/enterprise/configuration-server/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-30T22:02:26+00:00",
-  "manifest_sha256": "11f074c2e1d36f267ea7c4b8daaa81b3b970cb28a32c9f14b40c90ac5d2b29e0",
+  "generated_at": "2026-10-31T04:33:53+00:00",
+  "manifest_sha256": "2e2e6a64712e46a87700ee10e384bfedb911d3562385566b4accf303b322ea17",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -19,16 +17,8 @@
   },
   "total_files": 296,
   "updated": [
-    "codex_capabilities.json",
-    "feature-flags/lifecycle.json",
-    "feature-flags/lifecycle.md",
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
-    "learn.chatgpt.com/docs/security/cli/index.md",
-    "learn.chatgpt.com/docs/security/cli/reference/index.md",
-    "learn.chatgpt.com/docs/security/plugin/export-findings/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md"
+    "learn.chatgpt.com/docs/whats-new/devday-2026/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md",
+    "learn.chatgpt.com/docs/whats-new/september-28-october-2-2026/index.md"
   ]
 }
