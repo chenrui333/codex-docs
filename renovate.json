@@ -8,6 +8,14 @@
   "platformAutomerge": false,
   "minimumReleaseAge": "2 days",
   "internalChecksFilter": "strict",
+  "packageRules": [
+    {
+      "description": "Digest updates are aged at lookup against the newest matching version, but the branch-stage stability check has no release timestamp and stays pending (renovatebot/renovate#45236).",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["digest", "pinDigest"],
+      "minimumReleaseAgeBehaviour": "timestamp-optional"
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",

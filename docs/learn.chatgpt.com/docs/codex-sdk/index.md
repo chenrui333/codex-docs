@@ -76,6 +76,26 @@ const result2 = await thread2.run("Pick up where you left off");
 console.log(result2.finalResponse);
 ```
 
+### Configuration overrides
+
+Pass `config` to set structured Codex configuration. For keys that can't be
+expressed as dotted paths, use `configOverrides` to pass raw TOML strings as
+separate `--config` arguments:
+
+```ts
+const codex = new Codex({
+  config: { default_permissions: "audit" },
+  configOverrides: [
+    'permissions.audit.filesystem={":root"="read","/path/to/project/.env"="deny"}',
+  ],
+});
+```
+
+Raw overrides take precedence over structured `config`. The SDK applies
+managed settings such as `baseUrl` and thread-specific options afterward, so
+they take precedence over both. These overrides don't change your Codex configuration
+files.
+
 For more details, check out the [TypeScript repo](https://github.com/openai/codex/tree/main/sdk/typescript).
 
 ## Python library

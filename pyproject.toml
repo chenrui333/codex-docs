@@ -1,6 +1,6 @@
 [tool.ruff]
-required-version = "==0.16.9"
-target-version = "py314"
+required-version = "==0.17.3"
+target-version = "py315"
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F"]

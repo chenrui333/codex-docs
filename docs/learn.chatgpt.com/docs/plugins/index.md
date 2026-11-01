@@ -20,6 +20,8 @@ can include skills and MCP servers. Both products use one universal plugin
 directory, so the same public plugins are discoverable from their supported
 surfaces.
 
+[Watch: Plugins in ChatGPT](https://www.youtube.com/watch?v=pKwRNdDtai0)
+
 Plugins work in Chat and Work across ChatGPT on the web, desktop, and mobile,
 and in Codex in the ChatGPT desktop app. Codex CLI also has a plugin browser
 for Codex environments. The IDE extension doesn't support plugins.
@@ -135,7 +137,7 @@ The Plugins Directory organizes plugins into tabs:
 Use the separate **Installed** row to review plugins you already installed.
 
 Workspace admins can import and sync a GitHub marketplace for their team. See
-[Plugin management](https://learn.chatgpt.com/docs/enterprise/plugin-management) for setup and access
+[Import and sync plugins from GitHub](https://learn.chatgpt.com/docs/enterprise/plugin-management) for setup and access
 requirements.
 
 ### Install and use a plugin
@@ -195,7 +197,7 @@ should use. See [Skills & Plugins](https://learn.chatgpt.com/docs/skills-and-plu
 
 Use plugins in Sites to build a Site that uses each
 visitor's own connected accounts and permissions. See [Bring user data to your Site
-with plugins](https://learn.chatgpt.com/docs/sites#bring-user-data-to-your-site-with-plugins) for setup and visitor
+with plugins](https://learn.chatgpt.com/docs/sites/data-and-connections#bring-user-data-to-your-site-with-plugins) for setup and visitor
 access requirements.
 
 <ContentModeSwitch group="codex-surface" id="app">

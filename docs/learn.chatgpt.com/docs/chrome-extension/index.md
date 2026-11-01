@@ -53,7 +53,7 @@ ChatGPT can use context from your open tabs when a task needs it.
 
 1. Open the page you want to work with.
 2. Select ChatGPT from the browser toolbar or **Extensions** menu. On macOS, you
-   can also press <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>.
+   can also press <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>&nbsp;.&nbsp;</kbd>.
 3. Ask a question about the page or give ChatGPT a task.
 
 The panel stays with the tab where you opened it. Chats you start in side chat

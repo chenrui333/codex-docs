@@ -30,19 +30,25 @@ workspace operators, or members who need the same supported feature.
 
 Workspace owners and admins can create and manage groups. Create a manually
 managed group for a small or temporary audience, or sync an established group
-from your identity provider when membership should follow your directory.
+from your identity provider when membership should follow your directory. Use a
+dynamic group when membership should follow rules based on SCIM user attributes.
 
 Each group has one authoritative membership source:
 
-| Group type                | Membership source                   | When it applies                                                                  |
-| ------------------------- | ----------------------------------- | -------------------------------------------------------------------------------- |
-| Manually managed          | ChatGPT workspace administration    | The group is small, temporary, or not managed through directory sync             |
-| Identity-provider managed | Your identity provider through SCIM | Membership should follow the organization's directory and member-removal process |
+| Group type                | Membership source                            | When it applies                                                                  |
+| ------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
+| Manually managed          | ChatGPT workspace administration             | The group is small, temporary, or not managed through directory sync             |
+| Identity-provider managed | Your identity provider through SCIM          | Membership should follow the organization's directory and member-removal process |
+| Dynamic                   | Rules evaluated against SCIM user attributes | Membership should follow attributes such as department or location               |
 
-Manual and identity-provider-managed groups can coexist. For synchronized
-groups, the identity provider is the membership source; later provisioning
-updates can overwrite workspace-side changes. The Help Center owns current SCIM
-behavior, supported attributes, and setup steps.
+Dynamic groups evaluate SCIM user attributes against rules you define in
+ChatGPT Admin. See [Dynamic groups](https://learn.chatgpt.com/docs/enterprise/dynamic-groups) for setup
+steps and supported attributes.
+
+Manual and identity-provider-managed groups can coexist. For
+identity-provider-managed groups, the identity provider is the membership source;
+later provisioning updates can overwrite workspace-side changes. The Help Center
+owns current SCIM provisioning behavior and setup steps.
 
 ## Understand the access boundary
 
@@ -51,9 +57,10 @@ Group membership by itself doesn't grant a workspace feature permission.
 ### Connect a group to the right permissions
 
 Workspace owners can assign custom roles to groups or, where available, directly
-to members. Check every applicable role: an explicit **Off** in any role
-denies that permission, even when another role grants it. A member's seat type
-and product eligibility still apply.
+to members. Members receive permissions granted by any of their ordinary
+roles. Lockdown Mode restrictions, seat type, and product eligibility still
+apply. See
+[how role permissions combine](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions#set-the-workspace-default-then-create-targeted-custom-roles).
 
 SCIM provisions workspace membership and group assignments. It doesn't grant
 permissions in GitHub, Google Drive, Slack, or another connected system. It also

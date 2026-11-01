@@ -65,7 +65,7 @@ chat.
 
 Ask Codex in an interactive CLI session to use subagents. Codex can also follow
 applicable `AGENTS.md` or skill instructions that request delegation. Use
-`/agent` to inspect and switch between agent threads while they run. The main
+`/subagents` to inspect and switch between agent threads while they run. The main
 thread collects the subagent results into its final response.
 
 </ContentModeSwitch>
@@ -265,7 +265,7 @@ subagent.
 
 <ContentModeSwitch group="codex-surface" id="cli">
 
-- Use `/agent` in the CLI to switch between active agent threads and inspect the ongoing thread.
+- Use `/subagents` in the CLI to switch between active agent threads and inspect the ongoing thread.
 - Ask Codex directly to steer a running subagent, stop it, or close completed agent threads.
 
 </ContentModeSwitch>
@@ -314,10 +314,9 @@ In non-interactive flows, or whenever a run can't surface a fresh approval, an
 action that needs new approval fails and Codex surfaces the error back to the
 parent workflow.
 
-Codex also reapplies the parent turn's live runtime overrides when it spawns a
-child. That includes sandbox and approval choices you set interactively during
-the session, such as `/permissions` changes or `--yolo`, even if the selected
-custom agent file sets different defaults.
+Subagents inherit the parent turn's current sandbox and approval settings,
+including changes made with `/permissions` or `--yolo`. A custom agent file
+can't replace those settings.
 
 </ContentModeSwitch>
 
@@ -330,7 +329,9 @@ the permission mode for the parent turn before you ask Codex to delegate work.
 
 <ContentModeSwitch group="codex-surface" ids="app,cli,ide">
 
-You can also override the sandbox configuration for individual [custom agents](#custom-agents), such as explicitly marking one to work in read-only mode.
+Set sandbox and approval controls on the parent session. Custom agent
+instructions can ask an agent to avoid edits, but they don't create a separate
+read-only sandbox.
 
 ## Custom agents
 
@@ -344,10 +345,10 @@ To define your own custom agents, add standalone TOML files under
 `~/.codex/agents/` for personal agents or `.codex/agents/` for project-scoped
 agents.
 
-Each file defines one custom agent. Codex loads these files as configuration
-layers for spawned sessions, so custom agents can override the same settings as
-a normal Codex session config. That can feel heavier than a dedicated agent
-manifest, and the format may evolve as authoring and sharing mature.
+Each file defines one custom agent. Custom agents can change model settings and
+instructions or disable supported capabilities. They inherit the parent's
+permissions, provider, and MCP servers; a custom agent file can't override those
+settings.
 
 Every standalone custom agent file must define:
 
@@ -363,9 +364,8 @@ selects a model and neither supplies a reasoning effort, Codex uses
 that model's default effort. A custom agent file that sets only `model`
 preserves this previously resolved effort. Set `model_reasoning_effort` in the
 file too if the selected model doesn't support that effort or you want a
-different one. Other session settings, such as `sandbox_mode`, `mcp_servers`,
-and `skills.config`, inherit from the parent when the custom agent file omits
-them.
+different one. Skills inherit from the parent, and a custom agent can disable
+individual skills with `skills.config`.
 
 ### Global settings
 
@@ -395,7 +395,23 @@ Global subagent settings still live under `[agents]` in your [configuration](htt
 | `description`            | string |   Yes    | Human-facing guidance for when Codex should use this agent.     |
 | `developer_instructions` | string |   Yes    | Core instructions that define the agent's behavior.             |
 
-You can also include other supported `config.toml` keys in a custom agent file, such as `model`, `model_reasoning_effort`, `sandbox_mode`, `mcp_servers`, and `skills.config`.
+Use `model`, `model_reasoning_effort`, `model_reasoning_summary`, and
+`model_verbosity` to customize model behavior.
+See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for their
+accepted values.
+
+To reduce a custom agent's capabilities, set supported feature keys to `false`:
+`features.shell_tool`, `features.apps`, `features.plugins`,
+`features.memories`, or `features.request_permissions_tool`. Disable individual
+skills with `skills.config` or bundled skills with
+`skills.bundled.enabled = false`. Set `skills.include_instructions = false` to
+omit the automatic skills instructions block. Managed requirements still apply.
+
+Other session settings, including `sandbox_mode`, `approval_policy`,
+`model_provider`, and `mcp_servers`, don't override the parent configuration
+when placed in a custom agent file. The service tier also follows the root
+session's preference. Configure MCP servers in the parent session so the agent
+can use them.
 
 Codex identifies the custom agent by its `name` field. Matching the filename to
 the agent name is the simplest convention, but the `name` field is the source
@@ -424,6 +440,9 @@ Project config (`.codex/config.toml`):
 ```toml
 [agents]
 max_concurrent_threads_per_session = 8
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
 ```
 
 `.codex/agents/pr-explorer.toml`:
@@ -433,9 +452,9 @@ name = "pr_explorer"
 description = "Read-only codebase explorer for gathering evidence before changes are proposed."
 model = "gpt-6-luna"
 model_reasoning_effort = "high"
-sandbox_mode = "read-only"
 developer_instructions = """
 Stay in exploration mode.
+Do not edit files.
 Trace the real execution path, cite files and symbols, and avoid proposing fixes unless the parent agent asks for them.
 Prefer fast search and targeted file reads over broad scans.
 """
@@ -448,9 +467,9 @@ name = "reviewer"
 description = "PR reviewer focused on correctness, security, and missing tests."
 model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"
-sandbox_mode = "read-only"
 developer_instructions = """
 Review code like an owner.
+Do not edit files.
 Prioritize correctness, security, behavior regressions, and missing test coverage.
 Lead with concrete findings, include reproduction steps when possible, and avoid style-only comments unless they hide a real bug.
 """
@@ -463,15 +482,12 @@ name = "docs_researcher"
 description = "Documentation specialist that uses the docs MCP server to verify APIs and framework behavior."
 model = "gpt-6-luna"
 model_reasoning_effort = "high"
-sandbox_mode = "read-only"
 developer_instructions = """
 Use the docs MCP server to confirm APIs, options, and version-specific behavior.
 Return concise answers with links or exact references when available.
 Do not make code changes.
 """
 
-[mcp_servers.openaiDeveloperDocs]
-url = "https://developers.openai.com/mcp"
 ```
 
 This setup works well for prompts like:
@@ -489,6 +505,10 @@ Project config (`.codex/config.toml`):
 ```toml
 [agents]
 max_concurrent_threads_per_session = 6
+
+[mcp_servers.chrome_devtools]
+url = "http://localhost:3000/mcp"
+startup_timeout_sec = 20
 ```
 
 `.codex/agents/code-mapper.toml`:
@@ -498,9 +518,9 @@ name = "code_mapper"
 description = "Read-only codebase explorer for locating the relevant frontend and backend code paths."
 model = "gpt-6-luna"
 model_reasoning_effort = "high"
-sandbox_mode = "read-only"
 developer_instructions = """
 Map the code that owns the failing UI flow.
+Do not edit files.
 Identify entry points, state transitions, and likely files before the worker starts editing.
 """
 ```
@@ -512,15 +532,11 @@ name = "browser_debugger"
 description = "UI debugger that uses browser tooling to reproduce issues and capture evidence."
 model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"
-sandbox_mode = "workspace-write"
 developer_instructions = """
 Reproduce the issue in the browser, capture exact steps, and report what the UI actually does.
 Use browser tooling for screenshots, console output, and network evidence.
 Do not edit application code.
 """
-[mcp_servers.chrome_devtools]
-url = "http://localhost:3000/mcp"
-startup_timeout_sec = 20
 ```
 
 `.codex/agents/ui-fixer.toml`:

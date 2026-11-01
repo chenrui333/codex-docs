@@ -49,7 +49,7 @@ Source: https://learn.chatgpt.com/docs/administration
       ],
     },
     {
-      title: "Feature setup",
+      title: "Feature Configuration",
       description:
         "Choose a setup task, then review its access and security requirements.",
       pages: [
@@ -57,7 +57,7 @@ Source: https://learn.chatgpt.com/docs/administration
           title: "Configure dots permissions",
           description:
             "Manage dots access, communication, computers, and custom rules.",
-          href: "/codex/dots/controls#for-workspace-admins",
+          href: "/codex/enterprise/dots-admin-guide",
           icon: "shieldCheck",
         },
         {
@@ -66,6 +66,13 @@ Source: https://learn.chatgpt.com/docs/administration
             "Control Library sharing permissions and help members share pages.",
           href: "/codex/space/collaboration#for-workspace-admins",
           icon: "userLock",
+        },
+        {
+          title: "Sites administration",
+          description:
+            "Enable sites, configure connections, and review hosting, access controls, and data responsibilities.",
+          href: "/codex/enterprise/sites",
+          icon: "shieldCheck",
         },
         {
           title: "Set up teams and Team Tasks",
@@ -95,13 +102,6 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/enterprise/cloud-local-access#how-to-set-up-local-computer-access",
           icon: "settings",
         },
-        {
-          title: "Set up Sites and connected plugins",
-          description:
-            "Enable tenant and plugin access so Sites can use visitors' connected accounts.",
-          href: "/codex/enterprise/sites#enable-plugin-use-in-sites",
-          icon: "connect",
-        },
       ],
     },
     {
@@ -118,8 +118,15 @@ Source: https://learn.chatgpt.com/docs/administration
         {
           title: "Groups and provisioning",
           description:
-            "Manage manual and SCIM groups, provisioning, and rollout cohorts.",
+            "Compare membership sources and understand group permissions.",
           href: "/codex/enterprise/groups-and-provisioning",
+          icon: "users",
+        },
+        {
+          title: "Dynamic groups",
+          description:
+            "Manage group membership with rules based on SCIM user attributes.",
+          href: "/codex/enterprise/dynamic-groups",
           icon: "users",
         },
         {
@@ -157,9 +164,9 @@ Source: https://learn.chatgpt.com/docs/administration
         "Deploy apps and configure updates, runtime settings, remote connections, and model access.",
       pages: [
         {
-          title: "Windows app deployment",
+          title: "Windows app and CLI deployment",
           description:
-            "Choose an installation and update path for managed Windows devices.",
+            "Deploy the Windows app and Codex CLI on managed Windows devices.",
           href: "/codex/enterprise/windows-deployment",
           icon: "settings",
         },
@@ -175,6 +182,20 @@ Source: https://learn.chatgpt.com/docs/administration
           description:
             "Review the global baseline in Agent Security, policy precedence for this feature, and supported runtime requirements.",
           href: "/codex/enterprise/managed-configuration",
+          icon: "dataControls",
+        },
+        {
+          title: "Self-host Codex configuration for your team",
+          description:
+            "Serve Codex defaults and required settings from your own HTTPS endpoint.",
+          href: "/codex/enterprise/configuration-server",
+          icon: "settings",
+        },
+        {
+          title: "Codex security cookbook",
+          description:
+            "Configure and verify enterprise security controls, then combine them for common security goals.",
+          href: "/codex/enterprise/security-cookbook",
           icon: "dataControls",
         },
         {
@@ -198,14 +219,21 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "storage",
         },
         {
+          title: "Bedrock GovCloud configuration",
+          description:
+            "Configure local Codex workflows with Amazon Bedrock in AWS GovCloud.",
+          href: "/codex/enterprise/govcloud-configuration",
+          icon: "storage",
+        },
+        {
           title: "Connect to a gateway",
           description:
-            "Configure one Codex client to use your organization's model gateway and verify the connection.",
+            "Connect to your organization's model gateway with or without ChatGPT sign-in.",
           href: "/codex/enterprise/connect-to-a-gateway",
           icon: "connect",
         },
         {
-          title: "Deploy Codex through a gateway",
+          title: "Roll out a gateway",
           description:
             "Configure model routes, issue credentials, and deploy Codex through your organization’s gateway.",
           href: "/codex/enterprise/roll-out-a-gateway",
@@ -224,6 +252,27 @@ Source: https://learn.chatgpt.com/docs/administration
             "Configure a LiteLLM gateway to route Codex model requests to Amazon Bedrock.",
           href: "/codex/enterprise/bedrock-through-litellm",
           icon: "storage",
+        },
+      ],
+    },
+    {
+      title: "ChatGPT EDU",
+      description:
+        "Compare education plans and configure access for your institution.",
+      pages: [
+        {
+          title: "Education plans",
+          description:
+            "Compare plans, help members get access, and manage multiple workspaces.",
+          href: "/codex/enterprise/education-plans",
+          icon: "users",
+        },
+        {
+          title: "Higher education setup",
+          description:
+            "Choose campus roles, compare recommended permissions, and verify access.",
+          href: "/codex/enterprise/higher-education-roles-and-permissions",
+          icon: "userLock",
         },
       ],
     },
@@ -295,7 +344,7 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "connect",
         },
         {
-          title: "Plugin management",
+          title: "Import and sync plugins from GitHub",
           description: "Import and sync workspace plugins from GitHub.",
           href: "/codex/enterprise/plugin-management",
           icon: "connect",

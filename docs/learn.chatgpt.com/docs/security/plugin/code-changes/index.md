@@ -69,7 +69,7 @@ findings](https://learn.chatgpt.com/docs/security/plugin/export-findings).
 
 ## Automate reviews in CI/CD
 
-If you have access to the beta standalone CLI, see [Run Codex Security in
+For the standalone CLI, see [Run Codex Security in
 CI](https://learn.chatgpt.com/docs/security/cli/ci) for structured JSON, a severity policy, and SARIF
 upload. Continue with this section to invoke the installed plugin skill
 through `codex exec`.
@@ -88,9 +88,8 @@ Install the Codex Security plugin in the CLI:
 codex plugin add codex-security@openai-curated
 ```
 
-The install command uses the public Codex CLI plugin marketplace. Check the
-[plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) before you depend on a
-specific plugin version or feature in CI.
+The install command uses the public Codex CLI plugin marketplace. See the [plugin changelog](https://learn.chatgpt.com/docs/security/plugin/changelog) for version-specific
+requirements.
 
 Next, provide an OpenAI API key from your CI secret store as
 `CODEX_SECURITY_API_KEY`. Expose the credential only for the scan:
@@ -107,37 +106,17 @@ still requires Codex to leave the source checkout unchanged.
 The scan writes its output to
 `$TMPDIR/codex-security-scans/<repository>/<scan-id>/`:
 
-| File                 | Contents                                                                                                                                                  |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `report.md`          | Primary readable entry point to the complete scan directory.                                                                                              |
-| `findings/<slug>/`   | Detailed vulnerability reports and supporting proof-of-concept files, when requested.                                                                     |
-| `hardening/`         | Structural hardening guidance and supporting proposals, when requested.                                                                                   |
-| `findings.json`      | Findings with stable identifiers, severity, confidence, source locations, and remediation. Feed approved internal security workflows or downstream tools. |
-| `scan-manifest.json` | Sealed scan receipt with the reviewed target, revisions, and artifact hashes.                                                                             |
-| `coverage.json`      | Reviewed and deferred surfaces, exclusions, and coverage completeness.                                                                                    |
+| File                 | Contents                                                                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `report.md`          | Primary readable entry point to the complete scan directory.                                                                                           |
+| `findings/<slug>/`   | Detailed vulnerability reports and supporting proof-of-concept files, when requested.                                                                  |
+| `hardening/`         | Structural hardening guidance and supporting proposals, when requested.                                                                                |
+| `findings.json`      | Findings with stable identifiers, severity, confidence, source locations, and remediation. Use these fields in security workflows or downstream tools. |
+| `scan-manifest.json` | Sealed scan receipt with the reviewed target, revisions, and artifact hashes.                                                                          |
+| `coverage.json`      | Reviewed and deferred surfaces, exclusions, and coverage completeness.                                                                                 |
 
-The [`findings.json` schema](https://github.com/openai/plugins/blob/main/plugins/codex-security/schemas/findings.schema.json)
-defines the complete structure. The schema includes these fields:
-
-| Field                     | Type   | Description                                                            |
-| ------------------------- | ------ | ---------------------------------------------------------------------- |
-| `documentType`            | String | Identifies the document as `codex-security.findings`.                  |
-| `schemaVersion`           | String | Identifies the findings schema version.                                |
-| `scanId`                  | String | Identifies the scan that produced the findings.                        |
-| `findings`                | Array  | Contains zero or more finding objects.                                 |
-| `findings[].findingId`    | String | Stable finding identifier derived from the finding fingerprint.        |
-| `findings[].occurrenceId` | String | Identifies this occurrence of the finding in a specific scan.          |
-| `findings[].ruleId`       | String | Identifies the vulnerability family.                                   |
-| `findings[].identity`     | Object | Contains the semantic anchor and optional sibling-instance identifier. |
-| `findings[].fingerprints` | Object | Contains the fingerprint algorithm and primary fingerprint.            |
-| `findings[].title`        | String | Provides the short finding title.                                      |
-| `findings[].summary`      | String | Summarizes the vulnerability and its impact.                           |
-| `findings[].severity`     | Object | Contains the severity level and optional scoring details.              |
-| `findings[].confidence`   | Object | Contains the confidence level and rationale.                           |
-| `findings[].taxonomy`     | Object | Contains the vulnerability category and CWE identifiers.               |
-| `findings[].locations`    | Array  | Lists affected files, line numbers, and location roles.                |
-| `findings[].remediation`  | String | Describes the recommended fix.                                         |
-| `findings[].provenance`   | Object | Identifies the source of the finding.                                  |
+For field definitions, see the [findings schema](https://github.com/openai/plugins/blob/main/plugins/codex-security/schemas/findings.schema.json). Use `findingId` to identify the finding and `occurrenceId` for its occurrence
+in this scan.
 
 For example, this command prints one tab-separated row per finding:
 
@@ -153,11 +132,9 @@ These examples assume a trusted Linux runner with Node.js and `npm`, Git, Python
 3, `jq`, and the provider's command-line tools. The `npm` global package prefix
 must be writable.
 
-Choose the example for your CI provider:
-
 Scan results can include sensitive vulnerability details. Keep artifacts
-private, and publish findings only after reviewing the audience, content, and
-required approvals.
+private, and review the destination and content before publishing findings.
+Choose the example for your CI provider:
 
 <Tabs
   id="codex-security-ci-examples"

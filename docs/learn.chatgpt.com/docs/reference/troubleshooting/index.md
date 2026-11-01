@@ -113,11 +113,32 @@ worktrees.
 
 If you started a chat with the wrong target (**Local**, **Worktree**, or **Cloud**) by accident, you can cancel the current run and recover your previous prompt by pressing the up arrow key in the composer.
 
+### Approve for me is missing or disabled
+
+To use automatic review, select **Approve for me** from the permissions control
+below the composer. If the mode is missing or disabled:
+
+1. Update the desktop app and check the permissions menu in the chat where
+   you want to use automatic review. The available choices can differ between
+   local and cloud environments.
+2. For local Codex execution, check your effective configuration for an
+   explicit `features.guardian_approval = false` setting and review the
+   configured permission profile, approval policy, and approval reviewer.
+   See [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic) for configuration
+   precedence. Local configuration doesn't control a managed cloud runtime.
+3. If a mode is disabled or missing in a managed workspace, ask your
+   administrator to check the allowed permission profiles, sandbox modes,
+   approval policies, and approval reviewers. Organization or device policy
+   can restrict these choices; local settings can't override it.
+
+If the mode is still unexpectedly unavailable, include your app version,
+operating system, execution environment, and whether the option is missing or
+disabled in your [feedback](#feedback-and-logs).
+
 ### Feature is working in the Codex CLI but not in the ChatGPT desktop app
 
 The ChatGPT desktop app and Codex CLI can include different Codex versions, so
-features may reach one surface before the other. Experimental features might
-also land in Codex CLI first.
+features may reach one surface before the other.
 
 To get the version of the Codex CLI on your system run:
 

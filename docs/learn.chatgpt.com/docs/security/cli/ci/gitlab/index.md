@@ -29,17 +29,13 @@ You need:
 
 - A GitLab project with a trusted runner that supports the Codex sandbox's
   user namespace.
-- The Maintainer or Owner role in the GitLab project so you can configure
-  [project CI/CD variables](https://docs.gitlab.com/ci/variables/) and protected
-  resources.
+- The Maintainer or Owner role in the GitLab project so you can configure [project CI/CD variables](https://docs.gitlab.com/ci/variables/)
+  and protected resources.
 - An OpenAI API key with Codex Security access. Organizations using Platform
-  API keys can [request Trusted Access for
-  Cyber](https://openai.com/form/enterprise-trusted-access-for-cyber/).
-  Individuals using ChatGPT authentication can use the [personal Trusted Access
-  flow](https://chatgpt.com/cyber). Some accounts or repositories require this
+  API keys can [request Trusted Access for Cyber](https://openai.com/form/enterprise-trusted-access-for-cyber/).
+  Individuals using ChatGPT authentication can use the [personal Trusted Access flow](https://chatgpt.com/cyber). Some accounts or repositories require this
   access for full-repository scans.
-- GitLab Ultimate 19.2 or later for [SARIF 2.1.0
-  ingestion](https://docs.gitlab.com/user/application_security/detect/sarif/).
+- GitLab Ultimate 19.2 or later for [SARIF 2.1.0 ingestion](https://docs.gitlab.com/user/application_security/detect/sarif/).
 - Full Git history so merge request jobs can calculate the merge base.
 
 The pipeline image installs Node.js 26, Python 3, Git, `rg`, and the pinned
@@ -51,10 +47,9 @@ without protected credentials.
 
 Create a masked, hidden, protected GitLab CI/CD variable named
 `CODEX_SECURITY_API_KEY`. Use an OpenAI Platform API key with Codex Security
-access, and set its environment scope to `codex-security/openai`. See
-[environment-scoped CI/CD variables](https://docs.gitlab.com/ci/environments/#limit-the-environment-scope-of-a-cicd-variable).
+access, and set its environment scope to `codex-security/openai`. See [environment-scoped CI/CD variables](https://docs.gitlab.com/ci/environments/#limit-the-environment-scope-of-a-cicd-variable).
 
-Add this minimal pipeline to a test project first. It scans committed changes
+Add this pipeline to a test project first. It scans committed changes
 in eligible protected merge requests, publishes SARIF from a successful report
 job, and restores the scanner result in a separate gate:
 
@@ -77,7 +72,9 @@ codex-security:
   variables:
     GIT_DEPTH: "0"
   before_script:
-    - npm install --prefix /tmp/codex-security-cli --ignore-scripts --no-audit --no-fund @openai/codex-security@0.1.20
+    - apt-get update -qq
+    - apt-get install -y -qq --no-install-recommends ca-certificates git python3 ripgrep
+    - npm install --prefix /tmp/codex-security-cli --ignore-scripts --no-audit --no-fund @openai/codex-security@0.8.1
   script:
     - |
       set -eu
@@ -99,13 +96,14 @@ codex-security:
           --head "$CI_COMMIT_SHA" \
           --auth api-key \
           --output-dir "$RESULTS_DIR" \
+          --fail-on-severity high \
           --json
       scan_exit="$?"
       set -e
       unset codex_security_api_key
 
       case "$scan_exit" in
-        0|1|2) ;;
+        0|1) ;;
         *) exit "$scan_exit" ;;
       esac
 
@@ -140,7 +138,7 @@ codex-security-gate:
 > Illustration: GitLab pipeline scans a committed diff, publishes a SARIF report, and restores the scan result in a policy gate
 
 Review every change to `.gitlab-ci.yml` before running a secret-bearing job.
-The minimal example intentionally omits full scans and remediation.
+This example omits full scans and remediation.
 
 ## Adopt the production pipeline
 
@@ -165,8 +163,7 @@ budgets to enable scheduled deep scans on the protected default branch.
 A merge request pipeline can access protected variables and runners only when:
 
 - You protect the source and target branches in the same project.
-- The project [permits merge request pipelines to access protected variables and
-  runners](https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/#control-access-to-protected-variables-and-runners).
+- The project [permits merge request pipelines to access protected variables and runners](https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/#control-access-to-protected-variables-and-runners).
 - The user who starts the pipeline can push or merge into the target branch.
 
 Fork pipelines and unprotected merge requests don't receive the scan
@@ -182,9 +179,9 @@ full-repository scan.
 
 Open the `codex-security` job and confirm that its artifacts include:
 
-- `scan-manifest.json`
-- `findings.json`
-- `coverage.json`
+- `results/scan-manifest.json`
+- `results/findings.json`
+- `results/report.md`
 - `results.sarif`
 - `scan-exit-code.txt`
 
@@ -223,7 +220,7 @@ environment instead of inheriting every GitLab variable. For diff scans, the
 workflow calculates the merge base and binds the scan to the reviewed base and
 head revisions.
 
-The example pins `@openai/codex-security` to `0.1.20`. Retest authentication,
+The example pins `@openai/codex-security` to `0.8.1`. Retest authentication,
 artifacts, SARIF ingestion, and policy gating before changing the pin.
 
 ## Separate reporting from policy enforcement
@@ -232,21 +229,25 @@ GitLab ingests SARIF from a successful report job. The pipeline publishes the
 report first and restores the scanner's exit status in a separate
 `codex-security-gate` job.
 
-The report job accepts findings from exit codes `0` and `1`. It accepts exit
-code `2` only when the scan manifest proves the scan completed, coverage is
-explicitly `partial`, and a non-empty SARIF report exists. Other runtime,
-configuration, or export failures remain blocking.
+The report job exports findings only after exit codes `0` and `1`. Any other
+exit code skips SARIF export and blocks the pipeline. An export failure also
+blocks the pipeline.
 
-The final gate preserves these scanner exit codes:
+The report job propagates execution errors and interruptions. When it succeeds,
+the final gate restores the scanner's policy result:
 
-| Exit | Meaning                                                                     |
-| ---- | --------------------------------------------------------------------------- |
-| `0`  | The scan completed with complete coverage and passed its policy.            |
-| `1`  | The scan completed and found an issue at or above the configured threshold. |
-| `2`  | The scan had incomplete coverage or an input or runtime error.              |
+| Exit          | Meaning                                                                     |
+| ------------- | --------------------------------------------------------------------------- |
+| `0`           | The scan completed and passed its policy.                                   |
+| `1`           | The scan completed and found an issue at or above the configured threshold. |
+| `2`           | The scan had an input, runtime, target-integrity, or required-output error. |
+| `130` / `143` | The scan was interrupted or terminated.                                     |
 
-The example temporarily allows exit `2` while you calibrate partial coverage.
-Remove that allowance when incomplete coverage must block the pipeline.
+The example passes `--fail-on-severity high`, so high and critical findings fail
+the gate. Without a severity threshold, completed scans exit `0` by default.
+In `results/scan-manifest.json`, read `scan.scope` for the configured scope and
+`scan.review.excludedPaths` for paths excluded from finding comparisons. Read
+`results/report.md` for follow-up work.
 
 Remediation and publishing run before the final policy gate. An eligible
 finding can produce a verified draft merge request even when the gate later
@@ -259,17 +260,12 @@ pipelines. The Codex remediation process and repository-controlled verification
 commands do not receive the GitLab project access token or runner-injected
 credentials.
 
-The security contract has three parts: repository-controlled commands never
-receive OpenAI or GitLab credentials, only the publishing job receives
-repository-write access, and every generated change stays a draft until a
-human reviews and merges it.
-
 The workflow:
 
-1. Requires complete scan coverage and a `high`- or `critical`-severity
-   finding.
+1. Requires a completed scan manifest for the current revision and a `high`- or
+   `critical`-severity finding.
 2. Confirms that the configured regression test fails before patching.
-3. Generates a focused patch and rejects changes to CI, credential, binary, or
+3. Generates a patch and rejects changes to CI, credential, binary, or
    other protected files.
 4. Runs the regression test without OpenAI, GitLab, registry, deployment, or
    job-token credentials.
@@ -293,9 +289,9 @@ source changes.
   <summary>Advanced: repository command isolation</summary>
 
 The `validate`, `patch`, and `verify-fix` commands receive a process-scoped
-`CODEX_API_KEY`. Repository-controlled setup and test commands run as a
-separate unprivileged user in a writable copy of the tracked source files.
-The copy intentionally excludes Git metadata, submodule contents, and
+`OPENAI_API_KEY` and use `--auth api-key`. Repository-controlled setup and test
+commands run as a separate unprivileged user in a writable copy of the tracked source files.
+The copy excludes Git metadata, submodule contents, and
 downloaded artifacts. Setup and test commands that require `.git` or
 submodules must run in a separately designed credential-free job.
 
@@ -310,8 +306,7 @@ job before enabling remediation.
 
 ## Publish a draft merge request
 
-Create a [GitLab project access
-token](https://docs.gitlab.com/user/project/settings/project_access_tokens/#create-a-project-access-token)
+Create a [GitLab project access token](https://docs.gitlab.com/user/project/settings/project_access_tokens/#create-a-project-access-token)
 with the Developer role and the `api` and `write_repository` scopes. Store it as
 a protected, masked, hidden `GITLAB_REMEDIATION_TOKEN` scoped only to the
 `codex-security/publish` environment.
@@ -341,10 +336,10 @@ Configure only the variables needed for the features you enable:
 | Variable                                  | When needed                       | Default or purpose                                          |
 | ----------------------------------------- | --------------------------------- | ----------------------------------------------------------- |
 | `CODEX_SECURITY_API_KEY`                  | Every scan                        | Protected, masked, hidden; scope to `codex-security/openai` |
-| `CODEX_SECURITY_VERSION`                  | CLI upgrade                       | Pinned to `0.1.20`; retest before changing                  |
+| `CODEX_SECURITY_VERSION`                  | CLI upgrade                       | Pinned to `0.8.1`; retest before changing                   |
 | `CODEX_SECURITY_FULL_SCAN_DEFAULT_BRANCH` | Default-branch full scans         | Explicit opt-in; off by default                             |
 | `CODEX_SECURITY_SCHEDULED_DEEP_SCAN`      | Scheduled deep scans              | Explicit opt-in; off by default                             |
-| `CODEX_SECURITY_DEEP_MAX_TIME_HOURS`      | Scheduled deep scans              | Required time budget greater than `0` and less than `8`     |
+| `CODEX_SECURITY_DEEP_MAX_TIME_MINUTES`    | Scheduled deep scans              | Required minute budget greater than `0` and less than `480` |
 | `CODEX_SECURITY_DEEP_MAX_COST`            | Scheduled deep scans              | Required estimated USD cost guardrail greater than `0`      |
 | `CODEX_SECURITY_ENABLE_REMEDIATION`       | Patch generation                  | Protected opt-in; off by default                            |
 | `CODEX_SECURITY_VERIFICATION_COMMAND`     | Patch generation                  | Protected regression test                                   |
@@ -365,27 +360,31 @@ identity from the normalized base and head revisions.
 
 ## Tune enforcement and cost
 
-Use focused diff scans for merge request feedback, standard repository scans
+Use diff scans for merge request feedback, standard repository scans
 for the default branch, and scheduled deep scans for broader coverage. Both
 full-repository profiles are off by default. A scheduled deep scan also requires
-`CODEX_SECURITY_DEEP_MAX_TIME_HOURS` and `CODEX_SECURITY_DEEP_MAX_COST`; keep the
-CLI time budget below the job's eight-hour timeout. Measure representative runs
+`CODEX_SECURITY_DEEP_MAX_TIME_MINUTES` and `CODEX_SECURITY_DEEP_MAX_COST`; keep the
+CLI time budget below the job's eight-hour timeout. When adopting the new YAML,
+convert existing hour-based settings to minutes. Measure representative runs
 before setting a budget. Treat `--max-cost` as an estimated cost guardrail, not
 a hard billing cap.
 
-Start with report-only scans. Add `--fail-on-severity` after your team has
-reviewed representative findings, coverage, cost, and runtime. See [Run Codex
-Security in CI](https://learn.chatgpt.com/docs/security/cli/ci) for severity policies and exit-code
-details.
+This example gates on high and critical findings. For report-only scans, remove
+`--fail-on-severity high`; choose a threshold after reviewing representative
+findings, coverage, cost, and runtime. See the
+[CI/CD overview](https://learn.chatgpt.com/docs/security/cli/ci#choose-a-severity-policy) for severity
+policies and the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#exit-codes-and-signals)
+for exit-code details.
 
 When a job fails:
 
 - Missing scan artifacts point to a configuration or runner problem.
-- Existing artifacts with partial coverage require reviewing `coverage.json`.
+- For unexpected exclusions, check the scope and review details in
+  `results/scan-manifest.json`.
 - Missing GitLab findings require checking whether the SARIF report job
   succeeded and whether GitLab accepted the report.
-- Skipped remediation requires checking the protected branch, complete
-  coverage, finding severity, verification command, and opt-in variables.
+- Skipped remediation requires checking the protected branch, scan manifest,
+  finding severity, verification command, and opt-in variables.
 - Publishing errors require checking the project token's role, scopes, and
   environment restriction.
 

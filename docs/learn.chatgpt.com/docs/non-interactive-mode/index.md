@@ -68,7 +68,9 @@ By default, `codex exec` runs in a read-only sandbox. In automation, set the lea
 
 Use `danger-full-access` only in a controlled environment (for example, an isolated CI runner or container).
 
-Codex keeps `codex exec --full-auto` as a deprecated compatibility flag and prints a warning. Prefer the explicit `--sandbox workspace-write` flag in new scripts.
+`--full-auto` is no longer supported. Update scripts to use
+`--sandbox workspace-write`, or use `--approve-for-me` to route approval
+requests through automatic review with the workspace-write sandbox.
 
 Use `--ignore-user-config` when you need a run that doesn't load `$CODEX_HOME/config.toml`, and `--ignore-rules` when you need to skip user and project execpolicy `.rules` files for a controlled automation environment.
 

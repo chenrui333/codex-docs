@@ -21,7 +21,7 @@ To use an existing gateway, start with [Connect to an existing
   see [Amazon Bedrock](https://learn.chatgpt.com/docs/amazon-bedrock).
 
 Other gateway products follow the same [gateway requirements](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility)
-and [Codex connection flow](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
+and [gateway connection flow](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway).
 
 ## Connect to an existing gateway
 
@@ -30,7 +30,8 @@ Get these values from your gateway administrator:
 - The HTTPS base URL, such as `https://gateway.example.com/v1`.
 - The model alias that LiteLLM routes to an approved Bedrock model.
 - The provider ID to use in Codex configuration.
-- A scoped gateway credential or an authentication helper that returns it.
+- Native gateway OAuth settings, a scoped gateway API key, or an authentication
+  helper that returns the key.
 - Any model catalog distributed with your organization's configuration.
 
 Then complete the connection in this order:
@@ -43,9 +44,15 @@ Then complete the connection in this order:
 3. Verify the active provider and alias, send the short `gateway-ok` prompt from
    the connection guide, and confirm that the LiteLLM record shows the expected
    user and alias.
-4. For organization-wide distribution, continue with [Deploy Codex through a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway).
+4. For organization-wide distribution, continue with [Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway).
 
 Your gateway credential authenticates you to LiteLLM. The gateway manages its own Bedrock credentials; you don't need to copy those credentials to your workstation.
+
+If your gateway accepts OAuth access tokens, use [native gateway
+OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#use-native-gateway-oauth) for browser
+sign-in without ChatGPT sign-in or a credential helper. Confirm that your deployed
+gateway validates the token in the configured cookie or custom header. A LiteLLM
+API key alone doesn't enable this flow.
 
 ## Prepare a gateway
 
@@ -147,7 +154,7 @@ For this GPT-6 Sol/Runtime example with Codex 0.158.0, start with the complete `
 
 Preserve the remaining fields, including the model's instructions and context limits. Keep the edited entry in the catalog's top-level `models` array. These changes mirror the released [Bedrock metadata adjustments](https://github.com/openai/codex/blob/rust-v0.158.0/codex-rs/model-provider/src/amazon_bedrock/catalog.rs) and [Runtime search restriction](https://github.com/openai/codex/blob/rust-v0.158.0/codex-rs/model-provider/src/amazon_bedrock/runtime_catalog.rs). Recheck them against the matching source when changing the client version or upstream model.
 
-Distribute the complete JSON file and configure `model_catalog_json` using [Deploy Codex through a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#supply-metadata-for-a-custom-alias). Keep `web_search = "disabled"` in the Runtime client configuration. Verify the edited catalog through the gateway before distributing it to more users.
+Distribute the complete JSON file and configure `model_catalog_json` using [Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#supply-metadata-for-a-custom-alias). Keep `web_search = "disabled"` in the Runtime client configuration. Verify the edited catalog through the gateway before distributing it to more users.
 
 ### Verify Responses support
 
@@ -171,7 +178,7 @@ Complete these checks before expanding access:
 4. Confirm that gateway records show the expected identity, alias, and upstream route without exposing credentials or sensitive prompt content.
 5. Test credential expiration or revocation and confirm that unauthorized model aliases are rejected.
 
-Keep the deployed image version, route configuration, and test results with your rollout record. Continue with [Deploy Codex through a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway) for team distribution and ongoing operations.
+Keep the deployed image version, route configuration, and test results with your rollout record. Continue with [Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway) for team distribution and ongoing operations.
 
 ## Troubleshoot the connection
 

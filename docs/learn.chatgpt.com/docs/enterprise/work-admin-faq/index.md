@@ -27,11 +27,6 @@ plan, workspace settings, source permissions, and surface.
 
 <a id="what-does-work-sync-enable"></a>
 
-<span
-  id="what-does-local-computer-access-enable"
-  data-localization-body-anchor
-/>
-
 ### What does Local computer access with Work Cloud enable?
 
 Eligible members can continue a Work conversation across desktop, mobile, and web. Tasks using Local computer access with Work Cloud use cloud coordination. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. Individual steps can still execute in the cloud or use approved resources on a connected computer.
@@ -50,11 +45,6 @@ To enable this feature for the intended users:
 
 If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots.
 
-<span
-  id="can-we-enable-sync-if-our-policies-are-delivered-only-through-mdm"
-  data-localization-body-anchor
-/>
-
 ### Can we use this feature if our policies are delivered only through MDM?
 
 Prepare Agent Security policy for supported enterprise requirements during local execution. With Local computer access with Work Cloud enabled, Work cloud containers do not enforce these requirements. MDM delivers requirements to devices.
@@ -68,11 +58,6 @@ Use Agent Security in the Admin Console to manage policies and configuration. It
 Existing policies, assignments, and ordering are preserved. Review your existing policies in Agent Security. Local computer access with Work Cloud is a separate opt-in. See [Agent Security](https://learn.chatgpt.com/docs/enterprise/agent-security) for migration guidance.
 
 Use the policy API to manage Global settings. To manage Local or Codex Cloud settings, use the Agent Security UI. Existing Global API workflows remain available after migration. Test your scripts and Terraform integrations, and confirm that policy assignments and ordering are unchanged.
-
-<span
-  id="which-hooks-are-supported-in-synced-work"
-  data-localization-body-anchor
-/>
 
 ### Which hooks are supported in Local computer access with Work Cloud?
 
@@ -99,11 +84,6 @@ Keep orchestrator controls, including approvals and web search, in Global. Use t
 Keep the computer online and connected for steps that need its local files or tools. If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn.
 
 <a id="what-happens-if-an-admin-turns-work-sync-off"></a>
-
-<span
-  id="what-happens-if-an-admin-turns-local-computer-access-off"
-  data-localization-body-anchor
-/>
 
 ### What happens if an admin turns Local computer access with Work Cloud off?
 

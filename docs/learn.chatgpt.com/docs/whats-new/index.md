@@ -13,7 +13,47 @@ Source: https://learn.chatgpt.com/docs/whats-new
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-For every versioned update, bug fix, and minor improvement, see the [Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
+For every versioned update, bug fix, and minor improvement, see the [ChatGPT and Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
+
+## [October 26–30, 2026](https://learn.chatgpt.com/docs/whats-new/october-26-30-2026)
+
+### [Text your dot](https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026)
+
+Reach your dot through iMessage or RCS on Android for one-to-one conversations
+with text, photos, and voice messages. Texting is rolling out in beta to ChatGPT
+Pro users in the U.S.
+
+### Use GPT-6.1 Terra for visual reasoning and computer use
+
+[GPT-6.1 Terra](https://learn.chatgpt.com/docs/models?surface=app#app-gpt-61-terra) is now available in ChatGPT Work
+and Codex on Plus, Pro, Business, Enterprise, and Edu plans. This fast, efficient model for professional work combines
+strong image understanding with precise computer use. Match product photos to
+catalog entries, review design assets, and act on what you find across your
+browser, desktop, and apps.
+
+[Read the full update →](https://learn.chatgpt.com/docs/whats-new/october-26-30-2026)
+
+## October 12–16, 2026
+
+### Open your dot from iOS widgets and Shortcuts
+
+Add the **Your dot** Home Screen widget to open your conversation, with optional message and call buttons. In Apple Shortcuts, use **Open your dot** with **Messaging**, **Dictation**, or **Call** mode. You can assign a saved shortcut to your iPhone's Action button on supported models.
+
+These features are rolling out with ChatGPT for iOS 1.2026.279 and require [dot access](https://learn.chatgpt.com/docs/dots#access). [Set up widgets and shortcuts](https://learn.chatgpt.com/docs/dots/channels#ios-widgets-and-shortcuts).
+
+## [October 5–9, 2026](https://learn.chatgpt.com/docs/whats-new/october-5-9-2026)
+
+### [Create your dot in the ChatGPT mobile app](https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026)
+
+Create your dot, give it a name, customize its appearance, and connect plugins from your phone. This week's Dots update also brings more context from ChatGPT and Codex, faster cloud browsing, and fixes to notifications, setup, and everyday use.
+
+### Use GPT-6.1 Sol with Ultrafast mode
+
+[Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode) speeds up
+token generation with GPT-6.1 Sol in Codex and ChatGPT Work. Ultrafast is
+available on Pro $500 and eligible Enterprise and Edu plans.
+
+[Read the full update →](https://learn.chatgpt.com/docs/whats-new/october-5-9-2026)
 
 ## [DevDay 2026](https://learn.chatgpt.com/docs/whats-new/devday-2026)
 
@@ -25,7 +65,7 @@ Give your dot ongoing responsibility. Dots keep making progress between conversa
 
 [Meet your dot](https://learn.chatgpt.com/docs/dots)
 [Availability](https://learn.chatgpt.com/docs/dots#access)
-[Admin guide](https://learn.chatgpt.com/docs/enterprise/o-admin-guide)
+[Admin guide](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide)
 
 ### Work across devices
 
@@ -87,7 +127,7 @@ Add sidebar apps, panels, editors, and forms to ChatGPT. Composer mentions requi
 
 ### MCP Events
 
-Let users ask ChatGPT to act on updates from your MCP server. Requires MCP 2.0 and webhook delivery.
+Let users ask ChatGPT to act on updates from your MCP server. ChatGPT supports webhook delivery.
 
 [Build event subscriptions](https://developers.openai.com/plugins/build/mcp-events)
 
@@ -184,7 +224,7 @@ Add [ChatGPT sign-in and eligible plan usage](https://developers.openai.com/siwc
 
 ### Respond to MCP events
 
-Build [webhook subscriptions](https://developers.openai.com/plugins/build/mcp-events) so users can ask ChatGPT to act on updates from your MCP server. Requires MCP 2.0.
+Build [webhook subscriptions](https://developers.openai.com/plugins/build/mcp-events) so users can ask ChatGPT to act on updates from your MCP server.
 
 ### Customize website annotations
 

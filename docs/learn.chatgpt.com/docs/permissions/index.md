@@ -149,9 +149,9 @@ writable while still setting a matching `.env` path to `deny`.
 Use `extends` when a profile is mostly the same as a built-in or another named
 profile. Prefer extending a built-in profile over starting from scratch so
 baseline protections carry forward. Extending `:workspace`, for example, keeps
-the workspace root's `.codex` directory read-only unless you explicitly
-override it. Set the parent once, then add or override only the rules that
-differ.
+the workspace root's `.git`, `.agents`, `.codex`, and `.aws` paths read-only
+unless you explicitly override those rules. Set the parent once, then add or
+override only the rules that differ.
 
 ```toml
 default_permissions = "project-edit"
@@ -301,6 +301,19 @@ This rule denies reads for matching `.env` files found beneath each runtime or
 profile-defined workspace root. Use it when you want to preserve normal
 workspace writes while keeping environment files, generated secrets, or similar
 credential-bearing files unreadable.
+
+On Linux, WSL, and native Windows with MXC or `elevated`, deny-read glob matches
+are enumerated when each sandboxed process starts. Matching files created afterward are not
+added to that process's deny list and remain readable if its other permissions
+allow access. For example, a long-running shell, script, watcher, or development
+server can read a matching `.env` file created after it started.
+
+This snapshot lasts for the sandboxed process's lifetime, not the whole Codex
+session. Starting a new sandboxed process through Codex enumerates the matches
+again; continuing to use an already-running process does not refresh its deny
+list. Don't rely on a glob to block newly created files in that running process.
+See [Windows MXC compatibility](https://learn.chatgpt.com/docs/windows/windows-sandbox#mxc-compatibility)
+for Windows-specific limits.
 
 `deny` glob patterns are supported as deny-read rules. `read` or `write` globs
 are less portable on Linux, WSL, and native Windows sandboxing, so prefer exact
@@ -523,15 +536,16 @@ allowlist is not a global network policy for every action Codex can perform.
   be enforced by the platform sandbox, Codex refuses to run the command instead
   of silently running it unsandboxed.
 - On Linux and WSL, Codex uses [bubblewrap](https://github.com/containers/bubblewrap)
-  and [seccomp](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html),
-  with Landlock available for compatibility fallback paths. The strongest
-  enforcement path depends on user namespaces and kernel support; restricted
-  container hosts can force compatibility paths, and unsupported split policies
-  are refused.
-- On native Windows, [`elevated` sandboxing](https://learn.chatgpt.com/docs/windows/windows-sandbox#windows-sandbox)
-  is strongest because it can use dedicated lower-privilege sandbox users,
-  filesystem permission boundaries, and firewall rules. `unelevated`
-  sandboxing is a fallback with weaker network isolation and cannot enforce
+  and [seccomp](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)
+  to enforce filesystem restrictions. The legacy Landlock option can't isolate
+  app-server Unix sockets and is rejected for filesystem-restricted policies.
+  Disable `features.use_legacy_landlock` when upgrading. Hosts that block the
+  required bubblewrap operations can't run these policies.
+- On Windows, MXC uses process isolation for filesystem and network permissions.
+  Review [MXC compatibility](https://learn.chatgpt.com/docs/windows/windows-sandbox#mxc-compatibility)
+  before enabling it. The legacy `elevated` fallback uses dedicated lower-privilege
+  sandbox users, filesystem permission boundaries, and firewall rules.
+  `unelevated` is a legacy fallback with weaker network isolation and cannot enforce
   every split read/write carveout, so unsupported policies are refused. Use WSL
   when you need the Linux sandbox model.
 
@@ -573,8 +587,8 @@ default_permissions = "workspace-only"
 
 [permissions.workspace-only]
 # By extending the :workspace profile, you get Codex's safeguards to ensure
-# subfolders such as .codex/ and .git/ within a workspace root are read-only
-# while the rest of the folder is writable.
+# paths such as .git/, .agents/, .codex/, and .aws/ within a workspace root
+# are read-only while the rest of the folder is writable.
 extends = ":workspace"
 
 [permissions.workspace-only.filesystem]

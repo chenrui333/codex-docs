@@ -16,9 +16,10 @@ Source: https://learn.chatgpt.com/docs/pricing
 **ChatGPT Work and Codex share usage.** ChatGPT Work usage inside
   ChatGPT uses the same pricing, credits, and usage limits as Codex.
 
-GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on
-October 14, 2026. The OpenAI API isn't affected. See
-[GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement) for migration guidance.
+GPT-5.5 retires from Codex with ChatGPT sign-in on October 14, 2026, at noon
+PDT (19:00 UTC). The OpenAI API and Codex sessions authenticated with an API
+key aren't affected. See [GPT-5.5 retirement](https://learn.chatgpt.com/docs/models#gpt-55-retirement)
+for migration guidance.
 
 See [token rates](#token-rates) for credit-based plans and
 [GPT-6.1 Sol model guidance](https://learn.chatgpt.com/docs/models#gpt-61-sol) for model details.
@@ -74,7 +75,7 @@ estimate included tasks.
         - Codex on the web, in the CLI, in the IDE extension, and on iOS
         - Cloud-based integrations like automatic code review and Slack
           integration
-        - GPT-6 Sol and GPT-6 Luna
+        - GPT-6.1 Sol and GPT-6 Luna
         - Flexibly extend usage with [ChatGPT credits](#credits-overview)
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Plus plan
@@ -94,7 +95,7 @@ estimate included tasks.
       >
 
         - Plans at $100, $200, or $500 USD per month
-        - [Astra Ultrafast](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode)
+        - [Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode)
           access on Pro $500
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
@@ -240,6 +241,10 @@ and reset times.
       <td style="text-align:center">15-160</td>
     </tr>
     <tr>
+      <td>GPT-6.1 Terra</td>
+      <td style="text-align:center">35-285</td>
+    </tr>
+    <tr>
       <td>GPT-6 Sol</td>
       <td style="text-align:center">15-150</td>
     </tr>
@@ -274,6 +279,9 @@ Usage limits are shared with other agentic features once pricing for those
 features is effective. This currently includes [ChatGPT for
 Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
 
+GPT-6.1 Sol usage drawn from your subscription has no long-context surcharge
+in Codex or ChatGPT Work.
+
 Fast and Ultrafast modes use included subscription limits and paid credits
 at different rates, relative to Standard mode for the same model:
 
@@ -281,17 +289,16 @@ at different rates, relative to Standard mode for the same model:
 | --------------------- | --------------------------- | ---------------------------------------------------- |
 | Fast                  | 2.5x                        | 2x                                                   |
 | GPT-6 Astra Ultrafast | 8x                          | 6x                                                   |
+| GPT-6.1 Sol Ultrafast | 8x                          | 6x                                                   |
 
-These billing multipliers don't describe speed increases. Credit rates
-alone don't determine how quickly you use included subscription limits;
-check your [usage dashboard](#where-can-i-see-my-current-usage-limits) for
+Check your [usage dashboard](#where-can-i-see-my-current-usage-limits) for
 current limits and reset times. See [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)
 for supported models and how speed modes affect usage.
 
 Image generations use included limits ~3-5x faster on average, depending on
 image quality and size.
 
-For GPT-6 Astra Ultrafast eligibility, billing, and administrator controls,
+For Ultrafast mode eligibility and administrator controls,
 see [Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode).
 
 ### How much does Sites cost?
@@ -411,6 +418,12 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">250 credits</td>
       </tr>
       <tr>
+        <td>GPT-6.1 Terra</td>
+        <td style="text-align:center">25 credits</td>
+        <td style="text-align:center">1.25 credits</td>
+        <td style="text-align:center">125 credits</td>
+      </tr>
+      <tr>
         <td>GPT-6 Sol</td>
         <td style="text-align:center">50 credits</td>
         <td style="text-align:center">5 credits</td>
@@ -459,12 +472,6 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">625 credits</td>
       </tr>
       <tr>
-        <td>GPT-5.5</td>
-        <td style="text-align:center">125 credits</td>
-        <td style="text-align:center">12.50 credits</td>
-        <td style="text-align:center">750 credits</td>
-      </tr>
-      <tr>
         <td>GPT-Image-2 (image)</td>
         <td style="text-align:center">200 credits</td>
         <td style="text-align:center">50 credits</td>
@@ -480,15 +487,15 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
     <tfoot>
       <tr>
         <td colspan="4" style="text-align:center">
-          A typical GPT-5.6 Sol task may use 5-30 credits.
+          A typical GPT-5.6 Sol task may use 2-15 credits.
         </td>
       </tr>
       <tr>
         <td colspan="4" style="text-align:center">
           These are Standard credit rates. For purchased credits and Enterprise
           pay-as-you-go usage, Fast mode uses 2x the Standard rate where
-          available, and GPT-6 Astra Ultrafast uses 6x. Included subscription
-          usage has different multipliers. See
+          available, and Ultrafast mode uses 6x. Included subscription usage has
+          different multipliers. See
           [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) for availability
           and billing details.
         </td>
@@ -544,6 +551,17 @@ For guidance on choosing and scoping tasks, see [Use Work
 efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
 
 ## Feature availability
+
+In ChatGPT, GPT-6.1 Sol is available in Work and Codex, not Chat. For Enterprise
+and Edu, the model is off by default until an administrator enables it. Using
+it in ChatGPT Work or Codex also requires access to the respective surface.
+API-key access follows API model availability.
+
+[GPT-6.1 Terra](https://learn.chatgpt.com/docs/models?surface=app#app-gpt-61-terra) is available in Work and Codex on
+Plus, Pro, Business, Enterprise, and Edu plans. It does not support
+UAE inference residency. It isn't available in Chat. Access requires the corresponding
+surface; Enterprise access also depends on workspace availability and
+administrator controls. Overall Work and Codex plan limits are unchanged.
 
 <CodexPlanFeatureMatrix
   data={{
@@ -662,6 +680,28 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
         title: "Models and multimodal",
         features: [
           {
+            name: "GPT-6.1 Sol",
+            href: "/codex/models#gpt-61-sol",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
+            name: "GPT-6.1 Terra",
+            href: "/codex/models?surface=app#app-gpt-61-terra",
+            availability: {
+              plus: "available",
+              pro: "available",
+              business: "available",
+              enterprise: "available",
+              api: "available",
+            },
+          },
+          {
             name: "GPT-6 Sol and Luna",
             href: "/codex/models",
             availability: {
@@ -684,7 +724,7 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
             },
           },
           {
-            name: "Astra Ultrafast (Pro $500 and eligible Enterprise/Edu plans)",
+            name: "Ultrafast (Pro $500 and eligible Enterprise/Edu plans)",
             href: "/codex/agent-configuration/speed#ultrafast-mode",
             availability: {
               plus: "unavailable",
@@ -743,6 +783,17 @@ efficiently](https://learn.chatgpt.com/docs/prompting#use-work-efficiently).
       {
         title: "Local features",
         features: [
+          {
+            name: "Composer predictions (beta)",
+            href: "/codex/features/composer-predictions",
+            availability: {
+              plus: "unavailable",
+              pro: "limited",
+              business: "unavailable",
+              enterprise: "unavailable",
+              api: "unavailable",
+            },
+          },
           {
             name: "Local code review with `/review`",
             shortName: "Local code review",

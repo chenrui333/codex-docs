@@ -55,6 +55,22 @@ enforced `features.fast_mode` setting in
 This setting can pin Fast mode on or off for managed local Codex clients; it
 isn't a starting default and can't override workspace or product availability.
 
+## Save Preview and Launch access
+
+Where separate Preview and Launch access settings are visible and editable,
+select **Save changes** to save your choices.
+
+If **Sync preview and launch access** is available and editable, turn it on to
+copy your Preview choices to Launch when you save. Sync runs when you save;
+it doesn't continuously update Launch access. Turning optional Sync off and
+saving keeps the latest saved Launch choices unless you also edit them. You
+can edit and save Launch choices separately with Sync off.
+
+After a successful save, reopen the access settings to verify the saved choices.
+If the page reports that it couldn't save all changes, some changes may
+already be saved. Follow the on-screen guidance to review and save the
+remaining changes.
+
 ## GPT-6 Sol and Luna in Enterprise
 
 GPT-6 Sol and GPT-6 Luna are off by default in Enterprise workspaces at
@@ -96,14 +112,13 @@ model or changing local configuration doesn't grant access by itself.
 
 ## Prepare for the GPT-5.5 retirement
 
-On October 14, 2026, GPT-5.5 will retire from ChatGPT, ChatGPT Work, and Codex
-on all plans, including consumer, Business, Enterprise, and Edu plans. This
-retirement does not apply to the OpenAI API.
+GPT-5.5 retires from Codex with ChatGPT sign-in on October 14, 2026, at noon
+PDT (19:00 UTC). The OpenAI API and Codex sessions authenticated with an API
+key aren't affected.
 
-Before October 14, review workspace defaults for ChatGPT, ChatGPT Work, and
-Codex and choose an available replacement for each surface. For Work and Codex
-with ChatGPT sign-in, choose `gpt-6-sol` (GPT-6 Sol) once an administrator has
-enabled it for the affected users. Replace `gpt-5.5` in workspace defaults,
+Review Codex workspace defaults and choose an available replacement. Choose
+`gpt-6.1-sol` (GPT-6.1 Sol) once an administrator has enabled it for the
+affected users. Replace `gpt-5.5` in workspace defaults,
 saved model settings, managed configurations, custom agents, and scheduled
 tasks. Check scripts and commands that explicitly select `gpt-5.5` too.
 

@@ -25,7 +25,7 @@ Dots are always-on agents that take on ongoing responsibility. Give your dot a g
 
 [Meet your dot](https://learn.chatgpt.com/docs/dots)
 [Availability](https://learn.chatgpt.com/docs/dots#access)
-[Admin guide](https://learn.chatgpt.com/docs/enterprise/o-admin-guide)
+[Admin guide](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide)
 
 ### Work across devices
 
@@ -99,7 +99,7 @@ Add sidebar apps, conversation panels, file viewers and editors, and forms to Ch
 
 ### MCP Events
 
-Let users ask ChatGPT to monitor updates from your MCP server and act when matching events arrive. ChatGPT requires MCP 2.0 and supports webhook delivery from the draft MCP Events specification.
+Let users ask ChatGPT to monitor updates from your MCP server and act when matching events arrive. ChatGPT supports webhook delivery from the draft MCP Events specification.
 
 [Build event subscriptions](https://developers.openai.com/plugins/build/mcp-events)
 

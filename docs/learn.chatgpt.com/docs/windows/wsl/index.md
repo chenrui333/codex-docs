@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/windows/wsl
 When you use WSL2, Codex runs inside the Linux environment instead of using the
 native [Windows sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox). Choose WSL2 when you need Linux-native
 tooling, your repositories and developer workflow already live in WSL2, or
-neither native Windows sandbox mode works for your environment.
+the available Windows sandbox implementations don't meet your needs.
 
 WSL1 was supported through Codex `0.114`. Starting in Codex `0.115`, the Linux
 sandbox moved to `bubblewrap`, so WSL1 is no longer supported.
@@ -52,13 +52,13 @@ This opens a WSL remote window, installs the VS Code Server if needed, and ensur
 
   This prints your distribution name.
 
-If you don't see "WSL: ..." in the status bar, press `Ctrl+Shift+P`, pick
-  `WSL: Reopen Folder in WSL`, and keep your repository under `/home/...` (not
-  `C:\`) for best performance.
+If you don't see "WSL: …" in the status bar, press `Ctrl+Shift+P`, pick `WSL:
+  Reopen Folder in WSL`, and keep your repository under `/home/...` (not `C:\`)
+  for best performance.
 
 If the Windows app or project picker does not show your WSL repository, type
   `\\wsl$` into the file picker or Explorer, then navigate to your
-  distro's home directory.
+  distribution's home directory.
 
 ## Use Codex CLI with WSL
 

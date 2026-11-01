@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_changelog'
 source_url: 'https://learn.chatgpt.com/docs/changelog'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-09-25T20:52:55Z'
-source_etag: 'W/"439ac7b93b818d6806b2b9b963f61ebe"'
+source_last_modified: '2026-10-24T00:15:00Z'
+source_etag: 'W/"6299aaa33f74c8da9e4a0f7088a6a74b"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---

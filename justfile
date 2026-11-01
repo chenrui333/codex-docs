@@ -1,7 +1,7 @@
 set shell := ["bash", "-ueo", "pipefail", "-c"]
 
 actionlint_version := "v1.7.7"
-python := env_var_or_default("CODEX_DOCS_PYTHON", "python3.14")
+python := env_var_or_default("CODEX_DOCS_PYTHON", "python3.15")
 
 default:
     @just --list

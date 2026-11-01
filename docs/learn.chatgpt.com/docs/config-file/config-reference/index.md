@@ -254,9 +254,9 @@ Set `model` to one available to your signed-in account or workspace. See
     },
     {
       key: "windows.sandbox",
-      type: "unelevated | elevated | mxc",
+      type: "mxc | elevated | unelevated",
       description:
-        "Windows-only native sandbox mode when running Codex natively on Windows.",
+        "Native Windows sandbox implementation. Explicit `mxc` selection fails when MXC is unavailable or prohibited by managed requirements. Use `features.prefer_mxc` with a legacy selection for automatic MXC selection with fallback.",
     },
     {
       key: "browser_use.allow_history_access",
@@ -327,7 +327,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "analytics.enabled",
       type: "boolean",
       description:
-        "Enable or disable analytics for this machine/profile. When unset, the client default applies.",
+        "Enable or disable analytics for this machine/profile. In Codex CLI, `false` also disables custom OTLP metrics exporters. When unset, the client default applies.",
     },
     {
       key: "instructions",
@@ -368,7 +368,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "personality",
       type: "none | friendly | pragmatic",
       description:
-        "Default communication style for models that advertise `supportsPersonality`; can be overridden per thread/turn or via `/personality`.",
+        "Deprecated compatibility setting. `friendly` and `pragmatic` no longer select a style. `none` omits the built-in Personality section from model instructions; explicit instruction overrides are unchanged.",
     },
     {
       key: "service_tier",
@@ -650,6 +650,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Pre-registered OAuth client ID used for authorization and token exchange with this MCP server.",
     },
     {
+      key: "mcp_servers.<id>.oauth.client_secret",
+      type: "string",
+      description:
+        "OAuth client secret for token exchange with a pre-registered client. Requires a nonempty `oauth.client_id`; the secret must also be nonempty. Stored in configuration.",
+    },
+    {
       key: "mcp_servers.<id>.oauth.callback_url",
       type: "string",
       description:
@@ -877,10 +883,16 @@ Set `model` to one available to your signed-in account or workspace. See
       description: "Optional model override for global memory consolidation.",
     },
     {
+      key: "features.prefer_mxc",
+      type: "boolean",
+      description:
+        "Prefer MXC for local Windows execution when native capabilities and policy allow it; otherwise retain the configured legacy sandbox and setup. Disabled by default in the standalone CLI; the desktop app can enable it through rollout configuration. Command failures don't trigger fallback.",
+    },
+    {
       key: "features.unified_exec",
       type: "boolean",
       description:
-        "Use the unified PTY-backed exec tool (stable; enabled by default except on Windows).",
+        "Use resumable command execution (stable; enabled on all platforms). User opt-outs are ignored. Managed requirements can disable resumable processes and `write_stdin`, leaving one-shot `exec_command` available.",
     },
     {
       key: "features.shell_snapshot",
@@ -909,7 +921,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.personality",
       type: "boolean",
       description:
-        "Enable personality selection controls (stable; on by default).",
+        "Removed feature flag. Accepted for compatibility and ignored.",
     },
     {
       key: "features.network_proxy",
@@ -1002,8 +1014,7 @@ Set `model` to one available to your signed-in account or workspace. See
     {
       key: "features.shell_tool",
       type: "boolean",
-      description:
-        "Enable the default `shell` tool for running commands (stable; on by default).",
+      description: "Enable command execution tools (stable; on by default).",
     },
     {
       key: "features.enable_request_compression",
@@ -1021,7 +1032,13 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.fast_mode",
       type: "boolean",
       description:
-        "Enable model-catalog service tier selection in the TUI, including Fast-tier commands when the active model advertises them (stable; on by default).",
+        "Enable Fast mode controls advertised by the active model (stable; on by default), independently of `features.ultrafast_mode`. Availability still depends on the model and account.",
+    },
+    {
+      key: "features.ultrafast_mode",
+      type: "boolean",
+      description:
+        "Enable Ultrafast mode controls (stable; on by default), independently of `features.fast_mode`. Availability still depends on the model and account.",
     },
     {
       key: "features.prevent_idle_sleep",
@@ -1050,6 +1067,24 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "model_providers.<id>.base_url",
       type: "string",
       description: "API base URL for the model provider.",
+    },
+    {
+      key: "model_providers.<id>.model_catalog_url",
+      type: "string",
+      description:
+        "Full URL for a Codex-native model catalog. Omit to keep the provider's default model discovery.",
+    },
+    {
+      key: "model_providers.<id>.capabilities.external_web_access",
+      type: "boolean",
+      description:
+        "Whether the provider's hosted web search can access the live web. Omit to keep provider defaults; model and turn settings may restrict access further.",
+    },
+    {
+      key: "model_providers.<id>.capabilities.remote_compaction",
+      type: "unsupported | v2",
+      description:
+        "Provider compaction protocol. `unsupported` uses local compaction; `v2` sends compaction triggers through Responses. Omit to keep provider defaults; model and turn settings may restrict support further.",
     },
     {
       key: "model_providers.<id>.env_key",
@@ -1308,7 +1343,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "otel.metrics_exporter",
       type: "none | statsig | otlp-http | otlp-grpc",
       description:
-        "Select the OpenTelemetry metrics exporter (defaults to `statsig`).",
+        "Select the OpenTelemetry metrics exporter (defaults to `statsig`). In Codex CLI, `analytics.enabled = false` disables this exporter, including custom OTLP exporters. Set to `none` to disable metrics export independently.",
     },
     {
       key: "otel.log_user_prompt",
@@ -1448,6 +1483,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Enable terminal animations (welcome screen, shimmer, spinner) (default: true).",
     },
     {
+      key: "tui.disable_paste_burst",
+      type: "boolean",
+      description:
+        "Disable burst-paste detection in the TUI (default: false). Takes precedence over the legacy top-level `disable_paste_burst` setting.",
+    },
+    {
       key: "tui.alternate_screen",
       type: "auto | always | never",
       description:
@@ -1476,6 +1517,18 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "boolean",
       description:
         "Show onboarding tooltips in the TUI welcome screen (default: true).",
+    },
+    {
+      key: "tui.auto_recap",
+      type: "boolean",
+      description:
+        "Generate automatic conversation recaps while the terminal is unfocused (default: true). Set to `false` to disable automatic recaps; `/recap` remains available.",
+    },
+    {
+      key: "tui.show_server_version_notice",
+      type: "boolean",
+      description:
+        "Show informational notices about connected app-server version differences (default: true). Does not hide compatibility errors or version status.",
     },
     {
       key: "tui.status_line",
@@ -1586,7 +1639,8 @@ Set `model` to one available to your signed-in account or workspace. See
     {
       key: "disable_paste_burst",
       type: "boolean",
-      description: "Disable burst-paste detection in the TUI.",
+      description:
+        "Legacy fallback for `tui.disable_paste_burst`. Prefer the setting under `[tui]`.",
     },
     {
       key: "windows_wsl_setup_acknowledged",
@@ -1845,7 +1899,7 @@ Note: Rename `experimental_instructions_file` to `model_instructions_file`. Code
 `requirements.toml` is an admin-enforced configuration file that constrains security-sensitive settings users can't override. For details, locations, and examples, see [Admin-enforced requirements](https://learn.chatgpt.com/docs/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
 
 For ChatGPT Business and Enterprise users, Codex can also apply cloud-fetched
-requirements. See the security page for precedence details.
+requirements. See the security page for precedence details. To serve CLI policy from your own HTTPS endpoint, see [Self-host Codex configuration for your team](https://learn.chatgpt.com/docs/enterprise/configuration-server).
 
 Use `[features]` in `requirements.toml` to pin runtime feature flags by the same
 canonical keys that `config.toml` uses. Requirements can also include documented
@@ -1854,7 +1908,7 @@ unconstrained.
 
 Some managed requirements enforce an exact configuration value instead of an
 allowlist. Users can't override an enforced path, update preference, login-shell
-policy, feedback setting, or Windows private-desktop setting.
+policy, or feedback setting.
 
 Managed permission-profile allowlists require Codex 0.138.0 or later. Codex
 0.137.0 and earlier ignore `allowed_permission_profiles` and managed
@@ -1887,6 +1941,60 @@ from either one wins.
 
 <ConfigTable
   options={[
+    {
+      key: "config_server",
+      type: "table",
+      description:
+        "Enroll Codex with a configuration server. Set this in local administrator-controlled requirements.",
+    },
+    {
+      key: "config_server.base_url",
+      type: "string (HTTPS URL)",
+      description:
+        "Base URL of the configuration server enrolled by the administrator. Codex appends /codex/config/bundle to this URL.",
+    },
+    {
+      key: "config_server.oauth",
+      type: "table",
+      description:
+        "Optional company sign-in settings. Omit this table to fetch the bundle without credentials.",
+    },
+    {
+      key: "config_server.oauth.authorization_url",
+      type: "string (HTTPS URL)",
+      description:
+        "Authorization endpoint for company browser sign-in. Required when OAuth is configured.",
+    },
+    {
+      key: "config_server.oauth.token_url",
+      type: "string (HTTPS URL)",
+      description:
+        "Token endpoint for company sign-in and refresh. Required when OAuth is configured.",
+    },
+    {
+      key: "config_server.oauth.client_id",
+      type: "string",
+      description:
+        "Public OAuth client ID registered for Codex. Required when OAuth is configured.",
+    },
+    {
+      key: "config_server.oauth.scopes",
+      type: "array<string>",
+      description:
+        "Optional OAuth permissions to request from the identity provider.",
+    },
+    {
+      key: "config_server.oauth.resource",
+      type: "string",
+      description:
+        "Optional OAuth resource identifier required by the identity provider.",
+    },
+    {
+      key: "config_server.oauth.redirect_port",
+      type: "number",
+      description:
+        "Optional port for the browser callback on 127.0.0.1. By default, Codex chooses an available port.",
+    },
     {
       key: "sqlite_home",
       type: "string (path)",
@@ -2095,6 +2203,12 @@ from either one wins.
         "Allowed legacy native Windows sandbox implementations (`elevated` and `unelevated`). The list must not be empty. When both are allowed and no mode is selected, Codex prefers `elevated`. This list does not restrict the `mxc` sandbox when it is available.",
     },
     {
+      key: "windows.allow_mxc",
+      type: "boolean",
+      description:
+        "Set to `false` to prohibit both explicit MXC selection and automatic selection through `features.prefer_mxc`. Omitting this requirement or setting it to `true` permits MXC but doesn't enable it or require it. Legacy implementation restrictions still apply to fallback.",
+    },
+    {
       key: "remote_sandbox_config",
       type: "array<table>",
       description:
@@ -2281,6 +2395,12 @@ from either one wins.
       key: "browser_use",
       type: "table",
       description: "Managed requirements for agent-driven Browser Use.",
+    },
+    {
+      key: "browser_use.allow_webmcp",
+      type: "boolean",
+      description:
+        "Set to `true` to opt the desktop app's built-in browser into site tools (WebMCP). Setting it to `false` or omitting it leaves normal feature availability checks in place; `false` does not enforce a block. User preferences and site permissions still apply.",
     },
     {
       key: "browser_use.allow_history_access",
@@ -2490,6 +2610,35 @@ from either one wins.
       type: "allow | deny",
       description:
         "Required access decision for matching executables. `deny` blocks access. `allow` overrides only this policy source's default and still requires any other policy source and the normal approval flow to allow the app.",
+    },
+    {
+      key: "application",
+      type: "table",
+      description: "Managed desktop application requirements.",
+    },
+    {
+      key: "application.network",
+      type: "table",
+      description:
+        "Destination restrictions for desktop app network requests, separate from command networking and browser origin rules. This doesn't impose destination restrictions on native modules or spawned processes.",
+    },
+    {
+      key: "application.network.enabled",
+      type: "boolean",
+      description:
+        "Defaults to true when the table is present. When true, external desktop app requests require an explicitly allowed domain. An empty domain map allows no external destinations. An absent application network policy or false value doesn't restrict destinations through this policy.",
+    },
+    {
+      key: "application.network.domains",
+      type: "table<allow | deny>",
+      description:
+        "Exact domain rules for desktop app requests. Enabled policies allow HTTPS and WSS requests only to explicitly allowed domains; subdomains aren't implicitly allowed.",
+    },
+    {
+      key: "application.network.domains.<domain>",
+      type: "allow | deny",
+      description:
+        "Allow or deny an exact domain. Use domain names without URL schemes, ports, or wildcards.",
     },
     {
       key: "experimental_network",

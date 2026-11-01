@@ -13,6 +13,12 @@ Source: https://learn.chatgpt.com/docs/dots
 
 <OFeatureCanvas>
 
+<DotsCharacters
+  client:load
+  label="Dots characters"
+  switchLabel="Choose your dot character"
+/>
+
 <a id="introducing-o"></a>
 <a id="what-is-o"></a>
 
@@ -28,7 +34,9 @@ Powered by GPT-6 Astra, your dot lives in the cloud and has its own computer and
 
 ## Make it your own
 
-Create your dot in the ChatGPT desktop app or a desktop browser. Setup offers app connections and, in the desktop app, access to your computer. Your dot introduces itself and uses the context available to it to suggest ways it can help. You can start talking to it while it gets to know your work.
+Create your dot in the ChatGPT mobile app, desktop app, or a desktop browser. On your phone, you can give it a name, customize its appearance, and connect plugins. In the desktop app, you can also connect your computer. See [Getting started](https://learn.chatgpt.com/docs/dots/getting-started#create-your-dot) for setup steps.
+
+Your dot introduces itself and uses the context available to it to suggest ways it can help. You can start talking to it while it gets to know your work.
 
 Give your dot a name and choose its shape, color, eyes, glasses, and accessories. You can change these anytime.
 
@@ -42,9 +50,9 @@ Your dot starts with a handle such as @yourname-dot. Naming it updates the handl
 
 ## Message or call your dot
 
-Continue talking to your dot in ChatGPT on desktop or in the mobile app when the supporting update is available. Create your dot on desktop first; mobile web is not supported.
+Create and talk to your dot in the ChatGPT mobile app, desktop app, or a desktop browser. You can start on any of these and continue with the same dot on another device. Mobile web is not supported.
 
-> Illustration: An illustrative ChatGPT conversation starts on desktop and continues with the same dot in the mobile app: a venue comparison gains a budget constraint. Mobile use requires the supporting app update.
+> Illustration: An illustrative ChatGPT conversation with the same dot on desktop and in the mobile app: a venue comparison gains a budget constraint.
 
 You can message your dot or call it to discuss work, change priorities, or make a decision. In ChatGPT, select the phone button in your dot’s conversation to start a call. You can also type messages while you’re talking. Work you’ve assigned can continue after the call ends.
 
@@ -55,7 +63,7 @@ Tell your dot where to send different kinds of updates. For example, ask it to k
 <a id="choose-where-o-can-reach-you"></a>
 <a id="where-to-use-o"></a>
 
-Open your dot's profile and select **Add** to connect an available contact method. See [Message your dot](https://learn.chatgpt.com/docs/dots/channels) for channel details.
+Open your dot's profile and select **Add** to connect an available contact method. Texting is rolling out in beta to ChatGPT Pro users in the U.S. See how to [set up texting](https://learn.chatgpt.com/docs/dots/channels#texting) with iMessage or RCS on Android. See [Message your dot](https://learn.chatgpt.com/docs/dots/channels) for other ways to reach it.
 
 In Slack, you can DM your dot or mention it in a channel you’ve added it to. By default, it responds to you; you can instruct it to engage with others. Existing permissions and safeguards still apply to what it shares and does. Tell it which channels and events to watch for. Adding it to a channel alone doesn’t start monitoring. You can also message your dot in Microsoft Teams. See [Slack and Teams](https://learn.chatgpt.com/docs/dots/channels#slack-and-teams).
 
@@ -87,12 +95,13 @@ It can also research connected information and keep private notes to identify us
 Your dot has its own computer and browser in the cloud for research, files, and running software. Cloud work can continue while your devices are off. When you need to inspect the browser or do a step yourself, open its computer and select **Take over**. Select **Return control** when you’re ready for your dot to continue. See [computers and apps](https://learn.chatgpt.com/docs/dots/computers-and-apps) for connection details.
 
 <DotProductPreview
-  client:visible
+  client:load
   variant="computer"
   copy={{
     label:
       "Example of a dot's cloud browser displaying the California DMV vehicle registration renewal page, with the Take over control.",
-    title: "{name}'s computer",
+    title: "{name}’s Computer",
+    websiteTitle: "Vehicle Registration Renewal",
     domain:
       "dmv.ca.gov/portal/vehicle-registration/vehicle-registration-renewal/",
     websiteUrl:
@@ -101,6 +110,8 @@ Your dot has its own computer and browser in the cloud for research, files, and 
     websiteImageAlt:
       "California DMV website showing Vehicle Registration Online Renewal and the Before You Begin checklist.",
     status: "{name} has control",
+    humanControl: "You have control",
+    returnControl: "Return control",
     actions: ["Take over"],
   }}
 />
@@ -128,6 +139,7 @@ and their signed-in browser sessions.
 Your dot uses the same private browser sign-in flow as ChatGPT Work. When a website needs a login, it can send you a sign-in request. Open the request to enter your credentials and any requested verification in a private form. Your credentials go to the browser outside the conversation. You can also select **Take over to sign in** to complete the steps on the website yourself, then select **Done** when you’ve finished.
 
 <DotWebsiteSignIn
+  client:load
   copy={{
     label:
       "Two illustrative views of website sign-in: Alfred requests access to a saved venue proposal, then a private sign-in form offers optional saving and browser takeover.",
@@ -168,6 +180,17 @@ Built-in safeguards, your existing ChatGPT app permissions, and automatic approv
 
 You can add instructions for how you want your dot to work, such as asking it to show you drafts before sending them. Custom rules are optional controls for more specific ongoing boundaries. Neither instructions nor custom rules override built-in safety requirements. See [Control your dot](https://learn.chatgpt.com/docs/dots/controls).
 
+## How dots compare with ChatGPT Work and Codex
+
+Here's how dots compare with ChatGPT Work and Codex, and how they can work together.
+
+| Experience   | When to use it                                                                                                                                                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Chat         | When you want an answer, an explanation, ideas, or help drafting something in conversation.                                                                                                                                                      |
+| ChatGPT Work | When you have a task to delegate, such as research, analysis, or creating a file, either now or on a schedule.                                                                                                                                   |
+| Codex        | When you want to build, debug, test, or review software and work directly with code and developer tools.                                                                                                                                         |
+| Your dot     | When you want an agent to keep track of an ongoing responsibility, figure out next steps as things change, and follow up between conversations. It can keep you updated in ChatGPT, Slack, or Teams and delegate tasks to ChatGPT Work or Codex. |
+
 <a id="what-o-can-do"></a>
 <a id="things-to-try-with-o"></a>
 <a id="try-more-with-o"></a>
@@ -187,11 +210,13 @@ Start with work you regularly need to check or update. Describe the responsibili
 
 For an offsite, share the plan and venue emails, then ask your dot to identify upcoming decisions and deadlines.
 
-**An offsite to organize:**
-
-```text
-Help me keep our offsite on track. Read the plan and venue emails I shared, and make a list of decisions, deadlines, and things we're waiting on. Focus on anything that affects the budget or needs an answer this week. Draft suggested replies for my review, but don't send them.
-```
+<DotPrompt
+  client:load
+  copyLabel="Copy prompt"
+  copiedLabel="Copied"
+  label="An offsite to organize"
+  prompt={`Help me keep our offsite on track. Read the plan and venue emails I shared, and make a list of decisions, deadlines, and things we're waiting on. Focus on anything that affects the budget or needs an answer this week. Draft suggested replies for my review, but don't send them.`}
+/>
 
 Review the first result and correct any missing details before expanding the responsibility.
 
@@ -202,11 +227,13 @@ Review the first result and correct any missing details before expanding the res
 
 Tell your dot what to keep current and which changes deserve your attention. It can decide when to follow up. If you want an update at a specific time, include a time zone and a duration or end date, and ask it to confirm the schedule.
 
-**A scheduled check-in:**
-
-```text
-Check the connected planning channel each weekday at 9 AM Central for the next four weeks. Update our offsite list when something changes. Message me in ChatGPT if a deadline is at risk or you need a decision from me. Keep routine updates in the checklist. Confirm the schedule.
-```
+<DotPrompt
+  client:load
+  copyLabel="Copy prompt"
+  copiedLabel="Copied"
+  label="A scheduled check-in"
+  prompt={`Check the connected planning channel each weekday at 9 AM Central for the next four weeks. Update our offsite list when something changes. Message me in ChatGPT if a deadline is at risk or you need a decision from me. Keep routine updates in the checklist. Confirm the schedule.`}
+/>
 
 ### Review and redirect
 
@@ -230,7 +257,7 @@ Give your dot access to the relevant sources and tell it what to keep track of. 
 
 ## Access
 
-**For workspace admins:** See [Set up dots for work](https://learn.chatgpt.com/docs/enterprise/o-admin-guide) for workspace setup, permissions, and security and governance guidance.
+**For workspace admins:** See [Set up dots for work](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide) for workspace setup, permissions, and security and governance guidance.
 
 Dots are rolling out gradually. You may not see dots immediately, even if your plan is eligible.
 
@@ -240,14 +267,14 @@ Dots are rolling out gradually. You may not see dots immediately, even if your p
 
 Conversations with your dot don’t count toward your ChatGPT usage limits. Tasks your dot starts or manages in Work or Codex count toward those products’ usage limits as usual. Your plan includes an allowance for deeper work, with extended limits for the first month after launch.
 
-Create your dot in the desktop app or in ChatGPT on a desktop browser. After setup, use the same dot in the mobile app when the supporting update is available. Mobile web is not supported.
+You can create your dot in the ChatGPT mobile app, desktop app, or a desktop browser. Use the latest version of the mobile app for mobile setup. Mobile web is not supported.
 
 ## Reference
 
 | Guide                                                | Covers                                                           |
 | ---------------------------------------------------- | ---------------------------------------------------------------- |
 | [Getting started](https://learn.chatgpt.com/docs/dots/getting-started)       | Setup, your first conversation, and assigning work.              |
-| [Messaging](https://learn.chatgpt.com/docs/dots/channels)                    | ChatGPT, calls, Slack, and Teams.                                |
+| [Messaging](https://learn.chatgpt.com/docs/dots/channels)                    | ChatGPT, calls, texting, Slack, and Teams.                       |
 | [Tasks and memory](https://learn.chatgpt.com/docs/dots/tasks-and-memory)     | Assigned work, recurring tasks, context, and proactive research. |
 | [Computers and apps](https://learn.chatgpt.com/docs/dots/computers-and-apps) | Cloud work, local access, plugins, and website sign-in.          |
 | [Controls](https://learn.chatgpt.com/docs/dots/controls)                     | Review activity, manage permissions, and stop work.              |

@@ -33,10 +33,11 @@ You need:
 
 ## Connect Prisma AIRS
 
-1. Open [Codex Data controls](https://chatgpt.com/codex/cloud/settings/data) as
-   a workspace administrator.
-2. Under **External guardrails**, find **Prisma AIRS**. If this section isn't
-   available, ask your OpenAI account team to enable access for your workspace.
+1. Open [Admin Console](https://admin.openai.com)
+   as a workspace administrator and select your workspace.
+2. Under **Policy & security**, select **External guardrails** and find
+   **Prisma AIRS**. If this entry isn't available, ask your OpenAI account team
+   to enable access for your workspace.
 3. Enter your **API key**, **Security profile** name or ID, and **Endpoint
    URL**.
 4. Choose an **Enforcement mode** and the behavior **On AIRS failure**.
@@ -98,7 +99,8 @@ prompt inspection. Those policies apply to prompts sent to Prisma AIRS.
 
 ## Manage the connection
 
-Return to [Codex Data controls](https://chatgpt.com/codex/cloud/settings/data)
+Return to [Admin Console](https://admin.openai.com),
+select your workspace, and open **Policy & security** > **External guardrails**
 to manage the integration:
 
 - Select **Test connection** to verify your saved API key, security profile,
@@ -109,6 +111,18 @@ to manage the integration:
   configuration.
 - Select **Disconnect**, then confirm, to stop scanning and delete the saved
   connection and API key.
+
+### Disable or disconnect without a sidebar entry
+
+If **External guardrails** doesn't appear for a workspace with a saved
+configuration, a workspace administrator can open the limited recovery view at
+`https://admin.openai.com/workspace/<workspace-id>/external-guardrails`.
+Replace `<workspace-id>` with the workspace ID from your Admin Console URL.
+
+This view lets you see the saved configuration, turn off **Enable Prisma AIRS**,
+or select **Disconnect** and confirm. It doesn't allow setup, configuration
+changes, connection testing, key rotation, or turning the integration back on.
+Contact your OpenAI account team to restore configuration access.
 
 For broader workspace setup and policy management, see the
 [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup) and

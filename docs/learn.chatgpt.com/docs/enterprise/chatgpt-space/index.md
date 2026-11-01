@@ -5,40 +5,15 @@ source_url: 'https://learn.chatgpt.com/docs/enterprise/chatgpt-space'
 source_kind: 'learn_markdown'
 ---
 
-# Manage ChatGPT Space and shared pages
+# Manage ChatGPT Space, pages, and slides
 
 Source: https://learn.chatgpt.com/docs/enterprise/chatgpt-space
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-<span
-  id="does-turning-off-library-file-sharing-remove-existing-access"
-  data-localization-body-anchor
-/>
-
-<span
-  id="how-should-we-handle-malicious-incoming-content"
-  data-localization-body-anchor
-/>
-
-<span
-  id="how-can-we-reduce-data-exfiltration-risk"
-  data-localization-body-anchor
-/>
-
-<span
-  id="is-enterprise-data-used-to-train-models"
-  data-localization-body-anchor
-/>
-
-<span
-  id="what-if-information-was-shared-unintentionally"
-  data-localization-body-anchor
-/>
-
 ## What is ChatGPT Space?
 
-ChatGPT Space (formerly Library) brings together pages, uploaded files, and shared content so people and agents can collaborate. Teams can draft documents, [edit pages](https://learn.chatgpt.com/docs/space/pages#revise-the-content), or [ask ChatGPT for revisions](https://learn.chatgpt.com/docs/space/agents#start-with-a-bounded-request).
+ChatGPT Space (formerly Library) brings together pages, slide decks, uploaded files, and shared content so people and agents can collaborate. Teams can draft documents, [edit pages](https://learn.chatgpt.com/docs/space/pages#revise-the-content), [create presentations](https://learn.chatgpt.com/docs/space/getting-started#create-and-refine-slides), or [ask ChatGPT for revisions](https://learn.chatgpt.com/docs/space/agents#start-with-a-bounded-request).
 
 For product guidance, see the [ChatGPT Space guide](https://learn.chatgpt.com/docs/space) and [Help Center guidance on Library files](https://help.openai.com/en/articles/20001052-using-library-to-manage-files-in-chatgpt).
 
@@ -48,11 +23,6 @@ Use [Share Library files and folders](https://help.openai.com/en/articles/101284
 
 An Admin role alone does not grant [sensitive compliance access](https://help.openai.com/en/articles/20001067-data-access-for-your-managed-chatgpt-account). [Compliance API permissions](https://learn.chatgpt.com/docs/enterprise/compliance-api#get-started) are required to [export or delete eligible saved Library files](https://help.openai.com/en/articles/20001052-using-library-to-manage-files-in-chatgpt) through supported endpoints.
 
-<span
-  id="what-if-a-file-will-not-save-or-upload"
-  data-localization-body-anchor
-/>
-
 ## Help users create and share pages
 
 Users can [create a page](https://learn.chatgpt.com/docs/space/getting-started#draft-your-first-page) and [share it with people or available workspace teams](https://learn.chatgpt.com/docs/space/collaboration#share-a-page-or-space), choosing view or edit access.
@@ -60,6 +30,14 @@ Users can [create a page](https://learn.chatgpt.com/docs/space/getting-started#d
 Sharing a page keeps private chats and saved memory private. Private details added to the page are visible to its collaborators.
 
 Uploads follow the page’s permissions. Linked source files retain their own permissions. Content copied or summarized onto a page is visible to its collaborators.
+
+## Help users create and share slides
+
+ChatGPT Slides lets members create and edit presentations in Space with ChatGPT and their teammates. Slides uses the same access setting as Space and pages. For workspace sharing guidance, see [Space sharing, data, and controls](https://help.openai.com/en/articles/20001544-chatgpt-space-sharing-data-and-controls).
+
+Members can share a deck with view or edit access. People with edit access can revise the same deck together and discuss changes in shared comments. See [Collaborate on slides](https://learn.chatgpt.com/docs/space/collaboration#collaborate-on-slides) for permissions and feedback.
+
+If the Windows desktop app creates a PowerPoint file instead of a collaborative deck, direct the member to cloud mode or ChatGPT on the web. For the full workflow, see [Create and refine slides](https://learn.chatgpt.com/docs/space/getting-started#create-and-refine-slides). For platform requirements, see [Creating and collaborating on slides in ChatGPT](https://help.openai.com/articles/20001605) in the Help Center.
 
 ## Plugins and connected accounts
 

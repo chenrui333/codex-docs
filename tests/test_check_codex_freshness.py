@@ -111,6 +111,35 @@ class CheckCodexFreshnessTests(unittest.TestCase):
         report = freshness.build_report(**arguments)
         self.assertEqual(report["status"], "stale")
 
+    def test_freshness_requires_platform_evidence_even_when_provenance_matches(self):
+        snapshot = {"codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3", "source_commit": "a" * 40}
+        arguments = {
+            "latest_release": {"version": "1.2.3", "published_at": "2026-08-29T10:00:00Z"},
+            "installed_cli": {"version": "1.2.3"},
+            "summary": {"source_metadata": {
+                "codex_cli_version": "1.2.3", "codex_cli_release_ref": "rust-v1.2.3",
+                "codex_cli_source_commit": "a" * 40,
+            }},
+            "coverage": {
+                "codex_cli": {"version": "1.2.3"},
+                "github": {"source_ref": "rust-v1.2.3", "source_commit": "a" * 40},
+            },
+            "feature_snapshot": snapshot,
+            "model_snapshot": {**snapshot, "source_path": "codex-rs/models-manager/models.json"},
+            "cli_surface": cli_fixture(),
+            "now": datetime(2026, 8, 29, 23, tzinfo=timezone.utc),
+            "grace_hours": 12,
+            "resolve_tag_commit_fn": lambda _tag: "a" * 40,
+        }
+        valid = freshness.build_report(**arguments)
+        self.assertEqual(valid["status"], "fresh")
+        self.assertTrue(all(check["status"] == "pass" for check in valid["checks"]))
+
+        # Only the observation map changes; release, version, and commit remain valid.
+        arguments["cli_surface"]["platform_observations"] = {}
+        with self.assertRaises(freshness.FreshnessError):
+            freshness.build_report(**arguments)
+
     def test_model_provenance_failure_is_not_subject_to_release_grace(self):
         release = {"version": "1.2.3", "published_at": "2026-08-29T10:00:00Z"}
         model = {"codex_cli_version": "1.2.3", "source_ref": "rust-v1.2.3",

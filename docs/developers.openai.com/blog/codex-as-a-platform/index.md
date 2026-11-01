@@ -2,8 +2,8 @@
 source_type: 'developers'
 source_area: 'codex_blog'
 source_url: 'https://developers.openai.com/blog/codex-as-a-platform'
-source_last_modified: '2026-08-29T10:09:48Z'
-source_etag: 'W/"0fa1a7c2b7fa75ac2532f8fa3de574fa"'
+source_last_modified: '2026-10-10T21:09:38Z'
+source_etag: 'W/"ee0b4ba1eef447b5de338da8b5754912"'
 codex_cli_versions: ["0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -87,17 +87,9 @@ application-owned MCP tools and human approval for consequential actions.
 
 This pattern is already showing up in public implementations:
 
-- [GitHub and JetBrains](https://github.blog/changelog/2026-07-07-codex-as-agent-provider-and-agentic-enhancements-in-jetbrains-ides/)
-
-  bring Codex into existing IDE workflows.
-- [Cisco](https://blogs.cisco.com/ai/from-an-idea-to-a-live-app-on-cisco-in-minutes)
-
-  uses the Codex SDK in App Builder inside Cisco Cloud Control.
-- [Thrive Holdings and Crete](https://openai.com/index/building-self-improving-tax-agents-with-codex/)
-
-  use Codex in a tax-preparation workflow that incorporates practitioner
-  feedback. Their pilot processed 7,000 returns and reduced preparation time by
-  about a third.
+- [GitHub and JetBrains](https://github.blog/changelog/2026-07-07-codex-as-agent-provider-and-agentic-enhancements-in-jetbrains-ides/) bring Codex into existing IDE workflows.
+- [Cisco](https://blogs.cisco.com/ai/from-an-idea-to-a-live-app-on-cisco-in-minutes) uses the Codex SDK in App Builder inside Cisco Cloud Control.
+- [Thrive Holdings and Crete](https://openai.com/index/building-self-improving-tax-agents-with-codex/) use Codex in a tax-preparation workflow that incorporates practitioner feedback. Their pilot processed 7,000 returns and reduced preparation time by about a third.
 
 These examples are not limited to engineering: the same pattern applies to support teams investigating customer issues, operations teams coordinating workflows, security teams triaging incidents, sales teams researching accounts, and marketing teams developing campaigns. In each case, the application provides the context, tools, and approvals, while Codex powers the underlying agent loop.
 

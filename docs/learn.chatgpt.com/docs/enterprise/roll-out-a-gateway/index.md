@@ -5,17 +5,21 @@ source_url: 'https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway'
 source_kind: 'learn_markdown'
 ---
 
-# Deploy Codex through a gateway
+# Roll out a gateway
 
 Source: https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Deploy Codex through your organization’s LLM gateway. Configure model routes, issue developer credentials, and distribute a verified Codex configuration.
+Roll out native gateway OAuth, API keys, or credential helpers without ChatGPT
+sign-in. Configure model routes, authorize users, and distribute a verified Codex
+configuration. For a gateway that forwards ChatGPT workspace requests, see
+[Sign in with ChatGPT through a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#enable-chatgpt-sign-in-recommended).
 
 To configure Codex on your own machine with values you were given, see
-  [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). Before
-  choosing or rolling out a gateway, review the [gateway compatibility
+  [Configure the
+  provider](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider).
+  Before choosing or rolling out a gateway, review the [gateway compatibility
   requirements](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility).
 
 ## Prerequisites
@@ -25,9 +29,12 @@ Before deploying Codex to developers, confirm that you have:
 - A gateway serving HTTPS at the exact base URL you will distribute.
 - An upstream provider credential held by the gateway.
 - Approved Codex-facing model aliases mapped to intended upstream models.
-- A scoped test gateway credential.
-- A secret delivery mechanism or a tested credential helper.
-- A way to distribute configuration, helper executables, and any catalog files.
+- A tested authentication method: native gateway OAuth, scoped gateway API keys,
+  or a credential helper.
+- For OAuth, a registered public client, approved test users, and gateway support
+  for validating OAuth access tokens.
+- For API keys or helpers, a secret delivery mechanism or a tested helper.
+- A way to distribute configuration, any required helpers, and catalog files.
 
 ## Gateway requirements
 
@@ -50,7 +57,7 @@ Need an implementation starting point? The [Codex deployment guidance repository
 To move from a deployed gateway to a verified developer experience, complete these five checkpoints in order:
 
 1. [Choose model names and verify routes](#choose-model-names-and-routes).
-2. [Issue developer credentials](#issue-developer-credentials).
+2. [Choose authentication](#choose-authentication).
 3. [Test Codex through the gateway](#test-the-client-and-gateway).
 4. [Distribute the configuration](#distribute-the-configuration).
 5. [Verify from a developer machine](#verify-and-operate-the-rollout).
@@ -59,27 +66,59 @@ To move from a deployed gateway to a verified developer experience, complete the
 
 Set Codex's `model` to the gateway's model name. Configure the gateway to route that name to the approved upstream model.
 
-| Gateway model name                                                                                                     | Codex configuration                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| A [built-in model name](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility#recognized-model-names) included in your Codex version | Set `model` in `config.toml` to this exact name.                                                   |
-| A custom alias, such as `company-coding-model`                                                                         | Set `model_catalog_json` to a catalog containing the alias and the corresponding model's metadata. |
+| Gateway model name                                                                                                     | Codex configuration                                                                           |
+| ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| A [built-in model name](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility#recognized-model-names) included in your Codex version | Set `model` in `config.toml` to this exact name.                                              |
+| A custom alias, such as `company-coding-model`                                                                         | Supply a remote or local catalog containing the alias and the corresponding model's metadata. |
 
 <a id="supply-metadata-for-a-custom-alias"></a>
 
 ### Use a model catalog for custom names
 
-Use [`model_catalog_json`](https://learn.chatgpt.com/docs/config-file/config-reference) when your gateway uses a model name Codex does not recognize. The catalog supplies the instructions, reasoning options, context limits, and tool capabilities Codex uses for that name. Without a matching entry, a request can reach the intended upstream model while Codex uses generic settings.
+Supply a model catalog when your gateway uses a model name Codex does not recognize. The catalog supplies the instructions, reasoning options, context limits, and tool capabilities Codex uses for that name. Without a matching entry, a request can reach the intended upstream model while Codex uses generic settings.
 
-For example, to use `company-coding-model` as an alias for `gpt-6-luna`:
+Host a remote catalog with `model_providers.<id>.model_catalog_url` to update model metadata centrally, or distribute a local file with `model_catalog_json`. Use a local catalog when native gateway OAuth is the only credential; OAuth alone doesn't enable remote catalog discovery. See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for both settings.
 
-1. Create the `company-coding-model` alias on the gateway and route it to the approved upstream `gpt-6-luna` model.
-2. Download the [Codex model catalog](https://github.com/openai/codex/blob/main/codex-rs/models-manager/models.json) for your Codex version and save a copy as `gateway-models.json`. Use this file as your starting point.
-3. Edit the `gpt-6-luna` entry in your copy: set `slug` to `company-coding-model` and check that the remaining metadata matches the upstream model and gateway capabilities. For an alias without a model migration, set `upgrade` to `null`.
-4. Keep the entries in the top-level `models` array and distribute the file to each client. A custom catalog replaces the bundled catalog, so include every model users need to select.
+Get a catalog endpoint or file compatible with your Codex version from your cloud
+or gateway provider. Make sure it includes each approved alias and its model
+metadata. For catalog implementation, see
+[Implementing model catalogs for gateways and clouds](https://learn.chatgpt.com/docs/model-catalogs).
 
-To use a catalog for a specific Codex version, check `codex --version` and select the matching `rust-v<version>` tag. For a custom build, use its exact source commit. For a desktop deployment, match the bundled CLI version.
+#### Serve a remote catalog
 
-For Bedrock through LiteLLM, apply the [required catalog edits](https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm#prepare-the-client-catalog).
+Use the HTTPS catalog endpoint supplied by your provider.
+Distribute the full endpoint URL in the selected provider's `config.toml` table:
+
+```toml
+model = "company-coding-model"
+model_provider = "enterprise-gateway"
+web_search = "disabled"
+
+[model_providers.enterprise-gateway]
+name = "Organization Gateway"
+base_url = "https://gateway.example.com/v1"
+model_catalog_url = "https://gateway.example.com/codex/models"
+wire_api = "responses"
+env_key = "CODEX_GATEWAY_API_KEY"
+```
+
+Make `CODEX_GATEWAY_API_KEY` available to the Codex process. Set `base_url`
+separately to route inference through the gateway. If you omit it, Codex uses the
+default OpenAI endpoint for the current authentication mode.
+
+Discovery requires API-key, command-backed, or Codex-backend authentication.
+Native gateway OAuth or custom headers alone don't trigger it.
+
+Coordinate catalog updates with your provider when your approved models change. Restart the client after
+changing its configuration.
+
+Remove any effective `model_catalog_json` setting, including one enforced through
+`requirements.toml`. It takes precedence over the remote URL and prevents fetching.
+
+#### Distribute a local catalog
+
+Use `model_catalog_json` to load the provider-supplied file at startup. A local custom
+catalog replaces the bundled catalog.
 
 Set the gateway alias, catalog `slug`, and Codex `model` to `company-coding-model`. Add these settings before the first TOML table in the Codex configuration you distribute, using the file's actual absolute path:
 
@@ -99,7 +138,31 @@ model supports the required request and tool behavior.
 Model routing and tool authorization are separate parts of the rollout. Configure
 MCP connections, plugin distribution, and their policies separately.
 
-## Issue developer credentials
+<a id="issue-developer-credentials"></a>
+
+## Choose authentication
+
+### Native gateway OAuth
+
+1. Register a public OAuth client that supports authorization code with PKCE, and
+   approve the users or groups that can sign in.
+2. Configure the gateway to validate the issued access token in the selected
+   cookie or custom header. Apply the approved models, rate limits, and budgets
+   to each user's identity.
+3. Follow [native gateway
+   OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#use-native-gateway-oauth) to collect
+   the authorization and token URLs, public client ID, scopes, optional resource,
+   token delivery settings, and any fixed redirect port. Register the matching
+   loopback redirect URI with your identity provider.
+4. Test browser sign-in, token refresh, and access revocation with a test user on
+   the CLI or desktop app you plan to deploy. Confirm that the browser can reach
+   the callback, including for remote CLI users.
+
+Users sign in individually. You distribute OAuth configuration, not a client
+secret, gateway API key, or helper executable. Keep upstream provider credentials
+on the gateway.
+
+### API keys or credential helpers
 
 1. Issue one scoped gateway credential per developer so you can attribute usage
    and revoke access individually.
@@ -117,7 +180,7 @@ MCP connections, plugin distribution, and their policies separately.
 
 ## Test Codex through the gateway
 
-Before distributing anything, follow [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure one isolated test user with the provider block and credential mechanism you plan to distribute.
+Before distributing anything, follow [Configure the provider](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider) to configure one isolated test user with the provider block and authentication method you plan to distribute.
 
 Run the checks below from the same CLI or desktop surface developers will use:
 
@@ -129,16 +192,26 @@ Run the checks below from the same CLI or desktop surface developers will use:
 | Follow-up              | Ask a follow-up in the same thread.                                                                          | The answer uses the prior turn; the gateway accepts replayed input. If WebSocket or incremental transport is enabled, it also preserves `previous_response_id`. |
 | Errors and attribution | Repeat with an intentionally invalid test alias or expired test credential.                                  | The client receives a useful routing or authentication error, and valid requests remain attributed to the test user.                                            |
 
-After these checks succeed, direct developers to [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure and verify their own machine.
+After these checks succeed, direct developers to [Configure the provider](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider) to configure and verify their own machine.
 
 ## Distribute the configuration
 
 To give every machine the same connection path, distribute the gateway base URL,
-provider ID, approved model alias, and credential mechanism.
+provider ID, approved model alias, and authentication settings.
 
 ### What to distribute
 
-To set provider defaults, distribute this `config.toml` block through the configuration layer you chose. Use a model recognized by your Codex version, or supply the matching catalog described above. Install your token resolver at the configured command path:
+For native gateway OAuth, distribute the provider and
+`[model_providers.<id>.gateway_oauth]` tables from the [connection
+guide](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#use-native-gateway-oauth), with the
+registration values collected above. Keep `requires_openai_auth = false` and omit
+`env_key`, `experimental_bearer_token`, and the command-backed `auth` table when
+OAuth is the only gateway credential.
+
+For a credential helper, distribute the following `config.toml` block through the
+configuration layer you chose. Use a model recognized by your Codex version, or
+supply the matching catalog described above. Install your token resolver at the
+configured command path:
 
 Put `model` and `model_provider` before the first TOML table. If you set
   `model_catalog_json`, keep it there too. TOML treats keys after
@@ -166,6 +239,8 @@ For a short-lived static test key, remove the auth block and put `env_key = "COD
 
 ### Distribute defaults and requirements
 
+If your users don't sign in to Codex with ChatGPT, you can [distribute team settings from your own server](https://learn.chatgpt.com/docs/enterprise/configuration-server). Codex fetches those settings independently of how you route model requests.
+
 Use [Configuration precedence](https://learn.chatgpt.com/docs/config-file/config-basic#configuration-precedence)
 to choose where to distribute defaults. For enforced settings and macOS MDM
 payloads, see [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml).
@@ -175,7 +250,14 @@ Windows, place `config.toml` in `%ProgramData%\OpenAI\Codex\`. Users and
 profiles can override these defaults. The linked references describe supported
 requirements and their file locations.
 
-Distribute any referenced helper executables and catalog files separately.
+Distribute any referenced helper executables and local catalog files separately.
+
+To enforce a remote catalog URL, put the complete provider definition in
+`requirements.toml` under `[model_providers.<id>]`. An enforced provider
+definition replaces the matching provider table from ordinary configuration;
+include its `base_url`, authentication settings, and other required fields.
+Use the `model_provider` requirement when you also need to enforce provider
+selection.
 
 `model_catalog_json` points to a local JSON file. If you enforce it through
 `requirements.toml`, the requirement pins the path; it doesn't distribute the
@@ -198,7 +280,7 @@ inherit native Windows configuration.
 
 ### Hand developers the configuration values
 
-If you do not have managed distribution, give each developer the gateway URL, provider ID, model alias, credential variable or resolver, and any catalog path. Send them to [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway) to configure and verify their own machine.
+If you do not have managed distribution, give each developer the gateway URL, provider ID, model alias, OAuth configuration or credential variable or resolver, and any catalog URL or local path. Send them to [Configure the provider](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider) to configure and verify their own machine.
 
 Manual setup is not an enforcement channel. Project-local `.codex/config.toml` cannot override sensitive provider or authentication routing keys.
 
@@ -221,7 +303,7 @@ Use the issue to find the configuration, credential, or gateway layer that needs
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Expected provider is missing after restart.      | Inspect the winning configuration layer. User or profile configuration can override system defaults.                                                                                                                            |
 | Authentication fails for every user.             | Check gateway authentication and the upstream provider credential; identify which service rejected the request.                                                                                                                 |
-| Authentication fails for one user.               | Check that user's gateway credential or token resolver.                                                                                                                                                                         |
+| Authentication fails for one user.               | Check that user's identity-provider access, gateway credential, or token resolver.                                                                                                                                              |
 | Streaming stalls.                                | Inspect gateway buffering and terminal `response.completed` forwarding.                                                                                                                                                         |
 | A model is missing or uses generic capabilities. | For a custom alias, confirm the gateway alias, Codex `model`, and catalog `slug` match. Check the [catalog](#use-a-model-catalog-for-custom-names) path and compatibility with the installed Codex version, then restart Codex. |
 | A Windows path fails.                            | Use resolved absolute paths. In TOML, use single-quoted strings for Windows paths with single backslashes.                                                                                                                      |
@@ -239,7 +321,7 @@ retaining the existing working setup. Claude client settings and the
 | Gateway product, DNS, TLS, private networking, logging, redaction, and monitoring                                  | Keep these services in place. Add a Codex-facing route that satisfies the [Gateway compatibility requirements](https://learn.chatgpt.com/docs/enterprise/gateway-compatibility).                                                         |
 | Bedrock account, provider credential, IAM boundary, inference profiles, and credential rotation                    | Keep them only when they authorize the upstream models behind the new Codex aliases. The provider credential remains on the gateway.                                                                             |
 | Claude `/v1/messages` route, Bedrock InvokeModel shape, Anthropic headers, and Claude-specific retries or errors   | Do not reuse these as proof of compatibility. Codex needs `POST /v1/responses`, Responses streaming, continuation, tool calls, and useful errors.                                                                |
-| `ANTHROPIC_AUTH_TOKEN`, `ANTHROPIC_API_KEY`, or `apiKeyHelper`                                                     | Codex does not support `apiKeyHelper`. Issue a scoped Codex gateway credential and configure it with `env_key` or a Codex command-backed token resolver.                                                         |
+| `ANTHROPIC_AUTH_TOKEN`, `ANTHROPIC_API_KEY`, or `apiKeyHelper`                                                     | Codex does not support `apiKeyHelper`. Configure native gateway OAuth, a scoped key with `env_key`, or a Codex command-backed token resolver.                                                                    |
 | Claude model names, `ANTHROPIC_MODEL`, `ANTHROPIC_DEFAULT_*_MODEL`, `modelOverrides`, and Bedrock profile mappings | Have your gateway team [choose model names and configure any custom aliases](#choose-model-names-and-routes). Use the model name and any [model catalog JSON](https://learn.chatgpt.com/docs/config-file/config-reference) they provide. |
 | Claude `settings.json`, `managed-settings.json`, JSON `env` blocks, `plist`, or registry payloads                  | Keep the same MDM or configuration-management channel, but distribute Codex `config.toml` and supported `requirements.toml` values instead.                                                                      |
 
@@ -247,14 +329,14 @@ To migrate safely, complete these steps in order:
 
 1. Inventory the current Claude path: gateway URL, credential source, required headers, model aliases, Bedrock profile mappings, and managed delivery channel.
 2. Add a parallel Codex-facing Responses route and Codex model aliases.
-3. Issue one scoped Codex credential. If Codex will use a static credential, expose that new credential through `env_key`; if Claude uses a credential helper, implement and test the Codex command-backed resolver contract.
-4. Configure that developer with the [provider block](#what-to-distribute). For a managed rollout, translate the payload into the Codex paths and precedence described in [Deploy Codex through a gateway](#distribute-the-configuration).
+3. Choose [native gateway OAuth, an API key, or a credential helper](#choose-authentication) and authorize one test user. For a static credential, expose it through `env_key`; for a helper, implement and test the Codex command-backed resolver contract.
+4. Configure that developer with the [provider block](#what-to-distribute). For a managed rollout, translate the payload into the Codex paths and precedence described in [Roll out a gateway](#distribute-the-configuration).
 5. Run the short connection check on the developer's actual CLI or desktop surface, then run the full streaming, continuation, tool-call, error, logging, and alias-routing checks in [Test Codex through the gateway](#test-the-client-and-gateway).
 6. After the pilot passes, [distribute the configuration](#distribute-the-configuration) to the remaining developers.
 
 ## Related docs
 
-- [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway)
+- [Configure the provider](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider)
 - [MCP](https://learn.chatgpt.com/docs/extend/mcp)
 - [Plugins](https://learn.chatgpt.com/docs/plugins)
 - [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)

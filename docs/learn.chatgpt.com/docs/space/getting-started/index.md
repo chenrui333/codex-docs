@@ -11,8 +11,8 @@ Source: https://learn.chatgpt.com/docs/space/getting-started
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Start with a blank page, notes you already have, or a conversation you want to
-save. You need an account with Space enabled.
+Create a page or slide deck from notes, files, or a conversation. You need an
+account with Space enabled.
 
 ## Open Space
 
@@ -55,6 +55,56 @@ Organize the notes on this page into a clear draft. Use headings and bullet poin
    the page before sharing it.
 
 </WorkflowSteps>
+
+## Create and refine slides
+
+ChatGPT Slides lets you build a presentation with your team and ChatGPT in
+Space. On mobile, you can create slides through conversation and view decks.
+Use the web or desktop to edit slide elements directly.
+
+<WorkflowSteps variant="headings">
+
+1. Start with your material
+
+   Ask ChatGPT to create a presentation in Space from a conversation, an outline,
+   or source files. Describe the audience, goal, and length. You can also provide
+   a reference deck or template to guide the layout and style.
+
+**Prompt:**
+
+```text
+Create an 8-slide quarterly business review in Space using these notes and metrics. The audience is our leadership team. Cover results, risks, and decisions needed. Use the attached deck as a style reference, preserve the source numbers, and flag missing information.
+```
+
+2. Refine the deck
+
+   Open the editable deck in Space. Edit text, images, shapes, tables, and charts
+   directly, or select an element and choose **Request edits** to ask ChatGPT for
+   a change. Use the prompt bar for changes across the deck, such as shortening
+   the story for an executive audience. Ask ChatGPT to generate images or use
+   visuals you upload.
+
+3. Work with your team
+
+   Share the deck and give collaborators edit access to work on the same slides
+   at the same time. Use shared comments to discuss changes or mention ChatGPT
+   or your dot to request a revision. See
+   [Collaborate on slides](https://learn.chatgpt.com/docs/space/collaboration#collaborate-on-slides) for
+   permissions and feedback.
+
+4. Present or export
+
+   Check the facts, charts, and layout before presenting. Present directly in
+   ChatGPT with speaker notes, or export the deck. On the web, you can export to
+   PowerPoint (`.pptx`), PDF, or Google Slides. In the desktop app, options to
+   open the deck in PowerPoint or Keynote appear when those apps are installed.
+   Review the exported deck's content and formatting before sharing it.
+
+</WorkflowSteps>
+
+If the Windows desktop app creates a PowerPoint file instead of a collaborative
+deck, switch to cloud mode or use ChatGPT on the web to create and edit slides
+in Space.
 
 ## Group related pages in a space
 

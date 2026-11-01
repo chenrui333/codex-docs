@@ -38,18 +38,11 @@ Source: https://learn.chatgpt.com/docs/features
           icon: "folder",
         },
         {
-          title: "Codex Remote",
+          title: "Codex on mobile",
           description:
             "Start tasks, approve actions, and review work from your phone.",
-          href: "/codex/remote",
+          href: "/codex/mobile",
           icon: "connect",
-        },
-        {
-          title: "Sites",
-          description:
-            "Create, save, and publish interactive websites and apps in ChatGPT.",
-          href: "/codex/sites",
-          icon: "workspace",
         },
         {
           title: "Build plugins",
@@ -126,6 +119,12 @@ Source: https://learn.chatgpt.com/docs/features
           icon: "chat",
         },
         {
+          title: "Composer Predictions",
+          description: "Get suggestions for your next message in Codex.",
+          href: "/codex/features/composer-predictions",
+          icon: "chat",
+        },
+        {
           title: "Plugins",
           description:
             "Install reusable workflows, connected tools, and shared context.",
@@ -177,6 +176,46 @@ Source: https://learn.chatgpt.com/docs/features
             "Create, preview, and refine documents and other generated files.",
           href: "/codex/artifacts-viewer",
           icon: "stack",
+        },
+      ],
+    },
+    {
+      title: "Sites",
+      description: "Build, connect, publish, and manage websites in ChatGPT.",
+      pages: [
+        {
+          title: "Overview",
+          description:
+            "Explore what you can build and find availability and limits.",
+          href: "/codex/sites",
+          icon: "workspace",
+        },
+        {
+          title: "Create a site",
+          description: "Describe, build, and refine a website in ChatGPT.",
+          href: "/codex/sites/creating-a-site",
+          icon: "workspace",
+        },
+        {
+          title: "Data and connections",
+          description:
+            "Save records, connect apps, and add sign-in to your site.",
+          href: "/codex/sites/data-and-connections",
+          icon: "workspace",
+        },
+        {
+          title: "Publish and share",
+          description:
+            "Review your site, choose its audience, and invite editors.",
+          href: "/codex/sites/publishing-and-sharing",
+          icon: "workspace",
+        },
+        {
+          title: "Manage a site",
+          description:
+            "Review analytics, change settings, and manage site versions.",
+          href: "/codex/sites/managing-a-site",
+          icon: "workspace",
         },
       ],
     },

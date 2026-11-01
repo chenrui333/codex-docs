@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-09-11T03:32:10Z'
-source_etag: 'W/"01d0cc5b00d87f2513fb94d35fb6f66d"'
+source_last_modified: '2026-10-26T22:04:11Z'
+source_etag: 'W/"d49482e69915cdf0ed2f8b5ee1f3e798"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -327,30 +327,50 @@ This parameter applies only to the hosted Responses API `web_search` tool with G
 Run longer web searches
 
 ```javascript
-const client = new OpenAI();
 
-const response = await client.responses.create({
-  model: "gpt-6-astra",
-  reasoning: { effort: "xhigh" },
-  tools: [
-    {
-      type: "web_search",
-      return_token_budget: "unlimited",
-    },
-  ],
-  input: [
-    "Research the economic impact of semaglutide on global healthcare systems.",
-    "",
-    "Do:",
-    "- Include specific figures, trends, statistics, and measurable outcomes.",
-    "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
-    "- Include inline citations and return all source metadata.",
-    "",
-    "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
-  ].join("\n"),
+// Allow long research runs without automatic request retries.
+const timeout = 15 * 60 * 1000;
+const dispatcher = new Agent({
+  headersTimeout: timeout,
+  bodyTimeout: timeout,
+});
+const client = new OpenAI({
+  timeout,
+  maxRetries: 0,
+  fetch,
+  fetchOptions: { dispatcher },
 });
 
-console.log(response.output_text);
+try {
+  const stream = client.responses.stream({
+    model: "gpt-6-astra",
+    reasoning: { effort: "xhigh" },
+    tools: [
+      {
+        type: "web_search",
+        return_token_budget: "unlimited",
+      },
+    ],
+    input: [
+      "Research the economic impact of semaglutide on global healthcare systems.",
+      "",
+      "Do:",
+      "- Include specific figures, trends, statistics, and measurable outcomes.",
+      "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
+      "- Include inline citations and return all source metadata.",
+      "",
+      "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
+    ].join("\n"),
+  });
+
+  const response = await stream.finalResponse();
+  if (response.status !== "completed") {
+    throw new Error(`Research response ended with status ${response.status}`);
+  }
+  console.log(response.output_text);
+} finally {
+  await dispatcher.close();
+}
 ```
 
 ```python

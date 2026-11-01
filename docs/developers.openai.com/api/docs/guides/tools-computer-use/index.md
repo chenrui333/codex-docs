@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
-source_last_modified: '2026-09-29T20:39:16Z'
-source_etag: 'W/"8746b8b7a19e68bf5d29e4d4d73f35b2"'
+source_last_modified: '2026-10-23T21:09:06Z'
+source_etag: 'W/"5f91e33a223493e9349e4cf1d3fa5c77"'
 ---
 
 # Computer use
@@ -12,54 +12,754 @@ Source: https://developers.openai.com/api/docs/guides/tools-computer-use
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Computer use lets a model operate browser and desktop interfaces. Use it to fill out forms, test user flows, or complete tasks in applications through their UI.
+## Get started with computer use
 
-You provide the environment and execute the model's requests. The model uses screenshots and other tool results to decide what to do next. Choose how to connect it to your application:
+### Run code execution
 
-<a id="choose-an-integration-path"></a>
+Connect the API loop to your browser or desktop runtime.
 
-- **Code execution:** The model writes code that uses a library such as PyAutoGUI or Playwright to operate the interface. One call can combine actions, loops, or conditional logic.
-- **The computer tool:** The model returns structured mouse and keyboard actions that your application translates into browser or desktop input.
+```javascript
 
-For [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra), we recommend code execution. The `computer` tool remains supported as an alternative.
+async function runComputerUse(endpoint, prompt, model = "gpt-6-astra") {
+  const client = new OpenAI();
+  const sessionId = randomUUID();
 
-<a id="option-2-use-a-custom-tool-or-harness"></a>
-<a id="use-your-own-ui-tools"></a>
-<a id="use-an-existing-tool-interface"></a>
+  const tools = [
+    {
+      type: "function",
+      name: "exec_js",
+      description: `Run JavaScript in a persistent browser. Available: Playwright's
+browser, context, and page objects; console.log(value); and display(base64Image).
+Save reusable variables on globalThis. Inspect a screenshot before acting and
+check the screen after a short group of actions. Keep screenshots in memory.
+Use top-level await for async operations. Return images with display() and concise
+text with console.log(). The context viewport is 1440x900.`,
+      parameters: {
+        type: "object",
+        properties: { code: { type: "string" } },
+        required: ["code"],
+        additionalProperties: false,
+      },
+      strict: true,
+    },
+  ];
 
-If you already expose UI operations through [function calling](https://developers.openai.com/api/docs/guides/function-calling) or [remote MCP tools](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), you can keep that interface. See [Use your own UI tools](https://developers.openai.com/api/docs/guides/tools-computer-use-integration#use-your-own-ui-tools) for the differences in how those integrations execute tools and return results.
+  let nextInput = [{ role: "user", content: prompt }];
+  let previousResponseId;
 
-<a id="expose-a-code-execution-tool"></a>
-<a id="option-3-use-a-code-execution-harness"></a>
-<a id="use-a-code-execution-harness"></a>
+  for (let turn = 0; turn < 20; turn++) {
+    const response = await client.responses.create({
+      model,
+      tools,
+      input: nextInput,
+      previous_response_id: previousResponseId,
+      reasoning: { effort: "low" },
+    });
+    if (response.status !== "completed") {
+      throw new Error(`Response stopped with status: ${response.status}`);
+    }
+    const calls = response.output.filter(
+      (item) => item.type === "function_call"
+    );
+    if (
+      calls.length === 0 &&
+      response.output.some(
+        (item) => item.type === "message" && item.phase !== "commentary"
+      )
+    ) {
+      console.log(response.output_text);
+      return;
+    }
+    if (turn === 19) {
+      throw new Error(
+        "The task reached the 20-response limit. Inspect the last result."
+      );
+    }
 
-## Use code execution
+    nextInput = [];
+    for (const call of calls) {
+      if (call.name !== "exec_js")
+        throw new Error(`Unexpected tool: ${call.name}`);
+      const { code } = JSON.parse(call.arguments);
+      const output = await executeInSandbox(code, sessionId, endpoint);
+      nextInput.push({
+        type: "function_call_output",
+        call_id: call.call_id,
+        output,
+      });
+    }
+    previousResponseId = response.id;
+  }
+}
+```
 
-A code-execution integration gives the model a function tool that accepts a script. Your application runs the script in an isolated browser or desktop environment and returns its output, including screenshots. Keep the environment available between calls so the model can build on earlier work.
+```python
 
-<a id="before-running-the-examples"></a>
+ResponseInputItem userInput =
+    ResponseInputItem.ofEasyInputMessage(
+        EasyInputMessage.builder()
+            .role(EasyInputMessage.Role.USER)
+            .content(
+                "Go to Hacker News, click on the most interesting link (be prepared to "
+                    + "justify your choice), take a screenshot, and give me a critique of the visual layout.")
+            .build());
 
-### Run the sample app
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6-astra")
+        .inputOfResponse(List.of(userInput))
+        .addTool(
+            FunctionTool.builder()
+                .name("exec_py")
+                .description(
+                    "Execute provided interactive async Python in a persistent, isolated browser runtime.")
+                .parameters(
+                    FunctionTool.Parameters.builder()
+                        .putAdditionalProperty("type", JsonValue.from("object"))
+                        .putAdditionalProperty(
+                            "properties",
+                            JsonValue.from(
+                                Map.of(
+                                    "code",
+                                    Map.of(
+                                        "type",
+                                        "string",
+                                        "description",
+                                        "Python code to execute. Write small snippets. State "
+                                            + "persists across tool calls via globals(). The "
+                                            + "isolated runtime supports await and provides "
+                                            + "only these helpers and Playwright objects: log(x) "
+                                            + "for concise text output, display(base64_png_string) "
+                                            + "for image output, browser, context, and page. "
+                                            + "Keep screenshots and image data in memory and "
+                                            + "pass them directly to display(). Do not assume "
+                                            + "other globals or packages are available."))))
+                        .putAdditionalProperty("required", JsonValue.from(List.of("code")))
+                        .putAdditionalProperty("additionalProperties", JsonValue.from(false))
+                        .build())
+                .strict(true)
+                .build())
+        .addTool(
+            FunctionTool.builder()
+                .name("ask_user")
+                .description(
+                    "Ask the user a clarification question and wait for their response.")
+                .parameters(
+                    FunctionTool.Parameters.builder()
+                        .putAdditionalProperty("type", JsonValue.from("object"))
+                        .putAdditionalProperty(
+                            "properties",
+                            JsonValue.from(
+                                Map.of(
+                                    "question",
+                                    Map.of(
+                                        "type",
+                                        "string",
+                                        "description",
+                                        "The exact question to show the user. Use this instead "
+                                            + "of asking a freeform clarifying question in a "
+                                            + "final answer."))))
+                        .putAdditionalProperty("required", JsonValue.from(List.of("question")))
+                        .putAdditionalProperty("additionalProperties", JsonValue.from(false))
+                        .build())
+                .strict(true)
+                .build())
+        .build();
 
-The [CUA sample app](https://github.com/openai/openai-cua-sample-app#first-run) includes JavaScript/Playwright and Python/PyAutoGUI implementations, with local tasks and a shared console:
+List<ResponseInputItem> conversation = new ArrayList<>(List.of(userInput));
+ObjectMapper json = new ObjectMapper();
+Scanner terminal = new Scanner(System.in);
+String sessionId = UUID.randomUUID().toString();
 
-1. Follow the setup instructions for your chosen implementation in an isolated environment.
-2. Choose a built-in scenario and start a run.
-3. Inspect the actions, screenshots, and final state to assess whether the task succeeded.
+for (int step = 0; step < 20; step++) {
+  var response =
+      client.responses().create(params.toBuilder().inputOfResponse(conversation).build());
+  response.output().stream()
+      .map(item -> JsonValue.from(item).convert(ResponseInputItem.class))
+      .forEach(conversation::add);
+  boolean calledTool = false;
+  for (var item : response.output()) {
+    if (item.functionCall().isPresent()) {
+      var call = item.functionCall().orElseThrow();
+      JsonNode arguments = json.readTree(call.arguments());
+      var output = ResponseInputItem.FunctionCallOutput.builder().callId(call.callId());
 
-Use the app's README for installation, desktop permissions, and supported environments. Review [Run safely](#run-safely) before adapting it to real sites or accounts.
+      if (call.name().equals("exec_py")) {
+        String code = arguments.path("code").asText();
+        System.out.println(code);
+        System.out.print("Send this generated Python to the isolated runtime? Type yes: ");
+        String approval = terminal.hasNextLine() ? terminal.nextLine() : "";
+        List<ResponseFunctionCallOutputItem> execution;
+        if (approval.trim().equalsIgnoreCase("yes")) {
+          try {
+            execution = executeInSandbox(code, sessionId, json);
+          } catch (IOException exception) {
+            execution =
+                List.of(
+                    ResponseFunctionCallOutputItem.ofInputText(
+                        ResponseInputTextContent.builder()
+                            .text("Sandbox execution failed: " + exception.getMessage())
+                            .build()));
+          }
+        } else {
+          execution =
+              List.of(
+                  ResponseFunctionCallOutputItem.ofInputText(
+                      ResponseInputTextContent.builder()
+                          .text("The user declined this code execution.")
+                          .build()));
+        }
+        output.outputOfResponseFunctionCallOutputItemList(execution);
+        execution.forEach(System.out::println);
+      } else if (call.name().equals("ask_user")) {
+        String question = arguments.path("question").asText();
+        System.out.println("MODEL QUESTION: " + question);
+        output.output(terminal.hasNextLine() ? terminal.nextLine() : "");
+      } else {
+        throw new IllegalArgumentException("Unsupported function: " + call.name());
+      }
 
-<a id="code-execution-harness-examples"></a>
+      conversation.add(ResponseInputItem.ofFunctionCallOutput(output.build()));
+      calledTool = true;
+    } else if (item.message().isPresent()) {
+      var message = item.message().orElseThrow();
+      message.content().stream()
+          .flatMap(content -> content.outputText().stream())
+          .forEach(text -> System.out.println(text.text()));
+    }
+  }
+  if (!calledTool) break;
+}
 
-### Connect your own runtime
+private static List<ResponseFunctionCallOutputItem> executeInSandbox(
+    String code, String sessionId, ObjectMapper json) throws IOException, InterruptedException {
+  URI endpoint = URI.create(System.getenv("OPENAI_EXAMPLE_CODE_EXECUTION_URL"));
+  if (!endpoint.getScheme().equals("https")
+      && !List.of("localhost", "127.0.0.1", "::1").contains(endpoint.getHost())) {
+    throw new IllegalArgumentException("The isolated sandbox endpoint must use HTTPS");
+  }
 
-The following example shows the API loop for a runtime you provide. Python and Ruby send Python code to a desktop runtime that uses PyAutoGUI; JavaScript uses Playwright to operate a browser. Each client exposes an ordinary function tool and returns text or images with the original `call_id`.
+  var request =
+      HttpRequest.newBuilder(endpoint)
+          .timeout(Duration.ofSeconds(30))
+          .header("Content-Type", "application/json")
+          .POST(
+              HttpRequest.BodyPublishers.ofString(
+                  json.writeValueAsString(
+                      Map.of("session_id", sessionId, "language", "python", "code", code))));
+  String token = System.getenv("OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN");
+  if (token != null && !token.isBlank()) request.header("Authorization", "Bearer " + token);
 
-The `execute_in_sandbox` or `executeInSandbox` helper sends code to your execution environment and returns its observations. It must preserve the browser or desktop session, enforce execution limits, and apply your permission rules. These are integration examples, separate from running the sample app.
+  HttpResponse<String> response =
+      HttpClient.newBuilder()
+          .connectTimeout(Duration.ofSeconds(10))
+          .build()
+          .send(request.build(), HttpResponse.BodyHandlers.ofString());
+  if (response.statusCode() < 200 || response.statusCode() >= 300) {
+    throw new IOException("Isolated sandbox rejected execution: HTTP " + response.statusCode());
+  }
 
-Python
+  JsonNode outputs = json.readTree(response.body()).path("output");
+  if (!outputs.isArray()) throw new IOException("Sandbox returned an invalid output payload");
+  List<ResponseFunctionCallOutputItem> result = new ArrayList<>();
+  for (JsonNode item : outputs) {
+    String type = item.path("type").asText();
+    if (type.equals("input_text") && item.path("text").isTextual()) {
+      result.add(
+          ResponseFunctionCallOutputItem.ofInputText(
+              ResponseInputTextContent.builder().text(item.path("text").asText()).build()));
+    } else if (type.equals("input_image")
+        && item.path("image_url").isTextual()
+        && item.path("detail").asText().equals("original")) {
+      result.add(
+          ResponseFunctionCallOutputItem.ofInputImage(
+              ResponseInputImageContent.builder()
+                  .detail(ResponseInputImageContent.Detail.ORIGINAL)
+                  .imageUrl(item.path("image_url").asText())
+                  .build()));
+    } else {
+      throw new IOException("Sandbox returned an unsupported output item: " + type);
+    }
+  }
+  return result;
+}
+```
 
-    Run computer use with code execution
+```ruby
+require "json"
+require "openai"
+require "securerandom"
+
+def run_computer_use(endpoint, prompt)
+  client = OpenAI::Client.new
+  session_id = SecureRandom.uuid
+  tools = [
+    {
+      type: :function,
+      name: "exec_py",
+      description: "Run Python in a persistent desktop. Variables persist across calls. PyAutoGUI operations are synchronous. Available: pyautogui, time, log(value), and display(PIL_image). Inspect the screen with display(pyautogui.screenshot()) before acting. Use screenshot coordinates and check the screen after a short group of actions. Keep screenshots in memory and PyAutoGUI's fail-safe enabled.",
+      parameters: {
+        type: :object,
+        properties: { code: { type: :string } },
+        required: ["code"],
+        additionalProperties: false
+      },
+      strict: true
+    }
+  ]
+  next_input = []
+  next_input << {
+    role: :user,
+    content: prompt
+  }
+  history = {}
+  20.times do |turn|
+    response = client.responses.create(
+      model: "gpt-6-astra", tools: tools, input: next_input, previous_response_id: history[:id]
+    )
+    raise "Response stopped with status: #{response.status}" unless response.status == OpenAI::Responses::ResponseStatus::COMPLETED
+
+    calls = response.output.grep(OpenAI::Responses::ResponseFunctionToolCall)
+    if calls.empty? && response.output.any? { |item| item.is_a?(OpenAI::Responses::ResponseOutputMessage) && item.phase != :commentary }
+      puts(response.output_text)
+      return response
+    end
+    raise "The task reached the 20-response limit" if turn == 19
+
+    next_input.clear
+    calls.each do |call|
+      raise "Unexpected tool: #{call.name}" unless call.name == "exec_py"
+
+      code = JSON.parse(call.arguments).fetch("code")
+      raise "Expected Python source text" unless code.is_a?(String)
+
+      output = execute_in_sandbox(code, session_id, endpoint)
+      next_input << {
+        type: :function_call_output,
+        call_id: call.call_id,
+        output: output
+      }
+    end
+    history[:id] = response.id
+  end
+end
+```
+
+### Send a computer request
+
+Use the computer tool for structured mouse and keyboard actions.
+
+```javascript
+
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-6.1-sol",
+  tools: [{ type: "computer" }],
+  input:
+    "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
+});
+
+console.log(JSON.stringify(response.output, null, 2));
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-6.1-sol",
+    tools=[{"type": "computer"}],
+    input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
+)
+
+print(response.output)
+```
+
+```go
+package main
+
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6.1-sol")
+        .input(
+            "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
+        .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
+        .build();
+
+client.responses().create(params).output().forEach(System.out::println);
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-6.1-sol",
+  input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
+  tools: [{ type: :computer }]
+)
+
+puts(response.output)
+```
+
+### Return a screenshot
+
+Continue the conversation with the updated screen.
+
+```javascript
+
+const client = new OpenAI();
+
+async function sendComputerScreenshot(response, callId, screenshotBase64) {
+  const output = {
+    type: "computer_screenshot",
+    image_url: `data:image/png;base64,${screenshotBase64}`,
+    detail: "original",
+  };
+
+  return await client.responses.create({
+    model: "gpt-6.1-sol",
+    tools: [{ type: "computer" }],
+    previous_response_id: response.id,
+    input: [
+      {
+        type: "computer_call_output",
+        call_id: callId,
+        output,
+      },
+    ],
+  });
+}
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+def send_computer_screenshot(response, call_id, screenshot_base64):
+    return client.responses.create(
+        model="gpt-6.1-sol",
+        tools=[{"type": "computer"}],
+        previous_response_id=response.id,
+        input=[
+            {
+                "type": "computer_call_output",
+                "call_id": call_id,
+                "output": {
+                    "type": "computer_screenshot",
+                    "image_url": f"data:image/png;base64,{screenshot_base64}",
+                    "detail": "original",
+                },
+            }
+        ],
+    )
+```
+
+```go
+package main
+
+String responseId = "resp_abc123";
+
+String computerCallId = "call_abc123";
+
+String screenshotBase64 = "<base64 bytes here>";
+
+ResponseCreateParams params =
+    ResponseCreateParams.builder()
+        .model("gpt-6.1-sol")
+        .input(
+            ResponseCreateParams.Input.ofResponse(
+                List.of(
+                    ResponseInputItem.ofComputerCallOutput(
+                        ResponseInputItem.ComputerCallOutput.builder()
+                            .callId(computerCallId)
+                            .output(
+                                ResponseComputerToolCallOutputScreenshot.builder()
+                                    .imageUrl("data:image/png;base64," + screenshotBase64)
+                                    .putAdditionalProperty("detail", JsonValue.from("original"))
+                                    .build())
+                            .build()))))
+        .previousResponseId(responseId)
+        .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
+        .build();
+
+client.responses().create(params).output().forEach(System.out::println);
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-6.1-sol",
+  previous_response_id: "resp_abc123",
+  input: [
+    {
+      type: :computer_call_output,
+      call_id: "call_abc123",
+      output: {
+        type: :computer_screenshot,
+        image_url: "data:image/png;base64,<base64 bytes here>",
+        detail: :original
+      }
+    }
+  ],
+  tools: [{ type: :computer }]
+)
+
+puts(response.output)
+```
+
+Computer use lets a model operate a browser or desktop interface. Use it to fill out forms, test user flows, or complete tasks in an application.
+
+Choose a path based on what the model needs to see and who runs the environment:
+
+| Task | Start here |
+| --- | --- |
+| Use screenshots and mouse or keyboard actions in your browser or desktop | Use [`ComputerToolset`](https://developers.openai.com/api/docs/guides/tools-computer-use?sdk-task=computer#run-your-first-task) with the Responses computer tool. |
+| Read page text or use controls and tabs in your browser | Use [`BrowserToolset`](https://developers.openai.com/api/docs/guides/tools-computer-use?sdk-task=browser#run-your-first-task). Your driver exposes selected operations as function tools. |
+| Run a browser hosted by OpenAI | Follow the separate [Agents API computer use guide](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use). |
+
+For public information that needs no interaction, use [web search](https://developers.openai.com/api/docs/guides/tools-web-search).
+
+## Use the SDK
+
+The SDK runs the Responses tool loop in Python or Node. Your application supplies a **driver**: code that reads the environment or performs an allowed action. Your application owns the session, permissions, and cleanup.
+
+### Connect a hosted environment
+
+Use a partner's browser or desktop instead of running one yourself. Some integrations provide a driver; others expose controls that your application maps to the SDK. Follow the partner's guide for setup and supported package versions.
+
+| Environment | Integration |
+| --- | --- |
+| Browserbase | Use the Stagehand browser driver with a hosted Browserbase session. Follow the [Stagehand integration guide](https://docs.stagehand.dev/v4/integrations/agent-frameworks/openai-cua-toolset-quickstart) or see the [Python and TypeScript examples](https://github.com/browserbase/openai-cua-toolset). |
+| Browser Use | Use the [Browser Use library driver](https://docs.browser-use.com/open-source/customize/integrations/openai) or connect existing Playwright code with the [Browser Use Cloud integration](https://docs.browser-use.com/cloud/tutorials/integrations/openai). Both guides use Python. |
+| Daytona | Use `ComputerToolset` with a Daytona desktop sandbox. Follow the [Daytona computer-use helpers guide](https://www.daytona.io/docs/en/guides/openai/openai-computer-use-helpers/) (Python). For an Agents SDK example, see the [Daytona computer-use recipe](https://developers.openai.com/cookbook/examples/agents_sdk/computer_use_with_daytona/computer_use_with_daytona). |
+| E2B Desktop | Run computer actions or execute code in a desktop sandbox. Follow the [E2B computer-use guide](https://docs.e2b.dev/agents/openai-computer-use) or see the [Python](https://github.com/e2b-dev/e2b-cookbook/tree/main/examples/openai-computer-use-python) and [TypeScript](https://github.com/e2b-dev/e2b-cookbook/tree/main/examples/openai-computer-use-js) examples. |
+
+Set a session timeout and close or release the session even if the run fails. Check the provider dashboard if cleanup fails. Use provider network rules to restrict the sites and resources the session can reach.
+
+### Run your first task
+
+Use Python 3.11 or later, or Node.js 22.6 or later. [Create and export an API key](https://developers.openai.com/api/docs/quickstart#create-and-export-an-api-key). Both examples use a temporary local browser and make Responses API calls, which may incur charges.
+
+Install the packages and Chromium in a new folder:
+
+```sh
+# Python
+python3 -m venv .venv
+.venv/bin/python -m pip install openai==3.31.0 playwright==1.61.0
+.venv/bin/python -m playwright install chromium
+
+# Node
+npm install openai@7.33.0 playwright@1.61.1
+npx playwright install chromium
+```
+
+On Windows, use `py -3` instead of `python3` and `.venv\Scripts\python.exe` instead of `.venv/bin/python`.
+
+The model sees a screenshot of a fictional parcel pickup page and clicks to reveal the pickup details. The driver allows only screenshots and a left click on that control. It blocks page requests and closes the browser when the run ends. The script makes at most six Responses requests and checks the page before reporting success. Your project needs access to a model that supports the computer tool.
+
+Save the matching example as `pickup.py` or `pickup.mjs`:
+
+Reveal pickup details using computer actions
+
+```javascript
+
+class PickupDriver {
+  constructor(page) {
+    this.page = page;
+  }
+
+  async screenshot() {
+    const image = await this.page.screenshot({ type: "png" });
+    return {
+      type: "computer_screenshot",
+      image_url: "data:image/png;base64," + image.toString("base64"),
+    };
+  }
+
+  async allowed(action) {
+    if (action.type === "screenshot") return true;
+    if (
+      action.type !== "click" ||
+      action.button !== "left" ||
+      action.keys?.length
+    )
+      return false;
+    const box = await this.page.locator("summary").boundingBox();
+    return Boolean(
+      box &&
+      box.x <= action.x &&
+      action.x < box.x + box.width &&
+      box.y <= action.y &&
+      action.y < box.y + box.height
+    );
+  }
+
+  async click(action) {
+    // The page may have changed after approval, so bind the click again.
+    if (!(await this.allowed(action)))
+      throw new Error("Pickup details moved or the click is not allowed.");
+    await this.page.mouse.click(action.x, action.y);
+  }
+
+  refuse(action) {
+    throw new Error(`This exercise does not allow ${action.type}.`);
+  }
+
+  double_click = this.refuse;
+  drag = this.refuse;
+  keypress = this.refuse;
+  move = this.refuse;
+  scroll = this.refuse;
+  type = this.refuse;
+  wait = this.refuse;
+}
+
+async function main() {
+  const client = new OpenAI({ timeout: 30_000, maxRetries: 0 });
+  const browser = await chromium.launch({ env: {}, chromiumSandbox: true });
+  try {
+    const page = await browser.newPage({
+      viewport: { width: 1024, height: 768 },
+    });
+    await page.route("**/*", (route) => route.abort());
+    await page.setContent(
+      "<title>Parcel pickup</title><main>" +
+        "<h1>Parcel pickup</h1><p>Order #1042 is ready.</p>" +
+        "<details><summary>Show pickup details</summary>" +
+        "<p>Locker 18. Pickup code: 6249.</p></details></main>"
+    );
+    const driver = new PickupDriver(page);
+    const tools = new ComputerToolset(driver);
+    try {
+      const response = await tools.run(
+        client,
+        {
+          model: "gpt-6.1-sol",
+          store: false,
+          input:
+            "Take a screenshot. Open 'Show pickup details' and report the locker and pickup code. Use only screenshots and left clicks.",
+        },
+        { beforeAction: (action) => driver.allowed(action), maxSteps: 6 }
+      );
+      if ((await page.locator("details").getAttribute("open")) === null) {
+        throw new Error("Pickup details are still closed.");
+      }
+      console.log(
+        "Verified pickup details:",
+        await page.locator("details p").innerText()
+      );
+      console.log("Answer:", response.output_text);
+    } finally {
+      tools.close();
+    }
+  } finally {
+    await browser.close();
+  }
+}
+
+await main();
+```
+
+```python
+
+class BadgeForm {
+  constructor(page) {
+    this.page = page;
+  }
+
+  async state() {
+    return {
+      tabs: [
+        {
+          id: "badge",
+          title: await this.page.title(),
+          url: this.page.url(),
+          active: true,
+        },
+      ],
+    };
+  }
+
+  async read_page(_args) {
+    return {
+      version: 1,
+      text: await this.page.locator("body").innerText(),
+      elements: [
+        { ref: "name", role: "textbox", label: "Name" },
+        { ref: "save", role: "button", label: "Create badge" },
+      ],
+      omitted: [],
+    };
+  }
+
+  async type(args) {
+    await this.page.locator("#name").fill(args.text);
+  }
+
+  async click(_args) {
+    await this.page.locator("#save").click();
+  }
+
+  async confirm({ member, arguments: args }) {
+    if (
+      this.page.url() !== "about:blank" ||
+      (args.tab_id !== null && args.tab_id !== "badge")
+    ) {
+      return false;
+    }
+    return (
+      (member === "type" && args.target === "name" && args.text === "Mira") ||
+      (member === "click" && args.target === "save")
+    );
+  }
+}
+
+async function main() {
+  const client = new OpenAI({ timeout: 30_000, maxRetries: 0 });
+  const browser = await chromium.launch({ env: {}, chromiumSandbox: true });
+  try {
+    const page = await browser.newPage();
+    await page.route("**/*", (route) => route.abort());
+    await page.setContent(`
+      <title>Visitor badge</title>
+      <label>Name <input id="name"></label>
+      <button id="save" onclick="document.querySelector('output').innerText =
+        'Badge ready: ' + document.querySelector('#name').value">Create badge</button>
+      <output></output>
+    `);
+    const driver = new BadgeForm(page);
+    const tools = new BrowserToolset(driver, {
+      members: ["read_page", "type", "click"],
+      confirm: driver.confirm.bind(driver),
+    });
+    const response = await new ResponsesToolRunner({ browser: tools }).run(
+      client,
+      {
+        model: "gpt-6-astra",
+        store: false,
+        input: "Create a visitor badge for Mira.",
+      },
+      { maxSteps: 6 }
+    );
+    const result = await page.locator("output").innerText();
+    if (result !== "Badge ready: Mira") {
+      throw new Error(`The badge was not created: ${JSON.stringify(result)}`);
+    }
+    console.log(result);
+    console.log("Answer:", response.output_text);
+  } finally {
+    await browser.close();
+  }
+}
+
+await main();
+```
 
 ```python
 
@@ -200,11 +900,93 @@ def run_computer_use(endpoint, prompt)
 end
 ```
 
+Go
+
+    Run computer use with code execution
+
+```go
+func runComputerUse(ctx context.Context, client openai.Client, endpoint, prompt string, terminal *bufio.Scanner, output io.Writer) error {
+	session := make([]byte, 16)
+	if _, err := rand.Read(session); err != nil {
+		return err
+	}
+	sessionID := hex.EncodeToString(session)
+	tool := responses.ToolParamOfFunction("exec_py", map[string]any{
+		"type": "object", "properties": map[string]any{"code": map[string]any{"type": "string"}},
+		"required": []string{"code"}, "additionalProperties": false,
+	}, true)
+	tool.OfFunction.Description = openai.String("Run Python in a persistent desktop. Variables persist across calls. " +
+		"PyAutoGUI operations are synchronous. Available: pyautogui, time, " +
+		"log(value), and display(PIL_image). Inspect the screen with " +
+		"display(pyautogui.screenshot()) before acting. Use screenshot " +
+		"coordinates and check the screen after a short group of actions. " +
+		"Keep screenshots in memory and PyAutoGUI's fail-safe enabled.")
+	params := responses.ResponseNewParams{
+		Model: "gpt-6-astra", Tools: []responses.ToolUnionParam{tool},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(prompt)},
+	}
+	for turn := 0; turn < 20; turn++ {
+		response, err := client.Responses.New(ctx, params)
+		if err != nil {
+			return err
+		}
+		if response.Status != "completed" {
+			return fmt.Errorf("response stopped with status: %s", response.Status)
+		}
+		var calls []responses.ResponseFunctionToolCall
+		finalMessage := false
+		for _, item := range response.Output {
+			if item.Type == "function_call" {
+				calls = append(calls, item.AsFunctionCall())
+			}
+			if item.Type == "message" && item.AsMessage().Phase != "commentary" {
+				finalMessage = true
+			}
+		}
+		if len(calls) == 0 && finalMessage {
+			fmt.Fprintln(output, response.OutputText())
+			return nil
+		}
+		if turn == 19 {
+			return fmt.Errorf("task reached the 20-response limit; inspect the last result")
+		}
+		nextInput := responses.ResponseInputParam{}
+		for _, call := range calls {
+			if call.Name != "exec_py" {
+				return fmt.Errorf("unexpected tool: %s", call.Name)
+			}
+			var arguments struct {
+				Code *string `json:"code"`
+			}
+			if err := json.Unmarshal([]byte(call.Arguments), &arguments); err != nil {
+				return err
+			}
+			if arguments.Code == nil {
+				return fmt.Errorf("exec_py requires code")
+			}
+			observations, err := executeInSandbox(ctx, endpoint, sessionID, *arguments.Code, terminal, output)
+			if err != nil {
+				return err
+			}
+			nextInput = append(nextInput, responses.ResponseInputItemUnionParam{
+				OfFunctionCallOutput: &responses.ResponseInputItemFunctionCallOutputParam{
+					CallID: openai.String(call.CallID),
+					Output: responses.ResponseInputItemFunctionCallOutputOutputUnionParam{OfResponseFunctionCallOutputItemArray: observations},
+				},
+			})
+		}
+		params.Input = responses.ResponseNewParamsInputUnion{OfInputItemList: nextInput}
+		params.PreviousResponseID = openai.String(response.ID)
+	}
+	return nil
+}
+```
+
 <a id="connect-to-your-execution-service"></a>
 
 For a complete client adapter and the expected text and image output shape, see [Connect to your execution service](https://developers.openai.com/api/docs/guides/tools-computer-use-integration#connect-to-your-execution-service). The service interface in those examples belongs to your application; it is not an OpenAI-hosted endpoint.
 
-### Preserve state and return observations
+#### Preserve state and return observations
 
 Keep the browser or desktop session alive between calls. A persistent Python or JavaScript namespace can also preserve variables. Describe the available objects and helpers in the tool definition so the model knows what it can use.
 
@@ -215,9 +997,9 @@ The API conversation and the execution environment have separate state. Preserve
 <a id="provide-the-environment-and-control-the-loop"></a>
 <a id="option-1-run-the-built-in-computer-use-loop"></a>
 
-## Use the computer tool
+### Use the computer tool
 
-Use this alternative when your integration expects structured actions instead of generated code. For the recommended approach, start with [code execution](#use-code-execution).
+Use this alternative when your integration expects structured actions instead of generated code.
 
 To try this path, follow the [same sample-app setup](https://github.com/openai/openai-cua-sample-app#first-run), select **Native** mode, and run a built-in scenario. Use a model that supports the [computer tool](https://developers.openai.com/api/docs/models).
 
@@ -233,7 +1015,7 @@ For environment setup and action handlers, use the [integration recipes](https:/
 <a id="2-send-the-task"></a>
 <a id="1-send-the-task"></a>
 
-### Send the task
+#### Send the task
 
 Enable `computer` in the `tools` array and describe the result you want:
 
@@ -299,7 +1081,7 @@ puts(response.output)
 <a id="3-run-every-returned-action"></a>
 <a id="2-execute-the-requested-actions"></a>
 
-### Execute the requested actions
+#### Execute the requested actions
 
 A `computer_call` contains an ordered `actions` array. For example, this call selects the search field and types `penguin`:
 
@@ -335,7 +1117,7 @@ Use the [action-handler examples](https://developers.openai.com/api/docs/guides/
 <a id="4-return-the-updated-screen"></a>
 <a id="3-return-the-screenshot"></a>
 
-### Return the screenshot
+#### Return the screenshot
 
 Return a `computer_call_output` whose `call_id` matches the call you handled. Use `previous_response_id` to continue the model conversation:
 

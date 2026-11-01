@@ -199,11 +199,10 @@ new access level:
    approving a separate group-wide policy change and reviewing its effect on
    every member.
 5. Have a workspace owner open the employee's profile, review **Direct roles**,
-   and remove outdated roles assigned directly to that person. Custom roles use **Default**,
-   **On**, and **Off**. An explicit **Off** in any assigned role overrides
-   **On** in another role.
-6. Review the employee's effective permissions across all direct and
-   group-assigned roles before approving the team change.
+   and remove outdated direct role assignments.
+6. Review the employee's
+   [effective permissions](https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions#set-the-workspace-default-then-create-targeted-custom-roles)
+   across all direct and group-assigned roles before approving the team change.
 7. If the workspace supports more than one seat type, have a workspace owner open
    **Workspace settings > Members > Change seat type** and review the
    employee's intended product access.
