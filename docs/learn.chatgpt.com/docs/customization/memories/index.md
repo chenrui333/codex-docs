@@ -104,8 +104,16 @@ Codex stores memories under your Codex home directory. By default, that's
 `~/.codex`. See [Config and state locations](https://learn.chatgpt.com/docs/config-file/config-advanced#config-and-state-locations)
 for how Codex uses `CODEX_HOME`.
 
-The main memory files live under `~/.codex/memories/` and include summaries,
-durable entries, recent inputs, and supporting evidence from prior chats.
+When you enable memories in a fresh Codex home, the CLI uses
+`$CODEX_HOME/memories_v2/` by default. If `$CODEX_HOME/memories/` already
+exists, the CLI continues to use that store by default. Set
+`memories.version` to choose a version explicitly. With no explicit version,
+`memories.dual_write = false` keeps even a fresh profile on v1.
+
+In the desktop app, check both `$CODEX_HOME/memories/` and
+`$CODEX_HOME/memories_v2/` for generated summaries and supporting evidence
+from prior chats. During the migration, a new local chat with memories enabled
+can read from `memories/` and write to both directories, even on a fresh profile.
 
 Treat these files as generated state. You can inspect them when troubleshooting
 or before sharing your Codex home directory, but don't rely on editing them by

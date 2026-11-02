@@ -193,7 +193,7 @@ If your organization provides a model gateway, follow
 for client setup and verification. For organization-wide deployment, see
 [Roll out a gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway).
 
-A model provider defines how Codex connects to a model (base URL, wire API, authentication, and optional HTTP headers). Custom providers can't reuse the reserved built-in provider IDs: `openai`, `ollama`, and `lmstudio`.
+A model provider defines how Codex connects to a model (base URL, wire API, authentication, and optional HTTP headers). Choose a unique ID for custom providers. Codex reserves `openai`, `ollama`, `lmstudio`, `amazon-bedrock`, `amazon-bedrock-runtime`, and `gcp` for its built-in providers.
 
 Define more providers and point `model_provider` at them:
 
@@ -266,9 +266,9 @@ The auth command receives no `stdin` and must print the token to stdout. Codex t
 
 ### Amazon Bedrock provider
 
-Codex includes a built-in `amazon-bedrock` model provider. Set it directly as
-`model_provider`; unlike custom providers, this built-in provider supports only
-the nested AWS profile and region overrides.
+Set `model_provider` to `amazon-bedrock` for the Bedrock Mantle endpoint or
+`amazon-bedrock-runtime` for the Runtime endpoint. To select the AWS credentials
+and region for Mantle, configure its `aws` table.
 
 ```toml
 model_provider = "amazon-bedrock"
@@ -285,6 +285,34 @@ If you omit `profile`, Codex uses the standard AWS credential chain. Set
 For the full setup flow, authentication options, supported models, and feature
 availability, see [Use ChatGPT Work and Codex with Amazon
 Bedrock](https://learn.chatgpt.com/docs/amazon-bedrock).
+
+### Google Cloud Vertex AI provider
+
+To use a model your project can access on Vertex AI, set the built-in provider in `config.toml`.
+
+```toml
+model_provider = "gcp"
+
+[model_providers.gcp]
+project_id = "my-project"
+location = "global"
+```
+
+If you omit `project_id` or `location`, Codex reads `GOOGLE_CLOUD_PROJECT` or
+`GOOGLE_CLOUD_LOCATION`, respectively. The location defaults to `global`.
+
+To use default authentication, install the Google Cloud CLI on the machine
+running Codex. To sign in locally, run `gcloud auth application-default login`.
+Codex runs `gcloud auth application-default print-access-token` to obtain
+access tokens.
+
+To use a specific ADC file, set `credential_file` to its absolute path under
+`[model_providers.gcp]`. Codex sets `GOOGLE_APPLICATION_CREDENTIALS` to that
+path for the authentication command.
+
+If your deployment uses a different endpoint, token command, or static
+headers, configure `base_url`, `auth`, or `http_headers` under
+`[model_providers.gcp]`.
 
 ## OSS mode (local providers)
 
@@ -328,10 +356,9 @@ base_url = "https://us.api.openai.com/v1" # Replace 'us' with domain prefix
 ## Model reasoning, verbosity, and limits
 
 ```toml
-model_reasoning_summary = "none"          # Disable summaries
-model_verbosity = "low"                   # Shorten responses
-model_supports_reasoning_summaries = true # Force reasoning
-model_context_window = 128000             # Context window size
+model_reasoning_summary = "none" # Disable summaries
+model_verbosity = "low"          # Shorten responses
+model_context_window = 128000    # Context window size
 ```
 
 `model_verbosity` applies only to providers using the Responses API. Chat Completions providers will ignore the setting.
@@ -459,6 +486,9 @@ exporter = "none"         # set to otlp-http or otlp-grpc to send events
 log_user_prompt = false   # redact user prompts unless explicitly enabled
 ```
 
+Administrators can enforce the exporters and individual logging settings in
+[`requirements.toml`](https://learn.chatgpt.com/docs/enterprise/managed-configuration#enforce-opentelemetry-settings).
+
 Choose an exporter:
 
 ```toml
@@ -489,6 +519,8 @@ Codex emits structured log events for runs and tool usage. Representative event 
 - `codex.sse_event` (stream event kind, success/failure, duration, plus token counts on `response.completed`)
 - `codex.websocket_request` and `codex.websocket_event` (request duration plus per-message kind/success/error)
 - `codex.user_prompt` (length; content redacted unless explicitly enabled)
+- `codex.agent_response` (final answers from the main agent and spawned subagents when `otel.log_agent_responses = true`)
+- `codex.guardian_assessment` (completed automatic approval reviews when `otel.log_guardian_assessments = true`)
 - `codex.tool_decision` (approved/denied and whether the decision came from config vs user)
 - `codex.tool_result` (duration, success, output snippet)
 
@@ -517,14 +549,14 @@ For more security and privacy guidance around telemetry, see [Security](https://
 
 By default, Codex periodically sends a small amount of anonymous usage and health data back to OpenAI. This helps detect when Codex isn't working correctly and shows what features and configuration options are being used, so the Codex team can focus on what matters most. These metrics don't contain any personally identifiable information (PII). Metrics collection is independent of OTel log/trace export.
 
-To disable analytics and metrics collection in Codex CLI, set the analytics flag in your config:
+To disable analytics and the built-in `statsig` metrics exporter, set the analytics flag in your config:
 
 ```toml
 [analytics]
 enabled = false
 ```
 
-This also disables custom OTLP metrics exporters in Codex CLI.
+To disable a custom OTLP metrics exporter as well, set `otel.metrics_exporter = "none"`.
 
 Each metric includes its own fields plus the default context fields below.
 

@@ -50,15 +50,15 @@ review your import history from the same settings section.
 
 ### Import in Codex CLI
 
-1. Start a local Codex CLI session and type `/import`.
+1. Type `/import` in an idle Codex CLI session.
 2. Choose **Claude Code** or **Cursor**.
 3. Select the supported setup, project files, and recent chats you want to
    import.
 4. Review the imported configuration and continue working in Codex.
 
-Codex CLI imports up to 50 chats from the last 30 days. The `/import` command
-isn't available during a running task, in a remote session, or while connected
-to a local app-server daemon. See [CLI slash
+Codex CLI imports up to 50 chats from the last 30 days. When connected to a
+local daemon or remote server, Codex looks for user settings and recent chats
+on that server. It also checks the current project directory, if available. See [CLI slash
 commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli#cli-import-claude-code-or-cursor-setup-with-import).
 
 > Illustration: ChatGPT import screen for selecting setup, projects, and recent chats to import.

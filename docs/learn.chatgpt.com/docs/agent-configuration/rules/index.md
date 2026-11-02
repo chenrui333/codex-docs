@@ -26,7 +26,7 @@ These local `.rules` instructions apply to Codex; don't assume Local computer ac
 1. Create a `.rules` file under a `rules/` folder next to an active config layer (for example, `~/.codex/rules/default.rules`).
 2. Add a rule. This example prompts before allowing `gh pr view` to run outside the sandbox.
 
-```python
+```python snippet=configuration reason="Starlark policy configuration interpreted by Codex"
    # Prompt before running commands with the prefix `gh pr view` outside the sandbox.
    prefix_rule(
        # The prefix to match.

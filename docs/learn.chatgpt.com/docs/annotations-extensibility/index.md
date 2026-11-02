@@ -211,8 +211,12 @@ Run the script after both elements exist:
 ```
 
 ```javascript
-const summary = document.getElementById("delivery-summary");
-const button = document.getElementById("discuss-delivery");
+const summary = /** @type {HTMLElement} */ (
+  document.getElementById("delivery-summary")
+);
+const button = /** @type {HTMLButtonElement} */ (
+  document.getElementById("discuss-delivery")
+);
 
 button.hidden = typeof document.oai?.annotation?.request !== "function";
 
@@ -296,8 +300,12 @@ an `oai-annotation-container-text` attribute:
 Run this script after both elements exist:
 
 ```javascript
-const passage = document.getElementById("draft-passage");
-const button = document.getElementById("discuss-passage");
+const passage = /** @type {HTMLElement} */ (
+  document.getElementById("draft-passage")
+);
+const button = /** @type {HTMLButtonElement} */ (
+  document.getElementById("discuss-passage")
+);
 
 button.hidden = typeof document.oai?.annotation?.request !== "function";
 
@@ -405,9 +413,12 @@ the cards directly; selection attributes aren't required:
 Run this script after creating the preview:
 
 ```javascript
-const preview = document.getElementById("component-preview");
+const preview = /** @type {HTMLElement} */ (
+  document.getElementById("component-preview")
+);
 const annotation = document.oai?.annotation;
 
+/** @param {CustomEvent<{ callback: string; value: number | string }>} event */
 function previewSpacing(event) {
   const { callback, value } = event.detail;
   if (callback === "setCardPadding") {
@@ -415,6 +426,7 @@ function previewSpacing(event) {
   }
 }
 
+/** @type {{ dispose(): void } | undefined} */
 let registration;
 if (typeof annotation?.registerControls === "function") {
   preview.addEventListener("oaiannotationcontrolchange", previewSpacing);
@@ -484,7 +496,9 @@ selection attributes or metadata. Run the script after the paragraph exists:
 ```
 
 ```javascript
-const draft = document.getElementById("email-draft");
+const draft = /** @type {HTMLElement} */ (
+  document.getElementById("email-draft")
+);
 const registration = document.oai?.annotation?.registerControls?.({
   targets: draft,
   controlsHeading: "Email options",
@@ -679,8 +693,12 @@ and a stable object ID. Put the script after the canvas:
 ```
 
 ```javascript
-const canvas = document.getElementById("revenue-canvas");
-const context = canvas.getContext("2d");
+const canvas = /** @type {HTMLCanvasElement} */ (
+  document.getElementById("revenue-canvas")
+);
+const context = /** @type {CanvasRenderingContext2D} */ (
+  canvas.getContext("2d")
+);
 const bar = { x: 40, y: 60, width: 320, height: 100 };
 
 context.fillStyle = "#2563eb";
@@ -792,6 +810,7 @@ For the canvas above, define this function and add
 `renderSelection: renderRevenueSelection` to the `registerSurface()` options:
 
 ```javascript
+/** @param {{ hoveredId: string | null; selectedId: string | null }} selection */
 function renderRevenueSelection({ hoveredId, selectedId }) {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = "#2563eb";
@@ -842,17 +861,21 @@ then run the script after it exists:
 ```
 
 ```javascript
-const button = document.getElementById("toggle-annotations");
+const button = /** @type {HTMLButtonElement} */ (
+  document.getElementById("toggle-annotations")
+);
 const annotation = document.oai?.annotation;
 
+/** @param {boolean} active */
 function renderMode(active) {
   button.textContent = active
     ? "Exit annotation mode"
     : "Enter annotation mode";
 }
 
+/** @param {CustomEvent<{ active: boolean }>} event */
 const onModeChange = (event) => renderMode(event.detail.active);
-const onClick = () => annotation.toggle(!annotation.isActive());
+const onClick = () => annotation?.toggle(!annotation.isActive());
 
 if (
   typeof annotation?.toggle === "function" &&

@@ -247,7 +247,10 @@ codex mcp add context7 -- npx -y @upstash/context7-mcp
 
 Run `codex mcp list` to see configured servers. To see all available MCP
 commands, run `codex mcp --help`. For a server that supports OAuth, run
-`codex mcp login <server-name>`.
+`codex mcp login <server-name>`. If you're using a terminal without a local
+browser, run `codex mcp login <server-name> --no-browser`. Open the printed
+authorization URL in a browser and sign in. Paste the full redirect URL back
+into the terminal, even if the browser can't load the callback page.
 
 #### Terminal UI (TUI)
 
@@ -293,8 +296,6 @@ Configure each MCP server with a `[mcp_servers.<server-name>]` table in the conf
 - `env` (optional): Environment variables to set for the server.
 - `env_vars` (optional): Environment variables to allow and forward.
 - `cwd` (optional): Working directory to start the server from.
-- `experimental_environment` (optional): Set to `remote` to start the stdio
-  server through a remote executor environment when one is available.
 
 `env_vars` can contain plain variable names or objects with a source:
 
@@ -340,10 +341,17 @@ OAuth login.
 
 #### Other configuration options
 
+- `environment_id` selects the environment for a stdio or Streamable HTTP
+  server. It defaults to `local`. To connect through a remote executor, use
+  its registered environment ID.
 - `startup_timeout_sec` (optional): Timeout (seconds) for the server to start. Default: `10`.
 - `tool_timeout_sec` (optional): Timeout (seconds) for the server to run a tool. Default: `60`.
 - `enabled` (optional): Set `false` to disable a server without deleting it.
-- `required` (optional): Set `true` to make startup fail if this enabled server can't initialize.
+- Set `required = true` to make startup fail if this enabled server isn't
+  ready. By default, `startup_readiness = "connection"` requires a live connection.
+  Set `startup_readiness = "catalog"` to let a valid cached tool catalog
+  satisfy startup while the server connects. Tool calls still need a live
+  connection.
 - `enabled_tools` (optional): Tool allow list.
 - `disabled_tools` (optional): Tool deny list (applied after `enabled_tools`).
 - `default_tools_approval_mode` (optional): Default approval behavior for
@@ -380,14 +388,15 @@ This option requires a nonempty client ID and secret. Codex saves the secret as
 `mcp_servers.example.oauth.client_secret` in `config.toml`. Keep that file
 private and out of version control.
 
-Codex displays the complete callback URL to register with your provider:
+Register the exact callback URL that `codex mcp add` prints. When the
+authorization server advertises issuer support, the CLI can print this URL.
 
 ```text
 OAuth callback URL: http://127.0.0.1/callback
 ```
 
-Codex saves the callback alongside the client ID in `config.toml` for later
-logins:
+For the public client in this example, Codex saves the callback and client ID
+in `config.toml` for later logins:
 
 ```toml
 [mcp_servers.example]
@@ -453,7 +462,9 @@ without a metadata issuer also remains a hard failure. See
 Set `mcp_servers.<server-name>.scopes` in `config.toml` to choose OAuth scopes
 for a server. To override them for one login, run
 `codex mcp login <name> --scopes read,write`.
-If neither is set, Codex uses advertised OAuth scopes when available.
+If neither is set, Codex requests the scopes in the server's initial
+`WWW-Authenticate` challenge. If the challenge omits scopes, Codex uses the
+scopes advertised in the protected resource metadata when available.
 
 An empty list (`scopes = []`) still lets the OAuth library choose scopes.
 The library can also add `offline_access` when the authorization server supports it.

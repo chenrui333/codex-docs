@@ -118,7 +118,7 @@ For automatic review to run, keep all three controls in place:
 
 Requests to a target on the network allowlist stay inside the network boundary and don't automatically trigger Auto-review. To review a sensitive command even when its destination is on the allowlist, create an explicit [command rule](https://learn.chatgpt.com/docs/agent-configuration/rules) under `~/.codex/rules/`:
 
-```python
+```python snippet=configuration reason="Starlark policy configuration interpreted by Codex"
 prefix_rule(
     pattern = ["curl"],
     decision = "prompt",

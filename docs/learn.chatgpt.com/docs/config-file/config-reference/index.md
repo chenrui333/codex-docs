@@ -151,6 +151,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Controls whether the auto-compaction threshold counts the full active context (`total`, the default) or only growth after the carried compaction-window prefix (`body_after_prefix`).",
     },
     {
+      key: "model_post_turn_compact_threshold_percent",
+      type: "integer (0–100)",
+      description:
+        "Compact history after a final response when active context reaches this percentage of the usable context window. Omit or set to `0` to disable turn-end compaction. The usual auto-compaction limits still apply.",
+    },
+    {
       key: "model_catalog_json",
       type: "string (path)",
       description:
@@ -221,6 +227,12 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "boolean",
       description:
         "Allow shell-based tools to use login-shell semantics. Defaults to `true`; when `false`, `login = true` requests are rejected and omitted `login` defaults to non-login shells.",
+    },
+    {
+      key: "allow_symlinked_codex_home",
+      type: "boolean",
+      description:
+        "On macOS, allow writable sandbox roots at or under `$CODEX_HOME` to follow symlinks. Codex reads this only from the execution host's `$CODEX_HOME/config.toml` at startup. Enabling it trusts targets outside that directory and targets that change between commands. It grants no additional writable roots. Defaults to `false`.",
     },
     {
       key: "sandbox_mode",
@@ -327,7 +339,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "analytics.enabled",
       type: "boolean",
       description:
-        "Enable or disable analytics for this machine/profile. In Codex CLI, `false` also disables custom OTLP metrics exporters. When unset, the client default applies.",
+        "Enable or disable analytics for this machine or profile. Setting this to `false` disables the built-in Statsig metrics exporter. Explicit OTLP metrics exporters remain active. When unset, the client default applies.",
     },
     {
       key: "instructions",
@@ -383,6 +395,18 @@ Set `model` to one available to your signed-in account or workspace. See
         "Load the compaction prompt override from a file (experimental).",
     },
     {
+      key: "skills.bundled.enabled",
+      type: "boolean",
+      description:
+        "Load the system skills bundled with Codex. Defaults to `true`. Set to `false` in a trusted project configuration to disable bundled skills for that project.",
+    },
+    {
+      key: "skills.include_instructions",
+      type: "boolean",
+      description:
+        "Include the automatic skills instructions in the model context. Defaults to `true`.",
+    },
+    {
       key: "skills.max_context_tokens",
       type: "integer (positive)",
       description:
@@ -391,12 +415,19 @@ Set `model` to one available to your signed-in account or workspace. See
     {
       key: "skills.config",
       type: "array<object>",
-      description: "Per-skill enablement overrides stored in config.toml.",
+      description:
+        "Enable or disable skills by name or path. If several rules match a skill, the last one wins.",
     },
     {
       key: "skills.config.<index>.path",
       type: "string (path)",
-      description: "Path to a skill folder containing `SKILL.md`.",
+      description: "Absolute path to one `SKILL.md` file.",
+    },
+    {
+      key: "skills.config.<index>.name",
+      type: "string",
+      description:
+        "Match every skill with this exact name. Specify either `name` or `path` for each entry.",
     },
     {
       key: "skills.config.<index>.enabled",
@@ -470,6 +501,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Default approval behavior for tools in this app unless a per-tool override exists.",
     },
     {
+      key: "apps.<id>.omit_tools_from",
+      type: "array<string>",
+      description:
+        "Omit this app's tools from the `direct`, `deferred`, or `code_mode` surfaces. App and MCP server omissions apply together.",
+    },
+    {
       key: "apps.<id>.tools.<tool>.enabled",
       type: "boolean",
       description:
@@ -532,7 +569,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.rollout_budget.enabled",
       type: "boolean",
       description:
-        "Enable rollout budget tracking. This feature is under development and off by default. When enabled, `features.rollout_budget.limit_tokens` is required.",
+        "Enable rollout budget tracking. This feature is under development and off by default. When enabled, set both `limit_tokens` and `reminder_at_remaining_tokens`.",
     },
     {
       key: "features.rollout_budget.limit_tokens",
@@ -541,10 +578,10 @@ Set `model` to one available to your signed-in account or workspace. See
         "Positive token limit for rollout budget tracking. Required when rollout budget is enabled.",
     },
     {
-      key: "features.rollout_budget.reminder_interval_tokens",
-      type: "integer",
+      key: "features.rollout_budget.reminder_at_remaining_tokens",
+      type: "array<integer>",
       description:
-        "Positive token interval between rollout budget reminders. Defaults to 10% of `limit_tokens`, with a minimum of 1 token.",
+        "Send a reminder as the remaining weighted token budget crosses each threshold. Supply the list when rollout budget tracking is enabled. Each value must be positive and below `limit_tokens`.",
     },
     {
       key: "features.rollout_budget.sampling_token_weight",
@@ -568,7 +605,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "hooks.<Event>",
       type: "array<table>",
       description:
-        "Matcher groups for hook events such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SessionEnd`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, `Stop`, or `Interrupt`.",
+        "Matcher groups for hook events such as `PreModelRequest`, `PostModelRequest`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SessionEnd`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, `Stop`, or `Interrupt`.",
     },
     {
       key: "hooks.<Event>[].hooks",
@@ -699,7 +736,13 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "mcp_servers.<id>.required",
       type: "boolean",
       description:
-        "When true, fail startup/resume if this enabled MCP server cannot initialize.",
+        'Require this enabled server to be ready at startup. With `startup_readiness = "catalog"`, a valid cached catalog can satisfy that requirement.',
+    },
+    {
+      key: "mcp_servers.<id>.startup_readiness",
+      type: "connection | catalog",
+      description:
+        "Use a live connection to establish startup readiness (`connection`, the default), or let a valid cached tool catalog satisfy startup while the connection opens (`catalog`). Calling a tool still requires a live connection.",
     },
     {
       key: "mcp_servers.<id>.startup_timeout_sec",
@@ -730,6 +773,24 @@ Set `model` to one available to your signed-in account or workspace. See
         "Deny list applied after `enabled_tools` for the MCP server.",
     },
     {
+      key: "mcp_servers.<id>.supports_parallel_tool_calls",
+      type: "boolean",
+      description:
+        "Mark every tool on this server as safe to run in parallel. Enable only when the server can handle concurrent calls to all its tools. Defaults to `false`.",
+    },
+    {
+      key: "mcp_servers.<id>.tool_input_schema_max_bytes",
+      type: "integer (positive)",
+      description:
+        "Compact each ordinary MCP tool's input schema when it exceeds this many UTF-8 bytes. The default is 5,000 bytes. Code Mode also uses an explicit value when rendering tool input types.",
+    },
+    {
+      key: "mcp_servers.<id>.omit_tools_from",
+      type: "array<string>",
+      description:
+        "Omit this server’s tools from selected model-facing surfaces. Choose `direct` (initial tools), `deferred` (tool search), or `code_mode` (Code Mode scripts). Use `disabled_tools` to block a tool. An empty list clears inherited omissions.",
+    },
+    {
       key: "mcp_servers.<id>.default_tools_approval_mode",
       type: "auto | prompt | writes | approve",
       description:
@@ -751,7 +812,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "mcp_servers.<id>.scopes",
       type: "array<string>",
       description:
-        "OAuth scopes to request when authenticating to that MCP server.",
+        "OAuth scopes to request at login. If omitted, Codex uses the initial authentication challenge's scopes, falling back to the protected resource's metadata.",
     },
     {
       key: "mcp_servers.<id>.oauth_resource",
@@ -760,10 +821,10 @@ Set `model` to one available to your signed-in account or workspace. See
         "Optional RFC 8707 OAuth resource parameter to include during MCP login.",
     },
     {
-      key: "mcp_servers.<id>.experimental_environment",
-      type: "local | remote",
+      key: "mcp_servers.<id>.environment_id",
+      type: "string",
       description:
-        "Experimental placement for an MCP server. `remote` starts stdio servers through a remote executor environment; streamable HTTP remote placement is not implemented.",
+        "Execution environment for the MCP server. Defaults to `local`. Use the ID of a configured executor to run a stdio server or connect to a streamable HTTP server there.",
     },
     {
       key: "agents",
@@ -817,6 +878,18 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "string (path)",
       description:
         "Path to a TOML config layer for that role; relative paths resolve from the config file that declares the role.",
+    },
+    {
+      key: "memories.version",
+      type: "v1 | v2",
+      description:
+        "Select the local memory store. With memories enabled, Codex defaults to `v2` for a fresh home and `v1` if `$CODEX_HOME/memories/` exists. Explicitly setting `dual_write = false` keeps the default at `v1`.",
+    },
+    {
+      key: "memories.dual_write",
+      type: "boolean",
+      description:
+        "With `v1` selected, set to `true` to generate both stores while continuing to read `v1`. With `v2` selected, Codex writes only `v2`.",
     },
     {
       key: "memories.generate_memories",
@@ -883,6 +956,12 @@ Set `model` to one available to your signed-in account or workspace. See
       description: "Optional model override for global memory consolidation.",
     },
     {
+      key: "memories.consolidation_service_tier",
+      type: "string",
+      description:
+        "Service tier for global memory consolidation. Defaults to `default` (Standard).",
+    },
+    {
       key: "features.prefer_mxc",
       type: "boolean",
       description:
@@ -893,6 +972,12 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "boolean",
       description:
         "Use resumable command execution (stable; enabled on all platforms). User opt-outs are ignored. Managed requirements can disable resumable processes and `write_stdin`, leaving one-shot `exec_command` available.",
+    },
+    {
+      key: "features.view_image",
+      type: "boolean",
+      description:
+        "Enable the built-in `view_image` tool for opening local images. Defaults to `true`.",
     },
     {
       key: "features.shell_snapshot",
@@ -913,6 +998,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Enable persisted goals and automatic continuation (stable; on by default).",
     },
     {
+      key: "goals.max_goal_token_budget",
+      type: "integer (positive)",
+      description:
+        "Set the default token budget for new goals and the largest budget a goal can request. Omit to leave goals without a configured limit.",
+    },
+    {
       key: "features.remote_plugin",
       type: "boolean",
       description: "Enable the remote plugin catalog (stable; on by default).",
@@ -927,7 +1018,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "features.network_proxy",
       type: "boolean | table",
       description:
-        "Start the network proxy for sandboxed commands (experimental; off by default). Required to enforce permission-profile domain rules unless enabled administrator-managed `experimental_network` requirements start the proxy. Use a table when setting feature-level policy options such as `domains`. Does not filter web search, apps, MCP, or other hosted tools.",
+        "Start the network proxy for sandboxed commands (experimental; off by default). Required to enforce permission-profile domain rules unless enabled administrator-managed `network_proxy` requirements start the proxy. Use a table when setting feature-level policy options such as `domains`. Does not filter web search, apps, MCP, or other hosted tools.",
     },
     {
       key: "features.network_proxy.enabled",
@@ -1194,6 +1285,30 @@ Set `model` to one available to your signed-in account or workspace. See
       description: "Working directory for the token command.",
     },
     {
+      key: "model_providers.gcp.base_url",
+      type: "string",
+      description:
+        "Override the built-in Google Cloud Vertex AI endpoint. Otherwise, Codex builds it from the project ID and location.",
+    },
+    {
+      key: "model_providers.gcp.project_id",
+      type: "string",
+      description:
+        "Google Cloud project ID for the Vertex AI endpoint. Takes precedence over `GOOGLE_CLOUD_PROJECT`.",
+    },
+    {
+      key: "model_providers.gcp.location",
+      type: "string",
+      description:
+        "Google Cloud location for the Vertex AI endpoint. Takes precedence over `GOOGLE_CLOUD_LOCATION`. Defaults to `global`.",
+    },
+    {
+      key: "model_providers.gcp.credential_file",
+      type: "string (absolute path)",
+      description:
+        "Path to a Google Application Default Credentials (ADC) file. Overrides `GOOGLE_APPLICATION_CREDENTIALS` only for the provider\u2019s authentication command.",
+    },
+    {
       key: "model_providers.amazon-bedrock.aws.profile",
       type: "string",
       description:
@@ -1227,11 +1342,6 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "low | medium | high",
       description:
         "Optional GPT-5 Responses API verbosity override; when unset, the selected model/preset default is used.",
-    },
-    {
-      key: "model_supports_reasoning_summaries",
-      type: "boolean",
-      description: "Force Codex to send or not send reasoning metadata.",
     },
     {
       key: "shell_environment_policy.inherit",
@@ -1304,6 +1414,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Token budget for storing individual tool/function outputs in history.",
     },
     {
+      key: "thread_unload_delay_secs",
+      type: "integer (nonnegative)",
+      description:
+        "Seconds the app server waits before unloading an inactive thread with no subscribers. Set to `0` to unload it as soon as it meets both conditions. Defaults to `60` seconds.",
+    },
+    {
       key: "background_terminal_max_timeout",
       type: "number",
       description:
@@ -1343,13 +1459,42 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "otel.metrics_exporter",
       type: "none | statsig | otlp-http | otlp-grpc",
       description:
-        "Select the OpenTelemetry metrics exporter (defaults to `statsig`). In Codex CLI, `analytics.enabled = false` disables this exporter, including custom OTLP exporters. Set to `none` to disable metrics export independently.",
+        "Select the OpenTelemetry metrics exporter. The default, `statsig`, follows `analytics.enabled`. Explicit OTLP exporters work independently of that setting. Set to `none` to disable metrics export.",
     },
     {
       key: "otel.log_user_prompt",
       type: "boolean",
       description:
         "Opt in to exporting raw user prompts with OpenTelemetry logs.",
+    },
+    {
+      key: "otel.log_agent_responses",
+      type: "boolean",
+      description:
+        "Export final response text from the main agent and spawned subagents to the configured OTLP log exporter. Defaults to `false`. Response text can contain sensitive data and is capped at 64 KiB per response.",
+    },
+    {
+      key: "otel.log_guardian_assessments",
+      type: "boolean",
+      description:
+        "Export completed automatic approval reviews to the configured OTLP log exporter. Defaults to `false`. Review rationales can contain sensitive data and are capped at 64 KiB each.",
+    },
+    {
+      key: "otel.span_attributes",
+      type: "map<string,string>",
+      description: "Add string attributes to every exported trace span.",
+    },
+    {
+      key: "otel.tracestate",
+      type: "map<string,map<string,string>>",
+      description:
+        "Set fields on W3C tracestate members when propagating trace context. Each member maps field names to string values.",
+    },
+    {
+      key: "otel.tool_result.max_bytes",
+      type: "integer (nonnegative)",
+      description:
+        "Maximum number of UTF-8 bytes from each tool result to include in logs, before the truncation notice. Defaults to `2048`. This setting affects only logged output.",
     },
     {
       key: "otel.exporter.<id>.endpoint",
@@ -1584,6 +1729,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Optional sparse checkout paths for a Git marketplace. Include the marketplace catalog and any local plugin directories it references.",
     },
     {
+      key: "plugins._default.enabled",
+      type: "boolean",
+      description:
+        "Set the default activation state for installed plugins. An explicit `plugins.<plugin>.enabled` overrides this default for plugins their source enables. Omit the table to keep the source or account activation settings.",
+    },
+    {
       key: "plugins.<plugin>.enabled",
       type: "boolean",
       description:
@@ -1620,6 +1771,18 @@ Set `model` to one available to your signed-in account or workspace. See
         "Per-tool approval behavior override for a plugin-provided MCP tool.",
     },
     {
+      key: "tui.presets.<digit>.input",
+      type: "string",
+      description:
+        "Save a prompt or slash command in one of the ten slots (`0`–`9`) shown by `/presets`. Use up to 8,000 UTF-8 bytes of nonempty text. Shell commands beginning with `!` are unsupported.",
+    },
+    {
+      key: "tui.presets.<digit>.label",
+      type: "string",
+      description:
+        "Optional name for the preset in the picker and shortcut hints.",
+    },
+    {
       key: "tui.model_availability_nux.<model>",
       type: "integer",
       description: "Internal startup-tooltip state keyed by model slug.",
@@ -1641,11 +1804,6 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "boolean",
       description:
         "Legacy fallback for `tui.disable_paste_burst`. Prefer the setting under `[tui]`.",
-    },
-    {
-      key: "windows_wsl_setup_acknowledged",
-      type: "boolean",
-      description: "Track Windows onboarding acknowledgement (Windows only).",
     },
     {
       key: "chatgpt_base_url",
@@ -1685,11 +1843,6 @@ Set `model` to one available to your signed-in account or workspace. See
       type: 'boolean | { context_size = "low|medium|high", allowed_domains = [string], location = { country, region, city, timezone } }',
       description:
         "Optional web search tool configuration. The object form can set search context size, allowed search domains, and approximate user location. These search-domain filters are separate from sandboxed-command network domain rules and do not restrict connectors or MCP servers.",
-    },
-    {
-      key: "tools.view_image",
-      type: "boolean",
-      description: "Enable the local-image attachment tool `view_image`.",
     },
     {
       key: "web_search",
@@ -2002,6 +2155,12 @@ from either one wins.
         "Enforce the directory where Codex stores SQLite-backed runtime state.",
     },
     {
+      key: "unsafe_enforce_sqlite_journal_mode",
+      type: "boolean",
+      description:
+        "On Linux, set to `true` to migrate existing SQLite databases on NFS from WAL to DELETE journaling before opening them for writes. Defaults to `false`. The mount must support POSIX locks across hosts. Keep every other SQLite client that uses the databases stopped on every host until migration succeeds. Replacements preserve file mode bits but belong to the user running the migration and do not copy the original owner, group, or extended ACLs.",
+    },
+    {
       key: "log_dir",
       type: "string (path)",
       description: "Enforce the directory where Codex writes local log files.",
@@ -2020,6 +2179,24 @@ from either one wins.
       key: "allow_login_shell",
       type: "boolean",
       description: "Enforce whether shell tools can start a login shell.",
+    },
+    {
+      key: "config_server",
+      type: "table",
+      description:
+        "Enroll Codex with a configuration server through local managed requirements. Codex retrieves its policy bundle from this server. A cloud policy cannot configure its own server.",
+    },
+    {
+      key: "config_server.base_url",
+      type: "string",
+      description:
+        "Required HTTPS base URL. Codex appends `/codex/config/bundle`. Omit credentials, query parameters, and fragments from the base URL.",
+    },
+    {
+      key: "config_server.oauth",
+      type: "table",
+      description:
+        "OAuth settings for configuration server sign-in. Requires `authorization_url`, `token_url`, and a nonempty `client_id`. Optional fields are `device_authorization_url`, `resource`, `scopes` (defaults to an empty list), and `redirect_port` (nonzero). All endpoint URLs must use HTTPS.",
     },
     {
       key: "allowed_login_methods",
@@ -2209,6 +2386,12 @@ from either one wins.
         "Set to `false` to prohibit both explicit MXC selection and automatic selection through `features.prefer_mxc`. Omitting this requirement or setting it to `true` permits MXC but doesn't enable it or require it. Legacy implementation restrictions still apply to fallback.",
     },
     {
+      key: "windows.require_mxc",
+      type: "boolean",
+      description:
+        "On Windows, set to `true` to reject any effective sandbox implementation other than MXC. Select MXC separately. If Codex cannot use it, configuration fails instead of falling back to a legacy sandbox.",
+    },
+    {
       key: "remote_sandbox_config",
       type: "array<table>",
       description:
@@ -2281,6 +2464,12 @@ from either one wins.
         "Pin Apps integration availability on or off for managed users.",
     },
     {
+      key: "features.api_key_cyber_access_programs",
+      type: "boolean",
+      description:
+        "Allow Codex to send an explicitly selected cyber access program with requests to the built-in OpenAI provider when using API key authentication. The account and model must already have access to the program.",
+    },
+    {
       key: "features.in_app_updates",
       type: "boolean",
       description:
@@ -2293,6 +2482,12 @@ from either one wins.
         "Set to `false` in `requirements.toml` to disable the built-in browser pane that users open and control directly.",
     },
     {
+      key: "features.browser_annotation_api",
+      type: "boolean",
+      description:
+        "Set to `false` to block website-provided annotation customizations in the built-in browser. Users can still annotate pages themselves. Set to `true` to allow customizations when the app and account support them.",
+    },
+    {
       key: "features.in_app_chat",
       type: "boolean",
       description:
@@ -2303,6 +2498,12 @@ from either one wins.
       type: "boolean",
       description:
         "Set to `false` to disable in-app dictation in the desktop app. Setting it to `true` does not bypass other availability checks.",
+    },
+    {
+      key: "features.in_app_voice",
+      type: "boolean",
+      description:
+        "Set to `false` to disable real-time Codex voice in the desktop app. Use `features.in_app_dictation` to manage dictation separately.",
     },
     {
       key: "features.in_app_local_automation",
@@ -2332,7 +2533,19 @@ from either one wins.
       key: "features.fast_mode",
       type: "boolean",
       description:
-        "Pin the canonical `fast_mode` feature on or off for managed users.",
+        "Allow or block Fast mode for managed users. Older app servers also use this setting to control Ultrafast mode.",
+    },
+    {
+      key: "features.ultrafast_mode",
+      type: "boolean",
+      description:
+        "Allow or block Ultrafast mode for managed users. On app servers that support independent speed settings, this applies even when Fast mode is disabled. Availability depends on the model and account.",
+    },
+    {
+      key: "features.standalone_web_search",
+      type: "boolean",
+      description:
+        "Experimental. Set to `true` to keep the desktop app's native web search configuration when hosted search through MCP would otherwise be available.",
     },
     {
       key: "features.guardian_approval",
@@ -2397,10 +2610,33 @@ from either one wins.
       description: "Managed requirements for agent-driven Browser Use.",
     },
     {
+      key: "browser_use.extension",
+      type: "table",
+      description:
+        "Managed settings for Browser Use in supported Chromium browser extensions.",
+    },
+    {
+      key: "browser_use.extension.request_headers",
+      type: "array<table>",
+      description:
+        "Add up to 16 HTTP headers to requests from agent-controlled tabs in supported Chromium extensions. Use an empty list to send no managed headers.",
+    },
+    {
+      key: "browser_use.extension.request_headers[].name",
+      type: "string",
+      description:
+        "Header name. Reserved names, including `Authorization` and `Cookie`, are prohibited. Names and values support `{{session_id}}` as their only substitution.",
+    },
+    {
+      key: "browser_use.extension.request_headers[].value",
+      type: "string",
+      description: "Header value to send with matching browser requests.",
+    },
+    {
       key: "browser_use.allow_webmcp",
       type: "boolean",
       description:
-        "Set to `true` to opt the desktop app's built-in browser into site tools (WebMCP). Setting it to `false` or omitting it leaves normal feature availability checks in place; `false` does not enforce a block. User preferences and site permissions still apply.",
+        "Allow site tools (WebMCP) through workspace policy on eligible managed plans. Both `true` and an unset value allow access through this policy. Setting `false` turns off this path. Users can still have access through their account rollout. Browser settings and site permissions apply.",
     },
     {
       key: "browser_use.allow_history_access",
@@ -2617,6 +2853,23 @@ from either one wins.
       description: "Managed desktop application requirements.",
     },
     {
+      key: "application.storage",
+      type: "table",
+      description:
+        "Pin storage locations for newly created work on desktop builds that support managed storage. Each path independently overrides the local preference. Storage settings do not restrict filesystem access.",
+    },
+    {
+      key: "application.storage.default_project_parent",
+      type: "string (absolute path)",
+      description:
+        "Parent directory for new local projects created with Start from scratch.",
+    },
+    {
+      key: "application.storage.projectless_workspace_root",
+      type: "string (absolute path)",
+      description: "Root directory for new chats created without a project.",
+    },
+    {
       key: "application.network",
       type: "table",
       description:
@@ -2641,91 +2894,167 @@ from either one wins.
         "Allow or deny an exact domain. Use domain names without URL schemes, ports, or wildcards.",
     },
     {
-      key: "experimental_network",
+      key: "otel",
       type: "table",
       description:
-        "Administrator-managed network requirements for sandboxed local commands, enforced from `requirements.toml`. When enabled, these requirements can start the command network proxy without `features.network_proxy`. Browser tools separately check managed network denies and exclusive allowlists. These requirements do not route browser traffic through the proxy or control web search, apps, MCP servers, native-app traffic, or other capability-specific traffic. On supported managed Codex Cloud paths, these requirements constrain command networking alongside separate Cloud environment internet settings. Approved full sandbox escalation can bypass the command proxy where policy permits it. Work Cloud does not inherit these requirements.",
+        "Enforce the specified OpenTelemetry settings. Each exporter replaces the entire corresponding exporter definition. Span attributes and tracestate fields override only matching entries.",
     },
     {
-      key: "experimental_network.enabled",
+      key: "otel.environment",
+      type: "string",
+      description: "Enforce the environment label on telemetry.",
+    },
+    {
+      key: "otel.exporter",
+      type: "none | otlp-http | otlp-grpc",
+      description:
+        "Enforce the log exporter, including its endpoint, headers, and TLS settings.",
+    },
+    {
+      key: "otel.trace_exporter",
+      type: "none | otlp-http | otlp-grpc",
+      description:
+        "Enforce the trace exporter, including its endpoint, headers, and TLS settings.",
+    },
+    {
+      key: "otel.metrics_exporter",
+      type: "none | statsig | otlp-http | otlp-grpc",
+      description:
+        "Enforce the metrics exporter. The Statsig exporter follows `analytics.enabled`. Explicit OTLP metrics exporters run independently of that setting.",
+    },
+    {
+      key: "otel.log_user_prompt",
+      type: "boolean",
+      description: "Control whether exported logs include user prompt text.",
+    },
+    {
+      key: "otel.log_agent_responses",
+      type: "boolean",
+      description:
+        "Control whether OTLP logs include final response text from the main agent and spawned subagents.",
+    },
+    {
+      key: "otel.log_guardian_assessments",
+      type: "boolean",
+      description:
+        "Control whether OTLP logs include completed automatic approval assessments and their rationales.",
+    },
+    {
+      key: "otel.tool_result",
+      type: "table",
+      description:
+        "Enforce the tool-result log settings as a unit. An empty table enforces the default byte limit.",
+    },
+    {
+      key: "otel.tool_result.max_bytes",
+      type: "integer (nonnegative)",
+      description:
+        "Maximum UTF-8 bytes of tool-result text before the truncation notice in logs. Defaults to `2048` when the managed table is present.",
+    },
+    {
+      key: "otel.span_attributes",
+      type: "map<string,string>",
+      description:
+        "Enforce individual string attributes on exported spans. Higher-priority requirements win for the same attribute.",
+    },
+    {
+      key: "otel.tracestate",
+      type: "map<string,map<string,string>>",
+      description:
+        "Enforce individual fields within W3C tracestate members. Higher-priority requirements win for the same member and field.",
+    },
+    {
+      key: "network_proxy",
+      type: "table",
+      description:
+        "Administrator-managed network requirements for sandboxed local commands. Codex 0.166.0 accepts `[network_proxy]` and its alias `[experimental_network]`. Use one name per requirements layer. Keep the alias in published policies until every client and policy validator supports the new name. When enabled, these requirements can start the command network proxy without `features.network_proxy`. Browser tools separately check managed network denies and exclusive allowlists. These requirements do not route browser traffic through the proxy or control web search, apps, MCP servers, native-app traffic, or other capability-specific traffic. On supported managed Codex Cloud paths, these requirements constrain command networking alongside separate Cloud environment internet settings. Approved full sandbox escalation can bypass the command proxy where policy permits it. Work Cloud does not inherit these requirements.",
+    },
+    {
+      key: "network_proxy.enabled",
       type: "boolean",
       description:
         "Enable sandboxed networking requirements. This does not grant network access when the active sandbox keeps command networking off.",
     },
     {
-      key: "experimental_network.http_port",
+      key: "network_proxy.http_port",
       type: "integer",
       description:
-        "Loopback HTTP listener port to use for `[experimental_network]` requirements.",
+        "Loopback HTTP listener port to use for `[network_proxy]` requirements.",
     },
     {
-      key: "experimental_network.socks_port",
+      key: "network_proxy.socks_port",
       type: "integer",
       description:
-        "Loopback SOCKS5 listener port to use for `[experimental_network]` requirements.",
+        "Loopback SOCKS5 listener port to use for `[network_proxy]` requirements.",
     },
     {
-      key: "experimental_network.allow_upstream_proxy",
+      key: "network_proxy.allow_upstream_proxy",
       type: "boolean",
       description:
         "Allow sandboxed networking to chain through an upstream proxy from the environment.",
     },
     {
-      key: "experimental_network.dangerously_allow_non_loopback_proxy",
+      key: "network_proxy.dangerously_allow_non_loopback_proxy",
       type: "boolean",
       description:
-        "Permit non-loopback listener addresses for `[experimental_network]` requirements. Enabling it can expose listeners beyond localhost.",
+        "Permit non-loopback listener addresses for `[network_proxy]` requirements. Enabling it can expose listeners beyond localhost.",
     },
     {
-      key: "experimental_network.dangerously_allow_all_unix_sockets",
+      key: "network_proxy.dangerously_allow_all_unix_sockets",
       type: "boolean",
       description:
         "Permit arbitrary Unix socket destinations instead of allowlist-only access. Use only in tightly controlled environments.",
     },
     {
-      key: "experimental_network.domains",
+      key: "network_proxy.domains",
       type: "map<string, allow | deny>",
       description:
-        "Map-shaped administrator domain policy for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. Prefer scoped rules because `*` broadly opens public outbound access. Environment rules can replace the same Global domain key within a policy. Higher-priority values replace the same key, while other inherited keys remain. After composition, a different matching `deny`, including an inherited wildcard, still blocks a request. Empty environment maps do not clear Global rules. Verify executor support. Do not combine this with `experimental_network.allowed_domains` or `experimental_network.denied_domains`.",
+        "Map-shaped administrator domain policy for sandboxed networking. Supports exact hosts, `*.example.com` for subdomains only, `**.example.com` for apex plus subdomains, and global `*` allow rules. Prefer scoped rules because `*` broadly opens public outbound access. Environment rules can replace the same Global domain key within a policy. Higher-priority values replace the same key, while other inherited keys remain. After composition, a different matching `deny`, including an inherited wildcard, still blocks a request. Empty environment maps do not clear Global rules. Verify executor support. Do not combine this with `network_proxy.allowed_domains` or `network_proxy.denied_domains`.",
     },
     {
-      key: "experimental_network.domains.<pattern>",
+      key: "network_proxy.domains.<pattern>",
       type: "allow | deny",
       description:
         "Allow or deny sandboxed network access for the matching domain pattern. A deny rule wins when several patterns match.",
     },
     {
-      key: "experimental_network.allowed_domains",
+      key: "network_proxy.review_domains",
       type: "array<string>",
       description:
-        "Administrator allow rules for sandboxed-command networking while the managed network proxy is enabled. These rules do not apply to web search, apps, or MCP servers. Do not combine this with `experimental_network.domains`.",
+        "Route matching hosts through network approval even if an allow rule matches. An explicit deny takes precedence. Approved requests still undergo DNS and private-address checks. Defaults to an empty list.",
     },
     {
-      key: "experimental_network.denied_domains",
+      key: "network_proxy.allowed_domains",
       type: "array<string>",
       description:
-        "List-shaped administrator deny rules for sandboxed networking. Do not combine this with `experimental_network.domains`.",
+        "Administrator allow rules for sandboxed-command networking while the managed network proxy is enabled. These rules do not apply to web search, apps, or MCP servers. Do not combine this with `network_proxy.domains`.",
     },
     {
-      key: "experimental_network.managed_allowed_domains_only",
+      key: "network_proxy.denied_domains",
+      type: "array<string>",
+      description:
+        "List-shaped administrator deny rules for sandboxed networking. Do not combine this with `network_proxy.domains`.",
+    },
+    {
+      key: "network_proxy.managed_allowed_domains_only",
       type: "boolean",
       description:
         "When networking requirements are enabled and this is true, ordinary user configuration and per-domain approvals cannot expand the managed proxy allowlist. With no effective configured or inherited Allow entries, ordinary managed commands have no allowed destinations. A deny-only policy does not allow the rest of the internet. This does not cover every tool or approved full sandbox escalation.",
     },
     {
-      key: "experimental_network.unix_sockets",
+      key: "network_proxy.unix_sockets",
       type: "map<string, allow | deny>",
       description:
         "Administrator-managed Unix socket allowlist for sandboxed networking on macOS. Paths must be absolute.",
     },
     {
-      key: "experimental_network.unix_sockets.<path>",
+      key: "network_proxy.unix_sockets.<path>",
       type: "allow | deny",
       description:
         "On macOS, `allow` adds an absolute Unix socket path to the allowlist; `deny` leaves it out. A `deny` entry cannot block a socket when allow-all Unix sockets is enabled.",
     },
     {
-      key: "experimental_network.allow_local_binding",
+      key: "network_proxy.allow_local_binding",
       type: "boolean",
       description:
         "Permit broader local/private-network access for sandboxed networking. On the supported Codex Cloud proxy path, an explicit false can prevent upstream-proxy access even if a domain is allowed. It defaults to true only if no applicable requirement, selected network profile, or proxy feature setting provides a value. Inherited false remains explicit. A supported higher-priority Cloud override can change it without broadening Global for Local or adding domain Allow entries. Verify executor support. Do not apply this Cloud default to Local.",
@@ -2752,7 +3081,7 @@ from either one wins.
       key: "hooks.<Event>",
       type: "array<table>",
       description:
-        "Matcher groups for a hook event such as `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SessionEnd`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.",
+        "Matcher groups for a hook event such as `PreModelRequest`, `PostModelRequest`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `SessionStart`, `SessionEnd`, `SubagentStart`, `SubagentStop`, `UserPromptSubmit`, or `Stop`.",
     },
     {
       key: "hooks.<Event>[].hooks",

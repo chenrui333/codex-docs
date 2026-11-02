@@ -78,6 +78,10 @@ model_provider = "openai"
 
 # service_tier = "fast"
 
+# For Google Cloud Vertex AI, set model_provider = "gcp" above and configure
+
+# the project under [model_providers.gcp] below or set GOOGLE_CLOUD_PROJECT.
+
 # Optional manual model metadata. When unset, Codex uses model or preset defaults.
 
 # model_context_window = 128000 # tokens; default: auto for model
@@ -86,11 +90,21 @@ model_provider = "openai"
 
 # model_auto_compact_token_limit_scope = "total" # total | body_after_prefix; default: total
 
+# Compact after a final response at 80% of the usable context window.
+
+# Leave unset or set to 0 to disable turn-end compaction.
+
+# model_post_turn_compact_threshold_percent = 80
+
 # tool_output_token_limit = 12000 # tokens stored per tool output
 
 # model_catalog_json = "/absolute/path/to/models.json" # optional startup-only model catalog override
 
 # background_terminal_max_timeout = 300000 # ms; max empty write_stdin poll window (default 5m)
+
+# Unload a thread after five minutes with no activity or subscribers (default: 60 seconds).
+
+# thread_unload_delay_secs = 300
 
 # log_dir = "/absolute/path/to/codex-logs" # log directory; setting explicitly enables codex-tui.log; default: "$CODEX_HOME/log"
 
@@ -117,10 +131,6 @@ model_provider = "openai"
 # Text verbosity for GPT-5 family (Responses API): low | medium | high
 
 # model_verbosity = "medium"
-
-# Force enable or disable reasoning summaries for current model.
-
-# model_supports_reasoning_summaries = true
 
 ################################################################################
 
@@ -195,6 +205,14 @@ approval_policy = "on-request"
 # Default: true. Set false to force non-login shells and reject explicit login-shell requests.
 
 allow_login_shell = true
+
+# macOS only. Set in the execution host's $CODEX_HOME/config.toml, then restart Codex.
+
+# If true, already writable roots under CODEX_HOME can follow symlinks, including
+
+# targets outside CODEX_HOME or targets that change between commands.
+
+# allow_symlinked_codex_home = false
 
 # Filesystem/network sandbox policy for tool calls:
 
@@ -326,10 +344,6 @@ hide_agent_reasoning = false
 
 show_raw_agent_reasoning = false
 
-# Track Windows onboarding acknowledgement (Windows only). Default: false
-
-windows_wsl_setup_acknowledged = false
-
 # Check for updates on startup. Default: true
 
 check_for_update_on_startup = true
@@ -388,6 +402,12 @@ web_search = "cached"
 
 # interrupt_message = true
 
+# Default budget for new goals and maximum allowed goal budget.
+
+# [goals]
+
+# max_goal_token_budget = 100000
+
 # [agents.reviewer]
 
 # description = "Find correctness, security, and test risks in code."
@@ -408,11 +428,19 @@ web_search = "cached"
 
 # max_context_tokens = 2000
 
-# Disable or re-enable a specific skill without deleting it.
+# include_instructions = true
 
-[[skills.config]]
+# [skills.bundled]
 
-# path = "/path/to/skill/SKILL.md"
+# enabled = false
+
+# Disable every skill with this name. To match one file, use path instead.
+
+# [[skills.config]]
+
+# name = "review-changes"
+
+# Alternative selector: path = "/path/to/skill/SKILL.md"
 
 # enabled = false
 
@@ -684,6 +712,14 @@ show_tooltips = true
 
 # theme = "catppuccin-mocha"
 
+# Save a reusable prompt or slash command in slot 1 of /presets.
+
+# [tui.presets.1]
+
+# label = "Review changes"
+
+# input = "/review"
+
 # Custom key bindings. Selected composer actions fall back to matching [tui.keymap.global] bindings.
 
 # Use [] to unbind an action.
@@ -712,7 +748,7 @@ show_tooltips = true
 
 # Enable or disable analytics. When unset, the client default applies.
 
-# In Codex CLI, false also disables custom OTLP metrics exporters.
+# Setting this to false disables built-in Statsig metrics. Custom OTLP exporters remain active.
 
 [analytics]
 enabled = true
@@ -747,6 +783,8 @@ enabled = true
 [features]
 
 # Leave this table empty to accept defaults. Set explicit booleans to opt in/out.
+
+# view_image = false # disable the built-in local image viewer (enabled by default)
 
 # Prefer MXC on Windows when the device and policy support it; otherwise use the legacy sandbox below.
 
@@ -792,9 +830,7 @@ prefer_mxc = true
 
 # Rollout budget tracking. This feature is under development and off by default.
 
-# limit_tokens is required when enabled.
-
-# Optional reminder_interval_tokens defaults to 10% of limit_tokens.
+# Set limit_tokens and reminder_at_remaining_tokens when enabled.
 
 # Token weights default to 1.0.
 
@@ -804,7 +840,7 @@ prefer_mxc = true
 
 # limit_tokens = 100000
 
-# reminder_interval_tokens = 10000
+# reminder_at_remaining_tokens = [50000, 25000, 10000]
 
 # sampling_token_weight = 1.0
 
@@ -819,6 +855,12 @@ prefer_mxc = true
 # Enable memories with [features].memories, then tune memory behavior here.
 
 # [memories]
+
+# version = "v1" # keep reading the original store during migration
+
+# dual_write = true # generate both stores while reading v1
+
+# consolidation_service_tier = "default" # Standard tier for memory consolidation
 
 # generate_memories = true
 
@@ -864,7 +906,7 @@ prefer_mxc = true
 
 # enabled = true # optional; default true
 
-# required = true # optional; fail startup/resume if this server cannot initialize
+# required = true # require this server to be ready at startup
 
 # command = "docs-server" # required
 
@@ -878,7 +920,7 @@ prefer_mxc = true
 
 # cwd = "/path/to/server" # optional working directory override
 
-# experimental_environment = "remote" # experimental: run stdio via a remote executor
+# environment_id = "devbox" # ID of a configured executor. Defaults to "local".
 
 # startup_timeout_sec = 10.0 # optional; default 10.0 seconds
 
@@ -886,13 +928,17 @@ prefer_mxc = true
 
 # tool_timeout_sec = 60.0 # optional; default 60.0 seconds
 
+# supports_parallel_tool_calls = true # only if all tools are safe to call concurrently
+
 # enabled_tools = ["search", "summarize"] # optional allow-list
 
 # disabled_tools = ["slow-tool"] # optional deny-list (applied after allow-list)
 
-# scopes = ["read:docs"] # optional OAuth scopes
+# startup_readiness = "catalog" # use a valid cached tool catalog while connecting
 
-# oauth_resource = "https://docs.example.com/" # optional OAuth resource
+# tool_input_schema_max_bytes = 8000 # default 5000 UTF-8 bytes
+
+# omit_tools_from = ["direct"] # omit from the initial tool list
 
 # [mcp_servers.docs.tools.search]
 
@@ -904,7 +950,7 @@ prefer_mxc = true
 
 # enabled = true # optional; default true
 
-# required = true # optional; fail startup/resume if this server cannot initialize
+# required = true # require this server to be ready at startup
 
 # url = "https://github-mcp.example.com/mcp" # required
 
@@ -924,7 +970,9 @@ prefer_mxc = true
 
 # disabled_tools = ["delete_issue"] # optional deny-list
 
-# scopes = ["repo"] # optional OAuth scopes
+# scopes = ["repo"] # override scopes discovered from the server
+
+# oauth_resource = "https://github-mcp.example.com/"
 
 # [mcp_servers.github.oauth]
 
@@ -952,11 +1000,23 @@ prefer_mxc = true
 
 # - lmstudio
 
-# - amazon-bedrock
+# - amazon-bedrock and amazon-bedrock-runtime
+
+# - gcp (Google Cloud Vertex AI)
 
 # These IDs are reserved. Use a different ID for custom providers.
 
 [model_providers]
+
+# Built-in Vertex AI provider options. The file path applies only to its auth command.
+
+# [model_providers.gcp]
+
+# project_id = "my-project"
+
+# location = "global"
+
+# credential_file = "/absolute/path/to/adc.json"
 
 # --- Example: built-in Amazon Bedrock provider options ---
 
@@ -1066,6 +1126,18 @@ prefer_mxc = true
 
 ################################################################################
 
+# Keep installed plugins inactive by default, with an exception for one
+
+# plugin that its marketplace or account already enables.
+
+# [plugins._default]
+
+# enabled = false
+
+# [plugins."review@team"]
+
+# enabled = true
+
 # Optional per-app controls.
 
 [apps]
@@ -1166,8 +1238,6 @@ prefer_mxc = true
 
 # experimental_compact_prompt_file = "./compact_prompt.txt"
 
-# tools_view_image = true
-
 # features = { shell_snapshot = false }
 
 ################################################################################
@@ -1186,21 +1256,25 @@ prefer_mxc = true
 
 ################################################################################
 
-# Tools
-
-################################################################################
-
-[tools]
-
-# view_image = true
-
-################################################################################
-
 # OpenTelemetry (OTEL)
 
 ################################################################################
 
 [otel]
+
+# Each option sends potentially sensitive text to the configured OTLP log exporter.
+
+# log_agent_responses = false
+
+# log_guardian_assessments = false
+
+# Byte limit for logged tool results. Model-visible output has a separate limit.
+
+# tool_result.max_bytes = 2048
+
+# span_attributes = { team = "platform" }
+
+# tracestate = { acme = { region = "eu" } }
 
 # Include user prompt text in logs. Default: false
 
@@ -1220,7 +1294,7 @@ trace_exporter = "none"
 
 # Metrics exporter: none | statsig | otlp-http | otlp-grpc
 
-# Default: statsig. In Codex CLI, analytics.enabled = false disables all metrics exporters.
+# The default Statsig exporter follows analytics.enabled. Custom OTLP exporters run independently.
 
 # Set to none to disable metrics export.
 

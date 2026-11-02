@@ -53,21 +53,25 @@ Scan processes can inherit your environment, so remove unrelated credentials
 before you start. See [Local scan
 permissions](https://learn.chatgpt.com/docs/security/cli/reference#local-scan-permissions).
 
-Save this example as `scan.mjs`. Replace the paths, run a standard repository
-scan, and close the client when the work completes. Pass `outputDir` to choose a private
+Save this example as `scan.mjs`. Pass the paths to the repository and results directory as command-line arguments. Run a standard repository scan and close the client
+when the work completes. Pass `outputDir` to choose a private
 results directory outside the enclosing Git worktree.
 
 If you omit `outputDir`, Codex Security saves results in its own persistent
 state directory. Results can include source excerpts and vulnerability
 details. Set who can read them and how long to keep them.
 
-```ts
+```typescript
 
+const [repository, outputDir] = process.argv.slice(2);
+if (!repository || !outputDir) {
+  throw new Error("Usage: node scan.mjs <repository> <results-directory>");
+}
 const security = new CodexSecurity();
 
 try {
-  const result = await security.run("/path/to/repository", {
-    outputDir: "/path/outside/repository/results",
+  const result = await security.run(repository, {
+    outputDir,
   });
 
   console.log(result.reportPath);
@@ -81,7 +85,7 @@ try {
 Run it with Node.js:
 
 ```bash
-node scan.mjs
+node scan.mjs /path/to/repository /path/outside/repository/results
 ```
 
 The example prints the report path, scan status, and finding count.
@@ -100,13 +104,17 @@ In later examples, reuse the open `security` client and keep `close()` in
 ## Check inputs with preflight
 
 Use `preflight` to check a repository, target, mode, knowledge-base documents,
-output location, and Codex configuration before starting a scan:
+output location, and Codex configuration before starting a scan. This example
+reads `security.md` from the repository root:
 
-```ts
-const plan = await security.preflight("/path/to/repository", {
+```typescript
+
+const knowledgeBase = join(repository, "security.md");
+
+const plan = await security.preflight(repository, {
   target: ["services/billing", "packages/auth"],
-  knowledgeBasePaths: ["/path/to/architecture.md"],
-  outputDir: "/path/outside/repository/results",
+  knowledgeBasePaths: [knowledgeBase],
+  outputDir: outputDir,
 });
 
 console.log(plan.repository);
@@ -122,9 +130,9 @@ that the scan can authenticate or start.
 To preview archival for an existing result directory, set
 `archiveExisting: true`:
 
-```ts
-const plan = await security.preflight("/path/to/repository", {
-  outputDir: "/path/outside/repository/results",
+```typescript
+const plan = await security.preflight(repository, {
+  outputDir: outputDir,
   archiveExisting: true,
 });
 
@@ -135,9 +143,9 @@ The returned `archiveDir` previews the archive naming. The final path can
 differ because `run` generates its own unique destination. Capture the actual
 archive path with `onOutputArchived`:
 
-```ts
-await security.run("/path/to/repository", {
-  outputDir: "/path/outside/repository/results",
+```typescript
+await security.run(repository, {
+  outputDir: outputDir,
   archiveExisting: true,
   onOutputArchived(archiveDir) {
     console.log("Archived results:", archiveDir);
@@ -157,8 +165,8 @@ The default target is the complete repository.
 
 Pass an array of paths inside the repository:
 
-```ts
-const result = await security.run("/path/to/repository", {
+```typescript
+const result = await security.run(repository, {
   target: ["services/billing", "packages/auth"],
 });
 ```
@@ -171,14 +179,14 @@ repository and removes duplicates.
 Use `DiffTarget.refs` to scan committed changes between two locally available
 Git revisions:
 
-```ts
+```typescript
 
 const target = DiffTarget.refs({
-  base: "origin/main",
+  base: "HEAD~1",
   head: "HEAD",
 });
 
-const result = await security.run("/path/to/repository", { target });
+const result = await security.run(repository, { target });
 ```
 
 The head defaults to `HEAD`. Pass the Git worktree root as the repository and
@@ -189,9 +197,9 @@ check out the requested head before scanning.
 Use `DiffTarget.workingTree` to scan staged and unstaged changes against a base
 revision:
 
-```ts
+```typescript
 const target = DiffTarget.workingTree({ base: "HEAD" });
-const result = await security.run("/path/to/repository", { target });
+const result = await security.run(repository, { target });
 ```
 
 The base defaults to `HEAD`. Fetch the selected revisions before starting a
@@ -201,8 +209,8 @@ diff or working-tree scan.
 
 Set `mode: "deep"` for a repository or path scan that needs broader review:
 
-```ts
-const result = await security.run("/path/to/repository", {
+```typescript
+const result = await security.run(repository, {
   target: ["services/billing"],
   mode: "deep",
   workers: 2,
@@ -230,12 +238,12 @@ validation and post-scan instructions run outside that allowance.
 Pass architecture documents, threat models, or security policies through
 `knowledgeBasePaths`:
 
-```ts
-const result = await security.run("/path/to/repository", {
-  knowledgeBasePaths: [
-    "/path/to/architecture.md",
-    "/path/to/security-policies",
-  ],
+```typescript
+
+const knowledgeBase = join(repository, "security.md");
+
+const result = await security.run(repository, {
+  knowledgeBasePaths: [knowledgeBase],
 });
 ```
 
@@ -253,8 +261,8 @@ change or are deleted. Canonical reports don't embed the document text.
 
 Use `scanPrompt` to focus the scan and `postScanPrompt` to request a follow-up:
 
-```ts
-const result = await security.run("/path/to/repository", {
+```typescript
+const result = await security.run(repository, {
   scanPrompt: "Focus on tenant isolation and authorization checks.",
   postScanPrompt: "Write confirmed findings to post-scan-summary.md.",
 });
@@ -269,13 +277,21 @@ is outside `maxCostUsd`.
 
 Pass `validationPrompt` to check candidate findings with your own test
 procedure. For example, point the prompt at a script you control outside the
-checkout and run it against your local test server:
+checkout and run it against your local test server. Pass the validation script
+and server URL after the repository and results directory arguments:
 
-```ts
-const result = await security.run("/path/to/repository", {
-  validationPrompt:
-    "Run /path/to/security-tests/validate.sh against http://localhost:3000 and report which findings reproduce.",
+```typescript
+const [validationScript, validationUrl] = process.argv.slice(4);
+if (!validationScript || !validationUrl)
+  throw new Error("Pass a validation script path and service URL.");
+const result = await security.run(repository, {
+  outputDir,
+  validationPrompt: `Run ${validationScript} against ${validationUrl} and report which findings reproduce.`,
 });
+```
+
+```bash
+node scan.mjs /path/to/repository /path/outside/repository/results /path/to/validate.sh http://localhost:3000
 ```
 
 Use `validationPrompt` with standard repository, path, committed-diff, or
@@ -288,8 +304,8 @@ reject custom validation.
 Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
 Use `onCost` to track cost as the scan runs and report `estimatedUsdRange`:
 
-```ts
-const result = await security.run("/path/to/repository", {
+```typescript
+const result = await security.run(repository, {
   maxCostUsd: 5,
   onCost(cost) {
     console.log(cost.estimatedUsdRange);
@@ -317,14 +333,14 @@ Use `runComponentScans` to scan services or packages in parallel and combine
 their findings. Give each component a name and one or more repository-relative
 paths. Choose a new or empty output directory outside the enclosing Git worktree.
 
-```ts
+```typescript
 
 const result = await runComponentScans({
-  repository: "/path/to/project",
-  outputDir: "/path/outside/project/component-results",
+  repository: repository,
+  outputDir: outputDir,
   components: [
-    { name: "API", paths: ["apps/api", "packages/auth"] },
-    { name: "Web", paths: ["apps/web"] },
+    { name: "API", paths: ["services/api", "packages/auth"] },
+    { name: "Web", paths: ["services/billing"] },
   ],
   workers: 2,
   onProgress: ({ name, status }) => console.log(name, status),
@@ -339,10 +355,11 @@ To let Codex propose components, pass `auto: true` instead of `components`.
 Add `planOnly: true` to save the plan in `components.json` without running any
 scans:
 
-```ts
+```typescript
+
 const plan = await runComponentScans({
-  repository: "/path/to/project",
-  outputDir: "/path/outside/project/component-plan",
+  repository: repository,
+  outputDir: outputDir,
   auto: true,
   planOnly: true,
 });
@@ -385,7 +402,7 @@ the installed plugin version differs.
 
 Read the severity and first source location for each finding:
 
-```ts
+```typescript
 for (const finding of result.findings.findings) {
   const location = finding.locations[0];
   if (location === undefined) continue;
@@ -404,7 +421,7 @@ Findings can include optional `codeEvidence`, `rootCause`, `validation`,
 For repository-wide findings, `confirmedInLatestScan` distinguishes findings
 seen in the latest scan from earlier findings that remain open:
 
-```ts
+```typescript
 for (const finding of result.repositoryFindings ?? []) {
   console.log(finding.title, finding.confirmedInLatestScan);
 }
@@ -422,13 +439,20 @@ Use the path returned by the export instead of assuming a filename.
 ### Export saved artifacts
 
 Export saved results without starting Codex, loading credentials, or making a
-model call. This example exports a saved threat model to stdout. Replace
-`/path/to/scan` with a saved result directory:
+model call. This example exports a saved threat model to stdout. Pass an existing
+scan results directory as the first command-line argument:
 
-```ts
+```typescript
+
+const directory = process.argv[2];
+if (!directory) {
+  throw new Error(
+    "Pass an existing scan results directory as the first argument."
+  );
+}
 
 await exportArtifact({
-  source: { directory: "/path/to/scan" },
+  source: { directory },
   artifact: "threat-model",
   output: "-",
 });
@@ -451,12 +475,12 @@ Use `validate` to check a finding from another tool or workflow against the
 source. It doesn't start a new scan, run the application, or execute its tests.
 Run a separate reproduction if you need runtime evidence.
 
-```ts
+```typescript
 const validation = await security.validate({
-  repositoryPath: "/path/to/repository",
+  repositoryPath: repository,
   finding: {
     title: "Possible SQL injection",
-    location: "src/query.ts:42",
+    location: "src/index.js:1",
   },
 });
 
@@ -476,9 +500,9 @@ Save that string if you need a report file.
 Pass `ScanOptions` callbacks to report scan startup, worker progress, and
 connection retries:
 
-```ts
-const result = await security.run("/path/to/repository", {
-  outputDir: "/path/outside/repository/results",
+```typescript
+const result = await security.run(repository, {
+  outputDir: outputDir,
   onScanStarted() {
     console.log("Scan started");
   },
@@ -506,11 +530,11 @@ Pass an `AbortSignal` from your request or job controller to cancel a scan.
 If the scan is still running after 30 minutes, this example interrupts it and
 prints the directory containing any saved output:
 
-```ts
+```typescript
 
 try {
-  await security.run("/path/to/repository", {
-    outputDir: "/path/outside/repository/results",
+  await security.run(repository, {
+    outputDir: outputDir,
     signal: AbortSignal.timeout(30 * 60 * 1000),
   });
 } catch (error) {
@@ -558,8 +582,8 @@ Codex setting. Choose a [model](https://learn.chatgpt.com/docs/models) available
 
 ```typescript
 const security = new CodexSecurity({
-  pluginPath: "/path/to/codex-security-plugin",
-  pythonPath: "/path/to/python",
+  // To override the bundled plugin, add pluginPath: "/path/to/plugin".
+  pythonPath: "python3",
   codexOverrides: {
     model: "gpt-6.1-sol",
     model_reasoning_effort: "medium",
@@ -567,7 +591,8 @@ const security = new CodexSecurity({
 });
 ```
 
-`pluginPath` accepts a plugin directory or ZIP. `pythonPath` selects the
+Set `pluginPath` to a plugin directory or ZIP to override the bundled plugin.
+`pythonPath` selects the
 plugin interpreter. `codexOverrides` merges supported values into the isolated
 Codex configuration. To use [Amazon
 Bedrock](https://learn.chatgpt.com/docs/security/cli/reference#use-amazon-bedrock), set
@@ -582,7 +607,7 @@ For OpenRouter or Fireworks, also provide the matching API key and a complete
 provider configuration in `codexOverrides`. Set `OPENROUTER_API_KEY`
 and pass an available OpenRouter model ID to this TypeScript function:
 
-```ts
+```typescript
 function createOpenRouterClient(model: string) {
   return new CodexSecurity({
     codexOverrides: {
@@ -624,8 +649,8 @@ for CI and server-side automation.
 When both an API key and a stored sign-in are available, the SDK uses the API
 key by default. To use your ChatGPT sign-in instead, select it for the scan:
 
-```ts
-const result = await security.run("/path/to/repository", {
+```typescript
+const result = await security.run(repository, {
   auth: "chatgpt",
 });
 ```

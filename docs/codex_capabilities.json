@@ -58446,6 +58446,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "allow_symlinked_codex_home",
+      "id": "config_key:allow_symlinked_codex_home",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "allow_symlinked_codex_home",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -59346,6 +59374,90 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "application.network.enabled",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "application.storage",
+      "id": "config_key:application.storage",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "application.storage",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "application.storage.default_project_parent",
+      "id": "config_key:application.storage.default_project_parent",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "application.storage.default_project_parent",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "application.storage.projectless_workspace_root",
+      "id": "config_key:application.storage.projectless_workspace_root",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "application.storage.projectless_workspace_root",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -60412,6 +60524,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "apps.<id>.enabled",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "apps.<id>.omit_tools_from",
+      "id": "config_key:apps.<id>.omit_tools_from",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "apps.<id>.omit_tools_from",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -62404,6 +62544,118 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "browser_use.disable_auto_review",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "browser_use.extension",
+      "id": "config_key:browser_use.extension",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "browser_use.extension",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "browser_use.extension.request_headers",
+      "id": "config_key:browser_use.extension.request_headers",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "browser_use.extension.request_headers",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "browser_use.extension.request_headers[].name",
+      "id": "config_key:browser_use.extension.request_headers[].name",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "browser_use.extension.request_headers[].name",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "browser_use.extension.request_headers[].value",
+      "id": "config_key:browser_use.extension.request_headers[].value",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "browser_use.extension.request_headers[].value",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -65973,7 +66225,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66040,7 +66292,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network",
@@ -66055,7 +66308,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66122,7 +66375,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.allow_local_binding",
@@ -66137,7 +66391,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66204,7 +66458,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.allow_upstream_proxy",
@@ -66219,7 +66474,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66286,7 +66541,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.allowed_domains",
@@ -66301,7 +66557,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66368,7 +66624,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.dangerously_allow_all_unix_sockets",
@@ -66383,7 +66640,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66450,7 +66707,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.dangerously_allow_non_loopback_proxy",
@@ -66465,7 +66723,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66532,7 +66790,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.denied_domains",
@@ -66547,7 +66806,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66614,7 +66873,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.domains",
@@ -66629,7 +66889,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.157.1",
@@ -66670,7 +66930,8 @@
       "lifecycle": {
         "first_seen_version": "0.157.1",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.domains.<pattern>",
@@ -66685,7 +66946,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66752,7 +67013,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.enabled",
@@ -66767,7 +67029,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66834,7 +67096,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.http_port",
@@ -66849,7 +67112,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66916,7 +67179,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.managed_allowed_domains_only",
@@ -66931,7 +67195,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -66998,7 +67262,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.socks_port",
@@ -67013,7 +67278,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -67080,7 +67345,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.unix_sockets",
@@ -67095,7 +67361,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.157.1",
@@ -67136,7 +67402,8 @@
       "lifecycle": {
         "first_seen_version": "0.157.1",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "experimental_network.unix_sockets.<path>",
@@ -67400,6 +67667,35 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "features.api_key_cyber_access_programs",
+      "feature_flag": "api_key_cyber_access_programs",
+      "id": "config_key:features.api_key_cyber_access_programs",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.api_key_cyber_access_programs",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -67469,6 +67765,35 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "features.apps",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "features.browser_annotation_api",
+      "feature_flag": "browser_annotation_api",
+      "id": "config_key:features.browser_annotation_api",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.browser_annotation_api",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -68875,6 +69200,35 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "features.in_app_updates",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "features.in_app_voice",
+      "feature_flag": "in_app_voice",
+      "id": "config_key:features.in_app_voice",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.in_app_voice",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -70797,6 +71151,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "features.rollout_budget.reminder_at_remaining_tokens",
+      "id": "config_key:features.rollout_budget.reminder_at_remaining_tokens",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.rollout_budget.reminder_at_remaining_tokens",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": false,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -70861,7 +71243,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "features.rollout_budget.reminder_interval_tokens",
@@ -71210,6 +71593,35 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "features.standalone_web_search",
+      "feature_flag": "standalone_web_search",
+      "id": "config_key:features.standalone_web_search",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.standalone_web_search",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.162.1",
         "0.163.0",
         "0.164.0",
@@ -71316,6 +71728,35 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "features.unified_exec",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "features.view_image",
+      "feature_flag": "view_image",
+      "id": "config_key:features.view_image",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "features.view_image",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -72058,6 +72499,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "forced_login_method",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "goals.max_goal_token_budget",
+      "id": "config_key:goals.max_goal_token_budget",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "goals.max_goal_token_budget",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -75826,6 +76295,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "mcp_servers.<id>.environment_id",
+      "id": "config_key:mcp_servers.<id>.environment_id",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "mcp_servers.<id>.environment_id",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": false,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -75890,7 +76387,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "mcp_servers.<id>.experimental_environment",
@@ -77332,6 +77830,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "mcp_servers.<id>.omit_tools_from",
+      "id": "config_key:mcp_servers.<id>.omit_tools_from",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "mcp_servers.<id>.omit_tools_from",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -77496,6 +78022,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "mcp_servers.<id>.startup_readiness",
+      "id": "config_key:mcp_servers.<id>.startup_readiness",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "mcp_servers.<id>.startup_readiness",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -77646,6 +78200,62 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "mcp_servers.<id>.startup_timeout_sec",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "mcp_servers.<id>.supports_parallel_tool_calls",
+      "id": "config_key:mcp_servers.<id>.supports_parallel_tool_calls",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "mcp_servers.<id>.supports_parallel_tool_calls",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "mcp_servers.<id>.tool_input_schema_max_bytes",
+      "id": "config_key:mcp_servers.<id>.tool_input_schema_max_bytes",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "mcp_servers.<id>.tool_input_schema_max_bytes",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -78064,6 +78674,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "memories.consolidation_service_tier",
+      "id": "config_key:memories.consolidation_service_tier",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "memories.consolidation_service_tier",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -78132,6 +78770,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "memories.disable_on_external_context",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "memories.dual_write",
+      "id": "config_key:memories.dual_write",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "memories.dual_write",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -78884,6 +79550,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "memories.version",
+      "id": "config_key:memories.version",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "memories.version",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -79362,6 +80056,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "model_instructions_file",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "model_post_turn_compact_threshold_percent",
+      "id": "config_key:model_post_turn_compact_threshold_percent",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "model_post_turn_compact_threshold_percent",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -81590,6 +82312,118 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "model_providers.gcp.base_url",
+      "id": "config_key:model_providers.gcp.base_url",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "model_providers.gcp.base_url",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "model_providers.gcp.credential_file",
+      "id": "config_key:model_providers.gcp.credential_file",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "model_providers.gcp.credential_file",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "model_providers.gcp.location",
+      "id": "config_key:model_providers.gcp.location",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "model_providers.gcp.location",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "model_providers.gcp.project_id",
+      "id": "config_key:model_providers.gcp.project_id",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "model_providers.gcp.project_id",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -81751,7 +82585,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -81818,7 +82652,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "model_supports_reasoning_summaries",
@@ -82314,6 +83149,454 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "models.new_thread.service_tier",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy",
+      "id": "config_key:network_proxy",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.allow_local_binding",
+      "id": "config_key:network_proxy.allow_local_binding",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.allow_local_binding",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.allow_upstream_proxy",
+      "id": "config_key:network_proxy.allow_upstream_proxy",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.allow_upstream_proxy",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.allowed_domains",
+      "id": "config_key:network_proxy.allowed_domains",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.allowed_domains",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.dangerously_allow_all_unix_sockets",
+      "id": "config_key:network_proxy.dangerously_allow_all_unix_sockets",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.dangerously_allow_all_unix_sockets",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.dangerously_allow_non_loopback_proxy",
+      "id": "config_key:network_proxy.dangerously_allow_non_loopback_proxy",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.dangerously_allow_non_loopback_proxy",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.denied_domains",
+      "id": "config_key:network_proxy.denied_domains",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.denied_domains",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.domains",
+      "id": "config_key:network_proxy.domains",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.domains",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.domains.<pattern>",
+      "id": "config_key:network_proxy.domains.<pattern>",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.domains.<pattern>",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.enabled",
+      "id": "config_key:network_proxy.enabled",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.enabled",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.http_port",
+      "id": "config_key:network_proxy.http_port",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.http_port",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.managed_allowed_domains_only",
+      "id": "config_key:network_proxy.managed_allowed_domains_only",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.managed_allowed_domains_only",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.review_domains",
+      "id": "config_key:network_proxy.review_domains",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.review_domains",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.socks_port",
+      "id": "config_key:network_proxy.socks_port",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.socks_port",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.unix_sockets",
+      "id": "config_key:network_proxy.unix_sockets",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.unix_sockets",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "network_proxy.unix_sockets.<path>",
+      "id": "config_key:network_proxy.unix_sockets.<path>",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "network_proxy.unix_sockets.<path>",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -83066,6 +84349,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel",
+      "id": "config_key:otel",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -83722,6 +85033,62 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel.log_agent_responses",
+      "id": "config_key:otel.log_agent_responses",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.log_agent_responses",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel.log_guardian_assessments",
+      "id": "config_key:otel.log_guardian_assessments",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.log_guardian_assessments",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -83872,6 +85239,90 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "otel.metrics_exporter",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel.span_attributes",
+      "id": "config_key:otel.span_attributes",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.span_attributes",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel.tool_result",
+      "id": "config_key:otel.tool_result",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.tool_result",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel.tool_result.max_bytes",
+      "id": "config_key:otel.tool_result.max_bytes",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.tool_result.max_bytes",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -84446,6 +85897,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "otel.trace_exporter.<id>.tls.client-private-key",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "otel.tracestate",
+      "id": "config_key:otel.tracestate",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.tracestate",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -88136,6 +89615,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "plugins._default.enabled",
+      "id": "config_key:plugins._default.enabled",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "plugins._default.enabled",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -90514,6 +92021,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "skills.bundled.enabled",
+      "id": "config_key:skills.bundled.enabled",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "skills.bundled.enabled",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -90678,6 +92213,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "skills.config.<index>.name",
+      "id": "config_key:skills.config.<index>.name",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "skills.config.<index>.name",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -90746,6 +92309,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "skills.config.<index>.path",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "skills.include_instructions",
+      "id": "config_key:skills.include_instructions",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "skills.include_instructions",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -90986,6 +92577,34 @@
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "suppress_unstable_features_warning",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "thread_unload_delay_secs",
+      "id": "config_key:thread_unload_delay_secs",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "thread_unload_delay_secs",
       "provenance": [
         {
           "evidence_type": "official_documentation",
@@ -91243,7 +92862,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -91310,7 +92929,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "tools.view_image",
@@ -92220,6 +93840,62 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "tui.presets.<digit>.input",
+      "id": "config_key:tui.presets.<digit>.input",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "tui.presets.<digit>.input",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "tui.presets.<digit>.label",
+      "id": "config_key:tui.presets.<digit>.label",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "tui.presets.<digit>.label",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -92830,6 +94506,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "unsafe_enforce_sqlite_journal_mode",
+      "id": "config_key:unsafe_enforce_sqlite_journal_mode",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "unsafe_enforce_sqlite_journal_mode",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -93114,6 +94818,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.166.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.166.0"
+      ],
+      "config_key": "windows.require_mxc",
+      "id": "config_key:windows.require_mxc",
+      "lifecycle": {
+        "first_seen_version": "0.166.0",
+        "last_seen_version": "0.166.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "windows.require_mxc",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -93248,7 +94980,7 @@
       "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
     },
     {
-      "active": true,
+      "active": false,
       "category": "config_key",
       "codex_cli_versions": [
         "0.151.0",
@@ -93315,7 +95047,8 @@
       "lifecycle": {
         "first_seen_version": "0.151.0",
         "last_seen_version": "0.166.0",
-        "status": "active"
+        "removed_in_version": "0.166.0",
+        "status": "removed_from_inventory"
       },
       "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
       "name": "windows_wsl_setup_acknowledged",
@@ -93507,7 +95240,7 @@
       "config_keys": [
         "features.api_key_cyber_access_programs"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "api_key_cyber_access_programs",
       "id": "feature_flag:api_key_cyber_access_programs",
@@ -94612,7 +96345,7 @@
       "config_keys": [
         "features.browser_annotation_api"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "browser_annotation_api",
       "id": "feature_flag:browser_annotation_api",
@@ -100475,7 +102208,7 @@
       "config_keys": [
         "features.in_app_voice"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "in_app_voice",
       "id": "feature_flag:in_app_voice",
@@ -106553,7 +108286,7 @@
       "config_keys": [
         "features.standalone_web_search"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": false,
       "feature_flag": "standalone_web_search",
       "id": "feature_flag:standalone_web_search",
@@ -109064,7 +110797,7 @@
       "config_keys": [
         "features.view_image"
       ],
-      "documented_officially": false,
+      "documented_officially": true,
       "enabled_by_default": true,
       "feature_flag": "view_image",
       "id": "feature_flag:view_image",
@@ -111158,11 +112891,11 @@
     "codex-cli 0.166.0"
   ],
   "counts": {
-    "active": 1084,
+    "active": 1125,
     "by_category": {
       "cli_command": 97,
       "cli_option": 370,
-      "config_key": 463,
+      "config_key": 524,
       "feature_flag": 194,
       "linked_tool_guide": 2,
       "system_prompt_snapshot": 1,
@@ -111175,8 +112908,8 @@
       "stable": 58,
       "under development": 82
     },
-    "inactive": 49,
-    "total": 1133
+    "inactive": 69,
+    "total": 1194
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",

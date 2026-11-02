@@ -139,7 +139,7 @@ Codex skips source symlinks and won't overwrite files that already exist in the 
 
 Suppose Codex finishes some work on a worktree and you choose to create a `feature/a` branch on it using **Create branch here**. Now, you want to try it on your local checkout. If you tried to check out the branch, you would get the following error:
 
-```
+```text
 fatal: 'feature/a' is already used by worktree at '<WORKTREE_PATH>'
 ```
 

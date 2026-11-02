@@ -48,7 +48,7 @@ npm install @openai/codex-sdk
 
 Start a thread with Codex and run it with your prompt.
 
-```ts
+```typescript
 
 const codex = new Codex();
 const thread = codex.startThread();
@@ -61,7 +61,7 @@ console.log(result.finalResponse);
 
 Call `run()` again to continue on the same thread, or resume a past thread by providing a thread ID.
 
-```ts
+```typescript
 // running the same thread
 const result = await thread.run("Implement the plan");
 
@@ -69,12 +69,16 @@ console.log(result.finalResponse);
 
 // resuming past thread
 
-const threadId = "<thread-id>";
+const threadId = thread.id!;
 const thread2 = codex.resumeThread(threadId);
 const result2 = await thread2.run("Pick up where you left off");
 
 console.log(result2.finalResponse);
 ```
+
+To identify threads created by your integration, set `threadSource` when you create a thread.
+For example, `codex.startThread({ threadSource: "ci" })` labels the thread
+as `ci`. Resuming a thread preserves its original source.
 
 ### Configuration overrides
 
@@ -82,7 +86,7 @@ Pass `config` to set structured Codex configuration. For keys that can't be
 expressed as dotted paths, use `configOverrides` to pass raw TOML strings as
 separate `--config` arguments:
 
-```ts
+```typescript
 const codex = new Codex({
   config: { default_permissions: "audit" },
   configOverrides: [
@@ -124,6 +128,7 @@ use your configured default. See [GPT-6.1 Sol availability by plan](https://lear
 
 ```python
 from openai_codex import Codex, Sandbox
+
 with Codex() as codex:
     thread = codex.thread_start(
         model="gpt-6.1-sol",

@@ -22,11 +22,9 @@ page and signed-in session.
 In the [built-in browser](https://learn.chatgpt.com/docs/browser) in the ChatGPT desktop app, ChatGPT
 Work and Codex can discover and use these tools when they are available.
 
-Use GPT-5.6 Sol or GPT-6 Sol for site tools. GPT-5.6 Luna currently has WebMCP
-  disabled. Update the ChatGPT desktop app to the latest version. In Enterprise
-  workspaces, an admin must allow **Site tools** through workspace policy. Site
-  tools aren't available in Edu workspaces. Availability also depends on rollout
-  and the tools provided by the current page.
+Site tools require a supported model and a page that provides tools. Your
+  account or your managed workspace's browser policy can grant access. Your
+  browser settings and site permissions still apply.
 
 ## WebMCP vs. MCP
 
@@ -117,27 +115,19 @@ each program's scope and submission instructions.
 
 ## Limitations
 
-ChatGPT's built-in browser currently supports a subset of the WebMCP APIs.
-The following features aren't supported:
-
-- **Declarative API:** Tools defined through HTML form attributes aren't
-  available as site tools.
-- **Tools in iframes:** The browser doesn't discover tools registered inside
-  iframes, including same-origin and cross-origin iframes.
-
-Use JavaScript to register tools in the top-level page, as shown in the
-[next section](#add-webmcp-to-your-website). ChatGPT Work and Codex may still
-interact with forms using regular browser capabilities, but those interactions
-aren't WebMCP tool calls.
-
-The WebMCP specification and Chrome's developer guide describe the broader
-APIs, including features that aren't currently supported in the built-in browser.
+Site tools currently run only in the ChatGPT desktop app's built-in browser.
 
 ## Add WebMCP to your website
 
 You can ask Codex to add WebMCP support to the web app or
 [Site](https://learn.chatgpt.com/docs/sites) you're working on. Describe what an agent should be able
 to do, and ask Codex to reuse the application's existing logic and permissions.
+
+Register a tool with JavaScript or add WebMCP attributes to an HTML form. The
+built-in browser can discover tools in the top-level page and in same-origin
+and cross-origin iframes. Each frame must use a secure context. The browser
+checks access for the origin that provides the tool. You can omit `exposedTo`
+for agent discovery.
 
 Start with an operation your application already supports. For example:
 
@@ -152,7 +142,7 @@ You can also write the code yourself. In your page's JavaScript module, check
 for browser support and register a tool. This read-only example returns the
 current page's title:
 
-```javascript
+```typescript
 if (typeof document.modelContext?.registerTool === "function") {
   await document.modelContext.registerTool({
     name: "get_page_title",

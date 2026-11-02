@@ -1,0 +1,320 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [
+            "config_key:allow_symlinked_codex_home",
+            "config_key:application.storage",
+            "config_key:application.storage.default_project_parent",
+            "config_key:application.storage.projectless_workspace_root",
+            "config_key:apps.<id>.omit_tools_from",
+            "config_key:browser_use.extension",
+            "config_key:browser_use.extension.request_headers",
+            "config_key:browser_use.extension.request_headers[].name",
+            "config_key:browser_use.extension.request_headers[].value",
+            "config_key:features.api_key_cyber_access_programs",
+            "config_key:features.browser_annotation_api",
+            "config_key:features.in_app_voice",
+            "config_key:features.rollout_budget.reminder_at_remaining_tokens",
+            "config_key:features.standalone_web_search",
+            "config_key:features.view_image",
+            "config_key:goals.max_goal_token_budget",
+            "config_key:mcp_servers.<id>.environment_id",
+            "config_key:mcp_servers.<id>.omit_tools_from",
+            "config_key:mcp_servers.<id>.startup_readiness",
+            "config_key:mcp_servers.<id>.supports_parallel_tool_calls",
+            "config_key:mcp_servers.<id>.tool_input_schema_max_bytes",
+            "config_key:memories.consolidation_service_tier",
+            "config_key:memories.dual_write",
+            "config_key:memories.version",
+            "config_key:model_post_turn_compact_threshold_percent",
+            "config_key:model_providers.gcp.base_url",
+            "config_key:model_providers.gcp.credential_file",
+            "config_key:model_providers.gcp.location",
+            "config_key:model_providers.gcp.project_id",
+            "config_key:network_proxy",
+            "config_key:network_proxy.allow_local_binding",
+            "config_key:network_proxy.allow_upstream_proxy",
+            "config_key:network_proxy.allowed_domains",
+            "config_key:network_proxy.dangerously_allow_all_unix_sockets",
+            "config_key:network_proxy.dangerously_allow_non_loopback_proxy",
+            "config_key:network_proxy.denied_domains",
+            "config_key:network_proxy.domains",
+            "config_key:network_proxy.domains.<pattern>",
+            "config_key:network_proxy.enabled",
+            "config_key:network_proxy.http_port",
+            "config_key:network_proxy.managed_allowed_domains_only",
+            "config_key:network_proxy.review_domains",
+            "config_key:network_proxy.socks_port",
+            "config_key:network_proxy.unix_sockets",
+            "config_key:network_proxy.unix_sockets.<path>",
+            "config_key:otel",
+            "config_key:otel.log_agent_responses",
+            "config_key:otel.log_guardian_assessments",
+            "config_key:otel.span_attributes",
+            "config_key:otel.tool_result",
+            "config_key:otel.tool_result.max_bytes",
+            "config_key:otel.tracestate",
+            "config_key:plugins._default.enabled",
+            "config_key:skills.bundled.enabled",
+            "config_key:skills.config.<index>.name",
+            "config_key:skills.include_instructions",
+            "config_key:thread_unload_delay_secs",
+            "config_key:tui.presets.<digit>.input",
+            "config_key:tui.presets.<digit>.label",
+            "config_key:unsafe_enforce_sqlite_journal_mode",
+            "config_key:windows.require_mxc"
+          ],
+          "added_by_category": {
+            "config_key": [
+              "config_key:allow_symlinked_codex_home",
+              "config_key:application.storage",
+              "config_key:application.storage.default_project_parent",
+              "config_key:application.storage.projectless_workspace_root",
+              "config_key:apps.<id>.omit_tools_from",
+              "config_key:browser_use.extension",
+              "config_key:browser_use.extension.request_headers",
+              "config_key:browser_use.extension.request_headers[].name",
+              "config_key:browser_use.extension.request_headers[].value",
+              "config_key:features.api_key_cyber_access_programs",
+              "config_key:features.browser_annotation_api",
+              "config_key:features.in_app_voice",
+              "config_key:features.rollout_budget.reminder_at_remaining_tokens",
+              "config_key:features.standalone_web_search",
+              "config_key:features.view_image",
+              "config_key:goals.max_goal_token_budget",
+              "config_key:mcp_servers.<id>.environment_id",
+              "config_key:mcp_servers.<id>.omit_tools_from",
+              "config_key:mcp_servers.<id>.startup_readiness",
+              "config_key:mcp_servers.<id>.supports_parallel_tool_calls",
+              "config_key:mcp_servers.<id>.tool_input_schema_max_bytes",
+              "config_key:memories.consolidation_service_tier",
+              "config_key:memories.dual_write",
+              "config_key:memories.version",
+              "config_key:model_post_turn_compact_threshold_percent",
+              "config_key:model_providers.gcp.base_url",
+              "config_key:model_providers.gcp.credential_file",
+              "config_key:model_providers.gcp.location",
+              "config_key:model_providers.gcp.project_id",
+              "config_key:network_proxy",
+              "config_key:network_proxy.allow_local_binding",
+              "config_key:network_proxy.allow_upstream_proxy",
+              "config_key:network_proxy.allowed_domains",
+              "config_key:network_proxy.dangerously_allow_all_unix_sockets",
+              "config_key:network_proxy.dangerously_allow_non_loopback_proxy",
+              "config_key:network_proxy.denied_domains",
+              "config_key:network_proxy.domains",
+              "config_key:network_proxy.domains.<pattern>",
+              "config_key:network_proxy.enabled",
+              "config_key:network_proxy.http_port",
+              "config_key:network_proxy.managed_allowed_domains_only",
+              "config_key:network_proxy.review_domains",
+              "config_key:network_proxy.socks_port",
+              "config_key:network_proxy.unix_sockets",
+              "config_key:network_proxy.unix_sockets.<path>",
+              "config_key:otel",
+              "config_key:otel.log_agent_responses",
+              "config_key:otel.log_guardian_assessments",
+              "config_key:otel.span_attributes",
+              "config_key:otel.tool_result",
+              "config_key:otel.tool_result.max_bytes",
+              "config_key:otel.tracestate",
+              "config_key:plugins._default.enabled",
+              "config_key:skills.bundled.enabled",
+              "config_key:skills.config.<index>.name",
+              "config_key:skills.include_instructions",
+              "config_key:thread_unload_delay_secs",
+              "config_key:tui.presets.<digit>.input",
+              "config_key:tui.presets.<digit>.label",
+              "config_key:unsafe_enforce_sqlite_journal_mode",
+              "config_key:windows.require_mxc"
+            ]
+          },
+          "lifecycle_transitions": [],
+          "removed": [
+            "config_key:experimental_network",
+            "config_key:experimental_network.allow_local_binding",
+            "config_key:experimental_network.allow_upstream_proxy",
+            "config_key:experimental_network.allowed_domains",
+            "config_key:experimental_network.dangerously_allow_all_unix_sockets",
+            "config_key:experimental_network.dangerously_allow_non_loopback_proxy",
+            "config_key:experimental_network.denied_domains",
+            "config_key:experimental_network.domains",
+            "config_key:experimental_network.domains.<pattern>",
+            "config_key:experimental_network.enabled",
+            "config_key:experimental_network.http_port",
+            "config_key:experimental_network.managed_allowed_domains_only",
+            "config_key:experimental_network.socks_port",
+            "config_key:experimental_network.unix_sockets",
+            "config_key:experimental_network.unix_sockets.<path>",
+            "config_key:features.rollout_budget.reminder_interval_tokens",
+            "config_key:mcp_servers.<id>.experimental_environment",
+            "config_key:model_supports_reasoning_summaries",
+            "config_key:tools.view_image",
+            "config_key:windows_wsl_setup_acknowledged"
+          ],
+          "removed_by_category": {
+            "config_key": [
+              "config_key:experimental_network",
+              "config_key:experimental_network.allow_local_binding",
+              "config_key:experimental_network.allow_upstream_proxy",
+              "config_key:experimental_network.allowed_domains",
+              "config_key:experimental_network.dangerously_allow_all_unix_sockets",
+              "config_key:experimental_network.dangerously_allow_non_loopback_proxy",
+              "config_key:experimental_network.denied_domains",
+              "config_key:experimental_network.domains",
+              "config_key:experimental_network.domains.<pattern>",
+              "config_key:experimental_network.enabled",
+              "config_key:experimental_network.http_port",
+              "config_key:experimental_network.managed_allowed_domains_only",
+              "config_key:experimental_network.socks_port",
+              "config_key:experimental_network.unix_sockets",
+              "config_key:experimental_network.unix_sockets.<path>",
+              "config_key:features.rollout_budget.reminder_interval_tokens",
+              "config_key:mcp_servers.<id>.experimental_environment",
+              "config_key:model_supports_reasoning_summaries",
+              "config_key:tools.view_image",
+              "config_key:windows_wsl_setup_acknowledged"
+            ]
+          }
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "e1c5208f77903c3b5aeb767508852e87fdfa8eb1b63ec50af0717e1ae12f35e2",
+            "before": "2017f8034c0e15788f42040a85ba5868fe6421d00baf6f799a73e8496f0637da"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "b213c6c2e92c1ac5a1fdcd7ba931537e3fb977de18f51b2593c05e41d07ed421",
+            "before": "3dc0ff5e05aba334868148442835f453bc7eb7271127baab0962941eab0569d5"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "4820cc934841400ac0acdbf9c02747ef445b4cfec69d4870c89c969b00406668",
+            "before": "41719a61f50c4f26dd2ec846be67da2389618bbc22de3495d72eeeb372ae75e1"
+          },
+          "learn.chatgpt.com/docs/agent-configuration/rules/index.md": {
+            "after": "027425f0ad8850c64263fe5d2c3f5a627d5b4f8fbbeb1d8accbfd69bf4c1e01b",
+            "before": "06950de83904feca1a531793fb372d70865008b39691e9c0e897fcda558d1973"
+          },
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md": {
+            "after": "be1ade918c12662f88aeaa404c4a59698324150126f3a81aac3af3ce3ebb4ac3",
+            "before": "a890f1dd7d142e4d3018730b3ae20cf83f7641530dc4482e38de07d7f5e78959"
+          },
+          "learn.chatgpt.com/docs/app-server/index.md": {
+            "after": "25c566f7a49fa8ffc984a6c54734c8069de8fa8df6261ba9384f85ea9581f549",
+            "before": "914d8d3838a5f6925033a067c33eb67ce7dacdbdfcb536f4a9674b247892a61c"
+          },
+          "learn.chatgpt.com/docs/build-skills/index.md": {
+            "after": "fb4be5eef01b677c707b7c36a139c00612ce9f9c571b5a824dee335551781c54",
+            "before": "93e2ce8b347d8cf6ec3499a3f22a8379a5bca2c2ccc1fa46a30e6d909a7cce9f"
+          },
+          "learn.chatgpt.com/docs/codex-sdk/index.md": {
+            "after": "36edc3da3781c0b18e357ae8432bf0ee4351995465e7de7973e9aafbcf94566c",
+            "before": "6867ffd4de6888f3f050e32cedcf4b34d3a16ecb2faed080be834581b0af284d"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "29edcc077a329c202a1dd22036d2d0a3a203de7e85f01880870a525142171328",
+            "before": "ff32cc07d5550115e9f3a449050c70e56410aa3d3e5180ea1bcc0cd45727b6f4"
+          },
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md": {
+            "after": "ef66bf6ba4924aa96f3076c44dc989ffacbf4183688d0025058730bb34df2d1d",
+            "before": "bc9a09ad1bfd15d5a98846f2ab5e38174a3935d6f13a452885a2064080698f4c"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "1f13d20df49c796c9f31551157729bc2f319afdc2d7cb285f0e7efc8af5af022",
+            "before": "91d71c400f6ae9da8542e6c632552eac8ce245c019428c81bcdc16be22613d16"
+          },
+          "learn.chatgpt.com/docs/config-file/config-sample/index.md": {
+            "after": "db88c4a1086d89ffd29ca3d3624b4f8e5d6702345ea76e1f0916de346b669145",
+            "before": "b2529ca613467e6f5abe36638d8d6d541c78dd3f89526b2f10b796d2d3ff410f"
+          },
+          "learn.chatgpt.com/docs/customization/memories/index.md": {
+            "after": "5016983fa6cd9210da73bc5d42c6d734c25c75a4d1b71621a9c85289b7bd37fb",
+            "before": "d7d45dda57f3a67b6758a61bed1dfdccd948e522e62c6191dab3b87e574cfe98"
+          },
+          "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md": {
+            "after": "4119b26212615f2ef3e5d5d6c5952895623905c0b88253d2d458fef0efe7b256",
+            "before": "b661d0e0d54090c59f106c71d6ce23a1ee01c1d392ff780ac06d5a678fb13cd3"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "95c39db7495202feb1ae38d392a55fab1e078e3f21907432a37af710c7183468",
+            "before": "3b542c6f180738267f0903b902e56c1237e14b6bf0cda73ce5726da126da42e9"
+          },
+          "learn.chatgpt.com/docs/environments/git-worktrees/index.md": {
+            "after": "a25a974cf58c87f067d0909dbcd68602dc984e392dd0de69ddca469db7775b2a",
+            "before": "e4df3e9c176bfd5ec4fae0649676ce42cd94221de5a1dd56a8fcf1a80d42aa3c"
+          },
+          "learn.chatgpt.com/docs/extend/mcp/index.md": {
+            "after": "b9a3438876d595a0ef415b3e38050a75a8d1e7165e68b39f38564af4bd73ec05",
+            "before": "3227e226ab8c404551d3c8aa76623cf6dc5858eebbe997cb5cfd640c2ce13399"
+          },
+          "learn.chatgpt.com/docs/hooks/index.md": {
+            "after": "b2a6d4323913f133ea705f080cfc7d1f65cdaa8b8bc45208b80f86b67b02cf0b",
+            "before": "e9c1d69aeb5d84d5ef95b65010e5d6ed4764c1c906024a7f29338c03e126c00d"
+          },
+          "learn.chatgpt.com/docs/import/index.md": {
+            "after": "598218014c984fdda52beb4482a817470d1b7ab456f55b07a3e28041e677a4c4",
+            "before": "3a552272baad28caa9f462fc5dadce24bcf74ba6d5dd9205ec6573df6d2992ae"
+          },
+          "learn.chatgpt.com/docs/security/plugin/code-changes/index.md": {
+            "after": "84a80e6153416ab0d403293f32445da1d96d2cdc7cf1d37ec45ddd7983352428",
+            "before": "64dca3807113a205ab05f4ad8a0f294d3ce7d83bddfe16bd1d28ff523c647ce3"
+          },
+          "learn.chatgpt.com/docs/security/sdk/index.md": {
+            "after": "3efa4f21e09a5d628ee29a1d33dbccad022a429ac4aa8fcb21b56366ee152e7e",
+            "before": "d42c375a1549ce4ca2a79a2c37c017826a5cd4d80ae59591b6943c27726284ee"
+          },
+          "learn.chatgpt.com/docs/webmcp/index.md": {
+            "after": "61259b274bdc9115519a5b79924ccaa2e701e62d54403ba71f14ad7bd8d99a6a",
+            "before": "068fb1afdd3109c08eba19de35fcdb03caeb4e601c4507a5090e1309ae6f0e56"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.166.0",
+          "codex_cli_source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+          "codex_cli_version": "0.166.0",
+          "codex_cli_version_raw": "codex-cli 0.166.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "learn.chatgpt.com/docs/agent-configuration/rules/index.md",
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md",
+          "learn.chatgpt.com/docs/app-server/index.md",
+          "learn.chatgpt.com/docs/build-skills/index.md",
+          "learn.chatgpt.com/docs/codex-sdk/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/config-file/config-basic/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/config-file/config-sample/index.md",
+          "learn.chatgpt.com/docs/customization/memories/index.md",
+          "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
+          "learn.chatgpt.com/docs/extend/mcp/index.md",
+          "learn.chatgpt.com/docs/hooks/index.md",
+          "learn.chatgpt.com/docs/import/index.md",
+          "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
+          "learn.chatgpt.com/docs/security/sdk/index.md",
+          "learn.chatgpt.com/docs/webmcp/index.md"
+        ]
+      },
+      "id": "67a89a6aff0dfea402a3eeda65589993f304092d492554734401aa48ae7889c6",
+      "observed_at": "2026-11-02T15:01:39+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

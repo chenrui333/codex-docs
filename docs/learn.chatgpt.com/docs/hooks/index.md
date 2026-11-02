@@ -34,6 +34,7 @@ Hooks run at different points in a conversation:
 | When                              | Hooks                                                                                                                     |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | During a turn                     | `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PreCompact`, `PostCompact`, `UserPromptSubmit`, `SubagentStop`, `Stop` |
+| For each model request attempt    | `PreModelRequest`, `PostModelRequest`                                                                                     |
 | When you interrupt an active turn | `Interrupt` (doesn't run for subagents)                                                                                   |
 | When a session or subagent starts | `SessionStart`, `SubagentStart`                                                                                           |
 | When the main thread ends         | `SessionEnd` (doesn't run for subagents)                                                                                  |
@@ -414,9 +415,11 @@ Plugin hook commands receive these environment variables:
 - Codex also sets `CLAUDE_PLUGIN_ROOT` and `CLAUDE_PLUGIN_DATA` for
   compatibility with existing plugin hooks.
 
-Plugin hooks use the same event schema as other hooks. Installing or enabling a
-plugin doesn't automatically trust its hooks; Codex skips plugin-bundled hooks
-until you review and trust the current hook definition.
+Plugin hooks use the same event schema as other hooks. Review and trust them
+before they run. In the CLI, open `/hooks`. In the desktop app, select
+**Review hooks** in the composer or open **Settings > Hooks**.
+If a plugin update changes a bundled script,
+Codex requires a new review even if the hook definition stays the same.
 
 ## Matcher patterns
 
@@ -426,20 +429,21 @@ event.
 
 Only some current Codex events honor `matcher`:
 
-| Event               | What `matcher` filters | Notes                                                          |
-| ------------------- | ---------------------- | -------------------------------------------------------------- |
-| `PermissionRequest` | tool name              | Support includes `Bash`, `apply_patch`\*, and MCP tool names   |
-| `PostToolUse`       | tool name              | See [Tool coverage](#tool-coverage)                            |
-| `PostCompact`       | compaction trigger     | Values are `manual` or `auto`                                  |
-| `PreCompact`        | compaction trigger     | Values are `manual` or `auto`                                  |
-| `PreToolUse`        | tool name              | See [Tool coverage](#tool-coverage)                            |
-| `SessionEnd`        | end reason             | Currently only `other`                                         |
-| `SessionStart`      | start source           | Values are `startup`, `resume`, `clear`, `compact`, and `fork` |
-| `SubagentStart`     | subagent type          | Values depend on the subagent that starts                      |
-| `SubagentStop`      | subagent type          | Values depend on the subagent that stops                       |
-| `UserPromptSubmit`  | not supported          | Any configured `matcher` is ignored for this event             |
-| `Stop`              | not supported          | Any configured `matcher` is ignored for this event             |
-| `Interrupt`         | not supported          | Any configured `matcher` is ignored for this event             |
+| Event                                 | What `matcher` filters | Notes                                                          |
+| ------------------------------------- | ---------------------- | -------------------------------------------------------------- |
+| `PermissionRequest`                   | tool name              | Support includes `Bash`, `apply_patch`\*, and MCP tool names   |
+| `PostToolUse`                         | tool name              | See [Tool coverage](#tool-coverage)                            |
+| `PostCompact`                         | compaction trigger     | Values are `manual` or `auto`                                  |
+| `PreModelRequest`, `PostModelRequest` | not supported          | Both events run for each model request attempt                 |
+| `PreCompact`                          | compaction trigger     | Values are `manual` or `auto`                                  |
+| `PreToolUse`                          | tool name              | See [Tool coverage](#tool-coverage)                            |
+| `SessionEnd`                          | end reason             | Currently only `other`                                         |
+| `SessionStart`                        | start source           | Values are `startup`, `resume`, `clear`, `compact`, and `fork` |
+| `SubagentStart`                       | subagent type          | Values depend on the subagent that starts                      |
+| `SubagentStop`                        | subagent type          | Values depend on the subagent that stops                       |
+| `UserPromptSubmit`                    | not supported          | Any configured `matcher` is ignored for this event             |
+| `Stop`                                | not supported          | Any configured `matcher` is ignored for this event             |
+| `Interrupt`                           | not supported          | Any configured `matcher` is ignored for this event             |
 
 \*For `apply_patch`, `matcher` values can also use `Edit` or `Write`.
 
@@ -967,6 +971,22 @@ can keep the original result from reaching the running script.
 | `PreToolUse` returns `updatedInput`                              | The tool runs with the rewritten input and the promise resolves with that result.                      |
 | `PostToolUse` returns `decision: "block"` or exits with code `2` | The tool runs, then the promise rejects with the hook reason.                                          |
 | `PostToolUse` returns `continue: false`                          | Codex uses the hook feedback for the model-visible result, but doesn't reject the nested tool promise. |
+
+### PreModelRequest and PostModelRequest
+
+Use these hooks to log model requests, including retries within the same turn.
+`PreModelRequest` runs before each attempt. `PostModelRequest` reports the
+outcome. Both receive the model and `turn_id`, plus `agent_id` and `agent_type`
+when available. Hook output is diagnostic only. It can't change the model's
+context or block a request.
+
+`PostModelRequest` includes three additional fields:
+
+| Field         | Meaning                                                        |
+| ------------- | -------------------------------------------------------------- |
+| `status`      | `completed`, `failed`, or `cancelled`.                         |
+| `error`       | Error message when available, otherwise `null`.                |
+| `token_usage` | Token counts for the attempt when available, otherwise `null`. |
 
 ### PreCompact
 

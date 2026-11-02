@@ -260,11 +260,12 @@ To disable automatic review for browser actions, set
 `browser_use.disable_auto_review = true`, or set `auto_review = "deny"` on an
 origin policy to restrict it for that origin.
 
-To enable [Site tools](https://learn.chatgpt.com/docs/webmcp) for an eligible Enterprise workspace,
-set `browser_use.allow_webmcp = true`. This managed opt-in applies to the
-desktop app's built-in browser. Setting it to `false` or omitting it leaves
-normal feature availability checks in place; `false` does not enforce a block.
-User preferences and site permissions still apply.
+On eligible managed plans, leave `browser_use.allow_webmcp` unset or set it to
+`true` to allow [Site tools](https://learn.chatgpt.com/docs/webmcp) through workspace policy in the
+desktop app's built-in browser. Set it to `false` to turn off access through
+this policy. Users who already have access through their account rollout can
+still use site tools. Model support, browser settings, and site permissions
+also apply.
 
 This native-app example allows Calculator on macOS, denies other apps by default,
 and prevents app approvals from persisting across sessions:
@@ -847,11 +848,10 @@ the networks you plan to use. Keep these boundaries in mind:
 ### Configure network access requirements
 
 <WarningTip>
-  `[experimental_network]` is experimental and may change. Do not enable these
-  requirements broadly across an enterprise deployment without validating them
-  on the local client versions and operating systems your users run. Windows
-  support is still limited; avoid applying this policy to Windows users unless
-  you have tested it in your environment.
+  Keep `[experimental_network]` in published policies until every client and
+  policy validator supports `[network_proxy]`. Older versions can ignore or
+  strip the new name. Test enforcement on the client versions and operating
+  systems you deploy, especially Windows, where support is limited.
 </WarningTip>
 
 Use **Requirements** > **Network use controls** to manage supported command
@@ -883,13 +883,15 @@ or runtime defaults can apply. Removing environment settings can reveal inherite
 Global rules. Use **Edit as TOML** for advanced network fields or existing legacy
 domain lists that the visual editor can't represent.
 
-Use `[experimental_network]` in `requirements.toml` when administrators should
-define network access requirements centrally. These requirements are separate
-from the user `features.network_proxy` toggle: they can configure sandbox
-networking without that feature flag, but they don't grant command network
-access when the active sandbox keeps networking off. Set
-`experimental_network.enabled = true` to activate the managed proxy; domain
-rules alone do not make the proxy active.
+In Codex 0.166.0, `[network_proxy]` is the canonical table for managed
+command networking in `requirements.toml`. Codex also accepts the older
+`[experimental_network]` name. Choose one table name per layer. If layers use
+different names, Codex applies the usual requirements precedence.
+
+Set `enabled = true` in the managed table to start the proxy independently
+of the user setting `features.network_proxy`. The active sandbox must also
+allow command network access. The example uses the name that older clients
+and policy validation layers recognize.
 
 ```toml
 [experimental_network]
@@ -978,7 +980,7 @@ Orchestrator limits. Managed HTTP/SOCKS listener ports and non-loopback proxy li
 
 #### Other network runtime limits
 
-All field names below are under `experimental_network` in `requirements.toml`. The arrows show a Global value followed by an environment value within the same policy. These local-execution cases do not establish Orchestrator support for the same settings.
+All field names below belong to the managed `network_proxy` table (also accepted as `experimental_network`) in `requirements.toml`. The arrows show a Global value followed by an environment value within the same policy. These local-execution cases do not establish Orchestrator support for the same settings.
 
 | **Setting and attempted override**           | **Runtime behavior**                                                                                                                                                                      | **Admin action**                                                                                                   |
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -1334,6 +1336,61 @@ is available, Codex refuses to start.
 See the [requirements reference](https://learn.chatgpt.com/docs/config-file/config-reference#requirementstoml)
 for credential storage modes and service URL configuration.
 
+### Enforce OpenTelemetry settings
+
+In Codex CLI 0.166.0, use `[otel]` in `requirements.toml` to set the log, trace, and metrics
+exporters independently, label the environment, and control which content Codex
+exports. This example sends logs to an OTLP/HTTP collector and limits the
+text logged for each tool result to 256 UTF-8 bytes. It omits prompt text, final response
+text, and automatic approval assessments.
+
+The macOS desktop app 26.1027.30824 bundles CLI `0.166.0-alpha.5.1`.
+That build doesn't support `[otel]` in `requirements.toml`, so it can't
+enforce `log_user_prompt = false` through this policy.
+
+```toml
+[otel]
+environment = "prod"
+exporter = { otlp-http = { endpoint = "https://otel.example.com/v1/logs", protocol = "binary" } }
+log_user_prompt = false
+log_agent_responses = false
+log_guardian_assessments = false
+tool_result = { max_bytes = 256 }
+span_attributes = { team = "platform" }
+tracestate = { acme = { region = "eu" } }
+```
+
+Managed values override local configuration. For `exporter`, `trace_exporter`,
+and `metrics_exporter`, the highest-priority requirement that sets the
+exporter supplies its entire definition, including headers and TLS settings.
+Scalar settings and the `tool_result` table also take the highest-priority
+value supplied for each. Omitted settings remain configurable unless another
+requirements layer supplies them.
+
+Span attributes merge by attribute name. `tracestate` fields merge by member
+and field name. Higher-priority values win for matching entries. Other
+entries remain available, and an empty metadata table doesn't clear them.
+See [Observability and telemetry](https://learn.chatgpt.com/docs/config-file/config-advanced#observability-and-telemetry)
+for exporter options and log contents.
+
+### Migrate SQLite databases on NFS
+
+On Linux, Codex creates new SQLite databases on NFS in `DELETE` journal mode.
+To migrate existing databases from write-ahead logging (WAL), set
+`unsafe_enforce_sqlite_journal_mode = true` at the top level of
+`requirements.toml`. This setting is off by default. With it enabled, Codex
+migrates the databases before opening them for writes.
+
+The NFS mount must support POSIX locks across hosts. Mount options such as
+`nolock` and `local_lock=all` prevent those locks from working. On every host,
+stop all SQLite clients that use the databases, including Codex. Start
+one Codex instance and keep all other clients stopped until migration succeeds.
+The user running that instance needs write access to the database directory
+and migration lock. The replacement files retain their Unix permission bits
+and belong to that user.
+The migration doesn't copy the original owner, group, or extended access control
+lists. Codex keeps the originals in a private backup directory.
+
 ### Managed defaults (`managed_config.toml`)
 
 Use [Agent security Defaults](#set-configuration-defaults) for supported
@@ -1394,16 +1451,15 @@ network_access = false             # keep network disabled unless explicitly all
 
 [otel]
 environment = "prod"
-exporter = "otlp-http"            # point at your collector
+exporter = { otlp-http = { endpoint = "https://otel.example.com/v1/logs", protocol = "binary" } }
 log_user_prompt = false            # keep prompts redacted
-# exporter details live under exporter tables; see Monitoring and telemetry above
 ```
 
 #### Recommended guardrails
 
 - Prefer `workspace-write` with approvals for most users; reserve full access for controlled containers.
 - Keep `network_access = false` unless your security review allows a collector or domains required by your workflows.
-- Use managed configuration to pin OTel settings (exporter, environment), but keep `log_user_prompt = false` unless your policy explicitly allows storing prompt contents.
+- To enforce telemetry settings, use [OpenTelemetry requirements](#enforce-opentelemetry-settings). Keep `log_user_prompt = false` unless your policy allows storing prompt contents.
 - Periodically audit diffs between local `config.toml` and managed policy to catch drift; managed layers should win over local flags and files.
 
 ### macOS managed preferences (MDM)

@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-10-31T04:33:53+00:00",
-  "manifest_sha256": "2e2e6a64712e46a87700ee10e384bfedb911d3562385566b4accf303b322ea17",
+  "generated_at": "2026-11-02T15:01:39+00:00",
+  "manifest_sha256": "84575ba6f863ceede9ddf30b8e033e3cbb756a09428017427a79ea805f48d774",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,8 +17,27 @@
   },
   "total_files": 296,
   "updated": [
-    "learn.chatgpt.com/docs/whats-new/devday-2026/index.md",
-    "learn.chatgpt.com/docs/whats-new/index.md",
-    "learn.chatgpt.com/docs/whats-new/september-28-october-2-2026/index.md"
+    "codex_capabilities.json",
+    "feature-flags/lifecycle.json",
+    "feature-flags/lifecycle.md",
+    "learn.chatgpt.com/docs/agent-configuration/rules/index.md",
+    "learn.chatgpt.com/docs/annotations-extensibility/index.md",
+    "learn.chatgpt.com/docs/app-server/index.md",
+    "learn.chatgpt.com/docs/build-skills/index.md",
+    "learn.chatgpt.com/docs/codex-sdk/index.md",
+    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+    "learn.chatgpt.com/docs/config-file/config-basic/index.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/config-file/config-sample/index.md",
+    "learn.chatgpt.com/docs/customization/memories/index.md",
+    "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
+    "learn.chatgpt.com/docs/extend/mcp/index.md",
+    "learn.chatgpt.com/docs/hooks/index.md",
+    "learn.chatgpt.com/docs/import/index.md",
+    "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md",
+    "learn.chatgpt.com/docs/webmcp/index.md"
   ]
 }

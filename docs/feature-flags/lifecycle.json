@@ -975,11 +975,9 @@
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
-      "api_key_cyber_access_programs",
       "api_key_model_discovery",
       "auth_elicitation",
       "bedrock_setup_wizard",
-      "browser_annotation_api",
       "cli_daybreak",
       "code_mode_host",
       "code_mode_interrupt",
@@ -988,7 +986,6 @@
       "daemon_auto_start",
       "guardian_reuse_parent_compaction",
       "image_generation",
-      "in_app_voice",
       "incremental_tools",
       "login_shell_package_path",
       "mcp_oauth_refresh_coordination",
@@ -1006,24 +1003,16 @@
       "tool_suggest",
       "unbounded_connection_retries",
       "unified_exec_tty",
-      "view_image",
       "write_stdin_approval"
     ],
     "actionable_stages": [
       "stable",
       "experimental"
     ],
-    "documentation_stage_mismatches": [
-      {
-        "cli_stage": "stable",
-        "documentation_stage": "experimental",
-        "key": "memories"
-      }
-    ],
+    "documentation_stage_mismatches": [],
     "missing_in_docs": [
       "agent_message_board",
       "analytics_plan_history",
-      "api_key_cyber_access_programs",
       "api_key_model_discovery",
       "app_server_websocket_compression",
       "apply_patch_freeform",
@@ -1035,7 +1024,6 @@
       "auth_elicitation",
       "background_paginated_rollout_migration",
       "bedrock_setup_wizard",
-      "browser_annotation_api",
       "chronicle",
       "cli_daybreak",
       "code_mode",
@@ -1090,7 +1078,6 @@
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
-      "in_app_voice",
       "incremental_tools",
       "instant_interrupt",
       "item_ids",
@@ -1149,7 +1136,6 @@
       "sleep_tool",
       "sqlite",
       "stable_environment_tools",
-      "standalone_web_search",
       "steer",
       "step_model_switching",
       "subagent_default_context_limits",
@@ -1176,7 +1162,6 @@
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
       "use_xaa",
-      "view_image",
       "wake_on_agent_messages",
       "windows_sandbox_service",
       "workspace_owner_usage_nudge",
@@ -1239,11 +1224,9 @@
         "worktrees"
       ],
       "stable": [
-        "api_key_cyber_access_programs",
         "api_key_model_discovery",
         "auth_elicitation",
         "bedrock_setup_wizard",
-        "browser_annotation_api",
         "cli_daybreak",
         "code_mode_host",
         "code_mode_interrupt",
@@ -1252,7 +1235,6 @@
         "daemon_auto_start",
         "guardian_reuse_parent_compaction",
         "image_generation",
-        "in_app_voice",
         "incremental_tools",
         "mcp_oauth_refresh_coordination",
         "mentions_v2",
@@ -1269,7 +1251,6 @@
         "tool_suggest",
         "unbounded_connection_retries",
         "unified_exec_tty",
-        "view_image",
         "write_stdin_approval"
       ],
       "under development": [
@@ -1341,7 +1322,6 @@
         "simplified_selection_hints",
         "skill_catalog_deltas",
         "skip_host_skill_discovery",
-        "standalone_web_search",
         "step_model_switching",
         "subagent_default_context_limits",
         "subagent_thread_environments",
@@ -1361,7 +1341,9 @@
     ]
   },
   "docs_feature_keys": [
+    "api_key_cyber_access_programs",
     "apps",
+    "browser_annotation_api",
     "browser_use",
     "browser_use_external",
     "browser_use_full_cdp_access",
@@ -1376,6 +1358,7 @@
     "in_app_dictation",
     "in_app_local_automation",
     "in_app_updates",
+    "in_app_voice",
     "memories",
     "multi_agent",
     "network_proxy",
@@ -1389,8 +1372,10 @@
     "shell_snapshot",
     "shell_tool",
     "skill_mcp_dependency_install",
+    "standalone_web_search",
     "ultrafast_mode",
     "unified_exec",
+    "view_image",
     "web_search",
     "web_search_cached",
     "web_search_request",
@@ -1400,12 +1385,12 @@
     "config_basic": {
       "parsed_feature_key_count": 13,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-basic/index.md",
-      "sha256": "bc9a09ad1bfd15d5a98846f2ab5e38174a3935d6f13a452885a2064080698f4c"
+      "sha256": "ef66bf6ba4924aa96f3076c44dc989ffacbf4183688d0025058730bb34df2d1d"
     },
     "config_reference": {
-      "parsed_feature_key_count": 34,
+      "parsed_feature_key_count": 39,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "91d71c400f6ae9da8542e6c632552eac8ce245c019428c81bcdc16be22613d16"
+      "sha256": "1f13d20df49c796c9f31551157729bc2f319afdc2d7cb285f0e7efc8af5af022"
     }
   },
   "observation_environment": {
