@@ -446,11 +446,13 @@ For Configuration Manager (SCCM), use the reviewed CLI installation design in yo
 
 ### Configure managed requirements
 
-Deploy administrator-enforced Windows requirements to:
+By default, deploy administrator-enforced Windows requirements to:
 
 ```text
 %ProgramData%\OpenAI\Codex\requirements.toml
 ```
+
+Override this location by setting the `RequirementsPath` string under `HKLM\SOFTWARE\Policies\OpenAI\Codex` to an absolute file path.
 
 Deliver the file through your endpoint management tool. Give intended users read access and prevent ordinary users from changing the administrator-owned policy.
 

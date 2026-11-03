@@ -469,17 +469,9 @@ The result includes the output `path` and, for a threat-model file export,
 `provenance` from the same saved results. Both fields are `null` when
 `output: "-"` writes to stdout. Export requires Python 3.10 or later.
 
-For ServiceNow Manual AVIT Ingestion, [prepare the application template](https://learn.chatgpt.com/docs/security/cli/reference#export-findings-for-servicenow) and pass its path as `avitTemplate`.
-
-```ts
-await exportArtifact({
-  source: { directory: "/path/to/scan" },
-  artifact: "findings",
-  format: "servicenow-avit",
-  avitTemplate: "/path/outside/repository/exports/app.csv",
-  output: "/path/outside/repository/exports/findings-avit.csv",
-});
-```
+For ServiceNow Manual AVIT Ingestion, set `artifact: "findings"` and
+`format: "servicenow-avit"`. [Prepare the application template](https://learn.chatgpt.com/docs/security/cli/reference#export-findings-for-servicenow)
+and pass its path as `avitTemplate`. Set `output` to the destination CSV path.
 
 ## Validate an existing finding
 

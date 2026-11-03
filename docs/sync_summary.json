@@ -1,11 +1,9 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/environments/network-file-systems/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-03T00:42:24+00:00",
-  "manifest_sha256": "1628e079781530101b87d46e696a51c0aaa4b0f66686e924372096b8bf21e864",
+  "generated_at": "2026-11-03T23:07:28+00:00",
+  "manifest_sha256": "f0ee387e73afc258f9e14dfb270209e749274f3bb04b88512254d22cc4a4a72d",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -19,12 +17,9 @@
   },
   "total_files": 297,
   "updated": [
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/config-file/environment-variables/index.md",
-    "learn.chatgpt.com/docs/non-interactive-mode/index.md",
-    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
-    "learn.chatgpt.com/docs/security/cli/faq/index.md",
-    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+    "learn.chatgpt.com/docs/dots/index.md",
+    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
     "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

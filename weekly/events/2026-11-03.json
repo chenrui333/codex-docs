@@ -75,6 +75,61 @@
       "id": "b7f33c4e5b0024f9544bd24d5afc3e8d3bf8c176a9756201a6dc477620aa6158",
       "observed_at": "2026-11-03T00:42:24+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "29eb06a50464a5ad95506e05fa54e28338b41171bd37dac2891a49b205ecbf92",
+            "before": "1320e45393118fd0d9d3307c387c95e9088b6a55ae666fddfd6d30430f682cde"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "7ac38891201726a0b6de8e1f3b73b2defbe6b866070933c1c2f2862ee32a49f9",
+            "before": "98b1b3fc7d3157f5558adc4160307991bb464220bff81e2a83ee1a8c726a6362"
+          },
+          "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md": {
+            "after": "c4ff7865cd268a899d5fae7398284f998123927feb88501b96a8f75cf0bafc17",
+            "before": "96a0dbff19af5276d81081749d9b425fab4fe4d9380d96090c591b1761d34431"
+          },
+          "learn.chatgpt.com/docs/security/sdk/index.md": {
+            "after": "3ac257466750e087948d4152436ce957a63bdb4a2a8fb6314bd9bc0315ae87db",
+            "before": "c3bd5a8b36a831571428bec29ae679444f248ec4f1faf23afcc8c69d84c63f2c"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.166.0",
+          "codex_cli_source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+          "codex_cli_version": "0.166.0",
+          "codex_cli_version_raw": "codex-cli 0.166.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
+          "learn.chatgpt.com/docs/security/sdk/index.md"
+        ]
+      },
+      "id": "a51bd00ef20bee5f0f3e26c4c3351f6137c129ac91bddd85b1a56aad10cbf756",
+      "observed_at": "2026-11-03T23:07:28+00:00",
+      "previous_id": "b7f33c4e5b0024f9544bd24d5afc3e8d3bf8c176a9756201a6dc477620aa6158"
     }
   ],
   "schema_version": 1

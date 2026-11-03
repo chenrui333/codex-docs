@@ -7620,7 +7620,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "1320e45393118fd0d9d3307c387c95e9088b6a55ae666fddfd6d30430f682cde",
+      "sha256": "29eb06a50464a5ad95506e05fa54e28338b41171bd37dac2891a49b205ecbf92",
       "source_area": "learn_amazon_bedrock",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8648,7 +8648,7 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/getting-started"
     },
     "learn.chatgpt.com/docs/dots/index.md": {
-      "sha256": "98b1b3fc7d3157f5558adc4160307991bb464220bff81e2a83ee1a8c726a6362",
+      "sha256": "7ac38891201726a0b6de8e1f3b73b2defbe6b866070933c1c2f2862ee32a49f9",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9416,7 +9416,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "96a0dbff19af5276d81081749d9b425fab4fe4d9380d96090c591b1761d34431",
+      "sha256": "c4ff7865cd268a899d5fae7398284f998123927feb88501b96a8f75cf0bafc17",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11413,7 +11413,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "c3bd5a8b36a831571428bec29ae679444f248ec4f1faf23afcc8c69d84c63f2c",
+      "sha256": "3ac257466750e087948d4152436ce957a63bdb4a2a8fb6314bd9bc0315ae87db",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

@@ -54,7 +54,10 @@ Codex allows you to configure the provider by setting `model_provider` in `~/.co
 Choose the provider for the Amazon Bedrock endpoint you want to use: Bedrock
 Runtime for cross-Region inference (CRIS), or Bedrock Mantle for in-Region inference.
 
-Use Bedrock Runtime for new configurations:
+Use Bedrock Runtime for new configurations. For Daybreak Blue and Daybreak Red,
+follow [Daybreak model setup](#daybreak-blue-and-daybreak-red) to use Mantle.
+
+For Runtime:
 
 ```toml
 model_provider = "amazon-bedrock-runtime"
@@ -251,6 +254,42 @@ Supported models and model IDs:
 
 GPT-6 Sol and Luna are available through Mantle in `us-east-1` (N. Virginia).
 Model availability varies by AWS Region. See AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai) before selecting a provider and a model. For GPT-6 Astra, refer to the [Bedrock model page for GPT-6 Astra](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html).
+
+#### Daybreak Blue and Daybreak Red
+
+Approved customers can use the following Daybreak models through Mantle in
+`us-east-2` (Ohio):
+
+- Daybreak Blue: `openai.gpt-daybreak-blue-5.6-sol`
+- Daybreak Red: `openai.gpt-5.6-cyber`
+
+**Note:** On [OpenAI-hosted services](https://help.openai.com/en/articles/20001258-openai-daybreak-trusted-access-for-cyber-overview), you can select Daybreak separately from the model.
+On Bedrock, the model IDs above enable Daybreak behavior by default, with no extra
+Daybreak setting.
+
+These models support in-Region inference through `amazon-bedrock`. They don't
+support Runtime or Geo and Global cross-Region inference. Use the exact model
+IDs above without a `us.` or `global.` prefix. See the AWS model cards for [Daybreak Blue](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-daybreak-blue-56-sol.html) and [Daybreak Red](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-cyber.html).
+
+Request access through the [enterprise Daybreak application](https://openai.com/form/enterprise-trusted-access-for-cyber/) or your OpenAI account team. After approval,
+work with your AWS account team to provision the model on Amazon Bedrock.
+GPT-5.6-Cyber requires separate model-specific approval beyond Daybreak Red.
+Confirm the [Daybreak access requirements](https://help.openai.com/en/articles/20001258-openai-daybreak-trusted-access-for-cyber-overview) with your OpenAI account team.
+
+After provisioning, select Daybreak Blue explicitly in `~/.codex/config.toml`:
+
+```toml
+model_provider = "amazon-bedrock"
+model = "openai.gpt-daybreak-blue-5.6-sol"
+
+[model_providers.amazon-bedrock.aws]
+region = "us-east-2"
+```
+
+For approved Daybreak Red access to GPT-5.6-Cyber, replace the model ID with
+`openai.gpt-5.6-cyber` and keep the same provider and Region. Keep your
+[AWS authentication](#authentication-options) configured, then
+[verify the selected provider and model](#verify-setup).
 
 ## Feature availability
 
