@@ -171,6 +171,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "settings",
         },
         {
+          title: "Run Codex with an NFS home directory",
+          description:
+            "Migrate a shared Linux home, verify cross-host resume, or keep independent jobs on local scratch.",
+          href: "/codex/environments/network-file-systems",
+          icon: "settings",
+        },
+        {
           title: "Manage app updates",
           description:
             "Control desktop app updates and deploy approved versions through your device management platform.",

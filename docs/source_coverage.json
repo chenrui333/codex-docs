@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-11-02T15:01:39+00:00",
+  "generated_at": "2026-11-03T00:42:24+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 192,
+      "discovered_urls": 193,
       "html_fallback_pages": 2,
-      "markdown_pages": 189,
-      "mirrored_paths_count": 191,
-      "mirrored_urls": 191,
+      "markdown_pages": 190,
+      "mirrored_paths_count": 192,
+      "mirrored_urls": 192,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -457,6 +457,7 @@
       "https://learn.chatgpt.com/docs/environments/git-worktrees",
       "https://learn.chatgpt.com/docs/environments/local-environment",
       "https://learn.chatgpt.com/docs/environments/modes",
+      "https://learn.chatgpt.com/docs/environments/network-file-systems",
       "https://learn.chatgpt.com/docs/extend/mcp",
       "https://learn.chatgpt.com/docs/extend/record-and-replay",
       "https://learn.chatgpt.com/docs/feature-maturity",
@@ -654,6 +655,7 @@
       "https://learn.chatgpt.com/docs/environments/git-worktrees",
       "https://learn.chatgpt.com/docs/environments/local-environment",
       "https://learn.chatgpt.com/docs/environments/modes",
+      "https://learn.chatgpt.com/docs/environments/network-file-systems",
       "https://learn.chatgpt.com/docs/extend/mcp",
       "https://learn.chatgpt.com/docs/extend/record-and-replay",
       "https://learn.chatgpt.com/docs/feature-maturity",
@@ -846,6 +848,7 @@
       "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
       "learn.chatgpt.com/docs/environments/local-environment/index.md",
       "learn.chatgpt.com/docs/environments/modes/index.md",
+      "learn.chatgpt.com/docs/environments/network-file-systems/index.md",
       "learn.chatgpt.com/docs/extend/mcp/index.md",
       "learn.chatgpt.com/docs/extend/record-and-replay/index.md",
       "learn.chatgpt.com/docs/feature-maturity/index.md",
@@ -943,7 +946,7 @@
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
       "learn.chatgpt.com/docs/windows/wsl/index.md"
     ],
-    "mirrored_paths_count": 191,
+    "mirrored_paths_count": 192,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1041,6 +1044,7 @@
       "https://learn.chatgpt.com/docs/environments/git-worktrees",
       "https://learn.chatgpt.com/docs/environments/local-environment",
       "https://learn.chatgpt.com/docs/environments/modes",
+      "https://learn.chatgpt.com/docs/environments/network-file-systems",
       "https://learn.chatgpt.com/docs/extend/mcp",
       "https://learn.chatgpt.com/docs/extend/record-and-replay",
       "https://learn.chatgpt.com/docs/feature-maturity",
@@ -1242,6 +1246,7 @@
           "https://learn.chatgpt.com/docs/environments/git-worktrees",
           "https://learn.chatgpt.com/docs/environments/local-environment",
           "https://learn.chatgpt.com/docs/environments/modes",
+          "https://learn.chatgpt.com/docs/environments/network-file-systems",
           "https://learn.chatgpt.com/docs/extend/mcp",
           "https://learn.chatgpt.com/docs/extend/record-and-replay",
           "https://learn.chatgpt.com/docs/feature-maturity",
@@ -1339,7 +1344,7 @@
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
           "https://learn.chatgpt.com/docs/windows/wsl"
         ],
-        "discovered_urls_sha256": "00dc1b75ff461e61d1e5627f29e61a8c8115f1fe96bb5700e5a99cd15a32ae4e",
+        "discovered_urls_sha256": "47993fff750308e22f19c8593ca8cb4a2fedd098b7075b597072e9ff17c7c426",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1438,6 +1443,7 @@
           "https://learn.chatgpt.com/docs/environments/git-worktrees",
           "https://learn.chatgpt.com/docs/environments/local-environment",
           "https://learn.chatgpt.com/docs/environments/modes",
+          "https://learn.chatgpt.com/docs/environments/network-file-systems",
           "https://learn.chatgpt.com/docs/extend/mcp",
           "https://learn.chatgpt.com/docs/extend/record-and-replay",
           "https://learn.chatgpt.com/docs/feature-maturity",
@@ -1726,7 +1732,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-11-02T15:01:39+00:00",
+    "last_successful_full_sync_at": "2026-11-03T00:42:24+00:00",
     "status": "complete"
   }
 }

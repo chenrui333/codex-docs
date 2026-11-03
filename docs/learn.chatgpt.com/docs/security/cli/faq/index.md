@@ -76,7 +76,7 @@ Use a scan ID from the results to inspect its findings:
 npx @openai/codex-security scans show SCAN_ID
 ```
 
-Each completed scan keeps its report, findings, coverage, and supporting
+Each completed scan keeps its report, findings, manifest, and supporting
 artifacts together. See [Scan
 artifacts](https://learn.chatgpt.com/docs/security/cli/reference#scan-artifacts) for the full layout.
 
@@ -181,9 +181,10 @@ can show how findings changed, but a missing finding alone doesn't verify a fix.
 
 ### What does incomplete coverage mean
 
-Review `coverage.json` for excluded paths, deferred surfaces, and open questions.
-New results don't include a coverage-completeness field. Check `scan.status` in
-`scan-manifest.json` for execution status.
+In `scan-manifest.json`, check `scan.status` to see whether the scan finished.
+`scan.scope` records the configured scope. `scan.review.excludedPaths` lists
+path patterns the scan excluded from review. If an older manifest has
+`scan.coverageRef`, open the file it names for coverage details.
 
 Coverage gaps don't change a completed scan's exit code. Exit `0` doesn't mean
 every file was reviewed. A later scan can't establish that an earlier finding

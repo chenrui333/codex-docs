@@ -47,6 +47,8 @@ Use `--ephemeral` when you don't want to persist session rollout files to disk:
 codex exec --ephemeral "triage this repository and suggest next steps"
 ```
 
+For workers with network-mounted home directories, see how to [keep job state local and retain the session rollout](https://learn.chatgpt.com/docs/environments/network-file-systems#run-independent-batch-jobs).
+
 If stdin is piped and you also provide a prompt argument, Codex treats the prompt as the instruction and the piped content as additional context.
 
 This lets you generate input with one command and hand it directly to Codex:

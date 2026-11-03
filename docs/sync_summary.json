@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/environments/network-file-systems/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-02T15:01:39+00:00",
-  "manifest_sha256": "84575ba6f863ceede9ddf30b8e033e3cbb756a09428017427a79ea805f48d774",
+  "generated_at": "2026-11-03T00:42:24+00:00",
+  "manifest_sha256": "1628e079781530101b87d46e696a51c0aaa4b0f66686e924372096b8bf21e864",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,29 +17,14 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 296,
+  "total_files": 297,
   "updated": [
-    "codex_capabilities.json",
-    "feature-flags/lifecycle.json",
-    "feature-flags/lifecycle.md",
-    "learn.chatgpt.com/docs/agent-configuration/rules/index.md",
-    "learn.chatgpt.com/docs/annotations-extensibility/index.md",
-    "learn.chatgpt.com/docs/app-server/index.md",
-    "learn.chatgpt.com/docs/build-skills/index.md",
-    "learn.chatgpt.com/docs/codex-sdk/index.md",
-    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
-    "learn.chatgpt.com/docs/config-file/config-basic/index.md",
-    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
-    "learn.chatgpt.com/docs/config-file/config-sample/index.md",
-    "learn.chatgpt.com/docs/customization/memories/index.md",
-    "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/environments/git-worktrees/index.md",
-    "learn.chatgpt.com/docs/extend/mcp/index.md",
-    "learn.chatgpt.com/docs/hooks/index.md",
-    "learn.chatgpt.com/docs/import/index.md",
-    "learn.chatgpt.com/docs/security/plugin/code-changes/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md",
-    "learn.chatgpt.com/docs/webmcp/index.md"
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/config-file/environment-variables/index.md",
+    "learn.chatgpt.com/docs/non-interactive-mode/index.md",
+    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
+    "learn.chatgpt.com/docs/security/cli/faq/index.md",
+    "learn.chatgpt.com/docs/security/cli/reference/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

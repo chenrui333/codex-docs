@@ -199,13 +199,11 @@ security-scans/
     │   └── attempt-1/
     │       ├── scan-manifest.json
     │       ├── findings.json
-    │       ├── coverage.json
     │       └── report.md
     └── identity/
         └── attempt-1/
             ├── scan-manifest.json
             ├── findings.json
-            ├── coverage.json
             └── report.md
 ```
 
@@ -214,8 +212,8 @@ security-scans/
 - `results.jsonl` records each repository attempt, its status, artifact
   directory, and any available cost or error details.
 - `report.md` provides a readable report for one repository attempt.
-- `findings.json` and `coverage.json` record that attempt's findings and
-  reviewed scope.
+- Open `findings.json` for the attempt's findings and `scan-manifest.json` for
+  its configured scope and review exclusions.
 
 Export one completed repository scan when you need a portable result:
 

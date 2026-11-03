@@ -461,13 +461,25 @@ await exportArtifact({
 To select a saved scan by ID, use `source: { scanId: "SCAN_ID" }` instead. Set
 `output` to a destination path to save the artifact to a file.
 
-Use `artifact: "threat-model"` to export Markdown; the export returns an error
-if no threat model was saved. For findings, use `artifact: "findings"` and choose
-`format: "csv"`, `"json"`, or `"sarif"` (the default).
+Threat models export as Markdown. The export returns an error if the scan has
+no saved threat model. For findings, set `artifact: "findings"` and choose
+`format: "sarif"` (the default), `"json"`, `"csv"`, or `"servicenow-avit"`.
 
 The result includes the output `path` and, for a threat-model file export,
 `provenance` from the same saved results. Both fields are `null` when
 `output: "-"` writes to stdout. Export requires Python 3.10 or later.
+
+For ServiceNow Manual AVIT Ingestion, [prepare the application template](https://learn.chatgpt.com/docs/security/cli/reference#export-findings-for-servicenow) and pass its path as `avitTemplate`.
+
+```ts
+await exportArtifact({
+  source: { directory: "/path/to/scan" },
+  artifact: "findings",
+  format: "servicenow-avit",
+  avitTemplate: "/path/outside/repository/exports/app.csv",
+  output: "/path/outside/repository/exports/findings-avit.csv",
+});
+```
 
 ## Validate an existing finding
 

@@ -30,6 +30,7 @@ provider-specific secret names you choose yourself with
 
 For more about the files stored under `CODEX_HOME`, see
 [Config and state locations](https://learn.chatgpt.com/docs/config-file/config-advanced#config-and-state-locations).
+If multiple Linux hosts open the same databases, see [Run Codex with an NFS home directory](https://learn.chatgpt.com/docs/environments/network-file-systems).
 
 ## Installer variables
 
