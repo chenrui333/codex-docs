@@ -93,9 +93,9 @@ At a high level, Auto-review is designed to block actions such as:
 - destructive actions with significant risk of irreversible damage
 
 The exact policy lives in the open-source Codex repository:
-[policy_template.md](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy_template.md)
+[policy_template.md](https://github.com/openai/codex/blob/main/codex-rs/prompts/templates/guardian/policy_template.md)
 and
-[policy.md](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md).
+[policy.md](https://github.com/openai/codex/blob/main/codex-rs/prompts/templates/guardian/policy.md).
 That policy can be customized per enterprise with `guardian_policy_config` or
 per user with local [`[auto_review].policy`](/codex/config-file/config-advanced#approval-policies-and-sandbox-modes).
 
@@ -151,7 +151,7 @@ For setup details, see
 [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy).
 
 The default reviewer policy is in the open-source Codex repository:
-[core/src/guardian/policy.md](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md).
+[prompts/templates/guardian/policy.md](https://github.com/openai/codex/blob/main/codex-rs/prompts/templates/guardian/policy.md).
 Enterprises can replace its tenant-specific section with
 `guardian_policy_config` in managed requirements. Individual users can also set
 a local

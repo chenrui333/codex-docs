@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-03T23:07:28+00:00",
-  "manifest_sha256": "f0ee387e73afc258f9e14dfb270209e749274f3bb04b88512254d22cc4a4a72d",
+  "generated_at": "2026-11-04T05:17:08+00:00",
+  "manifest_sha256": "81dbd40f031bbea0aeef2f35aa6a2bf00c19a13a899371285a94fa21f598ddd9",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,9 +17,6 @@
   },
   "total_files": 297,
   "updated": [
-    "learn.chatgpt.com/docs/amazon-bedrock/index.md",
-    "learn.chatgpt.com/docs/dots/index.md",
-    "learn.chatgpt.com/docs/enterprise/windows-deployment/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md"
+    "learn.chatgpt.com/docs/sandboxing/auto-review/index.md"
   ]
 }
