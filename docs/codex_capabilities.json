@@ -112734,8 +112734,8 @@
         "learn.chatgpt.com/docs/agent-approvals-security/index.md"
       ],
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"d49482e69915cdf0ed2f8b5ee1f3e798\"",
-      "source_last_modified": "2026-10-26T22:04:11Z",
+      "source_etag": "W/\"5e146f1678b137f0ae9d909a1ed46087\"",
+      "source_last_modified": "2026-11-04T08:08:06Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
       "title": "Web search"

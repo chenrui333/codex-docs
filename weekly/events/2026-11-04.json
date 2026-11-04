@@ -39,6 +39,56 @@
       "id": "b8df6419b3d60765d55dc57e63fde0de42ee0623a4e4c79d39d0695095ec5838",
       "observed_at": "2026-11-04T05:17:08+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "cedacc36261e8c836d0678c04d893f81f9c3c9567228471fc22a37ab4c254ccd",
+            "before": "e1c5208f77903c3b5aeb767508852e87fdfa8eb1b63ec50af0717e1ae12f35e2"
+          },
+          "learn.chatgpt.com/docs/security/sdk/index.md": {
+            "after": "2153c014028e6611afec05af68000d1e7e4c0ce746a7b679982eddfd2d4463e5",
+            "before": "3ac257466750e087948d4152436ce957a63bdb4a2a8fb6314bd9bc0315ae87db"
+          },
+          "platform.openai.com/docs/guides/tools-web-search/index.md": {
+            "after": "3e8a8257f83731cea8a2454ca265d538a3145cebc7deff3bd64f344b8c3c54fd",
+            "before": "5ee30e4c804bb2e092dd72a98605ece4a9ff6c401603020e72045a9400d5232e"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.166.0",
+          "codex_cli_source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+          "codex_cli_version": "0.166.0",
+          "codex_cli_version_raw": "codex-cli 0.166.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "learn.chatgpt.com/docs/security/sdk/index.md",
+          "platform.openai.com/docs/guides/tools-web-search/index.md"
+        ]
+      },
+      "id": "e780b7a1f55c627919f6dc6cab9c3af9cf42bad42f5d371d589df0309bd7b48d",
+      "observed_at": "2026-11-04T13:57:09+00:00",
+      "previous_id": "b8df6419b3d60765d55dc57e63fde0de42ee0623a4e4c79d39d0695095ec5838"
     }
   ],
   "schema_version": 1

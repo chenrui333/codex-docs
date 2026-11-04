@@ -156,7 +156,7 @@
         "codex-cli 0.166.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "e1c5208f77903c3b5aeb767508852e87fdfa8eb1b63ec50af0717e1ae12f35e2",
+      "sha256": "cedacc36261e8c836d0678c04d893f81f9c3c9567228471fc22a37ab4c254ccd",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -11413,7 +11413,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "3ac257466750e087948d4152436ce957a63bdb4a2a8fb6314bd9bc0315ae87db",
+      "sha256": "2153c014028e6611afec05af68000d1e7e4c0ce746a7b679982eddfd2d4463e5",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12096,10 +12096,10 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "5ee30e4c804bb2e092dd72a98605ece4a9ff6c401603020e72045a9400d5232e",
+      "sha256": "3e8a8257f83731cea8a2454ca265d538a3145cebc7deff3bd64f344b8c3c54fd",
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"d49482e69915cdf0ed2f8b5ee1f3e798\"",
-      "source_last_modified": "2026-10-26T22:04:11Z",
+      "source_etag": "W/\"5e146f1678b137f0ae9d909a1ed46087\"",
+      "source_last_modified": "2026-11-04T08:08:06Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search"
     },

@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-04T05:17:08+00:00",
-  "manifest_sha256": "81dbd40f031bbea0aeef2f35aa6a2bf00c19a13a899371285a94fa21f598ddd9",
+  "generated_at": "2026-11-04T13:57:09+00:00",
+  "manifest_sha256": "6f968d0984dc97f3286300bac13246b9a795712fe95a40e4120c35f2096aa016",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,6 +17,8 @@
   },
   "total_files": 297,
   "updated": [
-    "learn.chatgpt.com/docs/sandboxing/auto-review/index.md"
+    "codex_capabilities.json",
+    "learn.chatgpt.com/docs/security/sdk/index.md",
+    "platform.openai.com/docs/guides/tools-web-search/index.md"
   ]
 }
