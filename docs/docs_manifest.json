@@ -7434,7 +7434,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "b839e9af62f41bc9b0037d0b1c83fffa220812e71a20ee83c6c9fea1022969f5",
+      "sha256": "08f64214c2c7e4c8bfd35342bcc7b869db79f51b1da0d2e4bdbd31b06c11e5d5",
       "source_area": "learn_administration",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8218,7 +8218,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "1af4d1ebe4d564abd8320fcfdd67fe4a052863b2d8552a679eb560bd8bf1cd46",
+      "sha256": "ea0bcb5f98f6c96ba3ebdab1eb0190fa61a1f6f48cacfb6419cf55f3c5621e58",
       "source_area": "learn_computer_use",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8641,14 +8641,14 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/controls"
     },
     "learn.chatgpt.com/docs/dots/getting-started/index.md": {
-      "sha256": "687f69b35a421b06da00a422c05cdab250d960d03e726ae7bc2616129ca26f3f",
+      "sha256": "3b13f8e702d5c70c2b76bf4cc8da69f54e264cb27ca496014671a74c04c932d8",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/dots/getting-started"
     },
     "learn.chatgpt.com/docs/dots/index.md": {
-      "sha256": "7ac38891201726a0b6de8e1f3b73b2defbe6b866070933c1c2f2862ee32a49f9",
+      "sha256": "fd6ab47e2ec89fd965e176d6ee2b2a27537efc0edeea06667cf5fba4f74b911e",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8977,11 +8977,18 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway"
     },
     "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md": {
-      "sha256": "3ee71d4759677623011f8134b693cd3eb5ed5c19fd7e8c8feb96de8b41710245",
+      "sha256": "cc6c2c32d98c328af7aa9ebf0ead43b4851207122c8606775f8ce780ffdb638e",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide"
+    },
+    "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+      "sha256": "f171a700b93ea3161a4270bfd0237dfb2f210f2ee803fd299982a80b2b8e99bd",
+      "source_area": "learn_enterprise",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/enterprise/dots-security"
     },
     "learn.chatgpt.com/docs/enterprise/dynamic-groups/index.md": {
       "sha256": "8912421819b1a35eaa64f97e52806fc2dae16b245af9a2276f07be8c7b98881c",
@@ -11413,7 +11420,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "2153c014028e6611afec05af68000d1e7e4c0ce746a7b679982eddfd2d4463e5",
+      "sha256": "a6cbb6684ea9dac9bd4a2fd750d4df9cf867c33fbf74a7b8b500201f1e890761",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12070,6 +12077,13 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/windows/wsl"
+    },
+    "learn.chatgpt.com/docs/working-with-agents/index.md": {
+      "sha256": "8b4e57ee04c86199d7a81004725012480bfbff7f86e7d9c73a70e67ca7494001",
+      "source_area": "learn_working_with_agents",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/working-with-agents"
     },
     "platform.openai.com/docs/guides/tools-web-search/index.md": {
       "codex_cli_versions": [

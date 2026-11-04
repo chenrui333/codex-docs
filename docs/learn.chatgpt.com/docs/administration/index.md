@@ -420,6 +420,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "dataControls",
         },
         {
+          title: "Safety and security in dots",
+          description:
+            "Review dots security controls, data handling, and audit and offboarding considerations.",
+          href: "/codex/enterprise/dots-security",
+          icon: "shieldCheck",
+        },
+        {
           title: "Prisma AIRS",
           description:
             "Apply workspace-wide security policies to Codex prompts.",

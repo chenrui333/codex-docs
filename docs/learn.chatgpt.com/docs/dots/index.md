@@ -24,6 +24,8 @@ Source: https://learn.chatgpt.com/docs/dots
 
 Your dot is an always-on agent that keeps work moving across your tools and projects. You can keep talking to it while it works, and it reaches out with results or decisions that need you.
 
+New to delegating work to an agent? Start with [Working with agents](https://learn.chatgpt.com/docs/working-with-agents).
+
 We’re expanding the family of frontier models that power dots to include GPT-6.1 Terra. Your dot can draw on different models for different parts of its work. GPT-6.1 Terra builds on the GPT-6 series’ alignment improvements and uses safeguards developed for GPT-6 Astra.
 
 Your dot lives in the cloud and has its own computer and browser. You can reach it and it can keep working even when your computer is off. It can research, analyze data, prepare documents, and build software, using relevant context from past conversations and your preferences.

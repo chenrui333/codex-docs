@@ -1,9 +1,12 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+    "learn.chatgpt.com/docs/working-with-agents/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-04T13:57:09+00:00",
-  "manifest_sha256": "6f968d0984dc97f3286300bac13246b9a795712fe95a40e4120c35f2096aa016",
+  "generated_at": "2026-11-04T23:21:15+00:00",
+  "manifest_sha256": "5f9841e884ea4a3b8487cdcfc77015e7f491c622fca8dcf4874d9726ae582f11",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,10 +18,13 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 297,
+  "total_files": 299,
   "updated": [
-    "codex_capabilities.json",
-    "learn.chatgpt.com/docs/security/sdk/index.md",
-    "platform.openai.com/docs/guides/tools-web-search/index.md"
+    "learn.chatgpt.com/docs/administration/index.md",
+    "learn.chatgpt.com/docs/computer-use/index.md",
+    "learn.chatgpt.com/docs/dots/getting-started/index.md",
+    "learn.chatgpt.com/docs/dots/index.md",
+    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
+    "learn.chatgpt.com/docs/security/sdk/index.md"
   ]
 }

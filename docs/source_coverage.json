@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-11-03T00:42:24+00:00",
+  "generated_at": "2026-11-04T23:21:15+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 193,
+      "discovered_urls": 195,
       "html_fallback_pages": 2,
-      "markdown_pages": 190,
-      "mirrored_paths_count": 192,
-      "mirrored_urls": 192,
+      "markdown_pages": 192,
+      "mirrored_paths_count": 194,
+      "mirrored_urls": 194,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -426,6 +426,7 @@
       "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
+      "https://learn.chatgpt.com/docs/enterprise/dots-security",
       "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
       "https://learn.chatgpt.com/docs/enterprise/education-plans",
       "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
@@ -553,7 +554,8 @@
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
       "https://learn.chatgpt.com/docs/windows/windows-app",
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
-      "https://learn.chatgpt.com/docs/windows/wsl"
+      "https://learn.chatgpt.com/docs/windows/wsl",
+      "https://learn.chatgpt.com/docs/working-with-agents"
     ],
     "discovery_status": "complete",
     "html_fallback_urls": [
@@ -624,6 +626,7 @@
       "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
+      "https://learn.chatgpt.com/docs/enterprise/dots-security",
       "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
       "https://learn.chatgpt.com/docs/enterprise/education-plans",
       "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
@@ -750,7 +753,8 @@
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
       "https://learn.chatgpt.com/docs/windows/windows-app",
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
-      "https://learn.chatgpt.com/docs/windows/wsl"
+      "https://learn.chatgpt.com/docs/windows/wsl",
+      "https://learn.chatgpt.com/docs/working-with-agents"
     ],
     "mirrored_paths": [
       "learn.chatgpt.com/docs/administration/index.md",
@@ -817,6 +821,7 @@
       "learn.chatgpt.com/docs/enterprise/configuration-server/index.md",
       "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
       "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
+      "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
       "learn.chatgpt.com/docs/enterprise/dynamic-groups/index.md",
       "learn.chatgpt.com/docs/enterprise/education-plans/index.md",
       "learn.chatgpt.com/docs/enterprise/gateway-compatibility/index.md",
@@ -944,9 +949,10 @@
       "learn.chatgpt.com/docs/whats-new/september-28-october-2-2026/index.md",
       "learn.chatgpt.com/docs/windows/windows-app/index.md",
       "learn.chatgpt.com/docs/windows/windows-sandbox/index.md",
-      "learn.chatgpt.com/docs/windows/wsl/index.md"
+      "learn.chatgpt.com/docs/windows/wsl/index.md",
+      "learn.chatgpt.com/docs/working-with-agents/index.md"
     ],
-    "mirrored_paths_count": 192,
+    "mirrored_paths_count": 194,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1013,6 +1019,7 @@
       "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
+      "https://learn.chatgpt.com/docs/enterprise/dots-security",
       "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
       "https://learn.chatgpt.com/docs/enterprise/education-plans",
       "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
@@ -1139,7 +1146,8 @@
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
       "https://learn.chatgpt.com/docs/windows/windows-app",
       "https://learn.chatgpt.com/docs/windows/windows-sandbox",
-      "https://learn.chatgpt.com/docs/windows/wsl"
+      "https://learn.chatgpt.com/docs/windows/wsl",
+      "https://learn.chatgpt.com/docs/working-with-agents"
     ],
     "new_discovered_urls_since_last_run": [],
     "page_fetch_errors": [],
@@ -1215,6 +1223,7 @@
           "https://learn.chatgpt.com/docs/enterprise/configuration-server",
           "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
+          "https://learn.chatgpt.com/docs/enterprise/dots-security",
           "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
           "https://learn.chatgpt.com/docs/enterprise/education-plans",
           "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
@@ -1342,9 +1351,10 @@
           "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
           "https://learn.chatgpt.com/docs/windows/windows-app",
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
-          "https://learn.chatgpt.com/docs/windows/wsl"
+          "https://learn.chatgpt.com/docs/windows/wsl",
+          "https://learn.chatgpt.com/docs/working-with-agents"
         ],
-        "discovered_urls_sha256": "47993fff750308e22f19c8593ca8cb4a2fedd098b7075b597072e9ff17c7c426",
+        "discovered_urls_sha256": "a05477f09162b9436a157d026719f0a68bed751db6b0e81e3e72d2701b3a91f1",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1412,6 +1422,7 @@
           "https://learn.chatgpt.com/docs/enterprise/configuration-server",
           "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
           "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
+          "https://learn.chatgpt.com/docs/enterprise/dots-security",
           "https://learn.chatgpt.com/docs/enterprise/dynamic-groups",
           "https://learn.chatgpt.com/docs/enterprise/education-plans",
           "https://learn.chatgpt.com/docs/enterprise/gateway-compatibility",
@@ -1539,7 +1550,8 @@
           "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
           "https://learn.chatgpt.com/docs/windows/windows-app",
           "https://learn.chatgpt.com/docs/windows/windows-sandbox",
-          "https://learn.chatgpt.com/docs/windows/wsl"
+          "https://learn.chatgpt.com/docs/windows/wsl",
+          "https://learn.chatgpt.com/docs/working-with-agents"
         ]
       }
     },
@@ -1732,7 +1744,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-11-03T00:42:24+00:00",
+    "last_successful_full_sync_at": "2026-11-04T23:21:14+00:00",
     "status": "complete"
   }
 }

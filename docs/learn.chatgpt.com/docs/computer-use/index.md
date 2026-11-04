@@ -14,9 +14,8 @@ Source: https://learn.chatgpt.com/docs/computer-use
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 In supported regions, Computer Use in the ChatGPT desktop app is available on
-  macOS and Windows with ChatGPT Work and Codex. Install the Computer Use
-  plugin. On macOS, grant Screen Recording and Accessibility permissions when
-  prompted.
+  macOS and Windows with ChatGPT Work and Codex. Open **Settings > Computer
+  use** to see which apps you can control.
 
 With Computer Use, ChatGPT can see and operate graphical user interfaces on macOS
 or Windows. Use it for tasks where command-line tools or structured integrations
@@ -30,17 +29,19 @@ continuing.
 
 ## Set up Computer Use
 
-In the ChatGPT desktop app, select ChatGPT and switch to Work in the switcher, or select
-Codex. Open **Plugins > Computer
-Use** and select **Install plugin** if prompted. If ChatGPT shows **Enable**,
-select it. Turn on the Computer Use server and skill toggles, then select **Try
-now** to start.
+1. In the ChatGPT desktop app, switch to Work or select Codex.
+2. Open **Settings > Computer use**. Under **Control**, find **Any App**. If the
+   row shows **Install**, select it and follow the prompts. If the switch is off,
+   turn it on. If your app shows a **Computer Use** plugin page instead, follow
+   the setup prompts on that page.
+3. [Start a Computer Use task](#start-a-computer-use-task). ChatGPT asks for
+   permission before it uses an app. Apps you approve for future tasks appear
+   under **Always-allowed apps** in the same settings.
 
-> Illustration: Computer Use plugin controls with the MCP server and skill enabled.
-
-Then open **Settings > Computer use** to review app access. Connected browser
-controls show a **Manage** action. Apps you approve for future tasks appear in
-the **Always-allowed apps** section.
+If you don't see **Any App**, you may still have separate controls for a browser
+or individual app. Those controls don't grant access to other desktop apps. In a
+managed workspace, ask your administrator whether your workspace allows Computer
+Use.
 
 > Illustration: Computer Use settings showing app controls and Calculator as the only always-allowed app.
 
@@ -57,8 +58,7 @@ On macOS, grant:
 
 For difficult tasks that depend on screenshots or visual judgment, choose
 [GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) when it is available in your model
-selector. The same plugin setup, operating-system permissions, and app access
-controls apply.
+selector. The same operating-system permissions and app access controls apply.
 
 Choose Computer Use when the task depends on a graphical user interface that's
 hard to verify through files or command output alone.
