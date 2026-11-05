@@ -1,12 +1,9 @@
 {
-  "added": [
-    "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
-    "learn.chatgpt.com/docs/working-with-agents/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-04T23:21:15+00:00",
-  "manifest_sha256": "5f9841e884ea4a3b8487cdcfc77015e7f491c622fca8dcf4874d9726ae582f11",
+  "generated_at": "2026-11-05T05:37:02+00:00",
+  "manifest_sha256": "542d16b870337bb70af146cceed2bc69f9d04e1e6b313e1f9e7c67f33e4ab636",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -16,15 +13,10 @@
     "codex_cli_version_raw": "codex-cli 0.166.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 299,
   "updated": [
-    "learn.chatgpt.com/docs/administration/index.md",
-    "learn.chatgpt.com/docs/computer-use/index.md",
-    "learn.chatgpt.com/docs/dots/getting-started/index.md",
-    "learn.chatgpt.com/docs/dots/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md"
+    "cli-surface/macos-arm64.json"
   ]
 }
