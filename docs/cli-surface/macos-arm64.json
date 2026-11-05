@@ -2184,7 +2184,7 @@
           "synopsis": "-c, --config <key=value>"
         },
         {
-          "description": "Use a local directory with space for the database and WAL files. The default is the system temporary directory [default: /var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/]",
+          "description": "Use a local directory with space for the database and WAL files. The default is the system temporary directory [default: /var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/]",
           "flags": [
             "--staging-dir"
           ],
