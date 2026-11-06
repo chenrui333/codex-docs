@@ -454,6 +454,81 @@
       "id": "1d03a79d6f1a3b759088a0b94b22d90698e8c45256ad9d6f8178437d1edb21b7",
       "observed_at": "2026-11-06T05:35:21+00:00",
       "previous_id": "5cb94203d51123effa8642e477c60bd6f5a1bada08ec4de5bf6d93997daa008d"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "feature-flags/lifecycle.json": {
+            "after": "88505e454a93492aabf455ebe51786e01e6690bb878599eac94f7fa5538cd1a0",
+            "before": "83a467a8ef3d644da9f4e44fd11c531bd6f3e7e022922e543d6a8c5a7e4b2bb4"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "2675beafc5d1f614cd4662cbef87ee9fd042a3c9349643b255751fda2fe41369",
+            "before": "4951f41d5aab183491bb8e3802306e94e085daa450b7810facfc34316adecf2e"
+          },
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md": {
+            "after": "8c78d8d20fb0c76e5a53072e2adad43f760d442753e259e23365a048575ff03b",
+            "before": "1112d3457927f1447a14d1c1c1e6bed1f65b4c3e6b813617d4f5390c22ef9292"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "93722fd5d11cf6adcd1f9e19e36b8e26decb117e8ef659525ed0f02bffc6d74b",
+            "before": "29edcc077a329c202a1dd22036d2d0a3a203de7e85f01880870a525142171328"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "8fb00bdda0286d85e5546036c300ce1698a8440ad8a078ad043f5d45029d8098",
+            "before": "1f13d20df49c796c9f31551157729bc2f319afdc2d7cb285f0e7efc8af5af022"
+          },
+          "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md": {
+            "after": "78a1003fe3abf36e1e1f7afd163eec608d2a5f01256a2659373f5f32b88abad7",
+            "before": "4119b26212615f2ef3e5d5d6c5952895623905c0b88253d2d458fef0efe7b256"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "7d30ec75bde3fd91b3b2d10082fb845d83179649ec551c4660c549072b4faef5",
+            "before": "95c39db7495202feb1ae38d392a55fab1e078e3f21907432a37af710c7183468"
+          },
+          "learn.chatgpt.com/docs/sandboxing/auto-review/index.md": {
+            "after": "afa33c73f62de29161e227c8626b4ff65fbe334aa8efced089bc314a3d123ab2",
+            "before": "d38de7070039325380d301aaab238b66bbcad4506f3854c2ef9588c61eb8e296"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.0",
+          "codex_cli_source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
+          "codex_cli_version": "0.167.0",
+          "codex_cli_version_raw": "codex-cli 0.167.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/sandboxing/auto-review/index.md"
+        ]
+      },
+      "id": "54d551aba1bb134e25d2b8b1732869a88382bb328690932002481bbffa92bd3a",
+      "observed_at": "2026-11-06T13:55:31+00:00",
+      "previous_id": "1d03a79d6f1a3b759088a0b94b22d90698e8c45256ad9d6f8178437d1edb21b7"
     }
   ],
   "schema_version": 1

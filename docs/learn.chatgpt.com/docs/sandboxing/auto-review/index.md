@@ -13,10 +13,9 @@ Source: https://learn.chatgpt.com/docs/sandboxing/auto-review
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Auto-review replaces manual approval at the sandbox boundary with a separate
-reviewer agent. The main Codex agent still runs inside the same sandbox, with
-the same approval policy and the same network and filesystem limits. The
-difference is who reviews eligible escalation requests.
+Auto-review sends eligible approval requests to a separate reviewer agent.
+Your sandbox, command rules, and tool settings determine which actions need
+approval. The reviewer decides whether those actions can proceed.
 
 Auto-review only applies when approvals are interactive. In practice, that
   means `approval_policy = "on-request"` or a granular approval policy that
@@ -36,7 +35,7 @@ warning recommends **Approve for me** instead and links to
 [reviewer-policy configuration](#configuration). The warning doesn't restore
 the sandbox boundary or override organization policy.
 
-## Select automatic review
+## Select Auto-review
 
 In the desktop app, choose **Approve for me** from the permissions control
 below the composer. Check that it's selected for the current chat. See
@@ -45,15 +44,14 @@ below the composer. Check that it's selected for the current chat. See
 For the CLI or a local Codex configuration, set
 `approvals_reviewer = "auto_review"` with an eligible interactive approval
 policy, such as `approval_policy = "on-request"`. Changing the approval policy
-alone doesn't select the reviewer. Managed requirements take precedence over
-local settings; see [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy).
+alone doesn't select the reviewer. Administrators can
+[require Auto-review](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-auto-review-policy)
+for their organization.
 
-## How auto-review works
+## How Auto-review works
 
-At a high level, the flow is:
-
-1. The main agent works inside `read-only` or `workspace-write`.
-2. When it needs to cross the sandbox boundary, it requests approval.
+1. The main agent proposes an action, such as running a command.
+2. If the action needs approval, Codex creates a request.
 3. If `approvals_reviewer = "auto_review"`, Codex routes that approval request
    to a separate reviewer agent instead of stopping for a person.
 4. The reviewer decides whether the action should run and returns a rationale.
@@ -61,29 +59,26 @@ At a high level, the flow is:
    agent is instructed to find a materially safer path or stop and ask the
    user.
 
-Auto-review is a reviewer swap, not a permission grant. It does not expand
-`writable_roots`, enable network access, or weaken protected paths. It only
-changes how Codex handles actions that already need approval.
-
 ## When it triggers
 
 Auto-review evaluates approval requests that would otherwise pause for a human.
 These include:
 
 - Shell or exec tool calls that request escalated sandbox permissions.
-- Network requests blocked by the current sandbox or policy.
+- Commands that match a [command rule](https://learn.chatgpt.com/docs/agent-configuration/rules) with
+  `decision = "prompt"`, including commands inside the sandbox.
+- Network requests to destinations that require approval. An explicit network
+  deny rule blocks the request.
 - File edits outside the allowed writable roots.
 - MCP or app tool calls that require approval based on their tool annotations
   or configured approval mode.
 
-Auto-review does not run for routine actions already allowed inside the
-sandbox. If a command can run under the active `sandbox_mode`, or a tool call
-stays within the allowed policy, the main agent continues without review.
+Actions that already have permission to run proceed without review.
 
-Computer Use is a separate case. App approvals for Computer Use still surface
-directly to the user, so Auto-review does not replace those app-level prompts.
+Computer Use app-level access prompts go directly to the user. Eligible
+Computer Use tool calls can separately trigger Auto-review.
 
-## What auto-review blocks
+## What Auto-review blocks
 
 At a high level, Auto-review is designed to block actions such as:
 
@@ -92,22 +87,17 @@ At a high level, Auto-review is designed to block actions such as:
 - broad or persistent security weakening
 - destructive actions with significant risk of irreversible damage
 
-The exact policy lives in the open-source Codex repository:
-[policy_template.md](https://github.com/openai/codex/blob/main/codex-rs/prompts/templates/guardian/policy_template.md)
-and
-[policy.md](https://github.com/openai/codex/blob/main/codex-rs/prompts/templates/guardian/policy.md).
-That policy can be customized per enterprise with `guardian_policy_config` or
-per user with local [`[auto_review].policy`](/codex/config-file/config-advanced#approval-policies-and-sandbox-modes).
+See [Configuration](#configuration) for the default rules and how to customize them.
 
 ## What the reviewer sees
 
-The reviewer is itself a Codex agent with a narrower job than the main agent:
-decide whether a specific boundary-crossing action should run.
+The reviewer evaluates the specific action that triggered the approval request.
 
 The reviewer sees a compact transcript plus the exact approval request. That
 typically includes user messages, surfaced assistant updates, relevant tool
 calls and tool outputs, and the action now being proposed for approval. It can
-also perform read-only checks to gather missing context, but it does so rarely.
+also perform read-only checks, such as inspecting a directory before approving
+its deletion.
 
 Hidden assistant reasoning is not included. Auto-review sees retained
 chat items and tool evidence, not private chain-of-thought.
@@ -122,14 +112,12 @@ the review rationale to the main agent and adds a stronger instruction:
 - Continue only with a materially safer alternative.
 - Otherwise, stop and ask the user.
 
-Codex also applies a rejection circuit breaker per turn. In the current
-open-source implementation, Auto-review interrupts the turn after `3`
-consecutive denials or `10` denials within a rolling window of the last `50`
-reviews in the same turn.
+For most models, the Codex CLI interrupts the turn after 3 consecutive denials
+or 10 denials in the last 50 reviews in that turn. For models designated for
+cybersecurity, the CLI interrupts the turn on the first denial.
 
-Any non-denial resets the consecutive-denial counter. When the breaker trips,
-Codex emits a warning and aborts the current turn with an interrupt rather than
-letting the agent loop on more escalation attempts.
+Any other review outcome resets the consecutive-denial count. When Codex
+reaches a denial limit, it displays a warning and stops the turn.
 
 Timeouts are surfaced separately from explicit denials, and the main agent is
 informed that a timeout alone is not proof that the action is unsafe.
@@ -147,45 +135,42 @@ denial.
 
 ## Configuration
 
-For setup details, see
-[Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy).
+The [reviewer template](https://github.com/openai/codex/blob/rust-v0.167.0/codex-rs/prompts/templates/guardian/policy_template.md)
+tells the reviewer how to assess an action. Codex inserts the security policy
+into that template and specifies the response format separately. The CLI uses
+the reviewer model's default policy when available. Otherwise, it uses the
+[bundled policy (`policy.md`)](https://github.com/openai/codex/blob/rust-v0.167.0/codex-rs/prompts/templates/guardian/policy.md).
 
-The default reviewer policy is in the open-source Codex repository:
-[prompts/templates/guardian/policy.md](https://github.com/openai/codex/blob/main/codex-rs/prompts/templates/guardian/policy.md).
-Enterprises can replace its tenant-specific section with
-`guardian_policy_config` in managed requirements. Individual users can also set
-a local
-[`[auto_review].policy`](/codex/config-file/config-advanced#approval-policies-and-sandbox-modes)
-in their `config.toml`, but managed requirements take precedence:
+**To add rules**, set `extra_policy` under `[auto_review]` in local
+`config.toml`, or set the top-level `guardian_extra_policy` in managed
+`requirements.toml`. Codex applies these rules alongside the active policy.
 
-```toml
-[auto_review]
-policy = """
-YOUR POLICY GOES HERE
-"""
-```
+**To replace the policy**, copy the complete policy you want to adapt. If you
+use the bundled default, copy the full contents of `policy.md`. Edit the rules
+you want to change, then put the full text in local `[auto_review].policy` or
+managed `guardian_policy_config`. Omitted rules drop out of the replacement.
+Codex still uses the reviewer's template and response format.
 
-To customize the policy, copy the whole default policy wording first, then
-iterate based on your individual risk profile.
+Codex resolves the two settings independently and ignores blank values.
+Managed `guardian_policy_config` takes precedence over local `[auto_review].policy`.
+Managed `guardian_extra_policy` takes precedence over local `[auto_review].extra_policy`.
+For example, if your organization sets only a replacement policy, your local
+`extra_policy` still adds rules to it.
+
+For organization-wide setup, see
+[Configure Auto-review policy](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-auto-review-policy).
 
 ## Configure an authorized cybersecurity engagement
 
-For authorized security work, combine automatic review with a written
+For authorized security work, combine Auto-review with a written
 engagement scope and a least-privilege [permission profile](https://learn.chatgpt.com/docs/permissions).
 Use an approved lab target, document the actions and engagement window, and
 keep production systems, unrelated hosts, credentials, and persistent changes
 out of scope unless explicitly authorized.
 
-Both `[auto_review].policy` and `guardian_policy_config` replace your current
-reviewer policy. They don't merge with policies bundled with your model or
-managed by your organization. The built-in review instructions and response
-format still apply. Before using either example, copy the complete current
-policy, keep every existing rule, and add the rules for your approved work.
-Replace the uppercase placeholder with that complete policy. If you can't
-access the current policy, don't override it.
-
-The following local `config.toml` template enables review and adds scoped
-conditions after the existing reviewer policy:
+This local `config.toml` example enables Auto-review and adds engagement
+rules to the active policy. Replace the example target and actions with your
+approved scope.
 
 ```toml
 approval_policy = "on-request"
@@ -193,9 +178,7 @@ approvals_reviewer = "auto_review"
 default_permissions = ":workspace"
 
 [auto_review]
-policy = """
-PASTE THE COMPLETE ACTIVE REVIEWER POLICY HERE BEFORE USING THIS EXAMPLE.
-
+extra_policy = """
 ## Environment Profile
 - Authorized target: lab.example.com.
 - Approved actions: inspect the target, reproduce authorized vulnerabilities,
@@ -211,31 +194,16 @@ PASTE THE COMPLETE ACTIVE REVIEWER POLICY HERE BEFORE USING THIS EXAMPLE.
 """
 ```
 
-Replace the example target and allowed actions with the actual approved scope.
-Enforce target restrictions with independent filesystem and network rules;
-reviewer instructions don't replace those boundaries.
-
-Organizations can enforce the same conditions in managed `requirements.toml`:
+Enforce target restrictions with independent filesystem and network rules.
+For an organization, put the same engagement rules in the top-level
+`guardian_extra_policy` in managed `requirements.toml`. The following
+requirements select Auto-review and restrict the available permission profiles.
 
 ```toml
 allowed_approval_policies = ["on-request"]
 allowed_approvals_reviewers = ["auto_review"]
 allowed_sandbox_modes = ["read-only", "workspace-write"]
 default_permissions = ":workspace"
-
-guardian_policy_config = """
-PASTE THE COMPLETE ACTIVE REVIEWER POLICY HERE BEFORE USING THIS EXAMPLE.
-
-## Environment Profile
-- Authorized target: lab.example.com.
-
-## Tenant Risk Taxonomy and Allow/Deny Rules
-- Allow only approved actions against the documented engagement target.
-- Deny out-of-scope hosts, production access, credential theft, persistence,
-  data exfiltration, destructive operations, and attempts to bypass policy.
-- Deny ambiguous or high-impact actions until a human explicitly approves the
-  exact target, action, and side effects.
-"""
 
 [allowed_permission_profiles]
 ":read-only" = true
@@ -247,8 +215,7 @@ PASTE THE COMPLETE ACTIVE REVIEWER POLICY HERE BEFORE USING THIS EXAMPLE.
 `allowed_sandbox_modes` also prevents full access in deployments that still use
 legacy `sandbox_mode`.
 
-Managed `guardian_policy_config` takes precedence over a user's local
-`[auto_review].policy`. Keep `approval_policy = "on-request"` or another
+Keep `approval_policy = "on-request"` or another
 eligible interactive approval policy and keep an enforceable sandbox boundary.
 With `approval_policy = "never"`, `:danger-full-access`, or `--yolo`, an action
 can avoid creating the boundary-crossing approval request that review requires.
@@ -260,8 +227,7 @@ when actions inside the sandbox must still reach the reviewer.
 
 See [Models and Trusted Access](https://learn.chatgpt.com/docs/cyber-safety) and [recommended
 configuration](https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration) for model access,
-engagement setup, and custom agent workflows. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy)
-for enterprise precedence and supported client versions. For custom API or
+engagement setup, and custom agent workflows. For custom API or
 Agents SDK harnesses, use [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution).
 
 ## Reduce review volume without weakening security
@@ -278,7 +244,8 @@ In practice, the highest-leverage changes are:
 - Add narrowly scoped [prefix rules](https://learn.chatgpt.com/docs/agent-configuration/rules). Prefer precise command
   prefixes such as `["cargo", "test"]` or `["pnpm", "run", "lint"]` over broad
   patterns such as `["python"]` or `["curl"]`. Broad rules often erase the
-  boundary Auto-review is meant to guard.
+  boundary Auto-review is meant to guard. For cybersecurity models, the CLI
+  ignores `allow` prefix rules and honors `prompt` and `forbidden` rules.
 
 Auto-review session transcripts are retained under `~/.codex/sessions` by
 default, so you can ask Codex to analyze past traffic there before changing

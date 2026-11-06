@@ -378,15 +378,12 @@ For beta permission profiles that configure filesystem and network access togeth
 You can also use a granular approval policy (`approval_policy = { granular = { ... } }`) to allow or auto-reject individual prompt categories. This is useful when you want normal interactive approvals for some cases but want others, such as `request_permissions` or skill-script prompts, to fail closed automatically.
 
 Set `approvals_reviewer = "auto_review"` to route eligible interactive approval
-requests through automatic review. This changes the reviewer, not the sandbox
-boundary.
-
-Use `[auto_review].policy` for local reviewer policy instructions. Managed
-`guardian_policy_config` takes precedence.
+requests through Auto-review. To add rules or replace the reviewer policy, see
+[Auto-review configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration).
 
 ```toml
 approval_policy = "on-request"  # Other options: never or { granular = { ... } }
-approvals_reviewer = "user"     # Or "auto_review" for automatic review
+approvals_reviewer = "user"     # Or "auto_review" for Auto-review
 sandbox_mode = "workspace-write"
 allow_login_shell = false       # Optional hardening: disallow login shells for shell tools
 
@@ -404,11 +401,6 @@ exclude_tmpdir_env_var = false  # Allow $TMPDIR
 exclude_slash_tmp = false       # Allow /tmp
 writable_roots = ["/Users/YOU/.pyenv/shims"]
 network_access = false          # Opt in to outbound network
-
-[auto_review]
-policy = """
-Use your organization's automatic review policy.
-"""
 ```
 
 ### Named permission profiles

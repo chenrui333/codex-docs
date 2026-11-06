@@ -174,7 +174,7 @@ See [how Agent Security applies to Work Cloud](https://learn.chatgpt.com/docs/en
 
 > Illustration: Agent Security site-rule editor with site access, transfers, debugging, and approval controls.
 
-Disabling automatic review for browser actions sends those actions to the user for
+Disabling Auto-review for browser actions sends those actions to the user for
 approval instead. It doesn't disable model safety monitoring.
 
 When several origin patterns match, the most restrictive value wins for each
@@ -256,7 +256,7 @@ persistent_approval = false
 access_approval_lifetime = "turn"
 ```
 
-To disable automatic review for browser actions, set
+To disable Auto-review for browser actions, set
 `browser_use.disable_auto_review = true`, or set `auto_review = "deny"` on an
 origin policy to restrict it for that origin.
 
@@ -416,7 +416,7 @@ Use this section to set approval behavior, permission boundaries, and starting d
 
 ### Admin-enforced requirements (requirements.toml)
 
-Requirements constrain security-sensitive settings (approval policy, approvals reviewer, automatic review policy, sandbox mode, permission profiles, web search mode, managed hooks, which MCP servers users can enable, and which plugin marketplace sources they can use). When resolving configuration (for example from `config.toml`, [profile files](https://learn.chatgpt.com/docs/config-file/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, the local client falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, the client enables an MCP server only when both its name and identity match an approved entry; otherwise, the client disables it.
+Requirements constrain security-sensitive settings (approval policy, approvals reviewer, Auto-review policy, sandbox mode, permission profiles, web search mode, managed hooks, which MCP servers users can enable, and which plugin marketplace sources they can use). When resolving configuration (for example from `config.toml`, [profile files](https://learn.chatgpt.com/docs/config-file/config-advanced#profiles), or CLI config overrides), if a value conflicts with an enforced rule, the local client falls back to a compatible value and notifies the user. If you configure an `mcp_servers` allowlist, the client enables an MCP server only when both its name and identity match an approved entry; otherwise, the client disables it.
 
 Requirements can also constrain [feature flags](https://learn.chatgpt.com/docs/config-file/config-basic#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren't always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
@@ -516,38 +516,35 @@ overrides that policy. See
 [Migrate from the retired `untrusted` approval policy](https://learn.chatgpt.com/docs/agent-approvals-security#migrate-from-the-retired-untrusted-approval-policy)
 for examples and security tradeoffs.
 
-### Configure automatic review policy
+<span
+  id="configure-automatic-review-policy"
+  className="block scroll-mt-[110px]"
+/>
 
-To make automatic review the default, use **Global** > **Defaults** > **Command execution** > **Approval reviewer**. A default lets users choose
-another permitted reviewer. To require automatic review or supply your
-organization's review instructions, use **Edit as TOML** and edit Global
-`requirements.toml` instead. These requirements are separate from the browser's
-automatic-review controls.
+### Configure Auto-review policy
 
-Use `allowed_approvals_reviewers` to require or allow automatic review. Set it
-to `["auto_review"]` to require automatic review, or include `"user"` when users
-can choose manual approval.
+To make Auto-review the default, select **Global** > **Defaults** > **Command execution** > **Approval reviewer**. Users can still choose another permitted
+reviewer. To require Auto-review or supply organization-wide rules, select
+**Edit as TOML** and edit Global `requirements.toml`. Browser actions have
+separate Auto-review controls.
 
-Set `guardian_policy_config` to replace the tenant-specific section of the
-automatic review policy. The local runtime still uses the built-in reviewer
-template and output contract. Managed `guardian_policy_config` takes precedence
-over local `[auto_review].policy`.
+The following example requires Auto-review for eligible approval requests and
+adds an organization-specific rule to the active policy. To also allow manual
+approval, include `"user"` in `allowed_approvals_reviewers`.
 
 ```toml
 allowed_approval_policies = ["on-request"]
 allowed_approvals_reviewers = ["auto_review"]
 
-guardian_policy_config = """
-## Environment Profile
-- Trusted internal destinations include github.com/my-org, artifacts.example.com,
-  and internal CI systems.
-
-## Tenant Risk Taxonomy and Allow/Deny Rules
-- Treat uploads to unapproved third-party file-sharing services as high risk.
-- Deny actions that expose credentials or private source code to untrusted
-  destinations.
+guardian_extra_policy = """
+Deny uploads of build artifacts to destinations outside artifacts.example.com.
 """
 ```
+
+To replace the entire policy, use `guardian_policy_config`. See
+[Auto-review configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration) for
+the default policy, how to prepare a replacement, and which managed settings
+take precedence over local ones.
 
 ### Control available permission profiles
 

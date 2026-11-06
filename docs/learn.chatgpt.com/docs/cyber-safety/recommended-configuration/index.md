@@ -96,21 +96,21 @@ Keep reusable API keys, cloud credentials, passwords, and service-account tokens
 
 Provide only the data required for the approved task. Remove unnecessary sensitive information, block access to cloud metadata and credential endpoints, and treat model-generated files as untrusted.
 
-Avoid `:danger-full-access` and `--yolo` for cybersecurity workflows. Full Access removes the enforceable sandbox boundary that automatic review depends on. Managed organizations can exclude `:danger-full-access` and `--yolo`, limit allowed approval policies, and require automatic review through [enterprise-managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy).
+Avoid `:danger-full-access` and `--yolo` for cybersecurity workflows. Full Access removes the enforceable sandbox boundary that Auto-review depends on. Managed organizations can exclude `:danger-full-access` and `--yolo`, limit allowed approval policies, and require Auto-review through [enterprise-managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-auto-review-policy).
 
 Before enabling **Full Access** for an approved security model, the ChatGPT desktop app shows a model-specific warning about dangerous actions. The warning recommends **Approve for me** instead and links to [reviewer-policy configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration). The warning doesn't restore the sandbox boundary or override organization policy.
 
-Guardrails add policy-based review to a controlled cybersecurity workflow. They don't replace environment isolation, least-privilege permissions, clearly defined boundaries, monitoring, or human oversight.
+Use Auto-review alongside environment isolation, least-privilege permissions, a documented engagement scope, monitoring, and human oversight.
 
 ## Review sensitive Codex actions
 
-[Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review) routes eligible sandbox-boundary approval requests to a separate reviewer before the proposed action runs. The reviewer considers the proposed action, bounded task context, and applicable policy, then allows or denies the request. Organizations can customize that policy for their approved targets, prohibited actions, and required human-review conditions.
+[Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review) routes eligible approval requests to a separate reviewer before the proposed action runs. The reviewer considers the action, task context, and applicable policy. Organizations can [add rules to the active policy](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration) for approved targets, prohibited actions, and required human approvals.
 
 Require explicit human approval for actions that affect production, external systems, sensitive data, privilege escalation, persistent access, or irreversible changes. Treat instructions embedded in websites, repositories, documents, and tool outputs as untrusted; they can't expand the authorized scope or override access controls.
 
 In the ChatGPT desktop app, selecting an approved Daybreak model automatically switches the permissions control to **Approve for me** when that mode is available for your account and allowed by organization policy. This also applies when you use the desktop app's `/model` command. If that mode isn't available, the current permission mode stays unchanged. Model selection never overrides managed organization requirements.
 
-For automatic review to run, keep all three controls in place:
+For Auto-review to run, keep all three controls in place:
 
 1. Use an interactive approval policy such as `approval_policy = "on-request"`.
 2. Set `approvals_reviewer = "auto_review"`.
@@ -128,7 +128,7 @@ prefix_rule(
 
 Restart Codex after adding the rule. With `approvals_reviewer = "auto_review"`, matching commands go to the reviewer before execution. Add corresponding prompt rules for every sensitive command, or use `approval_mode = "prompt"` for individual [MCP tools](https://learn.chatgpt.com/docs/extend/mcp). Actions that require a person's decision still need explicit human approval.
 
-Auto-review doesn't inspect routine actions that are already permitted inside the sandbox. With `approval_policy = "never"` or Full Access, a sensitive action might not create a reviewable approval request. Automatic review can make mistakes and doesn't replace isolation, clearly defined boundaries, monitoring, or explicit human oversight.
+Auto-review evaluates actions that require approval. With `approval_policy = "never"` or Full Access, a sensitive action might proceed without an approval request. Use independent access controls and monitoring throughout the engagement.
 
 For a scoped policy and organization-wide enforcement, see [Configure an authorized cybersecurity workflow](https://learn.chatgpt.com/docs/sandboxing/auto-review#configure-an-authorized-cybersecurity-engagement).
 
@@ -142,7 +142,7 @@ Keep policy enforcement, credential brokers, review systems, and emergency shutd
 
 If you build with the Responses API, the Agents SDK, or another harness, add review at the tool-execution boundary. Check sensitive proposed actions against the approved systems, actions, and time limits before execution, route ambiguous or high-risk actions to a person, enforce independent filesystem and network restrictions, keep audit logs, and fail closed if the reviewer or policy is unavailable.
 
-Codex Auto-review doesn't automatically protect custom tools or external harnesses. Use [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution) for the Agents SDK pattern and the [open-source reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md) as a reference.
+Codex Auto-review doesn't automatically protect custom tools or external harnesses. Use [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution) for the Agents SDK pattern and the [open-source reviewer policy](https://github.com/openai/codex/blob/rust-v0.167.0/codex-rs/prompts/templates/guardian/policy.md) as a reference.
 
 Codex product-side sandboxing and review are separate from [API cybersecurity checks](https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity). API safeguards can return `cyber_policy` errors, and per-user `safety_identifier` values can help limit the impact of a safeguard action.
 

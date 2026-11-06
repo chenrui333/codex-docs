@@ -214,13 +214,13 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "auto_review.policy",
       type: "string",
       description:
-        "Local Markdown policy instructions for automatic review. Managed `guardian_policy_config` takes precedence. Blank values are ignored.",
+        "Markdown text that replaces the default Auto-review policy. Managed `guardian_policy_config` takes precedence. Blank values are ignored.",
     },
     {
       key: "auto_review.extra_policy",
       type: "string",
       description:
-        "Additional local Markdown policy for automatic review, included alongside the main policy. Managed `guardian_extra_policy` takes precedence. Blank values are ignored.",
+        "Markdown rules that Auto-review applies alongside the active policy. Managed `guardian_extra_policy` takes precedence. Blank values are ignored.",
     },
     {
       key: "allow_login_shell",
@@ -2249,13 +2249,13 @@ from either one wins.
       key: "guardian_policy_config",
       type: "string",
       description:
-        "Managed Markdown policy instructions for automatic review. This takes precedence over local `[auto_review].policy`. Blank values are ignored.",
+        "Managed Markdown text that replaces the default Auto-review policy. This takes precedence over local `[auto_review].policy`. Blank values are ignored.",
     },
     {
       key: "guardian_extra_policy",
       type: "string",
       description:
-        "Additional managed Markdown policy for automatic review, included alongside the main policy. This takes precedence over local `[auto_review].extra_policy`. Blank values are ignored.",
+        "Managed Markdown rules that Auto-review applies alongside the active policy. This takes precedence over local `[auto_review].extra_policy`. Blank values are ignored.",
     },
     {
       key: "additional_developer_instructions",

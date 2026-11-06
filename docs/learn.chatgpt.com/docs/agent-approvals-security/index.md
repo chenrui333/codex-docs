@@ -326,10 +326,10 @@ By default, approval requests route to you:
 approvals_reviewer = "user"
 ```
 
-Automatic approval reviews apply when approvals are interactive, such as
+Auto-review applies when approvals are interactive, such as
 `approval_policy = "on-request"` or a granular approval policy. Set
 `approvals_reviewer = "auto_review"` to route eligible approval requests
-through a reviewer agent before Codex runs the request:
+through a reviewer agent before Codex runs the action.
 
 ```toml
 approval_policy = "on-request"
@@ -341,9 +341,9 @@ and failure behavior, see
 [Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review).
 
 The reviewer evaluates only actions that already need approval, such as sandbox
-escalations, blocked network requests, `request_permissions` prompts, or
-side-effecting app and MCP tool calls. Actions that stay inside the sandbox
-continue without an extra review step.
+escalations, network requests that require approval, `request_permissions`
+prompts, or app and MCP tool calls that need approval. A command rule can
+also require review inside the sandbox.
 
 The reviewer policy checks for data exfiltration, credential probing, persistent
 security weakening, and destructive actions. Low-risk and medium-risk actions
@@ -352,19 +352,15 @@ High-risk actions require enough user authorization and no matching deny rule.
 Prompt-build, review-session, and parse failures fail closed. Timeouts are
 surfaced separately, but the action still does not run.
 
-The [default reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md)
-is in the open-source Codex repository. Enterprises can replace its
-tenant-specific section with `guardian_policy_config` in managed requirements.
-Local `[auto_review].policy` text is also supported, but managed requirements
-take precedence. For setup details, see
-[Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-automatic-review-policy).
+To add rules or replace the policy locally or across an organization, see
+[Auto-review configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration).
 
-In the ChatGPT desktop app, these reviews appear as automatic review items with a status
+In the ChatGPT desktop app, these reviews appear as Auto-review items with a status
 such as Reviewing, Approved, Denied, Aborted, or Timed out. They can also
 include a risk level and user-authorization assessment for the reviewed
 request.
 
-Automatic review uses extra model calls, so it can add to Codex usage. Admins
+Auto-review uses extra model calls, so it can add to Codex usage. Admins
 can constrain it with `allowed_approvals_reviewers`.
 
 ### Common sandbox and approval combinations
