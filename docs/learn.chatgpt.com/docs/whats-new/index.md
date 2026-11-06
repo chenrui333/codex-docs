@@ -15,6 +15,14 @@ Source: https://learn.chatgpt.com/docs/whats-new
 
 For every versioned update, bug fix, and minor improvement, see the [ChatGPT and Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
 
+## [November 2–6, 2026](https://learn.chatgpt.com/docs/whats-new/november-2-6-2026)
+
+### Reply to your dot from an iOS notification
+
+Reply to your dot from a notification or share a photo from another app on iOS. This update also improves reliability on Windows and lets you report a problem to your main dot in conversation.
+
+[Read the full update →](https://learn.chatgpt.com/docs/whats-new/november-2-6-2026)
+
 ## [October 26–30, 2026](https://learn.chatgpt.com/docs/whats-new/october-26-30-2026)
 
 ### [Text your dot](https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026)

@@ -37,6 +37,12 @@ For monitoring, specify which channels to check, what to watch for, and when to 
 
 > Illustration: An example Slack direct message and reply thread: Alex forwards a launch plan. The next morning, the dot flags a schedule risk, and Alex reviews a draft follow-up in a thread.
 
+## Reply and share on iOS
+
+To reply from a notification, touch and hold the notification from your dot, type your reply, and tap **Send**.
+
+To share a photo with your dot, open the photo, tap **Share**, and choose your dot. Review the photo in the composer, add a message if you want, and tap **Send**. You can also share content from other apps that use the iOS share sheet.
+
 ## iOS widgets and shortcuts
 
 Open your dot from your iPhone Home Screen, or use Apple Shortcuts to choose how to start a conversation. Use the latest ChatGPT iOS app and sign in to the account where you set up your dot. These features are rolling out with ChatGPT for iOS 1.2026.279 and require [dot access](https://learn.chatgpt.com/docs/dots#access).

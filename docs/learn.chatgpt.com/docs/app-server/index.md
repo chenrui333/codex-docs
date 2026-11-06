@@ -177,6 +177,10 @@ rl.on("line", (line) => {
     });
   }
   if (msg.method === "turn/completed") {
+    if (msg.params?.turn?.status !== "completed") {
+      console.error(msg.params?.turn?.error ?? "The turn did not complete.");
+      process.exitCode = 1;
+    }
     proc.stdin.end();
     rl.close();
   }
@@ -213,6 +217,9 @@ proc.on("error", (error) => {
   console.error(error);
   process.exitCode = 1;
   rl.close();
+});
+proc.on("exit", (code) => {
+  if (code !== 0) process.exitCode = code ?? 1;
 });
 ```
 

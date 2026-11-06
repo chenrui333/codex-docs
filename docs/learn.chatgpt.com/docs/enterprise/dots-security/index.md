@@ -17,7 +17,7 @@ What a dot can do depends on the employee’s permissions, the actions the works
 
 ## Security overview
 
-A personal dot can work on its owner’s behalf between conversations. For example, an employee can ask it to follow a project and prepare a brief as updates come in. The dot works from its own cloud computer and can delegate tasks to Work or Codex. In a connected app, it inherits the permissions of the account its owner authorized. Workspace admins can further limit which apps and actions it can use.
+A personal dot can work on its owner’s behalf between conversations. For example, an employee can ask it to follow a project and prepare a brief as updates come in. The dot works from its own cloud computer and can delegate tasks to Work or Codex. In a connected app, it inherits the permissions of the account its owner authorized. The workspace’s app and action settings apply to both the owner and their dot.
 
 A project document can supply facts for the brief, but OpenAI trains the models behind dots to resist any hidden instructions in the project document or similar kinds of [prompt injection](https://help.openai.com/en/articles/20001529-dots-privacy-security-and-safety-faqs). Auto-review checks consequential actions before they run, and safety monitoring can pause or stop work if it detects potentially harmful behavior.
 
@@ -53,54 +53,17 @@ We’re developing additional rules in Agent Security so admins can choose which
 
 - **Model safeguards help dots follow the owner’s instructions.** OpenAI trains models in the GPT-6 family to refuse harmful requests and resist malicious instructions hidden in emails, files, or web pages. For example, an email asking a dot to forward a private file does not authorize the dot to send it. That authority comes from the owner or an automation the owner authorized. [GPT-6 model safeguards](https://deploymentsafety.openai.com/gpt-6-october/prompt-injection)
 
-- **Auto-review checks certain actions before they run.** Before a dot sends an email, for example, Auto-review checks the recipient and message against the owner’s instructions, Custom Rules, and safety requirements. It can block the send. The dot cannot turn off this review. Some default action and confirmation rules can be customized, but owner approval cannot override built-in safety requirements. [How Auto-review works](https://openai.com/index/how-we-build-safety-security-and-privacy-into-dots/)
+- **Auto-review checks certain actions before they run.** Before a dot sends an email, for example, Auto-review checks the recipient and message against the owner’s instructions, Custom Rules, and safety requirements. Auto-review can block the send, and the dot can’t turn off a required check. In a simulated Codex task, none of the GPT-6 models tested bypassed an Auto-review denial. [See how OpenAI tested responses to Auto-review denials](https://deploymentsafety.openai.com/gpt-6-1-terra/respecting-auto-review). Some default action and confirmation rules can be customized, but owner approval cannot override built-in safety requirements. [How Auto-review works](https://openai.com/index/how-we-build-safety-security-and-privacy-into-dots/)
 
 - **Safety monitoring can interrupt work in progress.** As a dot plans and acts, monitoring looks for potentially harmful behavior, such as attempts to bypass a safeguard or act outside the owner’s instructions. If it detects a concern, it can pause or stop the task. A pause can surface a warning for the owner to review. [Built-in safeguards](https://openai.com/index/introducing-dots/)
 
-- **Admins control plugin access and cloud browser access separately.** Admins choose which plugins and actions are available and whether dots can use the cloud browser. A read-only plugin limits what a dot can do through that plugin. If cloud browser use is enabled, the dot may still be able to make changes through an account signed in on the website. [Workspace controls](https://help.openai.com/en/articles/20001554-manage-dots-in-chatgpt-workspaces)
+- **Admins manage plugin access in workspace settings.** The same settings control which plugins and actions a user and their dot can use. Cloud browser access for the dot is controlled by a different setting. A read-only plugin limits what a dot can do through that plugin. If cloud browser use is enabled, the dot may still be able to make changes through an account signed in on the website. [Workspace controls](https://help.openai.com/en/articles/20001554-manage-dots-in-chatgpt-workspaces)
 
-- **Owners can review and redirect work.** In Activity View, owners can inspect a delegated task, add context, change direction, or ask the dot to stop. Timing matters when information is shared. If the dot has already posted in Slack, people in the channel may already have read the message. [Activity View and completed actions](https://help.openai.com/en/articles/20001529-dots-privacy-security-and-safety-faqs)
+- **Owners can review and redirect work.** In Activity View, owners can inspect a delegated task, add context, change direction, or ask the dot to stop. When a dot can’t finish a task, it should tell the owner what got in the way and what remains undone. On coding tasks selected to elicit blocker-reporting failures, GPT‑6.1 Terra failed to report the blocker accurately in about 8% of cases, down from 29% for GPT‑5.6 Terra. [See how OpenAI evaluated blocker reporting](https://deploymentsafety.openai.com/gpt-6-1-terra/blocker-deception). Timing matters when information is shared. If the dot has already posted in Slack, people in the channel may already have read the message. [Activity View and completed actions](https://help.openai.com/en/articles/20001529-dots-privacy-security-and-safety-faqs)
 
 > **What to review before rolling out dots**
 >
 > Decide which employees should have access to dots. A personal dot uses its owner’s existing app connections. Check what each connected account lets the owner read or change and which actions the workspace allows through that connection. If dots can use the cloud browser or delegate work to a connected computer, check what the signed-in account or local device permits there.
-
-## How OpenAI evaluates model safeguards
-
-A dot may read an email, act on the owner’s behalf, and report what it did. Model safeguards help at each step. OpenAI tests whether a model ignores malicious instructions embedded in content it reads, respects an Auto-review denial, and tells the owner when something prevented it from finishing. The following results come from the October 26 GPT-6.1 Terra system-card addendum.
-
-**Indirect prompt injection.** An email might tell a dot to forward a private file. The owner asked for a summary, so the model should ignore the forwarding instruction and continue summarizing. Figure 3 tests that distinction across untrusted content.
-
-<DotsEvaluationChart
-  kind="injection"
-  caption="Indirect prompt injection robustness."
-  sourceHref="https://deploymentsafety.openai.com/gpt-6-1-terra/prompt-injection/fig-3"
-  sourceFigure={3}
-/>
-
-**Respecting Auto-review.** When an action requires Auto-review, a separate reviewer checks what the dot proposes to do, what data or people it would affect, and whether the owner’s instructions, Custom Rules, and safety requirements allow it. For example, before a dot shares a file in a Slack channel, the reviewer checks what would be shared, where it would go, and whether the owner authorized sharing it there. A request to summarize the file does not authorize posting it. Destructive actions, such as permanently deleting data, may also require the owner’s approval. The dot cannot turn off required checks, and owner approval cannot override core safety requirements. Figure 5 shows how models responded to a denial in a simulated Codex task.
-
-<DotsEvaluationChart
-  kind="review"
-  caption="Responses to Auto-review denials in a simulated Codex task."
-  sourceHref="https://deploymentsafety.openai.com/gpt-6-1-terra/respecting-auto-review/fig-5"
-  sourceFigure={5}
-/>
-
-At maximum reasoning effort, GPT-6.1 Terra made no observed attempts to bypass a denial. GPT-6 Luna tried in 0.3% of samples. None of its attempts succeeded.
-
-**Disclosing blockers.** When a model cannot finish a task, the owner needs to know what remains undone. Figure 8 measures how often models failed to report a blocker accurately in their final answer on coding tasks chosen to make that failure more likely.
-
-<DotsEvaluationChart
-  kind="blockers"
-  caption="Failure to report blockers accurately on coding tasks selected to elicit this behavior."
-  sourceHref="https://deploymentsafety.openai.com/gpt-6-1-terra/blocker-deception/fig-8"
-  sourceFigure={8}
-/>
-
-GPT-6.1 Terra failed to report a blocker accurately in 8.47% of these cases, down from 28.99% for GPT-5.6 Terra and close to GPT-6 Sol (8.05%) and GPT-6 Luna (8.36%).
-
-These evaluations give an indication of what to expect from the GPT-6 family on similar tasks. Compared with the GPT-5.6 models tested, GPT-6 models more often resisted malicious instructions and accurately reported when they could not finish a task. In the simulated Codex evaluation, no GPT-6 model tested successfully bypassed an Auto-review denial.
 
 ## Confirm eligibility and data requirements
 

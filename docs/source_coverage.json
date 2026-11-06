@@ -306,7 +306,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-11-06T05:34:28+00:00",
+  "generated_at": "2026-11-06T05:35:21+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -348,11 +348,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 195,
+      "discovered_urls": 194,
       "html_fallback_pages": 2,
-      "markdown_pages": 192,
-      "mirrored_paths_count": 194,
-      "mirrored_urls": 194,
+      "markdown_pages": 191,
+      "mirrored_paths_count": 193,
+      "mirrored_urls": 193,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -414,7 +414,6 @@
       "https://learn.chatgpt.com/docs/enterprise/agent-security",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
-      "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -479,7 +478,6 @@
       "https://learn.chatgpt.com/docs/mcp-server",
       "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/mobile",
-      "https://learn.chatgpt.com/docs/model-catalogs",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -549,6 +547,7 @@
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+      "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
@@ -614,7 +613,6 @@
       "https://learn.chatgpt.com/docs/enterprise/agent-security",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
-      "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -679,7 +677,6 @@
       "https://learn.chatgpt.com/docs/mcp-server",
       "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/mobile",
-      "https://learn.chatgpt.com/docs/model-catalogs",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -748,6 +745,7 @@
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+      "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
@@ -809,7 +807,6 @@
       "learn.chatgpt.com/docs/enterprise/agent-security/index.md",
       "learn.chatgpt.com/docs/enterprise/analytics-api/index.md",
       "learn.chatgpt.com/docs/enterprise/apps-and-connectors/index.md",
-      "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-space/index.md",
       "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
@@ -875,7 +872,6 @@
       "learn.chatgpt.com/docs/mcp-server/index.md",
       "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
       "learn.chatgpt.com/docs/mobile/index.md",
-      "learn.chatgpt.com/docs/model-catalogs/index.md",
       "learn.chatgpt.com/docs/model-selection/index.md",
       "learn.chatgpt.com/docs/models/index.md",
       "learn.chatgpt.com/docs/non-interactive-mode/index.md",
@@ -944,6 +940,7 @@
       "learn.chatgpt.com/docs/whats-new/dots-october-28-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/index.md",
+      "learn.chatgpt.com/docs/whats-new/november-2-6-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/october-5-9-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/september-28-october-2-2026/index.md",
@@ -952,7 +949,7 @@
       "learn.chatgpt.com/docs/windows/wsl/index.md",
       "learn.chatgpt.com/docs/working-with-agents/index.md"
     ],
-    "mirrored_paths_count": 194,
+    "mirrored_paths_count": 193,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1007,7 +1004,6 @@
       "https://learn.chatgpt.com/docs/enterprise/agent-security",
       "https://learn.chatgpt.com/docs/enterprise/analytics-api",
       "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
-      "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
       "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -1072,7 +1068,6 @@
       "https://learn.chatgpt.com/docs/mcp-server",
       "https://learn.chatgpt.com/docs/migrate-custom-gpts",
       "https://learn.chatgpt.com/docs/mobile",
-      "https://learn.chatgpt.com/docs/model-catalogs",
       "https://learn.chatgpt.com/docs/model-selection",
       "https://learn.chatgpt.com/docs/models",
       "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1141,6 +1136,7 @@
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+      "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
       "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
@@ -1211,7 +1207,6 @@
           "https://learn.chatgpt.com/docs/enterprise/agent-security",
           "https://learn.chatgpt.com/docs/enterprise/analytics-api",
           "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
-          "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -1276,7 +1271,6 @@
           "https://learn.chatgpt.com/docs/mcp-server",
           "https://learn.chatgpt.com/docs/migrate-custom-gpts",
           "https://learn.chatgpt.com/docs/mobile",
-          "https://learn.chatgpt.com/docs/model-catalogs",
           "https://learn.chatgpt.com/docs/model-selection",
           "https://learn.chatgpt.com/docs/models",
           "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1346,6 +1340,7 @@
           "https://learn.chatgpt.com/docs/whats-new/devday-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+          "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
           "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
@@ -1354,7 +1349,7 @@
           "https://learn.chatgpt.com/docs/windows/wsl",
           "https://learn.chatgpt.com/docs/working-with-agents"
         ],
-        "discovered_urls_sha256": "a05477f09162b9436a157d026719f0a68bed751db6b0e81e3e72d2701b3a91f1",
+        "discovered_urls_sha256": "70edd092b3f09daf556b6b53940e099d740ce72fcc0bd84a50160cfa29e8ca35",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1410,7 +1405,6 @@
           "https://learn.chatgpt.com/docs/enterprise/agent-security",
           "https://learn.chatgpt.com/docs/enterprise/analytics-api",
           "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
-          "https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-space",
           "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security",
@@ -1475,7 +1469,6 @@
           "https://learn.chatgpt.com/docs/mcp-server",
           "https://learn.chatgpt.com/docs/migrate-custom-gpts",
           "https://learn.chatgpt.com/docs/mobile",
-          "https://learn.chatgpt.com/docs/model-catalogs",
           "https://learn.chatgpt.com/docs/model-selection",
           "https://learn.chatgpt.com/docs/models",
           "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -1545,6 +1538,7 @@
           "https://learn.chatgpt.com/docs/whats-new/devday-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+          "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
           "https://learn.chatgpt.com/docs/whats-new/september-28-october-2-2026",
@@ -1665,9 +1659,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1744,7 +1738,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-11-04T23:21:14+00:00",
+    "last_successful_full_sync_at": "2026-11-06T05:35:20+00:00",
     "status": "complete"
   }
 }

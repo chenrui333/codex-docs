@@ -3,12 +3,12 @@
     "coverage_source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
     "coverage_source_ref": "rust-v0.167.0",
     "coverage_version": "0.167.0",
-    "last_successful_full_sync_at": "2026-11-04T23:21:14+00:00",
-    "last_successful_release_sync_at": "2026-11-06T05:34:28+00:00",
+    "last_successful_full_sync_at": "2026-11-06T05:35:20+00:00",
+    "last_successful_release_sync_at": "2026-11-06T05:35:21+00:00",
     "provenance": "generated_sync_metadata",
     "source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
     "source_ref": "rust-v0.167.0",
-    "sync_scope": "release",
+    "sync_scope": "full",
     "version": "0.167.0"
   },
   "checks": [

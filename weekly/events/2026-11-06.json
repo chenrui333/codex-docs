@@ -322,6 +322,138 @@
       "id": "5cb94203d51123effa8642e477c60bd6f5a1bada08ec4de5bf6d93997daa008d",
       "observed_at": "2026-11-06T05:34:28+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/whats-new/november-2-6-2026/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "e3265db0e1fe505d2d72591d82516306ae5f664f425637949a6bd3c08186967e",
+            "before": "08f64214c2c7e4c8bfd35342bcc7b869db79f51b1da0d2e4bdbd31b06c11e5d5"
+          },
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "8e185b47a9307e9f1177a07d7d4fd18ec88db822095f760d24cef22c500b399c",
+            "before": "29eb06a50464a5ad95506e05fa54e28338b41171bd37dac2891a49b205ecbf92"
+          },
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md": {
+            "after": "e6a7ccbdf81b34211fb772483a7e32197723aee1330555b46102a5cb7dd8fbfc",
+            "before": "be1ade918c12662f88aeaa404c4a59698324150126f3a81aac3af3ce3ebb4ac3"
+          },
+          "learn.chatgpt.com/docs/app-server/index.md": {
+            "after": "310cfbb1b42bb55087c9826e642d0ef5574c99c038e527d52159f8f73f4de10a",
+            "before": "25c566f7a49fa8ffc984a6c54734c8069de8fa8df6261ba9384f85ea9581f549"
+          },
+          "learn.chatgpt.com/docs/codex-sdk/index.md": {
+            "after": "b844a417ccdd7d3c438d3a79c9b0ad8a90a10ca20f222d0ab86e9cb882a941a7",
+            "before": "36edc3da3781c0b18e357ae8432bf0ee4351995465e7de7973e9aafbcf94566c"
+          },
+          "learn.chatgpt.com/docs/developers/index.md": {
+            "after": "c0a86ae0063884cae28508b46cbd3839460a1e4d1230926c57d74fc0beedef73",
+            "before": "063405b2b399ee62133896d32ac5c3cc95ab6cd545df6f3d85d0ba86ed8a1d98"
+          },
+          "learn.chatgpt.com/docs/dots/channels/index.md": {
+            "after": "dc160d1540073ebaf317a3c3c908df6720836cf7658e170ec6447e2678dcadb8",
+            "before": "476bf48d2df7de37b8abac9ee8a242acc038fa999906fef381ce747fb647e19b"
+          },
+          "learn.chatgpt.com/docs/dots/computers-and-apps/index.md": {
+            "after": "1451ba577f12b62368cc3668c5c38cec4551c831634ba4ad3cb954278a7094c4",
+            "before": "4956ce951b1c4a189fbbb6931aaa64070b85e3c0dc0fe9af6503d7f860c26428"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "5666130b90e90959df7c43c3bf699b644743031e83b7e2fcbcee9ceea3fa9954",
+            "before": "fd6ab47e2ec89fd965e176d6ee2b2a27537efc0edeea06667cf5fba4f74b911e"
+          },
+          "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md": {
+            "after": null,
+            "before": "c4504ce0e4ff97266f3826d55dffcbdc06da3b5fffa6073fc1d7b31dc16c4277"
+          },
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
+            "after": "21897ef186b7744b19180fa98fa828a65d2e297b0cadb1a9f24d4044bf92437f",
+            "before": "28f342da54bf4288c85cffa1898f072e4dd5dfd8af21e2d2debc24f9e300aaff"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md": {
+            "after": "7e3a43c6992ba79a07cd599be4b81442b55223b31ec01b8b55cd59dd0a14b3e2",
+            "before": "cc6c2c32d98c328af7aa9ebf0ead43b4851207122c8606775f8ce780ffdb638e"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+            "after": "704235de582af89b14007b792f4ff52607b11dd06f28e2311f9f92223c826bf1",
+            "before": "f171a700b93ea3161a4270bfd0237dfb2f210f2ee803fd299982a80b2b8e99bd"
+          },
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md": {
+            "after": "f6ba25e7ba842c8824c189e8715fa3d75ca4ad89e6897e76f25ef7e709f5ddc8",
+            "before": "23d0b6f3f6470cacc9f06ccf03abffbafc7f6a489b58dbe770e1bbc22806f4b7"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "b89cdd7ec6836df50933b09e71acaecc9c6c1779046af047024bb5e9b695762d",
+            "before": "d1f475cba5efb0f83c8903453d14b6adaba0d301dd6008a60aaa9b23cce19b7d"
+          },
+          "learn.chatgpt.com/docs/model-catalogs/index.md": {
+            "after": null,
+            "before": "045d404bd1b54c2bbbc1ef36c3011f390be070f0a47985c31570c7a8a73894ff"
+          },
+          "learn.chatgpt.com/docs/security/sdk/index.md": {
+            "after": "d9a02c5038d0739c41a4511a028762344f41b0fb691c8e0b822eacb314579bff",
+            "before": "a6cbb6684ea9dac9bd4a2fd750d4df9cf867c33fbf74a7b8b500201f1e890761"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "cb85a8dc0120cc843764237b49b6d9ad6f27f902bf90781c728fce1194ceface",
+            "before": "76bdcb3a6f06e39b2435b05fa24cf2d4679b8e85d155b8210484e029c99ab74b"
+          },
+          "learn.chatgpt.com/docs/whats-new/november-2-6-2026/index.md": {
+            "after": "d250204529584e2fc3dacda6854a507ca703ec6203d241a93db9f9d095dd6d5f",
+            "before": null
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [
+          "learn.chatgpt.com/docs/enterprise/bedrock-through-litellm/index.md",
+          "learn.chatgpt.com/docs/model-catalogs/index.md"
+        ],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.0",
+          "codex_cli_source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
+          "codex_cli_version": "0.167.0",
+          "codex_cli_version_raw": "codex-cli 0.167.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md",
+          "learn.chatgpt.com/docs/app-server/index.md",
+          "learn.chatgpt.com/docs/codex-sdk/index.md",
+          "learn.chatgpt.com/docs/developers/index.md",
+          "learn.chatgpt.com/docs/dots/channels/index.md",
+          "learn.chatgpt.com/docs/dots/computers-and-apps/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+          "learn.chatgpt.com/docs/enterprise/roll-out-a-gateway/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/security/sdk/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md"
+        ]
+      },
+      "id": "1d03a79d6f1a3b759088a0b94b22d90698e8c45256ad9d6f8178437d1edb21b7",
+      "observed_at": "2026-11-06T05:35:21+00:00",
+      "previous_id": "5cb94203d51123effa8642e477c60bd6f5a1bada08ec4de5bf6d93997daa008d"
     }
   ],
   "schema_version": 1

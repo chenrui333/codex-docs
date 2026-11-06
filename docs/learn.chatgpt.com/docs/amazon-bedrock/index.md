@@ -21,8 +21,8 @@ This page covers direct access to Bedrock. If your organization already
   provides a model gateway, follow [Connect to a gateway without ChatGPT
   sign-in](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway). That path supports native
   gateway OAuth with your organization's identity provider; the gateway manages
-  the Bedrock credentials. To configure a gateway backed by Bedrock, see
-  [Bedrock through LiteLLM](https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm).
+  the Bedrock credentials. For deployment guidance, see [Roll out a
+  gateway](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway).
 
 ## How it works
 
@@ -47,9 +47,46 @@ Make sure you have:
 Check the model-specific IAM requirements. For example, GPT-6 Sol through Runtime
 also requires `bedrock:InvokeModel` on the account's default project. See AWS's [GPT-6 Sol setup instructions](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-sol.html).
 
-## Configure the provider
+## Set up Codex with Amazon Bedrock
 
-Codex allows you to configure the provider by setting `model_provider` in `~/.codex/config.toml`. The ChatGPT desktop app, Codex CLI, IDE extension, and SDK read the same local configuration layers.
+<a id="configure-the-provider"></a>
+
+### Choose Amazon Bedrock as your provider
+
+<Tabs
+  id="bedrock-client-setup"
+  ariaLabel="Bedrock setup by client"
+  param="setup"
+  defaultTab="cli"
+  tabs={[
+    { id: "cli", label: "CLI" },
+    { id: "desktop", label: "Desktop" },
+  ]}
+>
+
+If Codex already uses your AWS credentials for Bedrock, [verify your connection](#verify-your-connection). For first-time setup or a signed-out CLI session:
+
+1. Start `codex`. On the sign-in screen, choose **Use Amazon Bedrock**.
+2. Choose a detected AWS profile or credentials, or select a credential method. If Codex finds no credentials, choose **AWS profile**, **AWS access keys**, **Environment variables**, or **Bedrock API key**.
+3. Follow the prompts for your credential method. Enter the AWS Region when prompted. If you choose environment variables, set them in your shell and restart Codex.
+
+![Codex CLI showing the four Amazon Bedrock credential options when it finds no AWS credentials.](https://developers.openai.com/images/codex/amazon-bedrock/cli-credential-options.webp)
+
+1. On **Sign in another way**, select **Use Amazon Bedrock**.
+
+![Desktop sign-in screen showing the Use Amazon Bedrock option.](https://developers.openai.com/images/codex/amazon-bedrock/desktop-provider-selection.webp)
+
+2. On **Set up Amazon Bedrock**, open **Choose sign-in method**. Choose **AWS profile**, **AWS access keys**, or **Bedrock API key**. For an AWS profile, enter the profile name and AWS Region, then select **Continue**.
+
+![Amazon Bedrock setup with AWS profile selected and fields for the profile name and AWS Region.](https://developers.openai.com/images/codex/amazon-bedrock/desktop-credential-options.webp)
+
+3. Open a new task and [verify setup](#verify-setup). If your organization supplies a configuration file, follow the [manual configuration steps](#configure-bedrock-manually).
+
+</Tabs>
+
+### Configure Bedrock manually
+
+The ChatGPT desktop app, Codex CLI, IDE extension, and SDK read the same local configuration layers. To configure the provider manually or change endpoints, edit `~/.codex/config.toml`.
 
 Choose the provider for the Amazon Bedrock endpoint you want to use: Bedrock
 Runtime for cross-Region inference (CRIS), or Bedrock Mantle for in-Region inference.
@@ -68,13 +105,97 @@ Hosted web search isn't available on Bedrock Runtime. If you need it, use
   [Bedrock Mantle](#use-mantle-for-hosted-web-search). The `amazon-bedrock`
   provider selects Mantle; `amazon-bedrock-runtime` selects Runtime.
 
-### Use Mantle for hosted web search
+<a id="authentication-options"></a>
 
-For the Bedrock Mantle endpoint:
+<a id="authenticate-to-amazon-bedrock"></a>
 
-```toml
-model_provider = "amazon-bedrock"
-web_search = "cached"
+#### Configure AWS credentials
+
+Local ChatGPT Work and Codex surfaces support two Bedrock authentication paths.
+They check them in this order:
+
+1. Bedrock API key.
+2. AWS SDK credential chain.
+
+<a id="option-1-bedrock-api-key"></a>
+
+##### Bedrock API key
+
+Set the Bedrock API key in the environment the local client reads. You must
+specify a Region when using API-key authentication.
+
+```shell
+export AWS_BEARER_TOKEN_BEDROCK="<your-bedrock-api-key>"
+export AWS_REGION=us-east-2
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:AWS_BEARER_TOKEN_BEDROCK = "<your-bedrock-api-key>"
+$env:AWS_REGION = "us-east-2"
+```
+
+<a id="option-2-aws-sdk-credentials"></a>
+
+##### Shared AWS configuration files
+
+Configure the shared AWS `config` and `credentials` files:
+
+```shell
+aws configure
+```
+
+<a id="environment-variables"></a>
+
+##### AWS access keys
+
+Set your AWS access keys as environment variables:
+
+```shell
+export AWS_ACCESS_KEY_ID="<your-access-key-id>"
+export AWS_SECRET_ACCESS_KEY="<your-secret-access-key>"
+```
+
+For temporary credentials, also set the session token:
+
+```shell
+export AWS_SESSION_TOKEN="<your-session-token>"
+```
+
+##### AWS Management Console credentials
+
+Log in with AWS Management Console credentials:
+
+```shell
+aws login
+```
+
+##### AWS SSO or a named profile
+
+Log in with AWS SSO and select the named profile:
+
+```shell
+aws sso login --profile codex-bedrock
+export AWS_PROFILE=codex-bedrock
+```
+
+##### Federated identity
+
+For corporate SSO or OIDC federation, configure a federated identity with
+`credential_process` outside the local client and let the AWS SDK resolve
+credentials. Put browser login, token exchange, caching, and refresh in your
+AWS profile's `credential_process` helper.
+
+#### Desktop app and IDE extension
+
+Desktop apps and IDE extensions may not inherit environment variables from the
+shell. Put required values in `~/.codex/.env`, then restart the app or
+extension. On Windows, the default path is `%USERPROFILE%\.codex\.env`.
+
+```shell
+export AWS_BEARER_TOKEN_BEDROCK="<your-bedrock-api-key>"
+export AWS_REGION=us-east-2
 ```
 
 ### Choose a model
@@ -90,91 +211,9 @@ When switching endpoints, change the provider and any explicit model ID together
 
 Model availability varies by AWS Region. Refer to AWS [Regional availability by models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai).
 
-## Authentication options
+<a id="verify-setup"></a>
 
-Local ChatGPT Work and Codex surfaces support two Bedrock authentication paths.
-They check them in this order:
-
-1. Bedrock API key.
-2. AWS SDK credential chain.
-
-### Option 1: Bedrock API key
-
-Set the Bedrock API key in the environment the local client reads. You must
-specify a Region when using API-key authentication.
-
-```shell
-export AWS_BEARER_TOKEN_BEDROCK=<your-bedrock-api-key>
-export AWS_REGION=us-east-2
-```
-
-On Windows PowerShell:
-
-```powershell
-$env:AWS_BEARER_TOKEN_BEDROCK = "<your-bedrock-api-key>"
-$env:AWS_REGION = "us-east-2"
-```
-
-### Option 2: AWS SDK credentials
-
-Use this path when your organization manages Bedrock access through the AWS SDK
-credential chain. The local client can use these standard AWS SDK credential
-sources:
-
-#### Shared AWS configuration files
-
-Configure the shared AWS `config` and `credentials` files:
-
-```shell
-aws configure
-```
-
-#### Environment variables
-
-Set the standard AWS SDK credential environment variables:
-
-```shell
-export AWS_ACCESS_KEY_ID=<your-access-key-id>
-export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
-export AWS_SESSION_TOKEN=<your-session-token>
-```
-
-#### AWS Management Console credentials
-
-Log in with AWS Management Console credentials:
-
-```shell
-aws login
-```
-
-#### AWS SSO or a named profile
-
-Log in with AWS SSO and select the named profile:
-
-```shell
-aws sso login --profile codex-bedrock
-export AWS_PROFILE=codex-bedrock
-```
-
-#### Federated identity
-
-For corporate SSO or OIDC federation, configure a federated identity with
-`credential_process` outside the local client and let the AWS SDK resolve
-credentials. Put browser login, token exchange, caching, and refresh in your
-AWS profile's `credential_process` helper.
-
-## Desktop app and IDE extension
-
-Desktop apps and IDE extensions may not inherit environment variables from the
-shell. Put required values in `~/.codex/.env`, then restart the app or
-extension. On Windows, the default path is `%USERPROFILE%\.codex\.env`.
-
-```shell
-export AWS_BEARER_TOKEN_BEDROCK=<your-bedrock-api-key>
-export AWS_REGION=us-east-2
-```
-
-## Verify setup
+### Verify your connection
 
 - In Codex CLI, open `/status` and confirm the model provider matches your
   endpoint: `amazon-bedrock` for Mantle in-Region inference, or
@@ -452,13 +491,6 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
             {
               name: "Project and standalone scheduled tasks",
               shortName: "Scheduled tasks",
-              href: "/codex/automations",
-              availability: {
-                bedrock: "available",
-              },
-            },
-            {
-              name: "Scheduled tasks",
               href: "/codex/automations",
               availability: {
                 bedrock: "available",
@@ -774,6 +806,15 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
     sharing aren't available.
 
 </ToggleSection>
+
+### Use Mantle for hosted web search
+
+For the Bedrock Mantle endpoint:
+
+```toml
+model_provider = "amazon-bedrock"
+web_search = "cached"
+```
 
 ## Troubleshooting
 

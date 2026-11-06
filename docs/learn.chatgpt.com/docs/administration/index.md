@@ -16,10 +16,10 @@ Source: https://learn.chatgpt.com/docs/administration
 <CodexDocsOverviewLanding
   title="Administration"
   description="Set access and policy boundaries for ChatGPT, Codex developer tools, APIs, plugins, and connected systems."
-  intro="Start with workspace identity and access. Then configure local runtime policy for supported capabilities in the ChatGPT desktop app, Codex CLI, and IDE extension; Codex cloud eligibility; Platform API access; plugins and connectors; and permissions in connected systems."
+  intro="Start with the rollout guide, then set up identity and access. Use Configuration for app installation, updates, and workspace policies. Use Advanced deployment for Amazon Bedrock, Bedrock in GovCloud, or an organization gateway. Browse the sections for feature controls, usage, and security."
   primaryCta={{
-    label: "Explore authentication",
-    href: "/codex/auth?surface=app",
+    label: "Start your rollout",
+    href: "/codex/enterprise/admin-setup",
   }}
   hero={{
     illustration: "administration",
@@ -159,9 +159,9 @@ Source: https://learn.chatgpt.com/docs/administration
       ],
     },
     {
-      title: "Deployment and configuration",
+      title: "Configuration",
       description:
-        "Deploy apps and configure updates, runtime settings, remote connections, and model access.",
+        "Manage app installation, updates, runtime settings, remote connections, and workspace model availability.",
       pages: [
         {
           title: "Windows app and CLI deployment",
@@ -218,6 +218,13 @@ Source: https://learn.chatgpt.com/docs/administration
           href: "/codex/enterprise/workspace-model-availability",
           icon: "settings",
         },
+      ],
+    },
+    {
+      title: "Advanced deployment",
+      description:
+        "Connect directly to Amazon Bedrock, configure Bedrock in GovCloud, or deploy an organizational gateway that routes requests to your inference provider.",
+      pages: [
         {
           title: "Amazon Bedrock",
           description:
@@ -226,7 +233,7 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "storage",
         },
         {
-          title: "Bedrock GovCloud configuration",
+          title: "GovCloud deployment",
           description:
             "Configure local Codex workflows with Amazon Bedrock in AWS GovCloud.",
           href: "/codex/enterprise/govcloud-configuration",
@@ -245,20 +252,6 @@ Source: https://learn.chatgpt.com/docs/administration
             "Configure model routes, issue credentials, and deploy Codex through your organization’s gateway.",
           href: "/codex/enterprise/roll-out-a-gateway",
           icon: "settings",
-        },
-        {
-          title: "Gateway compatibility",
-          description:
-            "Check the Responses API behavior required for model requests, streaming, and tool calls.",
-          href: "/codex/enterprise/gateway-compatibility",
-          icon: "code",
-        },
-        {
-          title: "Bedrock through LiteLLM",
-          description:
-            "Configure a LiteLLM gateway to route Codex model requests to Amazon Bedrock.",
-          href: "/codex/enterprise/bedrock-through-litellm",
-          icon: "storage",
         },
       ],
     },

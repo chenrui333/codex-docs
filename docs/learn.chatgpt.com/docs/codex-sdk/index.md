@@ -70,7 +70,9 @@ console.log(result.finalResponse);
 // resuming past thread
 
 const threadId = thread.id!;
-const thread2 = codex.resumeThread(threadId);
+const thread2 = codex.resumeThread(threadId, {
+  sandboxMode: "workspace-write",
+});
 const result2 = await thread2.run("Pick up where you left off");
 
 console.log(result2.finalResponse);
