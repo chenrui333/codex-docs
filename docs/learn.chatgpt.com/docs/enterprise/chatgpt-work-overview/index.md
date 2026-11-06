@@ -19,7 +19,9 @@ ChatGPT Business or Enterprise agreement. The capabilities and controls
 available to each experience depend on whether a task runs locally or in the
 cloud, its available tools, and applicable workspace policies.
 
-ChatGPT Work can complete multi-step tasks using the files, applications, and tools available to an authorized workspace member. With sync enabled, members can continue eligible conversations across desktop, mobile, and web. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. OpenAI's cloud coordinates the task, while individual steps can run in a cloud environment or on an approved, connected computer.
+ChatGPT Work can complete multi-step tasks using a member's authorized files,
+applications, and tools. With local computer access enabled, the cloud can
+coordinate a task that uses approved tools on a connected computer.
 
 > **Update the desktop app.** Users must update to the latest version of the ChatGPT desktop app for Local computer access with Work Cloud to take effect after it is enabled for their workspace.
 
@@ -50,7 +52,8 @@ Local execution does not mean that the conversation or task context stays only o
 
 ### Cloud Work
 
-Cloud execution runs supported steps on OpenAI-managed infrastructure. If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn.
+Cloud steps run on OpenAI-managed infrastructure with their own execution
+requirements. Local requirements apply only to steps on the connected computer.
 
 A cloud execution environment does not automatically inherit a computer's files, applications, browser sessions, or network access. A task using Local computer access with Work Cloud can separately use approved local tools through an online, connected computer. Uploads, project sources, and authorized connected apps remain distinct ways to supply information.
 
@@ -58,7 +61,8 @@ When [Library](https://help.openai.com/en/articles/20001052-file-storage-and-lib
 
 See [Code and shell sandboxing](https://learn.chatgpt.com/docs/sandboxing?surface=web), [Creating and editing documents, spreadsheets, and presentations](https://help.openai.com/en/articles/20001278-creating-and-editing-documents-spreadsheets-and-presentations-with-chatgpt-work), and [File storage and Library in ChatGPT](https://help.openai.com/en/articles/20001052-library-for-chatgpt).
 
-Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
+For task eligibility and the experience on each device, see
+[Continue Work across devices](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices).
 
 ## Enable and govern Local computer access with Work Cloud
 
@@ -70,13 +74,11 @@ Review these policy boundaries before enabling sync:
 
 - **Local execution.** MDM and legacy managed-device requirements rank above Agent Security. The device's system requirements file ranks below Agent Security.
 
-- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
-
-- **Logging and auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+- **Enterprise hooks.** Check [which hooks run with cloud orchestration](https://learn.chatgpt.com/docs/hooks#hooks-with-cloud-orchestration). Before rollout, verify callback delivery, failure behavior, and [audit coverage](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#check-hooks-and-network-compatibility) for the events your workspace relies on.
 
 Keep orchestrator controls, including approvals and web search, in Global. Use the dedicated Allowed approval policies and Allowed web search modes controls where available, and TOML for other supported fields. See the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the field list and execution scope.
 
-Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files.
+Before disabling access, review [what to tell affected users](https://learn.chatgpt.com/docs/enterprise/admin-setup#if-you-need-to-turn-local-computer-access-off).
 
 Local computer access with Work Cloud does not change Codex configuration behavior or combine Work history with Codex history. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) and the [Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq).
 

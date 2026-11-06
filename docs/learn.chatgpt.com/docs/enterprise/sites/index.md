@@ -30,7 +30,7 @@ Start with a specific use case. For example, an onboarding site that displays ap
 
 ## How sites work
 
-A site can contain pages, application code, and visitor information. Review what it publishes and collects before sharing it. For the building and publishing workflow, see [Creating and managing ChatGPT Sites](https://help.openai.com/en/articles/20001339).
+A site can contain pages, application code, and visitor information. Review what it publishes and collects before sharing it. For the builder's workflow, see [Create a site](https://learn.chatgpt.com/docs/sites/creating-a-site#get-started-with-sites).
 
 ### What you can build
 
@@ -54,25 +54,23 @@ Review three levels of control: workspace permissions, the site's sharing and ed
 
 ### Workspace admin controls
 
-Workspace permissions govern who can create and publish sites. Review public publishing and external invitations separately: allowing a named external viewer and making a site available to anyone on the internet are different decisions.
+Workspace permissions govern who can create and publish sites. Public publishing is off by default in Enterprise. To let members invite named external visitors, enable **Allow members to invite external visitors to sites** under **Workspace settings > Permissions & roles**. You can allow these invitations while keeping public publishing off.
+
+In Business workspaces, external invitations are available when sites are enabled and the account has access to the feature. Business has no separate external-invitation setting.
 
 For configuration steps and current role permissions, follow the [workspace administration guidance](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace).
 
 ### Site owner and collaborator controls
 
-Use the site's sharing controls to decide who can view it and who can help maintain it.
+The site owner chooses visitors and editors within the limits you set for the workspace.
 
 #### Audience and sharing
 
-A site's audience controls who can open it. Choose an audience that matches the information and activities the site provides. Review the full set of access grants when narrowing access. Removing an individual invitation may still leave access through a group, workspace-wide sharing, or public publishing.
-
-Check the site from the intended visitor experience after changing access. For the sharing workflow, see [Publishing and sharing](https://learn.chatgpt.com/docs/sites/publishing-and-sharing).
+When reviewing a site's audience, check individual invitations, group access, workspace-wide sharing, and public access. More than one of these methods can give the same person access. Owners can [choose who can visit](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#choose-who-can-visit) or [invite external visitors](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#invite-people-outside-your-workspace).
 
 #### Editors and collaboration
 
-Owners can invite eligible workspace members as editors. Owners publish first; editors can publish later updates. Owners manage access and owner-only settings.
-
-Agree on how editors request and record review before publishing changes. An editor can publish later versions without a separate owner-approval step, so an organization's review process must account for who has edit access.
+Review who has edit access. After the owner publishes for the first time, editors can publish updates without separate owner approval. Agree on how they should request and record any review your organization requires. For editor permissions and invitations, see [Collaborate on a site](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#collaborate-on-a-site).
 
 ### Application permissions
 
@@ -86,53 +84,34 @@ Creating or sharing a site does not itself authorize connected-app access. Revie
 
 Include connections in the site's review. Identify which services it uses, what information it requests, and who should authorize that access. Keep the site's audience decision separate from the connected service's permissions.
 
-Keep credentials out of prompts, attachments, and visible site content. For questions about network access, contact your workspace admin.
+Keep credentials out of prompts, attachments, and visible site content.
 
 ### Verify the visitor experience
 
 Keep connected sites private to their workspace. Before sharing a connected site more widely within that workspace, test with another eligible workspace member who uses their own connected account. Confirm that the site shows information appropriate to that person's existing permissions.
 
-Also check the experience when a visitor does not grant the requested connection access. Explain which features need the connection and make sure the site does not present missing data as a successful result. Follow the current Help Center guidance for supported connections and access requirements.
+Also test what the site shows when a visitor declines access. It should identify which features need the connection and distinguish unavailable data from a successful result. For the visitor steps, see [Let visitors choose their connections](https://learn.chatgpt.com/docs/sites/data-and-connections#let-visitors-choose-their-connections).
 
 ## Review and manage sites
 
 ### Saved versions and publishing
 
-Editing and saving a version are separate from publishing it. Review the updated preview, then publish when it's ready for visitors. Sending editing instructions does not immediately change the published site.
+Decide who should review a saved version before it goes live. Your organization sets this review process. An owner or eligible editor can publish without a separate approval in Sites. For the publishing steps, see [Publish an update](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#publish-an-update).
 
 ![Recommended workflow: edit and save, review and test, explicitly publish the version, then check the live site as a visitor. Review is an organizational step, not a product approval gate.](<https://developers.openai.com/images/codex/sites/publishing.webp>)
 
-Use this workflow for the first publication and later updates:
-
-<WorkflowSteps>
-
-1. Describe the change and review the saved version.
-2. Check the content, audience, application permissions, and connections affected by the change.
-3. Complete your organization's review, then have the owner or an eligible editor publish the version. The owner must complete the first publication.
-4. Open the published site as an intended visitor and confirm that the expected content and behavior are available.
-
-</WorkflowSteps>
-
-The review step is a recommended organizational process. It does not add a product approval gate.
-
 ### Shared responsibilities
 
-Successful generation or publication does not establish that a site meets your organization's requirements. Assign responsibility for reviewing the content, access rules, generated application code, and connected services. Use reviewers with the appropriate expertise for the site's data and use case.
+Assign reviewers for the site's content, access rules, generated code, and connected services. Choose people who know the data and the intended use.
 
 ### Review before publishing
 
-Review the intended audience, generated code, visitor submissions, and connections before publishing. Test the experience for intended and unintended visitors. Repeat the review after material changes.
+Ask the site owner to [review the site before sharing](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#review-before-you-share). Have your reviewers run these checks before the first publication and after material changes.
 
-For example, a team dashboard can look correct for its creator while exposing an uploaded customer list to a broader audience than intended. A request form can collect the right fields while allowing one visitor to read another visitor's submission. Review both what appears on the page and how the application handles data and actions.
-
-Before publishing, check:
-
-- **Content:** Review generated text, images, links, uploaded files, and example data for accuracy and appropriate sharing.
-- **Audience:** Confirm who should be able to open the site, including external viewers and public visitors where applicable.
-- **Records and actions:** Verify that visitors can read and change only the information they have permission to access.
-- **Forms and submissions:** Decide what to collect, where it goes, who can see it, and how visitors can ask questions about it.
-- **Connections and credentials:** Review the services used, requested access, and any information exposed in pages, downloads, or error messages.
-- **Visitor experience:** Use separate visitor accounts to check the expected paths and denied-access cases.
+- Verify that the intended audience can open the site and that excluded visitors cannot.
+- Test record access with separate accounts. For example, if a form collects private requests, check whether one visitor can read or change another visitor's submission.
+- Check what forms collect, where submissions go, who can see them, and how visitors can ask questions about their data.
+- Check which services the site connects to, what access it requests, and whether pages, downloads, or error messages disclose sensitive information.
 
 ### Ongoing maintenance
 

@@ -52,19 +52,31 @@ review.
 
 ### Continue Work across devices
 
-When your workspace enables sync, tasks using Local computer access with Work Cloud use cloud coordination. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. You can continue an eligible conversation across desktop, mobile, and web. Work can still use approved local resources through a connected computer.
+If your workspace gives you Work Cloud and local computer access, sign in with
+ChatGPT using the same account and workspace on each device. In the desktop app,
+select **Cloud** in the composer and start a new Work task. You can continue
+that conversation on desktop, mobile, or web.
+Enterprise workspaces keep their existing Local/Cloud selector and default.
 
-For example, start a task with an approved folder on your laptop, then review results or send follow-up instructions from your phone. Keep the laptop online for steps that need its files or tools.
+For example, start a task with an approved folder on your laptop, then review the
+results from your phone. The cloud coordinates the task. Keep the laptop online
+and connected for steps that need its files or tools.
 
-Start a new task after enabling sync. Existing tasks, including those in projects, stay local only or in the cloud without access to local files.
+- **Older tasks:** Tasks created before your workspace enabled local computer
+  access keep their original mode, including tasks in projects.
+- **Computer offline:** If the computer is unavailable at the start of a new turn,
+  an eligible task can continue in a cloud container. The container cannot use
+  the computer's files or tools or enforce its local execution requirements.
+  A running turn cannot switch from local to cloud execution.
+- **Access turned off:** Turning off local computer access interrupts running
+  turns. If you still have Work access, send a new message in the existing cloud
+  conversation to continue without local files.
 
-If your computer is unavailable when a new turn starts, an existing eligible task using Local computer access with Work Cloud can continue in a cloud container. The container cannot access that computer's files or tools or enforce its enterprise execution requirements. Work can't switch from local to cloud execution during a turn.
+Without local computer access for Work Cloud, choose **Local** for tasks that need
+your computer. Choose **Cloud** for tasks that can run without it, such as a
+scheduled website check.
 
-Without Local computer access with Work Cloud, use the desktop composer's local and cloud options. Choose local Work for resources on your computer, or cloud Work for tasks that don't depend on it. Cloud is useful for scheduled tasks that research or check websites because your computer doesn't need to be awake.
-
-Turning off Local computer access with Work Cloud interrupts running turns. Send a new message in an existing cloud conversation to continue in Work Cloud without access to local files.
-
-Workspace admins can review [policy requirements and setup steps](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#how-to-set-up-local-computer-access) before enabling sync.
+Workspace owners can follow the [setup and policy checks](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#how-to-set-up-local-computer-access).
 
 Here are three common use cases you can get started with:
 

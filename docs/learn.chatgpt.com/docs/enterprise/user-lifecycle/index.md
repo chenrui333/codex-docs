@@ -294,7 +294,8 @@ token permissions and rotation steps, see
 
 If the member used Local computer access with Work Cloud, include the **Allow local computer access** permission and connected computers in the offboarding review. Check workspace and role assignments as well as access in each connected system.
 
-Turning off Local computer access with Work Cloud interrupts running turns. Users who retain access can start another turn in an existing cloud conversation, which then uses Work Cloud without access to local files. This is distinct from removing workspace membership, revoking credentials, or deleting stored data.
+Disabling local computer access [interrupts running Work turns](https://learn.chatgpt.com/docs/enterprise/admin-setup#if-you-need-to-turn-local-computer-access-off).
+Review workspace membership, connected credentials, and stored data separately.
 
 Review three separate outcomes after revocation:
 

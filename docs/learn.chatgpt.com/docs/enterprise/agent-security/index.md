@@ -57,9 +57,7 @@ Configure these controls in Global. For Work with local access and dots, support
 
 ### Hooks in Local computer access with Work Cloud
 
-When managed policy and remote hooks are enabled, Work Cloud with local access and dots use admin-managed remote MCP hooks on the cloud orchestrator. Configure `mcp_tool` handlers in Global `requirements.toml`. Work Cloud without local access and personal accounts do not use these enterprise hooks. Command/shell, prompt, and agent handlers; hooks from local configuration, plugins, or local directories; environment-scoped hooks; and `SessionEnd` MCP hooks are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
-
-Before relying on these hooks, test callback connectivity, required events, and failure behavior. An explicit supported denial can block an action, but a `PreToolUse` callback error, timeout, or malformed response can fail the hook without blocking the tool. MCP hooks do not provide a complete Compliance API audit trail.
+In **Global**, use **Edit as TOML** to configure `mcp_tool` handlers for Work with local computer access and dots. Test callback failures as well as explicit denials before relying on a hook to block a tool. See [Hooks with cloud orchestration](https://learn.chatgpt.com/docs/hooks#hooks-with-cloud-orchestration) for supported handlers and events.
 
 Global also contains desktop and client settings. Some of these settings apply only to the desktop app. Configuring a setting in Global does not mean it applies everywhere. See the Configuration Reference for each field's supported use.
 
@@ -78,9 +76,7 @@ These fields control how work runs on a computer or in a cloud container. Set sh
 
 The table shows which field groups support environment overrides. Supported options within each group can vary by platform, and some requirements combine across policies instead of replacing one another. See the Configuration Reference for supported values and Managed configuration for network exceptions.
 
-On supported managed Codex Cloud execution paths, Agent Security requirements constrain command networking. Codex Cloud environment internet settings apply separately. An allowed domain in Agent Security does not override a restriction in the Cloud environment's internet settings. These command-network controls do not, by themselves, disable hosted web search, apps, or MCP. ChatGPT Work Cloud has separate capability permissions and does not inherit these Agent Security requirements.
-
-A managed command allowlist applies to commands using the managed proxy. Where policy permits full sandbox escalation and it is approved, that execution can bypass the command proxy. A narrow network grant is different from full sandbox escalation. Configure enforced approval and sandbox requirements for the intended boundary, and test both ordinary and escalated commands.
+On supported managed Codex Cloud execution paths, allowing a domain in Agent Security cannot override an environment restriction. An approved full sandbox escalation can bypass the managed command proxy. See [Network isolation](https://learn.chatgpt.com/docs/agent-approvals-security#network-isolation) for what the proxy covers.
 
 ### Configure networking in the UI
 

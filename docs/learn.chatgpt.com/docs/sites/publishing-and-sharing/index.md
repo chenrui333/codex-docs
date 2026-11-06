@@ -97,7 +97,9 @@ External invitations let you share a site with named viewers without making it p
 
 External invitations are rolling out to sites users on Plus, Pro, Business,
   and Enterprise plans. If the invitation option is missing, check the selected
-  account, site ownership, workspace permissions, and rollout availability.
+  account, site ownership, and rollout availability. In Enterprise and Business
+  workspaces, ask your admin to check the [workspace settings for
+  Sites](https://learn.chatgpt.com/docs/enterprise/sites#workspace-admin-controls).
 
 <WorkflowSteps>
 
@@ -115,8 +117,6 @@ External invitations are rolling out to sites users on Plus, Pro, Business,
 External viewers can open and use the site. They don't become workspace
 members or site editors, and can't edit or publish the site. The invitation
 grants access to this site; review its content and connected data before sharing.
-
-In Enterprise, admins manage **Allow members to invite external visitors to sites** under **Workspace settings > Permissions & roles**. This permission is separate from permission to publish sites publicly. Business workspaces don't have a separate external-invitation toggle; sites must be enabled and the feature must be available to the account.
 
 To remove a viewer, open the site's sharing controls and remove their access.
 Also check the remaining audience settings: removing one invitation doesn't

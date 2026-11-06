@@ -108,13 +108,9 @@ Use the policy API to manage Global settings. To manage Local or Codex Cloud set
 
 Check compatibility before enabling sync:
 
-Network policy. Where environment overrides are available, test the `experimental_network` exceptions documented in [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration). A global restriction can remain in force despite an environment allow.
+- **Network policy.** Test [network policy precedence and runtime limits](https://learn.chatgpt.com/docs/enterprise/managed-configuration#network-policy-precedence-and-runtime-limits) if you use environment overrides. A Global restriction can remain in force despite an environment allow.
 
-- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally.
-
-- **Unsupported hooks.** Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
-
-- **Auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+- **Enterprise hooks.** If your rollout depends on hooks, check [which handlers run with cloud orchestration](https://learn.chatgpt.com/docs/hooks#hooks-with-cloud-orchestration). Test the events and failure cases you rely on before enabling access. Review [audit coverage](https://learn.chatgpt.com/docs/enterprise/compliance-api#audit-records-for-local-computer-access-with-work-cloud) separately.
 
 - Data requirements. Local computer access with Work Cloud does not provide strict zero data retention. Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations. Enterprise Key Management (EKM) covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots. If your organization requires ZDR, do not enable this feature.
 
@@ -267,7 +263,11 @@ Protect the integration boundary:
 
 ## Step 8: Verify and maintain the rollout
 
-After enabling Local computer access with Work Cloud, create a new task and continue the conversation from another supported device. Existing tasks are not migrated and keep their original local-only or cloud-only behavior. Keep the computer online for steps that need its files or tools. Test an action the policy should allow and an action it should block, checking the applicable approvals, filesystem, and network restrictions separately for local and cloud execution. Also test starting a new turn while the local computer is unavailable. An eligible task can continue in a cloud container without access to that computer's local files or tools. A task cannot switch from local execution to the cloud during a turn.
+Have a pilot user [start a new Work task and continue it on another device](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices).
+With the computer connected, check approvals, filesystem access, and network
+restrictions using an allowed action and a blocked action. Disconnect the
+computer and start another turn. Verify that the cloud container cannot access
+local files and that its own execution requirements apply.
 
 Record the effective settings and the result of each test. If a restriction does not work as expected, resolve the issue before users rely on it. Follow the documented behavior for disabling sync. Treat access removal, task interruption, and data retention as separate actions.
 
@@ -294,4 +294,6 @@ scope and administrator guidance when those signals change.
 
 ### If you need to turn Local computer access with Work Cloud off
 
-Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files. Tell users to start a new turn after the interruption and explain that local files will no longer be available to the cloud thread.
+Tell affected users that disabling **Allow local computer access** interrupts
+running turns. Members who retain Work access can send a new message in an
+existing cloud conversation to continue without local files.

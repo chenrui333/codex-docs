@@ -167,9 +167,12 @@ Set and verify access:
 
 - Test access with a member who has the intended permissions.
 
-Tasks using Local computer access with Work Cloud use cloud coordination and can still run local steps through a connected computer. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. The sync permission does not grant a seat, connected-app access, operating-system permissions, or unrestricted device access. Local Codex permissions and behavior remain separate. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) for policy scope and the [Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq) for compatibility requirements.
-
-Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files. Turning off sync does not by itself remove the member's workspace access.
+Review seats, connected-app access, operating-system permissions, and Codex
+Local access separately. Members can keep workspace access after you turn off
+local computer access. For the effect on running tasks, see the
+[rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup#if-you-need-to-turn-local-computer-access-off). For policy scope and compatibility requirements,
+see [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration) and the
+[Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq).
 
 ### Control Computer History access
 

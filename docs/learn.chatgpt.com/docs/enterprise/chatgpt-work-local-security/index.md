@@ -39,9 +39,9 @@ Local capabilities depend on the supported desktop app, operating system, worksp
 
 Local execution accesses approved resources through the desktop app on the user's computer. With Local computer access with Work Cloud enabled, OpenAI's cloud coordinates the task and calls the connected computer when a step needs local execution. The computer must be online and connected for those steps.
 
-Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
-
-If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn.
+Device requirements apply to local execution. If a new turn runs in a cloud
+container while the computer is offline, the container uses its own policies
+and cannot reach local files or tools. See [Continue Work across devices](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices).
 
 Local files can remain on the device, but relevant file excerpts, prompts, screenshots, browser content, or tool results may be sent to OpenAI services to complete a task. Local execution does not mean offline or device-only model inference.
 
@@ -115,9 +115,7 @@ Before enabling sync, review these requirements:
 
 - **Policies delivered only through MDM. MDM delivers policy to devices. Create an Agent Security baseline for supported local execution requirements before enabling sync.**
 
-- **Enterprise hooks.** Where enabled for your workspace, Local computer access with Work Cloud supports admin-defined MCP hooks that run on the cloud coordinator (orchestrator) for supported lifecycle and tool events. Command hooks and hooks from local configuration or plugins are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
-
-- **Auditing.** Before relying on these hooks, test the callback connection, confirm the events it receives, and check how failures affect the task. MCP hooks do not provide a complete Compliance API audit trail.
+- **Enterprise hooks.** If a local-only workflow depends on scripts or plugin hooks, check [which hooks the cloud orchestrator supports](https://learn.chatgpt.com/docs/hooks#hooks-with-cloud-orchestration) before enabling local computer access. Test the required events and review [audit coverage](https://learn.chatgpt.com/docs/enterprise/compliance-api#audit-records-for-local-computer-access-with-work-cloud).
 
 Review the Work controls available in **Workspace settings** > **Permissions & roles**. Whether local and hosted Work appear as distinct permissions depends on the workspace configuration and rollout. For more guidance, see the [Work administrator FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq).
 
@@ -128,8 +126,6 @@ Workspace permissions determine who can use Work. Administrators can also restri
 Enforced requirements cannot be overridden by individual users. Managed defaults, by contrast, establish initial settings that users may be able to change. Neither replaces workspace roles or operating-system permissions.
 
 For local clients that use the existing local configuration path, managed requirements load during configuration loading. A background refresh can prepare cloud requirements for a later load, and macOS MDM changes are read at the next client launch. Restart and verify the applicable local client after a local policy change.
-
-Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files.
 
 This local loading behavior does not establish when a cloud policy change takes effect in a running task using Local computer access with Work Cloud. Verify the task's effective controls before relying on the update.
 

@@ -47,21 +47,27 @@ a chat, it reappears in its original sidebar location.
 
 ### A Work conversation does not appear on another device
 
-- Confirm that you are signed in with ChatGPT to the same account and workspace on each device.
-- Ask your workspace owner to check that Work Cloud and **Allow local computer access** are enabled. If `enforce_residency` is enabled in any cloud policy, **Allow local computer access** is disabled for both Work and dots. This safeguard does not configure workspace residency or, by itself, disable Work Cloud or dots.
-- Check when the task was created. Sync applies to new tasks created after it is enabled. Existing tasks, including tasks in projects, are not migrated and keep their original local-only or cloud-without-local-files behavior.
-
-For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. A particular toggle or default mode does not by itself confirm whether a conversation can sync. Keep Codex history separate when looking for a Work conversation. See [Local computer access for Work Cloud and dots](https://learn.chatgpt.com/docs/enterprise/cloud-local-access) for setup and the [Work admin FAQ](https://learn.chatgpt.com/docs/enterprise/work-admin-faq) for common questions.
+- Sign in with ChatGPT to the same account and workspace on each device, and look
+  in Work history. Codex has a separate history.
+- Ask your workspace owner to verify Work Cloud and **Allow local computer
+  access** in [workspace permissions](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#how-to-set-up-local-computer-access). A cloud policy with
+  `enforce_residency` blocks local computer access.
+- If the task predates local computer access, select **Cloud** in the desktop
+  composer and [start a new Work task](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices).
 
 ### A synced task cannot use the computer's files or tools
 
-Keep the computer online and connected. If it's unavailable when a new turn starts, an eligible synced task can continue in a cloud container without access to the computer's files or tools. A running turn doesn't automatically move from the computer to the cloud.
+Open the ChatGPT desktop app on the computer that holds the files, sign in to
+the same workspace, and keep it online and connected. If you started a turn
+while the computer was offline, it may be running in a cloud container without
+access to those files.
 
 <a id="a-turn-stopped-after-local-computer-access-was-turned-off"></a>
 
 ### A turn stopped after Local computer access with Work Cloud was turned off
 
-Turning off Local computer access with Work Cloud interrupts running turns. If you still have Work access, send a new message to start another turn. In an existing cloud conversation, that turn automatically uses Work Cloud without access to local files.
+If you still have Work access, send a new message in the existing cloud
+conversation. The new turn can use Work Cloud, but it cannot use local files.
 
 ### Automated policy updates are missing
 

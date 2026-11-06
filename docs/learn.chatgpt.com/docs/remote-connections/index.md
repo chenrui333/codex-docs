@@ -25,13 +25,10 @@ permissions, plugins, Computer Use, browser setup, and local tools.
 
 ## Local computer access with Work Cloud and Remote connections
 
-When your workspace enables Local computer access with Work Cloud, eligible ChatGPT Work conversations can continue across desktop, mobile, and web. OpenAI's cloud coordinates the task, and an online, connected computer can execute steps that need its local resources.
-
-Use the Local computer access with Work Cloud guidance for conversations using this feature. The remote access and SSH instructions below apply to the existing supported host-connection workflows. The setup required to view a conversation using this feature may differ from the setup for a Codex host connection.
-
-Local computer access with Work Cloud applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
-
-If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn. This feature does not change how Codex on mobile connects to a host.
+To continue a Work conversation on desktop, mobile, or web, follow
+[Continue Work across devices](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices). Work Cloud can use approved local
+resources through a connected computer. The instructions below cover connecting
+to a desktop host from Codex or opening a project on an SSH host.
 
 ## What you can do remotely
 

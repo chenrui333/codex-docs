@@ -191,9 +191,9 @@ Restore archived chats from **Settings > Data Controls > Archived chats**.
 
 ## Use local projects for folders and codebases
 
-When sync is on, the cloud coordinates new tasks using Local computer access with Work Cloud, and you can continue them across supported desktop, mobile, and web experiences. For enterprises, the in-app Local/Cloud toggle and its default remain unchanged at launch. Existing tasks, including those in projects, stay local only or in the cloud without access to local files. Start a new task to use this feature.
-
-If your computer is unavailable when a new turn starts, an existing eligible task using Local computer access with Work Cloud can continue in a cloud container. The container can't access the computer's files or tools or enforce its enterprise execution requirements. Work can't switch from local to cloud execution during a turn.
+To use an approved project folder while you [continue Work across devices](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices),
+start a new cloud task after your workspace enables local computer access.
+Keep the computer that holds the folder online and connected.
 
 Conversation sync and project-file access are separate:
 

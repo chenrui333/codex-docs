@@ -336,16 +336,19 @@ deprecated alias. Admins can force hooks off the same way in
 
 ## Managed hooks from `requirements.toml`
 
-When managed policy and remote hooks are enabled, Work Cloud with local access and dots use admin-managed remote MCP hooks on the cloud orchestrator. Configure `mcp_tool` handlers in Global `requirements.toml`. Work Cloud without local access and personal accounts do not use these enterprise hooks. Command/shell, prompt, and agent handlers; hooks from local configuration, plugins, or local directories; environment-scoped hooks; and `SessionEnd` MCP hooks are not supported with cloud orchestration, even when tools execute locally. When both orchestration and execution are local, existing supported hooks continue to work in local-only Work and Codex threads. Admins can still configure supported managed hooks in Agent Security for those workflows.
+Choose hooks for the environment that coordinates the task.
 
-Before relying on these hooks, test callback connectivity, required events, and failure behavior. An explicit supported denial can block an action, but a `PreToolUse` callback error, timeout, or malformed response can fail the hook without blocking the tool. MCP hooks do not provide a complete Compliance API audit trail.
+### Hooks with cloud orchestration
 
-The Codex instructions in this section still apply to supported Codex workflows. Before enabling Local computer access with Work Cloud, review any compatibility warning in the sync setting and **Agent Security**. See [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration).
+In workspaces with managed policy and remote hooks enabled, Work Cloud with local computer access and dots can call an MCP service at supported task and tool events. These calls use the `mcp_tool` handlers your workspace admin configures in [Agent Security](https://learn.chatgpt.com/docs/enterprise/agent-security#hooks-in-local-computer-access-with-work-cloud). Work Cloud without local computer access and personal accounts do not use these enterprise hooks.
 
-In Codex, enterprise-managed requirements can define hooks inline under `[hooks]`.
-The command-hook example below applies only to Codex.
-This is useful when admins want to enforce the hook configuration while
-delivering the actual scripts through MDM or another device-management system.
+Cloud orchestration supports only Global MCP hooks, even when a tool runs on a connected computer. It does not support command, prompt, or agent handlers, hooks from local configuration, plugins, or local directories, environment-scoped hooks, or `SessionEnd` MCP hooks. Local-only Work and Codex threads continue to support their existing hooks when both orchestration and execution are local.
+
+A supported hook can block an action by returning an explicit denial. A `PreToolUse` error, timeout, or malformed response can let the tool run. MCP hooks provide only part of the audit trail. For rollout checks and audit coverage, see [Check hooks and network compatibility](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#check-hooks-and-network-compatibility).
+
+### Managed hooks in local Codex
+
+Define local Codex hooks under `[hooks]` in `requirements.toml`.
 To enforce managed hooks even for users who disabled hooks locally, pin
 `[features].hooks = true` in `requirements.toml` alongside `[hooks]`. To ignore
 user, project, session, and plugin hooks while still allowing administrator

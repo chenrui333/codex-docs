@@ -46,11 +46,10 @@ and connected integration. For the broader execution model, see the
 
 ## Where cloud tasks run
 
-For new tasks created after you enable Local computer access with Work Cloud, OpenAI's cloud coordinates the task while individual steps can execute in the cloud or on an approved, connected computer. This feature applies only to tasks created after you enable sync. Existing tasks, including tasks in projects, keep their original mode: locally only, or in the cloud without access to local files. Start a new task to use this feature.
-
-If the computer is unavailable when a new turn starts, an existing eligible task using local computer access with Work Cloud can continue in a cloud container. The cloud container cannot access files or tools on the unavailable computer. It also does not enforce enterprise requirements from local execution. A task cannot switch from local execution to the cloud during a turn.
-
-A step that needs a computer's local files or tools requires that computer to be online and connected. Workspace permissions, supported policy, and the user's existing access continue to apply.
+With local computer access enabled, Work Cloud can call approved tools on an
+online, connected computer. If a new turn uses a cloud container while the
+computer is offline, the container uses its own execution requirements and
+cannot reach the computer's files or tools. See [Continue Work across devices](https://learn.chatgpt.com/docs/get-started-with-work#continue-work-across-devices).
 
 The user's device sits within the organization's own IT-managed trust boundary, outside OpenAI-operated systems. Cloud execution remains in the OpenAI-managed environment. A synced task can separately use approved local tools through a connected computer, subject to its permissions.
 
@@ -225,8 +224,6 @@ Review each control in the context where it applies:
 - **Cloud execution policy.** Work Cloud manages its own execution environment under existing Work Cloud policies. The local environment's managed execution policy does not carry over. Desktop browser site rules do not become cloud-browser restrictions.
 
 Keep orchestrator controls, including approvals and web search, in Global. Use the dedicated Allowed approval policies and Allowed web search modes controls where available, and TOML for other supported fields. See the [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the field list and execution scope.
-
-Turning off Local computer access with Work Cloud interrupts currently running turns. Users can start a new turn in an existing cloud conversation. That turn automatically uses Work Cloud without access to local files.
 
 Review the controls that apply to each part of a cloud task:
 
