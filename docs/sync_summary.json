@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-06T13:55:31+00:00",
-  "manifest_sha256": "e7305c15aa66f81a3715dbe150fe1b862ea8ed715568888158b2937b153fad47",
+  "generated_at": "2026-11-06T23:08:57+00:00",
+  "manifest_sha256": "e6e2f1146cd2386f3c55fbe780119044b1c219a9b3f7838c9ac78bf18c17821d",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,17 +13,10 @@
     "codex_cli_version_raw": "codex-cli 0.167.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 298,
   "updated": [
-    "feature-flags/lifecycle.json",
-    "feature-flags/lifecycle.md",
-    "learn.chatgpt.com/docs/agent-approvals-security/index.md",
-    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
-    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
-    "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/sandboxing/auto-review/index.md"
+    "cli-surface/macos-arm64.json"
   ]
 }
