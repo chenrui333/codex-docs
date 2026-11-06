@@ -47,6 +47,11 @@
     },
     {
       "enabled": false,
+      "key": "apps_early_resource_discovery",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "apps_mcp_path_override",
       "stage": "removed"
     },
@@ -123,6 +128,11 @@
     {
       "enabled": false,
       "key": "code_mode_host_grpc",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "code_mode_host_output_truncation",
       "stage": "under development"
     },
     {
@@ -236,9 +246,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "deferred_tool_world_state",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -298,6 +308,11 @@
     {
       "enabled": true,
       "key": "fast_mode",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "gcp_setup_wizard",
       "stage": "stable"
     },
     {
@@ -426,6 +441,11 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "incremental_exec_tools",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "incremental_tools",
       "stage": "stable"
@@ -433,6 +453,11 @@
     {
       "enabled": true,
       "key": "instant_interrupt",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "interrupt_on_cancel",
       "stage": "under development"
     },
     {
@@ -658,7 +683,7 @@
     {
       "enabled": false,
       "key": "respect_system_proxy",
-      "stage": "under development"
+      "stage": "experimental"
     },
     {
       "enabled": false,
@@ -806,6 +831,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "suppress_model_change_announcements",
+      "stage": "stable"
+    },
+    {
       "enabled": true,
       "key": "system_proxy_fallback",
       "stage": "stable"
@@ -854,6 +884,11 @@
       "enabled": true,
       "key": "tui_app_server",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "tui_extensions_statusline",
+      "stage": "under development"
     },
     {
       "enabled": false,
@@ -971,7 +1006,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.166.0",
+  "codex_cli_version": "codex-cli 0.167.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -984,6 +1019,8 @@
       "compaction_image_budget",
       "content_item_kinds",
       "daemon_auto_start",
+      "deferred_tool_world_state",
+      "gcp_setup_wizard",
       "guardian_reuse_parent_compaction",
       "image_generation",
       "incremental_tools",
@@ -995,9 +1032,11 @@
       "prediction_preserve_parent_tools",
       "reasoning_effort_override",
       "recommended_plugins",
+      "respect_system_proxy",
       "secret_auth_storage",
       "skill_search",
       "sleep_tool",
+      "suppress_model_change_announcements",
       "system_proxy_fallback",
       "tool_call_mcp_elicitation",
       "tool_suggest",
@@ -1018,6 +1057,7 @@
       "apply_patch_freeform",
       "apply_patch_preserve_line_endings",
       "apply_patch_streaming_events",
+      "apps_early_resource_discovery",
       "apps_mcp_path_override",
       "artifact",
       "async_compaction",
@@ -1030,6 +1070,7 @@
       "code_mode_buffered_exec",
       "code_mode_host",
       "code_mode_host_grpc",
+      "code_mode_host_output_truncation",
       "code_mode_interrupt",
       "code_mode_only",
       "code_mode_only_strict_3p_tools",
@@ -1062,6 +1103,7 @@
       "experimental_windows_sandbox",
       "external_agent_memory_import",
       "external_migration",
+      "gcp_setup_wizard",
       "guardian_conversation_history_tools",
       "guardian_enhanced_node_repl_transcripts",
       "guardian_ext",
@@ -1078,8 +1120,10 @@
       "image_detail_original",
       "image_generation",
       "image_resize_notice",
+      "incremental_exec_tools",
       "incremental_tools",
       "instant_interrupt",
+      "interrupt_on_cancel",
       "item_ids",
       "js_repl",
       "js_repl_tools_only",
@@ -1140,6 +1184,7 @@
       "step_model_switching",
       "subagent_default_context_limits",
       "subagent_thread_environments",
+      "suppress_model_change_announcements",
       "system_proxy_fallback",
       "terminal_resize_reflow",
       "terminal_visualization_instructions",
@@ -1150,6 +1195,7 @@
       "tool_suggest",
       "transcript_v2",
       "tui_app_server",
+      "tui_extensions_statusline",
       "tui_multi_backend",
       "unavailable_dummy_tools",
       "unbounded_connection_retries",
@@ -1174,7 +1220,8 @@
       ],
       "experimental": [
         "analytics_plan_history",
-        "login_shell_package_path"
+        "login_shell_package_path",
+        "respect_system_proxy"
       ],
       "removed": [
         "apply_patch_freeform",
@@ -1233,6 +1280,8 @@
         "compaction_image_budget",
         "content_item_kinds",
         "daemon_auto_start",
+        "deferred_tool_world_state",
+        "gcp_setup_wizard",
         "guardian_reuse_parent_compaction",
         "image_generation",
         "incremental_tools",
@@ -1246,6 +1295,7 @@
         "secret_auth_storage",
         "skill_search",
         "sleep_tool",
+        "suppress_model_change_announcements",
         "system_proxy_fallback",
         "tool_call_mcp_elicitation",
         "tool_suggest",
@@ -1257,12 +1307,14 @@
         "agent_message_board",
         "app_server_websocket_compression",
         "apply_patch_streaming_events",
+        "apps_early_resource_discovery",
         "artifact",
         "async_compaction",
         "background_paginated_rollout_migration",
         "chronicle",
         "code_mode",
         "code_mode_host_grpc",
+        "code_mode_host_output_truncation",
         "code_mode_only",
         "code_mode_only_strict_3p_tools",
         "code_mode_prewarm",
@@ -1277,7 +1329,6 @@
         "default_mode_request_user_input",
         "defer_mailbox_preemption",
         "deferred_executor",
-        "deferred_tool_world_state",
         "enable_mcp_apps",
         "exec_permission_approvals",
         "executed_tool_call_metadata",
@@ -1295,7 +1346,9 @@
         "guardianv2_decisions_comparison",
         "guardianv3",
         "image_resize_notice",
+        "incremental_exec_tools",
         "instant_interrupt",
+        "interrupt_on_cancel",
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "mcp_connection_sharing",
@@ -1311,7 +1364,6 @@
         "powershell_shell_version",
         "psp",
         "request_permissions_tool",
-        "respect_system_proxy",
         "retain_client_developer_messages",
         "retain_client_tool_outputs",
         "rollout_budget",
@@ -1327,6 +1379,7 @@
         "subagent_thread_environments",
         "terminal_visualization_instructions",
         "token_budget",
+        "tui_extensions_statusline",
         "tui_multi_backend",
         "unified_image_budget",
         "untrusted_as_tool_output",
@@ -1398,7 +1451,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+  "source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1473,6 +1526,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
+    },
+    "apps_early_resource_discovery": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "apps_mcp_path_override": {
       "behavior_evidence": "Removed compatibility flag for the legacy Apps MCP path override.",
@@ -1597,6 +1658,14 @@
       "stage_from_source": "stable"
     },
     "code_mode_host_grpc": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "code_mode_host_output_truncation": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -1786,10 +1855,10 @@
     "deferred_tool_world_state": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "elevated_windows_sandbox": {
       "behavior_evidence": "Use the elevated Windows sandbox pipeline (setup + runner).",
@@ -1888,6 +1957,14 @@
       "configurable": true,
       "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
+    "gcp_setup_wizard": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
@@ -2094,6 +2171,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "incremental_exec_tools": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "incremental_tools": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2107,6 +2192,14 @@
       "configurable": true,
       "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "interrupt_on_cancel": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
@@ -2481,7 +2574,7 @@
       "default_enabled": false,
       "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "experimental"
     },
     "responses_websockets": {
       "behavior_evidence": "Legacy rollout flag for Responses API WebSocket transport experiments.",
@@ -2724,6 +2817,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "suppress_model_change_announcements": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "system_proxy_fallback": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2808,6 +2909,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "always_on",
       "stage_from_source": "removed"
+    },
+    "tui_extensions_statusline": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "tui_multi_backend": {
       "compatibility_flag": false,
@@ -3001,13 +3110,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "6a2e95e2b7014c480f5c543b95f112d79c23551c281050cffaad85d32a9847db",
-    "features_rs_sha256": "092fa6e9bd6b53d4a63aec2130fdfb90b74b28f222135ff34c499b58a53dc963"
+    "client_rs_sha256": "662cf64d10f4b0d7eaf3ad046e53b1eb6dcf8dfb3cb5a425a3c8c222adc05da5",
+    "features_rs_sha256": "905c8c54b2104d7f37eb4b15b963c37f9ff15850dc9c46662a6dc5be0b77e396"
   },
-  "source_ref": "rust-v0.166.0",
+  "source_ref": "rust-v0.167.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/6ff1e1ca3b30fc8b914720681fcf5fe62e95f856/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/6ff1e1ca3b30fc8b914720681fcf5fe62e95f856/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

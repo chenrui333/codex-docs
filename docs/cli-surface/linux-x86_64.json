@@ -1,10 +1,10 @@
 {
-  "codex_cli_version": "0.166.0",
-  "codex_cli_version_raw": "codex-cli 0.166.0",
+  "codex_cli_version": "0.167.0",
+  "codex_cli_version_raw": "codex-cli 0.167.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
-      "description": "Browse all agent sessions on the shared local app-server daemon",
+      "description": "Open the agent command center to browse and switch sessions",
       "name": "agents",
       "options": [
         {
@@ -15,6 +15,14 @@
           ],
           "primary_flag": "--config",
           "synopsis": "-c, --config <key=value>"
+        },
+        {
+          "description": "Run the agents overview with an embedded app server",
+          "flags": [
+            "--no-daemon"
+          ],
+          "primary_flag": "--no-daemon",
+          "synopsis": "--no-daemon"
         },
         {
           "description": "Enable a feature (repeatable). Equivalent to `-c features.<name>=true`",
@@ -3134,7 +3142,7 @@
       ],
       "subcommands": [
         {
-          "description": "Browse all agent sessions on the shared local app-server daemon",
+          "description": "Open the agent command center to browse and switch sessions",
           "name": "agents"
         },
         {
@@ -3456,9 +3464,9 @@
     "os": "linux"
   },
   "schema_version": 2,
-  "source_commit": "6ff1e1ca3b30fc8b914720681fcf5fe62e95f856",
+  "source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.166.0",
+  "source_ref": "rust-v0.167.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
