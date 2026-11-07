@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-06T23:10:08+00:00",
-  "manifest_sha256": "ef6818e3e62122d42f4f04e648dc8786fd9c2ec8bc6a8ee504f555fe7b065efe",
+  "generated_at": "2026-11-07T05:02:21+00:00",
+  "manifest_sha256": "88d3ff0d29107c78653f0605972e2ff83fd64f834adaa1757ce086722549e295",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,28 +13,10 @@
     "codex_cli_version_raw": "codex-cli 0.167.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 298,
   "updated": [
-    "learn.chatgpt.com/docs/cloud/internet-access/index.md",
-    "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
-    "learn.chatgpt.com/docs/enterprise/agent-security/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security/index.md",
-    "learn.chatgpt.com/docs/enterprise/chatgpt-work-overview/index.md",
-    "learn.chatgpt.com/docs/enterprise/cloud-local-access/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions/index.md",
-    "learn.chatgpt.com/docs/enterprise/sites/index.md",
-    "learn.chatgpt.com/docs/enterprise/user-lifecycle/index.md",
-    "learn.chatgpt.com/docs/enterprise/work-admin-faq/index.md",
-    "learn.chatgpt.com/docs/environments/cloud-environment/index.md",
-    "learn.chatgpt.com/docs/get-started-with-work/index.md",
-    "learn.chatgpt.com/docs/hooks/index.md",
-    "learn.chatgpt.com/docs/projects/index.md",
-    "learn.chatgpt.com/docs/reference/troubleshooting/index.md",
-    "learn.chatgpt.com/docs/remote-connections/index.md",
-    "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md"
+    "cli-surface/macos-arm64.json"
   ]
 }
