@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-07T21:33:39+00:00",
-  "manifest_sha256": "ef6818e3e62122d42f4f04e648dc8786fd9c2ec8bc6a8ee504f555fe7b065efe",
+  "generated_at": "2026-11-09T05:15:42+00:00",
+  "manifest_sha256": "39d49c74fc28efdae00a6ab858bceaadad95381011fb962a162c1e0de2f3a022",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,10 +13,17 @@
     "codex_cli_version_raw": "codex-cli 0.167.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "release"
+    "sync_scope": "full"
   },
   "total_files": 298,
   "updated": [
-    "cli-surface/macos-arm64.json"
+    "learn.chatgpt.com/docs/image-generation/index.md",
+    "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
+    "learn.chatgpt.com/docs/prompting/index.md",
+    "learn.chatgpt.com/docs/quickstart/index.md",
+    "learn.chatgpt.com/docs/security/plugin/index.md",
+    "learn.chatgpt.com/docs/sites/index.md",
+    "learn.chatgpt.com/docs/skills-and-plugins/index.md",
+    "learn.chatgpt.com/docs/use-chatgpt/index.md"
   ]
 }

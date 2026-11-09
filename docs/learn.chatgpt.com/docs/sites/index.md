@@ -246,25 +246,20 @@ Estimates assume a full month of storage. Select **This Site has a database** to
 
 ## Next up
 
-  [Create a site
+  [Create a site](https://learn.chatgpt.com/docs/sites/creating-a-site)
 
-        <TextPrompt />
+Describe, build, and refine a website in ChatGPT or Codex.
 
-      Describe, build, and refine a website in ChatGPT or Codex.](https://learn.chatgpt.com/docs/sites/creating-a-site)
-  [Data and connections
+  [Data and connections](https://learn.chatgpt.com/docs/sites/data-and-connections)
 
-        <Mcp />
+Choose storage, add sign-in, and connect apps to your site.
 
-      Choose storage, add sign-in, and connect apps to your site.](https://learn.chatgpt.com/docs/sites/data-and-connections)
-  [Publish and share
+  [Publish and share](https://learn.chatgpt.com/docs/sites/publishing-and-sharing)
 
-        <Globe />
+Review your site, choose its audience, and collaborate with editors.
 
-      Review your site, choose its audience, and collaborate with editors.](https://learn.chatgpt.com/docs/sites/publishing-and-sharing)
-  [Manage a site
+  [Manage a site](https://learn.chatgpt.com/docs/sites/managing-a-site)
 
-        <Folder />
-
-      Review analytics, change domains and settings, and manage site versions.](https://learn.chatgpt.com/docs/sites/managing-a-site)
+Review analytics, change domains and settings, and manage site versions.
 
 <SitesReferenceNavigation />

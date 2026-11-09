@@ -186,11 +186,9 @@ the asset in a design tool when needed.
 - [Work with files](https://learn.chatgpt.com/docs/artifacts-viewer)
 - [Creating images with ChatGPT](https://openai.com/academy/image-generation/)
 
-[Image generation gallery
+[Image generation gallery](https://developers.openai.com/api/docs/guides/image-generation?gallery=open)
 
-      <Images />
-
-    Explore more image generation prompts and results.](https://developers.openai.com/api/docs/guides/image-generation?gallery=open)
+Explore more image generation prompts and results.
 
 </ContentModeSwitch>
 
@@ -201,11 +199,9 @@ the asset in a design tool when needed.
 - [Work with files](https://learn.chatgpt.com/docs/artifacts-viewer)
 - [Creating images with ChatGPT](https://openai.com/academy/image-generation/)
 
-[Image generation gallery
+[Image generation gallery](https://developers.openai.com/api/docs/guides/image-generation?gallery=open)
 
-      <Images />
-
-    Explore more image generation prompts and results.](https://developers.openai.com/api/docs/guides/image-generation?gallery=open)
+Explore more image generation prompts and results.
 
 </ContentModeSwitch>
 
@@ -216,10 +212,8 @@ the asset in a design tool when needed.
 - [Image generation API guide](https://developers.openai.com/api/docs/guides/image-generation)
 - [Work with files](https://learn.chatgpt.com/docs/artifacts-viewer)
 
-[Image generation gallery
+[Image generation gallery](https://developers.openai.com/api/docs/guides/image-generation?gallery=open)
 
-      <Images />
-
-    Explore more image generation prompts and results.](https://developers.openai.com/api/docs/guides/image-generation?gallery=open)
+Explore more image generation prompts and results.
 
 </ContentModeSwitch>

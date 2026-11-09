@@ -390,8 +390,6 @@ Until retirement, the original GPT stays usable, and you can continue editing an
 
 Find answers to common questions about preparing your workspace and helping your team switch.
 
-h3]:mb-5 [&>h3]:mt-12 [&>h3]:text-xl [&>h3:first-child]:mt-0 [&_summary]:gap-3 [&_summary]:px-5 [&_summary]:py-4 [&_.toggle-section-content]:px-5 [&_details[open]>.toggle-section-content]:border-t [&_details[open]>.toggle-section-content]:border-default [&_details[open]>.toggle-section-content]:pt-4 [&_details[open]>summary>span>svg]:rotate-90">
-
 ### Preparing your workspace
 
   <ToggleSection title="Can admins migrate many GPTs at once?">

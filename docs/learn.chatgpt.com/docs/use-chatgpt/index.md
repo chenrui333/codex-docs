@@ -288,21 +288,14 @@ Legal, financial, medical, security, and other high-stakes decisions require
 
 ## Next steps
 
-a]:min-w-0 [&>a]:no-underline">
-  [Open the quickstart
+  [Open the quickstart](https://learn.chatgpt.com/docs/quickstart)
 
-        <OpenBook />
+Start using ChatGPT with a guided first task.
 
-      Start using ChatGPT with a guided first task.](https://learn.chatgpt.com/docs/quickstart)
+[Learn about prompting](https://learn.chatgpt.com/docs/prompting)
 
-[Learn about prompting
+Write useful prompts for questions, finished work, and coding tasks.
 
-      <Chat />
+  [Personalize ChatGPT](https://learn.chatgpt.com/docs/personalize)
 
-    Write useful prompts for questions, finished work, and coding tasks.](https://learn.chatgpt.com/docs/prompting)
-
-  [Personalize ChatGPT
-
-        <Settings />
-
-      Set preferences and carry useful context across chats.](https://learn.chatgpt.com/docs/personalize)
+Set preferences and carry useful context across chats.

@@ -1,0 +1,80 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/image-generation/index.md": {
+            "after": "b30b1413920127299a8d022a1d0046234461a26e031ce5445a49743e2f9fe327",
+            "before": "c6c050298b66be6eed7f451922f3c087bf2733d839e4075eafbcf11f9c506f04"
+          },
+          "learn.chatgpt.com/docs/migrate-custom-gpts/index.md": {
+            "after": "868edc59ec1996b42a9bb31d4dfab8cc2ec72029f9894a3e963d434b7a2d0e93",
+            "before": "65178c57d5f224d0f513408089b8a760185913acc3b42b3f5bc44841f668ee2f"
+          },
+          "learn.chatgpt.com/docs/prompting/index.md": {
+            "after": "b8b69cf69609712b9cb696b35382ff3826b8d15d4f43b20fa99a74e980eff997",
+            "before": "1571939f8b5bb7b0fa6bc7a804835fbd3293dc24d1aa7fea18403dc4131b2946"
+          },
+          "learn.chatgpt.com/docs/quickstart/index.md": {
+            "after": "d4aab3ab89a4346104eabcf92a2c404b0139515c509cbbfdcc3bb0afc0864126",
+            "before": "1e75efa45565cd6708f8b8622056948d776b49e11407e167e3303b43f4d71d4d"
+          },
+          "learn.chatgpt.com/docs/security/plugin/index.md": {
+            "after": "07062a6353f667ed2292ba8c39bfbaad8a89428b3f74ee06b5c1938ccad5f6c1",
+            "before": "8d652f4c52d1a7090386c909bf3c7fd59afa6c42a0a5605a3f4224188a61baad"
+          },
+          "learn.chatgpt.com/docs/sites/index.md": {
+            "after": "c82231672be25687f7524dab2579bfed7236488bb058ae3edaa85f28ea168a01",
+            "before": "f55503fdaaac64d9853157488ace1c3b9a386207765d30880164a91a6152df5f"
+          },
+          "learn.chatgpt.com/docs/skills-and-plugins/index.md": {
+            "after": "dad11ed2f6ecf261edb9b8e3efd44900d3717d388e7113b7974f299602eff742",
+            "before": "ea717e56486eb164a66e85edd2e65fc4e48a8c0c0fee2eb75ab63b7a4584f772"
+          },
+          "learn.chatgpt.com/docs/use-chatgpt/index.md": {
+            "after": "ba6e8b197ccb881848c2e63754508f297a9cbf752d8b3b318c30a2866cd0f1b1",
+            "before": "9ed0715991c99eb4306b3c2a2af2dc8380efdb5b00d954e7c4a91af36a96a421"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.0",
+          "codex_cli_source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
+          "codex_cli_version": "0.167.0",
+          "codex_cli_version_raw": "codex-cli 0.167.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/image-generation/index.md",
+          "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
+          "learn.chatgpt.com/docs/prompting/index.md",
+          "learn.chatgpt.com/docs/quickstart/index.md",
+          "learn.chatgpt.com/docs/security/plugin/index.md",
+          "learn.chatgpt.com/docs/sites/index.md",
+          "learn.chatgpt.com/docs/skills-and-plugins/index.md",
+          "learn.chatgpt.com/docs/use-chatgpt/index.md"
+        ]
+      },
+      "id": "d1eb14c4ba672a89e12be674ec85e8f55ef489a56252a1517e97efd192c27dab",
+      "observed_at": "2026-11-09T05:15:42+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}
