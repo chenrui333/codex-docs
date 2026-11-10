@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-10T01:18:09+00:00",
-  "manifest_sha256": "444628c5aa1e1d9c6b1c00a355b3132263da3ff00dc955fb17841887a1af707c",
+  "generated_at": "2026-11-10T14:32:25+00:00",
+  "manifest_sha256": "25906439b4d03e8bc8a13471c2b1c2e97d169e978b4e20e1971532f00635ed3e",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,8 +17,6 @@
   },
   "total_files": 298,
   "updated": [
-    "learn.chatgpt.com/docs/dots/computers-and-apps/index.md",
-    "learn.chatgpt.com/docs/dots/index.md",
-    "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md"
+    "learn.chatgpt.com/docs/sites/index.md"
   ]
 }
