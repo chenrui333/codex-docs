@@ -25,39 +25,31 @@ Give Codex coding tasks to work through in the cloud, from investigating bugs to
 
 ### Why use Codex Cloud
 
-- **Start with your project:** Choose repositories. Codex inspects the project, works through setup, and asks you for missing details or access.
-- **Keep work moving:** Start tasks from a published environment. Each task has its own workspace and can keep working while your computer is asleep.
+- **Start with or without a repository:** If the default environment is available, you can start without choosing a repository. You can also ask Codex to check out any repository available to Codex through your connected GitHub or GitLab account.
+- **Keep work moving:** Each task has its own workspace and can keep working while your computer is asleep.
 - **Review the work:** Inspect changed files and check results, request follow-up changes, and commit or open a pull request when you're ready.
 
 ## Getting started
 
 **Get started with Codex Cloud.**
 
-Create a cloud environment with the repositories, tools, and access your project needs, or select an existing one. Then start a task.
+Choose where to run your first task. If you want the same repositories and tools for future tasks, you can create and publish a reusable environment.
 
-### 1. Open ChatGPT
+### 1. Choose Cloud
 
-Open ChatGPT on the web, mobile, or in the [desktop app](https://learn.chatgpt.com/docs/app), then sign in with your ChatGPT account.
+Sign in to ChatGPT. On the web or in the desktop app, start a chat and choose Work in > Cloud. On mobile, open Codex.
 
-### 2. Create or select an environment
+### 2. Choose an environment
 
-On the web or in the desktop app, choose Work in > Cloud and open Select environment. On mobile, open Codex. Select an existing environment to begin working. To create a new one, use the web or desktop app and select [Create environment](https://learn.chatgpt.com/docs/environments/cloud-environments#create-and-publish-an-environment) and continue below.
+If you see the default environment, select it to start without choosing a repository. To use a setup someone has already prepared, select a published environment. In Enterprise workspaces, select a published environment you can access.
 
-### 3. Let Codex prepare your project
+### 3. Send your first task
 
-Choose your GitHub repositories and select Get started. Connect GitHub if prompted. Codex inspects your repositories, installs dependencies and tools, and tests the workflow. Provide any missing access or information when asked.
-
-### 4. Review and publish
-
-For a new environment, review the setup and test results, save changes, and select Publish. Wait for Environment published.
-
-### 5. Start a task
-
-After publishing a new environment, select Start a new task. If you selected an existing environment, you can start right away. Describe your task and send it. Review the changes and test results, request follow-ups, and commit or open a pull request when ready.
+Try a task that needs no repository, such as “Write a Python script that finds duplicate files by content. Test it on sample files.” Review the script and test results, then ask for any changes in the same chat.
 
 ### Next steps
 
-- [Configure cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments)
+- [Create and publish a reusable environment](https://learn.chatgpt.com/docs/environments/cloud-environments#create-and-publish-an-environment)
 - [Configure internet access](https://learn.chatgpt.com/docs/environments/cloud-environments#connect-to-services)
 - [Set up environment variables and network secrets](https://learn.chatgpt.com/docs/environments/cloud-environments#configure-environment-variables-and-network-secrets)
 - [Understand saved state](https://learn.chatgpt.com/docs/environments/cloud-environments#reuse-and-update-saved-state)

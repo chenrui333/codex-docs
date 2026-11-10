@@ -17,9 +17,14 @@ Use Codex code review to get another high-signal review pass on GitLab merge
 requests. Codex reviews the merge request diff, follows your repository
 guidance, and posts a standard GitLab code review focused on serious issues.
 
-GitLab support is in beta and is available on all ChatGPT plans. The Codex
-integration runs in Codex cloud. GitHub-style repository controls in the
+The GitLab code review integration is in beta and is available on all ChatGPT
+plans. It runs in Codex cloud. GitHub-style repository controls in the
 desktop app, such as **Create pull request**, aren't included in this beta.
+
+If GitLab appears in the repository picker when you
+[create a Cloud environment](https://learn.chatgpt.com/docs/environments/cloud-environments), select a
+GitLab.com project your connected account can access. Use the webhook setup
+below for tasks and reviews triggered from GitLab.
 
 ## Before you start
 

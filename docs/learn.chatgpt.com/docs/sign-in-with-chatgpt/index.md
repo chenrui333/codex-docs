@@ -12,8 +12,8 @@ Source: https://learn.chatgpt.com/docs/sign-in-with-chatgpt
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 Sign in with ChatGPT lets you sign in to participating apps and sites with your
-ChatGPT account. In supported apps, eligible ChatGPT Plus and Pro subscribers can
-also choose to use their ChatGPT plan for AI requests.
+ChatGPT account. In supported apps, eligible ChatGPT Go, Plus, Pro, and Business
+subscribers can also choose to use their ChatGPT plan for AI requests.
 
 Signing in and using your plan are separate permissions. You review what an app
 can access before you connect it.
@@ -40,7 +40,7 @@ Dactyl
       </li>
       <li>
         [
-Devin
+Devin*
 ](https://app.devin.ai/login)
       </li>
       <li>
@@ -197,6 +197,34 @@ Settings > Security and login > Sign in with ChatGPT**, select the app, and sele
 
 For help with Sign in with ChatGPT, visit the [OpenAI Help Center](https://help.openai.com/en/articles/20001542).
 
+## Admin Controls for Business Admins
+
+Business admins have granular control over which apps their teams can use and how
+much of each member's subscription allowance those apps can consume. Set up access
+and usage controls in two steps.
+
+### Step 1: Enable ChatGPT plan usage
+
+Go to [admin.openai.com](https://admin.openai.com), then open **Tenant settings > External access**.
+Select an app and set **Use ChatGPT plan** to **Allowed**. Repeat for each app you
+want your team to use.
+
+> Illustration: Tenant settings, External access, Acme: Control access shows Identity allowed by default and Use ChatGPT plan set to Allowed.
+
+### Step 2: Set workspace usage limits, if needed
+
+Go to [admin.openai.com](https://admin.openai.com), select your workspace, and open **Usage limits**.
+Under **ChatGPT plan**, find **Usage in other services** and select **Edit**.
+Set the percentage of each member's included
+allowance that approved services can use, select **Apply**, then **Save changes**.
+
+> Illustration: Workspace Usage limits: the Usage in other services dialog shows an example 25% limit, a slider from 0% to 100%, and Cancel and Apply controls. Save changes is on the underlying page.
+
+Business users can also set their own app limits in **Settings > Usage** or turn
+off ChatGPT plan usage for apps they've connected and used.
+
 ## For developers
 
 To add Sign in with ChatGPT to your app, start with the [Sign in with ChatGPT developer documentation](https://developers.openai.com/siwc).
+
+\* Devin does not support ChatGPT plan usage for ChatGPT Business plans.

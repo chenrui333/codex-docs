@@ -4,11 +4,11 @@
     "coverage_source_ref": "rust-v0.167.1",
     "coverage_version": "0.167.1",
     "last_successful_full_sync_at": "2026-11-06T05:35:20+00:00",
-    "last_successful_release_sync_at": "2026-11-10T23:10:36+00:00",
+    "last_successful_release_sync_at": "2026-11-10T23:11:30+00:00",
     "provenance": "generated_sync_metadata",
     "source_commit": "0a94398fa60c4fac0e7659e4213a0a36e613dd46",
     "source_ref": "rust-v0.167.1",
-    "sync_scope": "release",
+    "sync_scope": "full",
     "version": "0.167.1"
   },
   "checks": [

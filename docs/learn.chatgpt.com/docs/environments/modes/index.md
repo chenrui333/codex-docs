@@ -18,31 +18,39 @@ When starting a Codex chat, choose where it runs:
 
 - **Local**: work directly in your current project directory.
 - **Worktree**: isolate changes in a Git worktree. [Learn more](https://learn.chatgpt.com/docs/environments/git-worktrees).
-- **Cloud**: start a remote task in its own workspace from a published,
-  reusable environment. See [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments)
-  to prepare and publish the repositories, dependencies, and tools your tasks need.
+- **Cloud**: run a remote task in its own workspace. See [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments)
+  for help choosing an environment.
 
 Both **Local** and **Worktree** chats run on your computer.
 Use **Work in** to choose **This computer** or **Cloud**. For a local Git project,
 the separate **Worktree** control lets you isolate changes from your current checkout.
 
-A cloud task requires a published environment you can access. If none is available,
-create one on the web or in the desktop app, or ask a workspace admin for access
-to a shared environment. Selecting an environment is separate from creating or
-publishing it. Shared access lets you use the environment; it doesn't grant
+If the default environment is available, select it to start without choosing a
+repository. You can also select a published environment. In Enterprise
+workspaces, choose a published environment or ask an admin for access to a
+shared one. Shared access lets you use the environment; it doesn't grant
 permission to edit it.
 
 You can also start and continue cloud tasks on the web or on mobile. On mobile,
-open **Codex** and select a published environment.
+open **Codex** and choose an available environment.
 
 To create an environment, start a new task on the web or in the desktop app.
 Choose **Work in** > **Cloud**, open **Select environment**, then select
 **Create environment**. Codex inspects your selected repositories and helps
 prepare and test their setup before you publish it.
 
-Each Cloud task has its own working files. File changes in a task don't update
-the reusable environment. To change the starting point for future tasks, update
-and republish the environment's setup.
+In the desktop app, the default environment can automatically use a project's
+repositories when they are hosted on GitHub.com and you have connected your
+GitHub account. This automatic project setup doesn't include GitLab repositories.
+Adding a repository to a running task, including on mobile, is separate from
+this automatic project setup. See [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments#start-a-task-in-codex-cloud).
+
+Each Cloud task has its own working files. In the desktop app, when you add a repository
+to a task running in the default environment, that change applies to the current
+task. To reuse a setup across tasks, create a reusable environment. File changes
+in a task don't update a published environment. To change its starting point for
+future tasks, update and republish the environment's setup if you have permission
+to edit it.
 
 A cloud task uses the files and services available in its cloud environment.
 Your computer's local files, running processes, browser sign-ins, and VPN access

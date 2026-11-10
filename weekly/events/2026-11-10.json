@@ -380,6 +380,86 @@
       "id": "31c226b85ec3d5fc2200553671ef7d9a108d00bde25d9f81cfdb25ccb1e4a793",
       "observed_at": "2026-11-10T23:10:36+00:00",
       "previous_id": "f4f0e25ece49650dec5402cb040b3e3a11d35e864291ebe342b01c5a894dbc25"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/browser/index.md": {
+            "after": "94207074d6b35fee9304a669f3bb3bf79ebf7e3cfe51c2784d2f7570a3c2a755",
+            "before": "b3662ba2b4f3502bb5aa53ff327789f5e33dfe9b375bd0cfc33db3766171ebac"
+          },
+          "learn.chatgpt.com/docs/cloud/index.md": {
+            "after": "e8728cd09e2f3482ff35010572e1c7256ab287f650b766abea77a65e50868258",
+            "before": "a56b82a0521b47a525be26f68d0ca5defded8273a6c647e8cb1dfcd57661b687"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+            "after": "85d02d1f3e57ea21a665b9601c9013d6241cfdf09553c25076cf06c95d9e7ddc",
+            "before": "704235de582af89b14007b792f4ff52607b11dd06f28e2311f9f92223c826bf1"
+          },
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md": {
+            "after": "d823f4da5f88f3a3e6669f3c92b8a9948b7d4070ee6d9f6bc0f27e11bb9fc317",
+            "before": "dbadb63ce2405848e8ebd66c6c2edaf13c77e782fa1f1ce79739f6ddb34cf4cb"
+          },
+          "learn.chatgpt.com/docs/environments/modes/index.md": {
+            "after": "ba4d8747e726c5cba33f10d338ec9f705fcebf6817751b5214e4f591786f94dc",
+            "before": "7dc6831cf6027fd3159eeb1439fbbb51d9c362c08975b4761275498352abd723"
+          },
+          "learn.chatgpt.com/docs/quickstart/index.md": {
+            "after": "cd6c340228c86b71c455b74585b965fd06f348f221ee22cefcd80bcc96a6a7f3",
+            "before": "d4aab3ab89a4346104eabcf92a2c404b0139515c509cbbfdcc3bb0afc0864126"
+          },
+          "learn.chatgpt.com/docs/sign-in-with-chatgpt/index.md": {
+            "after": "00533d9da4328efe57586f184bddbf86c535f622b5196497f68161de698701ec",
+            "before": "822922552639cdf1f2851b93585392afd248fb924755e473fb77dd2eda1b2066"
+          },
+          "learn.chatgpt.com/docs/sites/data-and-connections/index.md": {
+            "after": "4ef5abe1beba4b7945b8e90b4599624314e74c6f64042bc5960d2392e6fe7160",
+            "before": "7fd40477b61037fc29b48470685c3a61627b0b21c12d545ce2ad9b18aa9a1fe2"
+          },
+          "learn.chatgpt.com/docs/third-party/gitlab/index.md": {
+            "after": "218a3c2905ab8a9abf9582e4422b469a6f6da26f7427e2231357611de9082548",
+            "before": "c3046b51730c8a540820660748d53402222aa0623854d65c75158fc130f07338"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.1",
+          "codex_cli_source_commit": "0a94398fa60c4fac0e7659e4213a0a36e613dd46",
+          "codex_cli_version": "0.167.1",
+          "codex_cli_version_raw": "codex-cli 0.167.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/browser/index.md",
+          "learn.chatgpt.com/docs/cloud/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md",
+          "learn.chatgpt.com/docs/environments/modes/index.md",
+          "learn.chatgpt.com/docs/quickstart/index.md",
+          "learn.chatgpt.com/docs/sign-in-with-chatgpt/index.md",
+          "learn.chatgpt.com/docs/sites/data-and-connections/index.md",
+          "learn.chatgpt.com/docs/third-party/gitlab/index.md"
+        ]
+      },
+      "id": "438e4f1ba0d68795a53f18b971fef8886f435f2f162bb54eafd3657e86e168d7",
+      "observed_at": "2026-11-10T23:11:30+00:00",
+      "previous_id": "31c226b85ec3d5fc2200553671ef7d9a108d00bde25d9f81cfdb25ccb1e4a793"
     }
   ],
   "schema_version": 1

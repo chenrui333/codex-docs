@@ -38,7 +38,24 @@ uploads, downloads, and developer access. See
 Treat page content as untrusted context. Review the site and proposed action
 before sharing sensitive information or allowing ChatGPT to act.
 
+## Inspect a web app in Codex Cloud
+
+When a [Codex Cloud](https://learn.chatgpt.com/docs/cloud) task has browser access, Codex can use a
+browser inside the cloud task to inspect your web app, reproduce a bug, or
+verify a fix. Give Codex the command to start the app in the task, the port,
+and the behavior you want it to check.
+
+For example, ask Codex to open your app's settings page, change and save a
+preference, and reload the page to check whether the change persists. Ask it
+to report what happened and include a screenshot if it helps show the result.
+
+Install the app's dependencies when you [prepare the Cloud environment](https://learn.chatgpt.com/docs/environments/cloud-environments).
+If the page needs an external service, check the environment's network settings
+or use local test data.
+
 <ContentModeSwitch group="codex-surface" ids="app,cli,ide">
+
+## Use the desktop browser
 
 The built-in browser in the ChatGPT desktop app gives you and ChatGPT a shared
 view of websites and local web apps inside a chat. Use it to preview a page,

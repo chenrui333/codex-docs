@@ -73,6 +73,46 @@ name-split headers.
 
 </ToggleSection>
 
+## Call a private site with a SIWC bypass token
+
+Use a Sign in with ChatGPT (SIWC) bypass token when a script or service needs to
+call a site that requires sign-in. The token lets the request pass the site's
+sign-in gate without an interactive browser session.
+
+As the site owner, ask ChatGPT Work or Codex to generate a token for your site:
+
+**Prompt:**
+
+```text
+Generate a Sign in with ChatGPT bypass token for this site so my service can call it without signing in through a browser.
+```
+
+The agent uses `generate_siwc_bypass_token` and returns
+`siwc_bypass_bearer_token`. Generating a token replaces any existing token for
+that site, so update every service that uses the previous value.
+
+Send the token in this HTTP request header:
+
+```text
+OAI-Sites-Authorization: Bearer <siwc_bypass_bearer_token>
+```
+
+Sites consumes this header before forwarding the request to your site. If your
+site also requires its own API credential, send that separately in the ordinary
+`Authorization` header, which Sites preserves.
+
+Bypass requests have no signed-in visitor identity. They don't receive the
+authenticated user headers described above or access to a visitor's connected
+apps. Keep any additional authorization checks in your site's server-side code.
+Use the normal sign-in flow for features that depend on a visitor's identity or
+plugin permissions.
+
+Treat the token as a secret: anyone who has it can pass that site's sign-in
+  gate. Store it in your service's secret storage, and keep it out of browser
+  code, URLs, and source control. If it is exposed, generate a replacement and
+  update your callers. The new token works immediately, but the previous token
+  may remain valid until cached configuration expires, for up to five minutes.
+
 <a id="load-visitor-data-via-plugins"></a>
 
 ## Bring user data to your site with plugins

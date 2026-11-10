@@ -15,10 +15,10 @@ Codex Cloud runs coding tasks in the cloud, so work can continue while your
 computer is asleep. Use it on the web, on mobile, or in the desktop app to edit
 code, run commands, and review results.
 
-A **cloud environment** is the reusable setup that tasks use: repositories,
-dependencies, tools, and access settings. Codex inspects your repositories,
-prepares the setup, and tests it with you. Each new task gets its own isolated
-workspace from the published environment.
+Each cloud task runs in its own workspace. If the default environment is
+available, you can start without choosing a repository. To reuse a setup across
+tasks, select [**Create environment**](#create-and-publish-an-environment), choose the repositories, dependencies,
+tools, and access settings your tasks need, then publish the environment.
 
 For an introduction, see the [Codex Cloud overview](https://learn.chatgpt.com/docs/cloud).
 
@@ -29,23 +29,39 @@ For an introduction, see the [Codex Cloud overview](https://learn.chatgpt.com/do
 
 ## Start a task in Codex Cloud
 
-On the web or in the [desktop app](https://learn.chatgpt.com/docs/app), choose **Work in** > **Cloud**
-and select a published environment. On mobile, open **Codex** and select a
-published environment. Describe what you want Codex to do and send the request.
-If you need a new setup, [create an environment](#create-and-publish-an-environment)
+On the web or in the [desktop app](https://learn.chatgpt.com/docs/app), choose **Work in** > **Cloud**.
+On mobile, open **Codex**. If the default environment appears in the picker,
+select it and describe your task.
+
+- **Without a project**, you can start without a repository. For example, ask
+  Codex to write and test a script using sample data. If the task later needs
+  existing code, tell Codex which repository to clone.
+- **From a project in the desktop app**, the default environment can
+  automatically use repositories associated with that project when they are
+  hosted on GitHub.com and you have connected your GitHub account. This
+  automatic project setup doesn't include GitLab repositories.
+
+Adding a repository to a running task is separate from this automatic project
+setup. You can ask Codex to clone a repository the environment can access,
+including when you start the task on mobile. To check out a GitLab.com repository through
+the repository picker, [create a reusable environment](#create-and-publish-an-environment)
 on the web or in the desktop app.
 
-Enterprise admins can [review workspace access](https://learn.chatgpt.com/docs/enterprise/admin-setup#step-5-configure-codex-cloud)
-before rolling out Codex Cloud.
+To use a setup you've already prepared or one shared with you, select the
+published environment instead. In Enterprise workspaces, use a published
+environment you have access to. Admins can [review workspace access](https://learn.chatgpt.com/docs/enterprise/admin-setup#step-5-configure-codex-cloud).
 
 ## Create and publish an environment
 
-Create new environments on the web or in the [desktop app](https://learn.chatgpt.com/docs/app).
+Create a reusable environment on the web or in the [desktop app](https://learn.chatgpt.com/docs/app)
+when you want to reuse repositories, tools, or access settings across tasks.
 Sign in with your ChatGPT account:
 
 1. In a new task, choose **Work in** > **Cloud**, open **Select environment**,
    and select **Create environment**.
-2. Select the GitHub repositories to check out. Connect GitHub if prompted.
+2. Select the repositories to check out. Connect GitHub if prompted. If
+   GitLab is available in the repository picker, select your GitLab.com
+   connection and search for the repository.
 3. Select **Get started**. Codex inspects the repositories, installs dependencies
    and tools, and tests the workflow.
 4. Supply missing access or information when asked. You can also request
@@ -85,7 +101,7 @@ Codex can record the tested setup in two fields:
 
 ## Reuse and update saved state
 
-- **New task:** starts from the published environment's prepared filesystem.
+- **New task in a published environment:** starts from the environment's prepared filesystem.
 - **Existing task:** continues with its own saved files, including uncommitted
   changes and installed tools.
 - **Repository refresh:** runs automatically in the background, preserving
@@ -368,8 +384,8 @@ applies to the operations and clients listed here.
 
 ## Run and return to a task
 
-Select a published environment and describe your goal. Codex uses its
-repositories and tools to edit files, run commands, and check its work.
+Describe your goal in the chat. Codex can edit files, run commands, and
+check its work.
 Review changes and test results before committing or opening a pull request.
 
 ### Continue on web or mobile
@@ -378,8 +394,7 @@ On the web, choose **Work in** > **Cloud** and select an environment. On mobile,
 open **Codex** and choose an available environment. Create new environments
 on the web or in the desktop app.
 
-Reopen the same task to continue its work across devices. A new task starts
-separate work from the published setup. Tasks in Codex Cloud can keep working while
+Reopen the same task to continue its work across devices. Each new task starts in its own workspace. Tasks in Codex Cloud can keep working while
 your computer is asleep.
 
 <a id="start-work-from-a-team-conversation"></a>
@@ -426,8 +441,8 @@ OpenAI account team for available configurations and pricing.
 The following capabilities aren't currently supported in cloud environments
 and are on our roadmap:
 
-- Computer and browser use
-- GitLab and self-hosted GitHub Enterprise Server
+- Computer use
+- Self-hosted GitHub Enterprise Server
 
 Skills stored in your repository are available in cloud tasks. Personal skills
 from your local computer aren't synced to cloud environments.
