@@ -8715,7 +8715,7 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/channels"
     },
     "learn.chatgpt.com/docs/dots/computers-and-apps/index.md": {
-      "sha256": "1451ba577f12b62368cc3668c5c38cec4551c831634ba4ad3cb954278a7094c4",
+      "sha256": "fd3d6e9d4eb70a21427ebff0169d1bac1b5548a9e89e0a735dee884ffac5bc9a",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -8736,7 +8736,7 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/getting-started"
     },
     "learn.chatgpt.com/docs/dots/index.md": {
-      "sha256": "5666130b90e90959df7c43c3bf699b644743031e83b7e2fcbcee9ceea3fa9954",
+      "sha256": "dcf1cb4afb873758002b5060562e9657348ac1ede91741f88dbe39391029fb76",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9597,7 +9597,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "f9a0ebb6e84a03985cd87aa55057b5c7055b2a7940ac19cf246237eda57a639f",
+      "sha256": "15367a59b354ddb27d3039f146fed2d3399897710f48b404d06017cf09d7d6e8",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",

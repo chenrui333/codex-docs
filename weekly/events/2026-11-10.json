@@ -1,0 +1,55 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/dots/computers-and-apps/index.md": {
+            "after": "fd3d6e9d4eb70a21427ebff0169d1bac1b5548a9e89e0a735dee884ffac5bc9a",
+            "before": "1451ba577f12b62368cc3668c5c38cec4551c831634ba4ad3cb954278a7094c4"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "dcf1cb4afb873758002b5060562e9657348ac1ede91741f88dbe39391029fb76",
+            "before": "5666130b90e90959df7c43c3bf699b644743031e83b7e2fcbcee9ceea3fa9954"
+          },
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md": {
+            "after": "15367a59b354ddb27d3039f146fed2d3399897710f48b404d06017cf09d7d6e8",
+            "before": "f9a0ebb6e84a03985cd87aa55057b5c7055b2a7940ac19cf246237eda57a639f"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.0",
+          "codex_cli_source_commit": "086ccc833bc9cf01024ad2dd6af7dbd421b6bf9a",
+          "codex_cli_version": "0.167.0",
+          "codex_cli_version_raw": "codex-cli 0.167.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/dots/computers-and-apps/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md"
+        ]
+      },
+      "id": "fa1092825b6ae7f48ea49de2809a0982c43d49e982734a2d49621d216d134274",
+      "observed_at": "2026-11-10T01:18:09+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

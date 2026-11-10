@@ -76,16 +76,18 @@ A saved login and an active website session are different. Your dot can continue
 using a valid session without signing in again. Reusing a saved login to sign in
 requires your confirmation.
 
-## Connect your computer
+## Connect your computers
 
 Connect your computer once to make its local files, code, and apps available
 for your dot’s work:
 
 1. Open your dot's profile in the ChatGPT app on that computer.
-2. Under **Computers**, find **Your computer** and select **Allow access**.
+2. Under **Computers**, find the computer you’re using and select **Allow**.
 3. Review the confirmation and select **Allow access** to connect it.
 
-You can connect only one personal computer at a time. Your dot’s cloud computer stays connected. Access to your computer applies
+To connect another computer, repeat these steps in the ChatGPT app on that computer. Ask your dot to start a separate thread on each computer for independent tasks. Each thread uses one computer at a time.
+
+Your dot’s cloud computer stays connected. Access to your computer applies
 wherever you message the same dot, including from your phone.
 
 Your dot can create local Work or Codex tasks and continue existing local Codex

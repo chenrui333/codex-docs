@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-09T05:15:42+00:00",
-  "manifest_sha256": "39d49c74fc28efdae00a6ab858bceaadad95381011fb962a162c1e0de2f3a022",
+  "generated_at": "2026-11-10T01:18:09+00:00",
+  "manifest_sha256": "444628c5aa1e1d9c6b1c00a355b3132263da3ff00dc955fb17841887a1af707c",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,13 +17,8 @@
   },
   "total_files": 298,
   "updated": [
-    "learn.chatgpt.com/docs/image-generation/index.md",
-    "learn.chatgpt.com/docs/migrate-custom-gpts/index.md",
-    "learn.chatgpt.com/docs/prompting/index.md",
-    "learn.chatgpt.com/docs/quickstart/index.md",
-    "learn.chatgpt.com/docs/security/plugin/index.md",
-    "learn.chatgpt.com/docs/sites/index.md",
-    "learn.chatgpt.com/docs/skills-and-plugins/index.md",
-    "learn.chatgpt.com/docs/use-chatgpt/index.md"
+    "learn.chatgpt.com/docs/dots/computers-and-apps/index.md",
+    "learn.chatgpt.com/docs/dots/index.md",
+    "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md"
   ]
 }

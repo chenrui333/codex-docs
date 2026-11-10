@@ -55,6 +55,32 @@ enforced `features.fast_mode` setting in
 This setting can pin Fast mode on or off for managed local Codex clients; it
 isn't a starting default and can't override workspace or product availability.
 
+## Set reasoning and speed limits
+
+For ChatGPT Work and Codex, Enterprise admins can set a maximum reasoning
+level and speed for each supported model. A starting default chooses where a
+member begins. A maximum limits the reasoning levels and speeds the member
+can select without requiring you to disable access to that model.
+
+Choose limits for the workspace or a custom role based on the work those
+members need to do. For example, you might keep a model available for everyday
+work with lower limits and allow a research role to use higher settings.
+Reasoning level and speed affect consumption. For current availability and
+usage guidance, see [ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex).
+
+To configure the limits:
+
+1. Open **Admin Console** > **Workspace settings** > **Models**.
+2. Select the workspace default or the custom role you want to configure.
+3. Select the gear next to a supported model and set its maximum reasoning
+   level and speed.
+
+After configuring the limits, reopen the settings to verify the saved values.
+Check the experience with an affected member on a supported client, including
+which model, reasoning, and speed options are available. If the result differs
+from the intended configuration, confirm the member's assigned roles and the
+client's support for these controls before making further changes.
+
 ## Save Preview and Launch access
 
 Where separate Preview and Launch access settings are visible and editable,
