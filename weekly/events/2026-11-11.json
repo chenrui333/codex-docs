@@ -107,6 +107,56 @@
       "id": "332b9403efbe8b4aa0027c2f2413d1d9f351d58e5f1e8b185f821e26953faf59",
       "observed_at": "2026-11-11T05:08:43+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "eeece3a40e187f47ff024ae760bcb9526cc5cd81efa14f23a90d115d4c6a1cab",
+            "before": "0bdeca1b8efd7759637e8a65952230204d24200908bd127e0f7e4af18bcee995"
+          },
+          "learn.chatgpt.com/docs/security/cli/index.md": {
+            "after": "1d97bfcd3b6319ed42e5717e7f2385bcfdb470e1309104d82930f1bd194a4b31",
+            "before": "60d99eb48d47cdabc9ba0cbff0b084d518209e410f8964afcb62c23368b31beb"
+          },
+          "learn.chatgpt.com/docs/security/cli/reference/index.md": {
+            "after": "5a4430fd22560c8c5c6d1b71483b3f351dcec1b96cf97a3d5485e4dec44a9166",
+            "before": "7ee6a232dd6c8c622706b60e0ad6f8bcf53b36dd09b7d86ef86acc48dc8a5636"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.1",
+          "codex_cli_source_commit": "0a94398fa60c4fac0e7659e4213a0a36e613dd46",
+          "codex_cli_version": "0.167.1",
+          "codex_cli_version_raw": "codex-cli 0.167.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/security/cli/index.md",
+          "learn.chatgpt.com/docs/security/cli/reference/index.md"
+        ]
+      },
+      "id": "d255535847dfe4cc1ca9b4b0e0e3a2db881c0e53e7a630d518a540e8ccb5b407",
+      "observed_at": "2026-11-11T13:46:05+00:00",
+      "previous_id": "332b9403efbe8b4aa0027c2f2413d1d9f351d58e5f1e8b185f821e26953faf59"
     }
   ],
   "schema_version": 1

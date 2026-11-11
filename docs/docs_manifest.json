@@ -7796,7 +7796,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0bdeca1b8efd7759637e8a65952230204d24200908bd127e0f7e4af18bcee995",
+      "sha256": "eeece3a40e187f47ff024ae760bcb9526cc5cd81efa14f23a90d115d4c6a1cab",
       "source_area": "learn_amazon_bedrock",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11117,7 +11117,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "60d99eb48d47cdabc9ba0cbff0b084d518209e410f8964afcb62c23368b31beb",
+      "sha256": "1d97bfcd3b6319ed42e5717e7f2385bcfdb470e1309104d82930f1bd194a4b31",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11148,7 +11148,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "7ee6a232dd6c8c622706b60e0ad6f8bcf53b36dd09b7d86ef86acc48dc8a5636",
+      "sha256": "5a4430fd22560c8c5c6d1b71483b3f351dcec1b96cf97a3d5485e4dec44a9166",
       "source_area": "learn_security",
       "source_kind": "learn_markdown",
       "source_type": "learn",

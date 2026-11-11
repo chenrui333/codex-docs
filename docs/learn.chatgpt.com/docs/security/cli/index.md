@@ -108,6 +108,9 @@ npx @openai/codex-security scan "$REPOSITORY" \
   --auth chatgpt --output-dir "$SCAN_DIR"
 ```
 
+If you have Daybreak Blue access in your ChatGPT workspace, add
+`--model gpt-6-sol --cyber-access-program daybreak_blue` to the scan command.
+
 An interactive terminal shows a live dashboard. Non-interactive terminals show progress
 lines. Add `--headless` to use progress lines in an interactive terminal too.
 The dashboard and saved logs can contain source code or credentials. Review

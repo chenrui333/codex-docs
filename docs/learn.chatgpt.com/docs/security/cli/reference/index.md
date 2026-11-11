@@ -201,15 +201,12 @@ To use an environment API key, pass `--auth api-key`:
 npx @openai/codex-security scan . --auth api-key
 ```
 
+To scan with Daybreak Blue, use a key from a project with Blue enabled and add
+`--model gpt-6-sol --cyber-access-program daybreak_blue` to the command.
+For other models, see the [model and access program table](https://developers.openai.com/api/docs/guides/daybreak#choose-the-model-and-access-program).
+
 To make stored credentials the automatic default, run
 `unset OPENAI_API_KEY CODEX_API_KEY`.
-
-Use `--auth api-key` with
-`--cyber-access-program standard|daybreak_blue|daybreak_red` to select a
-Cyber access program for OpenAI model requests. Omission preserves Codex
-defaults; `standard` explicitly selects the standard program.
-Selecting a program doesn't grant access; your API project must be approved
-for the selected program. See the [access-program guide](https://github.com/openai/codex-security/blob/main/sdk/typescript/docs/cli.md#select-a-cyber-access-program) for credential requirements.
 
 ### Attribute scans to end users
 
@@ -246,20 +243,14 @@ Both providers also support `bulk-scan`.
 ### Use Amazon Bedrock
 
 Use `--provider amazon-bedrock` and a Bedrock model ID with `scan` or
-`bulk-scan`. After AWS provisions model access, scans use AWS credentials
+`bulk-scan`. Bedrock scans use AWS credentials
 without `--auth`, an OpenAI login, or an OpenAI API key.
 
 #### Daybreak Blue and Daybreak Red
 
-Daybreak Blue and Daybreak Red require Trusted Access for Cyber approval.
-To request access, submit the [enterprise access application](https://openai.com/form/enterprise-trusted-access-for-cyber/) or contact your OpenAI account team.
-After approval, work with your AWS account team to provision model access
-on Amazon Bedrock.
-
-Daybreak Red approval does not include GPT-5.6-Cyber access. GPT-5.6-Cyber
-requires separate U.S. government (USG) approval. Ask your OpenAI account
-team to request this additional approval before provisioning GPT-5.6-Cyber
-on Amazon Bedrock. See the [Daybreak access requirements](https://help.openai.com/en/articles/20001258-openai-daybreak-trusted-access-for-cyber-overview).
+Request Daybreak access through your OpenAI account team or the [enterprise access application](https://openai.com/form/enterprise-trusted-access-for-cyber/). [Daybreak Red approval](https://help.openai.com/en/articles/20001258-openai-daybreak-trusted-access-for-cyber-overview) includes GPT-5.6 Cyber.
+After OpenAI approves your request, ask your AWS account team to provision
+the model in the account you use for scans.
 
 | Access        | Bedrock model ID                   | AWS region  |
 | ------------- | ---------------------------------- | ----------- |
@@ -268,8 +259,7 @@ on Amazon Bedrock. See the [Daybreak access requirements](https://help.openai.co
 
 For availability, check the AWS model cards for [Daybreak Blue](https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/model-card-openai-gpt-daybreak-blue-56-sol.html) and [Daybreak Red](https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/model-card-openai-gpt-56-cyber.html).
 
-To scan with Daybreak Blue, replace `<aws-profile-name>` with an AWS profile
-that has access to the Daybreak Blue model:
+Choose an AWS profile with access to the model. For Daybreak Blue, run:
 
 ```bash
 export AWS_PROFILE="<aws-profile-name>"
@@ -279,8 +269,7 @@ npx @openai/codex-security scan . \
   --model openai.gpt-daybreak-blue-5.6-sol --effort high
 ```
 
-To scan with Daybreak Red, choose an AWS profile with GPT-5.6-Cyber access.
-This may differ from the profile you use for Daybreak Blue:
+For Daybreak Red, run:
 
 ```bash
 export AWS_PROFILE="<aws-profile-name>"
@@ -568,6 +557,7 @@ configuration value.
 | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `--auth {auto,chatgpt,api-key}`                           | Select the scan credentials. The default is `auto`.                                                             |
 | `--provider {openai,openrouter,fireworks,amazon-bedrock}` | Select the inference provider. The default is `openai`.                                                         |
+| `--cyber-access-program PROGRAM`                          | For OpenAI scans, use `standard`, `daybreak_blue`, or `daybreak_red`.                                           |
 | `--model MODEL`                                           | Select the model. The default is `gpt-5.6-sol`. Required for OpenRouter, Fireworks, and Amazon Bedrock.         |
 | `--effort EFFORT`                                         | Select the model's reasoning effort. The default is `xhigh`; supported values depend on the model and provider. |
 | `--plugin-path PATH`                                      | Use a Codex Security plugin directory or ZIP to override the bundled plugin.                                    |
