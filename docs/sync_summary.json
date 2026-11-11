@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-10T23:11:30+00:00",
-  "manifest_sha256": "7509425cb80610e5fcc2af1cd16b9d6649cce8c172c4797dc56bc904917dfdb7",
+  "generated_at": "2026-11-11T05:08:44+00:00",
+  "manifest_sha256": "829af1e47344035fbfe15652068c37944167e60d62a39be1f357c2bb02b1fce5",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,14 +17,18 @@
   },
   "total_files": 298,
   "updated": [
-    "learn.chatgpt.com/docs/browser/index.md",
-    "learn.chatgpt.com/docs/cloud/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
-    "learn.chatgpt.com/docs/environments/cloud-environments/index.md",
-    "learn.chatgpt.com/docs/environments/modes/index.md",
-    "learn.chatgpt.com/docs/quickstart/index.md",
-    "learn.chatgpt.com/docs/sign-in-with-chatgpt/index.md",
-    "learn.chatgpt.com/docs/sites/data-and-connections/index.md",
-    "learn.chatgpt.com/docs/third-party/gitlab/index.md"
+    "codex_capabilities.json",
+    "feature-flags/lifecycle.json",
+    "feature-flags/lifecycle.md",
+    "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+    "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/customization/overview/index.md",
+    "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/sandboxing/auto-review/index.md",
+    "learn.chatgpt.com/docs/third-party/github/index.md"
   ]
 }

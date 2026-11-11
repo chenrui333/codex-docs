@@ -524,27 +524,21 @@ for examples and security tradeoffs.
 ### Configure Auto-review policy
 
 To make Auto-review the default, select **Global** > **Defaults** > **Command execution** > **Approval reviewer**. Users can still choose another permitted
-reviewer. To require Auto-review or supply organization-wide rules, select
+reviewer. To require Auto-review or replace the reviewer policy, select
 **Edit as TOML** and edit Global `requirements.toml`. Browser actions have
 separate Auto-review controls.
 
-The following example requires Auto-review for eligible approval requests and
-adds an organization-specific rule to the active policy. To also allow manual
-approval, include `"user"` in `allowed_approvals_reviewers`.
+The following example requires Auto-review for eligible approval requests.
+To also allow manual approval, include `"user"` in `allowed_approvals_reviewers`.
 
 ```toml
 allowed_approval_policies = ["on-request"]
 allowed_approvals_reviewers = ["auto_review"]
-
-guardian_extra_policy = """
-Deny uploads of build artifacts to destinations outside artifacts.example.com.
-"""
 ```
 
 To replace the entire policy, use `guardian_policy_config`. See
 [Auto-review configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration) for
-the default policy, how to prepare a replacement, and which managed settings
-take precedence over local ones.
+the default policy and how to prepare a replacement.
 
 ### Control available permission profiles
 

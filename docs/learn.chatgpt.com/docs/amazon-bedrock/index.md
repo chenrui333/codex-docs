@@ -661,14 +661,6 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
               },
             },
             {
-              name: "GitHub issue and PR delegation with `@codex`",
-              shortName: "GitHub delegation",
-              href: "/codex/third-party/github#give-codex-other-tasks",
-              availability: {
-                bedrock: "unavailable",
-              },
-            },
-            {
               name: "GitHub code review and automatic PR reviews",
               shortName: "GitHub PR reviews",
               href: "/codex/third-party/github",

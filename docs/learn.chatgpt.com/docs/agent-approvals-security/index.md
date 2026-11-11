@@ -352,7 +352,7 @@ High-risk actions require enough user authorization and no matching deny rule.
 Prompt-build, review-session, and parse failures fail closed. Timeouts are
 surfaced separately, but the action still does not run.
 
-To add rules or replace the policy locally or across an organization, see
+To replace the policy locally or across an organization, see
 [Auto-review configuration](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration).
 
 In the ChatGPT desktop app, these reviews appear as Auto-review items with a status

@@ -141,21 +141,14 @@ into that template and specifies the response format separately. The CLI uses
 the reviewer model's default policy when available. Otherwise, it uses the
 [bundled policy (`policy.md`)](https://github.com/openai/codex/blob/rust-v0.167.0/codex-rs/prompts/templates/guardian/policy.md).
 
-**To add rules**, set `extra_policy` under `[auto_review]` in local
-`config.toml`, or set the top-level `guardian_extra_policy` in managed
-`requirements.toml`. Codex applies these rules alongside the active policy.
-
-**To replace the policy**, copy the complete policy you want to adapt. If you
+To replace the policy, copy the complete policy you want to adapt. If you
 use the bundled default, copy the full contents of `policy.md`. Edit the rules
 you want to change, then put the full text in local `[auto_review].policy` or
 managed `guardian_policy_config`. Omitted rules drop out of the replacement.
 Codex still uses the reviewer's template and response format.
 
-Codex resolves the two settings independently and ignores blank values.
 Managed `guardian_policy_config` takes precedence over local `[auto_review].policy`.
-Managed `guardian_extra_policy` takes precedence over local `[auto_review].extra_policy`.
-For example, if your organization sets only a replacement policy, your local
-`extra_policy` still adds rules to it.
+Codex ignores blank policy values.
 
 For organization-wide setup, see
 [Configure Auto-review policy](https://learn.chatgpt.com/docs/enterprise/managed-configuration#configure-auto-review-policy).
@@ -168,36 +161,18 @@ Use an approved lab target, document the actions and engagement window, and
 keep production systems, unrelated hosts, credentials, and persistent changes
 out of scope unless explicitly authorized.
 
-This local `config.toml` example enables Auto-review and adds engagement
-rules to the active policy. Replace the example target and actions with your
-approved scope.
+This local `config.toml` example enables Auto-review and selects the workspace
+permission profile.
 
 ```toml
 approval_policy = "on-request"
 approvals_reviewer = "auto_review"
 default_permissions = ":workspace"
-
-[auto_review]
-extra_policy = """
-## Environment Profile
-- Authorized target: lab.example.com.
-- Approved actions: inspect the target, reproduce authorized vulnerabilities,
-  and validate fixes within the documented engagement window.
-
-## Tenant Risk Taxonomy and Allow/Deny Rules
-- Allow only actions against the approved target that match the documented
-  engagement scope and approved actions.
-- Deny out-of-scope or unknown hosts, production access, credential theft,
-  persistence, data exfiltration, destructive operations, and policy bypass.
-- Deny ambiguous actions and high-impact changes until a human explicitly
-  approves the exact target, action, and side effects.
-"""
 ```
 
 Enforce target restrictions with independent filesystem and network rules.
-For an organization, put the same engagement rules in the top-level
-`guardian_extra_policy` in managed `requirements.toml`. The following
-requirements select Auto-review and restrict the available permission profiles.
+The following managed `requirements.toml` example requires Auto-review and
+restricts the available permission profiles.
 
 ```toml
 allowed_approval_policies = ["on-request"]

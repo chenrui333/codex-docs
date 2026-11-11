@@ -419,4 +419,4 @@ Removed keys are compatibility inputs, not configurable features. A true CLI def
 - `features/src/lib.rs` sha256: `c51cc01809cc56efdca9815341e5636f67adab864aa457c7ce1b1faec6cf74a6`
 - `client.rs` sha256: `662cf64d10f4b0d7eaf3ad046e53b1eb6dcf8dfb3cb5a425a3c8c222adc05da5`
 - `docs/learn.chatgpt.com/docs/config-file/config-basic/index.md` sha256: `ef66bf6ba4924aa96f3076c44dc989ffacbf4183688d0025058730bb34df2d1d` (13 parsed keys; `config_basic`)
-- `docs/learn.chatgpt.com/docs/config-file/config-reference/index.md` sha256: `8fb00bdda0286d85e5546036c300ce1698a8440ad8a078ad043f5d45029d8098` (39 parsed keys; `config_reference`)
+- `docs/learn.chatgpt.com/docs/config-file/config-reference/index.md` sha256: `d61772a316bd12bd77989b9cca004d58d8b14e722b02223a764bf00d04b8e725` (39 parsed keys; `config_reference`)

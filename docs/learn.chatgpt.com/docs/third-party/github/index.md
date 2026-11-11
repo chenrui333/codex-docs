@@ -141,26 +141,6 @@ Codex reacts while the review is running, then posts security findings directly
 on the pull request. Open the associated Codex task and select the **Security
 Report** tab to view the full report.
 
-## Act on review findings
-
-After Codex posts a review, you can ask it to fix issues in the same pull
-request by leaving another comment:
-
-```md
-@codex fix the P1 issue
-```
-
-Codex starts a [legacy cloud chat](https://learn.chatgpt.com/docs/environments/cloud-environment) with the pull request as context and can push a fix
-back to the branch when it has permission to do so.
-
-## Give Codex other tasks
-
-If you mention `@codex` in a comment with anything other than `review`, Codex starts a [legacy cloud chat](https://learn.chatgpt.com/docs/environments/cloud-environment) using your pull request as context.
-
-```md
-@codex fix the CI failures
-```
-
 ## Troubleshoot code review
 
 If Codex doesn't react or post a review:

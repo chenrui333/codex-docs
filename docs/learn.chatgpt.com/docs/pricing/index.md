@@ -1145,18 +1145,6 @@ administrator controls. Overall Work and Codex plan limits are unchanged.
             },
           },
           {
-            name: "GitHub issue and PR delegation with `@codex`",
-            shortName: "GitHub delegation",
-            href: "/codex/third-party/github#give-codex-other-tasks",
-            availability: {
-              plus: "available",
-              pro: "available",
-              business: "available",
-              enterprise: "available",
-              api: "unavailable",
-            },
-          },
-          {
             name: "GitHub code review and automatic PR reviews",
             shortName: "GitHub PR reviews",
             href: "/codex/third-party/github",

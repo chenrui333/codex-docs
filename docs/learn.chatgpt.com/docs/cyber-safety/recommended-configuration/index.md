@@ -104,7 +104,7 @@ Use Auto-review alongside environment isolation, least-privilege permissions, a 
 
 ## Review sensitive Codex actions
 
-[Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review) routes eligible approval requests to a separate reviewer before the proposed action runs. The reviewer considers the action, task context, and applicable policy. Organizations can [add rules to the active policy](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration) for approved targets, prohibited actions, and required human approvals.
+[Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review) routes eligible approval requests to a separate reviewer before the proposed action runs. The reviewer considers the action, task context, and applicable policy. Organizations can [replace the reviewer policy](https://learn.chatgpt.com/docs/sandboxing/auto-review#configuration) with one that specifies approved targets, prohibited actions, and required human approvals.
 
 Require explicit human approval for actions that affect production, external systems, sensitive data, privilege escalation, persistent access, or irreversible changes. Treat instructions embedded in websites, repositories, documents, and tool outputs as untrusted; they can't expand the authorized scope or override access controls.
 
