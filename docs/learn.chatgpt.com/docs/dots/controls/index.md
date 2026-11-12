@@ -45,6 +45,33 @@ ways to help. The tools it uses for that research can't send messages, change
 app content, or control your browser or computer. Any follow-up action is
 subject to the same permissions and safety requirements.
 
+## Set custom instructions
+
+Custom instructions are specific to your dot. Use them to set how your dot
+works, such as your preferred writing style, how often it checks in, or when it
+asks before taking an action. Your dot's instructions are separate from your
+ChatGPT custom instructions.
+
+Tell your dot in chat what you'd like it to remember as an ongoing instruction.
+For example, “When you finish a task, link to the result and tell me what needs
+my attention.” You can also ask your dot to update an instruction later.
+
+On mobile, when **Behavior** is available, you can review your dot's
+instructions in **Customize** and edit them if editing is enabled:
+
+1. Open the sidebar and select **Customize** > **Behavior**.
+2. If you see tabs for ChatGPT and your dot, select your dot's name.
+3. Enter your preferences under **How [your dot's name] handles tasks**.
+4. Select the checkmark (**Save**).
+
+Return to **Customize** > **Behavior** to edit your instructions and save your
+changes. If your mobile app
+doesn't show **Behavior**, update the app or use your dot's chat on desktop or
+web.
+
+Custom rules, where available, let you choose how your dot handles specific
+actions and approvals. See [Set custom rules](#set-custom-rules).
+
 ## Set custom rules
 
 Custom rules are optional controls for specific ongoing boundaries. Start with
@@ -56,6 +83,7 @@ After setting up your dot, open custom rules for your app:
 - **Desktop and web:** Open **Settings** > **Personalization** and select
   **Custom rules** under **Permissions**.
 - **iOS and Android:** Open the sidebar, then select **Customize** > **Custom rules**.
+  This option appears when **Behavior** is unavailable.
 
 Select **Add**, describe the action, choose how your dot should handle it,
 and select **Add rule**. The choices are:
@@ -69,7 +97,8 @@ and select **Add rule**. The choices are:
 
 For example, you could choose **Ask before taking action** for sending messages
 to customers, or **Hand off to you** for deleting shared project files. Use your
-conversation for preferences such as writing style or how you like updates;
+conversation or [custom instructions](#set-custom-instructions) for preferences
+such as writing style or how you like updates;
 custom rules control when your dot can take an action.
 
 Saved custom rules apply to your dot in the same account. They can give your

@@ -13,68 +13,26 @@ Source: https://learn.chatgpt.com/docs/security/faq
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-These answers apply to Daybreak Defense Factory. For installation and a first scan,
-use [Cloud setup](https://learn.chatgpt.com/docs/security/setup). Local scans have separate
+[Set up Daybreak Defense Factory](https://learn.chatgpt.com/docs/security/setup) walks you through your first cloud scan. Local scans have separate
 [plugin](https://learn.chatgpt.com/docs/security/plugin) and [CLI](https://learn.chatgpt.com/docs/security/cli) guides.
 
 ## Billing
 
-### How are Cloud scans billed?
+### How are cloud scans billed?
 
-Repository scans and continuous scans set up after October 1, 2026, at
-12:53 PM Pacific are billed based on token usage at your plan's rates, in
-credits or USD depending on your billing plan. For
-[eligible accounts](#do-i-get-a-free-scanning-period-or-free-scanning-credits),
-free scanning credits apply before paid usage is billed.
+Repository scans and continuous monitoring are billed by token usage at your
+plan’s rates, in credits or USD. Your plan’s included usage allowance does
+not cover these scans.
 
-This usage is not covered by your plan's included usage allowance.
+Repository scans and continuous monitoring draw from the same credit balance.
+In a workspace, everyone shares that balance. Free scanning credits don’t
+expire. When they run out, further scans are billed at your plan’s rates.
 
-Continuous scans set up before that cutoff are free until
-October 21, 2026. After that, they are billed at regular token rates under
-your account's billing plan if you enable paid usage. Otherwise, they pause.
+### Where can I see scan costs?
 
-### Do I get a free scanning period or free scanning credits?
-
-What you receive depends on whether your account had continuous scanning set
-up before October 1, 2026, at 12:53 PM Pacific:
-
-- If it did, your covered continuous scans remain free until October 21, 2026.
-  This free period doesn't cover repository scans or continuous scanning set
-  up after October 1, 2026, at 12:53 PM Pacific.
-- If it didn't, eligible accounts receive $500 in free scanning credits
-  instead of the free continuous-scanning period.
-
-### How do free scanning credits work?
-
-Repository scans and continuous scanning use the same free balance. In a
-workspace, everyone shares that balance. These free scanning credits don't
-expire.
-
-When the free balance runs out, further scanning is billed under your
-account's or workspace's billing plan.
-
-### What happens when the free continuous-scanning period ends?
-
-Select **Keep scans running** and enable paid usage to continue these scans
-after the free period. They are then billed at regular token rates under
-your account's or workspace's billing plan.
-
-If you opt out or don't enable paid usage, those scans pause when the free
-period ends. Select **Re-enable scans** to enable paid usage afterward.
-In a workspace, ask a workspace owner to make this choice if you don't have
-permission.
-
-### Where can I see token usage and charges?
-
-Open a scan in **Scans** to review its token usage and cost. Hover over the
-token count to see input, cached input, and output tokens. Cached input is
-included in the input count, not added on top of it.
-
-Usage shows the cost before free scanning credits or billing exemptions,
-along with any amount covered by free scanning credits.
-
-Scans marked "Exempt from billing. No charges apply." incur no charges,
-even when they show token usage and cost.
+Open **Usage** to compare costs by repository over a date range. **Scan cost**
+shows the cost before credits and exemptions. **Billable remainder** shows
+the amount remaining after credits and exemptions apply.
 
 ## Scanning
 
@@ -95,24 +53,29 @@ ability to reason about the language and framework, and on the available
 repository context. A successful scan doesn't imply equal coverage across
 languages or components. Check the report for the scope actually reviewed.
 
-### How do repository scans and commit monitoring differ?
+### Which scan should I use?
 
-A **One-Time Scan** reviews the repository once. **Continuous Scanning** monitors
-new commits and can review selected commit history. Enable it after the first
-scan using [Monitor new commits](https://learn.chatgpt.com/docs/security/setup#5-monitor-new-commits).
+Use a repository scan to look for issues already in the code, continuous
+monitoring to check new commits on the default branch, or a scheduled scan for
+recurring repository reviews. You can check changes before they merge with
+[PR reviews](https://learn.chatgpt.com/docs/security/security-review#enable-pr-reviews-in-daybreak).
 
 ### Can I pause commit monitoring?
 
-Open **Repositories**, select the repository, and open **Monitoring settings**.
-Set monitoring to **Paused** and select **Save**. You can enable it again from
-the same settings.
+Yes. Open **Repositories**, select the repository, and open **Continuous scanning settings**.
+Turn off **Continuous monitoring** and save your changes. You can turn it back on in the same settings.
 
 ### Can I edit the threat model?
 
-Yes. Update it in the monitored repository's **Monitoring settings** when the
-architecture, deployment, or security assumptions change. The [threat-model
-guide](https://learn.chatgpt.com/docs/security/threat-model) explains what to include. Changes apply to
-future scans.
+Yes. Open **Threat model** in the monitored repository and update it when the
+architecture, deployment, or security assumptions change. Your edits apply to
+future scans. The [threat model guide](https://learn.chatgpt.com/docs/security/threat-model) explains what to include.
+
+### Can I scan code hosted on GitLab?
+
+Cloud scans use a connected GitHub repository. For GitLab, scan a [local
+checkout](https://learn.chatgpt.com/docs/security/setup#scan-your-local-checkout) or run the
+[Codex Security CLI in GitLab CI/CD](https://learn.chatgpt.com/docs/security/cli/ci/gitlab).
 
 ## Findings and validation
 
@@ -143,12 +106,9 @@ findings can still miss vulnerabilities.
 
 ### Does Daybreak apply patches automatically?
 
-The action depends on the finding. **Fix with Codex** on a repository finding
-starts a conversation that asks Codex to verify the issue, implement a fix,
-and run relevant tests. Review the changes in that conversation.
-
-For a finding with a suggested patch, review the diff before selecting
-**Create draft pull request**. Creating the draft doesn't merge the fix.
+Daybreak saves a proposed patch for review. **Fix with Codex** lets you
+discuss or refine it. **Create PR** opens a draft pull request on GitHub.
+See [Review a proposed fix](https://learn.chatgpt.com/docs/security/findings-and-fixes#review-a-proposed-fix).
 
 ### How do I know whether a patch fixed the issue?
 

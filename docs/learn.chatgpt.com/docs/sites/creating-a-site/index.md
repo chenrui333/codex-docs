@@ -20,7 +20,7 @@ Open ChatGPT on the web or in the desktop app. Include the word "website" in you
 **Prompt:**
 
 ```text
-Build a project request dashboard website for my operations team. Let team members submit requests, see who owns each one, update the status, and filter the list. Require people to sign in with their workspace account, and keep the request data saved between visits.
+Build a project request dashboard website for my operations team. Use my connected Google Drive plugin to find our request intake guide and suggest fields and status labels. Ask me to confirm them before building. Let team members submit requests, see who owns each one, update the status, and filter the list. Require people to sign in with their workspace account, and keep the request data saved between visits.
 ```
 
 **For ChatGPT Enterprise users:** A workspace admin must enable sites for your
@@ -34,7 +34,9 @@ The dashboard is one example. You can adapt the following flow to the site you w
 
 1. Describe the site
 
-   Tell ChatGPT who the site is for and what you'd like people to do. Share the documents or data it needs. For a request dashboard, you might include sample requests, owners, and status labels.
+   Tell ChatGPT who the site is for and what you'd like people to do. Share the documents or data it needs. For a request dashboard, you might include sample requests, owners, and status labels. Mention a plugin with `@` and describe what it should contribute: for example, Google Drive for intake guidelines or Slack for recent request discussions. If you aren't sure what is available, ask ChatGPT which plugins you can use. See [Data and connections](https://learn.chatgpt.com/docs/sites/data-and-connections#bring-user-data-to-your-site-with-plugins) to use connected data in the site itself.
+
+> Illustration: ChatGPT composer with a Google Drive plugin mention and a request to find intake guidelines, then build an operations dashboard with workspace sign-in and saved request data.
 
 2. Review the site
 
@@ -43,6 +45,8 @@ The dashboard is one example. You can adapt the following flow to the site you w
 3. Refine the site
 
    Tell ChatGPT what you'd like to change, and share a screenshot or reference site if it would help. For the dashboard, you might ask: “Put the owner and status filters above the request list.”
+
+> Illustration: A follow-up request asks ChatGPT to put owner and status filters above the request list while keeping the dashboard's other features, saved records, and access rules unchanged.
 
 4. Manage and share the site
 
@@ -70,6 +74,42 @@ a local project before publishing it.
 Every sites deployment URL is a production deployment. If you want to review a
   build before it becomes live, ask ChatGPT to save a version without deploying
   it.
+
+## Start from an existing site with Remix
+
+As an alternative to starting with a prompt, use **Remix** when a coworker's site already does much of what you need. For example, you could adapt a project hub for a new team while keeping its useful layout and navigation.
+
+Choose a site for the task it helps people complete. Before remixing, decide what to keep, what to replace, and what your audience should be able to do. If you want to maintain the same site together, [collaborate on it](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#collaborate-on-a-site) instead.
+
+<WorkflowSteps variant="headings">
+
+1. Open the source site and select Remix
+
+   Open the site while signed in with your ChatGPT workspace account. Select **Remix** in the toolbar in the lower-right corner, or open the toolbar menu to find it.
+
+> Illustration: A project dashboard in a browser with its site address visible. The Sites toolbar is in the lower-right corner, with Remix highlighted beside the ChatGPT logo and toolbar menu.
+
+   Continue in ChatGPT. If a composer opens in the toolbar, select **Open ChatGPT**. The ChatGPT composer includes **Remix** and the source site's name. In this example, the source is **Project Plan Progress Dashboard**.
+
+> Illustration: ChatGPT opens a composer with Remix and the source site, Project Plan Progress Dashboard, already included.
+
+2. Add your instructions and send
+
+   Keep the source site in the composer and describe what you want to change. Name the audience, what to keep, and what to replace. Add the files or context ChatGPT needs, then send your request.
+
+> Illustration: The Remix composer keeps Project Plan Progress Dashboard as the source and adds instructions to adapt it for a customer onboarding project, preserving the layout and saving a version for review before publishing.
+
+3. Review and refine the adapted site
+
+   Check the pages, links, examples, and actions against your team's needs. For this dashboard, try finding the next milestone and its owner, then opening a supporting resource. Ask for focused changes where the result needs work.
+
+4. Share when it's ready
+
+   Follow the [review and sharing checks](https://learn.chatgpt.com/docs/sites/publishing-and-sharing#review-before-you-share) before publishing. Ask a teammate to try the task the site supports.
+
+</WorkflowSteps>
+
+For current Sites availability, access requirements, and management instructions, see [Creating and using ChatGPT Sites](https://help.openai.com/en/articles/20001339-creating-and-using-chatgpt-sites) in the Help Center.
 
 ## Save records and progress
 

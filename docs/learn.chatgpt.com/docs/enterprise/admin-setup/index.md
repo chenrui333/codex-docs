@@ -55,6 +55,10 @@ For enterprise security, privacy, and runtime protections, see
 [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security) and the
 [Codex security white paper](https://trust.openai.com/?itemUid=382f924d-54f3-43a8-a9df-c39e6c959958&source=click).
 
+**ChatGPT Enterprise on AWS Marketplace**
+
+Review the [data residency and inference residency requirements in the Help Center](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt) for ChatGPT Enterprise purchased through AWS Marketplace. Then use this guide to plan your workspace rollout.
+
 <a id="pre-requisites-determine-owners-and-rollout-strategy"></a>
 
 ## Step 1: Assign owners and choose a rollout

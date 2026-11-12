@@ -127,7 +127,7 @@ Use an organization-approved GitHub user account, preferably dedicated to this s
 
 If a repository is missing, check the designated account’s GitHub access and the app’s allowed actions in ChatGPT.
 
-Daybreak Defense Factory uses a personal GitHub connection. See [Cloud setup](https://learn.chatgpt.com/docs/security/setup#2-connect-github).
+Daybreak Defense Factory uses a personal GitHub connection. See [Set up Daybreak](https://learn.chatgpt.com/docs/security/setup#open-daybreak-and-connect-github).
 
 ### Notion
 

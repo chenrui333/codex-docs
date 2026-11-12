@@ -406,6 +406,162 @@
       "id": "cc95513baccb2d2d8a480be87ba4029862e0fad11cb27c6bf168fea7ae3a23c7",
       "observed_at": "2026-11-12T00:12:24+00:00",
       "previous_id": "5b496c11472f7792464056bbd1566bebf2f14f6bdbe6f9ea8e6f9fa4c5047287"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/desktop-browser-policies/index.md",
+          "learn.chatgpt.com/docs/security/findings-and-fixes/index.md",
+          "learn.chatgpt.com/docs/security/notifications/index.md",
+          "learn.chatgpt.com/docs/security/scanner-imports/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "efce3212dc822df160dd2e3de6396a3d3bdb8d2bb0d28a61bec90c12c1c3ee90",
+            "before": "e3265db0e1fe505d2d72591d82516306ae5f664f425637949a6bd3c08186967e"
+          },
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md": {
+            "after": "62e59253f02e4eadb6ca347201bc9745876f26a80a9b674c8ecc872d1db08e02",
+            "before": "853a90f8948fc200caaca93241044574df17407cf5bdd64daff94592ee98f33c"
+          },
+          "learn.chatgpt.com/docs/dots/controls/index.md": {
+            "after": "5df45b449df269ac21a1bd51b47ea2a3a7f0d04ad18b856def637616e5936aea",
+            "before": "9efa6d5ef5183954572746e3d4a0b2c1bad7a8a698808dec05c9268dd7bd7a21"
+          },
+          "learn.chatgpt.com/docs/enterprise/admin-setup/index.md": {
+            "after": "55c94a01c705aadfbaaf9608c0088ad31559b9122c809ca6121c6616a5c1167b",
+            "before": "06ee33ca089830ab79d63ca3369c729ea38ba208c8b523845340b3dc0edb816b"
+          },
+          "learn.chatgpt.com/docs/enterprise/desktop-browser-policies/index.md": {
+            "after": "d8a6184cec23facefa6d8960a88e75a899257a6213eac379796b4a94f634c318",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+            "after": "983694620df1bae7dd1e6d725a7b071da7f6dacb0cae3164aa29e39e70b82b5e",
+            "before": "85d02d1f3e57ea21a665b9601c9013d6241cfdf09553c25076cf06c95d9e7ddc"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "0fc0fce0a588af2a90539ae496afc957341733b4e77b7fe182a573e4cd70850e",
+            "before": "4dad5e6e8aa3b2bd13dbc07ad1f1dfe850547d4206688cc0783a29626c2d10ca"
+          },
+          "learn.chatgpt.com/docs/enterprise/shared-connections/index.md": {
+            "after": "e9a9b6efd2ed13e9fd4196d28a5dfc13c6c41535c773212924bbe129161637bc",
+            "before": "99ff8e83ad3d82dbe779b7d5f27ece6fd5d24d1748b1c61ab8560c48c0059845"
+          },
+          "learn.chatgpt.com/docs/enterprise/sites/index.md": {
+            "after": "81c9e521f6085d81b9a3c9cb6b46a2b86990d14a5cd34065b159373a9c9222b9",
+            "before": "911a2af848be652109a0049239e8d5f4d8e0456926e891c2a77aabd3f3ff230b"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "34e3bca206a5f9c8ad2fcd4d5b4b384060826c1bb3ce88a6372d8332f2db68ba",
+            "before": "b89cdd7ec6836df50933b09e71acaecc9c6c1779046af047024bb5e9b695762d"
+          },
+          "learn.chatgpt.com/docs/security-administration/index.md": {
+            "after": "11334f9a80c3af8be1bd4c80a3fe345902c48ca6a2245a98ab534c3880135f55",
+            "before": "a5b6db267f00ff65e23c52a748446cf5c5f67af97431222156810f45b3b838e9"
+          },
+          "learn.chatgpt.com/docs/security/cli/reference/index.md": {
+            "after": "e8c869def7acfa43199567b7c02fd0a25eef4019761e99b68ccd5e23a45223a2",
+            "before": "afaf1ed03cbfb0985e42abb1011b1fd23782aab8a041e9466b89bed487b7788b"
+          },
+          "learn.chatgpt.com/docs/security/faq/index.md": {
+            "after": "4093f01bbb3756e9729b3038c3303258abfc27b25f597e5581ddf276d7e6505c",
+            "before": "89c8b1b488b0c94ab45d07cabc935b3a61005fcfd24b4f604561b19ca83c854e"
+          },
+          "learn.chatgpt.com/docs/security/findings-and-fixes/index.md": {
+            "after": "5033a98456a97106b3dea401007baf5b2c9aa859a7a799e2acfb24f86bf1f5ea",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/security/index.md": {
+            "after": "d416c726028422751445fdc4be8b884851a38af0a5933c53f95e27ef86171db2",
+            "before": "d1ee9f65895a496140d9f5d922f796fbce3c3d7453dc1eca1572f9cad109a82e"
+          },
+          "learn.chatgpt.com/docs/security/notifications/index.md": {
+            "after": "205eb131da181a329e9ab8ac0e83c761617f7795c63764234dbee47a0104c284",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/security/scanner-imports/index.md": {
+            "after": "f060c6ae4f6fe6385cf19732c675b538ef13e2298135db6a8de0eb4e6159e353",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/security/security-review/index.md": {
+            "after": "6883646c33681b0259f3f34b801224bb4ed064fcfbb6d2443de110c34b5f43b2",
+            "before": "3725bef138431643b9078336654f8973edab4350a9298b5079f6df952ee72986"
+          },
+          "learn.chatgpt.com/docs/security/setup/index.md": {
+            "after": "8284689d02ac82e41a14fc6a542b456821cc5760fb606e78f76b4a1cffc726ff",
+            "before": "26cd6c65a829a6b8da19141907acf05d4f201d8236af7c81ba3311c33e2452f2"
+          },
+          "learn.chatgpt.com/docs/security/threat-model/index.md": {
+            "after": "4d88491ac4d004ed0b59ec2949018f2371d0cd56f6b8da80c22dddda902640ff",
+            "before": "9c07499aded2fd5b55774933725c0a24b61114912847187b333d42dbd8feaeb7"
+          },
+          "learn.chatgpt.com/docs/sites/creating-a-site/index.md": {
+            "after": "755323bd83a4429c8e20a4c71a6853bd10ef38d97d6182a22c4c7823bc44e671",
+            "before": "71af7dc1388c14bdd25fd2611b0e2c05e387e10095a3f36be09bd06a12f98bb8"
+          },
+          "learn.chatgpt.com/docs/sites/index.md": {
+            "after": "8d2f9b58b2056ccd13f131a7eccf30bae99e44e560fe1c41358d441bc08e0e9b",
+            "before": "c7db6fe2ac26c9cd0126b69aee8b69650efb4afd7457040e2ec19315c4e0eafc"
+          },
+          "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md": {
+            "after": "7a1be848a48e8c1d814e918bd5ec97b4b66813ed6d8cf37817188eb19ec1dc5d",
+            "before": "62661c323530d331d5e7bc7e78bde966e42427fe0f180fd9df2765c8025b607c"
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "6bd21b19024e491d9325937f9dc792df7fd0dd1471a71eebdd1b615a2698c48f",
+            "before": "cb85a8dc0120cc843764237b49b6d9ad6f27f902bf90781c728fce1194ceface"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.167.2",
+          "codex_cli_source_commit": "ce21072c90d32c40af7a55b60b2fb35c84a43a6a",
+          "codex_cli_version": "0.167.2",
+          "codex_cli_version_raw": "codex-cli 0.167.2",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+          "learn.chatgpt.com/docs/dots/controls/index.md",
+          "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
+          "learn.chatgpt.com/docs/enterprise/sites/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/security-administration/index.md",
+          "learn.chatgpt.com/docs/security/cli/reference/index.md",
+          "learn.chatgpt.com/docs/security/faq/index.md",
+          "learn.chatgpt.com/docs/security/index.md",
+          "learn.chatgpt.com/docs/security/security-review/index.md",
+          "learn.chatgpt.com/docs/security/setup/index.md",
+          "learn.chatgpt.com/docs/security/threat-model/index.md",
+          "learn.chatgpt.com/docs/sites/creating-a-site/index.md",
+          "learn.chatgpt.com/docs/sites/index.md",
+          "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md"
+        ]
+      },
+      "id": "3c7ed0b231d22628ccdf631468a9ef75abb13f7d12806f7fca24cb5ff44b6ae3",
+      "observed_at": "2026-11-12T23:18:58+00:00",
+      "previous_id": "cc95513baccb2d2d8a480be87ba4029862e0fad11cb27c6bf168fea7ae3a23c7"
     }
   ],
   "schema_version": 1

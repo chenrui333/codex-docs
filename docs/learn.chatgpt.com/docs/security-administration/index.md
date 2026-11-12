@@ -101,10 +101,16 @@ Source: https://learn.chatgpt.com/docs/security-administration
         },
         {
           title: "Daybreak Defense Factory setup",
-          description:
-            "Install the plugin, connect GitHub, and start a security scan.",
+          description: "Connect GitHub and scan a repository with Daybreak.",
           href: "/codex/security/setup",
           icon: "storage",
+        },
+        {
+          title: "Review findings and fixes",
+          description:
+            "Assess a finding and review its patch before opening a pull request.",
+          href: "/codex/security/findings-and-fixes",
+          icon: "code",
         },
         {
           title: "Security Review",

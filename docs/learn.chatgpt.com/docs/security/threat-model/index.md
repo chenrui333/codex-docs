@@ -7,7 +7,7 @@ codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.1
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
-# Improve the Daybreak threat model
+# Improve the repository threat model
 
 Source: https://learn.chatgpt.com/docs/security/threat-model
 
@@ -41,13 +41,21 @@ as internal-only unless that is true of the deployment you want assessed.
 
 ## Edit the threat model
 
-1. Open **Daybreak** in the sidebar. See [Cloud setup](https://learn.chatgpt.com/docs/security/setup)
-   if you haven't installed it or configured commit monitoring.
-2. Open **Repositories** and select the monitored repository.
-3. Open **Monitoring settings**.
-4. Edit **Threat model**, then select **Save**.
+1. Open **Repositories** in Daybreak and select the monitored repository.
+2. Open its **Threat model** and choose the edit control.
+3. Add the deployment details or security assumptions the scan should use, then save your changes.
 
 Changes apply to future scans.
 
 Revisit the model after changes to authentication, tenant boundaries, or exposed
 services. Keep facts about the deployment separate from priorities for the scan.
+
+## Add context for validation
+
+Select **Manage** under **Validation context** on the repository overview.
+If the repository has a `SECURITY.md` file, you can read it here. Make any changes to
+the file in the repository.
+
+Use **Additional context** for details Daybreak should consider when it checks
+future findings. For example, identify which gateway enforces tenant
+membership and which routes can bypass it. Select **Save**.

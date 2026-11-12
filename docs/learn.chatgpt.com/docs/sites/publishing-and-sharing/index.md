@@ -154,4 +154,12 @@ Editor access is separate from visitor access. The steps above first add the
 person as a visitor, then grant editing access. Promoting a visitor to editor
 doesn't change the site's audience setting.
 
+### Adapt a site for another team
+
+Co-editing helps you maintain one site together. If another team needs its own version for a different project or purpose, **Remix** offers an alternative.
+
+For example, a project team can co-edit one hub to keep its milestones current. Another team can remix that hub to use its layout with their own milestones and resources. Follow the [Remix walkthrough](https://learn.chatgpt.com/docs/sites/creating-a-site#start-from-an-existing-site-with-remix) to adapt a site, then review the result for its new audience before sharing it.
+
+For current sharing and editor permissions, see [Creating and using ChatGPT Sites](https://help.openai.com/en/articles/20001339-creating-and-using-chatgpt-sites) in the Help Center.
+
 <SitesReferenceNavigation />

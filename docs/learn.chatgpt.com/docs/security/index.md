@@ -17,46 +17,18 @@ Codex Security reviews code for vulnerabilities and reports evidence you can
 use to investigate and fix them. Choose how to run it based on where your code
 lives and how you want to review the results.
 
+The **Overview** in Daybreak Defense Factory shows proposed fixes and tracks [open and fixed findings](https://learn.chatgpt.com/docs/security/findings-and-fixes) across your repositories.
+
+> Illustration: Daybreak Overview with proposed fixes across three repositories, open findings by severity, and the daily trend for new and fixed findings.
+
 ## Choose where to start
 
-| Use                      | When you want to                                                          | Start here                                          |
-| ------------------------ | ------------------------------------------------------------------------- | --------------------------------------------------- |
-| Daybreak Defense Factory | Scan connected GitHub repositories in Codex cloud or monitor new commits. | [Cloud setup](https://learn.chatgpt.com/docs/security/setup)                |
-| Codex Security plugin    | Scan a local repository in Codex and work through findings interactively. | [Run your first local scan](https://learn.chatgpt.com/docs/security/plugin) |
-| Codex Security CLI       | Run repeatable terminal scans or add checks to CI.                        | [CLI quickstart](https://learn.chatgpt.com/docs/security/cli)               |
-| Codex Security SDK       | Run scans and handle results in an application or developer tool.         | [SDK guide](https://learn.chatgpt.com/docs/security/sdk)                    |
-
-For your first local scan, use the plugin. In the ChatGPT desktop app, select
-**Codex**, install **Codex Security**, and open **Security** in the sidebar.
-The [Security workbench](https://learn.chatgpt.com/docs/security/plugin/workbench) keeps saved scans
-and findings available for review. You can also use the plugin in Codex CLI.
-
-The Codex Security CLI and SDK are distributed in the public [@openai/codex-security package](https://github.com/openai/codex-security). Scans using OpenAI inference require Codex Security access. See each quickstart for its
-runtime and authentication requirements.
-
-Daybreak Defense Factory is a separate plugin, available in research preview on
-the web and in the desktop app. It requires workspace access, a GitHub
-connection, and a compatible Codex cloud environment. You can connect the
-repository and create an environment during setup.
-
-<figure className="not-prose my-8">
-  <CodexScreenshot
-    alt="Daybreak Defense Factory overview with repository counts, finding statuses, and findings that need attention"
-    lightSrc={cloudOverview.src}
-    darkSrc={cloudOverview.src}
-    variant="no-wallpaper"
-    maxHeight="560px"
-    imageClass="border border-subtle"
-    panOnMobile
-  />
-  <figcaption className="mt-3 text-sm text-secondary">
-    Track open findings and fixes across repositories. This example uses
-    fictional repositories, findings, and counts.
-  </figcaption>
-</figure>
-
-For security reviews posted to GitHub pull requests, see
-[Security Review](https://learn.chatgpt.com/docs/security/security-review).
+| Use                      | When you want to                                                                              | Start here                                          |
+| ------------------------ | --------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Daybreak Defense Factory | Scan a GitHub repository, review findings from other tools, and propose fixes with your team. | [Set up Daybreak](https://learn.chatgpt.com/docs/security/setup)            |
+| Codex Security plugin    | Scan a local repository in Codex and work through findings interactively.                     | [Run your first local scan](https://learn.chatgpt.com/docs/security/plugin) |
+| Codex Security CLI       | Run repeatable terminal scans or add checks to CI.                                            | [CLI quickstart](https://learn.chatgpt.com/docs/security/cli)               |
+| Codex Security SDK       | Run scans and handle results in an application or developer tool.                             | [SDK guide](https://learn.chatgpt.com/docs/security/sdk)                    |
 
 ## Choose the next task
 

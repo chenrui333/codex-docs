@@ -3,8 +3,8 @@ source_type: 'learn'
 source_area: 'learn_docs'
 source_url: 'https://learn.chatgpt.com/docs'
 source_kind: 'learn_html_fallback'
-source_last_modified: '2026-11-06T04:26:40Z'
-source_etag: 'W/"5a4a5b7b8192ecc96b44bce935af8f7f"'
+source_last_modified: '2026-11-12T23:12:45Z'
+source_etag: 'W/"c9ec88ec6ee6b374a5051e349cf06b9b"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -69,16 +69,14 @@ CodeyI found a tiny loose thread in settings. Want me to tug it?
 
  [View all updates](/codex/whats-new)
 
+November 9–13, 2026
+
+[### Set custom instructions for your dot
+
+Tell your dot how you’d like it to respond and work with you.](/codex/whats-new#set-custom-instructions-for-your-dot)
+
 November 2–6, 2026
 
 [### Reply to your dot from an iOS notification
 
 Reply to your dot from a notification or share a photo from another app on iOS.](/codex/whats-new/november-2-6-2026#reply-to-your-dot-from-an-ios-notification)
-
-October 26–30, 2026
-
-[### Text your dot
-
-Reach your dot through iMessage or RCS on Android for one-to-one conversations with text, photos, and voice messages.](/codex/whats-new/dots-october-28-2026)  [### Use GPT-6.1 Terra for visual reasoning and computer use
-
-GPT-6.1 Terra is now available in ChatGPT Work and Codex on Plus, Pro, Business, Enterprise, and Edu plans.](/codex/whats-new/october-26-30-2026#use-gpt-61-terra-for-visual-reasoning-and-computer-use)

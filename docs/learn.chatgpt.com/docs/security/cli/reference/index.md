@@ -1213,11 +1213,7 @@ authentication outside the CLI. See the [findings service guide](https://github.
 
 ## `codex-security publish findings`
 
-Use `--to local` to save imported findings on your machine. With `--to cloud`,
-even a preview contacts the service. It needs a file-backed ChatGPT login and
-an authorized repository ID or URL. A Cloud import can return a partial result
-if the service rejects individual records.
-See the [GitHub import guide](https://github.com/openai/codex-security/blob/main/sdk/typescript/docs/cli.md#import-github-findings-locally-or-to-cloud) for both workflows.
+You can save scanner findings locally or publish them to Daybreak.
 
 ### Preview and save a local report
 

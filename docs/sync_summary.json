@@ -1,9 +1,14 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/enterprise/desktop-browser-policies/index.md",
+    "learn.chatgpt.com/docs/security/findings-and-fixes/index.md",
+    "learn.chatgpt.com/docs/security/notifications/index.md",
+    "learn.chatgpt.com/docs/security/scanner-imports/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-12T00:12:24+00:00",
-  "manifest_sha256": "45913384020e72e285e86c2aacaeec909e62b2637c728f21581a236732be2e40",
+  "generated_at": "2026-11-12T23:18:58+00:00",
+  "manifest_sha256": "a6ee9b58a824459c52221872263da494f0fc90587722ba48f0708569ce20c155",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,22 +20,27 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 298,
+  "total_files": 302,
   "updated": [
+    "learn.chatgpt.com/docs/administration/index.md",
     "learn.chatgpt.com/docs/amazon-bedrock/index.md",
+    "learn.chatgpt.com/docs/dots/controls/index.md",
+    "learn.chatgpt.com/docs/enterprise/admin-setup/index.md",
+    "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
     "learn.chatgpt.com/docs/enterprise/shared-connections/index.md",
+    "learn.chatgpt.com/docs/enterprise/sites/index.md",
+    "learn.chatgpt.com/docs/index.md",
     "learn.chatgpt.com/docs/security-administration/index.md",
-    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/github/index.md",
-    "learn.chatgpt.com/docs/security/cli/ci/index.md",
-    "learn.chatgpt.com/docs/security/cli/faq/index.md",
     "learn.chatgpt.com/docs/security/cli/reference/index.md",
     "learn.chatgpt.com/docs/security/faq/index.md",
     "learn.chatgpt.com/docs/security/index.md",
-    "learn.chatgpt.com/docs/security/plugin/index.md",
-    "learn.chatgpt.com/docs/security/sdk/index.md",
     "learn.chatgpt.com/docs/security/security-review/index.md",
     "learn.chatgpt.com/docs/security/setup/index.md",
-    "learn.chatgpt.com/docs/security/threat-model/index.md"
+    "learn.chatgpt.com/docs/security/threat-model/index.md",
+    "learn.chatgpt.com/docs/sites/creating-a-site/index.md",
+    "learn.chatgpt.com/docs/sites/index.md",
+    "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md",
+    "learn.chatgpt.com/docs/whats-new/index.md"
   ]
 }

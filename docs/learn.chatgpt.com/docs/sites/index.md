@@ -172,6 +172,10 @@ Here are some example use cases you can try with Sites.
 - [See which campaigns bring in leads](https://learn.chatgpt.com/use-cases/compare-campaign-performance): Turn weekly campaign exports into a dashboard where your team can compare lead volume and...
 - [Build a hackathon site](https://learn.chatgpt.com/use-cases/build-workshop-practice-site): Turn your event brief and agenda into a site that guides participants through registration...
 
+To build your first site, follow [Create a site](https://learn.chatgpt.com/docs/sites/creating-a-site) to describe what you need, review the result, and refine it.
+
+You can also use **Remix** to build on a useful site a coworker has already made. Keep the parts that fit your task and adapt the content and experience for your team. Learn how to [start from an existing site with Remix](https://learn.chatgpt.com/docs/sites/creating-a-site#start-from-an-existing-site-with-remix).
+
 ## Understand limits and unsupported uses
 
 Sites hosts web experiences in its supported runtime. Some frameworks, private networks, databases, background services, and hosting patterns aren't supported.

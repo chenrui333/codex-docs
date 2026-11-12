@@ -32,7 +32,15 @@ To configure automatic Codex Security Review, you need:
 - [Codex cloud](https://learn.chatgpt.com/docs/cloud) set up with a connected GitHub repository
 - GitHub push or admin permission for the repository settings
 
-An existing Codex Security scan is optional.
+You can enable reviews before running a repository scan.
+
+## Enable PR reviews in Daybreak
+
+1. Open **Daybreak** and choose **Set up PR reviews** on the welcome screen.
+2. Connect your GitHub organization if prompted. Select the repositories you want Daybreak to review.
+3. Select **Enable PR reviews**. Daybreak checks new pull requests as they open in those repositories.
+
+> Illustration: PR review setup with reporting-api selected and the Enable PR reviews button.
 
 <a id="configure-security-review"></a>
 

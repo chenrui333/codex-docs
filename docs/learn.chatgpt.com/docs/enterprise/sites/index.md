@@ -78,6 +78,18 @@ Site access and access to individual records are separate. For private applicati
 
 For example, a request tracker might let every workspace member open the site while allowing each person to see only their own requests. The application needs to check that rule when returning a record or accepting an action. Hiding a page element does not enforce the rule. Test with separate accounts that should and should not have access to the same record.
 
+## Help teams create and reuse sites
+
+Help members choose a task for their first site, such as finding project resources or guiding a new teammate through onboarding. Point them to [Create a site](https://learn.chatgpt.com/docs/sites/creating-a-site) to learn how to describe what they need, review the result, and refine it.
+
+As an alternative, teams can use **Remix** to adapt an existing site. Share a few useful examples with a short explanation of who each one helps and what people can do with it.
+
+Encourage teams to decide whether they need one shared site or a separate adaptation. Co-editing suits people maintaining the same project hub; remixing suits another team that wants the layout with its own milestones and resources. Point builders to the [Remix walkthrough](https://learn.chatgpt.com/docs/sites/creating-a-site#start-from-an-existing-site-with-remix).
+
+Ask each team to name the intended audience and the person who will keep its site useful. Before sharing an adaptation, have someone from that audience try a real task and check that the content, links, and actions fit their needs.
+
+For current workspace controls and site permissions, use [Managing ChatGPT Sites for your workspace](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace) in the Help Center.
+
 ## Configure connections
 
 Creating or sharing a site does not itself authorize connected-app access. Review organization approval, plugin settings, and each visitor's connected account and permissions in the [Help Center connected-app guidance](https://help.openai.com/en/articles/20001338-managing-chatgpt-sites-for-your-workspace).

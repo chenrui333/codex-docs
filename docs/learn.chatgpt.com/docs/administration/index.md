@@ -192,6 +192,13 @@ Source: https://learn.chatgpt.com/docs/administration
           icon: "dataControls",
         },
         {
+          title: "Desktop browser policies",
+          description:
+            "Deploy supported Chrome policies to the built-in desktop browser with device management tools.",
+          href: "/codex/enterprise/desktop-browser-policies",
+          icon: "settings",
+        },
+        {
           title: "Self-host Codex configuration for your team",
           description:
             "Serve Codex defaults and required settings from your own HTTPS endpoint.",
