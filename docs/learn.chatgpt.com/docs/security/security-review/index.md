@@ -107,5 +107,5 @@ findings.
 
 - [Review GitHub pull requests with Codex](https://learn.chatgpt.com/docs/third-party/github) explains Code Review and the GitHub integration.
 - [Codex Security](https://learn.chatgpt.com/docs/security) gives the product overview.
-- [Codex Security cloud setup](https://learn.chatgpt.com/docs/security/setup) explains repository scans and findings review.
+- [Daybreak Defense Factory setup](https://learn.chatgpt.com/docs/security/setup) explains repository scans and findings review.
 - [Improving the threat model](https://learn.chatgpt.com/docs/security/threat-model) explains how to tune repository context.

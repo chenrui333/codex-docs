@@ -7,13 +7,13 @@ codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.1
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
 
-# Codex Security Cloud FAQ
+# Daybreak Defense Factory FAQ
 
 Source: https://learn.chatgpt.com/docs/security/faq
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-These answers apply to Codex Security Cloud. For installation and a first scan,
+These answers apply to Daybreak Defense Factory. For installation and a first scan,
 use [Cloud setup](https://learn.chatgpt.com/docs/security/setup). Local scans have separate
 [plugin](https://learn.chatgpt.com/docs/security/plugin) and [CLI](https://learn.chatgpt.com/docs/security/cli) guides.
 
@@ -80,7 +80,7 @@ even when they show token usage and cost.
 
 ### Does the project need to be built for scanning?
 
-Codex Security can analyze source without a successful build. Validation may
+Daybreak can analyze source without a successful build. Validation may
 need dependencies or a working build to reproduce an issue. Configure those
 requirements in the [Codex cloud
 environment](https://learn.chatgpt.com/docs/environments/cloud-environment).
@@ -90,7 +90,7 @@ what still depends on runtime or deployment behavior.
 
 ### What languages are supported?
 
-Codex Security analyzes source across languages. Results depend on the model's
+Daybreak analyzes source across languages. Results depend on the model's
 ability to reason about the language and framework, and on the available
 repository context. A successful scan doesn't imply equal coverage across
 languages or components. Check the report for the scope actually reviewed.
@@ -141,7 +141,7 @@ findings can still miss vulnerabilities.
 
 ## Fixes
 
-### Does Codex Security apply patches automatically?
+### Does Daybreak apply patches automatically?
 
 The action depends on the finding. **Fix with Codex** on a repository finding
 starts a conversation that asks Codex to verify the issue, implement a fix,

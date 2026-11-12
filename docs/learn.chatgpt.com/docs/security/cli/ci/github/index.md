@@ -34,12 +34,11 @@ credentials and deployment steps in separate jobs.
 
 ## Add the GitHub Actions workflow
 
-**Scan costs:** These workflows use your API key and may incur charges. Both
-  examples omit `max-cost`, so they have no estimated cost stop threshold. To
-  set a threshold of $5 per scan, add `max-cost: "5"` to the Codex Security
-  Action's `with` settings. This isn't a hard spending cap: requests already in
-  progress can exceed it. See [Set an optional scan
-  budget](#set-an-optional-scan-budget) for pricing-support requirements.
+**Scan costs:** These workflows use your API key and may incur charges. The
+  scheduled example omits `max-cost`. The pull-request workflow sets an
+  estimated threshold of $5 per scan. The cost of requests already in progress
+  can exceed that threshold. See [Set an optional scan
+  budget](#set-an-optional-scan-budget).
 
 ### Scan the repository on a schedule
 
@@ -67,12 +66,6 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     steps:
-      - name: Set up the Ubuntu sandbox
-        run: |
-          sudo apt-get update
-          sudo apt-get install --yes bubblewrap apparmor-profiles
-          sudo apparmor_parser -r /usr/share/apparmor/extra-profiles/bwrap-userns-restrict
-
       - name: Check out the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -80,7 +73,7 @@ jobs:
 
       - name: Scan the repository
         id: security
-        uses: openai/codex-security@3f61e5150981a5087c32e4395bbaa8ce5ce0c3e3 # action-v0.3.0
+        uses: openai/codex-security@a98b35d7eef9f85c298c86229445bb64ac427aaf # action-v0.9.1
         with:
           scope: repository
           model: gpt-6-sol
@@ -93,15 +86,10 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.CODEX_SECURITY_API_KEY }}
 ```
 
-**About the version:** Both examples pin the Codex Security Action to commit
-  `3f61e5150981a5087c32e4395bbaa8ce5ce0c3e3` for the `action-v0.3.0` release,
-  which installs CLI `0.3.0`. Review a newer Action release before updating the
-  pinned commit.
-
-**Adapting the runner:** The Action needs Node.js 24 and Python 3.11 or later,
-which this runner provides. The sandbox setup installs the `bubblewrap`
-package and loads the supplied AppArmor profile before the scan. Installing
-the package alone is not enough on this runner.
+The Action checks the Codex sandbox before using the scan credential. On a
+GitHub-hosted Ubuntu 24.04 VM, it installs the required packages and loads the
+AppArmor profile if needed. On self-hosted runners and in job containers,
+provide a working sandbox, Linux x64, Node.js 24, and Python 3.11 or later.
 
 To run the workflow manually, open **Actions → Codex Security repository →
 Run workflow**. Open a completed run to review the summary, annotations, and
@@ -125,78 +113,31 @@ immediately after checkout.
 
 ### Scan pull-request changes
 
-Using the same secret, create `.github/workflows/codex-security-pr.yml`:
+1. Copy the [pull-request workflow](https://github.com/openai/codex-security/blob/a98b35d7eef9f85c298c86229445bb64ac427aaf/github-action/examples/pull-request.yml)
+   to `.github/workflows/codex-security-pr.yml`. Replace
+   `REPLACE_WITH_REVIEWED_COMMIT` with `a98b35d7eef9f85c298c86229445bb64ac427aaf`, the distribution commit for `action-v0.9.1`.
+2. Choose a model your API key can access. The template sets a $5 threshold for estimated
+   scan costs and fails on high or critical findings. For advisory findings, set
+   `fail-on-severity: none`.
+3. Open a PR from a branch in the same repository. Under **Checks**, open
+   **Scan changes** to review the results. The workflow also reports a check
+   named for the target branch, such as **Codex Security / main**.
 
-```yaml
-name: Codex Security PR
+The workflow checks the PR head, target branch, and live base revision before
+scanning and again before accepting the result. If the base advances, update
+the PR branch to trigger a fresh scan. To enforce this at merge time, follow the [branch protection and freshness requirements](https://github.com/openai/codex-security/blob/a98b35d7eef9f85c298c86229445bb64ac427aaf/github-action/README.md#scan-pull-requests).
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
-
-permissions:
-  contents: read
-
-concurrency:
-  group: codex-security-pr-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
-jobs:
-  security:
-    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
-    name: Codex Security
-    runs-on: ubuntu-24.04
-    timeout-minutes: 60
-    steps:
-      - name: Set up the Ubuntu sandbox
-        run: |
-          sudo apt-get update
-          sudo apt-get install --yes bubblewrap apparmor-profiles
-          sudo apparmor_parser -r /usr/share/apparmor/extra-profiles/bwrap-userns-restrict
-
-      - name: Check out the pull request
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Scan PR changes
-        id: security
-        uses: openai/codex-security@3f61e5150981a5087c32e4395bbaa8ce5ce0c3e3 # action-v0.3.0
-        with:
-          scope: diff
-          model: gpt-6-sol
-          # For approved Daybreak Blue access, uncomment the next input.
-          # cyber-access-program: daybreak_blue
-          effort: high
-          fail-on-severity: none
-          upload-artifacts: "true"
-        env:
-          OPENAI_API_KEY: ${{ secrets.CODEX_SECURITY_API_KEY }}
-```
-
-Open or update a PR from a branch in the same repository. The Action uses
-the full history to find the exact merge base and scans changes through the
-checked-out PR head. View the **Codex Security**
-check under **Checks** in the PR. Start with advisory findings, then [choose a severity
-policy](#choose-a-severity-policy) when you are ready to gate changes.
-
-This example skips fork PRs and PRs opened by `dependabot[bot]`. A skipped job
-is not evidence of a security review. To include these bot PRs, remove the actor
-exclusion and also
-configure `CODEX_SECURITY_API_KEY` as a [secret
-for `dependabot[bot]`](https://docs.github.com/en/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-on-actions#accessing-secrets). The Action does not support `pull_request_target` or `workflow_run`.
+The scan job skips fork PRs, so they cannot pass this workflow's required
+check. To scan Dependabot PRs, also save `CODEX_SECURITY_API_KEY` as a [Dependabot secret](https://docs.github.com/en/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-on-actions#accessing-secrets).
 
 The scanner reads applicable `SECURITY.md` guidance from the checkout,
 including policy changes in the PR. Review those changes alongside the code.
 
 ### Configure optional Daybreak access
 
-Daybreak is optional. Both workflow examples use `gpt-6-sol`. If your
-organization has been approved for [Trusted Access for
-Cyber](https://learn.chatgpt.com/docs/cyber-safety#trusted-access-for-cyber), remove the `#` before
-`cyber-access-program` in the scan step's `with` block:
+If your organization has approval for [Trusted Access for
+Cyber](https://learn.chatgpt.com/docs/cyber-safety#trusted-access-for-cyber), select the program and a
+compatible model in the scan step's `with` block:
 
 ```yaml
 model: gpt-6-sol
@@ -206,10 +147,9 @@ cyber-access-program: daybreak_blue
 Use an API key from a project enabled for Daybreak Blue with access to
 `gpt-6-sol`.
 
-The program input also accepts `standard`. Without Daybreak access, use a
-model your API key can access under standard safeguards and omit
-`cyber-access-program` or set it to `standard`. Selecting a model or program
-does not grant access. See the Action's [Daybreak access guidance](https://github.com/openai/codex-security/blob/3f61e5150981a5087c32e4395bbaa8ce5ce0c3e3/github-action/README.md#daybreak-access-and-refusals).
+The input also accepts `daybreak_red` for projects with Red access. To select
+standard safeguards, set `cyber-access-program` to `standard`. Omitting the
+input uses the CLI defaults. See the Action's [Daybreak access guidance](https://github.com/openai/codex-security/blob/a98b35d7eef9f85c298c86229445bb64ac427aaf/github-action/README.md#daybreak-access-and-refusals).
 
 A refusal or safety block that aborts the scan fails the Action, including when
 `fail-on-severity` is `none`. That input controls findings policy, not scanner
@@ -217,32 +157,31 @@ errors.
 
 ### Set an optional scan budget
 
-Both workflow examples omit `max-cost`, so they have no estimated cost stop
-threshold. To set one, add a positive USD amount with the `max-cost` input.
-For direct CLI scans, use `--max-cost`.
+The scheduled workflow omits `max-cost`. To set a threshold, add a positive
+USD amount with the `max-cost` input. For direct CLI scans, use `--max-cost`.
 
-The cost limit requires CLI pricing support for the selected model. The
-estimated threshold is not a hard spending cap: the cost of requests already
-in progress can exceed it.
-Review findings and `coverage.json` if a scan stops at the threshold. See
+The cost limit requires CLI pricing support for the selected model. The cost of
+requests already in progress can exceed the estimated threshold. Review findings and
+`scan-manifest.json` if a scan stops at the threshold. See
 [output and policy options](https://learn.chatgpt.com/docs/security/cli/reference#set-output-and-policy-options)
 for cost-limit behavior.
 
 ### Save reports and upload SARIF
 
-The examples set `upload-artifacts: "true"` to save downloadable reports with a
-seven-day retention window. Reports can contain source snippets, vulnerability
+Set `upload-artifacts: "true"` to save downloadable reports. The default
+retention is seven days. Reports can contain source snippets, vulnerability
 evidence, and remediation details. Choose a retention window and repository
 access appropriate for your code. The Action uploads only validated reports
 on its allowlist; do not recursively upload its `results-directory` output.
 
-SARIF upload is optional. For private or internal repositories, enable [GitHub Code Security](https://docs.github.com/en/code-security/how-tos/find-and-fix-code-vulnerabilities/integrate-with-existing-tools/upload-sarif-file) before uploading. Replace the workflow's `permissions` block with:
+SARIF upload is optional. For private or internal repositories, enable [GitHub Code Security](https://docs.github.com/en/code-security/how-tos/find-and-fix-code-vulnerabilities/integrate-with-existing-tools/upload-sarif-file) before uploading. The scan job needs these permissions for SARIF upload:
 
 ```yaml
 permissions:
   contents: read
   security-events: write
   actions: read # Required for private repositories
+  pull-requests: read # Required only in the PR workflow
 ```
 
 Then add this step after the scan in either workflow:
@@ -265,22 +204,23 @@ SARIF is not uploaded for failed or interrupted scans, empty diffs, or dry
 runs.
 
 See the Action's [input
-and output reference](https://github.com/openai/codex-security/blob/3f61e5150981a5087c32e4395bbaa8ce5ce0c3e3/github-action/README.md#inputs) for all settings, status fields, and report paths.
+and output reference](https://github.com/openai/codex-security/blob/a98b35d7eef9f85c298c86229445bb64ac427aaf/github-action/README.md#inputs) for all settings, status fields, and report paths.
 
 ## Choose a severity policy
 
-The GitHub workflows start with `fail-on-severity: none`. To fail on high or
-critical findings from a completed scan, change the scan step's input:
+The scheduled workflow starts with `fail-on-severity: none`. To fail on high or
+critical findings from a completed scan, use the PR workflow's setting:
 
 ```yaml
 fail-on-severity: high
 ```
 
-Make **Codex Security** a required status check in your repository rules to
-block merges when the PR job fails. GitHub treats a [conditionally skipped job as successful](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks),
-even for required checks. Fork PRs and PRs from `dependabot[bot]` pass this
-check without a scan. To block those skips, [require a
-successful, completed scan](#require-a-successful-completed-scan).
+For each protected target branch, require the matching check from the GitHub
+Actions app, such as **Codex Security / main** on `main`. GitHub treats
+a [conditionally skipped job as successful](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#handling-skipped-but-required-checks).
+The workflow's required check also verifies that the scan job ran. It accepts
+a completed scan or a verified empty diff. To block empty diffs too,
+[require a successful, completed scan](#require-a-successful-completed-scan).
 
 The Action follows the CLI outcome:
 
@@ -292,20 +232,13 @@ The Action follows the CLI outcome:
 - Invalid or missing required reports, a changed checkout, failures to upload
   requested artifacts, and runtime cleanup failures also fail the step.
 
-A completed scan means the configured analysis produced a valid result.
-Scope exclusions, deferred investigations, and other notes in `coverage.json`
-do not create a separate scan outcome or bypass the severity policy.
-Completion does not certify that every vulnerability was found. Review
-`coverage.json` when assessing the result.
-
 ### Require a successful, completed scan
 
 For a stricter policy, add a separate gate that runs even if the scan job
 fails or GitHub skips it. A step inside the scan job can't check a skipped job
 because none of its steps run.
 
-In the PR workflow, add this `outputs` mapping to the existing `security` job,
-at the same indentation as `runs-on` and `steps`:
+The PR workflow exposes the scan status through the `security` job:
 
 ```yaml
 outputs:
@@ -316,9 +249,9 @@ Then add this job under `jobs`, alongside the existing `security` job:
 
 ```yaml
 security-gate:
-  name: Codex Security gate
+  name: ${{ github.event.action == 'edited' && github.event.changes.base == null && 'metadata / ' || '' }}Codex Security gate / ${{ github.event.pull_request.base.ref }}
   needs: security
-  if: ${{ always() }}
+  if: always() && (github.event.action != 'edited' || github.event.changes.base != null)
   runs-on: ubuntu-24.04
   steps:
     - name: Require a successful, completed scan
@@ -328,31 +261,24 @@ security-gate:
       run: test "$SCAN_RESULT" = success && test "$SCAN_STATUS" = completed
 ```
 
-Make **Codex Security gate** the required status check for this policy. It
-requires both a successful scan job and `scan-status: completed`. Checking
-both preserves failures from the severity policy, reporting, and cleanup,
-even when the scan itself completed.
+For each protected branch, require its gate alongside its scan check. For
+`main`, require **Codex Security gate / main** and **Codex Security / main**. The gate requires both a successful scan job and
+`scan-status: completed`. Checking both preserves failures from the severity
+policy, reporting, and cleanup, even when the scan itself completed.
 
-With the example's exclusions, this gate blocks fork PRs and PRs from
-`dependabot[bot]`. It also blocks empty diffs and dry runs, which the Action
-marks as `skipped`.
-The gate doesn't scan excluded PRs. Choose this policy only if these cases
-should prevent merging.
+With the example's exclusions, this gate blocks fork PRs. It also blocks
+empty diffs and dry runs, which the Action marks as `skipped`. The gate
+doesn't scan excluded PRs. Choose this policy only if these cases should
+prevent merging.
 
 ## Troubleshoot a scan
 
 - **Unknown Git ref or unexpected diff:** Check out the PR head with
   `fetch-depth: 0`.
-- **Sandbox startup error:** On Ubuntu 24.04, install the `bubblewrap` package
-  and load the AppArmor profile before the Action. Installing the package alone
-  does not load the required profile.
 - **Missing credentials:** Confirm that `CODEX_SECURITY_API_KEY` is available to
   the trusted workflow and mapped to the scan step's `OPENAI_API_KEY`
   environment variable.
 - **Python setup error:** The Action requires Python 3.11 or later.
-- **Coverage notes:** Review scope exclusions and deferred investigations in
-  `coverage.json`. These notes do not cause execution failures or bypass the
-  severity policy.
 - **Missing SARIF:** Inspect `scan-status`, `report-status`, and
   `sarif-upload-ready`. If optional SARIF is missing, the Action warns without
   changing the scan outcome; requested artifact-upload failures still fail the

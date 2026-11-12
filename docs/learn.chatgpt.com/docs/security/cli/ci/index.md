@@ -76,13 +76,6 @@ open findings in the repository summary don't affect that policy. An
 incomplete scan can leave areas without a review even when it reports no
 findings.
 
-In the Action release `action-v0.3.0`, a completed scan means the configured analysis
-produced a valid result. Scope exclusions, deferred investigations, and other
-coverage notes do not bypass the severity policy. Scanner and required
-reporting errors fail the job. CLI `0.3.0` returns exit code `2` for input,
-execution, result-integrity, or required-output failures. Review `coverage.json` when assessing the result; completion does
-not certify that every vulnerability was found.
-
 Configure enforcement in the [GitHub Actions
 guide](https://learn.chatgpt.com/docs/security/cli/ci/github#choose-a-severity-policy) or the [GitLab
 CI/CD guide](https://learn.chatgpt.com/docs/security/cli/ci/gitlab#separate-reporting-from-policy-enforcement).

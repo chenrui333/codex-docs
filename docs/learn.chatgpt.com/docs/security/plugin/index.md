@@ -19,8 +19,8 @@ report with evidence and remediation guidance.
 
 This page covers the Codex Security plugin in the desktop app or Codex CLI. To
   scan a connected GitHub repository in Codex cloud, install the separate
-  **Codex Security Cloud** plugin from the plugin marketplace. See [Cloud
-  setup](https://learn.chatgpt.com/docs/security/setup).
+  **Daybreak Defense Factory (Preview)** plugin from the plugin marketplace. See
+  [Cloud setup](https://learn.chatgpt.com/docs/security/setup).
 
 ## Install the plugin
 

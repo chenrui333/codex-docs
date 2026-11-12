@@ -21,10 +21,6 @@ The SDK uses ECMAScript modules (ESM) and runs server-side with Node.js 24 or 26
 or Node.js 22 starting with 22.13.0. Scanning also requires Python 3.10 or later.
 Python 3.10 also requires the `tomli` package.
 
-To read or resume compressed Codex sessions (`.jsonl.zst`), use Node.js
-22.15.0 or later within 22.x, or Node.js 24 or 26. Plain `.jsonl` sessions work
-on all supported Node.js versions.
-
 For general coding agents, see the [Codex SDK guide](https://learn.chatgpt.com/docs/codex-sdk). For
   terminal and CI workflows, see the [Codex Security CLI
   quickstart](https://learn.chatgpt.com/docs/security/cli).
@@ -327,6 +323,13 @@ working-tree scans. To use the same procedure for each standard component
 scan, pass `scanOptions.validationPrompt` to `runComponentScans`. Deep scans
 reject custom validation.
 
+### Apply a severity policy
+
+Pass `rubricPath` to grade findings with a Markdown policy, or pass a
+`severityRubric` snapshot with `markdown`, a positive integer `revision`, and the `sha256`
+digest of the exact UTF-8 Markdown. A snapshot takes precedence over a file. Standard and deep scans save the
+selected rubric for retries, resumes, and reruns.
+
 ### Set a scan budget
 
 Set `maxCostUsd` to stop a scan when its estimated model cost exceeds a limit.
@@ -350,11 +353,6 @@ try {
 The limit uses `estimatedUsd`, the short-context baseline. Requests already
 in progress can put this estimate above the limit. Long-context pricing can
 raise `estimatedUsdRange` above it. This limit is not a billing cap.
-
-If a deep scan reaches the limit after
-Codex Security aggregates completed worker results, `run` can return a result
-with `manifest.scan.status` set to `"completed"` and report the budget warning
-through `onWarning`.
 
 If the scan can't produce a valid completed result, `run` throws
 `ScanCostLimitExceededError` and preserves any available output.
@@ -609,6 +607,7 @@ lifecycle callbacks:
 | `onReconnect(attempt, maxAttempts)` | The SDK retries a disconnected scan stream.          |
 | `onActivity(activity)`              | A command, tool, reasoning step, or message updates. |
 | `onProgress(progress)`              | The scan phase or reviewed file count changes.       |
+| `onDeepProgress(progress)`          | Counts of active or completed deep reviews change.   |
 | `onWorkerStatus(status)`            | Best-effort counts of workers planned and started.   |
 | `onSessionEvent(session)`           | A scan or worker session emits an event.             |
 | `onCost(cost)`                      | An updated estimated scan cost is available.         |

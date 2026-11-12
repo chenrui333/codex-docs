@@ -100,9 +100,9 @@ Source: https://learn.chatgpt.com/docs/security-administration
           icon: "code",
         },
         {
-          title: "Codex Security Cloud setup",
+          title: "Daybreak Defense Factory setup",
           description:
-            "Install the Cloud plugin, connect GitHub, and start a security scan.",
+            "Install the plugin, connect GitHub, and start a security scan.",
           href: "/codex/security/setup",
           icon: "storage",
         },
@@ -119,7 +119,7 @@ Source: https://learn.chatgpt.com/docs/security-administration
           icon: "webSearch",
         },
         {
-          title: "Codex Security Cloud FAQ",
+          title: "Daybreak Defense Factory FAQ",
           description:
             "Get answers about cloud scans, findings, privacy, and access.",
           href: "/codex/security/faq",

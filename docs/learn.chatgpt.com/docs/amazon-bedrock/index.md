@@ -766,8 +766,8 @@ Fast Mode isn't available with Amazon Bedrock. Fast Mode uses priority
               },
             },
             {
-              name: "Codex Security cloud for connected GitHub repositories",
-              shortName: "Codex Security cloud",
+              name: "Daybreak Defense Factory for connected GitHub repositories",
+              shortName: "Daybreak Defense Factory",
               href: "/codex/security/setup",
               availability: {
                 bedrock: "unavailable",
