@@ -141,14 +141,14 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "code_mode_host_grpc",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "code_mode_host_output_truncation",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -252,6 +252,11 @@
     },
     {
       "enabled": false,
+      "key": "daybreak_program_propagation",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "default_mode_request_user_input",
       "stage": "under development"
     },
@@ -328,6 +333,11 @@
     {
       "enabled": true,
       "key": "fast_mode",
+      "stage": "stable"
+    },
+    {
+      "enabled": false,
+      "key": "gateway_setup_wizard",
       "stage": "stable"
     },
     {
@@ -491,6 +501,16 @@
       "stage": "stable"
     },
     {
+      "enabled": false,
+      "key": "incremental_tools_legacy",
+      "stage": "stable"
+    },
+    {
+      "enabled": true,
+      "key": "incremental_tools_legacy_gcp",
+      "stage": "stable"
+    },
+    {
       "enabled": true,
       "key": "instant_interrupt",
       "stage": "under development"
@@ -538,6 +558,11 @@
     {
       "enabled": false,
       "key": "mcp_connection_sharing",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "mcp_lazy_stdio_startup",
       "stage": "under development"
     },
     {
@@ -626,9 +651,9 @@
       "stage": "removed"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "plugin_discovery_prefetch",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": false,
@@ -981,9 +1006,9 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "untrusted_as_tool_output",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": false,
@@ -1051,7 +1076,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.168.0",
+  "codex_cli_version": "codex-cli 0.169.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -1060,21 +1085,25 @@
       "bedrock_setup_wizard",
       "cli_daybreak",
       "code_mode_host",
+      "code_mode_host_grpc",
+      "code_mode_host_output_truncation",
       "code_mode_interrupt",
       "compaction_image_budget",
       "content_item_kinds",
       "daemon_auto_start",
       "deferred_tool_world_state",
+      "gateway_setup_wizard",
       "gcp_setup_wizard",
       "guardian_include_additional_context",
       "guardian_reuse_parent_compaction",
       "image_generation",
       "incremental_tools",
+      "incremental_tools_legacy",
+      "incremental_tools_legacy_gcp",
       "login_shell_package_path",
       "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_v2",
-      "plugin_discovery_prefetch",
       "prediction_preserve_parent_tools",
       "reasoning_effort_override",
       "recommended_plugins",
@@ -1090,6 +1119,7 @@
       "unbounded_connection_retries",
       "unified_exec_tty",
       "unified_image_budget",
+      "untrusted_as_tool_output",
       "write_stdin_approval"
     ],
     "actionable_stages": [
@@ -1147,6 +1177,7 @@
       "current_time_reminder",
       "cwd_relative_turn_diffs",
       "daemon_auto_start",
+      "daybreak_program_propagation",
       "default_mode_request_user_input",
       "defer_mailbox_preemption",
       "deferred_executor",
@@ -1161,6 +1192,7 @@
       "experimental_windows_sandbox",
       "external_agent_memory_import",
       "external_migration",
+      "gateway_setup_wizard",
       "gcp_setup_wizard",
       "guardian_conversation_history_tools",
       "guardian_denial_reconsideration",
@@ -1184,6 +1216,8 @@
       "image_resize_notice",
       "incremental_exec_tools",
       "incremental_tools",
+      "incremental_tools_legacy",
+      "incremental_tools_legacy_gcp",
       "instant_interrupt",
       "interrupt_on_cancel",
       "item_ids",
@@ -1194,6 +1228,7 @@
       "login_shell_package_path",
       "mcp_2026_07_28",
       "mcp_connection_sharing",
+      "mcp_lazy_stdio_startup",
       "mcp_oauth_refresh_coordination",
       "mcp_tool_list_changed",
       "mentions_v2",
@@ -1306,6 +1341,7 @@
         "js_repl_tools_only",
         "local_thread_store_shared_compression",
         "multi_agent_mode",
+        "plugin_discovery_prefetch",
         "plugin_hooks",
         "remote_compaction_v2",
         "remote_control",
@@ -1339,20 +1375,24 @@
         "bedrock_setup_wizard",
         "cli_daybreak",
         "code_mode_host",
+        "code_mode_host_grpc",
+        "code_mode_host_output_truncation",
         "code_mode_interrupt",
         "compaction_image_budget",
         "content_item_kinds",
         "daemon_auto_start",
         "deferred_tool_world_state",
+        "gateway_setup_wizard",
         "gcp_setup_wizard",
         "guardian_include_additional_context",
         "guardian_reuse_parent_compaction",
         "image_generation",
         "incremental_tools",
+        "incremental_tools_legacy",
+        "incremental_tools_legacy_gcp",
         "mcp_oauth_refresh_coordination",
         "mentions_v2",
         "multi_agent_v2",
-        "plugin_discovery_prefetch",
         "prediction_preserve_parent_tools",
         "reasoning_effort_override",
         "recommended_plugins",
@@ -1367,6 +1407,7 @@
         "unbounded_connection_retries",
         "unified_exec_tty",
         "unified_image_budget",
+        "untrusted_as_tool_output",
         "write_stdin_approval"
       ],
       "under development": [
@@ -1382,8 +1423,6 @@
         "chronicle",
         "cli_resume_account_check",
         "code_mode",
-        "code_mode_host_grpc",
-        "code_mode_host_output_truncation",
         "code_mode_only",
         "code_mode_only_strict_3p_tools",
         "code_mode_prewarm",
@@ -1396,6 +1435,7 @@
         "critical_path_timing",
         "current_time_reminder",
         "cwd_relative_turn_diffs",
+        "daybreak_program_propagation",
         "default_mode_request_user_input",
         "defer_mailbox_preemption",
         "deferred_executor",
@@ -1425,6 +1465,7 @@
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "mcp_connection_sharing",
+        "mcp_lazy_stdio_startup",
         "mcp_tool_list_changed",
         "model_catalog_in_context",
         "multi_agent_v2_dynamic_tools",
@@ -1454,7 +1495,6 @@
         "tui_extensions_statusline",
         "tui_multi_backend",
         "tui_workspace",
-        "untrusted_as_tool_output",
         "use_agent_identity",
         "use_xaa",
         "wake_on_agent_messages",
@@ -1523,7 +1563,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "9480ec100c3edee9fc69172e8e80a4730444094d",
+  "source_commit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1756,18 +1796,18 @@
     "code_mode_host_grpc": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "code_mode_host_output_truncation": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "code_mode_interrupt": {
       "compatibility_flag": false,
@@ -1932,6 +1972,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "daybreak_program_propagation": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "default_mode_request_user_input": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2061,6 +2109,14 @@
       "configurable": true,
       "default_enabled": true,
       "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
+    "gateway_setup_wizard": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
@@ -2323,6 +2379,22 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "incremental_tools_legacy": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
+    "incremental_tools_legacy_gcp": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": true,
+      "default_enabled_expr": "true",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "stable"
+    },
     "instant_interrupt": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2400,6 +2472,14 @@
       "stage_from_source": "under development"
     },
     "mcp_connection_sharing": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "mcp_lazy_stdio_startup": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2546,12 +2626,13 @@
       "stage_from_source": "removed"
     },
     "plugin_discovery_prefetch": {
-      "compatibility_flag": false,
-      "configurable": true,
-      "default_enabled": true,
-      "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "behavior_evidence": "Removed compatibility flag for plugin discovery prefetch.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "plugin_hooks": {
       "behavior_evidence": "Removed compatibility flag for plugin-bundled lifecycle hooks.",
@@ -3140,10 +3221,10 @@
     "untrusted_as_tool_output": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "use_agent_identity": {
       "compatibility_flag": false,
@@ -3254,13 +3335,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "ddeb4c09eda763c3c6d979649036b0a2ad2f56e4904e1d4e4d4b4afd715750da",
-    "features_rs_sha256": "52fbae91784323c5b1cb19b73d39001ef236518b6ca3215c838b98e5fe402662"
+    "client_rs_sha256": "544c428df0ebe2eb7e99bdaf507eb7873d6a8ec8e4e193885b3bfa37a200d03f",
+    "features_rs_sha256": "ae5067b54222326863207b2c3f9fdcf08d3476dfb850f9084b9ea34a0eb2d649"
   },
-  "source_ref": "rust-v0.168.0",
+  "source_ref": "rust-v0.169.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/9480ec100c3edee9fc69172e8e80a4730444094d/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/9480ec100c3edee9fc69172e8e80a4730444094d/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

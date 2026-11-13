@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.168.0",
-  "codex_cli_version_raw": "codex-cli 0.168.0",
+  "codex_cli_version": "0.169.0",
+  "codex_cli_version_raw": "codex-cli 0.169.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -251,6 +251,14 @@
           "synopsis": "--skip-git-repo-check"
         },
         {
+          "description": "Save trust for this project and future chats, including MCP commands outside the sandbox. Persists even with --ephemeral. Does not override an explicitly untrusted project",
+          "flags": [
+            "--trust"
+          ],
+          "primary_flag": "--trust",
+          "synopsis": "--trust"
+        },
+        {
           "description": "Run without persisting session files to disk",
           "flags": [
             "--ephemeral"
@@ -379,6 +387,22 @@
           "synopsis": "--enable <FEATURE>"
         },
         {
+          "description": "Save trust for this project and future chats, including MCP commands outside the sandbox. Persists even with --ephemeral. Does not override an explicitly untrusted project",
+          "flags": [
+            "--trust"
+          ],
+          "primary_flag": "--trust",
+          "synopsis": "--trust"
+        },
+        {
+          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
+          "flags": [
+            "--disable"
+          ],
+          "primary_flag": "--disable",
+          "synopsis": "--disable <FEATURE>"
+        },
+        {
           "description": "Review staged, unstaged, and untracked changes",
           "flags": [
             "--uncommitted"
@@ -393,14 +417,6 @@
           ],
           "primary_flag": "--base",
           "synopsis": "--base <BRANCH>"
-        },
-        {
-          "description": "Disable a feature (repeatable). Equivalent to `-c features.<name>=false`",
-          "flags": [
-            "--disable"
-          ],
-          "primary_flag": "--disable",
-          "synopsis": "--disable <FEATURE>"
         },
         {
           "description": "Review the changes introduced by a commit",
@@ -3560,9 +3576,9 @@
     "os": "darwin"
   },
   "schema_version": 2,
-  "source_commit": "9480ec100c3edee9fc69172e8e80a4730444094d",
+  "source_commit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.168.0",
+  "source_ref": "rust-v0.169.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
