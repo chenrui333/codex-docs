@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_web_search'
 source_url: 'https://platform.openai.com/docs/guides/tools-web-search'
-source_last_modified: '2026-11-04T08:08:06Z'
-source_etag: 'W/"5e146f1678b137f0ae9d909a1ed46087"'
+source_last_modified: '2026-11-13T05:34:12Z'
+source_etag: 'W/"0c7ae86cf03b64f2063742d8e5666188"'
 codex_cli_versions: ["0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2"]
 codex_cli_versions_raw: ["codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2"]
 ---
@@ -35,7 +35,7 @@ For new Responses API integrations, use `{ "type": "web_search" }`. The earlier 
 
 Web search tool example
 
-```javascript
+```typescript
 const client = new OpenAI();
 
 const response = await client.responses.create({
@@ -201,7 +201,7 @@ For integrations still using `gpt-5`, web search requires reasoning effort above
 
 Set search context size
 
-```javascript
+```typescript
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
@@ -329,7 +329,7 @@ This parameter applies only to the hosted Responses API `web_search` tool with G
 
 Run longer web searches
 
-```javascript
+```typescript
 
 // Allow long research runs without automatic request retries.
 const timeout = 15 * 60 * 1000;
@@ -340,7 +340,6 @@ const dispatcher = new Agent({
 const client = new OpenAI({
   timeout,
   maxRetries: 0,
-  fetch,
   fetchOptions: { dispatcher },
 });
 
@@ -473,27 +472,30 @@ The number of sources is often greater than the number of citations. Real-time t
 
 List sources
 
-```javascript
+```typescript
 const client = new OpenAI();
+
+const tools: OpenAI.Responses.Tool[] = [
+  {
+    type: "web_search",
+    filters: {
+      allowed_domains: [
+        "pubmed.ncbi.nlm.nih.gov",
+        "clinicaltrials.gov",
+        "www.who.int",
+        "www.cdc.gov",
+        "www.fda.gov",
+      ],
+      // @ts-expect-error The published SDK omits this documented API filter.
+      blocked_domains: ["reddit.com", "quora.com", "wikipedia.org"],
+    },
+  },
+];
 
 const response = await client.responses.create({
   model: "gpt-6-astra",
   reasoning: { effort: "low" },
-  tools: [
-    {
-      type: "web_search",
-      filters: {
-        allowed_domains: [
-          "pubmed.ncbi.nlm.nih.gov",
-          "clinicaltrials.gov",
-          "www.who.int",
-          "www.cdc.gov",
-          "www.fda.gov",
-        ],
-        blocked_domains: ["reddit.com", "quora.com", "wikipedia.org"],
-      },
-    },
-  ],
+  tools,
   tool_choice: "auto",
   include: ["web_search_call.action.sources"],
   input:
@@ -667,22 +669,25 @@ To inspect raw image results, include `web_search_call.results` in the request a
 
 Search for images
 
-```javascript
+```typescript
 const client = new OpenAI();
+
+const tools: OpenAI.Responses.Tool[] = [
+  {
+    type: "web_search",
+    // @ts-expect-error The published SDK omits the documented image-search options.
+    search_content_types: ["image", "text"],
+    image_settings: {
+      max_results: 3,
+      caption: true,
+    },
+  },
+];
 
 const response = await client.responses.create({
   model: "gpt-6-astra",
   reasoning: { effort: "low" },
-  tools: [
-    {
-      type: "web_search",
-      search_content_types: ["image", "text"],
-      image_settings: {
-        max_results: 3,
-        caption: true,
-      },
-    },
-  ],
+  tools,
   include: ["web_search_call.results"],
   input:
     "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
@@ -827,7 +832,7 @@ To refine search results based on geography, you can specify an approximate user
 
 Customizing user location
 
-```javascript
+```typescript
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
@@ -992,7 +997,7 @@ curl "https://api.openai.com/v1/responses" \
   }'
 ```
 
-```javascript
+```typescript
 const client = new OpenAI();
 
 const response = await client.responses.create({

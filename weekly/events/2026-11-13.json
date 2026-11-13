@@ -343,6 +343,61 @@
       "id": "c10b0c47d7ae45dfc46637c9da8deef1a1c25003332e53ac64646f0a48527ea2",
       "observed_at": "2026-11-13T05:33:20+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "80daec9df619647d0e44a2d917633d368a1067a6b5659cf8a6836329bc117a57",
+            "before": "3aa9f971ffc3a0ed326bab723f06a476de3f162b314acf10ddbac0ee16948ea8"
+          },
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+            "after": "d1b4a4280ffbfa97cb4c593a5949135d90ec575f7ae38c4ae13f11305477ba76",
+            "before": "0b5010a0699e14f0eeaa9119a4769e151712d5b3cf3da3ef1691f245f10ad308"
+          },
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md": {
+            "after": "c45539ee2ce1a9ccb09bb717b5434db85baff68332828c6a648963f0e808b038",
+            "before": "e6a7ccbdf81b34211fb772483a7e32197723aee1330555b46102a5cb7dd8fbfc"
+          },
+          "platform.openai.com/docs/guides/tools-web-search/index.md": {
+            "after": "aa787c845aa134845d81c9eb7266bce399f86996ca235076d644ac7fc6f24558",
+            "before": "3e8a8257f83731cea8a2454ca265d538a3145cebc7deff3bd64f344b8c3c54fd"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.168.0",
+          "codex_cli_source_commit": "9480ec100c3edee9fc69172e8e80a4730444094d",
+          "codex_cli_version": "0.168.0",
+          "codex_cli_version_raw": "codex-cli 0.168.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+          "learn.chatgpt.com/docs/annotations-extensibility/index.md",
+          "platform.openai.com/docs/guides/tools-web-search/index.md"
+        ]
+      },
+      "id": "2ad6bd924b807668619a80b5a33a33006b552d2b283cf513cd110c24624d5cdc",
+      "observed_at": "2026-11-13T05:34:16+00:00",
+      "previous_id": "c10b0c47d7ae45dfc46637c9da8deef1a1c25003332e53ac64646f0a48527ea2"
     }
   ],
   "schema_version": 1

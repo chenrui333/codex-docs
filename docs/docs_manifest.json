@@ -164,7 +164,7 @@
         "codex-cli 0.168.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "3aa9f971ffc3a0ed326bab723f06a476de3f162b314acf10ddbac0ee16948ea8",
+      "sha256": "80daec9df619647d0e44a2d917633d368a1067a6b5659cf8a6836329bc117a57",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -197,10 +197,10 @@
       "source_url": "https://raw.githubusercontent.com/openai/codex/9480ec100c3edee9fc69172e8e80a4730444094d/codex-rs/models-manager/models.json"
     },
     "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
-      "sha256": "0b5010a0699e14f0eeaa9119a4769e151712d5b3cf3da3ef1691f245f10ad308",
+      "sha256": "d1b4a4280ffbfa97cb4c593a5949135d90ec575f7ae38c4ae13f11305477ba76",
       "source_area": "tool_guide_computer_use",
-      "source_etag": "W/\"5f91e33a223493e9349e4cf1d3fa5c77\"",
-      "source_last_modified": "2026-10-23T21:09:06Z",
+      "source_etag": "W/\"bf53a58a2daa46716608378fead488f6\"",
+      "source_last_modified": "2026-11-13T05:34:12Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://developers.openai.com/api/docs/guides/tools-computer-use"
     },
@@ -7979,7 +7979,7 @@
       "source_url": "https://learn.chatgpt.com/docs/amazon-bedrock"
     },
     "learn.chatgpt.com/docs/annotations-extensibility/index.md": {
-      "sha256": "e6a7ccbdf81b34211fb772483a7e32197723aee1330555b46102a5cb7dd8fbfc",
+      "sha256": "c45539ee2ce1a9ccb09bb717b5434db85baff68332828c6a648963f0e808b038",
       "source_area": "learn_annotations_extensibility",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12483,10 +12483,10 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "3e8a8257f83731cea8a2454ca265d538a3145cebc7deff3bd64f344b8c3c54fd",
+      "sha256": "aa787c845aa134845d81c9eb7266bce399f86996ca235076d644ac7fc6f24558",
       "source_area": "tool_guide_web_search",
-      "source_etag": "W/\"5e146f1678b137f0ae9d909a1ed46087\"",
-      "source_last_modified": "2026-11-04T08:08:06Z",
+      "source_etag": "W/\"0c7ae86cf03b64f2063742d8e5666188\"",
+      "source_last_modified": "2026-11-13T05:34:12Z",
       "source_type": "platform_tool_guide",
       "source_url": "https://platform.openai.com/docs/guides/tools-web-search"
     },

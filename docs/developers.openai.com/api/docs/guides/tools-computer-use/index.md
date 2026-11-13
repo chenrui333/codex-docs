@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
-source_last_modified: '2026-10-23T21:09:06Z'
-source_etag: 'W/"5f91e33a223493e9349e4cf1d3fa5c77"'
+source_last_modified: '2026-11-13T05:34:12Z'
+source_etag: 'W/"bf53a58a2daa46716608378fead488f6"'
 ---
 
 # Computer use
@@ -18,13 +18,17 @@ Source: https://developers.openai.com/api/docs/guides/tools-computer-use
 
 Connect the API loop to your browser or desktop runtime.
 
-```javascript
+```typescript
 
-async function runComputerUse(endpoint, prompt, model = "gpt-6-astra") {
+async function runComputerUse(
+  endpoint: string,
+  prompt: string,
+  model = "gpt-6-astra"
+) {
   const client = new OpenAI();
   const sessionId = randomUUID();
 
-  const tools = [
+  const tools: OpenAI.Responses.Tool[] = [
     {
       type: "function",
       name: "exec_js",
@@ -44,11 +48,13 @@ text with console.log(). The context viewport is 1440x900.`,
     },
   ];
 
-  let nextInput = [{ role: "user", content: prompt }];
-  let previousResponseId;
+  let nextInput: OpenAI.Responses.ResponseInput = [
+    { role: "user", content: prompt },
+  ];
+  let previousResponseId: string | undefined;
 
   for (let turn = 0; turn < 20; turn++) {
-    const response = await client.responses.create({
+    const response: OpenAI.Responses.Response = await client.responses.create({
       model,
       tools,
       input: nextInput,
@@ -349,7 +355,7 @@ end
 
 Use the computer tool for structured mouse and keyboard actions.
 
-```javascript
+```typescript
 
 const client = new OpenAI();
 
@@ -408,13 +414,17 @@ puts(response.output)
 
 Continue the conversation with the updated screen.
 
-```javascript
+```typescript
 
 const client = new OpenAI();
 
-async function sendComputerScreenshot(response, callId, screenshotBase64) {
+async function sendComputerScreenshot(
+  response: OpenAI.Responses.Response,
+  callId: string,
+  screenshotBase64: string
+) {
   const output = {
-    type: "computer_screenshot",
+    type: "computer_screenshot" as const,
     image_url: `data:image/png;base64,${screenshotBase64}`,
     detail: "original",
   };
@@ -563,18 +573,20 @@ On Windows, use `py -3` instead of `python3` and `.venv\Scripts\python.exe` inst
 
 The model sees a screenshot of a fictional parcel pickup page and clicks to reveal the pickup details. The driver allows only screenshots and a left click on that control. It blocks page requests and closes the browser when the run ends. The script makes at most six Responses requests and checks the page before reporting success. Your project needs access to a model that supports the computer tool.
 
-Save the matching example as `pickup.py` or `pickup.mjs`:
+Save the matching example as `pickup.py` or `pickup.mts`:
 
 Reveal pickup details using computer actions
 
-```javascript
+```typescript
 
 class PickupDriver {
-  constructor(page) {
+  page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
 
-  async screenshot() {
+  async screenshot(): Promise<OpenAI.Responses.ResponseComputerToolCallOutputScreenshot> {
     const image = await this.page.screenshot({ type: "png" });
     return {
       type: "computer_screenshot",
@@ -582,7 +594,7 @@ class PickupDriver {
     };
   }
 
-  async allowed(action) {
+  async allowed(action: OpenAI.Responses.ComputerAction) {
     if (action.type === "screenshot") return true;
     if (
       action.type !== "click" ||
@@ -600,14 +612,14 @@ class PickupDriver {
     );
   }
 
-  async click(action) {
+  async click(action: OpenAI.Responses.ComputerAction.Click) {
     // The page may have changed after approval, so bind the click again.
     if (!(await this.allowed(action)))
       throw new Error("Pickup details moved or the click is not allowed.");
     await this.page.mouse.click(action.x, action.y);
   }
 
-  refuse(action) {
+  refuse(action: OpenAI.Responses.ComputerAction) {
     throw new Error(`This exercise does not allow ${action.type}.`);
   }
 
@@ -669,7 +681,9 @@ await main();
 ```python
 
 class BadgeForm {
-  constructor(page) {
+  page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
 
@@ -686,7 +700,9 @@ class BadgeForm {
     };
   }
 
-  async read_page(_args) {
+  async read_page(
+    _args: BrowserArguments<"read_page">
+  ): Promise<BrowserReadV1> {
     return {
       version: 1,
       text: await this.page.locator("body").innerText(),
@@ -698,15 +714,15 @@ class BadgeForm {
     };
   }
 
-  async type(args) {
+  async type(args: BrowserArguments<"type">) {
     await this.page.locator("#name").fill(args.text);
   }
 
-  async click(_args) {
+  async click(_args: BrowserArguments<"click">) {
     await this.page.locator("#save").click();
   }
 
-  async confirm({ member, arguments: args }) {
+  async confirm({ member, arguments: args }: BrowserConfirmContext) {
     if (
       this.page.url() !== "about:blank" ||
       (args.tab_id !== null && args.tab_id !== "badge")
@@ -763,11 +779,15 @@ await main();
 
 ```python
 
-async function runComputerUse(endpoint, prompt, model = "gpt-6-astra") {
+async function runComputerUse(
+  endpoint: string,
+  prompt: string,
+  model = "gpt-6-astra"
+) {
   const client = new OpenAI();
   const sessionId = randomUUID();
 
-  const tools = [
+  const tools: OpenAI.Responses.Tool[] = [
     {
       type: "function",
       name: "exec_js",
@@ -787,11 +807,13 @@ text with console.log(). The context viewport is 1440x900.`,
     },
   ];
 
-  let nextInput = [{ role: "user", content: prompt }];
-  let previousResponseId;
+  let nextInput: OpenAI.Responses.ResponseInput = [
+    { role: "user", content: prompt },
+  ];
+  let previousResponseId: string | undefined;
 
   for (let turn = 0; turn < 20; turn++) {
-    const response = await client.responses.create({
+    const response: OpenAI.Responses.Response = await client.responses.create({
       model,
       tools,
       input: nextInput,
@@ -1021,7 +1043,7 @@ Enable `computer` in the `tools` array and describe the result you want:
 
 Send a computer request
 
-```javascript
+```typescript
 
 const client = new OpenAI();
 
@@ -1123,13 +1145,17 @@ Return a `computer_call_output` whose `call_id` matches the call you handled. Us
 
 Send the updated screenshot
 
-```javascript
+```typescript
 
 const client = new OpenAI();
 
-async function sendComputerScreenshot(response, callId, screenshotBase64) {
+async function sendComputerScreenshot(
+  response: OpenAI.Responses.Response,
+  callId: string,
+  screenshotBase64: string
+) {
   const output = {
-    type: "computer_screenshot",
+    type: "computer_screenshot" as const,
     image_url: `data:image/png;base64,${screenshotBase64}`,
     detail: "original",
   };
