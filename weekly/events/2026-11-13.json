@@ -1,0 +1,349 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [
+            "cli_option:codex:exec-server:--chatgpt-account-id",
+            "cli_option:codex:exec-server:--chatgpt-token-stdin",
+            "cli_option:codex:exec-server:--registration-bearer-stdin",
+            "feature_flag:agent_message_board_mcp",
+            "feature_flag:async_compaction_root_only",
+            "feature_flag:cli_resume_account_check",
+            "feature_flag:command_sessions_world_state",
+            "feature_flag:guardian_denial_reconsideration",
+            "feature_flag:guardian_include_additional_context",
+            "feature_flag:hosted_search_policy",
+            "feature_flag:image_generation_animation",
+            "feature_flag:tui_workspace"
+          ],
+          "added_by_category": {
+            "cli_option": [
+              "cli_option:codex:exec-server:--chatgpt-account-id",
+              "cli_option:codex:exec-server:--chatgpt-token-stdin",
+              "cli_option:codex:exec-server:--registration-bearer-stdin"
+            ],
+            "feature_flag": [
+              "feature_flag:agent_message_board_mcp",
+              "feature_flag:async_compaction_root_only",
+              "feature_flag:cli_resume_account_check",
+              "feature_flag:command_sessions_world_state",
+              "feature_flag:guardian_denial_reconsideration",
+              "feature_flag:guardian_include_additional_context",
+              "feature_flag:hosted_search_policy",
+              "feature_flag:image_generation_animation",
+              "feature_flag:tui_workspace"
+            ]
+          },
+          "lifecycle_transitions": [
+            {
+              "from": "stable",
+              "id": "feature_flag:multi_agent",
+              "to": "deprecated"
+            },
+            {
+              "from": "under development",
+              "id": "feature_flag:retain_client_tool_outputs",
+              "to": "stable"
+            },
+            {
+              "from": "under development",
+              "id": "feature_flag:unified_image_budget",
+              "to": "stable"
+            }
+          ],
+          "removed": [
+            "feature_flag:incremental_tools_legacy",
+            "feature_flag:incremental_tools_legacy_gcp"
+          ],
+          "removed_by_category": {
+            "feature_flag": [
+              "feature_flag:incremental_tools_legacy",
+              "feature_flag:incremental_tools_legacy_gcp"
+            ]
+          }
+        },
+        "file_changes": {
+          "cli-surface/linux-x86_64.json": {
+            "after": "817b9f388b1c438a860dad9a3a5ffe3890a7d5a3eb5a54fce04efc5a42e50dbe",
+            "before": "f5c44bfebdff0a5a473fa84e08ae40cf2776d95098c9ce579e32f70c7ebe6f56"
+          },
+          "cli-surface/macos-arm64.json": {
+            "after": "5fcf9dae360e67ecd1b02f319d103558956b90177c25f2803cf64eedbf741826",
+            "before": "8d6efb3e8ce3edabd87eae315789bd52737a2acb95ebdf58da40ab03ff836c03"
+          },
+          "codex_capabilities.json": {
+            "after": "3aa9f971ffc3a0ed326bab723f06a476de3f162b314acf10ddbac0ee16948ea8",
+            "before": "10c467f95b3e3c9d9425fba45537e2ad2568fb350d3a79232c5ef96eaf5cf95d"
+          },
+          "codex_cli_surface.json": {
+            "after": "d0f2dd854d3d15e7fbb918909fb8e49485ab4a43a161bc98cc0447bad1d743ba",
+            "before": "167811619f41d38df79ee00e025f30780ea81a684da3b41a563268fe89a82644"
+          },
+          "codex_models.json": {
+            "after": "4b2e055f957253935d0c13553d45fb88c24a89556bf4bdff6da7a8f11cce6389",
+            "before": "4440b37ea2dbecbfb663b1fe3215ec37a33651022b073833333149368243ad97"
+          },
+          "dot_codex/skills/dot_system/imagegen/SKILL.md": {
+            "after": "388adab7256f7180fa0f3b375f6e0c8fb19dd28201866684c76adc574ee6c5d2",
+            "before": "63abcc38eeaf094b379eeb0fa39c6f1d8d73a056d3c18ce8a2eb6db9e68581f3"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/cli.md": {
+            "after": "1204c3b425a9c1ba0f97d8df6e25704f94bb9d2a25249fdadea6b0257863d1de",
+            "before": "7724af85a5880890297f6f77bf671082b548df933890a172024e0623b3b8a7ba"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/codex-network.md": {
+            "after": "7106bc688c41dbfe31cb0a7cdbda6bb706286ac2e5df6841e03227eb146e470d",
+            "before": "a81b191ac185604876758eb002179f176811dbf6c8c4aff81eafcb96eef88855"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/image-api.md": {
+            "after": "9b2ef4f5b9b440a70e0f9ce94047d037bbb109c2f538ba3aaebad23e77854566",
+            "before": "409107c9105b0faf433835f0aa48e369804dcc431e8b2568c04d088295ba5472"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/prompting.md": {
+            "after": "7505f7ecb29c34b761e8a3f9932b1cedbab69b0a4c2b8222f766e504cbce80c9",
+            "before": "e0e5187faba69db4225d726a16e16d177a2c9653ad92918f74a36108fbf70348"
+          },
+          "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md": {
+            "after": "24ec191833a0b64ced51ac339221b4c8521b151065b89d6b84e8ef224b1e96c1",
+            "before": "073afc2fbc2a9b4b2c5bc1eccc63e8ee72edce66955a39500880be56ec790105"
+          },
+          "dot_codex/skills/dot_system/openai-docs/SKILL.md": {
+            "after": "95c48a809646abcc6655539f719051c119d12b3c8dc1c6ce21fe2f8c0a516cdf",
+            "before": "b8f77942a6a24eef36b25bf4ccbe46974465203ae12fb49fb3b113a8caf19d7f"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md": {
+            "after": "b71418a5e42398695c74fb614575868af6077ac333dad72e3f4989b3a53702ea",
+            "before": "97d60aa066ff25b28ba790d920eb47d4650710df40557b2fad92760f21275df7"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/latest-model.md": {
+            "after": "894a89db268d85e38398fe1c3d5d12684cf9e1667a3fb10df5cee190c438cc09",
+            "before": "ef5ac754edd52abb8895af297cb7b58663bdfc58299a585ccd63248cebd5730c"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md": {
+            "after": "f2fb38799e4d5ebe0285be007c8bcb666dbb67cc0926c49ffd88503d4205e006",
+            "before": "eb1ddbb63e43b3ef6ffad2b98880e641c070d106948eb662c97a50a273e05162"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/model-migration.md": {
+            "after": "ec04b992c9a4f63133eb3f572cbe45aaa70c0d1edbc0d98e3dc745c283516c61",
+            "before": "1180f86f7c393eb21a2295bd1d7c9cc812095c91f0d12f8a072621b2e5c11acd"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/model-selection.md": {
+            "after": "0540e90afc34b361ade917fdeb72e5c2d9f7eb73f28a7fa09e88461c9e0715eb",
+            "before": "546a0f5d7f0e44985002793268274d14b3e2639372ebabc2bb6cbe9ce5f42851"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/official-docs.md": {
+            "after": "27b3747f8fff7b19e680931fdd0ea5ba45537cd4ac2ec80ffac3d9531cfd33b8",
+            "before": "18e0f82a63d67674b3c0b43416157c57d2922880e4bd85c0ce91f580a9d48d95"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md": {
+            "after": "d5cacbe2894c92b892ae77b57d00d7aa9d6ef4cd836da18da0eb8f2bae56d7bc",
+            "before": "33ad84b62727f3ee2db125102418468ccbbdac41f975d3698cd72fc57b2c0da2"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md": {
+            "after": "31421feaeab3b44b33b7b2e294ca42ff7e6c966a0e6ef1b448a3be4a1e8858b0",
+            "before": "3f7e7160498c0790e65553c287b79015f0bdbbf5bddcdc988417e37d1162af31"
+          },
+          "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md": {
+            "after": "9bc24349692d5bde189715eca5bf565e97059c22cef6d38ff8c021a9820a8bdc",
+            "before": "0c36b49d69375f7e22d41b6a7347b3a440a3dab6b56442826f57f5183850103b"
+          },
+          "dot_codex/skills/dot_system/review-agent/SKILL.md": {
+            "after": "99912e29d47455e71de3fb34e6275f7423df64b4cddf9e5cfce0ee3f5673d89a",
+            "before": "a3b2c61cc0521859b2c9eab873014e29f1f95d04cec88770c94601f25da0d1b0"
+          },
+          "dot_codex/skills/dot_system/skill-creator/SKILL.md": {
+            "after": "7af128b41d3ef7441029a6699f7ef0ce3df6f197312582160f17ce141ab31837",
+            "before": "8202609ac640b061aecadda4d181e743a20a00a6fe37b286450e45a48712a86c"
+          },
+          "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md": {
+            "after": "ba41458ab4560fdae78b685ee796b58f8c7740dbacf54e367cae6bf47077980d",
+            "before": "e66472f9b66b3a53dcfd47fd51f20591da22909b93a6028bc561bb9f60f8859f"
+          },
+          "dot_codex/skills/dot_system/skill-installer/SKILL.md": {
+            "after": "456ff722024fa3a6ec3ac54906f8ea6c5eccbd5f832eb7071bd24a99b261b5c0",
+            "before": "34b51442df5d84fa3acba3c21c37b307a23933e247e2ce6d0226a2e597531483"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "a229cb3acd074f76750de9812257a7c511528b99945483050eb992a0413bf3c5",
+            "before": "d3f71b5e5e15bc83aab0a39b973a08728989dec4016020230df1d2494ad79676"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "467bfd45146d4f983d79393b3e5c05fadfb47e838fed13048ec55577548140a4",
+            "before": "80f5d4b637d1a3118a18dd5c29d6cc6cbe166aa8561a3518865af330637e1243"
+          },
+          "github.openai.com/openai/codex/CHANGELOG.md": {
+            "after": "297ffb7ca588bcc51ee405ae81c282a6076d6c6ba1b0372b8f4d2c03e8aa29f5",
+            "before": "4e081f5c5d5503bd0a1298c8391cad06cfc3d8fbedd2811a1f8a4bc9081dad4b"
+          },
+          "github.openai.com/openai/codex/README.md": {
+            "after": "fd0ef42cad1fc4b039b19217a43061ae6f1103404729f4aa3345980afdd8324f",
+            "before": "d3412417b12dd7ce10242ba67fdc3341b873443b316f0a47afa311512d542b49"
+          },
+          "github.openai.com/openai/codex/SECURITY.md": {
+            "after": "8ca702383e03572a29ba16716e70ae970789d89a3f78a5f73ebf09944a6c91ff",
+            "before": "2aba3d62991eac0c97248eec983319f6a940db14df335a5ea516291c64697766"
+          },
+          "github.openai.com/openai/codex/codex-cli/scripts/README.md": {
+            "after": "c3edbeb930d7893a19a4f49972990da3ad22ce29bd9d54f90b23bc71beb16741",
+            "before": "f48afb0637291773c6d943837aa07bacdf53b9153e44b6bbe70b94c9a4b547fc"
+          },
+          "github.openai.com/openai/codex/codex-rs/README.md": {
+            "after": "b55f7fa453813e27624e8a043a828908a850fab44a8a8a564cce5ff9194c2128",
+            "before": "f752328157d8f5ac1df2b053bbab92d1023ae3c56cff9d00ffb89658b1e3af87"
+          },
+          "github.openai.com/openai/codex/codex-rs/config.md": {
+            "after": "e30b970fa943d2d96c5a21d1667ff3a4c70fba6653c31f97c2317bbbf393d879",
+            "before": "610f609a075a728b1ac39fde7020011699a7828a4d2ffadfd7ab5a41b5aab380"
+          },
+          "github.openai.com/openai/codex/codex-rs/docs/bazel.md": {
+            "after": "3aad193da9d6d08feefe03a0fd7afe7fbe0adb1b55f0d2cdc79571aeb9510375",
+            "before": "731eaf6f8d975f55f7163fc772d359ffd1c8e8bd243c82664fa5aa460d2332ff"
+          },
+          "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md": {
+            "after": "bfc624e1f08428a5905f8e9e8844b96445cb310c99a69b18b6cef8c51add0331",
+            "before": "6f470905a9ebb0040bc7bb7d496debec078dad8c296d11b6dad23d9a13ae1d24"
+          },
+          "github.openai.com/openai/codex/docs/CLA.md": {
+            "after": "d74aa11597457d6d121e0fe82360c86e4400dc409de947d7133f506cd93272ee",
+            "before": "2f9c518bee809453b7956e32ff41043190205039bb20490a19a45e25768f6dc5"
+          },
+          "github.openai.com/openai/codex/docs/agents_md.md": {
+            "after": "5de35e5cf4ff9943929474ac8a61e9519cd6b921b8d089f25a89661d32200190",
+            "before": "6aba6bf6592ef2bb791f22a3123d6422f945d4fb39e17da66f01d2097b1c5b13"
+          },
+          "github.openai.com/openai/codex/docs/authentication.md": {
+            "after": "70d8607397df439966ebae4a028507cdfcbe924f9e113bba4f12e3cae05c897b",
+            "before": "98ce2db6a91d7e10e74d301fa4087717c70adfa4c795108c027f20b87cba52e2"
+          },
+          "github.openai.com/openai/codex/docs/config.md": {
+            "after": "01e3542f325e96a62ef2026940ceca388b398d846341470d25d1cd41ca769a61",
+            "before": "05117ba803bfd1f7b6659b523ddb21fb0f2f2c248b3c10a42518e96c44cc383c"
+          },
+          "github.openai.com/openai/codex/docs/contributing.md": {
+            "after": "0b29d8271c7317005231d32a5998a9263e58157c5682a6c93ee08d056039d06d",
+            "before": "140e3bd412c772b356e4e412b6563ed5e16fc5ca229f77b9b940da9bc3061d86"
+          },
+          "github.openai.com/openai/codex/docs/example-config.md": {
+            "after": "0c35ec2921774162cb4f5f5d83857db5c9b161018e414c295da9443d9705f6ef",
+            "before": "ad1e41a2f53790d7e098d298780e315871aea018cc765377d1d0d433bb30e995"
+          },
+          "github.openai.com/openai/codex/docs/exec.md": {
+            "after": "7251f3772790309e092108220f2bcdd9b6587300e61f528b07915efb4814699e",
+            "before": "0ed854d34306227ffa01c2bc9cd48a0c4a0365a3b54014d8f9973a57ce6fe4b8"
+          },
+          "github.openai.com/openai/codex/docs/execpolicy.md": {
+            "after": "90a4fa9e24d86dcaec529015d7532f69059311e12d9d050256749f3a3539ac5e",
+            "before": "40afd431e89e11977939b5b98b65eed43a737334db92e09b068b994c6e0341ec"
+          },
+          "github.openai.com/openai/codex/docs/getting-started.md": {
+            "after": "a1e1402ff203414567f9667fe4f9d94c4acfbd1a7020ddac8b32025f6c70787b",
+            "before": "a6ca21859120dc5088baf2e89671ff30680b7dd80b8c0ffc1e710d74a7a0db3d"
+          },
+          "github.openai.com/openai/codex/docs/install.md": {
+            "after": "8497f3218fda4fadb982c4aade150246f499d5abda22dce73b71ea632fa677d1",
+            "before": "1921c6c6d5099c4f9b4291b72a12217356ae3f6e1cb1bc41b95f9f4c1b9699c2"
+          },
+          "github.openai.com/openai/codex/docs/license.md": {
+            "after": "907f6f533a8d4f164562de88d2e0f8092bab62c6ed08f3fbeda5fd466353ea92",
+            "before": "cfa419be294b26f5b755f0294b65780d8f626d7060557abd3ee8216403e57419"
+          },
+          "github.openai.com/openai/codex/docs/open-source-fund.md": {
+            "after": "05bebca141ce5cc2ed507ea63d04364dffb1d15370ea27bede20e6d5fca4b4c8",
+            "before": "0c2c7dbdb42eb0ecc9fc4a071b05ef5b3432c3e1d097fdc979a8f883e532f849"
+          },
+          "github.openai.com/openai/codex/docs/sandbox.md": {
+            "after": "a8d5d911defc55e8e6c17dbab31418ce206d7c867b2ab2ab2e38e29eef006643",
+            "before": "d5d17c54515919b240c3da5c45f5aab0a60b4cc27cfcc5e73f606b1444f2677d"
+          },
+          "github.openai.com/openai/codex/docs/skills.md": {
+            "after": "43a38638b8ce61ec95fa52856b6ed241bdbcaa17133f5dfebc00485506abd098",
+            "before": "711ff6985dc89f2593e54e99a9282123cbb2a82ec6582efb03da5eb66df0dff3"
+          },
+          "github.openai.com/openai/codex/docs/slash_commands.md": {
+            "after": "1ff0e7e006771a71524b3ecd21f0e73c98d2856e889ad318b04320958478dbe6",
+            "before": "9b4cd986aae878df1230d681f9f08e00fcd3fe19be131d57a5abc87b5058e79e"
+          },
+          "system_prompts/codex-cli/prompt-input.json": {
+            "after": "e2d19633071ddeb5424f2d6c0a03a420c17fbf2f3cfb774680ff08a3bdfa47f7",
+            "before": "95cb8a5f0026dac3eeae69739379483d7cf6f3e172358bd7368bab3425cf0d9c"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.168.0",
+          "codex_cli_source_commit": "9480ec100c3edee9fc69172e8e80a4730444094d",
+          "codex_cli_version": "0.168.0",
+          "codex_cli_version_raw": "codex-cli 0.168.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "release"
+        },
+        "updated": [
+          "cli-surface/linux-x86_64.json",
+          "cli-surface/macos-arm64.json",
+          "codex_capabilities.json",
+          "codex_cli_surface.json",
+          "codex_models.json",
+          "dot_codex/skills/dot_system/imagegen/SKILL.md",
+          "dot_codex/skills/dot_system/imagegen/references/cli.md",
+          "dot_codex/skills/dot_system/imagegen/references/codex-network.md",
+          "dot_codex/skills/dot_system/imagegen/references/image-api.md",
+          "dot_codex/skills/dot_system/imagegen/references/prompting.md",
+          "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md",
+          "dot_codex/skills/dot_system/openai-docs/SKILL.md",
+          "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md",
+          "dot_codex/skills/dot_system/openai-docs/references/latest-model.md",
+          "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md",
+          "dot_codex/skills/dot_system/openai-docs/references/model-migration.md",
+          "dot_codex/skills/dot_system/openai-docs/references/model-selection.md",
+          "dot_codex/skills/dot_system/openai-docs/references/official-docs.md",
+          "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md",
+          "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md",
+          "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md",
+          "dot_codex/skills/dot_system/review-agent/SKILL.md",
+          "dot_codex/skills/dot_system/skill-creator/SKILL.md",
+          "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md",
+          "dot_codex/skills/dot_system/skill-installer/SKILL.md",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "github.openai.com/openai/codex/CHANGELOG.md",
+          "github.openai.com/openai/codex/README.md",
+          "github.openai.com/openai/codex/SECURITY.md",
+          "github.openai.com/openai/codex/codex-cli/scripts/README.md",
+          "github.openai.com/openai/codex/codex-rs/README.md",
+          "github.openai.com/openai/codex/codex-rs/config.md",
+          "github.openai.com/openai/codex/codex-rs/docs/bazel.md",
+          "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md",
+          "github.openai.com/openai/codex/docs/CLA.md",
+          "github.openai.com/openai/codex/docs/agents_md.md",
+          "github.openai.com/openai/codex/docs/authentication.md",
+          "github.openai.com/openai/codex/docs/config.md",
+          "github.openai.com/openai/codex/docs/contributing.md",
+          "github.openai.com/openai/codex/docs/example-config.md",
+          "github.openai.com/openai/codex/docs/exec.md",
+          "github.openai.com/openai/codex/docs/execpolicy.md",
+          "github.openai.com/openai/codex/docs/getting-started.md",
+          "github.openai.com/openai/codex/docs/install.md",
+          "github.openai.com/openai/codex/docs/license.md",
+          "github.openai.com/openai/codex/docs/open-source-fund.md",
+          "github.openai.com/openai/codex/docs/sandbox.md",
+          "github.openai.com/openai/codex/docs/skills.md",
+          "github.openai.com/openai/codex/docs/slash_commands.md",
+          "system_prompts/codex-cli/prompt-input.json"
+        ]
+      },
+      "id": "c10b0c47d7ae45dfc46637c9da8deef1a1c25003332e53ac64646f0a48527ea2",
+      "observed_at": "2026-11-13T05:33:20+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

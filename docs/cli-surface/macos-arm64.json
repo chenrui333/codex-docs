@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.167.2",
-  "codex_cli_version_raw": "codex-cli 0.167.2",
+  "codex_cli_version": "0.168.0",
+  "codex_cli_version_raw": "codex-cli 0.168.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -2870,12 +2870,36 @@
           "synopsis": "--use-agent-identity-auth"
         },
         {
+          "description": "Read one registration bearer from stdin",
+          "flags": [
+            "--registration-bearer-stdin"
+          ],
+          "primary_flag": "--registration-bearer-stdin",
+          "synopsis": "--registration-bearer-stdin"
+        },
+        {
           "description": "Read rotating executor credentials from stdin; exit when the pipe closes",
           "flags": [
             "--executor-credential-stdin"
           ],
           "primary_flag": "--executor-credential-stdin",
           "synopsis": "--executor-credential-stdin"
+        },
+        {
+          "description": "Read a ChatGPT access token from stdin for HTTPS registration",
+          "flags": [
+            "--chatgpt-token-stdin"
+          ],
+          "primary_flag": "--chatgpt-token-stdin",
+          "synopsis": "--chatgpt-token-stdin"
+        },
+        {
+          "description": "ChatGPT account ID. Must match the token's account claim when present",
+          "flags": [
+            "--chatgpt-account-id"
+          ],
+          "primary_flag": "--chatgpt-account-id",
+          "synopsis": "--chatgpt-account-id <ID>"
         },
         {
           "description": "Sign Direct registration and WebSocket handshake requests with AWS SigV4",
@@ -3536,9 +3560,9 @@
     "os": "darwin"
   },
   "schema_version": 2,
-  "source_commit": "ce21072c90d32c40af7a55b60b2fb35c84a43a6a",
+  "source_commit": "9480ec100c3edee9fc69172e8e80a4730444094d",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.167.2",
+  "source_ref": "rust-v0.168.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"
