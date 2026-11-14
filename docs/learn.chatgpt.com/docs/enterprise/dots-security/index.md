@@ -77,7 +77,7 @@ We’re developing additional rules in Agent Security so admins can choose which
 
 ### EKM coverage for the dot’s cloud computer
 
-For eligible workspaces with EKM enabled, your workspace’s customer-managed key protects saved cloud computer snapshots and saved browser cookies at rest. Browser cookies are stored separately from snapshots.
+For eligible workspaces with EKM enabled, your workspace’s customer-managed key protects saved cloud computer snapshots and saved browser cookies at rest.
 
 The same access controls that protect other OpenAI services handling customer data also apply to the running cloud computer.
 

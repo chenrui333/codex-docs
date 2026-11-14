@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+            "after": "5d2ac626e2ff223ac4977574c9a432cb660bcd5232ff849fd521860d82b272fd",
+            "before": "983694620df1bae7dd1e6d725a7b071da7f6dacb0cae3164aa29e39e70b82b5e"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.169.0",
+          "codex_cli_source_commit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
+          "codex_cli_version": "0.169.0",
+          "codex_cli_version_raw": "codex-cli 0.169.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md"
+        ]
+      },
+      "id": "2a45ae18511c37ddd9504227edbcdba3df5f279c8bc95b9b03404f634cd67eaa",
+      "observed_at": "2026-11-14T05:25:39+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

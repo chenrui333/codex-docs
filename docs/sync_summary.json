@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-13T23:22:20+00:00",
-  "manifest_sha256": "ad4b7e3a7b03d73c20e0e13d4a28937183d428cc475b64a9e488a15155c7a63e",
+  "generated_at": "2026-11-14T05:25:39+00:00",
+  "manifest_sha256": "071de3136b7a3f6d1dd010e43a6e94eb4ff0b452359b4890ac079d2a2aaad509",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,6 +17,6 @@
   },
   "total_files": 302,
   "updated": [
-    "learn.chatgpt.com/docs/config-file/config-advanced/index.md"
+    "learn.chatgpt.com/docs/enterprise/dots-security/index.md"
   ]
 }
