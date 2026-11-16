@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-14T05:25:39+00:00",
-  "manifest_sha256": "071de3136b7a3f6d1dd010e43a6e94eb4ff0b452359b4890ac079d2a2aaad509",
+  "generated_at": "2026-11-16T15:06:02+00:00",
+  "manifest_sha256": "49e328ade2181e2c7ac7dfe9ac479ea25b645434690b0481a7731cbfe95890a9",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,10 +13,10 @@
     "codex_cli_version_raw": "codex-cli 0.169.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 302,
   "updated": [
-    "learn.chatgpt.com/docs/enterprise/dots-security/index.md"
+    "cli-surface/macos-arm64.json"
   ]
 }
