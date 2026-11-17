@@ -93840,6 +93840,34 @@
       "active": true,
       "category": "config_key",
       "codex_cli_versions": [
+        "0.169.0"
+      ],
+      "codex_cli_versions_raw": [
+        "codex-cli 0.169.0"
+      ],
+      "config_key": "otel.log_sse_deltas",
+      "id": "config_key:otel.log_sse_deltas",
+      "lifecycle": {
+        "first_seen_version": "0.169.0",
+        "last_seen_version": "0.169.0",
+        "status": "active"
+      },
+      "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+      "name": "otel.log_sse_deltas",
+      "provenance": [
+        {
+          "evidence_type": "official_documentation",
+          "mirrored_path": "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        }
+      ],
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+    },
+    {
+      "active": true,
+      "category": "config_key",
+      "codex_cli_versions": [
         "0.151.0",
         "0.152.0",
         "0.152.1",
@@ -125983,11 +126011,11 @@
     "codex-cli 0.169.0"
   ],
   "counts": {
-    "active": 1153,
+    "active": 1154,
     "by_category": {
       "cli_command": 97,
       "cli_option": 376,
-      "config_key": 528,
+      "config_key": 529,
       "feature_flag": 215,
       "linked_tool_guide": 2,
       "system_prompt_snapshot": 1,
@@ -126001,7 +126029,7 @@
       "under development": 90
     },
     "inactive": 72,
-    "total": 1225
+    "total": 1226
   },
   "evidence_types": {
     "generated_relationship": "A deterministic relationship derived from other recorded evidence.",

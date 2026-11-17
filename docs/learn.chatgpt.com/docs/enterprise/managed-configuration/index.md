@@ -1286,9 +1286,12 @@ exports. This example sends logs to an OTLP/HTTP collector and limits the
 text logged for each tool result to 256 UTF-8 bytes. It omits prompt text, final response
 text, and automatic approval assessments.
 
-The macOS desktop app 26.1027.30824 bundles CLI `0.166.0-alpha.5.1`.
-That build doesn't support `[otel]` in `requirements.toml`, so it can't
-enforce `log_user_prompt = false` through this policy.
+The macOS desktop app 26.1111.21308 bundles CLI `0.169.0-alpha.11.1` and
+supports managed `[otel]` settings. Set `otel.log_sse_deltas` to `false` to
+skip successful streaming events whose names end in `.delta`. Codex still
+records errors, completion events, and metrics.
+The older desktop build 26.1027.30824 bundles CLI `0.166.0-alpha.5.1` and
+can't enforce `[otel]` settings through `requirements.toml`.
 
 ```toml
 [otel]

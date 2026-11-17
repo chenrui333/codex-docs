@@ -271,6 +271,77 @@
       "id": "311431b5ec4a5ca459cc01eac610526afef512d0374c56e25f86d790ed14acb6",
       "observed_at": "2026-11-17T15:39:59+00:00",
       "previous_id": "db52b5ddee13dc030a860f2e9ab039535f015cf743ce5a54dc0af8b962b50e61"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [
+            "config_key:otel.log_sse_deltas"
+          ],
+          "added_by_category": {
+            "config_key": [
+              "config_key:otel.log_sse_deltas"
+            ]
+          },
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "fb3d1162d6d478b6ba71d0b307d1e7c6bd2ab50335c4238ebd1935702291f5fd",
+            "before": "822f935d7420d98d69275a26b401e8c67d8729b571fa6df2c690ff33a44bb6dc"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "afdd76490bbc2562e5a7b445dd96bf61f69154db4fdfc7509c522aa05adc8c1e",
+            "before": "06a63359ea86c64e28b525471afb10dc0b8be64732f6a163b704be2e162aa2a7"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "ff34da1305d071f7bf7cabde55ac3c0a3654a5841e1b4c8c99d38d13637324d7",
+            "before": "a7600dcfe1b193a36bf3971dcdf175fedd85e301f7c2e59ea06786216d65c121"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "4838d15ba2c0be7a36ea8e38869498cba8f50f8a2c58a8d5b429865a134cd0a4",
+            "before": "d11ef598f57a2111392668a3b8e416dea845190604a2a160565710119c5d1c3d"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "88aae7ffdf992f39e06a5abdfcd41cfe5bee8b24ab6535a2ea1e8d70e666bff0",
+            "before": "0fc0fce0a588af2a90539ae496afc957341733b4e77b7fe182a573e4cd70850e"
+          },
+          "learn.chatgpt.com/docs/hooks/index.md": {
+            "after": "7d5ac8bae33d3a26aafb49cff823aafa84f5e5fadf6bc1a39e4266c1315171c2",
+            "before": "43e132772ca69ac43578bb58425af90ac9fb801c0892e3de709ae947254cd5d3"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.169.0",
+          "codex_cli_source_commit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
+          "codex_cli_version": "0.169.0",
+          "codex_cli_version_raw": "codex-cli 0.169.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/hooks/index.md"
+        ]
+      },
+      "id": "ce2dd7749d3d7a72abef2c2303d38c768bab290cc4def176b5175d68b5190de7",
+      "observed_at": "2026-11-17T15:41:00+00:00",
+      "previous_id": "311431b5ec4a5ca459cc01eac610526afef512d0374c56e25f86d790ed14acb6"
     }
   ],
   "schema_version": 1

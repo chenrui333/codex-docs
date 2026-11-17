@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-17T15:39:59+00:00",
-  "manifest_sha256": "c10bd37fa42dbd3dca05e617fce0c405261e2c83c7a4641b8b57e226e6d10c1c",
+  "generated_at": "2026-11-17T15:41:00+00:00",
+  "manifest_sha256": "327c595654094e2d4994dccfd289bea0196fa0a2d043e4a5554ac536a3fac734",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,10 +13,15 @@
     "codex_cli_version_raw": "codex-cli 0.169.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "release"
+    "sync_scope": "full"
   },
   "total_files": 302,
   "updated": [
-    "cli-surface/macos-arm64.json"
+    "codex_capabilities.json",
+    "feature-flags/lifecycle.json",
+    "feature-flags/lifecycle.md",
+    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+    "learn.chatgpt.com/docs/hooks/index.md"
   ]
 }

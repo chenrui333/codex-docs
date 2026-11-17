@@ -41,35 +41,39 @@ Hooks run at different points in a conversation:
 
 ## Where Codex looks for hooks
 
-Codex discovers hooks next to active config layers in either of these forms:
+Local Codex looks for `hooks.json` in the locations below. In each directory,
+you can also declare hooks inline under `[hooks]` in `config.toml`.
 
-- `hooks.json`
-- inline `[hooks]` tables inside `config.toml`
+| Scope                    | `hooks.json` location                   |
+| ------------------------ | --------------------------------------- |
+| System (macOS and Linux) | `/etc/codex/hooks.json`                 |
+| System (Windows)         | `%ProgramData%\OpenAI\Codex\hooks.json` |
+| User                     | `$CODEX_HOME/hooks.json`                |
+| Trusted project          | `.codex/hooks.json`                     |
 
-Installed plugins can also bundle lifecycle config through their plugin
-manifest or a default `hooks/hooks.json` file. See [Build
+If `CODEX_HOME` is unset, the user file is `~/.codex/hooks.json` on macOS and
+Linux and `%USERPROFILE%\.codex\hooks.json` on Windows.
+
+Codex discovers a standalone `hooks.json` without a sibling `config.toml` or a
+reference in `requirements.toml`. If you move or remove the system file, Codex
+skips that source the next time it loads hooks. Use file and directory
+permissions to control who can edit or move it. Administrators can also declare
+hooks directly in [`requirements.toml`](#managed-hooks-in-local-codex).
+
+Codex checks `.codex` directories from the project root to the working directory
+and loads hooks only from trusted project layers. In a linked Git worktree, a
+project layer can read hooks from the corresponding directory in the main
+checkout. User and system hooks can still load in untrusted projects.
+
+Enabled plugins can also supply [bundled hooks](#plugin-bundled-hooks) through
+their manifest or, by default, `hooks/hooks.json` in the plugin root. See [Build
 plugins](https://developers.openai.com/plugins/build/plugins#bundled-mcp-servers-and-lifecycle-hooks) for the
 plugin packaging rules.
 
-In practice, the four most useful locations are:
-
-- `~/.codex/hooks.json`
-- `~/.codex/config.toml`
-- `<repo>/.codex/hooks.json`
-- `<repo>/.codex/config.toml`
-
-If more than one hook source exists, Codex loads all matching hooks.
-Higher-precedence config layers don't replace lower-precedence hooks.
-If a single layer contains both `hooks.json` and inline `[hooks]`, Codex
-merges them and warns at startup. Prefer one representation per layer.
-
-Codex can also discover hooks bundled with enabled plugins. Plugin-bundled
-hooks load alongside other hook sources and use the same trust-review flow as
-other non-managed hooks.
-
-Project-local hooks load only when the project `.codex/` layer is trusted. In
-untrusted projects, Codex still loads user and system hooks from their own
-active config layers.
+Codex combines matching hooks across sources. If two files register the same
+command for an event, Codex can run it twice when that event occurs. When a
+layer declares hooks in both `hooks.json` and `config.toml`, Codex loads both
+and warns at startup. Prefer one format per layer.
 
 ## Review and trust hooks
 
@@ -377,8 +381,9 @@ statusMessage = "Checking managed Bash command"
 
 Notes for managed hooks:
 
-- `managed_dir` is used on macOS and Linux.
-- `windows_managed_dir` is used on Windows.
+- `managed_dir` (macOS and Linux) and `windows_managed_dir` (Windows) describe
+  where you install scripts for the hooks declared in `requirements.toml`.
+  Setting either directory doesn't add a `hooks.json` search location.
 - Codex doesn't distribute the scripts in `managed_dir`; your enterprise
   tooling must install and update them separately.
 - Managed hook commands should use absolute script paths under the configured

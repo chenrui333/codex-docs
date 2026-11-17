@@ -166,7 +166,7 @@
         "codex-cli 0.169.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "822f935d7420d98d69275a26b401e8c67d8729b571fa6df2c690ff33a44bb6dc",
+      "sha256": "fb3d1162d6d478b6ba71d0b307d1e7c6bd2ab50335c4238ebd1935702291f5fd",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -4450,12 +4450,12 @@
       "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
     },
     "feature-flags/lifecycle.json": {
-      "sha256": "06a63359ea86c64e28b525471afb10dc0b8be64732f6a163b704be2e162aa2a7",
+      "sha256": "afdd76490bbc2562e5a7b445dd96bf61f69154db4fdfc7509c522aa05adc8c1e",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
     "feature-flags/lifecycle.md": {
-      "sha256": "a7600dcfe1b193a36bf3971dcdf175fedd85e301f7c2e59ea06786216d65c121",
+      "sha256": "ff34da1305d071f7bf7cabde55ac3c0a3654a5841e1b4c8c99d38d13637324d7",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
@@ -8751,7 +8751,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "d11ef598f57a2111392668a3b8e416dea845190604a2a160565710119c5d1c3d",
+      "sha256": "4838d15ba2c0be7a36ea8e38869498cba8f50f8a2c58a8d5b429865a134cd0a4",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9603,7 +9603,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "0fc0fce0a588af2a90539ae496afc957341733b4e77b7fe182a573e4cd70850e",
+      "sha256": "88aae7ffdf992f39e06a5abdfcd41cfe5bee8b24ab6535a2ea1e8d70e666bff0",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10411,7 +10411,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "43e132772ca69ac43578bb58425af90ac9fb801c0892e3de709ae947254cd5d3",
+      "sha256": "7d5ac8bae33d3a26aafb49cff823aafa84f5e5fadf6bc1a39e4266c1315171c2",
       "source_area": "learn_hooks",
       "source_kind": "learn_markdown",
       "source_type": "learn",

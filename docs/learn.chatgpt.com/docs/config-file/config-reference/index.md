@@ -1474,6 +1474,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Select the OpenTelemetry metrics exporter. The default, `statsig`, follows `analytics.enabled`. Explicit OTLP exporters work independently of that setting. Set to `none` to disable metrics export.",
     },
     {
+      key: "otel.log_sse_deltas",
+      type: "boolean",
+      description:
+        "Log successful server-sent events whose names end in `.delta`. Defaults to `true`. Set to `false` to skip those log entries. Codex still records errors, completion events, and metrics.",
+    },
+    {
       key: "otel.log_user_prompt",
       type: "boolean",
       description:
@@ -2933,6 +2939,12 @@ from either one wins.
       type: "none | statsig | otlp-http | otlp-grpc",
       description:
         "Enforce the metrics exporter. The Statsig exporter follows `analytics.enabled`. Explicit OTLP metrics exporters run independently of that setting.",
+    },
+    {
+      key: "otel.log_sse_deltas",
+      type: "boolean",
+      description:
+        "Control whether logs include successful server-sent events whose names end in `.delta`.",
     },
     {
       key: "otel.log_user_prompt",
