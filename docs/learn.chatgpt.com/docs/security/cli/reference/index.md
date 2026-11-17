@@ -137,6 +137,7 @@ usage: codex-security scan [-h] [--auth {auto,chatgpt,api-key}]
                            [--cyber-access-program PROGRAM]
                            [--provider {openai,openrouter,fireworks,amazon-bedrock}]
                            [--path PATH | --diff BASE | --working-tree]
+                           [--exclude-path PATH]
                            [--head HEAD] [--base BASE]
                            [--knowledge-base PATH] [--scan-prompt-file FILE]
                            [--validation-prompt-file FILE] [--rubric FILE]
@@ -307,6 +308,7 @@ Choose one target type for each scan.
 | Argument                 | Description                                                                     |
 | ------------------------ | ------------------------------------------------------------------------------- |
 | `--path PATH`            | Scan a path relative to the repository. Repeat the flag for more paths.         |
+| `--exclude-path PATH`    | Exclude a literal repository-relative file or directory. Repeat for more paths. |
 | `--diff BASE`            | Scan committed changes from `BASE` to `--head`. The head defaults to `HEAD`.    |
 | `--head HEAD`            | Set the head revision for `--diff`.                                             |
 | `--working-tree`         | Scan staged and unstaged changes against `--base`. The base defaults to `HEAD`. |
@@ -316,6 +318,10 @@ Choose one target type for each scan.
 `--path`, `--diff`, and `--working-tree` are mutually exclusive. `--head`
 requires `--diff`, and `--base` requires `--working-tree`. Deep mode supports
 repository and path targets.
+
+To skip a directory, pass `--exclude-path examples/`. In a project config, add
+`exclude_paths: [examples/]` under `scan`. CLI exclusions replace the configured
+list.
 
 Diff and working-tree scans require the repository argument to be the Git
 worktree root. The selected refs must exist in that checkout.

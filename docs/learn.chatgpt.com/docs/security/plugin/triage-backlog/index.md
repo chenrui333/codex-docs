@@ -23,12 +23,6 @@ assess. Codex must be able to read the repository's source code. Jira and Linear
 connectors can provide finding data, while GitHub findings require authenticated
 GitHub REST access. Neither replaces access to the source code.
 
-This differs from `$codex-security:validation`, which can build or run code,
-create a test or proof of concept, or exercise a real interface to
-reproduce or disprove a finding. Use triage to classify and rank an
-existing backlog. Use validation when runtime evidence could resolve a finding
-that static evidence leaves uncertain.
-
 Backlog triage starts from existing findings. To search the repository for new
   vulnerabilities, [run a security scan](https://learn.chatgpt.com/docs/security/plugin/scans). Triage
   doesn't modify the repository or implement fixes.
@@ -90,22 +84,16 @@ against the claim, along with unresolved questions.
 | `not_actionable` | Repository evidence rules out the claim, such as by showing an unaffected version, unreachable path, effective guard, or non-shipped surface.                 |
 | `needs_review`   | Repository evidence isn't enough to decide because required information is missing, ambiguous, runtime-dependent, environment-dependent, or policy-dependent. |
 
-Use the rankings to decide which `confirmed` findings to fix first and which
-`needs_review` findings to investigate first. Each group is ranked separately.
-
-Read the verdict's rationale alongside the affected code and attacker
-prerequisites. Check the evidence against the claim and any open questions
-before acting on the rank. Here, `confirmed` means supported by static
-repository evidence, not reproduced by executing the application.
-
-Jira, Linear, and other backlog records remain unchanged unless you ask Codex
-to update them after reviewing the triage results.
+Codex ranks `confirmed` and `needs_review` findings separately. Review the
+rationale, affected code, and attacker prerequisites before acting on a rank.
+A `confirmed` verdict is based on static evidence, not runtime reproduction.
+Source tickets remain unchanged unless you ask Codex to update them.
 
 ## Next steps
 
 - `confirmed`: After a person accepts the finding for remediation, use
   [`$codex-security:fix-finding`](https://learn.chatgpt.com/docs/security/plugin/fix-findings) to fix and
-  verify it. Triage prepares a prompt-ready handoff but doesn't invoke the skill
+  verify it. Triage prepares a handoff but doesn't invoke the skill
   automatically.
 - `needs_review`: If running code can resolve the proof gap, use
   `$codex-security:validation` to test the finding against running code. Pass
@@ -116,8 +104,8 @@ to update them after reviewing the triage results.
   Use $codex-security:validation to dynamically validate finding [triage item ID or source ID] from the backlog triage result. Reproduce or disprove the finding, record what you tested, and list any remaining uncertainty.
 ```
 
-  Unlike triage, validation may build or run code, create a test or
-  proof of concept, or exercise a real interface. See [Codex approval and
+  Validation may build or run code, create a test or proof of concept, or
+  exercise a real interface. See [Codex approval and
   security policies](https://learn.chatgpt.com/docs/agent-approvals-security) for execution controls.
 
 - `needs_review`: If the finding depends on product policy or deployment

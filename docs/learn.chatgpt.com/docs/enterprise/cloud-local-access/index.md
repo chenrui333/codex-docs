@@ -102,17 +102,18 @@ Review eligibility, data coverage, and the controls your organization relies on 
 
 #### Review Work and dots eligibility
 
-- **Work:** Residency applies only to eligible content and supported workloads, regions, and configurations. EKM covers supported stored content in eligible workspaces. Confirm coverage for your workflow rather than assuming every local-access step or connected integration is covered. Work is not supported with UAE inference residency. See [Data residency and inference residency](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt) and [Work cloud security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security#data-handling-and-retention).
+Use the Help Center as the source of truth for current eligibility, regional availability, and data requirements:
 
-- **Dots residency:** During the Enterprise beta, dots do not support data residency or inference residency. Eligible workspaces can opt in after acknowledging those limitations; enabling dots does not make their data or processing residency-compliant.
+- **Work:** Review [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt) and [Work cloud security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security#data-handling-and-retention).
+- **Dots:** Review [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot) and [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt), along with the workspace notices shown during setup.
 
-- **Dots exclusions:** Dots are unavailable for FedRAMP workspaces, workspaces with EKM, and workspaces with inference residency set to AE (UAE). HIPAA workspaces can participate if they meet the other eligibility requirements.
+Confirm that your workspace configuration, agreement, and intended workflow meet your organization’s requirements before enabling access.
 
 #### Check data handling and the local-access safeguard
 
 - **Cloud processing:** Work with local access and dots still use cloud coordination. Conversations, tool results, and other task context do not stay exclusively on the connected computer.
 
-- **Residency safeguard:** If any cloud policy enables `enforce_residency`, **Allow local computer access** is unavailable for both Work and dots. This safeguard does not set workspace residency or, by itself, disable Work Cloud or dots. Eligible workspaces can still opt in to dots after acknowledging the beta residency limitations; local access remains blocked.
+- **Residency safeguard:** If any cloud policy enables `enforce_residency`, **Allow local computer access** is unavailable for both Work and dots. This safeguard does not set workspace residency or, by itself, disable Work Cloud or dots.
 
 - **Retention and access to data:** Neither experience provides strict zero data retention. API Zero Data Retention is a separate API control. “Eyes-off” commitments and abuse-monitoring controls are also distinct from zero retention. If a workflow requires no retained data, do not enable it for these experiences.
 

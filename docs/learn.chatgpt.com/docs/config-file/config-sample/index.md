@@ -682,6 +682,10 @@ show_tooltips = true
 
 # alternate_screen = "auto"
 
+# Fold completed activity in the full-screen transcript. Default: false.
+
+# collapse_turn_details = true
+
 # Working directory for resumed or forked sessions: current | session.
 
 # Leave unset to choose when the current and saved session directories differ.
@@ -1109,6 +1113,22 @@ prefer_mxc = true
 # timeout_ms = 5000
 
 # refresh_interval_ms = 300000
+
+# To use gateway OAuth, replace the [model_providers.proxy.auth] table above with:
+
+# [model_providers.proxy.gateway_oauth]
+
+# authorization_url = "https://login.example.com/oauth/authorize"
+
+# token_url = "https://login.example.com/oauth/token"
+
+# client_id = "codex"
+
+# device_authorization_url = "https://login.example.com/oauth/device" # optional device-code sign-in
+
+# To use a token-export command, replace the four OAuth settings above with:
+
+# credential_export = { command = "/usr/local/bin/export-gateway-token" }
 
 # --- Example: Local OSS (e.g., Ollama-compatible) ---
 

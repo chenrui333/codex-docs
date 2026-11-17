@@ -974,6 +974,12 @@ Set `model` to one available to your signed-in account or workspace. See
         "Enable the built-in `view_image` tool for opening local images. Defaults to `true`.",
     },
     {
+      key: "features.gateway_setup_wizard",
+      type: "boolean",
+      description:
+        "Offer custom gateway setup during CLI sign-in when the user can choose a provider. Defaults to `false`. See [Connect to a gateway](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#configure-the-provider).",
+    },
+    {
       key: "features.shell_snapshot",
       type: "boolean",
       description:
@@ -1157,7 +1163,7 @@ Set `model` to one available to your signed-in account or workspace. See
       key: "model_providers.<id>.model_catalog_url",
       type: "string",
       description:
-        "Full URL for a Codex-native model catalog. Omit to keep the provider's default model discovery.",
+        "Full URL for a Codex-native model catalog. Codex can fetch it with existing gateway OAuth credentials when the URL has the same scheme, host, and port as `base_url`. Omit to keep the provider's default model discovery.",
     },
     {
       key: "model_providers.<id>.capabilities.external_web_access",
@@ -1192,6 +1198,18 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "boolean",
       description:
         "The provider uses OpenAI authentication (defaults to false).",
+    },
+    {
+      key: "model_providers.<id>.gateway_oauth.device_authorization_url",
+      type: "string",
+      description:
+        "Optional device authorization endpoint for signing in to the gateway over SSH or from a terminal without a browser.",
+    },
+    {
+      key: "model_providers.<id>.gateway_oauth.credential_export",
+      type: "table",
+      description:
+        "Use a command as the gateway credential source. Set `command` to an executable that prints one access token. Optional fields are `args` and `timeout_ms` (default `30000`). Omit the OAuth client ID and endpoint settings when using this table.",
     },
     {
       key: "model_providers.<id>.wire_api",
@@ -1632,6 +1650,12 @@ Set `model` to one available to your signed-in account or workspace. See
       type: "auto | always | never",
       description:
         "Control alternate screen usage for the TUI (default: auto; auto skips it in Zellij to preserve scrollback).",
+    },
+    {
+      key: "tui.collapse_turn_details",
+      type: "boolean",
+      description:
+        "Summarize tool calls and fold completed activity beneath each prompt in the full-screen transcript. Answers stay visible. Defaults to `false`.",
     },
     {
       key: "tui.resume_cwd",

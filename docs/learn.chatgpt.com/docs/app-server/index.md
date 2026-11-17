@@ -421,6 +421,7 @@ those plugins.
 ### List models (`model/list`)
 
 Call `model/list` to populate a model picker with the available models and reasoning efforts.
+Pass `modelProvider` to list models for a specific configured provider. Omit it to use the default provider selected at server startup.
 
 The response below illustrates the structure. Available models, reasoning
 efforts, and defaults depend on the client and account; use the returned
@@ -458,7 +459,8 @@ Each model entry can include:
 - `supportsPersonality` - deprecated compatibility field; always `false`. Models no longer support personality selection.
 - `isDefault` - whether the model is the recommended default.
 
-If the startup provider no longer satisfies managed requirements, `model/list`
+An unknown `modelProvider` returns `-32600` with `data.type` set to
+`modelProviderNotConfigured`. If the selected provider no longer satisfies managed requirements, `model/list`
 returns `-32600` and asks the client to restart Codex.
 
 By default, `model/list` returns picker-visible models only. Set `includeHidden: true` if you need the full list and want to filter on the client side using `hidden`.
@@ -2053,6 +2055,20 @@ Codex supports these authentication modes. `account/updated.authMode` shows the 
 - `account/workspaceMessages/read` - fetch active workspace messages, including notification headlines when available.
 - `mcpServer/oauthLogin/completed` (notify) - emitted after a `mcpServer/oauth/login` flow finishes; payload includes `{ name, threadId, loginId?, success, error? }`. Older servers omit `loginId`. `threadId` can be `null` for app-scoped or plugin OAuth flows.
 - `mcpServer/startupStatus/updated` (notify) - emitted when a configured MCP server's startup status changes; payload includes `{ threadId, name, status, error, failureReason }`. `threadId` is `null` for app-scoped startup. On failed startup, `failureReason: "reauthenticationRequired"` means stored OAuth credentials expired and couldn't be refreshed, so the client should offer to reconnect the server.
+
+### Sign in to a configured gateway
+
+If your client handles gateway sign-in, set `capabilities.explicitGatewayOauth` to
+`true` during initialization. On each connection, call `account/gatewayOAuth/read`
+successfully before sending authenticated requests. Pass `modelProvider` to check
+or sign in to a specific gateway. Omit it to use the current provider.
+
+For device-code sign-in, check that `account/gatewayOAuth/read` returns
+`supportsDeviceAuth: true`. Call `account/gatewayOAuth/login` with the same
+`modelProvider` and `deviceAuth: true`. A `null` prompt means the server reused
+or refreshed the credential. Otherwise, show `prompt.verificationUrl` and
+`prompt.userCode`, then wait for `account/gatewayOAuth/changed` with the
+matching `loginId` to report whether sign-in succeeded.
 
 ### 1) Check auth state
 

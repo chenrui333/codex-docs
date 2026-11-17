@@ -102,7 +102,7 @@ No. Local computer access with Work Cloud does not change Codex's existing confi
 
 ### Is sync suitable for a ZDR deployment?
 
-No. Local computer access with Work Cloud does not provide strict zero data retention. Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations. Enterprise Key Management (EKM) covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. Running a step on a connected computer does not make the workflow a ZDR deployment.
+No. Local computer access with Work Cloud does not provide strict zero data retention. For current regional availability and coverage requirements, consult the Help Center’s [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt). Running a step on a connected computer does not make the workflow a ZDR deployment.
 
 ## Overview
 
@@ -259,7 +259,7 @@ permissions and security controls.
 
 ChatGPT Work uses the privacy, security, and data commitments applicable to the customer's ChatGPT workspace, subject to plan, configuration, surface, feature, and region. For ChatGPT Enterprise, this includes [no training on business data by default](https://help.openai.com/en/articles/8983130-what-if-i-want-to-keep-my-history-on-but-disable-model-training), encryption in transit and at rest, workspace-level access controls, and supported audit logging.
 
-For Work with local access, residency applies only to eligible content and supported workloads, regions, and configurations; EKM covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. This experience does not provide strict zero data retention. Dots have separate beta exclusions and do not support data or inference residency. See [compatibility and data requirements](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#check-compatibility-and-data-requirements). HIPAA and Business Associate Agreement coverage depend on the features and agreement in use.
+For current regional availability and data requirements, use the Help Center as the source of truth: [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt) and [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot). Work with local access does not provide strict zero data retention. Review [compatibility and data requirements](https://learn.chatgpt.com/docs/enterprise/cloud-local-access#check-compatibility-and-data-requirements) before enabling local access. Confirm that the features and agreement in use meet your organization’s requirements.
 
 Connected services have their own retention, logging, access, residency, and compliance requirements. When ChatGPT Work uses plugins, repositories, or third-party systems, evaluate both the ChatGPT workspace controls and the connected system's controls.
 
@@ -284,6 +284,16 @@ classes, retention periods, and deletion paths.
 Review retention requirements across both the ChatGPT workspace and connected
 enterprise systems so your organization's data governance, compliance, and
 record-retention policies apply to each system.
+
+### How do locked chats affect workspace administration?
+
+Admins can't disable locked chats through settings or RBAC, unlock them, or reset
+a user's account PIN. Workspace policies and retention still apply. Enterprise
+and Edu conversation message logs remain available through the Compliance
+Platform.
+
+Share the [locked chat steps](https://learn.chatgpt.com/docs/projects?surface=web#web-use-locked-chats) with users, and check [Help Center](https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt)
+for availability and details.
 
 ## Observability
 

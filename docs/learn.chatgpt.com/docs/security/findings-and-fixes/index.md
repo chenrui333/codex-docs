@@ -11,10 +11,8 @@ Source: https://learn.chatgpt.com/docs/security/findings-and-fixes
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Daybreak allows you to quickly review proposed fixes based on findings from your scans.
-Open **Overview** in Daybreak. Under **Proposed fixes**, select **Review** to
-inspect a patch. To investigate an issue first, open **Findings** and select a
-finding.
+In Daybreak, open **Findings** and select a finding to investigate it. To review
+a proposed patch, open **Overview** and select **Review** under **Proposed fixes**.
 
 ## What’s on the findings page?
 
@@ -32,15 +30,17 @@ reported severity and current status.
 
 ## Import findings from other scanners
 
-Open **Settings → Integrations**. Select **Connect** to link a scanner or **Import** to use an existing connection. Check the count, repository, and destination. If the confirmation names a shared destination, confirming authorizes assessment and publication of eligible **Reportable** results there.
-
-You can save or assess an uploaded report privately, or share eligible results. Reopen **My recent imports** for the private outcomes. Each shared finding lists the evidence from its scanners under **Observations**. See [Import scanner findings](https://learn.chatgpt.com/docs/security/scanner-imports) for the steps and limits.
+You can [import scanner findings](https://learn.chatgpt.com/docs/security/scanner-imports) from **Settings → Integrations**
+or upload a report. Check the destination before confirming an import. Confirming
+a shared destination authorizes assessment and publication of eligible **Reportable** results.
+Private results remain in **My recent imports**. On a shared finding, **Observations**
+lists the evidence from each scanner.
 
 > Illustration: The observations table shows Daybreak and Wiz reporting the same export handler at the same revision.
 
 ## Review a proposed fix
 
-1. Under **Findings**, select **Fix** on a finding to generate a patch. You can also select multiple findings in the list. For example, select two findings and choose **Generate 2 fixes**. Daybreak prepares the patches in the background. Open **Fixes** to review them.
+1. Under **Findings**, select **Fix** on a finding, or select multiple findings and generate their fixes. Daybreak prepares the patches in the background. Open **Fixes** to review them.
 2. Open a proposed fix. Read its summary and diff under **Proposed changes**. Read the **Patch checker** result to see what Daybreak verified. For the export issue shown below, look for a test that rejects a request from another project and one that still allows an authorized export.
 3. If you have questions or want a change, choose **Fix with Codex** from the menu next to **Create PR**. When the patch is ready for your team, select **Create PR** to open a draft pull request on GitHub.
 

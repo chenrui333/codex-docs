@@ -91,7 +91,7 @@ For a local catalog, start with the [models.json example](#start-with-a-local-mo
 
 Supply a model catalog when your gateway uses a model name Codex does not recognize. The catalog supplies the instructions, reasoning options, context limits, and tool capabilities Codex uses for that name. Without a matching entry, a request can reach the intended upstream model while Codex uses generic settings.
 
-Host a remote catalog with `model_providers.<id>.model_catalog_url` to update model metadata centrally, or distribute a local file with `model_catalog_json`. Use a local catalog when native gateway OAuth is the only credential; OAuth alone doesn't enable remote catalog discovery. See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for both settings.
+Host a remote catalog with `model_providers.<id>.model_catalog_url` to update model metadata centrally, or distribute a local file with `model_catalog_json`. See the [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) for both settings.
 
 Get a catalog endpoint or file compatible with your Codex version from your cloud
 or gateway provider. Make sure it includes each approved alias and its model
@@ -120,8 +120,9 @@ Make `CODEX_GATEWAY_API_KEY` available to the Codex process. Set `base_url`
 separately to route inference through the gateway. If you omit it, Codex uses the
 default OpenAI endpoint for the current authentication mode.
 
-Discovery requires API-key, command-backed, or Codex-backend authentication.
-Native gateway OAuth or custom headers alone don't trigger it.
+When gateway OAuth is the only credential, set an explicit catalog URL with
+the same scheme, host, and port as `base_url`. Codex uses the existing gateway
+session without prompting for sign-in or requiring API-key discovery.
 
 Coordinate catalog updates with your provider when your approved models change. Restart the client after
 changing its configuration.
@@ -168,10 +169,11 @@ MCP connections, plugin distribution, and their policies separately.
    OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#use-native-gateway-oauth) to collect
    the authorization and token URLs, public client ID, scopes, optional resource,
    token delivery settings, and any fixed redirect port. Register the matching
-   loopback redirect URI with your identity provider.
+   loopback redirect URI with your identity provider. If it supports device
+   authorization, also distribute `device_authorization_url` for remote CLI users.
 4. Test browser sign-in, token refresh, and access revocation with a test user on
-   the CLI or desktop app you plan to deploy. Confirm that the browser can reach
-   the callback, including for remote CLI users.
+   the CLI or desktop app you plan to deploy. For remote CLI users, test
+   device-code sign-in or confirm the browser can reach the loopback callback.
 
 Users sign in individually. You distribute OAuth configuration, not a client
 secret, gateway API key, or helper executable. Keep upstream provider credentials
@@ -186,9 +188,11 @@ on the gateway.
 3. Deliver credentials through your secret manager or an installed credential
    helper. Keep upstream provider and gateway administrator credentials off
    developer machines.
-4. If you use a helper, follow the
-   [command-backed authentication contract](https://learn.chatgpt.com/docs/config-file/config-advanced#custom-model-providers)
-   and test token retrieval and refresh before distribution.
+4. If a helper supplies the primary provider credential, follow the
+   [command-backed authentication contract](https://learn.chatgpt.com/docs/config-file/config-advanced#custom-model-providers).
+   If it supplies a gateway credential alongside ChatGPT sign-in, configure a
+   [gateway credential export command](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=helper#use-an-organization-credential-helper).
+   Test token retrieval and refresh before distribution.
 5. Tell developers how to renew their credentials and whom to contact for help.
 
 <a id="verify-responses-support"></a>
@@ -231,7 +235,7 @@ registration values collected above. Keep `requires_openai_auth = false` and omi
 `env_key`, `experimental_bearer_token`, and the command-backed `auth` table when
 OAuth is the only gateway credential.
 
-For a credential helper, distribute the following `config.toml` block through the
+For a helper that supplies the primary provider credential, distribute the following `config.toml` block through the
 configuration layer you chose. Use a model recognized by your Codex version, or
 supply the matching catalog described above. Install your token resolver at the
 configured command path:
@@ -474,7 +478,7 @@ service authorized to receive those credentials.
 Authenticate the caller, fetch the corresponding upstream defaults, apply your
 overrides, and return the complete `ModelsResponse` JSON directly. Give every
 entry a unique, nonempty `slug`. For an explicit `model_catalog_url`, Codex rejects
-redirects and responses larger than 1 MiB. Continue enforcing model access on
+redirects. Continue enforcing model access on
 inference requests.
 
 Remove any effective `model_catalog_json` setting from clients using the endpoint:

@@ -239,13 +239,11 @@ http_headers = { "X-Example-Header" = "example-value" }
 env_http_headers = { "X-Example-Features" = "EXAMPLE_FEATURES" }
 ```
 
-For browser sign-in through your organization's identity provider, use
-[native gateway OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway#use-native-gateway-oauth).
+To sign in through your organization's identity provider, use
+[native gateway OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=oauth#use-native-gateway-oauth).
 Configure `[model_providers.<id>.gateway_oauth]` with the authorization and token
-URLs, public client ID, and token delivery settings. This works with
-`requires_openai_auth = false`; ChatGPT sign-in, PowerShell, the Azure CLI, and
-an external credential helper aren't required. The gateway must accept the OAuth
-token in the configured cookie or custom header.
+URLs and the public client ID. If the gateway supports device-code sign-in,
+set `device_authorization_url` so CLI users can sign in over SSH.
 
 Use command-backed authentication when a provider needs Codex to fetch bearer tokens from an external credential helper:
 
@@ -697,14 +695,14 @@ The elevated setup failure metrics include `code` and `message` when Windows set
 
 ### Feedback controls
 
-By default, local clients let users send feedback from `/feedback`. To disable feedback collection across the ChatGPT desktop app, Codex CLI, and IDE extension on a machine, update your config:
+By default, local clients let users send feedback from `/feedback`. To disable feedback uploads across the ChatGPT desktop app, Codex CLI, and IDE extension on a machine, update your config:
 
 ```toml
 [feedback]
 enabled = false
 ```
 
-When disabled, `/feedback` shows a disabled message and Codex rejects feedback submissions.
+If your local app server supports diagnostic archives, press <kbd>Ctrl</kbd>+<kbd>&nbsp;S&nbsp;</kbd> in the CLI `/feedback` editor to save a ZIP locally, even when uploads are off.
 
 ### Hide or surface reasoning events
 

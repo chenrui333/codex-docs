@@ -17,7 +17,7 @@ Export findings from a completed scan to use them in another tool. To track
 remediation or coordinate disclosure, ask Codex to prepare an issue or a
 private draft GitHub Security Advisory.
 
-## Export a portable artifact
+## Export findings
 
 In the desktop app, open a completed scan from **Security** > **Scans**. Under
 **Artifacts**, select **Findings JSON** to open the structured findings or
@@ -40,7 +40,7 @@ the scan directory. The CLI exports the saved scan without local triage updates.
 
 <figure className="not-prose my-8">
   <CodexScreenshot
-    alt="Completed Codex Security scan showing the real coverage, findings, manifest, Markdown, and SARIF artifacts"
+    alt="Completed Codex Security scan showing coverage, findings, manifest, Markdown, and SARIF artifacts"
     lightSrc={exportFindingsFormats.src}
     darkSrc={exportFindingsFormatsDark.src}
     maxHeight="360px"

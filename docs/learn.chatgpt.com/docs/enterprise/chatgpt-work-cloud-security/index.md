@@ -181,7 +181,7 @@ See [Code and shell sandboxing](https://learn.chatgpt.com/docs/sandboxing?surfac
 
 A conversation using Local computer access with Work Cloud uses cloud coordination even when a tool runs on a connected computer. Review the data sent to the orchestrating service separately from files remaining on the device. Confirm the applicable storage, retention, residency, and audit coverage for the workflow before rollout.
 
-Local computer access with Work Cloud does not provide strict zero data retention. Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations. Enterprise Key Management (EKM) covers supported stored content in eligible workspaces. Work is not supported with UAE inference residency. If your organization requires ZDR, do not enable this feature.
+Local computer access with Work Cloud does not provide strict zero data retention. For current regional availability and coverage requirements, consult the Help Center’s [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt). If your organization requires ZDR, do not enable this feature.
 
 Work Cloud follows the applicable ChatGPT workspace privacy and security protections. See [Enterprise privacy](https://openai.com/enterprise-privacy/).
 
@@ -205,7 +205,7 @@ Retained conversation and execution context can help Work resume interrupted tas
 
 Eligible Enterprise and Edu workspaces can use Enterprise Key Management for supported stored content, including supported hosted execution snapshots when customer-managed encryption is required. Coverage varies by data category and deployment. Rotating a key doesn't delete existing data or, by itself, deny access to earlier encrypted content. Revoking or disabling key access is a separate action that can disrupt supported workflows. Neither replaces a retention or deletion policy.
 
-Data residency and inference residency apply only to eligible content and supported workloads, subject to the organization's agreement, region, and configuration. Connected apps, external providers, and some processing or synced indexes can follow separate location rules. Verify support for the product, integration, and region. See [Data residency and inference residency](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt).
+For current regional availability, supported content, and processing coverage, consult the Help Center’s [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt). Review connected services separately before rollout.
 
 OpenAI API [Zero Data Retention](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention) is an API-specific control and doesn't define retention for ChatGPT Work.
 

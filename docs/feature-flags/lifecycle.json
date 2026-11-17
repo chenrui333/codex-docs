@@ -1092,7 +1092,6 @@
       "content_item_kinds",
       "daemon_auto_start",
       "deferred_tool_world_state",
-      "gateway_setup_wizard",
       "gcp_setup_wizard",
       "guardian_include_additional_context",
       "guardian_reuse_parent_compaction",
@@ -1192,7 +1191,6 @@
       "experimental_windows_sandbox",
       "external_agent_memory_import",
       "external_migration",
-      "gateway_setup_wizard",
       "gcp_setup_wizard",
       "guardian_conversation_history_tools",
       "guardian_denial_reconsideration",
@@ -1382,7 +1380,6 @@
         "content_item_kinds",
         "daemon_auto_start",
         "deferred_tool_world_state",
-        "gateway_setup_wizard",
         "gcp_setup_wizard",
         "guardian_include_additional_context",
         "guardian_reuse_parent_compaction",
@@ -1515,6 +1512,7 @@
     "computer_use",
     "enable_request_compression",
     "fast_mode",
+    "gateway_setup_wizard",
     "goals",
     "guardian_approval",
     "hooks",
@@ -1553,9 +1551,9 @@
       "sha256": "ef66bf6ba4924aa96f3076c44dc989ffacbf4183688d0025058730bb34df2d1d"
     },
     "config_reference": {
-      "parsed_feature_key_count": 39,
+      "parsed_feature_key_count": 40,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "d61772a316bd12bd77989b9cca004d58d8b14e722b02223a764bf00d04b8e725"
+      "sha256": "d11ef598f57a2111392668a3b8e416dea845190604a2a160565710119c5d1c3d"
     }
   },
   "observation_environment": {

@@ -267,7 +267,7 @@ Access depends on your plan, region, and workspace settings. Dots are rolling ou
 
 - **Pro 100, Pro 200, and Pro 500:** For users aged 18 and older outside the European Economic Area, United Kingdom, and Switzerland.
 - **Business Premium:** Available in supported ChatGPT regions, subject to workspace eligibility.
-- **Enterprise, Edu, and Healthcare:** Generally available in eligible workspaces. Workspaces with UAE data or inference residency are ineligible. During the admin preview, your admin can enable access for your role. Starting November 18, 2026, access is on by default unless your workspace opts out.
+- **Enterprise, Edu, and Healthcare:** Generally available in eligible workspaces. For current workspace eligibility and regional availability, see [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot) and [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt). During the admin preview, your admin can enable access for your role. Starting November 18, 2026, access is on by default unless your workspace opts out.
 
 For Pro and Business Premium, conversations with your dot don’t count toward your ChatGPT usage limits. Tasks your dot starts or manages in Work or Codex count toward those products’ usage limits as usual. Your plan includes an allowance for deeper work, with extended limits for the first month after launch. For Enterprise pricing and delegated task charges, see [Enterprise preview and billing](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide#enterprise-preview-and-billing).
 

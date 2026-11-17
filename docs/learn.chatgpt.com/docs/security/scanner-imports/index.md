@@ -26,8 +26,8 @@ where you can publish findings.
 
 1. Select **Connect** beside the scanner, **Reconnect** if your connection expired, or **Import** to use an existing connection.
 2. Choose the source and the findings to import. If **Import all for a repository** is available for Snyk or Endor, choose a connected GitHub repository to include all matching projects in the selected organization or namespace. Otherwise, choose a project and select findings. In Wiz, you can also use a supported saved view.
-3. Review the finding count, repository, and commit for assessment. The count on **Import 12 findings**, for example, includes all 12 selected scanner findings, even those that can't be assessed. It can differ from the number of shared findings.
-4. Check what the confirmation will do. If it names a shared workspace and destination, confirming authorizes assessment and publication of eligible **Reportable** results there. People with access to that destination can read the published assessment and source evidence. Daybreak preselects the only eligible environment. If several environments are eligible, choose one before confirming. If the review offers private assessment or saving only, the results stay private.
+3. Review the finding count, repository, and commit. The count includes selected findings that can't be assessed, so it may exceed the number ultimately shared.
+4. Check the destination. Confirming a shared destination authorizes Daybreak to assess the findings and publish eligible **Reportable** results there. Anyone with destination access can read the published assessment and source evidence. Daybreak selects the environment automatically if only one is eligible. If several are eligible, choose one. Assessing or saving privately keeps the results private.
 5. Confirm when the count and destination are correct. If the review expires or the source changes, review it again. Once the import starts, you can close Settings and follow it in **My recent imports**.
 
 ### Choose a source

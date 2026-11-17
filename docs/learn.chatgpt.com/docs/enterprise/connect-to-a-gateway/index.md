@@ -49,7 +49,21 @@ To configure Codex yourself, get these values from your gateway team:
 
 ## Configure the provider
 
-Open `config.toml` at `~/.codex/config.toml` on macOS or Linux, or
+In the interactive CLI, run `/config` and open **Sessions** > **Model providers**.
+Choose **Create a custom provider or gateway** and enter the name, base URL,
+and, if needed, the name of the environment variable holding the API key.
+To change an editable provider, open its details and choose **Edit configuration**.
+If you can change the default, highlight the provider, press <kbd>Space</kbd>, and
+start a chat with `/new`.
+
+To set up a gateway during CLI sign-in, start `codex --enable gateway_setup_wizard`
+and choose **Sign in another way** > **Use a custom provider or gateway**.
+This optional sign-in flow is off by default. It appears in a signed-out CLI
+using the embedded app server when the default provider is OpenAI, API-key
+sign-in is allowed, and no managed setting or launch override selects a provider.
+
+For manual setup or additional authentication settings, open
+`config.toml` at `~/.codex/config.toml` on macOS or Linux, or
 `%USERPROFILE%\.codex\config.toml` on Windows.
 
 Merge this example into your existing configuration, replacing the URL and model
@@ -89,15 +103,18 @@ Confirm with your gateway team how Codex gets the capabilities and instructions 
 
 - **Built-in name:** If the gateway accepts the exact model name bundled with your Codex version and routes it to the matching model, set `model` to that name. Codex already has its metadata.
 - **Catalog endpoint:** If the gateway serves Codex-compatible metadata, use its full catalog URL. This can be a `/v1/models` endpoint that implements the [Codex catalog response](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#implement-the-catalog-endpoint). A response that only lists model IDs is insufficient for custom aliases.
-- **Catalog file:** If your gateway uses custom aliases and your administrator distributes a file, use the [local models.json example](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#start-with-a-local-modelsjson-file). Use a local file when native gateway OAuth is your only credential and you need custom metadata.
+- **Catalog file:** If your gateway uses custom aliases and your administrator distributes a file, use the [local models.json example](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#start-with-a-local-modelsjson-file).
 
-For API-key or helper authentication, if your administrator supplies a catalog
-URL, add it to the existing
+If your administrator supplies a catalog URL, add it to the existing
 `[model_providers.enterprise-gateway]` table:
 
 ```toml
 model_catalog_url = "https://gateway.example.com/codex/models.json"
 ```
+
+If gateway OAuth is your only credential, the catalog URL must use the same
+scheme, host, and port as `base_url`. Sign in to the gateway first. Codex uses
+your existing gateway session to fetch the catalog.
 
 Remove any effective `model_catalog_json` setting; it takes precedence over the
 URL. Administrators can find endpoint requirements in
@@ -116,7 +133,7 @@ add a catalog path unless the file exists at that location.
 
 ## Choose an authentication method
 
-Use native gateway OAuth for browser sign-in, an API key for a scoped credential, or a credential helper if your organization supplies a command.
+Use native gateway OAuth for browser or device-code sign-in, an API key for a scoped credential, or a credential helper if your organization supplies a command.
 
 {/* prettier-ignore */}
 <Tabs
@@ -152,6 +169,7 @@ authorization_url = "https://login.example.com/oauth/authorize"
 token_url = "https://login.example.com/oauth/token"
 client_id = "YOUR_PUBLIC_CLIENT_ID"
 # redirect_port = 43127
+# device_authorization_url = "https://login.example.com/oauth/device"
 ```
 
 Add `scopes` and, if required, `resource` to this table using the values your
@@ -179,27 +197,30 @@ manage its own upstream credentials, such as its AWS credentials for Bedrock.
 
 When OAuth is your only credential, keep `requires_openai_auth = false` and remove the
 previous `env_key`, `experimental_bearer_token`, or `auth` settings used for the
-gateway credential. Use a [local model catalog](https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway#start-with-a-local-modelsjson-file) if you need custom model
-metadata; OAuth alone doesn't enable remote catalog discovery.
+gateway credential.
 
 Restart the desktop app and follow its gateway sign-in prompt to open the browser.
-In the CLI, start `codex` and follow the browser sign-in when Codex first accesses
-the gateway. Complete your organization's sign-in and MFA, then return to the
-client. If the grant expires or Codex can't refresh it, sign in again when prompted.
+In the CLI, start `codex` and follow its sign-in prompt. Complete your
+organization's sign-in and MFA, then return to Codex. If the grant expires or
+Codex can't refresh it, sign in again when prompted.
 
-Native gateway OAuth requires a browser and a reachable loopback callback. It has
-no device-code fallback. If the CLI runs over SSH, set `redirect_port = 43127` in
-the OAuth table and register the matching redirect URI described above. From the
-machine with your browser, forward that port before starting Codex:
+For SSH or a terminal without a browser, set `device_authorization_url` to the
+device authorization endpoint your identity provider supplies. When you need to
+sign in, the interactive CLI shows a verification URL and a one-time code. Open
+the URL in a browser and enter the code. This flow doesn't require port forwarding.
+
+If your provider only supports browser sign-in and the CLI runs over SSH, set
+`redirect_port = 43127` and register the matching redirect URI. From the machine
+with your browser, forward the port before starting Codex:
 
 ```shell
 ssh -L 43127:127.0.0.1:43127 user@remote
 ```
 
 In that SSH session, start `codex` and open the gateway sign-in URL in your local
-browser. A CLI inside a container also needs a callback reachable from the
-browser. If you can't make the callback reachable, use an API key or credential
-helper instead.
+browser. For browser sign-in inside a container, the callback must also be
+reachable from the browser. If you can't reach it, use device authorization,
+an API key, or a credential helper.
 
 ### Use an API key
 
@@ -238,8 +259,8 @@ If the custom header is your only authentication mechanism, use
 
 ### Use an organization credential helper
 
-If your administrator provides command-backed authentication, use their installed
-helper and configuration instead of `env_key`. Don't configure both mechanisms.
+If the helper supplies your primary provider credential, use your administrator's
+installed helper and configuration instead of `env_key`. Don't configure both mechanisms.
 The helper must exist on your machine; Codex doesn't install it. For example,
 add this table without `env_key`, using the resolver path and
 arguments your administrator supplies:
@@ -259,7 +280,27 @@ longer retrieve a token.
 
 <a id="option-a-reuse-your-credential-command-with-a-helper"></a>
 
-With ChatGPT sign-in, run the helper before launching Codex and pass its output through a [custom gateway header](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=api-key#use-a-custom-authentication-header) instead of configuring the `auth` table. When the key expires, get a new key and relaunch Codex.
+If your helper supplies a gateway token alongside ChatGPT sign-in, omit the
+provider's `auth` table and set `requires_openai_auth = true`. Configure a
+gateway credential export command and the header or cookie your gateway accepts:
+
+```toml
+[model_providers.enterprise-gateway.gateway_oauth]
+delivery = { kind = "cookie", name = "gateway_session" }
+
+[model_providers.enterprise-gateway.gateway_oauth.credential_export]
+command = "/usr/local/bin/fetch-codex-gateway-token"
+args = ["print-token"]
+```
+
+The command must print one access token to standard output. Codex runs it on
+first use and caches the token in memory. If the gateway rejects an inference
+request with HTTP 401, Codex runs the command again and retries once.
+When using `credential_export`, omit the OAuth client ID and endpoint settings.
+
+You can also run the helper before starting Codex and pass the token in a
+[custom gateway header](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=api-key#use-a-custom-authentication-header).
+Renew the token and restart Codex when it expires.
 
 Use resolved absolute paths for helper executables and catalog files.
 
@@ -278,7 +319,7 @@ If your organization uses a ChatGPT workspace, signing in gives users access to 
 For manual setup, update the existing `[model_providers.enterprise-gateway]` table before signing in:
 
 1. Set `requires_openai_auth = true` and keep `base_url` pointing to your gateway. Remove any `env_key`, `experimental_bearer_token`, and provider `auth` settings so Codex uses your OpenAI credential for primary authentication.
-2. Send the gateway credential separately. For [native gateway OAuth](#use-native-gateway-oauth), configure `gateway_oauth.delivery` to use the cookie or custom header your gateway accepts. For an API key or credential helper, use a [custom authentication header](#use-a-custom-authentication-header). Reserve `Authorization` for the OpenAI credential.
+2. Send the gateway credential separately. For [native gateway OAuth](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=oauth#use-native-gateway-oauth) or a [gateway credential export command](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=helper#use-an-organization-credential-helper), configure `gateway_oauth.delivery` to use the cookie or custom header your gateway accepts. For a static API key, use a [custom authentication header](https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway?gateway-auth=api-key#use-a-custom-authentication-header). Reserve `Authorization` for the OpenAI credential.
 
 Sign in to the ChatGPT workspace your administrator named. Complete the gateway sign-in if prompted, then [verify your connection](#verify-the-connection).
 

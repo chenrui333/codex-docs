@@ -161,6 +161,9 @@ directory.
 The SDK supports repository, path, committed-diff, and working-tree targets.
 The default target is the complete repository.
 
+To skip files or directories, set `excludePaths: ["examples/"]` in the scan
+options.
+
 ### Scan selected paths
 
 Pass an array of paths inside the repository:

@@ -43,15 +43,12 @@ need dependencies or a working build to reproduce an issue. Configure those
 requirements in the [Codex cloud
 environment](https://learn.chatgpt.com/docs/environments/cloud-environment).
 
-If validation can't run, inspect what the finding establishes from source and
-what still depends on runtime or deployment behavior.
-
 ### What languages are supported?
 
 Daybreak analyzes source across languages. Results depend on the model's
 ability to reason about the language and framework, and on the available
-repository context. A successful scan doesn't imply equal coverage across
-languages or components. Check the report for the scope actually reviewed.
+repository context. Check the report for the scope reviewed, since coverage can
+vary across languages and components.
 
 ### Which scan should I use?
 
@@ -81,26 +78,22 @@ checkout](https://learn.chatgpt.com/docs/security/setup#scan-your-local-checkout
 
 ### What does validation establish?
 
-Read the evidence attached to the particular finding. Source analysis can
-establish a vulnerable code path. Execution evidence can show that a specific
-reproducer or test demonstrated the issue.
-
-A finding's recorded status and severity help organize review. Use the
-underlying evidence and prerequisites to decide whether it applies to your
-system and what to fix.
+Source analysis can establish a vulnerable code path. A successful reproducer
+or test can demonstrate the issue at runtime. Check the finding's evidence and
+prerequisites to decide whether it applies to your system. If validation can't
+run, identify what still depends on runtime or deployment behavior.
 
 ### What happens if validation fails?
 
-Inspect the attempted validation and any available logs. A failed reproducer
-can mean the issue doesn't apply, but it can also mean the environment or test
-was unsuitable. Resolve the stated gap before dismissing the finding or
-claiming that it was reproduced.
+Inspect the attempted validation and any available logs. The issue may not
+apply, or the environment or test may have been unable to exercise it.
+Investigate before dismissing the finding.
 
 ### What if the scan reports no findings?
 
-Confirm that the scan completed and reviewed the intended repository and
-revision. Read any recorded limits or unfinished work. A scan that reports no
-findings can still miss vulnerabilities.
+Check that the scan completed on the intended repository and revision, and
+review any coverage limits or unfinished work. A report with no findings
+doesn't rule out vulnerabilities.
 
 ## Fixes
 
@@ -112,7 +105,6 @@ See [Review a proposed fix](https://learn.chatgpt.com/docs/security/findings-and
 
 ### How do I know whether a patch fixed the issue?
 
-Review the patch's validation evidence, including whether the original issue
-still reproduces and whether legitimate behavior still works. If validation
-wasn't completed, keep that uncertainty with the finding. A proposed patch,
-draft pull request, or status change alone doesn't verify a fix.
+Check whether the original issue still reproduces and whether legitimate
+behavior still works. If validation is incomplete, record what remains
+untested. A patch, pull request, or status change alone doesn't verify a fix.

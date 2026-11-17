@@ -14,7 +14,7 @@ Source: https://learn.chatgpt.com/docs/security/cli
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
 Run a standard scan of a local repository with the standalone Codex Security
-CLI. This quickstart ends with a saved report you can review and revisit.
+CLI and save a report.
 For scans inside a Codex conversation, use the [Codex Security
 plugin](https://learn.chatgpt.com/docs/security/plugin).
 
@@ -40,8 +40,8 @@ npm install -g @openai/codex-security
 codex-security --version
 ```
 
-The package provides the `codex-security` command and its `cs` alias. Ensure
-npm's global executable directory is on your `PATH`.
+The package provides the `codex-security` command and its `cs` alias. Add
+npm's global executable directory to your `PATH` if needed.
 
 To run without a global installation, use `npx`:
 
@@ -77,8 +77,7 @@ sign-in or OpenAI API key.
 
 ## Prepare a scan
 
-Replace these paths with your repository and a new results directory outside
-its Git worktree:
+Choose your repository and a new results directory outside its Git worktree:
 
 ```bash
 REPOSITORY=/path/to/repository

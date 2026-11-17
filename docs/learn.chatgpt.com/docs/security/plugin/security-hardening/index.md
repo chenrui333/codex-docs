@@ -13,15 +13,12 @@ Source: https://learn.chatgpt.com/docs/security/plugin/security-hardening
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use `$codex-security:propose-security-hardening` to turn a collection of
-security evidence into structural or architectural hardening options. The
-workflow can analyze a completed Codex Security scan or start from supplied
-findings, disclosure reports, incident reviews, assessment documents, and
-source code.
-
-The result compares design options and their engineering tradeoffs. Codex
-changes the repository only after you select an option and ask it
-to implement it.
+Use `$codex-security:propose-security-hardening` to compare structural or
+architectural changes that address security findings or recurring vulnerability patterns.
+Start from a completed scan, supplied findings, disclosure or incident reports,
+assessment documents, or source code. Codex compares the options and their
+engineering tradeoffs and changes the repository only if you select an option
+and ask it to implement it.
 
 ## Prepare the evidence
 
@@ -34,9 +31,8 @@ Provide the workflow with:
 - Constraints for performance, memory, compatibility, reliability, operations,
   delivery time, or change scope.
 
-For example, repeated authorization bugs may suggest that a shared control
-would be easier to enforce than checks in each handler. The evidence may also
-support keeping a local fix instead of changing the architecture.
+For example, compare a shared authorization check with checks in each handler
+when several findings involve missing authorization.
 
 ## Run the workflow
 
@@ -60,10 +56,6 @@ Before choosing an option, check that the proposal:
   questions.
 - Includes rollout, validation, rollback, and implementation guidance.
 - Separates observed facts, inferences, and proposed design properties.
-
-Review the evidence and tradeoffs before choosing an option. An architecture
-diagram or design recommendation doesn't replace validation of the original
-findings or the implemented fix.
 
 ## Use hardening guidance from a scan
 

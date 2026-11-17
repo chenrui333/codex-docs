@@ -185,6 +185,41 @@ Restore archived chats from **Settings > Data Controls > Archived chats**.
 
 </ContentModeSwitch>
 
+<ContentModeSwitch group="codex-surface" ids="app,web">
+
+## Use locked chats
+
+Locked chats keep conversations out of your normal history and search. You can return to them
+with your account PIN when you're ready.
+
+For example, you might lock a chat to:
+
+- Think through a career change before you're ready to discuss it.
+- Prepare for a difficult conversation.
+- Plan a surprise gift or celebration.
+
+You can lock eligible cloud Chat and Work conversations. Local Work and Codex
+conversations aren't supported.
+
+1. Open the chat's more menu (…), select **Lock chat**, confirm, and create or enter
+   your account PIN.
+2. Go to **Projects > Locked chats** and enter your PIN for temporary
+   access.
+3. Select **Lock now** when finished. Check other devices before screen sharing;
+   titles or content can remain visible until you refresh ChatGPT on those devices.
+
+Locking a project chat removes it from the project, so the chat no longer has
+access to project instructions, files, or memory. **Unlock chat** restores normal
+history.
+
+If you forget your PIN, resetting it permanently deletes locked chats and content
+protected only by that PIN.
+
+See [Using locked chats](https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt)
+for availability, sharing, files, memory, and PIN settings.
+
+</ContentModeSwitch>
+
 <a id="use-local-projects-for-folders-and-codebases"></a>
 
 <ContentModeSwitch group="codex-surface" id="app">
