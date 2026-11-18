@@ -501,7 +501,7 @@
       "stage": "stable"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "incremental_tools_legacy",
       "stage": "stable"
     },
@@ -1076,7 +1076,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.169.0",
+  "codex_cli_version": "codex-cli 0.169.1",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -1561,7 +1561,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
+  "source_commit": "c376cf7396eff83ce4c6ac61b9553df142e7a0be",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -2380,8 +2380,8 @@
     "incremental_tools_legacy": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
@@ -3333,13 +3333,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "544c428df0ebe2eb7e99bdaf507eb7873d6a8ec8e4e193885b3bfa37a200d03f",
-    "features_rs_sha256": "ae5067b54222326863207b2c3f9fdcf08d3476dfb850f9084b9ea34a0eb2d649"
+    "client_rs_sha256": "e5e9b2eb096a8491c3839761d68d1e79e4163b36ef036aae3ac639c3f7c4cac9",
+    "features_rs_sha256": "d2d099a2aad69991fb002d34bf2dbb21124123dee98c7f328328ad72a21de151"
   },
-  "source_ref": "rust-v0.169.0",
+  "source_ref": "rust-v0.169.1",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/d32063f96c2dff1dc96af839b3952abb6acfeda4/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/c376cf7396eff83ce4c6ac61b9553df142e7a0be/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/c376cf7396eff83ce4c6ac61b9553df142e7a0be/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
