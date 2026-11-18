@@ -9236,7 +9236,7 @@
       "source_url": "https://learn.chatgpt.com/docs/developers"
     },
     "learn.chatgpt.com/docs/dots/channels/index.md": {
-      "sha256": "dc160d1540073ebaf317a3c3c908df6720836cf7658e170ec6447e2678dcadb8",
+      "sha256": "139a3e3bc0cefdaff0db6886ff885c158aac32e7cd33683040a4f617c07406f7",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9264,14 +9264,14 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/getting-started"
     },
     "learn.chatgpt.com/docs/dots/index.md": {
-      "sha256": "dab41cdf5c0681529d627a5d8ade6745d80eb60f7b7c737c99810335ecbe6b45",
+      "sha256": "f9f539983b0978fcc5f45bccfb83e7f69c7bf35bf0d43b751fc3684f9e6a5f61",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/dots"
     },
     "learn.chatgpt.com/docs/dots/tasks-and-memory/index.md": {
-      "sha256": "2c9ba7716ab36d4c827f018efd01af92e99c9e927964c9636276aaf62dff62f2",
+      "sha256": "4b56c99c660637fbe14140715700feb508e38b6b348c11d9f7e2bedf23c30c76",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9600,14 +9600,14 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/desktop-browser-policies"
     },
     "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md": {
-      "sha256": "daf2afcbadfe972a6efcf5e192e2d3bfd0856b84404951610670a1678059a2d6",
+      "sha256": "6b6b4285c991c86ba615bde62a24714ca56e5c28682fe9a5e26f6e0e25a663b2",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide"
     },
     "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
-      "sha256": "acaeb0649ce8894beb3844eeedf670fcbed4152156bcabcbb81b4314fe964159",
+      "sha256": "35578fccc127ba991c6f2a3ad09569764524f2297d783a7e1dfc7fc731b2738d",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10861,7 +10861,7 @@
       "source_url": "https://learn.chatgpt.com/docs/mobile"
     },
     "learn.chatgpt.com/docs/model-selection/index.md": {
-      "sha256": "50d1d3763d8a27361b58d18b3faeccdbea2410467977f55af222896863d506fd",
+      "sha256": "57103eba7a14fc0aa3611a99b1fe93ce4723506d57f1a3535b8d931ca7f9d648",
       "source_area": "learn_model_selection",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10892,7 +10892,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "7b10247abb8fc23ec8704518286bafdf48e623cf524972b8197c15207dffe191",
+      "sha256": "79d1af7f4031c0f784824c25cc473866117d1fe112763ce48d836401690f6e44",
       "source_area": "learn_models",
       "source_kind": "learn_markdown",
       "source_type": "learn",

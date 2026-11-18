@@ -122,7 +122,7 @@ necessarily change the notes your dot has already made.
 
 ### Across messaging channels
 
-ChatGPT, Slack, and Teams are ways to reach the same dot. Switching
+You can reach the same dot in ChatGPT and Slack. Switching
 between them doesn't create a separate dot or reset its saved notes. Information
 you share through one contact method can inform its work and replies through
 another.

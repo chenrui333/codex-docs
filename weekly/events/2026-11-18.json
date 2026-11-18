@@ -868,6 +868,76 @@
       "id": "af36b25eb9260d41cdac7d069f2ac3a1033a3163f961186fe05124bb59fd6150",
       "observed_at": "2026-11-18T15:30:58+00:00",
       "previous_id": "5dfaee39cb1a4bcc30cf2bcb4bdd6b4dcb9c1c9e47ec6381999ff9328d24b445"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/dots/channels/index.md": {
+            "after": "139a3e3bc0cefdaff0db6886ff885c158aac32e7cd33683040a4f617c07406f7",
+            "before": "dc160d1540073ebaf317a3c3c908df6720836cf7658e170ec6447e2678dcadb8"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "f9f539983b0978fcc5f45bccfb83e7f69c7bf35bf0d43b751fc3684f9e6a5f61",
+            "before": "dab41cdf5c0681529d627a5d8ade6745d80eb60f7b7c737c99810335ecbe6b45"
+          },
+          "learn.chatgpt.com/docs/dots/tasks-and-memory/index.md": {
+            "after": "4b56c99c660637fbe14140715700feb508e38b6b348c11d9f7e2bedf23c30c76",
+            "before": "2c9ba7716ab36d4c827f018efd01af92e99c9e927964c9636276aaf62dff62f2"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md": {
+            "after": "6b6b4285c991c86ba615bde62a24714ca56e5c28682fe9a5e26f6e0e25a663b2",
+            "before": "daf2afcbadfe972a6efcf5e192e2d3bfd0856b84404951610670a1678059a2d6"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+            "after": "35578fccc127ba991c6f2a3ad09569764524f2297d783a7e1dfc7fc731b2738d",
+            "before": "acaeb0649ce8894beb3844eeedf670fcbed4152156bcabcbb81b4314fe964159"
+          },
+          "learn.chatgpt.com/docs/model-selection/index.md": {
+            "after": "57103eba7a14fc0aa3611a99b1fe93ce4723506d57f1a3535b8d931ca7f9d648",
+            "before": "50d1d3763d8a27361b58d18b3faeccdbea2410467977f55af222896863d506fd"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "79d1af7f4031c0f784824c25cc473866117d1fe112763ce48d836401690f6e44",
+            "before": "7b10247abb8fc23ec8704518286bafdf48e623cf524972b8197c15207dffe191"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.170.0",
+          "codex_cli_source_commit": "29eb79e9866b3262a777fdf8195c1b9e63684c91",
+          "codex_cli_version": "0.170.0",
+          "codex_cli_version_raw": "codex-cli 0.170.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/dots/channels/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/dots/tasks-and-memory/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+          "learn.chatgpt.com/docs/model-selection/index.md",
+          "learn.chatgpt.com/docs/models/index.md"
+        ]
+      },
+      "id": "770802692b40e876f6b5f79a3c6687b32cbbfc81c277a962885651d93483438d",
+      "observed_at": "2026-11-18T15:31:57+00:00",
+      "previous_id": "af36b25eb9260d41cdac7d069f2ac3a1033a3163f961186fe05124bb59fd6150"
     }
   ],
   "schema_version": 1

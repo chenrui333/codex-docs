@@ -46,7 +46,7 @@ Review these permissions in **Permissions**:
 
 - **Use dots**: Allow members to use dots.
 
-- **Add dots to Slack and Microsoft Teams**: Allow members to connect their dots to supported messaging channels where available.
+- Allow members to connect their dots to Slack where available.
 
 - **Allow local computer access**: Allow dots to use a member’s local computer.
 
@@ -97,7 +97,7 @@ Turning off a dot's Slack identity doesn't remove its access through the member'
 
 **Before members connect their dots to Slack**
 
-- **ChatGPT workspace owner:** Enable Use dots and Add dots to Slack and Microsoft Teams for the intended members through workspace defaults or custom roles.
+- **ChatGPT workspace owner:** Enable **Use dots** and the permission to connect dots to Slack for the intended members through workspace defaults or custom roles.
 
 - **Slack workspace owner or app manager:** Ensure the ChatGPT app is installed in Slack. Approve app requests if required by your workspace. See [Slack’s app approval guidance](https://slack.com/help/articles/360024269514-Manage-app-requests-for-your-workspace).
 
@@ -141,7 +141,7 @@ Open **Admin Console** > **Dots** to see the personal dots created in your works
 
 ### Review a dot's details
 
-The details include the member who created the dot, its active or paused status, its identity, and its Slack or Microsoft Teams connection status. The identity is the dot's service account, or its dot ID when a service account isn't available. Connection status shows whether a messaging service is connected; the [messaging permission](#3-configure-communication-channels) controls who can set up that connection.
+The details include the member who created the dot, its active or paused status, its identity, and its Slack connection status. The identity is the dot's service account, or its dot ID when a service account isn't available. Connection status shows whether Slack is connected; the [messaging permission](#3-configure-communication-channels) controls who can set up that connection.
 
 ### Pause and resume a dot
 

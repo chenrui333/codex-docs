@@ -85,7 +85,7 @@ The same access controls that protect other OpenAI services handling customer da
 
 - **Workspace access:** During the admin preview, access to dots is off by default. To enable it for a group, grant Use dots on the group’s custom role.
 
-> Illustration: Example dots access settings: Use dots and messaging channels are on; local computer access and custom rules are off. Toggle positions are illustrative and available settings may vary.
+> Illustration: Example dots access settings: Use dots and Slack messaging are on; local computer access and custom rules are off. Toggle positions are illustrative and available settings may vary.
 
 _Example settings; toggle positions and available channels may vary by workspace._
 

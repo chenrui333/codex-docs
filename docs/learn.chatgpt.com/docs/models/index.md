@@ -398,8 +398,7 @@ tasks that need more planning, analysis, or checking.
 - **High** and **Extra High** suit difficult work with multiple steps, sources,
   or tradeoffs.
 
-Reasoning efforts don't map exactly between model generations. Try a familiar task
-at a lower setting and adjust based on the result.
+  [Learn more in our Model selection guide](https://learn.chatgpt.com/docs/model-selection#how-to-think-about-models-and-reasoning-effort)
 
 ### Know when to use Max or Ultra
 
