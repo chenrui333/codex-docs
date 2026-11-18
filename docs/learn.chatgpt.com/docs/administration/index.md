@@ -16,7 +16,7 @@ Source: https://learn.chatgpt.com/docs/administration
 <CodexDocsOverviewLanding
   title="Administration"
   description="Set access and policy boundaries for ChatGPT, Codex developer tools, APIs, plugins, and connected systems."
-  intro="Start with the rollout guide, then set up identity and access. Use Configuration for app installation, updates, and workspace policies. Use Advanced deployment for Amazon Bedrock, Bedrock in GovCloud, or an organization gateway. Browse the sections for feature controls, usage, and security."
+  intro="Start with the rollout guide, then set up identity and access. Use Configuration for app installation, updates, and workspace policies. Use Advanced deployment to connect through a cloud provider or an organization gateway. Browse the sections for feature controls, usage, and security."
   primaryCta={{
     label: "Start your rollout",
     href: "/codex/enterprise/admin-setup",
@@ -230,13 +230,20 @@ Source: https://learn.chatgpt.com/docs/administration
     {
       title: "Advanced deployment",
       description:
-        "Connect directly to Amazon Bedrock, configure Bedrock in GovCloud, or deploy an organizational gateway that routes requests to your inference provider.",
+        "Configure a direct cloud connection or an organization gateway, then choose which models your users can access.",
       pages: [
         {
           title: "Amazon Bedrock",
           description:
             "Configure supported local clients to use models available through Bedrock.",
           href: "/codex/amazon-bedrock",
+          icon: "storage",
+        },
+        {
+          title: "Google Cloud",
+          description:
+            "Configure Codex CLI for the Vertex AI preview using your Google Cloud project and credentials.",
+          href: "/codex/enterprise/connect-to-vertex-ai",
           icon: "storage",
         },
         {

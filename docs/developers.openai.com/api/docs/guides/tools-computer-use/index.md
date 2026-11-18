@@ -2,8 +2,8 @@
 source_type: 'platform_tool_guide'
 source_area: 'tool_guide_computer_use'
 source_url: 'https://developers.openai.com/api/docs/guides/tools-computer-use'
-source_last_modified: '2026-11-13T05:34:12Z'
-source_etag: 'W/"bf53a58a2daa46716608378fead488f6"'
+source_last_modified: '2026-11-17T23:20:14Z'
+source_etag: 'W/"faa74c679c349afb0b4bdaffbcd8df89"'
 ---
 
 # Computer use
@@ -360,7 +360,7 @@ Use the computer tool for structured mouse and keyboard actions.
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   tools: [{ type: "computer" }],
   input:
     "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
@@ -375,7 +375,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6.1-sol",
+    model="gpt-6.2-sol",
     tools=[{"type": "computer"}],
     input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
 )
@@ -388,7 +388,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
         .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
@@ -402,7 +402,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
   tools: [{ type: :computer }]
 )
@@ -430,7 +430,7 @@ async function sendComputerScreenshot(
   };
 
   return await client.responses.create({
-    model: "gpt-6.1-sol",
+    model: "gpt-6.2-sol",
     tools: [{ type: "computer" }],
     previous_response_id: response.id,
     input: [
@@ -451,7 +451,7 @@ client = OpenAI()
 
 def send_computer_screenshot(response, call_id, screenshot_base64):
     return client.responses.create(
-        model="gpt-6.1-sol",
+        model="gpt-6.2-sol",
         tools=[{"type": "computer"}],
         previous_response_id=response.id,
         input=[
@@ -479,7 +479,7 @@ String screenshotBase64 = "<base64 bytes here>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -504,7 +504,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   previous_response_id: "resp_abc123",
   input: [
     {
@@ -652,7 +652,7 @@ async function main() {
       const response = await tools.run(
         client,
         {
-          model: "gpt-6.1-sol",
+          model: "gpt-6.2-sol",
           store: false,
           input:
             "Take a screenshot. Open 'Show pickup details' and report the locker and pickup code. Use only screenshots and left clicks.",
@@ -757,7 +757,7 @@ async function main() {
     const response = await new ResponsesToolRunner({ browser: tools }).run(
       client,
       {
-        model: "gpt-6-astra",
+        model: "gpt-6.2-astra",
         store: false,
         input: "Create a visitor badge for Mira.",
       },
@@ -1048,7 +1048,7 @@ Send a computer request
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   tools: [{ type: "computer" }],
   input:
     "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
@@ -1063,7 +1063,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6.1-sol",
+    model="gpt-6.2-sol",
     tools=[{"type": "computer"}],
     input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
 )
@@ -1076,7 +1076,7 @@ package main
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
         .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
@@ -1090,7 +1090,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
   tools: [{ type: :computer }]
 )
@@ -1161,7 +1161,7 @@ async function sendComputerScreenshot(
   };
 
   return await client.responses.create({
-    model: "gpt-6.1-sol",
+    model: "gpt-6.2-sol",
     tools: [{ type: "computer" }],
     previous_response_id: response.id,
     input: [
@@ -1182,7 +1182,7 @@ client = OpenAI()
 
 def send_computer_screenshot(response, call_id, screenshot_base64):
     return client.responses.create(
-        model="gpt-6.1-sol",
+        model="gpt-6.2-sol",
         tools=[{"type": "computer"}],
         previous_response_id=response.id,
         input=[
@@ -1210,7 +1210,7 @@ String screenshotBase64 = "<base64 bytes here>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -1235,7 +1235,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   previous_response_id: "resp_abc123",
   input: [
     {

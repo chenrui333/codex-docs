@@ -34,7 +34,7 @@ For current availability, supported plans, and workspace settings, see [Manage d
 
 During the preview, admins in eligible ChatGPT Enterprise, Edu, and Healthcare workspaces can enable dots for selected roles. Starting November 18, 2026, members have access by default unless the workspace opts out. Each member chooses whether to create a personal dot.
 
-Eligible Enterprise workspaces can pay a flat rate based on the type of work a dot does or pay based on consumption. The preview is free. Billing for enabled dots begins November 18, 2026. Tasks a dot delegates to ChatGPT Work or Codex threads incur separate charges at the standard rates. See [Dots pricing in the Help Center](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot).
+Workspace access and billing are separate. Eligible Enterprise workspaces can pay a flat rate based on the type of work a dot does or pay based on consumption. The preview is free. Tasks a dot delegates to ChatGPT Work or Codex threads incur separate charges at the standard rates. For billing details, see [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot) in the Help Center.
 
 ## Set up dots for work
 

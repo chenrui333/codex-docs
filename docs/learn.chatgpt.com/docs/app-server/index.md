@@ -115,7 +115,7 @@ increasing delay and jitter.
 
 Requests include `method`, `params`, and `id`.
 
-The examples use [GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-6.1-sol), which requires access
+The request examples use [GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-6.1-sol), which requires access
 for the signed-in account or workspace. Use [`model/list`](#list-models-modellist)
 to select an available model if needed.
 
@@ -154,7 +154,9 @@ codex app-server generate-json-schema --out ./schemas
 2. Connect a client over the selected transport, then send `initialize` followed by the `initialized` notification.
 3. Start a thread and a turn, then keep reading notifications from the active transport stream.
 
-Example (Node.js / TypeScript):
+The following examples use the `stdio` transport:
+
+Start an app-server conversation
 
 ```typescript
 const proc = spawn("codex", ["app-server"], {
@@ -221,6 +223,77 @@ proc.on("error", (error) => {
 proc.on("exit", (code) => {
   if (code !== 0) process.exitCode = code ?? 1;
 });
+```
+
+```ruby
+require "json"
+require "open3"
+require "tmpdir"
+
+# Use an owned repository for this runnable example.
+Dir.mktmpdir("codex-app-server-") do |directory|
+  File.write(File.join(directory, "README.md"), "A small Ruby project with a greeting program.\n")
+  File.write(File.join(directory, "hello.rb"), 'puts "Hello, world!"' + "\n")
+  system("git", "init", "--quiet", directory, exception: true)
+  Dir.chdir(directory) do
+    Open3.popen3("codex", "app-server") do |stdin, stdout, stderr, process|
+      errors = Thread.new { IO.copy_stream(stderr, $stderr) }
+      state = {}
+      state[:failed] = false
+      state[:completed] = false
+      send_message = lambda do |message|
+        stdin.puts(JSON.generate(message))
+        stdin.flush
+      end
+      send_message.call(
+        method: "initialize", id: 0,
+        params: {
+          clientInfo: {
+            name: "my_product",
+            title: "My Product",
+            version: "0.1.0"
+          }
+        }
+      )
+      stdout.each_line do |line|
+        message = JSON.parse(line)
+        puts JSON.generate(message)
+        if message["error"]
+          warn JSON.generate(message["error"])
+          state[:failed] = true
+          break
+        elsif message["id"] == 0
+          send_message.call(method: "initialized", params: {})
+          send_message.call(method: "thread/start", id: 1, params: { model: "gpt-6.1-sol" })
+        elsif message["id"] == 1 && state[:thread_id].nil?
+          state[:thread_id] = message.fetch("result").fetch("thread").fetch("id")
+          send_message.call(
+            method: "turn/start", id: 2,
+            params: {
+              threadId: state[:thread_id],
+              input: [
+                {
+                  type: "text",
+                  text: "Summarize this repo."
+                }
+              ]
+            }
+          )
+        elsif message["method"] == "turn/completed"
+          state[:completed] = message.fetch("params").fetch("turn").fetch("status") == "completed"
+          state[:failed] = !state[:completed]
+          break
+        end
+      end
+      stdin.close
+      errors.join
+      status = process.value
+      raise "App-server turn did not complete" if state[:failed] || !state[:completed] || !status.success?
+    ensure
+      stdin.close unless stdin.closed?
+    end
+  end
+end
 ```
 
 ## Core primitives

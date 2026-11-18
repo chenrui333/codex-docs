@@ -406,6 +406,182 @@
       "id": "860470741f1e7617ec124b418cfc6d0075ff5ff5fd4c3dddc5fd3d97778cac5d",
       "observed_at": "2026-11-18T00:41:25+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai/index.md",
+          "learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "0e2c6b19d222fdd55c96ead8d6a944c023b4e784f84c1c3597cb9afcd8ed60b9",
+            "before": "7e87d88b4e521b7b353d76b9fe3e5b00405505175f6c52a12f6447fea259a8c1"
+          },
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
+            "after": "9d03531850206a03122b12ae251f0546fdeddb6816ca1b0a04609429121578d9",
+            "before": "d1b4a4280ffbfa97cb4c593a5949135d90ec575f7ae38c4ae13f11305477ba76"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "4faa3dd6c45af43b5399098eef79d796aa43bf6b7db62dca8e7cc3fcdcf13fd0",
+            "before": "3813e151662b8a2e43f496c921d5b2db14932083a7d09f8c355e46413b68f66a"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "c539f7a7aeb73fc05be72f0cf8a97664262fdd486fec05e4fff681cc40c250a3",
+            "before": "1e070eab466d0446ca057ec5a6efc99bc3633f0f7c63ed93febcb284db6d0b37"
+          },
+          "learn.chatgpt.com/docs/administration/index.md": {
+            "after": "cf47797e2baff66e69b2f4f0851e43f67be0670e8a1faafde1a41ebf05b9ee2b",
+            "before": "efce3212dc822df160dd2e3de6396a3d3bdb8d2bb0d28a61bec90c12c1c3ee90"
+          },
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md": {
+            "after": "d742a121ba4c72dc53d98132c6f16e70c3fba7d50671d3e1b69c31c20d79934e",
+            "before": "3f3106c34a1c166b045d89dd579541988258ab2d7c8549c311bb05b0c6d5f91e"
+          },
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md": {
+            "after": "3ee546fb4290e8c8916431136c94f95379e1a8c3158375b7977d983d93065e1f",
+            "before": "4ee9f8d427370893959ce12cab066f4214095ec21e25e3249c13d2755fb6afce"
+          },
+          "learn.chatgpt.com/docs/agent-configuration/subagents/index.md": {
+            "after": "fad1d192412efaafe368695901b26568d6e8213bd67a7260270107f870eb79c4",
+            "before": "4376258fd463c814fb1c51f8d0369cb774b3f0dbef8c6e4255d25f9b541a46de"
+          },
+          "learn.chatgpt.com/docs/app-server/index.md": {
+            "after": "fcb82ca291353b9a146ba4439c7f8168a6d958434722eb103943eac5fa78e7d7",
+            "before": "b3f863672bb3e1f578f32ef17442476211934115305e91ecbfb92a52902947aa"
+          },
+          "learn.chatgpt.com/docs/browser/index.md": {
+            "after": "7981fb07836127760c034688550eac6ad4d7fd83752a615a9582e8fd7118c820",
+            "before": "94207074d6b35fee9304a669f3bb3bf79ebf7e3cfe51c2784d2f7570a3c2a755"
+          },
+          "learn.chatgpt.com/docs/codex-sdk/index.md": {
+            "after": "f22b85d953d2473dd590f18c881ea3d9a1f6eb55ee3f08abc410a5eca14504da",
+            "before": "b844a417ccdd7d3c438d3a79c9b0ad8a90a10ca20f222d0ab86e9cb882a941a7"
+          },
+          "learn.chatgpt.com/docs/computer-use/index.md": {
+            "after": "cb6798c80a08e129ac72cda252172cb65542d1f19997d0c57c8301c21e2c336f",
+            "before": "ea0bcb5f98f6c96ba3ebdab1eb0190fa61a1f6f48cacfb6419cf55f3c5621e58"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "33c578d67a7af9b507596eaa26d6d54d6f57b7f6ff1235742e28ee477ccb8c7d",
+            "before": "4838d15ba2c0be7a36ea8e38869498cba8f50f8a2c58a8d5b429865a134cd0a4"
+          },
+          "learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai/index.md": {
+            "after": "ab0855d9b10769e9e78405d6a832a3d281af7f77941553c2b0528a655ac017ea",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md": {
+            "after": "daf2afcbadfe972a6efcf5e192e2d3bfd0856b84404951610670a1678059a2d6",
+            "before": "b09153a4e50f35072f93bc72bf178ac814ae1c61591dd90b6ddb61c78b87a4ef"
+          },
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md": {
+            "after": "acaeb0649ce8894beb3844eeedf670fcbed4152156bcabcbb81b4314fe964159",
+            "before": "5d2ac626e2ff223ac4977574c9a432cb660bcd5232ff849fd521860d82b272fd"
+          },
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
+            "after": "02d6cb476f591ee423fe4e9ba748fd4bae082f8aca86cd4ec303cfefdf3c1a30",
+            "before": "c120437a69d905d8c2933bcdfc5958cb1777319d78b2d6649b88010ed5dbcf66"
+          },
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md": {
+            "after": "2db348220d4db8b7fe05a6f302e20266df5d0d1ddc82cfb27b9b252bed54a167",
+            "before": "15367a59b354ddb27d3039f146fed2d3399897710f48b404d06017cf09d7d6e8"
+          },
+          "learn.chatgpt.com/docs/get-started-with-work/index.md": {
+            "after": "9d7c0e791285ccc0339260901c363b5f31c4425c09d44993fac8f0177256cc37",
+            "before": "4b772f1ebae10dd6721fe8ad83526443048452c963f4fc0db16bae5825beff11"
+          },
+          "learn.chatgpt.com/docs/index.md": {
+            "after": "5ef1ed4f5c6239015d46d8a567ee104526d12277de18415bb3b85ff82a1b2456",
+            "before": "34e3bca206a5f9c8ad2fcd4d5b4b384060826c1bb3ce88a6372d8332f2db68ba"
+          },
+          "learn.chatgpt.com/docs/model-selection/index.md": {
+            "after": "50d1d3763d8a27361b58d18b3faeccdbea2410467977f55af222896863d506fd",
+            "before": "2387fd2dc394f8a805b9dd744028f9cc05c5ca381fc6260ad0473c1ef64c56c1"
+          },
+          "learn.chatgpt.com/docs/models/index.md": {
+            "after": "7b10247abb8fc23ec8704518286bafdf48e623cf524972b8197c15207dffe191",
+            "before": "1cd19916bf5df23cf26ce9cb7b65d65821932faf8be28e85cefab08414da838e"
+          },
+          "learn.chatgpt.com/docs/plugins/index.md": {
+            "after": "722e620010c710f0f92b3525541dad435667bc9199ba101d5cd57775362b658e",
+            "before": "18bf4785314095e715f0c81520169d685479ff927fc1c9a88ef2bcabf7d13453"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "45508ef4e9cefe54c7880240b5b64139b93c969e3384fcf5cd8892b9bd1f04c6",
+            "before": "1f1b633c609e20d84a2119e5b952d122a42c66529c99e95287643df96041d1c2"
+          },
+          "learn.chatgpt.com/docs/prompting/index.md": {
+            "after": "16d747343827802979d2ccb2f1f8252863a985f06f19f461f2069ab0251dbdfe",
+            "before": "b8b69cf69609712b9cb696b35382ff3826b8d15d4f43b20fa99a74e980eff997"
+          },
+          "learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol/index.md": {
+            "after": "a5f6a30fadbacf6e3cad39b992ee76b0bda5fd29cb1c92f86922b50572a4cbd7",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/whats-new/index.md": {
+            "after": "f2d47adc6aab2210c5cd34dbff6a0dfa9e8536ec85c1d9f5f82b6fc783bb5316",
+            "before": "6bd21b19024e491d9325937f9dc792df7fd0dd1471a71eebdd1b615a2698c48f"
+          },
+          "platform.openai.com/docs/guides/tools-web-search/index.md": {
+            "after": "cda13e7fa858530c7aad062225f98ebed7bfb8a9b10b3a6986d28b7bd64ada5c",
+            "before": "aa787c845aa134845d81c9eb7266bce399f86996ca235076d644ac7fc6f24558"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.169.1",
+          "codex_cli_source_commit": "c376cf7396eff83ce4c6ac61b9553df142e7a0be",
+          "codex_cli_version": "0.169.1",
+          "codex_cli_version_raw": "codex-cli 0.169.1",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "developers.openai.com/api/docs/guides/tools-computer-use/index.md",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "learn.chatgpt.com/docs/administration/index.md",
+          "learn.chatgpt.com/docs/agent-approvals-security/index.md",
+          "learn.chatgpt.com/docs/agent-configuration/speed/index.md",
+          "learn.chatgpt.com/docs/agent-configuration/subagents/index.md",
+          "learn.chatgpt.com/docs/app-server/index.md",
+          "learn.chatgpt.com/docs/browser/index.md",
+          "learn.chatgpt.com/docs/codex-sdk/index.md",
+          "learn.chatgpt.com/docs/computer-use/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
+          "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md",
+          "learn.chatgpt.com/docs/enterprise/workspace-model-availability/index.md",
+          "learn.chatgpt.com/docs/get-started-with-work/index.md",
+          "learn.chatgpt.com/docs/index.md",
+          "learn.chatgpt.com/docs/model-selection/index.md",
+          "learn.chatgpt.com/docs/models/index.md",
+          "learn.chatgpt.com/docs/plugins/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/prompting/index.md",
+          "learn.chatgpt.com/docs/whats-new/index.md",
+          "platform.openai.com/docs/guides/tools-web-search/index.md"
+        ]
+      },
+      "id": "5dfaee39cb1a4bcc30cf2bcb4bdd6b4dcb9c1c9e47ec6381999ff9328d24b445",
+      "observed_at": "2026-11-18T00:42:32+00:00",
+      "previous_id": "860470741f1e7617ec124b418cfc6d0075ff5ff5fd4c3dddc5fd3d97778cac5d"
     }
   ],
   "schema_version": 1

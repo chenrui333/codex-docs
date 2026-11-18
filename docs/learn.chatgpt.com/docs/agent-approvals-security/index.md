@@ -96,7 +96,7 @@ only after checking that the task can safely continue. If the notice says the
 task has ended or doesn't offer an option to resume, you can't resume from that
 surface.
 
-| Surface and data controls                                                                               | Findings and resume                                       |
+| GPT-6 Astra surface and data controls                                                                   | Findings and resume                                       |
 | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | Codex and ChatGPT Work clients with the findings and resume flow, without the data controls listed here | Review the findings before resuming.                      |
 | Codex CLI and mobile                                                                                    | Full findings and resume aren't available. The task ends. |

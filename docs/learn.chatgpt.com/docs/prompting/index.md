@@ -307,6 +307,9 @@ A useful Codex prompt names the behavior you want, points to the relevant code o
 reproduction steps, preserves important constraints, and says how to verify the
 change.
 
+For GPT-6.2 guidance on reasoning effort, subagents, and visual work, see
+[Prompting GPT-6.2 in Codex](https://learn.chatgpt.com/guides/prompting-gpt-6-2-astra).
+
 <a id="goal-mode"></a>
 
 For a multi-step task, enter `/plan` in the app composer when you want Codex to

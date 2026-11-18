@@ -81,6 +81,7 @@ Extend what ChatGPT and Codex can do, for example:
 - Install the Google Drive plugin to work across Drive, Docs, Sheets, and
   Slides.
 - Install the Slack plugin to summarize channels or draft replies.
+- Use the SVG & 3D Design plugin to [create editable SVG graphics and 3D scenes](https://learn.chatgpt.com/guides/svg-3d-design).
 
 A plugin can contain one or more of these parts:
 

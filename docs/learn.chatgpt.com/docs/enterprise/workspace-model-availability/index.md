@@ -97,6 +97,14 @@ If the page reports that it couldn't save all changes, some changes may
 already be saved. Follow the on-screen guidance to review and save the
 remaining changes.
 
+## GPT-6.2 Astra and GPT-6.2 Sol in Enterprise and Edu
+
+Both models are off by default at launch. To give members access, enable the
+models in your [workspace model settings](https://help.openai.com/en/articles/8411955).
+Members also need access to ChatGPT Work or Codex to select a model there.
+Eligible workspaces can separately enable
+[Ultrafast](https://learn.chatgpt.com/docs/agent-configuration/speed#gpt-62-speed-options).
+
 ## GPT-6 Sol and Luna in Enterprise
 
 GPT-6 Sol and GPT-6 Luna are off by default in Enterprise workspaces at

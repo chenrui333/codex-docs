@@ -21,66 +21,61 @@ model version. Check the [models available in ChatGPT](https://learn.chatgpt.com
 
 ## Find the right model for your workflow
 
-Choose your work and task and get a recommendation.
+Choose a task and a priority to see a suggested model and reasoning effort.
 
 <ModelRecommender client:load />
 
-### When to consider GPT-6.1 Terra
-
-Try [GPT-6.1 Terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra) for concise writing based on
-supplied material, computer-use tasks with a defined outcome, and scoped code
-fixes. Provide clear inputs, requirements, and a way to verify the result, such as
-checking saved records or running regression tests.
-
-Compare it with GPT-6.1 Sol on the same inputs and reasoning effort. For writing,
-judge audience fit, voice, and useful detail as well as accuracy and length. For
-computer use, check the saved result and the accuracy of the completion report.
-
-### When to consider GPT-6.1 Sol
-
-Consider GPT-6.1 Sol for complex projects where cost matters, such as
-creating a board presentation from financial results or building a website
-from a product brief. Compare it with Astra on the same task to assess the
-tradeoff between quality and cost.
-
-See the [API model page](https://developers.openai.com/api/docs/models/gpt-6.1-sol) for specifications
-and API pricing, or [Codex and ChatGPT Work availability](https://learn.chatgpt.com/docs/models#gpt-6.1-sol)
-for access through your ChatGPT plan.
-
 ## How to think about models and reasoning effort
 
-  Luna is our most efficient model, while Astra is our state-of-the-art, most
-  powerful model. If you don't need to think about usage or how long it takes to
-  complete a task, you can default to Astra. To optimize usage, use the guidance
-  below to choose a model and reasoning effort for your needs.
+  To optimize usage, start with the suggested model and reasoning effort. Check
+  which settings your plan offers and how much of your allowance the task uses.
 
-1. **Luna · Low**
+1. **GPT-6 Luna · Low**
 
-   Fine-grained edits, well-scoped problem-solving, and simple data extraction.
+   Making small edits to files and extracting fields when the expected result is clear.
 
-2. **Luna · Extra high**
+2. **GPT-6 Luna · Extra high**
 
-   Finding current context across multiple apps, prioritizing work, and solving problems with clear constraints.
+   Finding updates across apps, prioritizing follow-ups, and solving problems with clear constraints.
 
-3. **GPT-6.1 Sol · Medium**
+3. **GPT-6.1 Terra · Medium**
 
-   Complex technical work and coordinated deliverables you expect to revise.
+   Navigating desktop apps, updating records, and making focused fixes you can verify.
 
-4. **GPT-6.1 Sol · Extra high**
+4. **GPT-6.2 Sol · Medium**
 
-   Polished deliverables, connected visual systems, and decisions built from conflicting evidence.
+   Fixing bugs and adding features in an existing codebase, or drafting documents for review.
 
-5. **Astra · Low**
+5. **GPT-6.2 Sol · Extra high**
 
-   Concise writing and content adaptation that preserve facts and nuance.
+   Working through multistep tasks that need testing and revision along the way.
 
-6. **Astra · Medium**
+6. **GPT-6.2 Astra · Low**
 
-   Ambitious projects that need broad context, reliable interactions, and complete results.
+   Turning a clear brief into polished work that's ready to use.
 
-7. **Astra · Extra high**
+7. **GPT-6.2 Astra · Medium**
 
-   Demanding analysis and complex deliverables with exacting requirements.
+   Planning and carrying out complex projects, adjusting the approach as new information comes in.
+
+8. **GPT-6.2 Astra · Extra high**
+
+   Solving open-ended problems that require weighing trade-offs and testing assumptions.
+
+**Model strengths**
+
+Farther from the center means a stronger fit for that type of work. The ratings are high-level estimates based on benchmarks, independently run task examples, and user feedback.
+
+Models ordered by estimated fit for each type of work
+
+| Type of work | Models from strongest fit to weakest fit |
+| --- | --- |
+| 3D and design | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna |
+| Software engineering | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna |
+| Data analysis | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna |
+| Creating deliverables | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna |
+| Computer use | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna |
+| Research decisions | GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna |
 
 ### Experiment
 

@@ -15,6 +15,17 @@ Source: https://learn.chatgpt.com/docs/whats-new
 
 For every versioned update, bug fix, and minor improvement, see the [ChatGPT and Codex changelog](https://learn.chatgpt.com/docs/changelog) and [API changelog](https://developers.openai.com/api/docs/changelog).
 
+## [November 17, 2026](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)
+
+### [GPT-6.2](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)
+
+GPT-6.2 Astra and Sol launch in ChatGPT Work, Codex, and the API. Use Astra
+for your hardest projects, from implementing and testing complex code
+changes to building slides that follow a template. Choose Sol for everyday
+coding, writing, and multistep workflows.
+
+[Read the full update →](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)
+
 ## November 9–13, 2026
 
 ### Set custom instructions for your dot
@@ -310,7 +321,7 @@ for the full update and smaller improvements.
 
 ### Take on demanding work with GPT-6 Astra
 
-[GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) combines advanced reasoning, computer
+[GPT-6 Astra](https://learn.chatgpt.com/docs/models?surface=app#app-gpt-6-astra) combines advanced reasoning, computer
 use, and stronger judgment for complex work across code, apps, and research in
 Codex and ChatGPT Work. Use it to carry out a workflow, check the result, and
 produce a document, spreadsheet, or presentation that fits your templates and

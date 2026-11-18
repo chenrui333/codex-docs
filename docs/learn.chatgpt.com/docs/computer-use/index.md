@@ -57,8 +57,9 @@ On macOS, grant:
 ## When to use Computer Use
 
 For difficult tasks that depend on screenshots or visual judgment, choose
-[GPT-6 Astra](https://learn.chatgpt.com/docs/models#gpt-6-astra) when it is available in your model
-selector. The same operating-system permissions and app access controls apply.
+[GPT-6.2 Astra](https://learn.chatgpt.com/docs/models#recommended-models) from the model picker. For example, ask ChatGPT to reproduce a bug in the app
+and identify the first screen where the result differs from what you expected.
+The same operating-system permissions and app access controls apply.
 
 Choose Computer Use when the task depends on a graphical user interface that's
 hard to verify through files or command output alone.

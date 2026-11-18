@@ -284,7 +284,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-11-18T00:41:25+00:00",
+  "generated_at": "2026-11-18T00:42:32+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -326,11 +326,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 198,
+      "discovered_urls": 200,
       "html_fallback_pages": 2,
-      "markdown_pages": 195,
-      "mirrored_paths_count": 197,
-      "mirrored_urls": 197,
+      "markdown_pages": 197,
+      "mirrored_paths_count": 199,
+      "mirrored_urls": 199,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -402,6 +402,7 @@
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
       "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+      "https://learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai",
       "https://learn.chatgpt.com/docs/enterprise/desktop-browser-policies",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
       "https://learn.chatgpt.com/docs/enterprise/dots-security",
@@ -529,6 +530,7 @@
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+      "https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol",
       "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
@@ -605,6 +607,7 @@
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
       "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+      "https://learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai",
       "https://learn.chatgpt.com/docs/enterprise/desktop-browser-policies",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
       "https://learn.chatgpt.com/docs/enterprise/dots-security",
@@ -731,6 +734,7 @@
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+      "https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol",
       "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
@@ -803,6 +807,7 @@
       "learn.chatgpt.com/docs/enterprise/compliance-api/index.md",
       "learn.chatgpt.com/docs/enterprise/configuration-server/index.md",
       "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md",
+      "learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai/index.md",
       "learn.chatgpt.com/docs/enterprise/desktop-browser-policies/index.md",
       "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
       "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
@@ -929,6 +934,7 @@
       "learn.chatgpt.com/docs/whats-new/devday-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/dots-october-28-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/dots-october-9-2026/index.md",
+      "learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol/index.md",
       "learn.chatgpt.com/docs/whats-new/index.md",
       "learn.chatgpt.com/docs/whats-new/november-2-6-2026/index.md",
       "learn.chatgpt.com/docs/whats-new/october-26-30-2026/index.md",
@@ -939,7 +945,7 @@
       "learn.chatgpt.com/docs/windows/wsl/index.md",
       "learn.chatgpt.com/docs/working-with-agents/index.md"
     ],
-    "mirrored_paths_count": 197,
+    "mirrored_paths_count": 199,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1004,6 +1010,7 @@
       "https://learn.chatgpt.com/docs/enterprise/compliance-api",
       "https://learn.chatgpt.com/docs/enterprise/configuration-server",
       "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+      "https://learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai",
       "https://learn.chatgpt.com/docs/enterprise/desktop-browser-policies",
       "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
       "https://learn.chatgpt.com/docs/enterprise/dots-security",
@@ -1130,6 +1137,7 @@
       "https://learn.chatgpt.com/docs/whats-new/devday-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
       "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+      "https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol",
       "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
       "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
@@ -1211,6 +1219,7 @@
           "https://learn.chatgpt.com/docs/enterprise/compliance-api",
           "https://learn.chatgpt.com/docs/enterprise/configuration-server",
           "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+          "https://learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai",
           "https://learn.chatgpt.com/docs/enterprise/desktop-browser-policies",
           "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
           "https://learn.chatgpt.com/docs/enterprise/dots-security",
@@ -1338,6 +1347,7 @@
           "https://learn.chatgpt.com/docs/whats-new/devday-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+          "https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol",
           "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
@@ -1347,7 +1357,7 @@
           "https://learn.chatgpt.com/docs/windows/wsl",
           "https://learn.chatgpt.com/docs/working-with-agents"
         ],
-        "discovered_urls_sha256": "c9dc5af02cea3543e6423beabd15acce178fa8061b955a08cff04178dc6477c3",
+        "discovered_urls_sha256": "2275f1079ef94b0eb6b0c5bab625afc65e135ac4fa3f6d58fec87a4aa60cd48d",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1413,6 +1423,7 @@
           "https://learn.chatgpt.com/docs/enterprise/compliance-api",
           "https://learn.chatgpt.com/docs/enterprise/configuration-server",
           "https://learn.chatgpt.com/docs/enterprise/connect-to-a-gateway",
+          "https://learn.chatgpt.com/docs/enterprise/connect-to-vertex-ai",
           "https://learn.chatgpt.com/docs/enterprise/desktop-browser-policies",
           "https://learn.chatgpt.com/docs/enterprise/dots-admin-guide",
           "https://learn.chatgpt.com/docs/enterprise/dots-security",
@@ -1540,6 +1551,7 @@
           "https://learn.chatgpt.com/docs/whats-new/devday-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-28-2026",
           "https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026",
+          "https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol",
           "https://learn.chatgpt.com/docs/whats-new/november-2-6-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-26-30-2026",
           "https://learn.chatgpt.com/docs/whats-new/october-5-9-2026",
@@ -1661,9 +1673,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1740,7 +1752,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-11-17T15:40:59+00:00",
+    "last_successful_full_sync_at": "2026-11-18T00:42:32+00:00",
     "status": "complete"
   }
 }
