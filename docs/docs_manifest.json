@@ -12,10 +12,10 @@
       "source_url": "codex-cli://help"
     },
     "cli-surface/macos-arm64.json": {
-      "codex_cli_release_ref": "rust-v0.169.1",
-      "codex_cli_source_commit": "c376cf7396eff83ce4c6ac61b9553df142e7a0be",
-      "codex_cli_version": "0.169.1",
-      "sha256": "ab5f91d001f35f98110b484ab45ea992a6a771c0eea4fefea81b26de5f661a13",
+      "codex_cli_release_ref": "rust-v0.170.0",
+      "codex_cli_source_commit": "29eb79e9866b3262a777fdf8195c1b9e63684c91",
+      "codex_cli_version": "0.170.0",
+      "sha256": "5c2f92230d2b846b5349c28fef6d28ea0d0c4d7eb2af10dd7394070afcfe124f",
       "source_area": "codex_cli_platform_observation",
       "source_kind": "installed_cli_observation",
       "source_type": "codex_cli_platform_observation",
@@ -170,7 +170,7 @@
         "codex-cli 0.170.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "169c076e02d0de4baa4ca73ef7abf5471338e5aa1f15b42d33b0121fc0ab1b13",
+      "sha256": "bcf2b0ee49ccced638fbe65b474f8158774e7d311caa81e4cc925c58fa9d7a43",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -183,7 +183,7 @@
       "codex_cli_version": "0.170.0",
       "codex_cli_version_raw": "codex-cli 0.170.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "99147bb3d5883d24c7eb4bce23547a70c7a007d0ff392485ac68e91e05c83bd6",
+      "sha256": "2c62375f961efebf8dab977c45bf1f8e312db620ad16a16b1cc794b76068d8d5",
       "source_area": "codex_cli_surface",
       "source_kind": "aggregated_cli_observation",
       "source_type": "codex_cli_surface",

@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-18T15:31:57+00:00",
-  "manifest_sha256": "18da144ce9510f3cb99a3b21e5ee62197cc533df44ff67cce19e6465682b2862",
+  "generated_at": "2026-11-19T00:00:05+00:00",
+  "manifest_sha256": "044cdfab545dcb58a9f1b8b76e29d57be046bf034248c1001df851dfdc639997",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,16 +13,12 @@
     "codex_cli_version_raw": "codex-cli 0.170.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 304,
   "updated": [
-    "learn.chatgpt.com/docs/dots/channels/index.md",
-    "learn.chatgpt.com/docs/dots/index.md",
-    "learn.chatgpt.com/docs/dots/tasks-and-memory/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
-    "learn.chatgpt.com/docs/model-selection/index.md",
-    "learn.chatgpt.com/docs/models/index.md"
+    "cli-surface/macos-arm64.json",
+    "codex_capabilities.json",
+    "codex_cli_surface.json"
   ]
 }
