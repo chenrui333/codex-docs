@@ -144,7 +144,6 @@ See [how Agent Security applies to Work Cloud](https://learn.chatgpt.com/docs/en
 ### Configure browser access
 
 {/* Preserve the console label "Auto-approve requests". */}
-{/* vale Microsoft.Auto = NO */}
 
 1. Open **Admin Console > Agent security**. Use **Workspace default** for the
    workspace baseline, or open the relevant policy under **Overrides**. In
@@ -169,8 +168,6 @@ See [how Agent Security applies to Work Cloud](https://learn.chatgpt.com/docs/en
 1. Choose **Add rule**, review validation messages, and select **Save changes**.
    Test an allowed site and a blocked site on a supported client that receives the policy. Test
    uploads, downloads, and other restricted actions separately.
-
-{/* vale Microsoft.Auto = YES */}
 
 > Illustration: Agent Security site-rule editor with site access, transfers, debugging, and approval controls.
 
@@ -779,14 +776,11 @@ Command networking and desktop-app networking use different controls. Start with
 ### Use the system proxy for native client requests
 
 {/* Preserve the standard technical term "proxy auto-configuration". */}
-{/* vale Microsoft.Auto = NO */}
 
 The experimental `features.respect_system_proxy` setting lets the native Codex
 runtime used by ChatGPT desktop and Codex use operating-system proxy settings
 for its own network requests. Enable it on devices that need a system proxy or
 proxy auto-configuration (PAC). The setting defaults to `false`.
-
-{/* vale Microsoft.Auto = YES */}
 
 Add the following to a supported `config.toml` defaults source or to
 [`managed_config.toml`](#locations):

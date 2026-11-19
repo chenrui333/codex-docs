@@ -40,6 +40,8 @@ and when. Asking your dot to draft replies doesn't give it permission to send
 them. A specific instruction can cover future actions within that scope; an
 action outside it needs another decision.
 
+If you use Wallet, you’ll review and approve each payment using biometrics.
+
 Your dot can also research information from apps you've connected to look for
 ways to help. The tools it uses for that research can't send messages, change
 app content, or control your browser or computer. Any follow-up action is

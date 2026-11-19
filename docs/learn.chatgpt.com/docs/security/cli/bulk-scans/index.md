@@ -252,9 +252,13 @@ npx @openai/codex-security bulk-scan repositories.csv \
   --max-attempts 3
 ```
 
-The default is one attempt per repository. Each attempt has its own result
-record and artifact directory. Retries cover checkout errors, scan failures,
-and missing or invalid required artifacts. Completed scans aren't retried
+The default is one attempt per unfinished CSV row each time you run the
+command. In the example above, if a row fails on attempts 1 through 3,
+resuming with the same command gives it up to three more attempts, numbered
+4 through 6. The CLI skips completed rows.
+
+Each attempt has its own result record and artifact directory. Retries cover
+checkout errors, scan failures, and missing or invalid required artifacts. Completed scans aren't retried
 because of coverage gaps or severity-policy violations.
 
 Bulk scans use these exit codes:

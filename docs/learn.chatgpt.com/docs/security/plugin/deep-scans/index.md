@@ -128,6 +128,8 @@ existing scan.
 - If a wait ends while the scan is still active, return to
   the same scan or conversation and ask Codex to continue it. A response ending
   or a wait timing out doesn't cancel the scan.
+- If Codex blocks a worker request because of a misalignment policy violation,
+  Deep Scan reports the refusal and stops without retrying the request.
 - If the scan reports a terminal failure or was canceled, keep the error and
   saved scan directory. Review saved findings separately from pending
   candidates, which haven't been confirmed. Coverage is incomplete, so an

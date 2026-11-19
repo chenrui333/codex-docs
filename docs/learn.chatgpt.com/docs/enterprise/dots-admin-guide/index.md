@@ -64,7 +64,9 @@ For role creation, assignment, and access checks, see the [role-based access con
 
 5. Under Workspace capabilities, set Use password manager according to your workspace policy.
 
-6. Save, then check access for an intended member.
+6. Wallet is off by default for Enterprise workspaces. Once the setting is available, go to **Admin Console → Permissions → Workspace capabilities → Use Wallet** to give eligible members access. Members must review and approve each Wallet payment using biometrics.
+
+7. Save, then check access for an intended member.
 
 When you enable dots, you may be asked to turn on cloud computer capabilities that are still off. Dots, Work Cloud, and team automations share these permissions. Choose the capabilities your organization's policies allow.
 
@@ -122,6 +124,7 @@ Compare the result with the requirements approved by your security team. Resolve
 | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | Access to dots                      | Grant or revoke dots access through workspace permissions.                                                             |
 | Cloud and connected local computers | Control Use a browser, Allow network access, Allow computer use, Use password manager, and local-computer access.      |
+| Wallet                              | Give eligible members access to Wallet. Off by default for Enterprise workspaces.                                      |
 | Messaging and participation         | Enable or disable Slack participation.                                                                                 |
 | Connected apps                      | Set available apps and allowed actions through [Plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors).               |
 | Custom dot rules                    | When disabled, members cannot add or edit custom rules, and saved rules do not apply.                                  |

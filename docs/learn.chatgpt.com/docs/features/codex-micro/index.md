@@ -176,14 +176,10 @@ Pressing and holding the dial opens the device settings in every mode except
 
 ## Adjust lighting
 
-{/* vale Microsoft.Auto = NO */}
-
 In the device settings, adjust **Brightness** and choose an **Auto-dim**
 interval from 30 seconds to one hour, or turn automatic dimming off. The lights
 come back on when you use the Micro or an Agent Key changes status. By default,
 the lights turn off after three minutes.
-
-{/* vale Microsoft.Auto = YES */}
 
 When the Micro reports its battery status, you can see it in the device settings
 and beside the Micro icon in the sidebar.
@@ -216,15 +212,11 @@ ChatGPT retries automatically when it detects a Micro but can't connect or loses
 communication. If the problem continues, reconnect the Micro and check whether
 a keyboard utility or security tool blocks access to it.
 
-{/* vale Vale.Spelling = NO */}
-
 On macOS, Work Louder notes that Karabiner and Logitech Options+ can interfere
 with Micro communication when those apps have Input Monitoring permission. To
 test for interference, quit the keyboard utility or temporarily turn off its
 Input Monitoring access, then reconnect the Micro. If your organization manages
 your computer, ask your IT administrator to check the device rules.
-
-{/* vale Vale.Spelling = YES */}
 
 ### Get more Work Louder help
 

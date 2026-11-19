@@ -80,6 +80,10 @@ You can import a saved scanner export with `codex-security publish findings`. Pr
 
 Inspect the preview before removing `--dry-run` and confirming. A `privateImport` entry saves the findings to your private inbox. Entries in `requests` publish to the repository environments listed there. Check the receipt for exclusions, failures, and unprocessed rows. See the [CLI reference](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-publish-findings) for local and cloud import examples and the [scanner import guides](https://github.com/openai/codex-security/blob/main/docs/scanner-imports/README.md) for CLI formats and commands.
 
+For AWS Continuum, [collect code issues or an individual finding](https://learn.chatgpt.com/docs/security/cli/reference#codex-security-import-continuum), then preview the saved report with the CLI. Codex Security can use validation evidence from the tested target to assess whether an attacker can reach the affected code.
+
+For CrowdStrike Falcon Cloud Security infrastructure-as-code scans, [import the saved JSON report into your local workbench](https://learn.chatgpt.com/docs/security/cli/reference#preview-and-save-a-local-report).
+
 ## Reopen an import
 
 Open **My recent imports** from **Settings → Integrations** or **Findings → Import** in the workspace where you made the import. You can also reopen a private import from its row in **Scans**. The summary accounts for each row, including rejected inputs and their reasons. Open an accepted row to see its scanner ID and saved evidence, along with any assessment or published finding. Disconnecting the scanner stops new reads through that connection. You can still reopen your saved imports.

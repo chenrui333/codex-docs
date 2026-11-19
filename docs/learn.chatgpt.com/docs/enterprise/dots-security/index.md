@@ -158,6 +158,8 @@ When authorizing a recurring task, name the action, recipients, trigger, and sch
 
 - **Delegated work on a local computer.** The delegated thread uses the member’s connected computer. When Computer Use is enabled and the app is approved, selecting “Always allow” lets ChatGPT use the app without asking for access again.
 
+- **Wallet payments.** Even when an admin enables Wallet and a member gives their dot an ongoing instruction, the member must review and approve each Wallet payment using biometrics.
+
 ### Example: Sending the same external email through three routes
 
 - Suppose the owner authorizes a dot to email the approved project update to Lee at the customer every Friday, with no attachments. Compare that send with adding a new recipient. A new recipient needs fresh authorization. If company policy prohibits the recipient, even the owner’s approval cannot authorize delivery.

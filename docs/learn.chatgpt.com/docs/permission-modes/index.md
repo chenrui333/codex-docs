@@ -13,8 +13,6 @@ Source: https://learn.chatgpt.com/docs/permission-modes
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-{/* vale Microsoft.FirstPerson = NO */}
-
 ## Permission modes
 
 Permissions control how ChatGPT (in the desktop app) and Codex (in the CLI or IDE) handle local actions, such as editing files, running commands, and using the internet. The mode you choose sets the boundary
