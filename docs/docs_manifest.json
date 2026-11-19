@@ -8274,7 +8274,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "fcb82ca291353b9a146ba4439c7f8168a6d958434722eb103943eac5fa78e7d7",
+      "sha256": "55a6924aa0cd863ee537a0b7add37863b28d58da8eb95615980b86740ddf817c",
       "source_area": "learn_app_server",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9204,6 +9204,13 @@
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration"
     },
+    "learn.chatgpt.com/docs/developer-settings/index.md": {
+      "sha256": "f98ffcdfca4f970c82031997b4ea034565dbe67b7ba93c26699e75516e63d21c",
+      "source_area": "learn_developer_settings",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/developer-settings"
+    },
     "learn.chatgpt.com/docs/developers/index.md": {
       "codex_cli_versions": [
         "0.146.0",
@@ -9879,7 +9886,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway"
     },
     "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
-      "sha256": "02d6cb476f591ee423fe4e9ba748fd4bae082f8aca86cd4ec303cfefdf3c1a30",
+      "sha256": "5b009860bfca2ffc53765c7cb529be5dcdf964873ec46c67386f56371afea035",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",

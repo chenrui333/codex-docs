@@ -284,7 +284,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-11-19T00:00:05+00:00",
+  "generated_at": "2026-11-19T07:11:17+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -326,11 +326,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 200,
+      "discovered_urls": 201,
       "html_fallback_pages": 2,
-      "markdown_pages": 197,
-      "mirrored_paths_count": 199,
-      "mirrored_urls": 199,
+      "markdown_pages": 198,
+      "mirrored_paths_count": 200,
+      "mirrored_urls": 200,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -379,6 +379,7 @@
       "https://learn.chatgpt.com/docs/customization/overview",
       "https://learn.chatgpt.com/docs/cyber-safety",
       "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
+      "https://learn.chatgpt.com/docs/developer-settings",
       "https://learn.chatgpt.com/docs/developers",
       "https://learn.chatgpt.com/docs/dots",
       "https://learn.chatgpt.com/docs/dots/channels",
@@ -584,6 +585,7 @@
       "https://learn.chatgpt.com/docs/customization/overview",
       "https://learn.chatgpt.com/docs/cyber-safety",
       "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
+      "https://learn.chatgpt.com/docs/developer-settings",
       "https://learn.chatgpt.com/docs/developers",
       "https://learn.chatgpt.com/docs/dots",
       "https://learn.chatgpt.com/docs/dots/channels",
@@ -784,6 +786,7 @@
       "learn.chatgpt.com/docs/customization/overview/index.md",
       "learn.chatgpt.com/docs/cyber-safety/index.md",
       "learn.chatgpt.com/docs/cyber-safety/recommended-configuration/index.md",
+      "learn.chatgpt.com/docs/developer-settings/index.md",
       "learn.chatgpt.com/docs/developers/index.md",
       "learn.chatgpt.com/docs/dots/channels/index.md",
       "learn.chatgpt.com/docs/dots/computers-and-apps/index.md",
@@ -945,7 +948,7 @@
       "learn.chatgpt.com/docs/windows/wsl/index.md",
       "learn.chatgpt.com/docs/working-with-agents/index.md"
     ],
-    "mirrored_paths_count": 199,
+    "mirrored_paths_count": 200,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -987,6 +990,7 @@
       "https://learn.chatgpt.com/docs/customization/overview",
       "https://learn.chatgpt.com/docs/cyber-safety",
       "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
+      "https://learn.chatgpt.com/docs/developer-settings",
       "https://learn.chatgpt.com/docs/developers",
       "https://learn.chatgpt.com/docs/dots",
       "https://learn.chatgpt.com/docs/dots/channels",
@@ -1196,6 +1200,7 @@
           "https://learn.chatgpt.com/docs/customization/overview",
           "https://learn.chatgpt.com/docs/cyber-safety",
           "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
+          "https://learn.chatgpt.com/docs/developer-settings",
           "https://learn.chatgpt.com/docs/developers",
           "https://learn.chatgpt.com/docs/dots",
           "https://learn.chatgpt.com/docs/dots/channels",
@@ -1357,7 +1362,7 @@
           "https://learn.chatgpt.com/docs/windows/wsl",
           "https://learn.chatgpt.com/docs/working-with-agents"
         ],
-        "discovered_urls_sha256": "2275f1079ef94b0eb6b0c5bab625afc65e135ac4fa3f6d58fec87a4aa60cd48d",
+        "discovered_urls_sha256": "3fb02f15b59389318cab5234f7c8d1c6d80f0839a418583fbbec29dfb7b34ae9",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1400,6 +1405,7 @@
           "https://learn.chatgpt.com/docs/customization/overview",
           "https://learn.chatgpt.com/docs/cyber-safety",
           "https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration",
+          "https://learn.chatgpt.com/docs/developer-settings",
           "https://learn.chatgpt.com/docs/developers",
           "https://learn.chatgpt.com/docs/dots",
           "https://learn.chatgpt.com/docs/dots/channels",
@@ -1673,9 +1679,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1752,7 +1758,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-11-18T00:42:32+00:00",
+    "last_successful_full_sync_at": "2026-11-19T07:11:17+00:00",
     "status": "complete"
   }
 }

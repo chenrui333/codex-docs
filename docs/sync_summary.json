@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "learn.chatgpt.com/docs/developer-settings/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-19T00:01:03+00:00",
-  "manifest_sha256": "3eb7e38dc5f2bdcb33490640376799ef273efa0647327c10006735b9c2b59b6b",
+  "generated_at": "2026-11-19T07:11:17+00:00",
+  "manifest_sha256": "2813c2d57e094c41c7480c33836b4538e53baeee4b5c45471448367b3baff5c3",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,18 +17,9 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 304,
+  "total_files": 305,
   "updated": [
-    "learn.chatgpt.com/docs/dots/controls/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-admin-guide/index.md",
-    "learn.chatgpt.com/docs/enterprise/dots-security/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/features/codex-micro/index.md",
-    "learn.chatgpt.com/docs/permission-modes/index.md",
-    "learn.chatgpt.com/docs/security/cli/bulk-scans/index.md",
-    "learn.chatgpt.com/docs/security/cli/reference/index.md",
-    "learn.chatgpt.com/docs/security/plugin/deep-scans/index.md",
-    "learn.chatgpt.com/docs/security/scanner-imports/index.md",
-    "learn.chatgpt.com/docs/use-chatgpt/index.md"
+    "learn.chatgpt.com/docs/app-server/index.md",
+    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
   ]
 }

@@ -139,6 +139,57 @@
       "id": "80d7b11c5154f25bbd4f23d72412b736a502d3f318eaeb29896d5e0ecf99470f",
       "observed_at": "2026-11-19T00:01:03+00:00",
       "previous_id": "57a0e8f5ccb8295d90e6413e21a2cd70354898121abab13845ed27be462c9275"
+    },
+    {
+      "changes": {
+        "added": [
+          "learn.chatgpt.com/docs/developer-settings/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/app-server/index.md": {
+            "after": "55a6924aa0cd863ee537a0b7add37863b28d58da8eb95615980b86740ddf817c",
+            "before": "fcb82ca291353b9a146ba4439c7f8168a6d958434722eb103943eac5fa78e7d7"
+          },
+          "learn.chatgpt.com/docs/developer-settings/index.md": {
+            "after": "f98ffcdfca4f970c82031997b4ea034565dbe67b7ba93c26699e75516e63d21c",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
+            "after": "5b009860bfca2ffc53765c7cb529be5dcdf964873ec46c67386f56371afea035",
+            "before": "02d6cb476f591ee423fe4e9ba748fd4bae082f8aca86cd4ec303cfefdf3c1a30"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.170.0",
+          "codex_cli_source_commit": "29eb79e9866b3262a777fdf8195c1b9e63684c91",
+          "codex_cli_version": "0.170.0",
+          "codex_cli_version_raw": "codex-cli 0.170.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/app-server/index.md",
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
+        ]
+      },
+      "id": "45f562fcfee0d2f4317420b47f797474a0add5db5cc1b34602660af7b64ecfef",
+      "observed_at": "2026-11-19T07:11:17+00:00",
+      "previous_id": "80d7b11c5154f25bbd4f23d72412b736a502d3f318eaeb29896d5e0ecf99470f"
     }
   ],
   "schema_version": 1
