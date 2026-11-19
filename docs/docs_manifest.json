@@ -15,7 +15,7 @@
       "codex_cli_release_ref": "rust-v0.170.0",
       "codex_cli_source_commit": "29eb79e9866b3262a777fdf8195c1b9e63684c91",
       "codex_cli_version": "0.170.0",
-      "sha256": "5c2f92230d2b846b5349c28fef6d28ea0d0c4d7eb2af10dd7394070afcfe124f",
+      "sha256": "f3707d715310c1bf0c587ba46cf42d967bd5e69b0740b8973ce3bc6c18b1569c",
       "source_area": "codex_cli_platform_observation",
       "source_kind": "installed_cli_observation",
       "source_type": "codex_cli_platform_observation",
