@@ -1,12 +1,12 @@
 ---
 source_type: 'github'
 source_area: 'github_rust'
-source_url: 'https://raw.githubusercontent.com/openai/codex/29eb79e9866b3262a777fdf8195c1b9e63684c91/codex-rs/docs/bazel.md'
-source_etag: 'W/"01b5350d6587884e308aef761b29fcf98c6314d37fd1d89ba2df6bad4c125d83"'
-upstream_source_ref: 'rust-v0.170.0'
-upstream_source_commit: '29eb79e9866b3262a777fdf8195c1b9e63684c91'
-codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3", "0.160.0", "0.160.1", "0.161.0", "0.162.0", "0.162.1", "0.163.0", "0.164.0", "0.165.0", "0.166.0", "0.167.0", "0.167.1", "0.167.2", "0.168.0", "0.169.0", "0.169.1", "0.170.0"]
-codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3", "codex-cli 0.160.0", "codex-cli 0.160.1", "codex-cli 0.161.0", "codex-cli 0.162.0", "codex-cli 0.162.1", "codex-cli 0.163.0", "codex-cli 0.164.0", "codex-cli 0.165.0", "codex-cli 0.166.0", "codex-cli 0.167.0", "codex-cli 0.167.1", "codex-cli 0.167.2", "codex-cli 0.168.0", "codex-cli 0.169.0", "codex-cli 0.169.1", "codex-cli 0.170.0"]
+source_url: 'https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/docs/bazel.md'
+source_etag: 'W/"ac2ce9854b4642f87b1eb54f7357d2a53029ea30532ef5e0ed5561b1b792abd8"'
+upstream_source_ref: 'rust-v0.171.0'
+upstream_source_commit: 'ccf9be8cc458bd6b8336fe84d68d8893f2691a5e'
+codex_cli_versions: ["0.125.0", "0.128.0", "0.129.0", "0.130.0", "0.131.0", "0.132.0", "0.133.0", "0.134.0", "0.135.0", "0.136.0", "0.137.0", "0.138.0", "0.139.0", "0.140.0", "0.141.0", "0.142.0", "0.142.1", "0.142.2", "0.142.3", "0.142.4", "0.142.5", "0.143.0", "0.144.0", "0.144.1", "0.144.3", "0.144.4", "0.144.5", "0.144.6", "0.145.0", "0.146.0", "0.146.1", "0.147.0", "0.148.0", "0.149.0", "0.151.0", "0.152.0", "0.152.1", "0.153.0", "0.153.2", "0.153.3", "0.153.4", "0.154.0", "0.155.0", "0.155.1", "0.156.0", "0.156.1", "0.157.0", "0.157.1", "0.158.0", "0.159.0", "0.159.1", "0.159.2", "0.159.3", "0.160.0", "0.160.1", "0.161.0", "0.162.0", "0.162.1", "0.163.0", "0.164.0", "0.165.0", "0.166.0", "0.167.0", "0.167.1", "0.167.2", "0.168.0", "0.169.0", "0.169.1", "0.170.0", "0.171.0"]
+codex_cli_versions_raw: ["codex-cli 0.125.0", "codex-cli 0.128.0", "codex-cli 0.129.0", "codex-cli 0.130.0", "codex-cli 0.131.0", "codex-cli 0.132.0", "codex-cli 0.133.0", "codex-cli 0.134.0", "codex-cli 0.135.0", "codex-cli 0.136.0", "codex-cli 0.137.0", "codex-cli 0.138.0", "codex-cli 0.139.0", "codex-cli 0.140.0", "codex-cli 0.141.0", "codex-cli 0.142.0", "codex-cli 0.142.1", "codex-cli 0.142.2", "codex-cli 0.142.3", "codex-cli 0.142.4", "codex-cli 0.142.5", "codex-cli 0.143.0", "codex-cli 0.144.0", "codex-cli 0.144.1", "codex-cli 0.144.3", "codex-cli 0.144.4", "codex-cli 0.144.5", "codex-cli 0.144.6", "codex-cli 0.145.0", "codex-cli 0.146.0", "codex-cli 0.146.1", "codex-cli 0.147.0", "codex-cli 0.148.0", "codex-cli 0.149.0", "codex-cli 0.151.0", "codex-cli 0.152.0", "codex-cli 0.152.1", "codex-cli 0.153.0", "codex-cli 0.153.2", "codex-cli 0.153.3", "codex-cli 0.153.4", "codex-cli 0.154.0", "codex-cli 0.155.0", "codex-cli 0.155.1", "codex-cli 0.156.0", "codex-cli 0.156.1", "codex-cli 0.157.0", "codex-cli 0.157.1", "codex-cli 0.158.0", "codex-cli 0.159.0", "codex-cli 0.159.1", "codex-cli 0.159.2", "codex-cli 0.159.3", "codex-cli 0.160.0", "codex-cli 0.160.1", "codex-cli 0.161.0", "codex-cli 0.162.0", "codex-cli 0.162.1", "codex-cli 0.163.0", "codex-cli 0.164.0", "codex-cli 0.165.0", "codex-cli 0.166.0", "codex-cli 0.167.0", "codex-cli 0.167.1", "codex-cli 0.167.2", "codex-cli 0.168.0", "codex-cli 0.169.0", "codex-cli 0.169.1", "codex-cli 0.170.0", "codex-cli 0.171.0"]
 ---
 
 # Bazel in codex-rs
@@ -40,62 +40,9 @@ just bazel-test
 just bazel-clippy
 ```
 
-Ordinary local `bazel` and `just` invocations run locally. BuildBuddy cache,
-build event upload, downloads, and remote execution are opt-in configurations.
-
-## BuildBuddy
-
-Codex uses BuildBuddy for a shared Bazel cache and remoted builds and tests. To use it
-to speed up your builds and tests you'll need to provide an API key and select a
-configuration.
-
-### BuildBuddy API key
-
-If you're an OpenAI employee, log in to https://openai.buildbuddy.io and use Google sign-in.
-
-Create a BuildBuddy API key as described in BuildBuddy's [Authentication Guide][bb-auth-guide],
-then add it to `~/.bazelrc`:
-
-```bazelrc
-# Local machine only; this file contains a BuildBuddy credential.
-common --remote_header=x-buildbuddy-api-key=<your-buildbuddy-api-key>
-```
-
-Keeping the credential outside the workspace reduces the risk of accidentally
-committing it.
-
-If you need different API keys for different projects, put the API key in
-`%workspace%/user.bazelrc` instead. The checked-in `.bazelrc` optionally imports
-that file, and `.gitignore` excludes it. Do not commit or share a file containing
-the credential.
-
-[bb-auth-guide]: https://www.buildbuddy.io/docs/guide-auth/#managing-keys
-
-### Selecting a remote build configuration
-
-OpenAI employees should default to the OpenAI host with remote execution unless
-they have a reason to choose another configuration. Add the following configuration
-to `%workspace%/user.bazelrc`:
-
-```bazelrc
-common --config=buildbuddy-openai-rbe
-```
-
-OpenAI employees who don't want remote execution can use `buildbuddy-openai`. External users
-should use `buildbuddy-generic-rbe` or `buildbuddy-generic`. See below for details on these
-configurations.
-
-### All remote configurations
-
-CI executes Bazel actions on its runners. The following configurations are available for explicit local use.
-
-| Invocation/config                           | Key Required | Cache/BES              | Build exec | Test exec |
-| ------------------------------------------- | ------------ | ---------------------- | ---------- | --------- |
-| `bazel ...`                                 | No           | None                   | Local      | Local     |
-| `bazel ... --config=buildbuddy-generic`     | Yes          | `remote.buildbuddy.io` | Local      | Local     |
-| `bazel ... --config=buildbuddy-generic-rbe` | Yes          | `remote.buildbuddy.io` | Remote     | Remote    |
-| `bazel ... --config=buildbuddy-openai`      | Yes          | `openai.buildbuddy.io` | Local      | Local     |
-| `bazel ... --config=buildbuddy-openai-rbe`  | Yes          | `openai.buildbuddy.io` | Remote     | Remote    |
+Ordinary local `bazel` and `just` invocations run locally. The checked-in
+Bazel configuration does not define third-party remote cache or execution
+endpoints.
 
 ## Evolving the setup
 

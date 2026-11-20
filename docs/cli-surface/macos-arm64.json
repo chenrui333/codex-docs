@@ -1,6 +1,6 @@
 {
-  "codex_cli_version": "0.170.0",
-  "codex_cli_version_raw": "codex-cli 0.170.0",
+  "codex_cli_version": "0.171.0",
+  "codex_cli_version_raw": "codex-cli 0.171.0",
   "command": "codex --help; codex <command> --help",
   "commands": [
     {
@@ -116,6 +116,22 @@
           ],
           "primary_flag": "--disable",
           "synopsis": "--disable <FEATURE>"
+        },
+        {
+          "description": "Connect to an existing app server",
+          "flags": [
+            "--remote"
+          ],
+          "primary_flag": "--remote",
+          "synopsis": "--remote <ADDR>"
+        },
+        {
+          "description": "Environment variable containing the remote WebSocket bearer token",
+          "flags": [
+            "--remote-auth-token-env"
+          ],
+          "primary_flag": "--remote-auth-token-env",
+          "synopsis": "--remote-auth-token-env <ENV_VAR>"
         },
         {
           "description": "Error out when config.toml contains fields that are not recognized by this version of Codex",
@@ -2208,7 +2224,7 @@
           "synopsis": "-c, --config <key=value>"
         },
         {
-          "description": "Use a local directory with space for the database and WAL files. The default is the system temporary directory [default: /var/folders/q2/p1t6rgxj5fj32g1dc7dmd49r0000gn/T/]",
+          "description": "Use a local directory with space for the database and WAL files. The default is the system temporary directory [default: /var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/]",
           "flags": [
             "--staging-dir"
           ],
@@ -2764,6 +2780,22 @@
           ],
           "primary_flag": "--linux-sandbox-pid-namespace",
           "synopsis": "--linux-sandbox-pid-namespace <MODE>"
+        },
+        {
+          "description": "Route managed Linux sandbox TCP through the SOCKS proxy",
+          "flags": [
+            "--linux-sandbox-transparent-tcp"
+          ],
+          "primary_flag": "--linux-sandbox-transparent-tcp",
+          "synopsis": "--linux-sandbox-transparent-tcp"
+        },
+        {
+          "description": "Require this HTTP CONNECT proxy for raw TCP from the managed SOCKS listener",
+          "flags": [
+            "--tcp-upstream-proxy"
+          ],
+          "primary_flag": "--tcp-upstream-proxy",
+          "synopsis": "--tcp-upstream-proxy <HOST:PORT>"
         },
         {
           "description": "Allow permitted private IP destinations to use the configured upstream proxy. If no valid upstream proxy applies to the request protocol, connect directly. Loopback stays local. This flag does not require upstream routing [env: CODEX_EXEC_SERVER_PROXY_PRIVATE_IPS_VIA_UPSTREAM=]",
@@ -3576,9 +3608,9 @@
     "os": "darwin"
   },
   "schema_version": 2,
-  "source_commit": "29eb79e9866b3262a777fdf8195c1b9e63684c91",
+  "source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
   "source_kind": "installed_cli_help_observation",
-  "source_ref": "rust-v0.170.0",
+  "source_ref": "rust-v0.171.0",
   "usage": [
     "codex [OPTIONS] [PROMPT]",
     "codex [OPTIONS] <COMMAND> [ARGS]"

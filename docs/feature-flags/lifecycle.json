@@ -112,6 +112,11 @@
     },
     {
       "enabled": false,
+      "key": "catalog_apps_instructions",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "chronicle",
       "stage": "under development"
     },
@@ -337,6 +342,11 @@
     },
     {
       "enabled": false,
+      "key": "file_backed_tool_audio",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "gateway_setup_wizard",
       "stage": "stable"
     },
@@ -383,6 +393,11 @@
     {
       "enabled": false,
       "key": "guardian_native_multi_agent_history",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "guardian_nested_approval_context",
       "stage": "under development"
     },
     {
@@ -572,6 +587,11 @@
     },
     {
       "enabled": false,
+      "key": "mcp_shared_repl_cwd",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "mcp_tool_list_changed",
       "stage": "under development"
     },
@@ -648,6 +668,11 @@
     {
       "enabled": false,
       "key": "output_token_replay",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "per_environment_context",
       "stage": "under development"
     },
     {
@@ -767,6 +792,11 @@
     },
     {
       "enabled": false,
+      "key": "restored_history_prewarm",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
       "key": "retain_client_developer_messages",
       "stage": "under development"
     },
@@ -788,6 +818,11 @@
     {
       "enabled": false,
       "key": "runtime_metrics",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "safe_image_decoder",
       "stage": "under development"
     },
     {
@@ -958,7 +993,7 @@
     {
       "enabled": false,
       "key": "tui_extensions_statusline",
-      "stage": "under development"
+      "stage": "experimental"
     },
     {
       "enabled": false,
@@ -966,9 +1001,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "tui_workspace",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -1036,6 +1071,11 @@
       "stage": "under development"
     },
     {
+      "enabled": false,
+      "key": "utc_environment_date",
+      "stage": "under development"
+    },
+    {
       "enabled": true,
       "key": "view_image",
       "stage": "stable"
@@ -1081,7 +1121,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.170.0",
+  "codex_cli_version": "codex-cli 0.171.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -1120,6 +1160,8 @@
       "system_proxy_fallback",
       "tool_call_mcp_elicitation",
       "tool_suggest",
+      "tui_extensions_statusline",
+      "tui_workspace",
       "unbounded_connection_retries",
       "unified_exec_tty",
       "unified_image_budget",
@@ -1154,6 +1196,7 @@
       "auth_elicitation",
       "background_paginated_rollout_migration",
       "bedrock_setup_wizard",
+      "catalog_apps_instructions",
       "chronicle",
       "cli_daybreak",
       "cli_resume_account_check",
@@ -1196,6 +1239,7 @@
       "experimental_windows_sandbox",
       "external_agent_memory_import",
       "external_migration",
+      "file_backed_tool_audio",
       "gcp_setup_wizard",
       "guardian_conversation_history_tools",
       "guardian_denial_reconsideration",
@@ -1203,6 +1247,7 @@
       "guardian_ext",
       "guardian_include_additional_context",
       "guardian_native_multi_agent_history",
+      "guardian_nested_approval_context",
       "guardian_node_repl_transcript_images",
       "guardian_recorded_items",
       "guardian_reuse_parent_compaction",
@@ -1233,6 +1278,7 @@
       "mcp_connection_sharing",
       "mcp_lazy_stdio_startup",
       "mcp_oauth_refresh_coordination",
+      "mcp_shared_repl_cwd",
       "mcp_tool_list_changed",
       "mentions_v2",
       "model_catalog_in_context",
@@ -1246,6 +1292,7 @@
       "omit_app_server_notification_media",
       "omit_skill_descriptions",
       "output_token_replay",
+      "per_environment_context",
       "plugin_discovery_prefetch",
       "plugin_hooks",
       "powershell_shell_version",
@@ -1262,11 +1309,13 @@
       "respect_system_proxy",
       "responses_websockets",
       "responses_websockets_v2",
+      "restored_history_prewarm",
       "retain_client_developer_messages",
       "retain_client_tool_outputs",
       "rollout_budget",
       "runtime_agent_instances",
       "runtime_metrics",
+      "safe_image_decoder",
       "search_tool",
       "secret_auth_storage",
       "send_async_message",
@@ -1310,6 +1359,7 @@
       "use_legacy_landlock",
       "use_linux_sandbox_bwrap",
       "use_xaa",
+      "utc_environment_date",
       "wake_on_agent_messages",
       "windows_sandbox_service",
       "workspace_owner_usage_nudge",
@@ -1323,7 +1373,8 @@
       "experimental": [
         "analytics_plan_history",
         "login_shell_package_path",
-        "respect_system_proxy"
+        "respect_system_proxy",
+        "tui_extensions_statusline"
       ],
       "removed": [
         "apply_patch_freeform",
@@ -1407,6 +1458,7 @@
         "system_proxy_fallback",
         "tool_call_mcp_elicitation",
         "tool_suggest",
+        "tui_workspace",
         "unbounded_connection_retries",
         "unified_exec_tty",
         "unified_image_budget",
@@ -1423,6 +1475,7 @@
         "async_compaction",
         "async_compaction_root_only",
         "background_paginated_rollout_migration",
+        "catalog_apps_instructions",
         "chronicle",
         "cli_resume_account_check",
         "code_mode",
@@ -1448,10 +1501,12 @@
         "executor_capability_discovery",
         "executor_capability_discovery_v2",
         "external_agent_memory_import",
+        "file_backed_tool_audio",
         "guardian_conversation_history_tools",
         "guardian_denial_reconsideration",
         "guardian_enhanced_node_repl_transcripts",
         "guardian_native_multi_agent_history",
+        "guardian_nested_approval_context",
         "guardian_node_repl_transcript_images",
         "guardian_recorded_items",
         "guardian_root_handoff_context",
@@ -1469,6 +1524,7 @@
         "mcp_2026_07_28",
         "mcp_connection_sharing",
         "mcp_lazy_stdio_startup",
+        "mcp_shared_repl_cwd",
         "mcp_tool_list_changed",
         "model_catalog_in_context",
         "multi_agent_v2_dynamic_tools",
@@ -1479,13 +1535,16 @@
         "omit_app_server_notification_media",
         "omit_skill_descriptions",
         "output_token_replay",
+        "per_environment_context",
         "powershell_shell_version",
         "psp",
         "request_permissions_tool",
+        "restored_history_prewarm",
         "retain_client_developer_messages",
         "rollout_budget",
         "runtime_agent_instances",
         "runtime_metrics",
+        "safe_image_decoder",
         "send_message_to_user_async",
         "shell_snapshot_v2",
         "simplified_selection_hints",
@@ -1496,11 +1555,10 @@
         "subagent_thread_environments",
         "terminal_visualization_instructions",
         "token_budget",
-        "tui_extensions_statusline",
         "tui_multi_backend",
-        "tui_workspace",
         "use_agent_identity",
         "use_xaa",
+        "utc_environment_date",
         "wake_on_agent_messages",
         "windows_sandbox_service"
       ]
@@ -1568,7 +1626,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "29eb79e9866b3262a777fdf8195c1b9e63684c91",
+  "source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1748,6 +1806,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
+    },
+    "catalog_apps_instructions": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "chronicle": {
       "compatibility_flag": false,
@@ -2117,6 +2183,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "file_backed_tool_audio": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "gateway_setup_wizard": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2191,6 +2265,14 @@
       "stage_from_source": "stable"
     },
     "guardian_native_multi_agent_history": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "guardian_nested_approval_context": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2500,6 +2582,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "stable"
     },
+    "mcp_shared_repl_cwd": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "mcp_tool_list_changed": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2622,6 +2712,14 @@
       "stage_from_source": "under development"
     },
     "output_token_replay": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "per_environment_context": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2824,6 +2922,14 @@
       "effective_behavior": "unknown",
       "stage_from_source": "removed"
     },
+    "restored_history_prewarm": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "retain_client_developer_messages": {
       "compatibility_flag": false,
       "configurable": true,
@@ -2857,6 +2963,14 @@
       "stage_from_source": "under development"
     },
     "runtime_metrics": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "safe_image_decoder": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -3146,7 +3260,7 @@
       "default_enabled": false,
       "default_enabled_expr": "false",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "experimental"
     },
     "tui_multi_backend": {
       "compatibility_flag": false,
@@ -3159,10 +3273,10 @@
     "tui_workspace": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "ultrafast_mode": {
       "compatibility_flag": false,
@@ -3272,6 +3386,14 @@
       "effective_behavior": "feature_gated",
       "stage_from_source": "under development"
     },
+    "utc_environment_date": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
     "view_image": {
       "compatibility_flag": false,
       "configurable": true,
@@ -3348,13 +3470,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "cf1d3d7a9ba30ae280b965494079b0b5ab2a97ad860960de591719caaf6ac8f5",
-    "features_rs_sha256": "fae6cbf9cc83ae604d329deaaf5b79e806afebe8390d21e91bfee76322014a20"
+    "client_rs_sha256": "04a2cf7510f503f6c8e65660d883fdcfcc262cb3efa32082b0b370afbad6a302",
+    "features_rs_sha256": "5b191163de22c539b7a587d1d79db2d6b872812790cfb83da3506c62a2a55ff3"
   },
-  "source_ref": "rust-v0.170.0",
+  "source_ref": "rust-v0.171.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/29eb79e9866b3262a777fdf8195c1b9e63684c91/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/29eb79e9866b3262a777fdf8195c1b9e63684c91/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,
