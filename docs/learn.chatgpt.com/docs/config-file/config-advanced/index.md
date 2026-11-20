@@ -724,11 +724,45 @@ Enable raw reasoning only if it's acceptable for your workflow. Some models/prov
 
 Use `notify` to trigger an external program whenever Codex emits supported events (currently only `agent-turn-complete`). This is handy for desktop toasts, chat webhooks, CI updates, or any side-channel alerting that the built-in TUI notifications don't cover.
 
+<CodeSampleNote client:load language="python" languages={Object.keys(samples.all.codexConfigAdvanced.notifications())}>
+
 ```toml
 notify = ["python3", "/path/to/notify.py"]
 ```
 
-Example `notify.py` (truncated) that reacts to `agent-turn-complete`:
+</CodeSampleNote>
+
+These programs react to `agent-turn-complete` on macOS. Install `terminal-notifier` first.
+
+<CodeSampleNote client:load language="typescript" languages={Object.keys(samples.all.codexConfigAdvanced.notifications())}>
+
+For TypeScript, save the source as `notify.ts` and configure `notify = ["node", "--experimental-strip-types", "/path/to/notify.ts"]`.
+
+</CodeSampleNote>
+
+```typescript
+
+const argument = process.argv[2];
+if (!argument)
+  throw new Error("Pass the Codex notification JSON as one argument");
+const notification = JSON.parse(argument);
+if (notification.type === "agent-turn-complete") {
+  execFileSync(
+    "terminal-notifier",
+    [
+      "-title",
+      `Codex: ${notification["last-assistant-message"] ?? "Turn Complete!"}`,
+      "-message",
+      (notification["input-messages"] ?? []).join(" "),
+      "-group",
+      `codex-${notification["thread-id"] ?? ""}`,
+      "-activate",
+      "com.googlecode.iterm2",
+    ],
+    { stdio: "inherit" }
+  );
+}
+```
 
 ```python
 #!/usr/bin/env python3

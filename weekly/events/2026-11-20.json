@@ -402,6 +402,61 @@
       "id": "55761bcfeb4d10fcb3fc0749b88c71cbb2ee6b5c795b8070d00e7924737d80a9",
       "observed_at": "2026-11-20T19:42:48+00:00",
       "previous_id": "e3a8546eb156834f88f3dc205307fc631b76ea6e428981ae42f6e962113e976f"
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/codex-sdk/index.md": {
+            "after": "54646447d87352940c3c78c82154395402e68cba294552d0fdcbf0adc6bd026a",
+            "before": "f22b85d953d2473dd590f18c881ea3d9a1f6eb55ee3f08abc410a5eca14504da"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "bbbceda7d7f2ae621f32eae33ce019499aa5af9939abb419def2e8a597562cb2",
+            "before": "4918ddbfa69b63da1e48c4383c95b11fdad4ec894d4f4cfb45fb28b55bd9b401"
+          },
+          "learn.chatgpt.com/docs/dots/index.md": {
+            "after": "2480aedd47087b1e635289dfd7f4d862b38987dcdd862e1d03e20b53e00a2090",
+            "before": "f9f539983b0978fcc5f45bccfb83e7f69c7bf35bf0d43b751fc3684f9e6a5f61"
+          },
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
+            "after": "0704456375d58f755452288a084701e23bd35eb39032f76c2ce6d1ef2db32f20",
+            "before": "5b009860bfca2ffc53765c7cb529be5dcdf964873ec46c67386f56371afea035"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.171.0",
+          "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
+          "codex_cli_version": "0.171.0",
+          "codex_cli_version_raw": "codex-cli 0.171.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/codex-sdk/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/dots/index.md",
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
+        ]
+      },
+      "id": "a382b85f022e63f34341211cc4b84a1071cd2daab3d9e9196ab8ed6caee7eb6c",
+      "observed_at": "2026-11-20T19:43:58+00:00",
+      "previous_id": "55761bcfeb4d10fcb3fc0749b88c71cbb2ee6b5c795b8070d00e7924737d80a9"
     }
   ],
   "schema_version": 1

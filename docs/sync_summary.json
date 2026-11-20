@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-20T19:42:48+00:00",
-  "manifest_sha256": "da2db95f11092e06ec7da13bbfd1db3c86da320b5231ac9683b0be74b937834c",
+  "generated_at": "2026-11-20T19:43:59+00:00",
+  "manifest_sha256": "0495c47ded06430d36ba7b2fe5a3428601698822fa53b2b06b3a40a37c9a9d41",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,10 +13,13 @@
     "codex_cli_version_raw": "codex-cli 0.171.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "release"
+    "sync_scope": "full"
   },
   "total_files": 309,
   "updated": [
-    "cli-surface/macos-arm64.json"
+    "learn.chatgpt.com/docs/codex-sdk/index.md",
+    "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+    "learn.chatgpt.com/docs/dots/index.md",
+    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
   ]
 }

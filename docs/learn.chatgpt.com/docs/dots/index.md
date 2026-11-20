@@ -11,16 +11,13 @@ Source: https://learn.chatgpt.com/docs/dots
 
 > For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-<OFeatureCanvas>
+<DotsFeatureCanvas>
 
 <DotsCharacters
   client:load
   label="Dots characters"
   switchLabel="Choose your dot character"
 />
-
-<a id="introducing-o"></a>
-<a id="what-is-o"></a>
 
 Your dot is an always-on agent that keeps work moving across your tools and projects. You can keep talking to it while it works, and it reaches out with results or decisions that need you.
 
@@ -33,8 +30,6 @@ Your dot lives in the cloud and has its own computer and browser. You can reach 
 <a id="access-to-dots"></a>
 
 See [availability and access](#access) for plan, region, and workspace requirements.
-
-<a id="meet-your-o"></a>
 
 ## Make it your own
 
@@ -64,14 +59,10 @@ You reach the same dot in ChatGPT, Slack, or a call. Changing where you talk to 
 
 Tell your dot where to send different kinds of updates. For example, ask it to keep routine progress in ChatGPT and bring decisions to you in Slack. Explain which changes need your attention, such as a deadline at risk.
 
-<a id="choose-where-o-can-reach-you"></a>
-<a id="where-to-use-o"></a>
-
 Open your dot's profile and select **Add** to connect an available contact method. Texting is rolling out in beta to ChatGPT Pro users in the U.S. See how to [set up texting](https://learn.chatgpt.com/docs/dots/channels#texting) with iMessage or RCS on Android. See [Message your dot](https://learn.chatgpt.com/docs/dots/channels) for other ways to reach it.
 
 In Slack, you can DM your dot or mention it in a channel you’ve added it to. By default, it responds to you; you can instruct it to engage with others. Existing permissions and safeguards still apply to what it shares and does. Tell it which channels and events to watch for. Adding it to a channel alone doesn’t start monitoring. See [Message your dot in Slack](https://learn.chatgpt.com/docs/dots/channels#slack) for setup instructions.
 
-<a id="how-o-works"></a>
 <a id="how-your-dot-works"></a>
 
 ## How dots work
@@ -195,18 +186,13 @@ Here's how dots compare with ChatGPT Work and Codex, and how they can work toget
 | Codex        | When you want to build, debug, test, or review software and work directly with code and developer tools.                                                                                                                                 |
 | Your dot     | When you want an agent to keep track of an ongoing responsibility, figure out next steps as things change, and follow up between conversations. It can keep you updated in ChatGPT or Slack and delegate tasks to ChatGPT Work or Codex. |
 
-<a id="what-o-can-do"></a>
-<a id="things-to-try-with-o"></a>
-<a id="try-more-with-o"></a>
 <a id="what-could-you-do-with-yours"></a>
 
 ## Work with your dot
 
 Start with work you regularly need to check or update. Describe the responsibility and share the source material it needs, then review its work and explain what needs to change.
 
-<a id="work-with-o"></a>
 <a id="start-working-together"></a>
-<a id="give-o-your-first-task"></a>
 <a id="an-event-youre-organizing"></a>
 <a id="a-project-youre-working-on"></a>
 
@@ -283,4 +269,4 @@ You can create your dot in the ChatGPT mobile app, desktop app, or a desktop bro
 | [Computers and apps](https://learn.chatgpt.com/docs/dots/computers-and-apps) | Cloud work, local access, plugins, and website sign-in.          |
 | [Controls](https://learn.chatgpt.com/docs/dots/controls)                     | Review activity, manage permissions, and stop work.              |
 
-</OFeatureCanvas>
+</DotsFeatureCanvas>

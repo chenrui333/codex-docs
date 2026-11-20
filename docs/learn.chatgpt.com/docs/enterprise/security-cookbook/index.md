@@ -1112,8 +1112,32 @@ For a local macOS integration test, save the Ruby version as `pre_tool_use_polic
 
 </CodeSampleNote>
 
+<CodeSampleNote client:load language="typescript" languages={Object.keys(samples.all.codexSecurityCookbook.installAndEnforceAdministratorManagedHooks())}>
+
+Save the TypeScript version as `pre_tool_use_policy.ts`. Set the hook `command` to `/absolute/path/to/node --experimental-strip-types /etc/codex/hooks/pre_tool_use_policy.ts`, replacing the interpreter path with the path to your installed Node executable. In the installation commands below, replace both `pre_tool_use_policy.py` paths with `pre_tool_use_policy.ts`; retain root ownership and permissions. The hook uses only Node's standard library.
+
+</CodeSampleNote>
+
 It blocks only the synthetic marker; replace it with a reviewed organization-specific policy before relying on it. Confirm that the configured executable and any required interpreter exist on the target. The command must match the selected language:
 
 Define a managed hook policy
+
+```typescript
+
+try {
+  const event = JSON.parse(readFileSync(0, "utf8")) as {
+    tool_input?: { command?: unknown };
+  };
+  const command = event.tool_input?.command ?? "";
+  if (typeof command !== "string") throw new Error("Invalid command");
+  if (command.includes("CODEX_HOOK_TEST_DENY")) {
+    console.error("Synthetic test command blocked by managed hook.");
+    process.exit(2);
+  }
+} catch {
+  console.error("Invalid hook event.");
+  process.exit(2);
+}
+```
 
 ```python
