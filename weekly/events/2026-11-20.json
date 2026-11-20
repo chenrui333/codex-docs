@@ -362,6 +362,46 @@
       "id": "e3a8546eb156834f88f3dc205307fc631b76ea6e428981ae42f6e962113e976f",
       "observed_at": "2026-11-20T06:12:38+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "cli-surface/macos-arm64.json": {
+            "after": "f6f9cbf9130cdd466e70542c18779195288b5b91e8871717bc9c67d2519451b5",
+            "before": "5245efa32902255570d127328f87aade90fc6e12776ee0f56feb01ddd453f594"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.171.0",
+          "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
+          "codex_cli_version": "0.171.0",
+          "codex_cli_version_raw": "codex-cli 0.171.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "release"
+        },
+        "updated": [
+          "cli-surface/macos-arm64.json"
+        ]
+      },
+      "id": "55761bcfeb4d10fcb3fc0749b88c71cbb2ee6b5c795b8070d00e7924737d80a9",
+      "observed_at": "2026-11-20T19:42:48+00:00",
+      "previous_id": "e3a8546eb156834f88f3dc205307fc631b76ea6e428981ae42f6e962113e976f"
     }
   ],
   "schema_version": 1
