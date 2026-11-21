@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md": {
+            "after": "91a085a3ae7c3d4039304361acbb6412f130df745083a364fa9e90e19b11fd73",
+            "before": "4ce6c4216a4f34b6f9a72059fcdb5a2ec24c7f129e8fd562dae2a2900533c54e"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.171.0",
+          "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
+          "codex_cli_version": "0.171.0",
+          "codex_cli_version_raw": "codex-cli 0.171.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md"
+        ]
+      },
+      "id": "c1f140a1fde56748a0b03b4304160632ebf187a78cd43b93316d486c666785da",
+      "observed_at": "2026-11-21T06:01:16+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}
