@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-21T06:01:16+00:00",
-  "manifest_sha256": "1e89d82a8003f9c93637713522f3ceb41c2e46fe2f5c0d56feca1089ee73feaf",
+  "generated_at": "2026-11-21T14:33:39+00:00",
+  "manifest_sha256": "9d6436bb7e7084751f59a286eb02361b9c0e44d6d7eee19b31c0cfa8c04d52dc",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,10 +13,10 @@
     "codex_cli_version_raw": "codex-cli 0.171.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "full"
+    "sync_scope": "release"
   },
   "total_files": 309,
   "updated": [
-    "learn.chatgpt.com/docs/enterprise/connect-to-a-gateway/index.md"
+    "cli-surface/macos-arm64.json"
   ]
 }
