@@ -217,6 +217,13 @@ Source: https://learn.chatgpt.com/docs/features
           href: "/codex/sites/managing-a-site",
           icon: "workspace",
         },
+        {
+          title: "Usage and cost",
+          description:
+            "Check hosting allowances, rates, and estimated monthly costs.",
+          href: "/codex/sites/usage-and-cost",
+          icon: "workspace",
+        },
       ],
     },
     {

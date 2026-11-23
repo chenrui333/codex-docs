@@ -192,4 +192,13 @@ When a site needs to remember records or uploaded files, include that in your re
 Add player scores and avatar uploads to this game. Keep the scores and uploaded avatars between visits.
 ```
 
+## Guided projects
+
+Try a walkthrough for a site you can build with your team.
+
+- [Manage creative requests from brief to delivery](https://developers.openai.com/use-cases/collect-and-schedule-team-requests)
+- [Build an onboarding portal](https://developers.openai.com/use-cases/build-personal-onboarding-plan)
+- [See which campaigns bring in leads](https://developers.openai.com/use-cases/compare-campaign-performance)
+- [Build a hackathon site](https://developers.openai.com/use-cases/build-workshop-practice-site)
+
 <SitesReferenceNavigation />

@@ -1,9 +1,12 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security/index.md",
+    "learn.chatgpt.com/docs/sites/usage-and-cost/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-21T22:52:35+00:00",
-  "manifest_sha256": "1e89d82a8003f9c93637713522f3ceb41c2e46fe2f5c0d56feca1089ee73feaf",
+  "generated_at": "2026-11-23T23:32:35+00:00",
+  "manifest_sha256": "6c25764f5563f8915b44466c3b62b8ade22ab309b9f0b3b8d85b75efc2823403",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -13,10 +16,13 @@
     "codex_cli_version_raw": "codex-cli 0.171.0",
     "codex_prompt_snapshot_command": "codex debug prompt-input",
     "source_kind": "installed_codex_cli",
-    "sync_scope": "release"
+    "sync_scope": "full"
   },
-  "total_files": 309,
+  "total_files": 311,
   "updated": [
-    "cli-surface/macos-arm64.json"
+    "learn.chatgpt.com/docs/features/index.md",
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/sites/creating-a-site/index.md",
+    "learn.chatgpt.com/docs/sites/index.md"
   ]
 }

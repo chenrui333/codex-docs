@@ -1,0 +1,71 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [
+          "developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security/index.md",
+          "learn.chatgpt.com/docs/sites/usage-and-cost/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security/index.md": {
+            "after": "a73a85b996635a3a2bc120bcc8677808587d16f63823ab83933d7cfdf03b275e",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/features/index.md": {
+            "after": "8c122cfe10d51c1d24a41347bc2604b15fbd6331b2c349eded24b757402605ad",
+            "before": "197d0a60d218512d1dab7d5da71b9b6ee74203a188a56d4a74dc408a335961ea"
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "dd7dbf8141efb52264f39a899a1eb0b88deedf296bb7821aaca72540939c9ff7",
+            "before": "45508ef4e9cefe54c7880240b5b64139b93c969e3384fcf5cd8892b9bd1f04c6"
+          },
+          "learn.chatgpt.com/docs/sites/creating-a-site/index.md": {
+            "after": "6bf963e71d18d34769d7c4cbc9cef63bdae6471a2ed223a80098f6ef7782c296",
+            "before": "755323bd83a4429c8e20a4c71a6853bd10ef38d97d6182a22c4c7823bc44e671"
+          },
+          "learn.chatgpt.com/docs/sites/index.md": {
+            "after": "dc046482716897a776fe925c34093a8c27422886b722c5bfd55f3644646b992e",
+            "before": "8d2f9b58b2056ccd13f131a7eccf30bae99e44e560fe1c41358d441bc08e0e9b"
+          },
+          "learn.chatgpt.com/docs/sites/usage-and-cost/index.md": {
+            "after": "9be6f2a8c686728b4844944f5bbaef765068e7c7b138509b7d79af1f2a5688e3",
+            "before": null
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.171.0",
+          "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
+          "codex_cli_version": "0.171.0",
+          "codex_cli_version_raw": "codex-cli 0.171.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/features/index.md",
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/sites/creating-a-site/index.md",
+          "learn.chatgpt.com/docs/sites/index.md"
+        ]
+      },
+      "id": "07c1cb56e15cb9967fa78574adbd0001f263e856f1623407c264db1380b6c088",
+      "observed_at": "2026-11-23T23:32:35+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

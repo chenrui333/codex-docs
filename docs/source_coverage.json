@@ -125,6 +125,7 @@
       "https://developers.openai.com/api/docs/guides/promptfoo-codex",
       "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
+      "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security",
       "https://developers.openai.com/blog/codex-as-a-platform",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
@@ -160,8 +161,8 @@
     ],
     "counts": {
       "classified_skipped_codex_related_urls": 10,
-      "codex_related_urls": 35,
-      "mirrored_urls": 22,
+      "codex_related_urls": 36,
+      "mirrored_urls": 23,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -173,6 +174,7 @@
     "mirrored_urls": [
       "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
       "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
+      "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security",
       "https://developers.openai.com/blog/codex-as-a-platform",
       "https://developers.openai.com/blog/codex-at-devday",
       "https://developers.openai.com/blog/codex-for-documentation-dagster",
@@ -288,7 +290,7 @@
     ],
     "unconfirmed_removed_urls_due_to_partial_sitemap": []
   },
-  "generated_at": "2026-11-20T06:12:38+00:00",
+  "generated_at": "2026-11-23T23:32:35+00:00",
   "github": {
     "counts": {
       "mirrored_paths_count": 24,
@@ -330,11 +332,11 @@
   },
   "learn": {
     "counts": {
-      "discovered_urls": 201,
+      "discovered_urls": 202,
       "html_fallback_pages": 2,
-      "markdown_pages": 198,
-      "mirrored_paths_count": 200,
-      "mirrored_urls": 200,
+      "markdown_pages": 199,
+      "mirrored_paths_count": 201,
+      "mirrored_urls": 201,
       "page_fetch_errors": 0,
       "redirected_urls": 0,
       "sitemap_fetch_errors": 0,
@@ -516,6 +518,7 @@
       "https://learn.chatgpt.com/docs/sites/data-and-connections",
       "https://learn.chatgpt.com/docs/sites/managing-a-site",
       "https://learn.chatgpt.com/docs/sites/publishing-and-sharing",
+      "https://learn.chatgpt.com/docs/sites/usage-and-cost",
       "https://learn.chatgpt.com/docs/skills-and-plugins",
       "https://learn.chatgpt.com/docs/space",
       "https://learn.chatgpt.com/docs/space/agents",
@@ -721,6 +724,7 @@
       "https://learn.chatgpt.com/docs/sites/data-and-connections",
       "https://learn.chatgpt.com/docs/sites/managing-a-site",
       "https://learn.chatgpt.com/docs/sites/publishing-and-sharing",
+      "https://learn.chatgpt.com/docs/sites/usage-and-cost",
       "https://learn.chatgpt.com/docs/skills-and-plugins",
       "https://learn.chatgpt.com/docs/space",
       "https://learn.chatgpt.com/docs/space/agents",
@@ -923,6 +927,7 @@
       "learn.chatgpt.com/docs/sites/index.md",
       "learn.chatgpt.com/docs/sites/managing-a-site/index.md",
       "learn.chatgpt.com/docs/sites/publishing-and-sharing/index.md",
+      "learn.chatgpt.com/docs/sites/usage-and-cost/index.md",
       "learn.chatgpt.com/docs/skills-and-plugins/index.md",
       "learn.chatgpt.com/docs/space/agents/index.md",
       "learn.chatgpt.com/docs/space/collaboration/index.md",
@@ -952,7 +957,7 @@
       "learn.chatgpt.com/docs/windows/wsl/index.md",
       "learn.chatgpt.com/docs/working-with-agents/index.md"
     ],
-    "mirrored_paths_count": 200,
+    "mirrored_paths_count": 201,
     "mirrored_urls": [
       "https://learn.chatgpt.com/docs",
       "https://learn.chatgpt.com/docs/administration",
@@ -1126,6 +1131,7 @@
       "https://learn.chatgpt.com/docs/sites/data-and-connections",
       "https://learn.chatgpt.com/docs/sites/managing-a-site",
       "https://learn.chatgpt.com/docs/sites/publishing-and-sharing",
+      "https://learn.chatgpt.com/docs/sites/usage-and-cost",
       "https://learn.chatgpt.com/docs/skills-and-plugins",
       "https://learn.chatgpt.com/docs/space",
       "https://learn.chatgpt.com/docs/space/agents",
@@ -1337,6 +1343,7 @@
           "https://learn.chatgpt.com/docs/sites/data-and-connections",
           "https://learn.chatgpt.com/docs/sites/managing-a-site",
           "https://learn.chatgpt.com/docs/sites/publishing-and-sharing",
+          "https://learn.chatgpt.com/docs/sites/usage-and-cost",
           "https://learn.chatgpt.com/docs/skills-and-plugins",
           "https://learn.chatgpt.com/docs/space",
           "https://learn.chatgpt.com/docs/space/agents",
@@ -1366,7 +1373,7 @@
           "https://learn.chatgpt.com/docs/windows/wsl",
           "https://learn.chatgpt.com/docs/working-with-agents"
         ],
-        "discovered_urls_sha256": "3fb02f15b59389318cab5234f7c8d1c6d80f0839a418583fbbec29dfb7b34ae9",
+        "discovered_urls_sha256": "675ada3e527d5a57bd5e89c4a1f6be694169de9f43da0cbd967b8481591e985c",
         "status": "complete",
         "unique_discovered_urls": [
           "https://learn.chatgpt.com/docs",
@@ -1542,6 +1549,7 @@
           "https://learn.chatgpt.com/docs/sites/data-and-connections",
           "https://learn.chatgpt.com/docs/sites/managing-a-site",
           "https://learn.chatgpt.com/docs/sites/publishing-and-sharing",
+          "https://learn.chatgpt.com/docs/sites/usage-and-cost",
           "https://learn.chatgpt.com/docs/skills-and-plugins",
           "https://learn.chatgpt.com/docs/space",
           "https://learn.chatgpt.com/docs/space/agents",
@@ -1683,9 +1691,9 @@
   "sync": {
     "failure_count": 0,
     "preserve_missing_sources": [],
-    "scope": "release",
+    "scope": "full",
     "status": "complete",
-    "web_observation": "last_known_good"
+    "web_observation": "current"
   },
   "system_prompts": {
     "counts": {
@@ -1766,7 +1774,7 @@
     "source_kind": "installed_codex_cli"
   },
   "web_snapshot": {
-    "last_successful_full_sync_at": "2026-11-19T07:11:17+00:00",
+    "last_successful_full_sync_at": "2026-11-23T23:32:35+00:00",
     "status": "complete"
   }
 }

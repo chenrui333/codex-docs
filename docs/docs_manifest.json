@@ -256,6 +256,14 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma"
     },
+    "developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security/index.md": {
+      "sha256": "a73a85b996635a3a2bc120bcc8677808587d16f63823ab83933d7cfdf03b275e",
+      "source_area": "codex_blog",
+      "source_etag": "W/\"75f8d78588669e37d2348e16478848e6\"",
+      "source_last_modified": "2026-11-23T20:58:19Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security"
+    },
     "developers.openai.com/blog/codex-as-a-platform/index.md": {
       "codex_cli_versions": [
         "0.151.0",
@@ -10592,7 +10600,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "197d0a60d218512d1dab7d5da71b9b6ee74203a188a56d4a74dc408a335961ea",
+      "sha256": "8c122cfe10d51c1d24a41347bc2604b15fbd6331b2c349eded24b757402605ad",
       "source_area": "learn_features",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11324,7 +11332,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "45508ef4e9cefe54c7880240b5b64139b93c969e3384fcf5cd8892b9bd1f04c6",
+      "sha256": "dd7dbf8141efb52264f39a899a1eb0b88deedf296bb7821aaca72540939c9ff7",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12315,7 +12323,7 @@
       "source_url": "https://learn.chatgpt.com/docs/sign-in-with-chatgpt"
     },
     "learn.chatgpt.com/docs/sites/creating-a-site/index.md": {
-      "sha256": "755323bd83a4429c8e20a4c71a6853bd10ef38d97d6182a22c4c7823bc44e671",
+      "sha256": "6bf963e71d18d34769d7c4cbc9cef63bdae6471a2ed223a80098f6ef7782c296",
       "source_area": "learn_sites",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12353,7 +12361,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "8d2f9b58b2056ccd13f131a7eccf30bae99e44e560fe1c41358d441bc08e0e9b",
+      "sha256": "dc046482716897a776fe925c34093a8c27422886b722c5bfd55f3644646b992e",
       "source_area": "learn_sites",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12372,6 +12380,13 @@
       "source_kind": "learn_markdown",
       "source_type": "learn",
       "source_url": "https://learn.chatgpt.com/docs/sites/publishing-and-sharing"
+    },
+    "learn.chatgpt.com/docs/sites/usage-and-cost/index.md": {
+      "sha256": "9be6f2a8c686728b4844944f5bbaef765068e7c7b138509b7d79af1f2a5688e3",
+      "source_area": "learn_sites",
+      "source_kind": "learn_markdown",
+      "source_type": "learn",
+      "source_url": "https://learn.chatgpt.com/docs/sites/usage-and-cost"
     },
     "learn.chatgpt.com/docs/skills-and-plugins/index.md": {
       "codex_cli_versions": [
