@@ -500,6 +500,30 @@ exporter = { otlp-grpc = {
 
 If `exporter = "none"` Codex records events but sends nothing. Exporters batch asynchronously and flush on shutdown. Event metadata includes service name, CLI version, env tag, conversation id, model, sandbox/approval settings, and per-event fields (see [Config Reference](https://learn.chatgpt.com/docs/config-file/config-reference)).
 
+### Refresh collector credentials
+
+To refresh OTLP/HTTP collector credentials, configure a helper command in
+`~/.codex/config.toml`.
+
+```toml
+[otel]
+exporter = { otlp-http = { endpoint = "https://otel.example.com/v1/logs", protocol = "binary" } }
+headers_helper = "/opt/company/bin/otel-auth"
+```
+
+The helper must print a JSON object of string header names and values to standard
+output, such as `{"Authorization":"Bearer example-token"}`.
+
+Codex runs the helper at startup and every 29 minutes. To change the refresh
+interval, set `headers_helper_refresh_interval_ms` to a positive number of
+milliseconds. Helper headers override matching static headers. If a refresh fails or the helper returns invalid headers, affected exports
+pause until the helper succeeds.
+
+The helper supports OTLP/HTTP logs, traces, and metrics. It can't be set in
+project configuration or modify managed exporters. See
+[Managed collector credentials](https://learn.chatgpt.com/docs/enterprise/managed-configuration#managed-collector-credentials)
+for system and MDM deployment.
+
 ### What gets emitted
 
 Codex emits structured log events for runs and tool usage. Representative event types include:

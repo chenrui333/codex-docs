@@ -1312,6 +1312,28 @@ entries remain available, and an empty metadata table doesn't clear them.
 See [Observability and telemetry](https://learn.chatgpt.com/docs/config-file/config-advanced#observability-and-telemetry)
 for exporter options and log contents.
 
+### Managed collector credentials
+
+Use a managed header helper to refresh OTLP/HTTP collector credentials.
+
+Install the helper in an administrator-controlled directory and grant Codex
+users permission to execute it. Codex runs it directly from that directory.
+Set its absolute path and the exporters that use it in the same requirements
+layer, either system `requirements.toml` or macOS MDM.
+
+```toml
+[otel]
+headers_helper = "/opt/company/bin/otel-auth"
+exporter = { otlp-http = { endpoint = "https://otel.example.com/v1/logs", protocol = "binary" } }
+```
+
+The helper can supply headers for `exporter`, `trace_exporter`, and
+`metrics_exporter`. If another layer replaces an exporter, the replacement
+uses its own headers. OTLP/gRPC exporters don't use the helper.
+
+See [Refresh collector credentials](https://learn.chatgpt.com/docs/config-file/config-advanced#refresh-collector-credentials)
+for the helper's output format, refresh interval, and failure behavior.
+
 ### Migrate SQLite databases on NFS
 
 On Linux, Codex creates new SQLite databases on NFS in `DELETE` journal mode.

@@ -40,18 +40,42 @@ before sharing sensitive information or allowing ChatGPT to act.
 
 ## Inspect a web app in Codex Cloud
 
-When a [Codex Cloud](https://learn.chatgpt.com/docs/cloud) task has browser access, Codex can use a
-browser inside the cloud task to inspect your web app, reproduce a bug, or
-verify a fix. Give Codex the command to start the app in the task, the port,
-and the behavior you want it to check.
+### Use the cloud browser or computer
 
-For example, ask Codex to open your app's settings page, change and save a
-preference, and reload the page to check whether the change persists. Ask it
-to report what happened and include a screenshot if it helps show the result.
+In a [Codex Cloud](https://learn.chatgpt.com/docs/cloud) task with Browser Use access, ask Codex to
+open a URL, interact with the page, and check the result in the cloud browser.
+If Computer Use is available to the task, you can ask Codex to interact with
+apps on the cloud computer. Both tools run in the cloud. You don't need to
+install Playwright to use either one.
 
-Install the app's dependencies when you [prepare the Cloud environment](https://learn.chatgpt.com/docs/environments/cloud-environments).
-If the page needs an external service, check the environment's network settings
+For example, ask Codex to start your app on port 3000, open
+`http://localhost:3000`, turn on email reminders, and reload the page to
+check that the setting persists. Here, `localhost` refers to the task's
+cloud computer.
+
+If **Desktop** appears in the task's side panel, open it to watch Codex
+work. Select **Take over** to use the mouse and keyboard yourself, then
+**Return control** when you're done. To open just the app in your own
+browser, use a [private HTTP preview](https://learn.chatgpt.com/docs/environments/cloud-environments#preview-an-app-or-connect-over-ssh).
+
+> Illustration: Desktop panel with email reminders enabled at localhost:3000. Below the browser, Codex has control appears beside Take over.
+
+In Enterprise workspaces, Browser Use and Computer Use in Codex Cloud inherit the applicable Global Agent Security requirements. Admins can customize supported execution requirements for Codex Cloud in the policy's `requirements.toml` under **Admin Console** > **Agent Security** > **Codex Cloud** without changing the Global baseline. See [Where Agent Security settings apply](https://learn.chatgpt.com/docs/enterprise/agent-security#where-settings-apply).
+
+### Run Playwright tests
+
+For repeatable browser tests, you can also ask Codex to run Playwright in
+headless mode. These tests run without opening an interactive browser window
+and don't use Browser Use or Computer Use.
+
+If you choose Playwright, install it in the cloud environment along with its
+browser binaries, system dependencies, and your app's dependencies. If the script needs an external
+service, [check the environment's network settings](https://learn.chatgpt.com/docs/environments/cloud-environments#connect-to-services)
 or use local test data.
+
+Give Codex the command to start the app, the port it listens on, and the test
+command or behavior to verify. For example, ask Codex to run a Playwright test
+that changes a setting, reloads the page, and checks that the change persists.
 
 <ContentModeSwitch group="codex-surface" ids="app,cli,ide">
 

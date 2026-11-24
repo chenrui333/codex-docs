@@ -314,6 +314,94 @@
       "id": "f7477c5458af3f2a0c5ca731b775aa035fdbab75eb339627826f8048a8ea944f",
       "observed_at": "2026-11-24T08:52:52+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [
+            "config_key:otel.headers_helper",
+            "config_key:otel.headers_helper_refresh_interval_ms"
+          ],
+          "added_by_category": {
+            "config_key": [
+              "config_key:otel.headers_helper",
+              "config_key:otel.headers_helper_refresh_interval_ms"
+            ]
+          },
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "codex_capabilities.json": {
+            "after": "b84e3558d7b587d67f7df8ed93a7c1a37a279a2acf0a33e415ab076fab3a7c44",
+            "before": "8fc52d71438d55c66a3e9c9d3de161dbaab5b11e4ed275aa2da2495f45243a92"
+          },
+          "feature-flags/lifecycle.json": {
+            "after": "30232b7e023972ede87818e040523594c0c40b0afeae7257dbbc2aedda336134",
+            "before": "5aa943a402fb106ce1a054b1a2969c6c52f2096a76482c009fc59975203188c7"
+          },
+          "feature-flags/lifecycle.md": {
+            "after": "d5a57b00454f14dfeb72042e8ce6f269300ff7e12ff501be2bdff04815d48c82",
+            "before": "918443609bdf67b55649af0f598f944668759c3ada8e21b725f015de11ef9130"
+          },
+          "learn.chatgpt.com/docs/browser/index.md": {
+            "after": "21863c8ef2c6b1dc6574654312fcb0daaddf40f0b49f77043a1f7ab9789059f9",
+            "before": "7981fb07836127760c034688550eac6ad4d7fd83752a615a9582e8fd7118c820"
+          },
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md": {
+            "after": "f0f281d7915c3f48ad3b7382bf69c9a6b24f2e0169cec9292d576949549aff2e",
+            "before": "bbbceda7d7f2ae621f32eae33ce019499aa5af9939abb419def2e8a597562cb2"
+          },
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md": {
+            "after": "8f16b03be3075447e994ab6e8a17b1bf1b2f0cc06ba9070befb44f421f7f1489",
+            "before": "33c578d67a7af9b507596eaa26d6d54d6f57b7f6ff1235742e28ee477ccb8c7d"
+          },
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md": {
+            "after": "c9a7740884298b26818746546addd6046a066c879776b1e2ce7f130a3de450a5",
+            "before": "26564e2456bd07551d0ea7aa7d42bb2bfb64bb09a128e8ac58b6cfd953bffa4e"
+          },
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md": {
+            "after": "b37da6d59fee4e61d02100e96491788d1bf36a228b426438aa5691a8bf68cecb",
+            "before": "d823f4da5f88f3a3e6669f3c92b8a9948b7d4070ee6d9f6bc0f27e11bb9fc317"
+          },
+          "learn.chatgpt.com/docs/sites/usage-and-cost/index.md": {
+            "after": "f11f492923f6a1c4fe6658e0a2319ff182f49569253ee3d0ab6d7b397127076d",
+            "before": "9be6f2a8c686728b4844944f5bbaef765068e7c7b138509b7d79af1f2a5688e3"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.172.0",
+          "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+          "codex_cli_version": "0.172.0",
+          "codex_cli_version_raw": "codex-cli 0.172.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "codex_capabilities.json",
+          "feature-flags/lifecycle.json",
+          "feature-flags/lifecycle.md",
+          "learn.chatgpt.com/docs/browser/index.md",
+          "learn.chatgpt.com/docs/config-file/config-advanced/index.md",
+          "learn.chatgpt.com/docs/config-file/config-reference/index.md",
+          "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
+          "learn.chatgpt.com/docs/environments/cloud-environments/index.md",
+          "learn.chatgpt.com/docs/sites/usage-and-cost/index.md"
+        ]
+      },
+      "id": "1d0e418ffd15babbad600d5a54e53bdf969afd3e8c9499576e5d315de45ee10f",
+      "observed_at": "2026-11-24T08:53:43+00:00",
+      "previous_id": "f7477c5458af3f2a0c5ca731b775aa035fdbab75eb339627826f8048a8ea944f"
     }
   ],
   "schema_version": 1

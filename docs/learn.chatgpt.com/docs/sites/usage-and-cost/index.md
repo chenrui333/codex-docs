@@ -32,19 +32,27 @@ If your Enterprise agreement uses a dollar commitment, Codex tokens and Sites ho
 
 Use these approximate credit rates to estimate hosting costs starting January 1, 2027.
 
-| What you use                                             | Billing unit             | Approx. credits |
-| -------------------------------------------------------- | ------------------------ | --------------- |
-| Site without storage                                     | 1 Site per month         | 0               |
-| Site with storage, including an empty database           | 1 Site per month         | 25              |
-| Traffic                                                  | 100,000 requests         | 16              |
-| Database storage (saved records, such as form responses) | 1 GiB stored for a month | 150             |
-| File storage (uploaded files, such as images or PDFs)    | 1 GiB stored for a month | 3.75            |
-| Custom domain (domain registration costs extra)          | 1 domain per month       | 25              |
-| Tunnel to a private system (Enterprise only)             | 1 tunnel per month       | 125             |
+| What you use                                                       | Billing unit             | Approx. credits |
+| ------------------------------------------------------------------ | ------------------------ | --------------- |
+| Site without storage                                               | 1 Site per month         | 0               |
+| Site with storage, including an empty database                     | 1 Site per month         | 25              |
+| Traffic                                                            | 100,000 requests         | 15              |
+| Database storage (saved records, such as form responses)           | 1 GiB stored for a month | 150             |
+| File storage (uploaded files, such as images or PDFs)              | 1 GiB stored for a month | 3.75            |
+| Custom domain (domain registration costs extra)                    | 1 domain per month       | 25              |
+| Site–tunnel connection to a private system (Enterprise plans only) | 1 connection for 30 days | 125             |
 
 A request loads a page, image, or other resource. One page visit typically generates 30–50 requests, depending on the site.
 
 A site with an empty database uses about 25 credits per month before traffic. If it stores 1 GiB of records for the full month, the base fee and database storage together use about 175 credits. One GiB is about 1.07 GB.
+
+### Private connections on Enterprise
+
+A Site–tunnel connection costs approximately 125 credits for 30 days, prorated daily. Each Site–tunnel pair counts once per UTC day, even if the Site is unpublished or sends no traffic. A tunnel with no Sites attached during the day counts as zero connections.
+
+- Three Sites that share one tunnel count as three connections, even if they attach at different times that day.
+- One Site attached to two tunnels counts as two connections, including when it switches from one tunnel to the other.
+- Disconnecting and reconnecting the same Site to the same tunnel on the same UTC day counts as one connection.
 
 ## Estimate your monthly cost
 
@@ -59,11 +67,11 @@ Choose an example site or enter your monthly requests, database storage, and fil
     { label: "Enterprise" },
   ]}
   rates={{
-    traffic: { credits: 16, requests: 100000 },
+    traffic: { credits: 15, requests: 100000 },
     monthlyStorageBase: 25,
     databasePerGiB: 150,
     filesPerGiB: 3.75,
   }}
 />
 
-Estimates assume a full month of storage. Select **This Site has a database** to include its base fee even when saved records are zero. For custom domains and private connections, add the charges listed under [Hosting usage rates](#hosting-usage-rates).
+Estimates assume a full month of storage. Select **This Site has a database** to include its base fee even when saved records are zero. For custom domains and Enterprise Site–tunnel connections, add the charges listed under [Hosting usage rates](#hosting-usage-rates).

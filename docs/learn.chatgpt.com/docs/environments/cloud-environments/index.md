@@ -30,8 +30,10 @@ For an introduction, see the [Codex Cloud overview](https://learn.chatgpt.com/do
 ## Start a task in Codex Cloud
 
 On the web or in the [desktop app](https://learn.chatgpt.com/docs/app), choose **Work in** > **Cloud**.
-On mobile, open **Codex**. If the default environment appears in the picker,
+On mobile, open **Codex**. If **Default environment** appears in the picker,
 select it and describe your task.
+
+> Illustration: Desktop app Work in menu with Cloud open and Default environment highlighted
 
 - **Without a project**, you can start without a repository. For example, ask
   Codex to write and test a script using sample data. If the task later needs
@@ -50,6 +52,19 @@ on the web or in the desktop app.
 To use a setup you've already prepared or one shared with you, select the
 published environment instead. In Enterprise workspaces, use a published
 environment you have access to. Admins can [review workspace access](https://learn.chatgpt.com/docs/enterprise/admin-setup#step-5-configure-codex-cloud).
+
+### Reuse settings from a running task
+
+If **Edit** appears next to **Cloud** under **Environment** in the desktop
+app, you can configure the task without leaving the chat.
+
+1. Select **Edit** and review the repositories, scripts, and access settings.
+2. Select **Apply to this chat** to use your changes in the current task.
+3. To reuse the settings from **Default environment**, select **Save for future
+   chats**, enter a name, and select **Save environment**.
+
+Choose the named environment when you start another task. Reopen the original
+chat to continue working with that task's files.
 
 ## Create and publish an environment
 
@@ -94,6 +109,14 @@ Codex can record the tested setup in two fields:
 
 - **Install script:** commands to install dependencies and prepare development assets.
 - **Start skill:** instructions to start services and check that they're ready.
+
+When [Browser Use or Computer Use](https://learn.chatgpt.com/docs/browser#use-the-cloud-browser-or-computer)
+is available, ask Codex to interact with websites or apps on the cloud computer.
+Neither tool requires you to install Playwright.
+
+For repeatable browser tests, you can also [run Playwright tests](https://learn.chatgpt.com/docs/browser#run-playwright-tests).
+If you choose Playwright, install it along with its browser binaries, system
+dependencies, and your app's dependencies.
 
 > Illustration: Cloud environment setup conversation beside repository, script, network, secret, variable, privacy, and Advanced controls, with Save draft and Publish actions
 
@@ -397,6 +420,26 @@ on the web or in the desktop app.
 Reopen the same task to continue its work across devices. Each new task starts in its own workspace. Tasks in Codex Cloud can keep working while
 your computer is asleep.
 
+### Preview an app or connect over SSH
+
+The controls you see depend on your app version, workspace, and environment.
+To [watch Codex interact with an app](https://learn.chatgpt.com/docs/browser#use-the-cloud-browser-or-computer),
+open **Desktop**. To try the app in your own browser, use **HTTP Previews**
+if available:
+
+1. Ask Codex to start the server and tell you which port it uses.
+2. If the port isn't listed, edit the task's environment. Under **HTTP
+   Previews**, add the port, press Enter, select **Apply**, then select
+   **Apply to this chat**.
+3. Open the port under **HTTP Previews** in the task. Only you can access
+   the private HTTPS link. Remove the port to block new requests to the link.
+
+To connect from a local terminal or editor when **SSH access** is enabled,
+select **Set up SSH** next to **SSH** in the desktop app. Choose a profile
+name and select **Create and copy command**. Codex adds a profile to your
+local SSH configuration. Run the copied command in your terminal or select
+the profile in your editor. Turning off SSH access may leave existing connections active.
+
 <a id="start-work-from-a-team-conversation"></a>
 
 ### Start tasks from Slack or Microsoft Teams
@@ -438,11 +481,11 @@ OpenAI account team for available configurations and pricing.
 
 ## Current limitations
 
-The following capabilities aren't currently supported in cloud environments
-and are on our roadmap:
+[Browser Use and Computer Use](https://learn.chatgpt.com/docs/browser#use-the-cloud-browser-or-computer)
+aren't available in every cloud task. Access to the **Desktop** viewer can
+also vary by app version and workspace.
 
-- Computer use
-- Self-hosted GitHub Enterprise Server
+Cloud environments don't support self-hosted GitHub Enterprise Server.
 
 Skills stored in your repository are available in cloud tasks. Personal skills
 from your local computer aren't synced to cloud environments.

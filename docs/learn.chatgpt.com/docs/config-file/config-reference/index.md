@@ -1474,6 +1474,18 @@ Set `model` to one available to your signed-in account or workspace. See
         "Select the OpenTelemetry metrics exporter. The default, `statsig`, follows `analytics.enabled`. Explicit OTLP exporters work independently of that setting. Set to `none` to disable metrics export.",
     },
     {
+      key: "otel.headers_helper",
+      type: "string",
+      description:
+        "Command that returns OTLP/HTTP headers as JSON. Project settings and managed exporters can't use this user setting.",
+    },
+    {
+      key: "otel.headers_helper_refresh_interval_ms",
+      type: "integer (positive)",
+      description:
+        "Header helper refresh interval in milliseconds. Defaults to 1740000 (29 minutes).",
+    },
+    {
       key: "otel.log_sse_deltas",
       type: "boolean",
       description:
@@ -2939,6 +2951,18 @@ from either one wins.
       type: "none | statsig | otlp-http | otlp-grpc",
       description:
         "Enforce the metrics exporter. The Statsig exporter follows `analytics.enabled`. Explicit OTLP metrics exporters run independently of that setting.",
+    },
+    {
+      key: "otel.headers_helper",
+      type: "string",
+      description:
+        "Absolute path to an OTLP/HTTP header helper in system requirements or MDM. Configure its exporters in the same requirements layer.",
+    },
+    {
+      key: "otel.headers_helper_refresh_interval_ms",
+      type: "integer (positive)",
+      description:
+        "Managed header helper refresh interval in milliseconds. Defaults to 1740000 (29 minutes).",
     },
     {
       key: "otel.log_sse_deltas",
