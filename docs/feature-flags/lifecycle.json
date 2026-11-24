@@ -146,9 +146,9 @@
       "stage": "stable"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "key": "code_mode_host_grpc",
-      "stage": "stable"
+      "stage": "removed"
     },
     {
       "enabled": true,
@@ -218,6 +218,11 @@
     {
       "enabled": false,
       "key": "concurrent_reasoning_summaries",
+      "stage": "under development"
+    },
+    {
+      "enabled": false,
+      "key": "connector_tool_result_passthrough",
       "stage": "under development"
     },
     {
@@ -576,9 +581,9 @@
       "stage": "under development"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "key": "mcp_lazy_stdio_startup",
-      "stage": "under development"
+      "stage": "stable"
     },
     {
       "enabled": true,
@@ -729,6 +734,11 @@
       "enabled": true,
       "key": "realtime_conversation",
       "stage": "removed"
+    },
+    {
+      "enabled": false,
+      "key": "realtime_frames_local",
+      "stage": "under development"
     },
     {
       "enabled": true,
@@ -1121,7 +1131,7 @@
       "stage": "stable"
     }
   ],
-  "codex_cli_version": "codex-cli 0.171.0",
+  "codex_cli_version": "codex-cli 0.172.0",
   "coverage": {
     "actionable_missing_in_docs": [
       "analytics_plan_history",
@@ -1130,7 +1140,6 @@
       "bedrock_setup_wizard",
       "cli_daybreak",
       "code_mode_host",
-      "code_mode_host_grpc",
       "code_mode_host_output_truncation",
       "code_mode_interrupt",
       "compaction_image_budget",
@@ -1145,6 +1154,7 @@
       "incremental_tools_legacy",
       "incremental_tools_legacy_gcp",
       "login_shell_package_path",
+      "mcp_lazy_stdio_startup",
       "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_v2",
@@ -1217,6 +1227,7 @@
       "command_sessions_world_state",
       "compaction_image_budget",
       "concurrent_reasoning_summaries",
+      "connector_tool_result_passthrough",
       "content_item_kinds",
       "context_management",
       "credential_masking",
@@ -1298,6 +1309,7 @@
       "powershell_shell_version",
       "prediction_preserve_parent_tools",
       "psp",
+      "realtime_frames_local",
       "reasoning_effort_override",
       "recommended_plugins",
       "remote_compaction_v2",
@@ -1381,6 +1393,7 @@
         "apply_patch_preserve_line_endings",
         "apps_mcp_path_override",
         "code_mode_buffered_exec",
+        "code_mode_host_grpc",
         "code_mode_tool_description_first",
         "codex_git_commit",
         "collaboration_modes",
@@ -1430,7 +1443,6 @@
         "bedrock_setup_wizard",
         "cli_daybreak",
         "code_mode_host",
-        "code_mode_host_grpc",
         "code_mode_host_output_truncation",
         "code_mode_interrupt",
         "compaction_image_budget",
@@ -1444,6 +1456,7 @@
         "incremental_tools",
         "incremental_tools_legacy",
         "incremental_tools_legacy_gcp",
+        "mcp_lazy_stdio_startup",
         "mcp_oauth_refresh_coordination",
         "mentions_v2",
         "multi_agent_v2",
@@ -1486,6 +1499,7 @@
         "codex_apps_mcp_2026_07_28",
         "command_sessions_world_state",
         "concurrent_reasoning_summaries",
+        "connector_tool_result_passthrough",
         "context_management",
         "credential_masking",
         "critical_path_timing",
@@ -1523,7 +1537,6 @@
         "local_thread_store_compression",
         "mcp_2026_07_28",
         "mcp_connection_sharing",
-        "mcp_lazy_stdio_startup",
         "mcp_shared_repl_cwd",
         "mcp_tool_list_changed",
         "model_catalog_in_context",
@@ -1538,6 +1551,7 @@
         "per_environment_context",
         "powershell_shell_version",
         "psp",
+        "realtime_frames_local",
         "request_permissions_tool",
         "restored_history_prewarm",
         "retain_client_developer_messages",
@@ -1626,7 +1640,7 @@
     "os": "linux"
   },
   "schema_version": 3,
-  "source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
+  "source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
   "source_defaults": {
     "agent_message_board": {
       "compatibility_flag": false,
@@ -1865,12 +1879,13 @@
       "stage_from_source": "stable"
     },
     "code_mode_host_grpc": {
-      "compatibility_flag": false,
-      "configurable": true,
-      "default_enabled": true,
-      "default_enabled_expr": "true",
-      "effective_behavior": "feature_gated",
-      "stage_from_source": "stable"
+      "behavior_evidence": "Removed compatibility flag. The local code-mode host always uses gRPC over stdio.",
+      "compatibility_flag": true,
+      "configurable": false,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "unknown",
+      "stage_from_source": "removed"
     },
     "code_mode_host_output_truncation": {
       "compatibility_flag": false,
@@ -1980,6 +1995,14 @@
       "stage_from_source": "stable"
     },
     "concurrent_reasoning_summaries": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
+    },
+    "connector_tool_result_passthrough": {
       "compatibility_flag": false,
       "configurable": true,
       "default_enabled": false,
@@ -2569,10 +2592,10 @@
     "mcp_lazy_stdio_startup": {
       "compatibility_flag": false,
       "configurable": true,
-      "default_enabled": false,
-      "default_enabled_expr": "false",
+      "default_enabled": true,
+      "default_enabled_expr": "true",
       "effective_behavior": "feature_gated",
-      "stage_from_source": "under development"
+      "stage_from_source": "stable"
     },
     "mcp_oauth_refresh_coordination": {
       "compatibility_flag": false,
@@ -2818,6 +2841,14 @@
       "default_enabled_expr": "true",
       "effective_behavior": "unknown",
       "stage_from_source": "removed"
+    },
+    "realtime_frames_local": {
+      "compatibility_flag": false,
+      "configurable": true,
+      "default_enabled": false,
+      "default_enabled_expr": "false",
+      "effective_behavior": "feature_gated",
+      "stage_from_source": "under development"
     },
     "reasoning_effort_override": {
       "compatibility_flag": false,
@@ -3470,13 +3501,13 @@
     }
   },
   "source_fingerprints": {
-    "client_rs_sha256": "04a2cf7510f503f6c8e65660d883fdcfcc262cb3efa32082b0b370afbad6a302",
-    "features_rs_sha256": "5b191163de22c539b7a587d1d79db2d6b872812790cfb83da3506c62a2a55ff3"
+    "client_rs_sha256": "fb3f4c25c18b7b039484f13428b9dab047ee29a131887ffbcfc8fd3901ff237b",
+    "features_rs_sha256": "96124895b43ffb2eb2136c851d54f4696891de3a82cb69869beb17c23f7954f9"
   },
-  "source_ref": "rust-v0.171.0",
+  "source_ref": "rust-v0.172.0",
   "source_urls": {
-    "client_rs": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/core/src/client.rs",
-    "features_rs": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/features/src/lib.rs"
+    "client_rs": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/core/src/client.rs",
+    "features_rs": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/features/src/lib.rs"
   },
   "websocket_precedence": {
     "detected": false,

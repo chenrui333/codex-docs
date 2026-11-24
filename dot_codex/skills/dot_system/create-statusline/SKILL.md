@@ -3,10 +3,10 @@ source_type: 'codex_cli_system_skill'
 source_area: 'system_skill_create_statusline'
 source_url: 'codex-cli://skills/.system/create-statusline/SKILL.md'
 source_kind: 'installed_codex_cli'
-codex_cli_versions: ["0.171.0"]
-codex_cli_versions_raw: ["codex-cli 0.171.0"]
-codex_cli_release_ref: 'rust-v0.171.0'
-codex_cli_source_commit: 'ccf9be8cc458bd6b8336fe84d68d8893f2691a5e'
+codex_cli_versions: ["0.171.0", "0.172.0"]
+codex_cli_versions_raw: ["codex-cli 0.171.0", "codex-cli 0.172.0"]
+codex_cli_release_ref: 'rust-v0.172.0'
+codex_cli_source_commit: '3d86e43b075adeba2193ec5c22ac92f55afd82e6'
 name: 'create-statusline'
 description: 'Build and enable a custom MCP statusline for the Codex CLI. Use when someone wants a provider that displays information in the terminal footer.'
 ---

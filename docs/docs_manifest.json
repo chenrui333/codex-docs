@@ -2,20 +2,20 @@
   "schema_version": 1,
   "sources": {
     "cli-surface/linux-x86_64.json": {
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "sha256": "7f6ea026714be04df9d69dc338fec721329db0c0b684fa26ffc66d393836a7d8",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "sha256": "7b122314d5e68224fa32b2856e297f5d61292362efb75d4bda4e8b69edd27bc4",
       "source_area": "codex_cli_platform_observation",
       "source_kind": "installed_cli_observation",
       "source_type": "codex_cli_platform_observation",
       "source_url": "codex-cli://help"
     },
     "cli-surface/macos-arm64.json": {
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "sha256": "f6f9cbf9130cdd466e70542c18779195288b5b91e8871717bc9c67d2519451b5",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "sha256": "02274fd407d0fc18dd7abacdcf2cab4001417569b1c79413e6ea0a6d09d0f98b",
       "source_area": "codex_cli_platform_observation",
       "source_kind": "installed_cli_observation",
       "source_type": "codex_cli_platform_observation",
@@ -23,10 +23,10 @@
     },
     "codex_capabilities.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -97,7 +97,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -169,10 +170,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "8be3a369c48d718cc5137e75e46b3f4e37e90176a478ca04c6ca6337e37160af",
+      "sha256": "8fc52d71438d55c66a3e9c9d3de161dbaab5b11e4ed275aa2da2495f45243a92",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -180,12 +182,12 @@
     },
     "codex_cli_surface.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "0cdbff932d839ac1b266968b1c544d2dd7357b1bdd6054ff62e4c9d09e036e87",
+      "sha256": "c97a9c9c17cd5df9aeb22b8bab4418995f922d29b60a7937b8493f05c776a63f",
       "source_area": "codex_cli_surface",
       "source_kind": "aggregated_cli_observation",
       "source_type": "codex_cli_surface",
@@ -193,16 +195,16 @@
     },
     "codex_models.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "248f677e81857d9e59cd1d2daec89b1c0e16bba46f9897e624880d27a97d6de5",
+      "sha256": "562b4ee640c067b814c57b0eb765415ce44598607c1e102ff34fea6c028f8d96",
       "source_area": "models",
       "source_kind": "release_bundled_model_catalog",
       "source_type": "codex_model_catalog",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/models-manager/models.json"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/models-manager/models.json"
     },
     "developers.openai.com/api/docs/guides/tools-computer-use/index.md": {
       "sha256": "9d03531850206a03122b12ae251f0546fdeddb6816ca1b0a04609429121578d9",
@@ -1516,18 +1518,20 @@
     },
     "dot_codex/skills/dot_system/create-statusline/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "e7c7e6e8ad0175f3312d037bc73348e815774012b491d989e79bfc81b862b1cb",
+      "sha256": "934b4a4ad8a6316f82a38a202bcf71336c0a1644442a820062dbf513dfd58c58",
       "source_area": "system_skill_create_statusline",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -1535,10 +1539,10 @@
     },
     "dot_codex/skills/dot_system/create-statusline/agents/openai.yaml": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
       "source_area": "system_skill_create_statusline",
@@ -1548,10 +1552,10 @@
     },
     "dot_codex/skills/dot_system/create-statusline/assets/statusline.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "3061f8818b600429d757a788c20cac839082cc4f4688564b80875c757208497b",
       "source_area": "system_skill_create_statusline",
@@ -1561,10 +1565,10 @@
     },
     "dot_codex/skills/dot_system/create-statusline/references/statusline.d.ts": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "d0cd96502c569bec877f8f8fe0982cc60159d47c04299da1565b865be572d3f0",
       "source_area": "system_skill_create_statusline",
@@ -1574,12 +1578,12 @@
     },
     "dot_codex/skills/dot_system/dot_codex-system-skills.marker": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "7af90142d8259ae46a0e293a6baea11de8ca684a0df78bf06328fb0f66a76b48",
+      "sha256": "b080e58a2843c71016c3d57acde113ce70b7a41fd73537b669a07f5a73787ad9",
       "source_area": "system_skill_inventory",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -1587,10 +1591,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/LICENSE.txt": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
       "source_area": "system_skill_imagegen",
@@ -1600,10 +1604,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -1674,7 +1678,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1746,10 +1751,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "e259f5096886d13b3e2ec923ef813b9658d7d16de596290e5c439ec733c74fa7",
+      "sha256": "7e075ade594d57840d3fcfbc7e186ac6de2d48afa8613c51db2a4bffac61a36b",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -1757,10 +1763,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/agents/openai.yaml": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "9ca574af14580dc7a2a3dc37a1796d17f93cb8850be66501f0799ef8603e9dc0",
       "source_area": "system_skill_imagegen",
@@ -1770,10 +1776,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/assets/imagegen-small.svg": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "cff5f34f57ff60b3ee92eaedd17b15e96dd4b9e776df3e78936c9e00d42be294",
       "source_area": "system_skill_imagegen",
@@ -1783,10 +1789,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/assets/imagegen.png": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20",
       "source_area": "system_skill_imagegen",
@@ -1796,10 +1802,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/cli.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -1870,7 +1876,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -1942,10 +1949,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "df76a643273b635a2358a2673f65b14ac9e87c6efd67dbe1c42c9387a5f1464a",
+      "sha256": "a0c2301d338db5d29b4ca4c9135f677cff46aed9bc175c257296f924f7f141f0",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -1953,10 +1961,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/codex-network.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -2027,7 +2035,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2099,10 +2108,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "9a228a27ec791929cd858609f9d6a4bf63a1a02d0c5133eb10ed8caf5e0d1f01",
+      "sha256": "a04f03bc3e6d17e7637622352bae53ad1f6811dea5c4cc46e6e971f7f2ecda24",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2110,10 +2120,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/image-api.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -2184,7 +2194,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2256,10 +2267,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "c676a24305dc4a8662f975231d4f7396d65005f1e90f5b02954e6c99fb81716f",
+      "sha256": "e9a3341b4ecceadaf9fba10d775ed58f8f3e5bd9c5ca3fb450c37fba5fa54860",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2267,10 +2279,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/prompting.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -2341,7 +2353,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2413,10 +2426,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "680c59651605ae9a2faad9ca1965d6c3c548f279fd5a9ca83c9c0bfec9d70444",
+      "sha256": "2fb6c38e52190416574a8cc4bb92d850d551667b5a59b1dced537f1248a48754",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2424,10 +2438,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/references/sample-prompts.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -2498,7 +2512,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2570,10 +2585,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "6c22b6c37a3f2d61ff310801ada8737766766280d5501e27cbd54619af66d092",
+      "sha256": "ddb7ae3315154781fa4363ff559a2f8ecc3f5c0c0e9228b8624471bcf1bc5bbf",
       "source_area": "system_skill_imagegen",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2581,10 +2597,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/scripts/image_gen.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "b4345cf835e5b593b97df6bb2b70bda493b8a97eee4cabbc99b2fa57dba9b448",
       "source_area": "system_skill_imagegen",
@@ -2594,10 +2610,10 @@
     },
     "dot_codex/skills/dot_system/imagegen/scripts/remove_chroma_key.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "a5893c4bd04b21abced33731ea89d2ac428e81d92a0368eb18ffbe4fda5253e2",
       "source_area": "system_skill_imagegen",
@@ -2607,10 +2623,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/LICENSE.txt": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
       "source_area": "system_skill_openai_docs",
@@ -2620,10 +2636,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -2694,7 +2710,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -2766,10 +2783,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "bcad741fee822d69de6d88cb6e881bfe0e1fc4e975a6090f79db05581a255ca7",
+      "sha256": "f5b2783ef7ebc5454137f464891cebe33a6bd921f96cd588b90637e9ce34c68c",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2777,10 +2795,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/agents/openai.yaml": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "50c24c61ca46129bd3f555c37a0e4da6ad179eea2debf9176a5deba23d8a9869",
       "source_area": "system_skill_openai_docs",
@@ -2790,10 +2808,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/assets/openai-small.svg": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "45be1f0757eb18889eefb1e7db79668ef46a275dc4e0e78e8df5ebd7f6cdeadc",
       "source_area": "system_skill_openai_docs",
@@ -2803,10 +2821,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/assets/openai.png": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c",
       "source_area": "system_skill_openai_docs",
@@ -2816,10 +2834,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/codex-self-knowledge.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.147.0",
         "0.148.0",
@@ -2859,7 +2877,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.147.0",
@@ -2900,10 +2919,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "7857ed7f63abef5cbe948c933958c541910789992e3c0ce687fde4265a7547d6",
+      "sha256": "aab5024327a78a715e3bc969c56c1bc156237c20bdc7b3da0493ef72cf721bcd",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -2911,10 +2931,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/latest-model.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -2985,7 +3005,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3057,10 +3078,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "1194b8f3939916db784d1b3e4dc3509f9e5ee27553d27fc39ca8aa615dd81c64",
+      "sha256": "e4f9844ec3d073fbc6561f068fd7276a06cca6a94c60fc3758913dffa5907240",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3068,10 +3090,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/mcp-diagnostics.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.147.0",
         "0.148.0",
@@ -3111,7 +3133,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.147.0",
@@ -3152,10 +3175,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "a467c901acfac80a390151f70eeb96244fb4b74c4fec87b173a277df26acf77e",
+      "sha256": "a32cd4b79066770cbc6a8fb57c3dd2971a84a188d98d88c14ac007430546b1e1",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3163,10 +3187,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/model-migration.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.147.0",
         "0.148.0",
@@ -3206,7 +3230,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.147.0",
@@ -3247,10 +3272,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "b13564597ecfc33fc3d02d9435a445bc9a0dc66238ef64cb6dd425d39de13283",
+      "sha256": "56de9c57ccf61f4eae42145ef422b6eeb4cca0f9c29816e4bc60702f56f50d79",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3258,10 +3284,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/model-selection.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.147.0",
         "0.148.0",
@@ -3301,7 +3327,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.147.0",
@@ -3342,10 +3369,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "150f1bc495bf408fbe41d71f9863939e0717967663fe6a77f3e46752918d3fe4",
+      "sha256": "317b928b3a7edf8bc9cfcbede21fc685e5e912e3190d244d0558a4a4d6c48888",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3353,10 +3381,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/official-docs.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.147.0",
         "0.148.0",
@@ -3396,7 +3424,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.147.0",
@@ -3437,10 +3466,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "f176514984ecaaded3931794f72b6415393b699a0ce0989cc12622140c6f5d25",
+      "sha256": "87ddee29bd9676009482f5bcbb155ca8622e5afc7410542da516e1730db8773b",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3448,10 +3478,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/prompting-guide.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -3522,7 +3552,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3594,10 +3625,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "fca0de87f94cab0921494a635c1d3a01b6ac9bbc98edb1b733faeb97053b0a9e",
+      "sha256": "f997355929733e3c445e7777b35e278dffedf8fe2f1230404d33a94223cff4b1",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3605,10 +3637,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/upgrade-guide.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -3679,7 +3711,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -3751,10 +3784,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "ce4529dfa501c4f7457550497c38c3cb7713083dd10a6dc00eb1cdd1e54a1228",
+      "sha256": "3579d5943a8ae23961ca407b997a7839a35a1811aa160e319c5ce1a994a3848f",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3762,10 +3796,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/references/upgrading-to-gpt-6-astra.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.154.0",
         "0.155.0",
@@ -3795,7 +3829,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.154.0",
@@ -3826,10 +3861,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "cfcb008d970f7e4f1da555105e59fea553b42724c8435544c2adc325216e8521",
+      "sha256": "106ae63903f7362b7a6e6add213b31199c6a5218f080bcd80f2e86381cd3e472",
       "source_area": "system_skill_openai_docs",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3837,10 +3873,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/scripts/fetch-codex-manual.mjs": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "1ea0ca869e3fdf06e83a9972fc4c602b0505a96b22e4b0d9629656f5b545e5ff",
       "source_area": "system_skill_openai_docs",
@@ -3850,10 +3886,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "7354dbb030ca0736dd633a7ca1b930cf640abd40370725dea3a458cb51d49523",
       "source_area": "system_skill_openai_docs",
@@ -3863,10 +3899,10 @@
     },
     "dot_codex/skills/dot_system/openai-docs/scripts/resolve-latest-model-info.cjs": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "589b89515ab63fff87efde0b9c76eb72e674582aebc3afbc29ceae09abddafe3",
       "source_area": "system_skill_openai_docs",
@@ -3876,10 +3912,10 @@
     },
     "dot_codex/skills/dot_system/review-agent/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.145.0",
         "0.146.0",
@@ -3922,7 +3958,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.145.0",
@@ -3966,10 +4003,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "710de2aea7766acb661bfdad5716f1f720ab42e1f993fa22dbb4faee4e8007bc",
+      "sha256": "2324e8025a888555adf93407a1384b72e23b58556c8f98929f18d83240abb689",
       "source_area": "system_skill_review_agent",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -3977,10 +4015,10 @@
     },
     "dot_codex/skills/dot_system/review-agent/agents/openai.yaml": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "4d867a46d15e36ac880176484aae160f59855340c6059b2ea6ab9fbc9af084de",
       "source_area": "system_skill_review_agent",
@@ -3990,10 +4028,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -4064,7 +4102,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4136,10 +4175,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "e0021dd6106478302413da1d53991aa4434d3320be6e1a966ab1ccb018e56189",
+      "sha256": "d8de2a4a291d692174c0a6f598521c2aeb90034a8be2b3f4a8e3429ce685fa01",
       "source_area": "system_skill_skill_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -4147,10 +4187,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/agents/openai.yaml": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "d07d21b93fcf3d4dc8d9a3399c05fc226a49a333a96d3e1c68b451b8dd9eade6",
       "source_area": "system_skill_skill_creator",
@@ -4160,10 +4200,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/assets/skill-creator-small.svg": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
       "source_area": "system_skill_skill_creator",
@@ -4173,10 +4213,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/assets/skill-creator.png": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
       "source_area": "system_skill_skill_creator",
@@ -4186,10 +4226,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/license.txt": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "source_area": "system_skill_skill_creator",
@@ -4199,10 +4239,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/references/openai_yaml.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -4273,7 +4313,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4345,10 +4386,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "fb9082e10db96df0ba4d0ddae71a08b0cdf85af2941999a2694a3aed4ce00849",
+      "sha256": "fd2d0177e9d0e46bb6d098c35cc8c862315dc3a7eb6c89bd2d4afa95dfbc51d4",
       "source_area": "system_skill_skill_creator",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -4356,10 +4398,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/scripts/generate_openai_yaml.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "816df12072d74faf924d802a6599a139997e1441e90bfe4869ec304f2e5e2851",
       "source_area": "system_skill_skill_creator",
@@ -4369,10 +4411,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/scripts/init_skill.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "bf0656a5f9d8d8cdecf0245eaf27e1df8e0e9b6d40ccdda814eb8e3d5f6992c8",
       "source_area": "system_skill_skill_creator",
@@ -4382,10 +4424,10 @@
     },
     "dot_codex/skills/dot_system/skill-creator/scripts/quick_validate.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "ee6dba90f44d37171c5a6edb8095979c54919ff6822c1a907afca2e78c48738c",
       "source_area": "system_skill_skill_creator",
@@ -4395,10 +4437,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/LICENSE.txt": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "source_area": "system_skill_skill_installer",
@@ -4408,10 +4450,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/SKILL.md": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_cli_versions": [
         "0.125.0",
         "0.128.0",
@@ -4482,7 +4524,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4554,10 +4597,11 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "0989fad313949b6bf98eda592bec7a805d8da0b443c4cc166a18be90293e4d80",
+      "sha256": "99a75a3ce77949f449b617c0849ae55fb506daeae0de5e85d04f0cc2c70617a1",
       "source_area": "system_skill_skill_installer",
       "source_kind": "installed_codex_cli",
       "source_type": "codex_cli_system_skill",
@@ -4565,10 +4609,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/agents/openai.yaml": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "5ce223d8b1070b82c42298538f1b8d376f788eb9e7a42a987e8c094070d73f0e",
       "source_area": "system_skill_skill_installer",
@@ -4578,10 +4622,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/assets/skill-installer-small.svg": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "3928703ff00dc1a681e7a22401843b7edcbd4b2051651ce4c43b75f7e140504e",
       "source_area": "system_skill_skill_installer",
@@ -4591,10 +4635,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/assets/skill-installer.png": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605",
       "source_area": "system_skill_skill_installer",
@@ -4604,10 +4648,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/scripts/github_utils.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "61c1bbe2ae217433b4b6f9f09f21aca4df52c12598068343ade719f706e4859b",
       "source_area": "system_skill_skill_installer",
@@ -4617,10 +4661,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/scripts/install-skill-from-github.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "38f311b75664bb063808f982c600271ebc4b560830f491705190f88a94e3e781",
       "source_area": "system_skill_skill_installer",
@@ -4630,10 +4674,10 @@
     },
     "dot_codex/skills/dot_system/skill-installer/scripts/list-skills.py": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "9d6dfb2abf3afeee7f027a89fb1626b918a973da18f4eb6c25681286301beb41",
       "source_area": "system_skill_skill_installer",
@@ -4642,12 +4686,12 @@
       "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
     },
     "feature-flags/lifecycle.json": {
-      "sha256": "07b5d11fe4965510d83ff078da516618ec024827810881464aeb59b70821c38b",
+      "sha256": "5aa943a402fb106ce1a054b1a2969c6c52f2096a76482c009fc59975203188c7",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
     "feature-flags/lifecycle.md": {
-      "sha256": "d95bee10a0c137736d3e6bf8144d51b9d91f4c2d4ad98d6a8ca55e7b8f7017d0",
+      "sha256": "918443609bdf67b55649af0f598f944668759c3ada8e21b725f015de11ef9130",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
@@ -4722,7 +4766,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4794,24 +4839,25 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "93123450615927754becfe9ca383591391d50fbb89964e53bb4e4b65beaf6b2d",
+      "sha256": "17af37c2f5d32fccb79022a7a240ba4951cea5be1fb6b68d171ff122d9f73f93",
       "source_area": "github_root",
       "source_etag": "W/\"492657418e2afd7952496caf0a1198694485a9c5f47959644ca2a664a59fb072\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/CHANGELOG.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/CHANGELOG.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/LICENSE": {
       "sha256": "fbeda2145bd36d60a7dc61de4e78acf9d5e34f84e64f3d87f1815936434df61a",
       "source_area": "github_root",
       "source_etag": "W/\"4ec34c8c5dfcfdd3e3af22f1e08af2ce0872a47ced2255dcfc6f1bb707640853\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/LICENSE",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/LICENSE",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/README.md": {
       "codex_cli_versions": [
@@ -4884,7 +4930,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -4956,15 +5003,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "268de6b87dd4713cebb8c55168bc3c3319ddd932316567171494a05c87122fae",
+      "sha256": "79e1ff5c8486885d08a56f0da4e2d9e8a5af2f52ad2870f153dbcf79edf7a6bd",
       "source_area": "github_root",
       "source_etag": "W/\"4074f496d81d7e5fbb90de8ee7a13cf5fee5fbc179008fe66794850689b7cd53\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/README.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/README.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/SECURITY.md": {
       "codex_cli_versions": [
@@ -5037,7 +5085,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5109,15 +5158,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "012f86f63ca92f4c3babf2d18e6baf7a0b77cce2bc453bfa010847b53d29df24",
+      "sha256": "a7ee62259c79ecea9a7cb1a79c141141ac0e5190e34821bf681f216226ce274d",
       "source_area": "github_root",
       "source_etag": "W/\"85cdf55682402eb9dba63777e1e7c541827d10bc2edd355da5d28a4f9af6bb1d\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/SECURITY.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/SECURITY.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/codex-cli/scripts/README.md": {
       "codex_cli_versions": [
@@ -5190,7 +5240,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5262,15 +5313,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "dbf73787bc06148a626002e8247621112fc6bec069915539751a0d966f48370b",
+      "sha256": "53fe56252bab524213d5a4357c92ae2ce997fd4a74edd9a894b7b7ca261ac172",
       "source_area": "github_cli",
       "source_etag": "W/\"dca1d3ffd4de800f63e9da90b99a19b8080763ba2ee5f90eecb83a5792d3d29f\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-cli/scripts/README.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-cli/scripts/README.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/codex-rs/README.md": {
       "codex_cli_versions": [
@@ -5343,7 +5395,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5415,15 +5468,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "a5733115d9e044ecee1a358d62b706635698bb1bddef13517c9fff68ab83befb",
+      "sha256": "40b09172f54d2d20a3006327c9633ed429727c928c41087064229934ed3d6b18",
       "source_area": "github_rust",
       "source_etag": "W/\"6a110f913cb9c97e006894d137018e0d6f71abd1b21e2d5063c37d4fc6aaf023\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/README.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/README.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/codex-rs/config.md": {
       "codex_cli_versions": [
@@ -5496,7 +5550,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5568,15 +5623,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "77c46eb876898574e6969c69fe55b0038e587a83965a42aa590e347cdb745747",
+      "sha256": "352085b29f44a9f21f10f9309b4582fa51d81e19ce31540c7bfa28c9f80283d1",
       "source_area": "github_rust",
       "source_etag": "W/\"b0bd83f283ccfb6aae247b8d2af236f3d717c235085c4f711b9c839393decc78\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/config.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/config.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/codex-rs/docs/bazel.md": {
       "codex_cli_versions": [
@@ -5649,7 +5705,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5721,15 +5778,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "2178a30ecc392834c1f7c5eb671879e52b0ae523cf883a3eb495a4bf35b38581",
+      "sha256": "355dd4d1c36cee91d7eeebc4d06594c62afde0d404f1a087ce6f115d6c592478",
       "source_area": "github_rust",
       "source_etag": "W/\"ac2ce9854b4642f87b1eb54f7357d2a53029ea30532ef5e0ed5561b1b792abd8\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/docs/bazel.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/docs/bazel.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/codex-rs/docs/protocol_v1.md": {
       "codex_cli_versions": [
@@ -5802,7 +5860,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -5874,15 +5933,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "8deffa72d37dd12e7ee51bba81535e1fcd84803a9e91b65f7eb5003fa0d7ce01",
+      "sha256": "4f17a9692fa1afe44ab38345ad5341120ebfa574031eafef7fb87d12283d8c80",
       "source_area": "github_rust",
       "source_etag": "W/\"3fa49af70cfba7bc118acfd9e5b6ff12e448dd8dfef572dc580364a0db694b8a\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/codex-rs/docs/protocol_v1.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/codex-rs/docs/protocol_v1.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/CLA.md": {
       "codex_cli_versions": [
@@ -5955,7 +6015,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6027,15 +6088,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "84715d0cdc192b73dc7a0e092b0c9c8210d01142dd09c09d65b623432577d531",
+      "sha256": "d98c42c767e383decad388b575006afdbc99133d5250ca862b4f298f6b2dc5ea",
       "source_area": "github_docs",
       "source_etag": "W/\"eb27d3139c1961daea50174a9fe876cfe113044ef06f80e73f3e68ec99ab8135\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/CLA.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/CLA.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/agents_md.md": {
       "codex_cli_versions": [
@@ -6108,7 +6170,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6180,15 +6243,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "fb31dfeafa427d59c7437966e7e7466e6aef9ab72b33cfdc090b39c942fa6359",
+      "sha256": "d5edf4b6011eab6b4843aed0c2901030673cd984e5506d2deefdfd3f8c25bd75",
       "source_area": "github_docs",
       "source_etag": "W/\"96def5c6a5f7d28335591d60faeadf89b11527343850a8712eb21896ec6c5533\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/agents_md.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/agents_md.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/authentication.md": {
       "codex_cli_versions": [
@@ -6261,7 +6325,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6333,15 +6398,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "525a034efff14ebe6a13835476359276d9aa7614de97fc3f05e913dafc8f7685",
+      "sha256": "667f94f7f14583548d908d79d806f106c64cd9ca62ad06e431a4942d25c5d419",
       "source_area": "github_docs",
       "source_etag": "W/\"e5349891f8df99ec8d9e9b9fd394eb0357453da1778864da32348a2a54b452a8\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/authentication.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/authentication.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/config.md": {
       "codex_cli_versions": [
@@ -6414,7 +6480,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6486,15 +6553,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "e02a43571bcae1ad0dae7cda9c7e3ace1da96011efadd9ca7e2f22bb5f317ff0",
+      "sha256": "607ddc40a6397d2bc19041e3b118da3672bc3df6acf448f366772b3adde86b2e",
       "source_area": "github_docs",
       "source_etag": "W/\"49bad37e42f6d2d8c1720a46d1b18135c6d5407e1a770ff477b76585a843bb4a\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/config.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/config.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/contributing.md": {
       "codex_cli_versions": [
@@ -6567,7 +6635,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6639,15 +6708,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "3523e3cc67ff7baba5d2add97483a8fc09d5820514481a4a1a636d79444adb32",
+      "sha256": "b1d01974e26d65760b6acea56c0d857cf9b9bda3c99b6b7d7bcb6f0e01e81a87",
       "source_area": "github_docs",
       "source_etag": "W/\"2463afb8447481c92119835e6e02329d0b3a9b1baf71b59e74c6c301888fcf10\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/contributing.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/contributing.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/example-config.md": {
       "codex_cli_versions": [
@@ -6720,7 +6790,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6792,15 +6863,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "97d9682feb8a9cdd2a94d0732d405f29dd57e72b7ae57b31266fd7eb44f6b826",
+      "sha256": "ad21b783025aed3df6bec89c66ed62d56795843dc7f2d56e1aebafaee12a2a22",
       "source_area": "github_docs",
       "source_etag": "W/\"b5e0c4896e74c34bc7cfb63a3049d7339e499a95bd599af755bd77bb2f113834\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/example-config.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/example-config.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/exec.md": {
       "codex_cli_versions": [
@@ -6873,7 +6945,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -6945,15 +7018,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "8d218c98d7e38f08a3275309555d48f68592f4e352a9e5c8d4f735604868fd26",
+      "sha256": "e1e5e163a6e31212eb9a7c12690d242bf581ef45597267cadbc43fd00dc070b9",
       "source_area": "github_docs",
       "source_etag": "W/\"dcf1e3a75ec1080431c4ae55a70cb03c5124551b901ea3a5cdec01f14860c50b\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/exec.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/exec.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/execpolicy.md": {
       "codex_cli_versions": [
@@ -7026,7 +7100,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7098,15 +7173,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "1e1f0dcc97a9f170df27631f01b9716262e3a4d5dfacc55336a2179d71404bcf",
+      "sha256": "72d1d7bf41bfe9279c76279426bd9a39edea8643d72595ad5a6b590902f786e7",
       "source_area": "github_docs",
       "source_etag": "W/\"fd39160d926f9439ca12d1a51f9dd74b2de78cde9b8478acb9f540dafc3b08b6\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/execpolicy.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/execpolicy.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/getting-started.md": {
       "codex_cli_versions": [
@@ -7179,7 +7255,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7251,15 +7328,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "464d8e4c8442537100ad4420671aa7ed61f70d44e0413cd3db36b88e80ba23f4",
+      "sha256": "9e4493f103f1d6f6f591786fa0094773abb31496093a3a88787fb9c80e5e00b8",
       "source_area": "github_docs",
       "source_etag": "W/\"82e24d79cb87d803a45e293541d6e49716158943df1eae47611ccda006bad8ca\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/getting-started.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/getting-started.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/install.md": {
       "codex_cli_versions": [
@@ -7332,7 +7410,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7404,15 +7483,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "da9cd499d4a13ef55e87fcfe2912faaf94ad92cf810f55f413bdacf03a736f2e",
+      "sha256": "96381e97a29c13fba70ca64bf898fbee043b02b16d4f5b597c69ff238639a483",
       "source_area": "github_docs",
       "source_etag": "W/\"8999f341f8f5485217d6255c3c0f05c9b4b49bc00cad5d43c1b2fc6ed3714d2d\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/install.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/install.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/license.md": {
       "codex_cli_versions": [
@@ -7485,7 +7565,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7557,15 +7638,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "ed4d9f12e9745435da802c02a93f871d756cf57eadb60480ff868642b88b9aa8",
+      "sha256": "79a508a3d3f26b0b0fdf3bac59e2c385ee7c5b6ba40c9fa9079a5aa4c9f7b07e",
       "source_area": "github_docs",
       "source_etag": "W/\"5e2091c10ba6fda84bf6ae22b1c8c1f557e61b08c73dd2ffcf13911453d4a1f8\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/license.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/license.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/open-source-fund.md": {
       "codex_cli_versions": [
@@ -7638,7 +7720,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7710,15 +7793,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "7d5fabaa1d180b12b6de1b4bd57e1b3cfb80c9d3bb2d27ece2305dc1cdbbc0d0",
+      "sha256": "31dee9c697b0c9e162c506614ec19bea74e0d56f06f93c9ba66b42677ecc8c09",
       "source_area": "github_docs",
       "source_etag": "W/\"090e142cb811aa9aa4c9af31688872308cf68af2d6471e87665ed43f3f17c37c\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/open-source-fund.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/open-source-fund.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/sandbox.md": {
       "codex_cli_versions": [
@@ -7791,7 +7875,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -7863,15 +7948,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "bd2b13a32d05ab134ab33696f6e3e440cd503cc6e1352f0e6c0de149da660a0f",
+      "sha256": "892dc2054590cdc7f126410d85516afeefac0439aafb1901097f82e1e19aed73",
       "source_area": "github_docs",
       "source_etag": "W/\"e2f71f0fae297ce95471d539c52107f55aa67d565488302138ccbf6bafb999b3\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/sandbox.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/sandbox.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/skills.md": {
       "codex_cli_versions": [
@@ -7944,7 +8030,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -8016,15 +8103,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "cc6ac43968d26cd01a75a25608e7563d5453d850bf3e5e93eb2b5dfac5d72e3e",
+      "sha256": "81c890dd7fe354e6479d770d1bf3f8c39011085955242534ee855524da2f86fe",
       "source_area": "github_docs",
       "source_etag": "W/\"98db015a71bd40cdb336e59ad7d775aa63b119b711ec2622a8c9c4dd7e2fdc3f\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/skills.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/skills.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "github.openai.com/openai/codex/docs/slash_commands.md": {
       "codex_cli_versions": [
@@ -8097,7 +8185,8 @@
         "0.169.0",
         "0.169.1",
         "0.170.0",
-        "0.171.0"
+        "0.171.0",
+        "0.172.0"
       ],
       "codex_cli_versions_raw": [
         "codex-cli 0.125.0",
@@ -8169,15 +8258,16 @@
         "codex-cli 0.169.0",
         "codex-cli 0.169.1",
         "codex-cli 0.170.0",
-        "codex-cli 0.171.0"
+        "codex-cli 0.171.0",
+        "codex-cli 0.172.0"
       ],
-      "sha256": "4d4b0739bec28f888e54a07b97037f1b9e3bd7a5cbe575277d1b8c73b13330a4",
+      "sha256": "69d442c7eb1f4c904472f2b986dd874f05f5910d69233e5b20feeaa86437e278",
       "source_area": "github_docs",
       "source_etag": "W/\"a7d2abcaac56b52a8be40a5fbadd01885cd23676eb02c75088ba36d7e0d1791c\"",
       "source_type": "github",
-      "source_url": "https://raw.githubusercontent.com/openai/codex/ccf9be8cc458bd6b8336fe84d68d8893f2691a5e/docs/slash_commands.md",
-      "upstream_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "upstream_source_ref": "rust-v0.171.0"
+      "source_url": "https://raw.githubusercontent.com/openai/codex/3d86e43b075adeba2193ec5c22ac92f55afd82e6/docs/slash_commands.md",
+      "upstream_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "upstream_source_ref": "rust-v0.172.0"
     },
     "learn.chatgpt.com/docs/administration/index.md": {
       "codex_cli_versions": [
@@ -12938,10 +13028,10 @@
     },
     "system_prompts/codex-cli/prompt-input.json": {
       "codex_cli_command": "codex --version",
-      "codex_cli_release_ref": "rust-v0.171.0",
-      "codex_cli_source_commit": "ccf9be8cc458bd6b8336fe84d68d8893f2691a5e",
-      "codex_cli_version": "0.171.0",
-      "codex_cli_version_raw": "codex-cli 0.171.0",
+      "codex_cli_release_ref": "rust-v0.172.0",
+      "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+      "codex_cli_version": "0.172.0",
+      "codex_cli_version_raw": "codex-cli 0.172.0",
       "codex_prompt_snapshot_command": "codex debug prompt-input",
       "sha256": "cd76afdc20e617c770128407bc113c18edc78a043f0890a45a07f2dca36ecc8d",
       "source_area": "system_prompt",
