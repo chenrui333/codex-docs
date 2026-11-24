@@ -417,7 +417,7 @@ Requirements constrain security-sensitive settings (approval policy, approvals r
 
 Requirements can also constrain [feature flags](https://learn.chatgpt.com/docs/config-file/config-basic#feature-flags) via the `[features]` table in `requirements.toml`. Note that features aren't always security-sensitive, but enterprises can pin values if desired. Omitted keys remain unconstrained.
 
-For Codex 0.138.0 or later, prefer [permission profiles](https://learn.chatgpt.com/docs/permissions)
+Prefer [permission profiles](https://learn.chatgpt.com/docs/permissions)
 with `allowed_permission_profiles` and managed `default_permissions`. Use
 `allowed_sandbox_modes` only for legacy deployments that still configure
 `sandbox_mode`.
@@ -549,14 +549,6 @@ Use `allowed_permission_profiles` to control which built-in and custom
 permission-profile counterpart to `allowed_sandbox_modes`; use the allowlist that
 matches how your users select permissions.
 
-Permission-profile allowlists require Codex 0.138.0 or later. Codex 0.137.0 and
-earlier ignore `allowed_permission_profiles` and managed
-`default_permissions`.
-
-Use the permission-profile examples below only after every managed client runs a
-supporting release. Don't deploy managed custom profiles until the fleet upgrade
-is complete.
-
 When present, the table is the complete list of allowed profiles. It allows
 profiles set to `true` and denies profiles omitted or set to `false`, including
 built-ins added in future Codex versions.
@@ -580,10 +572,6 @@ Admins can define a custom profile in the same requirements source. Use
 organization-specific profile names that won't collide with names in users'
 loaded config. Custom names can't start with `:` or use the reserved `filesystem`
 name.
-
-Don't deploy managed custom profiles to clients running Codex 0.137.0 or
-earlier. Those clients recognize the profile table but not the managed default
-that selects it.
 
 For example:
 
@@ -833,10 +821,9 @@ the networks you plan to use. Keep these boundaries in mind:
 ### Configure network access requirements
 
 <WarningTip>
-  Keep `[experimental_network]` in published policies until every client and
-  policy validation tool supports `[network_proxy]`. Older versions can ignore
-  or strip the new name. Test enforcement on the client versions and operating
-  systems you deploy, especially Windows, where support is limited.
+  If your policy validator strips `[network_proxy]`, use the
+  `[experimental_network]` alias. Support for managed command networking is
+  limited on Windows.
 </WarningTip>
 
 Use **Requirements** > **Network use controls** to manage supported command
@@ -868,15 +855,13 @@ or runtime defaults can apply. Removing environment settings can reveal inherite
 Global rules. Use **Edit as TOML** for advanced network fields or existing legacy
 domain lists that the visual editor can't represent.
 
-In Codex 0.166.0, `[network_proxy]` is the canonical table for managed
-command networking in `requirements.toml`. Codex also accepts the older
-`[experimental_network]` name. Choose one table name per layer. If layers use
-different names, Codex applies the usual requirements precedence.
+Use `[network_proxy]` or its alias `[experimental_network]` in
+`requirements.toml`. Use one name per layer. If layers use different names,
+the usual requirements precedence applies.
 
 Set `enabled = true` in the managed table to start the proxy independently
 of the user setting `features.network_proxy`. The active sandbox must also
-allow command network access. The example uses the name that older clients
-and policy validation layers recognize.
+allow command network access.
 
 ```toml
 [experimental_network]
@@ -1185,9 +1170,7 @@ prefix_rules = [
 ]
 ```
 
-Check that every managed client version supports the keys you select. Assign the policy to the intended users or groups and verify that it takes effect on their supported clients. Use
-the configuration reference for the current schema and the administration
-surface for current assignment behavior.
+Assign the policy to the intended users or groups.
 
 The service selects the enterprise-managed requirement layers that apply to the
 signed-in identity. The local client evaluates those layers with the other
@@ -1274,18 +1257,16 @@ for credential storage modes and service URL configuration.
 
 ### Enforce OpenTelemetry settings
 
-In Codex CLI 0.166.0, use `[otel]` in `requirements.toml` to set the log, trace, and metrics
-exporters independently, label the environment, and control which content Codex
-exports. This example sends logs to an OTLP/HTTP collector and limits the
-text logged for each tool result to 256 UTF-8 bytes. It omits prompt text, final response
-text, and automatic approval assessments.
+Use `[otel]` in `requirements.toml` to configure log, trace, and metrics
+exporters independently for Codex CLI and the macOS desktop app. You can
+label the environment and control which content Codex exports.
 
-The macOS desktop app 26.1111.21308 bundles CLI `0.169.0-alpha.11.1` and
-supports managed `[otel]` settings. Set `otel.log_sse_deltas` to `false` to
-skip successful streaming events whose names end in `.delta`. Codex still
-records errors, completion events, and metrics.
-The older desktop build 26.1027.30824 bundles CLI `0.166.0-alpha.5.1` and
-can't enforce `[otel]` settings through `requirements.toml`.
+Set `otel.log_sse_deltas` to `false` to skip successful streaming events whose
+names end in `.delta`. Codex still records errors, completion events, and metrics.
+
+This example sends logs to an OTLP/HTTP collector and limits the logged text
+of each tool result to 256 UTF-8 bytes. It omits prompt text, final response
+text, and automatic approval assessments.
 
 ```toml
 [otel]

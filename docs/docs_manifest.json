@@ -174,7 +174,7 @@
         "codex-cli 0.172.0"
       ],
       "codex_prompt_snapshot_command": "codex debug prompt-input",
-      "sha256": "b84e3558d7b587d67f7df8ed93a7c1a37a279a2acf0a33e415ab076fab3a7c44",
+      "sha256": "1c09fe8b4818b70ffa8bdce9f7cf76464f99ab7a1d20c77abac0ff051028c141",
       "source_area": "capability_inventory",
       "source_kind": "generated_capability_inventory",
       "source_type": "capability_inventory",
@@ -4686,12 +4686,12 @@
       "source_url": "codex-cli://skills/.system/skill-installer/scripts/list-skills.py"
     },
     "feature-flags/lifecycle.json": {
-      "sha256": "30232b7e023972ede87818e040523594c0c40b0afeae7257dbbc2aedda336134",
+      "sha256": "f9165a6097976c46b73b86367af0f3d7bba873964c267e77be7c8a4470b34c85",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
     "feature-flags/lifecycle.md": {
-      "sha256": "d5a57b00454f14dfeb72042e8ce6f269300ff7e12ff501be2bdff04815d48c82",
+      "sha256": "6430d772f9e09c701556659226f004427e066dab5ffd0a630fb92fe4108ebe6e",
       "source_type": "feature_flags",
       "source_url": "generated://feature-lifecycle"
     },
@@ -8518,7 +8518,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "55a6924aa0cd863ee537a0b7add37863b28d58da8eb95615980b86740ddf817c",
+      "sha256": "8df9bb0f2f855dae213396559bd4694497ede3fc94a8511eea154b52e41779c8",
       "source_area": "learn_app_server",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9171,7 +9171,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "8f16b03be3075447e994ab6e8a17b1bf1b2f0cc06ba9070befb44f421f7f1489",
+      "sha256": "1bc17e9905259a0addcb8bf451f3280474c9e413ce5221433956b4b47f238651",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9202,7 +9202,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "70751fbc99580a16161f9c428aa1d15a9e87202b3d6554b5e343fd5cbc0cf1e7",
+      "sha256": "741998a4f8ebfa8d48e5348284b33eefcef404b276025d1863200f7738ef384e",
       "source_area": "learn_config_file",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -9515,7 +9515,7 @@
       "source_url": "https://learn.chatgpt.com/docs/dots/getting-started"
     },
     "learn.chatgpt.com/docs/dots/index.md": {
-      "sha256": "2480aedd47087b1e635289dfd7f4d862b38987dcdd862e1d03e20b53e00a2090",
+      "sha256": "e2bff244398cf3bada69834f7af46c85d5491ef78ce80a6f12ba03da6b258c44",
       "source_area": "learn_dots",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10037,7 +10037,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "c9a7740884298b26818746546addd6046a066c879776b1e2ce7f130a3de450a5",
+      "sha256": "facf2c3b45b7769abbe3cae3d95665b73bd91dace77f7dc47330dcae036824f3",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10130,7 +10130,7 @@
       "source_url": "https://learn.chatgpt.com/docs/enterprise/roll-out-a-gateway"
     },
     "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
-      "sha256": "0704456375d58f755452288a084701e23bd35eb39032f76c2ce6d1ef2db32f20",
+      "sha256": "4eb9feab6b295779524caa67c322bd4769850df9681a20a2d440fa4b44318edf",
       "source_area": "learn_enterprise",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -10559,7 +10559,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "b9a3438876d595a0ef415b3e38050a75a8d1e7165e68b39f38564af4bd73ec05",
+      "sha256": "51723aa171d01c0b042299b4a30b8a93636c030c3067f0f5c9ea4f3bc995c937",
       "source_area": "learn_extend",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -11174,7 +11174,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "79251c44e93a20be685df6222226f0a07c238c3447424231c9e98b93c76ea546",
+      "sha256": "f95a8cf03296f2621c51481b43126c9d5f0bb69bf4a9c74d0f8b68f68d0f5cde",
       "source_area": "learn_non_interactive_mode",
       "source_kind": "learn_markdown",
       "source_type": "learn",

@@ -820,6 +820,8 @@ prefer_mxc = true
 
 # skill_mcp_dependency_install = true
 
+# mcp_lazy_stdio_startup = true # start eligible stdio servers on first use when their tool list is cached
+
 # prevent_idle_sleep = false
 
 # Code mode namespaces. This feature is under development and off by default.
@@ -938,7 +940,7 @@ prefer_mxc = true
 
 # disabled_tools = ["slow-tool"] # optional deny-list (applied after allow-list)
 
-# startup_readiness = "catalog" # use a valid cached tool catalog while connecting
+# startup_readiness = "catalog" # a cached tool list can satisfy the startup check for a required server
 
 # tool_input_schema_max_bytes = 8000 # default 5000 UTF-8 bytes
 
@@ -1197,6 +1199,12 @@ prefer_mxc = true
 # enabled = false
 
 # approval_mode = "approve"
+
+# [apps.calendar.tools."events/create"]
+
+# approval_mode = "prompt"
+
+# approvals_reviewer = "user" # ask the user to review this tool's approval prompts
 
 # Optional tool suggestion allowlist for connectors or plugins Codex can offer to install.
 

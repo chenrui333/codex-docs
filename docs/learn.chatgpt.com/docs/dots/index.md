@@ -249,13 +249,15 @@ Give your dot access to the relevant sources and tell it what to keep track of. 
 
 **For workspace admins:** See [Set up dots for work](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide) for workspace setup, permissions, and security and governance guidance.
 
-Access depends on your plan, region, and workspace settings. Dots are rolling out gradually to eligible Pro and Business Premium accounts.
+Access depends on your plan, region, and workspace settings. Dots are rolling out gradually to select Plus users and Business Premium accounts.
 
-- **Pro 100, Pro 200, and Pro 500:** For users aged 18 and older outside the European Economic Area, United Kingdom, and Switzerland.
+- **Pro 100, Pro 200, and Pro 500:** Available to users aged 18 and older outside the European Economic Area, United Kingdom, and Switzerland.
+- **Plus:** Rolling out to select users aged 18 and older outside the European Economic Area, United Kingdom, and Switzerland.
 - **Business Premium:** Available in supported ChatGPT regions, subject to workspace eligibility.
+- **Business Standard:** Dots are available to eligible ChatGPT Business Standard members in supported regions. Each member can create one personal dot in their Business workspace. Usage limits apply.
 - **Enterprise, Edu, and Healthcare:** Generally available in eligible workspaces. For current workspace eligibility and regional availability, see [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot) and [Data residency and inference residency for ChatGPT](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt). During the admin preview, your admin can enable access for your role. Starting November 18, 2026, access is on by default unless your workspace opts out.
 
-For Pro and Business Premium, conversations with your dot don’t count toward your ChatGPT usage limits. Tasks your dot starts or manages in Work or Codex count toward those products’ usage limits as usual. Your plan includes an allowance for deeper work, with extended limits for the first month after launch. For Enterprise pricing and delegated task charges, see [Enterprise preview and billing](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide#enterprise-preview-and-billing).
+For Pro and Business Premium, conversations with your dot don’t count toward your ChatGPT usage limits. Tasks your dot starts or manages in Work or Codex count toward those products’ usage limits as usual. Your plan includes an allowance for deeper work. For Enterprise pricing and delegated task charges, see [Enterprise preview and billing](https://learn.chatgpt.com/docs/enterprise/dots-admin-guide#enterprise-preview-and-billing).
 
 You can create your dot in the ChatGPT mobile app, desktop app, or a desktop browser. Use the latest version of the mobile app for mobile setup. Mobile web is not supported.
 

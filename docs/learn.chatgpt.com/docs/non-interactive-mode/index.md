@@ -199,6 +199,10 @@ codex exec resume --last "fix the race conditions you found"
 ```
 
 You can also target a specific session ID with `codex exec resume <SESSION_ID>`.
+Codex reuses the session's working directory, workspace roots, and sandbox
+permissions. To override the working directory or sandbox, pass `-C` or
+`--sandbox` before `resume`. Use `--add-dir` before `resume` to add a
+workspace root to the saved set.
 
 ## Git repository required
 

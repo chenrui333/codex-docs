@@ -350,8 +350,7 @@ OAuth login.
 - Set `required = true` to make startup fail if this enabled server isn't
   ready. By default, `startup_readiness = "connection"` requires a live connection.
   Set `startup_readiness = "catalog"` to let a valid cached tool catalog
-  satisfy startup while the server connects. Tool calls still need a live
-  connection.
+  satisfy that requirement. Tool calls still need a live connection.
 - `enabled_tools` (optional): Tool allow list.
 - `disabled_tools` (optional): Tool deny list (applied after `enabled_tools`).
 - `default_tools_approval_mode` (optional): Default approval behavior for
@@ -361,6 +360,12 @@ OAuth login.
 - `tools.<tool>.output_token_limit` (optional): Positive token budget for one
   tool's output, before the standard 20% serialization allowance. Overrides the
   model's default output truncation budget for that tool.
+
+By default, Codex can wait until the first tool call to start an optional
+stdio server if it already has a usable tool list for that server. A required
+stdio server can also start on first use if you set `startup_readiness = "catalog"`.
+Without a cached tool list, Codex starts the server when the thread starts.
+Set `features.mcp_lazy_stdio_startup = false` to start these servers with the thread.
 
 The top-level `mcp_optional_startup_grace_ms` setting controls how long Codex
 waits for optional MCP servers when building the initial tool catalog. It

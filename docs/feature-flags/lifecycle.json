@@ -1154,7 +1154,6 @@
       "incremental_tools_legacy",
       "incremental_tools_legacy_gcp",
       "login_shell_package_path",
-      "mcp_lazy_stdio_startup",
       "mcp_oauth_refresh_coordination",
       "mentions_v2",
       "multi_agent_v2",
@@ -1287,7 +1286,6 @@
       "login_shell_package_path",
       "mcp_2026_07_28",
       "mcp_connection_sharing",
-      "mcp_lazy_stdio_startup",
       "mcp_oauth_refresh_coordination",
       "mcp_shared_repl_cwd",
       "mcp_tool_list_changed",
@@ -1456,7 +1454,6 @@
         "incremental_tools",
         "incremental_tools_legacy",
         "incremental_tools_legacy_gcp",
-        "mcp_lazy_stdio_startup",
         "mcp_oauth_refresh_coordination",
         "mentions_v2",
         "multi_agent_v2",
@@ -1601,6 +1598,7 @@
     "in_app_local_automation",
     "in_app_updates",
     "in_app_voice",
+    "mcp_lazy_stdio_startup",
     "memories",
     "multi_agent",
     "network_proxy",
@@ -1630,9 +1628,9 @@
       "sha256": "ef66bf6ba4924aa96f3076c44dc989ffacbf4183688d0025058730bb34df2d1d"
     },
     "config_reference": {
-      "parsed_feature_key_count": 40,
+      "parsed_feature_key_count": 41,
       "path": "docs/learn.chatgpt.com/docs/config-file/config-reference/index.md",
-      "sha256": "8f16b03be3075447e994ab6e8a17b1bf1b2f0cc06ba9070befb44f421f7f1489"
+      "sha256": "1bc17e9905259a0addcb8bf451f3280474c9e413ce5221433956b4b47f238651"
     }
   },
   "observation_environment": {

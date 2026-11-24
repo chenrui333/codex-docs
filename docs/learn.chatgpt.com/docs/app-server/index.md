@@ -1370,7 +1370,8 @@ Read the effective app config shape (including `_default` and per-tool overrides
 
 `apps._default.approvals_reviewer` sets the reviewer for all apps unless a
 per-app value overrides it. When both are omitted, the app inherits the
-top-level `approvals_reviewer` value. `apps._default.default_tools_approval_mode`
+top-level `approvals_reviewer` value. Use `apps.<id>.tools.<tool>.approvals_reviewer`
+to choose the reviewer for one tool. `apps._default.default_tools_approval_mode`
 sets the fallback approval mode for tools without a per-app or per-tool
 override. Managed approval-mode requirements override tool approval-mode
 settings.
@@ -1539,7 +1540,8 @@ Codex supports these authentication modes. `account/updated.authMode` shows the 
 ### API overview
 
 - `account/read` - fetch current account info; optionally refresh tokens.
-- `account/login/start` - begin login (`apiKey`, `chatgpt`, `chatgptDeviceCode`, or experimental `chatgptAuthTokens`).
+- `account/login/start` - begin login with `apiKey`, `chatgpt`, or `chatgptDeviceCode`. Experimental login types include `chatgptAuthTokens`, `amazonBedrock`, and `amazonBedrockAccessKeys`.
+- `account/bedrock/setup` (experimental) - configure Amazon Bedrock with an AWS profile or environment credentials.
 - `account/login/completed` (notify) - emitted when a login attempt finishes (success or error).
 - `account/login/cancel` - cancel a pending managed ChatGPT login by `loginId`.
 - `account/logout` - sign out; triggers `account/updated`.
@@ -1553,6 +1555,13 @@ Codex supports these authentication modes. `account/updated.authMode` shows the 
 - `account/workspaceMessages/read` - fetch active workspace messages, including notification headlines when available.
 - `mcpServer/oauthLogin/completed` (notify) - emitted after a `mcpServer/oauth/login` flow finishes; payload includes `{ name, threadId, loginId?, success, error? }`. Older servers omit `loginId`. `threadId` can be `null` for app-scoped or plugin OAuth flows.
 - `mcpServer/startupStatus/updated` (notify) - emitted when a configured MCP server's startup status changes; payload includes `{ threadId, name, status, error, failureReason }`. `threadId` is `null` for app-scoped startup. On failed startup, `failureReason: "reauthenticationRequired"` means stored OAuth credentials expired and couldn't be refreshed, so the client should offer to reconnect the server.
+
+### Select Amazon Bedrock Runtime
+
+Set `capabilities.experimentalApi` to `true` during initialization. Pass
+`providerId: "amazon-bedrock-runtime"` to `account/bedrock/setup` or to
+`account/login/start` with type `amazonBedrock` or `amazonBedrockAccessKeys`.
+Omitting `providerId` or passing `null` selects Bedrock Mantle (`amazon-bedrock`).
 
 ### Sign in to a configured gateway
 

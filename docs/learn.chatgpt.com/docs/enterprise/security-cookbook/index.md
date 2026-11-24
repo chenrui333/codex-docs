@@ -1094,6 +1094,12 @@ statusMessage = "Checking managed Bash command"
 
 The requirement registers the hook but does not install it. Have an administrator install the selected file with the commands below.
 
+<CodeSampleNote client:load language="java" languages={Object.keys(samples.all.codexSecurityCookbook.installAndEnforceAdministratorManagedHooks())}>
+
+The Java tab implements the same hook protocol. To use it, compile the class and configure the hook command to run the class with your Java runtime and dependencies. The installation commands here use the Python version.
+
+</CodeSampleNote>
+
 <CodeSampleNote client:load language="python" languages={Object.keys(samples.all.codexSecurityCookbook.installAndEnforceAdministratorManagedHooks())}>
 
 For a local macOS integration test, save the Python version as `pre_tool_use_policy.py`.
@@ -1141,3 +1147,104 @@ try {
 ```
 
 ```python
+
+var event = new ObjectMapper().readTree(System.in);
+String command = event.path("tool_input").path("command").asText("");
+if (command.contains("CODEX_HOOK_TEST_DENY")) {
+  System.err.println("Synthetic test command blocked by managed hook.");
+  System.exit(2);
+}
+```
+
+```ruby
+require "json"
+
+event = JSON.parse($stdin.read)
+command = event.fetch("tool_input", {}).fetch("command", "")
+if command.include?("CODEX_HOOK_TEST_DENY")
+  warn "Synthetic test command blocked by managed hook."
+  exit 2
+end
+```
+
+```bash
+sudo install -d -o root -g wheel -m 755 /etc/codex/hooks
+sudo install -o root -g wheel -m 644 ./pre_tool_use_policy.py /etc/codex/hooks/pre_tool_use_policy.py
+```
+
+<CodeSampleNote client:load language="ruby" languages={Object.keys(samples.all.codexSecurityCookbook.installAndEnforceAdministratorManagedHooks())}>
+
+For Ruby, replace both `pre_tool_use_policy.py` paths in the installation commands with `pre_tool_use_policy.rb`; keep the same root ownership and permissions.
+
+</CodeSampleNote>
+
+Restart the local client, then:
+
+- [ ] Confirm a benign Bash command runs.
+
+- [ ] Confirm a command containing `CODEX_HOOK_TEST_DENY` is blocked.
+
+- [ ] Verify that the policy and dependencies cannot be changed by the Codex user.
+
+`allow_managed_hooks_only` skips all non-managed user, project, session, and plugin hooks and may affect other workflows.
+
+The Bash matcher does not cover every tool or input supplied later to an existing process; errors, timeouts, or malformed hook responses can allow a tool call to proceed.
+
+Cloud-orchestrated Work uses different supported hook handlers. Keep independent OS and service protections. See [Managed hooks](https://learn.chatgpt.com/docs/enterprise/managed-configuration#enforce-managed-hooks-from-requirements) and [hook behavior](https://learn.chatgpt.com/docs/hooks#pretooluse).
+
+#### Protect the policy and its distribution
+
+On macOS, an administrator can deploy a reviewed and merged requirements file in a root-owned parent directory and prevent the Codex user from writing to the file:
+
+```bash
+sudo install -d -o root -g wheel -m 755 /etc/codex
+sudo install -o root -g wheel -m 644 ./requirements.reviewed.toml /etc/codex/requirements.toml
+ls -ld /etc/codex
+ls -l /etc/codex/requirements.toml
+```
+
+On Linux, use the appropriate administrator group; on Windows, protect the ProgramData directory and file with administrator-managed access control lists. Restrict who can change the MDM or cloud policy, review changes, and preserve a rollback copy.
+
+Using a non-admin pilot account, verify that the account cannot modify the policy, parent directory, or managed hook program; try a weaker user or project setting, restart Codex, and verify the enforced behavior persists.
+
+Test each client and environment in scope rather than assuming all clients load the same policy.
+
+#### Verify
+
+Using a non-admin test identity:
+
+- [ ] Attempt to edit the managed policy. Expected: The managed file cannot be changed.
+
+- [ ] Attempt to weaken a restriction through user or project configuration. Expected: Weaker settings are rejected or remain constrained.
+
+- [ ] Restart the client and verify the restrictions still apply.
+
+#### Boundaries
+
+A user or agent with sufficient host administrator privileges may be able to change the surrounding protections. User-editable settings alone are not a substitute for administrator-managed requirements.
+
+</PersistentChecklist>
+
+## Source pages
+
+- [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)
+
+- [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
+
+- [Advanced Configuration](https://learn.chatgpt.com/docs/config-file/config-advanced)
+
+- [Authentication](https://learn.chatgpt.com/docs/auth)
+
+- [Sandboxing](https://learn.chatgpt.com/docs/sandboxing)
+
+- [Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review)
+
+- [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
+
+- [Agent internet access](https://learn.chatgpt.com/docs/cloud/internet-access)
+
+- [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)
+
+- [Recommended configuration](https://learn.chatgpt.com/docs/cyber-safety/recommended-configuration)
+
+- [Compliance API and audit events](https://learn.chatgpt.com/docs/enterprise/compliance-api)
