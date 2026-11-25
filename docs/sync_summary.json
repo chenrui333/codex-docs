@@ -1,11 +1,9 @@
 {
-  "added": [
-    "developers.openai.com/blog/production-monitoring-with-codex/index.md"
-  ],
+  "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-25T07:29:09+00:00",
-  "manifest_sha256": "72ea40b5336b8295d80bab27c76ff1540d89787b85270accf658ac776b665287",
+  "generated_at": "2026-11-25T21:15:44+00:00",
+  "manifest_sha256": "1b12cb47d6e19f451802d33baf46e96cc19627b0c39664caf48a821f962a5e99",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -19,7 +17,7 @@
   },
   "total_files": 312,
   "updated": [
-    "learn.chatgpt.com/docs/pricing/index.md",
-    "learn.chatgpt.com/docs/sites/usage-and-cost/index.md"
+    "learn.chatgpt.com/docs/dots/channels/index.md",
+    "learn.chatgpt.com/docs/dots/index.md"
   ]
 }

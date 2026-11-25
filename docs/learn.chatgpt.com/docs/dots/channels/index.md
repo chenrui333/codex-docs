@@ -86,7 +86,7 @@ The action opens ChatGPT and requires authentication. If you switch accounts and
 
 ## Texting
 
-Reach your dot through iMessage or RCS on Android. Texting supports one-to-one conversations. It’s rolling out in beta to ChatGPT Pro users in the U.S.
+Reach your dot through iMessage or RCS on Android. Texting supports one-to-one conversations. It’s rolling out in beta to ChatGPT Pro users in the U.S., Canada, and Mexico.
 
 Your dot can use relevant context from your conversations in ChatGPT and other connected channels, along with the plugins you’ve connected.
 
