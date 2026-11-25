@@ -1,0 +1,56 @@
+{
+  "events": [
+    {
+      "changes": {
+        "added": [
+          "developers.openai.com/blog/production-monitoring-with-codex/index.md"
+        ],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "developers.openai.com/blog/production-monitoring-with-codex/index.md": {
+            "after": "5695bdc32dd28da2b88e1297d9017dd230b141562fa0f3cb4dbc58399a2ef12f",
+            "before": null
+          },
+          "learn.chatgpt.com/docs/pricing/index.md": {
+            "after": "ba9643335f259baf456429bbf850e276d23e16954935f395ac3d409f1edb61f0",
+            "before": "dd7dbf8141efb52264f39a899a1eb0b88deedf296bb7821aaca72540939c9ff7"
+          },
+          "learn.chatgpt.com/docs/sites/usage-and-cost/index.md": {
+            "after": "da4321b4c1aadce15f111fa1d2a87968b065fe9e3dfdc0d91559186e8d4f3088",
+            "before": "f11f492923f6a1c4fe6658e0a2319ff182f49569253ee3d0ab6d7b397127076d"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.172.0",
+          "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+          "codex_cli_version": "0.172.0",
+          "codex_cli_version_raw": "codex-cli 0.172.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/pricing/index.md",
+          "learn.chatgpt.com/docs/sites/usage-and-cost/index.md"
+        ]
+      },
+      "id": "ceb8ab914147212d5837761ab8ffea26106d582bd6d564953af269ef10e2ad2c",
+      "observed_at": "2026-11-25T07:29:09+00:00",
+      "previous_id": ""
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,9 +1,11 @@
 {
-  "added": [],
+  "added": [
+    "developers.openai.com/blog/production-monitoring-with-codex/index.md"
+  ],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-24T22:02:24+00:00",
-  "manifest_sha256": "5d6ed4d7c468a215574d4101a8e9dc7e82f9f3cb05656467ed735b0e175692f4",
+  "generated_at": "2026-11-25T07:29:09+00:00",
+  "manifest_sha256": "72ea40b5336b8295d80bab27c76ff1540d89787b85270accf658ac776b665287",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -15,18 +17,9 @@
     "source_kind": "installed_codex_cli",
     "sync_scope": "full"
   },
-  "total_files": 311,
+  "total_files": 312,
   "updated": [
-    "codex_capabilities.json",
-    "feature-flags/lifecycle.json",
-    "feature-flags/lifecycle.md",
-    "learn.chatgpt.com/docs/app-server/index.md",
-    "learn.chatgpt.com/docs/config-file/config-reference/index.md",
-    "learn.chatgpt.com/docs/config-file/config-sample/index.md",
-    "learn.chatgpt.com/docs/dots/index.md",
-    "learn.chatgpt.com/docs/enterprise/managed-configuration/index.md",
-    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md",
-    "learn.chatgpt.com/docs/extend/mcp/index.md",
-    "learn.chatgpt.com/docs/non-interactive-mode/index.md"
+    "learn.chatgpt.com/docs/pricing/index.md",
+    "learn.chatgpt.com/docs/sites/usage-and-cost/index.md"
   ]
 }

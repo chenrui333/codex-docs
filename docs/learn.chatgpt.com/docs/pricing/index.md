@@ -433,7 +433,19 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
         <td style="text-align:center">30 credits</td>
       </tr>
       <tr>
-        <td>GPT-Rosalind-Research</td>
+        <td>GPT-6 Rosalind Research *</td>
+        <td style="text-align:center">250 credits</td>
+        <td style="text-align:center">25 credits</td>
+        <td style="text-align:center">1,250 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.5 Rosalind Research</td>
+        <td style="text-align:center">125 credits</td>
+        <td style="text-align:center">12.5 credits</td>
+        <td style="text-align:center">625 credits</td>
+      </tr>
+      <tr>
+        <td>GPT-5.5 Rosalind Discovery</td>
         <td style="text-align:center">125 credits</td>
         <td style="text-align:center">12.5 credits</td>
         <td style="text-align:center">625 credits</td>
@@ -478,6 +490,8 @@ sales](https://chatgpt.com/contact-sales?utm_internal_source=openai_developers_c
     </tfoot>
   </table>
 
+\* GPT‑6 Rosalind Research promotional pricing is available at least through December 31, 2026.
+
 _GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026._
 
 [Learn more about credits in ChatGPT Plus and
@@ -508,7 +522,11 @@ invitation.
 
 ### How much does Sites cost?
 
-Sites is available in public beta on eligible plans. Availability depends on your region and workspace settings. Hosting is free through December 31, 2026. See [Sites usage and cost](https://learn.chatgpt.com/docs/sites/usage-and-cost) for plan allowances, hosting rates, and a monthly cost estimate.
+Sites is available in public beta on eligible plans. Availability depends on your region and workspace settings.
+
+We plan to show your Sites hosting usage in the app starting January 1, 2027. Hosting is free through January 31, 2027. We plan to start charging Plus, Pro, and Business customers for hosting usage above their monthly allowance on February 1, 2027. Enterprise billing follows your organization’s agreement.
+
+See [Sites usage and cost](https://learn.chatgpt.com/docs/sites/usage-and-cost) for plan allowances, hosting rates, and a monthly cost estimate.
 
 ### How much does Voice cost?
 

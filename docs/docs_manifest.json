@@ -376,6 +376,14 @@
       "source_type": "developers",
       "source_url": "https://developers.openai.com/blog/mastering-codex-remote-for-engineering"
     },
+    "developers.openai.com/blog/production-monitoring-with-codex/index.md": {
+      "sha256": "5695bdc32dd28da2b88e1297d9017dd230b141562fa0f3cb4dbc58399a2ef12f",
+      "source_area": "codex_blog",
+      "source_etag": "W/\"61bf849b3379453d29eebb6975f573be\"",
+      "source_last_modified": "2026-11-25T03:41:50Z",
+      "source_type": "developers",
+      "source_url": "https://developers.openai.com/blog/production-monitoring-with-codex"
+    },
     "developers.openai.com/blog/run-long-horizon-tasks-with-codex/index.md": {
       "codex_cli_versions": [
         "0.151.0",
@@ -11422,7 +11430,7 @@
         "codex-cli 0.153.0",
         "codex-cli 0.153.2"
       ],
-      "sha256": "dd7dbf8141efb52264f39a899a1eb0b88deedf296bb7821aaca72540939c9ff7",
+      "sha256": "ba9643335f259baf456429bbf850e276d23e16954935f395ac3d409f1edb61f0",
       "source_area": "learn_pricing",
       "source_kind": "learn_markdown",
       "source_type": "learn",
@@ -12472,7 +12480,7 @@
       "source_url": "https://learn.chatgpt.com/docs/sites/publishing-and-sharing"
     },
     "learn.chatgpt.com/docs/sites/usage-and-cost/index.md": {
-      "sha256": "f11f492923f6a1c4fe6658e0a2319ff182f49569253ee3d0ab6d7b397127076d",
+      "sha256": "da4321b4c1aadce15f111fa1d2a87968b065fe9e3dfdc0d91559186e8d4f3088",
       "source_area": "learn_sites",
       "source_kind": "learn_markdown",
       "source_type": "learn",
