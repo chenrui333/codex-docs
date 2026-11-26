@@ -1156,6 +1156,44 @@ if (command.contains("CODEX_HOOK_TEST_DENY")) {
 }
 ```
 
+```csharp
+using System;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+try
+{
+    using JsonDocument document = JsonDocument.Parse(await Console.In.ReadToEndAsync());
+    JsonElement eventData = document.RootElement;
+    if (eventData.ValueKind != JsonValueKind.Object)
+        throw new JsonException("Expected an event object.");
+    string command = "";
+    if (eventData.TryGetProperty("tool_input", out JsonElement toolInput))
+    {
+        if (toolInput.ValueKind != JsonValueKind.Object)
+            throw new JsonException("Expected tool_input to be an object.");
+        if (toolInput.TryGetProperty("command", out JsonElement commandValue))
+        {
+            if (commandValue.ValueKind != JsonValueKind.String)
+                throw new JsonException("Expected command to be a string.");
+            command = commandValue.GetString()!;
+        }
+    }
+
+    // This synthetic sentinel exercises the hook contract, not a general command policy.
+    if (command.Contains("CODEX_HOOK_TEST_DENY", StringComparison.Ordinal))
+    {
+        await Console.Error.WriteAsync("Synthetic test command blocked by managed hook.\n");
+        Environment.Exit(2);
+    }
+}
+catch (JsonException)
+{
+    await Console.Error.WriteAsync("Invalid hook event.\n");
+    Environment.Exit(2);
+}
+```
+
 ```ruby
 require "json"
 

@@ -39,6 +39,46 @@
       "id": "438412ea8b540e2e123009ac5da1056f4d1d9ca1252168cd73404c65aac3ef4e",
       "observed_at": "2026-11-26T07:17:49+00:00",
       "previous_id": ""
+    },
+    {
+      "changes": {
+        "added": [],
+        "capability_changes": {
+          "added": [],
+          "added_by_category": {},
+          "lifecycle_transitions": [],
+          "removed": [],
+          "removed_by_category": {}
+        },
+        "file_changes": {
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md": {
+            "after": "c915db5762b8588c3e3141ab379633c04d583c31e389d8f00c8212b45db53b5f",
+            "before": "4eb9feab6b295779524caa67c322bd4769850df9681a20a2d440fa4b44318edf"
+          }
+        },
+        "model_changes": {
+          "added": [],
+          "changed": [],
+          "removed": []
+        },
+        "removed": [],
+        "source_metadata": {
+          "codex_cli_command": "codex --version",
+          "codex_cli_release_ref": "rust-v0.172.0",
+          "codex_cli_source_commit": "3d86e43b075adeba2193ec5c22ac92f55afd82e6",
+          "codex_cli_version": "0.172.0",
+          "codex_cli_version_raw": "codex-cli 0.172.0",
+          "codex_prompt_snapshot_command": "codex debug prompt-input",
+          "source_kind": "installed_codex_cli",
+          "sync_scope": "full"
+        },
+        "updated": [
+          "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
+        ]
+      },
+      "id": "977b77e151ddc032f23945249785c369ab17bc0d03aca23b1cb92d11d45a619a",
+      "observed_at": "2026-11-26T21:17:40+00:00",
+      "previous_id": "438412ea8b540e2e123009ac5da1056f4d1d9ca1252168cd73404c65aac3ef4e"
     }
   ],
   "schema_version": 1

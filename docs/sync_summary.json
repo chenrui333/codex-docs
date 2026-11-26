@@ -2,8 +2,8 @@
   "added": [],
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-11-26T07:17:49+00:00",
-  "manifest_sha256": "6e5a8fc35dffa7e0bc11dcafad18daac026547ceeec3b31642af03aa3803daf4",
+  "generated_at": "2026-11-26T21:17:41+00:00",
+  "manifest_sha256": "bb2483b7189197e1222e88aee753ec7da5034c80fe48eb664d3166cf1cfec161",
   "removed": [],
   "source_metadata": {
     "codex_cli_command": "codex --version",
@@ -17,6 +17,6 @@
   },
   "total_files": 312,
   "updated": [
-    "learn.chatgpt.com/docs/config-file/config-advanced/index.md"
+    "learn.chatgpt.com/docs/enterprise/security-cookbook/index.md"
   ]
 }
