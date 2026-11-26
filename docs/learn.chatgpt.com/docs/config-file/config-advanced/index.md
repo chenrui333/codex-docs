@@ -790,3 +790,289 @@ if (notification.type === "agent-turn-complete") {
 
 ```python
 #!/usr/bin/env python3
+
+if (args.length != 1) {
+  throw new IllegalArgumentException("Pass the Codex notification JSON as one argument");
+}
+JsonNode notification =
+    new ObjectMapper().enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS).readTree(args[0]);
+if (notification == null || !notification.isObject()) {
+  throw new IllegalArgumentException("Codex notification must be a JSON object");
+}
+if (notification.path("type").asText("").equals("agent-turn-complete")) {
+  StringJoiner message = new StringJoiner(" ");
+  JsonNode inputs = notification.path("input-messages");
+  if (!inputs.isMissingNode() && !inputs.isNull()) {
+    if (!inputs.isArray()) {
+      throw new IllegalArgumentException("input-messages must be an array");
+    }
+    for (JsonNode input : inputs) {
+      if (!input.isTextual() && !input.isNull()) {
+        throw new IllegalArgumentException("input-messages must contain strings or null");
+      }
+      message.add(input.asText(""));
+    }
+  }
+  Process process =
+      new ProcessBuilder(
+              "terminal-notifier",
+              "-title",
+              "Codex: " + notification.path("last-assistant-message").asText("Turn Complete!"),
+              "-message",
+              message.toString(),
+              "-group",
+              "codex-" + notification.path("thread-id").asText(""),
+              "-activate",
+              "com.googlecode.iterm2")
+          .inheritIO()
+          .start();
+  System.exit(process.waitFor());
+}
+```
+
+```csharp
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+string[] arguments = Environment.GetCommandLineArgs();
+if (arguments.Length < 2)
+{
+    throw new ArgumentException("Pass the Codex notification JSON as one argument");
+}
+
+using JsonDocument document = JsonDocument.Parse(arguments[^1]);
+JsonElement notification = document.RootElement;
+if (notification.TryGetProperty("type", out JsonElement type)
+    && type.GetString() == "agent-turn-complete")
+{
+    string lastMessage = notification.TryGetProperty("last-assistant-message", out JsonElement last)
+        ? last.GetString() ?? "Turn Complete!"
+        : "Turn Complete!";
+    string message = notification.TryGetProperty("input-messages", out JsonElement inputs)
+        && inputs.ValueKind != JsonValueKind.Null
+        ? string.Join(" ", inputs.EnumerateArray().Select(item => item.GetString() ?? ""))
+        : "";
+    string threadId = notification.TryGetProperty("thread-id", out JsonElement thread)
+        ? thread.GetString() ?? ""
+        : "";
+
+    ProcessStartInfo startInfo = new("terminal-notifier")
+    {
+        UseShellExecute = false,
+    };
+    foreach (string argument in new[]
+    {
+        "-title", $"Codex: {lastMessage}",
+        "-message", message,
+        "-group", $"codex-{threadId}",
+        "-activate", "com.googlecode.iterm2",
+    })
+    {
+        startInfo.ArgumentList.Add(argument);
+    }
+
+    using Process process = Process.Start(startInfo)
+        ?? throw new InvalidOperationException("Could not start terminal-notifier");
+    await process.WaitForExitAsync();
+    if (process.ExitCode != 0)
+    {
+        Environment.Exit(process.ExitCode);
+    }
+}
+```
+
+```ruby
+require "json"
+
+raise ArgumentError, "Pass the Codex notification JSON as one argument" unless ARGV.length == 1
+
+notification = JSON.parse(ARGV.fetch(0))
+raise ArgumentError, "Codex notification must be a JSON object" unless notification.is_a?(Hash)
+
+if notification["type"] == "agent-turn-complete"
+  inputs = notification["input-messages"]
+  inputs = [] if inputs.nil?
+  raise ArgumentError, "input-messages must be an array of strings or null" unless inputs.is_a?(Array)
+
+  unless inputs.all? { |input| input.nil? || input.is_a?(String) }
+    raise ArgumentError, "input-messages must be an array of strings or null"
+  end
+
+  pid = Process.spawn(
+    "terminal-notifier",
+    "-title", "Codex: #{notification["last-assistant-message"] || "Turn Complete!"}",
+    "-message", inputs.join(" "),
+    "-group", "codex-#{notification["thread-id"] || ""}",
+    "-activate", "com.googlecode.iterm2"
+  )
+  _, status = Process.wait2(pid)
+  raise "Notification child status unavailable" unless status
+
+  exit(status.exitstatus || 128 + status.termsig)
+end
+```
+
+The script receives a single JSON argument. Common fields include:
+
+- `type` (currently `agent-turn-complete`)
+- `thread-id` (session identifier)
+- `turn-id` (turn identifier)
+- `cwd` (working directory)
+- `input-messages` (user messages that led to the turn)
+- `last-assistant-message` (last assistant message text)
+
+Place the script somewhere on disk and point `notify` to it.
+
+#### `notify` vs `tui.notifications`
+
+- `notify` runs an external program (good for webhooks, desktop notifiers, CI hooks).
+- `tui.notifications` is built in to the TUI and can optionally filter by event type (for example, `agent-turn-complete` and `approval-requested`).
+- `tui.notification_method` controls how the TUI emits terminal notifications (`auto`, `osc9`, or `bel`).
+- `tui.notification_condition` controls whether TUI notifications fire only when
+  the terminal is `unfocused` or `always`.
+
+In `auto` mode, Codex prefers OSC 9 notifications (a terminal escape sequence some terminals interpret as a desktop notification) and falls back to BEL (`\x07`) otherwise.
+
+See [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the exact keys.
+
+## History persistence
+
+By default, Codex saves local session transcripts under `CODEX_HOME` (for example, `~/.codex/history.jsonl`). To disable local history persistence:
+
+```toml
+[history]
+persistence = "none"
+```
+
+To cap the history file size, set `history.max_bytes`. When the file exceeds the cap, Codex drops the oldest entries and compacts the file while keeping the newest records.
+
+```toml
+[history]
+max_bytes = 104857600 # 100 MiB
+```
+
+## Clickable citations
+
+If you use a terminal/editor integration that supports it, Codex can render file citations as clickable links. Configure `file_opener` to pick the URI scheme Codex uses:
+
+```toml
+file_opener = "vscode" # or cursor, windsurf, vscode-insiders, none
+```
+
+Example: a citation like `/home/user/project/main.py:42` can be rewritten into a clickable `vscode://file/...:42` link.
+
+## Project instructions discovery
+
+Codex reads `AGENTS.md` (and related files) and includes a limited amount of project guidance in the first turn of a session. Two knobs control how this works:
+
+- `project_doc_max_bytes`: how much to read from each `AGENTS.md` file
+- `project_doc_fallback_filenames`: additional filenames to try when `AGENTS.md` is missing at a directory level
+
+For a detailed walkthrough, see [Custom instructions with AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
+
+## Desktop
+
+Options in this section apply only to the ChatGPT desktop app.
+
+### Add custom file handlers
+
+In your user-level `~/.codex/config.toml`, add entries under
+`desktop.custom_file_handlers` to open files in editors or internal launchers
+that the ChatGPT desktop app doesn't support by default. Each entry adds an
+editor target to the app's **Open in** menus. The app lists the target when
+`command` is an existing absolute path or resolves from the app's `PATH`.
+
+The following example shows three ways to pass a file to a handler:
+
+```toml
+# Append the opened path directly after the command.
+[desktop.custom_file_handlers.vscodium]
+label = "VSCodium"
+icon = "/Users/you/.codex/icons/vscodium.png"
+command = "codium"
+
+# Place fixed arguments before the opened path.
+[desktop.custom_file_handlers.textedit]
+label = "TextEdit"
+icon = "/Users/you/.codex/icons/textedit.png"
+command = "/usr/bin/open"
+args = ["-a", "TextEdit"]
+
+# Append one JSON argument with the path and editor context.
+[desktop.custom_file_handlers.company_editor]
+label = "Company Editor"
+icon = "/opt/company/editor/icon.png"
+command = "/opt/company/bin/editor"
+input = "json_argument"
+```
+
+Save `config.toml`, then restart the ChatGPT desktop app.
+
+The handler ID is the final segment of the TOML table header. It must contain
+1–64 characters, start with an ASCII letter or number, and otherwise contain
+only ASCII letters, numbers, periods, underscores, or hyphens. The app exposes
+the ID with a `custom:` prefix; for example, `company_editor` becomes
+`custom:company_editor`. Quote an ID that contains a period so TOML doesn't
+interpret it as a nested table. For example:
+
+```toml
+[desktop.custom_file_handlers."company.editor"]
+label = "Company Editor"
+icon = "/opt/company/editor/icon.png"
+command = "/opt/company/bin/editor"
+```
+
+Each handler supports these fields:
+
+| Field          | Required | Description                                                                                                                                                              |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `label`        | Yes      | Display name in the app.                                                                                                                                                 |
+| `icon`         | Yes      | Bundled app icon such as `apps/vscode.png`, base64 `data:image/...` URL, `file:` URI, or absolute local image path. An unsupported source uses the default VS Code icon. |
+| `command`      | Yes      | Executable path or command name to detect and launch.                                                                                                                    |
+| `args`         | No       | String array inserted between `command` and the file input. Defaults to `[]`.                                                                                            |
+| `input`        | No       | How the app sends file input: `path`, `json_argument`, or `json_stdin`. Defaults to `path`.                                                                              |
+| `supports_ssh` | No       | Whether to offer the handler for files in SSH workspaces. Defaults to `false`. Use `json_stdin` when the handler needs remote host and path details.                     |
+
+The `input` value controls what follows `args`:
+
+- `path` appends the path as the final command argument.
+- `json_argument` appends a JSON object with `target`, `path`, `appPath`, and
+  `location`. The `location` value is an object with 1-based `line` and
+  `column` values, or `null`.
+- `json_stdin` writes the JSON object to standard input instead of adding an
+  argument. It also includes `hostConfig`, `remoteWorkspaceRoot`, and
+  `remotePath`; these fields are `null` when they don't apply.
+
+For example, `company_editor` can receive this argument when the user opens a
+specific source location:
+
+```json
+{
+  "target": "custom:company_editor",
+  "path": "/repo/src/index.ts",
+  "appPath": null,
+  "location": { "line": 12, "column": 3 }
+}
+```
+
+Selecting a custom handler as the preferred editor persists the choice the same
+way as selecting a built-in editor, including per-project preferences.
+
+## TUI options
+
+Running `codex` with no subcommand launches the interactive terminal UI (TUI). Codex exposes some TUI-specific configuration under `[tui]`, including:
+
+- `tui.notifications`: enable/disable notifications (or restrict to specific types)
+- `tui.notification_method`: choose `auto`, `osc9`, or `bel` for terminal notifications
+- `tui.notification_condition`: choose `unfocused` or `always` for when
+  notifications fire
+- `tui.animations`: enable/disable ASCII animations and shimmer effects
+- `tui.alternate_screen`: control alternate screen usage (set to `never` to keep terminal scrollback)
+- `tui.show_tooltips`: show or hide onboarding tooltips on the welcome screen
+
+`tui.notification_method` defaults to `auto`. In `auto` mode, Codex prefers OSC 9 notifications (a terminal escape sequence some terminals interpret as a desktop notification) when the terminal appears to support them, and falls back to BEL (`\x07`) otherwise.
+
+See [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) for the full key list.
